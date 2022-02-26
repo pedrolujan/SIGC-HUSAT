@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<document datasource="{Document}" font-size="8" align="left" version="0.2">
+	<item align="center">
+		<img width="165px" src="{/Settings.printingLogo}" />
+	</item>
+	<item>
+		<empty/>
+	</item>
+	<item align="center">{empresa.RazonSocial}</item>
+	<item align="center">{empresa.Ruc}</item>
+	<item>
+		<empty/>
+	</item>
+	<item align="center">{sucursal.Nombre}</item>
+	<item align="center">{sucursal.Direccion}</item>
+	<item align="center">{sucursal.Ubigeo}</item>
+	<item>
+		<empty/>
+	</item>
+	<item margin="8 13 0 0">
+		<hr/>
+	</item>
+	<item align="center" margin="3 0">{Header.cDescripcionTipoDoc}</item>
+	<item font-style="bold" margin="1 13 0 1">
+		<hr/>
+	</item>
+	<horizontal-container margin="0 11 0 0">
+		<item align="center" width="1">{Header.dFechaVenta}</item>
+		<item align="right" font-size="8"  width="40%">{Header.cDocVenta}</item>
+	</horizontal-container>
+	<item>
+		<empty/>
+	</item>
+	<item width="20%" align="left">Cliente: {Header.cCliente}</item>
+	<item width="20%" align="left">{Header.cDescripcionTiDo}: {Header.cDocumento}</item>
+	<item font-style="bold" margin="1 13 0 1" >
+		<hr/>
+	</item>
+	<item >
+		<empty/>
+	</item>
+	<horizontal-container margin="0 11 0 0">
+		<item>Cantidad</item>
+		<item width="2">Descripcion</item>
+		<item>Precio</item>
+		<item align="right">Importe</item>
+	</horizontal-container>
+	<item margin="0 13 0 0">
+		<hr/>
+	</item>
+	<iterator-section datasource="{Detail}">
+		<horizontal-container margin="0 11 0 0">
+			<item width="20%">{Cantidad:Cantidad} {cNombreUM}</item>
+			<item width="40%">{Descripcion}</item>
+			<item width="20%">{PrecioVenta}</item>
+			<item width="20%" align="right">{currency:Importe}</item>
+		</horizontal-container>
+	</iterator-section>
+	<item>
+		<empty/>
+	</item>
+	<item margin="0 13 0 0">
+		<hr/>
+	</item>
+	<item>
+		<empty/>
+	</item>
+	<horizontal-container margin="0 11 0 0">
+		<item width="2" align="left">IGV ({Header.nNroIGV}%):</item>
+		<item width="1" align="right">{Header.nIGV}</item>
+	</horizontal-container>
+	<horizontal-container margin="0 11 0 0">
+		<item width="2" align="left">SubTotal:</item>
+		<item width="1" align="right">{Header.nSubtotal}</item>
+	</horizontal-container>
+	<horizontal-container margin="0 11 0 0">
+		<item width="2" align="left">Total:</item>
+		<item width="1" align="right">{Header.nMontoTotal}</item>
+	</horizontal-container>
+	<item margin="0 13 0 0">
+		<hr/>
+	</item>
+	<item>
+		<empty/>
+	</item>
+	<horizontal-container margin="0 11 0 0">
+		<item width="2" align="left">Tipo de Pago: {Header.cDescripcionTipoPago}</item>
+	</horizontal-container>
+	<horizontal-container margin="0 11 0 0">
+		<item width="2" align="left">Estado de la Venta: {Header.cDescripcionEstado}</item>
+	</horizontal-container>
+	<item margin="17 0 0 0">Atendido por: {Header.cUsuario}</item>
+	<item>
+		<empty/>
+	</item>
+</document>

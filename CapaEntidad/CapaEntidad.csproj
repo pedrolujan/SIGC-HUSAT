@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E3F706A-FA50-43CA-88D6-805E8821E734}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CapaEntidad</RootNamespace>
+    <AssemblyName>CapaEntidad</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Siticone.UI">
+      <HintPath>C:\Users\venta\Downloads\siticone\siticone\Siticone.UI-WinForms\Siticone.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accesorios.cs" />
+    <Compile Include="AdministrarEquipos.cs" />
+    <Compile Include="Almacen.cs" />
+    <Compile Include="Asociacion.cs" />
+    <Compile Include="Cate_Mar_Mod.cs" />
+    <Compile Include="Cargo.cs" />
+    <Compile Include="Ciclo.cs" />
+    <Compile Include="Contrato.cs" />
+    <Compile Include="ControlPagos.cs" />
+    <Compile Include="Cronograma.cs" />
+    <Compile Include="DetalleEquipo.cs" />
+    <Compile Include="Equipo.cs" />
+    <Compile Include="Cuadre.cs" />
+    <Compile Include="Cliente.cs" />
+    <Compile Include="ConfigMesa.cs" />
+    <Compile Include="DetalleCompra.cs" />
+    <Compile Include="DetalleInventario.cs" />
+    <Compile Include="DetalleTraslado.cs" />
+    <Compile Include="DetalleVenta.cs" />
+    <Compile Include="DocumentoVenta.cs" />
+    <Compile Include="Empresa.cs" />
+    <Compile Include="Equipo_imeis.cs" />
+    <Compile Include="Generic\GenericMasterDetail.cs" />
+    <Compile Include="Instalacion.cs" />
+    <Compile Include="Inventario.cs" />
+    <Compile Include="AttrVehiculo.cs" />
+    <Compile Include="Moneda.cs" />
+    <Compile Include="Reactivaciones.cs" />
+    <Compile Include="SimCard.cs" />
+    <Compile Include="OrdenCompra.cs" />
+    <Compile Include="OtrasVentas.cs" />
+    <Compile Include="Pagos.cs" />
+    <Compile Include="Perioricidad.cs" />
+    <Compile Include="Personal.cs" />
+    <Compile Include="Plan.cs" />
+    <Compile Include="Precio.cs" />
+    <Compile Include="Producto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prospecto.cs" />
+    <Compile Include="Proveedor.cs" />
+    <Compile Include="ReciboChips.cs" />
+    <Compile Include="Sucursal.cs" />
+    <Compile Include="Tarifa.cs" />
+    <Compile Include="TipoCliente.cs" />
+    <Compile Include="TipoDescuento.cs" />
+    <Compile Include="TipoPersona.cs" />
+    <Compile Include="TipoPlan.cs" />
+    <Compile Include="TipoVenta.cs" />
+    <Compile Include="Traslado.cs" />
+    <Compile Include="Ubigeo.cs" />
+    <Compile Include="UnidadMedida.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="validacion.cs" />
+    <Compile Include="Vehiculo.cs" />
+    <Compile Include="VentaGeneral.cs" />
+    <Compile Include="VentaMayor.cs" />
+    <Compile Include="VentaMesa.cs" />
+    <Compile Include="xmlAccesorio.cs" />
+    <Compile Include="xmlAccesorios.cs" />
+    <Compile Include="xmlDetalleIngreso.cs" />
+    <Compile Include="xmlEquipos.cs" />
+    <Compile Include="XmlEquiposProspecto.cs" />
+    <Compile Include="xmlTarifas.cs" />
+    <Compile Include="xmlTiposPlan.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\DetalleTraslado.datasource" />
+    <None Include="Properties\DataSources\Traslado.datasource" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

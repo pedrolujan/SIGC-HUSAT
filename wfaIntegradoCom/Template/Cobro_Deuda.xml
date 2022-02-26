@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<document datasource="{Document}" font-size="8" align="left" version="0.2">
+  <item align="center">
+    <img width="165px" src="{/Settings.printingLogo}" />
+  </item>
+  <item>
+    <empty/>
+  </item>
+  <item align="center">{empresa.RazonSocial}</item>
+  <item align="center">{empresa.Ruc}</item>
+  <item>
+    <empty/>
+  </item>
+  <item align="center">{sucursal.Nombre}</item>
+  <item align="center">{sucursal.Direccion}</item>
+  <item align="center">{sucursal.Ubigeo}</item>
+  <item>
+    <empty/>
+  </item>
+  <item margin="8 13 0 0">
+    <hr/>
+  </item>
+  <item align="center" margin="3 0">Cobro Deuda</item>
+  <item font-style="bold" margin="1 13 0 1">
+    <hr/>
+  </item>
+  <horizontal-container margin="0 11 0 0">
+    <item align="center" width="1">{Header.dFechaRegistro}</item>
+  </horizontal-container>
+  <item>
+    <empty/>
+  </item>
+  <item width="20%" align="left">Cliente: {Header.cCliente}</item>
+  <item font-style="bold" margin="1 13 0 1" >
+    <hr/>
+  </item>
+  <item >
+    <empty/>
+  </item>
+  <horizontal-container margin="0 11 0 0">
+  <item width="2" align="left">Monto Total Deuda:</item>
+  <item width="1" align="right">{Header.nMontoTotal}</item>
+  </horizontal-container>
+  <horizontal-container margin="0 11 0 0">
+    <item width="2" align="left">Monto Pagado:</item>
+    <item width="1" align="right">{Header.nMontoPagar}</item>
+  </horizontal-container>
+  <horizontal-container margin="0 11 0 0">
+    <item width="2" align="left">Saldo Restante:</item>
+    <item width="1" align="right">{Header.nSubtotal}</item>
+  </horizontal-container>
+  <item margin="0 13 0 0">
+    <hr/>
+  </item>
+  <item>
+    <empty/>
+  </item>
+  <item margin="17 0 0 0">Atendido por: {Header.cUsuario}</item>
+  <item>
+    <empty/>
+  </item>
+</document>

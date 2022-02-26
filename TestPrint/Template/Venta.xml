@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<document datasource="{Document}" font-size="8" align="left" version="0.2">
+  <item align="center" font-style="bold" font-size="9">{isatend}</item>
+</document>

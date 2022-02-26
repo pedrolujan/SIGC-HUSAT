@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="ucOpcion"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:tk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF.CTRL.Colocaciones"
+             xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+             xmlns:WpfTools="clr-namespace:WpfTools;assembly=WpfTools"
+             mc:Ignorable="d" 
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key='linearGradientBrushTest' StartPoint='0,0' EndPoint='1,1' >
+            <GradientStop Color='Yellow' Offset='0.2'></GradientStop>
+            <GradientStop Color='Orange' Offset='0.5'></GradientStop>
+            <GradientStop Color='Red' Offset='0.8'></GradientStop>
+        </LinearGradientBrush>
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.Resources>
+            <ResourceDictionary Source="Tema\dyAcordion.xaml" />
+        </Grid.Resources>
+        <toolkit:Accordion Name="acdPrincipal" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" x:FieldModifier="public">
+        </toolkit:Accordion>
+    </Grid>
+</UserControl>

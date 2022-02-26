@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E2CCB2B-4D9A-4D25-A9B2-34A4B90089F9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CapaDato</RootNamespace>
+    <AssemblyName>CapaDato</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clsCconexion.cs" />
+    <Compile Include="DAAcceso.cs" />
+    <Compile Include="DAAccesoADescuento.cs" />
+    <Compile Include="DAAccesorios.cs" />
+    <Compile Include="DAAdministrarEquipos.cs" />
+    <Compile Include="DAAlmacen.cs" />
+    <Compile Include="DAAsociacion.cs" />
+    <Compile Include="DACate_Mar_Mod.cs" />
+    <Compile Include="DACargo.cs" />
+    <Compile Include="DACategoria.cs" />
+    <Compile Include="DACiclo.cs" />
+    <Compile Include="DAconsultas.cs" />
+    <Compile Include="DAControlPagos.cs" />
+    <Compile Include="DAEquipo.cs" />
+    <Compile Include="DACliente.cs" />
+    <Compile Include="DAConfigMesa.cs" />
+    <Compile Include="DADocumentoVenta.cs" />
+    <Compile Include="DAEquipo_imeis.cs" />
+    <Compile Include="DAEquivalencia.cs" />
+    <Compile Include="DAInstalacion.cs" />
+    <Compile Include="DAInventario.cs" />
+    <Compile Include="DALineaProducto.cs" />
+    <Compile Include="DAMarca.cs" />
+    <Compile Include="DAAttrVehiculo.cs" />
+    <Compile Include="DAMenu.cs" />
+    <Compile Include="DAMoneda.cs" />
+    <Compile Include="DAOperador.cs" />
+    <Compile Include="DAOrdenCompra.cs" />
+    <Compile Include="DAPerioricidad.cs" />
+    <Compile Include="daPersonal.cs" />
+    <Compile Include="DAPlan.cs" />
+    <Compile Include="DAPrecio.cs" />
+    <Compile Include="DAProducto.cs" />
+    <Compile Include="DAProspecto.cs" />
+    <Compile Include="DAProveedor.cs" />
+    <Compile Include="DAReactivaciones.cs" />
+    <Compile Include="DASucursal.cs" />
+    <Compile Include="DATipoCliente.cs" />
+    <Compile Include="DATipoDescuento.cs" />
+    <Compile Include="DATipoPago.cs" />
+    <Compile Include="DATipoPlan.cs" />
+    <Compile Include="DATipoTarifa.cs" />
+    <Compile Include="DAOtrasVenta.cs" />
+    <Compile Include="DATraslado.cs" />
+    <Compile Include="DAUbigeo.cs" />
+    <Compile Include="DAUnidadMedida.cs" />
+    <Compile Include="DAUsuario.cs" />
+    <Compile Include="DAValidarDatosExistentes.cs" />
+    <Compile Include="DAVehiculo.cs" />
+    <Compile Include="DAVentaGeneral.cs" />
+    <Compile Include="DAVentaMesa.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="sqlParameter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaConexion\CapaConexion.csproj">
+      <Project>{c35344be-5dae-4a4f-9797-3bf7779b539e}</Project>
+      <Name>CapaConexion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
+      <Project>{5e3f706a-fa50-43ca-88d6-805e8821e734}</Project>
+      <Name>CapaEntidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaUtil\CapaUtil.csproj">
+      <Project>{3db7dd7f-bf9c-4a24-b7d5-0e80c361c6a3}</Project>
+      <Name>CapaUtil</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLLS\Newtonsoft.Json.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

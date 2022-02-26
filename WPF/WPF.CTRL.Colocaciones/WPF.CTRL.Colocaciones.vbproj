@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <RootNamespace>WPF.CTRL.Colocaciones</RootNamespace>
+    <AssemblyName>WPF.CTRL.Colocaciones</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <ProjectGuid>{DF6175EE-E653-4151-A8CB-43A480865D16}</ProjectGuid>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>true</IncrementalBuild>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>WPF.CTRL.Colocaciones.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>false</IncrementalBuild>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>WPF.CTRL.Colocaciones.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.19230, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\FontAwesome.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="WPF.Themes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\WPF.Themes.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfTools">
+      <HintPath>..\..\..\..\..\Compartidos\desa\Util.General\Util.Recursos\Lib\WpfTools.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Controls" />
+    <Import Include="System.Windows.Data" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Input" />
+    <Import Include="System.Windows.Shapes" />
+    <Import Include="System.Windows.Media" />
+    <Import Include="System.Windows.Media.Imaging" />
+    <Import Include="System.Windows.Navigation" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enum\StateOrder.vb" />
+    <Compile Include="Models\DCAcceso.vb" />
+    <Compile Include="Models\DCAccesoProceso.vb" />
+    <Compile Include="Models\DCPedido.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ucColor.xaml.vb">
+      <DependentUpon>ucColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucComboColor.xaml.vb">
+      <DependentUpon>ucComboColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucIcono.xaml.vb">
+      <DependentUpon>ucIcono.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucOpcion.xaml.vb">
+      <DependentUpon>ucOpcion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\clsModeloVista.vb" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCConsolidadoEstado.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCConsolidadoEstandar.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCConsolidadoItem.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCEstadoAnexo.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCEstadoFinanciero.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCEstadoFinancieroDetalle.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCEstructuraCelda.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCEstructuraCeldaFormula.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCEstructuraElemento.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCEstructuraSeccionAgencia.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCEvaluacionCIIU.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCTipoCostoVenta.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCTipoEstadoFinanciero.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCVersionEstadoFinanciero.datasource" />
+    <None Include="My Project\DataSources\SRV.GSTColocaciones.DataContract.EvaluacionFinanciera.DCVersionEstructuraSeccion.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <AppDesigner Include="My Project\" />
+    <Resource Include="Resources\fontawesome-webfont.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Tema\dyAcordion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ucColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ucComboColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ucIcono.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ucOpcion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dlls\FontAwesome.WPF.dll" />
+    <Content Include="Dlls\System.Windows.Controls.Layout.Toolkit.dll" />
+    <Content Include="Dlls\WPF.Themes.dll" />
+    <Content Include="Dlls\WPFToolkit.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
