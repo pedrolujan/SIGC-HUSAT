@@ -1032,6 +1032,7 @@ namespace wfaIntegradoCom.Procesos
         {
             CronogramaSeleccionado = Convert.ToInt32(cboCronograma.SelectedValue);
             fnObtenerCronogramaEspecifico(Convert.ToInt32(cboCronograma.SelectedValue), 0);
+
             //MessageBox.Show("idContrato "+ Convert.ToInt32(cboCronograma.SelectedValue));
         }
 
