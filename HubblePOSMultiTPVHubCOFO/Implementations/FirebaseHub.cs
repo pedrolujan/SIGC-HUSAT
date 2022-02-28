@@ -1,7 +1,6 @@
 ﻿using HubFirebase.Models;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
