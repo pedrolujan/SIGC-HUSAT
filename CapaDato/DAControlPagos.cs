@@ -86,7 +86,7 @@ namespace CapaDato
         }
         public Boolean daGuardarPagoCuotas(ControlPagos clsCPC, List<xmlDocumentoVentaGeneral> lstDV, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[16];
+            SqlParameter[] pa = new SqlParameter[20];
             DataTable dtResult = new DataTable();
             clsConexion objCnx = null;
             Int32 numRows = 0;
@@ -113,7 +113,12 @@ namespace CapaDato
                 pa[13] = new SqlParameter("@IGVPrecio", SqlDbType.Money) { Value = lstDV[0].xmlDocumentoVenta[0].nIGV };
                 pa[14] = new SqlParameter("@IdTarifa", SqlDbType.Int) { Value = clsCPC.claseTarifa.IdTarifa };
 
-                pa[15] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[15] = new SqlParameter("@dPeriodoInicio", SqlDbType.DateTime) { Value = clsCPC.claseDetalleCronograma.periodoInicio };
+                pa[16] = new SqlParameter("@dPeriodoFinal", SqlDbType.DateTime) { Value = clsCPC.claseDetalleCronograma.periodoFinal };
+                pa[17] = new SqlParameter("@dFechaVencimiento", SqlDbType.DateTime) { Value = clsCPC.claseDetalleCronograma.fechaVencimiento };
+                pa[18] = new SqlParameter("@dFechaEmision", SqlDbType.DateTime) { Value = clsCPC.claseDetalleCronograma.fechaEmision };
+
+                pa[19] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
                 objCnx = new clsConexion("");
                 numRows = objCnx.EjecutarProcedimiento("uspGuardarPagoCuotas", pa);
                 return true;

@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Siticone.UI">
-      <HintPath>C:\Users\pedro\Downloads\siticone\siticone\Siticone.UI.dll</HintPath>
+      <HintPath>C:\Users\USUARIO\Downloads\siticone\Siticone.UI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
