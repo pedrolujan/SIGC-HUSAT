@@ -97,9 +97,9 @@ namespace CapaDato
                 pa[1] = new SqlParameter("@idEquipoImeisAntiguo", SqlDbType.Int);
                 pa[1].Value = clsReac.listaEquipoAntiguo[0].idEquipoImeis;
                 pa[2] = new SqlParameter("@idChipNuevo", SqlDbType.Int);
-                pa[2].Value = clsReac.listaSimCardNuevo[0].idChip;
+                pa[2].Value = clsReac.listaSimCardNuevo.Count==0?0: clsReac.listaSimCardNuevo[0].idChip;
                 pa[3] = new SqlParameter("@idChipAntiguo", SqlDbType.Int);
-                pa[3].Value = clsReac.listaSimCardAntiguo[0].idChip;
+                pa[3].Value = clsReac.listaSimCardAntiguo.Count == 0 ? 0 : clsReac.listaSimCardAntiguo[0].idChip;
                 pa[4] = new SqlParameter("@idCliente", SqlDbType.Int);
                 pa[4].Value = clsReac.listaCliente[0].idCliente;
                 pa[5] = new SqlParameter("@idVehiculo", SqlDbType.Int);
