@@ -703,7 +703,8 @@ namespace wfaIntegradoCom.Funciones
             btnGuardar.HoveredState.Image = Properties.Resources.guardar_hover;
             btnGuardar.HoveredState.ForeColor = Color.White;
 
-            btnGuardar.PressedColor = Color.White;           
+            btnGuardar.PressedColor = Color.White; 
+            
 
         }
         public static void fnColorBotonEspecifico(SiticoneButton btnNuevo)

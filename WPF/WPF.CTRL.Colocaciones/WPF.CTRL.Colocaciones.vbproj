@@ -8,7 +8,7 @@
     <RootNamespace>WPF.CTRL.Colocaciones</RootNamespace>
     <AssemblyName>WPF.CTRL.Colocaciones</AssemblyName>
     <OutputType>Library</OutputType>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>

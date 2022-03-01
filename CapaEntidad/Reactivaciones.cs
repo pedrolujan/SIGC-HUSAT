@@ -21,7 +21,8 @@ namespace CapaEntidad
         public DateTime FechaReactivacionesSC { get; set; }
         public String ObservacionesE { get; set; }
         public String ObservacionesSC { get; set; }
-
+        
+        public Int32 idVentaGeneral { get; set; }
 
     }
 }
