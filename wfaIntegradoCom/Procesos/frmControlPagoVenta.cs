@@ -98,7 +98,8 @@ namespace wfaIntegradoCom.Procesos
         }
         private void fnCargarTablaLista(Boolean Indice,Int32 fila,Int32 columna)
         {
-            label11.Text = "Ciclo\n" + diaCicloPago;
+            //label11.Text = "Ciclo\n" + diaCicloPago;
+            txtCiclo.Text = "" + diaCicloPago;
 
 
             if (Indice == true)
@@ -491,21 +492,29 @@ namespace wfaIntegradoCom.Procesos
             txtTipoventa.Text = Convert.ToString(dtResult.Rows[0][15]);
             txtPlan.Text = Convert.ToString(dtResult.Rows[0][16]);
             clsVentaGeneral.codigoVenta= Convert.ToString(dtResult.Rows[0][24]);
+            txtfechaoriginal.Text = Convert.ToDateTime(dtResult.Rows[0][19]).ToString("dd/MM/yyyy");
+            diaCicloPago = Convert.ToInt32(dtResult.Rows[0][27]);
+
             for (Int32 i=0; i< dtResult.Rows.Count;i++)
             {
                 lstDetalleCronograma.Add(new DetalleCronograma
                 {
-                    idDetalleCronograma= Convert.ToInt32(dtResult.Rows[i][0]),
-                    fechaRegistro= Convert.ToDateTime(dtResult.Rows[i][18]),
+                    idDetalleCronograma = Convert.ToInt32(dtResult.Rows[i][0]),
+                    fechaRegistro = Convert.ToDateTime(dtResult.Rows[i][18]),
                     periodoInicio = Convert.ToDateTime(dtResult.Rows[i][19]),
                     periodoFinal = Convert.ToDateTime(dtResult.Rows[i][20]),
-                    fechaVencimiento= Convert.ToDateTime(dtResult.Rows[i][21]),
-                    fechaEmision= Convert.ToDateTime(dtResult.Rows[i][25]),
-                    fechaPago= Convert.ToDateTime(dtResult.Rows[i][26]),
+                    fechaVencimiento = Convert.ToDateTime(dtResult.Rows[i][21]),
+                    fechaEmision = Convert.ToDateTime(dtResult.Rows[i][25]),
+                    fechaPago = Convert.ToDateTime(dtResult.Rows[i][26]),
                     precioUnitario = clsTarifa.PrecioPlan,
-                    estado=Convert.ToString(dtResult.Rows[i][23])
-                });
-               
+                    descuento = Convert.ToDouble(dtResult.Rows[i][28]),
+                    descuentoCantidad = Convert.ToDouble(dtResult.Rows[i][28]),
+                    descuentoPrecio = Convert.ToDouble(dtResult.Rows[i][29]),
+                    total = Convert.ToInt32(dtResult.Rows[i][30]) == 0 ? clsTarifa.PrecioPlan : Convert.ToDouble(dtResult.Rows[i][30]),
+                    estado = Convert.ToString(dtResult.Rows[i][23])
+                }) ;
+
+
             }
             fnCargarTablaLista(false,0,0);
             
@@ -615,7 +624,7 @@ namespace wfaIntegradoCom.Procesos
                 }
 
                 var mousePosition = dgvCronograma.PointToClient(Cursor.Position);
-                cmsPagoCuotas.Show(dgvCronograma, 730, mousePosition.Y);
+                cmsPagoCuotas.Show(dgvCronograma, (803), mousePosition.Y);
             }else if (e.ColumnIndex == dgvCronograma.Columns["btnImprimir"].Index && e.RowIndex >= 0)
             {
                 if (lstDetalleCronograma[e.RowIndex].estado== "CUOTA PAGADA")
@@ -955,7 +964,7 @@ namespace wfaIntegradoCom.Procesos
         {
             if (EstadoCarga==true && e.ColumnIndex>0)
             {
-                if (e.ColumnIndex == 6)
+                if (e.ColumnIndex == 8)
                 {
                     DialogResult dResult;
                     Double PrecioADescontar = Convert.ToInt32(dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
