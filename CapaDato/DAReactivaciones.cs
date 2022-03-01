@@ -86,7 +86,7 @@ namespace CapaDato
         }
         public Int32 daGuardarReactivaciones(Reactivaciones clsReac, String Condicion)
         {
-            SqlParameter[] pa = new SqlParameter[13];
+            SqlParameter[] pa = new SqlParameter[14];
             Int32 dt = 0;
             clsConexion objCnx = null;
             objUtil = new clsUtil();
@@ -106,19 +106,20 @@ namespace CapaDato
                 pa[5].Value = clsReac.listaVehiculo[0].idVehiculo;
                 pa[6] = new SqlParameter("@idplan", SqlDbType.Int);
                 pa[6].Value = clsReac.listaPlan[0].idPlan;
-                pa[7] = new SqlParameter("@observacionesE", SqlDbType.NVarChar,200);
+                pa[7] = new SqlParameter("@observacionesE", SqlDbType.NVarChar,500);
                 pa[7].Value = clsReac.ObservacionesE;
-                pa[8] = new SqlParameter("@observacionesSC", SqlDbType.NVarChar,200);
+                pa[8] = new SqlParameter("@observacionesSC", SqlDbType.NVarChar,500);
                 pa[8].Value = clsReac.ObservacionesSC;                
-                pa[9] = new SqlParameter("FechaReactivacionE", SqlDbType.DateTime);
+                pa[9] = new SqlParameter("@FechaReactivacionE", SqlDbType.DateTime);
                 pa[9].Value = clsReac.FechaReactivacionesE;
                 pa[10] = new SqlParameter("@FechaRegistroSC", SqlDbType.DateTime);
                 pa[10].Value = clsReac.FechaRegistroSC;
-                pa[11] = new SqlParameter("FechaReactivacionSC", SqlDbType.DateTime);
+                pa[11] = new SqlParameter("@FechaReactivacionSC", SqlDbType.DateTime);
                 pa[11].Value = clsReac.FechaReactivacionesSC;
-                pa[12] = new SqlParameter("@TipoCon", SqlDbType.VarChar,15);
+                pa[12] = new SqlParameter("@TipoCon", SqlDbType.NVarChar,15);
                 pa[12].Value = Condicion;
-
+                pa[13] = new SqlParameter("@idVentaGeneral", SqlDbType.Int);
+                pa[13].Value = clsReac.idVentaGeneral;
                 objCnx = new clsConexion("");
                 dt = objCnx.EjecutarProcedimiento("uspGuardarReacctivaciones", pa);
 

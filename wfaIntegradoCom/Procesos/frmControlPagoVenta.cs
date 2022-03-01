@@ -57,6 +57,7 @@ namespace wfaIntegradoCom.Procesos
         {
             if (EstadoCarga==true)
             {
+
                 fnBuscarCronograma(0, txtBuscar.Text.ToString(),-1,0);
             }
             

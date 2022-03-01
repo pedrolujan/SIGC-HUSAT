@@ -31,15 +31,15 @@ namespace wfaIntegradoCom.Procesos
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReactivaciones));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gpbReactivacion = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -291,7 +291,7 @@ namespace wfaIntegradoCom.Procesos
             // 
             this.pbObservacionesE.BackColor = System.Drawing.Color.Transparent;
             this.pbObservacionesE.BaseColor = System.Drawing.Color.Transparent;
-            this.pbObservacionesE.Location = new System.Drawing.Point(441, 397);
+            this.pbObservacionesE.Location = new System.Drawing.Point(440, 397);
             this.pbObservacionesE.Name = "pbObservacionesE";
             this.pbObservacionesE.Size = new System.Drawing.Size(22, 22);
             this.pbObservacionesE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -302,6 +302,7 @@ namespace wfaIntegradoCom.Procesos
             // txtObservacionesE
             // 
             this.txtObservacionesE.Animated = false;
+            this.txtObservacionesE.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtObservacionesE.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtObservacionesE.DefaultText = "";
             this.txtObservacionesE.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -313,7 +314,8 @@ namespace wfaIntegradoCom.Procesos
             this.txtObservacionesE.FocusedState.Parent = this.txtObservacionesE;
             this.txtObservacionesE.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtObservacionesE.HoveredState.Parent = this.txtObservacionesE;
-            this.txtObservacionesE.Location = new System.Drawing.Point(140, 343);
+            this.txtObservacionesE.Location = new System.Drawing.Point(138, 343);
+            this.txtObservacionesE.Multiline = true;
             this.txtObservacionesE.Name = "txtObservacionesE";
             this.txtObservacionesE.PasswordChar = '\0';
             this.txtObservacionesE.PlaceholderText = "";
@@ -357,14 +359,14 @@ namespace wfaIntegradoCom.Procesos
             // 
             this.dtFechaReactivaciones.BackColor = System.Drawing.Color.White;
             this.dtFechaReactivaciones.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
-            this.dtFechaReactivaciones.BorderRadius = 14;
+            this.dtFechaReactivaciones.BorderRadius = 10;
             this.dtFechaReactivaciones.BorderThickness = 1;
             this.dtFechaReactivaciones.CheckedState.Parent = this.dtFechaReactivaciones;
             this.dtFechaReactivaciones.FillColor = System.Drawing.Color.Transparent;
             this.dtFechaReactivaciones.ForeColor = System.Drawing.SystemColors.ControlText;
             this.dtFechaReactivaciones.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtFechaReactivaciones.HoveredState.Parent = this.dtFechaReactivaciones;
-            this.dtFechaReactivaciones.Location = new System.Drawing.Point(505, 11);
+            this.dtFechaReactivaciones.Location = new System.Drawing.Point(504, 11);
             this.dtFechaReactivaciones.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaReactivaciones.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtFechaReactivaciones.Name = "dtFechaReactivaciones";
@@ -591,6 +593,7 @@ namespace wfaIntegradoCom.Procesos
             // 
             // btnGuardarEquipo
             // 
+            this.btnGuardarEquipo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
             this.btnGuardarEquipo.BorderRadius = 3;
             this.btnGuardarEquipo.BorderThickness = 1;
             this.btnGuardarEquipo.CheckedState.Parent = this.btnGuardarEquipo;
@@ -624,7 +627,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtEquipoNuevo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtEquipoNuevo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
             this.txtEquipoNuevo.HoveredState.Parent = this.txtEquipoNuevo;
-            this.txtEquipoNuevo.Location = new System.Drawing.Point(140, 243);
+            this.txtEquipoNuevo.Location = new System.Drawing.Point(138, 243);
             this.txtEquipoNuevo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEquipoNuevo.Name = "txtEquipoNuevo";
             this.txtEquipoNuevo.PasswordChar = '\0';
@@ -864,7 +867,7 @@ namespace wfaIntegradoCom.Procesos
             // 
             this.dtFechaReactivacionesSC.BackColor = System.Drawing.Color.White;
             this.dtFechaReactivacionesSC.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
-            this.dtFechaReactivacionesSC.BorderRadius = 14;
+            this.dtFechaReactivacionesSC.BorderRadius = 10;
             this.dtFechaReactivacionesSC.BorderThickness = 1;
             this.dtFechaReactivacionesSC.CheckedState.Parent = this.dtFechaReactivacionesSC;
             this.dtFechaReactivacionesSC.FillColor = System.Drawing.Color.Transparent;
@@ -1343,6 +1346,7 @@ namespace wfaIntegradoCom.Procesos
             // txtObservacionesSC
             // 
             this.txtObservacionesSC.Animated = false;
+            this.txtObservacionesSC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtObservacionesSC.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtObservacionesSC.DefaultText = "";
             this.txtObservacionesSC.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -1355,6 +1359,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtObservacionesSC.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtObservacionesSC.HoveredState.Parent = this.txtObservacionesSC;
             this.txtObservacionesSC.Location = new System.Drawing.Point(141, 342);
+            this.txtObservacionesSC.Multiline = true;
             this.txtObservacionesSC.Name = "txtObservacionesSC";
             this.txtObservacionesSC.PasswordChar = '\0';
             this.txtObservacionesSC.PlaceholderText = "";
@@ -1468,53 +1473,53 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsultas.AllowUserToAddRows = false;
             this.dgConsultas.AllowUserToDeleteRows = false;
             this.dgConsultas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
-            this.dgConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle55.BackColor = System.Drawing.Color.White;
+            this.dgConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle55;
             this.dgConsultas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgConsultas.BackgroundColor = System.Drawing.Color.White;
             this.dgConsultas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgConsultas.CausesValidation = false;
-            this.dgConsultas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
-            this.dgConsultas.ColumnHeadersHeight = 30;
+            this.dgConsultas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle56.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle56.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle56;
+            this.dgConsultas.ColumnHeadersHeight = 20;
             this.dgConsultas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.placa,
             this.imeis,
             this.card});
             this.dgConsultas.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsultas.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle61.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle61.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle61.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle61.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle61.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultas.DefaultCellStyle = dataGridViewCellStyle61;
             this.dgConsultas.EnableHeadersVisualStyles = false;
             this.dgConsultas.GridColor = System.Drawing.Color.Silver;
-            this.dgConsultas.Location = new System.Drawing.Point(31, 11);
+            this.dgConsultas.Location = new System.Drawing.Point(31, 133);
             this.dgConsultas.Name = "dgConsultas";
             this.dgConsultas.ReadOnly = true;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle62.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle62.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle62.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle62.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle62.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle62.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle62;
             this.dgConsultas.RowHeadersVisible = false;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsultas.RowsDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle63.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultas.RowsDefaultCellStyle = dataGridViewCellStyle63;
             this.dgConsultas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgConsultas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgConsultas.Size = new System.Drawing.Size(410, 142);
@@ -1528,15 +1533,15 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsultas.ThemeStyle.BackColor = System.Drawing.Color.White;
             this.dgConsultas.ThemeStyle.GridColor = System.Drawing.Color.Silver;
             this.dgConsultas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.dgConsultas.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgConsultas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgConsultas.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dgConsultas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgConsultas.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgConsultas.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgConsultas.ThemeStyle.HeaderStyle.Height = 30;
+            this.dgConsultas.ThemeStyle.HeaderStyle.Height = 20;
             this.dgConsultas.ThemeStyle.ReadOnly = true;
             this.dgConsultas.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgConsultas.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgConsultas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgConsultas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgConsultas.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.dgConsultas.ThemeStyle.RowsStyle.Height = 22;
             this.dgConsultas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -1546,8 +1551,8 @@ namespace wfaIntegradoCom.Procesos
             // 
             // id
             // 
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.id.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.id.DefaultCellStyle = dataGridViewCellStyle57;
             this.id.FillWeight = 85.2792F;
             this.id.HeaderText = "ID";
             this.id.MinimumWidth = 7;
@@ -1558,8 +1563,8 @@ namespace wfaIntegradoCom.Procesos
             // placa
             // 
             this.placa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.placa.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.placa.DefaultCellStyle = dataGridViewCellStyle58;
             this.placa.HeaderText = "PLACA";
             this.placa.Name = "placa";
             this.placa.ReadOnly = true;
@@ -1567,16 +1572,16 @@ namespace wfaIntegradoCom.Procesos
             // 
             // imeis
             // 
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.imeis.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.imeis.DefaultCellStyle = dataGridViewCellStyle59;
             this.imeis.HeaderText = "IMES";
             this.imeis.Name = "imeis";
             this.imeis.ReadOnly = true;
             // 
             // card
             // 
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.card.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.card.DefaultCellStyle = dataGridViewCellStyle60;
             this.card.HeaderText = "SIMCARD";
             this.card.Name = "card";
             this.card.ReadOnly = true;

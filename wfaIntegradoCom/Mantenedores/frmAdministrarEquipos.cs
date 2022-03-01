@@ -1214,11 +1214,6 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
             Boolean bResult = false;

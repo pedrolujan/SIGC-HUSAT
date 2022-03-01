@@ -54,9 +54,12 @@
   <PropertyGroup>
     <StartupObject>wfaIntegradoCom.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icono.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI">
-      <HintPath>C:\Users\venta\Downloads\Guna.UI.dll</HintPath>
+      <HintPath>bin\Debug\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
       <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
@@ -95,7 +98,11 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Siticone.UI">
-      <HintPath>..\..\..\DESCARGAS\Siticone.UI.dll</HintPath>
+<<<<<<< HEAD
+      <HintPath>C:\Users\USUARIO\Downloads\siticone\Siticone.UI.dll</HintPath>
+=======
+      <HintPath>C:\Users\venta\Downloads\siticone\siticone\Siticone.UI-WinForms\Siticone.UI.dll</HintPath>
+>>>>>>> desarrollo_irma
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -218,6 +225,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultas\frmRptActa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\frmRptActa.Designer.cs">
+      <DependentUpon>frmRptActa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\frmRptContrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\frmRptContrato.Designer.cs">
+      <DependentUpon>frmRptContrato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\frmVPVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\frmVPVenta.Designer.cs">
+      <DependentUpon>frmVPVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\frmBuscarLote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,11 +261,11 @@
     <Compile Include="Consultas\frmReporteVenta.Designer.cs">
       <DependentUpon>frmReporteVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Consultas\frmVPOtrasventas.cs">
+    <Compile Include="Consultas\frmVPOtrasVentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Consultas\frmVPOtrasventas.Designer.cs">
-      <DependentUpon>frmVPOtrasventas.cs</DependentUpon>
+    <Compile Include="Consultas\frmVPOtrasVentas.Designer.cs">
+      <DependentUpon>frmVPOtrasVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Funciones\Enum\StateOrder.cs" />
     <Compile Include="Funciones\Format.cs" />
@@ -312,17 +337,29 @@
     <Compile Include="Mantenedores\frmInstalacionEquipo.Designer.cs">
       <DependentUpon>frmInstalacionEquipo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mantenedores\frmOperador.cs">
+    <Compile Include="Mantenedores\frmSimCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mantenedores\frmOperador.Designer.cs">
-      <DependentUpon>frmOperador.cs</DependentUpon>
+    <Compile Include="Mantenedores\frmSimCard.Designer.cs">
+      <DependentUpon>frmSimCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\frmDocumentoChips.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mantenedores\frmDocumentoChips.Designer.cs">
       <DependentUpon>frmDocumentoChips.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\frmOperador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\frmOperador.Designer.cs">
+      <DependentUpon>frmOperador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\FrmPrevisualizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\FrmPrevisualizar.Designer.cs">
+      <DependentUpon>FrmPrevisualizar.cs</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\frmRegistrarCliente.cs">
       <SubType>Form</SubType>
@@ -387,11 +424,11 @@
     <Compile Include="Mantenedores\frmEquipoImeis.Designer.cs">
       <DependentUpon>frmEquipoImeis.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mantenedores\frmRegistrarInstalacion.cs">
+    <Compile Include="Mantenedores\frmSimCardMasivo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mantenedores\frmRegistrarInstalacion.Designer.cs">
-      <DependentUpon>frmRegistrarInstalacion.cs</DependentUpon>
+    <Compile Include="Mantenedores\frmSimCardMasivo.Designer.cs">
+      <DependentUpon>frmSimCardMasivo.cs</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\frmRegistrarTipoPlan.Designer.cs">
       <DependentUpon>frmRegistrarTipoPlan.cs</DependentUpon>
@@ -420,11 +457,23 @@
     <Compile Include="Mantenedores\frmSeguimiento.Designer.cs">
       <DependentUpon>frmSeguimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mantenedores\frmTipoImpresion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\frmTipoImpresion.Designer.cs">
+      <DependentUpon>frmTipoImpresion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mantenedores\frmTipoVenta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mantenedores\frmTipoVenta.Designer.cs">
       <DependentUpon>frmTipoVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\PRUPRU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\PRUPRU.Designer.cs">
+      <DependentUpon>PRUPRU.cs</DependentUpon>
     </Compile>
     <Compile Include="Procesos\frmAccesoADescuento.cs">
       <SubType>Form</SubType>
@@ -450,6 +499,12 @@
     <Compile Include="Procesos\frmConceptoCaja.Designer.cs">
       <DependentUpon>frmConceptoCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmControlPagoVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmControlPagoVenta.Designer.cs">
+      <DependentUpon>frmControlPagoVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\frmCronograma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +522,12 @@
     </Compile>
     <Compile Include="Procesos\frmListarTipoVentas.Designer.cs">
       <DependentUpon>frmListarTipoVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmLoad.Designer.cs">
+      <DependentUpon>frmLoad.cs</DependentUpon>
     </Compile>
     <Compile Include="Procesos\frmMovimientoCaja.cs">
       <SubType>Form</SubType>
@@ -491,6 +552,18 @@
     </Compile>
     <Compile Include="Procesos\frmProcesarPedido.Designer.cs">
       <DependentUpon>frmProcesarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmReactivaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmReactivaciones.Designer.cs">
+      <DependentUpon>frmReactivaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmReferenciaInstalacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmReferenciaInstalacion.Designer.cs">
+      <DependentUpon>frmReferenciaInstalacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Procesos\frmRegistrarCobros.cs">
       <SubType>Form</SubType>
@@ -633,6 +706,12 @@
     <Compile Include="Procesos\frmTipoPago.Designer.cs">
       <DependentUpon>frmTipoPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmVentaEspecifica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmVentaEspecifica.Designer.cs">
+      <DependentUpon>frmVentaEspecifica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\frmVentaxMayor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -645,6 +724,12 @@
     <Compile Include="Procesos\frmVentaxMesa.Designer.cs">
       <DependentUpon>frmVentaxMesa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmVPVentaGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmVPVentaGeneral.Designer.cs">
+      <DependentUpon>frmVPVentaGeneral.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\IForms.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -655,17 +740,29 @@
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Content Include="DLLS\Newtonsoft.Json.dll" />
+    <Content Include="icono.ico" />
     <Content Include="Imagenes\carrito_opt.png" />
     <Content Include="Imagenes\salir.bmp" />
-<<<<<<< HEAD
-    <EmbeddedResource Include="Consultas\frmVPOtrasventas.resx">
-      <DependentUpon>frmVPOtrasventas.cs</DependentUpon>
+    <EmbeddedResource Include="Consultas\DocumentoVenta.rdlc" />
+    <EmbeddedResource Include="Consultas\frmRptActa.resx">
+      <DependentUpon>frmRptActa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\frmRptContrato.resx">
+      <DependentUpon>frmRptContrato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\frmVPVenta.resx">
+      <DependentUpon>frmVPVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\frmVPOtrasVentas.resx">
+      <DependentUpon>frmVPOtrasVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\rptActaInstalacion.rdlc" />
+    <EmbeddedResource Include="Consultas\rptComprobantePago.rdlc" />
+    <EmbeddedResource Include="Consultas\rptContrato.rdlc" />
     <EmbeddedResource Include="Consultas\rptVPOtrasVentas.rdlc" />
-=======
     <EmbeddedResource Include="Consultas\rptCronograma.rdlc" />
     <EmbeddedResource Include="Consultas\rptReporteVenta2.rdlc" />
->>>>>>> Desarrollo_Mantenedores_Kevin2
+    <EmbeddedResource Include="Documentos\rptActaInstalacion.rdlc" />
     <EmbeddedResource Include="Mantenedores\frmAdministrarChips.resx">
       <DependentUpon>frmAdministrarChips.cs</DependentUpon>
     </EmbeddedResource>
@@ -693,6 +790,12 @@
     <EmbeddedResource Include="Mantenedores\frmInstalacionEquipo.resx">
       <DependentUpon>frmInstalacionEquipo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\frmOperador.resx">
+      <DependentUpon>frmOperador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\FrmPrevisualizar.resx">
+      <DependentUpon>FrmPrevisualizar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmRegistrarEquipo.resx">
       <DependentUpon>frmRegistrarEquipo.cs</DependentUpon>
     </EmbeddedResource>
@@ -702,8 +805,17 @@
     <EmbeddedResource Include="Mantenedores\frmSeguimiento.resx">
       <DependentUpon>frmSeguimiento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\frmTipoImpresion.resx">
+      <DependentUpon>frmTipoImpresion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\PRUPRU.resx">
+      <DependentUpon>PRUPRU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmAccesoADescuento.resx">
       <DependentUpon>frmAccesoADescuento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmControlPagoVenta.resx">
+      <DependentUpon>frmControlPagoVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmCronograma.resx">
       <DependentUpon>frmCronograma.cs</DependentUpon>
@@ -711,19 +823,51 @@
     <EmbeddedResource Include="Procesos\frmListarTipoVentas.resx">
       <DependentUpon>frmListarTipoVentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmLoad.resx">
+      <DependentUpon>frmLoad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmOrdenCompraEquipos.resx">
       <DependentUpon>frmOrdenCompraEquipos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmOtrasVentas.resx">
       <DependentUpon>frmOtrasVentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmReactivaciones.resx">
+      <DependentUpon>frmReactivaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmReferenciaInstalacion.resx">
+      <DependentUpon>frmReferenciaInstalacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmVentaEspecifica.resx">
+      <DependentUpon>frmVentaEspecifica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmVPVentaGeneral.resx">
+      <DependentUpon>frmVPVentaGeneral.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\CapaEntidad.AccesoriosEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Cliente1.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Contrato.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.DetalleCronograma.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.DetalleOtrasVentas.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.DetalleVentaCabecera.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Equipo_imeis.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Instalacion.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Moneda.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.OtrasVentas.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.PagoPrincipal.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Plan.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.PlanEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ServicioEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.TipoVenta.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.TotalPagosVenta.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Vehiculo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlInstalacion.datasource" />
+    <None Include="Properties\DataSources\CapaNegocio.BLInstalacion.datasource" />
     <None Include="Resources\search_por.png" />
     <None Include="Resources\search_inicio.png" />
     <None Include="Resources\buscar.png" />
@@ -784,6 +928,20 @@
     <None Include="Resources\limpiar_blanco_32.png" />
     <None Include="Resources\limpiar_32.png" />
     <None Include="Resources\liberar.png" />
+    <None Include="Resources\calendario.png" />
+    <None Include="Resources\equivale.png" />
+    <None Include="Resources\redo.png" />
+    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\icono.ico" />
+    <None Include="Resources\247101754_239436438240977_9004483511644389912_n.png" />
+    <None Include="Resources\246670832_270751215056744_6886770987346263881_n.png" />
+    <None Include="Resources\soporte.png" />
+    <None Include="Resources\soporte1.png" />
+    <None Include="Resources\usser.png" />
+    <None Include="Resources\user_perfil.png" />
+    <None Include="Resources\reload.png" />
+    <None Include="Resources\reloadWhite.png" />
+    <None Include="Resources\update.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -802,6 +960,9 @@
     </Content>
     <Content Include="Template\OtrasVentas.xml" />
     <Content Include="Template\PrintingLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Template\VentaTemplateOriginal.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Template\Venta.xml">
@@ -834,8 +995,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Impresiones\rptImprimeTraslado.rdlc" />
     <EmbeddedResource Include="Impresiones\rptImprimeOrden.rdlc" />
-    <EmbeddedResource Include="Mantenedores\frmOperador.resx">
-      <DependentUpon>frmOperador.cs</DependentUpon>
+    <EmbeddedResource Include="Mantenedores\frmSimCard.resx">
+      <DependentUpon>frmSimCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmPrecio.resx">
       <DependentUpon>frmPrecio.cs</DependentUpon>
@@ -858,8 +1019,8 @@
     <EmbeddedResource Include="Mantenedores\frmEquipoImeis.resx">
       <DependentUpon>frmEquipoImeis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mantenedores\frmRegistrarInstalacion.resx">
-      <DependentUpon>frmRegistrarInstalacion.cs</DependentUpon>
+    <EmbeddedResource Include="Mantenedores\frmSimCardMasivo.resx">
+      <DependentUpon>frmSimCardMasivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmRegistrarPerioricidad.resx">
       <DependentUpon>frmRegistrarPerioricidad.cs</DependentUpon>

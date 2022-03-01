@@ -35,7 +35,9 @@ namespace wfaIntegradoCom.Procesos
         static List<Cliente> lstClientes = new List<Cliente>();
         static List<Vehiculo> lstVehiculo = new List<Vehiculo>();
         static List<Plan> lstPlan = new List<Plan>();
-       
+        static Int32 idVenta = 0 ;
+
+
 
         static Reactivaciones ClsReactivaciones;
         private object txtNuevoSimCard;
@@ -47,6 +49,9 @@ namespace wfaIntegradoCom.Procesos
             dgConsultas.Visible = false;
             dtFechaReactivaciones.Value = Variables.gdFechaSis;
             dtFechaReactivacionesSC.Value = Variables.gdFechaSis;
+            FunValidaciones.fnColorBtnGuardar(btnGuardarEquipo);
+            FunValidaciones.fnColorBtnGuardar(btnGuardarSimCard);
+
 
 
             fnActivarCamposEquipo(false, "EQUIPO");
@@ -246,7 +251,7 @@ namespace wfaIntegradoCom.Procesos
 
                         });
                         txtPlan.Text = lstPlan[0].nombrePlan+"-" +lstPlan[0].tiposPlan;
-
+                        idVenta = Convert.ToInt32(drMenu["idVentaGeneral"]);
 
 
 
@@ -514,12 +519,15 @@ namespace wfaIntegradoCom.Procesos
         }
         private Reactivaciones CargarClaseReactivaciones()
         {
+            lstSimCardsAntiguo = lstSimCardsAntiguo.Count == 0 ? lstSimCardNuevo : lstSimCardsAntiguo;
+
             ClsReactivaciones = new Reactivaciones
             {
                 listaEquipoNuevo = lstEquipoNuevo,
                 listaEquipoAntiguo = lstEquipoAntiguo,
                 listaSimCardNuevo = lstSimCardNuevo,
-                listaSimCardAntiguo = lstSimCardsAntiguo,
+                listaSimCardAntiguo= lstSimCardsAntiguo,
+
                 listaCliente = lstClientes,
                 listaVehiculo = lstVehiculo,
                 listaPlan = lstPlan,
@@ -530,6 +538,7 @@ namespace wfaIntegradoCom.Procesos
 
                 ObservacionesE = Convert.ToString(txtObservacionesE.Text),
                 ObservacionesSC=Convert.ToString(txtObservacionesSC.Text),
+                idVentaGeneral = idVenta,
             };
             return ClsReactivaciones;
         }
