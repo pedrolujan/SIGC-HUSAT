@@ -140,9 +140,9 @@ namespace wfaIntegradoCom.Procesos
                     diaNuevaFecha = cantDiasMes < diaCicloPago ? cantDiasMes : diaCicloPago;
                     DateTime fechaInicio = Convert.ToDateTime(diaNuevaFecha + "/" +( lstDetalleCronograma[i].periodoInicio.Month)+"/"+ lstDetalleCronograma[i].periodoInicio.Year);
                     lstDetalleCronograma[i].periodoInicio = fechaInicio;
-                    lstDetalleCronograma[i].fechaEmision = fechaInicio;
                     DateTime fechaFinal = fechaInicio.AddDays(diasASumar);
                     lstDetalleCronograma[i].periodoFinal = fechaFinal;
+                    lstDetalleCronograma[i].fechaEmision = fechaFinal.AddDays(1);
                     DateTime fechaVencimiento = fechaFinal.AddDays(7);
                     lstDetalleCronograma[i].fechaVencimiento = fechaVencimiento;
                     if (diaCicloPago==30)
@@ -732,7 +732,7 @@ namespace wfaIntegradoCom.Procesos
             //};
             arrayPrimerPago = new string[]
             {
-                "Cuota "+lstDetalleCronograma[fila].fechaVencimiento.ToString("MMMM  yyyy")+" - Plan "+txtPlan.Text
+                "Cuota "+lstDetalleCronograma[fila].fechaEmision.ToString("MMMM  yyyy")+" - Plan "+txtPlan.Text
             };
 
 
