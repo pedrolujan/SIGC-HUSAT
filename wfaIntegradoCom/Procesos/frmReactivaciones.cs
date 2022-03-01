@@ -519,6 +519,7 @@ namespace wfaIntegradoCom.Procesos
         }
         private Reactivaciones CargarClaseReactivaciones()
         {
+           
             lstSimCardsAntiguo = lstSimCardsAntiguo.Count == 0 ? lstSimCardNuevo : lstSimCardsAntiguo;
 
             ClsReactivaciones = new Reactivaciones
