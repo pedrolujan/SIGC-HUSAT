@@ -1,0 +1,6 @@
+D:\SISTEMA-HUSAT\CapaUtil\bin\Debug\CapaUtil.dll
+D:\SISTEMA-HUSAT\CapaUtil\bin\Debug\CapaUtil.pdb
+D:\SISTEMA-HUSAT\CapaUtil\obj\Debug\CapaUtil.csproj.AssemblyReference.cache
+D:\SISTEMA-HUSAT\CapaUtil\obj\Debug\CapaUtil.csproj.CoreCompileInputs.cache
+D:\SISTEMA-HUSAT\CapaUtil\obj\Debug\CapaUtil.dll
+D:\SISTEMA-HUSAT\CapaUtil\obj\Debug\CapaUtil.pdb

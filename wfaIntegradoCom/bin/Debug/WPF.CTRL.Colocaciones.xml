@@ -1,0 +1,121 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+WPF.CTRL.Colocaciones
+</name>
+</assembly>
+<members>
+<member name="T:WPF.CTRL.Colocaciones.My.Resources.Resources">
+<summary>
+  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+</summary>
+</member>
+<member name="P:WPF.CTRL.Colocaciones.My.Resources.Resources.ResourceManager">
+<summary>
+  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+</summary>
+</member>
+<member name="P:WPF.CTRL.Colocaciones.My.Resources.Resources.Culture">
+<summary>
+  Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+  búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+</summary>
+</member>
+<member name="P:WPF.CTRL.Colocaciones.My.Resources.Resources.fontawesome_webfont">
+<summary>
+  Busca un recurso adaptado de tipo System.Byte[].
+</summary>
+</member>
+<member name="T:WPF.CTRL.Colocaciones.ucColor">
+<summary>
+ucColor
+</summary>
+</member>
+<member name="F:WPF.CTRL.Colocaciones.ucColor._cboColor">
+<summary>
+cboColor Name Field
+</summary>
+</member>
+<member name="M:WPF.CTRL.Colocaciones.ucColor.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:WPF.CTRL.Colocaciones.ucComboColor">
+<summary>
+ucComboColor
+</summary>
+</member>
+<member name="F:WPF.CTRL.Colocaciones.ucComboColor._cboColor">
+<summary>
+cboColor Name Field
+</summary>
+</member>
+<member name="M:WPF.CTRL.Colocaciones.ucComboColor.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:WPF.CTRL.Colocaciones.ucIcono">
+<summary>
+ucIcono
+</summary>
+</member>
+<member name="F:WPF.CTRL.Colocaciones.ucIcono._lwvIcono">
+<summary>
+lwvIcono Name Field
+</summary>
+</member>
+<member name="M:WPF.CTRL.Colocaciones.ucIcono.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:WPF.CTRL.Colocaciones.ucOpcion">
+<summary>
+ucOpcion
+</summary>
+</member>
+<member name="F:WPF.CTRL.Colocaciones.ucOpcion._acdPrincipal">
+<summary>
+acdPrincipal Name Field
+</summary>
+</member>
+<member name="M:WPF.CTRL.Colocaciones.ucOpcion.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:WPF.CTRL.Colocaciones.XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+<summary>
+GeneratedInternalTypeHelper
+</summary>
+</member>
+<member name="M:WPF.CTRL.Colocaciones.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+<summary>
+CreateInstance
+</summary>
+</member>
+<member name="M:WPF.CTRL.Colocaciones.XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+<summary>
+GetPropertyValue
+</summary>
+</member>
+<member name="M:WPF.CTRL.Colocaciones.XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+<summary>
+SetPropertyValue
+</summary>
+</member>
+<member name="M:WPF.CTRL.Colocaciones.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+<summary>
+CreateDelegate
+</summary>
+</member>
+<member name="M:WPF.CTRL.Colocaciones.XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+<summary>
+AddEventHandler
+</summary>
+</member>
+</members>
+</doc>

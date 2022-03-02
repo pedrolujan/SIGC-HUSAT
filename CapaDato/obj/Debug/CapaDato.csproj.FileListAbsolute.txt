@@ -1,0 +1,16 @@
+D:\SISTEMA-HUSAT\CapaDato\obj\Debug\CapaDato.csproj.AssemblyReference.cache
+D:\SISTEMA-HUSAT\CapaDato\obj\Debug\CapaDato.csproj.CoreCompileInputs.cache
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\CapaDato.dll.config
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\CapaDato.dll
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\CapaDato.pdb
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\CapaConexion.dll
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\CapaEntidad.dll
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\CapaUtil.dll
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\Encripta.dll
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\Siticone.UI.dll
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\CapaConexion.pdb
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\CapaEntidad.pdb
+D:\SISTEMA-HUSAT\CapaDato\bin\Debug\CapaUtil.pdb
+D:\SISTEMA-HUSAT\CapaDato\obj\Debug\CapaDato.csproj.CopyComplete
+D:\SISTEMA-HUSAT\CapaDato\obj\Debug\CapaDato.dll
+D:\SISTEMA-HUSAT\CapaDato\obj\Debug\CapaDato.pdb

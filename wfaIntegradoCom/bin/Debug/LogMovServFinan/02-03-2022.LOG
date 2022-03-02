@@ -1,0 +1,60 @@
+02-03-2022 09:22:06     [DAAcceso.svc]     [DAValidarIngreso]
+==>> Antes de llamr - ValidaUsuarioClaveDominio 
+02-03-2022 09:22:06     [DAAcceso.svc]     [fnAccederSistema]
+==>> Antes de verificar usuario y clavePEDRO
+02-03-2022 09:22:06     [DAAcceso.svc]     [fnAccederSistema]
+==>> Despues de acceder verificar usuario y clavePEDRO
+02-03-2022 09:22:06     [DAAcceso.svc]     [DAValidarIngreso]
+==>> Antes de llamar metodo de registro de logeo
+02-03-2022 09:22:06     [DAAcceso.svc]     [DARegistrarLogueo]
+==>> Antes de registrar login uspRegistrarLogueoMovil2
+02-03-2022 09:22:06     [DAAcceso.svc]     [DARegistrarLogueo]
+==>> Despues de registrar login uspRegistrarLogueoMovil2
+02-03-2022 09:22:06     [DAAcceso.svc]     [DAValidarIngreso]
+==>> OK-correcto
+02-03-2022 09:22:16     [InitializationSelfService]     [TRAZA StartInitializationSeflService]
+==>> Inicio de función
+02-03-2022 09:22:19     [InitializationSelfService Exception: ]     [TRAZA StartInitializationSeflService]
+==>> The server factory could not be located for the given input: Microsoft.Owin.Host.HttpListener
+02-03-2022 09:22:20     [InitializationSelfService]     [TRAZA StartInitializationSeflService]
+==>> Salida de función
+02-03-2022 10:07:57     [DAAcceso.svc]     [DAValidarIngreso]
+==>> Antes de llamr - ValidaUsuarioClaveDominio 
+02-03-2022 10:07:57     [DAAcceso.svc]     [fnAccederSistema]
+==>> Antes de verificar usuario y clavePEDRO
+02-03-2022 10:07:57     [DAAcceso.svc]     [fnAccederSistema]
+==>> Despues de acceder verificar usuario y clavePEDRO
+02-03-2022 10:07:57     [DAAcceso.svc]     [DAValidarIngreso]
+==>> Antes de llamar metodo de registro de logeo
+02-03-2022 10:07:57     [DAAcceso.svc]     [DARegistrarLogueo]
+==>> Antes de registrar login uspRegistrarLogueoMovil2
+02-03-2022 10:07:57     [DAAcceso.svc]     [DARegistrarLogueo]
+==>> Despues de registrar login uspRegistrarLogueoMovil2
+02-03-2022 10:07:57     [DAAcceso.svc]     [DAValidarIngreso]
+==>> OK-correcto
+02-03-2022 10:08:05     [InitializationSelfService]     [TRAZA StartInitializationSeflService]
+==>> Inicio de función
+02-03-2022 10:08:05     [InitializationSelfService Exception: ]     [TRAZA StartInitializationSeflService]
+==>> The server factory could not be located for the given input: Microsoft.Owin.Host.HttpListener
+02-03-2022 10:08:05     [InitializationSelfService]     [TRAZA StartInitializationSeflService]
+==>> Salida de función
+02-03-2022 10:32:37     [DAAcceso.svc]     [DAValidarIngreso]
+==>> Antes de llamr - ValidaUsuarioClaveDominio 
+02-03-2022 10:32:37     [DAAcceso.svc]     [fnAccederSistema]
+==>> Antes de verificar usuario y clavePEDRO
+02-03-2022 10:32:37     [DAAcceso.svc]     [fnAccederSistema]
+==>> Despues de acceder verificar usuario y clavePEDRO
+02-03-2022 10:32:37     [DAAcceso.svc]     [DAValidarIngreso]
+==>> Antes de llamar metodo de registro de logeo
+02-03-2022 10:32:37     [DAAcceso.svc]     [DARegistrarLogueo]
+==>> Antes de registrar login uspRegistrarLogueoMovil2
+02-03-2022 10:32:38     [DAAcceso.svc]     [DARegistrarLogueo]
+==>> Despues de registrar login uspRegistrarLogueoMovil2
+02-03-2022 10:32:38     [DAAcceso.svc]     [DAValidarIngreso]
+==>> OK-correcto
+02-03-2022 10:32:45     [InitializationSelfService]     [TRAZA StartInitializationSeflService]
+==>> Inicio de función
+02-03-2022 10:32:46     [InitializationSelfService Exception: ]     [TRAZA StartInitializationSeflService]
+==>> The server factory could not be located for the given input: Microsoft.Owin.Host.HttpListener
+02-03-2022 10:32:46     [InitializationSelfService]     [TRAZA StartInitializationSeflService]
+==>> Salida de función

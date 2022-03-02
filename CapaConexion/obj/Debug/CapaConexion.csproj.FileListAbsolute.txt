@@ -1,0 +1,8 @@
+D:\SISTEMA-HUSAT\CapaConexion\bin\Debug\CapaConexion.dll
+D:\SISTEMA-HUSAT\CapaConexion\bin\Debug\CapaConexion.pdb
+D:\SISTEMA-HUSAT\CapaConexion\bin\Debug\Encripta.dll
+D:\SISTEMA-HUSAT\CapaConexion\obj\Debug\CapaConexion.csproj.AssemblyReference.cache
+D:\SISTEMA-HUSAT\CapaConexion\obj\Debug\CapaConexion.csproj.CoreCompileInputs.cache
+D:\SISTEMA-HUSAT\CapaConexion\obj\Debug\CapaConexion.csproj.CopyComplete
+D:\SISTEMA-HUSAT\CapaConexion\obj\Debug\CapaConexion.dll
+D:\SISTEMA-HUSAT\CapaConexion\obj\Debug\CapaConexion.pdb

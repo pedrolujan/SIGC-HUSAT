@@ -1,0 +1,9 @@
+D:\SISTEMA-HUSAT\ModulePrinting\bin\Debug\ModulePrinting.dll
+D:\SISTEMA-HUSAT\ModulePrinting\bin\Debug\ModulePrinting.pdb
+D:\SISTEMA-HUSAT\ModulePrinting\bin\Debug\HubblePOSPrintModule.dll
+D:\SISTEMA-HUSAT\ModulePrinting\bin\Debug\Newtonsoft.Json.dll
+D:\SISTEMA-HUSAT\ModulePrinting\obj\Debug\ModulePrinting.csproj.AssemblyReference.cache
+D:\SISTEMA-HUSAT\ModulePrinting\obj\Debug\ModulePrinting.csproj.CoreCompileInputs.cache
+D:\SISTEMA-HUSAT\ModulePrinting\obj\Debug\ModulePrinting.csproj.CopyComplete
+D:\SISTEMA-HUSAT\ModulePrinting\obj\Debug\ModulePrinting.dll
+D:\SISTEMA-HUSAT\ModulePrinting\obj\Debug\ModulePrinting.pdb

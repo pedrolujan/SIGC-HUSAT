@@ -493,8 +493,10 @@ namespace wfaIntegradoCom.Procesos
             txtTipoventa.Text = Convert.ToString(dtResult.Rows[0][15]);
             txtPlan.Text = Convert.ToString(dtResult.Rows[0][16]);
             clsVentaGeneral.codigoVenta= Convert.ToString(dtResult.Rows[0][24]);
-            txtfechaoriginal.Text = Convert.ToDateTime(dtResult.Rows[0][19]).ToString("dd/MM/yyyy");
+
+            txtfechaoriginal.Text = Convert.ToDateTime(dtResult.Rows[0][31]).ToString("dd/MM/yyyy");
             diaCicloPago = Convert.ToInt32(dtResult.Rows[0][27]);
+
 
             for (Int32 i=0; i< dtResult.Rows.Count;i++)
             {

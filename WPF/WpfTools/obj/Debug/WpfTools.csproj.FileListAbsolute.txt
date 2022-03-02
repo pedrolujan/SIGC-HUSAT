@@ -1,0 +1,6 @@
+D:\SISTEMA-HUSAT\WPF\WpfTools\bin\Debug\WpfTools.dll
+D:\SISTEMA-HUSAT\WPF\WpfTools\bin\Debug\WpfTools.pdb
+D:\SISTEMA-HUSAT\WPF\WpfTools\obj\Debug\WpfTools.csproj.AssemblyReference.cache
+D:\SISTEMA-HUSAT\WPF\WpfTools\obj\Debug\WpfTools.csproj.CoreCompileInputs.cache
+D:\SISTEMA-HUSAT\WPF\WpfTools\obj\Debug\WpfTools.dll
+D:\SISTEMA-HUSAT\WPF\WpfTools\obj\Debug\WpfTools.pdb
