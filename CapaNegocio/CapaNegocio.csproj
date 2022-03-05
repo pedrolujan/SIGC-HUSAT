@@ -86,6 +86,7 @@
     <Compile Include="BLTipoPlan.cs" />
     <Compile Include="BLTipoTarifa.cs" />
     <Compile Include="BLOtrasVenta.cs" />
+    <Compile Include="BLTitularidad.cs" />
     <Compile Include="BLTraslado.cs" />
     <Compile Include="BLUbigeo.cs" />
     <Compile Include="BLUnidadMedida.cs" />
@@ -97,6 +98,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CapaConexion\CapaConexion.csproj">
+      <Project>{C35344BE-5DAE-4A4F-9797-3BF7779B539E}</Project>
+      <Name>CapaConexion</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaDato\CapaDato.csproj">
       <Project>{5e2ccb2b-4d9a-4d25-a9b2-34a4b90089f9}</Project>
       <Name>CapaDato</Name>
@@ -104,6 +109,10 @@
     <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
       <Project>{5e3f706a-fa50-43ca-88d6-805e8821e734}</Project>
       <Name>CapaEntidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaUtil\CapaUtil.csproj">
+      <Project>{3DB7DD7F-BF9C-4A24-B7D5-0E80C361C6A3}</Project>
+      <Name>CapaUtil</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

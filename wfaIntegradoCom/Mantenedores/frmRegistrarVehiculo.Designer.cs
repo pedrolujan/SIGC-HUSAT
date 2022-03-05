@@ -1758,7 +1758,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgConsultas.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgConsultas.EnableHeadersVisualStyles = false;
             this.dgConsultas.GridColor = System.Drawing.Color.Silver;
-            this.dgConsultas.Location = new System.Drawing.Point(17, 58);
+            this.dgConsultas.Location = new System.Drawing.Point(16, 83);
             this.dgConsultas.Name = "dgConsultas";
             this.dgConsultas.ReadOnly = true;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;

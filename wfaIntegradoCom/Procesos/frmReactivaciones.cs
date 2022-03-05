@@ -35,6 +35,7 @@ namespace wfaIntegradoCom.Procesos
         static List<Cliente> lstClientes = new List<Cliente>();
         static List<Vehiculo> lstVehiculo = new List<Vehiculo>();
         static List<Plan> lstPlan = new List<Plan>();
+
         static Int32 idVenta = 0 ;
 
 

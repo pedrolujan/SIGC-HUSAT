@@ -87,6 +87,7 @@
     <Compile Include="DATipoPlan.cs" />
     <Compile Include="DATipoTarifa.cs" />
     <Compile Include="DAOtrasVenta.cs" />
+    <Compile Include="DATitularidad.cs" />
     <Compile Include="DATraslado.cs" />
     <Compile Include="DAUbigeo.cs" />
     <Compile Include="DAUnidadMedida.cs" />
