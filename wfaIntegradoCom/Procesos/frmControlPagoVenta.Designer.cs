@@ -30,24 +30,24 @@ namespace wfaIntegradoCom.Procesos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmControlPagoVenta));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmControlPagoVenta));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTop = new Siticone.UI.WinForms.SiticonePanel();
             this.label13 = new System.Windows.Forms.Label();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
@@ -93,12 +93,15 @@ namespace wfaIntegradoCom.Procesos
             this.imgMoneda = new System.Windows.Forms.PictureBox();
             this.imgComprobanteP = new System.Windows.Forms.PictureBox();
             this.dtFechaPago = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.txtCiclo = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtfechaoriginal = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.cboComprobanteP = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboCronograma = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboMoneda = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboTipoDescuentoPrecios = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -142,9 +145,6 @@ namespace wfaIntegradoCom.Procesos
             this.cmsPagoCuotas = new Guna.UI.WinForms.GunaContextMenuStrip();
             this.msPagarCuota = new System.Windows.Forms.ToolStripMenuItem();
             this.msActializarPago = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtfechaoriginal = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtCiclo = new Siticone.UI.WinForms.SiticoneTextBox();
             this.PanelTop.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -369,20 +369,20 @@ namespace wfaIntegradoCom.Procesos
             this.dgvListaVentas.AllowUserToAddRows = false;
             this.dgvListaVentas.AllowUserToDeleteRows = false;
             this.dgvListaVentas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            this.dgvListaVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvListaVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListaVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListaVentas.BackgroundColor = System.Drawing.Color.White;
             this.dgvListaVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvListaVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaVentas.ColumnHeadersHeight = 42;
             this.dgvListaVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDCRONOGRAMA,
@@ -397,31 +397,31 @@ namespace wfaIntegradoCom.Procesos
             this.Estado_lv});
             this.dgvListaVentas.ContextMenuStrip = this.ctmPagar;
             this.dgvListaVentas.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaVentas.EnableHeadersVisualStyles = false;
             this.dgvListaVentas.GridColor = System.Drawing.Color.Silver;
             this.dgvListaVentas.Location = new System.Drawing.Point(18, 136);
             this.dgvListaVentas.Name = "dgvListaVentas";
             this.dgvListaVentas.ReadOnly = true;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvListaVentas.RowHeadersVisible = false;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaVentas.RowsDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaVentas.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvListaVentas.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvListaVentas.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaVentas.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -837,6 +837,70 @@ namespace wfaIntegradoCom.Procesos
             this.dtFechaPago.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
             this.dtFechaPago.ValueChanged += new System.EventHandler(this.dtFechaPago_ValueChanged);
             // 
+            // txtCiclo
+            // 
+            this.txtCiclo.Animated = false;
+            this.txtCiclo.BorderColor = System.Drawing.Color.Silver;
+            this.txtCiclo.BorderRadius = 5;
+            this.txtCiclo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCiclo.DefaultText = "";
+            this.txtCiclo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCiclo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCiclo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCiclo.DisabledState.Parent = this.txtCiclo;
+            this.txtCiclo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCiclo.Enabled = false;
+            this.txtCiclo.FillColor = System.Drawing.Color.Gainsboro;
+            this.txtCiclo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtCiclo.FocusedState.Parent = this.txtCiclo;
+            this.txtCiclo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCiclo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCiclo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCiclo.HoveredState.Parent = this.txtCiclo;
+            this.txtCiclo.Location = new System.Drawing.Point(681, 434);
+            this.txtCiclo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtCiclo.Name = "txtCiclo";
+            this.txtCiclo.PasswordChar = '\0';
+            this.txtCiclo.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCiclo.PlaceholderText = "";
+            this.txtCiclo.ReadOnly = true;
+            this.txtCiclo.SelectedText = "";
+            this.txtCiclo.ShadowDecoration.Parent = this.txtCiclo;
+            this.txtCiclo.Size = new System.Drawing.Size(38, 36);
+            this.txtCiclo.TabIndex = 153;
+            // 
+            // txtfechaoriginal
+            // 
+            this.txtfechaoriginal.Animated = false;
+            this.txtfechaoriginal.BorderColor = System.Drawing.Color.Silver;
+            this.txtfechaoriginal.BorderRadius = 5;
+            this.txtfechaoriginal.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtfechaoriginal.DefaultText = "";
+            this.txtfechaoriginal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtfechaoriginal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtfechaoriginal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtfechaoriginal.DisabledState.Parent = this.txtfechaoriginal;
+            this.txtfechaoriginal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtfechaoriginal.Enabled = false;
+            this.txtfechaoriginal.FillColor = System.Drawing.Color.Gainsboro;
+            this.txtfechaoriginal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtfechaoriginal.FocusedState.Parent = this.txtfechaoriginal;
+            this.txtfechaoriginal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtfechaoriginal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtfechaoriginal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtfechaoriginal.HoveredState.Parent = this.txtfechaoriginal;
+            this.txtfechaoriginal.Location = new System.Drawing.Point(15, 434);
+            this.txtfechaoriginal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtfechaoriginal.Name = "txtfechaoriginal";
+            this.txtfechaoriginal.PasswordChar = '\0';
+            this.txtfechaoriginal.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtfechaoriginal.PlaceholderText = "";
+            this.txtfechaoriginal.ReadOnly = true;
+            this.txtfechaoriginal.SelectedText = "";
+            this.txtfechaoriginal.ShadowDecoration.Parent = this.txtfechaoriginal;
+            this.txtfechaoriginal.Size = new System.Drawing.Size(164, 36);
+            this.txtfechaoriginal.TabIndex = 153;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -941,6 +1005,17 @@ namespace wfaIntegradoCom.Procesos
             this.cboTipoDescuentoPrecios.Size = new System.Drawing.Size(259, 36);
             this.cboTipoDescuentoPrecios.TabIndex = 261;
             this.cboTipoDescuentoPrecios.SelectedIndexChanged += new System.EventHandler(this.cboTipoDescuentoPrecios_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label12.Location = new System.Drawing.Point(12, 417);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(163, 18);
+            this.label12.TabIndex = 262;
+            this.label12.Text = "Fecha original de inicio";
             // 
             // label9
             // 
@@ -1057,14 +1132,14 @@ namespace wfaIntegradoCom.Procesos
             this.dgvCronograma.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvCronograma.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCronograma.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCronograma.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCronograma.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCronograma.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCronograma.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -1085,19 +1160,19 @@ namespace wfaIntegradoCom.Procesos
             this.dgvCronograma.GridColor = System.Drawing.Color.Black;
             this.dgvCronograma.Location = new System.Drawing.Point(3, 25);
             this.dgvCronograma.Name = "dgvCronograma";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCronograma.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCronograma.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvCronograma.RowHeadersVisible = false;
             this.dgvCronograma.RowHeadersWidth = 15;
             this.dgvCronograma.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvCronograma.RowsDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvCronograma.RowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvCronograma.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvCronograma.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvCronograma.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -1111,16 +1186,16 @@ namespace wfaIntegradoCom.Procesos
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn5.HeaderText = "CODIGO";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.Visible = false;
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewTextBoxColumn3.HeaderText = "N°";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -1128,8 +1203,8 @@ namespace wfaIntegradoCom.Procesos
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewTextBoxColumn4.HeaderText = "FECHA INICIO";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -1137,8 +1212,8 @@ namespace wfaIntegradoCom.Procesos
             // 
             // dataGridViewTextBoxColumn11
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTextBoxColumn11.HeaderText = "FECHA FIN";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
@@ -1153,10 +1228,10 @@ namespace wfaIntegradoCom.Procesos
             // 
             // dataGridViewTextBoxColumn9
             // 
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle23.Format = "N2";
-            dataGridViewCellStyle23.NullValue = "0";
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = "0";
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTextBoxColumn9.HeaderText = "FECHA VENCIMIENTO";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
@@ -1170,8 +1245,8 @@ namespace wfaIntegradoCom.Procesos
             // 
             // PRECIO
             // 
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.PRECIO.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.PRECIO.DefaultCellStyle = dataGridViewCellStyle12;
             this.PRECIO.HeaderText = "PRECIO";
             this.PRECIO.Name = "PRECIO";
             this.PRECIO.ReadOnly = true;
@@ -1179,8 +1254,8 @@ namespace wfaIntegradoCom.Procesos
             // 
             // dataGridViewTextBoxColumn10
             // 
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewTextBoxColumn10.HeaderText = "DESCUENTO";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
@@ -1194,18 +1269,18 @@ namespace wfaIntegradoCom.Procesos
             // 
             // dataGridViewTextBoxColumn12
             // 
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewTextBoxColumn12.HeaderText = "TOTAL";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
             // DCTOIMPORTE
             // 
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle27.Format = "N2";
-            dataGridViewCellStyle27.NullValue = null;
-            this.DCTOIMPORTE.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = null;
+            this.DCTOIMPORTE.DefaultCellStyle = dataGridViewCellStyle15;
             this.DCTOIMPORTE.HeaderText = "ESTADO";
             this.DCTOIMPORTE.Name = "DCTOIMPORTE";
             this.DCTOIMPORTE.ReadOnly = true;
@@ -1592,14 +1667,14 @@ namespace wfaIntegradoCom.Procesos
             this.cmsPagoCuotas.RenderStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.cmsPagoCuotas.RenderStyle.SeparatorColor = System.Drawing.Color.Gray;
             this.cmsPagoCuotas.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.SystemDefault;
-            this.cmsPagoCuotas.Size = new System.Drawing.Size(157, 48);
+            this.cmsPagoCuotas.Size = new System.Drawing.Size(181, 70);
             // 
             // msPagarCuota
             // 
             this.msPagarCuota.Image = global::wfaIntegradoCom.Properties.Resources.porPagar_base;
             this.msPagarCuota.Name = "msPagarCuota";
             this.msPagarCuota.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.msPagarCuota.Size = new System.Drawing.Size(156, 22);
+            this.msPagarCuota.Size = new System.Drawing.Size(180, 22);
             this.msPagarCuota.Text = "Pagar Cuota";
             this.msPagarCuota.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.msPagarCuota.Click += new System.EventHandler(this.msPagarCuota_Click);
@@ -1609,83 +1684,9 @@ namespace wfaIntegradoCom.Procesos
             this.msActializarPago.Image = global::wfaIntegradoCom.Properties.Resources.update;
             this.msActializarPago.Name = "msActializarPago";
             this.msActializarPago.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.msActializarPago.Size = new System.Drawing.Size(156, 22);
+            this.msActializarPago.Size = new System.Drawing.Size(180, 22);
             this.msActializarPago.Text = "Actualizar Pago";
-            // 
-            // txtfechaoriginal
-            // 
-            this.txtfechaoriginal.Animated = false;
-            this.txtfechaoriginal.BorderColor = System.Drawing.Color.Silver;
-            this.txtfechaoriginal.BorderRadius = 5;
-            this.txtfechaoriginal.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtfechaoriginal.DefaultText = "";
-            this.txtfechaoriginal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtfechaoriginal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtfechaoriginal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtfechaoriginal.DisabledState.Parent = this.txtfechaoriginal;
-            this.txtfechaoriginal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtfechaoriginal.Enabled = false;
-            this.txtfechaoriginal.FillColor = System.Drawing.Color.Gainsboro;
-            this.txtfechaoriginal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.txtfechaoriginal.FocusedState.Parent = this.txtfechaoriginal;
-            this.txtfechaoriginal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtfechaoriginal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtfechaoriginal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtfechaoriginal.HoveredState.Parent = this.txtfechaoriginal;
-            this.txtfechaoriginal.Location = new System.Drawing.Point(15, 434);
-            this.txtfechaoriginal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtfechaoriginal.Name = "txtfechaoriginal";
-            this.txtfechaoriginal.PasswordChar = '\0';
-            this.txtfechaoriginal.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtfechaoriginal.PlaceholderText = "";
-            this.txtfechaoriginal.ReadOnly = true;
-            this.txtfechaoriginal.SelectedText = "";
-            this.txtfechaoriginal.ShadowDecoration.Parent = this.txtfechaoriginal;
-            this.txtfechaoriginal.Size = new System.Drawing.Size(164, 36);
-            this.txtfechaoriginal.TabIndex = 153;
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(12, 417);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(163, 18);
-            this.label12.TabIndex = 262;
-            this.label12.Text = "Fecha original de inicio";
-            // 
-            // txtCiclo
-            // 
-            this.txtCiclo.Animated = false;
-            this.txtCiclo.BorderColor = System.Drawing.Color.Silver;
-            this.txtCiclo.BorderRadius = 5;
-            this.txtCiclo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCiclo.DefaultText = "";
-            this.txtCiclo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCiclo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCiclo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCiclo.DisabledState.Parent = this.txtCiclo;
-            this.txtCiclo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCiclo.Enabled = false;
-            this.txtCiclo.FillColor = System.Drawing.Color.Gainsboro;
-            this.txtCiclo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.txtCiclo.FocusedState.Parent = this.txtCiclo;
-            this.txtCiclo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCiclo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCiclo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCiclo.HoveredState.Parent = this.txtCiclo;
-            this.txtCiclo.Location = new System.Drawing.Point(681, 434);
-            this.txtCiclo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtCiclo.Name = "txtCiclo";
-            this.txtCiclo.PasswordChar = '\0';
-            this.txtCiclo.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtCiclo.PlaceholderText = "";
-            this.txtCiclo.ReadOnly = true;
-            this.txtCiclo.SelectedText = "";
-            this.txtCiclo.ShadowDecoration.Parent = this.txtCiclo;
-            this.txtCiclo.Size = new System.Drawing.Size(38, 36);
-            this.txtCiclo.TabIndex = 153;
+            this.msActializarPago.Click += new System.EventHandler(this.msActializarPago_Click);
             // 
             // frmControlPagoVenta
             // 

@@ -129,17 +129,40 @@ namespace wfaIntegradoCom.Procesos
             else
             {
                 Int32 cantDiasMes = 0;
+                Int32 cantDiasSum = 0;
 
                 dgvCronograma.Rows.Clear();
                 for (Int32 i = 0; i < lstDetalleCronograma.Count; i++)
                 {
+                    if (i==6)
+                    {
+
+                    }
+                    DateTime dtFechaTemp = lstDetalleCronograma[i].periodoInicio.AddMonths(1);
                     cantDiasMes = DateTime.DaysInMonth(lstDetalleCronograma[i].periodoInicio.Year, lstDetalleCronograma[i].periodoInicio.Month);
+                    cantDiasSum = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
                     Int32 diasASumar = 0;
                     Int32 diaNuevaFecha = 0;
-                    diasASumar = cantDiasMes-1;
+                    if (cantDiasSum <= 29 && dtFechaTemp.Month==2)
+                    {
+                        diasASumar = cantDiasSum;
+                    }
+                    else if(cantDiasMes<=29 && lstDetalleCronograma[i].periodoInicio.Month==2)
+                    {
+                        diasASumar = cantDiasSum>30?(30-1):cantDiasSum -1;
+
+                    }
+                    else
+                    {
+                        diasASumar = cantDiasMes - 1;
+
+                    }
+
                     diaNuevaFecha = cantDiasMes < diaCicloPago ? cantDiasMes : diaCicloPago;
+
                     DateTime fechaInicio = Convert.ToDateTime(diaNuevaFecha + "/" +( lstDetalleCronograma[i].periodoInicio.Month)+"/"+ lstDetalleCronograma[i].periodoInicio.Year);
                     lstDetalleCronograma[i].periodoInicio = fechaInicio;
+
                     DateTime fechaFinal = fechaInicio.AddDays(diasASumar);
                     lstDetalleCronograma[i].periodoFinal = fechaFinal;
                     lstDetalleCronograma[i].fechaEmision = fechaFinal.AddDays(1);
@@ -361,10 +384,15 @@ namespace wfaIntegradoCom.Procesos
 
                         }
                             estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dtt.Rows[i][10])) + tiempoTranscurrido;
-                        
-                    }                    
 
-                    
+                    }
+                    else
+                    {
+                        estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dtt.Rows[i][10])) + tiempoTranscurrido;
+
+                    }
+
+
                     dgv.Rows.Add(
                         dtt.Rows[i][1],
                         dtt.Rows[i][2],
@@ -514,7 +542,8 @@ namespace wfaIntegradoCom.Procesos
                     descuentoCantidad = Convert.ToDouble(dtResult.Rows[i][28]),
                     descuentoPrecio = Convert.ToDouble(dtResult.Rows[i][29]),
                     total = Convert.ToInt32(dtResult.Rows[i][30]) == 0 ? clsTarifa.PrecioPlan : Convert.ToDouble(dtResult.Rows[i][30]),
-                    estado = Convert.ToString(dtResult.Rows[i][23])
+                    estado = Convert.ToString(dtResult.Rows[i][23]),
+                    idDetallePago=Convert.ToInt32(dtResult.Rows[i][32])
                 }) ;
 
 
@@ -818,13 +847,14 @@ namespace wfaIntegradoCom.Procesos
             obControPagos = new BLControlPagos();
             Boolean bResult = false;
             bResult=obControPagos.blGuardarPagoCuota(ctp, lstDV, tipoCon);
+            String strTipo = tipoCon == 0 ? "Guardado" : "Actualizado";
             if (bResult)
             {
-                MessageBox.Show("Págo Guardado Correctamente ✅", "Informacion ✅",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Págo "+ strTipo + " Correctamente ✅", "Informacion ",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Error al Guardar Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al "+ strTipo + " Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
@@ -1137,6 +1167,26 @@ namespace wfaIntegradoCom.Procesos
             dtFechaPagoCuota = Convert.ToDateTime(dtFechaPago.Value);
         }
 
+        private void msActializarPago_Click(object sender, EventArgs e)
+        {
+            lnTipoCon = 1;
+
+            DataGridViewRow filaSeleccionada = dgvCronograma.CurrentRow;
+            DataGridViewCell ColumnaSeleccionada = dgvCronograma.CurrentCell;
+
+            Int32 idDetalleCronograma = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
+
+            //lstVehiculoSinRenovar.Add(lstVehiculo.Find(i => i.idVehiculo == idVehiculo));
+
+            clsDetCronogramaEspecifico = lstDetalleCronograma.Find(i => i.idDetalleCronograma == idDetalleCronograma);
+
+            lstDetalleVenta.Clear();
+            lstDocumentoVenta.Clear();
+            fnGenerarComprobantePago(filaSeleccionada, ColumnaSeleccionada);
+
+
+        }
+
         private void btnVerDatos_Click(object sender, EventArgs e)
         {
             
@@ -1169,6 +1219,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void msPagarCuota_Click(object sender, EventArgs e)
         {
+            lnTipoCon = 0;
             DataGridViewRow filaSeleccionada = dgvCronograma.CurrentRow;
             DataGridViewCell ColumnaSeleccionada = dgvCronograma.CurrentCell;
             
@@ -1180,6 +1231,15 @@ namespace wfaIntegradoCom.Procesos
 
             lstDetalleVenta.Clear();
             lstDocumentoVenta.Clear();
+            fnGenerarComprobantePago(filaSeleccionada, ColumnaSeleccionada);
+
+
+
+
+        }
+
+        private void fnGenerarComprobantePago(DataGridViewRow filaSeleccionada, DataGridViewCell ColumnaSeleccionada)
+        {
             if (estadoComprabanteP)
             {
                 if (filaSeleccionada.Index != 0)
@@ -1190,7 +1250,7 @@ namespace wfaIntegradoCom.Procesos
                     }
                     else
                     {
-                        DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n"+dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n" + dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (EstadoDialog == DialogResult.Yes)
                         {
                             lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
@@ -1202,14 +1262,14 @@ namespace wfaIntegradoCom.Procesos
                             fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
                         }
 
-                        
+
 
                     }
                 }
                 else if (filaSeleccionada.Index == 0)
                 {
                     DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n" + dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (EstadoDialog== DialogResult.Yes)
+                    if (EstadoDialog == DialogResult.Yes)
                     {
                         lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
                         clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
@@ -1219,18 +1279,16 @@ namespace wfaIntegradoCom.Procesos
                         frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
                         fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
                     }
-                    
 
-                   
+
+
                 }
-               
+
             }
             else
             {
-                MessageBox.Show("Por favor complete todo los datos","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor complete todo los datos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-                
-            
         }
 
         private void cboComprobanteP_SelectedIndexChanged(object sender, EventArgs e)

@@ -120,13 +120,23 @@ namespace CapaDato
 
                 pa[19] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
                 objCnx = new clsConexion("");
-                numRows = objCnx.EjecutarProcedimiento("uspGuardarPagoCuotas", pa);
+                objCnx.EjecutarProcedimiento("uspGuardarPagoCuotas", pa);
                 return true;
             }
             catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
                 throw new Exception(ex.Message);
+            }
+            finally
+            {
+                //if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                objUtil = null;
+                clsCPC = null;
+                lstDV = null;
+                tipoCon = 0;
             }
         }
     }

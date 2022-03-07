@@ -137,12 +137,7 @@ namespace wfaIntegradoCom.Consultas
             {
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(3, sumaPrimerPago, lstDVenta[0].cSimbolo);
-                if (estVP)
-                {
-                    frmControlPagoVenta frmCVent = new frmControlPagoVenta();
-                    frmCVent.fnCambiarEstadoVenta(true);
-                }
+                fmr.Inicio(3, sumaPrimerPago, lstDVenta[0].cSimbolo);              
                
 
             }

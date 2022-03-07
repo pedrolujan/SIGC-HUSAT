@@ -219,8 +219,8 @@ namespace wfaIntegradoCom.Procesos
                     this.Close();
                 }else if (lnTipoLLamada == 3)
                 {
-                    frmControlPagoVenta frm = new frmControlPagoVenta();
                     Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
+                    frmControlPagoVenta frm = new frmControlPagoVenta();
                     frm.fnCambiarEstadoVenta(true);
                     this.Close();
                 }
@@ -319,14 +319,22 @@ namespace wfaIntegradoCom.Procesos
             pbTipoVenta.Visible = estado;
             lblTipoVenta.Visible = estado;
 
-            txtPagaCon.Visible = !estado;
-            label4.Visible = !estado;
-            pbPagaCon.Visible = !estado;
-            txtVuelto.Visible = !estado;
-            label6.Visible = !estado;
-            pbVuelto.Visible = !estado;
-            lblMoneda1.Visible = !estado;
-            lblMoneda2.Visible = !estado;
+            
+
+
+        }
+
+        private void fnActivarpagaConYVuelto(Boolean estado)
+        {
+            pbPagaCon.Visible = estado;
+            txtPagaCon.Visible = estado;
+            txtVuelto.Visible = estado;
+            label6.Visible = estado;
+            pbVuelto.Visible = estado;
+            lblMoneda1.Visible = estado;
+            lblMoneda2.Visible = estado;
+            lblPagaCon.Visible = estado;
+            label4.Visible = estado;
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -335,18 +343,31 @@ namespace wfaIntegradoCom.Procesos
             lblTipoVentaa = res.Item2;
             String ValorCombo = cboTipoPago.SelectedValue.ToString().Trim();
 
-            if (ValorCombo== "TIPA0001" || ValorCombo == "TIPA0005" || ValorCombo == "TIPA0006" || ValorCombo=="0")
+            if (ValorCombo== "TIPA0001" || ValorCombo=="0")
             {
                 estEntidadVenta = true;
                 fnMostrarCombo(false);
+                fnActivarpagaConYVuelto(true);
                 estNroOperacion = true;
             }
             else
             {
-                fnLlenarCombobox(cboEntidadesPago,Convert.ToString(cboTipoPago.SelectedValue),0);
-                fnMostrarCombo(true);
-                estEntidadVenta = false;
-                estNroOperacion = false;
+                if (ValorCombo == "TIPA0005" || ValorCombo == "TIPA0006")
+                {
+                    fnActivarpagaConYVuelto(false);
+                    fnMostrarCombo(false);
+                    estEntidadVenta = true;
+                    estNroOperacion = true;
+                }
+                else
+                {
+                    fnLlenarCombobox(cboEntidadesPago, Convert.ToString(cboTipoPago.SelectedValue), 0);
+                    fnMostrarCombo(true);
+                    fnActivarpagaConYVuelto(false);
+                    estEntidadVenta = false;
+                    estNroOperacion = false;
+                }
+               
                 //txtNumeroOperacion.Text = "000";
             }
             //else

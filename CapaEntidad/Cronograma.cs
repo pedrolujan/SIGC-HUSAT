@@ -47,6 +47,7 @@ namespace CapaEntidad
         public DateTime fechaRegistro { get; set; }
         public Int32 idUsuario { get; set; }
         public String cSimbolo { get; set; }
+        public Int32 idDetallePago { get; set; }
         public DetalleCronograma(DetalleCronograma add)
         {
             idDetalleCronograma = add.idDetalleCronograma;
