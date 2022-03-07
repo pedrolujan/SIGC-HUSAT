@@ -377,9 +377,22 @@ namespace wfaIntegradoCom.Mantenedores
         {
             if (dgvAcciones.Columns["Chk"].Index==2)
             {
-                if (index!=4)
+                if (index<4)
                 {
                     if (dgvAcciones.Name== "dgvAccesorios")
+                    {
+                        if (Convert.ToBoolean(dgvServicios.Rows[index].Cells[2].Value) == true)
+                        {
+                            dgvServicios.Rows[index].Cells[2].Value = false;
+                        }
+                        else if (Convert.ToBoolean(dgvServicios.Rows[index].Cells[2].Value) == false)
+                        {
+                            dgvServicios.Rows[index].Cells[2].Value = true;
+                        }
+
+
+                    }
+                    else if (dgvAcciones.Name== "dgvServicios")
                     {
                         if (Convert.ToBoolean(dgvAccesorios.Rows[index].Cells[2].Value) == true)
                         {
@@ -390,18 +403,7 @@ namespace wfaIntegradoCom.Mantenedores
                             dgvAccesorios.Rows[index].Cells[2].Value = true;
 
                         }
-
-                       
-                    }else if (dgvAcciones.Name== "dgvServicios")
-                    {
-                        if (Convert.ToBoolean(dgvServicios.Rows[index].Cells[2].Value) == true)
-                        {
-                            dgvServicios.Rows[index].Cells[2].Value = false;
-                        }
-                        else if (Convert.ToBoolean(dgvServicios.Rows[index].Cells[2].Value) == false)
-                        {
-                            dgvServicios.Rows[index].Cells[2].Value = true;
-                        }
+                        
                     }
                     
                 }
@@ -620,6 +622,7 @@ namespace wfaIntegradoCom.Mantenedores
             pbSubir.Visible = true;
             pbBajar.Visible = false;
 
+            fnActivarCamposActualizacion(true);
 
         }
         private void fnLlamarDatosInstalacion(String codVenta, String placa)
