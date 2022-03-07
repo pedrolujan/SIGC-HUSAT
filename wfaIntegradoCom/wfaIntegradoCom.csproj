@@ -489,6 +489,12 @@
     <Compile Include="Procesos\frmArquearCaja.Designer.cs">
       <DependentUpon>frmArquearCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmCambioTitularidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmCambioTitularidad.Designer.cs">
+      <DependentUpon>frmCambioTitularidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\frmConceptoCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -809,6 +815,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmAccesoADescuento.resx">
       <DependentUpon>frmAccesoADescuento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmCambioTitularidad.resx">
+      <DependentUpon>frmCambioTitularidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmControlPagoVenta.resx">
       <DependentUpon>frmControlPagoVenta.cs</DependentUpon>
@@ -1161,6 +1170,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CapaDato\CapaDato.csproj">
+      <Project>{5E2CCB2B-4D9A-4D25-A9B2-34A4B90089F9}</Project>
+      <Name>CapaDato</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
       <Project>{5e3f706a-fa50-43ca-88d6-805e8821e734}</Project>
       <Name>CapaEntidad</Name>
