@@ -71,7 +71,7 @@ namespace wfaIntegradoCom.Procesos
             this.lblDni = new System.Windows.Forms.Label();
             this.pbcliente = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.txtCorreo = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.txtbni = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtdni = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtCliente = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtTelefono = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -115,11 +115,11 @@ namespace wfaIntegradoCom.Procesos
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.txtBusca = new Siticone.UI.WinForms.SiticoneTextBox();
             this.dgConsulta = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.dtFechaTitulacion = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtFechaTitulacion = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.gunaPanel1.SuspendLayout();
             this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbmodelo)).BeginInit();
@@ -228,7 +228,7 @@ namespace wfaIntegradoCom.Procesos
             this.siticoneGroupBox1.Controls.Add(this.lblDni);
             this.siticoneGroupBox1.Controls.Add(this.pbcliente);
             this.siticoneGroupBox1.Controls.Add(this.txtCorreo);
-            this.siticoneGroupBox1.Controls.Add(this.txtbni);
+            this.siticoneGroupBox1.Controls.Add(this.txtdni);
             this.siticoneGroupBox1.Controls.Add(this.txtCliente);
             this.siticoneGroupBox1.Controls.Add(this.txtTelefono);
             this.siticoneGroupBox1.Controls.Add(this.label22);
@@ -600,30 +600,30 @@ namespace wfaIntegradoCom.Procesos
             this.txtCorreo.Size = new System.Drawing.Size(329, 27);
             this.txtCorreo.TabIndex = 315;
             // 
-            // txtbni
+            // txtdni
             // 
-            this.txtbni.Animated = false;
-            this.txtbni.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtbni.DefaultText = "";
-            this.txtbni.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtbni.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtbni.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtbni.DisabledState.Parent = this.txtbni;
-            this.txtbni.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtbni.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtbni.FocusedState.Parent = this.txtbni;
-            this.txtbni.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtbni.HoveredState.Parent = this.txtbni;
-            this.txtbni.Location = new System.Drawing.Point(104, 80);
-            this.txtbni.Margin = new System.Windows.Forms.Padding(10, 6, 10, 6);
-            this.txtbni.Name = "txtbni";
-            this.txtbni.PasswordChar = '\0';
-            this.txtbni.PlaceholderText = "";
-            this.txtbni.SelectedText = "";
-            this.txtbni.ShadowDecoration.Parent = this.txtbni;
-            this.txtbni.Size = new System.Drawing.Size(329, 27);
-            this.txtbni.TabIndex = 314;
-            this.txtbni.TextChanged += new System.EventHandler(this.txtbni_TextChanged);
+            this.txtdni.Animated = false;
+            this.txtdni.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtdni.DefaultText = "";
+            this.txtdni.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtdni.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtdni.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtdni.DisabledState.Parent = this.txtdni;
+            this.txtdni.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtdni.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtdni.FocusedState.Parent = this.txtdni;
+            this.txtdni.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtdni.HoveredState.Parent = this.txtdni;
+            this.txtdni.Location = new System.Drawing.Point(104, 80);
+            this.txtdni.Margin = new System.Windows.Forms.Padding(10, 6, 10, 6);
+            this.txtdni.Name = "txtdni";
+            this.txtdni.PasswordChar = '\0';
+            this.txtdni.PlaceholderText = "";
+            this.txtdni.SelectedText = "";
+            this.txtdni.ShadowDecoration.Parent = this.txtdni;
+            this.txtdni.Size = new System.Drawing.Size(329, 27);
+            this.txtdni.TabIndex = 314;
+            this.txtdni.TextChanged += new System.EventHandler(this.txtbni_TextChanged);
             // 
             // txtCliente
             // 
@@ -673,7 +673,6 @@ namespace wfaIntegradoCom.Procesos
             this.txtTelefono.ShadowDecoration.Parent = this.txtTelefono;
             this.txtTelefono.Size = new System.Drawing.Size(329, 27);
             this.txtTelefono.TabIndex = 312;
-            this.txtTelefono.TextChanged += new System.EventHandler(this.txtTelefono_TextChanged);
             // 
             // label22
             // 
@@ -1273,7 +1272,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsulta.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgConsulta.EnableHeadersVisualStyles = false;
             this.dgConsulta.GridColor = System.Drawing.Color.Silver;
-            this.dgConsulta.Location = new System.Drawing.Point(130, 69);
+            this.dgConsulta.Location = new System.Drawing.Point(130, 73);
             this.dgConsulta.Name = "dgConsulta";
             this.dgConsulta.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1316,6 +1315,35 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsulta.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.dgConsulta.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsulta_CellContentDoubleClick);
             // 
+            // id
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.id.DefaultCellStyle = dataGridViewCellStyle3;
+            this.id.FillWeight = 85.2792F;
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 7;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // placa
+            // 
+            this.placa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.placa.DefaultCellStyle = dataGridViewCellStyle4;
+            this.placa.HeaderText = "CLIENTE";
+            this.placa.Name = "placa";
+            this.placa.ReadOnly = true;
+            this.placa.Width = 132;
+            // 
+            // cliente
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.cliente.DefaultCellStyle = dataGridViewCellStyle5;
+            this.cliente.HeaderText = "PLACA";
+            this.cliente.Name = "cliente";
+            this.cliente.ReadOnly = true;
+            // 
             // dtFechaTitulacion
             // 
             this.dtFechaTitulacion.BackColor = System.Drawing.Color.White;
@@ -1348,35 +1376,6 @@ namespace wfaIntegradoCom.Procesos
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
             this.siticonePanel1.Size = new System.Drawing.Size(1157, 637);
             this.siticonePanel1.TabIndex = 322;
-            // 
-            // id
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.id.DefaultCellStyle = dataGridViewCellStyle3;
-            this.id.FillWeight = 85.2792F;
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 7;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // placa
-            // 
-            this.placa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.placa.DefaultCellStyle = dataGridViewCellStyle4;
-            this.placa.HeaderText = "CLIENTE";
-            this.placa.Name = "placa";
-            this.placa.ReadOnly = true;
-            this.placa.Width = 132;
-            // 
-            // cliente
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.cliente.DefaultCellStyle = dataGridViewCellStyle5;
-            this.cliente.HeaderText = "PLACA";
-            this.cliente.Name = "cliente";
-            this.cliente.ReadOnly = true;
             // 
             // frmCambioTitularidad
             // 
@@ -1444,7 +1443,7 @@ namespace wfaIntegradoCom.Procesos
         private System.Windows.Forms.Label lblDni;
         private Guna.UI.WinForms.GunaCirclePictureBox pbcliente;
         private Siticone.UI.WinForms.SiticoneTextBox txtCorreo;
-        private Siticone.UI.WinForms.SiticoneTextBox txtbni;
+        private Siticone.UI.WinForms.SiticoneTextBox txtdni;
         private Siticone.UI.WinForms.SiticoneTextBox txtCliente;
         private Siticone.UI.WinForms.SiticoneTextBox txtTelefono;
         private System.Windows.Forms.Label label22;

@@ -36,6 +36,8 @@ namespace CapaDato
             }
             catch (Exception ex)
             {
+                objUtil.gsLogAplicativo("DACliente.cs", "DABuscarTitularidad", ex.Message);
+
                 throw new Exception(ex.Message);
 
             }
@@ -47,25 +49,44 @@ namespace CapaDato
                 objCnx = null;
 
             }
+
         }
         public DataTable daBuscarTilularidadEspecificos(Int32 condicion,Int32 idventageneral)
         {
             DATitularidad daobjEquipo = new DATitularidad();
+            DataTable dtResul = new DataTable();
+            SqlParameter[] pa = new SqlParameter[2];
+
+            clsConexion objCnx = null;
+            
             try
             {
-                return daobjEquipo.daBuscarTilularidadEspecificos(condicion, idventageneral);
+                pa[0] = new SqlParameter("@pcBuscar", SqlDbType.VarChar);
+                pa[0].Value = idventageneral;
+                pa[1] = new SqlParameter("@TipoCon", SqlDbType.Int);
+                pa[1].Value = condicion;
+
+                objCnx = new clsConexion("");
+                dtResul = objCnx.EjecutarProcedimientoDT("uspBuscarTitularidad", pa);
+                return dtResul;
+
+               
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
 
             }
+            finally
+            {
+
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
 
         }
-        public DataTable BlBuscarTitularidad(int cond, string buscarDato)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 
 }

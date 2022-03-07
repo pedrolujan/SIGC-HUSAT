@@ -33,6 +33,7 @@ namespace wfaIntegradoCom.Procesos
         String msjCliente, msjdni, msjtelefono;
         Boolean estCliente, estdni, esttelefono;
 
+      
 
 
         private void txtBusca_KeyPress(object sender, KeyPressEventArgs e)
@@ -76,6 +77,7 @@ namespace wfaIntegradoCom.Procesos
                     lstClientes.Clear();
                     lstvehiculo.Clear();
 
+                    dgConsulta.Visible = false;
                     foreach (DataRow drMenu in datResultado.Rows)
                     {
 
@@ -90,9 +92,18 @@ namespace wfaIntegradoCom.Procesos
                         });
                         txtCliente.Text = lstClientes[0].cNombre + " " + lstClientes[0].cApePat + " " + lstClientes[0].cApeMat;
 
+                       
 
-                        txtbni.Text = Convert.ToString(drMenu["cDocumento"]);
-                        txtTelefono.Text = Convert.ToString(drMenu["cTelCelular"]);
+                        //txtdni.Text = Convert.ToString(drMenu["cDocumento"]);
+                        //lstClientes.Add(new Cliente
+                        //{
+                        //    idCliente = Convert.ToInt32(drMenu["idCliente"]),
+                        //    cDocumento = Convert.ToString(drMenu["cDocumento"]),
+
+                        //}
+
+
+                     txtTelefono.Text = Convert.ToString(drMenu["cTelCelular"]);
                         txtCorreo.Text = Convert.ToString(drMenu["cCorreo"]);
 
                         
@@ -120,13 +131,25 @@ namespace wfaIntegradoCom.Procesos
             //txtclienteN.Text = Convert.ToString(lstclienteN[0].*imei*);
         }
 
+        private void txtbni_TextChanged(object sender, EventArgs e)
+        {
+            var resultado = FunValidaciones.fnValidarTexboxs(txtdni, lblDni, pbdni, true, true, true, 3, 9, 9, 9, "Complete el Nunero de DNI");
+            estdni = resultado.Item1;
+            msjdni = resultado.Item2;
+        }
+
         private void dgConsulta_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            lnTipoCon = 1;
+            lnTipoCon = 0;
 
             fnListarDatosCliente(lnTipoCon, e);
-            //fnActivarCamposEquipo(true)
+            //fnActivarCamposCliente(true);
+        }
+
+        private void fnActivarCamposCliente(bool v)
+        {
+            throw new NotImplementedException();
         }
 
         private void txtCliente_TextChanged(object sender, EventArgs e)
@@ -137,7 +160,7 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
-        private Boolean fnBuscarDatosCliente (Int32 cond)
+        private Boolean fnBuscarDatosCliente(Int32 cond)
         {
             BLTitularidad datCliente = new BLTitularidad();
             clsUtil objUtil = new clsUtil();
@@ -155,38 +178,30 @@ namespace wfaIntegradoCom.Procesos
                     dgConsulta.Rows.Add(
                         Convert.ToString(drMenu["idventageneral"]),
                        Convert.ToString(drMenu["cNombre"]),
-                       Convert.ToString(drMenu["vPlaca"]));
+                       Convert.ToString(drMenu["vPlaca"])
+                       );
 
-                       
-                }
-                return true ; 
-                {
-                    return false;
 
                 }
+                return true;
 
+            }
+            catch (Exception Error)
+
+            {
+                return false;
             }
             finally
             {
 
             }
         }
+        
 
-        private void txtbni_TextChanged(object sender, EventArgs e)
-        {
-            var resultado = FunValidaciones.fnValidarTexboxs(txtbni, lblDni, pbdni, true, true, true, 3, 50, 50, 50, "ingrese el numero de DNI");
-            estdni = resultado.Item1;
-            msjdni = resultado.Item2;
+        
 
-        }
+    }
+            
+      
 
-        private void txtTelefono_TextChanged(object sender, EventArgs e)
-        {
-            var resultado = FunValidaciones.fnValidarTexboxs(txtTelefono, lblTelefono, pbtelefono, true, true, true, 3, 50, 50, 50, "ingrese el numero de telefono");
-            esttelefono = resultado.Item1;
-            msjtelefono = resultado.Item2;
-
-
-        }
-}
 }

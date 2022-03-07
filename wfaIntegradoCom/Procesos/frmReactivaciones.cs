@@ -186,6 +186,7 @@ namespace wfaIntegradoCom.Procesos
             lnTipoCon = 1;
 
             fnListarReacctivacionesEspecificos(lnTipoCon, e);
+
             fnActivarCamposEquipo(false, "EQUIPO");
             fnActivarCamposEquipo(false, "SIMCARD");
 
