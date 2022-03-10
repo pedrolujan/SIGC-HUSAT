@@ -889,5 +889,14 @@ namespace wfaIntegradoCom
             fnOcultarObjetos();
             this.Loading();
         }
+
+        private void tsbRecaudacion_Click(object sender, EventArgs e)
+        {
+            tslMenuIzquierdo.Text = "Recaudación";
+            tslMenuIzquierdo.Image = Properties.Resources.recaudacion_Blanco;
+            treeView1.Nodes.Clear();
+            lcCodMenu = "8881000000";
+            fnCargarMenuGeneral(lcCodMenu);
+        }
     }
 }

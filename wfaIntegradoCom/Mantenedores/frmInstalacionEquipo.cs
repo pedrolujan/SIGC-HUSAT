@@ -921,16 +921,16 @@ namespace wfaIntegradoCom.Mantenedores
         {
 
 
-            //var Result = FunValidaciones.fnValidarTexboxs(txtObserInst, lbltxtObservacionIns, pbValObservacion, true, true, true, 0, 50, 50, 50, "LLENE TODOS LOS CAMPOS");
-            //estObservacion = Result.Item1;
-            //msjObservacion = Result.Item2;
+            var Result = FunValidaciones.fnValidarTexboxs(txtObserInst, lbltxtObservacionIns, pbValObservacion, true, true, true, 0, 50, 50, 50, "LLENE TODOS LOS CAMPOS");
+            estObservacion = Result.Item1;
+            msjObservacion = Result.Item2;
 
-            //if (estObservacion == false)
-            //{
-            //    FunValidaciones.fnHabilitarBoton(btnGuardarIns, true);
-            //}
-            //else
-            //{ FunValidaciones.fnHabilitarBoton(btnGuardarIns, true); }
+            if (estObservacion == false)
+            {
+                FunValidaciones.fnHabilitarBoton(btnGuardarIns, true);
+            }
+            else
+            { FunValidaciones.fnHabilitarBoton(btnGuardarIns, true); }
 
 
         }

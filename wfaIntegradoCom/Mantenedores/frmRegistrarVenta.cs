@@ -3678,7 +3678,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cboTipoClienteC.SelectedValue = lstvgeneral[0].ClsCliente.cTipPers;
                 cboTipoDocumentoC.SelectedValue = lstvgeneral[0].ClsCliente.cTiDo;
                 txtDocumentoC.Text = lstvgeneral[0].ClsCliente.cDocumento.Trim();
-                txtNombreC.Text = $"{ lstvgeneral[0].ClsCliente.cTipoDoc.Trim()} {lstvgeneral[0].ClsCliente.cApePat.Trim()} {lstvgeneral[0].ClsCliente.cApeMat.Trim()}";
+                txtNombreC.Text = $"{ lstvgeneral[0].ClsCliente.cNombre.Trim()} {lstvgeneral[0].ClsCliente.cApePat.Trim()} {lstvgeneral[0].ClsCliente.cApeMat.Trim()}";
                 txtCorreoC.Text = lstvgeneral[0].ClsCliente.cCorreo.Trim();
                 txtTelefonoFijoC.Text = lstvgeneral[0].ClsCliente.cTelFijo.Trim();
                 txtCelularC.Text = lstvgeneral[0].ClsCliente.cTelCelular.Trim();

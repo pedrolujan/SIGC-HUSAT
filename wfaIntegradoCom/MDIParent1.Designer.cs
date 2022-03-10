@@ -76,6 +76,7 @@
             this.tslMenuIzquierdo = new System.Windows.Forms.ToolStripLabel();
             this.tsMenuPrincipal = new System.Windows.Forms.ToolStrip();
             this.tsbVenta = new System.Windows.Forms.ToolStripButton();
+            this.tsbRecaudacion = new System.Windows.Forms.ToolStripButton();
             this.tsbComercial = new System.Windows.Forms.ToolStripButton();
             this.tsbLogistica = new System.Windows.Forms.ToolStripButton();
             this.tsbSistemas = new System.Windows.Forms.ToolStripButton();
@@ -108,7 +109,6 @@
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.tsPerfil = new System.Windows.Forms.ToolStripButton();
             this.tsCerrarSession = new System.Windows.Forms.ToolStripButton();
-            this.tsbRecaudacion = new System.Windows.Forms.ToolStripButton();
             this.tsAccesoRapido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitDerecho)).BeginInit();
             this.SplitDerecho.Panel1.SuspendLayout();
@@ -660,7 +660,7 @@
             this.SplitIzquierdo.Panel2.BackColor = System.Drawing.Color.White;
             this.SplitIzquierdo.Panel2.Controls.Add(this.tsMenuPrincipal);
             this.SplitIzquierdo.Size = new System.Drawing.Size(311, 431);
-            this.SplitIzquierdo.SplitterDistance = 189;
+            this.SplitIzquierdo.SplitterDistance = 221;
             this.SplitIzquierdo.TabIndex = 0;
             // 
             // tvOpes
@@ -678,7 +678,7 @@
             this.tvOpes.Margin = new System.Windows.Forms.Padding(10);
             this.tvOpes.Name = "tvOpes";
             this.tvOpes.SelectedImageKey = "A1.bmp";
-            this.tvOpes.Size = new System.Drawing.Size(307, 145);
+            this.tvOpes.Size = new System.Drawing.Size(307, 177);
             this.tvOpes.TabIndex = 8;
             this.tvOpes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOpes_AfterSelect);
             // 
@@ -727,17 +727,17 @@
             this.tsMenuPrincipal.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsMenuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbVenta,
+            this.tsbRecaudacion,
             this.tsbComercial,
             this.tsbLogistica,
             this.tsbSistemas,
             this.tsbRrHh,
             this.tsbConfiguracion,
-            this.tsbSoporte,
-            this.tsbRecaudacion});
+            this.tsbSoporte});
             this.tsMenuPrincipal.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.tsMenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.tsMenuPrincipal.Name = "tsMenuPrincipal";
-            this.tsMenuPrincipal.Size = new System.Drawing.Size(307, 234);
+            this.tsMenuPrincipal.Size = new System.Drawing.Size(307, 202);
             this.tsMenuPrincipal.Stretch = true;
             this.tsMenuPrincipal.TabIndex = 0;
             this.tsMenuPrincipal.Text = "ToolStrip1";
@@ -758,6 +758,18 @@
             this.tsbVenta.Text = "Ventas";
             this.tsbVenta.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.tsbVenta.Click += new System.EventHandler(this.tsbVenta_Click);
+            // 
+            // tsbRecaudacion
+            // 
+            this.tsbRecaudacion.Enabled = false;
+            this.tsbRecaudacion.Image = global::wfaIntegradoCom.Properties.Resources.refund_32px;
+            this.tsbRecaudacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbRecaudacion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbRecaudacion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRecaudacion.Name = "tsbRecaudacion";
+            this.tsbRecaudacion.Size = new System.Drawing.Size(305, 36);
+            this.tsbRecaudacion.Text = "Recaudación";
+            this.tsbRecaudacion.Click += new System.EventHandler(this.tsbRecaudacion_Click);
             // 
             // tsbComercial
             // 
@@ -1184,15 +1196,6 @@
             this.tsCerrarSession.Text = "Cerrar Session";
             this.tsCerrarSession.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.tsCerrarSession.Click += new System.EventHandler(this.tsCerrarSession_Click);
-            // 
-            // tsbRecaudacion
-            // 
-            this.tsbRecaudacion.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRecaudacion.Image = global::wfaIntegradoCom.Properties.Resources.refund_32px;
-            this.tsbRecaudacion.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRecaudacion.Name = "tsbRecaudacion";
-            this.tsbRecaudacion.Size = new System.Drawing.Size(23, 20);
-            this.tsbRecaudacion.Text = "Recaudación";
             // 
             // MDIParent1
             // 
