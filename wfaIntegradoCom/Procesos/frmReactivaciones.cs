@@ -40,7 +40,7 @@ namespace wfaIntegradoCom.Procesos
 
 
 
-        static Titularidad ClsReactivaciones;
+        static Reactivaciones ClsReactivaciones;
         private object txtNuevoSimCard;
         
         String msjNuevoSimCard, msjEquipoNuevo, msjClienteE, msjVehiculoE, msjPlanE, msjEquipoE, msjClienteSc,msjVehiculoSc, msjPlanSc, msjEquipoSc, msjSimCardSc,msjObservacionesE, msjObservacionesSC;
@@ -187,8 +187,8 @@ namespace wfaIntegradoCom.Procesos
 
             fnListarReacctivacionesEspecificos(lnTipoCon, e);
 
-            fnActivarCamposEquipo(false, "EQUIPO");
-            fnActivarCamposEquipo(false, "SIMCARD");
+            fnActivarCamposEquipo(true, "EQUIPO");
+            fnActivarCamposEquipo(true, "SIMCARD");
 
 
         }
@@ -454,7 +454,7 @@ namespace wfaIntegradoCom.Procesos
             Boolean Guardar;
                 String lcResultado = "";
                 txtSimCardNuevo_TextChanged(sender, e);
-            Titularidad clsRenova = new Titularidad();
+            Reactivaciones clsRenova = new Reactivaciones();
             if (estSimCard==true&& estClienteSc==true&& estVehiculoSc==true&&estPlanSc==true&& estEquipoSc==true&& estSimCardSc==true)
               
             {
@@ -530,12 +530,12 @@ namespace wfaIntegradoCom.Procesos
         {
 
         }
-        private Titularidad CargarClaseReactivaciones()
+        private Reactivaciones CargarClaseReactivaciones()
         {
            
             lstSimCardsAntiguo = lstSimCardsAntiguo.Count == 0 ? lstSimCardNuevo : lstSimCardsAntiguo;
 
-            ClsReactivaciones = new Titularidad
+            ClsReactivaciones = new Reactivaciones
             {
                 listaEquipoNuevo = lstEquipoNuevo,
                 listaEquipoAntiguo = lstEquipoAntiguo,
@@ -557,7 +557,7 @@ namespace wfaIntegradoCom.Procesos
             return ClsReactivaciones;
         }
 
-        private Boolean fnGuardarRenovacion(Titularidad clsReac ,String Condicion)
+        private Boolean fnGuardarRenovacion(Reactivaciones clsReac ,String Condicion)
         {
             clsUtil objUtil = new clsUtil();
             DataTable datosreactivacioSimCard = new DataTable();
@@ -582,8 +582,7 @@ namespace wfaIntegradoCom.Procesos
               Boolean Guardar;
                 String lcResultado = "";
                 txtEquipoNuevo_TextChanged(sender, e);
-            Titularidad clsRenova = new Titularidad();
-
+            Reactivaciones clsRenova = new Reactivaciones();
             if (estClienteE == true  && estEquipoNuevo == true && estVehiculoE == true && estPlanE == true && estEquipoE == true )
             {
                 clsRenova= CargarClaseReactivaciones();

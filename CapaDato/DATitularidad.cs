@@ -88,7 +88,7 @@ namespace CapaDato
 
         }
 
-        public Int32 daGuardarClienteN(Titularidad clsTitu, Int32 tipocon)
+        public Int32 daGuardarClienteN(Reactivaciones clsTitu, Int32 tipocon)
         {
             SqlParameter[] pa = new SqlParameter[4];
             Int32 dt = 0;

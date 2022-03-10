@@ -298,7 +298,7 @@ namespace wfaIntegradoCom.Procesos
         }
 
 
-        private Boolean fnGurdarNuevoCliente(Titularidad clsTitu, Int32 tipocon)
+        private Boolean fnGurdarNuevoCliente(Reactivaciones clsTitu, Int32 tipocon)
         {
             clsUtil objUtil = new clsUtil();
             DataTable datosTitularidad = new DataTable();
@@ -393,21 +393,21 @@ namespace wfaIntegradoCom.Procesos
             Boolean Guardado;
             String lcResultado = "";
             txtClienteNuevo_TextChanged(sender, e);
-            Titularidad clsTitu = new Titularidad();
+            //Titularidad clsTitu = new Titularidad();
             if (estCNuevo == true && estDireccionN == true && estDNuevo == true && estTelNuevo == true && estDNuevo == true)
             {
                 //clsTtu = CargarClaseReactivaciones();
-                Guardado = fnGurdarNuevoCliente(clsTitu, 1);
+                //Guardado = fnGurdarNuevoCliente(clsTitu, 1);
 
-                if (Guardado == true) 
-                {
-                    MessageBox.Show("Correcto para guaradar", "PERFECTO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //if (Guardado == true) 
+                //{
+                //    MessageBox.Show("Correcto para guaradar", "PERFECTO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                }
-                else 
-                {
-                    MessageBox.Show("No se pudo guaradar su cambio de Titularidad!!!!", "ERROR" ,MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                //}
+                //else 
+                //{
+                //    MessageBox.Show("No se pudo guaradar su cambio de Titularidad!!!!", "ERROR" ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
 
                 
 

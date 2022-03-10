@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaEntidad
 {
-    public class Titularidad
+    public class Reactivaciones
     {
         public List<Equipo_imeis> listaEquipoNuevo { get; set; }
         public List<Equipo_imeis> listaEquipoAntiguo { get; set; }

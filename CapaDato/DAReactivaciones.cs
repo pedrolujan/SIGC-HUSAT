@@ -84,7 +84,7 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public Int32 daGuardarReactivaciones(Titularidad clsReac, String Condicion)
+        public Int32 daGuardarReactivaciones(Reactivaciones clsReac, String Condicion)
         {
             SqlParameter[] pa = new SqlParameter[14];
             Int32 dt = 0;
