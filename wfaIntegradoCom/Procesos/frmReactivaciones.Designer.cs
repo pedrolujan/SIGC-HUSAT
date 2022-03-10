@@ -31,15 +31,15 @@ namespace wfaIntegradoCom.Procesos
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReactivaciones));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gpbReactivacion = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -124,13 +124,13 @@ namespace wfaIntegradoCom.Procesos
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.panelPrincipal = new Siticone.UI.WinForms.SiticonePanel();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.drcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.dgConsultas = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.card = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.drcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.gpbReactivacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tbcDatos.SuspendLayout();
@@ -164,7 +164,7 @@ namespace wfaIntegradoCom.Procesos
             this.gpbReactivacion.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.gpbReactivacion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.gpbReactivacion.ForeColor = System.Drawing.Color.White;
-            this.gpbReactivacion.Location = new System.Drawing.Point(20, 45);
+            this.gpbReactivacion.Location = new System.Drawing.Point(20, 40);
             this.gpbReactivacion.Margin = new System.Windows.Forms.Padding(4);
             this.gpbReactivacion.Name = "gpbReactivacion";
             this.gpbReactivacion.ShadowDecoration.Parent = this.gpbReactivacion;
@@ -234,7 +234,7 @@ namespace wfaIntegradoCom.Procesos
             this.tbcDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tbcDatos.ImageList = this.imageList1;
             this.tbcDatos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tbcDatos.Location = new System.Drawing.Point(20, 145);
+            this.tbcDatos.Location = new System.Drawing.Point(20, 150);
             this.tbcDatos.Name = "tbcDatos";
             this.tbcDatos.SelectedIndex = 0;
             this.tbcDatos.ShowToolTips = true;
@@ -667,7 +667,7 @@ namespace wfaIntegradoCom.Procesos
             this.BtnSeleccionarEquipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
             this.BtnSeleccionarEquipo.Image = global::wfaIntegradoCom.Properties.Resources.search_base;
             this.BtnSeleccionarEquipo.ImageSize = new System.Drawing.Size(20, 20);
-            this.BtnSeleccionarEquipo.Location = new System.Drawing.Point(559, 310);
+            this.BtnSeleccionarEquipo.Location = new System.Drawing.Point(541, 243);
             this.BtnSeleccionarEquipo.Name = "BtnSeleccionarEquipo";
             this.BtnSeleccionarEquipo.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
             this.BtnSeleccionarEquipo.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
@@ -1192,7 +1192,7 @@ namespace wfaIntegradoCom.Procesos
             this.btnSimCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
             this.btnSimCard.Image = global::wfaIntegradoCom.Properties.Resources.search_base;
             this.btnSimCard.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnSimCard.Location = new System.Drawing.Point(559, 310);
+            this.btnSimCard.Location = new System.Drawing.Point(532, 282);
             this.btnSimCard.Name = "btnSimCard";
             this.btnSimCard.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
             this.btnSimCard.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
@@ -1468,26 +1468,36 @@ namespace wfaIntegradoCom.Procesos
             this.panelPrincipal.TabIndex = 257;
             this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPrincipal_Paint);
             // 
+            // imageList2
+            // 
+            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // drcMover
+            // 
+            this.drcMover.TargetControl = this.gunaPanel1;
+            // 
             // dgConsultas
             // 
             this.dgConsultas.AllowUserToAddRows = false;
             this.dgConsultas.AllowUserToDeleteRows = false;
             this.dgConsultas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.dgConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgConsultas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgConsultas.BackgroundColor = System.Drawing.Color.White;
             this.dgConsultas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgConsultas.CausesValidation = false;
             this.dgConsultas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgConsultas.ColumnHeadersHeight = 20;
             this.dgConsultas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -1495,35 +1505,35 @@ namespace wfaIntegradoCom.Procesos
             this.imeis,
             this.card});
             this.dgConsultas.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsultas.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultas.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgConsultas.EnableHeadersVisualStyles = false;
             this.dgConsultas.GridColor = System.Drawing.Color.Silver;
-            this.dgConsultas.Location = new System.Drawing.Point(31, 133);
+            this.dgConsultas.Location = new System.Drawing.Point(32, 127);
             this.dgConsultas.Name = "dgConsultas";
             this.dgConsultas.ReadOnly = true;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgConsultas.RowHeadersVisible = false;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsultas.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultas.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgConsultas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgConsultas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgConsultas.Size = new System.Drawing.Size(410, 142);
-            this.dgConsultas.TabIndex = 232;
+            this.dgConsultas.TabIndex = 289;
             this.dgConsultas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgConsultas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgConsultas.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -1546,13 +1556,12 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsultas.ThemeStyle.RowsStyle.Height = 22;
             this.dgConsultas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgConsultas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.dgConsultas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsultas_CellContentClick);
-            this.dgConsultas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsultas_CellDoubleClick);
+            this.dgConsultas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsultas_CellDoubleClick);
             // 
             // id
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.id.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.id.DefaultCellStyle = dataGridViewCellStyle3;
             this.id.FillWeight = 85.2792F;
             this.id.HeaderText = "ID";
             this.id.MinimumWidth = 7;
@@ -1563,8 +1572,8 @@ namespace wfaIntegradoCom.Procesos
             // placa
             // 
             this.placa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.placa.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.placa.DefaultCellStyle = dataGridViewCellStyle4;
             this.placa.HeaderText = "PLACA";
             this.placa.Name = "placa";
             this.placa.ReadOnly = true;
@@ -1572,29 +1581,19 @@ namespace wfaIntegradoCom.Procesos
             // 
             // imeis
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.imeis.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.imeis.DefaultCellStyle = dataGridViewCellStyle5;
             this.imeis.HeaderText = "IMES";
             this.imeis.Name = "imeis";
             this.imeis.ReadOnly = true;
             // 
             // card
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.card.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.card.DefaultCellStyle = dataGridViewCellStyle6;
             this.card.HeaderText = "SIMCARD";
             this.card.Name = "card";
             this.card.ReadOnly = true;
-            // 
-            // imageList2
-            // 
-            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // drcMover
-            // 
-            this.drcMover.TargetControl = this.gunaPanel1;
             // 
             // frmReactivaciones
             // 
@@ -1683,7 +1682,6 @@ namespace wfaIntegradoCom.Procesos
         private Guna.UI.WinForms.GunaButton btnSimCard;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ImageList imageList2;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgConsultas;
         private Siticone.UI.WinForms.SiticoneDragControl drcMover;
         private Siticone.UI.WinForms.SiticoneMaterialTextBox txtVehiculoSimCard;
         private Siticone.UI.WinForms.SiticoneMaterialTextBox txtEquipoNuevo;
@@ -1726,12 +1724,13 @@ namespace wfaIntegradoCom.Procesos
         private System.Windows.Forms.Label lblObservacionesE;
         private System.Windows.Forms.Label lblOBservacionesSCard;
         private Guna.UI.WinForms.GunaCirclePictureBox pbObsevacionesSC;
+        private System.Windows.Forms.Label label1;
+        private Siticone.UI.WinForms.SiticoneTextBox txtObservacionesE;
+        private Siticone.UI.WinForms.SiticoneTextBox txtObservacionesSC;
+        private Siticone.UI.WinForms.SiticoneDataGridView dgConsultas;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn placa;
         private System.Windows.Forms.DataGridViewTextBoxColumn imeis;
         private System.Windows.Forms.DataGridViewTextBoxColumn card;
-        private System.Windows.Forms.Label label1;
-        private Siticone.UI.WinForms.SiticoneTextBox txtObservacionesE;
-        private Siticone.UI.WinForms.SiticoneTextBox txtObservacionesSC;
     }
 }

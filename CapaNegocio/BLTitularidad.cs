@@ -1,4 +1,5 @@
 ﻿using CapaDato;
+using CapaEntidad;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,7 +26,8 @@ namespace CapaNegocio
 
             }
         }
-        public DataTable BlBuscarTitularidadEspecificos(Int32 condicion,Int32 idventageneral)
+
+        public DataTable BlBuscarTitularidadEspecificos(Int32 condicion, Int32 idventageneral)
         {
             DATitularidad daobjCliente = new DATitularidad();
             try
@@ -40,5 +42,22 @@ namespace CapaNegocio
             }
 
         }
+        public Int32 blGuardarClienteN(Titularidad clsTitu, Int32 tipocon)
+        {
+            DATitularidad daobjEquipo = new DATitularidad();
+            try
+            {
+                return daobjEquipo.daGuardarClienteN(clsTitu, tipocon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+
+
+        }
+
+       
     }
 }

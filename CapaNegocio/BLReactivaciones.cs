@@ -41,7 +41,7 @@ namespace CapaNegocio
             }
         }
 
-        public Int32 blGuardarReactivaciones(Reactivaciones clsReac, String Condicion)
+        public Int32 blGuardarReactivaciones(Titularidad clsReac, String Condicion)
         {
             DAReactivaciones daobjEquipo = new DAReactivaciones();
             try

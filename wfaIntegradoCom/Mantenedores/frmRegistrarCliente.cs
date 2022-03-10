@@ -492,7 +492,7 @@ namespace wfaIntegradoCom.Mantenedores
                     
                     txtNrDocumento.Text = Convert.ToString(lstCliente.cDocumento.Trim());
                   
-                    txtNombre.Text = Convert.ToString(lstCliente.cNombre);
+                    txtNombre.Text = Convert.ToString(lstCliente.cTipoDoc);
                     txtApePat.Text = Convert.ToString(lstCliente.cApePat);
                     txtApeMat.Text = Convert.ToString(lstCliente.cApeMat);
                     if (lstCliente.bEstado)
@@ -815,7 +815,7 @@ namespace wfaIntegradoCom.Mantenedores
                 objCliente.bEstado = Convert.ToBoolean(cboEstado.SelectedIndex == 1 ? 1 : 0);
                 objCliente.cTiDo = Convert.ToInt32(cboTipoDoc.SelectedValue.ToString());
                 objCliente.cDocumento = Convert.ToString(txtNrDocumento.Text.Trim());
-                objCliente.cNombre = Convert.ToString(txtNombre.Text.Trim());
+                objCliente.cTipoDoc = Convert.ToString(txtNombre.Text.Trim());
                 objCliente.cApePat = Convert.ToString(txtApePat.Text.Trim());
                 objCliente.cApeMat = Convert.ToString(txtApeMat.Text.Trim());
                 objCliente.cTelFijo = Convert.ToString(txtTelFijo.Text.Trim());

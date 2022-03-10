@@ -40,7 +40,7 @@ namespace wfaIntegradoCom.Procesos
 
 
 
-        static Reactivaciones ClsReactivaciones;
+        static Titularidad ClsReactivaciones;
         private object txtNuevoSimCard;
         
         String msjNuevoSimCard, msjEquipoNuevo, msjClienteE, msjVehiculoE, msjPlanE, msjEquipoE, msjClienteSc,msjVehiculoSc, msjPlanSc, msjEquipoSc, msjSimCardSc,msjObservacionesE, msjObservacionesSC;
@@ -55,8 +55,8 @@ namespace wfaIntegradoCom.Procesos
 
 
 
-            fnActivarCamposEquipo(false, "EQUIPO");
-            fnActivarCamposEquipo(false, "SIMCARD");
+            fnActivarCamposEquipo(true, "EQUIPO");
+            fnActivarCamposEquipo(true, "SIMCARD");
         }
         public void fnDatoEquipoNuevo(List<Equipo_imeis> lstEquipoImeis)
         {
@@ -225,12 +225,12 @@ namespace wfaIntegradoCom.Procesos
                         lstClientes.Add(new Cliente
                         {
                             idCliente = Convert.ToInt32(drMenu["idCliente"]),
-                            cNombre = Convert.ToString(drMenu["NombreCliente"]),
+                            cTipoDoc = Convert.ToString(drMenu["NombreCliente"]),
                             cApePat = Convert.ToString(drMenu["cApePat"]),
                             cApeMat = Convert.ToString(drMenu["cApeMat"])
 
                         });
-                        txtCliente.Text = lstClientes[0].cNombre + " " + lstClientes[0].cApePat+ " " +lstClientes[0].cApeMat;
+                        txtCliente.Text = lstClientes[0].cTipoDoc + " " + lstClientes[0].cApePat+ " " +lstClientes[0].cApeMat;
 
 
                         txtVehiculo.Text = Convert.ToString(drMenu["vPlaca"]);
@@ -240,7 +240,7 @@ namespace wfaIntegradoCom.Procesos
                             vPlaca = Convert.ToString(drMenu["vPlaca"])
                         });
                         txtVehiculo.Text = lstVehiculo[0].vPlaca;
-
+                        
 
                         txtPlan.Text = Convert.ToString(drMenu["cNombre"]);
 
@@ -273,7 +273,7 @@ namespace wfaIntegradoCom.Procesos
                         });
 
                         //txtclienteSimCard.Text = Convert.ToString(drMenu["NombreCliente"]);                     
-                        txtclienteSimCard.Text = lstClientes[0].cNombre + " " + lstClientes[0].cApePat + " " + lstClientes[0].cApeMat;
+                        txtclienteSimCard.Text = lstClientes[0].cTipoDoc + " " + lstClientes[0].cApePat + " " + lstClientes[0].cApeMat;
                         txtVehiculoSimCard.Text = Convert.ToString(drMenu["vPlaca"]) != "" ? Convert.ToString(drMenu["vPlaca"]) : "SIN Placa";
                         
                         //txtVehiculoSimCard.Text = lstVehiculo[0].vPlaca;
@@ -451,19 +451,30 @@ namespace wfaIntegradoCom.Procesos
 
         private void btnGuardarSimCard_Click(object sender, EventArgs e)
         {
+            Boolean Guardar;
                 String lcResultado = "";
                 txtSimCardNuevo_TextChanged(sender, e);
-            Reactivaciones clsRenova = new Reactivaciones();
+            Titularidad clsRenova = new Titularidad();
             if (estSimCard==true&& estClienteSc==true&& estVehiculoSc==true&&estPlanSc==true&& estEquipoSc==true&& estSimCardSc==true)
               
             {
                 clsRenova = CargarClaseReactivaciones();
-                fnGuardarRenovacion(clsRenova, "SIMCARD");
-                MessageBox.Show("Correcto listo para guaradar", "PERFECTO!!!!!!!",MessageBoxButtons.OK,MessageBoxIcon.Information) ;
+               Guardar = fnGuardarRenovacion(clsRenova, "SIMCARD");
+                if (Guardar==true)
+                {
+                    MessageBox.Show("Se guardo corectamente la Reactivacion del NUEVO SINCARD!!!!", "PERFECTO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("¡¡¡¡Su Reactivacion del Nuevo SINCARD no se puede guardar", "¡¡¡ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
             }
             else
             {
                 MessageBox.Show("Aun faltan algunos datos", "¡¡¡¡¡¡ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           
             }
         }
 
@@ -519,12 +530,12 @@ namespace wfaIntegradoCom.Procesos
         {
 
         }
-        private Reactivaciones CargarClaseReactivaciones()
+        private Titularidad CargarClaseReactivaciones()
         {
            
             lstSimCardsAntiguo = lstSimCardsAntiguo.Count == 0 ? lstSimCardNuevo : lstSimCardsAntiguo;
 
-            ClsReactivaciones = new Reactivaciones
+            ClsReactivaciones = new Titularidad
             {
                 listaEquipoNuevo = lstEquipoNuevo,
                 listaEquipoAntiguo = lstEquipoAntiguo,
@@ -546,7 +557,7 @@ namespace wfaIntegradoCom.Procesos
             return ClsReactivaciones;
         }
 
-        private Boolean fnGuardarRenovacion(Reactivaciones clsReac ,String Condicion)
+        private Boolean fnGuardarRenovacion(Titularidad clsReac ,String Condicion)
         {
             clsUtil objUtil = new clsUtil();
             DataTable datosreactivacioSimCard = new DataTable();
@@ -568,22 +579,28 @@ namespace wfaIntegradoCom.Procesos
         }
         private void btnGuardarEquipo_Click(object sender, EventArgs e)
         {
-
+              Boolean Guardar;
                 String lcResultado = "";
                 txtEquipoNuevo_TextChanged(sender, e);
-            Reactivaciones clsRenova = new Reactivaciones();
+            Titularidad clsRenova = new Titularidad();
 
             if (estClienteE == true  && estEquipoNuevo == true && estVehiculoE == true && estPlanE == true && estEquipoE == true )
             {
                 clsRenova= CargarClaseReactivaciones();
-                 fnGuardarRenovacion(clsRenova,"EQUIPO");
-                MessageBox.Show("Correcto listo para guaradar","PERFECTO",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                Guardar = fnGuardarRenovacion(clsRenova,"EQUIPO");
+                if (Guardar == true)
+                {
+                    MessageBox.Show("Se guardo corectamente la Reactivacion del NUEVO EQUIPO!!!!", "PERFECTO!!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("¡¡¡Su Reactivacion del NUEVO EQUIPO no se puede guardar", "¡¡¡¡ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-
+                }
             }
             else
             {
-                MessageBox.Show("Aun faltan algunos datos","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Aun faltan algunos datos!!!!!","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
             }
         }
