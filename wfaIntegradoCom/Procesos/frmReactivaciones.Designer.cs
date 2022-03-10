@@ -124,9 +124,9 @@ namespace wfaIntegradoCom.Procesos
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.panelPrincipal = new Siticone.UI.WinForms.SiticonePanel();
+            this.dgConsultas = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.drcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
-            this.dgConsultas = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeis = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -189,12 +189,13 @@ namespace wfaIntegradoCom.Procesos
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.White;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(29, 61);
+            this.pictureBox3.Location = new System.Drawing.Point(391, 52);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox3.Size = new System.Drawing.Size(30, 35);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 230;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // txtBusca
             // 
@@ -234,11 +235,11 @@ namespace wfaIntegradoCom.Procesos
             this.tbcDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tbcDatos.ImageList = this.imageList1;
             this.tbcDatos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tbcDatos.Location = new System.Drawing.Point(20, 150);
+            this.tbcDatos.Location = new System.Drawing.Point(15, 150);
             this.tbcDatos.Name = "tbcDatos";
             this.tbcDatos.SelectedIndex = 0;
             this.tbcDatos.ShowToolTips = true;
-            this.tbcDatos.Size = new System.Drawing.Size(754, 483);
+            this.tbcDatos.Size = new System.Drawing.Size(754, 478);
             this.tbcDatos.TabIndex = 288;
             this.tbcDatos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbcDatos_KeyPress);
             // 
@@ -282,7 +283,7 @@ namespace wfaIntegradoCom.Procesos
             this.Equuipo.Location = new System.Drawing.Point(4, 27);
             this.Equuipo.Name = "Equuipo";
             this.Equuipo.Padding = new System.Windows.Forms.Padding(3);
-            this.Equuipo.Size = new System.Drawing.Size(746, 452);
+            this.Equuipo.Size = new System.Drawing.Size(746, 447);
             this.Equuipo.TabIndex = 0;
             this.Equuipo.Text = "Equipo";
             this.Equuipo.Click += new System.EventHandler(this.Equuipo_Click);
@@ -499,7 +500,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtVehiculo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtVehiculo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
             this.txtVehiculo.HoveredState.Parent = this.txtVehiculo;
-            this.txtVehiculo.Location = new System.Drawing.Point(140, 70);
+            this.txtVehiculo.Location = new System.Drawing.Point(140, 79);
             this.txtVehiculo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtVehiculo.Name = "txtVehiculo";
             this.txtVehiculo.PasswordChar = '\0';
@@ -508,7 +509,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtVehiculo.ReadOnly = true;
             this.txtVehiculo.SelectedText = "";
             this.txtVehiculo.ShadowDecoration.Parent = this.txtVehiculo;
-            this.txtVehiculo.Size = new System.Drawing.Size(325, 36);
+            this.txtVehiculo.Size = new System.Drawing.Size(325, 27);
             this.txtVehiculo.TabIndex = 243;
             this.txtVehiculo.TextChanged += new System.EventHandler(this.txtVehiculo_TextChanged);
             // 
@@ -823,9 +824,9 @@ namespace wfaIntegradoCom.Procesos
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(746, 452);
+            this.tabPage1.Size = new System.Drawing.Size(746, 447);
             this.tabPage1.TabIndex = 1;
-            this.tabPage1.Text = "SimCard";
+            this.tabPage1.Text = "Sim Card";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
@@ -1173,9 +1174,9 @@ namespace wfaIntegradoCom.Procesos
             this.lblSCardNuevo.ForeColor = System.Drawing.Color.Black;
             this.lblSCardNuevo.Location = new System.Drawing.Point(24, 299);
             this.lblSCardNuevo.Name = "lblSCardNuevo";
-            this.lblSCardNuevo.Size = new System.Drawing.Size(114, 17);
+            this.lblSCardNuevo.Size = new System.Drawing.Size(118, 17);
             this.lblSCardNuevo.TabIndex = 271;
-            this.lblSCardNuevo.Text = "SimCard Nuevo: ";
+            this.lblSCardNuevo.Text = "Sim Card Nuevo: ";
             // 
             // btnSimCard
             // 
@@ -1202,7 +1203,7 @@ namespace wfaIntegradoCom.Procesos
             this.btnSimCard.Radius = 15;
             this.btnSimCard.Size = new System.Drawing.Size(181, 36);
             this.btnSimCard.TabIndex = 269;
-            this.btnSimCard.Text = "Seleccionar SimCard";
+            this.btnSimCard.Text = "Seleccionar Sim Card";
             this.btnSimCard.Click += new System.EventHandler(this.gunaButton1_Click);
             // 
             // label7
@@ -1261,9 +1262,9 @@ namespace wfaIntegradoCom.Procesos
             this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(26, 240);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(119, 17);
+            this.label11.Size = new System.Drawing.Size(123, 17);
             this.label11.TabIndex = 266;
-            this.label11.Text = "SimCard Anterior:";
+            this.label11.Text = "Sim Card Anterior:";
             // 
             // txtSimcard
             // 
@@ -1468,16 +1469,6 @@ namespace wfaIntegradoCom.Procesos
             this.panelPrincipal.TabIndex = 257;
             this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPrincipal_Paint);
             // 
-            // imageList2
-            // 
-            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // drcMover
-            // 
-            this.drcMover.TargetControl = this.gunaPanel1;
-            // 
             // dgConsultas
             // 
             this.dgConsultas.AllowUserToAddRows = false;
@@ -1558,6 +1549,16 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsultas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.dgConsultas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsultas_CellDoubleClick);
             // 
+            // imageList2
+            // 
+            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // drcMover
+            // 
+            this.drcMover.TargetControl = this.gunaPanel1;
+            // 
             // id
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
@@ -1591,7 +1592,7 @@ namespace wfaIntegradoCom.Procesos
             // 
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             this.card.DefaultCellStyle = dataGridViewCellStyle6;
-            this.card.HeaderText = "SIMCARD";
+            this.card.HeaderText = "SIM CARD";
             this.card.Name = "card";
             this.card.ReadOnly = true;
             // 

@@ -57,6 +57,8 @@ namespace wfaIntegradoCom.Procesos
 
             fnActivarCamposEquipo(true, "EQUIPO");
             fnActivarCamposEquipo(true, "SIMCARD");
+            fnBorrarCampos("SIMCARD");
+            fnBorrarCampos( "EQUIPO");
         }
         public void fnDatoEquipoNuevo(List<Equipo_imeis> lstEquipoImeis)
         {
@@ -170,7 +172,7 @@ namespace wfaIntegradoCom.Procesos
         }
         private void txtCliente_TextChanged(object sender, EventArgs e)
         {
-            var resultado = FunValidaciones.fnValidarTexboxs(txtCliente, lblSimcardNuevo, pbCliente, true, true, true, 3, 50, 50, 50, "Complete el Nombre del cliente");
+            var resultado = FunValidaciones.fnValidarTexboxs(txtCliente, lblClienteE, pbCliente, true, true, true, 3, 50, 50, 50, "Complete el Nombre del cliente");
             estClienteE = resultado.Item1;
             msjClienteE = resultado.Item2;
         }
@@ -373,6 +375,60 @@ namespace wfaIntegradoCom.Procesos
         {
 
         }
+        private void fnBorrarCampos( String condicion)
+        {
+            if (condicion=="EQUIPO")
+            {
+                txtCliente.Text = "";
+                txtEquipo.Text = "";
+                txtEquipoNuevo.Text = "";
+                txtObservacionesE.Text = "";
+                txtPlan.Text = "";
+                txtVehiculo.Text = "";
+                lstClientes.Clear();
+                lstEquipoAntiguo.Clear();
+                lstEquipoNuevo.Clear();
+                lstPlan.Clear();
+                lstVehiculo.Clear();
+               
+            }else if (condicion == "SIMCARD")
+            {
+                txtVehiculoSimCard.Text = "";
+                txtSimCardNuevo.Text = "";
+                txtEquipoSimCard.Text = "";
+                txtclienteSimCard.Text = "";
+                txtObservacionesSC.Text = "";
+                txtPlanSimCard.Text = "";
+                txtSimcard.Text = "";
+                lstClientes.Clear();
+                lstEquipoAntiguo.Clear();
+                lstEquipoNuevo.Clear();
+                lstPlan.Clear();
+                lstVehiculo.Clear();
+                lstSimCardsAntiguo.Clear();
+                lstSimCardNuevo.Clear();
+
+            }
+
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+                fnBorrarCampos("EQUIPO");
+                
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            fnBorrarCampos("SIMCARD");
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            fnBuscarDatosReactivacion(lnTipoCon);
+        }
 
         private void dtFechaReactivaciones_ValueChanged(object sender, EventArgs e)
         {
@@ -463,12 +519,15 @@ namespace wfaIntegradoCom.Procesos
                 if (Guardar==true)
                 {
                     MessageBox.Show("Se guardo corectamente la Reactivacion del NUEVO SINCARD!!!!", "PERFECTO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fnBorrarCampos("EQUIPO");
+                    fnBorrarCampos("SIMCARD");
                 }
                 else
                 {
                     MessageBox.Show("¡¡¡¡Su Reactivacion del Nuevo SINCARD no se puede guardar", "¡¡¡ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
+
 
             }
             else
@@ -480,7 +539,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void txtclienteSimCard_TextChanged(object sender, EventArgs e)
         {
-            var resultado = FunValidaciones.fnValidarTexboxs(txtEquipo, lblClienteSc, pbClienteSc, true, true, true, 3, 50, 50, 50, "Complete el nombre del cliente");
+            var resultado = FunValidaciones.fnValidarTexboxs(txtclienteSimCard, lblClienteSc, pbClienteSc, true, true, true, 3, 50, 50, 50, "Complete el nombre del cliente");
             estClienteSc = resultado.Item1;
             msjClienteSc = resultado.Item2;
             
@@ -590,6 +649,8 @@ namespace wfaIntegradoCom.Procesos
                 if (Guardar == true)
                 {
                     MessageBox.Show("Se guardo corectamente la Reactivacion del NUEVO EQUIPO!!!!", "PERFECTO!!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fnBorrarCampos("EQUIPO");
+                    fnBorrarCampos("SIMCARD");
                 }
                 else
                 {

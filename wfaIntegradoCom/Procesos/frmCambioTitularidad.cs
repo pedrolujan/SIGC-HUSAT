@@ -367,17 +367,7 @@ namespace wfaIntegradoCom.Procesos
 
 
             }) ;
-            
-
-
-
-            //txtPlaca.Text = Convert.ToString(drMenu["vPlaca"]);
-            //lstvehiculo.Add(new Vehiculo
-            //{
-            //    idVehiculo = Convert.ToInt32(drMenu["idVehiculo"]),
-            //    vPlaca = Convert.ToString(drMenu["vPlaca"]),
-            //});
-
+    
 
         }
 
@@ -399,17 +389,17 @@ namespace wfaIntegradoCom.Procesos
                 //clsTtu = CargarClaseReactivaciones();
                 //Guardado = fnGurdarNuevoCliente(clsTitu, 1);
 
-                //if (Guardado == true) 
+                //if (Guardado == true)
                 //{
                 //    MessageBox.Show("Correcto para guaradar", "PERFECTO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 //}
-                //else 
+                //else
                 //{
-                //    MessageBox.Show("No se pudo guaradar su cambio de Titularidad!!!!", "ERROR" ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    MessageBox.Show("No se pudo guaradar su cambio de Titularidad!!!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //}
 
-                
+
 
 
             }
