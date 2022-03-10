@@ -29,6 +29,7 @@ namespace wfaIntegradoCom.Procesos
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCambioTitularidad));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,22 +39,23 @@ namespace wfaIntegradoCom.Procesos
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.pbmodelo = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.lblMarca = new System.Windows.Forms.Label();
-            this.lblModelo = new System.Windows.Forms.Label();
-            this.lblSerie = new System.Windows.Forms.Label();
+            this.pbplaca = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblPlaca = new System.Windows.Forms.Label();
-            this.pbMarca = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.pbserie = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.txtMarca = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtSerie = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.pbplaca = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.txtPlaca = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.siticoneSeparator7 = new Siticone.UI.WinForms.SiticoneSeparator();
@@ -62,12 +64,8 @@ namespace wfaIntegradoCom.Procesos
             this.label4 = new System.Windows.Forms.Label();
             this.siticoneSeparator6 = new Siticone.UI.WinForms.SiticoneSeparator();
             this.label24 = new System.Windows.Forms.Label();
-            this.lblcorreo = new System.Windows.Forms.Label();
-            this.lblTelefono = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
             this.pbdni = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.pbcorreo = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.pbtelefono = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.lblDni = new System.Windows.Forms.Label();
             this.pbcliente = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.txtCorreo = new Siticone.UI.WinForms.SiticoneTextBox();
@@ -84,32 +82,26 @@ namespace wfaIntegradoCom.Procesos
             this.txtModelo = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticoneSeparator1 = new Siticone.UI.WinForms.SiticoneSeparator();
             this.siticoneGroupBox2 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.pbDniNuevo = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.pbClienteNuevo = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.lblDireccion = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.gunaCirclePictureBox1 = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.siticoneTextBox4 = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.lblDireccionN = new System.Windows.Forms.Label();
+            this.pbDireccionN = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.txtDireccionNuevo = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticoneSeparator2 = new Siticone.UI.WinForms.SiticoneSeparator();
-            this.label34 = new System.Windows.Forms.Label();
-            this.BtnSeleccionarCliente = new Guna.UI.WinForms.GunaButton();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.gunaCirclePictureBox19 = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.gunaCirclePictureBox20 = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.siticoneTextBox13 = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.siticoneTextBox16 = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.lblTelNuevo = new System.Windows.Forms.Label();
+            this.pbTelNuevo = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.txtTelefonoNuevo = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.siticoneSeparator14 = new Siticone.UI.WinForms.SiticoneSeparator();
             this.label27 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.gunaCirclePictureBox18 = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.gunaCirclePictureBox21 = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.siticoneTextBox14 = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.siticoneTextBox15 = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.lblClienteNuevo = new System.Windows.Forms.Label();
+            this.lblDniNuevo = new System.Windows.Forms.Label();
+            this.txtDniNuevo = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtClienteNuevo = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.siticoneSeparator13 = new Siticone.UI.WinForms.SiticoneSeparator();
             this.siticoneSeparator15 = new Siticone.UI.WinForms.SiticoneSeparator();
-            this.siticoneSeparator16 = new Siticone.UI.WinForms.SiticoneSeparator();
             this.btnGuardarCliente = new Siticone.UI.WinForms.SiticoneButton();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -120,25 +112,36 @@ namespace wfaIntegradoCom.Procesos
             this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtFechaTitulacion = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dgConsultaCliente = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtBuscarCliente = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtImporte = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtTotal = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtIGV = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.TxtSubT = new Siticone.UI.WinForms.SiticoneTextBox();
             this.gunaPanel1.SuspendLayout();
             this.siticoneGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbmodelo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMarca)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbserie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbplaca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbdni)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbcorreo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbtelefono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbcliente)).BeginInit();
             this.siticoneGroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDniNuevo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClienteNuevo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDireccionN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTelNuevo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgConsulta)).BeginInit();
             this.siticonePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgConsultaCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaPanel1
@@ -200,17 +203,11 @@ namespace wfaIntegradoCom.Procesos
             // siticoneGroupBox1
             // 
             this.siticoneGroupBox1.BackColor = System.Drawing.Color.White;
-            this.siticoneGroupBox1.Controls.Add(this.pbmodelo);
-            this.siticoneGroupBox1.Controls.Add(this.lblMarca);
-            this.siticoneGroupBox1.Controls.Add(this.lblModelo);
-            this.siticoneGroupBox1.Controls.Add(this.lblSerie);
+            this.siticoneGroupBox1.Controls.Add(this.pbplaca);
             this.siticoneGroupBox1.Controls.Add(this.label7);
             this.siticoneGroupBox1.Controls.Add(this.lblPlaca);
-            this.siticoneGroupBox1.Controls.Add(this.pbMarca);
-            this.siticoneGroupBox1.Controls.Add(this.pbserie);
             this.siticoneGroupBox1.Controls.Add(this.txtMarca);
             this.siticoneGroupBox1.Controls.Add(this.txtSerie);
-            this.siticoneGroupBox1.Controls.Add(this.pbplaca);
             this.siticoneGroupBox1.Controls.Add(this.txtPlaca);
             this.siticoneGroupBox1.Controls.Add(this.label9);
             this.siticoneGroupBox1.Controls.Add(this.siticoneSeparator7);
@@ -219,12 +216,8 @@ namespace wfaIntegradoCom.Procesos
             this.siticoneGroupBox1.Controls.Add(this.label4);
             this.siticoneGroupBox1.Controls.Add(this.siticoneSeparator6);
             this.siticoneGroupBox1.Controls.Add(this.label24);
-            this.siticoneGroupBox1.Controls.Add(this.lblcorreo);
-            this.siticoneGroupBox1.Controls.Add(this.lblTelefono);
             this.siticoneGroupBox1.Controls.Add(this.lblCliente);
             this.siticoneGroupBox1.Controls.Add(this.pbdni);
-            this.siticoneGroupBox1.Controls.Add(this.pbcorreo);
-            this.siticoneGroupBox1.Controls.Add(this.pbtelefono);
             this.siticoneGroupBox1.Controls.Add(this.lblDni);
             this.siticoneGroupBox1.Controls.Add(this.pbcliente);
             this.siticoneGroupBox1.Controls.Add(this.txtCorreo);
@@ -248,49 +241,22 @@ namespace wfaIntegradoCom.Procesos
             this.siticoneGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(1109, 267);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(1109, 287);
             this.siticoneGroupBox1.TabIndex = 313;
             this.siticoneGroupBox1.Text = "Datos del Cliente y Vehiculo:";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -10);
             // 
-            // pbmodelo
+            // pbplaca
             // 
-            this.pbmodelo.BackColor = System.Drawing.Color.Transparent;
-            this.pbmodelo.BaseColor = System.Drawing.Color.Transparent;
-            this.pbmodelo.Location = new System.Drawing.Point(1007, 191);
-            this.pbmodelo.Name = "pbmodelo";
-            this.pbmodelo.Size = new System.Drawing.Size(22, 22);
-            this.pbmodelo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbmodelo.TabIndex = 340;
-            this.pbmodelo.TabStop = false;
-            this.pbmodelo.UseTransfarantBackground = false;
-            // 
-            // lblMarca
-            // 
-            this.lblMarca.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarca.Location = new System.Drawing.Point(749, 165);
-            this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(325, 16);
-            this.lblMarca.TabIndex = 347;
-            // 
-            // lblModelo
-            // 
-            this.lblModelo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModelo.Location = new System.Drawing.Point(749, 216);
-            this.lblModelo.Name = "lblModelo";
-            this.lblModelo.Size = new System.Drawing.Size(325, 16);
-            this.lblModelo.TabIndex = 345;
-            // 
-            // lblSerie
-            // 
-            this.lblSerie.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSerie.Location = new System.Drawing.Point(749, 111);
-            this.lblSerie.Name = "lblSerie";
-            this.lblSerie.Size = new System.Drawing.Size(325, 16);
-            this.lblSerie.TabIndex = 346;
+            this.pbplaca.BackColor = System.Drawing.Color.Transparent;
+            this.pbplaca.BaseColor = System.Drawing.Color.Transparent;
+            this.pbplaca.Location = new System.Drawing.Point(1007, 26);
+            this.pbplaca.Name = "pbplaca";
+            this.pbplaca.Size = new System.Drawing.Size(22, 22);
+            this.pbplaca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbplaca.TabIndex = 339;
+            this.pbplaca.TabStop = false;
+            this.pbplaca.UseTransfarantBackground = false;
             // 
             // label7
             // 
@@ -306,36 +272,12 @@ namespace wfaIntegradoCom.Procesos
             // 
             // lblPlaca
             // 
-            this.lblPlaca.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblPlaca.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lblPlaca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlaca.Location = new System.Drawing.Point(749, 52);
             this.lblPlaca.Name = "lblPlaca";
             this.lblPlaca.Size = new System.Drawing.Size(325, 16);
             this.lblPlaca.TabIndex = 344;
-            // 
-            // pbMarca
-            // 
-            this.pbMarca.BackColor = System.Drawing.Color.Transparent;
-            this.pbMarca.BaseColor = System.Drawing.Color.Transparent;
-            this.pbMarca.Location = new System.Drawing.Point(1008, 142);
-            this.pbMarca.Name = "pbMarca";
-            this.pbMarca.Size = new System.Drawing.Size(22, 22);
-            this.pbMarca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbMarca.TabIndex = 343;
-            this.pbMarca.TabStop = false;
-            this.pbMarca.UseTransfarantBackground = false;
-            // 
-            // pbserie
-            // 
-            this.pbserie.BackColor = System.Drawing.Color.Transparent;
-            this.pbserie.BaseColor = System.Drawing.Color.Transparent;
-            this.pbserie.Location = new System.Drawing.Point(1007, 85);
-            this.pbserie.Name = "pbserie";
-            this.pbserie.Size = new System.Drawing.Size(22, 22);
-            this.pbserie.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbserie.TabIndex = 342;
-            this.pbserie.TabStop = false;
-            this.pbserie.UseTransfarantBackground = false;
             // 
             // txtMarca
             // 
@@ -385,18 +327,6 @@ namespace wfaIntegradoCom.Procesos
             this.txtSerie.Size = new System.Drawing.Size(325, 27);
             this.txtSerie.TabIndex = 333;
             // 
-            // pbplaca
-            // 
-            this.pbplaca.BackColor = System.Drawing.Color.Transparent;
-            this.pbplaca.BaseColor = System.Drawing.Color.Transparent;
-            this.pbplaca.Location = new System.Drawing.Point(1007, 26);
-            this.pbplaca.Name = "pbplaca";
-            this.pbplaca.Size = new System.Drawing.Size(22, 22);
-            this.pbplaca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbplaca.TabIndex = 339;
-            this.pbplaca.TabStop = false;
-            this.pbplaca.UseTransfarantBackground = false;
-            // 
             // txtPlaca
             // 
             this.txtPlaca.Animated = false;
@@ -420,6 +350,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtPlaca.ShadowDecoration.Parent = this.txtPlaca;
             this.txtPlaca.Size = new System.Drawing.Size(325, 27);
             this.txtPlaca.TabIndex = 328;
+            this.txtPlaca.TextChanged += new System.EventHandler(this.txtPlaca_TextChanged);
             // 
             // label9
             // 
@@ -492,27 +423,9 @@ namespace wfaIntegradoCom.Procesos
             this.label24.TabIndex = 308;
             this.label24.Text = "Cliente:";
             // 
-            // lblcorreo
-            // 
-            this.lblcorreo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblcorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcorreo.Location = new System.Drawing.Point(151, 216);
-            this.lblcorreo.Name = "lblcorreo";
-            this.lblcorreo.Size = new System.Drawing.Size(325, 16);
-            this.lblcorreo.TabIndex = 326;
-            // 
-            // lblTelefono
-            // 
-            this.lblTelefono.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(152, 164);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(325, 16);
-            this.lblTelefono.TabIndex = 325;
-            // 
             // lblCliente
             // 
-            this.lblCliente.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblCliente.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCliente.Location = new System.Drawing.Point(152, 57);
             this.lblCliente.Name = "lblCliente";
@@ -531,33 +444,9 @@ namespace wfaIntegradoCom.Procesos
             this.pbdni.TabStop = false;
             this.pbdni.UseTransfarantBackground = false;
             // 
-            // pbcorreo
-            // 
-            this.pbcorreo.BackColor = System.Drawing.Color.Transparent;
-            this.pbcorreo.BaseColor = System.Drawing.Color.Transparent;
-            this.pbcorreo.Location = new System.Drawing.Point(410, 191);
-            this.pbcorreo.Name = "pbcorreo";
-            this.pbcorreo.Size = new System.Drawing.Size(22, 22);
-            this.pbcorreo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbcorreo.TabIndex = 322;
-            this.pbcorreo.TabStop = false;
-            this.pbcorreo.UseTransfarantBackground = false;
-            // 
-            // pbtelefono
-            // 
-            this.pbtelefono.BackColor = System.Drawing.Color.Transparent;
-            this.pbtelefono.BaseColor = System.Drawing.Color.Transparent;
-            this.pbtelefono.Location = new System.Drawing.Point(412, 138);
-            this.pbtelefono.Name = "pbtelefono";
-            this.pbtelefono.Size = new System.Drawing.Size(22, 22);
-            this.pbtelefono.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbtelefono.TabIndex = 321;
-            this.pbtelefono.TabStop = false;
-            this.pbtelefono.UseTransfarantBackground = false;
-            // 
             // lblDni
             // 
-            this.lblDni.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblDni.BackColor = System.Drawing.SystemColors.Control;
             this.lblDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDni.Location = new System.Drawing.Point(151, 111);
             this.lblDni.Name = "lblDni";
@@ -599,6 +488,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtCorreo.ShadowDecoration.Parent = this.txtCorreo;
             this.txtCorreo.Size = new System.Drawing.Size(329, 27);
             this.txtCorreo.TabIndex = 315;
+            this.txtCorreo.TextChanged += new System.EventHandler(this.txtCorreo_TextChanged);
             // 
             // txtdni
             // 
@@ -673,6 +563,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtTelefono.ShadowDecoration.Parent = this.txtTelefono;
             this.txtTelefono.Size = new System.Drawing.Size(329, 27);
             this.txtTelefono.TabIndex = 312;
+            this.txtTelefono.TextChanged += new System.EventHandler(this.txtTelefono_TextChanged);
             // 
             // label22
             // 
@@ -775,44 +666,62 @@ namespace wfaIntegradoCom.Procesos
             // siticoneGroupBox2
             // 
             this.siticoneGroupBox2.BackColor = System.Drawing.Color.White;
+            this.siticoneGroupBox2.Controls.Add(this.pbDniNuevo);
+            this.siticoneGroupBox2.Controls.Add(this.pbClienteNuevo);
             this.siticoneGroupBox2.Controls.Add(this.lblDireccion);
-            this.siticoneGroupBox2.Controls.Add(this.label3);
-            this.siticoneGroupBox2.Controls.Add(this.gunaCirclePictureBox1);
-            this.siticoneGroupBox2.Controls.Add(this.siticoneTextBox4);
+            this.siticoneGroupBox2.Controls.Add(this.lblDireccionN);
+            this.siticoneGroupBox2.Controls.Add(this.pbDireccionN);
+            this.siticoneGroupBox2.Controls.Add(this.txtDireccionNuevo);
             this.siticoneGroupBox2.Controls.Add(this.siticoneSeparator2);
-            this.siticoneGroupBox2.Controls.Add(this.label34);
-            this.siticoneGroupBox2.Controls.Add(this.BtnSeleccionarCliente);
-            this.siticoneGroupBox2.Controls.Add(this.label28);
-            this.siticoneGroupBox2.Controls.Add(this.label29);
-            this.siticoneGroupBox2.Controls.Add(this.gunaCirclePictureBox19);
-            this.siticoneGroupBox2.Controls.Add(this.gunaCirclePictureBox20);
-            this.siticoneGroupBox2.Controls.Add(this.siticoneTextBox13);
-            this.siticoneGroupBox2.Controls.Add(this.siticoneTextBox16);
+            this.siticoneGroupBox2.Controls.Add(this.lblTelNuevo);
+            this.siticoneGroupBox2.Controls.Add(this.pbTelNuevo);
+            this.siticoneGroupBox2.Controls.Add(this.txtTelefonoNuevo);
             this.siticoneGroupBox2.Controls.Add(this.label33);
             this.siticoneGroupBox2.Controls.Add(this.siticoneSeparator14);
             this.siticoneGroupBox2.Controls.Add(this.label27);
-            this.siticoneGroupBox2.Controls.Add(this.label30);
-            this.siticoneGroupBox2.Controls.Add(this.gunaCirclePictureBox18);
-            this.siticoneGroupBox2.Controls.Add(this.label31);
-            this.siticoneGroupBox2.Controls.Add(this.gunaCirclePictureBox21);
-            this.siticoneGroupBox2.Controls.Add(this.siticoneTextBox14);
-            this.siticoneGroupBox2.Controls.Add(this.siticoneTextBox15);
+            this.siticoneGroupBox2.Controls.Add(this.lblClienteNuevo);
+            this.siticoneGroupBox2.Controls.Add(this.lblDniNuevo);
+            this.siticoneGroupBox2.Controls.Add(this.txtDniNuevo);
+            this.siticoneGroupBox2.Controls.Add(this.txtClienteNuevo);
             this.siticoneGroupBox2.Controls.Add(this.label32);
             this.siticoneGroupBox2.Controls.Add(this.siticoneSeparator13);
             this.siticoneGroupBox2.Controls.Add(this.siticoneSeparator15);
-            this.siticoneGroupBox2.Controls.Add(this.siticoneSeparator16);
             this.siticoneGroupBox2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.siticoneGroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.siticoneGroupBox2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.siticoneGroupBox2.ForeColor = System.Drawing.Color.White;
-            this.siticoneGroupBox2.Location = new System.Drawing.Point(20, 360);
+            this.siticoneGroupBox2.Location = new System.Drawing.Point(13, 380);
             this.siticoneGroupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.siticoneGroupBox2.Name = "siticoneGroupBox2";
             this.siticoneGroupBox2.ShadowDecoration.Parent = this.siticoneGroupBox2;
-            this.siticoneGroupBox2.Size = new System.Drawing.Size(1109, 211);
+            this.siticoneGroupBox2.Size = new System.Drawing.Size(544, 253);
             this.siticoneGroupBox2.TabIndex = 314;
             this.siticoneGroupBox2.Text = "Cliente Nuevo:";
             this.siticoneGroupBox2.TextOffset = new System.Drawing.Point(0, -10);
+            // 
+            // pbDniNuevo
+            // 
+            this.pbDniNuevo.BackColor = System.Drawing.Color.Transparent;
+            this.pbDniNuevo.BaseColor = System.Drawing.Color.Transparent;
+            this.pbDniNuevo.Location = new System.Drawing.Point(432, 82);
+            this.pbDniNuevo.Name = "pbDniNuevo";
+            this.pbDniNuevo.Size = new System.Drawing.Size(22, 22);
+            this.pbDniNuevo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbDniNuevo.TabIndex = 323;
+            this.pbDniNuevo.TabStop = false;
+            this.pbDniNuevo.UseTransfarantBackground = false;
+            // 
+            // pbClienteNuevo
+            // 
+            this.pbClienteNuevo.BackColor = System.Drawing.Color.Transparent;
+            this.pbClienteNuevo.BaseColor = System.Drawing.Color.Transparent;
+            this.pbClienteNuevo.Location = new System.Drawing.Point(433, 35);
+            this.pbClienteNuevo.Name = "pbClienteNuevo";
+            this.pbClienteNuevo.Size = new System.Drawing.Size(22, 22);
+            this.pbClienteNuevo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbClienteNuevo.TabIndex = 320;
+            this.pbClienteNuevo.TabStop = false;
+            this.pbClienteNuevo.UseTransfarantBackground = false;
             // 
             // lblDireccion
             // 
@@ -820,201 +729,120 @@ namespace wfaIntegradoCom.Procesos
             this.lblDireccion.BackColor = System.Drawing.Color.Transparent;
             this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDireccion.ForeColor = System.Drawing.Color.Black;
-            this.lblDireccion.Location = new System.Drawing.Point(602, 159);
+            this.lblDireccion.Location = new System.Drawing.Point(27, 212);
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.Size = new System.Drawing.Size(75, 18);
             this.lblDireccion.TabIndex = 337;
             this.lblDireccion.Text = "Direccion:";
             // 
-            // label3
+            // lblDireccionN
             // 
-            this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(737, 181);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(325, 18);
-            this.label3.TabIndex = 341;
+            this.lblDireccionN.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblDireccionN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccionN.Location = new System.Drawing.Point(145, 234);
+            this.lblDireccionN.Name = "lblDireccionN";
+            this.lblDireccionN.Size = new System.Drawing.Size(325, 18);
+            this.lblDireccionN.TabIndex = 341;
             // 
-            // gunaCirclePictureBox1
+            // pbDireccionN
             // 
-            this.gunaCirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBox1.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBox1.Location = new System.Drawing.Point(1006, 155);
-            this.gunaCirclePictureBox1.Name = "gunaCirclePictureBox1";
-            this.gunaCirclePictureBox1.Size = new System.Drawing.Size(22, 22);
-            this.gunaCirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.gunaCirclePictureBox1.TabIndex = 340;
-            this.gunaCirclePictureBox1.TabStop = false;
-            this.gunaCirclePictureBox1.UseTransfarantBackground = false;
+            this.pbDireccionN.BackColor = System.Drawing.Color.Transparent;
+            this.pbDireccionN.BaseColor = System.Drawing.Color.Transparent;
+            this.pbDireccionN.Location = new System.Drawing.Point(438, 205);
+            this.pbDireccionN.Name = "pbDireccionN";
+            this.pbDireccionN.Size = new System.Drawing.Size(22, 22);
+            this.pbDireccionN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbDireccionN.TabIndex = 340;
+            this.pbDireccionN.TabStop = false;
+            this.pbDireccionN.UseTransfarantBackground = false;
             // 
-            // siticoneTextBox4
+            // txtDireccionNuevo
             // 
-            this.siticoneTextBox4.Animated = false;
-            this.siticoneTextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.siticoneTextBox4.DefaultText = "";
-            this.siticoneTextBox4.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.siticoneTextBox4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.siticoneTextBox4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox4.DisabledState.Parent = this.siticoneTextBox4;
-            this.siticoneTextBox4.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox4.FocusedState.Parent = this.siticoneTextBox4;
-            this.siticoneTextBox4.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox4.HoveredState.Parent = this.siticoneTextBox4;
-            this.siticoneTextBox4.Location = new System.Drawing.Point(677, 153);
-            this.siticoneTextBox4.Margin = new System.Windows.Forms.Padding(16, 6, 16, 6);
-            this.siticoneTextBox4.Name = "siticoneTextBox4";
-            this.siticoneTextBox4.PasswordChar = '\0';
-            this.siticoneTextBox4.PlaceholderText = "";
-            this.siticoneTextBox4.SelectedText = "";
-            this.siticoneTextBox4.ShadowDecoration.Parent = this.siticoneTextBox4;
-            this.siticoneTextBox4.Size = new System.Drawing.Size(353, 25);
-            this.siticoneTextBox4.TabIndex = 338;
+            this.txtDireccionNuevo.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolTip;
+            this.txtDireccionNuevo.Animated = false;
+            this.txtDireccionNuevo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDireccionNuevo.DefaultText = "";
+            this.txtDireccionNuevo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDireccionNuevo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDireccionNuevo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDireccionNuevo.DisabledState.Parent = this.txtDireccionNuevo;
+            this.txtDireccionNuevo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDireccionNuevo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDireccionNuevo.FocusedState.Parent = this.txtDireccionNuevo;
+            this.txtDireccionNuevo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDireccionNuevo.HoveredState.Parent = this.txtDireccionNuevo;
+            this.txtDireccionNuevo.Location = new System.Drawing.Point(106, 180);
+            this.txtDireccionNuevo.Margin = new System.Windows.Forms.Padding(16, 6, 16, 6);
+            this.txtDireccionNuevo.Multiline = true;
+            this.txtDireccionNuevo.Name = "txtDireccionNuevo";
+            this.txtDireccionNuevo.PasswordChar = '\0';
+            this.txtDireccionNuevo.PlaceholderText = "";
+            this.txtDireccionNuevo.SelectedText = "";
+            this.txtDireccionNuevo.ShadowDecoration.Parent = this.txtDireccionNuevo;
+            this.txtDireccionNuevo.Size = new System.Drawing.Size(353, 50);
+            this.txtDireccionNuevo.TabIndex = 338;
+            this.txtDireccionNuevo.TextChanged += new System.EventHandler(this.txtDireccionNuevo_TextChanged);
             // 
             // siticoneSeparator2
             // 
             this.siticoneSeparator2.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneSeparator2.Location = new System.Drawing.Point(602, 172);
+            this.siticoneSeparator2.Location = new System.Drawing.Point(13, 225);
             this.siticoneSeparator2.Name = "siticoneSeparator2";
             this.siticoneSeparator2.Size = new System.Drawing.Size(465, 15);
             this.siticoneSeparator2.TabIndex = 339;
             // 
-            // label34
+            // lblTelNuevo
             // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.Transparent;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.Color.Black;
-            this.label34.Location = new System.Drawing.Point(609, 100);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(59, 18);
-            this.label34.TabIndex = 327;
-            this.label34.Text = "Correo:";
+            this.lblTelNuevo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblTelNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelNuevo.Location = new System.Drawing.Point(142, 156);
+            this.lblTelNuevo.Name = "lblTelNuevo";
+            this.lblTelNuevo.Size = new System.Drawing.Size(325, 18);
+            this.lblTelNuevo.TabIndex = 335;
             // 
-            // BtnSeleccionarCliente
+            // pbTelNuevo
             // 
-            this.BtnSeleccionarCliente.AnimationHoverSpeed = 0.07F;
-            this.BtnSeleccionarCliente.AnimationSpeed = 0.03F;
-            this.BtnSeleccionarCliente.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSeleccionarCliente.BaseColor = System.Drawing.Color.Transparent;
-            this.BtnSeleccionarCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
-            this.BtnSeleccionarCliente.BorderSize = 1;
-            this.BtnSeleccionarCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnSeleccionarCliente.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.BtnSeleccionarCliente.FocusedColor = System.Drawing.Color.Empty;
-            this.BtnSeleccionarCliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSeleccionarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
-            this.BtnSeleccionarCliente.Image = global::wfaIntegradoCom.Properties.Resources.search_base;
-            this.BtnSeleccionarCliente.ImageSize = new System.Drawing.Size(20, 20);
-            this.BtnSeleccionarCliente.Location = new System.Drawing.Point(787, 30);
-            this.BtnSeleccionarCliente.Name = "BtnSeleccionarCliente";
-            this.BtnSeleccionarCliente.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
-            this.BtnSeleccionarCliente.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
-            this.BtnSeleccionarCliente.OnHoverForeColor = System.Drawing.Color.White;
-            this.BtnSeleccionarCliente.OnHoverImage = global::wfaIntegradoCom.Properties.Resources.search_hover;
-            this.BtnSeleccionarCliente.OnPressedColor = System.Drawing.Color.Black;
-            this.BtnSeleccionarCliente.Radius = 15;
-            this.BtnSeleccionarCliente.Size = new System.Drawing.Size(166, 36);
-            this.BtnSeleccionarCliente.TabIndex = 315;
-            this.BtnSeleccionarCliente.Text = "Seleccionar Cliente";
-            this.BtnSeleccionarCliente.Click += new System.EventHandler(this.BtnSeleccionarCliente_Click);
+            this.pbTelNuevo.BackColor = System.Drawing.Color.Transparent;
+            this.pbTelNuevo.BaseColor = System.Drawing.Color.Transparent;
+            this.pbTelNuevo.Location = new System.Drawing.Point(435, 133);
+            this.pbTelNuevo.Name = "pbTelNuevo";
+            this.pbTelNuevo.Size = new System.Drawing.Size(22, 22);
+            this.pbTelNuevo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbTelNuevo.TabIndex = 333;
+            this.pbTelNuevo.TabStop = false;
+            this.pbTelNuevo.UseTransfarantBackground = false;
             // 
-            // label28
+            // txtTelefonoNuevo
             // 
-            this.label28.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(737, 121);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(325, 18);
-            this.label28.TabIndex = 336;
-            // 
-            // label29
-            // 
-            this.label29.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(166, 176);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(325, 18);
-            this.label29.TabIndex = 335;
-            // 
-            // gunaCirclePictureBox19
-            // 
-            this.gunaCirclePictureBox19.BackColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBox19.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBox19.Location = new System.Drawing.Point(1007, 96);
-            this.gunaCirclePictureBox19.Name = "gunaCirclePictureBox19";
-            this.gunaCirclePictureBox19.Size = new System.Drawing.Size(22, 22);
-            this.gunaCirclePictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.gunaCirclePictureBox19.TabIndex = 334;
-            this.gunaCirclePictureBox19.TabStop = false;
-            this.gunaCirclePictureBox19.UseTransfarantBackground = false;
-            // 
-            // gunaCirclePictureBox20
-            // 
-            this.gunaCirclePictureBox20.BackColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBox20.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBox20.Location = new System.Drawing.Point(435, 153);
-            this.gunaCirclePictureBox20.Name = "gunaCirclePictureBox20";
-            this.gunaCirclePictureBox20.Size = new System.Drawing.Size(22, 22);
-            this.gunaCirclePictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.gunaCirclePictureBox20.TabIndex = 333;
-            this.gunaCirclePictureBox20.TabStop = false;
-            this.gunaCirclePictureBox20.UseTransfarantBackground = false;
-            // 
-            // siticoneTextBox13
-            // 
-            this.siticoneTextBox13.Animated = false;
-            this.siticoneTextBox13.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.siticoneTextBox13.DefaultText = "";
-            this.siticoneTextBox13.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.siticoneTextBox13.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.siticoneTextBox13.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox13.DisabledState.Parent = this.siticoneTextBox13;
-            this.siticoneTextBox13.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox13.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox13.FocusedState.Parent = this.siticoneTextBox13;
-            this.siticoneTextBox13.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox13.HoveredState.Parent = this.siticoneTextBox13;
-            this.siticoneTextBox13.Location = new System.Drawing.Point(677, 93);
-            this.siticoneTextBox13.Margin = new System.Windows.Forms.Padding(14, 6, 14, 6);
-            this.siticoneTextBox13.Name = "siticoneTextBox13";
-            this.siticoneTextBox13.PasswordChar = '\0';
-            this.siticoneTextBox13.PlaceholderText = "";
-            this.siticoneTextBox13.SelectedText = "";
-            this.siticoneTextBox13.ShadowDecoration.Parent = this.siticoneTextBox13;
-            this.siticoneTextBox13.Size = new System.Drawing.Size(353, 25);
-            this.siticoneTextBox13.TabIndex = 330;
-            // 
-            // siticoneTextBox16
-            // 
-            this.siticoneTextBox16.Animated = false;
-            this.siticoneTextBox16.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.siticoneTextBox16.DefaultText = "";
-            this.siticoneTextBox16.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.siticoneTextBox16.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.siticoneTextBox16.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox16.DisabledState.Parent = this.siticoneTextBox16;
-            this.siticoneTextBox16.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox16.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox16.FocusedState.Parent = this.siticoneTextBox16;
-            this.siticoneTextBox16.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox16.HoveredState.Parent = this.siticoneTextBox16;
-            this.siticoneTextBox16.Location = new System.Drawing.Point(104, 150);
-            this.siticoneTextBox16.Margin = new System.Windows.Forms.Padding(14, 6, 14, 6);
-            this.siticoneTextBox16.Name = "siticoneTextBox16";
-            this.siticoneTextBox16.PasswordChar = '\0';
-            this.siticoneTextBox16.PlaceholderText = "";
-            this.siticoneTextBox16.SelectedText = "";
-            this.siticoneTextBox16.ShadowDecoration.Parent = this.siticoneTextBox16;
-            this.siticoneTextBox16.Size = new System.Drawing.Size(353, 25);
-            this.siticoneTextBox16.TabIndex = 329;
+            this.txtTelefonoNuevo.Animated = false;
+            this.txtTelefonoNuevo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTelefonoNuevo.DefaultText = "";
+            this.txtTelefonoNuevo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTelefonoNuevo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTelefonoNuevo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTelefonoNuevo.DisabledState.Parent = this.txtTelefonoNuevo;
+            this.txtTelefonoNuevo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTelefonoNuevo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTelefonoNuevo.FocusedState.Parent = this.txtTelefonoNuevo;
+            this.txtTelefonoNuevo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTelefonoNuevo.HoveredState.Parent = this.txtTelefonoNuevo;
+            this.txtTelefonoNuevo.Location = new System.Drawing.Point(104, 128);
+            this.txtTelefonoNuevo.Margin = new System.Windows.Forms.Padding(14, 6, 14, 6);
+            this.txtTelefonoNuevo.Name = "txtTelefonoNuevo";
+            this.txtTelefonoNuevo.PasswordChar = '\0';
+            this.txtTelefonoNuevo.PlaceholderText = "";
+            this.txtTelefonoNuevo.SelectedText = "";
+            this.txtTelefonoNuevo.ShadowDecoration.Parent = this.txtTelefonoNuevo;
+            this.txtTelefonoNuevo.Size = new System.Drawing.Size(353, 25);
+            this.txtTelefonoNuevo.TabIndex = 329;
+            this.txtTelefonoNuevo.TextChanged += new System.EventHandler(this.txtTelefonoNuevo_TextChanged);
             // 
             // label33
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.Color.Black;
-            this.label33.Location = new System.Drawing.Point(26, 150);
+            this.label33.Location = new System.Drawing.Point(23, 133);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(70, 18);
             this.label33.TabIndex = 328;
@@ -1023,7 +851,7 @@ namespace wfaIntegradoCom.Procesos
             // siticoneSeparator14
             // 
             this.siticoneSeparator14.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneSeparator14.Location = new System.Drawing.Point(26, 166);
+            this.siticoneSeparator14.Location = new System.Drawing.Point(13, 146);
             this.siticoneSeparator14.Name = "siticoneSeparator14";
             this.siticoneSeparator14.Size = new System.Drawing.Size(465, 15);
             this.siticoneSeparator14.TabIndex = 331;
@@ -1033,108 +861,86 @@ namespace wfaIntegradoCom.Procesos
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.Black;
-            this.label27.Location = new System.Drawing.Point(39, 46);
+            this.label27.Location = new System.Drawing.Point(21, 36);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(57, 18);
             this.label27.TabIndex = 308;
             this.label27.Text = "Cliente:";
             // 
-            // label30
+            // lblClienteNuevo
             // 
-            this.label30.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(169, 69);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(325, 18);
-            this.label30.TabIndex = 324;
+            this.lblClienteNuevo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblClienteNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClienteNuevo.Location = new System.Drawing.Point(145, 59);
+            this.lblClienteNuevo.Name = "lblClienteNuevo";
+            this.lblClienteNuevo.Size = new System.Drawing.Size(325, 18);
+            this.lblClienteNuevo.TabIndex = 324;
             // 
-            // gunaCirclePictureBox18
+            // lblDniNuevo
             // 
-            this.gunaCirclePictureBox18.BackColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBox18.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBox18.Location = new System.Drawing.Point(435, 100);
-            this.gunaCirclePictureBox18.Name = "gunaCirclePictureBox18";
-            this.gunaCirclePictureBox18.Size = new System.Drawing.Size(22, 22);
-            this.gunaCirclePictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.gunaCirclePictureBox18.TabIndex = 323;
-            this.gunaCirclePictureBox18.TabStop = false;
-            this.gunaCirclePictureBox18.UseTransfarantBackground = false;
+            this.lblDniNuevo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblDniNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDniNuevo.Location = new System.Drawing.Point(141, 107);
+            this.lblDniNuevo.Name = "lblDniNuevo";
+            this.lblDniNuevo.Size = new System.Drawing.Size(325, 18);
+            this.lblDniNuevo.TabIndex = 305;
             // 
-            // label31
+            // txtDniNuevo
             // 
-            this.label31.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(165, 121);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(325, 18);
-            this.label31.TabIndex = 305;
+            this.txtDniNuevo.Animated = false;
+            this.txtDniNuevo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDniNuevo.DefaultText = "";
+            this.txtDniNuevo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDniNuevo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDniNuevo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDniNuevo.DisabledState.Parent = this.txtDniNuevo;
+            this.txtDniNuevo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDniNuevo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDniNuevo.FocusedState.Parent = this.txtDniNuevo;
+            this.txtDniNuevo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDniNuevo.HoveredState.Parent = this.txtDniNuevo;
+            this.txtDniNuevo.Location = new System.Drawing.Point(104, 80);
+            this.txtDniNuevo.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
+            this.txtDniNuevo.Name = "txtDniNuevo";
+            this.txtDniNuevo.PasswordChar = '\0';
+            this.txtDniNuevo.PlaceholderText = "";
+            this.txtDniNuevo.SelectedText = "";
+            this.txtDniNuevo.ShadowDecoration.Parent = this.txtDniNuevo;
+            this.txtDniNuevo.Size = new System.Drawing.Size(353, 25);
+            this.txtDniNuevo.TabIndex = 314;
+            this.txtDniNuevo.TextChanged += new System.EventHandler(this.txtDniNuevo_TextChanged);
             // 
-            // gunaCirclePictureBox21
+            // txtClienteNuevo
             // 
-            this.gunaCirclePictureBox21.BackColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBox21.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBox21.Location = new System.Drawing.Point(435, 44);
-            this.gunaCirclePictureBox21.Name = "gunaCirclePictureBox21";
-            this.gunaCirclePictureBox21.Size = new System.Drawing.Size(22, 22);
-            this.gunaCirclePictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.gunaCirclePictureBox21.TabIndex = 320;
-            this.gunaCirclePictureBox21.TabStop = false;
-            this.gunaCirclePictureBox21.UseTransfarantBackground = false;
-            // 
-            // siticoneTextBox14
-            // 
-            this.siticoneTextBox14.Animated = false;
-            this.siticoneTextBox14.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.siticoneTextBox14.DefaultText = "";
-            this.siticoneTextBox14.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.siticoneTextBox14.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.siticoneTextBox14.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox14.DisabledState.Parent = this.siticoneTextBox14;
-            this.siticoneTextBox14.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox14.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox14.FocusedState.Parent = this.siticoneTextBox14;
-            this.siticoneTextBox14.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox14.HoveredState.Parent = this.siticoneTextBox14;
-            this.siticoneTextBox14.Location = new System.Drawing.Point(104, 93);
-            this.siticoneTextBox14.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
-            this.siticoneTextBox14.Name = "siticoneTextBox14";
-            this.siticoneTextBox14.PasswordChar = '\0';
-            this.siticoneTextBox14.PlaceholderText = "";
-            this.siticoneTextBox14.SelectedText = "";
-            this.siticoneTextBox14.ShadowDecoration.Parent = this.siticoneTextBox14;
-            this.siticoneTextBox14.Size = new System.Drawing.Size(353, 25);
-            this.siticoneTextBox14.TabIndex = 314;
-            // 
-            // siticoneTextBox15
-            // 
-            this.siticoneTextBox15.Animated = false;
-            this.siticoneTextBox15.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.siticoneTextBox15.DefaultText = "";
-            this.siticoneTextBox15.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.siticoneTextBox15.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.siticoneTextBox15.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox15.DisabledState.Parent = this.siticoneTextBox15;
-            this.siticoneTextBox15.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.siticoneTextBox15.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox15.FocusedState.Parent = this.siticoneTextBox15;
-            this.siticoneTextBox15.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneTextBox15.HoveredState.Parent = this.siticoneTextBox15;
-            this.siticoneTextBox15.Location = new System.Drawing.Point(104, 41);
-            this.siticoneTextBox15.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
-            this.siticoneTextBox15.Name = "siticoneTextBox15";
-            this.siticoneTextBox15.PasswordChar = '\0';
-            this.siticoneTextBox15.PlaceholderText = "";
-            this.siticoneTextBox15.SelectedText = "";
-            this.siticoneTextBox15.ShadowDecoration.Parent = this.siticoneTextBox15;
-            this.siticoneTextBox15.Size = new System.Drawing.Size(353, 25);
-            this.siticoneTextBox15.TabIndex = 313;
+            this.txtClienteNuevo.Animated = false;
+            this.txtClienteNuevo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtClienteNuevo.DefaultText = "";
+            this.txtClienteNuevo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtClienteNuevo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtClienteNuevo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtClienteNuevo.DisabledState.Parent = this.txtClienteNuevo;
+            this.txtClienteNuevo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtClienteNuevo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtClienteNuevo.FocusedState.Parent = this.txtClienteNuevo;
+            this.txtClienteNuevo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtClienteNuevo.HoveredState.Parent = this.txtClienteNuevo;
+            this.txtClienteNuevo.Location = new System.Drawing.Point(104, 31);
+            this.txtClienteNuevo.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
+            this.txtClienteNuevo.Name = "txtClienteNuevo";
+            this.txtClienteNuevo.PasswordChar = '\0';
+            this.txtClienteNuevo.PlaceholderText = "";
+            this.txtClienteNuevo.SelectedText = "";
+            this.txtClienteNuevo.ShadowDecoration.Parent = this.txtClienteNuevo;
+            this.txtClienteNuevo.Size = new System.Drawing.Size(353, 25);
+            this.txtClienteNuevo.TabIndex = 313;
+            this.txtClienteNuevo.TextChanged += new System.EventHandler(this.txtClienteNuevo_TextChanged);
             // 
             // label32
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.Color.Black;
-            this.label32.Location = new System.Drawing.Point(35, 100);
+            this.label32.Location = new System.Drawing.Point(22, 85);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(33, 18);
             this.label32.TabIndex = 309;
@@ -1143,7 +949,7 @@ namespace wfaIntegradoCom.Procesos
             // siticoneSeparator13
             // 
             this.siticoneSeparator13.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneSeparator13.Location = new System.Drawing.Point(25, 111);
+            this.siticoneSeparator13.Location = new System.Drawing.Point(13, 98);
             this.siticoneSeparator13.Name = "siticoneSeparator13";
             this.siticoneSeparator13.Size = new System.Drawing.Size(465, 15);
             this.siticoneSeparator13.TabIndex = 316;
@@ -1151,18 +957,10 @@ namespace wfaIntegradoCom.Procesos
             // siticoneSeparator15
             // 
             this.siticoneSeparator15.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneSeparator15.Location = new System.Drawing.Point(29, 59);
+            this.siticoneSeparator15.Location = new System.Drawing.Point(13, 51);
             this.siticoneSeparator15.Name = "siticoneSeparator15";
             this.siticoneSeparator15.Size = new System.Drawing.Size(465, 15);
             this.siticoneSeparator15.TabIndex = 318;
-            // 
-            // siticoneSeparator16
-            // 
-            this.siticoneSeparator16.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneSeparator16.Location = new System.Drawing.Point(602, 112);
-            this.siticoneSeparator16.Name = "siticoneSeparator16";
-            this.siticoneSeparator16.Size = new System.Drawing.Size(465, 15);
-            this.siticoneSeparator16.TabIndex = 332;
             // 
             // btnGuardarCliente
             // 
@@ -1176,12 +974,13 @@ namespace wfaIntegradoCom.Procesos
             this.btnGuardarCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarCliente.ForeColor = System.Drawing.Color.White;
             this.btnGuardarCliente.HoveredState.Parent = this.btnGuardarCliente;
-            this.btnGuardarCliente.Location = new System.Drawing.Point(339, 578);
+            this.btnGuardarCliente.Location = new System.Drawing.Point(629, 580);
             this.btnGuardarCliente.Name = "btnGuardarCliente";
             this.btnGuardarCliente.ShadowDecoration.Parent = this.btnGuardarCliente;
-            this.btnGuardarCliente.Size = new System.Drawing.Size(469, 54);
+            this.btnGuardarCliente.Size = new System.Drawing.Size(132, 54);
             this.btnGuardarCliente.TabIndex = 316;
             this.btnGuardarCliente.Text = "Guardar";
+            this.btnGuardarCliente.Click += new System.EventHandler(this.btnGuardarCliente_Click);
             // 
             // label1
             // 
@@ -1231,9 +1030,10 @@ namespace wfaIntegradoCom.Procesos
             this.txtBusca.PlaceholderText = "DATOS A BUSCAR...";
             this.txtBusca.SelectedText = "";
             this.txtBusca.ShadowDecoration.Parent = this.txtBusca;
-            this.txtBusca.Size = new System.Drawing.Size(409, 35);
+            this.txtBusca.Size = new System.Drawing.Size(408, 35);
             this.txtBusca.TabIndex = 317;
             this.txtBusca.TextOffset = new System.Drawing.Point(30, 0);
+            this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
             this.txtBusca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusca_KeyPress);
             // 
             // dgConsulta
@@ -1250,7 +1050,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsulta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1264,7 +1064,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
@@ -1272,7 +1072,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsulta.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgConsulta.EnableHeadersVisualStyles = false;
             this.dgConsulta.GridColor = System.Drawing.Color.Silver;
-            this.dgConsulta.Location = new System.Drawing.Point(130, 73);
+            this.dgConsulta.Location = new System.Drawing.Point(387, 69);
             this.dgConsulta.Name = "dgConsulta";
             this.dgConsulta.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1289,7 +1089,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsulta.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgConsulta.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgConsulta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgConsulta.Size = new System.Drawing.Size(409, 142);
+            this.dgConsulta.Size = new System.Drawing.Size(407, 142);
             this.dgConsulta.TabIndex = 320;
             this.dgConsulta.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgConsulta.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -1301,18 +1101,19 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsulta.ThemeStyle.GridColor = System.Drawing.Color.Silver;
             this.dgConsulta.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.dgConsulta.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dgConsulta.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgConsulta.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgConsulta.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgConsulta.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgConsulta.ThemeStyle.HeaderStyle.Height = 20;
             this.dgConsulta.ThemeStyle.ReadOnly = true;
             this.dgConsulta.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgConsulta.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgConsulta.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgConsulta.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgConsulta.ThemeStyle.RowsStyle.ForeColor = System.Drawing.SystemColors.ControlText;
             this.dgConsulta.ThemeStyle.RowsStyle.Height = 22;
             this.dgConsulta.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgConsulta.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.dgConsulta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsulta_CellContentClick);
             this.dgConsulta.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsulta_CellContentDoubleClick);
             // 
             // id
@@ -1334,7 +1135,7 @@ namespace wfaIntegradoCom.Procesos
             this.placa.HeaderText = "CLIENTE";
             this.placa.Name = "placa";
             this.placa.ReadOnly = true;
-            this.placa.Width = 132;
+            this.placa.Width = 250;
             // 
             // cliente
             // 
@@ -1369,7 +1170,22 @@ namespace wfaIntegradoCom.Procesos
             // 
             this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticonePanel1.BorderThickness = 2;
+            this.siticonePanel1.Controls.Add(this.dgConsultaCliente);
+            this.siticonePanel1.Controls.Add(this.TxtSubT);
+            this.siticonePanel1.Controls.Add(this.txtIGV);
+            this.siticonePanel1.Controls.Add(this.txtTotal);
+            this.siticonePanel1.Controls.Add(this.txtImporte);
+            this.siticonePanel1.Controls.Add(this.label12);
+            this.siticonePanel1.Controls.Add(this.label11);
+            this.siticonePanel1.Controls.Add(this.label10);
+            this.siticonePanel1.Controls.Add(this.label3);
+            this.siticonePanel1.Controls.Add(this.pictureBox1);
+            this.siticonePanel1.Controls.Add(this.dgConsulta);
+            this.siticonePanel1.Controls.Add(this.txtBuscarCliente);
+            this.siticonePanel1.Controls.Add(this.btnGuardarCliente);
             this.siticonePanel1.Controls.Add(this.siticoneGroupBox1);
+            this.siticonePanel1.Controls.Add(this.label2);
+            this.siticonePanel1.Controls.Add(this.siticoneGroupBox2);
             this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
@@ -1377,18 +1193,322 @@ namespace wfaIntegradoCom.Procesos
             this.siticonePanel1.Size = new System.Drawing.Size(1157, 637);
             this.siticonePanel1.TabIndex = 322;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(711, 389);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 18);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 348;
+            this.pictureBox1.TabStop = false;
+            // 
+            // dgConsultaCliente
+            // 
+            this.dgConsultaCliente.AllowUserToAddRows = false;
+            this.dgConsultaCliente.AllowUserToDeleteRows = false;
+            this.dgConsultaCliente.AllowUserToResizeRows = false;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            this.dgConsultaCliente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgConsultaCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgConsultaCliente.BackgroundColor = System.Drawing.Color.White;
+            this.dgConsultaCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgConsultaCliente.CausesValidation = false;
+            this.dgConsultaCliente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultaCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgConsultaCliente.ColumnHeadersHeight = 20;
+            this.dgConsultaCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dgConsultaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultaCliente.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dgConsultaCliente.EnableHeadersVisualStyles = false;
+            this.dgConsultaCliente.GridColor = System.Drawing.Color.Silver;
+            this.dgConsultaCliente.Location = new System.Drawing.Point(710, 404);
+            this.dgConsultaCliente.Name = "dgConsultaCliente";
+            this.dgConsultaCliente.ReadOnly = true;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgConsultaCliente.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgConsultaCliente.RowHeadersVisible = false;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultaCliente.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgConsultaCliente.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultaCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgConsultaCliente.Size = new System.Drawing.Size(419, 138);
+            this.dgConsultaCliente.TabIndex = 349;
+            this.dgConsultaCliente.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgConsultaCliente.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgConsultaCliente.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgConsultaCliente.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgConsultaCliente.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgConsultaCliente.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgConsultaCliente.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgConsultaCliente.ThemeStyle.GridColor = System.Drawing.Color.Silver;
+            this.dgConsultaCliente.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.dgConsultaCliente.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dgConsultaCliente.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgConsultaCliente.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgConsultaCliente.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgConsultaCliente.ThemeStyle.HeaderStyle.Height = 20;
+            this.dgConsultaCliente.ThemeStyle.ReadOnly = true;
+            this.dgConsultaCliente.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgConsultaCliente.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
+            this.dgConsultaCliente.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgConsultaCliente.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgConsultaCliente.ThemeStyle.RowsStyle.Height = 22;
+            this.dgConsultaCliente.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgConsultaCliente.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.dgConsultaCliente.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsultaCliente_CellContentDoubleClick_1);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewTextBoxColumn1.FillWeight = 85.2792F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 7;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridViewTextBoxColumn2.HeaderText = "CLIENTE";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 433;
+            // 
+            // txtBuscarCliente
+            // 
+            this.txtBuscarCliente.Animated = false;
+            this.txtBuscarCliente.BorderColor = System.Drawing.Color.Silver;
+            this.txtBuscarCliente.BorderRadius = 3;
+            this.txtBuscarCliente.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarCliente.DefaultText = "";
+            this.txtBuscarCliente.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarCliente.DisabledState.Parent = this.txtBuscarCliente;
+            this.txtBuscarCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarCliente.FocusedState.Parent = this.txtBuscarCliente;
+            this.txtBuscarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtBuscarCliente.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarCliente.HoveredState.Parent = this.txtBuscarCliente;
+            this.txtBuscarCliente.Location = new System.Drawing.Point(707, 379);
+            this.txtBuscarCliente.Margin = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.txtBuscarCliente.Name = "txtBuscarCliente";
+            this.txtBuscarCliente.PasswordChar = '\0';
+            this.txtBuscarCliente.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.txtBuscarCliente.PlaceholderText = "DATOS A BUSCAR...";
+            this.txtBuscarCliente.SelectedText = "";
+            this.txtBuscarCliente.ShadowDecoration.Parent = this.txtBuscarCliente;
+            this.txtBuscarCliente.Size = new System.Drawing.Size(422, 29);
+            this.txtBuscarCliente.TabIndex = 347;
+            this.txtBuscarCliente.TextOffset = new System.Drawing.Point(30, 0);
+            this.txtBuscarCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarCliente_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(600, 385);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 17);
+            this.label2.TabIndex = 346;
+            this.label2.Text = "Buscar : Venta ";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(846, 430);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 18);
+            this.label3.TabIndex = 353;
+            this.label3.Text = "Importe:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(872, 514);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 18);
+            this.label10.TabIndex = 354;
+            this.label10.Text = "IGV:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(837, 472);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 18);
+            this.label11.TabIndex = 355;
+            this.label11.Text = "SubTotal:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(863, 556);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 18);
+            this.label12.TabIndex = 357;
+            this.label12.Text = "Total:";
+            // 
+            // txtImporte
+            // 
+            this.txtImporte.Animated = false;
+            this.txtImporte.BorderRadius = 3;
+            this.txtImporte.BorderThickness = 2;
+            this.txtImporte.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtImporte.DefaultText = "";
+            this.txtImporte.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtImporte.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtImporte.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtImporte.DisabledState.Parent = this.txtImporte;
+            this.txtImporte.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtImporte.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtImporte.FocusedState.Parent = this.txtImporte;
+            this.txtImporte.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtImporte.HoveredState.Parent = this.txtImporte;
+            this.txtImporte.Location = new System.Drawing.Point(916, 422);
+            this.txtImporte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txtImporte.Name = "txtImporte";
+            this.txtImporte.PasswordChar = '\0';
+            this.txtImporte.PlaceholderText = "";
+            this.txtImporte.SelectedText = "";
+            this.txtImporte.ShadowDecoration.Parent = this.txtImporte;
+            this.txtImporte.Size = new System.Drawing.Size(200, 28);
+            this.txtImporte.TabIndex = 358;
+            this.txtImporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporte_KeyPress);
+            this.txtImporte.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtImporte_KeyUp);
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Animated = false;
+            this.txtTotal.BorderRadius = 3;
+            this.txtTotal.BorderThickness = 2;
+            this.txtTotal.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTotal.DefaultText = "";
+            this.txtTotal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTotal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTotal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTotal.DisabledState.Parent = this.txtTotal;
+            this.txtTotal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTotal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTotal.FocusedState.Parent = this.txtTotal;
+            this.txtTotal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTotal.HoveredState.Parent = this.txtTotal;
+            this.txtTotal.Location = new System.Drawing.Point(916, 551);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.PasswordChar = '\0';
+            this.txtTotal.PlaceholderText = "";
+            this.txtTotal.SelectedText = "";
+            this.txtTotal.ShadowDecoration.Parent = this.txtTotal;
+            this.txtTotal.Size = new System.Drawing.Size(200, 28);
+            this.txtTotal.TabIndex = 359;
+            // 
+            // txtIGV
+            // 
+            this.txtIGV.Animated = false;
+            this.txtIGV.BorderRadius = 3;
+            this.txtIGV.BorderThickness = 2;
+            this.txtIGV.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIGV.DefaultText = "";
+            this.txtIGV.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtIGV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtIGV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtIGV.DisabledState.Parent = this.txtIGV;
+            this.txtIGV.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtIGV.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtIGV.FocusedState.Parent = this.txtIGV;
+            this.txtIGV.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtIGV.HoveredState.Parent = this.txtIGV;
+            this.txtIGV.Location = new System.Drawing.Point(916, 508);
+            this.txtIGV.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtIGV.Name = "txtIGV";
+            this.txtIGV.PasswordChar = '\0';
+            this.txtIGV.PlaceholderText = "";
+            this.txtIGV.SelectedText = "";
+            this.txtIGV.ShadowDecoration.Parent = this.txtIGV;
+            this.txtIGV.Size = new System.Drawing.Size(200, 28);
+            this.txtIGV.TabIndex = 360;
+            // 
+            // TxtSubT
+            // 
+            this.TxtSubT.Animated = false;
+            this.TxtSubT.BorderRadius = 3;
+            this.TxtSubT.BorderThickness = 2;
+            this.TxtSubT.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtSubT.DefaultText = "";
+            this.TxtSubT.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtSubT.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtSubT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtSubT.DisabledState.Parent = this.TxtSubT;
+            this.TxtSubT.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtSubT.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtSubT.FocusedState.Parent = this.TxtSubT;
+            this.TxtSubT.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtSubT.HoveredState.Parent = this.TxtSubT;
+            this.TxtSubT.Location = new System.Drawing.Point(916, 465);
+            this.TxtSubT.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.TxtSubT.Name = "TxtSubT";
+            this.TxtSubT.PasswordChar = '\0';
+            this.TxtSubT.PlaceholderText = "";
+            this.TxtSubT.SelectedText = "";
+            this.TxtSubT.ShadowDecoration.Parent = this.TxtSubT;
+            this.TxtSubT.Size = new System.Drawing.Size(200, 28);
+            this.TxtSubT.TabIndex = 361;
+            // 
             // frmCambioTitularidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1157, 637);
-            this.Controls.Add(this.dgConsulta);
             this.Controls.Add(this.dtFechaTitulacion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.txtBusca);
-            this.Controls.Add(this.btnGuardarCliente);
-            this.Controls.Add(this.siticoneGroupBox2);
             this.Controls.Add(this.gunaPanel1);
             this.Controls.Add(this.siticonePanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1403,24 +1523,21 @@ namespace wfaIntegradoCom.Procesos
             this.gunaPanel1.PerformLayout();
             this.siticoneGroupBox1.ResumeLayout(false);
             this.siticoneGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbmodelo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMarca)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbserie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbplaca)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbdni)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbcorreo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbtelefono)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbcliente)).EndInit();
             this.siticoneGroupBox2.ResumeLayout(false);
             this.siticoneGroupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDniNuevo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClienteNuevo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDireccionN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTelNuevo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgConsulta)).EndInit();
             this.siticonePanel1.ResumeLayout(false);
+            this.siticonePanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgConsultaCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1434,12 +1551,8 @@ namespace wfaIntegradoCom.Procesos
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label lblcorreo;
-        private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.Label lblCliente;
         private Guna.UI.WinForms.GunaCirclePictureBox pbdni;
-        private Guna.UI.WinForms.GunaCirclePictureBox pbcorreo;
-        private Guna.UI.WinForms.GunaCirclePictureBox pbtelefono;
         private System.Windows.Forms.Label lblDni;
         private Guna.UI.WinForms.GunaCirclePictureBox pbcliente;
         private Siticone.UI.WinForms.SiticoneTextBox txtCorreo;
@@ -1453,15 +1566,9 @@ namespace wfaIntegradoCom.Procesos
         private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator10;
         private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator12;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblMarca;
-        private System.Windows.Forms.Label lblSerie;
-        private System.Windows.Forms.Label lblModelo;
         private System.Windows.Forms.Label lblPlaca;
-        private Guna.UI.WinForms.GunaCirclePictureBox pbMarca;
-        private Guna.UI.WinForms.GunaCirclePictureBox pbserie;
         private Siticone.UI.WinForms.SiticoneTextBox txtMarca;
         private Siticone.UI.WinForms.SiticoneTextBox txtSerie;
-        private Guna.UI.WinForms.GunaCirclePictureBox pbmodelo;
         private Guna.UI.WinForms.GunaCirclePictureBox pbplaca;
         private Siticone.UI.WinForms.SiticoneTextBox txtPlaca;
         private System.Windows.Forms.Label label9;
@@ -1474,32 +1581,26 @@ namespace wfaIntegradoCom.Procesos
         private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator6;
         private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator1;
         private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox2;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBox19;
-        private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBox20;
-        private Siticone.UI.WinForms.SiticoneTextBox siticoneTextBox13;
-        private Siticone.UI.WinForms.SiticoneTextBox siticoneTextBox16;
+        private System.Windows.Forms.Label lblTelNuevo;
+        private Guna.UI.WinForms.GunaCirclePictureBox pbTelNuevo;
+        private Siticone.UI.WinForms.SiticoneTextBox txtTelefonoNuevo;
         private System.Windows.Forms.Label label33;
         private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator14;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label30;
-        private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBox18;
-        private System.Windows.Forms.Label label31;
-        private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBox21;
-        private Siticone.UI.WinForms.SiticoneTextBox siticoneTextBox14;
-        private Siticone.UI.WinForms.SiticoneTextBox siticoneTextBox15;
+        private System.Windows.Forms.Label lblClienteNuevo;
+        private Guna.UI.WinForms.GunaCirclePictureBox pbDniNuevo;
+        private System.Windows.Forms.Label lblDniNuevo;
+        private Guna.UI.WinForms.GunaCirclePictureBox pbClienteNuevo;
+        private Siticone.UI.WinForms.SiticoneTextBox txtDniNuevo;
+        private Siticone.UI.WinForms.SiticoneTextBox txtClienteNuevo;
         private System.Windows.Forms.Label label32;
         private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator13;
         private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator15;
-        private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator16;
-        private Guna.UI.WinForms.GunaButton BtnSeleccionarCliente;
         private Siticone.UI.WinForms.SiticoneButton btnGuardarCliente;
         private System.Windows.Forms.Label lblDireccion;
-        private System.Windows.Forms.Label label3;
-        private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBox1;
-        private Siticone.UI.WinForms.SiticoneTextBox siticoneTextBox4;
+        private System.Windows.Forms.Label lblDireccionN;
+        private Guna.UI.WinForms.GunaCirclePictureBox pbDireccionN;
+        private Siticone.UI.WinForms.SiticoneTextBox txtDireccionNuevo;
         private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -1510,5 +1611,20 @@ namespace wfaIntegradoCom.Procesos
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn placa;
         private System.Windows.Forms.DataGridViewTextBoxColumn cliente;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Siticone.UI.WinForms.SiticoneDataGridView dgConsultaCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private Siticone.UI.WinForms.SiticoneTextBox txtBuscarCliente;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private Siticone.UI.WinForms.SiticoneTextBox TxtSubT;
+        private Siticone.UI.WinForms.SiticoneTextBox txtIGV;
+        private Siticone.UI.WinForms.SiticoneTextBox txtTotal;
+        private Siticone.UI.WinForms.SiticoneTextBox txtImporte;
     }
 }
