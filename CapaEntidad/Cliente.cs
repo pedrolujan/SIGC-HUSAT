@@ -13,7 +13,7 @@ namespace CapaEntidad
         public String cCliente { get; set; }
         public String cApePat { get; set; }
         public String cApeMat { get; set; }
-        public String cNombre { get; set; }
+        public String cTipoDoc { get; set; }
         public String cDocumento { get; set; }
         public String cDireccion { get; set; }
         public DateTime dFecNac { get; set; }
@@ -82,7 +82,7 @@ namespace CapaEntidad
             idCliente = pnidCliente;
             cApePat = pcApePat;
             cApeMat = pcApeMat;
-            cNombre = pcNombre;
+            cTipoDoc = pcNombre;
             cDireccion = pcDireccion;
             dFecNac = pdFecNac;
             cTipPers = pcTipPers;
