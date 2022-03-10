@@ -273,8 +273,7 @@ namespace wfaIntegradoCom.Procesos
 
             decSeperator = nfi.CurrencyDecimalSeparator[0];
 
-            if (!char.IsControl(e.KeyChar) && !(char.IsDigit(e.KeyChar)
-            | e.KeyChar == decSeperator))
+            if (!char.IsControl(e.KeyChar) && !(char.IsDigit(e.KeyChar) | e.KeyChar == decSeperator))
             {
                 e.Handled = true;
             }

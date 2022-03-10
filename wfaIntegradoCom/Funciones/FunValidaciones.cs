@@ -218,12 +218,12 @@ namespace wfaIntegradoCom.Funciones
                         e.KeyChar = char.ToUpper(e.KeyChar);
                         if ((Char.IsLetter(e.KeyChar)) || (Char.IsControl(e.KeyChar)) || (Char.IsWhiteSpace(e.KeyChar)))
                         {
-                            e.Handled = true;
+                            e.Handled = false;
 
                         }
                         else
                         {
-                            e.Handled = false;
+                            e.Handled = true;
 
                         }
                     }

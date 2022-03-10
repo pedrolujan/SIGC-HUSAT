@@ -108,6 +108,7 @@
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.tsPerfil = new System.Windows.Forms.ToolStripButton();
             this.tsCerrarSession = new System.Windows.Forms.ToolStripButton();
+            this.tsbRecaudacion = new System.Windows.Forms.ToolStripButton();
             this.tsAccesoRapido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitDerecho)).BeginInit();
             this.SplitDerecho.Panel1.SuspendLayout();
@@ -731,7 +732,8 @@
             this.tsbSistemas,
             this.tsbRrHh,
             this.tsbConfiguracion,
-            this.tsbSoporte});
+            this.tsbSoporte,
+            this.tsbRecaudacion});
             this.tsMenuPrincipal.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.tsMenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.tsMenuPrincipal.Name = "tsMenuPrincipal";
@@ -1183,6 +1185,15 @@
             this.tsCerrarSession.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.tsCerrarSession.Click += new System.EventHandler(this.tsCerrarSession_Click);
             // 
+            // tsbRecaudacion
+            // 
+            this.tsbRecaudacion.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRecaudacion.Image = global::wfaIntegradoCom.Properties.Resources.refund_32px;
+            this.tsbRecaudacion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRecaudacion.Name = "tsbRecaudacion";
+            this.tsbRecaudacion.Size = new System.Drawing.Size(23, 20);
+            this.tsbRecaudacion.Text = "Recaudación";
+            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1334,6 +1345,7 @@
         internal System.Windows.Forms.ToolStrip toolStrip4;
         private System.Windows.Forms.ToolStripButton tsPerfil;
         private System.Windows.Forms.ToolStripButton tsCerrarSession;
+        private System.Windows.Forms.ToolStripButton tsbRecaudacion;
     }
 }
 

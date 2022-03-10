@@ -2060,8 +2060,7 @@ namespace wfaIntegradoCom.Mantenedores
 
 
         private void txtPrimerNom_TextChanged(object sender, EventArgs e)
-        {
-           
+        {           
             var result = fnValidarTexbox(txtNombre,erNombre, imgNombre, true, 3);
            
             estNombre = result.Item1;

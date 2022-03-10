@@ -947,6 +947,7 @@
     <None Include="Resources\reload.png" />
     <None Include="Resources\reloadWhite.png" />
     <None Include="Resources\update.png" />
+    <None Include="Resources\refund_32px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

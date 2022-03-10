@@ -35,6 +35,7 @@ namespace CapaEntidad
         public Double precioUnitario { get; set; }
         public String sPrecioUnitario { get; set; }
         public Int32 idTipoDescuento { get; set; }
+        public String strTipoDescuento { get; set; }
         public Double descuento { get; set; }
         public Double descuentoCantidad { get; set; }
         public Double descuentoPrecio { get; set; }
