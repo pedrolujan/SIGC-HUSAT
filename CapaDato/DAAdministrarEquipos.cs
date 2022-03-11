@@ -54,7 +54,7 @@ namespace CapaDato
                     lstEquipo.serie = Convert.ToString(drMenu["nSerieEquipo"]);
                     lstEquipo.Observacion = Convert.ToString(drMenu["Observaciones"]);
                     lstEquipo.idPlataformaEquipo = Convert.ToString(drMenu["idPlataforma"]);
-                    
+                    //lstEquipo.dFechaActivo = Convert.ToDateTime();
                     
                     //lstEquipo.idSimCard = Convert.ToInt32(drMenu["idSimCard"]);
                     if (Convert.ToInt32(drMenu["idSimCard"]) != 0)
