@@ -905,15 +905,47 @@ namespace wfaIntegradoCom.Mantenedores
             cboSeleccionarUbicacionE.Enabled = maria;
             txtObserInst.Enabled = maria;
             gbObservacionesInst.Enabled = maria;
+           
 
         }
         private void btnNuevoInst_Click(object sender, EventArgs e)
         {
+
+            if (Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue) == -3)
+            {
+                txtOtraUbicacion.Enabled = true;
+                btnGuardarIns.Enabled = false;
+                pbubicacion.Visible = true;
+                txtObserInst.Enabled = true;
+                gbObservacionesInst.Enabled = true;
+
+            }
+            else
+            {
+                txtOtraUbicacion.Enabled = false;
+                txtOtraUbicacion.Text = "";
+                txtObserInst.Enabled = true;
+                txtObserInst.Text = "";
+                
+                if ( Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue) != 0)
+                {
+                    gbObservacionesInst.Enabled = true;
+                    
+                    txtObserInst.Enabled = true;
+                    btnGuardarIns.Enabled = false;
+
+                }
+                   pbubicacion.Visible = false;
+
+            }
             estCliente = false;
             estEquipo = false;
 
             btnGuardarIns.Enabled = false;
+            
             fnLimpiarControlesInstalacion();
+
+
 
         }
 
@@ -1396,18 +1428,23 @@ namespace wfaIntegradoCom.Mantenedores
         {
             if (Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue)==-3)
             {
-                txtOtraUbicacion.Enabled = true;
+                 txtOtraUbicacion.Enabled = true;
                 btnGuardarIns.Enabled = false;
                 pbubicacion.Visible = true;
+                txtObserInst.Enabled = true;
+                gbObservacionesInst.Enabled = true;
 
             }
             else
             {
 
                 txtOtraUbicacion.Enabled = false;
-                txtOtraUbicacion.Text = "";
+                txtObserInst.Text = "";
+                gbObservacionesInst.Enabled = true;
+                txtObserInst.Enabled = true;
                 if (estCliente == true && estEquipo == true && Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue) != 0)
                 {
+                    
                     btnGuardarIns.Enabled = false;
 
                 }

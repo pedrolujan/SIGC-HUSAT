@@ -250,9 +250,9 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticonePanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticonePanel2.BorderRadius = 5;
             this.siticonePanel2.Controls.Add(this.lblGuardarAccYServ);
+            this.siticonePanel2.Controls.Add(this.lblSeleccionar);
             this.siticonePanel2.Controls.Add(this.pbBajar);
             this.siticonePanel2.Controls.Add(this.pbSubir);
-            this.siticonePanel2.Controls.Add(this.lblSeleccionar);
             this.siticonePanel2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.siticonePanel2.Location = new System.Drawing.Point(515, 390);
             this.siticonePanel2.Name = "siticonePanel2";
