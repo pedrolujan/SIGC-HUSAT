@@ -83,7 +83,7 @@ namespace CapaEntidad
             idCliente = pnidCliente;
             cApePat = pcApePat;
             cApeMat = pcApeMat;
-            cTipoDoc = pcNombre;
+            cNombre = pcNombre;
             cDireccion = pcDireccion;
             dFecNac = pdFecNac;
             cTipPers = pcTipPers;

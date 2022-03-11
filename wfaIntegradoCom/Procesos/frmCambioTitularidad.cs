@@ -99,7 +99,7 @@ namespace wfaIntegradoCom.Procesos
                         lstClientes.Add(new Cliente
                         {
                             idCliente = Convert.ToInt32(drMenu["idCliente"]),
-                            cTipoDoc = Convert.ToString(drMenu["cNombre"]),
+                            cNombre = Convert.ToString(drMenu["cNombre"]),
                             cApePat = Convert.ToString(drMenu["cApePat"]),
                             cApeMat = Convert.ToString(drMenu["cApeMat"])
 

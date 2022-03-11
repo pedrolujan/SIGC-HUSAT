@@ -845,7 +845,7 @@ namespace wfaIntegradoCom.Mantenedores
                             tipoCon.lnTipoConC = 1;
                             fnHabilitarBotonesC(false, false, false, false);
                             txtDocumentoC.Text = lstPros.cDocumento.Trim();
-                            txtNombreC.Text = $"{ lstPros.cTipoDoc.Trim()} {lstPros.cApePat.Trim()} {lstPros.cApeMat.Trim()}";
+                            txtNombreC.Text = $"{ lstPros.cNombre.Trim()} {lstPros.cApePat.Trim()} {lstPros.cApeMat.Trim()}";
                             txtCorreoC.Text = lstPros.cCorreo.Trim();
                             txtTelefonoFijoC.Text = lstPros.cTelFijo.Trim();
                             txtCelularC.Text = lstPros.cTelCelular.Trim();
@@ -859,7 +859,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                             fnHabilitarBotonesRP(false, false, false, false);
                             txtDocumentoRP.Text = lstPros.cDocumento.Trim();
-                            txtNombreRP.Text = $"{ lstPros.cTipoDoc.Trim()} {lstPros.cApePat.Trim()} {lstPros.cApeMat.Trim()}";
+                            txtNombreRP.Text = $"{ lstPros.cNombre.Trim()} {lstPros.cApePat.Trim()} {lstPros.cApeMat.Trim()}";
                             txtCorreoRP.Text = lstPros.cCorreo.Trim();
                             txtTelefonoFijoRP.Text = lstPros.cTelFijo.Trim();
                             txtCelularRP.Text = lstPros.cTelCelular.Trim();
@@ -3007,7 +3007,7 @@ namespace wfaIntegradoCom.Mantenedores
             lsDocVenta.Add(new DocumentoVenta
             {
                 idCliente = clsRespPago.idCliente,
-                cCliente = FormatearCadenaTitleCase(clsRespPago.cTipoDoc + " " + clsRespPago.cApePat + " " + clsRespPago.cApeMat),
+                cCliente = FormatearCadenaTitleCase(clsRespPago.cNombre + " " + clsRespPago.cApePat + " " + clsRespPago.cApeMat),
                 cTipoDoc = fnDevolverTipoDocPersona(clsRespPago.cTiDo),
                 cDireccion = FormatearCadenaTitleCase(clsRespPago.cDireccion),
                 cDocumento = clsRespPago.cDocumento,
@@ -3872,7 +3872,7 @@ namespace wfaIntegradoCom.Mantenedores
                 lstCliente.Add(new Cliente
                 {
                     cContactoNom2= Convert.ToString(dr["tipoDocumento"]),
-                    cTipoDoc = Convert.ToString(dr["cNombre"]),
+                    cNombre = Convert.ToString(dr["cNombre"]),
                     cApePat = Convert.ToString(dr["cApePat"]),
                     cApeMat = Convert.ToString(dr["cApeMat"]),
                     cDocumento = Convert.ToString(dr["cDocumento"]),

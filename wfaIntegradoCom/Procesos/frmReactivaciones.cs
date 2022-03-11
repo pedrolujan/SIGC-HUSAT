@@ -227,12 +227,12 @@ namespace wfaIntegradoCom.Procesos
                         lstClientes.Add(new Cliente
                         {
                             idCliente = Convert.ToInt32(drMenu["idCliente"]),
-                            cTipoDoc = Convert.ToString(drMenu["NombreCliente"]),
+                            cNombre = Convert.ToString(drMenu["NombreCliente"]),
                             cApePat = Convert.ToString(drMenu["cApePat"]),
                             cApeMat = Convert.ToString(drMenu["cApeMat"])
 
                         });
-                        txtCliente.Text = lstClientes[0].cTipoDoc + " " + lstClientes[0].cApePat+ " " +lstClientes[0].cApeMat;
+                        txtCliente.Text = lstClientes[0].cNombre + " " + lstClientes[0].cApePat+ " " +lstClientes[0].cApeMat;
 
 
                         txtVehiculo.Text = Convert.ToString(drMenu["vPlaca"]);
@@ -275,7 +275,7 @@ namespace wfaIntegradoCom.Procesos
                         });
 
                         //txtclienteSimCard.Text = Convert.ToString(drMenu["NombreCliente"]);                     
-                        txtclienteSimCard.Text = lstClientes[0].cTipoDoc + " " + lstClientes[0].cApePat + " " + lstClientes[0].cApeMat;
+                        txtclienteSimCard.Text = lstClientes[0].cNombre + " " + lstClientes[0].cApePat + " " + lstClientes[0].cApeMat;
                         txtVehiculoSimCard.Text = Convert.ToString(drMenu["vPlaca"]) != "" ? Convert.ToString(drMenu["vPlaca"]) : "SIN Placa";
                         
                         //txtVehiculoSimCard.Text = lstVehiculo[0].vPlaca;
