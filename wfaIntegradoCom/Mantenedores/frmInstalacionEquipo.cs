@@ -1502,7 +1502,7 @@ namespace wfaIntegradoCom.Mantenedores
             }) ;
             
           
-            if (estCliente==true && estEquipo==true && estObservacion==true && xmlInstal[0].ListaUbicacionEquipo[0].idUbicacionEquipo!=0)
+            if (estCliente==true && estEquipo==true /*&& estObservacion==true*/ && xmlInstal[0].ListaUbicacionEquipo[0].idUbicacionEquipo!=0)
             {
                 
                         //FUNCION DE CONFIRMACION DE VISTA PREVIA
