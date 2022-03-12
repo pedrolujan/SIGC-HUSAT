@@ -1282,9 +1282,27 @@ namespace wfaIntegradoCom.Procesos
             if (estadoComprabanteP)
             {
                 Cronograma clsCronomaEspecifico = new Cronograma();
-                clsCronomaEspecifico= lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
-                if (clsCronomaEspecifico.estado== "ESPV0001")
+                for (Int32 i=0;i< lstCronograma.Count;i++)
                 {
+                    if (i+1!= lstCronograma.Count)
+                    {
+                        if (lstCronograma[i].idCronograma == CronogramaSeleccionado)
+                        {
+                            clsCronomaEspecifico = lstCronograma[i + 1];
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        clsCronomaEspecifico.estado = "ESPV0002";
+                        break;
+                    }
+                    
+
+                }
+                //clsCronomaEspecifico= lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
+                //if (clsCronomaEspecifico.estado== "ESPV0002")
+                //{
                     if (filaSeleccionada.Index != 0)
                     {
                         if (lstDetalleCronograma[filaSeleccionada.Index - 1].estado == "PAGO PENDIENTE")
@@ -1326,11 +1344,11 @@ namespace wfaIntegradoCom.Procesos
 
 
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Aun no puede generar este pago ! \n porque falta las cuotas anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Aun no puede generar este pago ! \n porque falta las cuotas anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
                 
 
             }

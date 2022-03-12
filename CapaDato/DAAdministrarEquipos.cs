@@ -54,17 +54,17 @@ namespace CapaDato
                     lstEquipo.serie = Convert.ToString(drMenu["nSerieEquipo"]);
                     lstEquipo.Observacion = Convert.ToString(drMenu["Observaciones"]);
                     lstEquipo.idPlataformaEquipo = Convert.ToString(drMenu["idPlataforma"]);
-                    //lstEquipo.dFechaActivo = Convert.ToDateTime();
-                    
+                    lstEquipo.dFechaMovimiento = Convert.ToDateTime(drMenu["dFechaMovimiento"]);
+
                     //lstEquipo.idSimCard = Convert.ToInt32(drMenu["idSimCard"]);
-                    if (Convert.ToInt32(drMenu["idSimCard"]) != 0)
-                    {
+                    //if (Convert.ToInt32(drMenu["idSimCard"]) != 0)
+                    //{
                         lstEquipo.dFechaMovimiento= Convert.ToDateTime(drMenu["dFechaMovimiento"]);
-                    }
-                    else
-                    {
-                        lstEquipo.dFechaMovimiento = Convert.ToDateTime(DateTime.Now);
-                    }
+                    //}
+                    //else
+                    //{
+                    //    lstEquipo.dFechaMovimiento = Convert.ToDateTime(DateTime.Now);
+                    //}
 
                     //lstEquipo.dFechaBaja = Convert.ToString(drMenu["dFechaBaja"]);
                     //lstEquipo.dFechaExpiracion = Convert.ToString(drMenu["dFechaExpiracion"]);
