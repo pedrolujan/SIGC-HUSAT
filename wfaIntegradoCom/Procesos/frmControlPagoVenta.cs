@@ -52,7 +52,7 @@ namespace wfaIntegradoCom.Procesos
         static Int32 diaCicloPago = 0;
 
         static DateTime dtFechaPagoCuota = Variables.gdFechaSis;
-        Boolean estadoComprabanteP, estadoMoneda, estadoDescuento;
+        Boolean estadoComprabanteP, estadoFechaPago, estadoDescuento, estadoMoneda;
         String msgComprabanteP, msgMoneda, msgDescuento;
         private void pbBuscar_Click(object sender, EventArgs e)
         {
@@ -144,16 +144,14 @@ namespace wfaIntegradoCom.Procesos
                 dgvCronograma.Rows.Clear();
                 for (Int32 i = 0; i < lstDetalleCronograma.Count; i++)
                 {
-                    if (i==6)
-                    {
-
-                    }
+                    
                     DateTime dtFechaTemp = lstDetalleCronograma[i].periodoInicio.AddMonths(1);
                     cantDiasMes = DateTime.DaysInMonth(lstDetalleCronograma[i].periodoInicio.Year, lstDetalleCronograma[i].periodoInicio.Month);
                     cantDiasSum = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
                     Int32 diasASumar = 0;
                     Int32 diaNuevaFecha = 0;
-                    if (cantDiasSum <= 29 && dtFechaTemp.Month==2)
+                    Int32 restarFinal = 0;
+                    if (cantDiasSum <= 29 && dtFechaTemp.Month==2 && diaCicloPago!=15)
                     {
                         diasASumar = cantDiasSum;
                     }
@@ -172,17 +170,21 @@ namespace wfaIntegradoCom.Procesos
 
                     DateTime fechaInicio = Convert.ToDateTime(diaNuevaFecha + "/" +( lstDetalleCronograma[i].periodoInicio.Month)+"/"+ lstDetalleCronograma[i].periodoInicio.Year);
                     lstDetalleCronograma[i].periodoInicio = fechaInicio;
-
-                    DateTime fechaFinal = fechaInicio.AddDays(diasASumar);
+                    if (lstDetalleCronograma[i].periodoInicio.Month == 2 && diaCicloPago == 15)
+                    {
+                        restarFinal = 30 - cantDiasMes;
+                    }
+                    else
+                    {
+                        restarFinal = 0;
+                    }
+                    DateTime fechaFinal = fechaInicio.AddDays((diasASumar- restarFinal));
                     lstDetalleCronograma[i].periodoFinal = fechaFinal;
                     lstDetalleCronograma[i].fechaEmision = fechaFinal.AddDays(1);
                     DateTime fechaVencimiento = fechaFinal.AddDays(7);
                     lstDetalleCronograma[i].fechaVencimiento = fechaVencimiento;
-                    if (diaCicloPago==30)
-                    {
-                        DateTime dFechaInicio = lstDetalleCronograma[i].periodoInicio;
+                    
 
-                    }
                     String strDescuento = "";
                     if (lstDetalleCronograma[i].strTipoDescuento == "PORCENTUAL" && lstDetalleCronograma[i].descuento != 0)
                     {
@@ -311,23 +313,26 @@ namespace wfaIntegradoCom.Procesos
                     Int32 faltaDias = 0;
                     Int32 restaAnio = 0;
                     Int32 restaMeses = 0;
+                    Int32 diaNuevaFecha=0;
                     String cDias = "";
                     String tiempoTranscurrido = "";
                     Int32 cicloPago = Convert.ToInt32(dtt.Rows[i][11]);
                     diaCicloPago = cicloPago;
                     DateTime dtFechActual = Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy"));
-                    Int32 numMesActual= Convert.ToInt32(Variables.gdFechaSis.ToString("MM"));
-                    Int32 diaFechaActual= Convert.ToInt32(Variables.gdFechaSis.ToString("dd"));
-                    Int32 numAñoActual= Convert.ToInt32(Variables.gdFechaSis.ToString("yyyy"));
+                    Int32 cantDiasMesActual = DateTime.DaysInMonth(dtFechActual.Year, dtFechActual.Month);
 
                     DateTime dtFechaDePago = Convert.ToDateTime(Convert.ToDateTime(dtt.Rows[i][4].ToString()).ToString("dd/MM/yyyy"));
+                    diaNuevaFecha = cantDiasMesActual < diaCicloPago ? cantDiasMesActual : diaCicloPago;
+
+                    DateTime dtFechaPagoCronograma = Convert.ToDateTime(diaNuevaFecha + "/" +(dtFechActual.Month) +"/"+ dtFechActual.Year);
+
                     Int32 numMesPago = Convert.ToInt32(Convert.ToDateTime(dtt.Rows[i][4].ToString()).ToString("MM"));
                     Int32 diaFechaPago = Convert.ToInt32(Convert.ToDateTime(dtt.Rows[i][4].ToString()).ToString("dd"));
                     Int32 numAñoPago = Convert.ToInt32(Convert.ToDateTime(dtt.Rows[i][4].ToString()).ToString("yyyy"));
                     TimeSpan age = dtFechActual - dtFechActual.AddDays(-1);
                     Int32 numDias = DateTime.DaysInMonth(numAñoPago, numMesPago);
-                    cicloPago = numDias < cicloPago ? numDias : cicloPago;
                     Int32 NumDiasSumar = (Math.Abs(cicloPago - diaFechaPago));
+                    cicloPago = numDias < cicloPago ? numDias : cicloPago;
                     Int32 numDiasrestar = 0;
                     Int32 numRestarADIAs = 0;
                     if (numDias<=29)
@@ -463,8 +468,8 @@ namespace wfaIntegradoCom.Procesos
                 Boolean bResult = false;
               
                 dtFechaPago.Value = Variables.gdFechaSis;
-                dtpFechaInicialBus.Value = Variables.gdFechaSis;
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
+                dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
                 gbBuscarListaVentas.Enabled = false;
                 CronogramaSeleccionado = 0;
                 frmRegistrarVenta frmRV = new frmRegistrarVenta();
@@ -480,6 +485,9 @@ namespace wfaIntegradoCom.Procesos
                 }
                 estDescuento = false;
                 fnHabilitarDescuento(false);
+                cboCronograma.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboComprobanteP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboMoneda.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
             }
             catch (Exception ex)
             {
@@ -1025,8 +1033,9 @@ namespace wfaIntegradoCom.Procesos
                 if (e.ColumnIndex == 8)
                 {
                     DialogResult dResult;
+                    Double PrecioADescontar = 0;
                     String PrecioADescontarStr = Convert.ToString(dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
-                    Double PrecioADescontar = Convert.ToDouble(dgvCronograma.Rows[e.RowIndex+1].Cells[e.ColumnIndex].Value);
+                    //Double PrecioADescontar = Convert.ToDouble(dgvCronograma.Rows[e.RowIndex+1].Cells[e.ColumnIndex].Value);
                     string patron = @"(?:- *)?\d+(?:\.\d+)?";
                     Regex regex = new Regex(patron);
 
@@ -1107,7 +1116,10 @@ namespace wfaIntegradoCom.Procesos
         {
 
         }
-
+        void cboCronograma_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
         private void cboCronograma_SelectedIndexChanged(object sender, EventArgs e)
         {
             CronogramaSeleccionado = Convert.ToInt32(cboCronograma.SelectedValue);
@@ -1201,9 +1213,48 @@ namespace wfaIntegradoCom.Procesos
             fnBuscarCronograma(0, txtBuscar.Text.ToString(), -1, 0);
         }
 
+        private Boolean fnValidarFecha(Label lbl,PictureBox pb)
+        {
+            String msg = "";
+            Boolean bEstado = false;
+            PictureBox pbx = null;
+            Image img = null;
+            DateTime dtFechaSistema = Variables.gdFechaSis.AddDays(-2);
+            if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) >= Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")) && Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) <= Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
+            {
+                bEstado = true;
+                msg = "";
+                img = Properties.Resources.ok;
+            }
+            else
+            {
+                if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) > Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
+                {
+                    bEstado = false;
+                    msg = "la fecha de pago no puede ser mayor a la fecha actual";
+                    img = Properties.Resources.error;
+                }
+                else if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) < Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")))
+                {
+                    //bEstado = false;
+                    //msg = "La fecha de pago no puede ser menor a: " + dtFechaSistema.ToString("dd/MM/yyyy");
+                    //img = Properties.Resources.error;
+
+                    bEstado = true;
+                    msg = "";
+                    img = Properties.Resources.ok;
+                }
+            }
+            lbl.Text = msg;
+            pb.Image = img;
+            return bEstado;
+        }
         private void dtFechaPago_ValueChanged(object sender, EventArgs e)
         {
+            estadoFechaPago=fnValidarFecha(erFechaPago,pbFechaPago);
             dtFechaPagoCuota = Convert.ToDateTime(dtFechaPago.Value);
+            
+            
         }
 
         private void msActializarPago_Click(object sender, EventArgs e)
@@ -1279,7 +1330,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void fnGenerarComprobantePago(DataGridViewRow filaSeleccionada, DataGridViewCell ColumnaSeleccionada)
         {
-            if (estadoComprabanteP)
+            if (estadoComprabanteP==true && estadoFechaPago==true)
             {
                 Cronograma clsCronomaEspecifico = new Cronograma();
                 for (Int32 i=0;i< lstCronograma.Count;i++)

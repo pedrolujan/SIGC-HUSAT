@@ -145,6 +145,8 @@ namespace wfaIntegradoCom.Procesos
             this.cmsPagoCuotas = new Guna.UI.WinForms.GunaContextMenuStrip();
             this.msPagarCuota = new System.Windows.Forms.ToolStripMenuItem();
             this.msActializarPago = new System.Windows.Forms.ToolStripMenuItem();
+            this.erFechaPago = new System.Windows.Forms.Label();
+            this.pbFechaPago = new System.Windows.Forms.PictureBox();
             this.PanelTop.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -164,6 +166,7 @@ namespace wfaIntegradoCom.Procesos
             this.siticoneGroupBox5.SuspendLayout();
             this.gbCliente.SuspendLayout();
             this.cmsPagoCuotas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelTop
@@ -766,6 +769,7 @@ namespace wfaIntegradoCom.Procesos
             // tbCronogramas
             // 
             this.tbCronogramas.AutoScroll = true;
+            this.tbCronogramas.Controls.Add(this.pbFechaPago);
             this.tbCronogramas.Controls.Add(this.imgMoneda);
             this.tbCronogramas.Controls.Add(this.imgComprobanteP);
             this.tbCronogramas.Controls.Add(this.dtFechaPago);
@@ -789,6 +793,7 @@ namespace wfaIntegradoCom.Procesos
             this.tbCronogramas.Controls.Add(this.siticoneGroupBox5);
             this.tbCronogramas.Controls.Add(this.gbCliente);
             this.tbCronogramas.Controls.Add(this.erMoneda);
+            this.tbCronogramas.Controls.Add(this.erFechaPago);
             this.tbCronogramas.Controls.Add(this.erComprobanteP);
             this.tbCronogramas.Location = new System.Drawing.Point(4, 22);
             this.tbCronogramas.Name = "tbCronogramas";
@@ -827,12 +832,12 @@ namespace wfaIntegradoCom.Procesos
             this.dtFechaPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtFechaPago.HoveredState.Parent = this.dtFechaPago;
-            this.dtFechaPago.Location = new System.Drawing.Point(737, 434);
+            this.dtFechaPago.Location = new System.Drawing.Point(737, 426);
             this.dtFechaPago.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaPago.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtFechaPago.Name = "dtFechaPago";
             this.dtFechaPago.ShadowDecoration.Parent = this.dtFechaPago;
-            this.dtFechaPago.Size = new System.Drawing.Size(256, 36);
+            this.dtFechaPago.Size = new System.Drawing.Size(259, 36);
             this.dtFechaPago.TabIndex = 266;
             this.dtFechaPago.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
             this.dtFechaPago.ValueChanged += new System.EventHandler(this.dtFechaPago_ValueChanged);
@@ -857,7 +862,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtCiclo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCiclo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCiclo.HoveredState.Parent = this.txtCiclo;
-            this.txtCiclo.Location = new System.Drawing.Point(681, 434);
+            this.txtCiclo.Location = new System.Drawing.Point(681, 426);
             this.txtCiclo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCiclo.Name = "txtCiclo";
             this.txtCiclo.PasswordChar = '\0';
@@ -889,7 +894,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtfechaoriginal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtfechaoriginal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtfechaoriginal.HoveredState.Parent = this.txtfechaoriginal;
-            this.txtfechaoriginal.Location = new System.Drawing.Point(15, 434);
+            this.txtfechaoriginal.Location = new System.Drawing.Point(15, 426);
             this.txtfechaoriginal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtfechaoriginal.Name = "txtfechaoriginal";
             this.txtfechaoriginal.PasswordChar = '\0';
@@ -907,7 +912,7 @@ namespace wfaIntegradoCom.Procesos
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(682, 418);
+            this.label11.Location = new System.Drawing.Point(682, 410);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 17);
             this.label11.TabIndex = 265;
@@ -958,7 +963,7 @@ namespace wfaIntegradoCom.Procesos
             this.cboCronograma.HoveredState.Parent = this.cboCronograma;
             this.cboCronograma.ItemHeight = 30;
             this.cboCronograma.ItemsAppearance.Parent = this.cboCronograma;
-            this.cboCronograma.Location = new System.Drawing.Point(196, 434);
+            this.cboCronograma.Location = new System.Drawing.Point(196, 426);
             this.cboCronograma.Name = "cboCronograma";
             this.cboCronograma.ShadowDecoration.Parent = this.cboCronograma;
             this.cboCronograma.Size = new System.Drawing.Size(460, 36);
@@ -1011,7 +1016,7 @@ namespace wfaIntegradoCom.Procesos
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(12, 417);
+            this.label12.Location = new System.Drawing.Point(12, 409);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(163, 18);
             this.label12.TabIndex = 262;
@@ -1022,7 +1027,7 @@ namespace wfaIntegradoCom.Procesos
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(737, 413);
+            this.label9.Location = new System.Drawing.Point(737, 405);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(128, 18);
             this.label9.TabIndex = 262;
@@ -1033,7 +1038,7 @@ namespace wfaIntegradoCom.Procesos
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(193, 417);
+            this.label4.Location = new System.Drawing.Point(193, 409);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 18);
             this.label4.TabIndex = 262;
@@ -1667,14 +1672,14 @@ namespace wfaIntegradoCom.Procesos
             this.cmsPagoCuotas.RenderStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.cmsPagoCuotas.RenderStyle.SeparatorColor = System.Drawing.Color.Gray;
             this.cmsPagoCuotas.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.SystemDefault;
-            this.cmsPagoCuotas.Size = new System.Drawing.Size(181, 70);
+            this.cmsPagoCuotas.Size = new System.Drawing.Size(157, 48);
             // 
             // msPagarCuota
             // 
             this.msPagarCuota.Image = global::wfaIntegradoCom.Properties.Resources.porPagar_base;
             this.msPagarCuota.Name = "msPagarCuota";
             this.msPagarCuota.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.msPagarCuota.Size = new System.Drawing.Size(180, 22);
+            this.msPagarCuota.Size = new System.Drawing.Size(156, 22);
             this.msPagarCuota.Text = "Pagar Cuota";
             this.msPagarCuota.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.msPagarCuota.Click += new System.EventHandler(this.msPagarCuota_Click);
@@ -1684,9 +1689,30 @@ namespace wfaIntegradoCom.Procesos
             this.msActializarPago.Image = global::wfaIntegradoCom.Properties.Resources.update;
             this.msActializarPago.Name = "msActializarPago";
             this.msActializarPago.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.msActializarPago.Size = new System.Drawing.Size(180, 22);
+            this.msActializarPago.Size = new System.Drawing.Size(156, 22);
             this.msActializarPago.Text = "Actualizar Pago";
             this.msActializarPago.Click += new System.EventHandler(this.msActializarPago_Click);
+            // 
+            // erFechaPago
+            // 
+            this.erFechaPago.AutoSize = true;
+            this.erFechaPago.BackColor = System.Drawing.Color.Transparent;
+            this.erFechaPago.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erFechaPago.ForeColor = System.Drawing.Color.Red;
+            this.erFechaPago.Location = new System.Drawing.Point(734, 462);
+            this.erFechaPago.Name = "erFechaPago";
+            this.erFechaPago.Size = new System.Drawing.Size(32, 13);
+            this.erFechaPago.TabIndex = 277;
+            this.erFechaPago.Text = "Error";
+            // 
+            // pbFechaPago
+            // 
+            this.pbFechaPago.BackColor = System.Drawing.Color.White;
+            this.pbFechaPago.Location = new System.Drawing.Point(1001, 434);
+            this.pbFechaPago.Name = "pbFechaPago";
+            this.pbFechaPago.Size = new System.Drawing.Size(20, 20);
+            this.pbFechaPago.TabIndex = 278;
+            this.pbFechaPago.TabStop = false;
             // 
             // frmControlPagoVenta
             // 
@@ -1728,6 +1754,7 @@ namespace wfaIntegradoCom.Procesos
             this.gbCliente.ResumeLayout(false);
             this.gbCliente.PerformLayout();
             this.cmsPagoCuotas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1831,5 +1858,7 @@ namespace wfaIntegradoCom.Procesos
         private Siticone.UI.WinForms.SiticoneTextBox txtfechaoriginal;
         private System.Windows.Forms.Label label12;
         private Siticone.UI.WinForms.SiticoneTextBox txtCiclo;
+        private System.Windows.Forms.PictureBox pbFechaPago;
+        private System.Windows.Forms.Label erFechaPago;
     }
 }
