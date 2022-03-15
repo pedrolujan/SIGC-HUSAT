@@ -37,18 +37,19 @@ namespace wfaIntegradoCom.Mantenedores
         static List<UbicacionEquipoInstalacion> lstUbicacionEquipo = new List<UbicacionEquipoInstalacion>();
         static Boolean EstadoInstalacion = false;
         static Int32 tabInicio;
+        static Int32 lnTipoCondicion = 0;
 
         private void btnBuscarVentas_Click(object sender, EventArgs e)
         {
             frmRegistrarVenta frmVentaGeneral = new frmRegistrarVenta();
             frmVentaGeneral.Inicio(3);
         }
-     
+
         private void frmInstalacionEquipo_Load(object sender, EventArgs e)
         {
 
             FunGeneral.fnLlenarTablaCodTipoCon(cboEstadosInst, "ESVG", true);
-            
+
 
 
             dtpFechaFinalBusIns.Value = Variables.gdFechaSis;
@@ -72,7 +73,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             dgvAccesorios.Visible = false;
             dgvServicios.Visible = false;
-           
+
             siticonePanel2.Visible = false;
             pbSubir.Visible = false;
             pbBajar.Visible = false;
@@ -95,7 +96,8 @@ namespace wfaIntegradoCom.Mantenedores
 
             FunValidaciones.fnHabilitarBoton(btnGuardarIns, false);
 
-
+          
+            fnActivarCamposInst(0, true);
 
         }
 
@@ -128,7 +130,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             try
             {
-                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, datoBuscar, datoEstado, numPagina, tipoLLamada, tipoCon,1);
+                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, datoBuscar, datoEstado, numPagina, tipoLLamada, tipoCon, 1);
 
                 Int32 totalResultados = datVentaG.Rows.Count;
                 if (totalResultados > 0)
@@ -261,14 +263,14 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void cboEstadosInst_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //fnBuscarListaVentas(dgvListaInstalaciones, Convert.ToString(cboEstadosInst.SelectedValue), btnTotalRegistrosIns, 0, 1, -1);
+            fnBuscarListaVentas(dgvListaInstalaciones, Convert.ToString(cboEstadosInst.SelectedValue), btnTotalRegistrosIns, 0, 1, -1);
 
-            if (Convert.ToString(cboEstadosInst.SelectedValue)== "ESVG0001")
+            if (Convert.ToString(cboEstadosInst.SelectedValue) == "ESVG0001")
             {
                 cmsMenuSeleccion.Items[0].Visible = true;
                 cmsMenuSeleccion.Items[1].Visible = false;
             }
-            else if(Convert.ToString(cboEstadosInst.SelectedValue) == "ESVG0002")
+            else if (Convert.ToString(cboEstadosInst.SelectedValue) == "ESVG0002")
             {
                 cmsMenuSeleccion.Items[0].Visible = false;
                 cmsMenuSeleccion.Items[1].Visible = true;
@@ -312,7 +314,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
             Int32 Num = Convert.ToInt32(cboPagIns.Text);
             fnBuscarListaVentas(dgvListaInstalaciones, Convert.ToString(cboEstadosInst.SelectedValue), btnTotalRegistrosIns, Num, 1, -2);
-            
+
         }
 
         private void dgvAccesorios_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -322,7 +324,7 @@ namespace wfaIntegradoCom.Mantenedores
             //VALIDACION DEL DGV ACCESORIO Y SERVICIOS- ACTIVO EN ACCESORIO -ACTIVA AUTOMATICAMENTE EL CHECK DE SERVICIOS Y VICEBERSA
 
             Int32 dato = Convert.ToInt32(dgvAccesorios.Rows[3].Cells[2].Value);
-            fnActivarChecks(e.RowIndex , dgvAccesorios);
+            fnActivarChecks(e.RowIndex, dgvAccesorios);
             //if (e.ColumnIndex == dgvAccesorios.Columns["Chk"].Index)
             //{
             //    if (e.RowIndex==3 && Convert.ToBoolean(dgvServicios.Rows[3].Cells[2].Value) == true)
@@ -375,11 +377,11 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void fnActivarChecks(Int32 index, SiticoneDataGridView dgvAcciones)
         {
-            if (dgvAcciones.Columns["Chk"].Index==2)
+            if (dgvAcciones.Columns["Chk"].Index == 2)
             {
-                if (index<4)
+                if (index < 4)
                 {
-                    if (dgvAcciones.Name== "dgvAccesorios")
+                    if (dgvAcciones.Name == "dgvAccesorios")
                     {
                         if (Convert.ToBoolean(dgvServicios.Rows[index].Cells[2].Value) == true)
                         {
@@ -392,7 +394,7 @@ namespace wfaIntegradoCom.Mantenedores
 
 
                     }
-                    else if (dgvAcciones.Name== "dgvServicios")
+                    else if (dgvAcciones.Name == "dgvServicios")
                     {
                         if (Convert.ToBoolean(dgvAccesorios.Rows[index].Cells[2].Value) == true)
                         {
@@ -403,13 +405,13 @@ namespace wfaIntegradoCom.Mantenedores
                             dgvAccesorios.Rows[index].Cells[2].Value = true;
 
                         }
-                        
+
                     }
-                    
+
                 }
-               
+
             }
-           
+
         }
 
         private void fnBusquedaAccesorios(DataTable datAcce)
@@ -425,17 +427,17 @@ namespace wfaIntegradoCom.Mantenedores
 
             //dgvAccesorios .Columns.Add(dgvAccE);
 
-          
+
 
 
             for (int i = 0; i <= datAcce.Rows.Count - 1; i++)
             {
 
-                    dtEmp.Rows.Add(
-                        datAcce.Rows[i][0],                  
-                        datAcce.Rows[i][1]
-                   
-                    );
+                dtEmp.Rows.Add(
+                    datAcce.Rows[i][0],
+                    datAcce.Rows[i][1]
+
+                );
             }
 
             dgvAccesorios.DataSource = dtEmp;
@@ -458,7 +460,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private void fnBusquedaServicios (DataTable datServ)
+        private void fnBusquedaServicios(DataTable datServ)
         {
             DataTable dtEmp = new DataTable();
             dtEmp.Columns.Add("ID", typeof(int));
@@ -498,7 +500,7 @@ namespace wfaIntegradoCom.Mantenedores
 
 
             dgvServicios.Columns[0].Visible = false;
-            
+
 
 
         }
@@ -538,13 +540,13 @@ namespace wfaIntegradoCom.Mantenedores
                 return true;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
 
             }
 
-            }
+        }
 
         public Boolean fnServisios(String lnIdPlan)
         {
@@ -580,7 +582,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -593,6 +595,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void seleccionarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lnTipoCondicion = 0;
             fnLimpiarListas();
             lstServicios.Clear();
             lstAccesorios.Clear();
@@ -606,104 +609,104 @@ namespace wfaIntegradoCom.Mantenedores
             lstVehiculo = fnDebolverDatVehiculo(RowVehiculos, ArrayVehiculos);
 
             fnLlamarDatosInstalacion(codVenta, lstVehiculo[0].vPlaca);
-            
+
             tabControl1.SelectedIndex = 0;
             String lnIdPlan = "";
 
             fnAccesorios(lnIdPlan);
             fnServisios(lnIdPlan);
+            //JJJJJJJJJJ
+            //dgvAccesorios.Visible = true;
+            //dgvServicios.Visible = true;
 
-            dgvAccesorios.Visible = true;
-            dgvServicios.Visible = true;
-
-            siticonePanel2.Visible = true;
-            lblSeleccionar.Visible = false;
-            lblGuardarAccYServ.Visible = true;
-            pbSubir.Visible = true;
-            pbBajar.Visible = false;
-
+            //siticonePanel2.Visible = true;
+            //lblSeleccionar.Visible = false;
+            //lblGuardarAccYServ.Visible = true;
+            //pbSubir.Visible = true;
+            //pbBajar.Visible = false;
+            //HHHHHHHHH
             fnActivarCamposActualizacion(true);
-
+            fnActivarCamposInst(1, true);
         }
         private void fnLlamarDatosInstalacion(String codVenta, String placa)
         {
 
             BLInstalacion objLlamarDatos = new BLInstalacion();
             clsUtil objUtil = new clsUtil();
-            DataTable dtResp = new DataTable();       
+            DataTable dtResp = new DataTable();
             try
             {
                 lstEquipoActual.Clear();
                 dtResp = objLlamarDatos.blLlEnarDatosIntalacion(codVenta, placa);
 
-                    foreach (DataRow dr in dtResp.Rows)
+                foreach (DataRow dr in dtResp.Rows)
+                {
+                    if (Convert.ToString(dr["vPlaca"]) == "")
                     {
-                        if (Convert.ToString(dr["vPlaca"]) == "")
-                        {
-                            txtPlacaVInst.Visible = false;
-                            lblplaca.Visible = false;
+                        txtPlacaVInst.Visible = false;
+                        lblplaca.Visible = false;
 
-                            lblSerieVInstalacion.Location = new Point(557, 27);
-                            txtSerieVInst.Location = new Point(555, 48);
+                        lblSerieVInstalacion.Location = new Point(557, 27);
+                        txtSerieVInst.Location = new Point(555, 48);
 
-                        }
-                        else
-                        {
-                            txtPlacaVInst.Visible = true;
-                            lblplaca.Visible = true;
+                    }
+                    else
+                    {
+                        txtPlacaVInst.Visible = true;
+                        lblplaca.Visible = true;
 
-                            lblSerieVInstalacion.Location = new Point(799, 28);
-                            txtSerieVInst.Location = new Point(802, 48);
-                        }
+                        lblSerieVInstalacion.Location = new Point(799, 28);
+                        txtSerieVInst.Location = new Point(802, 48);
+                    }
 
 
-                        lstCliente.Add(new Cliente
-                        {
-                            idVentaGen = Convert.ToInt32(dr["idVentaGeneral"]),
-                            codigoVentaGen = Convert.ToString(dr["codigoVenta"]),
-                            idReferencia = Convert.ToString(dr["idReferencia"]),
-                            cNombre = Convert.ToString(dr["cNombre"] + " " + dr["cApePat"] + " " + dr["cApeMat"]),
-                            cTelCelular = Convert.ToString(dr["cTelCelular"]),
-                            cCorreo = Convert.ToString(dr["cCorreo"]),
-                            cDireccion = Convert.ToString(dr["cDireccion"]),
-                            ubigeo = Convert.ToString(dr["cNomDist"] + " / " + dr["cNomProv"] + " / " + dr["cNomDep"]),
-                            cContactoNom1 = Convert.ToString(dr["cContactoNom1"]),
-                            dFechaRegistro = Convert.ToDateTime(dr["dFechaRefInstalacion"]),
-                            cDocumento = Convert.ToString(dr["cDocumento"]),
-                            cContactoNom2 = Convert.ToString(dr["tipoDocumento"])
-                        }); 
+                    lstCliente.Add(new Cliente
+                    {
+                        idVentaGen = Convert.ToInt32(dr["idVentaGeneral"]),
+                        codigoVentaGen = Convert.ToString(dr["codigoVenta"]),
+                        idReferencia = Convert.ToString(dr["idReferencia"]),
+                        cNombre = Convert.ToString(dr["cNombre"] + " " + dr["cApePat"] + " " + dr["cApeMat"]),
+                        cTelCelular = Convert.ToString(dr["cTelCelular"]),
+                        cCorreo = Convert.ToString(dr["cCorreo"]),
+                        cDireccion = Convert.ToString(dr["cDireccion"]),
+                        ubigeo = Convert.ToString(dr["cNomDist"] + " / " + dr["cNomProv"] + " / " + dr["cNomDep"]),
+                        cContactoNom1 = Convert.ToString(dr["cContactoNom1"]),
+                        dFechaRegistro = Convert.ToDateTime(dr["dFechaRefInstalacion"]),
+                        cDocumento = Convert.ToString(dr["cDocumento"]),
+                        cContactoNom2 = Convert.ToString(dr["tipoDocumento"])
+                    });
 
-                        lstVehiculo.Add(new Vehiculo
-                        {
-                            idVehiculo = Convert.ToInt32(dr["idVehiculo"]),
-                            vClase = Convert.ToString(dr["cNombreClaseV"] + " / " + dr["nombreMarcaV"] + " / " + dr["nombreModeloV"] + " / " + dr["cUsoV"]),
-                            vMarcaV = Convert.ToString(dr["nombreMarcaV"]),
-                            vModeloV=Convert.ToString(dr["nombreModeloV"]),
-                            vPlaca = Convert.ToString(dr["vPlaca"]),
-                            vSerie = Convert.ToString(dr["vSerie"]),
-                            vColor=Convert.ToString(dr["vColor"]),
+                    lstVehiculo.Add(new Vehiculo
+                    {
+                        idVehiculo = Convert.ToInt32(dr["idVehiculo"]),
+                        vClase = Convert.ToString(dr["cNombreClaseV"] + " / " + dr["nombreMarcaV"] + " / " + dr["nombreModeloV"] + " / " + dr["cUsoV"]),
+                        vMarcaV = Convert.ToString(dr["nombreMarcaV"]),
+                        vModeloV = Convert.ToString(dr["nombreModeloV"]),
+                        vPlaca = Convert.ToString(dr["vPlaca"]),
+                        vSerie = Convert.ToString(dr["vSerie"]),
+                        vColor = Convert.ToString(dr["vColor"]),
 
-                        }) ;
+                    });
 
-                        
+
                     lstPlan.Add(new Plan
-                        {
-                            tarifas=Convert.ToString(dr["nombreTipoTarifa"]),
-                            cLetraPlan = Convert.ToString(dr["cLetraContrato"]),
-                            nombrePlan = Convert.ToString(dr["nombrePlan"]),
-                            ContratoPlan = Convert.ToString(dr["nombreTipoPlan"]),
-                            CicloPlan = Convert.ToInt32(dr["cDia"]),
-                            idPlan= Convert.ToInt32(dr["idPlan"]),
-                            idTipoTarifa=Convert.ToInt32(dr["idTipoTarifa"])
-                        });
+                    {
+                        tarifas = Convert.ToString(dr["nombreTipoTarifa"]),
+                        cLetraPlan = Convert.ToString(dr["cLetraContrato"]),
+                        nombrePlan = Convert.ToString(dr["nombrePlan"]),
+                        ContratoPlan = Convert.ToString(dr["nombreTipoPlan"]),
+                        CicloPlan = Convert.ToInt32(dr["cDia"]),
+                        idPlan = Convert.ToInt32(dr["idPlan"]),
+                        idTipoTarifa = Convert.ToInt32(dr["idTipoTarifa"])
+                    });
 
-                        lstEquipoActual.Add(objLlamarDatos.blBuscarEquipo(Convert.ToInt32(dr["idEquipoImei"])));
-                        instalacion.idInstalacion = Convert.ToInt32(dr["idInstalacion"]);
-                        instalacion.codigoInstalacion = Convert.ToString(dr["CodigoInstalacion"]);
+                    lstEquipoActual.Add(objLlamarDatos.blBuscarEquipo(Convert.ToInt32(dr["idEquipoImei"])));
+                    instalacion.idInstalacion = Convert.ToInt32(dr["idInstalacion"]);
+                    instalacion.codigoInstalacion = Convert.ToString(dr["CodigoInstalacion"]);
 
-                        cboSeleccionarUbicacionE.SelectedValue= Convert.ToInt32(dtResp.Rows[0][35]);
-                        txtOtraUbicacion.Text = Convert.ToString(dr["DescripUbicacion"]);
-                        txtObserInst.Text = Convert.ToString(dr["Descripcion"]);
+                    cboSeleccionarUbicacionE.SelectedValue = Convert.ToInt32(dtResp.Rows[0][35]);
+                    txtOtraUbicacion.Text = Convert.ToString(dr["DescripUbicacion"]);
+                    txtObserInst.Text = Convert.ToString(dr["Descripcion"]);
 
 
 
@@ -712,30 +715,30 @@ namespace wfaIntegradoCom.Mantenedores
 
 
                 }
-                    foreach (Cliente drc in lstCliente)
-                    {
-                        txtCodVenta.Text = drc.codigoVentaGen;
-                        txtNomPerInst.Text = drc.cNombre + " " + drc.cApePat + " " + drc.cApeMat;
-                        txtCelularPerInst.Text = drc.cTelCelular;
-                        txtCorreoPerInst.Text = drc.cCorreo;
-                        txtDireccPerInst.Text = drc.cDireccion;
-                        txtDisProDepPerInst.Text = drc.ubigeo;
-                        txtParenPropieV.Text = drc.cContactoNom1;
-                        dtpFechaRegistro.Value = drc.dFechaRegistro;
+                foreach (Cliente drc in lstCliente)
+                {
+                    txtCodVenta.Text = drc.codigoVentaGen;
+                    txtNomPerInst.Text = drc.cNombre + " " + drc.cApePat + " " + drc.cApeMat;
+                    txtCelularPerInst.Text = drc.cTelCelular;
+                    txtCorreoPerInst.Text = drc.cCorreo;
+                    txtDireccPerInst.Text = drc.cDireccion;
+                    txtDisProDepPerInst.Text = drc.ubigeo;
+                    txtParenPropieV.Text = drc.cContactoNom1;
+                    dtpFechaRegistro.Value = drc.dFechaRegistro;
 
 
-                    }
-                    foreach (Vehiculo drv in lstVehiculo)
-                    {
-                        txtCMMUvehiculo.Text = drv.vClase;
-                        txtPlacaVInst.Text = drv.vPlaca;
-                        txtSerieVInst.Text = drv.vSerie;
+                }
+                foreach (Vehiculo drv in lstVehiculo)
+                {
+                    txtCMMUvehiculo.Text = drv.vClase;
+                    txtPlacaVInst.Text = drv.vPlaca;
+                    txtSerieVInst.Text = drv.vSerie;
 
-                    }
+                }
 
-                 fnPintarDatosEquipo(lstEquipoActual);
-                
-                
+                fnPintarDatosEquipo(lstEquipoActual);
+
+
 
 
                 btnBuscarEquipos.Enabled = true;
@@ -747,9 +750,9 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private void fnActivarChecksTablas(List<AccesoriosEquipo> lstAcc,List<ServicioEquipo> lstServ, DataTable td,DataGridView dgv)
+        private void fnActivarChecksTablas(List<AccesoriosEquipo> lstAcc, List<ServicioEquipo> lstServ, DataTable td, DataGridView dgv)
         {
-            if (dgv.Name== "dgvAccesorios")
+            if (dgv.Name == "dgvAccesorios")
             {
                 for (Int32 i = 0; i < td.Rows.Count; i++)
                 {
@@ -763,7 +766,7 @@ namespace wfaIntegradoCom.Mantenedores
                     }
                 }
             }
-            else if (dgv.Name== "dgvServicios")
+            else if (dgv.Name == "dgvServicios")
             {
                 for (Int32 i = 0; i < td.Rows.Count; i++)
                 {
@@ -777,7 +780,7 @@ namespace wfaIntegradoCom.Mantenedores
                     }
                 }
             }
-            
+
         }
         //static String DesEquipo = "";
         //static Int32 idEquipos = 0;
@@ -785,7 +788,7 @@ namespace wfaIntegradoCom.Mantenedores
         //static Int32 tipcon = 0;
 
 
-        public static void fnDatoEquipo( List<Equipo_imeis> lstEquipoImeis )
+        public static void fnDatoEquipo(List<Equipo_imeis> lstEquipoImeis)
         {
             lstEquipo.Clear();
             lstEquipo = lstEquipoImeis;
@@ -795,7 +798,7 @@ namespace wfaIntegradoCom.Mantenedores
             //tipcon = tpcon;
         }
 
-        private void fnPintarDatosEquipo( List<Equipo_imeis>lstEquipImei)
+        private void fnPintarDatosEquipo(List<Equipo_imeis> lstEquipImei)
         {
             foreach (Equipo_imeis dr in lstEquipImei)
             {
@@ -826,8 +829,8 @@ namespace wfaIntegradoCom.Mantenedores
             //btnGuardarIns.Enabled=true;
             gbUbicacion.Enabled = true;
             txtNomMarModEquipo_TextChanged(sender, e);
-           
 
+            fnActivarCamposInst(2, true);
             //btnGuardarIns.Enabled = true;
             //txtCelularPerInst.Text = Convert.ToString(dr["cTelCelular"]);
         }
@@ -864,7 +867,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             txtNomMarModEquipo.Text = "";
             txtEmailEquipo.Text = "";
-            TxtsimCard.Text="";
+            TxtsimCard.Text = "";
 
             txtObserInst.Text = "";
 
@@ -872,7 +875,7 @@ namespace wfaIntegradoCom.Mantenedores
             txtCodVehiculo.Text = "0";
             txtCodEquipo.Text = "0";
             txtidRefInstalacion.Text = "0";
-            
+
             btnBuscarEquipos.Enabled = false;
 
             gbObservacionesInst.Enabled = false;
@@ -880,7 +883,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             txtPlacaVInst.Visible = true;
             lblplaca.Visible = true;
-     
+
             lblSerieVInstalacion.Location = new Point(799, 28);
             txtSerieVInst.Location = new Point(802, 48);
             cboSeleccionarUbicacionE.SelectedValue = 0;
@@ -905,46 +908,19 @@ namespace wfaIntegradoCom.Mantenedores
             cboSeleccionarUbicacionE.Enabled = maria;
             txtObserInst.Enabled = maria;
             gbObservacionesInst.Enabled = maria;
-           
+
 
         }
         private void btnNuevoInst_Click(object sender, EventArgs e)
         {
 
-            if (Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue) == -3)
-            {
-                txtOtraUbicacion.Enabled = true;
-                btnGuardarIns.Enabled = false;
-                pbubicacion.Visible = true;
-                txtObserInst.Enabled = true;
-                gbObservacionesInst.Enabled = true;
-
-            }
-            else
-            {
-                txtOtraUbicacion.Enabled = false;
-                txtOtraUbicacion.Text = "";
-                txtObserInst.Enabled = true;
-                txtObserInst.Text = "";
-                
-                if ( Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue) != 0)
-                {
-                    gbObservacionesInst.Enabled = true;
-                    
-                    txtObserInst.Enabled = true;
-                    btnGuardarIns.Enabled = false;
-
-                }
-                   pbubicacion.Visible = false;
-
-            }
             estCliente = false;
             estEquipo = false;
 
             btnGuardarIns.Enabled = false;
-            
-            fnLimpiarControlesInstalacion();
 
+            fnLimpiarControlesInstalacion();
+            fnActivarCamposInst(1, true);
 
 
         }
@@ -953,7 +929,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
 
 
-            var Result = FunValidaciones.fnValidarTexboxs(txtObserInst, lbltxtObservacionIns, pbValObservacion, true, true, true, 0, 50, 50, 50, "LLENE TODOS LOS CAMPOS");
+            var Result = FunValidaciones.fnValidarTexboxs(txtObserInst, lbltxtObservacionIns, pbValObservacion, true, true, true, 0, 500, 500, 500, "LLENE TODOS LOS CAMPOS");
             estObservacion = Result.Item1;
             msjObservacion = Result.Item2;
 
@@ -971,7 +947,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
             FunValidaciones.fnValidarTipografia(e, "LENUMCARAC", true);
 
-            
+
         }
 
 
@@ -992,7 +968,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
             var Result = FunValidaciones.fnValidarTexboxs(txtNomMarModEquipo, lbltextequipo, pbtextequipo, true, true, true, 5, 50, 50, 70, "LLENE TODOS LOS CAMPOS");
             estEquipo = Result.Item1;
-            msjEquipo= Result.Item2;
+            msjEquipo = Result.Item2;
         }
 
         private void gbDatosPersona_Click(object sender, EventArgs e)
@@ -1027,29 +1003,29 @@ namespace wfaIntegradoCom.Mantenedores
                 }
             }
         }
-                
+
         private Boolean fnConfirmacionVistaPreviaG(List<xmlInstalacion> xmlInstal)
         {
             //FUNCION DE CONFIRMACION DE VISTA PREVIA
 
-                BLInstalacion objTipoVenta = new BLInstalacion();
-                clsUtil objUtil = new clsUtil();
-                DataTable dtResp = new DataTable();
-                //List<TipoVenta> lsTipoVenta = new List<TipoVenta>();
-                //Int32 filas = 20;
-               
-
-                    //xmlDocVenta = objTipoVenta.blConfirmacionVistaPGuardar(codigoVenta);
-
-                    Consultas.frmRptActa abrirFrmRptActa = new Consultas.frmRptActa();
-                    
-
-                    abrirFrmRptActa.Inicio(xmlInstal[0].ListaCliente,xmlInstal[0].ListaVehiculo,xmlInstal[0].ListaEquipo,xmlInstal[0].ListaPlan,xmlInstal[0].ListaAccesorio,xmlInstal[0].ListaServicio,xmlInstal[0].observaciones, xmlInstal[0].clsInstalacion,0);
-
-                    return true;
+            BLInstalacion objTipoVenta = new BLInstalacion();
+            clsUtil objUtil = new clsUtil();
+            DataTable dtResp = new DataTable();
+            //List<TipoVenta> lsTipoVenta = new List<TipoVenta>();
+            //Int32 filas = 20;
 
 
-         }
+            //xmlDocVenta = objTipoVenta.blConfirmacionVistaPGuardar(codigoVenta);
+
+            Consultas.frmRptActa abrirFrmRptActa = new Consultas.frmRptActa();
+
+
+            abrirFrmRptActa.Inicio(xmlInstal[0].ListaCliente, xmlInstal[0].ListaVehiculo, xmlInstal[0].ListaEquipo, xmlInstal[0].ListaPlan, xmlInstal[0].ListaAccesorio, xmlInstal[0].ListaServicio, xmlInstal[0].observaciones, xmlInstal[0].clsInstalacion, 0);
+
+            return true;
+
+
+        }
 
         private void dgvServicios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1139,14 +1115,14 @@ namespace wfaIntegradoCom.Mantenedores
             List<ServicioEquipo> objServicio = new List<ServicioEquipo>();
 
             AccesoriosEquipo clsAccesorio;
-            ServicioEquipo clsServicio ;
+            ServicioEquipo clsServicio;
 
             objAccesorios.Clear();
             objServicio.Clear();
 
             foreach (DataGridViewRow row in dgvAccesorios.Rows)
             {
-                clsAccesorio =new AccesoriosEquipo();
+                clsAccesorio = new AccesoriosEquipo();
 
                 clsAccesorio.idAccesorios = Convert.ToInt32(row.Cells[0].Value);
                 clsAccesorio.NombreAccesorio = Convert.ToString(row.Cells[1].Value);
@@ -1170,14 +1146,14 @@ namespace wfaIntegradoCom.Mantenedores
 
             }
 
-            
+
 
             return Tuple.Create(objAccesorios, objServicio);
         }
         private void dgvAccesorios_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if  (e.ColumnIndex == dgvAccesorios.Columns["Chk"].Index)
-                {
+            if (e.ColumnIndex == dgvAccesorios.Columns["Chk"].Index)
+            {
                 dgvAccesorios.Cursor = Cursors.Hand;
             }
             else
@@ -1223,20 +1199,19 @@ namespace wfaIntegradoCom.Mantenedores
             //
             //
             //.Visible = true;
-           
+
         }
 
         private void txtOtraUbicacion_TextChanged(object sender, EventArgs e)
-        
         {
-            var Result = FunValidaciones.fnValidarTexboxs(txtOtraUbicacion, lblUbicacionEquipo,pbubicacion, true, true, true, 4, 50, 50, 50, "LLENE TODOS LOS CAMPOS");
+            var Result = FunValidaciones.fnValidarTexboxs(txtOtraUbicacion, lblUbicacionEquipo, pbubicacion, true, true, true, 4, 50, 50, 50, "LLENE TODOS LOS CAMPOS");
             estUbicacion = Result.Item1;
-            msjUbicacion= Result.Item2;
-           
+            msjUbicacion = Result.Item2;
+
             if (estUbicacion == true)
             { FunValidaciones.fnHabilitarBoton(btnGuardarIns, true); }
             else
-            { FunValidaciones.fnHabilitarBoton(btnGuardarIns, true); }
+            { FunValidaciones.fnHabilitarBoton(btnGuardarIns, false); }
 
         }
 
@@ -1299,7 +1274,7 @@ namespace wfaIntegradoCom.Mantenedores
                 }
                 else
                 {
-                    MessageBox.Show("Por favor registre la instalacion para imprimir el acta","Aviso 🤨!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor registre la instalacion para imprimir el acta", "Aviso 🤨!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -1311,12 +1286,12 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void actualizarInstalacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         
+            lnTipoCondicion = 1;
 
             fnLimpiarListas();
             lstServicios.Clear();
             lstAccesorios.Clear();
-            
+
             String codVenta = "";
             codVenta = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[0].Value);
 
@@ -1343,7 +1318,8 @@ namespace wfaIntegradoCom.Mantenedores
             pbSubir.Visible = true;
             pbBajar.Visible = false;
 
-               fnActivarCamposActualizacion(true);
+            fnActivarCamposActualizacion(true);
+
         }
 
         private void siticonePictureBox1_Click(object sender, EventArgs e)
@@ -1412,7 +1388,7 @@ namespace wfaIntegradoCom.Mantenedores
             }
             catch (Exception ex)
             {
-                
+
                 return false;
             }
             finally
@@ -1421,37 +1397,11 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
 
-    
+
 
         private void cboSeleccionarUbicacionE_SelectedIndexChanged(object sender, EventArgs e)
-        
+       
         {
-            if (Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue)==-3)
-            {
-                 txtOtraUbicacion.Enabled = true;
-                btnGuardarIns.Enabled = false;
-                pbubicacion.Visible = true;
-                txtObserInst.Enabled = true;
-                gbObservacionesInst.Enabled = true;
-
-            }
-            else
-            {
-
-                txtOtraUbicacion.Enabled = false;
-                txtObserInst.Text = "";
-                gbObservacionesInst.Enabled = true;
-                txtObserInst.Enabled = true;
-                if (estCliente == true && estEquipo == true && Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue) != 0)
-                {
-                    
-                    btnGuardarIns.Enabled = false;
-
-                }
-                pbubicacion.Visible = false;
-
-
-            }
 
 
             //Int32 idUbicacion = 1;
@@ -1459,6 +1409,7 @@ namespace wfaIntegradoCom.Mantenedores
             //cboClaseV.ValueMember = "idClase";
             //cboClaseV.DisplayMember = "cNomClase";
             //cboClaseV.DataSource = lstClase;
+            fnActivarCamposInst(3, true);
 
         }
 
@@ -1472,7 +1423,7 @@ namespace wfaIntegradoCom.Mantenedores
             DateTime FechaInstalacion = dtpFechaRegistro.Value;
             Boolean respuesta = false;
             Boolean resul = false;
-            
+
             frmRegistrarVenta fntecnico = new frmRegistrarVenta();
             instalacion.cUsuario = fntecnico.fnObtenerUsuarioActual();
             instalacion.dFechaIntal = Convert.ToDateTime(dtpFechaRegistro.Value);
@@ -1499,16 +1450,16 @@ namespace wfaIntegradoCom.Mantenedores
                 ListaUbicacionEquipo = lstUbicacionEquipo,
                 observaciones = txtObserInst.Text.ToString() == "" ? "Sin Observacion" : txtObserInst.Text.ToString(),
                 clsInstalacion = instalacion
-            }) ;
-            
-          
-            if (estCliente==true && estEquipo==true /*&& estObservacion==true*/ && xmlInstal[0].ListaUbicacionEquipo[0].idUbicacionEquipo!=0)
-            {
-                
-                        //FUNCION DE CONFIRMACION DE VISTA PREVIA
+            });
 
-               fnConfirmacionVistaPreviaG(xmlInstal);
-                
+
+            if (estCliente == true && estEquipo == true /*&& estObservacion==true*/ && xmlInstal[0].ListaUbicacionEquipo[0].idUbicacionEquipo != 0)
+            {
+
+                //FUNCION DE CONFIRMACION DE VISTA PREVIA
+
+                fnConfirmacionVistaPreviaG(xmlInstal);
+
 
 
                 if (EstadoInstalacion == true)
@@ -1531,7 +1482,7 @@ namespace wfaIntegradoCom.Mantenedores
                 }
                 else
                 {
-                    
+
                 }
 
             }
@@ -1539,22 +1490,23 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 MessageBox.Show("COMPLETA TODOS LOS CAMPOS", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
+            fnActivarCamposInst(0, true);
 
         }
         //falta las texboxs ocultos para las id agregar a los campos qeu se envia 
-        private Boolean FnGuardarInstalacionEquipo( List<xmlInstalacion> xmlInstal,  Int32 idUsuario, DateTime FechaInstalacion)
+        private Boolean FnGuardarInstalacionEquipo(List<xmlInstalacion> xmlInstal, Int32 idUsuario, DateTime FechaInstalacion)
         {
             DateTime dfechaSis = Variables.gdFechaSis;
             BLInstalacion objGuardarInst = new BLInstalacion();
             clsUtil objUtil = new clsUtil();
             Boolean respuesta = false;
-            
+
 
 
             try
             {
-               return respuesta=objGuardarInst.blGrabarInstalacionEquipo( xmlInstal,idUsuario,FechaInstalacion);
+                return respuesta = objGuardarInst.blGrabarInstalacionEquipo(xmlInstal, idUsuario, FechaInstalacion);
             }
             catch (Exception ex)
             {
@@ -1589,7 +1541,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(tabControl1.SelectedIndex == 0)
+            if (tabControl1.SelectedIndex == 0)
             {
                 fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTRegistros, 0, 1, -3);
                 //fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTRegistros, 0, 1, -1);
@@ -1601,9 +1553,86 @@ namespace wfaIntegradoCom.Mantenedores
                 //fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTotalRegistrosIns, 0, 1, -1);
             }
         }
-  
+        private void fnActivarCamposInst(Int32 condicion, Boolean estado)
+        {
+            if (condicion == 0)
+            {
+                cboSeleccionarUbicacionE.Enabled = !estado;
+                txtOtraUbicacion.Enabled = !estado;
+                gbObservacionesInst.Enabled = !estado;
+                btnGuardarIns.Enabled = !estado;
+                btnBuscarEquipos.Enabled = !estado;
+            }
+            else if (condicion == 1)
+            {
+                btnBuscarEquipos.Enabled = estado;
+                cboSeleccionarUbicacionE.Enabled = !estado;
+                txtOtraUbicacion.Enabled = !estado;
+                gbObservacionesInst.Enabled = !estado;
+                btnGuardarIns.Enabled = !estado;
+                cboSeleccionarUbicacionE.Enabled = !estado;
+
+               
+            }
+            else if (condicion == 2)
+
+            {
+                cboSeleccionarUbicacionE.Enabled = estado;
+
+
+                if (Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue) == -3)
+                {
+                    txtOtraUbicacion.Enabled = estado;
+                    gbObservacionesInst.Enabled = estado;
+                    btnGuardarIns.Enabled = estado;
+
+                }
+
+                else if (Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue)  != 0 && lnTipoCondicion == 0)
+                {
+                    txtOtraUbicacion.Enabled = !estado;
+
+                    gbObservacionesInst.Enabled = estado;
+                    btnGuardarIns.Enabled = estado;
+                }
+
+
+            }
+            else if (condicion==3)
+            {
+                cboSeleccionarUbicacionE.Enabled = estado;
+
+
+                if (Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue) == -3)
+                {
+                    txtOtraUbicacion.Enabled = estado;
+                    txtOtraUbicacion.Text = "";
+                    gbObservacionesInst.Enabled = estado;
+                    btnGuardarIns.Enabled = !estado;
+
+                }
+
+                else if (Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue) != 0)
+                {
+                    txtOtraUbicacion.Enabled = !estado;
+                   
+                    gbObservacionesInst.Enabled = estado;
+                    btnGuardarIns.Enabled = estado;
+                }
+            }
+
+            
+
+        }
+           
+
+
+
+            
+
     }
 
 
+    
 }
 

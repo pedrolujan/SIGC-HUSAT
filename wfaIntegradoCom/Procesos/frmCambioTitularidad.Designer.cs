@@ -112,21 +112,22 @@ namespace wfaIntegradoCom.Procesos
             this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtFechaTitulacion = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnBoleta = new Siticone.UI.WinForms.SiticoneButton();
             this.dgConsultaCliente = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtSubT = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtIGV = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtTotal = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtImporte = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtBuscarCliente = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtImporte = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.txtTotal = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.txtIGV = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.TxtSubT = new Siticone.UI.WinForms.SiticoneTextBox();
             this.gunaPanel1.SuspendLayout();
             this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbplaca)).BeginInit();
@@ -140,8 +141,8 @@ namespace wfaIntegradoCom.Procesos
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgConsulta)).BeginInit();
             this.siticonePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgConsultaCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaPanel1
@@ -737,7 +738,7 @@ namespace wfaIntegradoCom.Procesos
             // 
             // lblDireccionN
             // 
-            this.lblDireccionN.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblDireccionN.BackColor = System.Drawing.SystemColors.Control;
             this.lblDireccionN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDireccionN.Location = new System.Drawing.Point(145, 234);
             this.lblDireccionN.Name = "lblDireccionN";
@@ -793,7 +794,7 @@ namespace wfaIntegradoCom.Procesos
             // 
             // lblTelNuevo
             // 
-            this.lblTelNuevo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblTelNuevo.BackColor = System.Drawing.SystemColors.Control;
             this.lblTelNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelNuevo.Location = new System.Drawing.Point(142, 156);
             this.lblTelNuevo.Name = "lblTelNuevo";
@@ -869,7 +870,7 @@ namespace wfaIntegradoCom.Procesos
             // 
             // lblClienteNuevo
             // 
-            this.lblClienteNuevo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblClienteNuevo.BackColor = System.Drawing.SystemColors.Control;
             this.lblClienteNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClienteNuevo.Location = new System.Drawing.Point(145, 59);
             this.lblClienteNuevo.Name = "lblClienteNuevo";
@@ -878,7 +879,7 @@ namespace wfaIntegradoCom.Procesos
             // 
             // lblDniNuevo
             // 
-            this.lblDniNuevo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblDniNuevo.BackColor = System.Drawing.SystemColors.Control;
             this.lblDniNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDniNuevo.Location = new System.Drawing.Point(141, 107);
             this.lblDniNuevo.Name = "lblDniNuevo";
@@ -1072,7 +1073,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsulta.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgConsulta.EnableHeadersVisualStyles = false;
             this.dgConsulta.GridColor = System.Drawing.Color.Silver;
-            this.dgConsulta.Location = new System.Drawing.Point(387, 69);
+            this.dgConsulta.Location = new System.Drawing.Point(126, 69);
             this.dgConsulta.Name = "dgConsulta";
             this.dgConsulta.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1115,6 +1116,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsulta.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.dgConsulta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsulta_CellContentClick);
             this.dgConsulta.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsulta_CellContentDoubleClick);
+            this.dgConsulta.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsulta_CellDoubleClick);
             // 
             // id
             // 
@@ -1170,7 +1172,7 @@ namespace wfaIntegradoCom.Procesos
             // 
             this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticonePanel1.BorderThickness = 2;
-            this.siticonePanel1.Controls.Add(this.dgConsultaCliente);
+            this.siticonePanel1.Controls.Add(this.btnBoleta);
             this.siticonePanel1.Controls.Add(this.TxtSubT);
             this.siticonePanel1.Controls.Add(this.txtIGV);
             this.siticonePanel1.Controls.Add(this.txtTotal);
@@ -1186,6 +1188,7 @@ namespace wfaIntegradoCom.Procesos
             this.siticonePanel1.Controls.Add(this.siticoneGroupBox1);
             this.siticonePanel1.Controls.Add(this.label2);
             this.siticonePanel1.Controls.Add(this.siticoneGroupBox2);
+            this.siticonePanel1.Controls.Add(this.dgConsultaCliente);
             this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
@@ -1193,16 +1196,27 @@ namespace wfaIntegradoCom.Procesos
             this.siticonePanel1.Size = new System.Drawing.Size(1157, 637);
             this.siticonePanel1.TabIndex = 322;
             // 
-            // pictureBox1
+            // btnBoleta
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(711, 389);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 18);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 348;
-            this.pictureBox1.TabStop = false;
+            this.btnBoleta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnBoleta.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(57)))));
+            this.btnBoleta.BorderRadius = 3;
+            this.btnBoleta.BorderThickness = 1;
+            this.btnBoleta.CheckedState.Parent = this.btnBoleta;
+            this.btnBoleta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBoleta.CustomImages.Parent = this.btnBoleta;
+            this.btnBoleta.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnBoleta.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBoleta.ForeColor = System.Drawing.Color.White;
+            this.btnBoleta.HoveredState.Parent = this.btnBoleta;
+            this.btnBoleta.Location = new System.Drawing.Point(849, 592);
+            this.btnBoleta.Name = "btnBoleta";
+            this.btnBoleta.ShadowDecoration.Parent = this.btnBoleta;
+            this.btnBoleta.Size = new System.Drawing.Size(109, 28);
+            this.btnBoleta.TabIndex = 362;
+            this.btnBoleta.Text = "Boleta";
+            this.btnBoleta.CheckedChanged += new System.EventHandler(this.btnBoleta_CheckedChanged);
+            this.btnBoleta.Click += new System.EventHandler(this.btnBoleta_Click);
             // 
             // dgConsultaCliente
             // 
@@ -1281,6 +1295,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsultaCliente.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgConsultaCliente.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.dgConsultaCliente.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsultaCliente_CellContentDoubleClick_1);
+            this.dgConsultaCliente.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsultaCliente_CellDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1302,6 +1317,167 @@ namespace wfaIntegradoCom.Procesos
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 433;
+            // 
+            // TxtSubT
+            // 
+            this.TxtSubT.Animated = false;
+            this.TxtSubT.BorderRadius = 3;
+            this.TxtSubT.BorderThickness = 2;
+            this.TxtSubT.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtSubT.DefaultText = "";
+            this.TxtSubT.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtSubT.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtSubT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtSubT.DisabledState.Parent = this.TxtSubT;
+            this.TxtSubT.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtSubT.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtSubT.FocusedState.Parent = this.TxtSubT;
+            this.TxtSubT.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtSubT.HoveredState.Parent = this.TxtSubT;
+            this.TxtSubT.Location = new System.Drawing.Point(916, 465);
+            this.TxtSubT.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.TxtSubT.Name = "TxtSubT";
+            this.TxtSubT.PasswordChar = '\0';
+            this.TxtSubT.PlaceholderText = "";
+            this.TxtSubT.SelectedText = "";
+            this.TxtSubT.ShadowDecoration.Parent = this.TxtSubT;
+            this.TxtSubT.Size = new System.Drawing.Size(200, 28);
+            this.TxtSubT.TabIndex = 361;
+            // 
+            // txtIGV
+            // 
+            this.txtIGV.Animated = false;
+            this.txtIGV.BorderRadius = 3;
+            this.txtIGV.BorderThickness = 2;
+            this.txtIGV.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIGV.DefaultText = "";
+            this.txtIGV.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtIGV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtIGV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtIGV.DisabledState.Parent = this.txtIGV;
+            this.txtIGV.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtIGV.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtIGV.FocusedState.Parent = this.txtIGV;
+            this.txtIGV.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtIGV.HoveredState.Parent = this.txtIGV;
+            this.txtIGV.Location = new System.Drawing.Point(916, 508);
+            this.txtIGV.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtIGV.Name = "txtIGV";
+            this.txtIGV.PasswordChar = '\0';
+            this.txtIGV.PlaceholderText = "";
+            this.txtIGV.SelectedText = "";
+            this.txtIGV.ShadowDecoration.Parent = this.txtIGV;
+            this.txtIGV.Size = new System.Drawing.Size(200, 28);
+            this.txtIGV.TabIndex = 360;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Animated = false;
+            this.txtTotal.BorderRadius = 3;
+            this.txtTotal.BorderThickness = 2;
+            this.txtTotal.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTotal.DefaultText = "";
+            this.txtTotal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTotal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTotal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTotal.DisabledState.Parent = this.txtTotal;
+            this.txtTotal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTotal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTotal.FocusedState.Parent = this.txtTotal;
+            this.txtTotal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTotal.HoveredState.Parent = this.txtTotal;
+            this.txtTotal.Location = new System.Drawing.Point(916, 551);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.PasswordChar = '\0';
+            this.txtTotal.PlaceholderText = "";
+            this.txtTotal.SelectedText = "";
+            this.txtTotal.ShadowDecoration.Parent = this.txtTotal;
+            this.txtTotal.Size = new System.Drawing.Size(200, 28);
+            this.txtTotal.TabIndex = 359;
+            // 
+            // txtImporte
+            // 
+            this.txtImporte.Animated = false;
+            this.txtImporte.BorderRadius = 3;
+            this.txtImporte.BorderThickness = 2;
+            this.txtImporte.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtImporte.DefaultText = "";
+            this.txtImporte.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtImporte.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtImporte.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtImporte.DisabledState.Parent = this.txtImporte;
+            this.txtImporte.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtImporte.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtImporte.FocusedState.Parent = this.txtImporte;
+            this.txtImporte.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtImporte.HoveredState.Parent = this.txtImporte;
+            this.txtImporte.Location = new System.Drawing.Point(916, 422);
+            this.txtImporte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txtImporte.Name = "txtImporte";
+            this.txtImporte.PasswordChar = '\0';
+            this.txtImporte.PlaceholderText = "";
+            this.txtImporte.SelectedText = "";
+            this.txtImporte.ShadowDecoration.Parent = this.txtImporte;
+            this.txtImporte.Size = new System.Drawing.Size(200, 28);
+            this.txtImporte.TabIndex = 358;
+            this.txtImporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporte_KeyPress);
+            this.txtImporte.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtImporte_KeyUp);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(863, 556);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 18);
+            this.label12.TabIndex = 357;
+            this.label12.Text = "Total:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(837, 472);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 18);
+            this.label11.TabIndex = 355;
+            this.label11.Text = "SubTotal:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(872, 514);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 18);
+            this.label10.TabIndex = 354;
+            this.label10.Text = "IGV:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(846, 430);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 18);
+            this.label3.TabIndex = 353;
+            this.label3.Text = "Importe:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(711, 389);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 18);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 348;
+            this.pictureBox1.TabStop = false;
             // 
             // txtBuscarCliente
             // 
@@ -1350,156 +1526,6 @@ namespace wfaIntegradoCom.Procesos
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(846, 430);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 18);
-            this.label3.TabIndex = 353;
-            this.label3.Text = "Importe:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(872, 514);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 18);
-            this.label10.TabIndex = 354;
-            this.label10.Text = "IGV:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(837, 472);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 18);
-            this.label11.TabIndex = 355;
-            this.label11.Text = "SubTotal:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(863, 556);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(45, 18);
-            this.label12.TabIndex = 357;
-            this.label12.Text = "Total:";
-            // 
-            // txtImporte
-            // 
-            this.txtImporte.Animated = false;
-            this.txtImporte.BorderRadius = 3;
-            this.txtImporte.BorderThickness = 2;
-            this.txtImporte.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtImporte.DefaultText = "";
-            this.txtImporte.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtImporte.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtImporte.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtImporte.DisabledState.Parent = this.txtImporte;
-            this.txtImporte.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtImporte.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtImporte.FocusedState.Parent = this.txtImporte;
-            this.txtImporte.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtImporte.HoveredState.Parent = this.txtImporte;
-            this.txtImporte.Location = new System.Drawing.Point(916, 422);
-            this.txtImporte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txtImporte.Name = "txtImporte";
-            this.txtImporte.PasswordChar = '\0';
-            this.txtImporte.PlaceholderText = "";
-            this.txtImporte.SelectedText = "";
-            this.txtImporte.ShadowDecoration.Parent = this.txtImporte;
-            this.txtImporte.Size = new System.Drawing.Size(200, 28);
-            this.txtImporte.TabIndex = 358;
-            this.txtImporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporte_KeyPress);
-            this.txtImporte.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtImporte_KeyUp);
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Animated = false;
-            this.txtTotal.BorderRadius = 3;
-            this.txtTotal.BorderThickness = 2;
-            this.txtTotal.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTotal.DefaultText = "";
-            this.txtTotal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTotal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTotal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTotal.DisabledState.Parent = this.txtTotal;
-            this.txtTotal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTotal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotal.FocusedState.Parent = this.txtTotal;
-            this.txtTotal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotal.HoveredState.Parent = this.txtTotal;
-            this.txtTotal.Location = new System.Drawing.Point(916, 551);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.PasswordChar = '\0';
-            this.txtTotal.PlaceholderText = "";
-            this.txtTotal.SelectedText = "";
-            this.txtTotal.ShadowDecoration.Parent = this.txtTotal;
-            this.txtTotal.Size = new System.Drawing.Size(200, 28);
-            this.txtTotal.TabIndex = 359;
-            // 
-            // txtIGV
-            // 
-            this.txtIGV.Animated = false;
-            this.txtIGV.BorderRadius = 3;
-            this.txtIGV.BorderThickness = 2;
-            this.txtIGV.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtIGV.DefaultText = "";
-            this.txtIGV.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtIGV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtIGV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtIGV.DisabledState.Parent = this.txtIGV;
-            this.txtIGV.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtIGV.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtIGV.FocusedState.Parent = this.txtIGV;
-            this.txtIGV.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtIGV.HoveredState.Parent = this.txtIGV;
-            this.txtIGV.Location = new System.Drawing.Point(916, 508);
-            this.txtIGV.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtIGV.Name = "txtIGV";
-            this.txtIGV.PasswordChar = '\0';
-            this.txtIGV.PlaceholderText = "";
-            this.txtIGV.SelectedText = "";
-            this.txtIGV.ShadowDecoration.Parent = this.txtIGV;
-            this.txtIGV.Size = new System.Drawing.Size(200, 28);
-            this.txtIGV.TabIndex = 360;
-            // 
-            // TxtSubT
-            // 
-            this.TxtSubT.Animated = false;
-            this.TxtSubT.BorderRadius = 3;
-            this.TxtSubT.BorderThickness = 2;
-            this.TxtSubT.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TxtSubT.DefaultText = "";
-            this.TxtSubT.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TxtSubT.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TxtSubT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtSubT.DisabledState.Parent = this.TxtSubT;
-            this.TxtSubT.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtSubT.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtSubT.FocusedState.Parent = this.TxtSubT;
-            this.TxtSubT.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtSubT.HoveredState.Parent = this.TxtSubT;
-            this.TxtSubT.Location = new System.Drawing.Point(916, 465);
-            this.TxtSubT.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.TxtSubT.Name = "TxtSubT";
-            this.TxtSubT.PasswordChar = '\0';
-            this.TxtSubT.PlaceholderText = "";
-            this.TxtSubT.SelectedText = "";
-            this.TxtSubT.ShadowDecoration.Parent = this.TxtSubT;
-            this.TxtSubT.Size = new System.Drawing.Size(200, 28);
-            this.TxtSubT.TabIndex = 361;
-            // 
             // frmCambioTitularidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -1536,8 +1562,8 @@ namespace wfaIntegradoCom.Procesos
             ((System.ComponentModel.ISupportInitialize)(this.dgConsulta)).EndInit();
             this.siticonePanel1.ResumeLayout(false);
             this.siticonePanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgConsultaCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1626,5 +1652,6 @@ namespace wfaIntegradoCom.Procesos
         private Siticone.UI.WinForms.SiticoneTextBox txtIGV;
         private Siticone.UI.WinForms.SiticoneTextBox txtTotal;
         private Siticone.UI.WinForms.SiticoneTextBox txtImporte;
+        private Siticone.UI.WinForms.SiticoneButton btnBoleta;
     }
 }

@@ -96,6 +96,7 @@
     <Compile Include="TipoPersona.cs" />
     <Compile Include="TipoPlan.cs" />
     <Compile Include="TipoVenta.cs" />
+    <Compile Include="Titularidad.cs" />
     <Compile Include="Traslado.cs" />
     <Compile Include="Ubigeo.cs" />
     <Compile Include="UnidadMedida.cs" />
