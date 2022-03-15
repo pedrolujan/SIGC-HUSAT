@@ -316,15 +316,36 @@ namespace wfaIntegradoCom.Procesos
                     Int32 diaNuevaFecha=0;
                     String cDias = "";
                     String tiempoTranscurrido = "";
+                    
                     Int32 cicloPago = Convert.ToInt32(dtt.Rows[i][11]);
                     diaCicloPago = cicloPago;
+
                     DateTime dtFechActual = Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy"));
+                    TimeSpan tiket = dtFechActual - dtFechActual.AddDays(-1);
                     Int32 cantDiasMesActual = DateTime.DaysInMonth(dtFechActual.Year, dtFechActual.Month);
 
                     DateTime dtFechaDePago = Convert.ToDateTime(Convert.ToDateTime(dtt.Rows[i][4].ToString()).ToString("dd/MM/yyyy"));
                     diaNuevaFecha = cantDiasMesActual < diaCicloPago ? cantDiasMesActual : diaCicloPago;
 
-                    DateTime dtFechaPagoCronograma = Convert.ToDateTime(diaNuevaFecha + "/" +(dtFechActual.Month) +"/"+ dtFechActual.Year);
+                    DateTime dtFechaPagoCronograma = Convert.ToDateTime(diaNuevaFecha + "/" +(dtFechaDePago.Month) +"/"+ dtFechaDePago.Year);
+
+                    Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
+                    if (dtFechActual > dtFechaPagoCronograma)
+                    {
+                        tiket = dtFechActual - dtFechaPagoCronograma;
+                    }
+                    else
+                    {
+                         tiket = dtFechaPagoCronograma-dtFechActual ;
+                    }
+
+                    DateTime totalTime = new DateTime(tiket.Ticks);
+                    restaAnio = totalTime.Year - 1;
+                    restaMeses = totalTime.Month - 1;
+                    faltaDias = Convert.ToInt32(totalTime.Day - 1);
+
+
+
 
                     Int32 numMesPago = Convert.ToInt32(Convert.ToDateTime(dtt.Rows[i][4].ToString()).ToString("MM"));
                     Int32 diaFechaPago = Convert.ToInt32(Convert.ToDateTime(dtt.Rows[i][4].ToString()).ToString("dd"));
@@ -364,14 +385,14 @@ namespace wfaIntegradoCom.Procesos
 
                         TimeSpan Diff_dates = dtFechActual.Subtract(fechaPagoCiclo);
 
-                        DateTime totalTime = new DateTime(age.Ticks);                      
-                        restaAnio = totalTime.Year - 1;
-                        restaMeses = totalTime.Month - 1;
-                        faltaDias = Convert.ToInt32(totalTime.Day- numRestarADIAs);
+                        //DateTime totalTime = new DateTime(age.Ticks);                      
+                        //restaAnio = totalTime.Year - 1;
+                        //restaMeses = totalTime.Month - 1;
+                        //faltaDias = Convert.ToInt32(totalTime.Day- numRestarADIAs);
 
 
                         cDias = faltaDias == 1 ? " Dia " : " Dias ";
-                        if (fechaPagoCiclo.AddDays(-numDiasrestar) <dtFechActual)
+                        if (dtFechaPagoCronograma < dtFechActual)
                         {
                             if (restaAnio>0)
                             {
@@ -403,7 +424,16 @@ namespace wfaIntegradoCom.Procesos
                             }
                             else
                             {
-                                tiempoTranscurrido = "\n‼ Solo tienes ( " + faltaDias + " )" + cDias+ " para cobrar";
+                                if (faltaDias==0)
+                                {
+                                    tiempoTranscurrido = "\n‼ El dia de pago es hoy "+ dtFechActual.ToString("dd/MMM");
+
+                                }
+                                else
+                                {
+                                    tiempoTranscurrido = "\n‼ Solo tienes ( " + faltaDias + " )" + cDias+ " para cobrar";
+
+                                }
                             }
 
                         }
@@ -412,6 +442,8 @@ namespace wfaIntegradoCom.Procesos
                     }
                     else
                     {
+                        
+                        tiempoTranscurrido = "\n✅ El ( " + Convert.ToDateTime(dtt.Rows[i][13]).ToString("dd/MMM/yyyy") + " )";
                         estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dtt.Rows[i][10])) + tiempoTranscurrido;
 
                     }

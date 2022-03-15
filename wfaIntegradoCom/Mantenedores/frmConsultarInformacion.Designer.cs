@@ -176,6 +176,9 @@
             this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
             this.panelPrincipal = new Siticone.UI.WinForms.SiticonePanel();
             this.drcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
+            this.siticoneSeparator19 = new Siticone.UI.WinForms.SiticoneSeparator();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPlataformaEquipo = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
             this.tbcDatos.SuspendLayout();
             this.DatosActuales.SuspendLayout();
             this.DotNetDatosSimCard.SuspendLayout();
@@ -593,13 +596,16 @@
             this.gbMEquipo.Controls.Add(this.linkMarcaEquipo);
             this.gbMEquipo.Controls.Add(this.linkEquipoUnico);
             this.gbMEquipo.Controls.Add(this.linkOrdenCompra);
+            this.gbMEquipo.Controls.Add(this.txtPlataformaEquipo);
             this.gbMEquipo.Controls.Add(this.lblMSerieEquipo);
             this.gbMEquipo.Controls.Add(this.lblMImeiEquipo);
             this.gbMEquipo.Controls.Add(this.lblMModeloEquipo);
             this.gbMEquipo.Controls.Add(this.lblMMarcaEquipo);
             this.gbMEquipo.Controls.Add(this.lblMNombreEquipo);
             this.gbMEquipo.Controls.Add(this.lblMOrdenIEquipo);
+            this.gbMEquipo.Controls.Add(this.label5);
             this.gbMEquipo.Controls.Add(this.siticoneSeparator12);
+            this.gbMEquipo.Controls.Add(this.siticoneSeparator19);
             this.gbMEquipo.Controls.Add(this.label41);
             this.gbMEquipo.Controls.Add(this.siticoneSeparator13);
             this.gbMEquipo.Controls.Add(this.siticoneSeparator14);
@@ -619,7 +625,7 @@
             this.gbMEquipo.Location = new System.Drawing.Point(53, 6);
             this.gbMEquipo.Name = "gbMEquipo";
             this.gbMEquipo.ShadowDecoration.Parent = this.gbMEquipo;
-            this.gbMEquipo.Size = new System.Drawing.Size(692, 434);
+            this.gbMEquipo.Size = new System.Drawing.Size(692, 467);
             this.gbMEquipo.TabIndex = 198;
             this.gbMEquipo.Text = "INFORMACION:";
             this.gbMEquipo.TextOffset = new System.Drawing.Point(0, -10);
@@ -2578,6 +2584,7 @@
             this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscar.HoveredState.Parent = this.txtBuscar;
             this.txtBuscar.Location = new System.Drawing.Point(36, 95);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -2605,6 +2612,54 @@
             // drcMover
             // 
             this.drcMover.TargetControl = this.gunaPanel1;
+            // 
+            // siticoneSeparator19
+            // 
+            this.siticoneSeparator19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.siticoneSeparator19.Location = new System.Drawing.Point(38, 432);
+            this.siticoneSeparator19.Name = "siticoneSeparator19";
+            this.siticoneSeparator19.Size = new System.Drawing.Size(620, 18);
+            this.siticoneSeparator19.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(48, 410);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(144, 29);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Plataforma:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtPlataformaEquipo
+            // 
+            this.txtPlataformaEquipo.Animated = false;
+            this.txtPlataformaEquipo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPlataformaEquipo.DefaultText = "";
+            this.txtPlataformaEquipo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPlataformaEquipo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPlataformaEquipo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPlataformaEquipo.DisabledState.Parent = this.txtPlataformaEquipo;
+            this.txtPlataformaEquipo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPlataformaEquipo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
+            this.txtPlataformaEquipo.FocusedState.Parent = this.txtPlataformaEquipo;
+            this.txtPlataformaEquipo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPlataformaEquipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPlataformaEquipo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
+            this.txtPlataformaEquipo.HoveredState.Parent = this.txtPlataformaEquipo;
+            this.txtPlataformaEquipo.Location = new System.Drawing.Point(186, 406);
+            this.txtPlataformaEquipo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPlataformaEquipo.Name = "txtPlataformaEquipo";
+            this.txtPlataformaEquipo.PasswordChar = '\0';
+            this.txtPlataformaEquipo.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPlataformaEquipo.PlaceholderText = "";
+            this.txtPlataformaEquipo.ReadOnly = true;
+            this.txtPlataformaEquipo.SelectedText = "";
+            this.txtPlataformaEquipo.ShadowDecoration.Parent = this.txtPlataformaEquipo;
+            this.txtPlataformaEquipo.Size = new System.Drawing.Size(325, 36);
+            this.txtPlataformaEquipo.TabIndex = 11;
             // 
             // frmConsultarInformacion
             // 
@@ -2797,5 +2852,8 @@
         private Siticone.UI.WinForms.SiticoneDateTimePicker dtHFechaInicio;
         private Siticone.UI.WinForms.SiticoneDateTimePicker dtHfechaFinal;
         private Siticone.UI.WinForms.SiticoneDragControl drcMover;
+        private Siticone.UI.WinForms.SiticoneMaterialTextBox txtPlataformaEquipo;
+        private System.Windows.Forms.Label label5;
+        private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator19;
     }
 }

@@ -90,6 +90,7 @@ namespace wfaIntegradoCom.Procesos
             this.label22 = new System.Windows.Forms.Label();
             this.dtpFechaInicialBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.tbCronogramas = new System.Windows.Forms.TabPage();
+            this.pbFechaPago = new System.Windows.Forms.PictureBox();
             this.imgMoneda = new System.Windows.Forms.PictureBox();
             this.imgComprobanteP = new System.Windows.Forms.PictureBox();
             this.dtFechaPago = new Siticone.UI.WinForms.SiticoneDateTimePicker();
@@ -140,13 +141,12 @@ namespace wfaIntegradoCom.Procesos
             this.txtDatosCliente = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.erMoneda = new System.Windows.Forms.Label();
+            this.erFechaPago = new System.Windows.Forms.Label();
             this.erComprobanteP = new System.Windows.Forms.Label();
             this.siticoneCustomGradientPanel1 = new Siticone.UI.WinForms.SiticoneCustomGradientPanel();
             this.cmsPagoCuotas = new Guna.UI.WinForms.GunaContextMenuStrip();
             this.msPagarCuota = new System.Windows.Forms.ToolStripMenuItem();
             this.msActializarPago = new System.Windows.Forms.ToolStripMenuItem();
-            this.erFechaPago = new System.Windows.Forms.Label();
-            this.pbFechaPago = new System.Windows.Forms.PictureBox();
             this.PanelTop.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -158,6 +158,7 @@ namespace wfaIntegradoCom.Procesos
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.gbBuscarListaVentas.SuspendLayout();
             this.tbCronogramas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMoneda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgComprobanteP)).BeginInit();
             this.gbVehiculo.SuspendLayout();
@@ -166,7 +167,6 @@ namespace wfaIntegradoCom.Procesos
             this.siticoneGroupBox5.SuspendLayout();
             this.gbCliente.SuspendLayout();
             this.cmsPagoCuotas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelTop
@@ -431,7 +431,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgvListaVentas.RowTemplate.Height = 60;
             this.dgvListaVentas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvListaVentas.Size = new System.Drawing.Size(983, 477);
+            this.dgvListaVentas.Size = new System.Drawing.Size(1051, 477);
             this.dgvListaVentas.TabIndex = 264;
             this.dgvListaVentas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvListaVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -564,7 +564,7 @@ namespace wfaIntegradoCom.Procesos
             this.siticoneGroupBox4.Location = new System.Drawing.Point(18, 14);
             this.siticoneGroupBox4.Name = "siticoneGroupBox4";
             this.siticoneGroupBox4.ShadowDecoration.Parent = this.siticoneGroupBox4;
-            this.siticoneGroupBox4.Size = new System.Drawing.Size(983, 119);
+            this.siticoneGroupBox4.Size = new System.Drawing.Size(1051, 119);
             this.siticoneGroupBox4.TabIndex = 263;
             this.siticoneGroupBox4.Text = "Buscar por";
             this.siticoneGroupBox4.TextOffset = new System.Drawing.Point(0, -7);
@@ -594,7 +594,7 @@ namespace wfaIntegradoCom.Procesos
             this.pbBuscar.BackColor = System.Drawing.Color.White;
             this.pbBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbBuscar.Image = ((System.Drawing.Image)(resources.GetObject("pbBuscar.Image")));
-            this.pbBuscar.Location = new System.Drawing.Point(941, 75);
+            this.pbBuscar.Location = new System.Drawing.Point(1004, 75);
             this.pbBuscar.Name = "pbBuscar";
             this.pbBuscar.Size = new System.Drawing.Size(26, 27);
             this.pbBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -651,7 +651,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtBuscar.PlaceholderText = " VEHICULO/PROPIETARIO";
             this.txtBuscar.SelectedText = "";
             this.txtBuscar.ShadowDecoration.Parent = this.txtBuscar;
-            this.txtBuscar.Size = new System.Drawing.Size(200, 38);
+            this.txtBuscar.Size = new System.Drawing.Size(262, 38);
             this.txtBuscar.TabIndex = 261;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
@@ -802,6 +802,15 @@ namespace wfaIntegradoCom.Procesos
             this.tbCronogramas.TabIndex = 0;
             this.tbCronogramas.Text = "CRONOGRAMA VEHICULO";
             this.tbCronogramas.UseVisualStyleBackColor = true;
+            // 
+            // pbFechaPago
+            // 
+            this.pbFechaPago.BackColor = System.Drawing.Color.White;
+            this.pbFechaPago.Location = new System.Drawing.Point(1001, 434);
+            this.pbFechaPago.Name = "pbFechaPago";
+            this.pbFechaPago.Size = new System.Drawing.Size(20, 20);
+            this.pbFechaPago.TabIndex = 278;
+            this.pbFechaPago.TabStop = false;
             // 
             // imgMoneda
             // 
@@ -1633,6 +1642,18 @@ namespace wfaIntegradoCom.Procesos
             this.erMoneda.TabIndex = 277;
             this.erMoneda.Text = "Error";
             // 
+            // erFechaPago
+            // 
+            this.erFechaPago.AutoSize = true;
+            this.erFechaPago.BackColor = System.Drawing.Color.Transparent;
+            this.erFechaPago.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erFechaPago.ForeColor = System.Drawing.Color.Red;
+            this.erFechaPago.Location = new System.Drawing.Point(734, 462);
+            this.erFechaPago.Name = "erFechaPago";
+            this.erFechaPago.Size = new System.Drawing.Size(32, 13);
+            this.erFechaPago.TabIndex = 277;
+            this.erFechaPago.Text = "Error";
+            // 
             // erComprobanteP
             // 
             this.erComprobanteP.AutoSize = true;
@@ -1693,27 +1714,6 @@ namespace wfaIntegradoCom.Procesos
             this.msActializarPago.Text = "Actualizar Pago";
             this.msActializarPago.Click += new System.EventHandler(this.msActializarPago_Click);
             // 
-            // erFechaPago
-            // 
-            this.erFechaPago.AutoSize = true;
-            this.erFechaPago.BackColor = System.Drawing.Color.Transparent;
-            this.erFechaPago.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.erFechaPago.ForeColor = System.Drawing.Color.Red;
-            this.erFechaPago.Location = new System.Drawing.Point(734, 462);
-            this.erFechaPago.Name = "erFechaPago";
-            this.erFechaPago.Size = new System.Drawing.Size(32, 13);
-            this.erFechaPago.TabIndex = 277;
-            this.erFechaPago.Text = "Error";
-            // 
-            // pbFechaPago
-            // 
-            this.pbFechaPago.BackColor = System.Drawing.Color.White;
-            this.pbFechaPago.Location = new System.Drawing.Point(1001, 434);
-            this.pbFechaPago.Name = "pbFechaPago";
-            this.pbFechaPago.Size = new System.Drawing.Size(20, 20);
-            this.pbFechaPago.TabIndex = 278;
-            this.pbFechaPago.TabStop = false;
-            // 
             // frmControlPagoVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1743,6 +1743,7 @@ namespace wfaIntegradoCom.Procesos
             this.gbBuscarListaVentas.PerformLayout();
             this.tbCronogramas.ResumeLayout(false);
             this.tbCronogramas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMoneda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgComprobanteP)).EndInit();
             this.gbVehiculo.ResumeLayout(false);
@@ -1754,7 +1755,6 @@ namespace wfaIntegradoCom.Procesos
             this.gbCliente.ResumeLayout(false);
             this.gbCliente.PerformLayout();
             this.cmsPagoCuotas.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).EndInit();
             this.ResumeLayout(false);
 
         }

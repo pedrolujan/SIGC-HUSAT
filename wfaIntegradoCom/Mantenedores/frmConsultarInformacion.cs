@@ -144,6 +144,8 @@ namespace wfaIntegradoCom.Mantenedores
                             lblMModeloEquipo.Text = Convert.ToString(drMenu["cNombreModelo"]) != "" ? Convert.ToString(drMenu["cNombreModelo"]) : "--------";
                             lblMImeiEquipo.Text = Convert.ToString(drMenu["Imei"]) != "" ? Convert.ToString(drMenu["Imei"]) : "----------";
                             lblMSerieEquipo.Text = Convert.ToString(drMenu["nSerieEquipo"]) != "" ? Convert.ToString(drMenu["nSerieEquipo"]) : "----------";
+                            txtPlataformaEquipo.Text = Convert.ToString(drMenu["nombrePlataforma"]) != "" ? Convert.ToString(drMenu["nombrePlataforma"]) : "----------";
+
                         }
                         lblMNombreCliente.Text = Convert.ToString(drMenu["nombreCliente"]) != "" ? Convert.ToString(drMenu["nombreCliente"]) : "----------";
                         lblMApellidoCliente.Text = Convert.ToString(drMenu["cApePat"])!=""? Convert.ToString(drMenu["cApePat"]) + " " + Convert.ToString(drMenu["cApeMat"]):"EMPRESA-SIN APELLIDO";
