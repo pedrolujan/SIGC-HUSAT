@@ -41,6 +41,7 @@ namespace CapaEntidad
         public Int32 idVentaGen { get; set; }
         public String codigoVentaGen { get; set; }
         public String idReferencia { get; set; }
+       
 
   
                         

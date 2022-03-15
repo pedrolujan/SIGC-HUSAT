@@ -88,7 +88,7 @@ namespace CapaDato
 
         }
 
-        public Int32 daGuardarClienteN(Reactivaciones clsTitu, Int32 tipocon)
+        public Int32 daGuardarClienteN(Titularidad clsTitu, Int32 tipocon)
         {
             SqlParameter[] pa = new SqlParameter[4];
             Int32 dt = 0;
@@ -98,7 +98,7 @@ namespace CapaDato
             {
 
                 pa[0] = new SqlParameter("@idCliente", SqlDbType.Int);
-                pa[0].Value = clsTitu.listaCliente[0].idCliente;
+                pa[0].Value = clsTitu.listaClientes[0].idCliente;
                 pa[1] = new SqlParameter("@idVehiculo", SqlDbType.Int);
                 pa[1].Value = clsTitu.listaVehiculo[0].idVehiculo;
                 pa[2] = new SqlParameter("@TipoCon", SqlDbType.NVarChar, 15);

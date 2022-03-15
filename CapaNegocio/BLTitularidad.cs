@@ -42,7 +42,7 @@ namespace CapaNegocio
             }
 
         }
-        public Int32 blGuardarClienteN(Reactivaciones clsTitu, Int32 tipocon)
+        public Int32 blGuardarClienteN(Titularidad clsTitu, Int32 tipocon)
         {
             DATitularidad daobjEquipo = new DATitularidad();
             try
