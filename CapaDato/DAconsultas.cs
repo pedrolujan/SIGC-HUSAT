@@ -51,11 +51,6 @@ namespace CapaDato
 
         }
 
-        public DataTable daBuscarHistorial(object simcard)
-        {
-            throw new NotImplementedException();
-        }
-
         public DataTable daBuscarDatosEspecificos(Int32 dato, Int32 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[2];
