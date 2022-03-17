@@ -34,7 +34,7 @@ namespace CapaDato
                 clsCiclo = new Ciclo
                 {
                     IdCiclo = 0,
-                    Dia = tipBusqueda ? "TODOS" : "Selecc. Ciclo",
+                    Dia = tipBusqueda ? "TODOS" : "Selecc.Ciclo",
                     DiaNumber = 0,
                     Estado = Convert.ToBoolean(1)
                 };

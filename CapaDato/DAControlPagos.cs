@@ -14,7 +14,7 @@ namespace CapaDato
     public class DAControlPagos
     {
         clsUtil objUtil = null;
-        public DataTable daBuscarCronograma(Boolean habilitarfechas, DateTime dtFechaIni, DateTime dFechaFin, String pcBuscar,Int32 tipoCon, Int32 TipConPaginacion, Int32 numPagina,String estadoPago)
+        public DataTable daBuscarCronograma(Boolean habilitarfechas, DateTime dtFechaIni, DateTime dFechaFin, String pcBuscar,Int32 tipoCon, Int32 TipConPaginacion, Int32 numPagina,String estadoPago,Int32 idCiclo)
         {
             SqlParameter[] pa = new SqlParameter[9];
             DataTable dtResult = new DataTable();
@@ -27,12 +27,13 @@ namespace CapaDato
                 pa[1] = new SqlParameter("@peFechaInical", SqlDbType.DateTime) { Value = dtFechaIni };
                 pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.DateTime) { Value = dFechaFin };
                 pa[3] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = pcBuscar };
-                pa[4] = new SqlParameter("@idCiclo", SqlDbType.Int) { Value = 1 };
+                pa[4] = new SqlParameter("@idCiclo", SqlDbType.Int) { Value = idCiclo };
                 pa[5] = new SqlParameter("@estadoDetCronograma", SqlDbType.VarChar, 8) { Value = estadoPago };
                 pa[6] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = tipoCon };
                 pa[7] = new SqlParameter("@numPagina", SqlDbType.Int) { Value = numPagina };
                 pa[8] = new SqlParameter("@TipoConPagina", SqlDbType.Int) { Value = TipConPaginacion };
                 objCnx = new clsConexion("");
+                //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
                 dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronograma", pa);
 
 

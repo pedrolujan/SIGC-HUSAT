@@ -77,12 +77,14 @@ namespace wfaIntegradoCom.Procesos
             this.ctmPagar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.iRACONTROLDEPAGOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siticoneGroupBox4 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.chkHabilitarFechasBus = new Siticone.UI.WinForms.SiticoneCheckBox();
+            this.cboCicloPago = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboEstadopago = new Siticone.UI.WinForms.SiticoneComboBox();
             this.pbBuscar = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.chkHabilitarFechasBus = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.gbBuscarListaVentas = new System.Windows.Forms.GroupBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -410,7 +412,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaVentas.EnableHeadersVisualStyles = false;
             this.dgvListaVentas.GridColor = System.Drawing.Color.Silver;
-            this.dgvListaVentas.Location = new System.Drawing.Point(18, 136);
+            this.dgvListaVentas.Location = new System.Drawing.Point(6, 136);
             this.dgvListaVentas.Name = "dgvListaVentas";
             this.dgvListaVentas.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -431,7 +433,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgvListaVentas.RowTemplate.Height = 60;
             this.dgvListaVentas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvListaVentas.Size = new System.Drawing.Size(1051, 477);
+            this.dgvListaVentas.Size = new System.Drawing.Size(1074, 477);
             this.dgvListaVentas.TabIndex = 264;
             this.dgvListaVentas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvListaVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -549,26 +551,68 @@ namespace wfaIntegradoCom.Procesos
             // 
             this.siticoneGroupBox4.BorderColor = System.Drawing.Color.Gainsboro;
             this.siticoneGroupBox4.BorderRadius = 5;
+            this.siticoneGroupBox4.Controls.Add(this.chkHabilitarFechasBus);
+            this.siticoneGroupBox4.Controls.Add(this.cboCicloPago);
             this.siticoneGroupBox4.Controls.Add(this.cboEstadopago);
             this.siticoneGroupBox4.Controls.Add(this.pbBuscar);
+            this.siticoneGroupBox4.Controls.Add(this.label14);
             this.siticoneGroupBox4.Controls.Add(this.label10);
             this.siticoneGroupBox4.Controls.Add(this.label38);
             this.siticoneGroupBox4.Controls.Add(this.txtBuscar);
-            this.siticoneGroupBox4.Controls.Add(this.chkHabilitarFechasBus);
             this.siticoneGroupBox4.Controls.Add(this.pictureBox4);
             this.siticoneGroupBox4.Controls.Add(this.gbBuscarListaVentas);
             this.siticoneGroupBox4.CustomBorderColor = System.Drawing.Color.DimGray;
             this.siticoneGroupBox4.CustomBorderThickness = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.siticoneGroupBox4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneGroupBox4.ForeColor = System.Drawing.Color.White;
-            this.siticoneGroupBox4.Location = new System.Drawing.Point(18, 14);
+            this.siticoneGroupBox4.Location = new System.Drawing.Point(6, 9);
             this.siticoneGroupBox4.Name = "siticoneGroupBox4";
             this.siticoneGroupBox4.ShadowDecoration.Parent = this.siticoneGroupBox4;
-            this.siticoneGroupBox4.Size = new System.Drawing.Size(1051, 119);
+            this.siticoneGroupBox4.Size = new System.Drawing.Size(1074, 126);
             this.siticoneGroupBox4.TabIndex = 263;
             this.siticoneGroupBox4.Text = "Buscar por";
             this.siticoneGroupBox4.TextOffset = new System.Drawing.Point(0, -7);
             this.siticoneGroupBox4.Click += new System.EventHandler(this.siticoneGroupBox4_Click);
+            // 
+            // chkHabilitarFechasBus
+            // 
+            this.chkHabilitarFechasBus.AutoSize = true;
+            this.chkHabilitarFechasBus.BackColor = System.Drawing.Color.Transparent;
+            this.chkHabilitarFechasBus.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkHabilitarFechasBus.CheckedState.BorderRadius = 0;
+            this.chkHabilitarFechasBus.CheckedState.BorderThickness = 0;
+            this.chkHabilitarFechasBus.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkHabilitarFechasBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.chkHabilitarFechasBus.Location = new System.Drawing.Point(415, 31);
+            this.chkHabilitarFechasBus.Name = "chkHabilitarFechasBus";
+            this.chkHabilitarFechasBus.Size = new System.Drawing.Size(119, 21);
+            this.chkHabilitarFechasBus.TabIndex = 234;
+            this.chkHabilitarFechasBus.Text = "Habilitar Fechas";
+            this.chkHabilitarFechasBus.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkHabilitarFechasBus.UncheckedState.BorderRadius = 0;
+            this.chkHabilitarFechasBus.UncheckedState.BorderThickness = 0;
+            this.chkHabilitarFechasBus.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkHabilitarFechasBus.UseVisualStyleBackColor = false;
+            this.chkHabilitarFechasBus.CheckedChanged += new System.EventHandler(this.chkHabilitarFechasBus_CheckedChanged);
+            // 
+            // cboCicloPago
+            // 
+            this.cboCicloPago.BackColor = System.Drawing.Color.Transparent;
+            this.cboCicloPago.BorderColor = System.Drawing.Color.Silver;
+            this.cboCicloPago.BorderRadius = 5;
+            this.cboCicloPago.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboCicloPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCicloPago.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboCicloPago.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboCicloPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboCicloPago.HoveredState.Parent = this.cboCicloPago;
+            this.cboCicloPago.ItemHeight = 30;
+            this.cboCicloPago.ItemsAppearance.Parent = this.cboCicloPago;
+            this.cboCicloPago.Location = new System.Drawing.Point(712, 79);
+            this.cboCicloPago.Name = "cboCicloPago";
+            this.cboCicloPago.ShadowDecoration.Parent = this.cboCicloPago;
+            this.cboCicloPago.Size = new System.Drawing.Size(96, 36);
+            this.cboCicloPago.TabIndex = 263;
             // 
             // cboEstadopago
             // 
@@ -583,10 +627,10 @@ namespace wfaIntegradoCom.Procesos
             this.cboEstadopago.HoveredState.Parent = this.cboEstadopago;
             this.cboEstadopago.ItemHeight = 30;
             this.cboEstadopago.ItemsAppearance.Parent = this.cboEstadopago;
-            this.cboEstadopago.Location = new System.Drawing.Point(553, 72);
+            this.cboEstadopago.Location = new System.Drawing.Point(540, 79);
             this.cboEstadopago.Name = "cboEstadopago";
             this.cboEstadopago.ShadowDecoration.Parent = this.cboEstadopago;
-            this.cboEstadopago.Size = new System.Drawing.Size(201, 36);
+            this.cboEstadopago.Size = new System.Drawing.Size(165, 36);
             this.cboEstadopago.TabIndex = 263;
             // 
             // pbBuscar
@@ -594,7 +638,7 @@ namespace wfaIntegradoCom.Procesos
             this.pbBuscar.BackColor = System.Drawing.Color.White;
             this.pbBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbBuscar.Image = ((System.Drawing.Image)(resources.GetObject("pbBuscar.Image")));
-            this.pbBuscar.Location = new System.Drawing.Point(1004, 75);
+            this.pbBuscar.Location = new System.Drawing.Point(1038, 75);
             this.pbBuscar.Name = "pbBuscar";
             this.pbBuscar.Size = new System.Drawing.Size(26, 27);
             this.pbBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -602,13 +646,25 @@ namespace wfaIntegradoCom.Procesos
             this.pbBuscar.TabStop = false;
             this.pbBuscar.Click += new System.EventHandler(this.pbBuscar_Click_1);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label14.Location = new System.Drawing.Point(709, 59);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(39, 17);
+            this.label14.TabIndex = 131;
+            this.label14.Text = "Ciclo:";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(550, 51);
+            this.label10.Location = new System.Drawing.Point(540, 59);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 17);
             this.label10.TabIndex = 131;
@@ -620,7 +676,7 @@ namespace wfaIntegradoCom.Procesos
             this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label38.Location = new System.Drawing.Point(770, 51);
+            this.label38.Location = new System.Drawing.Point(887, 51);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(73, 17);
             this.label38.TabIndex = 131;
@@ -643,7 +699,7 @@ namespace wfaIntegradoCom.Procesos
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.txtBuscar.HoveredState.Parent = this.txtBuscar;
-            this.txtBuscar.Location = new System.Drawing.Point(773, 69);
+            this.txtBuscar.Location = new System.Drawing.Point(890, 69);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
@@ -651,31 +707,10 @@ namespace wfaIntegradoCom.Procesos
             this.txtBuscar.PlaceholderText = " VEHICULO/PROPIETARIO";
             this.txtBuscar.SelectedText = "";
             this.txtBuscar.ShadowDecoration.Parent = this.txtBuscar;
-            this.txtBuscar.Size = new System.Drawing.Size(262, 38);
+            this.txtBuscar.Size = new System.Drawing.Size(177, 38);
             this.txtBuscar.TabIndex = 261;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
-            // 
-            // chkHabilitarFechasBus
-            // 
-            this.chkHabilitarFechasBus.AutoSize = true;
-            this.chkHabilitarFechasBus.BackColor = System.Drawing.Color.White;
-            this.chkHabilitarFechasBus.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.chkHabilitarFechasBus.CheckedState.BorderRadius = 0;
-            this.chkHabilitarFechasBus.CheckedState.BorderThickness = 0;
-            this.chkHabilitarFechasBus.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.chkHabilitarFechasBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.chkHabilitarFechasBus.Location = new System.Drawing.Point(540, 32);
-            this.chkHabilitarFechasBus.Name = "chkHabilitarFechasBus";
-            this.chkHabilitarFechasBus.Size = new System.Drawing.Size(119, 21);
-            this.chkHabilitarFechasBus.TabIndex = 227;
-            this.chkHabilitarFechasBus.Text = "Habilitar Fechas";
-            this.chkHabilitarFechasBus.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.chkHabilitarFechasBus.UncheckedState.BorderRadius = 0;
-            this.chkHabilitarFechasBus.UncheckedState.BorderThickness = 0;
-            this.chkHabilitarFechasBus.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.chkHabilitarFechasBus.UseVisualStyleBackColor = false;
-            this.chkHabilitarFechasBus.CheckedChanged += new System.EventHandler(this.chkHabilitarFechasBus_CheckedChanged);
             // 
             // pictureBox4
             // 
@@ -691,13 +726,13 @@ namespace wfaIntegradoCom.Procesos
             // 
             // gbBuscarListaVentas
             // 
-            this.gbBuscarListaVentas.BackColor = System.Drawing.Color.White;
+            this.gbBuscarListaVentas.BackColor = System.Drawing.Color.Transparent;
             this.gbBuscarListaVentas.Controls.Add(this.label35);
             this.gbBuscarListaVentas.Controls.Add(this.dtpFechaFinalBus);
             this.gbBuscarListaVentas.Controls.Add(this.label22);
             this.gbBuscarListaVentas.Controls.Add(this.dtpFechaInicialBus);
             this.gbBuscarListaVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.gbBuscarListaVentas.Location = new System.Drawing.Point(6, 32);
+            this.gbBuscarListaVentas.Location = new System.Drawing.Point(6, 40);
             this.gbBuscarListaVentas.Name = "gbBuscarListaVentas";
             this.gbBuscarListaVentas.Size = new System.Drawing.Size(528, 82);
             this.gbBuscarListaVentas.TabIndex = 224;
@@ -1790,7 +1825,6 @@ namespace wfaIntegradoCom.Procesos
         private System.Windows.Forms.PictureBox pbBuscar;
         private System.Windows.Forms.Label label38;
         private Siticone.UI.WinForms.SiticoneTextBox txtBuscar;
-        private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBus;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.GroupBox gbBuscarListaVentas;
         private System.Windows.Forms.Label label35;
@@ -1860,5 +1894,8 @@ namespace wfaIntegradoCom.Procesos
         private Siticone.UI.WinForms.SiticoneTextBox txtCiclo;
         private System.Windows.Forms.PictureBox pbFechaPago;
         private System.Windows.Forms.Label erFechaPago;
+        private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBus;
+        private Siticone.UI.WinForms.SiticoneComboBox cboCicloPago;
+        private System.Windows.Forms.Label label14;
     }
 }
