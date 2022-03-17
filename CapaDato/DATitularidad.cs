@@ -88,24 +88,45 @@ namespace CapaDato
 
         }
 
-        public Int32 daGuardarClienteN(Titularidad clsTitu, Int32 tipocon)
+        public Int32 daGuardarClienteN(Titularidad clsTitu, Int32 tipocon , Int32 idUsuario ,Int32 idVenta)
+        
         {
-            SqlParameter[] pa = new SqlParameter[4];
+            SqlParameter[] pa = new SqlParameter[6];
             Int32 dt = 0;
+        
+            List<xmlDocumentoVentaGeneral> ListaDocumentoVentas = new List<xmlDocumentoVentaGeneral>();
+
+            ListaDocumentoVentas.Add(new xmlDocumentoVentaGeneral
+            {
+                xmlDocumentoVenta = clsTitu.listaDocVenta,
+                xmlDetalleVentas = clsTitu.listaDetalleV,
+            }); 
+
+
+            
+            String xmlDV = clsUtil.Serialize(clsTitu.listaDetalleV);
+            String xmlDocV = clsUtil.Serialize(ListaDocumentoVentas);
+
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             try
             {
 
-                pa[0] = new SqlParameter("@idCliente", SqlDbType.Int);
-                pa[0].Value = clsTitu.listaClientes[0].idCliente;
-                pa[1] = new SqlParameter("@idVehiculo", SqlDbType.Int);
-                pa[1].Value = clsTitu.listaVehiculo[0].idVehiculo;
-                pa[2] = new SqlParameter("@TipoCon", SqlDbType.NVarChar, 15);
-                pa[2].Value = tipocon;
-                pa[3] = new SqlParameter("@idVentaGeneral", SqlDbType.Int);
-                pa[3].Value = clsTitu.idVentaGeneral;
-                objCnx = new clsConexion("");
+                pa[0] = new SqlParameter("@idClienteAntiguo", SqlDbType.Int);
+                pa[0].Value = clsTitu.listaDocVenta[0].idCliente;
+                pa[1] = new SqlParameter("@idVenta", SqlDbType.Int);
+                pa[1].Value = idVenta;
+                pa[2] = new SqlParameter("@FechaRegistro", SqlDbType.DateTime);
+                pa[2].Value = clsTitu.FechaRegistroT;
+                pa[3] = new SqlParameter("@FechaTitularidad ", SqlDbType.DateTime);
+                pa[3].Value = clsTitu.FechaTitularidad;
+                pa[4] = new SqlParameter("@idUsuario", SqlDbType.Int);
+                pa[4].Value = idUsuario;
+                pa[5] = new SqlParameter("@xmlDocumentoventa", SqlDbType.Xml);
+                pa[5].Value = xmlDocV;
+                
+
+                objCnx = new clsConexion(""); 
                 dt = objCnx.EjecutarProcedimiento("uspGuardarTitularidad", pa);
 
                 return dt;

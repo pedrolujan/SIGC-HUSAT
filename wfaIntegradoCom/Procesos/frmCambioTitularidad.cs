@@ -25,15 +25,16 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
-        Double IGV;
-        Double SutTotal;
-        Double total;
-        Double precioUnit;
+        Double IGV = 0;
+        Double SutTotal = 0;
+        Double total = 0;
+        Double precioUnit = 0;
         Double descuento = 0;
         String CambioTitularidad = "";
         static Int32 lnTipoCon = 0;
-        static Int32 idCliente= 0;
+        static Int32 idCliente = 0;
         static Int32 idModelo = 0;
+        static Boolean estVP = false;
         //string Int32 idVenta=0;
         //static CambioTitularidad ClsCambioTitularidad
         static List<Cliente> lstClientes = new List<Cliente>();
@@ -42,13 +43,13 @@ namespace wfaIntegradoCom.Procesos
         static List<MarcaVehiculo> lstMarca = new List<MarcaVehiculo>();
         static List<DetalleVenta> lstDventa = new List<DetalleVenta>();
         static List<DocumentoVenta> lstdocumentoV = new List<DocumentoVenta>();
+        private static List<Pagos> lstPagosTitularidad = new List<Pagos>();
+        static Titularidad ClsTitu;
+        List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
+        static DateTime dtFechaTitularidad= Variables.gdFechaSis;
 
-        static Titularidad ClsTitularidad;
-        //static List<ClienteNuevo> lstClientesN = new List<ClienteNuevo>();
-        //static List<VehiculoNuevo> lstvehiculoN = new List<VehiculoNuevo>();
-
-        String msjCliente, msjdni, msjPlaca, msjCNuevo, msjDNuevo, msjTelNuevo, msjDireccionN;
-        Boolean estCliente, estdni, estPlaca, estCNuevo, estDNuevo, estTelNuevo, estDireccionN;
+        String msjCliente, msjdni, msjPlaca, msjCNuevo, msjDNuevo, msjTelNuevo, msjDireccionN, msjImporte;
+        Boolean estCliente, estdni, estPlaca, estCNuevo, estDNuevo, estTelNuevo, estDireccionN, estImporte, estadoFechaPago;
 
 
 
@@ -70,14 +71,21 @@ namespace wfaIntegradoCom.Procesos
 
         private void frmCambioTitularidad_Load(object sender, EventArgs e)
         {
+            fnLinpiar();
 
+            IGV = 0;
+            SutTotal = 0;
+            total = 0;
+            precioUnit = 0;
+            descuento = 0;
+            CambioTitularidad = "";
             dgConsulta.Visible = false;
             dgConsultaCliente.Visible = false;
-            lstDventa.Clear();
-            lstdocumentoV.Clear();
-            dtFechaTitulacion.Value = Variables.gdFechaSis;
-            FunValidaciones.fnColorBtnGuardar(btnGuardarCliente);
+            
+            dtFechaTitu.Value = Variables.gdFechaSis;
 
+            FunValidaciones.fnColorBtnGuardar(btnGuardarCliente);
+            btnGuardarCliente.Enabled = false;
         }
 
         private void txtPlaca_TextChanged(object sender, EventArgs e)
@@ -98,7 +106,7 @@ namespace wfaIntegradoCom.Procesos
             {
 
 
-                
+
                 datResultado = datTitularidad.BlBuscarTitularidadEspecificos(condicion, Convert.ToInt32(dgConsultaCliente.Rows[e.RowIndex].Cells[0].Value));
                 if (datResultado.Rows.Count > 0)
                 {
@@ -108,7 +116,7 @@ namespace wfaIntegradoCom.Procesos
                     {
 
                         txtClienteNuevo.Text = Convert.ToString(drMenu["cNombre"]);
-                        
+
                         lstClientes.Add(new Cliente
                         {
                             idCliente = Convert.ToInt32(drMenu["idCliente"]),
@@ -171,14 +179,14 @@ namespace wfaIntegradoCom.Procesos
                             cDocumento = Convert.ToString(drMenu["cDocumento"]),
                             cTelCelular = Convert.ToString(drMenu["cTelCelular"]),
                             cCorreo = Convert.ToString(drMenu["cCorreo"]),
-                            cTipoDoc=Convert.ToString(drMenu["NomTdoc"])
+                            cTipoDoc = Convert.ToString(drMenu["NomTdoc"])
 
-                    });
+                        });
                         txtCliente.Text = lstClientes[0].cNombre + " " + lstClientes[0].cApePat + " " + lstClientes[0].cApeMat;
                         txtdni.Text = Convert.ToString(drMenu["cDocumento"]);
                         txtTelefono.Text = Convert.ToString(drMenu["cTelCelular"]);
                         txtCorreo.Text = Convert.ToString(drMenu["cCorreo"]) != "" ? Convert.ToString(drMenu["cCorreo"]) : "SIN CORREO";
-                       
+
 
                         txtPlaca.Text = Convert.ToString(drMenu["vPlaca"]);
 
@@ -193,7 +201,7 @@ namespace wfaIntegradoCom.Procesos
 
                         });
 
-                       
+
 
 
                         txtMarca.Text = Convert.ToString(drMenu["nombreMarcaV"]);
@@ -257,15 +265,16 @@ namespace wfaIntegradoCom.Procesos
         }
 
 
-        private Boolean fnGurdarNuevoCliente(Titularidad clsTitu, Int32 tipocon)
+        private Boolean fnGurdarNuevoCliente(Titularidad clsTitu, Int32 tipocon, Int32 idUsuario, Int32 idVenta)
         {
+
             clsUtil objUtil = new clsUtil();
             DataTable datosTitularidad = new DataTable();
             BLTitularidad datTITULACION = new BLTitularidad();
             Int32 datResultado = 0;
             try
             {
-                datResultado = datTITULACION.blGuardarClienteN(clsTitu, tipocon);
+                datResultado = datTITULACION.blGuardarClienteN(clsTitu, tipocon, idUsuario, idVenta);
 
                 return true;
             }
@@ -281,10 +290,11 @@ namespace wfaIntegradoCom.Procesos
 
         private void txtImporte_KeyPress(object sender, KeyPressEventArgs e)
         {
+
         }
 
-        private void txtImporte_KeyUp(object sender, KeyEventArgs e)                       
-         {          
+        private void txtImporte_KeyUp(object sender, KeyEventArgs e)
+        {
 
             lstDventa.Clear();
             lstdocumentoV.Clear();
@@ -303,8 +313,22 @@ namespace wfaIntegradoCom.Procesos
         private void dgConsultaCliente_CellContentDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
         }
+        public static void fnTipoPagoTitularidad(List<Pagos> lstEntidades)
+        {
+            lstPagosTitularidad = lstEntidades;
+
+        }
+        public void fnCambiarEstado(Boolean estado)
+        {
+            estVP = estado;
+        }
         private void fnMuestraBoleta()
         {
+            lstDventa.Clear();
+            lstdocumentoV.Clear();
+
+            Mantenedores.frmRegistrarVenta frmRVenta = new Mantenedores.frmRegistrarVenta();
+            frmRVenta.fnObtenerUsuarioActual();
 
             lstDventa.Add(new DetalleVenta
             {
@@ -321,27 +345,32 @@ namespace wfaIntegradoCom.Procesos
                 dFechaAct = Variables.gdFechaSis,
                 nNroIGV = 18,
                 dFechaRegistro = Variables.gdFechaSis,
-                dFechaVenta = Convert.ToDateTime(dtFechaTitulacion.Value),
+                dFechaVenta = Convert.ToDateTime(dtFechaTitu.Value),
                 idUsuario = Variables.gnCodUser,
-                cCliente = lstClientes[0].cNombre + " " + lstClientes[0].cApePat + " " + lstClientes[0].cApePat,
+                cCliente = lstClientes[0].cNombre + " " + lstClientes[0].cApePat + " " + lstClientes[0].cApeMat,
                 idCliente = lstClientes[0].idCliente,
                 cDocumento = lstClientes[0].cDocumento,
                 cTipoDoc = lstClientes[0].cTipoDoc,
                 cDireccion = lstClientes[0].cDireccion,
-                cVehiculos = lstvehiculo[0].vPlaca
+                cVehiculos = lstvehiculo[0].vPlaca,
+                cUsuario = frmRVenta.fnObtenerUsuarioActual(),
+
 
 
             });
             Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
-            frmVenta.Inicio(lstdocumentoV, lstDventa, -1);
+            frmVenta.Inicio(lstdocumentoV, lstDventa, -2);
+
+
         }
         private void btnBoleta_Click(object sender, EventArgs e)
         {
+
+
         }
-       
+
         private void btnBoleta_CheckedChanged(object sender, EventArgs e)
         {
-            fnMuestraBoleta();
         }
 
         private void dgConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -349,6 +378,80 @@ namespace wfaIntegradoCom.Procesos
             lnTipoCon = 1;
 
             fnListarDatosCliente(lnTipoCon, e);
+        }
+
+        private void dtFechaTitulacion_ValueChanged(object sender, EventArgs e)
+        {
+            estadoFechaPago = fnValidaFecha(lblFechaT, pbFechaT);
+
+            dtFechaTitularidad = Convert.ToDateTime(dtFechaTitu.Value);
+        }
+        private void fnActivarBotonGuardar()
+        {
+            if (estadoFechaPago == true && estImporte == true)
+            {
+                btnGuardarCliente.Enabled = true;
+            }
+            else
+            {
+                btnGuardarCliente.Enabled = false;
+            }
+
+        }
+            
+
+        
+        private Boolean fnValidaFecha(Label lbl, PictureBox pb)
+        {
+            String msg = "";
+            Boolean bEstado = false;
+            PictureBox pbx = null;
+            Image img = null;
+            DateTime dtFechaSistema = Variables.gdFechaSis.AddDays(-2);
+            if (Convert.ToDateTime(dtFechaTitu.Value.ToString("dd/MM/yyyy")) >= Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")) && Convert.ToDateTime(dtFechaTitu.Value.ToString("dd/MM/yyyy")) <= Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
+            {
+                bEstado = true;
+                msg = "";
+                img = Properties.Resources.ok;
+                
+            }
+            else
+            {
+                if (Convert.ToDateTime(dtFechaTitu.Value.ToString("dd/MM/yyyy")) > Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
+                {
+                    bEstado = false;
+                    msg = "La fecha de pago no puede ser mayor a la fecha actual";
+                    img = Properties.Resources.error;
+                    fnActivarBotonGuardar();
+                }
+                else if (Convert.ToDateTime(dtFechaTitu.Value.ToString("dd/MM/yyyy")) < Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")))
+                {
+                    //bEstado = false;
+                    //msg = "La fecha de pago no puede ser menor a: " + dtFechaSistema.ToString("dd/MM/yyyy");
+                    //img = Properties.Resources.error;
+
+                    bEstado = true;
+                    msg = "";
+                    img = Properties.Resources.ok;
+                  
+                }
+            }
+            lbl.Text = msg;
+            pb.Image = img;
+            return bEstado;
+            fnActivarBotonGuardar();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            fnBuscarDatosCliente(0);
+           
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            fnBuscarDatosClienteNuevo(2);
         }
 
         private void dgConsultaCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -359,9 +462,20 @@ namespace wfaIntegradoCom.Procesos
             fnListarDatosClienteNuevo(lnTipoCon, e);
         }
 
+        private void txtImporte_TextChanged(object sender, EventArgs e)
+        {
+            fnActivarBotonGuardar();
+            //btnGuardarCliente.Enabled = true;
+            var resultado = FunValidaciones.fnValidarTexboxs(txtImporte, lblImporte, pbImporte, true, true, true, 2, 6, 6, 6," Cual es el importe !!! ");
+            estImporte = resultado.Item1;
+            msjImporte = resultado.Item2;
+
+            
+        }
+
         private Titularidad CargarTitularidad()
         {
-            ClsTitularidad = new Titularidad
+            ClsTitu = new Titularidad
             {
                 listaClientes = lstClientes,
                 listaVehiculo = lstvehiculo,
@@ -370,26 +484,63 @@ namespace wfaIntegradoCom.Procesos
                 listaDetalleV = lstDventa,
                 listaDocVenta = lstdocumentoV,
 
-                FechaTitularidad = Convert.ToDateTime(dtFechaTitulacion.Value),
+                FechaTitularidad = Convert.ToDateTime(dtFechaTitu.Value),
                 FechaRegistroT = Variables.gdFechaSis,
                 idCliente = idCliente,
                 idModelo = idModelo,
 
             };
-            return ClsTitularidad;
+            return ClsTitu;
+
+        }
+        private void fnLinpiar()
+        {
+            lstDventa.Clear();
+            lstdocumentoV.Clear();
+            lstClientes.Clear();
+            lstPagosTitularidad.Clear();
+            txtImporte.Text = "";
+            txtBusca.Text = "";
+            txtBuscarCliente.Text = "";
+            txtCliente.Text = "";
+            txtClienteNuevo.Text = "";
+            txtCorreo.Text = "";
+            txtDireccionNuevo.Text = "";
+            txtdni.Text = "";
+            txtDniNuevo.Text = "";
+            txtTelefono.Text = "";
+            txtTelefonoNuevo.Text = "";
+            txtSerie.Text = "";
+            txtPlaca.Text = "";
+            txtModelo.Text = "";
+            txtMarca.Text = "";
+            TxtSubT.Text = "";
+            txtTotal.Text = "";
+            txtIGV.Text = "";
+            
+
+
+
 
         }
         private void btnGuardarCliente_Click(object sender, EventArgs e)
         {
+
+           
+            fnLinpiar();
+            fnMuestraBoleta();
             Boolean Guardado;
-            String lcResultado = "";
-            txtClienteNuevo_TextChanged(sender, e);
+            //String lcResultado = "";
+            
+           txtClienteNuevo_TextChanged(sender, e);
             Titularidad clsTitu = new Titularidad();
-            if (estCNuevo == true && estDireccionN == true && estDNuevo == true && estTelNuevo == true && estDNuevo == true)
+           
+            if (estCNuevo == true && estDireccionN == true && estDNuevo == true && estTelNuevo == true && estDNuevo == true && estVP==true)
             {
                 clsTitu = CargarTitularidad();
-                Guardado = fnGurdarNuevoCliente(clsTitu, 1);
-
+                Guardado = fnGurdarNuevoCliente(clsTitu,1,1,1);
+                fnMuestraBoleta();
+                
                 if (Guardado == true)
                 {
                     MessageBox.Show("Correcto para guaradar", "PERFECTO", MessageBoxButtons.OK, MessageBoxIcon.Information);

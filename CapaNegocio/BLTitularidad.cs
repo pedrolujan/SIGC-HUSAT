@@ -42,12 +42,13 @@ namespace CapaNegocio
             }
 
         }
-        public Int32 blGuardarClienteN(Titularidad clsTitu, Int32 tipocon)
+        public Int32 blGuardarClienteN(Titularidad clsTitu, Int32 tipocon, Int32 idUsuario, Int32 idVenta)
         {
+           
             DATitularidad daobjEquipo = new DATitularidad();
             try
             {
-                return daobjEquipo.daGuardarClienteN(clsTitu, tipocon);
+                return daobjEquipo.daGuardarClienteN(clsTitu, tipocon,idUsuario,idVenta);
             }
             catch (Exception ex)
             {

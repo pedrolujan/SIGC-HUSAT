@@ -40,7 +40,7 @@ namespace wfaIntegradoCom.Procesos
         {
             String valorTipoPago = Convert.ToString(cboTipoPago.SelectedValue);
 
-            if (valorTipoPago == "TIPA0001" || valorTipoPago== "TIPA0005" || valorTipoPago== "TIPA0005")
+            if (valorTipoPago == "TIPA0001" || valorTipoPago== "TIPA0005" || valorTipoPago== "TIPA0006")
             {
                
             }
@@ -79,7 +79,7 @@ namespace wfaIntegradoCom.Procesos
         private void txtNumeroOperacion_TextChanged(object sender, EventArgs e)
         {
             String valorTipoPago = Convert.ToString(cboTipoPago.SelectedValue);
-            if (valorTipoPago == "TIPA0001" || valorTipoPago == "TIPA0005" || valorTipoPago == "TIPA0005")
+            if (valorTipoPago == "TIPA0001" || valorTipoPago == "TIPA0005" || valorTipoPago == "TIPA0006")
             {
 
             }
@@ -160,13 +160,13 @@ namespace wfaIntegradoCom.Procesos
             var res = FunValidaciones.fnValidarCombobox(cboTipoPago, lblTipoPago, pbTipoPago);
             estTipoVenta = res.Item1;
             lblTipoVentaa = res.Item2;
-            cboEntidadesPago_SelectedIndexChanged( sender,  e);
+            cboEntidadesPago_SelectedIndexChanged(sender, e);
             txtNumeroOperacion_TextChanged(sender, e);
             txtCanPagar_TextChanged(sender, e);
-            txtPagaCon_TextChanged( sender,  e);
-            txtVuelto_TextChanged( sender,  e);
+            txtPagaCon_TextChanged(sender, e);
+            txtVuelto_TextChanged(sender, e);
 
-            if (estTipoVenta==true && estEntidadVenta==true && estTotalAPagar==true && estPagaCon==true && estVuelto==true && estNroOperacion==true)
+            if (estTipoVenta == true && estEntidadVenta == true && estTotalAPagar == true && estPagaCon == true && estVuelto == true && estNroOperacion == true)
             {
                 String TipoPago = Convert.ToString(cboTipoPago.SelectedValue);
                 List<Pagos> lstEntidades = new List<Pagos>();
@@ -187,7 +187,7 @@ namespace wfaIntegradoCom.Procesos
                 {
                     estadoPrimerPago = "ESPP0001";
                 }
-                
+
                 lstEntidades.Add(new Pagos
                 {
                     codTipoPago = Convert.ToString(cboTipoPago.SelectedValue),
@@ -203,7 +203,7 @@ namespace wfaIntegradoCom.Procesos
                     dFechaPago = Variables.gdFechaSis,
                     idUsario = Variables.gnCodUser,
                     cEstadoPP = estadoPrimerPago
-                }) ;
+                });
                 if (lnTipoLLamada == 1)
                 {
                     Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
@@ -217,19 +217,28 @@ namespace wfaIntegradoCom.Procesos
 
                     frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
                     this.Close();
-                }else if (lnTipoLLamada == 3)
+                } else if (lnTipoLLamada == 3)
                 {
                     Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
                     frmControlPagoVenta frm = new frmControlPagoVenta();
                     frm.fnCambiarEstadoVenta(true);
                     this.Close();
+                } else if (lnTipoLLamada == 4)
+                {
+                    Procesos.frmCambioTitularidad.fnTipoPagoTitularidad(lstEntidades);
+                    frmCambioTitularidad frm = new frmCambioTitularidad();
+                    frm.fnCambiarEstado(true);
+                    this.Close();
+
                 }
+
                 else
                 {
                     frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
                     this.Close();
                 }
             }
+            
             else
             {
                 MessageBox.Show("Porfavor Complete todod los datos"," Aviso !!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
@@ -385,6 +394,11 @@ namespace wfaIntegradoCom.Procesos
             {
                 frmControlPagoVenta frm = new frmControlPagoVenta();
                 frm.fnCambiarEstadoVenta(false);
+            }
+            else if (lnTipoLLamada == 4)
+            {
+                frmCambioTitularidad frm = new frmCambioTitularidad();
+                frm.fnCambiarEstado(false);
             }
             this.Dispose();
         }
