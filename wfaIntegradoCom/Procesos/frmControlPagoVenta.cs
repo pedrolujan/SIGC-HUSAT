@@ -107,11 +107,20 @@ namespace wfaIntegradoCom.Procesos
         {
             //label11.Text = "Ciclo\n" + diaCicloPago;
             txtCiclo.Text = "" + diaCicloPago;
-
+            String estadoCuota = "";
 
             if (Indice == true)
             {
-                String estadoCuota = lstDetalleCronograma[fila].estado == "CUOTA PAGADA" ? "✅ " + lstDetalleCronograma[fila].estado : "❗ " + lstDetalleCronograma[fila].estado;
+                if (lstDetalleCronograma[fila].estado == "CUOTA PAGADA")
+                {
+                    estadoCuota = "✅ " + lstDetalleCronograma[fila].estado;
+                }else if (lstDetalleCronograma[fila].estado == "PAGO PENDIENTE")
+                {
+                    estadoCuota = "❗ " + lstDetalleCronograma[fila].estado;
+                }else if (lstDetalleCronograma[fila].estado == "CORTE")
+                {
+                    estadoCuota = "❌ " + lstDetalleCronograma[fila].estado;
+                }
                 String strDescuento = "";
                 if (lstDetalleCronograma[fila].strTipoDescuento == "PORCENTUAL" && lstDetalleCronograma[fila].descuento != 0)
                 {
@@ -199,7 +208,20 @@ namespace wfaIntegradoCom.Procesos
                         strDescuento = clsMoneda.cSimbolo + " " + lstDetalleCronograma[i].descuento;
                     }
 
-                    String estadoCuota = lstDetalleCronograma[i].estado == "CUOTA PAGADA" ? "✅ "+ lstDetalleCronograma[i].estado : "❗ "+ lstDetalleCronograma[i].estado;
+
+                    if (lstDetalleCronograma[i].estado == "CUOTA PAGADA")
+                    {
+                        estadoCuota = "✅ " + lstDetalleCronograma[i].estado;
+                    }
+                    else if (lstDetalleCronograma[i].estado == "PAGO PENDIENTE")
+                    {
+                        estadoCuota = "❗ " + lstDetalleCronograma[i].estado;
+                    }
+                    else if (lstDetalleCronograma[i].estado == "CORTE")
+                    {
+                        estadoCuota = "❌ " + lstDetalleCronograma[i].estado;
+                    }
+
                     Double DescuentoPrecio = fnConvertirATipoDescuento(lstDetalleCronograma[i].precioUnitario, lstDetalleCronograma[i].strTipoDescuento, lstDetalleCronograma[i].descuento);
                     lstDetalleCronograma[i].descuentoPrecio = DescuentoPrecio;
                     Double ImporteTotal = (lstDetalleCronograma[i].precioUnitario - DescuentoPrecio);
