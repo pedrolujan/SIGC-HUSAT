@@ -14,6 +14,7 @@ using CapaUtil;
 using wfaIntegradoCom.Funciones;
 using System.Text.RegularExpressions;
 using Siticone.UI.WinForms;
+using CapaDato;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -512,7 +513,7 @@ namespace wfaIntegradoCom.Procesos
                 frmRegistrarVenta frmRV = new frmRegistrarVenta();
                 fnLLenarMoneda(cboMoneda, 0, false);
                 bResult = frmRV.fnLlenarTipoDescuento(0, cboTipoDescuentoPrecios, false);
-                FunGeneral.fnLlenarTablaCod(cboEstadopago, "ESPV");
+                FunGeneral.fnLlenarTablaCodTipoCon(cboEstadopago, "ESPV",true);
                 cboEstadopago.SelectedValue = "ESPV0001";
                 //cboEstadopago.Enabled = false;
                 if (!bResult)
@@ -1335,6 +1336,50 @@ namespace wfaIntegradoCom.Procesos
             lstDocumentoVenta.Clear();
             fnGenerarComprobantePago(filaSeleccionada, ColumnaSeleccionada);
 
+
+        }
+
+        private void tsPagoPendiente_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaSeleccionada = dgvCronograma.CurrentRow;
+            DataGridViewCell ColumnaSeleccionada = dgvCronograma.CurrentCell;
+            String opcion = "PENDIENTE";
+            Int32 idDetalleCronograma = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
+            DAControlPagos cntPago = new DAControlPagos();
+            Boolean Resp = false;
+            Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion);
+            if (Resp == true)
+            {
+                MessageBox.Show("Actualizacion Correcta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+            }
+            else
+            {
+                MessageBox.Show("Error en el la actualizacion", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+
+        }
+
+        private void tsPagoCorte_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaSeleccionada = dgvCronograma.CurrentRow;
+            DataGridViewCell ColumnaSeleccionada = dgvCronograma.CurrentCell;
+            String opcion = "CORTE";
+            Int32 idDetalleCronograma = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
+            DAControlPagos cntPago = new DAControlPagos();
+            Boolean Resp = false;
+            Resp=cntPago.daActualizarEstados(idDetalleCronograma, opcion);
+            if (Resp==true)
+            {
+                MessageBox.Show("Actualizacion Correcta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+            }
+            else
+            {
+                MessageBox.Show("Error en el la actualizacion", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
 
         }
 

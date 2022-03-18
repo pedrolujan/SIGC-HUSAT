@@ -140,5 +140,37 @@ namespace CapaDato
                 tipoCon = 0;
             }
         }
+
+
+        public Boolean daActualizarEstados(Int32 idDetCronograma,String estado)
+        {
+            SqlParameter[] pa = new SqlParameter[2];
+            DataTable dtResult = new DataTable();
+            clsConexion objCnx = null;
+            Int32 numRows = 0;
+
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@idDetCronograma", SqlDbType.Int) { Value = idDetCronograma };
+                pa[1] = new SqlParameter("@estado", SqlDbType.VarChar) { Value = estado };
+               
+                objCnx = new clsConexion("");
+                objCnx.EjecutarProcedimiento("uspGuardarActualizacionEstados", pa);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                //if (objCnx != null)
+                objCnx.CierraConexion();
+                objCnx = null;
+                objUtil = null;
+            }
+        }
     }
 }
