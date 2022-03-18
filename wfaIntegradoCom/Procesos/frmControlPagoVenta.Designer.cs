@@ -66,6 +66,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgvListaVentas = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.IDCRONOGRAMA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDCONTRATO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAPAGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vehiculos_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -113,6 +114,24 @@ namespace wfaIntegradoCom.Procesos
             this.siticoneButton2 = new Siticone.UI.WinForms.SiticoneButton();
             this.gbVehiculo = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.dgvCronograma = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dttFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dttFechapago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRECIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IMPORTEDESCONTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCTOIMPORTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmsActualizarEstado = new Guna.UI.WinForms.GunaContextMenuStrip();
+            this.tsPagovencido = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsPagoPendiente = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsPagoCorte = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnImprimir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siticoneGroupBox6 = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.txtPlan = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -135,23 +154,6 @@ namespace wfaIntegradoCom.Procesos
             this.cmsPagoCuotas = new Guna.UI.WinForms.GunaContextMenuStrip();
             this.msPagarCuota = new System.Windows.Forms.ToolStripMenuItem();
             this.msActializarPago = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsActualizarEstado = new Guna.UI.WinForms.GunaContextMenuStrip();
-            this.tsPagoPendiente = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsPagoCorte = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dttFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dttFechapago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRECIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IMPORTEDESCONTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DCTOIMPORTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnImprimir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PanelTop.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -168,11 +170,11 @@ namespace wfaIntegradoCom.Procesos
             ((System.ComponentModel.ISupportInitialize)(this.imgComprobanteP)).BeginInit();
             this.gbVehiculo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCronograma)).BeginInit();
+            this.cmsActualizarEstado.SuspendLayout();
             this.siticoneGroupBox6.SuspendLayout();
             this.siticoneGroupBox5.SuspendLayout();
             this.gbCliente.SuspendLayout();
             this.cmsPagoCuotas.SuspendLayout();
-            this.cmsActualizarEstado.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelTop
@@ -396,6 +398,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgvListaVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDCRONOGRAMA,
             this.IDCONTRATO,
+            this.numero,
             this.codContrato,
             this.FECHAPAGO,
             this.Vehiculos_lv,
@@ -479,58 +482,65 @@ namespace wfaIntegradoCom.Procesos
             this.IDCONTRATO.ReadOnly = true;
             this.IDCONTRATO.Visible = false;
             // 
+            // numero
+            // 
+            this.numero.FillWeight = 22.84264F;
+            this.numero.HeaderText = "N°";
+            this.numero.Name = "numero";
+            this.numero.ReadOnly = true;
+            // 
             // codContrato
             // 
-            this.codContrato.FillWeight = 106.5625F;
+            this.codContrato.FillWeight = 116.8401F;
             this.codContrato.HeaderText = "Codigo Contrato";
             this.codContrato.Name = "codContrato";
             this.codContrato.ReadOnly = true;
             // 
             // FECHAPAGO
             // 
-            this.FECHAPAGO.FillWeight = 85.2792F;
-            this.FECHAPAGO.HeaderText = "Fecha de pago";
+            this.FECHAPAGO.FillWeight = 93.50409F;
+            this.FECHAPAGO.HeaderText = "Fecha estimada de pago";
             this.FECHAPAGO.Name = "FECHAPAGO";
             this.FECHAPAGO.ReadOnly = true;
             // 
             // Vehiculos_lv
             // 
-            this.Vehiculos_lv.FillWeight = 72.43391F;
+            this.Vehiculos_lv.FillWeight = 79.41992F;
             this.Vehiculos_lv.HeaderText = "Vehiculos";
             this.Vehiculos_lv.Name = "Vehiculos_lv";
             this.Vehiculos_lv.ReadOnly = true;
             // 
             // Ciente_Rs_lv
             // 
-            this.Ciente_Rs_lv.FillWeight = 159.8284F;
+            this.Ciente_Rs_lv.FillWeight = 175.2433F;
             this.Ciente_Rs_lv.HeaderText = "Cliente/Razon Social";
             this.Ciente_Rs_lv.Name = "Ciente_Rs_lv";
             this.Ciente_Rs_lv.ReadOnly = true;
             // 
             // Plan_lv
             // 
-            this.Plan_lv.FillWeight = 72.43391F;
+            this.Plan_lv.FillWeight = 79.41992F;
             this.Plan_lv.HeaderText = "Plan";
             this.Plan_lv.Name = "Plan_lv";
             this.Plan_lv.ReadOnly = true;
             // 
             // TipoVenta
             // 
-            this.TipoVenta.FillWeight = 72.43391F;
+            this.TipoVenta.FillWeight = 79.41992F;
             this.TipoVenta.HeaderText = "Tipo Venta";
             this.TipoVenta.Name = "TipoVenta";
             this.TipoVenta.ReadOnly = true;
             // 
             // CicloPago
             // 
-            this.CicloPago.FillWeight = 83.20396F;
+            this.CicloPago.FillWeight = 91.2287F;
             this.CicloPago.HeaderText = "Ciclo de Pago";
             this.CicloPago.Name = "CicloPago";
             this.CicloPago.ReadOnly = true;
             // 
             // Estado_lv
             // 
-            this.Estado_lv.FillWeight = 147.8243F;
+            this.Estado_lv.FillWeight = 162.0815F;
             this.Estado_lv.HeaderText = "Estado";
             this.Estado_lv.Name = "Estado_lv";
             this.Estado_lv.ReadOnly = true;
@@ -1234,8 +1244,170 @@ namespace wfaIntegradoCom.Procesos
             this.dgvCronograma.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCronograma_CellClick);
             this.dgvCronograma.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCronograma_CellContentClick);
             this.dgvCronograma.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCronograma_CellFormatting);
+            this.dgvCronograma.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCronograma_CellMouseDown);
             this.dgvCronograma.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvCronograma_CellPainting);
             this.dgvCronograma.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCronograma_CellValueChanged);
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewTextBoxColumn5.HeaderText = "CODIGO";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewTextBoxColumn3.HeaderText = "N°";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridViewTextBoxColumn4.HeaderText = "FECHA INICIO";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridViewTextBoxColumn11.HeaderText = "FECHA FIN";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Width = 90;
+            // 
+            // dttFechaEmision
+            // 
+            this.dttFechaEmision.HeaderText = "FECHA EMISION";
+            this.dttFechaEmision.Name = "dttFechaEmision";
+            this.dttFechaEmision.ReadOnly = true;
+            this.dttFechaEmision.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = "0";
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewTextBoxColumn9.HeaderText = "FECHA VENCIMIENTO";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dttFechapago
+            // 
+            this.dttFechapago.HeaderText = "FECHA PAGO";
+            this.dttFechapago.Name = "dttFechapago";
+            this.dttFechapago.ReadOnly = true;
+            this.dttFechapago.Width = 80;
+            // 
+            // PRECIO
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.PRECIO.DefaultCellStyle = dataGridViewCellStyle12;
+            this.PRECIO.HeaderText = "PRECIO";
+            this.PRECIO.Name = "PRECIO";
+            this.PRECIO.ReadOnly = true;
+            this.PRECIO.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewTextBoxColumn10.HeaderText = "DESCUENTO";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 80;
+            // 
+            // IMPORTEDESCONTADO
+            // 
+            this.IMPORTEDESCONTADO.HeaderText = "IMPORTE DESCONTADO";
+            this.IMPORTEDESCONTADO.Name = "IMPORTEDESCONTADO";
+            this.IMPORTEDESCONTADO.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridViewTextBoxColumn12.HeaderText = "TOTAL";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // DCTOIMPORTE
+            // 
+            this.DCTOIMPORTE.ContextMenuStrip = this.cmsActualizarEstado;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = null;
+            this.DCTOIMPORTE.DefaultCellStyle = dataGridViewCellStyle15;
+            this.DCTOIMPORTE.HeaderText = "ESTADO";
+            this.DCTOIMPORTE.Name = "DCTOIMPORTE";
+            this.DCTOIMPORTE.ReadOnly = true;
+            this.DCTOIMPORTE.Width = 120;
+            // 
+            // cmsActualizarEstado
+            // 
+            this.cmsActualizarEstado.BackColor = System.Drawing.Color.White;
+            this.cmsActualizarEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsPagovencido,
+            this.tsPagoPendiente,
+            this.tsPagoCorte});
+            this.cmsActualizarEstado.Name = "cmsPagoCuotas";
+            this.cmsActualizarEstado.RenderStyle.ArrowColor = System.Drawing.Color.Cornsilk;
+            this.cmsActualizarEstado.RenderStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cmsActualizarEstado.RenderStyle.ColorTable = null;
+            this.cmsActualizarEstado.RenderStyle.RoundedEdges = true;
+            this.cmsActualizarEstado.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.cmsActualizarEstado.RenderStyle.SelectionBackColor = System.Drawing.Color.Silver;
+            this.cmsActualizarEstado.RenderStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.cmsActualizarEstado.RenderStyle.SeparatorColor = System.Drawing.Color.Gray;
+            this.cmsActualizarEstado.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.SystemDefault;
+            this.cmsActualizarEstado.Size = new System.Drawing.Size(233, 70);
+            // 
+            // tsPagovencido
+            // 
+            this.tsPagovencido.Image = global::wfaIntegradoCom.Properties.Resources.error;
+            this.tsPagovencido.Name = "tsPagovencido";
+            this.tsPagovencido.Size = new System.Drawing.Size(232, 22);
+            this.tsPagovencido.Text = "Actualizar a VENCIDO";
+            this.tsPagovencido.Click += new System.EventHandler(this.tsPagovencido_Click);
+            // 
+            // tsPagoPendiente
+            // 
+            this.tsPagoPendiente.Image = global::wfaIntegradoCom.Properties.Resources.editar_base;
+            this.tsPagoPendiente.Name = "tsPagoPendiente";
+            this.tsPagoPendiente.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tsPagoPendiente.Size = new System.Drawing.Size(232, 22);
+            this.tsPagoPendiente.Text = "Actualizar a PAGO PENDIENTE";
+            this.tsPagoPendiente.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.tsPagoPendiente.Click += new System.EventHandler(this.tsPagoPendiente_Click);
+            // 
+            // tsPagoCorte
+            // 
+            this.tsPagoCorte.Image = global::wfaIntegradoCom.Properties.Resources.liberar;
+            this.tsPagoCorte.Name = "tsPagoCorte";
+            this.tsPagoCorte.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tsPagoCorte.Size = new System.Drawing.Size(232, 22);
+            this.tsPagoCorte.Text = "Actualizar a CORTE";
+            this.tsPagoCorte.Click += new System.EventHandler(this.tsPagoCorte_Click);
+            // 
+            // btnPagar
+            // 
+            this.btnPagar.HeaderText = "";
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.ReadOnly = true;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.HeaderText = "";
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.ReadOnly = true;
             // 
             // siticoneGroupBox6
             // 
@@ -1639,158 +1811,6 @@ namespace wfaIntegradoCom.Procesos
             this.msActializarPago.Text = "Actualizar Pago";
             this.msActializarPago.Click += new System.EventHandler(this.msActializarPago_Click);
             // 
-            // cmsActualizarEstado
-            // 
-            this.cmsActualizarEstado.BackColor = System.Drawing.Color.White;
-            this.cmsActualizarEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsPagoPendiente,
-            this.tsPagoCorte});
-            this.cmsActualizarEstado.Name = "cmsPagoCuotas";
-            this.cmsActualizarEstado.RenderStyle.ArrowColor = System.Drawing.Color.Cornsilk;
-            this.cmsActualizarEstado.RenderStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.cmsActualizarEstado.RenderStyle.ColorTable = null;
-            this.cmsActualizarEstado.RenderStyle.RoundedEdges = true;
-            this.cmsActualizarEstado.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.cmsActualizarEstado.RenderStyle.SelectionBackColor = System.Drawing.Color.Silver;
-            this.cmsActualizarEstado.RenderStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.cmsActualizarEstado.RenderStyle.SeparatorColor = System.Drawing.Color.Gray;
-            this.cmsActualizarEstado.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.SystemDefault;
-            this.cmsActualizarEstado.Size = new System.Drawing.Size(233, 70);
-            // 
-            // tsPagoPendiente
-            // 
-            this.tsPagoPendiente.Image = global::wfaIntegradoCom.Properties.Resources.editar_base;
-            this.tsPagoPendiente.Name = "tsPagoPendiente";
-            this.tsPagoPendiente.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tsPagoPendiente.Size = new System.Drawing.Size(232, 22);
-            this.tsPagoPendiente.Text = "Actualizar a PAGO PENDIENTE";
-            this.tsPagoPendiente.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.tsPagoPendiente.Click += new System.EventHandler(this.tsPagoPendiente_Click);
-            // 
-            // tsPagoCorte
-            // 
-            this.tsPagoCorte.Image = global::wfaIntegradoCom.Properties.Resources.liberar;
-            this.tsPagoCorte.Name = "tsPagoCorte";
-            this.tsPagoCorte.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tsPagoCorte.Size = new System.Drawing.Size(232, 22);
-            this.tsPagoCorte.Text = "Actualizar a CORTE";
-            this.tsPagoCorte.Click += new System.EventHandler(this.tsPagoCorte_Click);
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn5.HeaderText = "CODIGO";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn3.HeaderText = "N°";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 30;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewTextBoxColumn4.HeaderText = "FECHA INICIO";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewTextBoxColumn11.HeaderText = "FECHA FIN";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Width = 90;
-            // 
-            // dttFechaEmision
-            // 
-            this.dttFechaEmision.HeaderText = "FECHA EMISION";
-            this.dttFechaEmision.Name = "dttFechaEmision";
-            this.dttFechaEmision.ReadOnly = true;
-            this.dttFechaEmision.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = "0";
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridViewTextBoxColumn9.HeaderText = "FECHA VENCIMIENTO";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dttFechapago
-            // 
-            this.dttFechapago.HeaderText = "FECHA PAGO";
-            this.dttFechapago.Name = "dttFechapago";
-            this.dttFechapago.ReadOnly = true;
-            this.dttFechapago.Width = 80;
-            // 
-            // PRECIO
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.PRECIO.DefaultCellStyle = dataGridViewCellStyle12;
-            this.PRECIO.HeaderText = "PRECIO";
-            this.PRECIO.Name = "PRECIO";
-            this.PRECIO.ReadOnly = true;
-            this.PRECIO.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dataGridViewTextBoxColumn10.HeaderText = "DESCUENTO";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Width = 80;
-            // 
-            // IMPORTEDESCONTADO
-            // 
-            this.IMPORTEDESCONTADO.HeaderText = "IMPORTE DESCONTADO";
-            this.IMPORTEDESCONTADO.Name = "IMPORTEDESCONTADO";
-            this.IMPORTEDESCONTADO.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridViewTextBoxColumn12.HeaderText = "TOTAL";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // DCTOIMPORTE
-            // 
-            this.DCTOIMPORTE.ContextMenuStrip = this.cmsActualizarEstado;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "N2";
-            dataGridViewCellStyle15.NullValue = null;
-            this.DCTOIMPORTE.DefaultCellStyle = dataGridViewCellStyle15;
-            this.DCTOIMPORTE.HeaderText = "ESTADO";
-            this.DCTOIMPORTE.Name = "DCTOIMPORTE";
-            this.DCTOIMPORTE.ReadOnly = true;
-            this.DCTOIMPORTE.Width = 120;
-            // 
-            // btnPagar
-            // 
-            this.btnPagar.HeaderText = "";
-            this.btnPagar.Name = "btnPagar";
-            this.btnPagar.ReadOnly = true;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.HeaderText = "";
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.ReadOnly = true;
-            // 
             // frmControlPagoVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1825,6 +1845,7 @@ namespace wfaIntegradoCom.Procesos
             ((System.ComponentModel.ISupportInitialize)(this.imgComprobanteP)).EndInit();
             this.gbVehiculo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCronograma)).EndInit();
+            this.cmsActualizarEstado.ResumeLayout(false);
             this.siticoneGroupBox6.ResumeLayout(false);
             this.siticoneGroupBox6.PerformLayout();
             this.siticoneGroupBox5.ResumeLayout(false);
@@ -1832,7 +1853,6 @@ namespace wfaIntegradoCom.Procesos
             this.gbCliente.ResumeLayout(false);
             this.gbCliente.PerformLayout();
             this.cmsPagoCuotas.ResumeLayout(false);
-            this.cmsActualizarEstado.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1905,16 +1925,6 @@ namespace wfaIntegradoCom.Procesos
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDCRONOGRAMA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDCONTRATO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codContrato;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAPAGO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculos_lv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ciente_Rs_lv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Plan_lv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipoVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CicloPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado_lv;
         private Siticone.UI.WinForms.SiticoneComboBox cboEstadopago;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -1943,5 +1953,17 @@ namespace wfaIntegradoCom.Procesos
         private System.Windows.Forms.ToolStripMenuItem tsPagoCorte;
         private System.Windows.Forms.DataGridViewTextBoxColumn btnPagar;
         private System.Windows.Forms.DataGridViewTextBoxColumn btnImprimir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCRONOGRAMA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCONTRATO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codContrato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAPAGO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculos_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ciente_Rs_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Plan_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CicloPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado_lv;
+        private System.Windows.Forms.ToolStripMenuItem tsPagovencido;
     }
 }

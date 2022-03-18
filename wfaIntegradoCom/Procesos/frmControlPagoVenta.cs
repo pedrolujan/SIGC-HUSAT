@@ -117,7 +117,12 @@ namespace wfaIntegradoCom.Procesos
                 }else if (lstDetalleCronograma[fila].estado == "PAGO PENDIENTE")
                 {
                     estadoCuota = "❗ " + lstDetalleCronograma[fila].estado;
-                }else if (lstDetalleCronograma[fila].estado == "CORTE")
+                }
+                else if (lstDetalleCronograma[fila].estado == "VENCIDO")
+                {
+                    estadoCuota = "🚫 " + lstDetalleCronograma[fila].estado;
+                }
+                else if (lstDetalleCronograma[fila].estado == "CORTE")
                 {
                     estadoCuota = "❌ " + lstDetalleCronograma[fila].estado;
                 }
@@ -217,6 +222,10 @@ namespace wfaIntegradoCom.Procesos
                     else if (lstDetalleCronograma[i].estado == "PAGO PENDIENTE")
                     {
                         estadoCuota = "❗ " + lstDetalleCronograma[i].estado;
+                    }
+                    else if (lstDetalleCronograma[i].estado == "VENCIDO")
+                    {
+                        estadoCuota = "🚫 " + lstDetalleCronograma[i].estado;
                     }
                     else if (lstDetalleCronograma[i].estado == "CORTE")
                     {
@@ -335,7 +344,8 @@ namespace wfaIntegradoCom.Procesos
                 Int32 totalResultados = dtt.Rows.Count;
                 for (Int32 i = 0; i < dtt.Rows.Count; i++)
                 {
-                    String estadoCuota = "";
+                    y += 1;
+                   String estadoCuota = "";
                     String PasoDias = "";
                     Int32 faltaDias = 0;
                     Int32 restaAnio = 0;
@@ -466,8 +476,15 @@ namespace wfaIntegradoCom.Procesos
                     }
                     else
                     {
+                        if (Convert.ToString(dtt.Rows[i][10]) == "VENCIDO")
+                        {
+                            tiempoTranscurrido = "\n🚫 Desde ( " + Convert.ToDateTime(dtt.Rows[i][13]).ToString("dd/MMM/yyyy") + " )";
+                        }
+                        else
+                        {
+                            tiempoTranscurrido = "\n❌ Desde ( " + Convert.ToDateTime(dtt.Rows[i][13]).ToString("dd/MMM/yyyy") + " )";
 
-                        tiempoTranscurrido = "\n❌ Desde ( " + Convert.ToDateTime(dtt.Rows[i][13]).ToString("dd/MMM/yyyy") + " )";
+                        }
                         estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dtt.Rows[i][10])) + tiempoTranscurrido;
 
                     }
@@ -476,6 +493,7 @@ namespace wfaIntegradoCom.Procesos
                     dgv.Rows.Add(
                         dtt.Rows[i][1],
                         dtt.Rows[i][2],
+                        y,
                         dtt.Rows[i][12],
                         dtFechaPagoCronograma.ToString("dd/MMM/yyyy"),
                         dtt.Rows[i][5],
@@ -681,7 +699,7 @@ namespace wfaIntegradoCom.Procesos
             CronogramaSeleccionado = 0;
             Int32 idCronograma = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[0].Value);
             Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[1].Value);
-            String Placa = Convert.ToString(dgvListaVentas.CurrentRow.Cells[4].Value);
+            String Placa = Convert.ToString(dgvListaVentas.CurrentRow.Cells[5].Value);
 
             fnBuscarCronograma(1, Placa, -1, 0);
             cboCronograma.SelectedIndex = 0;
@@ -1229,6 +1247,9 @@ namespace wfaIntegradoCom.Procesos
                 else if (e.Value.ToString().Contains("❗"))
                 {
                     e.CellStyle.ForeColor = Color.Orange;
+                }else if (e.Value.ToString().Contains("🚫"))
+                {
+                    e.CellStyle.ForeColor = Color.Purple;
                 }
                 else
                 {
@@ -1370,17 +1391,22 @@ namespace wfaIntegradoCom.Procesos
             Int32 idDetalleCronograma = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
             DAControlPagos cntPago = new DAControlPagos();
             Boolean Resp = false;
-            Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion);
-            if (Resp == true)
+            DialogResult EstadoDialog = MessageBox.Show("Esta seguro que desea realizar la actualización?", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (EstadoDialog == DialogResult.Yes)
             {
-                MessageBox.Show("Actualizacion Correcta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
-            }
-            else
-            {
-                MessageBox.Show("Error en el la actualizacion", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion);
+                if (Resp == true)
+                {
+                    MessageBox.Show("Actualizacion Correcta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Error en el la actualizacion", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                }
             }
+                
 
         }
 
@@ -1392,18 +1418,72 @@ namespace wfaIntegradoCom.Procesos
             Int32 idDetalleCronograma = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
             DAControlPagos cntPago = new DAControlPagos();
             Boolean Resp = false;
-            Resp=cntPago.daActualizarEstados(idDetalleCronograma, opcion);
-            if (Resp==true)
+            DialogResult EstadoDialog = MessageBox.Show("Esta seguro que desea realizar la actualización?", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (EstadoDialog == DialogResult.Yes)
             {
-                MessageBox.Show("Actualizacion Correcta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+                Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion);
+                if (Resp == true)
+                {
+                    MessageBox.Show("Actualizacion Correcta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Error en el la actualizacion", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
             }
-            else
+                
+
+        }
+
+        private void tsPagovencido_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaSeleccionada = dgvCronograma.CurrentRow;
+            DataGridViewCell ColumnaSeleccionada = dgvCronograma.CurrentCell;
+            String opcion = "VENCIDO";
+            Int32 idDetalleCronograma = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
+            DAControlPagos cntPago = new DAControlPagos();
+            Boolean Resp = false;
+
+            DialogResult EstadoDialog = MessageBox.Show("Esta seguro que desea realizar la actualización?", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (EstadoDialog == DialogResult.Yes)
             {
-                MessageBox.Show("Error en el la actualizacion", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion);
+                if (Resp == true)
+                {
+                    MessageBox.Show("Actualizacion Correcta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Error en el la actualizacion", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                }
             }
+                
+        }
 
+        private void dgvCronograma_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex != -1 && e.ColumnIndex != -1)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    DataGridViewRow clickedRow = (sender as DataGridView).Rows[e.RowIndex];
+                    if (!clickedRow.Selected)
+                    {
+                        dgvCronograma.CurrentCell = clickedRow.Cells[e.ColumnIndex];
+
+                    }
+                    else
+                    {
+                        var mousePosition = dgvCronograma.PointToClient(Cursor.Position);
+                        ctmPagar.Show(dgvCronograma, mousePosition);
+                    }
+
+                }
+            }
         }
 
         private void btnVerDatos_Click(object sender, EventArgs e)
@@ -1428,7 +1508,11 @@ namespace wfaIntegradoCom.Procesos
                 {
                     e.CellStyle.ForeColor = Color.Orange;
                 }
-                
+                else if (e.Value.ToString().Contains("🚫"))
+                {
+                    e.CellStyle.ForeColor = Color.Purple;
+
+                }
                 else
                 {
                     e.CellStyle.ForeColor = Color.Red;
