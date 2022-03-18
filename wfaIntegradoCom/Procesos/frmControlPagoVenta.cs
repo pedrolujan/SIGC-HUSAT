@@ -121,6 +121,7 @@ namespace wfaIntegradoCom.Procesos
                 {
                     estadoCuota = "❌ " + lstDetalleCronograma[fila].estado;
                 }
+
                 String strDescuento = "";
                 if (lstDetalleCronograma[fila].strTipoDescuento == "PORCENTUAL" && lstDetalleCronograma[fila].descuento != 0)
                 {
