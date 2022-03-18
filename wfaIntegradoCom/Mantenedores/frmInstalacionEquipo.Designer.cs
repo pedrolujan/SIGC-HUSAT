@@ -342,7 +342,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvServicios.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvServicios.EnableHeadersVisualStyles = false;
             this.dgvServicios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvServicios.Location = new System.Drawing.Point(790, 409);
+            this.dgvServicios.Location = new System.Drawing.Point(790, 410);
             this.dgvServicios.Name = "dgvServicios";
             this.dgvServicios.RowHeadersVisible = false;
             this.dgvServicios.RowHeadersWidth = 10;

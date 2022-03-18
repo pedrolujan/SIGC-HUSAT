@@ -125,12 +125,12 @@ namespace wfaIntegradoCom.Procesos
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.panelPrincipal = new Siticone.UI.WinForms.SiticonePanel();
             this.dgConsultas = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.drcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imeis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.card = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.drcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.gpbReactivacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tbcDatos.SuspendLayout();
@@ -189,9 +189,9 @@ namespace wfaIntegradoCom.Procesos
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.White;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(391, 52);
+            this.pictureBox3.Location = new System.Drawing.Point(391, 59);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(30, 35);
+            this.pictureBox3.Size = new System.Drawing.Size(30, 24);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 230;
             this.pictureBox3.TabStop = false;
@@ -1549,16 +1549,6 @@ namespace wfaIntegradoCom.Procesos
             this.dgConsultas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.dgConsultas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsultas_CellDoubleClick);
             // 
-            // imageList2
-            // 
-            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // drcMover
-            // 
-            this.drcMover.TargetControl = this.gunaPanel1;
-            // 
             // id
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
@@ -1595,6 +1585,16 @@ namespace wfaIntegradoCom.Procesos
             this.card.HeaderText = "SIM CARD";
             this.card.Name = "card";
             this.card.ReadOnly = true;
+            // 
+            // imageList2
+            // 
+            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // drcMover
+            // 
+            this.drcMover.TargetControl = this.gunaPanel1;
             // 
             // frmReactivaciones
             // 
