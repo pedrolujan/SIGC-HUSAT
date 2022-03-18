@@ -454,6 +454,11 @@ namespace wfaIntegradoCom.Procesos
             fnBuscarDatosClienteNuevo(2);
         }
 
+        private void siticonePanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void dgConsultaCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -466,7 +471,7 @@ namespace wfaIntegradoCom.Procesos
         {
             fnActivarBotonGuardar();
             //btnGuardarCliente.Enabled = true;
-            var resultado = FunValidaciones.fnValidarTexboxs(txtImporte, lblImporte, pbImporte, true, true, true, 2, 6, 6, 6," Cual es el importe !!! ");
+            var resultado = FunValidaciones.fnValidarTexboxs(txtImporte, lblImporte, pbImporte, true, true, true, 2, 6, 6, 6,"¿ Cual es el monto del importe ? ");
             estImporte = resultado.Item1;
             msjImporte = resultado.Item2;
 

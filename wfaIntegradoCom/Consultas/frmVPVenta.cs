@@ -110,7 +110,12 @@ namespace wfaIntegradoCom.Consultas
                 frmControlPagoVenta frmCVent = new frmControlPagoVenta();
                 frmCVent.fnCambiarEstadoVenta(false);
 
+            }else if (lnTipoCon == -2)
+            {
+                frmCambioTitularidad frmcTitu = new frmCambioTitularidad();
+                frmcTitu.fnCambiarEstado(false);
             }
+
             this.Close();
         }
 
@@ -140,7 +145,15 @@ namespace wfaIntegradoCom.Consultas
                 fmr.Inicio(3, sumaPrimerPago, lstDVenta[0].cSimbolo);              
                
 
+            }else if(lnTipoCon == -2)
+            {
+
+                Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
+                fmr.Inicio(4, sumaPrimerPago, lstDVenta[0].cSimbolo);
+
             }
+
             this.Close();
         }
 
