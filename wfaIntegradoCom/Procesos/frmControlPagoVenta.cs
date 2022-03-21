@@ -33,7 +33,9 @@ namespace wfaIntegradoCom.Procesos
         static List<Cronograma> lstCronograma = new List<Cronograma>();
         static Tarifa clsTarifa = new Tarifa();
         static Vehiculo clsVehiculo = new Vehiculo();
+        
         static Cliente clsCliente = new Cliente();
+        
         BLControlPagos obControPagos = null;
         private static List<Pagos> lstPagosTrand = new List<Pagos>();
         static List<Moneda> lstMon=new List<Moneda>();
@@ -53,6 +55,13 @@ namespace wfaIntegradoCom.Procesos
         static Int32 lnTipoCon = 0;
         static Int32 tabInicio;
         static Int32 diaCicloPago = 0;
+
+        //listas para exportar las busquedas
+        static List<Vehiculo> lstVehiculoBusq = new List<Vehiculo>();
+        static List<Cliente> lstClientesBusq = new List<Cliente>();
+        static List<Plan> lstPlanBusq = new List<Plan>();
+        static List<TipoPlan> lstTipoPlanBusq = new List<TipoPlan>();
+        static List<Ciclo> lstCicloBusq = new List<Ciclo>();
 
         static DateTime dtFechaPagoCuota = Variables.gdFechaSis;
         Boolean estadoComprabanteP, estadoFechaPago, estadoDescuento, estadoMoneda;
@@ -324,6 +333,9 @@ namespace wfaIntegradoCom.Procesos
         }
         private void fnCargarTabla(DataGridView dgv,DataTable dtt, Int32 TipConPaginacion, Int32 numPagina)
         {
+            lstClientesBusq.Clear();
+            lstPlanBusq.Clear();
+            lstVehiculoBusq.Clear();
             Int32 filas = 10;
             if (dtt.Rows.Count > 0)
             {
@@ -342,7 +354,7 @@ namespace wfaIntegradoCom.Procesos
 
                 dgv.Rows.Clear();
                 Int32 totalResultados = dtt.Rows.Count;
-                for (Int32 i = 0; i < dtt.Rows.Count; i++)
+                foreach (DataRow drMenu in dtt.Rows)
                 {
                     y += 1;
                    String estadoCuota = "";
@@ -358,15 +370,15 @@ namespace wfaIntegradoCom.Procesos
                     Int32 diasASumar = 0;
                     Int32 restarFinal = 0;
 
-                    Int32 cicloPago = Convert.ToInt32(dtt.Rows[i][11]);
+                    Int32 cicloPago = Convert.ToInt32(drMenu["cDia"]);
                     diaCicloPago = cicloPago;
 
                     DateTime dtFechActual = Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy"));
                     TimeSpan tiket = dtFechActual - dtFechActual.AddDays(-1);
 
-                    DateTime dtFechaInicio = Convert.ToDateTime(Convert.ToDateTime(dtt.Rows[i][14].ToString()).ToString("dd/MM/yyyy"));
+                    DateTime dtFechaInicio = Convert.ToDateTime(Convert.ToDateTime(drMenu["periodoInicio"].ToString()).ToString("dd/MM/yyyy"));
 
-                    DateTime dtFechaTemp = Convert.ToDateTime(Convert.ToDateTime(dtt.Rows[i][14].ToString()).ToString("dd/MM/yyyy")).AddMonths(1);
+                    DateTime dtFechaTemp = Convert.ToDateTime(Convert.ToDateTime(drMenu["periodoInicio"].ToString()).ToString("dd/MM/yyyy")).AddMonths(1);
                     numDiasMespago = DateTime.DaysInMonth(dtFechaInicio.Year, dtFechaInicio.Month);
                     numDiasMesAdd = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
 
@@ -417,7 +429,7 @@ namespace wfaIntegradoCom.Procesos
 
                     //DateTime fechaPagoCiclo = dtFechaDePago.AddDays(Math.Abs(NumDiasSumar));
 
-                    if (Convert.ToString(dtt.Rows[i][10]) == "PAGO PENDIENTE")
+                    if (Convert.ToString(drMenu["cNomTab"]) == "PAGO PENDIENTE")
                     {
                         cDias = faltaDias == 1 ? " Dia " : " Dias ";
                         if (dtFechaPagoCronograma < dtFechActual)
@@ -465,42 +477,67 @@ namespace wfaIntegradoCom.Procesos
                             }
 
                         }
-                        estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dtt.Rows[i][10])) + tiempoTranscurrido;
+                        estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
 
                     }
-                    else if (Convert.ToString(dtt.Rows[i][10]) == "CUOTA PAGADA")
+                    else if (Convert.ToString(drMenu["cNomTab"]) == "CUOTA PAGADA")
                     {
 
-                        tiempoTranscurrido = "\n✅ El ( " + Convert.ToDateTime(dtt.Rows[i][13]).ToString("dd/MMM/yyyy") + " )";
-                        estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dtt.Rows[i][10])) + tiempoTranscurrido;
+                        tiempoTranscurrido = "\n✅ El ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
+                        estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
                     }
                     else
                     {
-                        if (Convert.ToString(dtt.Rows[i][10]) == "VENCIDO")
+                        if (Convert.ToString(drMenu["cNomTab"]) == "VENCIDO")
                         {
-                            tiempoTranscurrido = "\n🚫 Desde ( " + Convert.ToDateTime(dtt.Rows[i][13]).ToString("dd/MMM/yyyy") + " )";
+                            tiempoTranscurrido = "\n🚫 Desde ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
                         }
                         else
                         {
-                            tiempoTranscurrido = "\n❌ Desde ( " + Convert.ToDateTime(dtt.Rows[i][13]).ToString("dd/MMM/yyyy") + " )";
+                            tiempoTranscurrido = "\n❌ Desde ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
 
                         }
-                        estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dtt.Rows[i][10])) + tiempoTranscurrido;
+                        estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
 
                     }
 
+                    lstClientesBusq.Add(new Cliente
+                    {
+                        cNombre= Convert.ToString(drMenu["nombreCliente"]),
+                        cApePat= Convert.ToString(drMenu["cApePat"]),
+                        cApeMat= Convert.ToString(drMenu["cApeMat"]),
+                        cTelCelular= Convert.ToString(drMenu["cTelCelular"]),                       
+                        dFecNac = dtFechaPagoCronograma.AddDays(1),
+                        cContactoNom1=Convert.ToString(drMenu["cContactoNom1"]),
+                        cContactoCel1=Convert.ToString(drMenu["cContactoCel1"])
+
+                    });
+
+                    lstVehiculoBusq.Add(new Vehiculo
+                    {
+                        vPlaca= Convert.ToString(drMenu["vPlaca"])
+
+                    });
+
+                    lstPlanBusq.Add(new Plan
+                    {
+                        nombrePlan=Convert.ToString(drMenu["cNombre"]),
+                        ContratoPlan=Convert.ToString(drMenu["nombre"]),
+                        cLetraPlan=Convert.ToString(drMenu["cDia"]),
+                        codPlan=Convert.ToString(drMenu["cNomTab"]),                        
+                    });
 
                     dgv.Rows.Add(
-                        dtt.Rows[i][1],
-                        dtt.Rows[i][2],
+                        drMenu["idCronograma"],
+                        drMenu["idContrato"],
                         y,
-                        dtt.Rows[i][12],
+                       drMenu["codContrato"],
                         dtFechaPagoCronograma.ToString("dd/MMM/yyyy"),
-                        dtt.Rows[i][5],
-                        dtt.Rows[i][6],
-                        dtt.Rows[i][7],
-                        dtt.Rows[i][8],
-                        Convert.ToInt32(dtt.Rows[i][11]),
+                        drMenu["vPlaca"],
+                        drMenu["nombreCliente"]+" "+ drMenu["cApePat"]+ drMenu["cApeMat"],
+                        drMenu["cNombre"],
+                        drMenu["nombre"],
+                        drMenu["cDia"],
                         estadoCuota
                         );
                 }

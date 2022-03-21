@@ -14,6 +14,7 @@ namespace CapaEntidad
         public DateTime fechaRegistro { get; set; }
         public DateTime fechaVenta { get; set; }
         public DateTime fechaPago { get; set; }
+        public List<Cliente> ListaClientesBusqueda { get; set; }
         public Cliente claseCliente { get; set; }
         public Vehiculo claseVehiculo { get; set; }
         public Int32 idCiclo { get; set; }

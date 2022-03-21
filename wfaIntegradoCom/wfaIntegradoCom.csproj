@@ -221,6 +221,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultas\frmExportConsultasCronograma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\frmExportConsultasCronograma.Designer.cs">
+      <DependentUpon>frmExportConsultasCronograma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\frmRptActa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -746,6 +752,10 @@
     <Content Include="Imagenes\carrito_opt.png" />
     <Content Include="Imagenes\salir.bmp" />
     <EmbeddedResource Include="Consultas\DocumentoVenta.rdlc" />
+    <EmbeddedResource Include="Consultas\frmExportConsultasCronograma.rdlc" />
+    <EmbeddedResource Include="Consultas\frmExportConsultasCronograma.resx">
+      <DependentUpon>frmExportConsultasCronograma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\frmRptActa.resx">
       <DependentUpon>frmRptActa.cs</DependentUpon>
     </EmbeddedResource>
