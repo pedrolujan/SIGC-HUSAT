@@ -33,6 +33,7 @@ namespace wfaIntegradoCom.Procesos
         {
             lnTipoLlamada = pnTipoLlamda;
             ShowDialog();
+
         }
 
         private void fnAgregarDatosDeBusqueda(Int32 tipoConPagina, Int32 pagina, Int32 filas, DataTable dtDatosResp, Int32 totalResultados, String idTipoventa)
@@ -266,6 +267,7 @@ namespace wfaIntegradoCom.Procesos
             clsUtil objUtil = new clsUtil();
             BLOtrasVenta obtTVenta = new BLOtrasVenta();
             DataTable dtResp = new DataTable();
+            
             try
             {
                 OtrasVentas clsOtrasVentas = new OtrasVentas();
@@ -287,7 +289,8 @@ namespace wfaIntegradoCom.Procesos
 
                 }
 
-                Procesos.frmOtrasVentas.fnObtenerObjVentas(clsOtrasVentas);
+                frmOtrasVentas fr = new frmOtrasVentas();
+                fr.fnObtenerObjVentas(clsOtrasVentas);
 
                 return true;
             }
@@ -296,6 +299,7 @@ namespace wfaIntegradoCom.Procesos
                 objUtil.gsLogAplicativo("frmRegistrarProveedor", "fnRecuperarProveedorEsp", ex.Message);
                 return false;
             }
+            
         }
 
         private void fnCambiarPosisionObt(SiticoneGroupBox gb, Int32 x,Int32 y)
@@ -313,6 +317,7 @@ namespace wfaIntegradoCom.Procesos
                     gbBusqMarcaModelo.Visible = true;
                     fnCambiarPosisionObt(gbCajaDeTexto, 1010, 40);
                     fnCambiarPosisionObt(gbBusqMarcaModelo, 318, 20);
+                   
                 }
                 else 
                 {

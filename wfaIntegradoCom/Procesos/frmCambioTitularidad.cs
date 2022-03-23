@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using wfaIntegradoCom.Funciones;
+using wfaIntegradoCom.Mantenedores;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -35,6 +36,7 @@ namespace wfaIntegradoCom.Procesos
         static Int32 idCliente = 0;
         static Int32 idModelo = 0;
         static Boolean estVP = false;
+        Boolean EstadoCarga = false;
         //string Int32 idVenta=0;
         //static CambioTitularidad ClsCambioTitularidad
         static List<Cliente> lstClientes = new List<Cliente>();
@@ -45,11 +47,14 @@ namespace wfaIntegradoCom.Procesos
         static List<DocumentoVenta> lstdocumentoV = new List<DocumentoVenta>();
         private static List<Pagos> lstPagosTitularidad = new List<Pagos>();
         static Titularidad ClsTitu;
+        static Boolean estDescuento = false;
         List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
         static DateTime dtFechaTitularidad= Variables.gdFechaSis;
-
-        String msjCliente, msjdni, msjPlaca, msjCNuevo, msjDNuevo, msjTelNuevo, msjDireccionN, msjImporte;
-        Boolean estCliente, estdni, estPlaca, estCNuevo, estDNuevo, estTelNuevo, estDireccionN, estImporte, estadoFechaPago;
+        static Ciclo clsCiclo = new Ciclo();
+        static Moneda clsMoneda = new Moneda();
+        static List<Moneda> lstMon = new List<Moneda>();
+        String msjCliente, msjdni, msjPlaca, msjCNuevo, msjDNuevo,msjDescuento, msjTelNuevo, msjDireccionN, msjImporte, msgMoneda, msgComprabanteP;
+        Boolean estCliente, estdni, estPlaca, estCNuevo, estDNuevo, estTelNuevo,estadoDescuento, estDireccionN, estImporte, estadoFechaPago, estadoMoneda, estComprabanteP;
 
 
 
@@ -71,23 +76,70 @@ namespace wfaIntegradoCom.Procesos
 
         private void frmCambioTitularidad_Load(object sender, EventArgs e)
         {
-            fnLinpiar();
+            Boolean bResult = false;
+            frmRegistrarVenta frmRV = new frmRegistrarVenta();
+            try
+            {
 
-            IGV = 0;
-            SutTotal = 0;
-            total = 0;
-            precioUnit = 0;
-            descuento = 0;
-            CambioTitularidad = "";
-            dgConsulta.Visible = false;
-            dgConsultaCliente.Visible = false;
-            
-            dtFechaTitu.Value = Variables.gdFechaSis;
+                fnLinpiar();
 
-            FunValidaciones.fnColorBtnGuardar(btnGuardarCliente);
-            btnGuardarCliente.Enabled = false;
+                IGV = 0;
+                SutTotal = 0;
+                total = 0;
+                precioUnit = 0;
+                descuento = 0;
+                CambioTitularidad = "";
+                dgConsulta.Visible = false;
+                dgConsultaCliente.Visible = false;
+
+                dtFechaTitu.Value = Variables.gdFechaSis;
+                fnLLenarMoneda(CboMoneda, 0, false);
+                estadoDescuento = false;
+                EstadoCarga = false;
+                bResult = frmRV.fnLlenarTipoDescuento(0, cboTipoDescuentoPrecios, false);
+                FunValidaciones.fnColorBtnGuardar(btnGuardarCliente);
+                btnGuardarCliente.Enabled = false;
+                txtDescuento.Enabled = false;
+            }
+            catch(Exception ex)
+            {
+                
+            }
+            finally
+            {
+                EstadoCarga = true;
+                EstadoCarga = true;
+            }
+           
+            //CboMoneda.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
         }
+        private Boolean fnLLenarMoneda(ComboBox cbo, Int32 idMoneda, Boolean buscar)
+        {
+            BLMoneda objMoneda = new BLMoneda();
+            clsUtil objUtil = new clsUtil();
+            List<Moneda> lstMoneda;
+            
+            try
+            {
+                lstMoneda = objMoneda.blDevolverMoneda(idMoneda, buscar);
+                cbo.ValueMember = "idMoneda";
+                cbo.DisplayMember = "cNombre";
+                cbo.DataSource = lstMoneda;
 
+                lstMon = lstMoneda;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FrmRegistrarVehiculo", "fnLLenarClaseVehiculo", ex.Message);
+                return false;
+            }
+            finally
+            {
+                lstMoneda = null;
+            }
+        }
         private void txtPlaca_TextChanged(object sender, EventArgs e)
         {
             var resultado = FunValidaciones.fnValidarTexboxs(txtPlaca, lblPlaca, pbplaca, true, true, true, 3, 50, 50, 50, "Complete el Placa");
@@ -126,8 +178,10 @@ namespace wfaIntegradoCom.Procesos
                             cDocumento = Convert.ToString(drMenu["cDocumento"]),
                             cTelCelular = Convert.ToString(drMenu["cTelCelular"]),
                             cDireccion = Convert.ToString(drMenu["cDireccion"]),
-                            cTipoDoc = Convert.ToString(drMenu["NomTdoc"])
-                        });
+                            cTipoDoc = Convert.ToString(drMenu["NomTdoc"]),
+                            cTiDo = Convert.ToInt32(drMenu["cTiDo"])
+                        }) ;
+                        Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboComprobanteP, "DOVE", lstClientes[0].cTiDo,0);
                         txtClienteNuevo.Text = lstClientes[0].cNombre + " " + lstClientes[0].cApePat + " " + lstClientes[0].cApeMat;
                         txtTelefonoNuevo.Text = Convert.ToString(drMenu["cTelCelular"]);
                         txtDireccionNuevo.Text = Convert.ToString(drMenu["cDireccion"]) != "" ? Convert.ToString(drMenu["cDireccion"]) : "No registro su Direccion";
@@ -391,6 +445,7 @@ namespace wfaIntegradoCom.Procesos
             if (estadoFechaPago == true && estImporte == true)
             {
                 btnGuardarCliente.Enabled = true;
+
             }
             else
             {
@@ -398,8 +453,8 @@ namespace wfaIntegradoCom.Procesos
             }
 
         }
-            
-
+      
+       
         
         private Boolean fnValidaFecha(Label lbl, PictureBox pb)
         {
@@ -454,8 +509,119 @@ namespace wfaIntegradoCom.Procesos
             fnBuscarDatosClienteNuevo(2);
         }
 
+        private void chkHabilitarDescuentoP_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (chkHabilitarDescuentoP.Checked == true)
+            {
+                Procesos.frmAccesoADescuento frmDescuento = new Procesos.frmAccesoADescuento();
+                estDescuento = false;
+                frmDescuento.Inicio(2);
+                if (estDescuento == true)
+                {
+                    cboTipoDescuentoPrecios.Enabled = estDescuento;
+                    chkHabilitarDescuentoP.Checked = estDescuento;
+                }
+                else
+                {
+                    cboTipoDescuentoPrecios.Enabled = estDescuento;
+                    chkHabilitarDescuentoP.Checked = estDescuento;
+                }
+
+
+            }
+            else
+            {
+                estDescuento = false;
+                chkHabilitarDescuentoP.Checked = false;
+                 
+                cboTipoDescuentoPrecios.SelectedIndex = 0;
+                cboTipoDescuentoPrecios.Enabled = estDescuento;
+            }
+        }
+        public static void fnRespuestaValidacion(Boolean estado)
+        {
+            estDescuento = estado;
+        }
+        private void cboTipoDescuentoPrecios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+            if (EstadoCarga == true)
+            {
+               
+                if (Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue) != 0)
+                {
+                    fnvalidarDescuento(true) ;
+                }
+                else
+                {
+                    fnvalidarDescuento(false) ;
+
+                    //txtDescuento.Enabled = false;
+                }
+
+            }
+        }
+
+        private void pbFechaT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFechaT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fnvalidarDescuento(Boolean ESTADO)
+        {
+            if(estDescuento == ESTADO)
+            {
+                txtDescuento.Enabled = ESTADO;
+            }
+            else
+            {
+                txtDescuento.Enabled = ESTADO;
+            }
+        }
+
+        private void txtDescuento_TextChanged(object sender, EventArgs e)
+        {
+           
+            var resultado = FunValidaciones.fnValidarTexboxs(txtDescuento, lblDescuento, pbDescuento, true, true, true, 2, 20, 20, 20, " Seleccione el tipo de importe !!! ");
+            estadoDescuento = resultado.Item1;
+            msjDescuento = resultado.Item2;
+           
+        }
+
+        private void dgConsultaCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cboComprobanteP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var result = FunValidaciones.fnValidarCombobox(cboComprobanteP, lblComprobanteP, pbComprobanteP);
+            estComprabanteP = result.Item1;
+            msgComprabanteP = result.Item2;
+        }
+
         private void siticonePanel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void CboMoneda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (EstadoCarga == true)
+            {
+                clsMoneda = lstMon.Find(i => i.idMoneda == Convert.ToInt32(CboMoneda.SelectedValue));
+
+            }
+            var result = FunValidaciones.fnValidarCombobox(CboMoneda, lblError,pbMoneda);
+            estadoMoneda = result.Item1;
+            msgMoneda = result.Item2;
 
         }
 
@@ -465,13 +631,14 @@ namespace wfaIntegradoCom.Procesos
             lnTipoCon = 3;
 
             fnListarDatosClienteNuevo(lnTipoCon, e);
+            
         }
 
         private void txtImporte_TextChanged(object sender, EventArgs e)
         {
             fnActivarBotonGuardar();
-            //btnGuardarCliente.Enabled = true;
-            var resultado = FunValidaciones.fnValidarTexboxs(txtImporte, lblImporte, pbImporte, true, true, true, 2, 6, 6, 6,"¿ Cual es el monto del importe ? ");
+            
+            var resultado = FunValidaciones.fnValidarTexboxs(txtImporte, lblImporte, pbImporte, true, true, true, 1, 6, 6, 6,"¿ Cual es el monto del importe ? ");
             estImporte = resultado.Item1;
             msjImporte = resultado.Item2;
 
