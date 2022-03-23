@@ -36,6 +36,12 @@ namespace wfaIntegradoCom.Procesos
         private static List<Moneda> lstMon = new List<Moneda>();
         private static CambioMonedaVenta clsCMP = new CambioMonedaVenta();
         private static CambioMonedaVenta clsCUnico = new CambioMonedaVenta();
+        static List<Cliente> lstClientesN = new List<Cliente>();
+        static List<Vehiculo> lstvehiculo = new List<Vehiculo>();
+        static List<ModeloVehiculo> lstModelo = new List<ModeloVehiculo>();
+        static List<MarcaVehiculo> lstMarca = new List<MarcaVehiculo>();
+        static List<DetalleVenta> lstDventa = new List<DetalleVenta>();
+        static List<DocumentoVenta> lstdocumentoV = new List<DocumentoVenta>();
         //static  CambioPrecioOtrasVentas cPOtrasVentas = new CambioPrecioOtrasVentas();
         private static Moneda Mon = new Moneda();
         static Double dsPrecioEquipo;
@@ -65,9 +71,11 @@ namespace wfaIntegradoCom.Procesos
         static List<OtrasVentas> lstOtrasVentas = new List<OtrasVentas>();
         static List<StokAccesorios> lstAtokAccesorios = new List<StokAccesorios>();
        static Int32 IdObjetoExistente = 0;
-        Boolean estadoTabla, estMoneda, estTipPersona, estTipDocumento,  estTipoDescuento,estCliente,estDocumentoEmitir;
+        static DateTime dtFechaTitularidad = Variables.gdFechaSis;
+        String msgPLACA;
+        Boolean estadoTabla, estMoneda, estTipPersona, estTipDocumento, estTipoDescuento, estPLACA, estadoFechaPago, estCliente, estDocumentoEmitir, estImporte;
         String lblMoneda, lblTipPersona, lblTipDocumento, lblTipoDescuento,lblCliente, lblDocumentoEmitir;
-        public static void fnObtenerObjVentas(OtrasVentas clsOtrasVentas)
+        public  void fnObtenerObjVentas(OtrasVentas clsOtrasVentas)
         {
 
 
@@ -78,13 +86,24 @@ namespace wfaIntegradoCom.Procesos
                 if (IdObjetoExistente == 0)
                 {
                     lstOtrasVentas.Add(clsOtrasVentas);
+                    if (lstOtrasVentas[0].idTipoTransaccion == 4 && lstOtrasVentas[0].idObjVenta == 2)
+                    {
+                   this.gbDatosVehiculo.Visible =true;
+                    }
+                    else if (lstOtrasVentas[0].idTipoTransaccion != 4 && lstOtrasVentas[0].idObjVenta != 2)
+                    {
+                        this.gbDatosVehiculo.Visible = false;
+                    }
                 }
                 else
                 {
                     Int32 indiceLista = lstOtrasVentas.FindIndex(i =>i.idObjVenta == IdObjetoExistente);
-                    
-                        lstOtrasVentas[indiceLista] = clsOtrasVentas;
+
+                    lstOtrasVentas[indiceLista] = clsOtrasVentas;
+                   
+
                 }
+
                
 
             }
@@ -117,6 +136,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void fnInsertarATable()
         {
+            //siticoneGroupBox2.Visible = false;
             dgOtrasVentas.Rows.Clear();
             Int32 i = 0;
             Int32 indiceLista = lstOtrasVentas.FindIndex(j => j.idTipoTransaccion == 2);
@@ -325,6 +345,8 @@ namespace wfaIntegradoCom.Procesos
         }
         private void frmOtrasVentas_Load(object sender, EventArgs e)
         {
+            gbDatosVehiculo.Visible = false;
+
             pnActivar = false;
             CargoForm = false;
             FunValidaciones.fnColorBtnGuardar(btnGuardar);
@@ -339,8 +361,9 @@ namespace wfaIntegradoCom.Procesos
                 fnHabilitarDescuento(false);
                 lstOtrasVentas = new List<OtrasVentas>();
                 estadoTabla=false;
-
-
+                fnLinpiar();
+                dgConsulta.Visible = false;
+               
             }
             catch (Exception ex)
             {
@@ -1109,6 +1132,7 @@ namespace wfaIntegradoCom.Procesos
             if (e.RowIndex!=-1)
             {
                  posicionFila = e.RowIndex;
+                //siticoneGroupBox2.Visible = true;
             }
             DataGridViewRow filaSeleccionada = dgOtrasVentas.Rows[posicionFila];
 
@@ -1125,9 +1149,12 @@ namespace wfaIntegradoCom.Procesos
 
                 frmListarTipoVentas frmEquipo = new frmListarTipoVentas();
                 frmEquipo.Inicio(1);
-                fnInsertarATable();
+               fnInsertarATable();
                 fnHabilitarDescuento(false);
                 estadoTabla = true;
+
+
+
                 //fnCalcularTotalPrecios();
 
                 //if (EstadoLlenarObjetos == true)
@@ -1184,12 +1211,17 @@ namespace wfaIntegradoCom.Procesos
 
         public static OtrasVentas fnObtenerObjetoSeleccionado(Int32 idObJeto, List<OtrasVentas> lstV)
         {
+           
             foreach (OtrasVentas item in lstV)
             {
+               
                 if (item.idObjVenta == idObJeto)
                 {
                     return item;
+    
+             
                 }
+               
             }
             return new OtrasVentas();
         }
@@ -1972,6 +2004,271 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
+        private void gbDatosVenta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBusca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            lnTipoCon = 0;
+
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+
+
+                fnBuscarDatosCliente(lnTipoCon);
+            }
+        }
+        private Boolean fnBuscarDatosCliente(Int32 cond)
+        {
+            BLTitularidad datCliente = new BLTitularidad();
+            clsUtil objUtil = new clsUtil();
+            DataTable datResultado = new DataTable();
+            try
+            {
+                string BuscaDato = Convert.ToString(txtBusca.Text);
+                datResultado = datCliente.BlBuscarTitularidad(cond, BuscaDato);
+
+                dgConsulta.Visible = true;
+                dgConsulta.Rows.Clear();
+
+                foreach (DataRow drMenu in datResultado.Rows)
+                {
+                    dgConsulta.Rows.Add(
+                        Convert.ToString(drMenu["idventageneral"]),
+                       Convert.ToString(drMenu["cNombre"]),
+                       Convert.ToString(drMenu["vPlaca"])
+                       );
+
+
+                }
+                return true;
+
+            }
+            catch (Exception Error)
+
+            {
+                return false;
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void dgConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            lnTipoCon = 1;
+
+            fnListarDatosCliente(lnTipoCon, e);
+        }
+        private void fnLinpiar()
+        {
+            lstDventa.Clear();
+            lstdocumentoV.Clear();
+            lstClientesN.Clear();
+            //lstPagosTitularidad.Clear();
+            //txtImporte.Text = "";
+            txtBusca.Text = "";
+            //txtBuscarCliente.Text = "";
+            txtCliente.Text = "";
+            //txtClienteNuevo.Text = "";
+            //txtCorreo.Text = "";
+            //txtDireccionNuevo.Text = "";
+            //txtdni.Text = "";
+            //txtDniNuevo.Text = "";
+            //txtTelefono.Text = "";
+            //txtTelefonoNuevo.Text = "";
+            txtSerie.Text = "";
+            txtPlacaT.Text = "";
+            txtModelo.Text = "";
+            txtMarca.Text = "";
+            //TxtSubT.Text = "";
+            //txtTotal.Text = "";
+            //txtIGV.Text = "";
+
+
+
+
+
+        }
+        private void fnListarDatosCliente(int condicion, DataGridViewCellEventArgs e)
+        {
+            clsUtil objUtil = new clsUtil();
+            DataTable datosclienteT = new DataTable();
+            BLTitularidad datTitularidad = new BLTitularidad();
+            DataTable datResultado = new DataTable();
+            try
+            {
+
+
+                datResultado = datTitularidad.BlBuscarTitularidadEspecificos(condicion, Convert.ToInt32(dgConsulta.Rows[e.RowIndex].Cells[0].Value));
+                if (datResultado.Rows.Count > 0)
+                {
+                    lstClientesN.Clear();
+                    lstvehiculo.Clear();
+                    lstModelo.Clear();
+                    lstMarca.Clear();
+                    fnLinpiar();
+                    Titularidad clsTitu = new Titularidad();
+                    clsTitu.idModelo = 0;
+
+                    dgConsulta.Visible = false;
+                    foreach (DataRow drMenu in datResultado.Rows)
+                    {
+
+                        txtCliente.Text = Convert.ToString(drMenu["cNombre"]);
+                        lstClientesN.Add(new Cliente
+                        {
+                            idCliente = Convert.ToInt32(drMenu["idCliente"]),
+                            cNombre = Convert.ToString(drMenu["cNombre"]),
+                            cApePat = Convert.ToString(drMenu["cApePat"]),
+                            cApeMat = Convert.ToString(drMenu["cApeMat"]),
+                            //cDocumento = Convert.ToString(drMenu["cDocumento"]),
+                            //cTelCelular = Convert.ToString(drMenu["cTelCelular"]),
+                            //cCorreo = Convert.ToString(drMenu["cCorreo"]),
+                            //cTipoDoc = Convert.ToString(drMenu["NomTdoc"])
+
+                        });
+                        txtCliente.Text = lstClientesN[0].cNombre + " " + lstClientesN[0].cApePat + " " + lstClientesN[0].cApeMat;
+                        //txtdni.Text = Convert.ToString(drMenu["cDocumento"]);
+                        //txtTelefono.Text = Convert.ToString(drMenu["cTelCelular"]);
+                        //txtCorreo.Text = Convert.ToString(drMenu["cCorreo"]) != "" ? Convert.ToString(drMenu["cCorreo"]) : "SIN CORREO";
+
+
+                        txtPlacaT.Text = Convert.ToString(drMenu["vPlaca"]);
+
+                        txtSerie.Text = Convert.ToString(drMenu["vSerie"]);
+
+
+                        lstvehiculo.Add(new Vehiculo
+                        {
+                            idVehiculo = Convert.ToInt32(drMenu["idVehiculo"]),
+                            vPlaca = Convert.ToString(drMenu["vPlaca"]),
+                            vSerie = Convert.ToString(drMenu["vSerie"]),
+
+                        });
+
+
+
+
+                        txtMarca.Text = Convert.ToString(drMenu["nombreMarcaV"]);
+                        lstMarca.Add(new MarcaVehiculo
+                        {
+                            idMarca = Convert.ToInt32(drMenu["idMarcaV"]),
+                            cNomMarca = Convert.ToString(drMenu["nombreMarcaV"]),
+
+                        });
+                        //txtMarca.Text = lstMarca[0].cNomMarca;
+
+                        txtModelo.Text = Convert.ToString(drMenu["nombreModeloV"]);
+                        lstModelo.Add(new ModeloVehiculo
+                        {
+                            idModelo = Convert.ToInt32(drMenu["idModeloV"]),
+                            cNomModelo = Convert.ToString(drMenu["nombreModeloV"])
+                        });
+                        //txtModelo.Text = lstModelo[0].cNomModelo;
+                    }
+
+                }
+            }
+            catch (Exception exp)
+            {
+
+            }
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            fnBuscarDatosCliente(0);
+        }
+        private Boolean fnValidaFecha(Label lbl, PictureBox pb)
+        {
+            String msg = "";
+            Boolean bEstado = false;
+            PictureBox pbx = null;
+            Image img = null;
+            DateTime dtFechaSistema = Variables.gdFechaSis.AddDays(-2);
+            if (Convert.ToDateTime(dtFechaTitu.Value.ToString("dd/MM/yyyy")) >= Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")) && Convert.ToDateTime(dtFechaTitu.Value.ToString("dd/MM/yyyy")) <= Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
+            {
+                bEstado = true;
+                msg = "";
+                img = Properties.Resources.ok;
+
+            }
+            else
+            {
+                if (Convert.ToDateTime(dtFechaTitu.Value.ToString("dd/MM/yyyy")) > Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
+                {
+                    bEstado = false;
+                    msg = "La fecha de pago no puede ser mayor a la fecha actual";
+                    img = Properties.Resources.error;
+                   
+                }
+                else if (Convert.ToDateTime(dtFechaTitu.Value.ToString("dd/MM/yyyy")) < Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")))
+                {
+                    //bEstado = false;
+                    //msg = "La fecha de pago no puede ser menor a: " + dtFechaSistema.ToString("dd/MM/yyyy");
+                    //img = Properties.Resources.error;
+
+                    bEstado = true;
+                    msg = "";
+                    img = Properties.Resources.ok;
+
+                }
+            }
+            lbl.Text = msg;
+            pb.Image = img;
+            return bEstado;
+            
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gbDatosCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPlacaT_TextChanged(object sender, EventArgs e)
+        {
+            var result = FunValidaciones.fnValidarTexboxs(txtPlacaT, lblPlacaT, pbplacaT, true, true, true, 3, 20, 20, 20, "Complete los campos");
+            estPLACA = result.Item1;
+            msgPLACA = result.Item2;
+        }
+
+        private void siticoneGroupBox2_Click(object sender, EventArgs e)
+        {
+            //    siticoneGroupBox2.Visible = false;
+        }
+        private void dtFechaTitu_ValueChanged(object sender, EventArgs e)
+        {
+
+            estadoFechaPago = fnValidaFecha(lblFechaT, pbFechaT);
+
+            dtFechaTitularidad = Convert.ToDateTime(dtFechaTitu.Value);
+        }
+
+        //private void fnActivarBotonGuardar()
+        //{
+        //    if (estadoFechaPago == true && estImporte == true)
+        //    {
+        //        btnGuardar.Enabled = true;
+
+        //    }
+        //    else
+        //    {
+        //        btnGuardar.Enabled = false;
+        //    }
+
+        //}
         //private Boolean fnListarEquipos(String equipos)
         //{
         //    clsUtil objUtil = new clsUtil();
@@ -2096,7 +2393,7 @@ namespace wfaIntegradoCom.Procesos
             txtClientesN_A_TextChanged(sender, e);
             txtDireccion_TextChanged(sender, e);
             txtIdCliente_TextChanged(sender, e);
-
+            txtPlacaT_TextChanged(sender, e);
         }
         
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -2104,9 +2401,10 @@ namespace wfaIntegradoCom.Procesos
             Boolean blnResultado = false;
             BLOtrasVenta objOtrasVentas = new BLOtrasVenta();
             fnValidarCamposCliente(sender,e);
+           
 
             List<OtrasVentas> lstDetalleVenta = fnRecorrerGrilla();
-            if (estCliente == true && estTipDocumento==true && estTipPersona==true )
+            if (estCliente == true && estTipDocumento==true && estTipPersona==true&& estPLACA==true )
             {
                 if (estDocumentoEmitir == true)
                 {

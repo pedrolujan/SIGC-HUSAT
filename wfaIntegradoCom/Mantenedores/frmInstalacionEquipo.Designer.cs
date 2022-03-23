@@ -254,7 +254,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticonePanel2.Controls.Add(this.pbBajar);
             this.siticonePanel2.Controls.Add(this.pbSubir);
             this.siticonePanel2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.siticonePanel2.Location = new System.Drawing.Point(507, 385);
+            this.siticonePanel2.Location = new System.Drawing.Point(507, 390);
             this.siticonePanel2.Name = "siticonePanel2";
             this.siticonePanel2.ShadowDecoration.Parent = this.siticonePanel2;
             this.siticonePanel2.Size = new System.Drawing.Size(566, 26);
@@ -268,7 +268,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.lblGuardarAccYServ.AutoSize = true;
             this.lblGuardarAccYServ.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGuardarAccYServ.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblGuardarAccYServ.Location = new System.Drawing.Point(3, 1);
+            this.lblGuardarAccYServ.Location = new System.Drawing.Point(3, 5);
             this.lblGuardarAccYServ.Name = "lblGuardarAccYServ";
             this.lblGuardarAccYServ.Size = new System.Drawing.Size(223, 21);
             this.lblGuardarAccYServ.TabIndex = 101;
@@ -280,7 +280,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.lblSeleccionar.AutoSize = true;
             this.lblSeleccionar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSeleccionar.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblSeleccionar.Location = new System.Drawing.Point(3, 0);
+            this.lblSeleccionar.Location = new System.Drawing.Point(3, 4);
             this.lblSeleccionar.Name = "lblSeleccionar";
             this.lblSeleccionar.Size = new System.Drawing.Size(245, 21);
             this.lblSeleccionar.TabIndex = 102;
@@ -342,7 +342,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvServicios.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvServicios.EnableHeadersVisualStyles = false;
             this.dgvServicios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvServicios.Location = new System.Drawing.Point(790, 410);
+            this.dgvServicios.Location = new System.Drawing.Point(790, 414);
             this.dgvServicios.Name = "dgvServicios";
             this.dgvServicios.RowHeadersVisible = false;
             this.dgvServicios.RowHeadersWidth = 10;
@@ -404,7 +404,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvAccesorios.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvAccesorios.EnableHeadersVisualStyles = false;
             this.dgvAccesorios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvAccesorios.Location = new System.Drawing.Point(507, 410);
+            this.dgvAccesorios.Location = new System.Drawing.Point(507, 414);
             this.dgvAccesorios.Name = "dgvAccesorios";
             this.dgvAccesorios.RowHeadersVisible = false;
             this.dgvAccesorios.RowHeadersWidth = 10;

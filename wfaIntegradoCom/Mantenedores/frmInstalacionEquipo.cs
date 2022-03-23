@@ -67,16 +67,17 @@ namespace wfaIntegradoCom.Mantenedores
             btnBuscarEquipos.Enabled = false;
             //fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTRegistros, 0, 1, -3);
             pbValObservacion.Visible = false;
-            //lbltxtObservacionIns.Visible = false;
 
-
-
+            String lnIdPlan = "";
             dgvAccesorios.Visible = false;
             dgvServicios.Visible = false;
+            fnAccesorios(lnIdPlan);
+            fnServisios(lnIdPlan);
 
-            siticonePanel2.Visible = false;
-            pbSubir.Visible = false;
-            pbBajar.Visible = false;
+
+
+            //pbSubir.Visible = false;
+            //pbBajar.Visible = false;
 
 
 
@@ -425,7 +426,7 @@ namespace wfaIntegradoCom.Mantenedores
             dgvAccE.Name = "Chk";
             dgvAccE.HeaderText = "Seleccionar";
 
-            //dgvAccesorios .Columns.Add(dgvAccE);
+            //dgvAccesorios.Columns.Add(dgvAccE);
 
 
 
@@ -615,7 +616,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             fnAccesorios(lnIdPlan);
             fnServisios(lnIdPlan);
-            //JJJJJJJJJJ
+            
             //dgvAccesorios.Visible = true;
             //dgvServicios.Visible = true;
 
@@ -624,9 +625,10 @@ namespace wfaIntegradoCom.Mantenedores
             //lblGuardarAccYServ.Visible = true;
             //pbSubir.Visible = true;
             //pbBajar.Visible = false;
-            //HHHHHHHHH
+            
             fnActivarCamposActualizacion(true);
             fnActivarCamposInst(1, true);
+            fnMostrtarTablas();
         }
         private void fnLlamarDatosInstalacion(String codVenta, String placa)
         {
@@ -1309,8 +1311,8 @@ namespace wfaIntegradoCom.Mantenedores
             fnAccesorios(lnIdPlan);
             fnServisios(lnIdPlan);
 
-            dgvAccesorios.Visible = true;
-            dgvServicios.Visible = true;
+            //dgvAccesorios.Visible = true;
+            //dgvServicios.Visible = true;
 
             siticonePanel2.Visible = true;
             lblSeleccionar.Visible = false;
@@ -1319,6 +1321,7 @@ namespace wfaIntegradoCom.Mantenedores
             pbBajar.Visible = false;
 
             fnActivarCamposActualizacion(true);
+            fnMostrtarTablas();
 
         }
 
