@@ -19,15 +19,26 @@ namespace wfaIntegradoCom.Consultas
         {
             InitializeComponent();
         }
+        List<Cliente> lstCliente= new List<Cliente>();
+        String TituloInforme = "";
+        Int32 TipoCon = 0;
+        public void Inicio(List<Cliente> lstCli,String titu, Int32 TipCon)
+        {
+            lstCliente = lstCli;
+            TipoCon = TipCon;
+            TituloInforme = titu;
+            //lstVehiculo = lstV;
+            //lstPagoPrincipales = lstPP;
 
+            ShowDialog();
+        }
         private void frmExportConsultasCronograma_Load(object sender, EventArgs e)
         {
-            //CargarReporte(lstDocumentoVenta, lstDetalleVentas);
+            CargarReporte(lstCliente,TituloInforme);
             this.reportViewer1.RefreshReport();
         }
-        private void CargarReporte(List<DocumentoVenta> lstDocumento, List<OtrasVentas> lstDC)
+        private void CargarReporte(List<Cliente> lstDocumento,String tituloInforme)
         {
-            List<OtrasVentas> lstDetaVenta = lstDC;
             //List<PagoPrincipal> lstPagoPrinci = lstPP;
             ReportParameter[] parameters = new ReportParameter[3];
             ///Mostrar datos en el reporte
@@ -38,11 +49,10 @@ namespace wfaIntegradoCom.Consultas
             parameters[0] = new ReportParameter("rpSucursal", Variables.gsSucursal);
             parameters[1] = new ReportParameter("rpEmpresaDir", Variables.gsEmpresaDir);
             parameters[2] = new ReportParameter("rpRuc", Variables.gsRuc);
-            reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.rptVPOtrasVentas.rdlc";
+            parameters[2] = new ReportParameter("Titulo", tituloInforme);
+            reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.frmExportConsultasCronograma.rdlc";
             reportViewer1.LocalReport.SetParameters(parameters);
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DatosCliente", lstDocumento));
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DetalleOtrasVentas", lstDetaVenta));
-            //reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DatosTotalPagos", lstTotPag));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dtCliente", lstDocumento));
             reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.RefreshReport();
         }

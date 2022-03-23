@@ -15,6 +15,7 @@ using wfaIntegradoCom.Funciones;
 using System.Text.RegularExpressions;
 using Siticone.UI.WinForms;
 using CapaDato;
+using wfaIntegradoCom.Consultas;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -55,7 +56,7 @@ namespace wfaIntegradoCom.Procesos
         static Int32 lnTipoCon = 0;
         static Int32 tabInicio;
         static Int32 diaCicloPago = 0;
-
+        static DateTime dtFechapagoCronogramaGeneral = Variables.gdFechaSis;
         //listas para exportar las busquedas
         static List<Vehiculo> lstVehiculoBusq = new List<Vehiculo>();
         static List<Cliente> lstClientesBusq = new List<Cliente>();
@@ -334,15 +335,14 @@ namespace wfaIntegradoCom.Procesos
         private void fnCargarTabla(DataGridView dgv,DataTable dtt, Int32 TipConPaginacion, Int32 numPagina)
         {
             lstClientesBusq.Clear();
-            lstPlanBusq.Clear();
-            lstVehiculoBusq.Clear();
             Int32 filas = 10;
             if (dtt.Rows.Count > 0)
             {
+                btnExportarBusqueda.Visible = true;
                 Int32 y;
 
 
-                if (TipConPaginacion == -1)
+                if (TipConPaginacion == -1 || TipConPaginacion==-3)
                 {
                     y = 0;
                 }
@@ -352,223 +352,232 @@ namespace wfaIntegradoCom.Procesos
                     y = tabInicio;
                 }
 
-                dgv.Rows.Clear();
+               
                 Int32 totalResultados = dtt.Rows.Count;
-                foreach (DataRow drMenu in dtt.Rows)
+
+                if (TipConPaginacion==-3)
                 {
-                    y += 1;
-                   String estadoCuota = "";
-                    String PasoDias = "";
-                    Int32 faltaDias = 0;
-                    Int32 restaAnio = 0;
-                    Int32 restaMeses = 0;
-                    Int32 diaNuevaFecha = 0;
-                    String cDias = "";
-                    String tiempoTranscurrido = "";
-                    Int32 numDiasMesAdd = 0;
-                    Int32 numDiasMespago = 0;
-                    Int32 diasASumar = 0;
-                    Int32 restarFinal = 0;
-
-                    Int32 cicloPago = Convert.ToInt32(drMenu["cDia"]);
-                    diaCicloPago = cicloPago;
-
-                    DateTime dtFechActual = Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy"));
-                    TimeSpan tiket = dtFechActual - dtFechActual.AddDays(-1);
-
-                    DateTime dtFechaInicio = Convert.ToDateTime(Convert.ToDateTime(drMenu["periodoInicio"].ToString()).ToString("dd/MM/yyyy"));
-
-                    DateTime dtFechaTemp = Convert.ToDateTime(Convert.ToDateTime(drMenu["periodoInicio"].ToString()).ToString("dd/MM/yyyy")).AddMonths(1);
-                    numDiasMespago = DateTime.DaysInMonth(dtFechaInicio.Year, dtFechaInicio.Month);
-                    numDiasMesAdd = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
-
-                    if (numDiasMesAdd <= 29 && dtFechaTemp.Month == 2 && diaCicloPago != 15)
+                    foreach (DataRow drMenu in dtt.Rows)
                     {
-                        diasASumar = numDiasMesAdd;
-                    }
-                    else if (numDiasMespago <= 29 && dtFechaInicio.Month == 2)
-                    {
-                        diasASumar = numDiasMesAdd > 30 ? (30 - 1) : numDiasMesAdd - 1;
-
-                    }
-                    else
-                    {
-                        diasASumar = numDiasMespago - 1;
-
-                    }
-
-                    diaNuevaFecha = numDiasMespago < diaCicloPago ? numDiasMespago : diaCicloPago;
-
-                    DateTime fechaInicio = Convert.ToDateTime(diaNuevaFecha + "/" + (dtFechaInicio.Month) + "/" + dtFechaInicio.Year);
-                    //lstDetalleCronograma[i].periodoInicio = fechaInicio;
-                    if (dtFechaInicio.Month == 2 && diaCicloPago == 15)
-                    {
-                        restarFinal = 30 - numDiasMespago;
-                    }
-                    else
-                    {
-                        restarFinal = 0;
-                    }
-
-                    DateTime dtFechaPagoCronograma = fechaInicio.AddDays((diasASumar - restarFinal));
-                    //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
-                    if (dtFechActual > dtFechaPagoCronograma)
-                    {
-                        tiket = dtFechActual - dtFechaPagoCronograma;
-                    }
-                    else
-                    {
-                        tiket = dtFechaPagoCronograma - dtFechActual;
-                    }
-
-                    DateTime totalTime = new DateTime(tiket.Ticks);
-                    restaAnio = totalTime.Year - 1;
-                    restaMeses = totalTime.Month - 1;
-                    faltaDias = Convert.ToInt32(totalTime.Day - 2);
-
-
-                    //DateTime fechaPagoCiclo = dtFechaDePago.AddDays(Math.Abs(NumDiasSumar));
-
-                    if (Convert.ToString(drMenu["cNomTab"]) == "PAGO PENDIENTE")
-                    {
-                        cDias = faltaDias == 1 ? " Dia " : " Dias ";
-                        if (dtFechaPagoCronograma < dtFechActual)
+                        y+=1;
+                        lstClientesBusq.Add(new Cliente
                         {
-                            if (restaAnio > 0)
-                            {
-                                tiempoTranscurrido = "\n❌ Retraso ( " + restaAnio + " años " + restaMeses + " Meses " + faltaDias + " )" + cDias;
+                            idCliente=y,
+                            cNombre = Convert.ToString(drMenu["nombreCliente"]),
+                            cApePat = Convert.ToString(drMenu["cApePat"]),
+                            cApeMat = Convert.ToString(drMenu["cApeMat"]),
+                            cCliente =FunGeneral.FormatearCadenaTitleCase(drMenu["nombreCliente"] + " " + drMenu["cApePat"] + drMenu["cApeMat"]),
+                            cTelCelular = Convert.ToString(drMenu["cTelCelular"]),
+                            dFecNac = dtFechapagoCronogramaGeneral.AddDays(1),
+                            cContactoNom1 = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cContactoNom1"])),
+                            cContactoCel1 = Convert.ToString(drMenu["cContactoCel1"]),
+                            codigoVentaGen = Convert.ToString(drMenu["vPlaca"]),
+                            cEmpresa = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNombre"])),
+                            cCorreo = "S/."+ string.Format("{0:0.00}", drMenu["precioPlan"]),
+                            cContactoNom2 = Convert.ToString(drMenu["cDia"]),
+                            cTelFijo = Convert.ToString(drMenu["cNomTab"]),
+                            cDireccion= dtFechapagoCronogramaGeneral.AddDays(1).ToString("dd/MMM/yyyy")
+                        });
+                    }
 
-                            } else if (restaMeses > 0)
-                            {
-                                tiempoTranscurrido = "\n❌ Retraso ( " + restaMeses + " Meses " + faltaDias + " )" + cDias;
+                }
+                else
+                {
+                    dgv.Rows.Clear();
+                    foreach (DataRow drMenu in dtt.Rows)
+                    {
+                        y += 1;
+                        String estadoCuota = "";
+                        String PasoDias = "";
+                        Int32 faltaDias = 0;
+                        Int32 restaAnio = 0;
+                        Int32 restaMeses = 0;
+                        Int32 diaNuevaFecha = 0;
+                        String cDias = "";
+                        String tiempoTranscurrido = "";
+                        Int32 numDiasMesAdd = 0;
+                        Int32 numDiasMespago = 0;
+                        Int32 diasASumar = 0;
+                        Int32 restarFinal = 0;
 
-                            }
-                            else
-                            {
-                                tiempoTranscurrido = "\n❌ Retraso ( " + faltaDias + " )" + cDias;
-                            }
+                        Int32 cicloPago = Convert.ToInt32(drMenu["cDia"]);
+                        diaCicloPago = cicloPago;
 
+                        DateTime dtFechActual = Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy"));
+                        TimeSpan tiket = dtFechActual - dtFechActual.AddDays(-1);
+
+                        DateTime dtFechaInicio = Convert.ToDateTime(Convert.ToDateTime(drMenu["periodoInicio"].ToString()).ToString("dd/MM/yyyy"));
+
+                        DateTime dtFechaTemp = Convert.ToDateTime(Convert.ToDateTime(drMenu["periodoInicio"].ToString()).ToString("dd/MM/yyyy")).AddMonths(1);
+                        numDiasMespago = DateTime.DaysInMonth(dtFechaInicio.Year, dtFechaInicio.Month);
+                        numDiasMesAdd = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
+
+                        if (numDiasMesAdd <= 29 && dtFechaTemp.Month == 2 && diaCicloPago != 15)
+                        {
+                            diasASumar = numDiasMesAdd;
+                        }
+                        else if (numDiasMespago <= 29 && dtFechaInicio.Month == 2)
+                        {
+                            diasASumar = numDiasMesAdd > 30 ? (30 - 1) : numDiasMesAdd - 1;
 
                         }
                         else
                         {
-                            if (restaMeses > 0)
-                            {
-                                tiempoTranscurrido = "\n✅ Aun tienes ( " + restaMeses + " Meses " + faltaDias + " )" + cDias + " para cobrar";
+                            diasASumar = numDiasMespago - 1;
 
-                            }
-                            else if (faltaDias > 10)
-                            {
-                                tiempoTranscurrido = "\n❗ Aun tienes ( " + faltaDias + " )" + cDias + " para cobrar";
+                        }
 
-                            }
-                            else
+                        diaNuevaFecha = numDiasMespago < diaCicloPago ? numDiasMespago : diaCicloPago;
+
+                        DateTime fechaInicio = Convert.ToDateTime(diaNuevaFecha + "/" + (dtFechaInicio.Month) + "/" + dtFechaInicio.Year);
+                        //lstDetalleCronograma[i].periodoInicio = fechaInicio;
+                        if (dtFechaInicio.Month == 2 && diaCicloPago == 15)
+                        {
+                            restarFinal = 30 - numDiasMespago;
+                        }
+                        else
+                        {
+                            restarFinal = 0;
+                        }
+
+                        DateTime dtFechaPagoCronograma = fechaInicio.AddDays((diasASumar - restarFinal));
+                        dtFechapagoCronogramaGeneral = dtFechaPagoCronograma;
+                        //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
+                        if (dtFechActual > dtFechaPagoCronograma)
+                        {
+                            tiket = dtFechActual - dtFechaPagoCronograma;
+                        }
+                        else
+                        {
+                            tiket = dtFechaPagoCronograma - dtFechActual;
+                        }
+
+                        DateTime totalTime = new DateTime(tiket.Ticks);
+                        restaAnio = totalTime.Year - 1;
+                        restaMeses = totalTime.Month - 1;
+                        faltaDias = Convert.ToInt32(totalTime.Day - 2);
+
+
+                        //DateTime fechaPagoCiclo = dtFechaDePago.AddDays(Math.Abs(NumDiasSumar));
+
+                        if (Convert.ToString(drMenu["cNomTab"]) == "PAGO PENDIENTE")
+                        {
+                            cDias = faltaDias == 1 ? " Dia " : " Dias ";
+                            if (dtFechaPagoCronograma < dtFechActual)
                             {
-                                if (faltaDias == 0)
+                                if (restaAnio > 0)
                                 {
-                                    tiempoTranscurrido = "\n‼ El dia de pago es hoy " + dtFechActual.ToString("dd/MMM");
+                                    tiempoTranscurrido = "\n❌ Retraso ( " + restaAnio + " años " + restaMeses + " Meses " + faltaDias + " )" + cDias;
+
+                                } else if (restaMeses > 0)
+                                {
+                                    tiempoTranscurrido = "\n❌ Retraso ( " + restaMeses + " Meses " + faltaDias + " )" + cDias;
 
                                 }
                                 else
                                 {
-                                    tiempoTranscurrido = "\n‼ Solo tienes ( " + faltaDias + " )" + cDias + " para cobrar";
+                                    tiempoTranscurrido = "\n❌ Retraso ( " + faltaDias + " )" + cDias;
+                                }
+
+
+                            }
+                            else
+                            {
+                                if (restaMeses > 0)
+                                {
+                                    tiempoTranscurrido = "\n✅ Aun tienes ( " + restaMeses + " Meses " + faltaDias + " )" + cDias + " para cobrar";
 
                                 }
+                                else if (faltaDias > 10)
+                                {
+                                    tiempoTranscurrido = "\n❗ Aun tienes ( " + faltaDias + " )" + cDias + " para cobrar";
+
+                                }
+                                else
+                                {
+                                    if (faltaDias == 0)
+                                    {
+                                        tiempoTranscurrido = "\n‼ El dia de pago es hoy " + dtFechActual.ToString("dd/MMM");
+
+                                    }
+                                    else
+                                    {
+                                        tiempoTranscurrido = "\n‼ Solo tienes ( " + faltaDias + " )" + cDias + " para cobrar";
+
+                                    }
+                                }
+
                             }
+                            estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
 
                         }
-                        estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
-
-                    }
-                    else if (Convert.ToString(drMenu["cNomTab"]) == "CUOTA PAGADA")
-                    {
-
-                        tiempoTranscurrido = "\n✅ El ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
-                        estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
-                    }
-                    else
-                    {
-                        if (Convert.ToString(drMenu["cNomTab"]) == "VENCIDO")
+                        else if (Convert.ToString(drMenu["cNomTab"]) == "CUOTA PAGADA")
                         {
-                            tiempoTranscurrido = "\n🚫 Desde ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
+
+                            tiempoTranscurrido = "\n✅ El ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
+                            estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
                         }
                         else
                         {
-                            tiempoTranscurrido = "\n❌ Desde ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
+                            if (Convert.ToString(drMenu["cNomTab"]) == "VENCIDO")
+                            {
+                                tiempoTranscurrido = "\n🚫 Desde ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
+                            }
+                            else
+                            {
+                                tiempoTranscurrido = "\n❌ Desde ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
+
+                            }
+                            estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
 
                         }
-                        estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
 
+
+
+
+                        dgv.Rows.Add(
+                            drMenu["idCronograma"],
+                            drMenu["idContrato"],
+                            y,
+                           drMenu["codContrato"],
+                            dtFechaPagoCronograma.ToString("dd/MMM/yyyy"),
+                            drMenu["vPlaca"],
+                            drMenu["nombreCliente"] + " " + drMenu["cApePat"] + drMenu["cApeMat"],
+                            drMenu["cNombre"],
+                            drMenu["nombre"],
+                            drMenu["cDia"],
+                            estadoCuota
+                            );
+                    }
+                    dgv.Visible = true;
+
+                    if (TipConPaginacion == -1)
+                    {
+                        gbPaginacion.Visible = true;
+                        Int32 totalRegistros = Convert.ToInt32(dtt.Rows[0][0]);
+                        FunValidaciones.fnCalcularPaginacion(
+                            totalRegistros,
+                            filas,
+                            totalResultados,
+                            cboPagina,
+                            btnTotalPag,
+                            btnNumFilas,
+                            btnTotalReg
+                        );
+                    }
+                    else
+                    {
+                        btnNumFilas.Text = Convert.ToString(totalResultados);
                     }
 
-                    lstClientesBusq.Add(new Cliente
-                    {
-                        cNombre= Convert.ToString(drMenu["nombreCliente"]),
-                        cApePat= Convert.ToString(drMenu["cApePat"]),
-                        cApeMat= Convert.ToString(drMenu["cApeMat"]),
-                        cTelCelular= Convert.ToString(drMenu["cTelCelular"]),                       
-                        dFecNac = dtFechaPagoCronograma.AddDays(1),
-                        cContactoNom1=Convert.ToString(drMenu["cContactoNom1"]),
-                        cContactoCel1=Convert.ToString(drMenu["cContactoCel1"])
-
-                    });
-
-                    lstVehiculoBusq.Add(new Vehiculo
-                    {
-                        vPlaca= Convert.ToString(drMenu["vPlaca"])
-
-                    });
-
-                    lstPlanBusq.Add(new Plan
-                    {
-                        nombrePlan=Convert.ToString(drMenu["cNombre"]),
-                        ContratoPlan=Convert.ToString(drMenu["nombre"]),
-                        cLetraPlan=Convert.ToString(drMenu["cDia"]),
-                        codPlan=Convert.ToString(drMenu["cNomTab"]),                        
-                    });
-
-                    dgv.Rows.Add(
-                        drMenu["idCronograma"],
-                        drMenu["idContrato"],
-                        y,
-                       drMenu["codContrato"],
-                        dtFechaPagoCronograma.ToString("dd/MMM/yyyy"),
-                        drMenu["vPlaca"],
-                        drMenu["nombreCliente"]+" "+ drMenu["cApePat"]+ drMenu["cApeMat"],
-                        drMenu["cNombre"],
-                        drMenu["nombre"],
-                        drMenu["cDia"],
-                        estadoCuota
-                        );
                 }
-                dgv.Visible = true;
-
-                if (TipConPaginacion == -1)
-                {
-                    gbPaginacion.Visible = true;
-                    Int32 totalRegistros = Convert.ToInt32(dtt.Rows[0][0]);
-                    FunValidaciones.fnCalcularPaginacion(
-                        totalRegistros,
-                        filas,
-                        totalResultados,
-                        cboPagina,
-                        btnTotalPag,
-                        btnNumFilas,
-                        btnTotalReg
-                    );
-                }
-                else
-                {
-                    btnNumFilas.Text = Convert.ToString(totalResultados);
-                }
-
-
                 //tabControl1.TabPages[0].AutoScroll = false;
             }
             else
             {
                 dgv.Rows.Clear();
                 gbPaginacion.Visible = false;
+                btnExportarBusqueda.Visible = false;
             }
         }
         public  int MonthDifference( DateTime Actual, DateTime Pago)
@@ -1521,6 +1530,15 @@ namespace wfaIntegradoCom.Procesos
 
                 }
             }
+        }
+
+        private void siticoneButton1_Click(object sender, EventArgs e)
+        {
+            fnBuscarCronograma(0, txtBuscar.Text.ToString(), -3, 0);
+            frmExportConsultasCronograma frmExport = new frmExportConsultasCronograma();
+            frmExport.Inicio(lstClientesBusq,
+                "Lista de vehiculos en estado: " 
+                + cboEstadopago.Text+", Periodo: "+ lstClientesBusq[0].cDireccion+", Ciclo: "+lstClientesBusq[0].cContactoNom2, 0);
         }
 
         private void btnVerDatos_Click(object sender, EventArgs e)

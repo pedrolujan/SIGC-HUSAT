@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.siticonePanel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,8 +49,17 @@
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(576, 515);
+            this.siticonePanel1.Size = new System.Drawing.Size(786, 515);
             this.siticonePanel1.TabIndex = 165;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 8;
+            this.reportViewer1.Location = new System.Drawing.Point(3, 32);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(779, 480);
+            this.reportViewer1.TabIndex = 163;
             // 
             // gunaPanel1
             // 
@@ -58,9 +67,10 @@
             this.gunaPanel1.Controls.Add(this.label1);
             this.gunaPanel1.Controls.Add(this.gunaControlBox1);
             this.gunaPanel1.Controls.Add(this.gunaControlBox2);
-            this.gunaPanel1.Location = new System.Drawing.Point(1, 1);
+            this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gunaPanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaPanel1.Name = "gunaPanel1";
-            this.gunaPanel1.Size = new System.Drawing.Size(575, 29);
+            this.gunaPanel1.Size = new System.Drawing.Size(786, 29);
             this.gunaPanel1.TabIndex = 162;
             // 
             // label1
@@ -70,9 +80,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(8, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(156, 21);
+            this.label1.Size = new System.Drawing.Size(147, 21);
             this.label1.TabIndex = 76;
-            this.label1.Text = "Documento de Venta";
+            this.label1.Text = "Exportar busquedas";
             // 
             // gunaControlBox1
             // 
@@ -82,7 +92,7 @@
             this.gunaControlBox1.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MinimizeBox;
             this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(456, 0);
+            this.gunaControlBox1.Location = new System.Drawing.Point(667, 0);
             this.gunaControlBox1.Name = "gunaControlBox1";
             this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
@@ -98,7 +108,7 @@
             this.gunaControlBox2.BackColor = System.Drawing.Color.Transparent;
             this.gunaControlBox2.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox2.IconSize = 15F;
-            this.gunaControlBox2.Location = new System.Drawing.Point(526, 0);
+            this.gunaControlBox2.Location = new System.Drawing.Point(737, 0);
             this.gunaControlBox2.Name = "gunaControlBox2";
             this.gunaControlBox2.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox2.OnHoverIconColor = System.Drawing.Color.White;
@@ -106,23 +116,15 @@
             this.gunaControlBox2.Size = new System.Drawing.Size(45, 29);
             this.gunaControlBox2.TabIndex = 74;
             // 
-            // reportViewer1
-            // 
-            this.reportViewer1.DocumentMapWidth = 8;
-            this.reportViewer1.Location = new System.Drawing.Point(3, 32);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(570, 480);
-            this.reportViewer1.TabIndex = 163;
-            // 
             // frmExportConsultasCronograma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 515);
+            this.ClientSize = new System.Drawing.Size(786, 515);
             this.Controls.Add(this.siticonePanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmExportConsultasCronograma";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmExportConsultasCronograma";
             this.Load += new System.EventHandler(this.frmExportConsultasCronograma_Load);
             this.siticonePanel1.ResumeLayout(false);
