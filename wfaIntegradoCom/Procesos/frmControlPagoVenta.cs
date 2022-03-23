@@ -187,7 +187,6 @@ namespace wfaIntegradoCom.Procesos
                     else if(cantDiasMes<=29 && lstDetalleCronograma[i].periodoInicio.Month==2)
                     {
                         diasASumar = cantDiasSum>30?(30-1):cantDiasSum -1;
-
                     }
                     else
                     {
