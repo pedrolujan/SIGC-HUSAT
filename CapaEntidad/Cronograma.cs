@@ -24,6 +24,7 @@ namespace CapaEntidad
     public class DetalleCronograma
     {
         public DetalleCronograma() { }
+        public Int32 numItem { get; set; }
         public Int32 idDetalleCronograma { get; set; }
         public Int32 numeroCuota { get; set; }
         public String descripcion { get; set; }
@@ -49,6 +50,10 @@ namespace CapaEntidad
         public Int32 idUsuario { get; set; }
         public String cSimbolo { get; set; }
         public Int32 idDetallePago { get; set; }
+        public String cCliente { get; set; }
+        public String cVehiculo { get; set; }
+        public String cPlan { get; set; }
+        public String cPeriodo { get; set; }
         public DetalleCronograma(DetalleCronograma add)
         {
             idDetalleCronograma = add.idDetalleCronograma;

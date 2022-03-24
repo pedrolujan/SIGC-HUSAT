@@ -239,6 +239,12 @@
     <Compile Include="Consultas\frmRptContrato.Designer.cs">
       <DependentUpon>frmRptContrato.cs</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\frmVPCronograma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\frmVPCronograma.Designer.cs">
+      <DependentUpon>frmVPCronograma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\frmVPVenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -763,6 +769,9 @@
       <DependentUpon>frmRptContrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Consultas\frmVPCronograma.rdlc" />
+    <EmbeddedResource Include="Consultas\frmVPCronograma.resx">
+      <DependentUpon>frmVPCronograma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\frmVPVenta.resx">
       <DependentUpon>frmVPVenta.cs</DependentUpon>
     </EmbeddedResource>
@@ -865,24 +874,112 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\CapaEntidad.Accesorios.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.AccesoriosEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.AdministrarEquipos.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Almacen.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.AsignarImeisADocumento.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.AsignarReciboAChips.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Asociacion.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.CambioMonedaVenta.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.CategoriaEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Ciclo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ClaseVehiculo.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.Cliente1.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.Contrato.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ControlPagos.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Cronograma.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.DatosEnviarVehiculo.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.DetalleCronograma.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.DetalleEquipo.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.DetalleOtrasVentas.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.DetalleVehiculoEspecial.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.DetalleVentaCabecera.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.DetalleVentaMensual.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Distrito.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Empresa.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.EntidadesPago.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Equipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.EquipoAccesorios.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.Equipo_imeis.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.EstadoImeis.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Imeis_paginas.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.Instalacion.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Inventario.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.MarcaEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.MarcaVehiculo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ModeloEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ModeloVehiculo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ModUsoVehiculo.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.Moneda.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Operador.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ordencompraSimCard.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.OrdenSimCard.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.OtrasVentas.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.PagoPrincipal.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Pagos.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Pais.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Perioricidad.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Personal.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.Plan.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.PlanEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Prospecto.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ProspectosPlan.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Proveedor.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Provincia.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Reactivaciones.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.RealizarPago.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ReciboChips.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.RegistrarEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Seguimiento.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.ServicioEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.SimCard.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.StokAccesorios.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Sucursal.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.TablaOrdenIngreso.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Tarifa.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.TipoCliente.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.TipoDescuento.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.TipoDocumento.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.TipoOrdenCompra.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.TipoPersona.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.TipoPlan.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.TipoTarifa.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.TipoVenta.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Titularidad.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.TotalPagosVenta.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.totalRanking.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.UbicacionEquipoInstalacion.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.validacion.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.Vehiculo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.VehiculoYCliente.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.VentaGeneral.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.VentaMayor.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlAccesorio+Item.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlAccesorio+Items.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlAccesorio.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlAccesorios+Item.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlAccesorios+Items.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlAccesorios.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.XMLContrato.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlDetalleIngreso+Item.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlDetalleIngreso+Items.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlDetalleIngreso.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlDocumentoVenta.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlDocumentoVentaGeneral.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlEquipos+Item.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlEquipos+Items.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlEquipos.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.XmlEquiposProspecto+Item.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.XmlEquiposProspecto+Items.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.XmlEquiposProspecto.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.xmlInstalacion.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlTarifas+Item.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlTarifas+Items.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlTarifas.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlTiposPlan+Item.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlTiposPlan+Items.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.xmlTiposPlan.datasource" />
     <None Include="Properties\DataSources\CapaNegocio.BLInstalacion.datasource" />
     <None Include="Resources\search_por.png" />
     <None Include="Resources\search_inicio.png" />

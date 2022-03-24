@@ -706,6 +706,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 lstDetalleCronograma.Add(new DetalleCronograma
                 {
+                    numItem=(i+1),
                     idDetalleCronograma = Convert.ToInt32(dtResult.Rows[i][0]),
                     fechaRegistro = Convert.ToDateTime(dtResult.Rows[i][18]),
                     periodoInicio = Convert.ToDateTime(dtResult.Rows[i][19]),
@@ -1310,7 +1311,14 @@ namespace wfaIntegradoCom.Procesos
 
         private void siticoneButton2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Proceso aun no disponible","Aviso.😕",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            //MessageBox.Show("Proceso aun no disponible","Aviso.😕",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            frmVPCronograma frm= new frmVPCronograma();
+            lstDetalleCronograma[0].cCliente = clsCliente.cNombre+" "+clsCliente.cApePat+" "+clsCliente.cApeMat;
+            lstDetalleCronograma[0].cVehiculo = clsVehiculo.vPlaca+" "+ clsVehiculo.Observaciones;
+            lstDetalleCronograma[0].cPlan = txtTarifa.Text + " - " + txtPlan.Text;
+            lstDetalleCronograma[0].cPeriodo = cboCronograma.Text;
+
+            frm.Inicio(lstDetalleCronograma,0);
             
         }
 
