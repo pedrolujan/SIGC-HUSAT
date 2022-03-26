@@ -376,6 +376,8 @@ namespace wfaIntegradoCom.Procesos
                             cContactoNom2 = Convert.ToString(drMenu["cDia"]),
                             cTelFijo = Convert.ToString(drMenu["cNomTab"]),
                             cDireccion= dtFechapagoCronogramaGeneral.AddDays(1).ToString("dd/MMM/yyyy")
+                           
+
                         });
                     }
 
@@ -1313,10 +1315,10 @@ namespace wfaIntegradoCom.Procesos
         {
             //MessageBox.Show("Proceso aun no disponible","Aviso.😕",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             frmVPCronograma frm= new frmVPCronograma();
-            lstDetalleCronograma[0].cCliente = clsCliente.cNombre+" "+clsCliente.cApePat+" "+clsCliente.cApeMat;
-            lstDetalleCronograma[0].cVehiculo = clsVehiculo.vPlaca+" "+ clsVehiculo.Observaciones;
-            lstDetalleCronograma[0].cPlan = txtTarifa.Text + " - " + txtPlan.Text;
-            lstDetalleCronograma[0].cPeriodo = cboCronograma.Text;
+            lstDetalleCronograma[0].cCliente =FunGeneral.FormatearCadenaTitleCase(clsCliente.cNombre+" "+clsCliente.cApePat+" "+clsCliente.cApeMat);
+            lstDetalleCronograma[0].cVehiculo = FunGeneral.FormatearCadenaTitleCase(clsVehiculo.vPlaca+" "+ clsVehiculo.Observaciones);
+            lstDetalleCronograma[0].cPlan = FunGeneral.FormatearCadenaTitleCase(txtTarifa.Text + " - " + txtPlan.Text);
+            lstDetalleCronograma[0].cPeriodo = "" + lstDetalleCronograma[0].periodoInicio.ToString("dd/MM/yyyy") + " A " + lstDetalleCronograma[11].periodoFinal.ToString("dd/MM/yyyy");
 
             frm.Inicio(lstDetalleCronograma,0);
             

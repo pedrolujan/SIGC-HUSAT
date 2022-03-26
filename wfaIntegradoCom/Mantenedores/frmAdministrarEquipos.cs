@@ -1202,7 +1202,7 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 lblFechaEstado.Text = "Fecha de disponibilidad";
                 gbFechas.Enabled = true;
-                dtFecha.Value = Variables.gdFechaSis;
+                //dtFecha.Value = Variables.gdFechaSis;
             }
         }
         private void cboEstado_SelectedIndexChanged(object sender, EventArgs e)

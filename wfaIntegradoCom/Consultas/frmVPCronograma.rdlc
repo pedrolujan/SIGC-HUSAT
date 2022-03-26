@@ -9,19 +9,22 @@
               <Width>0.81894cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.7271cm</Width>
+              <Width>2.46252cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.57359cm</Width>
+              <Width>2.33546cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.2814cm</Width>
+              <Width>2.77869cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.64415cm</Width>
+              <Width>2.10312cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.26664cm</Width>
+              <Width>2.45894cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.73747cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -133,7 +136,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Fech. Vencimiento</Value>
+                              <Value>Fech. Emision</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -143,6 +146,38 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox4">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Fech. Pago</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -355,6 +390,38 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox6">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=IIf(Format(Fields!fechaPago.Value,"dd/MM/yyyy") = "01/01/1900"," ", Format(Fields!fechaPago.Value,"dd/MM/yyyy"))</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox6</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="precioUnitario">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -395,7 +462,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!estado.Value</Value>
-                              <Style />
+                              <Style>
+                                <Color>=IIf(Fields!estado.Value = "CUOTA PAGADA","Green", IIf(Fields!estado.Value = "PAGO PENDIENTE", "Orange",IIf(Fields!estado.Value = "CORTE", "Red","Purple")))</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -415,6 +484,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -423,6 +493,7 @@
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -442,10 +513,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dtDetalleCronograma</DataSetName>
-        <Top>4.56353cm</Top>
+        <Top>5.19853cm</Top>
         <Left>0.02328cm</Left>
         <Height>1.17354cm</Height>
-        <Width>16.31182cm</Width>
+        <Width>16.69515cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -467,7 +538,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>0.9846cm</Top>
+        <Top>1.4926cm</Top>
         <Left>0.34078cm</Left>
         <Height>0.6cm</Height>
         <Width>1.67979cm</Width>
@@ -497,7 +568,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>0.20821cm</Top>
+        <Top>0.71621cm</Top>
         <Left>0.34078cm</Left>
         <Height>0.6cm</Height>
         <Width>1.67979cm</Width>
@@ -527,7 +598,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>1.76099cm</Top>
+        <Top>2.26899cm</Top>
         <Left>0.34078cm</Left>
         <Height>0.6cm</Height>
         <Width>1.67979cm</Width>
@@ -557,7 +628,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>0.20821cm</Top>
+        <Top>0.71621cm</Top>
         <Left>2.02939cm</Left>
         <Height>0.6cm</Height>
         <Width>14.43271cm</Width>
@@ -587,7 +658,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>0.9846cm</Top>
+        <Top>1.4926cm</Top>
         <Left>2.02057cm</Left>
         <Height>0.6cm</Height>
         <Width>14.43271cm</Width>
@@ -617,7 +688,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>1.76099cm</Top>
+        <Top>2.26899cm</Top>
         <Left>2.02939cm</Left>
         <Height>0.6cm</Height>
         <Width>14.43271cm</Width>
@@ -647,7 +718,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>2.57073cm</Top>
+        <Top>3.07873cm</Top>
         <Left>0.34078cm</Left>
         <Height>0.6cm</Height>
         <Width>1.67979cm</Width>
@@ -677,7 +748,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>2.57073cm</Top>
+        <Top>3.07873cm</Top>
         <Left>2.02939cm</Left>
         <Height>0.6cm</Height>
         <Width>14.43271cm</Width>
@@ -712,7 +783,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>3.60329cm</Top>
+        <Top>4.23829cm</Top>
         <Left>0.02328cm</Left>
         <Height>0.69525cm</Height>
         <Width>16.31182cm</Width>
@@ -728,13 +799,13 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.28369in</Height>
+    <Height>2.50869in</Height>
     <Style />
   </Body>
-  <Width>6.48114in</Width>
+  <Width>6.58206in</Width>
   <Page>
     <PageHeader>
-      <Height>1.10312cm</Height>
+      <Height>1.8265cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -744,8 +815,8 @@
           <Sizing>FitProportional</Sizing>
           <Top>0.1904cm</Top>
           <Left>0.34078cm</Left>
-          <Height>0.88108cm</Height>
-          <Width>5.73334cm</Width>
+          <Height>1.6361cm</Height>
+          <Width>7.21501cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
