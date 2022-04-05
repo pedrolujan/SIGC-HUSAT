@@ -239,9 +239,9 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta)
+        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta,String estadoTipoContrato)
         {
-            SqlParameter[] pa = new SqlParameter[9];
+            SqlParameter[] pa = new SqlParameter[10];
             DataTable dtVentaG;
             clsConexion objCnx = null;           
 
@@ -256,7 +256,8 @@ namespace CapaDato
                 pa[5] = new SqlParameter("@numPagina", SqlDbType.Int) { Value = numPagina };
                 pa[6] = new SqlParameter("@tipoLLamada", SqlDbType.Int) { Value = tipoLLamada };
                 pa[7] = new SqlParameter("@tipoCon", SqlDbType.Real) { Value = tipoCon };
-                pa[8] = new SqlParameter("@codTipoVenta", SqlDbType.Real) { Value = codTipoVenta };
+                pa[8] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
+                pa[9] = new SqlParameter("@estadoTipoContrato", SqlDbType.NVarChar,8) { Value = estadoTipoContrato };
 
                 objCnx = new clsConexion("");
                 dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarVentasGenerales", pa);

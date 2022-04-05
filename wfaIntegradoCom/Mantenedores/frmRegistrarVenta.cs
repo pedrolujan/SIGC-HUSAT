@@ -387,6 +387,7 @@ namespace wfaIntegradoCom.Mantenedores
                 bActivarChecks = false;
                 bTipoTab = false;
                 fnLlenarTipoTarifa(0, cboTipoVetaBusq, true);
+                FunGeneral.fnLlenarTablaCodTipoCon(cboEstadoContrato, "TICN", true);
                 cboTipoVetaBusq.SelectedValue = 1;
                 dtpFechaRegistro.Value = Variables.gdFechaSis;
                 dtFechaPago.Value = Variables.gdFechaSis;
@@ -2147,6 +2148,7 @@ namespace wfaIntegradoCom.Mantenedores
             Boolean habilitarFechas = chkHabilitarFechasBus.Checked ? true : false;
             DateTime fechaInicial = dtpFechaInicialBus.Value;
             DateTime fechaFinal = dtpFechaFinalBus.Value;
+            String estadoTipoContrato = cboEstadoContrato.SelectedValue.ToString();
             Int32 HorasIni = 0;
             Int32 HorasFin = 0;
             Int32 HorasRestarIni = 0;
@@ -2167,7 +2169,7 @@ namespace wfaIntegradoCom.Mantenedores
             Boolean estadoReturn = false;
             try
             {
-                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta);
+                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato);
 
                 Int32 totalResultados = datVentaG.Rows.Count;
                 if (tipoCon==-4)
@@ -2199,18 +2201,9 @@ namespace wfaIntegradoCom.Mantenedores
                             dgv.Rows.Clear();
 
                         }
-                        //DataTable dt = new DataTable();
-                        //dt.Clear();
-                        //dt.Columns.Add("ID");
-                        //dt.Columns.Add("N°");
-                        //dt.Columns.Add("COD. VENTA");
-                        //dt.Columns.Add("VEHÍCULOS");
-                        //dt.Columns.Add("CLIENTE / RAZÓN SOCIAL");
-                        //dt.Columns.Add("ESTADO");
-                        //dt.Columns.Add("USUARIO");
-                        //dt.Columns.Add("PLAN");
-
+                       
                         Int32 y;
+                        Int32 contador = 0;
 
 
                         if (tipoCon == -1)
@@ -2223,60 +2216,113 @@ namespace wfaIntegradoCom.Mantenedores
                             y = tabInicio;
                         }
 
-                        for (int i = 0; i <= totalResultados - 1; i++)
+                        foreach (DataRow dr in datVentaG.Rows)
                         {
-
                             y += 1;
-                            string desVehiculos = Convert.ToString(datVentaG.Rows[i][4]);
-                            DateTime fecha = Convert.ToDateTime(datVentaG.Rows[i][3]);
-                            DateTime fechaPago = Convert.ToDateTime(datVentaG.Rows[i][17]);
+                            Int32 restaAnio = 0;
+                            Int32 restaMeses = 0;
+                            Int32 faltaDias = 0;
+                            String desVehiculos = Convert.ToString(dr["descripcionVehiculo"]);
+                            DateTime fecha = Convert.ToDateTime(dr["FechaRegistro"]);
+                            DateTime fechaPago = Convert.ToDateTime(dr["fechaPago"]);
+                            DateTime fechaFinalContrato = Convert.ToDateTime(dr["periodoFinal"]);
+
+                            TimeSpan tiket = fechaFinalContrato - Variables.gdFechaSis;
+                            DateTime totalTime = new DateTime(tiket.Ticks);
+                            restaAnio = totalTime.Year - 1;
+                            restaMeses = totalTime.Month - 1;
+                            faltaDias = Convert.ToInt32(totalTime.Day - 1);
+
+
+
+
+
+
+
                             dgv.Rows.Add(
-                                datVentaG.Rows[i][1],
+                                dr["idCliente"],
                                 y,
-                                datVentaG.Rows[i][2],
+                                dr["codigoVenta"],
                                 fechaPago.ToString("dd/MM/yyyy"),
                                 fecha.ToString("dd/MM/yyyy"),
                                 desVehiculos,
-                                datVentaG.Rows[i][5],
-                                datVentaG.Rows[i][9],
-                                datVentaG.Rows[i][11],
-                                datVentaG.Rows[i][6],
-                                datVentaG.Rows[i][7],
-                                datVentaG.Rows[i][8],
-                                $"{datVentaG.Rows[i][12]} {string.Format("{0:0.00}", datVentaG.Rows[i][13])}",
+                                dr["descripcionCliente"],
+                                dr["plan"],
+                                dr["nombre"],
+                                dr["EstadoVenta"],
+                                dr["cNomTab"],
+                                dr["cUser"],
+                                $"{dr["cSimbolo"]} {string.Format("{0:0.00}", dr["TotalPago"])}",
+                                "Falta "+restaMeses + " Meses con "+ faltaDias+" Dias",
                                 "",
-                                datVentaG.Rows[i][10],
-                                datVentaG.Rows[i][14]
+                                dr["idTipoTarifa"],
+                                dr["idContrato"]
                             );
 
-                            if (Convert.ToString(datVentaG.Rows[i][6]) == "EXPIRADO" || Convert.ToString(datVentaG.Rows[i][6]) == "ANULADA")
+                            if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA")
                             {
-                                dgv.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
+                                dgv.Rows[contador].DefaultCellStyle.ForeColor = Color.Red;
                             }
-                            else if (Convert.ToString(datVentaG.Rows[i][16]) == "ESPP0002")
+                            else if (Convert.ToString(dr["cCodTab"]) == "ESPP0002")
                             {
-                                dgv.Rows[i].DefaultCellStyle.ForeColor = Color.DarkOrange;
+                                dgv.Rows[contador].DefaultCellStyle.ForeColor = Color.DarkOrange;
                             }
-
-                            //TotalGanacia += Convert.ToDouble(datVentaG.Rows[i][15]);
-
+                            contador += 1;
                         }
+                        //for (int i = 0; i <= totalResultados - 1; i++)
+                        //{
+
+                        //    y += 1;
+                        //    string desVehiculos = Convert.ToString(datVentaG.Rows[i][4]);
+                        //    DateTime fecha = Convert.ToDateTime(datVentaG.Rows[i][3]);
+                        //    DateTime fechaPago = Convert.ToDateTime(datVentaG.Rows[i][17]);
+                        //    dgv.Rows.Add(
+                        //        datVentaG.Rows[i][1],
+                        //        y,
+                        //        datVentaG.Rows[i][2],
+                        //        fechaPago.ToString("dd/MM/yyyy"),
+                        //        fecha.ToString("dd/MM/yyyy"),
+                        //        desVehiculos,
+                        //        datVentaG.Rows[i][5],
+                        //        datVentaG.Rows[i][9],
+                        //        datVentaG.Rows[i][11],
+                        //        datVentaG.Rows[i][6],
+                        //        datVentaG.Rows[i][7],
+                        //        datVentaG.Rows[i][8],
+                        //        $"{datVentaG.Rows[i][12]} {string.Format("{0:0.00}", datVentaG.Rows[i][13])}",
+                        //        "",
+                        //        datVentaG.Rows[i][10],
+                        //        datVentaG.Rows[i][14]
+                        //    );
+
+                        //    if (Convert.ToString(datVentaG.Rows[i][6]) == "EXPIRADO" || Convert.ToString(datVentaG.Rows[i][6]) == "ANULADA")
+                        //    {
+                        //        dgv.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
+                        //    }
+                        //    else if (Convert.ToString(datVentaG.Rows[i][16]) == "ESPP0002")
+                        //    {
+                        //        dgv.Rows[i].DefaultCellStyle.ForeColor = Color.DarkOrange;
+                        //    }
+
+                        //    //TotalGanacia += Convert.ToDouble(datVentaG.Rows[i][15]);
+
+                        //}
                         //lblTotaGanancia.Text = $"{"S/"} {String.Format("{0:#,##0.00}", TotalGanacia)}";
 
                         dgv.Columns[0].Visible = false;
                         dgv.Columns[2].Visible = false;
                         dgv.Columns[1].Width = 20;
-                        dgv.Columns[3].Width = 50;
-                        dgv.Columns[4].Width = 50;
-                        dgv.Columns[5].Width = 100;
-                        dgv.Columns[6].Width = 120;
-                        dgv.Columns[7].Width = 60;
-                        dgv.Columns[8].Width = 50;
-                        dgv.Columns[9].Width = 65;
-                        dgv.Columns[10].Width = 50;
-                        dgv.Columns[11].Width = 30;
-                        dgv.Columns[12].Width = 60;
-                        dgv.Columns[13].Width = 60;
+                        dgv.Columns[3].Width = 45;
+                        dgv.Columns[4].Width = 45;
+                        dgv.Columns[5].Width = 75;
+                        dgv.Columns[6].Width = 95;
+                        dgv.Columns[7].Width = 45;
+                        dgv.Columns[8].Width = 45;
+                        dgv.Columns[9].Width = 50;
+                        dgv.Columns[10].Width = 45;
+                        dgv.Columns[11].Width = 40;
+                        dgv.Columns[12].Width = 40;
+                        dgv.Columns[13].Width = 100;
                         dgv.Columns[14].Width = 60;
                         //dgv.RowTemplate.Height = 100;
                         dgv.Visible = true;

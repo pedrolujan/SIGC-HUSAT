@@ -142,9 +142,9 @@ namespace CapaDato
         }
 
 
-        public Boolean daActualizarEstados(Int32 idDetCronograma,String estado)
+        public Boolean daActualizarEstados(Int32 idDetCronograma,String estado,Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[2];
+            SqlParameter[] pa = new SqlParameter[3];
             DataTable dtResult = new DataTable();
             clsConexion objCnx = null;
             Int32 numRows = 0;
@@ -154,7 +154,8 @@ namespace CapaDato
             {
                 pa[0] = new SqlParameter("@idDetCronograma", SqlDbType.Int) { Value = idDetCronograma };
                 pa[1] = new SqlParameter("@estado", SqlDbType.VarChar) { Value = estado };
-               
+                pa[2] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = tipoCon };
+
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspGuardarActualizacionEstados", pa);
                 return true;
@@ -172,5 +173,144 @@ namespace CapaDato
                 objUtil = null;
             }
         }
+
+
+        public List<DetalleCronograma> daBuscarCronogramaAutomatico(DateTime dtFechaIni, DateTime dFechaFin,String estadoPago, List<DetalleCronograma>lstCron ,Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[5];
+            DataTable dtResult = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            List<DetalleCronograma> lstDetCron = new List<DetalleCronograma>();
+            String xmlids= clsUtil.Serialize(lstCron);
+
+            try
+            {
+                pa[0] = new SqlParameter("@peFechaInical", SqlDbType.DateTime) { Value = dtFechaIni };
+                pa[1] = new SqlParameter("@peFechaFinal", SqlDbType.DateTime) { Value = dFechaFin };
+                pa[2] = new SqlParameter("@estado", SqlDbType.VarChar, 8) { Value = estadoPago };
+                pa[3] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[4] = new SqlParameter("@XmlIds", SqlDbType.Xml) { Value = xmlids };
+                objCnx = new clsConexion("");
+                //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
+                dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaAutomatico", pa);
+
+                foreach (DataRow dr in dtResult.Rows)
+                {
+                    lstDetCron.Add(new DetalleCronograma
+                    {
+                        idDetalleCronograma=Convert.ToInt32(dr["idDetalleCronograma"]),
+                        periodoInicio=Convert.ToDateTime(dr["periodoInicio"]),
+                        periodoFinal=Convert.ToDateTime(dr["periodoFinal"]),
+                        fechaVencimiento=Convert.ToDateTime(dr["fechaVencimiento"]),
+                        //fechaPago=Convert.ToDateTime(dr["fechaPago"]),
+                        cDiaCiclo=Convert.ToString(dr["cDia"]),
+                        idCronograma= Convert.ToInt32(dr["idCronograma"])
+                    });
+                }
+
+                return lstDetCron;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
+
+        public List<DetalleCronograma> daBuscarCronogramaAutomaticoEspecifico(DateTime dtFechaIni, DateTime dFechaFin,String estado, List<DetalleCronograma> Datos,Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[5];
+            DataTable dtResult = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            List<DetalleCronograma> lstDetCron = new List<DetalleCronograma>();
+            String xmlIds = clsUtil.Serialize(Datos);
+            try
+            {
+                pa[0] = new SqlParameter("@peFechaInical", SqlDbType.DateTime) { Value = dtFechaIni };
+                pa[1] = new SqlParameter("@peFechaFinal", SqlDbType.DateTime) { Value = dFechaFin };
+                pa[2] = new SqlParameter("@estado", SqlDbType.NVarChar,8) { Value = estado };
+                pa[3] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[4] = new SqlParameter("@XmlIds", SqlDbType.Xml) { Value = xmlIds };
+                objCnx = new clsConexion("");
+                //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
+                dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaAutomatico", pa);
+
+                foreach (DataRow dr in dtResult.Rows)
+                {
+                    lstDetCron.Add(new DetalleCronograma
+                    {
+                        idDetalleCronograma = Convert.ToInt32(dr["idDetalleCronograma"]),
+                        periodoInicio = Convert.ToDateTime(dr["periodoInicio"]),
+                        periodoFinal = Convert.ToDateTime(dr["periodoFinal"]),
+                        fechaVencimiento = Convert.ToDateTime(dr["fechaVencimiento"]),
+                        //fechaPago=Convert.ToDateTime(dr["fechaPago"]),
+                        cDiaCiclo = Convert.ToString(dr["cDia"]),
+                        idCronograma = Convert.ToInt32(dr["idCronograma"]),
+                        estado=Convert.ToString(dr["estado"])
+                    });
+                }
+
+                return lstDetCron;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
+
+        public Int32 daContadorEstadosVencidos(Int32 idDetCronograma,String estado)
+        {
+            SqlParameter[] pa = new SqlParameter[2];
+            DataTable dtResult = new DataTable();
+            clsConexion objCnx = null;
+            Int32 numRows = 0;
+
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@idCronograma", SqlDbType.Int) { Value = idDetCronograma };
+                pa[1] = new SqlParameter("@estado", SqlDbType.NVarChar,8) { Value = estado };
+
+                objCnx = new clsConexion("");
+                dtResult = objCnx.EjecutarProcedimientoDT("uspBusacrContadorEstados", pa);
+                foreach (DataRow dr in dtResult.Rows)
+                {
+                    numRows = Convert.ToInt32(dr["CantItems"]);
+                }
+                return numRows;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                //if (objCnx != null)
+                objCnx.CierraConexion();
+                objCnx = null;
+                objUtil = null;
+            }
+        }
+
     }
 }

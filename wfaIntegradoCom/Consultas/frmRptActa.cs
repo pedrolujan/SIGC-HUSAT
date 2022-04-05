@@ -80,6 +80,7 @@ namespace wfaIntegradoCom.Consultas
 
             this.reportViewer1.RefreshReport();
             fnCargarRptActa(lstCliente, lstVehiculo, lstEquipo, lstPlan,lstAccesorios,lstServicios,Observacion, clsIntalacion);
+            
         }
 
         private void btnFinalizarInstalacion_Click(object sender, EventArgs e)

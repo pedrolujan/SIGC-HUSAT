@@ -173,43 +173,46 @@ namespace wfaIntegradoCom.Procesos
                 dgvCronograma.Rows.Clear();
                 for (Int32 i = 0; i < lstDetalleCronograma.Count; i++)
                 {
-                    
-                    DateTime dtFechaTemp = lstDetalleCronograma[i].periodoInicio.AddMonths(1);
-                    cantDiasMes = DateTime.DaysInMonth(lstDetalleCronograma[i].periodoInicio.Year, lstDetalleCronograma[i].periodoInicio.Month);
-                    cantDiasSum = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
-                    Int32 diasASumar = 0;
-                    Int32 diaNuevaFecha = 0;
-                    Int32 restarFinal = 0;
-                    if (cantDiasSum <= 29 && dtFechaTemp.Month==2 && diaCicloPago!=15)
-                    {
-                        diasASumar = cantDiasSum;
-                    }
-                    else if(cantDiasMes<=29 && lstDetalleCronograma[i].periodoInicio.Month==2)
-                    {
-                        diasASumar = cantDiasSum>30?(30-1):cantDiasSum -1;
-                    }
-                    else
-                    {
-                        diasASumar = cantDiasMes - 1;
 
-                    }
+                    //DateTime dtFechaTemp = lstDetalleCronograma[i].periodoInicio.AddMonths(1);
+                    //cantDiasMes = DateTime.DaysInMonth(lstDetalleCronograma[i].periodoInicio.Year, lstDetalleCronograma[i].periodoInicio.Month);
+                    //cantDiasSum = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
+                    //Int32 diasASumar = 0;
+                    //Int32 diaNuevaFecha = 0;
+                    //Int32 restarFinal = 0;
+                    //if (cantDiasSum <= 29 && dtFechaTemp.Month==2 && diaCicloPago!=15)
+                    //{
+                    //    diasASumar = cantDiasSum;
+                    //}
+                    //else if(cantDiasMes<=29 && lstDetalleCronograma[i].periodoInicio.Month==2)
+                    //{
+                    //    diasASumar = cantDiasSum>30?(30-1):cantDiasSum -1;
+                    //}
+                    //else
+                    //{
+                    //    diasASumar = cantDiasMes - 1;
 
-                    diaNuevaFecha = cantDiasMes < diaCicloPago ? cantDiasMes : diaCicloPago;
+                    //}
 
-                    DateTime fechaInicio = Convert.ToDateTime(diaNuevaFecha + "/" +( lstDetalleCronograma[i].periodoInicio.Month)+"/"+ lstDetalleCronograma[i].periodoInicio.Year);
-                    lstDetalleCronograma[i].periodoInicio = fechaInicio;
-                    if (lstDetalleCronograma[i].periodoInicio.Month == 2 && diaCicloPago == 15)
-                    {
-                        restarFinal = 30 - cantDiasMes;
-                    }
-                    else
-                    {
-                        restarFinal = 0;
-                    }
-                    DateTime fechaFinal = fechaInicio.AddDays((diasASumar- restarFinal));
-                    lstDetalleCronograma[i].periodoFinal = fechaFinal;
-                    lstDetalleCronograma[i].fechaEmision = fechaFinal.AddDays(1);
-                    DateTime fechaVencimiento = fechaFinal.AddDays(7);
+                    //diaNuevaFecha = cantDiasMes < diaCicloPago ? cantDiasMes : diaCicloPago;
+
+                    //DateTime fechaInicio = Convert.ToDateTime(diaNuevaFecha + "/" +( lstDetalleCronograma[i].periodoInicio.Month)+"/"+ lstDetalleCronograma[i].periodoInicio.Year);
+                    //lstDetalleCronograma[i].periodoInicio = fechaInicio;
+                    //if (lstDetalleCronograma[i].periodoInicio.Month == 2 && diaCicloPago == 15)
+                    //{
+                    //    restarFinal = 30 - cantDiasMes;
+                    //}
+                    //else
+                    //{
+                    //    restarFinal = 0;
+                    //}
+                    //DateTime fechaFinal = fechaInicio.AddDays((diasASumar- restarFinal));
+                    var resulFechas = fnConvertirFechas(lstDetalleCronograma[i].periodoInicio);
+
+                    lstDetalleCronograma[i].periodoInicio = resulFechas.Item1;
+                    lstDetalleCronograma[i].periodoFinal = resulFechas.Item2;
+                    lstDetalleCronograma[i].fechaEmision = lstDetalleCronograma[i].periodoFinal.AddDays(1);
+                    DateTime fechaVencimiento = lstDetalleCronograma[i].periodoFinal.AddDays(7);
                     lstDetalleCronograma[i].fechaVencimiento = fechaVencimiento;
                     
 
@@ -456,7 +459,7 @@ namespace wfaIntegradoCom.Procesos
                         DateTime totalTime = new DateTime(tiket.Ticks);
                         restaAnio = totalTime.Year - 1;
                         restaMeses = totalTime.Month - 1;
-                        faltaDias = Convert.ToInt32(totalTime.Day - 2);
+                        faltaDias = Convert.ToInt32(totalTime.Day - 1);
 
 
                         //DateTime fechaPagoCiclo = dtFechaDePago.AddDays(Math.Abs(NumDiasSumar));
@@ -522,7 +525,7 @@ namespace wfaIntegradoCom.Procesos
                         {
                             if (Convert.ToString(drMenu["cNomTab"]) == "VENCIDO")
                             {
-                                tiempoTranscurrido = "\n🚫 Desde ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
+                                tiempoTranscurrido = "\n🚫 Desde ( " + dtFechaPagoCronograma.AddDays(7).ToString("dd/MMM/yyyy") + " )";
                             }
                             else
                             {
@@ -615,6 +618,7 @@ namespace wfaIntegradoCom.Procesos
                 cboCronograma.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboComprobanteP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboMoneda.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+
             }
             catch (Exception ex)
             {
@@ -623,9 +627,130 @@ namespace wfaIntegradoCom.Procesos
             finally
             {
                 EstadoCarga = true;
+                fnBuscarCronogramaAutomatico(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value, "ESPV0001", 0);
             }
         }
 
+        private void fnBuscarCronogramaAutomatico(DateTime dtIni,DateTime dtFin,String estado,Int32 tipoCon)
+        {
+            DAControlPagos dtCP = new DAControlPagos();
+            List<DetalleCronograma> lstCronogramas = new List<DetalleCronograma>();
+            List<DetalleCronograma> lstDetCronAutomatico = new List<DetalleCronograma>();
+            List<DetalleCronograma> lstDetCronAutomaticoEsp = new List<DetalleCronograma>();
+            List<DetalleCronograma> lstDetCronAutomaticoEspUnico = new List<DetalleCronograma>();
+            ;
+            try
+            {
+                lstDetCronAutomatico = dtCP.daBuscarCronogramaAutomatico(dtFin.AddDays(-(dtFin.Day - 1)).AddMonths(-1), dtFin, estado, lstDetCronAutomatico, tipoCon);
+                String ArrIdsCronograma = "";
+                Int32 contadorVencido = 0;
+                Int32 contadorCorte = 0;
+                Int32 stIdCronograma = 0;
+                
+                lstDetCronAutomaticoEsp = dtCP.daBuscarCronogramaAutomaticoEspecifico(dtIni, dtFin, "ESPV0001", lstDetCronAutomatico, 1);
+                contadorVencido = 0;
+                stIdCronograma = 0;
+             
+                
+                for (Int32 i = 0; i < lstDetCronAutomatico.Count; i++)
+                {
+                    contadorVencido = 0;  
+
+                    for (Int32 j=0;j< lstDetCronAutomaticoEsp.Count; j++)
+                    {
+                        if (lstDetCronAutomatico[i].idCronograma== lstDetCronAutomaticoEsp[j].idCronograma)
+                        {
+                            diaCicloPago = Convert.ToInt32(lstDetCronAutomaticoEsp[j].cDiaCiclo);
+                            var resulFechas = fnConvertirFechas(lstDetCronAutomaticoEsp[j].periodoInicio);
+                            lstDetCronAutomaticoEsp[j].periodoInicio = resulFechas.Item1;
+                            lstDetCronAutomaticoEsp[j].periodoFinal = resulFechas.Item2;
+                            lstDetCronAutomaticoEsp[j].fechaEmision = lstDetCronAutomaticoEsp[j].periodoFinal.AddDays(1);
+                            lstDetCronAutomaticoEsp[j].fechaVencimiento = lstDetCronAutomaticoEsp[j].periodoFinal.AddDays(7);
+
+                            if (lstDetCronAutomaticoEsp[j].fechaVencimiento < Variables.gdFechaSis)
+                            {
+                                contadorVencido = dtCP.daContadorEstadosVencidos(lstDetCronAutomatico[i].idCronograma, "ESPV0003");
+                              
+                                if (contadorVencido <2)
+                                {
+                                    if (lstDetCronAutomaticoEsp[j].estado!= "ESPV0002")
+                                    {
+                                        dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0003", 1);
+                                    }
+                                    //if(lstDetCronAutomaticoEsp[j].estado != "ESPV0002")
+                                    //{
+
+                                    //}
+                                    if (contadorVencido == 2)
+                                    {
+                                        contadorVencido += 1;
+                                    }
+                                }
+                                else if (contadorVencido>=2)
+                                {
+                                    dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+
+            }
+
+        }
+
+        private Tuple<DateTime,DateTime> fnConvertirFechas(DateTime dtRecibido)
+        {
+            Int32 cantDiasMes = 0;
+            Int32 cantDiasSum = 0;
+            DateTime dtFechaTemp = dtRecibido.AddMonths(1);
+            cantDiasMes = DateTime.DaysInMonth(dtRecibido.Year, dtRecibido.Month);
+            cantDiasSum = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
+            Int32 diasASumar = 0;
+            Int32 diaNuevaFecha = 0;
+            Int32 restarFinal = 0;
+            if (cantDiasSum <= 29 && dtFechaTemp.Month == 2 && diaCicloPago != 15)
+            {
+                diasASumar = cantDiasSum;
+            }
+            else if (cantDiasMes <= 29 && dtRecibido.Month == 2)
+            {
+                diasASumar = cantDiasSum > 30 ? (30 - 1) : cantDiasSum - 1;
+            }
+            else
+            {
+                diasASumar = cantDiasMes - 1;
+
+            }
+
+            diaNuevaFecha = cantDiasMes < diaCicloPago ? cantDiasMes : diaCicloPago;
+
+            DateTime fechaInicio = Convert.ToDateTime(diaNuevaFecha + "/" + (dtRecibido.Month) + "/" + dtRecibido.Year);
+            //lstDetalleCronograma[i].periodoInicio = fechaInicio;
+            if (fechaInicio.Month == 2 && diaCicloPago == 15)
+            {
+                restarFinal = 30 - cantDiasMes;
+            }
+            else
+            {
+                restarFinal = 0;
+            }
+            DateTime fechaFinal = fechaInicio.AddDays((diasASumar - restarFinal));
+
+           return Tuple.Create(fechaInicio, fechaFinal);
+
+        }
         private Boolean fnLlenarCiclo(Int32 idCiclo, SiticoneComboBox cbo, Boolean buscar)
         {
             BLCiclo objCiclo = new BLCiclo();
@@ -1449,7 +1574,7 @@ namespace wfaIntegradoCom.Procesos
             DialogResult EstadoDialog = MessageBox.Show("Esta seguro que desea realizar la actualización?", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (EstadoDialog == DialogResult.Yes)
             {
-                Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion);
+                Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion,0);
                 if (Resp == true)
                 {
                     MessageBox.Show("Actualizacion Correcta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1476,7 +1601,7 @@ namespace wfaIntegradoCom.Procesos
             DialogResult EstadoDialog = MessageBox.Show("Esta seguro que desea realizar la actualización?", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (EstadoDialog == DialogResult.Yes)
             {
-                Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion);
+                Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion,0);
                 if (Resp == true)
                 {
                     MessageBox.Show("Actualizacion Correcta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1504,7 +1629,7 @@ namespace wfaIntegradoCom.Procesos
             DialogResult EstadoDialog = MessageBox.Show("Esta seguro que desea realizar la actualización?", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (EstadoDialog == DialogResult.Yes)
             {
-                Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion);
+                Resp = cntPago.daActualizarEstados(idDetalleCronograma, opcion,0);
                 if (Resp == true)
                 {
                     MessageBox.Show("Actualizacion Correcta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1548,6 +1673,11 @@ namespace wfaIntegradoCom.Procesos
             frmExport.Inicio(lstClientesBusq,
                 "Lista de vehiculos en estado: " 
                 + cboEstadopago.Text+", Periodo: "+ lstClientesBusq[0].cDireccion+", Ciclo: "+lstClientesBusq[0].cContactoNom2, 0);
+        }
+
+        private void btnValidarEstados_Click(object sender, EventArgs e)
+        {
+           
         }
 
         private void btnVerDatos_Click(object sender, EventArgs e)

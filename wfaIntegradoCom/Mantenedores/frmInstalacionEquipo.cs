@@ -126,12 +126,12 @@ namespace wfaIntegradoCom.Mantenedores
             DateTime fechaInicial = dtpFechaInicialIns.Value;
             DateTime fechaFinal = dtpFechaFinalBusIns.Value;
             Int32 filas = 10;
-
+            String estadoTipoContrato = "0";
             //3 fechade registro 2 cod venta 4 descripcion vehiculo 5 cliente 6 estado
 
             try
             {
-                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, datoBuscar, datoEstado, numPagina, tipoLLamada, tipoCon, 1);
+                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, datoBuscar, datoEstado, numPagina, tipoLLamada, tipoCon, 1, estadoTipoContrato);
 
                 Int32 totalResultados = datVentaG.Rows.Count;
                 if (totalResultados > 0)
