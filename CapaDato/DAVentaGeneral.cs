@@ -50,8 +50,8 @@ namespace CapaDato
                 pa[12] = new SqlParameter("@xmlData3", SqlDbType.Xml) { Value = xmlVehiculo };
                 pa[13] = new SqlParameter("@xmlData4", SqlDbType.Xml) { Value = xmlVentaGeneral };
                 pa[14] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml) { Value = xmlTrandiaria };
-                pa[15] = new SqlParameter("@periodoInicio", SqlDbType.DateTime) { Value = clsVentaGeneral.lstDetalleCronograma.First().periodoInicio };
-                pa[16] = new SqlParameter("@periodoFinal", SqlDbType.DateTime) { Value = clsVentaGeneral.lstDetalleCronograma.Last().periodoFinal };
+                pa[15] = new SqlParameter("@periodoInicio", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta /*clsVentaGeneral.lstDetalleCronograma.First().periodoInicio */};
+                pa[16] = new SqlParameter("@periodoFinal", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta.AddYears(1).AddDays(-1) /*clsVentaGeneral.lstDetalleCronograma.Last().periodoFinal*/ };
                 pa[17] = new SqlParameter("@igvValor", SqlDbType.Money) { Value = clsVentaGeneral.clsDetalleVentaCabecera.IGV };
                 pa[18] = new SqlParameter("@totalVenta", SqlDbType.Money) { Value = clsVentaGeneral.clsDetalleVentaCabecera.Total };
                 pa[19] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmlDocumentoVenta }; 
@@ -66,7 +66,7 @@ namespace CapaDato
                 pa[28] = new SqlParameter("@FinalizacionContrato", SqlDbType.Int) { Value = clsVentaGeneral.estFinalizacionContrato };
                 pa[29] = new SqlParameter("@dFechaPago", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaPago };
                 pa[30] = new SqlParameter("@dFechaVenta", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta };
-                objCnx = new clsConexion("");
+                objCnx = new clsConexion(""); 
                 objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
 
                 return true;
@@ -239,9 +239,9 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta,String estadoTipoContrato)
+        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones,String valorRadio)
         {
-            SqlParameter[] pa = new SqlParameter[10];
+            SqlParameter[] pa = new SqlParameter[12];
             DataTable dtVentaG;
             clsConexion objCnx = null;           
 
@@ -258,9 +258,18 @@ namespace CapaDato
                 pa[7] = new SqlParameter("@tipoCon", SqlDbType.Real) { Value = tipoCon };
                 pa[8] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
                 pa[9] = new SqlParameter("@estadoTipoContrato", SqlDbType.NVarChar,8) { Value = estadoTipoContrato };
+                pa[10] = new SqlParameter("@pehabilitarRenovaciones", SqlDbType.TinyInt) { Value = habilitarRenovaciones };
+                pa[11] = new SqlParameter("@valorRadio", SqlDbType.NVarChar,8) { Value = valorRadio };
 
                 objCnx = new clsConexion("");
-                dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarVentasGenerales", pa);
+                if (habilitarRenovaciones==true)
+                {
+                    dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarRenovaciones", pa);
+                }
+                else
+                {
+                    dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarVentasGenerales", pa);
+                }
 
                 return dtVentaG;
             }

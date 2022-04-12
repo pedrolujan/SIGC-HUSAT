@@ -203,6 +203,26 @@ namespace wfaIntegradoCom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap CheckCircle_30px {
+            get {
+                object obj = ResourceManager.GetObject("CheckCircle_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CheckCircle_30px1 {
+            get {
+                object obj = ResourceManager.GetObject("CheckCircle_30px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap comercial_32 {
             get {
                 object obj = ResourceManager.GetObject("comercial_32", resourceCulture);
@@ -393,6 +413,26 @@ namespace wfaIntegradoCom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap exclamation_mark_30px {
+            get {
+                object obj = ResourceManager.GetObject("exclamation_mark_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap eye_30px {
+            get {
+                object obj = ResourceManager.GetObject("eye_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap gps {
             get {
                 object obj = ResourceManager.GetObject("gps", resourceCulture);
@@ -543,6 +583,16 @@ namespace wfaIntegradoCom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap null_symbol_30px {
+            get {
+                object obj = ResourceManager.GetObject("null_symbol_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ok {
             get {
                 object obj = ResourceManager.GetObject("ok", resourceCulture);
@@ -586,6 +636,16 @@ namespace wfaIntegradoCom.Properties {
         public static System.Drawing.Bitmap pdf_32px {
             get {
                 object obj = ResourceManager.GetObject("pdf_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap pocket_watch_30px {
+            get {
+                object obj = ResourceManager.GetObject("pocket_watch_30px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -783,6 +843,16 @@ namespace wfaIntegradoCom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap todo_list_30px {
+            get {
+                object obj = ResourceManager.GetObject("todo_list_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap update {
             get {
                 object obj = ResourceManager.GetObject("update", resourceCulture);
@@ -846,6 +916,16 @@ namespace wfaIntegradoCom.Properties {
         public static System.Drawing.Bitmap ventaBase_32 {
             get {
                 object obj = ResourceManager.GetObject("ventaBase_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap x_30px {
+            get {
+                object obj = ResourceManager.GetObject("x_30px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

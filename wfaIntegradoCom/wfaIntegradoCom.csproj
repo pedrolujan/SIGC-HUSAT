@@ -501,6 +501,12 @@
     <Compile Include="Procesos\frmArquearCaja.Designer.cs">
       <DependentUpon>frmArquearCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmBuscarVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmBuscarVentas.Designer.cs">
+      <DependentUpon>frmBuscarVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\frmCambioTitularidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -836,6 +842,9 @@
     <EmbeddedResource Include="Procesos\frmAccesoADescuento.resx">
       <DependentUpon>frmAccesoADescuento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmBuscarVentas.resx">
+      <DependentUpon>frmBuscarVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmCambioTitularidad.resx">
       <DependentUpon>frmCambioTitularidad.cs</DependentUpon>
     </EmbeddedResource>
@@ -1058,6 +1067,14 @@
     <None Include="Resources\refund_32px.png" />
     <None Include="Resources\recaudacion_Blanco.png" />
     <None Include="Resources\pdf_32px.png" />
+    <None Include="Resources\CheckCircle_30px.png" />
+    <None Include="Resources\exclamation_mark_30px.png" />
+    <None Include="Resources\eye_30px.png" />
+    <None Include="Resources\pocket_watch_30px.png" />
+    <None Include="Resources\x_30px.png" />
+    <None Include="Resources\CheckCircle_30px1.png" />
+    <None Include="Resources\null_symbol_30px.png" />
+    <None Include="Resources\todo_list_30px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

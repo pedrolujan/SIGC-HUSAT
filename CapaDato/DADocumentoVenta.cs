@@ -555,9 +555,18 @@ namespace CapaDato
                 lstVenta = new List<Cuadre>();
                 foreach (DataRow drMenu in dtCompra.Rows)
                 {
-                    lstVenta.Add(new Cuadre(Convert.ToInt32(drMenu["idTrandiaria"]),Convert.ToDateTime(drMenu["dFecha"]), Convert.ToString(drMenu["cNombreOperacion"]),
-                        Convert.ToDecimal(drMenu["mIngreso"]), Convert.ToDecimal(drMenu["mSalida"]),
-                        Convert.ToDecimal(drMenu["mSaldo"]), Convert.ToString(drMenu["cUser"]), Convert.ToInt32(drMenu["idDocumento"])));
+                    lstVenta.Add(new Cuadre
+                        (
+                        Convert.ToInt32(drMenu["idTrandiaria"]),
+                        Convert.ToDateTime(drMenu["dFecha"]), 
+                        Convert.ToString(drMenu["cNombreOperacion"]),
+                        Convert.ToDecimal(drMenu["mIngreso"]), 
+                        Convert.ToDecimal(drMenu["mSalida"]),
+                        Convert.ToDecimal(drMenu["mSaldo"]), 
+                        Convert.ToString(drMenu["cUser"]),
+                        Convert.ToInt32(drMenu["idDocumento"])
+
+                        ));
                 }
 
                 return lstVenta;

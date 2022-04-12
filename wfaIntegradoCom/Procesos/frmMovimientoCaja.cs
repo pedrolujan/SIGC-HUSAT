@@ -102,10 +102,14 @@ namespace wfaIntegradoCom.Procesos
 
             if (intTipoLlamada == 0)
             {
-                paBusqueda.Visible = false;
-                pcFecha = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
-                intUsuario = Variables.gnCodUser;
-               
+                paBusqueda.Visible = true;
+                bResult = fnCargarUsuario();
+                pcFecha = FunGeneral.GetFechaHoraFormato(dateTimePicker1.Value, 5);
+                intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
+                //paBusqueda.Visible = false;
+                //pcFecha = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
+                //intUsuario = Variables.gnCodUser;
+
             }
             else
             {
@@ -232,7 +236,7 @@ namespace wfaIntegradoCom.Procesos
             try
             {
 
-                lcResultado = obj.blAperturarCaja(Variables.idSucursal, lnMonto, Variables.gnCodUser, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3), 11);
+                lcResultado = obj.blAperturarCaja(Variables.idSucursal, lnMonto, Variables.gnCodUser, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3), 2);
                 if (lcResultado == "OK")
                     this.Dispose();
                 return lcResultado;

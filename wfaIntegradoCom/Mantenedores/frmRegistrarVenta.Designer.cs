@@ -220,7 +220,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvListaVentas = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.cmListaVentas = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.irPagoCuotas = new System.Windows.Forms.ToolStripMenuItem();
             this.irActualizar = new System.Windows.Forms.ToolStripMenuItem();
             this.irAInstalacion = new System.Windows.Forms.ToolStripMenuItem();
             this.anularVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -229,12 +228,15 @@ namespace wfaIntegradoCom.Mantenedores
             this.Contrato = new System.Windows.Forms.ToolStripMenuItem();
             this.ActaInstalacion = new System.Windows.Forms.ToolStripMenuItem();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.chkRenovaciones = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.label38 = new System.Windows.Forms.Label();
             this.pnMontoGanania = new Siticone.UI.WinForms.SiticonePanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.lblTotaGanancia = new System.Windows.Forms.Label();
+            this.cboEstadoContrato = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboTipoVetaBusq = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBuscarMonto = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.chkHabilitarFechasBus = new Siticone.UI.WinForms.SiticoneCheckBox();
@@ -258,13 +260,14 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
-            this.cboEstadoContrato = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.cboTipoFiltro = new Siticone.UI.WinForms.SiticoneComboBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numero_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodVenta_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAVENTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaFinContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vehiculos_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ciente_Rs_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plan_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -2842,7 +2845,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle34.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle34.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -2856,6 +2859,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.CodVenta_lv,
             this.fechaPago,
             this.FECHAVENTA,
+            this.fechaFinContrato,
             this.Vehiculos_lv,
             this.Ciente_Rs_lv,
             this.Plan_lv,
@@ -2871,7 +2875,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaVentas.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle36.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.SteelBlue;
@@ -2879,7 +2883,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle36;
             this.dgvListaVentas.EnableHeadersVisualStyles = false;
             this.dgvListaVentas.GridColor = System.Drawing.Color.Silver;
-            this.dgvListaVentas.Location = new System.Drawing.Point(22, 132);
+            this.dgvListaVentas.Location = new System.Drawing.Point(3, 132);
             this.dgvListaVentas.Name = "dgvListaVentas";
             this.dgvListaVentas.ReadOnly = true;
             dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -2900,7 +2904,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaVentas.RowTemplate.Height = 80;
             this.dgvListaVentas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvListaVentas.Size = new System.Drawing.Size(1188, 442);
+            this.dgvListaVentas.Size = new System.Drawing.Size(1221, 442);
             this.dgvListaVentas.TabIndex = 209;
             this.dgvListaVentas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvListaVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -2912,14 +2916,14 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaVentas.ThemeStyle.GridColor = System.Drawing.Color.Silver;
             this.dgvListaVentas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.DimGray;
             this.dgvListaVentas.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvListaVentas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaVentas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaVentas.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvListaVentas.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvListaVentas.ThemeStyle.HeaderStyle.Height = 45;
             this.dgvListaVentas.ThemeStyle.ReadOnly = true;
             this.dgvListaVentas.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvListaVentas.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvListaVentas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaVentas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaVentas.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvListaVentas.ThemeStyle.RowsStyle.Height = 80;
             this.dgvListaVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Azure;
@@ -2928,44 +2932,37 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellClick);
             this.dgvListaVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellContentClick);
             this.dgvListaVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellDoubleClick);
+            this.dgvListaVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaVentas_CellFormatting);
             this.dgvListaVentas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListaVentas_CellMouseDown);
             this.dgvListaVentas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvListaVentas_CellPainting);
             // 
             // cmListaVentas
             // 
             this.cmListaVentas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.irPagoCuotas,
             this.irActualizar,
             this.irAInstalacion,
             this.anularVentaToolStripMenuItem});
             this.cmListaVentas.Name = "cmListaVentas";
-            this.cmListaVentas.Size = new System.Drawing.Size(175, 92);
-            // 
-            // irPagoCuotas
-            // 
-            this.irPagoCuotas.Enabled = false;
-            this.irPagoCuotas.Name = "irPagoCuotas";
-            this.irPagoCuotas.Size = new System.Drawing.Size(174, 22);
-            this.irPagoCuotas.Text = "Ir a pago de cuotas";
+            this.cmListaVentas.Size = new System.Drawing.Size(181, 92);
             // 
             // irActualizar
             // 
             this.irActualizar.Name = "irActualizar";
-            this.irActualizar.Size = new System.Drawing.Size(174, 22);
+            this.irActualizar.Size = new System.Drawing.Size(180, 22);
             this.irActualizar.Text = "Actualizar Venta";
             this.irActualizar.Click += new System.EventHandler(this.irActualizar_Click);
             // 
             // irAInstalacion
             // 
             this.irAInstalacion.Name = "irAInstalacion";
-            this.irAInstalacion.Size = new System.Drawing.Size(174, 22);
+            this.irAInstalacion.Size = new System.Drawing.Size(180, 22);
             this.irAInstalacion.Text = "Ir a Renovaciones";
             this.irAInstalacion.Click += new System.EventHandler(this.irAInstalacion_Click);
             // 
             // anularVentaToolStripMenuItem
             // 
             this.anularVentaToolStripMenuItem.Name = "anularVentaToolStripMenuItem";
-            this.anularVentaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.anularVentaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.anularVentaToolStripMenuItem.Text = "Anular Venta";
             this.anularVentaToolStripMenuItem.Click += new System.EventHandler(this.anularVentaToolStripMenuItem_Click);
             // 
@@ -3004,8 +3001,11 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
             this.siticoneGroupBox1.BorderRadius = 5;
+            this.siticoneGroupBox1.Controls.Add(this.chkRenovaciones);
+            this.siticoneGroupBox1.Controls.Add(this.label24);
             this.siticoneGroupBox1.Controls.Add(this.label38);
             this.siticoneGroupBox1.Controls.Add(this.pnMontoGanania);
+            this.siticoneGroupBox1.Controls.Add(this.cboTipoFiltro);
             this.siticoneGroupBox1.Controls.Add(this.cboEstadoContrato);
             this.siticoneGroupBox1.Controls.Add(this.cboTipoVetaBusq);
             this.siticoneGroupBox1.Controls.Add(this.label23);
@@ -3019,7 +3019,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneGroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.siticoneGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneGroupBox1.ForeColor = System.Drawing.Color.White;
-            this.siticoneGroupBox1.Location = new System.Drawing.Point(22, 7);
+            this.siticoneGroupBox1.Location = new System.Drawing.Point(19, 7);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
             this.siticoneGroupBox1.Size = new System.Drawing.Size(1188, 119);
@@ -3027,13 +3027,34 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneGroupBox1.Text = "Buscar por";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -7);
             // 
+            // chkRenovaciones
+            // 
+            this.chkRenovaciones.AutoSize = true;
+            this.chkRenovaciones.Checked = true;
+            this.chkRenovaciones.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkRenovaciones.CheckedState.BorderRadius = 0;
+            this.chkRenovaciones.CheckedState.BorderThickness = 0;
+            this.chkRenovaciones.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkRenovaciones.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRenovaciones.ForeColor = System.Drawing.Color.Black;
+            this.chkRenovaciones.Location = new System.Drawing.Point(5, 32);
+            this.chkRenovaciones.Name = "chkRenovaciones";
+            this.chkRenovaciones.Size = new System.Drawing.Size(144, 21);
+            this.chkRenovaciones.TabIndex = 234;
+            this.chkRenovaciones.Text = "Filtrar Renovaciones";
+            this.chkRenovaciones.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkRenovaciones.UncheckedState.BorderRadius = 0;
+            this.chkRenovaciones.UncheckedState.BorderThickness = 0;
+            this.chkRenovaciones.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkRenovaciones.CheckedChanged += new System.EventHandler(this.chkRenovaciones_CheckedChanged);
+            // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label38.Location = new System.Drawing.Point(1034, 59);
+            this.label38.Location = new System.Drawing.Point(958, 59);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(73, 17);
             this.label38.TabIndex = 131;
@@ -3092,6 +3113,25 @@ namespace wfaIntegradoCom.Mantenedores
             this.lblTotaGanancia.Text = "00.0";
             this.lblTotaGanancia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // cboEstadoContrato
+            // 
+            this.cboEstadoContrato.BackColor = System.Drawing.Color.Transparent;
+            this.cboEstadoContrato.BorderColor = System.Drawing.Color.Silver;
+            this.cboEstadoContrato.BorderRadius = 5;
+            this.cboEstadoContrato.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboEstadoContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstadoContrato.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboEstadoContrato.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboEstadoContrato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboEstadoContrato.HoveredState.Parent = this.cboEstadoContrato;
+            this.cboEstadoContrato.ItemHeight = 30;
+            this.cboEstadoContrato.ItemsAppearance.Parent = this.cboEstadoContrato;
+            this.cboEstadoContrato.Location = new System.Drawing.Point(608, 79);
+            this.cboEstadoContrato.Name = "cboEstadoContrato";
+            this.cboEstadoContrato.ShadowDecoration.Parent = this.cboEstadoContrato;
+            this.cboEstadoContrato.Size = new System.Drawing.Size(147, 36);
+            this.cboEstadoContrato.TabIndex = 228;
+            // 
             // cboTipoVetaBusq
             // 
             this.cboTipoVetaBusq.BackColor = System.Drawing.Color.Transparent;
@@ -3111,6 +3151,17 @@ namespace wfaIntegradoCom.Mantenedores
             this.cboTipoVetaBusq.Size = new System.Drawing.Size(147, 36);
             this.cboTipoVetaBusq.TabIndex = 228;
             this.cboTipoVetaBusq.SelectedIndexChanged += new System.EventHandler(this.cboTipoVetaBusq_SelectedIndexChanged);
+            // 
+            // label23
+            // 
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label23.Location = new System.Drawing.Point(539, 79);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(66, 36);
+            this.label23.TabIndex = 229;
+            this.label23.Text = "Estado Contrato";
             // 
             // label7
             // 
@@ -3276,15 +3327,15 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtBuscarVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtBuscarVentas.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.txtBuscarVentas.HoveredState.Parent = this.txtBuscarVentas;
-            this.txtBuscarVentas.Location = new System.Drawing.Point(1034, 78);
-            this.txtBuscarVentas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBuscarVentas.Location = new System.Drawing.Point(958, 78);
+            this.txtBuscarVentas.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscarVentas.Name = "txtBuscarVentas";
             this.txtBuscarVentas.PasswordChar = '\0';
             this.txtBuscarVentas.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtBuscarVentas.PlaceholderText = "Placa / Cliente / Usuario / Plan";
             this.txtBuscarVentas.SelectedText = "";
             this.txtBuscarVentas.ShadowDecoration.Parent = this.txtBuscarVentas;
-            this.txtBuscarVentas.Size = new System.Drawing.Size(133, 36);
+            this.txtBuscarVentas.Size = new System.Drawing.Size(209, 37);
             this.txtBuscarVentas.TabIndex = 230;
             this.txtBuscarVentas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPlacaBus_KeyPress);
             // 
@@ -3459,35 +3510,38 @@ namespace wfaIntegradoCom.Mantenedores
             this.gunaLabel10.TabIndex = 49;
             this.gunaLabel10.Text = "VENTA - HUSAT";
             // 
-            // cboEstadoContrato
+            // label24
             // 
-            this.cboEstadoContrato.BackColor = System.Drawing.Color.Transparent;
-            this.cboEstadoContrato.BorderColor = System.Drawing.Color.Silver;
-            this.cboEstadoContrato.BorderRadius = 5;
-            this.cboEstadoContrato.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboEstadoContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEstadoContrato.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.cboEstadoContrato.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboEstadoContrato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboEstadoContrato.HoveredState.Parent = this.cboEstadoContrato;
-            this.cboEstadoContrato.ItemHeight = 30;
-            this.cboEstadoContrato.ItemsAppearance.Parent = this.cboEstadoContrato;
-            this.cboEstadoContrato.Location = new System.Drawing.Point(608, 79);
-            this.cboEstadoContrato.Name = "cboEstadoContrato";
-            this.cboEstadoContrato.ShadowDecoration.Parent = this.cboEstadoContrato;
-            this.cboEstadoContrato.Size = new System.Drawing.Size(147, 36);
-            this.cboEstadoContrato.TabIndex = 228;
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label24.Location = new System.Drawing.Point(771, 59);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(128, 17);
+            this.label24.TabIndex = 131;
+            this.label24.Text = "Filtro por Caducidad";
+            this.label24.Click += new System.EventHandler(this.label38_Click);
             // 
-            // label23
+            // cboTipoFiltro
             // 
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label23.Location = new System.Drawing.Point(539, 79);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(66, 36);
-            this.label23.TabIndex = 229;
-            this.label23.Text = "Estado Contrato";
+            this.cboTipoFiltro.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoFiltro.BorderColor = System.Drawing.Color.Silver;
+            this.cboTipoFiltro.BorderRadius = 5;
+            this.cboTipoFiltro.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoFiltro.DropDownWidth = 220;
+            this.cboTipoFiltro.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboTipoFiltro.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoFiltro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboTipoFiltro.HoveredState.Parent = this.cboTipoFiltro;
+            this.cboTipoFiltro.ItemHeight = 30;
+            this.cboTipoFiltro.ItemsAppearance.Parent = this.cboTipoFiltro;
+            this.cboTipoFiltro.Location = new System.Drawing.Point(771, 78);
+            this.cboTipoFiltro.Name = "cboTipoFiltro";
+            this.cboTipoFiltro.ShadowDecoration.Parent = this.cboTipoFiltro;
+            this.cboTipoFiltro.Size = new System.Drawing.Size(177, 36);
+            this.cboTipoFiltro.TabIndex = 228;
             // 
             // ID
             // 
@@ -3519,9 +3573,15 @@ namespace wfaIntegradoCom.Mantenedores
             // FECHAVENTA
             // 
             this.FECHAVENTA.ContextMenuStrip = this.cmListaVentas;
-            this.FECHAVENTA.HeaderText = "Fecha inicio";
+            this.FECHAVENTA.HeaderText = "Fecha inicio contrato";
             this.FECHAVENTA.Name = "FECHAVENTA";
             this.FECHAVENTA.ReadOnly = true;
+            // 
+            // fechaFinContrato
+            // 
+            this.fechaFinContrato.HeaderText = "Fecha fin contrato";
+            this.fechaFinContrato.Name = "fechaFinContrato";
+            this.fechaFinContrato.ReadOnly = true;
             // 
             // Vehiculos_lv
             // 
@@ -3811,7 +3871,6 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.DataGridViewButtonColumn colEliminar;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ContextMenuStrip cmListaVentas;
-        private System.Windows.Forms.ToolStripMenuItem irPagoCuotas;
         private System.Windows.Forms.ToolStripMenuItem irActualizar;
         private System.Windows.Forms.ToolStripMenuItem irAInstalacion;
         private Siticone.UI.WinForms.SiticoneGroupBox gbDinamico;
@@ -3866,11 +3925,15 @@ namespace wfaIntegradoCom.Mantenedores
         private Siticone.UI.WinForms.SiticoneCheckBox btnBuscarMonto;
         private Siticone.UI.WinForms.SiticoneComboBox cboEstadoContrato;
         private System.Windows.Forms.Label label23;
+        private Siticone.UI.WinForms.SiticoneCheckBox chkRenovaciones;
+        private System.Windows.Forms.Label label24;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoFiltro;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero_lv;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodVenta_lv;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAVENTA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaFinContrato;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculos_lv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ciente_Rs_lv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plan_lv;

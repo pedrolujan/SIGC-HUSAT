@@ -131,7 +131,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             try
             {
-                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, datoBuscar, datoEstado, numPagina, tipoLLamada, tipoCon, 1, estadoTipoContrato);
+                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, datoBuscar, datoEstado, numPagina, tipoLLamada, tipoCon, 1, estadoTipoContrato,false,"");
 
                 Int32 totalResultados = datVentaG.Rows.Count;
                 if (totalResultados > 0)

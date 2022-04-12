@@ -124,20 +124,23 @@
   <data name="rrHh_blanco_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rrHh_blanco_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="comprar_naranja_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\comprar_naranja_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="recaudacion_Blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\recaudacion_Blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="agregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\agregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="limpiar_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\limpiar_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="usser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="buscar_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buscar_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gps" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gps.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo husat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo husat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="guardar_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\guardar_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,17 +151,26 @@
   <data name="venta_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\venta_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CheckCircle_30px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckCircle_30px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="refund_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refund_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="soporte1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\soporte1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CheckCircle_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckCircle_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="redo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\redo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="consultar_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\consultar_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="compu_ok_naranja_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\compu_ok_naranja_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,6 +181,9 @@
   <data name="update" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\update.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="tipoVenta_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tipoVenta_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="editar_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\editar_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -178,11 +193,14 @@
   <data name="arrow down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="reload" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pdf_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pdf_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="compras_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\compras_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eye_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="salir_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\salir_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -201,6 +219,9 @@
   </data>
   <data name="commercial_naranja_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\commercial_naranja_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="x_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\x_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="nuevo_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nuevo_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,20 +256,8 @@
   <data name="porPagar_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\porPagar_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="user_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="compu_ok_blanco_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\compu_ok_blanco_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="recaudacion_Blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\recaudacion_Blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo husat" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo husat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="aniadir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\aniadir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="comprar_naranja_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\comprar_naranja_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cadreCaja_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cadreCaja_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -274,17 +283,23 @@
   <data name="pagado_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pagado_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="reloadWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reloadWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="porPagar_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\porPagar_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="null_symbol_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\null_symbol_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="buscar_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buscar_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sistema_blanco_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sistema_blanco_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="compras_blanco_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\compras_blanco_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="agregar_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\agregar_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="246670832_270751215056744_6886770987346263881_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\246670832_270751215056744_6886770987346263881_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="login_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\login_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -298,17 +313,17 @@
   <data name="search_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="nuevo_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\nuevo_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="compu_ok_blanco_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\compu_ok_blanco_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tipoVenta_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tipoVenta_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="limpiar_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\limpiar_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sistema_blanco_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sistema_blanco_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="reloadWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reloadWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="compras_blanco_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\compras_blanco_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exclamation_mark_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exclamation_mark_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logistica_blanc_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logistica_blanc_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -316,14 +331,26 @@
   <data name="editar_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\editar_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gps.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pocket_watch_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pocket_watch_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sistemas_naranja_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sistemas_naranja_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="limpiar_blanco_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\limpiar_blanco_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nuevo_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nuevo_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="atras_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\atras_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,22 +364,19 @@
   <data name="soporte" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\soporte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="usser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="aniadir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aniadir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="246670832_270751215056744_6886770987346263881_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\246670832_270751215056744_6886770987346263881_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logistica_base_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logistica_base_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="porPagar_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\porPagar_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="247101754_239436438240977_9004483511644389912_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\247101754_239436438240977_9004483511644389912_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pdf_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pdf_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="todo_list_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\todo_list_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

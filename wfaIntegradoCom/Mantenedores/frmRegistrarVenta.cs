@@ -83,7 +83,7 @@ namespace wfaIntegradoCom.Mantenedores
         static List<validacion> lstValidacionPlan;
         public static String cCodigoVenta = "";
         static Double RestarDescuento = 0;
-
+       
         Int32 idTipoPlanActual = 0;
         Int32 idPlanActual = 0;
         Int32 idCicloActual = 0;
@@ -388,6 +388,8 @@ namespace wfaIntegradoCom.Mantenedores
                 bTipoTab = false;
                 fnLlenarTipoTarifa(0, cboTipoVetaBusq, true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadoContrato, "TICN", true);
+                FunGeneral.fnLlenarTablaCodTipoCon(cboTipoFiltro, "TFRV", true);
+                cboTipoFiltro.SelectedValue = "TFRV0005";
                 cboTipoVetaBusq.SelectedValue = 1;
                 dtpFechaRegistro.Value = Variables.gdFechaSis;
                 dtFechaPago.Value = Variables.gdFechaSis;
@@ -2137,7 +2139,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private Boolean fnBuscarListaVentas(DataGridView dgv, Int32 numPagina,Int32 tipoLLamada, Int32 tipoCon)
+        private Boolean fnBuscarListaVentas(DataGridView dgv, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon)
         {
             BLVentaGeneral objVentaGeneral = new BLVentaGeneral();
             clsUtil objUtil = new clsUtil();
@@ -2146,6 +2148,7 @@ namespace wfaIntegradoCom.Mantenedores
             String cEstadoInstal = "0";
             Int32 cEstadoTipoVenta = Convert.ToInt32(cboTipoVetaBusq.SelectedValue);
             Boolean habilitarFechas = chkHabilitarFechasBus.Checked ? true : false;
+            Boolean habilitarRenovaciones = chkRenovaciones.Checked ? true : false;
             DateTime fechaInicial = dtpFechaInicialBus.Value;
             DateTime fechaFinal = dtpFechaFinalBus.Value;
             String estadoTipoContrato = cboEstadoContrato.SelectedValue.ToString();
@@ -2153,6 +2156,7 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 HorasFin = 0;
             Int32 HorasRestarIni = 0;
             Int32 HorasRestarFin = 0;
+            String TipoFiltro = "";
             //if (fechaInicial== fechaFinal)
             //{
             HorasIni = Convert.ToInt32(fechaInicial.ToString("HH"));
@@ -2161,15 +2165,18 @@ namespace wfaIntegradoCom.Mantenedores
 
             HorasFin = Convert.ToInt32(fechaFinal.ToString("HH"));
             HorasRestarFin = 24 - HorasFin;
-            fechaFinal = fechaFinal.AddHours(HorasRestarFin);
-            //}
+            fechaFinal  = Convert.ToDateTime(fechaFinal.ToString("dd") + "/" + (fechaFinal.Month) + "/" + fechaFinal.Year+" 23:59:59");
+            TipoFiltro = cboTipoFiltro.SelectedValue.ToString();
+
+            //fechaFinal = fechaFinal.AddHours(HorasRestarFin);
+            //}            
             
             Int32 filas = 10;
             Double TotalGanacia = 0;
             Boolean estadoReturn = false;
             try
             {
-                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato);
+                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro);
 
                 Int32 totalResultados = datVentaG.Rows.Count;
                 if (tipoCon==-4)
@@ -2222,38 +2229,51 @@ namespace wfaIntegradoCom.Mantenedores
                             Int32 restaAnio = 0;
                             Int32 restaMeses = 0;
                             Int32 faltaDias = 0;
+                            String strEstado = "";
                             String desVehiculos = Convert.ToString(dr["descripcionVehiculo"]);
-                            DateTime fecha = Convert.ToDateTime(dr["FechaRegistro"]);
-                            DateTime fechaPago = Convert.ToDateTime(dr["fechaPago"]);
-                            DateTime fechaFinalContrato = Convert.ToDateTime(dr["periodoFinal"]);
+                            DateTime fecha = Convert.ToDateTime(Convert.ToDateTime(dr["FechaRegistro"]).ToString("dd/MM/yyyy"));
+                            DateTime fechaPago = Convert.ToDateTime(Convert.ToDateTime(dr["fechaPago"]).ToString("dd/MM/yyyy"));
+                            DateTime fechaFinalContrato = Convert.ToDateTime(Convert.ToDateTime(dr["periodoFinal"]).ToString("dd/MM/yyyy"));
 
-                            TimeSpan tiket = fechaFinalContrato - Variables.gdFechaSis;
+                            TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
+
+                            //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
+                            if (Variables.gdFechaSis > fechaFinalContrato)
+                            {
+                                tiket = Variables.gdFechaSis-fechaFinalContrato;
+                            }
+                            else
+                            {
+                                tiket = fechaFinalContrato - Variables.gdFechaSis;
+                            }
                             DateTime totalTime = new DateTime(tiket.Ticks);
                             restaAnio = totalTime.Year - 1;
                             restaMeses = totalTime.Month - 1;
-                            faltaDias = Convert.ToInt32(totalTime.Day - 1);
-
-
-
-
-
-
-
+                            faltaDias = Convert.ToInt32(totalTime.Day);
+                            if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA")
+                            {
+                                strEstado = "❌ ANULADA";
+                            }
+                            else
+                            {
+                                strEstado = fnMostrarEstadoRenovacion(Variables.gdFechaSis, fechaFinalContrato, restaAnio, restaMeses, faltaDias);
+                            }
                             dgv.Rows.Add(
                                 dr["idCliente"],
                                 y,
                                 dr["codigoVenta"],
                                 fechaPago.ToString("dd/MM/yyyy"),
                                 fecha.ToString("dd/MM/yyyy"),
+                                fechaFinalContrato.ToString("dd/MM/yyyy"),
                                 desVehiculos,
-                                dr["descripcionCliente"],
-                                dr["plan"],
-                                dr["nombre"],
-                                dr["EstadoVenta"],
-                                dr["cNomTab"],
-                                dr["cUser"],
+                                FunGeneral.FormatearCadenaTitleCase(dr["descripcionCliente"].ToString()),
+                                FunGeneral.FormatearCadenaTitleCase(dr["plan"].ToString()),
+                                FunGeneral.FormatearCadenaTitleCase(dr["nombre"].ToString()),
+                                FunGeneral.FormatearCadenaTitleCase(dr["EstadoVenta"].ToString()),
+                                FunGeneral.FormatearCadenaTitleCase(dr["cNomTab"].ToString()),
+                                FunGeneral.FormatearCadenaTitleCase(dr["cUser"].ToString()),
                                 $"{dr["cSimbolo"]} {string.Format("{0:0.00}", dr["TotalPago"])}",
-                                "Falta "+restaMeses + " Meses con "+ faltaDias+" Dias",
+                                strEstado,
                                 "",
                                 dr["idTipoTarifa"],
                                 dr["idContrato"]
@@ -2313,17 +2333,18 @@ namespace wfaIntegradoCom.Mantenedores
                         dgv.Columns[2].Visible = false;
                         dgv.Columns[1].Width = 20;
                         dgv.Columns[3].Width = 45;
-                        dgv.Columns[4].Width = 45;
-                        dgv.Columns[5].Width = 75;
-                        dgv.Columns[6].Width = 95;
-                        dgv.Columns[7].Width = 45;
+                        dgv.Columns[4].Width = 50;
+                        dgv.Columns[5].Width = 45;
+                        dgv.Columns[6].Width = 75;
+                        dgv.Columns[7].Width = 110;
                         dgv.Columns[8].Width = 45;
-                        dgv.Columns[9].Width = 50;
-                        dgv.Columns[10].Width = 45;
-                        dgv.Columns[11].Width = 40;
+                        dgv.Columns[9].Width = 45;
+                        dgv.Columns[10].Width = 50;
+                        dgv.Columns[11].Width = 45;
                         dgv.Columns[12].Width = 40;
-                        dgv.Columns[13].Width = 100;
-                        dgv.Columns[14].Width = 60;
+                        dgv.Columns[13].Width = 40;
+                        dgv.Columns[14].Width = 100;
+                        dgv.Columns[15].Width = 60;
                         //dgv.RowTemplate.Height = 100;
                         dgv.Visible = true;
 
@@ -2368,6 +2389,88 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
 
+        private String fnMostrarEstadoRenovacion(DateTime dtActual, DateTime dtFinal, Int32 restaAnio, Int32 restaMeses, Int32 faltaDias)
+        {
+            String strEstado = "";
+            String strAnio = "";
+            String strMes = "";
+            String strDia = "";
+            strAnio = restaAnio == 1 ? " Año " : " Años ";
+            strMes = restaMeses == 1 ? " Mes y " : " Meses y ";
+            strDia = faltaDias == 1 ? " Dia " : " Dias ";
+
+            if (dtActual < dtFinal)
+            {
+                if (restaAnio > 0)
+                {
+                    strEstado = "✔ Aun falta " + restaAnio + strAnio + restaMeses + strMes + faltaDias + strDia;
+
+                }
+                else if (restaMeses > 0)
+                {
+                    strEstado = "✔ Aun falta " + restaMeses + strMes + faltaDias + strDia;
+
+                }
+                else
+                {
+                    if (restaMeses == 0 && faltaDias >= 15)
+                    {
+                        strEstado = "🕐 Aun falta " + faltaDias + strDia;
+
+                    }
+                    else if (restaMeses == 0 && faltaDias < 15 && faltaDias > 5)
+                    {
+                        strEstado = "👁‍ Solo falta " + faltaDias + strDia;
+                    }
+                    else if (restaMeses == 0 && faltaDias < 6 && faltaDias > 0)
+                    {
+                        strEstado = "❗ Solo falta " + faltaDias + strDia+" para la renovacion";
+
+                    }
+                    else if (restaMeses == 0 && faltaDias == 0)
+                    {
+                        strEstado = "🚫 El dia de revacion es hoy!!\n " + Variables.gdFechaSis.ToString("dd/MMM/yyyy");
+                    }
+                }
+            }
+            else if (dtActual > dtFinal)
+            {
+                if (restaAnio > 0)
+                {
+                    strEstado = "❌ Retraso " + restaAnio + strAnio + restaMeses + strMes + faltaDias + strDia;
+
+                }
+                else if (restaMeses > 0)
+                {
+                    strEstado = "❌ Retraso " + restaMeses + strMes + faltaDias + strDia;
+
+                }
+                else
+                {
+                    if (restaMeses == 0 && faltaDias >= 15)
+                    {
+                        strEstado = "❌ Retraso " + faltaDias + strDia;
+
+                    }
+                    else if (restaMeses == 0 && faltaDias < 15 && faltaDias > 5)
+                    {
+                        strEstado = "❌‍ Retraso " + faltaDias + strDia;
+                    }
+                    else if (restaMeses == 0 && faltaDias < 6 && faltaDias > 0)
+                    {
+                        strEstado = "❌ Retraso " + faltaDias + strDia;
+
+                    }
+                    else if (restaMeses == 0 && faltaDias == 0)
+                    {
+                        strEstado = "❌ El dia de revacion es hoy!!\n " + Variables.gdFechaSis.ToString("dd/MMM/yyyy");
+                    }
+                }
+
+            }
+
+            return strEstado;
+        }
         private void cboTipoDescuentoP_SelectedIndexChanged(object sender, EventArgs e)
         {
             Int32 idTipoDescuento = Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue ?? 0);
@@ -3596,7 +3699,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
             if (e.ColumnIndex == dgvListaVentas.Columns["lvBtnImprimir"].Index && e.RowIndex >= 0)
             {
-                Int32 idTipoVenta = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[14].Value);
+                Int32 idTipoVenta = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[16].Value);
                 if (idTipoVenta==2)
                 {
                     cmsImpresiones.Items[2].Visible = false;
@@ -3922,11 +4025,11 @@ namespace wfaIntegradoCom.Mantenedores
             
             if (e.ColumnIndex == dgvListaVentas.Columns["Vehiculos_lv"].Index && e.RowIndex >= 0)
             {
-                dato = fnRecortarCadena(Convert.ToString(dgvListaVentas.Rows[e.RowIndex].Cells[5].Value));
+                dato = fnRecortarCadena(Convert.ToString(dgvListaVentas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value));
                 frmPrev.inicio(2, dato);
             }if (e.ColumnIndex == dgvListaVentas.Columns["Ciente_Rs_lv"].Index && e.RowIndex >= 0)
             {
-                dato = Convert.ToString(dgvListaVentas.Rows[e.RowIndex].Cells[6].Value);
+                dato = Convert.ToString(dgvListaVentas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
                 frmPrev.inicio(2, dato);
             }
         }
@@ -3945,11 +4048,11 @@ namespace wfaIntegradoCom.Mantenedores
         {
             String CodVenta = Convert.ToString(dgvListaVentas.CurrentRow.Cells[2].Value);
 
-            String RowVehiculos = Convert.ToString(dgvListaVentas.CurrentRow.Cells[5].Value);
+            String RowVehiculos = Convert.ToString(dgvListaVentas.CurrentRow.Cells[6].Value);
 
             String[] ArrayVehiculos = RowVehiculos.Split(';');
             List<Vehiculo> lstVehiculo = new List<Vehiculo>();
-            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[15].Value);
+            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[17].Value);
             frmTipoImpresion frmTImpre = new frmTipoImpresion();
             frmRptContrato frmVPContrato = new frmRptContrato();
             if (ArrayVehiculos.Length-1==1)
@@ -4046,8 +4149,8 @@ namespace wfaIntegradoCom.Mantenedores
         {
 
             cCodigoVenta = Convert.ToString(dgvListaVentas.CurrentRow.Cells[2].Value);
-            Int32 idTipoTarifa = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[14].Value);
-            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[15].Value);
+            Int32 idTipoTarifa = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[16].Value);
+            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[17].Value);
             fnBuscarDocumentoVenta(cCodigoVenta,1, idTipoTarifa, idContrato);
         }
 
@@ -4079,10 +4182,10 @@ namespace wfaIntegradoCom.Mantenedores
         private void ActaInstalacion_Click(object sender, EventArgs e)
         {
             String CodVenta = Convert.ToString(dgvListaVentas.CurrentRow.Cells[2].Value);
-            Int32 idTipoVenta = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[14].Value);
-            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[15].Value);
+            Int32 idTipoVenta = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[16].Value);
+            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[17].Value);
 
-            String RowVehiculos = Convert.ToString(dgvListaVentas.CurrentRow.Cells[5].Value);
+            String RowVehiculos = Convert.ToString(dgvListaVentas.CurrentRow.Cells[6].Value);
             String[] ArrayVehiculos = RowVehiculos.Split(';');
             List<Vehiculo> lstVehiculo = new List<Vehiculo>();
             frmTipoImpresion frmTImpre = new frmTipoImpresion();
@@ -4156,9 +4259,9 @@ namespace wfaIntegradoCom.Mantenedores
             bActivarChecks = true;
             String codigoVenta = Convert.ToString(dgvListaVentas.CurrentRow.Cells[2].Value);
             Int32 idCliente = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[0].Value);
-            String strEstadoContrato = Convert.ToString(dgvListaVentas.CurrentRow.Cells[10].Value);
-            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[15].Value);
-            if (strEstadoContrato=="VIGENTE")
+            String strEstadoContrato = Convert.ToString(dgvListaVentas.CurrentRow.Cells[11].Value);
+            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[17].Value);
+            if (strEstadoContrato== "Vigente")
             {
                 lnTipoCon = 0;
                 siticoneCheckBox1.Checked = false;
@@ -4199,7 +4302,7 @@ namespace wfaIntegradoCom.Mantenedores
             
             String codigoVenta = Convert.ToString(dgvListaVentas.CurrentRow.Cells[2].Value);
             Int32 idCliente = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[0].Value);
-            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[15].Value);
+            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[17].Value);
 
             fnDevolverVehiculoRenovacion(codigoVenta, idCliente, "", idContrato);
             //fnMostrarParaActualizar(false);
@@ -4260,5 +4363,78 @@ namespace wfaIntegradoCom.Mantenedores
                 fnBuscarListaVentas(dgvListaVentas, 0, 0, -4);
             }
         }
+
+        private void dgvListaVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView dgview = sender as DataGridView;
+
+            String nombreCabecera = dgview.Columns[e.ColumnIndex].Name;
+
+            if (nombreCabecera == "txtEstado")
+            {
+
+                if (e.Value.ToString().Contains("✔"))
+                {
+                    e.CellStyle.ForeColor = Variables.ColorSuccess;
+                }
+                else if (e.Value.ToString().Contains("🕐"))
+                {
+                    e.CellStyle.ForeColor = Color.YellowGreen;
+                }
+                else if (e.Value.ToString().Contains("👁"))
+                {
+                    e.CellStyle.ForeColor = Color.Orange;
+                }
+                else if (e.Value.ToString().Contains("❗"))
+                {
+                    e.CellStyle.ForeColor = Color.OrangeRed;
+
+                }else if (e.Value.ToString().Contains("🚫"))
+                {
+                    e.CellStyle.ForeColor = Color.Purple;
+                }
+                else if (e.Value.ToString().Contains("❌"))
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+
+                }
+            }
+        }
+
+        private void chkRenovaciones_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbCheck_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbRelog_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void cbOjo_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbAdmiracion_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbCirculo_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbX_Click(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }

@@ -368,7 +368,7 @@ namespace wfaIntegradoCom.Procesos
                             cNombre = Convert.ToString(drMenu["nombreCliente"]),
                             cApePat = Convert.ToString(drMenu["cApePat"]),
                             cApeMat = Convert.ToString(drMenu["cApeMat"]),
-                            cCliente =FunGeneral.FormatearCadenaTitleCase(drMenu["nombreCliente"] + " " + drMenu["cApePat"] + drMenu["cApeMat"]),
+                            cCliente =FunGeneral.FormatearCadenaTitleCase(drMenu["nombreCliente"] + " " + drMenu["cApePat"] +" "+ drMenu["cApeMat"]),
                             cTelCelular = Convert.ToString(drMenu["cTelCelular"]),
                             dFecNac = dtFechapagoCronogramaGeneral.AddDays(1),
                             cContactoNom1 = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cContactoNom1"])),
@@ -546,7 +546,7 @@ namespace wfaIntegradoCom.Procesos
                            drMenu["codContrato"],
                             dtFechaPagoCronograma.ToString("dd/MMM/yyyy"),
                             drMenu["vPlaca"],
-                            drMenu["nombreCliente"] + " " + drMenu["cApePat"] + drMenu["cApeMat"],
+                            drMenu["nombreCliente"] + " " + drMenu["cApePat"] +" "+ drMenu["cApeMat"],
                             drMenu["cNombre"],
                             drMenu["nombre"],
                             drMenu["cDia"],
@@ -1517,18 +1517,15 @@ namespace wfaIntegradoCom.Procesos
                 if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) > Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
                 {
                     bEstado = false;
-                    msg = "la fecha de pago no puede ser mayor a la fecha actual";
+                    msg = "La fecha de pago no puede ser mayor a la fecha actual";
                     img = Properties.Resources.error;
                 }
                 else if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) < Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")))
                 {
-                    //bEstado = false;
-                    //msg = "La fecha de pago no puede ser menor a: " + dtFechaSistema.ToString("dd/MM/yyyy");
-                    //img = Properties.Resources.error;
+                    bEstado = false;
+                    msg = "La fecha de pago no puede ser menor a: " + dtFechaSistema.ToString("dd/MM/yyyy");
+                    img = Properties.Resources.error;
 
-                    bEstado = true;
-                    msg = "";
-                    img = Properties.Resources.ok;
                 }
             }
             lbl.Text = msg;
