@@ -338,7 +338,7 @@ namespace CapaDato
 
             try
             {
-                if (tipoCon==-1)
+                if (tipoCon==-1 || tipoCon==-2)
                 {
                     tipoCon = 0;
                 }

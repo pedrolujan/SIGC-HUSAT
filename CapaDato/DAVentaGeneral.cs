@@ -66,7 +66,7 @@ namespace CapaDato
                 pa[28] = new SqlParameter("@FinalizacionContrato", SqlDbType.Int) { Value = clsVentaGeneral.estFinalizacionContrato };
                 pa[29] = new SqlParameter("@dFechaPago", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaPago };
                 pa[30] = new SqlParameter("@dFechaVenta", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta };
-                objCnx = new clsConexion(""); 
+                objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
 
                 return true;
@@ -333,6 +333,7 @@ namespace CapaDato
             Cliente clsCliente = new Cliente();
             Plan ClsPlan = new Plan();
             Contrato clsContrato = new Contrato();
+            Cronograma clsCronograma = new Cronograma();
             Ciclo clsCiclo = new Ciclo();
             Tarifa clsTarifa = new Tarifa();
             Moneda clsMoneda = new Moneda();
@@ -399,6 +400,9 @@ namespace CapaDato
                         clsCiclo.IdCiclo = Convert.ToInt32(dtVentaG.Rows[0][1]);
                         clsMoneda.idMoneda = Convert.ToInt32(dtVentaG.Rows[0][2]);
                         clsContrato.idContrato = Convert.ToInt32(dtVentaG.Rows[0][24]);
+
+                        clsCronograma.periodoInicio = Convert.ToDateTime(dtVentaG.Rows[0][36]);
+                        clsCronograma.periodoFinal = Convert.ToDateTime(dtVentaG.Rows[0][37]);
                         int i = 0;
                         foreach (DataRow drMenu in dtVentaG.Rows)
                         {
@@ -431,7 +435,8 @@ namespace CapaDato
                             clsDetalleVentaCabecera= clsDetVentaCabecera,
                             ClsCiclo = clsCiclo,
                             ClsMoneda = clsMoneda,
-                            clsContrato = clsContrato
+                            clsContrato = clsContrato,
+                            clsCronograma= clsCronograma
 
                         }) ;
                     }

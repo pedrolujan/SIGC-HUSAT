@@ -101,18 +101,21 @@ namespace CapaDato
 
         }
 
-        public Tarifa daListarPreciosTarifaDePlan(Int32 idPlan, Int32 tipoCon)
+        public Tarifa daListarPreciosTarifaDePlan(Int32 idPlan, Int32 peTipoTarifa, String codVenta, Int32 lnTipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[2];
+            SqlParameter[] pa = new SqlParameter[4];
             DataTable dtUsuario = new DataTable();
             clsConexion objCnx = null;
             Tarifa clsTarifa = new Tarifa();
             objUtil = new clsUtil();
+            String codVent = codVenta is null ? "" : codVenta;
 
             try
             {
                 pa[0] = new SqlParameter("@peIdPlan", SqlDbType.Int) { Value = idPlan };
-                pa[1] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[1] = new SqlParameter("@peTipoTarifa", SqlDbType.Int) { Value = peTipoTarifa };
+                pa[2] = new SqlParameter("@codigoVenta", SqlDbType.NVarChar,20) { Value = codVent };
+                pa[3] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = lnTipoCon };
 
                 objCnx = new clsConexion("");
                 dtUsuario = objCnx.EjecutarProcedimientoDT("uspListarTarifaDePlan", pa);
