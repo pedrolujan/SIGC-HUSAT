@@ -146,9 +146,11 @@ namespace CapaDato
 
         }
 
-        public Boolean daGuardarOtrasVenta(List<OtrasVentas> lstOtrasVentas, List<Pagos> lstPagos, List<xmlDocumentoVenta> xmlDocumentoVenta, Int32 tipoCon)
+        public Boolean daGuardarOtrasVenta(List<OtrasVentas> lstOtrasVentas, List<Pagos> lstPagos, List<xmlDocumentoVentaGeneral> xmlDocumentoVenta, Int32 tipoCon, List<Cliente> lstClientesN, List<Vehiculo> lstvehiculo)
         {
-            SqlParameter[] pa = new SqlParameter[4];
+           
+            
+            SqlParameter[] pa = new SqlParameter[14];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             int intRowsAffected = 0;
@@ -167,8 +169,32 @@ namespace CapaDato
                 pa[3] = new SqlParameter("@peiTipoCon", SqlDbType.Int);
                 pa[3].Value = tipoCon;
 
+                pa[4] = new SqlParameter("@idClienteAntiguo", SqlDbType.Int);
+                pa[4].Value = lstClientesN[0].idCliente;
+                pa[5] = new SqlParameter("@idVenta", SqlDbType.Int);
+                pa[5].Value = lstClientesN[0].idVentaGen;
+                pa[6] = new SqlParameter("@FechaRegistro", SqlDbType.DateTime);
+                pa[6].Value = lstOtrasVentas[0].dFechaRegistro;
+                pa[7] = new SqlParameter("@FechaTitularidad ", SqlDbType.DateTime);
+                pa[7].Value = lstOtrasVentas[0].dFechaTitularidad;
+                pa[8] = new SqlParameter("@idUsuario", SqlDbType.Int);
+                pa[8].Value = lstOtrasVentas[0].iddUsuario;
+                pa[9] = new SqlParameter("@idvehiculo ", SqlDbType.Int);
+                pa[9].Value = lstvehiculo[0].idVehiculo;
+              
+                pa[10] = new SqlParameter("@igvporcentaje", SqlDbType.Money);
+                pa[10].Value = lstOtrasVentas[0].IgvPorcentaje;
+                pa[11] = new SqlParameter("@igvvalor", SqlDbType.Money);
+                pa[11].Value = lstOtrasVentas[0].igvValor;
+                pa[12] = new SqlParameter("@TotalVentas", SqlDbType.Money);
+                pa[12].Value = lstOtrasVentas[0].TotalVenta;
+                pa[13] = new SqlParameter("@codigoDocumentoVentaTC", SqlDbType.NVarChar);
+                pa[13].Value = lstOtrasVentas[0].codDocumentoCorrelativo;
+
+
+
                 objCnx = new clsConexion("");
-                intRowsAffected=objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
+                intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
                 return true;
             }
             catch (Exception ex)
@@ -386,6 +412,42 @@ namespace CapaDato
             }
 
         }
+        //public DataTable daMotivo(ComboBox cbo, String cCodTab, String buscar)
+        //{
+        //    SqlParameter[] pa = new SqlParameter[1];
+        //    DataTable dtUsuario = new DataTable();
+        //    clsConexion objCnx = null;
+        //    objUtil = new clsUtil();
+        //    string Motivo;
+        //    try
+        //    {
+        //        pa[0] = new SqlParameter("@pecCodTab", SqlDbType.NVarChar, 8);
+        //        pa[0].Value = cCodTab;
+        //        objCnx = new clsConexion("");
+
+        //        dtUsuario = objCnx.EjecutarProcedimientoDT("uspMostrarMotivo", pa);
+
+        //        foreach (DataRow drMenu in dtUsuario.Rows)
+        //        {
+        //            Motivo = Convert.ToDouble(drMenu["cNoNTab"]);
+        //        }
+
+        //        return Motivo;
+        //         catch (Exception ex)
+        //    {
+        //        objUtil.gsLogAplicativo("DACargo.cs", "daDevolverTablaCod", ex.Message);
+        //        throw new Exception(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        if (objCnx != null)
+        //            objCnx.CierraConexion();
+        //        objCnx = null;
+        //    }
 
     }
+
+        
+
+    
 }

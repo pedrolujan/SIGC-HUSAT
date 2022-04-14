@@ -18,8 +18,20 @@ namespace CapaEntidad
         public List<DocumentoVenta> listaDocVenta { get; set; }
         public DateTime FechaTitularidad { get; set; }
         public DateTime FechaRegistroT { get; set; }
+        public DateTime dtFechaTitu { get; set; }
         public Int32 idCliente { get; set; }
         public Int32 idModelo { get; set; }
         public Int32 idVentaGeneral { get; set; }
     }
+    public class xmlTitularidad
+    {
+        public xmlTitularidad() { }
+        public List<Cliente> ListaCliente { get; set; }
+        public List<Vehiculo> ListaVehiculo { get; set; }      
+        public List<OtrasVentas> ListaOtrasVentas { get; set; }
+        public Titularidad clstitu { get; set; }
+
+    }
+
+
 }

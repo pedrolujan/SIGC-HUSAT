@@ -124,6 +124,8 @@ namespace CapaDato
                 pa[4].Value = idUsuario;
                 pa[5] = new SqlParameter("@xmlDocumentoventa", SqlDbType.Xml);
                 pa[5].Value = xmlDocV;
+                pa[6] = new SqlParameter("@idvehiculo ", SqlDbType.Int);
+                pa[6].Value = idVenta;
                 
 
                 objCnx = new clsConexion(""); 
@@ -146,6 +148,7 @@ namespace CapaDato
             }
 
         }
+        
 
     }
 }

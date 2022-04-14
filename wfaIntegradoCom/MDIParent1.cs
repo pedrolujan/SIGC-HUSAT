@@ -501,6 +501,7 @@ namespace wfaIntegradoCom
                     }
                     else
                     {
+                        
                         frmFormulario.ShowDialog();
                     }
                 }

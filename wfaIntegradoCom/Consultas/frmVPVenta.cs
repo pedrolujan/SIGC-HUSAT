@@ -150,6 +150,8 @@ namespace wfaIntegradoCom.Consultas
 
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
+                
+              
                 fmr.Inicio(4, sumaPrimerPago, lstDVenta[0].cSimbolo);
 
             }

@@ -52,12 +52,12 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public Boolean blGuardarOtrasVentas(List<OtrasVentas>lstOtrasVentas, List<Pagos> lstPagos, List<xmlDocumentoVenta> xmlDocumentoVenta, Int32 tipCon)
+        public Boolean blGuardarOtrasVentas(List<OtrasVentas>lstOtrasVentas, List<Pagos> lstPagos, List<xmlDocumentoVentaGeneral> xmlDocumentoVenta, Int32 tipCon, List<Cliente> lstClientesN, List<Vehiculo> lstvehiculo )
         {
             daObjTipoVenta = new DAOtrasVenta();
             try
             {
-                return daObjTipoVenta.daGuardarOtrasVenta(lstOtrasVentas,lstPagos,xmlDocumentoVenta, tipCon);
+                return daObjTipoVenta.daGuardarOtrasVenta(lstOtrasVentas,lstPagos,xmlDocumentoVenta, tipCon, lstClientesN, lstvehiculo);
             }
             catch(Exception ex)
             {
@@ -121,8 +121,9 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
 
+           
         }
-
+        
 
 
 

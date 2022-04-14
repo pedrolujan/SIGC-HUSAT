@@ -26,6 +26,10 @@ namespace CapaEntidad
         public String simbMoneda { get; set; }
         public Int32 idCliente { get; set; }
         public DateTime dFechaRegistro { get; set; }
+        public DateTime dFechaTitularidad { get; set; }
+        public String codDocumentoCorrelativo { get; set; }
+
+
         public String CodDocumento { get; set; }
         public Double IgvPorcentaje { get; set; }
         public Double IgvPrecio { get; set; }
@@ -34,6 +38,7 @@ namespace CapaEntidad
         public String Visivilidad { get; set; }
         public String NombreDocumento { get; set; }
         public String cUsuario { get; set; }
+        public Double igvValor { get; set; }
     }
 
     public class StokAccesorios
@@ -42,6 +47,7 @@ namespace CapaEntidad
         public Int32 IdAccesorio { get; set; }
         public Int32 StokAccesorio { get; set; }
         public String NombreAccesorio { get; set; }
+      
     }
 
     public class TotalPagosVenta

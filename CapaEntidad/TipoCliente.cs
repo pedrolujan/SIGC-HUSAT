@@ -60,5 +60,6 @@ namespace CapaEntidad
             }
             return new TipoDocumento();
         }
+
     }
 }

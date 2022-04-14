@@ -41,10 +41,14 @@ namespace CapaEntidad
         public Int32 idVentaGen { get; set; }
         public String codigoVentaGen { get; set; }
         public String idReferencia { get; set; }
-       
+        public String cNomDep { get; set; }
+        public String cNomProv { get; set; }
+        public String cNomDist { get; set; }
 
-  
-                        
+
+
+
+
 
         public Cliente(Int32 pnidCliente, String pcCliente, String pcDocumento, Int32 pcTiDo,String pcTelefono, Boolean pbEstado)
         {

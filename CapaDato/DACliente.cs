@@ -137,6 +137,9 @@ namespace CapaDato
                     lstCliente.idDep = Convert.ToInt32(drMenu["idDepa"]);
                     lstCliente.idProv = Convert.ToInt32(drMenu["idProv"]);
                     lstCliente.idDist = Convert.ToInt32(drMenu["idDist"]);
+                    lstCliente.cNomDep = Convert.ToString(drMenu["cNomDep"]);
+                    lstCliente.cNomDist = Convert.ToString(drMenu["cNomDist"]);
+                    lstCliente.cNomProv = Convert.ToString(drMenu["cNomProv"]);
                     lstCliente.cDocumento = Convert.ToString(drMenu["cDocumento"]);
                     lstCliente.cContactoNom1 = Convert.ToString(drMenu["cContactoNom1"]);
                     lstCliente.cContactoNom2 = Convert.ToString(drMenu["cContactoNom2"]);

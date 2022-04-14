@@ -239,6 +239,12 @@
     <Compile Include="Consultas\frmRptContrato.Designer.cs">
       <DependentUpon>frmRptContrato.cs</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\frmRtpCambioTitularidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\frmRtpCambioTitularidad.Designer.cs">
+      <DependentUpon>frmRtpCambioTitularidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\frmVPVenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -762,6 +768,9 @@
     <EmbeddedResource Include="Consultas\frmRptContrato.resx">
       <DependentUpon>frmRptContrato.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\frmRtpCambioTitularidad.resx">
+      <DependentUpon>frmRtpCambioTitularidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\frmVPCronograma.rdlc" />
     <EmbeddedResource Include="Consultas\frmVPVenta.resx">
       <DependentUpon>frmVPVenta.cs</DependentUpon>
@@ -770,6 +779,7 @@
       <DependentUpon>frmVPOtrasVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Consultas\rptActaInstalacion.rdlc" />
+    <EmbeddedResource Include="Consultas\rptCambioTitularidad.rdlc" />
     <EmbeddedResource Include="Consultas\rptComprobantePago.rdlc" />
     <EmbeddedResource Include="Consultas\rptContrato.rdlc" />
     <EmbeddedResource Include="Consultas\rptVPOtrasVentas.rdlc" />

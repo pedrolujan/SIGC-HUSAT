@@ -56,6 +56,7 @@ namespace wfaIntegradoCom.Procesos
         String msjCliente, msjdni, msjPlaca, msjCNuevo, msjDNuevo,msjDescuento, msjTelNuevo, msjDireccionN, msjImporte, msgMoneda, msgComprabanteP;
         Boolean estCliente, estdni, estPlaca, estCNuevo, estDNuevo, estTelNuevo,estadoDescuento, estDireccionN, estImporte, estadoFechaPago, estadoMoneda, estComprabanteP;
 
+      
 
 
 
@@ -417,15 +418,9 @@ namespace wfaIntegradoCom.Procesos
 
 
         }
-        private void btnBoleta_Click(object sender, EventArgs e)
-        {
+        
 
-
-        }
-
-        private void btnBoleta_CheckedChanged(object sender, EventArgs e)
-        {
-        }
+       
 
         private void dgConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -436,9 +431,9 @@ namespace wfaIntegradoCom.Procesos
 
         private void dtFechaTitulacion_ValueChanged(object sender, EventArgs e)
         {
-            estadoFechaPago = fnValidaFecha(lblFechaT, pbFechaT);
+             estadoFechaPago = fnValidaFecha(lblFechaT, pbFechaT);
 
-            dtFechaTitularidad = Convert.ToDateTime(dtFechaTitu.Value);
+              dtFechaTitularidad = Convert.ToDateTime(dtFechaTitu.Value);
         }
         private void fnActivarBotonGuardar()
         {

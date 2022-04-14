@@ -2954,6 +2954,7 @@ namespace wfaIntegradoCom.Mantenedores
             //lstDetalleVDocumento = Convert.ToInt32(cboTipoPlanP.SelectedValue) == 1?lstTotalDetalle: lstPP;
             //fncalcularTotales(lstDetalleVDocumento, lstDVC);
             frmVenta.Inicio(fnCargarDocumentoVenta(lstDVC), lstDetalleVDocumento, 0);
+
             if (Convert.ToInt32(cboTipoVenta.SelectedValue)!=2)
             {
                 if (estGenrarVenta == true)

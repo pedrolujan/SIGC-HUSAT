@@ -2300,7 +2300,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -3218,8 +3217,8 @@
               <Source>Embedded</Source>
               <Value>barcode1</Value>
               <Sizing>Fit</Sizing>
-              <Top>0.11536cm</Top>
-              <Left>13.51132cm</Left>
+              <Top>0.07479cm</Top>
+              <Left>13.54847cm</Left>
               <Height>0.969cm</Height>
               <Width>4.462cm</Width>
               <ZIndex>1</ZIndex>
