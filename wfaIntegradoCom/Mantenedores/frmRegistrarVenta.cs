@@ -631,51 +631,55 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void cboPlan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(cboPlanP.SelectedValue)!=0)
+            if (cargoFrom)
             {
-                fnCargarTablaTarifa();
-            }
-
-            Int32 idPlan = FunValidaciones.fnObtenerIdDeComboBox(cboPlanP);
-
-            clsPlan = Plan.fnObtenerPlanSeleccionado(idPlan, lstP);
-            var result = FunValidaciones.fnValidarCombobox(lstValidacionPlan[1].combobox, erPlanP, imgPlanP);
-            lstValidacionPlan[1].estado = result.Item1;
-            lstValidacionPlan[1].mensaje = result.Item2;
-            if (idPlan == 0)
-            {
-                
-            }
-            else
-            {
-            }
-            if (ClsVentaGeneral.ClsTarifa is Tarifa )
-            {
-                
-                if (clsTarifa.IdTarifa !=0 && lnTipoCon !=0)
+                if (Convert.ToInt32(cboPlanP.SelectedValue) != 0)
                 {
-                    fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, 1);
+                    fnCargarTablaTarifa();
+                }
+
+                Int32 idPlan = FunValidaciones.fnObtenerIdDeComboBox(cboPlanP);
+
+                clsPlan = Plan.fnObtenerPlanSeleccionado(idPlan, lstP);
+                var result = FunValidaciones.fnValidarCombobox(lstValidacionPlan[1].combobox, erPlanP, imgPlanP);
+                lstValidacionPlan[1].estado = result.Item1;
+                lstValidacionPlan[1].mensaje = result.Item2;
+                if (idPlan == 0)
+                {
+
                 }
                 else
                 {
-                    fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, lnTipoCon);
-                    //ClsVentaGeneral.ClsTarifa = clsTarifa;
                 }
-                
+                if (ClsVentaGeneral.ClsTarifa is Tarifa)
+                {
+
+                    if (clsTarifa.IdTarifa != 0 && lnTipoCon != 0)
+                    {
+                        fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, 1);
+                    }
+                    else
+                    {
+                        fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, lnTipoCon);
+                        //ClsVentaGeneral.ClsTarifa = clsTarifa;
+                    }
+
+                }
+                else
+                {
+                    fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, 1);
+                }
+                //fnCargarTablaTarifa();
+                lstDV[0].idTipoTarifa = clsTarifa.IdTarifa;
+                fnCalcularTotalPago();
+                lstPP = fnGenerarPagoPrincipal();
+
+                fnCargaTablaDetalle(lstPP, dgvPrimerPago);
+                fncalcularTotales(lstPP, lstDV);
+
+                btnStockEquipos.Text = Convert.ToString(fnObtenerStockEquipos());
             }
-            else
-            {
-                fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue),ClsVentaGeneral.codigoVenta,1);
-            }
-            //fnCargarTablaTarifa();
-            lstDV[0].idTipoTarifa = clsTarifa.IdTarifa;
-            fnCalcularTotalPago();
-            lstPP = fnGenerarPagoPrincipal();
-          
-            fnCargaTablaDetalle(lstPP, dgvPrimerPago);
-            fncalcularTotales(lstPP, lstDV);
             
-            btnStockEquipos.Text = Convert.ToString(fnObtenerStockEquipos());
             
         }
         private void fncalcularTotales( List<DetalleVenta> lstPP,List<DetalleVenta> lstDV)
@@ -1391,18 +1395,21 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void cboMonedaP_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cargoFrom)
+            {
+                Int32 idMoneda = Convert.ToInt32(cboMonedaP.SelectedValue ?? 0);
+                clsMoneda = fnObtenerMonedaSeleccionada(idMoneda, lstMon);
+                lstDV[0].cSimbolo = clsMoneda.cSimbolo;
+
+
+                clsMoneda.idMoneda = idMoneda;
+                lblTipoDescuento.Text = fnCambiarSimboloDescuento();
+                lstPP = fnGenerarPagoPrincipal();
+                fnCargaTablaDetalle(lstPP, dgvPrimerPago);
+                fnCalcularTotalPago();
+                fncalcularTotales(lstPP, lstDV);
+            }
             
-            Int32 idMoneda = Convert.ToInt32(cboMonedaP.SelectedValue ?? 0);
-            clsMoneda = fnObtenerMonedaSeleccionada(idMoneda,lstMon);
-            lstDV[0].cSimbolo = clsMoneda.cSimbolo;
-            
-            
-            clsMoneda.idMoneda = idMoneda;
-            lblTipoDescuento.Text = fnCambiarSimboloDescuento();
-            lstPP = fnGenerarPagoPrincipal();
-            fnCargaTablaDetalle(lstPP, dgvPrimerPago);
-            fnCalcularTotalPago();
-            fncalcularTotales(lstPP,lstDV);
         }
 
         private Moneda fnObtenerMonedaSeleccionada(Int32 idM, List<Moneda> lstMoneda)
@@ -1747,14 +1754,16 @@ namespace wfaIntegradoCom.Mantenedores
             return lstDetV;
         }
 
-        private List<DetalleVenta> fnGenerarPagoPrincipal()
+        private Tuple<String[],Double[], Double[], Double[], Double[],Int32> fnDevolverArraysPagos()
         {
-            List<DetalleVenta> lstDetV = new List<DetalleVenta>();
-            
+            double pagoEquipo = clsTarifa.PrecioEquipo;
+            double pagoPlan = clsTarifa.PrecioPlan;
+            Int32 idTipoPlan = Convert.ToInt32(cboTipoPlanP.SelectedValue ?? 0);
+
             Int32 idCiclo = Convert.ToInt32(cboCicloP.SelectedValue ?? 0);
             Int32 ciclo = Ciclo.fnObtenerCicloSeleccionado(idCiclo, lstC).DiaNumber;
             DateTime fechaActual = Convert.ToDateTime(dtpFechaRegistro.Value);
-            Int32 idTipoPlan = Convert.ToInt32(cboTipoPlanP.SelectedValue ?? 0);
+
             Double rentaAdelantada = 0;
             Double prorrateo = 0;
             Double ganProrrateo = 0;
@@ -1766,18 +1775,18 @@ namespace wfaIntegradoCom.Mantenedores
             if (Convert.ToInt32(cboTipoVenta.SelectedValue) == 2)
             {
 
-                rentaAdelantada =  clsPlanActual.idTipoPlan == clsPlan.idTipoPlan ? 0:clsTarifa.PrecioPlan;
+                rentaAdelantada = clsPlanActual.idTipoPlan == clsPlan.idTipoPlan ? 0 : clsTarifa.PrecioPlan;
             }
             else
             {
-                rentaAdelantada =  clsTarifa.PrecioPlan;
+                rentaAdelantada = clsTarifa.PrecioPlan;
 
             }
             clsTarifa.PrecioRentaAdelantada = rentaAdelantada;
 
             prorrateo = DetalleVentaCabecera.fnCalcularProrrateo(rentaAdelantada, ciclo, fechaActual);
             //separamos los decimales del prorrateo
-            Double SoloDecimales = Convert.ToDouble(string.Format("{0:0.00}", prorrateo - Math.Truncate(prorrateo))) ;
+            Double SoloDecimales = Convert.ToDouble(string.Format("{0:0.00}", prorrateo - Math.Truncate(prorrateo)));
             //retornamos el decimal redondeado
             Double DecimalesRedondeado = DetalleVentaCabecera.fnRedondearDecimales(SoloDecimales);
             //separamos solo el entero
@@ -1785,7 +1794,7 @@ namespace wfaIntegradoCom.Mantenedores
             //prorrateo redondeado
             Double ProrrateoRedondeado = Convert.ToDouble(string.Format("{0:0.00}", SoloEntero + DecimalesRedondeado));
             //arrayGananciaPro despues del redondeo
-            ganProrrateo = clsTarifa.DescuentoProrrateo == ProrrateoRedondeado ? 0:Convert.ToDouble(string.Format("{0:0.00}", ProrrateoRedondeado - prorrateo));
+            ganProrrateo = clsTarifa.DescuentoProrrateo == ProrrateoRedondeado ? 0 : Convert.ToDouble(string.Format("{0:0.00}", ProrrateoRedondeado - prorrateo));
 
             clsTarifa.PrecioProrrateo = ProrrateoRedondeado;
 
@@ -1793,10 +1802,8 @@ namespace wfaIntegradoCom.Mantenedores
 
             calcularDesRA = fnConvertirATipoDescuento((clsTarifa.PrecioPlan * lstVehiculo.Count), cboTipoDescuentoPrecios.Text, clsTarifa.DescuentoRentaAdelantada);
             calcularDesPR = fnConvertirATipoDescuento((prorrateo * lstVehiculo.Count), cboTipoDescuentoPrecios.Text, clsTarifa.DescuentoProrrateo);
-            calcularDesReactivacion= fnConvertirATipoDescuento((clsTarifa.PrecioReactivacion * lstVehiculo.Count), cboTipoDescuentoPrecios.Text, clsTarifa.DescuentoReactivacion);
+            calcularDesReactivacion = fnConvertirATipoDescuento((clsTarifa.PrecioReactivacion * lstVehiculo.Count), cboTipoDescuentoPrecios.Text, clsTarifa.DescuentoReactivacion);
 
-            double pagoEquipo = clsTarifa.PrecioEquipo;
-            double pagoPlan = clsTarifa.PrecioPlan;
             //clsTarifa.PrecioPlan -
             Double[] arrayPrecio = { };
             Double[] arrayDescuentoCantidad = { };
@@ -1804,7 +1811,7 @@ namespace wfaIntegradoCom.Mantenedores
             Double[] arrayGananciaPro = { };
             String[] arrayPrimerPago = { };
             Int32 cuota = 0;
-            if (Convert.ToInt32(cboTipoVenta.SelectedValue)==1)
+            if (Convert.ToInt32(cboTipoVenta.SelectedValue) == 1)
             {
                 if (idTipoPlan == 1)
                 {
@@ -1873,37 +1880,37 @@ namespace wfaIntegradoCom.Mantenedores
                     };
                 }
             }
-            else if(Convert.ToInt32(cboTipoVenta.SelectedValue) == 2)
+            else if (Convert.ToInt32(cboTipoVenta.SelectedValue) == 2)
             {
                 cuota = 1;
                 if (idTipoPlan == 1)
                 {
                     arrayPrecio = new double[]
                     {
-                        
+
                     };
 
                     arrayDescuentoCantidad = new double[]
                     {
-                        
+
                     };
 
                     arrayDescuentoPrecio = new double[]
                     {
-                        
+
                     };
                     arrayGananciaPro = new double[]
                     {
-                      
+
                     };
                     arrayPrimerPago = new string[]
                     {
-                        
+
                     };
                 }
                 else if (idTipoPlan == 2)
                 {
-                    if (clsPlanActual.idTipoPlan != clsPlan.idTipoPlan && clsPlan.idTipoPlan!=0)
+                    if (clsPlanActual.idTipoPlan != clsPlan.idTipoPlan && clsPlan.idTipoPlan != 0)
                     {
                         if (clsTarifa.PrecioPlan < 30)
                         {
@@ -1962,14 +1969,14 @@ namespace wfaIntegradoCom.Mantenedores
                                 "Prorrateo"
                             };
                         }
-                        
+
                     }
                     else
                     {
                         switch (lnTipoCon)
                         {
                             case -2:
-                                if (ClsVentaGeneral.clsCronograma.periodoFinal<Variables.gdFechaSis.AddMonths(-2))
+                                if (ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
                                 {
                                     arrayPrecio = new double[]
                                     {
@@ -2057,8 +2064,8 @@ namespace wfaIntegradoCom.Mantenedores
                                 }
                                 break;
                         }
-                        
-                        
+
+
 
                     }
                 }
@@ -2127,32 +2134,40 @@ namespace wfaIntegradoCom.Mantenedores
                 }
             }
 
+            return Tuple.Create(arrayPrimerPago, arrayPrecio, arrayDescuentoCantidad, arrayDescuentoPrecio, arrayGananciaPro,cuota);
+        }
+
+        private List<DetalleVenta> fnGenerarPagoPrincipal()
+        {
+            List<DetalleVenta> lstDetV = new List<DetalleVenta>();
+            var result = fnDevolverArraysPagos();
+
             int cantVehiculos = lstVehiculo.Count;
             if (lnTipoCon==-1)
             {
                 if (ClsVentaGeneral.clsDetalleVentaCabecera.lstDetalleVenta.Count > 0)
                 {
                     lstDetV = lstPP;
-                    if (lstPP.Count == arrayPrimerPago.Count())
+                    if (lstPP.Count == result.Item1.Count())
                     {
                         for (int i = 0; i < lstPP.Count; i++)
                         {
-                            double precioUnitario = fnConvertirPrecioMoneda(clsMonedaTarifa.idMoneda, arrayPrecio[i], clsMoneda.idMoneda);
+                            double precioUnitario = fnConvertirPrecioMoneda(clsMonedaTarifa.idMoneda, result.Item2[i], clsMoneda.idMoneda);
 
-                            double precioDescontado = fnConvertirPrecioMoneda(clsMonedaTarifa.idMoneda, arrayDescuentoPrecio[i], clsMoneda.idMoneda);
+                            double precioDescontado = fnConvertirPrecioMoneda(clsMonedaTarifa.idMoneda, result.Item4[i], clsMoneda.idMoneda);
                             int cantidad = lstVehiculo.Count;
                             double importe = (precioUnitario * cantidad) - precioDescontado;
 
                             lstDetV[i].Numeracion = i + 1;
-                            lstDetV[i].Descripcion = arrayPrimerPago[i];
+                            lstDetV[i].Descripcion = result.Item1[i];
                             lstDetV[i].idTipoTarifa = clsTarifa.IdTarifa;
                             lstDetV[i].PrecioUni = precioUnitario;
-                            lstDetV[i].Descuento = arrayDescuentoCantidad[i];
-                            lstDetV[i].gananciaRedondeo = arrayGananciaPro[i];
+                            lstDetV[i].Descuento = result.Item3[i];
+                            lstDetV[i].gananciaRedondeo = result.Item5[i];
                             lstDetV[i].TotalTipoDescuento = precioDescontado;
                             lstDetV[i].IdTipoDescuento = lstDV[0].IdTipoDescuento;
                             lstDetV[i].Cantidad = cantVehiculos;
-                            lstDetV[i].Couta = cuota;
+                            lstDetV[i].Couta = result.Item6;
                             lstDetV[i].Importe = importe;
                             lstDetV[i].cSimbolo = clsMoneda.cSimbolo;
                         }
@@ -2163,25 +2178,25 @@ namespace wfaIntegradoCom.Mantenedores
             }
             else
             {
-                for (int i = 0; i <= arrayPrimerPago.Count() - 1; i++)
+                for (int i = 0; i <= result.Item1.Count() - 1; i++)
                 {
-                    double precioUnitario = fnConvertirPrecioMoneda(clsMonedaTarifa.idMoneda, arrayPrecio[i], clsMoneda.idMoneda);
+                    double precioUnitario = fnConvertirPrecioMoneda(clsMonedaTarifa.idMoneda, result.Item2[i], clsMoneda.idMoneda);
 
-                    double precioDescontado = fnConvertirPrecioMoneda(clsMonedaTarifa.idMoneda, arrayDescuentoPrecio[i], clsMoneda.idMoneda);
+                    double precioDescontado = fnConvertirPrecioMoneda(clsMonedaTarifa.idMoneda, result.Item4[i], clsMoneda.idMoneda);
                     int cantidad = lstVehiculo.Count;
                     double importe = (precioUnitario * cantidad) - precioDescontado;
                     lstDetV.Add(new DetalleVenta
                     {
                         Numeracion = i + 1,
-                        Descripcion = arrayPrimerPago[i],
+                        Descripcion = result.Item1[i],
                         idTipoTarifa = clsTarifa.IdTarifa,
                         PrecioUni = precioUnitario,
-                        Descuento = arrayDescuentoCantidad[i],
-                        gananciaRedondeo = arrayGananciaPro[i],
+                        Descuento = result.Item3[i],
+                        gananciaRedondeo = result.Item5[i],
                         TotalTipoDescuento = precioDescontado,
                         IdTipoDescuento = lstDV[0].IdTipoDescuento,
                         Cantidad = cantVehiculos,
-                        Couta = cuota,
+                        Couta = result.Item6,
                         Importe = importe,
                         cSimbolo = clsMoneda.cSimbolo
                     });
@@ -2533,26 +2548,29 @@ namespace wfaIntegradoCom.Mantenedores
         }
         private void cboTipoDescuentoP_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Int32 idTipoDescuento = Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue ?? 0);
+            if (cargoFrom)
+            {
+                Int32 idTipoDescuento = Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue ?? 0);
 
-            clsTD = TipoDescuento.fnObtnerTipoDescuentoSelecccionado(idTipoDescuento, lstTDes);
-            lblTipoDescuento.Text = fnCambiarSimboloDescuento();
-            if (Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue)!=0)
-            {
-                fnHabilitarDescuento(estDescuento);
+                clsTD = TipoDescuento.fnObtnerTipoDescuentoSelecccionado(idTipoDescuento, lstTDes);
+                lblTipoDescuento.Text = fnCambiarSimboloDescuento();
+                if (Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue) != 0)
+                {
+                    fnHabilitarDescuento(estDescuento);
+                }
+                else
+                {
+                    fnHabilitarDescuento(false);
+                }
+                for (int i = 0; i < lstDV.Count; i++)
+                {
+                    lstDV[i].IdTipoDescuento = idTipoDescuento;
+                }
+                fnCalcularTotalPago();
+                lstPP = fnGenerarPagoPrincipal();
+                fnCargaTablaDetalle(lstPP, dgvPrimerPago);
+                fncalcularTotales(lstPP, lstDV);
             }
-            else
-            {
-                fnHabilitarDescuento(false);
-            }
-            for (int i = 0; i < lstDV.Count; i++)
-            {
-                lstDV[i].IdTipoDescuento = idTipoDescuento;
-            }
-            fnCalcularTotalPago();
-            lstPP = fnGenerarPagoPrincipal();
-            fnCargaTablaDetalle(lstPP, dgvPrimerPago);
-            fncalcularTotales(lstPP, lstDV);
         }
 
         private string fnCambiarSimboloDescuento()
