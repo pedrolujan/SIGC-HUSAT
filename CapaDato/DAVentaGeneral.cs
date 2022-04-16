@@ -318,6 +318,38 @@ namespace CapaDato
                 objCnx = null;
             }
         }
+        public Int32 daValidarContratoReciente(Int32 idContrato)
+        {
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtVentaG=new DataTable();
+            clsConexion objCnx = null;
+            Int32 idCOntratoValido = 0;
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@idContrato", SqlDbType.Int) { Value = idContrato };
+                
+
+                objCnx = new clsConexion("");
+                dtVentaG = objCnx.EjecutarProcedimientoDT("uspBusacrContratoReciente", pa);
+                foreach (DataRow drMenu in dtVentaG.Rows)
+                {
+                    idCOntratoValido = Convert.ToInt32(drMenu["idContratoValido"]);
+                }
+                return idCOntratoValido;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
 
         public List<VentaGeneral> daDevolverVehiculoRenovacion(String cBuscar,String codVenta, Int32 idVehiculo,Int32 idContrato, List<Vehiculo> lstCT)
         {

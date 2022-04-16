@@ -1,4 +1,5 @@
-﻿using CapaEntidad;
+﻿using CapaDato;
+using CapaEntidad;
 using CapaEntidad.Generic;
 using CapaNegocio;
 using CapaUtil;
@@ -652,24 +653,24 @@ namespace wfaIntegradoCom.Mantenedores
                 else
                 {
                 }
-                if (ClsVentaGeneral.ClsTarifa is Tarifa)
-                {
+                //if (ClsVentaGeneral.ClsTarifa is Tarifa)
+                //{
 
-                    if (clsTarifa.IdTarifa != 0 && lnTipoCon != 0)
-                    {
-                        fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, 1);
-                    }
-                    else
-                    {
+                //    if (clsTarifa.IdTarifa != 0 && lnTipoCon != 0)
+                //    {
+                //        fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, 1);
+                //    }
+                //    else
+                //    {
                         fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, lnTipoCon);
                         //ClsVentaGeneral.ClsTarifa = clsTarifa;
-                    }
+                //    }
 
-                }
-                else
-                {
-                    fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, 1);
-                }
+                //}
+                //else
+                //{
+                //    fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, 1);
+                //}
                 //fnCargarTablaTarifa();
                 lstDV[0].idTipoTarifa = clsTarifa.IdTarifa;
                 fnCalcularTotalPago();
@@ -1542,6 +1543,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             for (int i = 0; i <= numFilas; i++)
             {
+                lstDV[i].Couta = Convert.ToInt32(cboTipoVenta.SelectedValue) == 2 ? 1 : lstDV[i].Couta;
                 lstDV[i].Cantidad = lnTipoCon==-1?ClsVentaGeneral.lstVehiculo.Count: lstVehiculo.Count;
                 lstDV[i].PrecioUni = fnConvertirPrecioMoneda(clsTarifa.IdMoneda, clsTarifa.PrecioPlan, clsMoneda.idMoneda);
                 precioTotalFinal = lstDV[i].PrecioUni * lstDV[i].Cantidad;
@@ -1914,217 +1916,157 @@ namespace wfaIntegradoCom.Mantenedores
                     }
                     else if (idTipoPlan == 2)
                     {
-                        if (clsPlanActual.idTipoPlan != clsPlan.idTipoPlan && clsPlan.idTipoPlan != 0)
+                        if (lnTipoCon == -2)
                         {
-                            if (clsTarifa.PrecioPlan < 30)
+                            if (ClsVentaGeneral.clsCronograma is Cronograma && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
                             {
                                 arrayPrecio = new double[]
                                 {
-                                clsTarifa.PrecioReactivacion
+                                        clsTarifa.PrecioReactivacion,
+                                        rentaAdelantada
                                 };
 
                                 arrayDescuentoCantidad = new double[]
                                 {
-                                clsTarifa.DescuentoReactivacion
+                                            clsTarifa.DescuentoReactivacion,
+                                            clsTarifa.DescuentoRentaAdelantada
                                 };
 
                                 arrayDescuentoPrecio = new double[]
                                 {
-                                calcularDesRA
+                                            calcularDesReactivacion,
+                                            calcularDesRA
                                 };
                                 arrayGananciaPro = new double[]
                                 {
-                                0
+                                            0,
+                                            0
                                 };
                                 arrayPrimerPago = new string[]
                                 {
 
-                                "Plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString()))+" - "+ FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboTipoVenta.Text))
-
+                                            "Reactivacion plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString())),
+                                            "Renta Adelantada"
                                 };
+                            }
+                            else if (clsPlanActual.idTipoPlan != clsPlan.idTipoPlan && clsPlan.idTipoPlan != 0)
+                            {
+                                if (clsTarifa.PrecioPlan < 30)
+                                {
+                                    arrayPrecio = new double[]
+                                    {
+                                        clsTarifa.PrecioReactivacion
+                                    };
+
+                                    arrayDescuentoCantidad = new double[]
+                                    {
+                                        clsTarifa.DescuentoReactivacion
+                                    };
+
+                                    arrayDescuentoPrecio = new double[]
+                                    {
+                                        calcularDesRA
+                                    };
+                                    arrayGananciaPro = new double[]
+                                    {
+                                        0
+                                    };
+                                    arrayPrimerPago = new string[]
+                                    {
+
+                                        "Plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString()))+" - "+ FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboTipoVenta.Text))
+
+                                    };
+                                }
+                                else
+                                {
+                                    arrayPrecio = new double[]
+                                    {
+                                        rentaAdelantada,
+                                        ProrrateoRedondeado
+                                    };
+
+                                    arrayDescuentoCantidad = new double[]
+                                    {
+                                        clsTarifa.DescuentoRentaAdelantada,
+                                        clsTarifa.DescuentoProrrateo
+                                    };
+
+                                    arrayDescuentoPrecio = new double[]
+                                    {
+                                        calcularDesRA,
+                                        calcularDesPR
+                                    };
+                                    arrayGananciaPro = new double[]
+                                    {
+                                        0,
+                                        ganProrrateo
+                                    };
+                                    arrayPrimerPago = new string[]
+                                    {
+                                        "Renta Adelantada",
+                                        "Prorrateo"
+                                    };
+                                }
+
                             }
                             else
                             {
-                                arrayPrecio = new double[]
-                                {
-                                rentaAdelantada,
-                                ProrrateoRedondeado
-                                };
 
-                                arrayDescuentoCantidad = new double[]
+                                if (clsTarifa.PrecioPlan < 30)
                                 {
-                                clsTarifa.DescuentoRentaAdelantada,
-                                clsTarifa.DescuentoProrrateo
-                                };
+                                    arrayPrecio = new double[]
+                                    {
+                                        clsTarifa.PrecioReactivacion
+                                    };
 
-                                arrayDescuentoPrecio = new double[]
+                                    arrayDescuentoCantidad = new double[]
+                                    {
+                                        clsTarifa.DescuentoReactivacion
+                                    };
+
+                                    arrayDescuentoPrecio = new double[]
+                                    {
+                                        calcularDesRA
+                                    };
+                                    arrayGananciaPro = new double[]
+                                    {
+                                        0
+                                    };
+                                    arrayPrimerPago = new string[]
+                                    {
+
+                                        "Plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString()))+" - "+ FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboTipoVenta.Text))
+
+                                    };
+                                }
+                                else
                                 {
-                                calcularDesRA,
-                                calcularDesPR
-                                };
-                                arrayGananciaPro = new double[]
-                                {
-                                0,
-                                ganProrrateo
-                                };
-                                arrayPrimerPago = new string[]
-                                {
-                                "Renta Adelantada",
-                                "Prorrateo"
-                                };
+                                    arrayPrecio = new double[]
+                                    {
+                                        clsTarifa.PrecioPlan,
+                                    };
+
+                                    arrayDescuentoCantidad = new double[]
+                                    {
+                                        clsTarifa.DescuentoRentaAdelantada,
+                                    };
+
+                                    arrayDescuentoPrecio = new double[]
+                                    {
+                                        calcularDesRA
+                                    };
+                                    arrayGananciaPro = new double[]
+                                    {
+                                        0
+                                    };
+                                    arrayPrimerPago = new string[]
+                                    {
+
+                                        "Plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString()))+" - "+ FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboTipoVenta.Text))
+                                    };
+                                }
                             }
-
-                        }
-                        else
-                        {
-
-                            if (clsTarifa.PrecioPlan < 30)
-                            {
-                                arrayPrecio = new double[]
-                                {
-                                clsTarifa.PrecioReactivacion
-                                };
-
-                                arrayDescuentoCantidad = new double[]
-                                {
-                                clsTarifa.DescuentoReactivacion
-                                };
-
-                                arrayDescuentoPrecio = new double[]
-                                {
-                                calcularDesRA
-                                };
-                                arrayGananciaPro = new double[]
-                                {
-                                0
-                                };
-                                arrayPrimerPago = new string[]
-                                {
-
-                                "Plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString()))+" - "+ FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboTipoVenta.Text))
-
-                                };
-                            }
-                            else
-                            {
-                                arrayPrecio = new double[]
-                                {
-                                clsTarifa.PrecioPlan,
-                                };
-
-                                arrayDescuentoCantidad = new double[]
-                                {
-                                    clsTarifa.DescuentoRentaAdelantada,
-                                };
-
-                                arrayDescuentoPrecio = new double[]
-                                {
-                                    calcularDesRA
-                                };
-                                arrayGananciaPro = new double[]
-                                {
-                                    0
-                                };
-                                arrayPrimerPago = new string[]
-                                {
-
-                                    "Plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString()))+" - "+ FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboTipoVenta.Text))
-                                };
-                            }
-                            //switch (lnTipoCon)
-                            //{
-                            //    case -2:
-                            //        if (ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
-                            //        {
-                            //            arrayPrecio = new double[]
-                            //            {
-                            //            clsTarifa.PrecioReactivacion,
-                            //            rentaAdelantada
-                            //            };
-
-                            //            arrayDescuentoCantidad = new double[]
-                            //            {
-                            //            clsTarifa.DescuentoReactivacion,
-                            //            clsTarifa.DescuentoRentaAdelantada
-                            //            };
-
-                            //            arrayDescuentoPrecio = new double[]
-                            //            {
-                            //            calcularDesReactivacion,
-                            //            calcularDesRA
-                            //            };
-                            //            arrayGananciaPro = new double[]
-                            //            {
-                            //            0,
-                            //            0
-                            //            };
-                            //            arrayPrimerPago = new string[]
-                            //            {
-
-                            //            "Reactivacion plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString())),
-                            //            "Renta Adelantada"
-                            //            };
-                            //        }
-                            //        else
-                            //        {
-                            //            if (clsTarifa.PrecioPlan < 30)
-                            //            {
-                            //                arrayPrecio = new double[]
-                            //                {
-                            //            clsTarifa.PrecioReactivacion
-                            //                };
-
-                            //                arrayDescuentoCantidad = new double[]
-                            //                {
-                            //            clsTarifa.DescuentoReactivacion
-                            //                };
-
-                            //                arrayDescuentoPrecio = new double[]
-                            //                {
-                            //            calcularDesRA
-                            //                };
-                            //                arrayGananciaPro = new double[]
-                            //                {
-                            //            0
-                            //                };
-                            //                arrayPrimerPago = new string[]
-                            //                {
-
-                            //            "Plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString()))+" - "+ FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboTipoVenta.Text))
-
-                            //                };
-                            //            }
-                            //            else
-                            //            {
-                            //                arrayPrecio = new double[]
-                            //                {
-                            //            clsTarifa.PrecioPlan,
-                            //                };
-
-                            //                arrayDescuentoCantidad = new double[]
-                            //                {
-                            //            clsTarifa.DescuentoRentaAdelantada,
-                            //                };
-
-                            //                arrayDescuentoPrecio = new double[]
-                            //                {
-                            //            calcularDesRA
-                            //                };
-                            //                arrayGananciaPro = new double[]
-                            //                {
-                            //            0
-                            //                };
-                            //                arrayPrimerPago = new string[]
-                            //                {
-                            //            "Plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString()))+" - "+ FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboTipoVenta.Text))
-                            //                };
-                            //            }
-                            //        }
-                            //        break;
-                            //}
-
-
-
                         }
                     }
                     break;
@@ -3305,10 +3247,10 @@ namespace wfaIntegradoCom.Mantenedores
             List<DetalleVentaCabecera> lstDVC = new List<DetalleVentaCabecera>();
             List<Cliente> lstCliente = new List<Cliente>();
             lstCliente.Add(clsRespPago);
-                      
-            lstDetalleVDocumento = Convert.ToInt32(cboTipoVenta.SelectedValue)==2 ? lstTotalDetalle : lstPP;
+
+            lstDetalleVDocumento = Convert.ToInt32(cboTipoPlanP.SelectedValue) == 1 ? lstTotalDetalle : lstPP;
             lstDVC.Add(fnCalcularCabeceraDetalle(lstDetalleVDocumento, false));
-           List <xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
+            List <xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
 
 
             //lstDetalleVDocumento = Convert.ToInt32(cboTipoPlanP.SelectedValue) == 1?lstTotalDetalle: lstPP;
@@ -3667,19 +3609,18 @@ namespace wfaIntegradoCom.Mantenedores
         {
             DetalleVentaCabecera clsDVC = new DetalleVentaCabecera();
             DetalleVenta dvMensual = new DetalleVenta();
-            Double totalMensual = 0;
-           
-            totalMensual = lstDV.Sum(item => item.Importe);
-            clsDVC.Total = totalMensual;
+            Double totalMensual = lstPP.Sum(item => item.Importe);
+
+            clsDVC.Total = Convert.ToInt32(cboTipoPlanP.SelectedValue) == 1 ? lstDV.Sum(item => item.Importe) : totalMensual;
             clsDVC.IGV = (clsDVC.Total * 0.18);
-            clsDVC.SubTotal = clsDVC.Total- clsDVC.IGV;
+            clsDVC.SubTotal = clsDVC.Total - clsDVC.IGV;
             clsDVC.SimboloMoneda = clsMoneda.cSimbolo;
             clsDVC.NombreDocumento = Convert.ToString(cboComprobanteP.Text);
             clsDVC.CodDocumento = Convert.ToString(cboComprobanteP.SelectedValue);
-            if (lstTotalDetalle.Count>0)
+            if (lstTotalDetalle.Count > 0)
             {
 
-            lstTotalDetalle[0].cSimbolo = clsMoneda.cSimbolo;
+                lstTotalDetalle[0].cSimbolo = clsMoneda.cSimbolo;
             }
             clsDVC.lstDetalleVenta = lstTotalDetalle;
             if (total)
@@ -4394,11 +4335,13 @@ namespace wfaIntegradoCom.Mantenedores
 
             bTipoTab = true;
             bActivarChecks = true;
+            DAVentaGeneral objVentaG = new DAVentaGeneral();
             String codigoVenta = Convert.ToString(dgvListaVentas.CurrentRow.Cells[2].Value);
             Int32 idCliente = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[0].Value);
             String strEstadoContrato = Convert.ToString(dgvListaVentas.CurrentRow.Cells[11].Value);
             Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[17].Value);
-            if (strEstadoContrato== "Vigente")
+            Int32 idContratoValido = objVentaG.daValidarContratoReciente(idContrato);
+            if (idContratoValido == idContrato)
             {
                 lnTipoCon = -2;
                 siticoneCheckBox1.Checked = false;
@@ -4416,7 +4359,7 @@ namespace wfaIntegradoCom.Mantenedores
             }
             else
             {
-                MessageBox.Show("Por favor eliga un contrato vigente","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Por favor eliga un contrato vigente ó el mas reciente","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             
             
@@ -4475,6 +4418,8 @@ namespace wfaIntegradoCom.Mantenedores
                     if ((lstPP[i].Descripcion == lstDV[0].Descripcion))
                     {
                         lstDV[0].IdDetalleVenta = lstPP[i].IdDetalleVenta;
+                        lstDV[0].Descuento = lstPP[i].Descuento;
+                        lstDV[0].TotalTipoDescuento = lstPP[i].TotalTipoDescuento;
                         lstDV[0].Importe = lstPP[i].Importe;
                         lstDV[0].PrecioUni = lstPP[i].PrecioUni;
                         lstDV[0].idTipoTarifa = lstPP[i].idTipoTarifa;
@@ -4482,26 +4427,33 @@ namespace wfaIntegradoCom.Mantenedores
                     }else if ((lstPP[i].Descripcion == CadenaRecortada) || (lstPP[i].Descripcion == CadenaRecortadaTipoPlan))
                     {
                         lstDV[0].IdDetalleVenta = lstPP[i].IdDetalleVenta;
+                        lstDV[0].Descuento = lstPP[i].Descuento;
+                        lstDV[0].TotalTipoDescuento = lstPP[i].TotalTipoDescuento;
                         lstDV[0].Importe = lstPP[i].Importe;
                         lstDV[0].PrecioUni = lstPP[i].PrecioUni;
                         lstDV[0].idTipoTarifa = lstPP[i].idTipoTarifa;
                         lstPP.Remove(lstPP[i]);
                     }
                 }
-                //else if(ClsVentaGeneral.clsDetalleVentaCabecera.lstDetalleVenta.Count == 1)
-                //{
-                //    if ((lstPP[i].Descripcion == lstDV[0].Descripcion))
-                //    {
-                //        lstDV[0] = lstPP[i];
-                //        lstPP.Remove(lstPP[i]);
-                //        lstDV[0].Couta = 1;
-                //    }
-                //}
-               
+                else if (ClsVentaGeneral.clsDetalleVentaCabecera.lstDetalleVenta.Count == 1 && Convert.ToInt32(cboTipoPlanP.SelectedValue)==1)
+                {
+                    if ((lstPP[i].Descripcion == lstDV[0].Descripcion))
+                    {
+                        lstDV[0].IdDetalleVenta = lstPP[i].IdDetalleVenta;
+                        lstDV[0].Descuento = lstPP[i].Descuento;
+                        lstDV[0].TotalTipoDescuento = lstPP[i].TotalTipoDescuento;
+                        lstDV[0].Importe = lstPP[i].Importe;
+                        lstDV[0].PrecioUni = lstPP[i].PrecioUni;
+                        lstDV[0].idTipoTarifa = lstPP[i].idTipoTarifa;
+                        lstPP.Remove(lstPP[i]);
+                    }
+                }
+
             }
-            fnCalcularTotalPago();
+           
+                fnCalcularTotalPago();
             
-            fnCargaTablaDetalle(lstPP, dgvPrimerPago);
+            fnCargaTablaDetalle(lstPP.Count()==0? lstDV: lstPP, dgvPrimerPago);
             fncalcularTotales(lstPP, lstDV);
 
             tabControl1.SelectedIndex = 0;
