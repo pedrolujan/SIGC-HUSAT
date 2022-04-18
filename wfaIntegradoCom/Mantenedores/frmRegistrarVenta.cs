@@ -1777,10 +1777,14 @@ namespace wfaIntegradoCom.Mantenedores
             Double calcularDesPR = 0;
             Double calcularDesReactivacion = 0;
 
-            if (Convert.ToInt32(cboTipoVenta.SelectedValue) == 2)
+            if (Convert.ToInt32(cboTipoVenta.SelectedValue) == 2 )
             {
 
                 rentaAdelantada = clsPlanActual.idTipoPlan == clsPlan.idTipoPlan ? 0 : clsTarifa.PrecioPlan;
+                if (ClsVentaGeneral.clsCronograma is Cronograma && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
+                {
+                    rentaAdelantada =clsTarifa.PrecioPlan;
+                }
             }
             else
             {
