@@ -1069,7 +1069,7 @@ namespace wfaIntegradoCom.Procesos
             //};
             arrayPrimerPago = new string[]
             {
-                "Cuota "+lstDetalleCronograma[fila].fechaEmision.ToString("MMMM  yyyy")+" - Plan "+txtPlan.Text
+                "Cuota "+lstDetalleCronograma[fila].fechaEmision.ToString("MMMM  yyyy")+" - Plan "+FunGeneral.FormatearCadenaTitleCase(txtPlan.Text)
             };
 
 
@@ -1301,7 +1301,19 @@ namespace wfaIntegradoCom.Procesos
                 cboTipoDescuentoPrecios.Enabled = estDescuento;
             }
         }
+        public Double fnLimpiarDescuentos(String PrecioADescontarStr)
+        {
+            Double PrecioADescontar = 0;
+            //Double PrecioADescontar = Convert.ToDouble(dgvCronograma.Rows[e.RowIndex+1].Cells[e.ColumnIndex].Value);
+            string patron = @"(?:- *)?\d+(?:\.\d+)?";
+            Regex regex = new Regex(patron);
 
+            foreach (Match m in regex.Matches(PrecioADescontarStr))
+            {
+                PrecioADescontar = Convert.ToDouble(m.Value);
+            }
+            return PrecioADescontar;
+        }
         private void dgvCronograma_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (EstadoCarga==true && e.ColumnIndex>0)
@@ -1310,15 +1322,9 @@ namespace wfaIntegradoCom.Procesos
                 {
                     DialogResult dResult;
                     Double PrecioADescontar = 0;
-                    String PrecioADescontarStr = Convert.ToString(dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                    PrecioADescontar=fnLimpiarDescuentos(Convert.ToString(dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex].Value));
                     //Double PrecioADescontar = Convert.ToDouble(dgvCronograma.Rows[e.RowIndex+1].Cells[e.ColumnIndex].Value);
-                    string patron = @"(?:- *)?\d+(?:\.\d+)?";
-                    Regex regex = new Regex(patron);
-
-                    foreach (Match m in regex.Matches(PrecioADescontarStr))
-                    {
-                        PrecioADescontar= Convert.ToDouble(m.Value);
-                    }
+                 
                     Int32 idDescuento = Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue);
                     lstDetalleCronograma[e.RowIndex].strTipoDescuento = Convert.ToString(cboTipoDescuentoPrecios.Text);
 
@@ -1514,19 +1520,23 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
-                if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) > Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
-                {
-                    bEstado = false;
-                    msg = "La fecha de pago no puede ser mayor a la fecha actual";
-                    img = Properties.Resources.error;
-                }
-                else if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) < Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")))
-                {
-                    bEstado = false;
-                    msg = "La fecha de pago no puede ser menor a: " + dtFechaSistema.ToString("dd/MM/yyyy");
-                    img = Properties.Resources.error;
+                bEstado = true;
+                msg = "";
+                img = Properties.Resources.ok;
 
-                }
+                //if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) > Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
+                //{
+                //    bEstado = false;
+                //    msg = "La fecha de pago no puede ser mayor a la fecha actual";
+                //    img = Properties.Resources.error;
+                //}
+                //else if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) < Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")))
+                //{
+                //    bEstado = false;
+                //    msg = "La fecha de pago no puede ser menor a: " + dtFechaSistema.ToString("dd/MM/yyyy");
+                //    img = Properties.Resources.error;
+
+                //}
             }
             lbl.Text = msg;
             pb.Image = img;
@@ -1675,6 +1685,39 @@ namespace wfaIntegradoCom.Procesos
         private void btnValidarEstados_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void btnCambiarIncumplimiento_Click(object sender, EventArgs e)
+        {
+            DAControlPagos frm = new DAControlPagos();
+            Boolean res = false;
+            Boolean estadoActualizar = false;
+            for (Int32 i=0;i< lstDetalleCronograma.Count;i++)
+            {
+                if (lstDetalleCronograma[i].estado== "PAGO PENDIENTE" && lstDetalleCronograma[i-1].estado== "CORTE")
+                {
+                    estadoActualizar = true;
+                }
+            }
+            if (estadoActualizar)
+            {
+                DialogResult EstadoDialog = MessageBox.Show("Esta seguro de realizar el cambio de estado!!!\n YA NO SE MOSTRARA EN LA BUSQUEDA DE CRONOGRAMA", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (EstadoDialog == DialogResult.Yes)
+                {
+                    res = frm.daCambiarEstadoCronograma(CronogramaSeleccionado);
+                    if (res)
+                    {
+                        MessageBox.Show("El contrato se actualizo correctamente", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+             
+            }
+            else
+            {
+                MessageBox.Show("No se puede realizar la actualizacion -- Comuniquese con el administrador", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+
         }
 
         private void btnVerDatos_Click(object sender, EventArgs e)

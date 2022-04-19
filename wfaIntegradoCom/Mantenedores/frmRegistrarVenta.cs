@@ -381,10 +381,15 @@ namespace wfaIntegradoCom.Mantenedores
         {
             lstPagosTrand = lstEntidades;
         }
+        void cboCronograma_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
         private void frmRegistrarVenta_Load(object sender, EventArgs e)
         {
             try
             {
+                lnTipoCon = 0;
                 cargoFrom = false;
                 bActivarChecks = false;
                 bTipoTab = false;
@@ -447,7 +452,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                     fnCargarTablaTarifa();
                     lstPP = fnCargarDatosPagoPrincipal();
-                    lnTipoCon = 0;
+                    
                     
                     tipoCon.lnTipoConV = 0;
                     tipoCon.lnTipoConC = 0;
@@ -504,13 +509,13 @@ namespace wfaIntegradoCom.Mantenedores
 
                     if (Variables.gsCargoUsuario == "PETR0001" || Variables.gsCargoUsuario == "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
                     {
-                        //cmListaVentas.Items[1].Visible = true;
-                        cmListaVentas.Items[3].Visible = true;
+                        cmListaVentas.Items[0].Visible = true;
+                        cmListaVentas.Items[2].Visible = false;
                     }
                     else
                     {
-                        //cmListaVentas.Items[1].Visible = false;
-                        cmListaVentas.Items[3].Visible = false;
+                        cmListaVentas.Items[0].Visible = false;
+                        cmListaVentas.Items[2].Visible = false;
                     }
                 }
                 else if (lnTipoLlamada == 1)
@@ -526,6 +531,21 @@ namespace wfaIntegradoCom.Mantenedores
                     tabControl1.SelectedIndex = 1;
                     tabControl1.Controls.RemoveAt(0);                    
                 }
+
+                cboCicloP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboTipoClienteC.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboMonedaP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboTipoClienteRP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboTipoDescuentoPrecios.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboTipoDocumentoRP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboTipoDocumentoC.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboTipoVenta.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboTipoFiltro.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboTipoVetaBusq.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboComprobanteP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboEstadoContrato.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboTipoPlanP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboPlanP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
             }
             catch (Exception ex)
             {
@@ -1127,6 +1147,7 @@ namespace wfaIntegradoCom.Mantenedores
         private void dgDocumentoC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Boolean bResul = false;
+            lnTipoCon = 0;
             if (Convert.ToInt32(cboTipoVenta.SelectedValue)==2)
             {
                 String codVt = Convert.ToString(dgDocumentoC.CurrentRow.Cells[0].Value);
@@ -1397,14 +1418,12 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void cboMonedaP_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cargoFrom)
-            {
                 Int32 idMoneda = Convert.ToInt32(cboMonedaP.SelectedValue ?? 0);
                 clsMoneda = fnObtenerMonedaSeleccionada(idMoneda, lstMon);
                 lstDV[0].cSimbolo = clsMoneda.cSimbolo;
-
-
                 clsMoneda.idMoneda = idMoneda;
+            if (cargoFrom)
+            {
                 lblTipoDescuento.Text = fnCambiarSimboloDescuento();
                 lstPP = fnGenerarPagoPrincipal();
                 fnCargaTablaDetalle(lstPP, dgvPrimerPago);
@@ -1484,24 +1503,45 @@ namespace wfaIntegradoCom.Mantenedores
         {
             return 12 / (numMeses == 0 ? 12 : numMeses);
         }
+        public String fnDevolverSrtDescuento(Int32 idTipodescuento, Double Descuento)
+        {
+            String srtDescuento = "";
+            if (idTipodescuento == 1 && Descuento!=0)
+            {
+                srtDescuento = Descuento + " %";
+            }
+            else if (idTipodescuento == 2 && Descuento != 0)
+            {
+                srtDescuento = clsMoneda.cSimbolo + " " + string.Format("{0:0.00}", Descuento);
 
+            }else if (idTipodescuento == 0 && Descuento != 0)
+            {
+                
+                srtDescuento = clsMoneda.cSimbolo + " " + string.Format("{0:0.00}", Descuento);
+            }
+            return srtDescuento;
+        }
         private void fnCargaTablaDetalle(List<DetalleVenta> lstDV, DataGridView dgv)
         {
            
             dgv.Rows.Clear();
+            Int32 idTipodescuento = Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue);
+            
+           
 
             foreach (DetalleVenta item in lstDV)
             {
+                
                 dgv.Rows.Add(
                     item.IdDetalleVenta,
                     item.Numeracion,
                     item.Descripcion,
                     item.Cantidad,
-                    item.PrecioUni,
+                    fnDevolverSrtDescuento(0,item.PrecioUni),
                     item.Couta,
-                    item.Descuento,
-                    item.TotalTipoDescuento,
-                    item.Importe
+                    fnDevolverSrtDescuento(idTipodescuento,item.Descuento),
+                    fnDevolverSrtDescuento(0,item.TotalTipoDescuento),
+                    fnDevolverSrtDescuento(0,item.Importe)
                 );
             }
             if (lstDV.Count>0)
@@ -2647,6 +2687,7 @@ namespace wfaIntegradoCom.Mantenedores
             DataGridViewRow filaSeleccionada = dgvVehiculos.Rows[posicionFila];
             if (posicionColumna == dgvVehiculos.Columns["colBuscar"].Index && posicionFila >= 0)
             {
+                lnTipoCon = 0;
                 frmRegistrarVehiculo frmVehiculo = new frmRegistrarVehiculo();
                 idEditar = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
                 frmVehiculo.Inicio(5);
@@ -2765,7 +2806,8 @@ namespace wfaIntegradoCom.Mantenedores
         private void fnValidarPrecioDescuento(DataGridView dgv, DataGridViewRow filaData,Int32 filaIndice,Int32 posicionColumna)
         {
             Int32 idTipoVenta = Convert.ToInt32(cboTipoVenta.SelectedValue);
-
+            frmControlPagoVenta frm = new frmControlPagoVenta();
+            Double PrecioADescontar = frm.fnLimpiarDescuentos(Convert.ToString(filaData.Cells[6].Value));
             if (Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue) == 0)
             {
                 fnHabilitarDescuento(false);
@@ -2815,7 +2857,7 @@ namespace wfaIntegradoCom.Mantenedores
                             }
                             else if (idTipoVenta == 2)
                             {
-                                if (Convert.ToInt32(filaData.Cells[6].Value) > 5 && Convert.ToInt32(filaData.Cells[6].Value) < 101)
+                                if (PrecioADescontar > 5 && PrecioADescontar < 101)
                                 {
                                     dgv.Columns[posicionColumna].DefaultCellStyle.BackColor = Variables.ColorWarning;
 
@@ -2823,8 +2865,15 @@ namespace wfaIntegradoCom.Mantenedores
                                     RespDescuento = MessageBox.Show("¡ En realidad desea aplicar mas del 5% en descuento !", "Aviso !!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                                     if (RespDescuento == DialogResult.Yes)
                                     {
+                                        if (lnTipoCon == -2 && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
+                                        {                                            
+                                            clsTarifa.DescuentoReactivacion = PrecioADescontar;
+                                        }
+                                        else
+                                        {
+                                            clsTarifa.DescuentoRentaAdelantada = PrecioADescontar;
+                                        }
                                         //lstDV[filaIndice].Descuento = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
-                                        clsTarifa.DescuentoRentaAdelantada = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
                                     }
                                     else
                                     {
@@ -2891,7 +2940,7 @@ namespace wfaIntegradoCom.Mantenedores
                         case 1:
                             if (idTipoVenta==2)
                             {
-                                if (Convert.ToInt32(filaData.Cells[6].Value) > 5 && Convert.ToInt32(filaData.Cells[6].Value) < 101)
+                                if (PrecioADescontar > 5 && PrecioADescontar < 101)
                                 {
                                     dgv.Columns[posicionColumna].DefaultCellStyle.BackColor = Variables.ColorWarning;
 
@@ -2899,8 +2948,15 @@ namespace wfaIntegradoCom.Mantenedores
                                     RespDescuento = MessageBox.Show("¡ En realidad desea aplicar mas del 5% en descuento !", "Aviso !!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                                     if (RespDescuento == DialogResult.Yes)
                                     {
+                                        if (lnTipoCon == -2 && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
+                                        {
+                                            clsTarifa.DescuentoRentaAdelantada = PrecioADescontar;
+                                        }
+                                        else
+                                        {
+                                            clsTarifa.DescuentoProrrateo = PrecioADescontar;
+                                        }
                                         //lstDV[filaIndice].Descuento = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
-                                        clsTarifa.DescuentoProrrateo = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
                                     }
                                     else
                                     {
@@ -3046,7 +3102,7 @@ namespace wfaIntegradoCom.Mantenedores
                         case 0:
                             if (idTipoVenta == 1)
                             {
-                                if (Convert.ToDouble(filaData.Cells[6].Value) > (clsTarifa.PrecioEquipo * lstVehiculo.Count))
+                                if (PrecioADescontar > (clsTarifa.PrecioEquipo * lstVehiculo.Count))
                                 {
                                     MessageBox.Show("El descuento no puede ser  mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -3056,26 +3112,43 @@ namespace wfaIntegradoCom.Mantenedores
                                 else
                                 {
                                     //lstDV[filaIndice].Descuento = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
-                                    clsTarifa.DescuentoEquipo = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
+                                    clsTarifa.DescuentoEquipo = PrecioADescontar;
                                 }
                             }
                             else if (idTipoVenta==2)
                             {
-                                if (Convert.ToDouble(filaData.Cells[6].Value) > (clsTarifa.PrecioPlan * lstVehiculo.Count) * lstDV[0].Couta)
+                                if (lnTipoCon==-2 && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
                                 {
-                                    MessageBox.Show("El descuento no puede ser mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    if (PrecioADescontar > (clsTarifa.PrecioReactivacion * lstVehiculo.Count) * lstDV[0].Couta)
+                                    {
+                                        MessageBox.Show("El descuento no puede ser mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                                    clsTarifa.DescuentoRentaAdelantada = 0;
+                                        clsTarifa.DescuentoReactivacion = 0;
+                                    }
+                                    else
+                                    {
+                                        clsTarifa.DescuentoReactivacion = PrecioADescontar;
+                                    }
                                 }
                                 else
                                 {
-                                    clsTarifa.DescuentoRentaAdelantada = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
+                                    if (PrecioADescontar > (clsTarifa.PrecioPlan * lstVehiculo.Count) * lstDV[0].Couta)
+                                    {
+                                        MessageBox.Show("El descuento no puede ser mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                        clsTarifa.DescuentoRentaAdelantada = 0;
+                                    }
+                                    else
+                                    {
+                                        clsTarifa.DescuentoRentaAdelantada = PrecioADescontar;
+                                    }
                                 }
+                                
                                 
                             }
                             else if (idTipoVenta ==3)
                             {
-                                if (Convert.ToDouble(filaData.Cells[6].Value) > (clsTarifa.PrecioReactivacion * lstVehiculo.Count))
+                                if (PrecioADescontar > (clsTarifa.PrecioReactivacion * lstVehiculo.Count))
                                 {
                                     MessageBox.Show("El descuento no puede ser  mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -3085,7 +3158,7 @@ namespace wfaIntegradoCom.Mantenedores
                                 else
                                 {
                                     //lstDV[filaIndice].Descuento = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
-                                    clsTarifa.DescuentoReactivacion = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
+                                    clsTarifa.DescuentoReactivacion = PrecioADescontar;
                                 }
                             }
 
@@ -3095,7 +3168,21 @@ namespace wfaIntegradoCom.Mantenedores
                         case 1:
                             if (idTipoVenta == 2)
                             {
-                                if (Convert.ToDouble(filaData.Cells[6].Value) > (clsTarifa.PrecioProrrateo * lstVehiculo.Count))
+                                if (lnTipoCon == -2 && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
+                                {
+                                    if (PrecioADescontar > (clsTarifa.PrecioRentaAdelantada * lstVehiculo.Count) * lstDV[0].Couta)
+                                    {
+                                        MessageBox.Show("El descuento no puede ser mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                        clsTarifa.DescuentoRentaAdelantada = 0;
+                                    }
+                                    else
+                                    {
+                                        clsTarifa.DescuentoRentaAdelantada = PrecioADescontar;
+                                    }
+                                }
+                                else
+                                if (PrecioADescontar > (clsTarifa.PrecioProrrateo * lstVehiculo.Count))
                                 {
                                     MessageBox.Show("El descuento no puede ser mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -3105,13 +3192,13 @@ namespace wfaIntegradoCom.Mantenedores
                                 else
                                 {
                                     //lstDV[filaIndice].Descuento = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
-                                    clsTarifa.DescuentoProrrateo = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
+                                    clsTarifa.DescuentoProrrateo = PrecioADescontar;
                                 }
 
                             }
                             else 
                             {
-                                if (Convert.ToDouble(filaData.Cells[6].Value) > (clsTarifa.PrecioRentaAdelantada * lstVehiculo.Count))
+                                if (PrecioADescontar > (clsTarifa.PrecioRentaAdelantada * lstVehiculo.Count))
                                 {
                                     MessageBox.Show("El descuento no puede ser mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -3121,7 +3208,7 @@ namespace wfaIntegradoCom.Mantenedores
                                 else
                                 {
                                     //lstDV[filaIndice].Descuento = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
-                                    clsTarifa.DescuentoRentaAdelantada = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
+                                    clsTarifa.DescuentoRentaAdelantada = PrecioADescontar;
                                 }
                             }
 
@@ -3130,7 +3217,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                         case 2:
 
-                            if (Convert.ToDouble(filaData.Cells[6].Value) > (clsTarifa.PrecioProrrateo * lstVehiculo.Count))
+                            if (PrecioADescontar > (clsTarifa.PrecioProrrateo * lstVehiculo.Count))
                             {
                                 MessageBox.Show("El descuento no puede ser mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -3140,7 +3227,7 @@ namespace wfaIntegradoCom.Mantenedores
                             else
                             {
                                 //lstDV[filaIndice].Descuento = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
-                                clsTarifa.DescuentoProrrateo = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
+                                clsTarifa.DescuentoProrrateo = PrecioADescontar;
                             }
                             break;
 
@@ -3150,7 +3237,7 @@ namespace wfaIntegradoCom.Mantenedores
                 }
                 else if (dgv.Name == "dgvPagoPlan")
                 {
-                    if (Convert.ToDouble(filaData.Cells[6].Value) > (clsTarifa.PrecioPlan * lstVehiculo.Count) *lstDV[0].Couta)
+                    if (PrecioADescontar > (clsTarifa.PrecioPlan * lstVehiculo.Count) *lstDV[0].Couta)
                     {
                         MessageBox.Show("El descuento no puede ser mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -3158,7 +3245,7 @@ namespace wfaIntegradoCom.Mantenedores
                     }
                     else
                     {
-                        lstDV[filaIndice].Descuento = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
+                        lstDV[filaIndice].Descuento = PrecioADescontar;
                     }
                 }
 

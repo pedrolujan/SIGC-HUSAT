@@ -85,6 +85,36 @@ namespace CapaDato
             }
 
         }
+        public Boolean daCambiarEstadoCronograma(Int32 idCron)
+        {
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtResult = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@idCronograma", SqlDbType.Int) { Value = idCron };
+                objCnx = new clsConexion("");
+                dtResult = objCnx.EjecutarProcedimientoDT("uspcambiarEstadoCronograma", pa);
+
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
         public Boolean daGuardarPagoCuotas(ControlPagos clsCPC, List<xmlDocumentoVentaGeneral> lstDV, Int32 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[20];

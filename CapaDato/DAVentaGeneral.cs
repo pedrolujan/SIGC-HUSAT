@@ -262,14 +262,14 @@ namespace CapaDato
                 pa[11] = new SqlParameter("@valorRadio", SqlDbType.NVarChar,8) { Value = valorRadio };
 
                 objCnx = new clsConexion("");
-                if (habilitarRenovaciones==true)
-                {
+                //if (habilitarRenovaciones==true)
+                //{
                     dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarRenovaciones", pa);
-                }
-                else
-                {
-                    dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarVentasGenerales", pa);
-                }
+                //}
+                //else
+                //{
+                //    dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarVentasGenerales", pa);
+                //}
 
                 return dtVentaG;
             }
