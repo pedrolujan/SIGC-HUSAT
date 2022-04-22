@@ -1714,7 +1714,7 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
-                MessageBox.Show("No se puede realizar la actualizacion -- Comuniquese con el administrador", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No se puede realizar la actualizacion -- Comuniquese con el administrador", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
 
