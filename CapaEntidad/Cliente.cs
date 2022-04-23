@@ -44,6 +44,8 @@ namespace CapaEntidad
         public String cNomDep { get; set; }
         public String cNomProv { get; set; }
         public String cNomDist { get; set; }
+        public Vehiculo vehiculo { get; set; }
+
 
 
 

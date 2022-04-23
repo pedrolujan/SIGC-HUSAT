@@ -35,6 +35,19 @@ namespace wfaIntegradoCom.Procesos
             SImboloMoneda = sMoneda;
             this.ShowDialog();
         }
+        //private void fnActivarBotonGuardar()
+        //{
+        //    if (estadoFechaPago == true && estImporte == true)
+        //    {
+        //        btnGuardarCliente.Enabled = true;
+
+        //    }
+        //    else
+        //    {
+        //        btnGuardarCliente.Enabled = false;
+        //    }
+
+        //}
 
         private void cboEntidadesPago_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -157,7 +170,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var res = FunValidaciones.fnValidarCombobox(cboTipoPago, lblTipoPago, pbTipoPago);
+             var res = FunValidaciones.fnValidarCombobox(cboTipoPago, lblTipoPago, pbTipoPago);
             estTipoVenta = res.Item1;
             lblTipoVentaa = res.Item2;
             cboEntidadesPago_SelectedIndexChanged(sender, e);
@@ -214,7 +227,7 @@ namespace wfaIntegradoCom.Procesos
                 }
                 else if (lnTipoLLamada == 2)
                 {
-
+                   
                     frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
                     this.Close();
                 } else if (lnTipoLLamada == 3)
@@ -225,9 +238,9 @@ namespace wfaIntegradoCom.Procesos
                     this.Close();
                 } else if (lnTipoLLamada == 4)
                 {
-                    Procesos.frmCambioTitularidad.fnTipoPagoTitularidad(lstEntidades);
-                    frmCambioTitularidad frm = new frmCambioTitularidad();
-                    frm.fnCambiarEstado(true);
+                    
+                    frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
+                    
                     this.Close();
 
                 }
@@ -397,8 +410,10 @@ namespace wfaIntegradoCom.Procesos
             }
             else if (lnTipoLLamada == 4)
             {
-                frmCambioTitularidad frm = new frmCambioTitularidad();
-                frm.fnCambiarEstado(false);
+
+                frmOtrasVentas.fnRecuperarEstadoGenVenta(false);
+                Mantenedores.frmRegistrarVenta fmrov= new Mantenedores.frmRegistrarVenta();
+                fmrov.fnCambiarEstadoVenta(false);
             }
             this.Dispose();
         }

@@ -110,6 +110,7 @@ namespace CapaDato
             DataTable dtUsuario;
             clsConexion objCnx = null;
             Cliente lstCliente;
+           
             objUtil = new clsUtil();
 
             try
@@ -147,6 +148,10 @@ namespace CapaDato
                     lstCliente.cContactoCel2 = Convert.ToString(drMenu["cContactoCel2"]);
                     lstCliente.cEmpresa = Convert.ToString(drMenu["cEmpresa"]);
                     lstCliente.cCorreo = Convert.ToString(drMenu["cCorreo"]);
+                    //lstCliente. vehiculo = Convert.ToChar(drMenu["vehiculo"])/*;*/
+                    //    lstCliente.vehiculo.vSerie = Convert.ToString(drMenu["vSerie"]);
+                    //lstCliente.vehiculo.vMarcaV = Convert.ToString(drMenu["vMarcaV"]);
+                    //lstCliente.vehiculo.vModeloV = Convert.ToString(drMenu["vModeloV"]);
                 }
 
                 return lstCliente;

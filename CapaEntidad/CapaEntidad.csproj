@@ -115,6 +115,9 @@
     <Compile Include="xmlTiposPlan.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Properties\DataSources\DetalleTraslado.datasource" />
     <None Include="Properties\DataSources\Traslado.datasource" />
   </ItemGroup>

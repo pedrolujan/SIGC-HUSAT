@@ -33,7 +33,8 @@ namespace wfaIntegradoCom.Procesos
         {
             lnTipoLlamada = pnTipoLlamda;
             ShowDialog();
-
+            //Procesos.frmOtrasVentas frmOtras = new frmOtrasVentas();
+            //frmOtras. fn
         }
 
         private void fnAgregarDatosDeBusqueda(Int32 tipoConPagina, Int32 pagina, Int32 filas, DataTable dtDatosResp, Int32 totalResultados, String idTipoventa)
@@ -309,7 +310,9 @@ namespace wfaIntegradoCom.Procesos
         }
         private void cboTipoVenta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            Procesos.frmOtrasVentas frmov = new frmOtrasVentas();
+         
+
             if (cargoForm==true) 
             {
                 if (Convert.ToString(cboTipoVenta.SelectedValue) == "TVNT0002")

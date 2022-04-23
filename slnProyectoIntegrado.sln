@@ -29,6 +29,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTools", "WPF\WpfTools\Wp
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WPF.CTRL.Colocaciones", "WPF\WPF.CTRL.Colocaciones\WPF.CTRL.Colocaciones.vbproj", "{DF6175EE-E653-4151-A8CB-43A480865D16}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3EF7E26B-58EE-4E34-BD30-6E3D1818E540}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

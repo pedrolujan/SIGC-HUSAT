@@ -412,17 +412,23 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
                         <Value>=First(Fields!cNombre.Value, "dsCliente") +" "+ First(Fields!cApePat.Value, "dsCliente")+" "+First(Fields!cApeMat.Value, "dsCliente")</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <Top>1.07597cm</Top>
-                <Left>6.2483cm</Left>
+                <Left>3.3908cm</Left>
                 <Height>0.51098cm</Height>
-                <Width>9.63021cm</Width>
+                <Width>12.17021cm</Width>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -440,24 +446,20 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value xml:space="preserve"> </Value>
-                        <Style>
-                          <FontFamily>Arial Black</FontFamily>
-                        </Style>
-                      </TextRun>
-                      <TextRun>
-                        <Value>Nombres y Apellidos/Razón Social:</Value>
+                        <Value>=IIf(First(Fields!cCorreo.Value, "dsCliente")="NATURAL","Nombre","Razón Social")</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox25</rd:DefaultName>
-                <Top>1.04069cm</Top>
+                <Top>1.07597cm</Top>
                 <Left>0.31754cm</Left>
                 <Height>0.54626cm</Height>
-                <Width>6.2794cm</Width>
+                <Width>2.96743cm</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
@@ -479,21 +481,17 @@
                         <Value>=First(Fields!cCliente.Value, "dsCliente")</Value>
                         <Style />
                       </TextRun>
-                      <TextRun>
-                        <Value>:</Value>
-                        <Style />
-                      </TextRun>
                     </TextRuns>
                     <Style>
-                      <TextAlign>Right</TextAlign>
+                      <TextAlign>Left</TextAlign>
                     </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox26</rd:DefaultName>
                 <Top>1.65751cm</Top>
-                <Left>0.19403cm</Left>
+                <Left>0.37717cm</Left>
                 <Height>0.6cm</Height>
-                <Width>1.98848cm</Width>
+                <Width>3.03802cm</Width>
                 <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
@@ -512,18 +510,24 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
                         <Value>=First(Fields!cTipoDoc.Value, "dsCliente")</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox27</rd:DefaultName>
                 <Top>1.62223cm</Top>
-                <Left>2.28834cm</Left>
+                <Left>3.3908cm</Left>
                 <Height>0.54764cm</Height>
-                <Width>4.60848cm</Width>
+                <Width>4.77602cm</Width>
                 <ZIndex>3</ZIndex>
                 <Style>
                   <Border>
@@ -542,18 +546,20 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Teléfono :</Value>
+                        <Value>Teléfono </Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox28</rd:DefaultName>
-                <Top>1.56987cm</Top>
-                <Left>7.78346cm</Left>
+                <Top>2.20487cm</Top>
+                <Left>0.34396cm</Left>
                 <Height>0.68764cm</Height>
-                <Width>2.40773cm</Width>
+                <Width>3.01156cm</Width>
                 <ZIndex>4</ZIndex>
                 <Style>
                   <Border>
@@ -572,6 +578,10 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
                         <Value>=First(Fields!cTelCelular.Value, "dsCliente")</Value>
                         <Style />
                       </TextRun>
@@ -580,10 +590,10 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox29</rd:DefaultName>
-                <Top>1.56987cm</Top>
-                <Left>9.48974cm</Left>
+                <Top>2.20487cm</Top>
+                <Left>3.45724cm</Left>
                 <Height>0.6cm</Height>
-                <Width>3.62415cm</Width>
+                <Width>4.70958cm</Width>
                 <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
@@ -627,11 +637,79 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
+              <Textbox Name="Textbox58">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!cDireccion.Value, "dsCliente")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox48</rd:DefaultName>
+                <Top>2.87264cm</Top>
+                <Left>3.4152cm</Left>
+                <Height>0.59118cm</Height>
+                <Width>11.92327cm</Width>
+                <ZIndex>7</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox59">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Domicilio Legal</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox47</rd:DefaultName>
+                <Top>2.84618cm</Top>
+                <Left>0.34396cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.01156cm</Width>
+                <ZIndex>8</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.40342cm</Top>
+            <Top>6.35592cm</Top>
             <Left>0.04408cm</Left>
-            <Height>3.08208cm</Height>
+            <Height>3.77cm</Height>
             <Width>16.30654cm</Width>
             <Style>
               <Border>
@@ -687,7 +765,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.00766cm</Top>
+            <Top>2.32516cm</Top>
             <Height>0.6cm</Height>
             <Width>1.28292cm</Width>
             <ZIndex>2</ZIndex>
@@ -718,7 +796,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>2.00766cm</Top>
+            <Top>2.32516cm</Top>
             <Left>1.38875cm</Left>
             <Height>0.6cm</Height>
             <Width>2.01085cm</Width>
@@ -748,7 +826,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>2.00766cm</Top>
+            <Top>2.32516cm</Top>
             <Left>10.02361cm</Left>
             <Height>0.6cm</Height>
             <Width>3.76055cm</Width>
@@ -778,7 +856,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>2.00766cm</Top>
+            <Top>2.32516cm</Top>
             <Left>13.02571cm</Left>
             <Height>0.6cm</Height>
             <Width>3.00741cm</Width>
@@ -808,7 +886,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.00398cm</Top>
+            <Top>3.32148cm</Top>
             <Height>0.93514cm</Height>
             <Width>16.17423cm</Width>
             <ZIndex>6</ZIndex>
@@ -837,7 +915,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>3.43669cm</Top>
+            <Top>3.75419cm</Top>
             <Left>1.38875cm</Left>
             <Height>0.50243cm</Height>
             <Width>2.73877cm</Width>
@@ -869,7 +947,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Top>3.82475cm</Top>
+            <Top>4.5303cm</Top>
+            <Left>0.04408cm</Left>
             <Height>0.63528cm</Height>
             <Width>1.94436cm</Width>
             <ZIndex>8</ZIndex>
@@ -898,10 +977,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>4.56586cm</Top>
+            <Top>5.20086cm</Top>
             <Left>0.04408cm</Left>
             <Height>0.6cm</Height>
-            <Width>6.20007cm</Width>
+            <Width>5.06645cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -920,7 +999,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIf(Parameters!cboMotivo.Value="MOTI0001","X","")</Value>
+                    <Value>=IIf(Parameters!cboMotivo.Value="MOTI0001", " X ","")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -928,8 +1007,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>4.4953cm</Top>
-            <Left>5.11053cm</Left>
+            <Top>5.20086cm</Top>
+            <Left>5.18109cm</Left>
             <Height>0.6cm</Height>
             <Width>0.49326cm</Width>
             <ZIndex>10</ZIndex>
@@ -958,7 +1037,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.4953cm</Top>
+            <Top>5.1303cm</Top>
             <Left>7.58534cm</Left>
             <Height>0.6cm</Height>
             <Width>2.36771cm</Width>
@@ -980,14 +1059,14 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIf(Parameters!cboMotivo.Value="MOTI0002", "x"," ")</Value>
+                    <Value>=IIf(Parameters!cboMotivo.Value="MOTI0002", " X "," ")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>4.4953cm</Top>
+            <Top>5.1303cm</Top>
             <Left>10.05007cm</Left>
             <Height>0.6cm</Height>
             <Width>0.49326cm</Width>
@@ -1017,7 +1096,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
-            <Top>4.4953cm</Top>
+            <Top>5.1303cm</Top>
             <Left>12.39071cm</Left>
             <Height>0.6cm</Height>
             <Width>3.21438cm</Width>
@@ -1039,15 +1118,15 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIf(Parameters!cboMotivo.Value="MOTI0003", "x"," ")</Value>
+                    <Value>=IIf(Parameters!cboMotivo.Value="MOTI0003", " X "," ")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>4.4953cm</Top>
-            <Left>15.63155cm</Left>
+            <Top>5.1303cm</Top>
+            <Left>15.60509cm</Left>
             <Height>0.6cm</Height>
             <Width>0.49326cm</Width>
             <ZIndex>14</ZIndex>
@@ -1070,18 +1149,20 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Domicilio Legal:</Value>
+                        <Value>Domicilio Legal</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox47</rd:DefaultName>
-                <Top>2.51382cm</Top>
+                <Top>2.97299cm</Top>
                 <Left>0.34396cm</Left>
                 <Height>0.6cm</Height>
-                <Width>3.8141cm</Width>
+                <Width>3.01156cm</Width>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1099,6 +1180,10 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
                         <Value>=First(Fields!cDireccion.Value, "dsclienteN")</Value>
                         <Style />
                       </TextRun>
@@ -1109,10 +1194,10 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox48</rd:DefaultName>
-                <Top>2.54028cm</Top>
-                <Left>3.05566cm</Left>
+                <Top>2.90243cm</Top>
+                <Left>3.35552cm</Left>
                 <Height>0.59118cm</Height>
-                <Width>12.82285cm</Width>
+                <Width>12.52299cm</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
@@ -1131,18 +1216,20 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Distrito:</Value>
+                        <Value>Distrito</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox49</rd:DefaultName>
-                <Top>3.21084cm</Top>
-                <Left>0.43215cm</Left>
+                <Top>3.57299cm</Top>
+                <Left>0.37924cm</Left>
                 <Height>0.6cm</Height>
-                <Width>1.6357cm</Width>
+                <Width>3.03596cm</Width>
                 <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
@@ -1161,6 +1248,10 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
                         <Value>=First(Fields!cNomDist.Value, "dsclienteN")</Value>
                         <Style />
                       </TextRun>
@@ -1171,10 +1262,10 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox50</rd:DefaultName>
-                <Top>3.21083cm</Top>
-                <Left>2.06785cm</Left>
+                <Top>3.52833cm</Top>
+                <Left>3.4152cm</Left>
                 <Height>0.6cm</Height>
-                <Width>3.32965cm</Width>
+                <Width>3.5698cm</Width>
                 <ZIndex>3</ZIndex>
                 <Style>
                   <Border>
@@ -1193,18 +1284,20 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Provincia:</Value>
+                        <Value>Provincia</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox51</rd:DefaultName>
-                <Top>3.24612cm</Top>
-                <Left>8.20619cm</Left>
+                <Top>4.17216cm</Top>
+                <Left>0.37924cm</Left>
                 <Height>0.56472cm</Height>
-                <Width>1.985cm</Width>
+                <Width>2.97628cm</Width>
                 <ZIndex>4</ZIndex>
                 <Style>
                   <Border>
@@ -1223,6 +1316,10 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
                         <Value>=First(Fields!cNomProv.Value, "dsclienteN")</Value>
                         <Style />
                       </TextRun>
@@ -1233,10 +1330,10 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox52</rd:DefaultName>
-                <Top>3.21966cm</Top>
-                <Left>10.00599cm</Left>
+                <Top>4.17216cm</Top>
+                <Left>3.3908cm</Left>
                 <Height>0.6cm</Height>
-                <Width>3.1079cm</Width>
+                <Width>3.5942cm</Width>
                 <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
@@ -1255,18 +1352,20 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Departamento:</Value>
+                        <Value>Departamento</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox53</rd:DefaultName>
-                <Top>3.98723cm</Top>
-                <Left>0.34396cm</Left>
+                <Top>4.77216cm</Top>
+                <Left>0.31754cm</Left>
                 <Height>0.6cm</Height>
-                <Width>2.53531cm</Width>
+                <Width>3.03798cm</Width>
                 <ZIndex>6</ZIndex>
                 <Style>
                   <Border>
@@ -1285,6 +1384,10 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
                         <Value>=First(Fields!cNomDep.Value, "dsclienteN")</Value>
                         <Style />
                       </TextRun>
@@ -1295,8 +1398,8 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox54</rd:DefaultName>
-                <Top>3.96077cm</Top>
-                <Left>2.9851cm</Left>
+                <Top>4.77216cm</Top>
+                <Left>3.35552cm</Left>
                 <Height>0.6cm</Height>
                 <Width>6.92387cm</Width>
                 <ZIndex>7</ZIndex>
@@ -1320,21 +1423,17 @@
                         <Value>=First(Fields!cCliente.Value, "dsclienteN")</Value>
                         <Style />
                       </TextRun>
-                      <TextRun>
-                        <Value>:</Value>
-                        <Style />
-                      </TextRun>
                     </TextRuns>
                     <Style>
-                      <TextAlign>Right</TextAlign>
+                      <TextAlign>Left</TextAlign>
                     </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox26</rd:DefaultName>
                 <Top>1.73771cm</Top>
-                <Left>0.06174cm</Left>
+                <Left>0.37924cm</Left>
                 <Height>0.56472cm</Height>
-                <Width>2.20899cm</Width>
+                <Width>2.97628cm</Width>
                 <ZIndex>8</ZIndex>
                 <Style>
                   <Border>
@@ -1385,24 +1484,20 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value xml:space="preserve"> </Value>
-                        <Style>
-                          <FontFamily>Arial Black</FontFamily>
-                        </Style>
-                      </TextRun>
-                      <TextRun>
-                        <Value>Nombres y Apellidos /Razón Social :</Value>
+                        <Value>=IIf(Sum(Fields!cTipPers.Value, "dsclienteN")="1","Nombre","Razon Social")</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox25</rd:DefaultName>
                 <Top>1.10243cm</Top>
                 <Left>0.37924cm</Left>
                 <Height>0.56445cm</Height>
-                <Width>6.51758cm</Width>
+                <Width>2.97628cm</Width>
                 <ZIndex>10</ZIndex>
                 <Style>
                   <Border>
@@ -1421,18 +1516,24 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
                         <Value>=First(Fields!cNombre.Value, "dsclienteN")+ " " +First(Fields!cApePat.Value, "dsclienteN")+ " " +First(Fields!cApeMat.Value, "dsclienteN")</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox24</rd:DefaultName>
                 <Top>1.13771cm</Top>
-                <Left>6.47348cm</Left>
+                <Left>3.45724cm</Left>
                 <Height>0.55563cm</Height>
-                <Width>9.51556cm</Width>
+                <Width>12.5318cm</Width>
                 <ZIndex>11</ZIndex>
                 <Style>
                   <Border>
@@ -1451,6 +1552,10 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
                         <Value>=First(Fields!cDocumento.Value, "dsclienteN")</Value>
                         <Style />
                       </TextRun>
@@ -1462,9 +1567,9 @@
                 </Paragraphs>
                 <rd:DefaultName>Textbox27</rd:DefaultName>
                 <Top>1.73744cm</Top>
-                <Left>2.34128cm</Left>
+                <Left>3.4152cm</Left>
                 <Height>0.56499cm</Height>
-                <Width>4.77947cm</Width>
+                <Width>4.97555cm</Width>
                 <ZIndex>12</ZIndex>
                 <Style>
                   <Border>
@@ -1483,18 +1588,20 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Teléfono :</Value>
+                        <Value>Teléfono </Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox28</rd:DefaultName>
-                <Top>1.83445cm</Top>
-                <Left>7.78346cm</Left>
+                <Top>2.37299cm</Top>
+                <Left>0.37924cm</Left>
                 <Height>0.6cm</Height>
-                <Width>2.40773cm</Width>
+                <Width>2.97628cm</Width>
                 <ZIndex>13</ZIndex>
                 <Style>
                   <Border>
@@ -1513,6 +1620,10 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
+                        <Value>:</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
                         <Value>=First(Fields!cTelCelular.Value, "dsclienteN")</Value>
                         <Style />
                       </TextRun>
@@ -1523,10 +1634,10 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox29</rd:DefaultName>
-                <Top>1.86972cm</Top>
-                <Left>9.68846cm</Left>
+                <Top>2.30243cm</Top>
+                <Left>3.3908cm</Left>
                 <Height>0.56473cm</Height>
-                <Width>3.69002cm</Width>
+                <Width>4.99995cm</Width>
                 <ZIndex>14</ZIndex>
                 <Style>
                   <Border>
@@ -1540,9 +1651,9 @@
               </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>9.53929cm</Top>
+            <Top>10.49179cm</Top>
             <Left>0.04408cm</Left>
-            <Height>5.3575cm</Height>
+            <Height>6.2541cm</Height>
             <Width>16.30654cm</Width>
             <ZIndex>15</ZIndex>
             <Style>
@@ -1566,7 +1677,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox55</rd:DefaultName>
-            <Top>16.15486cm</Top>
+            <Top>17.74236cm</Top>
             <Left>0.20697cm</Left>
             <Height>1.9761cm</Height>
             <Width>15.71562cm</Width>
@@ -1681,7 +1792,11 @@
           </Image>
         </ReportItems>
         <Height>8.87429in</Height>
-        <Style />
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
       </Body>
       <Width>6.43725in</Width>
       <Page>

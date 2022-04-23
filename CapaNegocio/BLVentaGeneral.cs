@@ -118,7 +118,19 @@ namespace CapaNegocio
             }
 
         }
+        //public Boolean blCambioTItularidad(String codVenta, String vPlaca,Int32 idTipoVenta)
+        //{
+        //    DAVentaGeneral objDAVG = new DAVentaGeneral();
+        //    try
+        //    {
+        //        return objDAVG.daCambioTitularidad(codVenta, vPlaca, idTipoVenta);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
 
+        //}
 
     }
 

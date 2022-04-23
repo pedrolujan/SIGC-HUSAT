@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0161: 'frmOtrasVentas.fnListarClienteEspecifico(SiticoneDataGridView, SiticoneTextBox, SiticoneTextBox, SiticoneTextBox, SiticoneTextBox, SiticoneTextBox)': no todas las rutas de acceso de código devuelven un valor
+dotnet_diagnostic.CS0161.severity = error
