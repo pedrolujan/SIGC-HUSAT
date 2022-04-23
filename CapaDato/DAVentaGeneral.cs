@@ -473,4 +473,9 @@ namespace CapaDato
         }
 
     }
+    //public Boolean daBuscarCanbioTitularidad(String codVenta, String vPlaca, Int32 idTipoVenta)
+    //{
+
+
+    //}
 }

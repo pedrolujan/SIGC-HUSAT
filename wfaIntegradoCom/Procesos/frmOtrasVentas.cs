@@ -2214,17 +2214,10 @@ namespace wfaIntegradoCom.Procesos
 
             if (e.KeyChar == (Char)Keys.Enter)
             {
-                if (this.dgOtrasVentas.Name == "dgbtnNuevo" && lstOtrasVentas[0].idTipoTransaccion == 4 && lstOtrasVentas[0].idObjVenta == 2)
-                {
+               
                     lnTipoCon = 0;
                     fnBuscarDatosCliente(lnTipoCon);
-                }
-                else if(   lstOtrasVentas[0].idTipoTransaccion == 4 && lstOtrasVentas[0].idObjVenta == 1)
-                {
-
-                    fnDatosCliente();
-                    
-                }
+               
             }
             
 
