@@ -869,12 +869,12 @@ namespace wfaIntegradoCom.Procesos
         }
         private Boolean fnListarClienteEspecifico(SiticoneDataGridView dgv,SiticoneTextBox txtDoc,SiticoneTextBox txtIdCliente,
             SiticoneTextBox txtClienteN_A,SiticoneTextBox txtDireccion,SiticoneTextBox txtTelefono
-            , SiticoneTextBox txtPlacaT , SiticoneTextBox txtMarca, SiticoneTextBox txtModelo, SiticoneTextBox txtSerie
+           
             )
         {
             BLCliente objAcc = new BLCliente();           
             Cliente lstPros = new Cliente();
-            List<Vehiculo> lstvehiculo = new List<Vehiculo>();
+            //List<Vehiculo> lstvehiculo = new List<Vehiculo>();
             clsUtil objUtil = new clsUtil();
             Int32 idCliente;
 
@@ -904,6 +904,7 @@ namespace wfaIntegradoCom.Procesos
                         DocumentoVenta.cTiDocPersona = lstPros.cTipPers;
                         DocumentoVenta.cDireccion = lstPros.cDireccion;
                         DocumentoVenta.cEstado = lstPros.cTelCelular;
+                      
                     
 
                        
@@ -913,10 +914,10 @@ namespace wfaIntegradoCom.Procesos
                         txtDireccion.Text = lstPros.cDireccion;
                         txtTelefono.Text = lstPros.cTelCelular;
 
-                       
 
+                        dgv.Visible = false;
                     }
-                    dgv.Visible = false;
+                   
                     
                 }
                 
@@ -936,9 +937,9 @@ namespace wfaIntegradoCom.Procesos
         private void dgDocumento_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Boolean bResul = false;
-            bResul = fnListarClienteEspecifico(dgDocumento, txtDocumento, txtIdCliente, txtClientesN_A, txtDireccion, txtTelefono /*);*/
-            ,
-             txtPlacaT, txtSerie, txtModelo, txtMarca );
+            bResul = fnListarClienteEspecifico(dgDocumento, txtDocumento, txtIdCliente, txtClientesN_A, txtDireccion, txtTelefono);
+            //,
+            // txtPlacaT, txtSerie, txtModelo, txtMarca );
             if (!bResul)
              {
                  MessageBox.Show("Error al Cargar Cliente Especifico", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -951,8 +952,7 @@ namespace wfaIntegradoCom.Procesos
          {
 
              fnListarClienteEspecifico(dgDocumento, txtDocumento, txtIdCliente, txtClientesN_A, txtDireccion, txtTelefono
-            ,
-                 txtPlacaT, txtSerie, txtModelo, txtMarca);
+           );
 
          }
         private Boolean fnBuscarEquipos_Accesorios(SiticoneTextBox txt, DataGridView dgv)
@@ -1327,8 +1327,7 @@ namespace wfaIntegradoCom.Procesos
                     lstOtrasVentas.Remove(fnObtenerObjetoSeleccionado(idObJeto, lstOtrasVentas));
                     fnInsertarATable();
                     estad = false;
-                    fnListarClienteEspecifico(dgDocumento, txtDocumento, txtIdCliente, txtClientesN_A, txtDireccion, txtTelefono,
-                      txtPlacaT, txtSerie, txtModelo, txtMarca);
+                   
                 }
                 estadoTitularidad = false;
                 gbDatosVehiculo.Visible = estadoTitularidad;
@@ -2147,7 +2146,8 @@ namespace wfaIntegradoCom.Procesos
             xmlTitularidad xmlTitu = new xmlTitularidad();
             
             
-            clsClienteNuevo.cCliente = cboTipoDocumento.Text;
+           clsClienteNuevo.cCliente = cboTipoDocumento.Text;
+            
             dtFechaTitularidad = Convert.ToDateTime(dtFechaTitu.Value);
             clstitu.FechaTitularidad= dtFechaTitularidad;
             cboComboBox = Convert.ToString( cboMotivo.SelectedValue);

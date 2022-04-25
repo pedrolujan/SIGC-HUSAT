@@ -50,7 +50,7 @@ namespace wfaIntegradoCom.Consultas
             this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.gunaPanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaPanel1.Name = "gunaPanel1";
-            this.gunaPanel1.Size = new System.Drawing.Size(592, 29);
+            this.gunaPanel1.Size = new System.Drawing.Size(708, 29);
             this.gunaPanel1.TabIndex = 164;
             // 
             // label1
@@ -73,7 +73,7 @@ namespace wfaIntegradoCom.Consultas
             this.gunaControlBox2.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MinimizeBox;
             this.gunaControlBox2.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox2.IconSize = 15F;
-            this.gunaControlBox2.Location = new System.Drawing.Point(502, 0);
+            this.gunaControlBox2.Location = new System.Drawing.Point(618, 0);
             this.gunaControlBox2.Name = "gunaControlBox2";
             this.gunaControlBox2.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox2.OnHoverIconColor = System.Drawing.Color.White;
@@ -89,7 +89,7 @@ namespace wfaIntegradoCom.Consultas
             this.gunaControlBox1.BackColor = System.Drawing.Color.Transparent;
             this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(543, 0);
+            this.gunaControlBox1.Location = new System.Drawing.Point(659, 0);
             this.gunaControlBox1.Name = "gunaControlBox1";
             this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
@@ -109,7 +109,7 @@ namespace wfaIntegradoCom.Consultas
             this.siticonePanel1.Location = new System.Drawing.Point(0, 29);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(592, 590);
+            this.siticonePanel1.Size = new System.Drawing.Size(708, 590);
             this.siticonePanel1.TabIndex = 169;
             // 
             // btnVolver
@@ -157,7 +157,7 @@ namespace wfaIntegradoCom.Consultas
             this.reportViewer1.Location = new System.Drawing.Point(3, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(585, 475);
+            this.reportViewer1.Size = new System.Drawing.Size(705, 511);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
@@ -165,7 +165,7 @@ namespace wfaIntegradoCom.Consultas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 619);
+            this.ClientSize = new System.Drawing.Size(708, 619);
             this.Controls.Add(this.siticonePanel1);
             this.Controls.Add(this.gunaPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

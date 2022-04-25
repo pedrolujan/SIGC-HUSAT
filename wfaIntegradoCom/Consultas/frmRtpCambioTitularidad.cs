@@ -22,7 +22,7 @@ namespace wfaIntegradoCom.Consultas
         }
         List<OtrasVentas> lstOtrasVentas = new List<OtrasVentas>();
         List<Cliente> lstclienteA = new List<Cliente>();
-        List<Cliente> lstclientesN = new List<Cliente>();    
+        List<Cliente> lstclientesN = new List<Cliente>();
         List<Vehiculo> lstVehiculo = new List<Vehiculo>();
         String cboCombobox="x";
         List<DocumentoVenta> lstDocumentoVentas = new List<DocumentoVenta>();
@@ -30,17 +30,17 @@ namespace wfaIntegradoCom.Consultas
         String Observaciones = "";
         Int32 lnTipoCon = 0;
 
-        public void inicio(List<OtrasVentas> lstOtrasV, List<Cliente> lstclienteAntiguo, List<Vehiculo> lstVehicu, String obser, Titularidad clsTitu, List<DocumentoVenta> docVenta, Cliente lstPros,String cboComboBox)
+        public void inicio(List<OtrasVentas> lstOtrasV, List<Cliente> lstclienteAntiguo,List<Vehiculo> lstVehicu, String obser, Titularidad clsTitu, List<DocumentoVenta> docVenta, Cliente lstPros,String cboComboBox)
         {
 
 
             lstclientesN.Clear();
-            //lstclienteA.Clear();
-            //lstDocumentoVentas.Clear();
-            //lstVehiculo.Clear();
+            lstclienteA.Clear();
+            lstDocumentoVentas.Clear();
+            lstVehiculo.Clear();
 
 
-             lstOtrasVentas = lstOtrasV;
+            lstOtrasVentas = lstOtrasV;
            lstclienteA = lstclienteAntiguo;
             lstclientesN.Add( lstPros);
             lstVehiculo = lstVehicu;
@@ -83,14 +83,12 @@ namespace wfaIntegradoCom.Consultas
         {
 
         }
-
         public void frmRtpCambioTitularidad_Load(object sender, EventArgs e)
         {
             this.reportViewer1.RefreshReport();
             fnCargarCambioTitularidad(lstOtrasVentas,lstclienteA, lstVehiculo,Observaciones, clsTitularidad,lstclientesN,cboCombobox);
         }
-
-        private void reportViewer1_Load(object sender, EventArgs e)
+    private void reportViewer1_Load(object sender, EventArgs e)
         {
             FunValidaciones.fnColorAceptarCancelar(btnFinalizarInstalacion, btnVolver);
             Int32 CountAccSer = Convert.ToInt32(lstOtrasVentas.Count() - lstOtrasVentas.Count());

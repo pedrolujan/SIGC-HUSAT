@@ -412,7 +412,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>:</Value>
+                        <Value>:  </Value>
                         <Style />
                       </TextRun>
                       <TextRun>
@@ -510,7 +510,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>:</Value>
+                        <Value>:  </Value>
                         <Style />
                       </TextRun>
                       <TextRun>
@@ -525,7 +525,7 @@
                 </Paragraphs>
                 <rd:DefaultName>Textbox27</rd:DefaultName>
                 <Top>1.62223cm</Top>
-                <Left>3.3908cm</Left>
+                <Left>3.4152cm</Left>
                 <Height>0.54764cm</Height>
                 <Width>4.77602cm</Width>
                 <ZIndex>3</ZIndex>
@@ -578,7 +578,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>:</Value>
+                        <Value>:  </Value>
                         <Style />
                       </TextRun>
                       <TextRun>
@@ -644,7 +644,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>:</Value>
+                        <Value>:  </Value>
                         <Style />
                       </TextRun>
                       <TextRun>
@@ -658,10 +658,10 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox48</rd:DefaultName>
-                <Top>2.87264cm</Top>
-                <Left>3.4152cm</Left>
+                <Top>2.84015cm</Top>
+                <Left>3.35552cm</Left>
                 <Height>0.59118cm</Height>
-                <Width>11.92327cm</Width>
+                <Width>8.82765cm</Width>
                 <ZIndex>7</ZIndex>
                 <Style>
                   <Border>
@@ -1111,35 +1111,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="fusion">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=IIf(Parameters!cboMotivo.Value="MOTI0003", " X "," ")</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Top>5.1303cm</Top>
-            <Left>15.60509cm</Left>
-            <Height>0.6cm</Height>
-            <Width>0.49326cm</Width>
-            <ZIndex>14</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Rectangle Name="Rectangle3">
             <ReportItems>
               <Textbox Name="Textbox47">
@@ -1173,42 +1144,6 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
-              <Textbox Name="Textbox48">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>:</Value>
-                        <Style />
-                      </TextRun>
-                      <TextRun>
-                        <Value>=First(Fields!cDireccion.Value, "dsclienteN")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Left</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox48</rd:DefaultName>
-                <Top>2.90243cm</Top>
-                <Left>3.35552cm</Left>
-                <Height>0.59118cm</Height>
-                <Width>12.52299cm</Width>
-                <ZIndex>1</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
               <Textbox Name="Textbox49">
                 <CanGrow>true</CanGrow>
                 <KeepTogether>true</KeepTogether>
@@ -1230,7 +1165,7 @@
                 <Left>0.37924cm</Left>
                 <Height>0.6cm</Height>
                 <Width>3.03596cm</Width>
-                <ZIndex>2</ZIndex>
+                <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1241,18 +1176,18 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
-              <Textbox Name="Textbox50">
+              <Textbox Name="Textbox48">
                 <CanGrow>true</CanGrow>
                 <KeepTogether>true</KeepTogether>
                 <Paragraphs>
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>:</Value>
+                        <Value>:   </Value>
                         <Style />
                       </TextRun>
                       <TextRun>
-                        <Value>=First(Fields!cNomDist.Value, "dsclienteN")</Value>
+                        <Value>=First(Fields!cDireccion.Value, "dsclienteN")</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -1261,12 +1196,12 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <rd:DefaultName>Textbox50</rd:DefaultName>
-                <Top>3.52833cm</Top>
+                <rd:DefaultName>Textbox48</rd:DefaultName>
+                <Top>2.93715cm</Top>
                 <Left>3.4152cm</Left>
-                <Height>0.6cm</Height>
-                <Width>3.5698cm</Width>
-                <ZIndex>3</ZIndex>
+                <Height>0.59118cm</Height>
+                <Width>12.52299cm</Width>
+                <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1298,7 +1233,7 @@
                 <Left>0.37924cm</Left>
                 <Height>0.56472cm</Height>
                 <Width>2.97628cm</Width>
-                <ZIndex>4</ZIndex>
+                <ZIndex>3</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1309,18 +1244,18 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
-              <Textbox Name="Textbox52">
+              <Textbox Name="Textbox50">
                 <CanGrow>true</CanGrow>
                 <KeepTogether>true</KeepTogether>
                 <Paragraphs>
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>:</Value>
+                        <Value>:   </Value>
                         <Style />
                       </TextRun>
                       <TextRun>
-                        <Value>=First(Fields!cNomProv.Value, "dsclienteN")</Value>
+                        <Value>=First(Fields!cNomDist.Value, "dsclienteN")</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -1329,12 +1264,12 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <rd:DefaultName>Textbox52</rd:DefaultName>
-                <Top>4.17216cm</Top>
-                <Left>3.3908cm</Left>
+                <rd:DefaultName>Textbox50</rd:DefaultName>
+                <Top>3.52833cm</Top>
+                <Left>3.4152cm</Left>
                 <Height>0.6cm</Height>
-                <Width>3.5942cm</Width>
-                <ZIndex>5</ZIndex>
+                <Width>4.97555cm</Width>
+                <ZIndex>4</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1366,43 +1301,7 @@
                 <Left>0.31754cm</Left>
                 <Height>0.6cm</Height>
                 <Width>3.03798cm</Width>
-                <ZIndex>6</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox54">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>:</Value>
-                        <Style />
-                      </TextRun>
-                      <TextRun>
-                        <Value>=First(Fields!cNomDep.Value, "dsclienteN")</Value>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Left</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox54</rd:DefaultName>
-                <Top>4.77216cm</Top>
-                <Left>3.35552cm</Left>
-                <Height>0.6cm</Height>
-                <Width>6.92387cm</Width>
-                <ZIndex>7</ZIndex>
+                <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1434,7 +1333,43 @@
                 <Left>0.37924cm</Left>
                 <Height>0.56472cm</Height>
                 <Width>2.97628cm</Width>
-                <ZIndex>8</ZIndex>
+                <ZIndex>6</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox54">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>:   </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!cNomDep.Value, "dsclienteN")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox54</rd:DefaultName>
+                <Top>4.77216cm</Top>
+                <Left>3.4152cm</Left>
+                <Height>0.6cm</Height>
+                <Width>6.92387cm</Width>
+                <ZIndex>7</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1466,7 +1401,7 @@
                 <Left>0.34396cm</Left>
                 <Height>0.72319cm</Height>
                 <Width>15.05416cm</Width>
-                <ZIndex>9</ZIndex>
+                <ZIndex>8</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1484,7 +1419,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=IIf(Sum(Fields!cTipPers.Value, "dsclienteN")="1","Nombre","Razon Social")</Value>
+                        <Value>=IIf(Sum(Fields!cTipPers.Value, "dsclienteN")="0","Nombre","Razon Social")</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -1498,7 +1433,7 @@
                 <Left>0.37924cm</Left>
                 <Height>0.56445cm</Height>
                 <Width>2.97628cm</Width>
-                <ZIndex>10</ZIndex>
+                <ZIndex>9</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1516,7 +1451,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>:</Value>
+                        <Value>:   </Value>
                         <Style />
                       </TextRun>
                       <TextRun>
@@ -1534,7 +1469,7 @@
                 <Left>3.45724cm</Left>
                 <Height>0.55563cm</Height>
                 <Width>12.5318cm</Width>
-                <ZIndex>11</ZIndex>
+                <ZIndex>10</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1552,7 +1487,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>:</Value>
+                        <Value>:   </Value>
                         <Style />
                       </TextRun>
                       <TextRun>
@@ -1570,7 +1505,7 @@
                 <Left>3.4152cm</Left>
                 <Height>0.56499cm</Height>
                 <Width>4.97555cm</Width>
-                <ZIndex>12</ZIndex>
+                <ZIndex>11</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1602,7 +1537,7 @@
                 <Left>0.37924cm</Left>
                 <Height>0.6cm</Height>
                 <Width>2.97628cm</Width>
-                <ZIndex>13</ZIndex>
+                <ZIndex>12</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1620,7 +1555,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>:</Value>
+                        <Value>:   </Value>
                         <Style />
                       </TextRun>
                       <TextRun>
@@ -1638,6 +1573,40 @@
                 <Left>3.3908cm</Left>
                 <Height>0.56473cm</Height>
                 <Width>4.99995cm</Width>
+                <ZIndex>13</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox14">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>:   </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!cNomProv.Value, "dsclienteN")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox14</rd:DefaultName>
+                <Top>4.17216cm</Top>
+                <Left>3.4152cm</Left>
+                <Height>0.52944cm</Height>
+                <Width>4.97555cm</Width>
                 <ZIndex>14</ZIndex>
                 <Style>
                   <Border>
@@ -1655,13 +1624,42 @@
             <Left>0.04408cm</Left>
             <Height>6.2541cm</Height>
             <Width>16.30654cm</Width>
-            <ZIndex>15</ZIndex>
+            <ZIndex>14</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
               </Border>
             </Style>
           </Rectangle>
+          <Textbox Name="fusion">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIf(Parameters!cboMotivo.Value="MOTI0003", " X "," ")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>5.1303cm</Top>
+            <Left>15.60509cm</Left>
+            <Height>0.6cm</Height>
+            <Width>0.49326cm</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
           <Textbox Name="Textbox55">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
