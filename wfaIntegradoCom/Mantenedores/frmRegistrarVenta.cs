@@ -2287,9 +2287,7 @@ namespace wfaIntegradoCom.Mantenedores
             HorasRestarFin = 24 - HorasFin;
             fechaFinal  = Convert.ToDateTime(fechaFinal.ToString("dd") + "/" + (fechaFinal.Month) + "/" + fechaFinal.Year+" 23:59:59");
             TipoFiltro = cboTipoFiltro.SelectedValue.ToString();
-
-            //fechaFinal = fechaFinal.AddHours(HorasRestarFin);
-            //}            
+       
             
             Int32 filas = 10;
             Double TotalGanacia = 0;
