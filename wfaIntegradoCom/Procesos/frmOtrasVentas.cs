@@ -115,8 +115,7 @@ namespace wfaIntegradoCom.Procesos
                        else if (lstOtrasVentas[0].idTipoTransaccion == 4 && lstOtrasVentas[0].idObjVenta == 1)
                        {
                             estad = false;
-                            //fnListarClienteEspecifico(dgDocumento, txtDocumento, txtIdCliente, txtClientesN_A, txtDireccion, txtTelefono,
-                            //       txtPlacaT, txtSerie, txtModelo, txtMarca);
+                          
                         }
 
                     }
