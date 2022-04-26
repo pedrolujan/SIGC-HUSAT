@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarVentas));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
@@ -37,8 +40,16 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lblTotaGanancia = new System.Windows.Forms.Label();
             this.cboTipoFiltro = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.siticoneComboBox4 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.siticoneComboBox3 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.siticoneComboBox2 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.siticoneComboBox1 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.cboEstadoContrato = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.cboTipoVetaBusq = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBuscarMonto = new Siticone.UI.WinForms.SiticoneCheckBox();
@@ -50,19 +61,27 @@
             this.label14 = new System.Windows.Forms.Label();
             this.dtpFechaInicialBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.txtBuscarVentas = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.siticoneComboBox1 = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.siticoneComboBox2 = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.siticoneComboBox3 = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.siticoneComboBox4 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.siticoneDataGridView1 = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siticoneGroupBox1.SuspendLayout();
             this.pnMontoGanania.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.gbBuscarListaVentas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.siticoneDataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // siticoneGroupBox1
@@ -97,7 +116,7 @@
             this.siticoneGroupBox1.Location = new System.Drawing.Point(10, 22);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(1188, 161);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(1188, 168);
             this.siticoneGroupBox1.TabIndex = 86;
             this.siticoneGroupBox1.Text = "Buscar por";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -7);
@@ -110,9 +129,9 @@
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label24.Location = new System.Drawing.Point(771, 59);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(128, 17);
+            this.label24.Size = new System.Drawing.Size(56, 17);
             this.label24.TabIndex = 131;
-            this.label24.Text = "Filtro por Caducidad";
+            this.label24.Text = "Usuario:";
             // 
             // label38
             // 
@@ -197,6 +216,94 @@
             this.cboTipoFiltro.Size = new System.Drawing.Size(177, 36);
             this.cboTipoFiltro.TabIndex = 228;
             // 
+            // siticoneComboBox4
+            // 
+            this.siticoneComboBox4.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneComboBox4.BorderColor = System.Drawing.Color.Silver;
+            this.siticoneComboBox4.BorderRadius = 5;
+            this.siticoneComboBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.siticoneComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.siticoneComboBox4.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.siticoneComboBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneComboBox4.HoveredState.Parent = this.siticoneComboBox4;
+            this.siticoneComboBox4.ItemHeight = 30;
+            this.siticoneComboBox4.ItemsAppearance.Parent = this.siticoneComboBox4;
+            this.siticoneComboBox4.Location = new System.Drawing.Point(589, 114);
+            this.siticoneComboBox4.Name = "siticoneComboBox4";
+            this.siticoneComboBox4.ShadowDecoration.Parent = this.siticoneComboBox4;
+            this.siticoneComboBox4.Size = new System.Drawing.Size(147, 36);
+            this.siticoneComboBox4.TabIndex = 228;
+            // 
+            // siticoneComboBox3
+            // 
+            this.siticoneComboBox3.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneComboBox3.BorderColor = System.Drawing.Color.Silver;
+            this.siticoneComboBox3.BorderRadius = 5;
+            this.siticoneComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.siticoneComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.siticoneComboBox3.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.siticoneComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneComboBox3.HoveredState.Parent = this.siticoneComboBox3;
+            this.siticoneComboBox3.ItemHeight = 30;
+            this.siticoneComboBox3.ItemsAppearance.Parent = this.siticoneComboBox3;
+            this.siticoneComboBox3.Location = new System.Drawing.Point(589, 61);
+            this.siticoneComboBox3.Name = "siticoneComboBox3";
+            this.siticoneComboBox3.ShadowDecoration.Parent = this.siticoneComboBox3;
+            this.siticoneComboBox3.Size = new System.Drawing.Size(147, 36);
+            this.siticoneComboBox3.TabIndex = 228;
+            // 
+            // siticoneComboBox2
+            // 
+            this.siticoneComboBox2.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneComboBox2.BorderColor = System.Drawing.Color.Silver;
+            this.siticoneComboBox2.BorderRadius = 5;
+            this.siticoneComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.siticoneComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.siticoneComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.siticoneComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneComboBox2.HoveredState.Parent = this.siticoneComboBox2;
+            this.siticoneComboBox2.ItemHeight = 30;
+            this.siticoneComboBox2.ItemsAppearance.Parent = this.siticoneComboBox2;
+            this.siticoneComboBox2.Location = new System.Drawing.Point(436, 114);
+            this.siticoneComboBox2.Name = "siticoneComboBox2";
+            this.siticoneComboBox2.ShadowDecoration.Parent = this.siticoneComboBox2;
+            this.siticoneComboBox2.Size = new System.Drawing.Size(147, 36);
+            this.siticoneComboBox2.TabIndex = 228;
+            // 
+            // siticoneComboBox1
+            // 
+            this.siticoneComboBox1.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneComboBox1.BorderColor = System.Drawing.Color.Silver;
+            this.siticoneComboBox1.BorderRadius = 5;
+            this.siticoneComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.siticoneComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.siticoneComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.siticoneComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneComboBox1.HoveredState.Parent = this.siticoneComboBox1;
+            this.siticoneComboBox1.ItemHeight = 30;
+            this.siticoneComboBox1.ItemsAppearance.Parent = this.siticoneComboBox1;
+            this.siticoneComboBox1.Location = new System.Drawing.Point(436, 61);
+            this.siticoneComboBox1.Name = "siticoneComboBox1";
+            this.siticoneComboBox1.ShadowDecoration.Parent = this.siticoneComboBox1;
+            this.siticoneComboBox1.Size = new System.Drawing.Size(147, 36);
+            this.siticoneComboBox1.TabIndex = 228;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(589, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 17);
+            this.label4.TabIndex = 229;
+            this.label4.Text = "Estado Contrato";
+            // 
             // cboEstadoContrato
             // 
             this.cboEstadoContrato.BackColor = System.Drawing.Color.Transparent;
@@ -216,6 +323,30 @@
             this.cboEstadoContrato.Size = new System.Drawing.Size(147, 36);
             this.cboEstadoContrato.TabIndex = 228;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(436, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 17);
+            this.label2.TabIndex = 229;
+            this.label2.Text = "Plan";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(589, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 17);
+            this.label3.TabIndex = 229;
+            this.label3.Text = "TipoVenta";
+            // 
             // cboTipoVetaBusq
             // 
             this.cboTipoVetaBusq.BackColor = System.Drawing.Color.Transparent;
@@ -234,6 +365,18 @@
             this.cboTipoVetaBusq.ShadowDecoration.Parent = this.cboTipoVetaBusq;
             this.cboTipoVetaBusq.Size = new System.Drawing.Size(147, 36);
             this.cboTipoVetaBusq.TabIndex = 228;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(436, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.TabIndex = 229;
+            this.label1.Text = "Tipo Plan";
             // 
             // label23
             // 
@@ -407,7 +550,7 @@
             this.txtBuscarVentas.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.txtBuscarVentas.HoveredState.Parent = this.txtBuscarVentas;
             this.txtBuscarVentas.Location = new System.Drawing.Point(961, 78);
-            this.txtBuscarVentas.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtBuscarVentas.Margin = new System.Windows.Forms.Padding(5);
             this.txtBuscarVentas.Name = "txtBuscarVentas";
             this.txtBuscarVentas.PasswordChar = '\0';
             this.txtBuscarVentas.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -417,135 +560,168 @@
             this.txtBuscarVentas.Size = new System.Drawing.Size(222, 36);
             this.txtBuscarVentas.TabIndex = 230;
             // 
-            // label1
+            // siticoneDataGridView1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(436, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 17);
-            this.label1.TabIndex = 229;
-            this.label1.Text = "Tipo Plan";
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.siticoneDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.siticoneDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.siticoneDataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.siticoneDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.siticoneDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.siticoneDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.siticoneDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.siticoneDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.siticoneDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.siticoneDataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.siticoneDataGridView1.EnableHeadersVisualStyles = false;
+            this.siticoneDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.siticoneDataGridView1.Location = new System.Drawing.Point(4, 196);
+            this.siticoneDataGridView1.Name = "siticoneDataGridView1";
+            this.siticoneDataGridView1.RowHeadersVisible = false;
+            this.siticoneDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.siticoneDataGridView1.Size = new System.Drawing.Size(1183, 188);
+            this.siticoneDataGridView1.TabIndex = 87;
+            this.siticoneDataGridView1.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.siticoneDataGridView1.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.siticoneDataGridView1.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.Height = 59;
+            this.siticoneDataGridView1.ThemeStyle.ReadOnly = false;
+            this.siticoneDataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.siticoneDataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.siticoneDataGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.siticoneDataGridView1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.siticoneDataGridView1.ThemeStyle.RowsStyle.Height = 22;
+            this.siticoneDataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.siticoneDataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // label2
+            // Column1
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(436, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 17);
-            this.label2.TabIndex = 229;
-            this.label2.Text = "Plan";
+            this.Column1.FillWeight = 70.26395F;
+            this.Column1.HeaderText = "N°";
+            this.Column1.Name = "Column1";
             // 
-            // siticoneComboBox1
+            // Column2
             // 
-            this.siticoneComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneComboBox1.BorderColor = System.Drawing.Color.Silver;
-            this.siticoneComboBox1.BorderRadius = 5;
-            this.siticoneComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.siticoneComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.siticoneComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.siticoneComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneComboBox1.HoveredState.Parent = this.siticoneComboBox1;
-            this.siticoneComboBox1.ItemHeight = 30;
-            this.siticoneComboBox1.ItemsAppearance.Parent = this.siticoneComboBox1;
-            this.siticoneComboBox1.Location = new System.Drawing.Point(436, 61);
-            this.siticoneComboBox1.Name = "siticoneComboBox1";
-            this.siticoneComboBox1.ShadowDecoration.Parent = this.siticoneComboBox1;
-            this.siticoneComboBox1.Size = new System.Drawing.Size(147, 36);
-            this.siticoneComboBox1.TabIndex = 228;
+            this.Column2.FillWeight = 85.82585F;
+            this.Column2.HeaderText = "Fecha Venta";
+            this.Column2.Name = "Column2";
             // 
-            // siticoneComboBox2
+            // Column3
             // 
-            this.siticoneComboBox2.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneComboBox2.BorderColor = System.Drawing.Color.Silver;
-            this.siticoneComboBox2.BorderRadius = 5;
-            this.siticoneComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.siticoneComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.siticoneComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.siticoneComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneComboBox2.HoveredState.Parent = this.siticoneComboBox2;
-            this.siticoneComboBox2.ItemHeight = 30;
-            this.siticoneComboBox2.ItemsAppearance.Parent = this.siticoneComboBox2;
-            this.siticoneComboBox2.Location = new System.Drawing.Point(436, 114);
-            this.siticoneComboBox2.Name = "siticoneComboBox2";
-            this.siticoneComboBox2.ShadowDecoration.Parent = this.siticoneComboBox2;
-            this.siticoneComboBox2.Size = new System.Drawing.Size(147, 36);
-            this.siticoneComboBox2.TabIndex = 228;
+            this.Column3.FillWeight = 85.82585F;
+            this.Column3.HeaderText = "Fecha Inicio Contrato";
+            this.Column3.Name = "Column3";
             // 
-            // label3
+            // Column4
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(589, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 17);
-            this.label3.TabIndex = 229;
-            this.label3.Text = "TipoVenta";
+            this.Column4.FillWeight = 85.82585F;
+            this.Column4.HeaderText = "Fecha Fin Contrato";
+            this.Column4.Name = "Column4";
             // 
-            // label4
+            // Column5
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(589, 97);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 17);
-            this.label4.TabIndex = 229;
-            this.label4.Text = "Estado Contrato";
+            this.Column5.FillWeight = 85.82585F;
+            this.Column5.HeaderText = "Vehiculos";
+            this.Column5.Name = "Column5";
             // 
-            // siticoneComboBox3
+            // Column6
             // 
-            this.siticoneComboBox3.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneComboBox3.BorderColor = System.Drawing.Color.Silver;
-            this.siticoneComboBox3.BorderRadius = 5;
-            this.siticoneComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.siticoneComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.siticoneComboBox3.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.siticoneComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneComboBox3.HoveredState.Parent = this.siticoneComboBox3;
-            this.siticoneComboBox3.ItemHeight = 30;
-            this.siticoneComboBox3.ItemsAppearance.Parent = this.siticoneComboBox3;
-            this.siticoneComboBox3.Location = new System.Drawing.Point(589, 61);
-            this.siticoneComboBox3.Name = "siticoneComboBox3";
-            this.siticoneComboBox3.ShadowDecoration.Parent = this.siticoneComboBox3;
-            this.siticoneComboBox3.Size = new System.Drawing.Size(147, 36);
-            this.siticoneComboBox3.TabIndex = 228;
+            this.Column6.FillWeight = 85.82585F;
+            this.Column6.HeaderText = "Cliente/ Razon Social";
+            this.Column6.Name = "Column6";
             // 
-            // siticoneComboBox4
+            // Column7
             // 
-            this.siticoneComboBox4.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneComboBox4.BorderColor = System.Drawing.Color.Silver;
-            this.siticoneComboBox4.BorderRadius = 5;
-            this.siticoneComboBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.siticoneComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.siticoneComboBox4.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.siticoneComboBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneComboBox4.HoveredState.Parent = this.siticoneComboBox4;
-            this.siticoneComboBox4.ItemHeight = 30;
-            this.siticoneComboBox4.ItemsAppearance.Parent = this.siticoneComboBox4;
-            this.siticoneComboBox4.Location = new System.Drawing.Point(589, 114);
-            this.siticoneComboBox4.Name = "siticoneComboBox4";
-            this.siticoneComboBox4.ShadowDecoration.Parent = this.siticoneComboBox4;
-            this.siticoneComboBox4.Size = new System.Drawing.Size(147, 36);
-            this.siticoneComboBox4.TabIndex = 228;
+            this.Column7.FillWeight = 85.82585F;
+            this.Column7.HeaderText = "Plan";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.FillWeight = 85.82585F;
+            this.Column8.HeaderText = "Tipo Venta";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 85.82585F;
+            this.Column9.HeaderText = "Estado";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.FillWeight = 85.82585F;
+            this.Column10.HeaderText = "Estado Contrato";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.FillWeight = 85.82585F;
+            this.Column11.HeaderText = "Usuario";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.FillWeight = 85.82585F;
+            this.Column12.HeaderText = "Importe Total";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.FillWeight = 85.82585F;
+            this.Column13.HeaderText = "Estado Renovacion";
+            this.Column13.Name = "Column13";
+            // 
+            // Column14
+            // 
+            this.Column14.FillWeight = 85.82585F;
+            this.Column14.HeaderText = "Column14";
+            this.Column14.Name = "Column14";
             // 
             // frmBuscarVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1233, 450);
+            this.Controls.Add(this.siticoneDataGridView1);
             this.Controls.Add(this.siticoneGroupBox1);
             this.Name = "frmBuscarVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -557,6 +733,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.gbBuscarListaVentas.ResumeLayout(false);
             this.gbBuscarListaVentas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.siticoneDataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -592,5 +769,20 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private Siticone.UI.WinForms.SiticoneDataGridView siticoneDataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
     }
 }
