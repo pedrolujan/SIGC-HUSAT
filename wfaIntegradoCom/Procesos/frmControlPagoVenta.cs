@@ -482,8 +482,6 @@ namespace wfaIntegradoCom.Procesos
                                 {
                                     tiempoTranscurrido = "\n❌ Retraso ( " + faltaDias + " )" + cDias;
                                 }
-
-
                             }
                             else
                             {
