@@ -280,6 +280,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
+            this.btnExportarBusqueda = new Siticone.UI.WinForms.SiticoneButton();
             this.siticonePanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -3129,6 +3130,7 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
             this.siticoneGroupBox1.BorderRadius = 5;
+            this.siticoneGroupBox1.Controls.Add(this.btnExportarBusqueda);
             this.siticoneGroupBox1.Controls.Add(this.chkRenovaciones);
             this.siticoneGroupBox1.Controls.Add(this.label24);
             this.siticoneGroupBox1.Controls.Add(this.label38);
@@ -3343,7 +3345,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnBuscarMonto.CheckedState.BorderThickness = 0;
             this.btnBuscarMonto.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnBuscarMonto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnBuscarMonto.Location = new System.Drawing.Point(1078, 34);
+            this.btnBuscarMonto.Location = new System.Drawing.Point(761, 37);
             this.btnBuscarMonto.Name = "btnBuscarMonto";
             this.btnBuscarMonto.Size = new System.Drawing.Size(108, 21);
             this.btnBuscarMonto.TabIndex = 227;
@@ -3487,7 +3489,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtBuscarVentas.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.txtBuscarVentas.HoveredState.Parent = this.txtBuscarVentas;
             this.txtBuscarVentas.Location = new System.Drawing.Point(958, 78);
-            this.txtBuscarVentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscarVentas.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscarVentas.Name = "txtBuscarVentas";
             this.txtBuscarVentas.PasswordChar = '\0';
             this.txtBuscarVentas.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -3668,6 +3670,28 @@ namespace wfaIntegradoCom.Mantenedores
             this.gunaLabel10.Size = new System.Drawing.Size(89, 15);
             this.gunaLabel10.TabIndex = 49;
             this.gunaLabel10.Text = "VENTA - HUSAT";
+            // 
+            // btnExportarBusqueda
+            // 
+            this.btnExportarBusqueda.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnExportarBusqueda.BorderRadius = 5;
+            this.btnExportarBusqueda.BorderThickness = 1;
+            this.btnExportarBusqueda.CheckedState.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportarBusqueda.CustomImages.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.FillColor = System.Drawing.Color.Transparent;
+            this.btnExportarBusqueda.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnExportarBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnExportarBusqueda.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExportarBusqueda.HoveredState.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.Image = global::wfaIntegradoCom.Properties.Resources.pdf_32px;
+            this.btnExportarBusqueda.Location = new System.Drawing.Point(1038, 36);
+            this.btnExportarBusqueda.Name = "btnExportarBusqueda";
+            this.btnExportarBusqueda.ShadowDecoration.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.Size = new System.Drawing.Size(145, 27);
+            this.btnExportarBusqueda.TabIndex = 265;
+            this.btnExportarBusqueda.Text = "Exportar Busqueda";
+            this.btnExportarBusqueda.Visible = false;
             // 
             // frmRegistrarVenta
             // 
@@ -3945,5 +3969,6 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn DCTOIMPORTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private Siticone.UI.WinForms.SiticoneButton btnExportarBusqueda;
     }
 }
