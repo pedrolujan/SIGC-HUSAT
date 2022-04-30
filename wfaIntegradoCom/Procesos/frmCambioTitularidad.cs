@@ -156,9 +156,6 @@ namespace wfaIntegradoCom.Procesos
             DataTable datResultado = new DataTable();
             try
             {
-
-
-
                 datResultado = datTitularidad.BlBuscarTitularidadEspecificos(condicion, Convert.ToInt32(dgConsultaCliente.Rows[e.RowIndex].Cells[0].Value));
                 if (datResultado.Rows.Count > 0)
                 {
@@ -182,6 +179,8 @@ namespace wfaIntegradoCom.Procesos
                             cTiDo = Convert.ToInt32(drMenu["cTiDo"])
                         }) ;
                         Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboComprobanteP, "DOVE", lstClientes[0].cTiDo,0);
+
+
                         txtClienteNuevo.Text = lstClientes[0].cNombre + " " + lstClientes[0].cApePat + " " + lstClientes[0].cApeMat;
                         txtTelefonoNuevo.Text = Convert.ToString(drMenu["cTelCelular"]);
                         txtDireccionNuevo.Text = Convert.ToString(drMenu["cDireccion"]) != "" ? Convert.ToString(drMenu["cDireccion"]) : "No registro su Direccion";

@@ -55,6 +55,7 @@
     <Compile Include="DACargo.cs" />
     <Compile Include="DACategoria.cs" />
     <Compile Include="DACiclo.cs" />
+    <Compile Include="DAClienteVenta.cs" />
     <Compile Include="DAconsultas.cs" />
     <Compile Include="DAControlPagos.cs" />
     <Compile Include="DAEquipo.cs" />

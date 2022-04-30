@@ -261,7 +261,7 @@ namespace wfaIntegradoCom.Procesos
             this.siticoneGroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.siticoneGroupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.siticoneGroupBox1.ForeColor = System.Drawing.Color.White;
-            this.siticoneGroupBox1.Location = new System.Drawing.Point(20, 85);
+            this.siticoneGroupBox1.Location = new System.Drawing.Point(20, 91);
             this.siticoneGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
