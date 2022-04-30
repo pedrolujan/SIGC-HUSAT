@@ -2322,7 +2322,63 @@ namespace wfaIntegradoCom.Mantenedores
                 }
                 else if (tipoCon==-5)
                 {
-                    
+                    lstClientesBusq.Clear();
+                    Int32 y=0;
+                    foreach (DataRow dr in datVentaG.Rows)
+                    {
+                        
+                        Int32 restaAnio = 0;
+                        Int32 restaMeses = 0;
+                        Int32 faltaDias = 0;
+                        String strEstado = "";
+                        DateTime fechaFinalContrato = Convert.ToDateTime(Convert.ToDateTime(dr["periodoFinal"]).ToString("dd/MM/yyyy"));
+
+                        TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
+
+                        //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
+                        if (fechaActual > fechaFinalContrato)
+                        {
+                            tiket = fechaActual - fechaFinalContrato;
+                        }
+                        else
+                        {
+                            tiket = fechaFinalContrato - fechaActual;
+                        }
+                        DateTime totalTime = new DateTime(tiket.Ticks);
+                        restaAnio = totalTime.Year - 1;
+                        restaMeses = totalTime.Month - 1;
+                        faltaDias = Convert.ToInt32(totalTime.Day);
+                        if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA")
+                        {
+                            strEstado = "❌ ANULADA";
+                        }
+                        else
+                        {
+                            strEstado = fnMostrarEstadoRenovacion(fechaActual, fechaFinalContrato, restaAnio, restaMeses, faltaDias);
+                        }
+
+                        y += 1;
+                        lstClientesBusq.Add(new Cliente
+                        {
+                            idCliente = y,
+                            cNombre = Convert.ToString(dr["nombreCliente"]),
+                            cApePat = Convert.ToString(dr["cApePat"]),
+                            cApeMat = Convert.ToString(dr["cApeMat"]),
+                            cCliente = FunGeneral.FormatearCadenaTitleCase(dr["nombreCliente"] + " " + dr["cApePat"] + " " + dr["cApeMat"]),
+                            cTelCelular = Convert.ToString(dr["cTelCelular"]),
+                            dFecNac = fechaFinalContrato,
+                            cContactoNom1 = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dr["cContactoNom1"])),
+                            cContactoCel1 = Convert.ToString(dr["cContactoCel1"]),
+                            codigoVentaGen = Convert.ToString(dr["descripcionVehiculo"]),
+                            cEmpresa = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dr["plan"])),
+                            cCorreo = Convert.ToInt64(dr["TotalPago"]) < 50 ? "S/." + string.Format("{0:0.00}", 0): "S/." + string.Format("{0:0.00}", dr["TotalPago"]),
+                            cContactoNom2 = Convert.ToString(dr["plan"]),
+                            cTelFijo = strEstado,
+                            cDireccion = fechaFinalContrato.ToString("dd/MMM/yyyy")
+
+
+                        });
+                    }
                 }
                 else
                 {
@@ -4648,5 +4704,11 @@ namespace wfaIntegradoCom.Mantenedores
             
         }
 
+        private void btnExportarBusqueda_Click(object sender, EventArgs e)
+        {
+            fnBuscarListaVentas(dgvListaVentas, 0, 0, -5);
+            frmExportConsultasCronograma frmExport = new frmExportConsultasCronograma();
+            frmExport.Inicio(lstClientesBusq,"Lista de vehiculos para renovación. ", 1);
+        }
     }
 }

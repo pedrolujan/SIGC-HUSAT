@@ -16,10 +16,10 @@ namespace CapaDato
         private clsUtil objUtil;
         private object pcBuscar;
 
-        public DataTable DABuscarTitularidad(Int32 TipoCon, String pcBuscar)
+        public DataTable DABuscarTitularidad(Int32 TipoCon, String pcBuscar, Int32 idCliente)
         {
             DataTable dtResul = new DataTable();
-            SqlParameter[] pa = new SqlParameter[2];
+            SqlParameter[] pa = new SqlParameter[3];
 
             clsConexion objCnx = null;
             objUtil = new clsUtil();
@@ -28,8 +28,10 @@ namespace CapaDato
 
                 pa[0] = new SqlParameter("@PCBuscar", SqlDbType.VarChar, 30);
                 pa[0].Value = pcBuscar;
-                pa[1] = new SqlParameter("@TipoCon", SqlDbType.Int);
-                pa[1].Value = TipoCon;
+                pa[1] = new SqlParameter("@idCliente", SqlDbType.Int);
+                pa[1].Value = idCliente;
+                pa[2] = new SqlParameter("@TipoCon", SqlDbType.Int);
+                pa[2].Value = TipoCon;
                 objCnx = new clsConexion("");
 
                 dtResul = objCnx.EjecutarProcedimientoDT("uspBuscarTitularidad", pa);

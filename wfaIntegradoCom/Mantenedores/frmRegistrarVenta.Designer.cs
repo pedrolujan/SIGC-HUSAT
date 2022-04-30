@@ -246,6 +246,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.idTipoTarida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.btnExportarBusqueda = new Siticone.UI.WinForms.SiticoneButton();
             this.chkRenovaciones = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
@@ -280,7 +281,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
-            this.btnExportarBusqueda = new Siticone.UI.WinForms.SiticoneButton();
             this.siticonePanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -3157,6 +3157,29 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneGroupBox1.Text = "Buscar por";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -7);
             // 
+            // btnExportarBusqueda
+            // 
+            this.btnExportarBusqueda.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnExportarBusqueda.BorderRadius = 5;
+            this.btnExportarBusqueda.BorderThickness = 1;
+            this.btnExportarBusqueda.CheckedState.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportarBusqueda.CustomImages.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.FillColor = System.Drawing.Color.Transparent;
+            this.btnExportarBusqueda.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnExportarBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnExportarBusqueda.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExportarBusqueda.HoveredState.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.Image = global::wfaIntegradoCom.Properties.Resources.pdf_32px;
+            this.btnExportarBusqueda.Location = new System.Drawing.Point(1038, 36);
+            this.btnExportarBusqueda.Name = "btnExportarBusqueda";
+            this.btnExportarBusqueda.ShadowDecoration.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.Size = new System.Drawing.Size(145, 27);
+            this.btnExportarBusqueda.TabIndex = 265;
+            this.btnExportarBusqueda.Text = "Exportar Busqueda";
+            this.btnExportarBusqueda.Visible = false;
+            this.btnExportarBusqueda.Click += new System.EventHandler(this.btnExportarBusqueda_Click);
+            // 
             // chkRenovaciones
             // 
             this.chkRenovaciones.AutoSize = true;
@@ -3670,28 +3693,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.gunaLabel10.Size = new System.Drawing.Size(89, 15);
             this.gunaLabel10.TabIndex = 49;
             this.gunaLabel10.Text = "VENTA - HUSAT";
-            // 
-            // btnExportarBusqueda
-            // 
-            this.btnExportarBusqueda.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnExportarBusqueda.BorderRadius = 5;
-            this.btnExportarBusqueda.BorderThickness = 1;
-            this.btnExportarBusqueda.CheckedState.Parent = this.btnExportarBusqueda;
-            this.btnExportarBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExportarBusqueda.CustomImages.Parent = this.btnExportarBusqueda;
-            this.btnExportarBusqueda.FillColor = System.Drawing.Color.Transparent;
-            this.btnExportarBusqueda.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnExportarBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnExportarBusqueda.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnExportarBusqueda.HoveredState.Parent = this.btnExportarBusqueda;
-            this.btnExportarBusqueda.Image = global::wfaIntegradoCom.Properties.Resources.pdf_32px;
-            this.btnExportarBusqueda.Location = new System.Drawing.Point(1038, 36);
-            this.btnExportarBusqueda.Name = "btnExportarBusqueda";
-            this.btnExportarBusqueda.ShadowDecoration.Parent = this.btnExportarBusqueda;
-            this.btnExportarBusqueda.Size = new System.Drawing.Size(145, 27);
-            this.btnExportarBusqueda.TabIndex = 265;
-            this.btnExportarBusqueda.Text = "Exportar Busqueda";
-            this.btnExportarBusqueda.Visible = false;
             // 
             // frmRegistrarVenta
             // 

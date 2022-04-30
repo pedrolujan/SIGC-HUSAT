@@ -12,12 +12,12 @@ namespace CapaNegocio
     public class BLTitularidad
     {
         private object cliente;
-        public DataTable BlBuscarTitularidad(Int32 condicion, String dato)
+        public DataTable BlBuscarTitularidad(Int32 condicion, String dato, Int32 idCliente)
         {
             DATitularidad daobjCliente = new DATitularidad();
             try
             {
-                return (daobjCliente.DABuscarTitularidad(condicion, dato));
+                return daobjCliente.DABuscarTitularidad(condicion, dato, idCliente);
 
             }
             catch (Exception ex)

@@ -40,7 +40,7 @@ namespace wfaIntegradoCom.Consultas
         private void CargarReporte(List<Cliente> lstDocumento,String tituloInforme)
         {
             //List<PagoPrincipal> lstPagoPrinci = lstPP;
-            ReportParameter[] parameters = new ReportParameter[3];
+            ReportParameter[] parameters = new ReportParameter[5];
             ///Mostrar datos en el reporte
             reportViewer1.Reset();
             reportViewer1.LocalReport.DataSources.Clear();
@@ -49,7 +49,8 @@ namespace wfaIntegradoCom.Consultas
             parameters[0] = new ReportParameter("rpSucursal", Variables.gsSucursal);
             parameters[1] = new ReportParameter("rpEmpresaDir", Variables.gsEmpresaDir);
             parameters[2] = new ReportParameter("rpRuc", Variables.gsRuc);
-            parameters[2] = new ReportParameter("Titulo", tituloInforme);
+            parameters[3] = new ReportParameter("Titulo", tituloInforme);
+            parameters[4] = new ReportParameter("tipoCon", TipoCon.ToString());
             reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.frmExportConsultasCronograma.rdlc";
             reportViewer1.LocalReport.SetParameters(parameters);
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dtCliente", lstDocumento));
