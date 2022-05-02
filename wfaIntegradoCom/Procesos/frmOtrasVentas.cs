@@ -77,12 +77,25 @@ namespace wfaIntegradoCom.Procesos
         static DateTime dtFechaTitularidad = Variables.gdFechaSis;
         String msgPLACA;
         static Boolean estMostrarGb = false;
+        static Boolean estOcultarFila = false;
         Boolean estadoTabla, estMoneda, estTipPersona, estTipDocumento, estTipoDescuento, estPLACA, estadoFechaPago, estCliente, estDocumentoEmitir, estImporte;
         String lblMoneda, lblTipPersona, lblTipDocumento, lblTipoDescuento,lblCliente, lblDocumentoEmitir;
         public  void fnObtenerObjVentas(OtrasVentas clsOtrasVentas)
         {
 
-            
+            if ((lstOtrasVentas.Count==0 && clsOtrasVentas.idTipoTransaccion==4) || (lstOtrasVentas.Count == 1 && lstOtrasVentas[0].idTipoTransaccion==4 && clsOtrasVentas.idTipoTransaccion == 4))
+            {
+                estOcultarFila = false;
+            }
+            else if((lstOtrasVentas.Count == 1 && clsOtrasVentas.idTipoTransaccion == 4))
+            {
+                estOcultarFila = false;
+            }
+            else
+            {
+                estOcultarFila = true;
+
+            }
             OtrasVentas valorRepetido = lstOtrasVentas.Find(i=>(i.idObjVenta== clsOtrasVentas.idObjVenta) && (i.idTipoTransaccion==clsOtrasVentas.idTipoTransaccion));
             OtrasVentas ifServicio = lstOtrasVentas.Find(i=>(i.idTipoTransaccion==4));
             //if (ifServicio != null)
@@ -113,7 +126,15 @@ namespace wfaIntegradoCom.Procesos
                             {
                                 if (clsOtrasVentas.idTipoTransaccion == 4 && (clsObjetoEsxistente.idTipoTransaccion!=4 || lstOtrasVentas.Count>0))
                                 {
-                                    MessageBox.Show("Opcion restringida-> no puedes mesclar productos con servicios", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    if (lstOtrasVentas.Count==0)
+                                    {
+                                        lstOtrasVentas.Add(clsOtrasVentas);
+                                        estMostrarGb = fnActivarEstados(lstOtrasVentas[0].idTipoTransaccion, lstOtrasVentas[0].idObjVenta, 0);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Opcion restringida-> no puedes mesclar productos con servicios", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
 
                                 }
                                 else
@@ -127,6 +148,7 @@ namespace wfaIntegradoCom.Procesos
                         }
                         else
                         {
+
                             Int32 indiceLista = lstOtrasVentas.FindIndex(i => i.idObjVenta == IdObjetoExistente);
 
                             lstOtrasVentas[indiceLista] = clsOtrasVentas;
@@ -405,7 +427,7 @@ namespace wfaIntegradoCom.Procesos
                 fnHabilitarDescuento(false);
                 lstOtrasVentas = new List<OtrasVentas>();
                 estadoTabla=false;
-                fnLinpiar();
+                fnLimpiarDatosActecesor();
                 dgConsulta.Visible = false;
                
             }
@@ -1183,9 +1205,8 @@ namespace wfaIntegradoCom.Procesos
 
             if (posicionColumna == dgOtrasVentas.Columns["dgbtnNuevo"].Index && e.RowIndex >= 0)
             {                
-              fnProcesarDatos(filaSeleccionada);              
-
-
+                fnProcesarDatos(filaSeleccionada);
+                fnLimpiarDatosActecesor();
             }
 
             if (posicionColumna == dgOtrasVentas.Columns["dgbtnEliminar"].Index && e.RowIndex >= 0)
@@ -1229,6 +1250,7 @@ namespace wfaIntegradoCom.Procesos
             estadoTabla = true;
 
             gbDatosVehiculo.Visible = estMostrarGb;
+            dgOtrasVentas.AllowUserToAddRows=estOcultarFila;
             fncambiarPosicionGB(estMostrarGb);
         }
         private void fncambiarPosicionGB(Boolean estado)
@@ -2100,38 +2122,9 @@ namespace wfaIntegradoCom.Procesos
 
             lnTipoConCambio = 1;
 
-            fnListarDatosCliente(lnTipoCon, e);
+            fnListarDatosCliente(lnTipoConCambio, e);
         }
-        private void fnLinpiar()
-        {
-            lstDventa.Clear();
-            lstdocumentoV.Clear();
-            clsClienteDocumentoV= new Cliente();
-            //lstPagosTitularidad.Clear();
-            //txtImporte.Text = "";
-            txtBusca.Text = "";
-            //txtBuscarCliente.Text = "";
-            txtCliente.Text = "";
-            //txtClienteNuevo.Text = "";
-            //txtCorreo.Text = "";
-            //txtDireccionNuevo.Text = "";
-            //txtdni.Text = "";
-            //txtDniNuevo.Text = "";
-            //txtTelefono.Text = "";
-            //txtTelefonoNuevo.Text = "";
-            txtSerie.Text = "";
-            txtPlacaT.Text = "";
-            txtModelo.Text = "";
-            txtMarca.Text = "";
-            //TxtSubT.Text = "";
-            //txtTotal.Text = "";
-            //txtIGV.Text = "";
-
-
-
-
-
-        }
+       
         private void fnListarDatosCliente(int condicion, DataGridViewCellEventArgs e)
         {
             clsUtil objUtil = new clsUtil();
@@ -2148,7 +2141,7 @@ namespace wfaIntegradoCom.Procesos
                     lstvehiculo.Clear();
                     lstModelo.Clear();
                     lstMarca.Clear();
-                    fnLinpiar();
+                    fnLimpiarDatosActecesor();
                     Titularidad clsTitu = new Titularidad();
                     clsTitu.idModelo = 0;
 
@@ -2211,6 +2204,20 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
+        private void fnLimpiarDatosActecesor()
+        {
+            txtCliente.Text="";
+            txtPlacaT.Text="";
+            txtSerie.Text="";
+            txtMarca.Text="";
+            txtModelo.Text="";
+            clsClienteAntecesor = new Cliente();
+            lstvehiculo.Clear();
+            lstMarca.Clear();
+            lstModelo.Clear();
+
+
+        }
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             //fnBuscarDatosCliente(0);
@@ -2403,6 +2410,7 @@ namespace wfaIntegradoCom.Procesos
                 lblDocumentoEmitir = result.Item2;
                 
             }
+            
         }
 
         private void txtIdCliente_TextChanged(object sender, EventArgs e)
@@ -2454,7 +2462,7 @@ namespace wfaIntegradoCom.Procesos
                                        xmlDetalleVentas= fnGenerarDetalleOtrasVentas(),
                                        xmlTotalesVenta= fnGenerarTotalesOtrasVentas()
                                     });
-                                    blnResultado = objOtrasVentas.blGuardarOtrasVentas(fnRecorrerGrilla(), lstPagosTrand, xmlDocumentoVenta, lnTipoCon);
+                                    blnResultado = objOtrasVentas.blGuardarOtrasVentas(lstDetalleVenta, lstPagosTrand, xmlDocumentoVenta, lnTipoCon);
                                     if (blnResultado)
                                     {
                                         //blnResultado = fnObtenerPreciosxProductoxUM(idEquipo);
