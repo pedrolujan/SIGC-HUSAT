@@ -30,10 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarVentas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.erPlan = new System.Windows.Forms.Label();
             this.imgPlan = new System.Windows.Forms.PictureBox();
             this.erTipoPlan = new System.Windows.Forms.Label();
             this.imgTipoPlanP = new System.Windows.Forms.PictureBox();
@@ -62,20 +63,9 @@
             this.dtpFechaInicialBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.txtBuscarVentas = new Siticone.UI.WinForms.SiticoneTextBox();
             this.dgDatosVenta = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmsImpresion = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tlsDocumentoVenta = new System.Windows.Forms.ToolStripMenuItem();
+            this.ActaInstalacion = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTop = new Siticone.UI.WinForms.SiticonePanel();
             this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
@@ -91,10 +81,23 @@
             this.btnTotalReg = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.btnTotalPag = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label41 = new System.Windows.Forms.Label();
-            this.cmsImpresion = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tlsDocumentoVenta = new System.Windows.Forms.ToolStripMenuItem();
-            this.ActaInstalacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.erPlan = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lvBtnImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoPlanP)).BeginInit();
@@ -103,10 +106,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.gbBuscarListaVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDatosVenta)).BeginInit();
+            this.cmsImpresion.SuspendLayout();
             this.pnlTop.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
             this.gbPaginacion.SuspendLayout();
-            this.cmsImpresion.SuspendLayout();
             this.SuspendLayout();
             // 
             // siticoneGroupBox1
@@ -141,11 +144,24 @@
             this.siticoneGroupBox1.Location = new System.Drawing.Point(10, 66);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(1188, 193);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(1283, 193);
             this.siticoneGroupBox1.TabIndex = 86;
             this.siticoneGroupBox1.Text = "Buscar por:";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -7);
             this.siticoneGroupBox1.Click += new System.EventHandler(this.siticoneGroupBox1_Click);
+            // 
+            // erPlan
+            // 
+            this.erPlan.AutoSize = true;
+            this.erPlan.BackColor = System.Drawing.Color.Transparent;
+            this.erPlan.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erPlan.ForeColor = System.Drawing.Color.Red;
+            this.erPlan.Location = new System.Drawing.Point(544, 163);
+            this.erPlan.Name = "erPlan";
+            this.erPlan.Size = new System.Drawing.Size(32, 13);
+            this.erPlan.TabIndex = 372;
+            this.erPlan.Text = "Error";
+            this.erPlan.Visible = false;
             // 
             // imgPlan
             // 
@@ -243,7 +259,7 @@
             this.pnMontoGanania.Controls.Add(this.label9);
             this.pnMontoGanania.Controls.Add(this.lblTotaGanancia);
             this.pnMontoGanania.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.pnMontoGanania.Location = new System.Drawing.Point(734, 1);
+            this.pnMontoGanania.Location = new System.Drawing.Point(829, 1);
             this.pnMontoGanania.Name = "pnMontoGanania";
             this.pnMontoGanania.ShadowDecoration.Parent = this.pnMontoGanania;
             this.pnMontoGanania.Size = new System.Drawing.Size(453, 30);
@@ -571,26 +587,28 @@
             // 
             // dgDatosVenta
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgDatosVenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgDatosVenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgDatosVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgDatosVenta.BackgroundColor = System.Drawing.Color.White;
             this.dgDatosVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgDatosVenta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgDatosVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDatosVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgDatosVenta.ColumnHeadersHeight = 59;
             this.dgDatosVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgDatosVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Column15,
+            this.codigoV,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -602,24 +620,25 @@
             this.Column10,
             this.Column11,
             this.Column12,
-            this.Column13,
-            this.Column14});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgDatosVenta.DefaultCellStyle = dataGridViewCellStyle9;
+            this.lvBtnImprimir,
+            this.Column16,
+            this.Column17});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgDatosVenta.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgDatosVenta.EnableHeadersVisualStyles = false;
             this.dgDatosVenta.GridColor = System.Drawing.Color.Silver;
-            this.dgDatosVenta.Location = new System.Drawing.Point(10, 269);
+            this.dgDatosVenta.Location = new System.Drawing.Point(10, 259);
             this.dgDatosVenta.Name = "dgDatosVenta";
             this.dgDatosVenta.RowHeadersVisible = false;
             this.dgDatosVenta.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgDatosVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgDatosVenta.Size = new System.Drawing.Size(1188, 234);
+            this.dgDatosVenta.Size = new System.Drawing.Size(1283, 289);
             this.dgDatosVenta.TabIndex = 87;
             this.dgDatosVenta.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgDatosVenta.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -648,89 +667,27 @@
             this.dgDatosVenta.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDatosVenta_CellMouseDown);
             this.dgDatosVenta.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgDatosVenta_CellPainting);
             // 
-            // Column1
+            // cmsImpresion
             // 
-            this.Column1.FillWeight = 19.64228F;
-            this.Column1.HeaderText = "N°";
-            this.Column1.Name = "Column1";
+            this.cmsImpresion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsDocumentoVenta,
+            this.ActaInstalacion});
+            this.cmsImpresion.Name = "cmsImpresiones";
+            this.cmsImpresion.Size = new System.Drawing.Size(186, 48);
             // 
-            // Column2
+            // tlsDocumentoVenta
             // 
-            this.Column2.FillWeight = 44.5043F;
-            this.Column2.HeaderText = "Fecha Venta";
-            this.Column2.Name = "Column2";
+            this.tlsDocumentoVenta.Name = "tlsDocumentoVenta";
+            this.tlsDocumentoVenta.Size = new System.Drawing.Size(185, 22);
+            this.tlsDocumentoVenta.Text = "Documento de Venta";
+            this.tlsDocumentoVenta.Click += new System.EventHandler(this.tlsDocumentoVenta_Click);
             // 
-            // Column3
+            // ActaInstalacion
             // 
-            this.Column3.FillWeight = 50.21885F;
-            this.Column3.HeaderText = "Fecha Inicio Contrato";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 50.72433F;
-            this.Column4.HeaderText = "Fecha Fin Contrato";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 55.35128F;
-            this.Column5.HeaderText = "Vehiculos";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.FillWeight = 98.79116F;
-            this.Column6.HeaderText = "Cliente/ Razon Social";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.FillWeight = 29.84816F;
-            this.Column7.HeaderText = "Plan";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.FillWeight = 29.84816F;
-            this.Column8.HeaderText = "Tipo Venta";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.FillWeight = 39.84816F;
-            this.Column9.HeaderText = "Estado";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.FillWeight = 41.10353F;
-            this.Column10.HeaderText = "Estado Contrato";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.FillWeight = 47.79313F;
-            this.Column11.HeaderText = "Usuario";
-            this.Column11.Name = "Column11";
-            // 
-            // Column12
-            // 
-            this.Column12.FillWeight = 39.84816F;
-            this.Column12.HeaderText = "Importe Total";
-            this.Column12.Name = "Column12";
-            // 
-            // Column13
-            // 
-            this.Column13.FillWeight = 89.573F;
-            this.Column13.HeaderText = "Estado Renovacion";
-            this.Column13.Name = "Column13";
-            // 
-            // Column14
-            // 
-            this.Column14.FillWeight = 30.20552F;
-            this.Column14.HeaderText = "";
-            this.Column14.Name = "Column14";
+            this.ActaInstalacion.Name = "ActaInstalacion";
+            this.ActaInstalacion.Size = new System.Drawing.Size(185, 22);
+            this.ActaInstalacion.Text = "Acta de Instalacion";
+            this.ActaInstalacion.Click += new System.EventHandler(this.ActaInstalacion_Click);
             // 
             // pnlTop
             // 
@@ -742,7 +699,7 @@
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.ShadowDecoration.Parent = this.pnlTop;
-            this.pnlTop.Size = new System.Drawing.Size(1233, 29);
+            this.pnlTop.Size = new System.Drawing.Size(1305, 29);
             this.pnlTop.TabIndex = 88;
             // 
             // siticoneControlBox2
@@ -753,7 +710,7 @@
             this.siticoneControlBox2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.siticoneControlBox2.HoveredState.Parent = this.siticoneControlBox2;
             this.siticoneControlBox2.IconColor = System.Drawing.Color.White;
-            this.siticoneControlBox2.Location = new System.Drawing.Point(1143, 0);
+            this.siticoneControlBox2.Location = new System.Drawing.Point(1215, 0);
             this.siticoneControlBox2.Name = "siticoneControlBox2";
             this.siticoneControlBox2.ShadowDecoration.Parent = this.siticoneControlBox2;
             this.siticoneControlBox2.Size = new System.Drawing.Size(45, 29);
@@ -766,7 +723,7 @@
             this.siticoneControlBox1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.siticoneControlBox1.HoveredState.Parent = this.siticoneControlBox1;
             this.siticoneControlBox1.IconColor = System.Drawing.Color.White;
-            this.siticoneControlBox1.Location = new System.Drawing.Point(1188, 0);
+            this.siticoneControlBox1.Location = new System.Drawing.Point(1260, 0);
             this.siticoneControlBox1.Name = "siticoneControlBox1";
             this.siticoneControlBox1.ShadowDecoration.Parent = this.siticoneControlBox1;
             this.siticoneControlBox1.Size = new System.Drawing.Size(45, 29);
@@ -790,11 +747,12 @@
             this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticonePanel1.BorderThickness = 3;
             this.siticonePanel1.Controls.Add(this.label8);
+            this.siticonePanel1.Controls.Add(this.dgDatosVenta);
             this.siticonePanel1.Controls.Add(this.gbPaginacion);
             this.siticonePanel1.Location = new System.Drawing.Point(0, 6);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(1233, 538);
+            this.siticonePanel1.Size = new System.Drawing.Size(1305, 603);
             this.siticonePanel1.TabIndex = 89;
             // 
             // label8
@@ -803,7 +761,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(456, 26);
+            this.label8.Location = new System.Drawing.Point(557, 26);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(105, 32);
             this.label8.TabIndex = 210;
@@ -820,7 +778,7 @@
             this.gbPaginacion.Controls.Add(this.btnTotalPag);
             this.gbPaginacion.Controls.Add(this.label41);
             this.gbPaginacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPaginacion.Location = new System.Drawing.Point(881, 490);
+            this.gbPaginacion.Location = new System.Drawing.Point(881, 541);
             this.gbPaginacion.Name = "gbPaginacion";
             this.gbPaginacion.Size = new System.Drawing.Size(340, 40);
             this.gbPaginacion.TabIndex = 209;
@@ -928,48 +886,118 @@
             this.label41.TabIndex = 170;
             this.label41.Text = "de";
             // 
-            // cmsImpresion
+            // Column1
             // 
-            this.cmsImpresion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsDocumentoVenta,
-            this.ActaInstalacion});
-            this.cmsImpresion.Name = "cmsImpresiones";
-            this.cmsImpresion.Size = new System.Drawing.Size(186, 48);
+            this.Column1.FillWeight = 6.587044F;
+            this.Column1.HeaderText = "id";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
             // 
-            // tlsDocumentoVenta
+            // Column15
             // 
-            this.tlsDocumentoVenta.Name = "tlsDocumentoVenta";
-            this.tlsDocumentoVenta.Size = new System.Drawing.Size(185, 22);
-            this.tlsDocumentoVenta.Text = "Documento de Venta";
-            this.tlsDocumentoVenta.Click += new System.EventHandler(this.tlsDocumentoVenta_Click);
+            this.Column15.FillWeight = 5.903116F;
+            this.Column15.HeaderText = "N°";
+            this.Column15.Name = "Column15";
             // 
-            // ActaInstalacion
+            // codigoV
             // 
-            this.ActaInstalacion.Name = "ActaInstalacion";
-            this.ActaInstalacion.Size = new System.Drawing.Size(185, 22);
-            this.ActaInstalacion.Text = "Acta de Instalacion";
-            this.ActaInstalacion.Click += new System.EventHandler(this.ActaInstalacion_Click);
+            this.codigoV.FillWeight = 6.589975F;
+            this.codigoV.HeaderText = "CODIGOv";
+            this.codigoV.Name = "codigoV";
+            this.codigoV.Visible = false;
             // 
-            // erPlan
+            // Column2
             // 
-            this.erPlan.AutoSize = true;
-            this.erPlan.BackColor = System.Drawing.Color.Transparent;
-            this.erPlan.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.erPlan.ForeColor = System.Drawing.Color.Red;
-            this.erPlan.Location = new System.Drawing.Point(544, 163);
-            this.erPlan.Name = "erPlan";
-            this.erPlan.Size = new System.Drawing.Size(32, 13);
-            this.erPlan.TabIndex = 372;
-            this.erPlan.Text = "Error";
-            this.erPlan.Visible = false;
+            this.Column2.FillWeight = 14.671F;
+            this.Column2.HeaderText = "Fecha Venta";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.FillWeight = 16.55482F;
+            this.Column3.HeaderText = "Fecha Inicio Contrato";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.FillWeight = 16.72145F;
+            this.Column4.HeaderText = "Fecha Fin Contrato";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.FillWeight = 18.24674F;
+            this.Column5.HeaderText = "Vehiculos";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.FillWeight = 32.56686F;
+            this.Column6.HeaderText = "Cliente/ Razon Social";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.FillWeight = 9.83955F;
+            this.Column7.HeaderText = "Plan";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.FillWeight = 9.83955F;
+            this.Column8.HeaderText = "Tipo Venta";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 13.13609F;
+            this.Column9.HeaderText = "Estado";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.FillWeight = 13.54992F;
+            this.Column10.HeaderText = "Estado Contrato";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.FillWeight = 15.75517F;
+            this.Column11.HeaderText = "Usuario";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.FillWeight = 13.13609F;
+            this.Column12.HeaderText = "Importe Total";
+            this.Column12.Name = "Column12";
+            // 
+            // lvBtnImprimir
+            // 
+            this.lvBtnImprimir.ContextMenuStrip = this.cmsImpresion;
+            this.lvBtnImprimir.FillWeight = 9.957356F;
+            this.lvBtnImprimir.HeaderText = "";
+            this.lvBtnImprimir.Name = "lvBtnImprimir";
+            this.lvBtnImprimir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "Column16";
+            this.Column16.Name = "Column16";
+            this.Column16.Visible = false;
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "Column17";
+            this.Column17.Name = "Column17";
+            this.Column17.Visible = false;
             // 
             // frmBuscarVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1233, 542);
-            this.Controls.Add(this.dgDatosVenta);
+            this.ClientSize = new System.Drawing.Size(1305, 609);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.siticoneGroupBox1);
             this.Controls.Add(this.siticonePanel1);
@@ -988,13 +1016,13 @@
             this.gbBuscarListaVentas.ResumeLayout(false);
             this.gbBuscarListaVentas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDatosVenta)).EndInit();
+            this.cmsImpresion.ResumeLayout(false);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.siticonePanel1.ResumeLayout(false);
             this.siticonePanel1.PerformLayout();
             this.gbPaginacion.ResumeLayout(false);
             this.gbPaginacion.PerformLayout();
-            this.cmsImpresion.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1025,20 +1053,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private Siticone.UI.WinForms.SiticoneDataGridView dgDatosVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private Siticone.UI.WinForms.SiticonePanel pnlTop;
         private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox2;
         private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
@@ -1063,5 +1077,22 @@
         private System.Windows.Forms.Label erTipoPlan;
         private System.Windows.Forms.PictureBox imgPlan;
         private System.Windows.Forms.Label erPlan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewButtonColumn lvBtnImprimir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
     }
 }

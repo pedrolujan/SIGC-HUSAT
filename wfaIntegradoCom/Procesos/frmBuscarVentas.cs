@@ -187,10 +187,10 @@ namespace wfaIntegradoCom.Procesos
             BLClienteVenta objClienteV = new BLClienteVenta();
             clsUtil objUtil = new clsUtil();
             DataTable datClienteV = new DataTable();
-            String placaVehiculo = txtBuscarVentas.Text.Trim();
+
+           
             String cEstadoInstal = "0";
             Int32 cEstadoTipoVenta = Convert.ToInt32(cbTipoVenta.SelectedValue);
-
             Boolean habilitarFechas = chkHabilitarFechasBus.Checked ? true : false;
             Boolean habilitarRenovaciones = chkHabilitarFechasBus.Checked ? true : false;
             DateTime fechaInicial = dtpFechaInicialBus.Value;
@@ -199,6 +199,7 @@ namespace wfaIntegradoCom.Procesos
             String estadoTipoPlan = cboTipoPlan.SelectedValue.ToString();
             String estadoPlan = cboPlanV.SelectedValue.ToString();
             String estadoUsuario = cboUsuario.SelectedValue.ToString();
+            String placaVehiculo = txtBuscarVentas.Text.Trim();
             Int32 HorasIni = 0;
             Int32 HorasFin = 0;
             Int32 HorasRestarIni = 0;
@@ -210,7 +211,7 @@ namespace wfaIntegradoCom.Procesos
             HorasFin = Convert.ToInt32(fechaFinal.ToString("HH"));
             HorasRestarFin = 24 - HorasFin;
             fechaFinal = Convert.ToDateTime(fechaFinal.ToString("dd") + "/" + (fechaFinal.Month) + "/" + fechaFinal.Year + " 23:59:59");
-            //TipoFiltro = cboUsuario.SelectedValue.ToString();
+           
             Int32 filas = 10;
             Double TotalGanacia = 0;
             Boolean estadoReturn = false;
@@ -264,38 +265,40 @@ namespace wfaIntegradoCom.Procesos
                             Int32 restaMeses = 0;
                             Int32 faltaDias = 0;
                             String strEstado = "";
+
                             String desVehiculos = Convert.ToString(dr["descripcionVehiculo"]);
                             DateTime fecha = Convert.ToDateTime(Convert.ToDateTime(dr["FechaRegistro"]).ToString("dd/MM/yyyy"));
                             DateTime fechaPago = Convert.ToDateTime(Convert.ToDateTime(dr["fechaPago"]).ToString("dd/MM/yyyy"));
                             DateTime fechaFinalContrato = Convert.ToDateTime(Convert.ToDateTime(dr["periodoFinal"]).ToString("dd/MM/yyyy"));
 
-                            TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
+                            //TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
 
-                            //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
-                            if (Variables.gdFechaSis > fechaFinalContrato)
-                            {
-                                tiket = Variables.gdFechaSis - fechaFinalContrato;
-                            }
-                            else
-                            {
-                                tiket = fechaFinalContrato - Variables.gdFechaSis;
-                            }
-                            DateTime totalTime = new DateTime(tiket.Ticks);
-                            restaAnio = totalTime.Year - 1;
-                            restaMeses = totalTime.Month - 1;
-                            faltaDias = Convert.ToInt32(totalTime.Day);
-                            if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA")
-                            {
-                                strEstado = "❌ ANULADA";
-                            }
+                            ////Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
+                            //if (Variables.gdFechaSis > fechaFinalContrato)
+                            //{
+                            //    tiket = Variables.gdFechaSis - fechaFinalContrato;
+                            //}
+                            //else
+                            //{
+                            //    tiket = fechaFinalContrato - Variables.gdFechaSis;
+                            //}
+                            //DateTime totalTime = new DateTime(tiket.Ticks);
+                            //restaAnio = totalTime.Year - 1;
+                            //restaMeses = totalTime.Month - 1;
+                            //faltaDias = Convert.ToInt32(totalTime.Day);
+                            //if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA")
+                            //{
+                            //    strEstado = "❌ ANULADA";
+                            //}
                             //else
                             //{
                             //    //strEstado = fnMostrarEstadoRenovacion(Variables.gdFechaSis, fechaFinalContrato, restaAnio, restaMeses, faltaDias);
                             //}
                             dgv.Rows.Add(
-                                dr["idCliente"],
+
+                                dr["idCliente"],                               
                                 y,
-                                dr["codigoVenta"],
+                                 dr["codigoVenta"],
                                 fechaPago.ToString("dd/MM/yyyy"),
                                 fecha.ToString("dd/MM/yyyy"),
                                 fechaFinalContrato.ToString("dd/MM/yyyy"),
@@ -323,8 +326,10 @@ namespace wfaIntegradoCom.Procesos
                             }
                             contador += 1;
                         }
+                        
                         dgv.Columns[0].Visible = false;
                         dgv.Columns[2].Visible = false;
+
                         dgv.Columns[1].Width = 20;
                         dgv.Columns[3].Width = 45;
                         dgv.Columns[4].Width = 50;
@@ -339,6 +344,7 @@ namespace wfaIntegradoCom.Procesos
                         dgv.Columns[13].Width = 40;
                         dgv.Columns[14].Width = 100;
                         dgv.Columns[15].Width = 60;
+
                         //dgv.RowTemplate.Height = 100;
                         dgv.Visible = true;
 
@@ -377,10 +383,11 @@ namespace wfaIntegradoCom.Procesos
             catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("frmRegistrarAccesorios", "fnBuscarEquipo", ex.Message);
-                return false;
+               return false;
             }
         }
         private void txtBuscarVentas_KeyPress(object sender, KeyPressEventArgs e)        
+
         {
             lnTipoCon = 0;
             if (e.KeyChar == (Char)Keys.Enter)
@@ -452,6 +459,7 @@ namespace wfaIntegradoCom.Procesos
         {
             String CodVenta = Convert.ToString(dgDatosVenta.CurrentRow.Cells[2].Value);
             Int32 idTipoVenta = Convert.ToInt32(dgDatosVenta.CurrentRow.Cells[16].Value);
+            Int32 idtipoPlan = Convert.ToInt32(dgDatosVenta.CurrentRow.Cells[18].Value);
             Int32 idContrato = Convert.ToInt32(dgDatosVenta.CurrentRow.Cells[17].Value);
             String RowVehiculos = Convert.ToString(dgDatosVenta.CurrentRow.Cells[6].Value);
             String[] ArrayVehiculos = RowVehiculos.Split(';');
@@ -566,17 +574,15 @@ namespace wfaIntegradoCom.Procesos
                 Int32 idTipoVenta = Convert.ToInt32(dgDatosVenta.CurrentRow.Cells[16].Value);
                 if (idTipoVenta == 2)
                 {
-
                     cmsImpresion.Items[2].Visible = false;
+
                 }
                 else
                 {
                     cmsImpresion.Items[2].Visible = true;
-
                 }
                 var mousePosition = dgDatosVenta.PointToClient(Cursor.Position);
                 cmsImpresion.Show(dgDatosVenta, 940, mousePosition.Y);
-
             }
         }
         private void dgDatosVenta_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -667,8 +673,7 @@ namespace wfaIntegradoCom.Procesos
             //var result = FunValidaciones.fnValidarCombobox(lstValidacionPlan[0].combobox, erTipoPlan, imgTipoPlanP);
             //lstValidacionPlan[0].estado = result.Item1;
             //lstValidacionPlan[0].mensaje = result.Item2;
-
-
+           
             if (cboTipoPlan.SelectedValue.ToString() == "0" || cboTipoPlan.SelectedValue == null)
             {
                 cboPlanV.Enabled = false;
