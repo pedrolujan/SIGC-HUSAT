@@ -540,6 +540,10 @@ namespace wfaIntegradoCom.Funciones
             String dat = str.ToLower();
             return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(dat); ;
         }
+        public static void cbo_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
 
     }
 }

@@ -168,7 +168,7 @@ namespace CapaDato
                 pa[3].Value = tipoCon;
 
                 objCnx = new clsConexion("");
-                intRowsAffected=objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
+                //intRowsAffected=objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
                 return true;
             }
             catch (Exception ex)

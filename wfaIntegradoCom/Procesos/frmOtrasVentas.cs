@@ -16,12 +16,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
+//using System.Windows.Input;
 using System.Xml.Serialization;
 using wfaIntegradoCom.Funciones;
 using wfaIntegradoCom.Funciones.Models;
 using wfaIntegradoCom.Impresiones;
 using wfaIntegradoCom.Mantenedores;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -295,13 +296,13 @@ namespace wfaIntegradoCom.Procesos
                 if (lstOtrasVentas.Count>0)
                 {
                     TotalGeneral = lstOtrasVentas.Sum(i => i.precioNeto);
-                    //TotVenta.Total = TotalGeneral;
+                    TotVenta.Total = TotalGeneral;
                     DocumentoVenta.nMontoTotal = TotalGeneral;
 
                     txtTotal.Text = Mon.cSimbolo + " " + string.Format("{0:0.00}", DocumentoVenta.nMontoTotal);
                     CalcIgv = (TotVenta.Total * fnDebolverIgv()) / 100;
 
-                    //TotVenta.Igv = CalcIgv;
+                    TotVenta.Igv = CalcIgv;
                     DocumentoVenta.nIGV = CalcIgv;
 
                     lstOtrasVentas[0].IgvPorcentaje = fnDebolverIgv();
@@ -309,13 +310,13 @@ namespace wfaIntegradoCom.Procesos
                     txtShowCalcIgv.Text = Mon.cSimbolo + " " + string.Format("{0:0.00}", DocumentoVenta.nIGV);
 
                     SubTotal = TotalGeneral - CalcIgv;
-                    //TotVenta.Subtotal = SubTotal;
+                    TotVenta.Subtotal = SubTotal;
                     DocumentoVenta.nSubtotal = SubTotal;
 
                     txtSubTotal.Text = Mon.cSimbolo + " " + string.Format("{0:0.00}", DocumentoVenta.nSubtotal);
-                    //TotVenta.SimboloMoneda = Mon.cSimbolo;
+                    TotVenta.SimboloMoneda = Mon.cSimbolo;
                     DocumentoVenta.SimboloMoneda= Mon.cSimbolo;
-                    //TotVenta.idMoneda = Mon.idMoneda;
+                    TotVenta.idMoneda = Mon.idMoneda;
                     DocumentoVenta.idMoneda= Mon.idMoneda;
 
                     DocumentoVenta.cCodDocumentoVenta= Convert.ToString(cboTipoDocEmitir.SelectedValue);
@@ -429,7 +430,13 @@ namespace wfaIntegradoCom.Procesos
                 estadoTabla=false;
                 fnLimpiarDatosActecesor();
                 dgConsulta.Visible = false;
-               
+
+                    cboMoneda.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                    cboTipoPersona.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                    cboTipoDocumento.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                    cboTipoDescuento.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                    cboTipoDocEmitir.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                    cboMoneda.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
             }
             catch (Exception ex)
             {
@@ -441,7 +448,6 @@ namespace wfaIntegradoCom.Procesos
             }
             //this.reportViewer1.RefreshReport();
         }
-
         public static Boolean fnLlenarTablaCod(ComboBox cboCombo, String cCodTab,Int32 idTipoDocPers,Int32 Busqueda)
         {
             BLOtrasVenta objTablaCod = new BLOtrasVenta();
@@ -2148,9 +2154,8 @@ namespace wfaIntegradoCom.Procesos
                     dgConsulta.Visible = false;
                     foreach (DataRow drMenu in datResultado.Rows)
                     {
-
                         txtCliente.Text = Convert.ToString(drMenu["cNombre"]);
-
+                        clsClienteAntecesor.idVentaGen = Convert.ToInt32(drMenu["idventageneral"]);
                         clsClienteAntecesor.idCliente = Convert.ToInt32(drMenu["idCliente"]);
                         clsClienteAntecesor.cNombre = Convert.ToString(drMenu["cNombre"]);
                         clsClienteAntecesor.cApePat = Convert.ToString(drMenu["cApePat"]);
