@@ -68,24 +68,23 @@ namespace CapaDato
                 pa[5] = new SqlParameter("@numPagina", SqlDbType.Int) { Value = numPagina };
                 pa[6] = new SqlParameter("@tipoLLamada", SqlDbType.Int) { Value = tipoLLamada };
                 pa[7] = new SqlParameter("@tipoCon", SqlDbType.Real) { Value = tipoCon };
-                pa[8] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
+                
+                pa[8] = new SqlParameter("@Usuario", SqlDbType.VarChar) { Value = estadoUsuario };
                 pa[9] = new SqlParameter("@estadoTipoContrato", SqlDbType.NVarChar, 8) { Value = estadoTipoContrato };
                 pa[10] = new SqlParameter("@pehabilitarRenovaciones", SqlDbType.TinyInt) { Value = habilitarRenovaciones };
                 pa[11] = new SqlParameter("@valorRadio", SqlDbType.NVarChar, 8) { Value = valorRadio };             
                 pa[12] = new SqlParameter("@plan", SqlDbType.NVarChar, 15) { Value = estadoPlan };
-                pa[13] = new SqlParameter("@estadoTipoContrato", SqlDbType.VarChar) { Value = estadoTipoPlan };
-                pa[14] = new SqlParameter("@Usuario", SqlDbType.VarChar) { Value = estadoUsuario };
-                
+
+                pa[13] = new SqlParameter("@TipoPlan", SqlDbType.VarChar) { Value = estadoTipoPlan };
+                pa[14] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
+                //pa[15]=new SqlParameter("@TipoPlan", SqlDbType.VarChar) { Value = estadoTipoPlan };
+
 
                 objCnx = new clsConexion("");
-                if (habilitarRenovaciones == false)
-                {
-                    dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarRenovaciones", pa);
-                }
-                else
-                {
+                
+                
                     dtVenta= objCnx.EjecutarProcedimientoDT("uspBuscarVentas", pa);
-                }
+                
 
                 return dtVenta;
             }
