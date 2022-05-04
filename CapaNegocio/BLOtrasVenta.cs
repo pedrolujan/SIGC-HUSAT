@@ -52,7 +52,7 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public Boolean blGuardarOtrasVentas(List<OtrasVentas>lstOtrasVentas, List<Pagos> lstPagos, List<xmlDocumentoVenta> xmlDocumentoVenta, Int32 tipCon)
+        public Boolean blGuardarOtrasVentas(List<OtrasVentas>lstOtrasVentas, List<Pagos> lstPagos, List<xmlDocumentoVentaGeneral> xmlDocumentoVenta, Int32 tipCon)
         {
             daObjTipoVenta = new DAOtrasVenta();
             try

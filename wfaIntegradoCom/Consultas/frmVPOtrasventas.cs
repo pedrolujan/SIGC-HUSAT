@@ -72,7 +72,7 @@ namespace wfaIntegradoCom.Consultas
             parameters[0] = new ReportParameter("rpSucursal", Variables.gsSucursal);
             parameters[1] = new ReportParameter("rpEmpresaDir", Variables.gsEmpresaDir);
             parameters[2] = new ReportParameter("rpRuc", Variables.gsRuc);
-            reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.rptVPOtrasVentas.rdlc";
+            reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas..rdlc";
             reportViewer1.LocalReport.SetParameters(parameters);
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DatosCliente", lstDocumento));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DetalleOtrasVentas", lstDetaVenta));

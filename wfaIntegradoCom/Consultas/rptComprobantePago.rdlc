@@ -562,6 +562,7 @@
                   <TextRun>
                     <Value>=First(Fields!cTipoDoc.Value, "DocumentoVenta")</Value>
                     <Style>
+                      <FontStyle>Italic</FontStyle>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
