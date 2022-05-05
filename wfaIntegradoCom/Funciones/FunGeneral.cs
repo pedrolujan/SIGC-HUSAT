@@ -544,6 +544,35 @@ namespace wfaIntegradoCom.Funciones
         {
             ((HandledMouseEventArgs)e).Handled = true;
         }
+        public static Boolean fnLlenarUsuarioPorCargo(ComboBox cboCombo, String cCodCargo, Boolean buscar)
+        {
+            BLCargo objTablaCod = new BLCargo();
+            clsUtil objUtil = new clsUtil();
+            List<Cargo> lstTablaCod = new List<Cargo>();
+
+            try
+            {
+                lstTablaCod = objTablaCod.blDevolverUsuarioPorCargo(cCodCargo, buscar);
+                cboCombo.DataSource = null;
+                cboCombo.ValueMember = "cCodTab";
+                cboCombo.DisplayMember = "cNomTab";
+                cboCombo.DataSource = lstTablaCod;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FunGeneral", "fnLlenarTablaCod", ex.Message);
+                return false;
+            }
+            finally
+            {
+                objUtil = null;
+                objTablaCod = null;
+                lstTablaCod = null;
+            }
+
+        }
 
     }
 }

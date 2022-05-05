@@ -283,7 +283,7 @@ namespace wfaIntegradoCom.Mantenedores
                 lstValidacionPlan[2].mensaje = "";
                 fnOcultarCiclo(false);
 
-                fnOcultarParaRenovacion(dgvPagoPlan, lblPagoPlan, idTipoventa==2?false:true);
+                //fnOcultarParaRenovacion(dgvPagoPlan, lblPagoPlan, idTipoventa==2?false:true);
 
             }
             else

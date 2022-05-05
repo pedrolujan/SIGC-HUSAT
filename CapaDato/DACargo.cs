@@ -199,6 +199,55 @@ namespace CapaDato
             }
 
         }
+        public List<Cargo> daDevolverUsuarioPorCargo(String cCodTab,Boolean buscar)
+        {
+
+
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtUsuario = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@codcargo", SqlDbType.NVarChar, 8);
+                pa[0].Value = cCodTab;
+
+
+                objCnx = new clsConexion("");
+                dtUsuario = objCnx.EjecutarProcedimientoDT("uspObtenerUsuarioPorTipoCargo", pa);
+
+                List<Cargo> lstCargo = new List<Cargo>();
+                lstCargo.Add(new Cargo(
+                        Convert.ToString("0"),
+                        Convert.ToString(buscar ? "TODOS" : "Selecc. opcion"),
+                        Convert.ToString("1")));
+
+                foreach (DataRow drMenu in dtUsuario.Rows)
+                {
+                    lstCargo.Add(new Cargo(
+                        Convert.ToString(drMenu["idUsuario"]),
+                        Convert.ToString(drMenu["personal"]),
+                        Convert.ToString(drMenu["idUsuario"])));
+                }
+
+                return lstCargo;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACargo.cs", "daDevolverTablaCod", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
 
         public String daDevolverCorrelativo(String cCodTab)
         {

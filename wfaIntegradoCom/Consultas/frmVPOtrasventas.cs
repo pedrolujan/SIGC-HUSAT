@@ -85,7 +85,7 @@ namespace wfaIntegradoCom.Consultas
         {
             EstadoGenerarVenta = true;
 
-            frmOtrasVentas.fnRecuperarEstadoGenVenta(EstadoGenerarVenta);
+            //frmOtrasVentas.fnRecuperarEstadoGenVenta(EstadoGenerarVenta);
             this.Close();
         }
        
@@ -94,7 +94,7 @@ namespace wfaIntegradoCom.Consultas
         {
             EstadoGenerarVenta = false;
 
-            frmOtrasVentas.fnRecuperarEstadoGenVenta(EstadoGenerarVenta);
+            //frmOtrasVentas.fnRecuperarEstadoGenVenta(EstadoGenerarVenta);
 
             this.Close();
 

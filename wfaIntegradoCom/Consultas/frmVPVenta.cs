@@ -58,6 +58,7 @@ namespace wfaIntegradoCom.Consultas
             }
             else
             {
+                //opcion para pagos mensuales
                 if (lnTipoCon==-1)
                 {
                     this.btnGenerarVenta.Text = "Generar Pago";
@@ -123,34 +124,35 @@ namespace wfaIntegradoCom.Consultas
 
         private void btnGenerarVenta_Click(object sender, EventArgs e)
         {
+            //opcion para venta general
             if (lnTipoCon == 0)
             {
                 List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(1, sumaPrimerPago, lstDVenta[0].cSimbolo);
+                fmr.Inicio(0, sumaPrimerPago, lstDVenta[0].cSimbolo);
                 if (estVP)
                 {
                     Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
                     fmr2.fnCambiarEstadoVenta(true);
                 }
-            } else if (lnTipoCon==1)
-            {
-                Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
-                fmr2.fnActivarInprecion(true);
-            }else if (lnTipoCon==-1)
+            } 
+            //opcion para pagos mensuales
+            else if (lnTipoCon==-1)
             {
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(3, sumaPrimerPago, lstDVenta[0].cSimbolo);              
+                fmr.Inicio(-1, sumaPrimerPago, lstDVenta[0].cSimbolo);              
                
 
-            }else if(lnTipoCon == -2)
+            }
+            // opcion para otras ventas
+            else if(lnTipoCon == -2)
             {
 
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(4, sumaPrimerPago, lstDVenta[0].cSimbolo);
+                fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo);
 
             }
 

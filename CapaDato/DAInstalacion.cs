@@ -351,6 +351,45 @@ namespace CapaDato
 
         }
 
+        public DataTable daBuscarInstalacion(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoCon, Int32 codTipoVenta, Int32 idUsuario)
+        {
+            SqlParameter[] pa = new SqlParameter[9];
+            DataTable dtVentaG;
+            clsConexion objCnx = null;
+
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.TinyInt) { Value = habilitarfechas };
+                pa[1] = new SqlParameter("@peFechaInical", SqlDbType.DateTime) { Value = fechaInical };
+                pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.DateTime) { Value = fechaFinal };
+                pa[3] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = placaVehiculo };
+                pa[4] = new SqlParameter("@pcEstadoInstal", SqlDbType.VarChar, 15) { Value = cEstadoInstal };
+                pa[5] = new SqlParameter("@numPagina", SqlDbType.Int) { Value = numPagina };
+                pa[6] = new SqlParameter("@tipoCon", SqlDbType.Real) { Value = tipoCon };
+                pa[7] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
+                pa[8] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = idUsuario };
+
+                objCnx = new clsConexion("");
+               
+                    dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarInstalaciones", pa);
+                
+
+                return dtVentaG;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+
 
     }
 }

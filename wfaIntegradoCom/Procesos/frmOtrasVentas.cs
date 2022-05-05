@@ -1550,7 +1550,7 @@ namespace wfaIntegradoCom.Procesos
             if (lstPagosTrand.Count>0)
             {
                 //fnLimpiarControles();
-                fnRecuperarEstadoGenVenta(true);
+                //fnRecuperarEstadoGenVenta(true);
             }
             else
             {
@@ -1655,7 +1655,7 @@ namespace wfaIntegradoCom.Procesos
                     Cantidad = lstvehiculo.Count(),
                     Couta = 1,
                     Importe = lstOtrasVentas[i].precioNeto,
-                    cSimbolo = lstMon[0].cSimbolo
+                    cSimbolo = Mon.cSimbolo
                 }) ;
 
             }
@@ -1988,7 +1988,7 @@ namespace wfaIntegradoCom.Procesos
             }
             return estado;
         }
-        public static void fnRecuperarEstadoGenVenta(Boolean estado)
+        public  void fnRecuperarEstadoGenVenta(Boolean estado)
         {
             EstadoGenVenta = estado;
         }
@@ -1996,16 +1996,16 @@ namespace wfaIntegradoCom.Procesos
         {
             fnHabilitarControles(false);
             Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
-            abrirFrmVPOtrasVentas.Inicio(fnlstDocumentoVenta(),/*lstOtrasVentas*/ fnGenerarDetalleOtrasVentas(),0);
-            if (EstadoGenVenta == true)
-            {
-                EstadoGenVenta = false;
-                 fnMostrarVentanaTipoPago();
-            }
-            else
-            {
-                fnHabilitarControles(true);
-            }
+            abrirFrmVPOtrasVentas.Inicio(fnlstDocumentoVenta(),/*lstOtrasVentas*/ fnGenerarDetalleOtrasVentas(),-2);
+            //if (EstadoGenVenta == true)
+            //{
+            //    EstadoGenVenta = false;
+            //     fnMostrarVentanaTipoPago();
+            //}
+            //else
+            //{
+            //    fnHabilitarControles(true);
+            //}
             
             return EstadoGenVenta;
         }

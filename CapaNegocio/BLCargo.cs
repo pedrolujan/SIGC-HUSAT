@@ -69,6 +69,20 @@ namespace CapaNegocio
             }
 
         }
+        public List<Cargo> blDevolverUsuarioPorCargo(String cCodCargo,Boolean buscar)
+        {
+
+            DACargo daobjUsuario = new DACargo();
+            try
+            {
+                return daobjUsuario.daDevolverUsuarioPorCargo(cCodCargo, buscar);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
 
         public String blDevolverCorrelativo(String cCodTab)
         {

@@ -102,6 +102,18 @@ namespace CapaNegocio
             }
 
         }
+        public DataTable blBuscarInstalaciones(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoCon, Int32 codTipoVenta,Int32 idUsuario)
+        {
+            DAInstalacion objVentaG = new DAInstalacion();
+            try
+            {
+                return objVentaG.daBuscarInstalacion(habilitarfechas, fechaInical, fechaFinal, placaVehiculo, cEstadoInstal, numPagina, tipoCon, codTipoVenta ,idUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
 
     }
