@@ -51,7 +51,7 @@ namespace CapaDato
 
         //}
         public DataTable DAbuscarClienteV(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta, String estadoTipoContrato, 
-            Boolean habilitarRenovaciones, String valorRadio,String estadoTipoPlan, String estadoPlan,String estadoUsuario)
+            Boolean habilitarRenovaciones, String valorRadio, Int32 estadoTipoPlan, Int32 estadoPlan, Int32 estadoUsuario)
         {
             SqlParameter[] pa = new SqlParameter[15];
             DataTable dtVenta;
@@ -72,10 +72,10 @@ namespace CapaDato
                 pa[8] = new SqlParameter("@Usuario", SqlDbType.VarChar) { Value = estadoUsuario };
                 pa[9] = new SqlParameter("@estadoTipoContrato", SqlDbType.NVarChar, 8) { Value = estadoTipoContrato };
                 pa[10] = new SqlParameter("@pehabilitarRenovaciones", SqlDbType.TinyInt) { Value = habilitarRenovaciones };
-                pa[11] = new SqlParameter("@valorRadio", SqlDbType.NVarChar, 8) { Value = valorRadio };             
-                pa[12] = new SqlParameter("@plan", SqlDbType.NVarChar, 15) { Value = estadoPlan };
+                pa[11] = new SqlParameter("@valorRadio", SqlDbType.NVarChar) { Value = valorRadio };             
+                pa[12] = new SqlParameter("@plan", SqlDbType.Int) { Value = estadoPlan };
 
-                pa[13] = new SqlParameter("@TipoPlan", SqlDbType.VarChar) { Value = estadoTipoPlan };
+                pa[13] = new SqlParameter("@TipoPlan", SqlDbType.Int) { Value = estadoTipoPlan };
                 pa[14] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
                 //pa[15]=new SqlParameter("@TipoPlan", SqlDbType.VarChar) { Value = estadoTipoPlan };
 

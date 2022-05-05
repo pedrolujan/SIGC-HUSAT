@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarVentas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.erPlan = new System.Windows.Forms.Label();
@@ -62,42 +65,44 @@
             this.label14 = new System.Windows.Forms.Label();
             this.dtpFechaInicialBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.txtBuscarVentas = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.dgDatosVenta = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.cmsImpresion = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tlsDocumentoVenta = new System.Windows.Forms.ToolStripMenuItem();
-            this.ActaInstalacion = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTop = new Siticone.UI.WinForms.SiticonePanel();
             this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.dgvLVentas = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodVenta_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHAVENTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaFinContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vehiculos_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ciente_Rs_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Plan_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImporteTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lvBtnImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cmsImpresion = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tlsDocumentoVenta = new System.Windows.Forms.ToolStripMenuItem();
+            this.Contrato = new System.Windows.Forms.ToolStripMenuItem();
+            this.ActaInstalacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.gbPaginacion = new System.Windows.Forms.GroupBox();
-            this.btnNumFilas = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnNumF = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label37 = new System.Windows.Forms.Label();
             this.siticoneVSeparator1 = new Siticone.UI.WinForms.SiticoneVSeparator();
             this.cboPaginaV = new System.Windows.Forms.ComboBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.btnTotalReg = new Siticone.UI.WinForms.SiticoneCircleButton();
-            this.btnTotalPag = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnTotalR = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnTotalP = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label41 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lvBtnImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoPlanP)).BeginInit();
@@ -105,10 +110,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.gbBuscarListaVentas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgDatosVenta)).BeginInit();
-            this.cmsImpresion.SuspendLayout();
             this.pnlTop.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLVentas)).BeginInit();
+            this.cmsImpresion.SuspendLayout();
             this.gbPaginacion.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -585,110 +590,6 @@
             this.txtBuscarVentas.TextChanged += new System.EventHandler(this.txtBuscarVentas_TextChanged);
             this.txtBuscarVentas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarVentas_KeyPress);
             // 
-            // dgDatosVenta
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgDatosVenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgDatosVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgDatosVenta.BackgroundColor = System.Drawing.Color.White;
-            this.dgDatosVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgDatosVenta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgDatosVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgDatosVenta.ColumnHeadersHeight = 59;
-            this.dgDatosVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgDatosVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column15,
-            this.codigoV,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.Column12,
-            this.lvBtnImprimir,
-            this.Column16,
-            this.Column17});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgDatosVenta.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgDatosVenta.EnableHeadersVisualStyles = false;
-            this.dgDatosVenta.GridColor = System.Drawing.Color.Silver;
-            this.dgDatosVenta.Location = new System.Drawing.Point(10, 259);
-            this.dgDatosVenta.Name = "dgDatosVenta";
-            this.dgDatosVenta.RowHeadersVisible = false;
-            this.dgDatosVenta.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgDatosVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgDatosVenta.Size = new System.Drawing.Size(1283, 289);
-            this.dgDatosVenta.TabIndex = 87;
-            this.dgDatosVenta.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
-            this.dgDatosVenta.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgDatosVenta.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgDatosVenta.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgDatosVenta.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgDatosVenta.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgDatosVenta.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgDatosVenta.ThemeStyle.GridColor = System.Drawing.Color.Silver;
-            this.dgDatosVenta.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.DimGray;
-            this.dgDatosVenta.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgDatosVenta.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.dgDatosVenta.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgDatosVenta.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgDatosVenta.ThemeStyle.HeaderStyle.Height = 59;
-            this.dgDatosVenta.ThemeStyle.ReadOnly = false;
-            this.dgDatosVenta.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgDatosVenta.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgDatosVenta.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgDatosVenta.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgDatosVenta.ThemeStyle.RowsStyle.Height = 22;
-            this.dgDatosVenta.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.dgDatosVenta.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgDatosVenta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDatosVenta_CellContentClick);
-            this.dgDatosVenta.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgDatosVenta_CellFormatting);
-            this.dgDatosVenta.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDatosVenta_CellMouseDown);
-            this.dgDatosVenta.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgDatosVenta_CellPainting);
-            // 
-            // cmsImpresion
-            // 
-            this.cmsImpresion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsDocumentoVenta,
-            this.ActaInstalacion});
-            this.cmsImpresion.Name = "cmsImpresiones";
-            this.cmsImpresion.Size = new System.Drawing.Size(186, 48);
-            // 
-            // tlsDocumentoVenta
-            // 
-            this.tlsDocumentoVenta.Name = "tlsDocumentoVenta";
-            this.tlsDocumentoVenta.Size = new System.Drawing.Size(185, 22);
-            this.tlsDocumentoVenta.Text = "Documento de Venta";
-            this.tlsDocumentoVenta.Click += new System.EventHandler(this.tlsDocumentoVenta_Click);
-            // 
-            // ActaInstalacion
-            // 
-            this.ActaInstalacion.Name = "ActaInstalacion";
-            this.ActaInstalacion.Size = new System.Drawing.Size(185, 22);
-            this.ActaInstalacion.Text = "Acta de Instalacion";
-            this.ActaInstalacion.Click += new System.EventHandler(this.ActaInstalacion_Click);
-            // 
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
@@ -746,14 +647,279 @@
             this.siticonePanel1.BackColor = System.Drawing.SystemColors.Control;
             this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticonePanel1.BorderThickness = 3;
+            this.siticonePanel1.Controls.Add(this.dgvLVentas);
             this.siticonePanel1.Controls.Add(this.label8);
-            this.siticonePanel1.Controls.Add(this.dgDatosVenta);
             this.siticonePanel1.Controls.Add(this.gbPaginacion);
             this.siticonePanel1.Location = new System.Drawing.Point(0, 6);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
             this.siticonePanel1.Size = new System.Drawing.Size(1305, 603);
             this.siticonePanel1.TabIndex = 89;
+            // 
+            // dgvLVentas
+            // 
+            this.dgvLVentas.AllowUserToAddRows = false;
+            this.dgvLVentas.AllowUserToDeleteRows = false;
+            this.dgvLVentas.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvLVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvLVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLVentas.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvLVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvLVentas.ColumnHeadersHeight = 45;
+            this.dgvLVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvLVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Numero_lv,
+            this.CodVenta_lv,
+            this.fechaPago,
+            this.FECHAVENTA,
+            this.fechaFinContrato,
+            this.Vehiculos_lv,
+            this.Ciente_Rs_lv,
+            this.Plan_lv,
+            this.TipoVenta,
+            this.Estado_lv,
+            this.EstadoContrato,
+            this.Usuario_lv,
+            this.ImporteTotal,
+            this.txtEstado,
+            this.lvBtnImprimir,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dgvLVentas.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLVentas.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvLVentas.EnableHeadersVisualStyles = false;
+            this.dgvLVentas.GridColor = System.Drawing.Color.Silver;
+            this.dgvLVentas.Location = new System.Drawing.Point(9, 263);
+            this.dgvLVentas.Name = "dgvLVentas";
+            this.dgvLVentas.ReadOnly = true;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvLVentas.RowHeadersVisible = false;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLVentas.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvLVentas.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvLVentas.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvLVentas.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLVentas.RowTemplate.Height = 80;
+            this.dgvLVentas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvLVentas.Size = new System.Drawing.Size(1284, 280);
+            this.dgvLVentas.TabIndex = 211;
+            this.dgvLVentas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvLVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvLVentas.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvLVentas.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvLVentas.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvLVentas.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvLVentas.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvLVentas.ThemeStyle.GridColor = System.Drawing.Color.Silver;
+            this.dgvLVentas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.DimGray;
+            this.dgvLVentas.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvLVentas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvLVentas.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvLVentas.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvLVentas.ThemeStyle.HeaderStyle.Height = 45;
+            this.dgvLVentas.ThemeStyle.ReadOnly = true;
+            this.dgvLVentas.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvLVentas.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
+            this.dgvLVentas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvLVentas.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvLVentas.ThemeStyle.RowsStyle.Height = 80;
+            this.dgvLVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Azure;
+            this.dgvLVentas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            this.dgvLVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLVentas_CellContentClick);
+            this.dgvLVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLVentas_CellDoubleClick);
+            this.dgvLVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLVentas_CellFormatting);
+            this.dgvLVentas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLVentas_CellMouseDown_1);
+            this.dgvLVentas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvLVentas_CellPainting);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // Numero_lv
+            // 
+            this.Numero_lv.FillWeight = 104.959F;
+            this.Numero_lv.HeaderText = "N°";
+            this.Numero_lv.Name = "Numero_lv";
+            this.Numero_lv.ReadOnly = true;
+            // 
+            // CodVenta_lv
+            // 
+            this.CodVenta_lv.HeaderText = "Cod. Venta";
+            this.CodVenta_lv.Name = "CodVenta_lv";
+            this.CodVenta_lv.ReadOnly = true;
+            this.CodVenta_lv.Visible = false;
+            // 
+            // fechaPago
+            // 
+            this.fechaPago.FillWeight = 104.959F;
+            this.fechaPago.HeaderText = "Fecha Venta";
+            this.fechaPago.Name = "fechaPago";
+            this.fechaPago.ReadOnly = true;
+            // 
+            // FECHAVENTA
+            // 
+            this.FECHAVENTA.FillWeight = 104.959F;
+            this.FECHAVENTA.HeaderText = "Fecha inicio contrato";
+            this.FECHAVENTA.Name = "FECHAVENTA";
+            this.FECHAVENTA.ReadOnly = true;
+            // 
+            // fechaFinContrato
+            // 
+            this.fechaFinContrato.FillWeight = 104.959F;
+            this.fechaFinContrato.HeaderText = "Fecha fin contrato";
+            this.fechaFinContrato.Name = "fechaFinContrato";
+            this.fechaFinContrato.ReadOnly = true;
+            // 
+            // Vehiculos_lv
+            // 
+            this.Vehiculos_lv.FillWeight = 104.959F;
+            this.Vehiculos_lv.HeaderText = "Vehiculos";
+            this.Vehiculos_lv.Name = "Vehiculos_lv";
+            this.Vehiculos_lv.ReadOnly = true;
+            // 
+            // Ciente_Rs_lv
+            // 
+            this.Ciente_Rs_lv.FillWeight = 104.959F;
+            this.Ciente_Rs_lv.HeaderText = "Cliente/Razon Social";
+            this.Ciente_Rs_lv.Name = "Ciente_Rs_lv";
+            this.Ciente_Rs_lv.ReadOnly = true;
+            // 
+            // Plan_lv
+            // 
+            this.Plan_lv.FillWeight = 104.959F;
+            this.Plan_lv.HeaderText = "Plan";
+            this.Plan_lv.Name = "Plan_lv";
+            this.Plan_lv.ReadOnly = true;
+            // 
+            // TipoVenta
+            // 
+            this.TipoVenta.FillWeight = 104.959F;
+            this.TipoVenta.HeaderText = "Tipo Venta";
+            this.TipoVenta.Name = "TipoVenta";
+            this.TipoVenta.ReadOnly = true;
+            // 
+            // Estado_lv
+            // 
+            this.Estado_lv.FillWeight = 104.959F;
+            this.Estado_lv.HeaderText = "Estado";
+            this.Estado_lv.Name = "Estado_lv";
+            this.Estado_lv.ReadOnly = true;
+            // 
+            // EstadoContrato
+            // 
+            this.EstadoContrato.FillWeight = 104.959F;
+            this.EstadoContrato.HeaderText = "Estado Contrato";
+            this.EstadoContrato.Name = "EstadoContrato";
+            this.EstadoContrato.ReadOnly = true;
+            // 
+            // Usuario_lv
+            // 
+            this.Usuario_lv.FillWeight = 104.959F;
+            this.Usuario_lv.HeaderText = "Usuario";
+            this.Usuario_lv.Name = "Usuario_lv";
+            this.Usuario_lv.ReadOnly = true;
+            // 
+            // ImporteTotal
+            // 
+            this.ImporteTotal.FillWeight = 104.959F;
+            this.ImporteTotal.HeaderText = "Importe Total";
+            this.ImporteTotal.Name = "ImporteTotal";
+            this.ImporteTotal.ReadOnly = true;
+            // 
+            // txtEstado
+            // 
+            this.txtEstado.FillWeight = 104.959F;
+            this.txtEstado.HeaderText = "Estado Renovacion";
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.ReadOnly = true;
+            this.txtEstado.Visible = false;
+            // 
+            // lvBtnImprimir
+            // 
+            this.lvBtnImprimir.ContextMenuStrip = this.cmsImpresion;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvBtnImprimir.DefaultCellStyle = dataGridViewCellStyle3;
+            this.lvBtnImprimir.FillWeight = 35.53299F;
+            this.lvBtnImprimir.HeaderText = "";
+            this.lvBtnImprimir.Name = "lvBtnImprimir";
+            this.lvBtnImprimir.ReadOnly = true;
+            // 
+            // cmsImpresion
+            // 
+            this.cmsImpresion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsDocumentoVenta,
+            this.Contrato,
+            this.ActaInstalacion});
+            this.cmsImpresion.Name = "cmsImpresiones";
+            this.cmsImpresion.Size = new System.Drawing.Size(186, 70);
+            // 
+            // tlsDocumentoVenta
+            // 
+            this.tlsDocumentoVenta.Name = "tlsDocumentoVenta";
+            this.tlsDocumentoVenta.Size = new System.Drawing.Size(185, 22);
+            this.tlsDocumentoVenta.Text = "Documento de Venta";
+            this.tlsDocumentoVenta.Click += new System.EventHandler(this.tlsDocumentoVenta_Click_1);
+            // 
+            // Contrato
+            // 
+            this.Contrato.Name = "Contrato";
+            this.Contrato.Size = new System.Drawing.Size(185, 22);
+            this.Contrato.Text = "Contrato";
+            this.Contrato.Click += new System.EventHandler(this.Contrato_Click);
+            // 
+            // ActaInstalacion
+            // 
+            this.ActaInstalacion.Name = "ActaInstalacion";
+            this.ActaInstalacion.Size = new System.Drawing.Size(185, 22);
+            this.ActaInstalacion.Text = "Acta de Instalacion";
+            this.ActaInstalacion.Click += new System.EventHandler(this.ActaInstalacion_Click_1);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "idTipoTarida";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "idContrato";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
             // 
             // label8
             // 
@@ -769,13 +935,13 @@
             // 
             // gbPaginacion
             // 
-            this.gbPaginacion.Controls.Add(this.btnNumFilas);
+            this.gbPaginacion.Controls.Add(this.btnNumF);
             this.gbPaginacion.Controls.Add(this.label37);
             this.gbPaginacion.Controls.Add(this.siticoneVSeparator1);
             this.gbPaginacion.Controls.Add(this.cboPaginaV);
             this.gbPaginacion.Controls.Add(this.label40);
-            this.gbPaginacion.Controls.Add(this.btnTotalReg);
-            this.gbPaginacion.Controls.Add(this.btnTotalPag);
+            this.gbPaginacion.Controls.Add(this.btnTotalR);
+            this.gbPaginacion.Controls.Add(this.btnTotalP);
             this.gbPaginacion.Controls.Add(this.label41);
             this.gbPaginacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbPaginacion.Location = new System.Drawing.Point(881, 541);
@@ -784,23 +950,23 @@
             this.gbPaginacion.TabIndex = 209;
             this.gbPaginacion.TabStop = false;
             // 
-            // btnNumFilas
+            // btnNumF
             // 
-            this.btnNumFilas.BackColor = System.Drawing.Color.Transparent;
-            this.btnNumFilas.CheckedState.Parent = this.btnNumFilas;
-            this.btnNumFilas.CustomImages.Parent = this.btnNumFilas;
-            this.btnNumFilas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnNumFilas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNumFilas.ForeColor = System.Drawing.Color.White;
-            this.btnNumFilas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnNumFilas.HoveredState.Parent = this.btnNumFilas;
-            this.btnNumFilas.Location = new System.Drawing.Point(209, 12);
-            this.btnNumFilas.Name = "btnNumFilas";
-            this.btnNumFilas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnNumFilas.ShadowDecoration.Parent = this.btnNumFilas;
-            this.btnNumFilas.Size = new System.Drawing.Size(25, 25);
-            this.btnNumFilas.TabIndex = 171;
-            this.btnNumFilas.TextOffset = new System.Drawing.Point(0, 1);
+            this.btnNumF.BackColor = System.Drawing.Color.Transparent;
+            this.btnNumF.CheckedState.Parent = this.btnNumF;
+            this.btnNumF.CustomImages.Parent = this.btnNumF;
+            this.btnNumF.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumF.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNumF.ForeColor = System.Drawing.Color.White;
+            this.btnNumF.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumF.HoveredState.Parent = this.btnNumF;
+            this.btnNumF.Location = new System.Drawing.Point(209, 12);
+            this.btnNumF.Name = "btnNumF";
+            this.btnNumF.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnNumF.ShadowDecoration.Parent = this.btnNumF;
+            this.btnNumF.Size = new System.Drawing.Size(25, 25);
+            this.btnNumF.TabIndex = 171;
+            this.btnNumF.TextOffset = new System.Drawing.Point(0, 1);
             // 
             // label37
             // 
@@ -841,41 +1007,41 @@
             this.label40.TabIndex = 168;
             this.label40.Text = "Página";
             // 
-            // btnTotalReg
+            // btnTotalR
             // 
-            this.btnTotalReg.BackColor = System.Drawing.Color.Transparent;
-            this.btnTotalReg.CheckedState.Parent = this.btnTotalReg;
-            this.btnTotalReg.CustomImages.Parent = this.btnTotalReg;
-            this.btnTotalReg.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalReg.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTotalReg.ForeColor = System.Drawing.Color.White;
-            this.btnTotalReg.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalReg.HoveredState.Parent = this.btnTotalReg;
-            this.btnTotalReg.Location = new System.Drawing.Point(307, 12);
-            this.btnTotalReg.Name = "btnTotalReg";
-            this.btnTotalReg.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnTotalReg.ShadowDecoration.Parent = this.btnTotalReg;
-            this.btnTotalReg.Size = new System.Drawing.Size(25, 25);
-            this.btnTotalReg.TabIndex = 172;
-            this.btnTotalReg.TextOffset = new System.Drawing.Point(0, 1);
+            this.btnTotalR.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalR.CheckedState.Parent = this.btnTotalR;
+            this.btnTotalR.CustomImages.Parent = this.btnTotalR;
+            this.btnTotalR.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalR.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalR.ForeColor = System.Drawing.Color.White;
+            this.btnTotalR.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalR.HoveredState.Parent = this.btnTotalR;
+            this.btnTotalR.Location = new System.Drawing.Point(307, 12);
+            this.btnTotalR.Name = "btnTotalR";
+            this.btnTotalR.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalR.ShadowDecoration.Parent = this.btnTotalR;
+            this.btnTotalR.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalR.TabIndex = 172;
+            this.btnTotalR.TextOffset = new System.Drawing.Point(0, 1);
             // 
-            // btnTotalPag
+            // btnTotalP
             // 
-            this.btnTotalPag.BackColor = System.Drawing.Color.Transparent;
-            this.btnTotalPag.CheckedState.Parent = this.btnTotalPag;
-            this.btnTotalPag.CustomImages.Parent = this.btnTotalPag;
-            this.btnTotalPag.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalPag.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTotalPag.ForeColor = System.Drawing.Color.White;
-            this.btnTotalPag.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalPag.HoveredState.Parent = this.btnTotalPag;
-            this.btnTotalPag.Location = new System.Drawing.Point(149, 12);
-            this.btnTotalPag.Name = "btnTotalPag";
-            this.btnTotalPag.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnTotalPag.ShadowDecoration.Parent = this.btnTotalPag;
-            this.btnTotalPag.Size = new System.Drawing.Size(25, 25);
-            this.btnTotalPag.TabIndex = 169;
-            this.btnTotalPag.TextOffset = new System.Drawing.Point(0, 1);
+            this.btnTotalP.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalP.CheckedState.Parent = this.btnTotalP;
+            this.btnTotalP.CustomImages.Parent = this.btnTotalP;
+            this.btnTotalP.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalP.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalP.ForeColor = System.Drawing.Color.White;
+            this.btnTotalP.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalP.HoveredState.Parent = this.btnTotalP;
+            this.btnTotalP.Location = new System.Drawing.Point(149, 12);
+            this.btnTotalP.Name = "btnTotalP";
+            this.btnTotalP.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalP.ShadowDecoration.Parent = this.btnTotalP;
+            this.btnTotalP.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalP.TabIndex = 169;
+            this.btnTotalP.TextOffset = new System.Drawing.Point(0, 1);
             // 
             // label41
             // 
@@ -885,112 +1051,6 @@
             this.label41.Size = new System.Drawing.Size(20, 15);
             this.label41.TabIndex = 170;
             this.label41.Text = "de";
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 6.587044F;
-            this.Column1.HeaderText = "id";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Column15
-            // 
-            this.Column15.FillWeight = 5.903116F;
-            this.Column15.HeaderText = "N°";
-            this.Column15.Name = "Column15";
-            // 
-            // codigoV
-            // 
-            this.codigoV.FillWeight = 6.589975F;
-            this.codigoV.HeaderText = "CODIGOv";
-            this.codigoV.Name = "codigoV";
-            this.codigoV.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 14.671F;
-            this.Column2.HeaderText = "Fecha Venta";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 16.55482F;
-            this.Column3.HeaderText = "Fecha Inicio Contrato";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 16.72145F;
-            this.Column4.HeaderText = "Fecha Fin Contrato";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 18.24674F;
-            this.Column5.HeaderText = "Vehiculos";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.FillWeight = 32.56686F;
-            this.Column6.HeaderText = "Cliente/ Razon Social";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.FillWeight = 9.83955F;
-            this.Column7.HeaderText = "Plan";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.FillWeight = 9.83955F;
-            this.Column8.HeaderText = "Tipo Venta";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.FillWeight = 13.13609F;
-            this.Column9.HeaderText = "Estado";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.FillWeight = 13.54992F;
-            this.Column10.HeaderText = "Estado Contrato";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.FillWeight = 15.75517F;
-            this.Column11.HeaderText = "Usuario";
-            this.Column11.Name = "Column11";
-            // 
-            // Column12
-            // 
-            this.Column12.FillWeight = 13.13609F;
-            this.Column12.HeaderText = "Importe Total";
-            this.Column12.Name = "Column12";
-            // 
-            // lvBtnImprimir
-            // 
-            this.lvBtnImprimir.ContextMenuStrip = this.cmsImpresion;
-            this.lvBtnImprimir.FillWeight = 9.957356F;
-            this.lvBtnImprimir.HeaderText = "";
-            this.lvBtnImprimir.Name = "lvBtnImprimir";
-            this.lvBtnImprimir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "Column16";
-            this.Column16.Name = "Column16";
-            this.Column16.Visible = false;
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "Column17";
-            this.Column17.Name = "Column17";
-            this.Column17.Visible = false;
             // 
             // frmBuscarVentas
             // 
@@ -1015,12 +1075,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.gbBuscarListaVentas.ResumeLayout(false);
             this.gbBuscarListaVentas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgDatosVenta)).EndInit();
-            this.cmsImpresion.ResumeLayout(false);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.siticonePanel1.ResumeLayout(false);
             this.siticonePanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLVentas)).EndInit();
+            this.cmsImpresion.ResumeLayout(false);
             this.gbPaginacion.ResumeLayout(false);
             this.gbPaginacion.PerformLayout();
             this.ResumeLayout(false);
@@ -1052,47 +1112,49 @@
         private Siticone.UI.WinForms.SiticoneComboBox cboTipoPlan;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgDatosVenta;
         private Siticone.UI.WinForms.SiticonePanel pnlTop;
         private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox2;
         private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
         private Guna.UI.WinForms.GunaLabel gunaLabel10;
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
         private System.Windows.Forms.GroupBox gbPaginacion;
-        private Siticone.UI.WinForms.SiticoneCircleButton btnNumFilas;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnNumF;
         private System.Windows.Forms.Label label37;
         private Siticone.UI.WinForms.SiticoneVSeparator siticoneVSeparator1;
         private System.Windows.Forms.ComboBox cboPaginaV;
         private System.Windows.Forms.Label label40;
-        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalReg;
-        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalPag;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalR;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalP;
         private System.Windows.Forms.Label label41;
         private Siticone.UI.WinForms.SiticoneComboBox cbTipoVenta;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ContextMenuStrip cmsImpresion;
-        private System.Windows.Forms.ToolStripMenuItem tlsDocumentoVenta;
-        private System.Windows.Forms.ToolStripMenuItem ActaInstalacion;
         private System.Windows.Forms.PictureBox imgTipoPlanP;
         private System.Windows.Forms.Label erTipoPlan;
         private System.Windows.Forms.PictureBox imgPlan;
         private System.Windows.Forms.Label erPlan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.ContextMenuStrip cmsImpresion;
+        private System.Windows.Forms.ToolStripMenuItem tlsDocumentoVenta;
+        private System.Windows.Forms.ToolStripMenuItem Contrato;
+        private System.Windows.Forms.ToolStripMenuItem ActaInstalacion;
+        private Siticone.UI.WinForms.SiticoneDataGridView dgvLVentas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodVenta_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAVENTA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaFinContrato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculos_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ciente_Rs_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Plan_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoContrato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImporteTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtEstado;
         private System.Windows.Forms.DataGridViewButtonColumn lvBtnImprimir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

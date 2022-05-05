@@ -99,6 +99,8 @@ namespace CapaNegocio
        public List<TipoPlan> blDevolverTipoPlan(Int32 idTipoPlan, Int32 tipBusqueda)
        {
 
+            BLCargo objTablaCod = new BLCargo();
+            List<Cargo> lstTablaCod = new List<Cargo>();
             DATipoPlan objTipoPlan = new DATipoPlan();
             try
             {

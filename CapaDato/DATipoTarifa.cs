@@ -38,13 +38,13 @@ namespace CapaDato
 
                 foreach (DataRow drMenu in dtUsuario.Rows)
                 {
-                    //if (Convert.ToInt32(drMenu["idTipoTarifa"])!=2)
-                    //{
+                   
+                    
                         lstCargo.Add(new TipoTarifa(
                        Convert.ToInt32(drMenu["idTipoTarifa"]),
                        Convert.ToString(drMenu["nombre"]),
                        Convert.ToBoolean(drMenu["estado"])));
-                    //}
+                    
                    
                 }
 
