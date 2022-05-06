@@ -784,6 +784,7 @@
     <EmbeddedResource Include="Consultas\frmVPOtrasVentas.resx">
       <DependentUpon>frmVPOtrasVentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\rptActaCambioTitularidad.rdlc" />
     <EmbeddedResource Include="Consultas\rptActaInstalacion.rdlc" />
     <EmbeddedResource Include="Consultas\rptComprobantePago.rdlc" />
     <EmbeddedResource Include="Consultas\rptContrato.rdlc" />

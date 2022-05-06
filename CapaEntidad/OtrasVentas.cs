@@ -34,6 +34,14 @@ namespace CapaEntidad
         public String Visivilidad { get; set; }
         public String NombreDocumento { get; set; }
         public String cUsuario { get; set; }
+        public List<OtrasVentas> lstOtrasVenta { get; set; }
+        public Cliente clsClienteDocumentoVenta { get; set; }
+        public Cliente clsClienteAntecesor { get; set; }
+        public Vehiculo clsVehiculo { get; set; }
+        public Equipo_imeis clsEquipoImeis { get; set; }
+        public List<Equipo_imeis> lstClienteImeis { get; set; }
+        public List<DetalleVenta> lstDetalleVenta { get; set; }
+        public List<Pagos> lstTrandiaria { get; set; }
     }
 
     public class StokAccesorios

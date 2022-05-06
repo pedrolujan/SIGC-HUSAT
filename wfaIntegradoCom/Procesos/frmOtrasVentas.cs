@@ -74,6 +74,7 @@ namespace wfaIntegradoCom.Procesos
         static List<OtrasVentas> lstOtrasVentas = new List<OtrasVentas>();
         static OtrasVentas  clsObjetoEsxistente = new OtrasVentas();
         static List<StokAccesorios> lstAtokAccesorios = new List<StokAccesorios>();
+        static OtrasVentas clsOtrasVentaGeneral = new OtrasVentas();
        static Int32 IdObjetoExistente = 0;
         static DateTime dtFechaTitularidad = Variables.gdFechaSis;
         String msgPLACA;
@@ -424,6 +425,7 @@ namespace wfaIntegradoCom.Procesos
             CargoForm = false;
             fncambiarPosicionGB(estMostrarGb);
             FunValidaciones.fnColorBtnGuardar(btnGuardar);
+            clsOtrasVentaGeneral = new OtrasVentas();
             try
             {
                 fnHabilitarControles(true);
@@ -2425,6 +2427,18 @@ namespace wfaIntegradoCom.Procesos
             txtPlacaT_TextChanged(sender, e);
         }
         
+        private void fnCargarClasePrincipal()
+        {
+            clsOtrasVentaGeneral = new OtrasVentas
+            {
+                lstOtrasVenta = lstOtrasVentas,
+                clsClienteDocumentoVenta = clsClienteDocumentoV,
+                clsClienteAntecesor = clsClienteAntecesor,
+                clsVehiculo=lstvehiculo[0],
+                
+
+            } ;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             Boolean blnResultado = false;
@@ -2437,7 +2451,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 if (estDocumentoEmitir == true)
                 {
-                    if (lstDetalleVenta.Count > 0)
+                    if (fnGenerarDetalleOtrasVentas().Count > 0)
                     {
                         if (fnValidarUnidadesDifCero())
                         {
@@ -2453,7 +2467,8 @@ namespace wfaIntegradoCom.Procesos
                                        xmlDocumentoVenta= fnlstDocumentoVenta(),
                                        xmlDetalleVentas= fnGenerarDetalleOtrasVentas()
                                     });
-                                    blnResultado = objOtrasVentas.blGuardarOtrasVentas(lstDetalleVenta, lstPagosTrand, xmlDocumentoVenta, lnTipoCon);
+                                    fnCargarClasePrincipal();
+                                    blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral,lstDetalleVenta, lstPagosTrand, xmlDocumentoVenta, lnTipoCon);
                                     if (blnResultado)
                                     {
                                         //blnResultado = fnObtenerPreciosxProductoxUM(idEquipo);

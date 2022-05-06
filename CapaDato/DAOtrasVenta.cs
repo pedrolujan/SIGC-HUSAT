@@ -146,7 +146,7 @@ namespace CapaDato
 
         }
 
-        public Boolean daGuardarOtrasVenta(List<OtrasVentas> lstOtrasVentas, List<Pagos> lstPagos, List<xmlDocumentoVentaGeneral> xmlDocumentoVenta, Int32 tipoCon)
+        public Boolean daGuardarOtrasVenta(OtrasVentas clsOtrasVentas,List<OtrasVentas> lstOtrasVentas, List<Pagos> lstPagos, List<xmlDocumentoVentaGeneral> xmlDocumentoVenta, Int32 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[4];
             clsConexion objCnx = null;
