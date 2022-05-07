@@ -545,7 +545,7 @@
             // 
             this.dtFechaTitu.BackColor = System.Drawing.Color.White;
             this.dtFechaTitu.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
-            this.dtFechaTitu.BorderRadius = 10;
+            this.dtFechaTitu.BorderRadius = 5;
             this.dtFechaTitu.BorderThickness = 1;
             this.dtFechaTitu.CheckedState.Parent = this.dtFechaTitu;
             this.dtFechaTitu.FillColor = System.Drawing.Color.Transparent;

@@ -1999,16 +1999,16 @@ namespace wfaIntegradoCom.Procesos
             fnHabilitarControles(false);
             Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
             abrirFrmVPOtrasVentas.Inicio(fnlstDocumentoVenta(),/*lstOtrasVentas*/ fnGenerarDetalleOtrasVentas(),-2);
-            //if (EstadoGenVenta == true)
-            //{
-            //    EstadoGenVenta = false;
-            //     fnMostrarVentanaTipoPago();
-            //}
-            //else
-            //{
-            //    fnHabilitarControles(true);
-            //}
+
+            Consultas.frmVPActaCambioTitularidad frmCT = new Consultas.frmVPActaCambioTitularidad();
+            List<Cliente> lstCDV=new List<Cliente>();
+            List<Cliente> lstCAN = new List<Cliente>();
+            lstCDV.Add(clsOtrasVentaGeneral.clsClienteDocumentoVenta);
+            lstCAN.Add(clsOtrasVentaGeneral.clsClienteAntecesor);
+
+            frmCT.Inicio(lstCDV, lstCAN, lstvehiculo, 0);
             
+
             return EstadoGenVenta;
         }
 
@@ -2149,6 +2149,13 @@ namespace wfaIntegradoCom.Procesos
                         clsClienteAntecesor.cNombre = Convert.ToString(drMenu["cNombre"]);
                         clsClienteAntecesor.cApePat = Convert.ToString(drMenu["cApePat"]);
                         clsClienteAntecesor.cApeMat = Convert.ToString(drMenu["cApeMat"]);
+                        clsClienteAntecesor.cDocumento = Convert.ToString(drMenu["cDocumento"]);
+                        clsClienteAntecesor.cTipoDoc= Convert.ToString(drMenu["NomTdoc"]);
+                        clsClienteAntecesor.cTelCelular= Convert.ToString(drMenu["cTelCelular"]);
+                        clsClienteAntecesor.cDireccion= Convert.ToString(drMenu["cDireccion"]);
+
+                        clsClienteAntecesor.cContactoNom1= Convert.ToInt32(drMenu["cTipPers"])==2?"Rason social":"Nombre";
+
                         txtCliente.Text = clsClienteAntecesor.cNombre + " " + clsClienteAntecesor.cApePat + " " + clsClienteAntecesor.cApeMat;
                         //txtdni.Text = Convert.ToString(drMenu["cDocumento"]);
                         //txtTelefono.Text = Convert.ToString(drMenu["cTelCelular"]);
@@ -2429,6 +2436,10 @@ namespace wfaIntegradoCom.Procesos
         
         private void fnCargarClasePrincipal()
         {
+            lstvehiculo[0].dFechaReg = dtFechaTitu.Value;
+            lstvehiculo[0].Propietario = "MOTI0002";
+            clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(cboTipoPersona.SelectedValue) == 2 ? "Rason social" : "Nombre";
+            clsClienteDocumentoV.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
             clsOtrasVentaGeneral = new OtrasVentas
             {
                 lstOtrasVenta = lstOtrasVentas,
@@ -2458,7 +2469,7 @@ namespace wfaIntegradoCom.Procesos
                             if (estadoTabla == true)
                             {
 
-
+                                fnCargarClasePrincipal();
                                 if (fnMostrarVPDocumentoventa())
                                 {
                                     List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
