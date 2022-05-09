@@ -118,6 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAmZJREFUWEft
+        l0trFEEURickkpCgoiJJfIEo/g1RIYm4FYI/QQRBEcSNGlBRxAcuxB9gjAsjIr7QhbpxpeBCJFnqzic+
+        8LFQx/Pdvj1MJ9XVNXFAhRw4pKvurds9k6rqmto8/xX1er0Ht+IZvIqPXF2fxhHs9vT2QdGleAo/YxXK
+        OYlLfPifQaEd+B5b5R2OepnWYXAHjuEvnCsaewg7vGw6DDquCm3iqJdNgwGjGPvkn/AWajJqblzHj1iG
+        am338nFIXIxvNCrAF9yFPZ7egL4+3I1lY1/hQk8vh6Qjlh7mJ27yvJWoJbkNV9lg4HotTmGIMU8LQ0IX
+        avbGeIF3sssGerArOOh11mGojr6dTrtZCIKbLW023/1vFXq4/CH2WM9sNtrNQhAMzfznuAZvWKuaSa+l
+        OfHVeoocs5uFIHgpy2mgmw94rBtTHkL/jn4fc9d6ilxULAjBB1mO8RgL2yntTpxQsIIhz7+QNQvct2Ih
+        CD7Mcgqc99hw1oxyGbusmEN7GT5R0Ik+QOjT3fbYAKZsy1oNC3zMcnyqzibGFQtC8ESWU0CbT6/Hr1lP
+        NcrTxH1mrSLRSVi2DPd5fAVqqaVQtnSjy7BsI/qAGzxnEHUA0WzP+YH66l9aq5z4RiRIKNuKp3G9pylv
+        NW5BfWv55qPr5gebSXwrFiTFXkY6mOzFPk9vQJ+OaztRcyZE2stIkFj1Ov6G9/AcnsWbGHuHpL+Ocxhw
+        wIa2h/1eNh0G/d0jWQ6DdSh9i62ieTT3Q2kzFFqEh/E1VqHJdhDTJlwrUFQvIy09/QiZ+cNEZ0Mtw/g6
+        n+ffolb7Dfub2UOjYchyAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="pictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAUhJREFUOE/V
@@ -178,7 +194,7 @@
     <value>True</value>
   </metadata>
   <metadata name="cmsImpresion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>18, 21</value>
   </metadata>
   <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -187,6 +203,6 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>81</value>
+    <value>25</value>
   </metadata>
 </root>

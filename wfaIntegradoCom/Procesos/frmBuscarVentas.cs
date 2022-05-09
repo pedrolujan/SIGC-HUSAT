@@ -30,8 +30,9 @@ namespace wfaIntegradoCom.Procesos
         private static List<TipoPlan> lstTP = new List<TipoPlan>();
         private static List<Plan> lstP = new List<Plan>();
         private static Plan clsPlan = new Plan();
+        
         static List<validacion> lstValidacionPlan;
-        static Int32 lnTipoCon = 0;
+        static Int16 lnTipoCon;
         static DateTime dtpFechaInicialB = Variables.gdFechaSis;
         //string TipoVenta clsTVenta = new TipoVenta();
         public static String cCodigoVenta = "";
@@ -43,24 +44,33 @@ namespace wfaIntegradoCom.Procesos
         {
             try
             {
-
+                lnTipoCon = 0;
+                cargoFrom = false;
                 //fnListarDatosVenta(dgDatosVenta, 0, 0, -1);
                 fnLlenarTipoTarifa(0, cbTipoVenta, true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadoContrato, "TICN", true);
-
-                cbTipoVenta.SelectedValue = 1;
-                fnListarTipoPlan(0, cboTipoPlan, 0);
-                fnListarPlan(0, cboPlanV, false, 0);
-                fnlistarUsuario(cboUsuario, 1, true);
+                
+                
+                cboPlanV.SelectedValue = 0;
+                fnListarPlanDeTipoPlan(0, cboPlanV, true, lnTipoCon);
+                
+               
+                fnlistarUsuario(cboUsuario, 0, true);
+                
+                dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
-
+               
                 cboUsuario.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboEstadoContrato.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboTipoPlan.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboPlanV.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cbTipoVenta.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                fnValidarPlan();
+                fnLlenarTipoTarifa(0, cbTipoVenta, true);
 
+                cbTipoVenta.SelectedValue = 1;
+                fnListarTipoPlan(0, cboTipoPlan, 1);
             }
             catch (Exception ex)
             {
@@ -98,25 +108,30 @@ namespace wfaIntegradoCom.Procesos
                 return false;
             }
         }
-        private Boolean fnListarPlan(Int32 idTipoPlan, SiticoneComboBox cbo, Boolean tipBusqueda, Int16 tipoCon)
+        private Boolean fnListarPlanDeTipoPlan(Int32 idTipoPlan, SiticoneComboBox cbo, Boolean tipBusqueda, Int16 tipoCon)
         {
             BLPlan objPlan = new BLPlan();
             clsUtil objUtil = new clsUtil();
             List<Plan> lstPlan;
+
             try
             {
                 lstPlan = objPlan.blDevolverPlanDeTipoPlan(idTipoPlan, tipBusqueda, tipoCon);
+
                 cbo.ValueMember = "idPlan";
                 cbo.DisplayMember = "nombrePlan";
                 cbo.DataSource = lstPlan;
+
                 lstP = lstPlan;
+
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("FrmRegistrarCliente", "fnLlenarDepartamento", ex.Message);
                 return false;
             }
+
         }
         private Boolean fnlistarUsuario(SiticoneComboBox cbo, Int32 tipoCon, Boolean buscar)
         {
@@ -126,8 +141,8 @@ namespace wfaIntegradoCom.Procesos
             try
             {
                 lstClase = objUsuario.blDevolverSoloUsuario(tipoCon, buscar);
-                cbo.ValueMember = "cUser";
-                //cbo.ValueMember = "cUser";
+                cbo.ValueMember = "idUsuario";
+                cbo.DisplayMember = "cUser";
                 cbo.DataSource = lstClase; 
                 return true;
             }
@@ -183,12 +198,12 @@ namespace wfaIntegradoCom.Procesos
         }
         public  Boolean fnListarDatosVenta(DataGridView dgv, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon)
         {
-
-            BLClienteVenta objClienteV = new BLClienteVenta();
+            BLClienteVenta objVentaGeneral = new BLClienteVenta();
             clsUtil objUtil = new clsUtil();
-            DataTable datClienteV = new DataTable();
-
+            DataTable datVenta = new DataTable();
+            String placaVehiculo = txtBuscarVentas.Text.Trim();
            
+
             String cEstadoInstal = "0";
             Int32 cEstadoTipoVenta = Convert.ToInt32(cbTipoVenta.SelectedValue);
             Boolean habilitarFechas = chkHabilitarFechasBus.Checked ? true : false;
@@ -196,10 +211,10 @@ namespace wfaIntegradoCom.Procesos
             DateTime fechaInicial = dtpFechaInicialBus.Value;
             DateTime fechaFinal = dtpFechaFinalBus.Value;
             String estadoTipoContrato = cboEstadoContrato.SelectedValue.ToString();
-            String estadoTipoPlan = cboTipoPlan.SelectedValue.ToString();
-            String estadoPlan = cboPlanV.SelectedValue.ToString();
-            String estadoUsuario = cboUsuario.SelectedValue.ToString();
-            String placaVehiculo = txtBuscarVentas.Text.Trim();
+            Int32 estadoTipoPlan = Convert.ToInt32(cboTipoPlan.SelectedValue);
+            Int32 estadoPlan = Convert.ToInt32(cboPlanV.SelectedValue);
+            Int32 estadoUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
+           
             Int32 HorasIni = 0;
             Int32 HorasFin = 0;
             Int32 HorasRestarIni = 0;
@@ -215,11 +230,10 @@ namespace wfaIntegradoCom.Procesos
             Int32 filas = 10;
             Double TotalGanacia = 0;
             Boolean estadoReturn = false;
-
             try
             {
-                datClienteV = objClienteV.BlBuscarClienteV(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro,estadoTipoPlan,estadoPlan, estadoUsuario);
-                Int32 totalResultados = datClienteV.Rows.Count;
+                datVenta = objVentaGeneral.BlBuscarClienteV(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro, estadoTipoPlan, estadoPlan, estadoUsuario);
+                Int32 totalResultados = datVenta.Rows.Count;
                 if (tipoCon == -4)
                 {
                     if (totalResultados > 0)
@@ -228,15 +242,16 @@ namespace wfaIntegradoCom.Procesos
                         {
 
 
-                            TotalGanacia += Convert.ToDouble(datClienteV.Rows[i][1]);
+                            TotalGanacia += Convert.ToDouble(datVenta.Rows[i][1]);
 
                         }
-                        lblTotaGanancia.Text = $"{Convert.ToString(datClienteV.Rows[0][0])} {String.Format("{0:#,##0.00}", TotalGanacia)}";
+                        lblTotaGanancia.Text = $"{Convert.ToString(datVenta.Rows[0][0])} {String.Format("{0:#,##0.00}", TotalGanacia)}";
                     }
                     else
                     {
                         lblTotaGanancia.Text = $"{"S/"} {String.Format("{0:#,##0.00}", totalResultados)}";
-                    }     
+                    }
+
                     estadoReturn = true;
                 }
                 else
@@ -246,9 +261,13 @@ namespace wfaIntegradoCom.Procesos
                         if (dgv.Rows.Count > 0)
                         {
                             dgv.Rows.Clear();
+
                         }
+
                         Int32 y;
                         Int32 contador = 0;
+
+
                         if (tipoCon == -1)
                         {
                             y = 0;
@@ -258,47 +277,42 @@ namespace wfaIntegradoCom.Procesos
                             tabInicio = (numPagina - 1) * filas;
                             y = tabInicio;
                         }
-                        foreach (DataRow dr in datClienteV.Rows)
+
+                        foreach (DataRow dr in datVenta.Rows)
                         {
                             y += 1;
                             Int32 restaAnio = 0;
                             Int32 restaMeses = 0;
                             Int32 faltaDias = 0;
                             String strEstado = "";
-
                             String desVehiculos = Convert.ToString(dr["descripcionVehiculo"]);
                             DateTime fecha = Convert.ToDateTime(Convert.ToDateTime(dr["FechaRegistro"]).ToString("dd/MM/yyyy"));
                             DateTime fechaPago = Convert.ToDateTime(Convert.ToDateTime(dr["fechaPago"]).ToString("dd/MM/yyyy"));
                             DateTime fechaFinalContrato = Convert.ToDateTime(Convert.ToDateTime(dr["periodoFinal"]).ToString("dd/MM/yyyy"));
 
-                            //TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
+                            TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
 
-                            ////Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
-                            //if (Variables.gdFechaSis > fechaFinalContrato)
-                            //{
-                            //    tiket = Variables.gdFechaSis - fechaFinalContrato;
-                            //}
-                            //else
-                            //{
-                            //    tiket = fechaFinalContrato - Variables.gdFechaSis;
-                            //}
-                            //DateTime totalTime = new DateTime(tiket.Ticks);
-                            //restaAnio = totalTime.Year - 1;
-                            //restaMeses = totalTime.Month - 1;
-                            //faltaDias = Convert.ToInt32(totalTime.Day);
-                            //if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA")
-                            //{
-                            //    strEstado = "❌ ANULADA";
-                            //}
-                            //else
-                            //{
-                            //    //strEstado = fnMostrarEstadoRenovacion(Variables.gdFechaSis, fechaFinalContrato, restaAnio, restaMeses, faltaDias);
-                            //}
+                            if (Variables.gdFechaSis > fechaFinalContrato)
+                            {
+                                tiket = Variables.gdFechaSis - fechaFinalContrato;
+                            }
+                            else
+                            {
+                                tiket = fechaFinalContrato - Variables.gdFechaSis;
+                            }
+                            DateTime totalTime = new DateTime(tiket.Ticks);
+                            restaAnio = totalTime.Year - 1;
+                            restaMeses = totalTime.Month - 1;
+                            faltaDias = Convert.ToInt32(totalTime.Day);
+                            if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA")
+                            {
+                                strEstado = "❌ ANULADA";
+                            }
+                          
                             dgv.Rows.Add(
-
-                                dr["idCliente"],                               
+                                dr["idCliente"],
                                 y,
-                                 dr["codigoVenta"],
+                                dr["codigoVenta"],
                                 fechaPago.ToString("dd/MM/yyyy"),
                                 fecha.ToString("dd/MM/yyyy"),
                                 fechaFinalContrato.ToString("dd/MM/yyyy"),
@@ -326,10 +340,10 @@ namespace wfaIntegradoCom.Procesos
                             }
                             contador += 1;
                         }
-                        
+                      
+
                         dgv.Columns[0].Visible = false;
                         dgv.Columns[2].Visible = false;
-
                         dgv.Columns[1].Width = 20;
                         dgv.Columns[3].Width = 45;
                         dgv.Columns[4].Width = 50;
@@ -344,27 +358,19 @@ namespace wfaIntegradoCom.Procesos
                         dgv.Columns[13].Width = 40;
                         dgv.Columns[14].Width = 100;
                         dgv.Columns[15].Width = 60;
-
-                        //dgv.RowTemplate.Height = 100;
+                        
                         dgv.Visible = true;
 
                         if (tipoCon == -1)
                         {
                             gbPaginacion.Visible = true;
-                            Int32 totalRegistros = Convert.ToInt32(datClienteV.Rows[0][0]);
-                            FunValidaciones.fnCalcularPaginacion(
-                                totalRegistros,
-                                filas,
-                                totalResultados,
-                                cboPaginaV,
-                                btnTotalPag,
-                                btnNumFilas,
-                                btnTotalReg
-                            );
+                            Int32 totalRegistros = Convert.ToInt32(datVenta.Rows[0][0]);
+                            FunValidaciones.fnCalcularPaginacion(totalRegistros,filas,totalResultados,cboPaginaV, btnTotalP, btnNumF,btnTotalR );
                         }
                         else
                         {
-                            btnNumFilas.Text = Convert.ToString(totalResultados);
+                            btnNumF.Text = Convert.ToString(totalResultados);
+  
                         }
 
                         estadoReturn = true;
@@ -372,18 +378,20 @@ namespace wfaIntegradoCom.Procesos
                     else
                     {
 
-                        MessageBox.Show("NO SE ENCONTRÓ NINGÚN RESULTADO CON ESTAS COINCIDENCIAS", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("NO HAY DATOS QUE COINSIDAN", "AVISO!!!", MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
                         dgv.Rows.Clear();
                         estadoReturn = false;
                     }
                 }
+
                 return estadoReturn;
+
 
             }
             catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("frmRegistrarAccesorios", "fnBuscarEquipo", ex.Message);
-               return false;
+                return false;
             }
         }
         private void txtBuscarVentas_KeyPress(object sender, KeyPressEventArgs e)        
@@ -392,7 +400,7 @@ namespace wfaIntegradoCom.Procesos
             lnTipoCon = 0;
             if (e.KeyChar == (Char)Keys.Enter)
             {
-                fnListarDatosVenta(dgDatosVenta, 0, 0, -1);
+                fnListarDatosVenta(dgvLVentas, 0, 0, -1);
             }
         }
       private void cboTipoVetaBusq_SelectedIndexChanged(object sender, EventArgs e)
@@ -402,20 +410,21 @@ namespace wfaIntegradoCom.Procesos
      {    
      }
       private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
-        {
+       {
          int fila = Convert.ToInt32(cboPaginaV.Text);
-            if (cargoFrom == true)
-            {
-                fnListarDatosVenta (dgDatosVenta, fila, 0, -2);
+            
+                fnListarDatosVenta (dgvLVentas, fila, 0, -2);
 
-            }
-      }
+            
+           
+       }
       private void chkHabilitarFechasBus_CheckedChanged(object sender, EventArgs e)
       {
             if (chkHabilitarFechasBus.Checked == true)
             {
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
+
                 gbBuscarListaVentas.Enabled = true;
             }
             else
@@ -428,40 +437,40 @@ namespace wfaIntegradoCom.Procesos
 
             if (btnBuscarMonto.Checked == true)
             {
-                fnListarDatosVenta(dgDatosVenta, 0, 0, -4);
+                fnListarDatosVenta(dgvLVentas, 0, 0, -4);
             }
 
        }
       private void pictureBox4_Click(object sender, EventArgs e)
        {
             {
-                fnListarDatosVenta(dgDatosVenta, 0, 0, -1);
+                fnListarDatosVenta(dgvLVentas, 0, 0, -1);
                 if (btnBuscarMonto.Checked == true)
                 {
-                    fnListarDatosVenta(dgDatosVenta, 0, 0, -4);
+                    fnListarDatosVenta(dgvLVentas, 0, 0, -4);
                 }
             }
       }
        private void pictureBox1_Click(object sender, EventArgs e)
        {
-            fnListarDatosVenta(dgDatosVenta, 0, 0, -4);
+            fnListarDatosVenta(dgvLVentas, 0, 0, -4);
        }
 
         private void tlsDocumentoVenta_Click(object sender, EventArgs e)
         {
-            cCodigoVenta = Convert.ToString(dgDatosVenta.CurrentRow.Cells[2].Value);
-            Int32 idTipoTarifa = Convert.ToInt32(dgDatosVenta.CurrentRow.Cells[16].Value);
-            Int32 idContrato = Convert.ToInt32(dgDatosVenta.CurrentRow.Cells[17].Value);
+            cCodigoVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
+            Int32 idTipoTarifa = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[16].Value);
+            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
             ////Mantenedores.frmRegistrarVenta frmrv = new Mantenedores.frmRegistrarVenta();
             fnBuscarDocumentoVent(cCodigoVenta, 1, idTipoTarifa, idContrato);
         }
         private void ActaInstalacion_Click(object sender, EventArgs e)
         {
-            String CodVenta = Convert.ToString(dgDatosVenta.CurrentRow.Cells[2].Value);
-            Int32 idTipoVenta = Convert.ToInt32(dgDatosVenta.CurrentRow.Cells[16].Value);
-            Int32 idtipoPlan = Convert.ToInt32(dgDatosVenta.CurrentRow.Cells[18].Value);
-            Int32 idContrato = Convert.ToInt32(dgDatosVenta.CurrentRow.Cells[17].Value);
-            String RowVehiculos = Convert.ToString(dgDatosVenta.CurrentRow.Cells[6].Value);
+            String CodVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
+            Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[16].Value);
+            Int32 idtipoPlan = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[18].Value);
+            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            String RowVehiculos = Convert.ToString(dgvLVentas.CurrentRow.Cells[6].Value);
             String[] ArrayVehiculos = RowVehiculos.Split(';');
             List<Vehiculo> lstVehiculo = new List<Vehiculo>();
 
@@ -545,20 +554,20 @@ namespace wfaIntegradoCom.Procesos
             }
         }
 
-        private void dgDatosVenta_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dgvLVentas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && this.dgDatosVenta.Columns[e.ColumnIndex].Name == "lvBtnImprimir" && e.RowIndex >= 0)
+            if (e.ColumnIndex >= 0 && this.dgvLVentas.Columns[e.ColumnIndex].Name == "lvBtnImprimir" && e.RowIndex >= 0)
             {
                
                 
                     e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                    DataGridViewButtonCell celBoton = this.dgDatosVenta.Rows[e.RowIndex].Cells["lvBtnImprimir"] as DataGridViewButtonCell;
+                    DataGridViewButtonCell celBoton = this.dgvLVentas.Rows[e.RowIndex].Cells["lvBtnImprimir"] as DataGridViewButtonCell;
                     Icon icoAtomico = new Icon(Application.StartupPath + @"\Impresora.ico");
                     e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
 
-                    this.dgDatosVenta.Rows[e.RowIndex].Height = 45;
-                    this.dgDatosVenta.Columns[e.ColumnIndex].Width = 45;
+                    this.dgvLVentas.Rows[e.RowIndex].Height = 45;
+                    this.dgvLVentas.Columns[e.ColumnIndex].Width = 45;
 
 
                     e.Handled = true;
@@ -567,11 +576,11 @@ namespace wfaIntegradoCom.Procesos
 
             }
         }
-        private void dgDatosVenta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvLVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgDatosVenta.Columns["lvBtnImprimir"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvLVentas.Columns["lvBtnImprimir"].Index && e.RowIndex >= 0)
             {
-                Int32 idTipoVenta = Convert.ToInt32(dgDatosVenta.CurrentRow.Cells[16].Value);
+                Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[16].Value);
                 if (idTipoVenta == 2)
                 {
                     cmsImpresion.Items[2].Visible = false;
@@ -581,11 +590,11 @@ namespace wfaIntegradoCom.Procesos
                 {
                     cmsImpresion.Items[2].Visible = true;
                 }
-                var mousePosition = dgDatosVenta.PointToClient(Cursor.Position);
-                cmsImpresion.Show(dgDatosVenta, 940, mousePosition.Y);
+                var mousePosition = dgvLVentas.PointToClient(Cursor.Position);
+                cmsImpresion.Show(dgvLVentas, 940, mousePosition.Y);
             }
         }
-        private void dgDatosVenta_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvLVentas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex != -1 && e.ColumnIndex != -1)
             {
@@ -594,13 +603,13 @@ namespace wfaIntegradoCom.Procesos
                     DataGridViewRow clickedRow = (sender as DataGridView).Rows[e.RowIndex];
                     if (!clickedRow.Selected)
                     {
-                        dgDatosVenta.CurrentCell = clickedRow.Cells[e.ColumnIndex];
+                        dgvLVentas.CurrentCell = clickedRow.Cells[e.ColumnIndex];
                     }
                 }
             }
         }
 
-        private void dgDatosVenta_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dgvLVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridView dgview = sender as DataGridView;
 
@@ -664,49 +673,208 @@ namespace wfaIntegradoCom.Procesos
             }
 
         }
-
+        private void fnValidarPlan()
+        {
+            lstValidacionPlan = new List<validacion>();
+            lstValidacionPlan.Add(new validacion { estado = false, mensaje = "", combobox = cboTipoPlan });
+            lstValidacionPlan.Add(new validacion { estado = false, mensaje = "", combobox = cboPlanV });
+           
+        }
         private void cboTipoPlan_SelectedIndexChanged(object sender, EventArgs e)
+        
         {
             Int32 idTipoPlan = Convert.ToInt32(cboTipoPlan.SelectedValue ?? 0);
-            Int32 idTipoventa = Convert.ToInt32(cboPlanV.SelectedValue);
+            Int32 idTipoventa = Convert.ToInt32(cbTipoVenta.SelectedValue);
+
 
             //var result = FunValidaciones.fnValidarCombobox(lstValidacionPlan[0].combobox, erTipoPlan, imgTipoPlanP);
             //lstValidacionPlan[0].estado = result.Item1;
             //lstValidacionPlan[0].mensaje = result.Item2;
-           
-            if (cboTipoPlan.SelectedValue.ToString() == "0" || cboTipoPlan.SelectedValue == null)
+
+
+            //lstValidacionPlan[0].estado = true;
+            //lstValidacionPlan[0].mensaje = "";
+
+
+            if (cboTipoPlan.SelectedValue.ToString() == "1" )
             {
-                cboPlanV.Enabled = false;
+                cboPlanV.Enabled = true;
             }
             else
             {
                 idTipoPlan = Convert.ToInt32(cboTipoPlan.SelectedValue.ToString());
                 cboPlanV.Enabled = true;
             }
-            fnListarPlan(0, cboPlanV, false, 0);
-    
+
+            int numMeses = TipoPlan.fnObtenerTipoPlanSeleccionado(idTipoPlan, lstTP).cMeses;
+            
+            fnListarPlanDeTipoPlan(idTipoPlan, cboPlanV, true, lnTipoCon);
+
         }
 
         private void cboPlanV_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (cargoFrom)
-            //{
 
-            //    if ((Convert.ToInt32(cboPlanV.SelectedValue) != 0))
-            //    {
+            if (cargoFrom)
+            {
+                if (Convert.ToInt32(cboPlanV.SelectedValue) != 0)
+                {
 
-            //        Int32 idPlan = FunValidaciones.fnObtenerIdDeComboBox(cboPlanV);
+                }
 
-            //        clsPlan = Plan.fnObtenerPlanSeleccionado(idPlan, lstP);
-            //        var result = FunValidaciones.fnValidarCombobox(lstValidacionPlan[1].combobox, erPlan, imgPlan);
-            //        lstValidacionPlan[1].estado = result.Item1;
-            //        lstValidacionPlan[1].mensaje = result.Item2;
-            //        if (idPlan == 0)
-            //        {
+                Int32 idPlan = FunValidaciones.fnObtenerIdDeComboBox(cboPlanV);
 
-            //        }
-            //    }
-            //}
+                clsPlan = Plan.fnObtenerPlanSeleccionado(idPlan, lstP);
+                //var result = FunValidaciones.fnValidarCombobox(lstValidacionPlan[1].combobox, erPlan, imgPlan);
+               // lstValidacionPlan[1].estado = result.Item1;
+              //  lstValidacionPlan[1].mensaje = result.Item2;
+                //if (idPlan != 0)
+                //{
+
+                //}
+               
+            }            
+        }
+
+        private void tlsDocumentoVenta_Click_1(object sender, EventArgs e)
+        {
+
+            cCodigoVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
+            Int32 idTipoTarifa = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[16].Value);
+            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            fnBuscarDocumentoVenta(cCodigoVenta, 1, idTipoTarifa, idContrato);
+        }
+        private void fnBuscarDocumentoVenta(String cCodVenta, Int32 tipCon, Int32 idTipoTarifa, Int32 idContrato)
+        {
+            BLOtrasVenta objTipoVenta = new BLOtrasVenta();
+            clsUtil objUtil = new clsUtil();
+            DataTable dtResp = new DataTable();
+            List<TipoVenta> lsTipoVenta = new List<TipoVenta>();
+            Int32 filas = 20;
+            List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
+            xmlDocumentoVentaGeneral xmlDocVenta = new xmlDocumentoVentaGeneral();
+
+            try
+            {
+                xmlDocVenta = objTipoVenta.blBuscarDocumentoVentaGeneral(cCodVenta, tipCon, idTipoTarifa, idContrato);
+                xmlDocVenta.xmlDocumentoVenta[0].cDireccion = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDireccion);
+                xmlDocVenta.xmlDocumentoVenta[0].cCliente = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cCliente);
+                xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago);
+                xmlDocumentoVenta.Add(xmlDocVenta);
+
+                Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
+
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, 1);
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("frmOrdenCompra", "fnListarProveedorActivo", ex.Message);
+
+            }
+            finally
+            {
+                objUtil = null;
+                objTipoVenta = null;
+                lsTipoVenta = null;
+            }
+        }
+
+        private void Contrato_Click(object sender, EventArgs e)
+        {
+            String CodVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
+
+            String RowVehiculos = Convert.ToString(dgvLVentas.CurrentRow.Cells[6].Value);
+
+            String[] ArrayVehiculos = RowVehiculos.Split(';');
+            List<Vehiculo> lstVehiculo = new List<Vehiculo>();
+            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            frmTipoImpresion frmTImpre = new frmTipoImpresion();
+            frmRptContrato frmVPContrato = new frmRptContrato();
+            if (ArrayVehiculos.Length - 1 == 1)
+            {
+                lstVehiculo = fnDebolverDatVehiculo(RowVehiculos, ArrayVehiculos);
+                Mantenedores.frmRegistrarVenta FRMregistrarV = new frmRegistrarVenta();
+                var resutl = FRMregistrarV. fnBuscarContrato(CodVenta, lstVehiculo[0].vPlaca, idContrato);
+                frmVPContrato.Inicio(resutl.Item1, resutl.Item2, resutl.Item3);
+            }
+            else
+            {
+                frmTImpre.inicio(0, CodVenta, fnDebolverDatVehiculo(RowVehiculos, ArrayVehiculos), "C", idContrato);
+
+            }
+        }
+        private List<Vehiculo> fnDebolverDatVehiculo(String RowVehiculos, String[] ArrayVehiculos)
+        {
+            Int32 contador = ArrayVehiculos.Length - 1;
+            String placa = "";
+            String DescripVehiculo = "";
+            String[] ArrayDatos = RowVehiculos.Split('(');
+            Int32 contadorDtos = ArrayDatos[0].Length;
+
+            List<Vehiculo> lstVehi = new List<Vehiculo>();
+
+            for (Int32 i = 0; i < contador; i++)
+            {
+                DescripVehiculo = string.Format("{1}{0}", Environment.NewLine, ArrayVehiculos[i]);
+                placa = (i == 0) ? ArrayVehiculos[i].Substring(6, contadorDtos - 6) : ArrayVehiculos[i].Substring(7, contadorDtos - 6);
+
+
+                lstVehi.Add(new Vehiculo
+                {
+                    vPlaca = placa,
+                    vModeloV = DescripVehiculo
+
+                });
+            }
+            return lstVehi;
+        }
+
+        private void ActaInstalacion_Click_1(object sender, EventArgs e)
+        {
+            String CodVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
+            Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[16].Value);
+            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+
+            String RowVehiculos = Convert.ToString(dgvLVentas.CurrentRow.Cells[6].Value);
+            String[] ArrayVehiculos = RowVehiculos.Split(';');
+            List<Vehiculo> lstVehiculo = new List<Vehiculo>();
+            frmTipoImpresion frmTImpre = new frmTipoImpresion();
+            xmlInstalacion xmlInst = new xmlInstalacion();
+            frmRptActa frmVPActa = new frmRptActa();
+            if (ArrayVehiculos.Length - 1 == 1)
+            {
+                lstVehiculo = fnDebolverDatVehiculo(RowVehiculos, ArrayVehiculos);
+                Mantenedores.frmRegistrarVenta FRMRegistrarV = new frmRegistrarVenta();
+                xmlInst = FRMRegistrarV . fnBuscarActaInstalacion(CodVenta, lstVehiculo[0].vPlaca, idTipoVenta);
+                if (xmlInst.clsInstalacion != null)
+                {
+                    frmVPActa.Inicio(xmlInst.ListaCliente, xmlInst.ListaVehiculo, xmlInst.ListaEquipo, xmlInst.ListaPlan, xmlInst.ListaAccesorio, xmlInst.ListaServicio, xmlInst.observaciones, xmlInst.clsInstalacion, 1);
+                }
+                else
+                {
+                    MessageBox.Show("Por favor indique que se registre la instalacion para poder imprimir el acta.", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                frmTImpre.inicio(Convert.ToInt32(cbTipoVenta.SelectedValue), CodVenta, fnDebolverDatVehiculo(RowVehiculos, ArrayVehiculos), "A", idContrato);
+
+            }
+        }
+
+        private void siticonePanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label38_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gbBuscarListaVentas_Enter(object sender, EventArgs e)
+        {
 
         }
     }
