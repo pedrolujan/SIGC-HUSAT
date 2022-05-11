@@ -144,6 +144,7 @@ namespace CapaDato
                     lstCliente.cContactoCel2 = Convert.ToString(drMenu["cContactoCel2"]);
                     lstCliente.cEmpresa = Convert.ToString(drMenu["cEmpresa"]);
                     lstCliente.cCorreo = Convert.ToString(drMenu["cCorreo"]);
+                    lstCliente.ubigeo = Convert.ToString(drMenu["cDireccion"]+" "+drMenu["cNomDist"]+" "+ drMenu["cNomProv"] +" "+ drMenu["cNomDep"]);
                 }
 
                 return lstCliente;

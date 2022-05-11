@@ -380,6 +380,8 @@ namespace wfaIntegradoCom.Procesos
         }
         private void fnCargarCombobox(Int32 tabIndex)
         {
+
+            FunGeneral.fnLlenarTablaCodTipoCon(cboMotivo, "MOTI", false);
             Boolean result = false;
             if (tabIndex == 0)
             {
@@ -2115,9 +2117,9 @@ namespace wfaIntegradoCom.Procesos
         private void dgConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            lnTipoConCambio = 1;
+            //lnTipoConCambio = 1;
 
-            fnListarDatosCliente(lnTipoConCambio, e);
+            fnListarDatosCliente(1, e);
         }
        
         private void fnListarDatosCliente(int condicion, DataGridViewCellEventArgs e)
@@ -2153,6 +2155,7 @@ namespace wfaIntegradoCom.Procesos
                         clsClienteAntecesor.cTipoDoc= Convert.ToString(drMenu["NomTdoc"]);
                         clsClienteAntecesor.cTelCelular= Convert.ToString(drMenu["cTelCelular"]);
                         clsClienteAntecesor.cDireccion= Convert.ToString(drMenu["cDireccion"]);
+                        clsClienteAntecesor.ubigeo= Convert.ToString(drMenu["cDireccion"]+" "+drMenu["cNomDist"] +" "+ drMenu["cNomProv"] +" "+drMenu["cNomDep"]);
 
                         clsClienteAntecesor.cContactoNom1= Convert.ToInt32(drMenu["cTipPers"])==2?"Rason social":"Nombre";
 
@@ -2437,7 +2440,7 @@ namespace wfaIntegradoCom.Procesos
         private void fnCargarClasePrincipal()
         {
             lstvehiculo[0].dFechaReg = dtFechaTitu.Value;
-            lstvehiculo[0].Propietario = "MOTI0002";
+            lstvehiculo[0].Propietario = cboMotivo.SelectedValue.ToString();
             clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(cboTipoPersona.SelectedValue) == 2 ? "Rason social" : "Nombre";
             clsClienteDocumentoV.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
             clsOtrasVentaGeneral = new OtrasVentas
@@ -2445,8 +2448,14 @@ namespace wfaIntegradoCom.Procesos
                 lstOtrasVenta = lstOtrasVentas,
                 clsClienteDocumentoVenta = clsClienteDocumentoV,
                 clsClienteAntecesor = clsClienteAntecesor,
-                clsVehiculo=lstvehiculo[0],
-                
+                clsVehiculo = lstvehiculo[0],
+                lstTrandiaria = lstPagosTrand,
+                lstDetalleVenta = fnGenerarDetalleOtrasVentas(),
+                dFechaOperacion = dtFechaTitu.Value,
+                dFechaRegistro = Variables.gdFechaSis,
+                CodDocumento = cboTipoDocEmitir.SelectedValue.ToString(),
+                iddUsuario=Variables.gnCodUser,
+                idMoneda=Mon.idMoneda
 
             } ;
         }
@@ -2479,7 +2488,7 @@ namespace wfaIntegradoCom.Procesos
                                        xmlDetalleVentas= fnGenerarDetalleOtrasVentas()
                                     });
                                     fnCargarClasePrincipal();
-                                    blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral,lstDetalleVenta, lstPagosTrand, xmlDocumentoVenta, lnTipoCon);
+                                    blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral, xmlDocumentoVenta, lnTipoCon);
                                     if (blnResultado)
                                     {
                                         //blnResultado = fnObtenerPreciosxProductoxUM(idEquipo);

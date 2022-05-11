@@ -26,6 +26,7 @@ namespace CapaEntidad
         public String simbMoneda { get; set; }
         public Int32 idCliente { get; set; }
         public DateTime dFechaRegistro { get; set; }
+        public DateTime dFechaOperacion { get; set; }
         public String CodDocumento { get; set; }
         public Double IgvPorcentaje { get; set; }
         public Double IgvPrecio { get; set; }
@@ -72,6 +73,13 @@ namespace CapaEntidad
         public List<OtrasVentas> xmlDetalleVentas { get; set; }
         public List<TotalPagosVenta> xmlTotalesVenta { get; set; }
     }
+    public class xmlActaTitularidad
+    {
+        public xmlActaTitularidad() { }
 
+        public List<Cliente> lstClienteDocVenta { get; set; }
+        public List<Cliente> lstClienteAntecesor { get; set; }
+        public List<Vehiculo> lstVehiculo { get; set; }
+    }
 
 }

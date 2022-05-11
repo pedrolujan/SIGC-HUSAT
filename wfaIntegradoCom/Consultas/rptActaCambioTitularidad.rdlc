@@ -411,7 +411,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>0.07761cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>16.51cm</Width>
             <Style>
@@ -440,7 +439,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.854cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>1.23529cm</Width>
             <ZIndex>1</ZIndex>
@@ -569,7 +567,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>1.63039cm</Top>
-            <Left>0cm</Left>
             <Height>0.54708cm</Height>
             <Width>16.44707cm</Width>
             <ZIndex>5</ZIndex>
@@ -599,7 +596,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>2.13717cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>1.12946cm</Width>
             <ZIndex>6</ZIndex>
@@ -660,7 +656,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Top>2.91356cm</Top>
+            <Top>3.10406cm</Top>
             <Left>0.03175cm</Left>
             <Height>0.6cm</Height>
             <Width>16.44707cm</Width>
@@ -690,8 +686,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>3.7852cm</Top>
-            <Left>0cm</Left>
+            <Top>3.9757cm</Top>
             <Height>0.6cm</Height>
             <Width>5.44548cm</Width>
             <ZIndex>9</ZIndex>
@@ -722,7 +717,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>3.7852cm</Top>
+            <Top>3.9757cm</Top>
             <Left>5.52662cm</Left>
             <Height>0.6cm</Height>
             <Width>0.64792cm</Width>
@@ -752,9 +747,9 @@
                 <Width>1pt</Width>
               </RightBorder>
               <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
+              <PaddingRight>1.3pt</PaddingRight>
+              <PaddingTop>3pt</PaddingTop>
+              <PaddingBottom>1pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="Textbox12">
@@ -772,10 +767,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>3.7852cm</Top>
-            <Left>7.58073cm</Left>
+            <Top>3.9757cm</Top>
+            <Left>7.34261cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.19807cm</Width>
+            <Width>2.4362cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -795,7 +790,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=IIf(First(Fields!Propietario.Value, "dsVehiculo")="MOTI0002", "X"," ")</Value>
-                    <Style />
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -804,7 +801,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>3.7852cm</Top>
+            <Top>3.9757cm</Top>
             <Left>9.78948cm</Left>
             <Height>0.6cm</Height>
             <Width>0.64792cm</Width>
@@ -834,9 +831,9 @@
                 <Width>1pt</Width>
               </RightBorder>
               <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
+              <PaddingRight>1.3pt</PaddingRight>
+              <PaddingTop>3pt</PaddingTop>
+              <PaddingBottom>1pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="Textbox14">
@@ -854,10 +851,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>3.7852cm</Top>
-            <Left>12.52579cm</Left>
+            <Top>3.9757cm</Top>
+            <Left>12.36704cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.22994cm</Width>
+            <Width>3.38869cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -886,7 +883,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>3.7852cm</Top>
+            <Top>3.9757cm</Top>
             <Left>15.76641cm</Left>
             <Height>0.6cm</Height>
             <Width>0.64792cm</Width>
@@ -916,9 +913,9 @@
                 <Width>1pt</Width>
               </RightBorder>
               <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
+              <PaddingRight>1.3pt</PaddingRight>
+              <PaddingTop>3pt</PaddingTop>
+              <PaddingBottom>1pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="Textbox34">
@@ -936,7 +933,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox34</rd:DefaultName>
-            <Top>11.94446cm</Top>
+            <Top>12.26196cm</Top>
             <Left>0.08008cm</Left>
             <Height>1.36729cm</Height>
             <Width>16.33425cm</Width>
@@ -1088,7 +1085,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=": "+First(Fields!cNombre.Value, "dsClienteAntiguo")+" "+First(Fields!cApePat.Value, "dsClienteAntiguo")+" "+First(Fields!cApeMat.Value, "dsClienteAntiguo")</Value>
+                                  <Value>=First(Fields!cNombre.Value, "dsClienteAntiguo")+" "+First(Fields!cApePat.Value, "dsClienteAntiguo")+" "+First(Fields!cApeMat.Value, "dsClienteAntiguo")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1153,7 +1150,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=": "+First(Fields!cDocumento.Value, "dsClienteAntiguo")</Value>
+                                  <Value>=First(Fields!cDocumento.Value, "dsClienteAntiguo")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1330,8 +1327,8 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <Top>5.47176cm</Top>
-            <Left>0cm</Left>
+            <DataSetName>dsClienteAntiguo</DataSetName>
+            <Top>5.78926cm</Top>
             <Height>2.4cm</Height>
             <Width>16.38258cm</Width>
             <ZIndex>20</ZIndex>
@@ -1358,8 +1355,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>4.76592cm</Top>
-            <Left>0cm</Left>
+            <Top>5.08342cm</Top>
             <Height>0.6cm</Height>
             <Width>16.38258cm</Width>
             <ZIndex>21</ZIndex>
@@ -1426,7 +1422,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=": "+First(Fields!cNombre.Value, "dsClienteNuevo")+" "+First(Fields!cApePat.Value, "dsClienteNuevo")+" "+First(Fields!cApeMat.Value, "dsClienteNuevo")</Value>
+                                  <Value>=First(Fields!cNombre.Value, "dsClienteNuevo")+" "+First(Fields!cApePat.Value, "dsClienteNuevo")+" "+First(Fields!cApeMat.Value, "dsClienteNuevo")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1491,7 +1487,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=": "+First(Fields!cDocumento.Value, "dsClienteNuevo")</Value>
+                                  <Value>=First(Fields!cDocumento.Value, "dsClienteNuevo")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1556,7 +1552,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=": "+First(Fields!cTelCelular.Value, "dsClienteNuevo")</Value>
+                                  <Value>=First(Fields!cTelCelular.Value, "dsClienteNuevo")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1621,7 +1617,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=": "+First(Fields!ubigeo.Value, "dsClienteNuevo")</Value>
+                                  <Value>=First(Fields!ubigeo.Value, "dsClienteNuevo")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1668,7 +1664,8 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <Top>9.00092cm</Top>
+            <DataSetName>dsClienteNuevo</DataSetName>
+            <Top>9.31842cm</Top>
             <Height>2.4cm</Height>
             <Width>16.38258cm</Width>
             <ZIndex>22</ZIndex>
@@ -1695,7 +1692,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>8.36565cm</Top>
+            <Top>8.68315cm</Top>
             <Height>0.6cm</Height>
             <Width>16.38258cm</Width>
             <ZIndex>23</ZIndex>
@@ -1725,7 +1722,6 @@
               <Value>HUSAT_LOGO</Value>
               <Sizing>FitProportional</Sizing>
               <Top>0.09525cm</Top>
-              <Left>0cm</Left>
               <Height>1.11152cm</Height>
               <Width>4.97619cm</Width>
               <Style>
