@@ -44,6 +44,18 @@ namespace CapaEntidad
             cNomTab = pcNomTab;
             cValor = pcValor;
         }
+        public static Cargo fnObtenerEstadoSeleccionado(String cCodTab, List<Cargo> lstTablaCod)
+        {
+            foreach (Cargo C in lstTablaCod)
+            {
+                if (C.cCodTab == cCodTab)
+                {
+                    
+                    return C;
+                }
+            }
+            return new Cargo();
+        }
 
     }
 }

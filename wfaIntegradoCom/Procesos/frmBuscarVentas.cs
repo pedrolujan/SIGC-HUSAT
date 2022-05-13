@@ -30,12 +30,14 @@ namespace wfaIntegradoCom.Procesos
         private static List<TipoPlan> lstTP = new List<TipoPlan>();
         private static List<Plan> lstP = new List<Plan>();
         private static Plan clsPlan = new Plan();
+        private static List<Cargo> lstTablaCod = new List<Cargo>();
+        private static Cargo Cargo = new Cargo();
         
         static List<validacion> lstValidacionPlan;
         static Int16 lnTipoCon;
         static DateTime dtpFechaInicialB = Variables.gdFechaSis;
         //string TipoVenta clsTVenta = new TipoVenta();
-        public static String cCodigoVenta = "";
+        public static String cCodigoVenta = ""; 
         static List<TipoVenta> lstTVenta = new List<TipoVenta>();
         Boolean estadoFecha;
         static Int32 tabInicio;
@@ -44,33 +46,35 @@ namespace wfaIntegradoCom.Procesos
         {
             try
             {
+              
                 lnTipoCon = 0;
                 cargoFrom = false;
                 //fnListarDatosVenta(dgDatosVenta, 0, 0, -1);
                 fnLlenarTipoTarifa(0, cbTipoVenta, true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadoContrato, "TICN", true);
-                
-                
+                FunGeneral.fnLlenarTablaCodTipoCon(cboEstado, "ESVG", true);
+              
                 cboPlanV.SelectedValue = 0;
-                fnListarPlanDeTipoPlan(0, cboPlanV, true, lnTipoCon);
+                //  totalResultados.clear();
                 
-               
+
                 fnlistarUsuario(cboUsuario, 0, true);
-                
+
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
-               
+
                 cboUsuario.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboEstadoContrato.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboEstado.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboTipoPlan.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboPlanV.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cbTipoVenta.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 fnValidarPlan();
                 fnLlenarTipoTarifa(0, cbTipoVenta, true);
-
-                cbTipoVenta.SelectedValue = 1;
-                fnListarTipoPlan(0, cboTipoPlan, 1);
+              
+               cbTipoVenta.SelectedValue = 1;
+                fnListarTipoPlan(0, cboTipoPlan, 0);
             }
             catch (Exception ex)
             {
@@ -80,7 +84,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 cargoFrom = true;
             }
-            
+
         }
         void cboCronograma_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -118,13 +122,15 @@ namespace wfaIntegradoCom.Procesos
             {
                 lstPlan = objPlan.blDevolverPlanDeTipoPlan(idTipoPlan, tipBusqueda, tipoCon);
 
+
                 cbo.ValueMember = "idPlan";
                 cbo.DisplayMember = "nombrePlan";
                 cbo.DataSource = lstPlan;
 
                 lstP = lstPlan;
-
+                
                 return true;
+               
             }
             catch (Exception ex)
             {
@@ -133,6 +139,7 @@ namespace wfaIntegradoCom.Procesos
             }
 
         }
+
         private Boolean fnlistarUsuario(SiticoneComboBox cbo, Int32 tipoCon, Boolean buscar)
         {
             BLUsuario objUsuario = new BLUsuario();
@@ -143,10 +150,10 @@ namespace wfaIntegradoCom.Procesos
                 lstClase = objUsuario.blDevolverSoloUsuario(tipoCon, buscar);
                 cbo.ValueMember = "idUsuario";
                 cbo.DisplayMember = "cUser";
-                cbo.DataSource = lstClase; 
+                cbo.DataSource = lstClase;
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("FrmRegistrarVehiculo", "fnLLenarClaseVehiculo", ex.Message);
                 return false;
@@ -196,25 +203,26 @@ namespace wfaIntegradoCom.Procesos
         private void txtBuscarVentas_TextChanged(object sender, EventArgs e)
         {
         }
-        public  Boolean fnListarDatosVenta(DataGridView dgv, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon)
+        public Boolean fnListarDatosVenta(DataGridView dgv, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon)
         {
             BLClienteVenta objVentaGeneral = new BLClienteVenta();
             clsUtil objUtil = new clsUtil();
             DataTable datVenta = new DataTable();
             String placaVehiculo = txtBuscarVentas.Text.Trim();
+            
            
-
-            String cEstadoInstal = "0";
+           String cEstadoInstal = "0";
             Int32 cEstadoTipoVenta = Convert.ToInt32(cbTipoVenta.SelectedValue);
             Boolean habilitarFechas = chkHabilitarFechasBus.Checked ? true : false;
             Boolean habilitarRenovaciones = chkHabilitarFechasBus.Checked ? true : false;
             DateTime fechaInicial = dtpFechaInicialBus.Value;
             DateTime fechaFinal = dtpFechaFinalBus.Value;
             String estadoTipoContrato = cboEstadoContrato.SelectedValue.ToString();
+            String estadoContrato = cboEstado.SelectedValue.ToString();
             Int32 estadoTipoPlan = Convert.ToInt32(cboTipoPlan.SelectedValue);
             Int32 estadoPlan = Convert.ToInt32(cboPlanV.SelectedValue);
             Int32 estadoUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
-           
+
             Int32 HorasIni = 0;
             Int32 HorasFin = 0;
             Int32 HorasRestarIni = 0;
@@ -226,14 +234,19 @@ namespace wfaIntegradoCom.Procesos
             HorasFin = Convert.ToInt32(fechaFinal.ToString("HH"));
             HorasRestarFin = 24 - HorasFin;
             fechaFinal = Convert.ToDateTime(fechaFinal.ToString("dd") + "/" + (fechaFinal.Month) + "/" + fechaFinal.Year + " 23:59:59");
+            Int32 totalResultados = 0;
            
             Int32 filas = 10;
             Double TotalGanacia = 0;
             Boolean estadoReturn = false;
+            
             try
             {
-                datVenta = objVentaGeneral.BlBuscarClienteV(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro, estadoTipoPlan, estadoPlan, estadoUsuario);
-                Int32 totalResultados = datVenta.Rows.Count;
+                datVenta = objVentaGeneral.BlBuscarClienteV(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina,
+                    tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro, estadoTipoPlan, 
+                    estadoPlan, estadoUsuario, estadoContrato);
+
+                totalResultados = datVenta.Rows.Count;
                 if (tipoCon == -4)
                 {
                     if (totalResultados > 0)
@@ -308,7 +321,7 @@ namespace wfaIntegradoCom.Procesos
                             {
                                 strEstado = "❌ ANULADA";
                             }
-                          
+
                             dgv.Rows.Add(
                                 dr["idCliente"],
                                 y,
@@ -334,13 +347,14 @@ namespace wfaIntegradoCom.Procesos
                             {
                                 dgv.Rows[contador].DefaultCellStyle.ForeColor = Color.Red;
                             }
-                            else if (Convert.ToString(dr["cCodTab"]) == "ESPP0002")
+                            else
+                            if (Convert.ToString(dr["cCodTab"]) == "ESPP0002")
                             {
                                 dgv.Rows[contador].DefaultCellStyle.ForeColor = Color.DarkOrange;
                             }
                             contador += 1;
                         }
-                      
+
 
                         dgv.Columns[0].Visible = false;
                         dgv.Columns[2].Visible = false;
@@ -358,19 +372,19 @@ namespace wfaIntegradoCom.Procesos
                         dgv.Columns[13].Width = 40;
                         dgv.Columns[14].Width = 100;
                         dgv.Columns[15].Width = 60;
-                        
+
                         dgv.Visible = true;
 
                         if (tipoCon == -1)
                         {
                             gbPaginacion.Visible = true;
                             Int32 totalRegistros = Convert.ToInt32(datVenta.Rows[0][0]);
-                            FunValidaciones.fnCalcularPaginacion(totalRegistros,filas,totalResultados,cboPaginaV, btnTotalP, btnNumF,btnTotalR );
+                            FunValidaciones.fnCalcularPaginacion(totalRegistros, filas, totalResultados, cboPaginaV, btnTotalP, btnNumF, btnTotalR);
                         }
                         else
                         {
                             btnNumF.Text = Convert.ToString(totalResultados);
-  
+
                         }
 
                         estadoReturn = true;
@@ -378,7 +392,7 @@ namespace wfaIntegradoCom.Procesos
                     else
                     {
 
-                        MessageBox.Show("NO HAY DATOS QUE COINSIDAN", "AVISO!!!", MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+                        MessageBox.Show("NO HAY DATOS QUE COINCIDAN", "AVISO!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         dgv.Rows.Clear();
                         estadoReturn = false;
                     }
@@ -394,7 +408,7 @@ namespace wfaIntegradoCom.Procesos
                 return false;
             }
         }
-        private void txtBuscarVentas_KeyPress(object sender, KeyPressEventArgs e)        
+        private void txtBuscarVentas_KeyPress(object sender, KeyPressEventArgs e)
 
         {
             lnTipoCon = 0;
@@ -403,23 +417,20 @@ namespace wfaIntegradoCom.Procesos
                 fnListarDatosVenta(dgvLVentas, 0, 0, -1);
             }
         }
-      private void cboTipoVetaBusq_SelectedIndexChanged(object sender, EventArgs e)
-      {
-      }
-     private void siticoneGroupBox1_Click(object sender, EventArgs e)
-     {    
-     }
-      private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
-       {
-         int fila = Convert.ToInt32(cboPaginaV.Text);
-            
-                fnListarDatosVenta (dgvLVentas, fila, 0, -2);
+        private void siticoneGroupBox1_Click(object sender, EventArgs e)
+        {
+        }
+        private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int fila = Convert.ToInt32(cboPaginaV.Text);
 
-            
-           
-       }
-      private void chkHabilitarFechasBus_CheckedChanged(object sender, EventArgs e)
-      {
+            fnListarDatosVenta(dgvLVentas, fila, 0, -2);
+
+
+
+        }
+        private void chkHabilitarFechasBus_CheckedChanged(object sender, EventArgs e)
+        {
             if (chkHabilitarFechasBus.Checked == true)
             {
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
@@ -431,30 +442,19 @@ namespace wfaIntegradoCom.Procesos
             {
                 gbBuscarListaVentas.Enabled = false;
             }
-      }
-      private void btnBuscarMonto_CheckedChanged(object sender, EventArgs e)
-      {
-
-            if (btnBuscarMonto.Checked == true)
+        }
+       
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
             {
-                fnListarDatosVenta(dgvLVentas, 0, 0, -4);
+               // fnListarDatosVenta(dgvLVentas, 0, 0, -1);
+                
             }
-
-       }
-      private void pictureBox4_Click(object sender, EventArgs e)
-       {
-            {
-                fnListarDatosVenta(dgvLVentas, 0, 0, -1);
-                if (btnBuscarMonto.Checked == true)
-                {
-                    fnListarDatosVenta(dgvLVentas, 0, 0, -4);
-                }
-            }
-      }
-       private void pictureBox1_Click(object sender, EventArgs e)
-       {
-            fnListarDatosVenta(dgvLVentas, 0, 0, -4);
-       }
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {  
+                fnListarDatosVenta(dgvLVentas, 0, 0, -4);        
+        }
 
         private void tlsDocumentoVenta_Click(object sender, EventArgs e)
         {
@@ -492,20 +492,20 @@ namespace wfaIntegradoCom.Procesos
                 }
             }
             else
-            {              
+            {
                 frmTImpre.inicio(Convert.ToInt32(cbTipoVenta.SelectedValue), CodVenta, fnDebolverDatosVehi(RowVehiculos, ArrayVehiculos), "A", idContrato);
             }
 
         }
-        private List<Vehiculo>  fnDebolverDatosVehi (String RowVehiculos, String[] ArrayVehiculos)
+        private List<Vehiculo> fnDebolverDatosVehi(String RowVehiculos, String[] ArrayVehiculos)
         {
             Int32 contad = ArrayVehiculos.Length - 1;
             string placa = "";
-            string descripVehiculo="";
+            string descripVehiculo = "";
             String[] ArrayDatos = RowVehiculos.Split('(');
             Int32 contadorDtos = ArrayDatos[0].Length;
             List<Vehiculo> lstVehi = new List<Vehiculo>();
-            for(Int32 i =0; i > contad ;  i++)
+            for (Int32 i = 0; i > contad; i++)
             {
                 descripVehiculo = string.Format("{1}{0}", Environment.NewLine, ArrayVehiculos[i]);
                 placa = (i == 0) ? ArrayVehiculos[i].Substring(6, contadorDtos - 6) : ArrayVehiculos[i].Substring(7, contadorDtos - 6);
@@ -518,7 +518,7 @@ namespace wfaIntegradoCom.Procesos
 
                 });
             }
-             return lstVehi ;         
+            return lstVehi;
         }
         private void fnBuscarDocumentoVent(String cCodVenta, Int32 tipCon, Int32 idTipoTarifa, Int32 idContrato)
         {
@@ -558,21 +558,21 @@ namespace wfaIntegradoCom.Procesos
         {
             if (e.ColumnIndex >= 0 && this.dgvLVentas.Columns[e.ColumnIndex].Name == "lvBtnImprimir" && e.RowIndex >= 0)
             {
-               
-                
-                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                    DataGridViewButtonCell celBoton = this.dgvLVentas.Rows[e.RowIndex].Cells["lvBtnImprimir"] as DataGridViewButtonCell;
-                    Icon icoAtomico = new Icon(Application.StartupPath + @"\Impresora.ico");
-                    e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
-
-                    this.dgvLVentas.Rows[e.RowIndex].Height = 45;
-                    this.dgvLVentas.Columns[e.ColumnIndex].Width = 45;
 
 
-                    e.Handled = true;
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                
+                DataGridViewButtonCell celBoton = this.dgvLVentas.Rows[e.RowIndex].Cells["lvBtnImprimir"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Application.StartupPath + @"\Impresora.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
+
+                this.dgvLVentas.Rows[e.RowIndex].Height = 45;
+                this.dgvLVentas.Columns[e.ColumnIndex].Width = 45;
+
+
+                e.Handled = true;
+
+
 
             }
         }
@@ -646,7 +646,7 @@ namespace wfaIntegradoCom.Procesos
                 }
             }
         }
-        private Boolean fnLlenarTipoTarifa(Int32 idTipoPlan, SiticoneComboBox cbo, Boolean busqueda) 
+        private Boolean fnLlenarTipoTarifa(Int32 idTipoPlan, SiticoneComboBox cbo, Boolean busqueda)
         {
 
             BLTipoTarifa objTipTarifa = new BLTipoTarifa();
@@ -678,62 +678,27 @@ namespace wfaIntegradoCom.Procesos
             lstValidacionPlan = new List<validacion>();
             lstValidacionPlan.Add(new validacion { estado = false, mensaje = "", combobox = cboTipoPlan });
             lstValidacionPlan.Add(new validacion { estado = false, mensaje = "", combobox = cboPlanV });
-           
+
         }
         private void cboTipoPlan_SelectedIndexChanged(object sender, EventArgs e)
-        
+
         {
             Int32 idTipoPlan = Convert.ToInt32(cboTipoPlan.SelectedValue ?? 0);
             Int32 idTipoventa = Convert.ToInt32(cbTipoVenta.SelectedValue);
 
-
-            //var result = FunValidaciones.fnValidarCombobox(lstValidacionPlan[0].combobox, erTipoPlan, imgTipoPlanP);
-            //lstValidacionPlan[0].estado = result.Item1;
-            //lstValidacionPlan[0].mensaje = result.Item2;
-
-
-            //lstValidacionPlan[0].estado = true;
-            //lstValidacionPlan[0].mensaje = "";
-
-
-            if (cboTipoPlan.SelectedValue.ToString() == "1" )
-            {
-                cboPlanV.Enabled = true;
-            }
-            else
-            {
-                idTipoPlan = Convert.ToInt32(cboTipoPlan.SelectedValue.ToString());
-                cboPlanV.Enabled = true;
-            }
-
-            int numMeses = TipoPlan.fnObtenerTipoPlanSeleccionado(idTipoPlan, lstTP).cMeses;
-            
-            fnListarPlanDeTipoPlan(idTipoPlan, cboPlanV, true, lnTipoCon);
-
+                fnListarPlanDeTipoPlan(idTipoPlan, cboPlanV, true, 1);
         }
 
         private void cboPlanV_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+          
             if (cargoFrom)
             {
-                if (Convert.ToInt32(cboPlanV.SelectedValue) != 0)
-                {
-
-                }
-
                 Int32 idPlan = FunValidaciones.fnObtenerIdDeComboBox(cboPlanV);
-
                 clsPlan = Plan.fnObtenerPlanSeleccionado(idPlan, lstP);
-                //var result = FunValidaciones.fnValidarCombobox(lstValidacionPlan[1].combobox, erPlan, imgPlan);
-               // lstValidacionPlan[1].estado = result.Item1;
-              //  lstValidacionPlan[1].mensaje = result.Item2;
-                //if (idPlan != 0)
-                //{
+            }
+          
 
-                //}
-               
-            }            
         }
 
         private void tlsDocumentoVenta_Click_1(object sender, EventArgs e)
@@ -795,7 +760,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 lstVehiculo = fnDebolverDatVehiculo(RowVehiculos, ArrayVehiculos);
                 Mantenedores.frmRegistrarVenta FRMregistrarV = new frmRegistrarVenta();
-                var resutl = FRMregistrarV. fnBuscarContrato(CodVenta, lstVehiculo[0].vPlaca, idContrato);
+                var resutl = FRMregistrarV.fnBuscarContrato(CodVenta, lstVehiculo[0].vPlaca, idContrato);
                 frmVPContrato.Inicio(resutl.Item1, resutl.Item2, resutl.Item3);
             }
             else
@@ -846,7 +811,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 lstVehiculo = fnDebolverDatVehiculo(RowVehiculos, ArrayVehiculos);
                 Mantenedores.frmRegistrarVenta FRMRegistrarV = new frmRegistrarVenta();
-                xmlInst = FRMRegistrarV . fnBuscarActaInstalacion(CodVenta, lstVehiculo[0].vPlaca, idTipoVenta);
+                xmlInst = FRMRegistrarV.fnBuscarActaInstalacion(CodVenta, lstVehiculo[0].vPlaca, idTipoVenta);
                 if (xmlInst.clsInstalacion != null)
                 {
                     frmVPActa.Inicio(xmlInst.ListaCliente, xmlInst.ListaVehiculo, xmlInst.ListaEquipo, xmlInst.ListaPlan, xmlInst.ListaAccesorio, xmlInst.ListaServicio, xmlInst.observaciones, xmlInst.clsInstalacion, 1);
@@ -877,8 +842,17 @@ namespace wfaIntegradoCom.Procesos
         {
 
         }
+
+        private void cboEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void cboEstadoContrato_SelectedIndexChanged(object sender, EventArgs e)
+       {
+
+       }
     }
-    
 }
 
       

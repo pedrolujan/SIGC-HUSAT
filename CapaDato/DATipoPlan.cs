@@ -301,7 +301,7 @@ namespace CapaDato
                 lstTipoPlan = new List<TipoPlan>();
                 lstTipoPlan.Add(new TipoPlan(
                        Convert.ToInt32("0"),
-                       Convert.ToString( tipBusqueda == 0 ? "Selecc. T. Plan" : "TODOS" ),
+                       Convert.ToString( tipBusqueda == 1 ? "Selecc. T. Plan" : "TODOS" ),
                        Convert.ToInt32("0"),
                        Convert.ToString(""),
                        Convert.ToBoolean(1),

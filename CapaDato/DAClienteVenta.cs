@@ -16,9 +16,9 @@ namespace CapaDato
         private object pcBuscar;
        
         public DataTable DAbuscarClienteV(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta, String estadoTipoContrato, 
-            Boolean habilitarRenovaciones, String valorRadio, Int32 estadoTipoPlan, Int32 estadoPlan, Int32 estadoUsuario)
+            Boolean habilitarRenovaciones, String valorRadio, Int32 estadoTipoPlan, Int32 estadoPlan, Int32 estadoUsuario, String estadoContrato)
         {
-            SqlParameter[] pa = new SqlParameter[15];
+            SqlParameter[] pa = new SqlParameter[16];
             DataTable dtVenta;
             clsConexion objCnx = null;
 
@@ -40,6 +40,7 @@ namespace CapaDato
                 pa[12] = new SqlParameter("@plan", SqlDbType.Int) { Value = estadoPlan };
                 pa[13] = new SqlParameter("@TipoPlan", SqlDbType.Int) { Value = estadoTipoPlan };
                 pa[14] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
+                pa[15]=new SqlParameter("@estadoTipoContratoVenta", SqlDbType.NVarChar, 8) { Value = estadoContrato }; 
               
 
 
