@@ -806,7 +806,7 @@ namespace wfaIntegradoCom.Procesos
             try
             {
                 String BuscarDato = Convert.ToString(txtBuscarCliente.Text);
-                datResultado=datCliente.BlBuscarTitularidad(cond, BuscarDato);
+                //datResultado=datCliente.BlBuscarTitularidad(cond, BuscarDato);
                 dgConsultaCliente.Visible = true;
                 dgConsultaCliente.Rows.Clear();
 
@@ -841,7 +841,7 @@ namespace wfaIntegradoCom.Procesos
             try
             {
                 string BuscaDato = Convert.ToString(txtBusca.Text);
-                datResultado = datCliente.BlBuscarTitularidad(cond, BuscaDato);
+                //datResultado = datCliente.BlBuscarTitularidad(cond, BuscaDato);
 
                 dgConsulta.Visible = true;
                 dgConsulta.Rows.Clear();

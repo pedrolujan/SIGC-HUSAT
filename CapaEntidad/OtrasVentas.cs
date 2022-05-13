@@ -26,6 +26,7 @@ namespace CapaEntidad
         public String simbMoneda { get; set; }
         public Int32 idCliente { get; set; }
         public DateTime dFechaRegistro { get; set; }
+        public DateTime dFechaOperacion { get; set; }
         public String CodDocumento { get; set; }
         public Double IgvPorcentaje { get; set; }
         public Double IgvPrecio { get; set; }
@@ -34,6 +35,14 @@ namespace CapaEntidad
         public String Visivilidad { get; set; }
         public String NombreDocumento { get; set; }
         public String cUsuario { get; set; }
+        public List<OtrasVentas> lstOtrasVenta { get; set; }
+        public Cliente clsClienteDocumentoVenta { get; set; }
+        public Cliente clsClienteAntecesor { get; set; }
+        public Vehiculo clsVehiculo { get; set; }
+        public Equipo_imeis clsEquipoImeis { get; set; }
+        public List<Equipo_imeis> lstClienteImeis { get; set; }
+        public List<DetalleVenta> lstDetalleVenta { get; set; }
+        public List<Pagos> lstTrandiaria { get; set; }
     }
 
     public class StokAccesorios
@@ -64,6 +73,13 @@ namespace CapaEntidad
         public List<OtrasVentas> xmlDetalleVentas { get; set; }
         public List<TotalPagosVenta> xmlTotalesVenta { get; set; }
     }
+    public class xmlActaTitularidad
+    {
+        public xmlActaTitularidad() { }
 
+        public List<Cliente> lstClienteDocVenta { get; set; }
+        public List<Cliente> lstClienteAntecesor { get; set; }
+        public List<Vehiculo> lstVehiculo { get; set; }
+    }
 
 }

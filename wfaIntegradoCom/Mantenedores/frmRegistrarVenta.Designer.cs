@@ -246,6 +246,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.idTipoTarida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.btnExportarBusqueda = new Siticone.UI.WinForms.SiticoneButton();
             this.chkRenovaciones = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
@@ -3129,6 +3130,7 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
             this.siticoneGroupBox1.BorderRadius = 5;
+            this.siticoneGroupBox1.Controls.Add(this.btnExportarBusqueda);
             this.siticoneGroupBox1.Controls.Add(this.chkRenovaciones);
             this.siticoneGroupBox1.Controls.Add(this.label24);
             this.siticoneGroupBox1.Controls.Add(this.label38);
@@ -3154,6 +3156,29 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneGroupBox1.TabIndex = 85;
             this.siticoneGroupBox1.Text = "Buscar por";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -7);
+            // 
+            // btnExportarBusqueda
+            // 
+            this.btnExportarBusqueda.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnExportarBusqueda.BorderRadius = 5;
+            this.btnExportarBusqueda.BorderThickness = 1;
+            this.btnExportarBusqueda.CheckedState.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportarBusqueda.CustomImages.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.FillColor = System.Drawing.Color.Transparent;
+            this.btnExportarBusqueda.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnExportarBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnExportarBusqueda.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExportarBusqueda.HoveredState.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.Image = global::wfaIntegradoCom.Properties.Resources.pdf_32px;
+            this.btnExportarBusqueda.Location = new System.Drawing.Point(1038, 36);
+            this.btnExportarBusqueda.Name = "btnExportarBusqueda";
+            this.btnExportarBusqueda.ShadowDecoration.Parent = this.btnExportarBusqueda;
+            this.btnExportarBusqueda.Size = new System.Drawing.Size(145, 27);
+            this.btnExportarBusqueda.TabIndex = 265;
+            this.btnExportarBusqueda.Text = "Exportar Busqueda";
+            this.btnExportarBusqueda.Visible = false;
+            this.btnExportarBusqueda.Click += new System.EventHandler(this.btnExportarBusqueda_Click);
             // 
             // chkRenovaciones
             // 
@@ -3343,7 +3368,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnBuscarMonto.CheckedState.BorderThickness = 0;
             this.btnBuscarMonto.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnBuscarMonto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnBuscarMonto.Location = new System.Drawing.Point(1078, 34);
+            this.btnBuscarMonto.Location = new System.Drawing.Point(761, 37);
             this.btnBuscarMonto.Name = "btnBuscarMonto";
             this.btnBuscarMonto.Size = new System.Drawing.Size(108, 21);
             this.btnBuscarMonto.TabIndex = 227;
@@ -3487,7 +3512,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtBuscarVentas.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.txtBuscarVentas.HoveredState.Parent = this.txtBuscarVentas;
             this.txtBuscarVentas.Location = new System.Drawing.Point(958, 78);
-            this.txtBuscarVentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscarVentas.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscarVentas.Name = "txtBuscarVentas";
             this.txtBuscarVentas.PasswordChar = '\0';
             this.txtBuscarVentas.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -3945,5 +3970,6 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn DCTOIMPORTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private Siticone.UI.WinForms.SiticoneButton btnExportarBusqueda;
     }
 }

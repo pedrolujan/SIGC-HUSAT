@@ -49,6 +49,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
 
             FunGeneral.fnLlenarTablaCodTipoCon(cboEstadosInst, "ESVG", true);
+            FunGeneral.fnLlenarUsuarioPorCargo(cboUsuario, "PETR0008", true);
 
 
 
@@ -117,7 +118,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private Boolean fnBuscarListaVentas(DataGridView dgv, String ValueCBO, SiticoneCircleButton btnTotReg, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon)
         {
-            BLVentaGeneral objVentaGeneral = new BLVentaGeneral();
+            BLInstalacion objVentaGeneral = new BLInstalacion();
             clsUtil objUtil = new clsUtil();
             DataTable datVentaG = new DataTable();
             String datoBuscar = txtBuscarIns.Text.Trim();
@@ -127,11 +128,12 @@ namespace wfaIntegradoCom.Mantenedores
             DateTime fechaFinal = dtpFechaFinalBusIns.Value;
             Int32 filas = 10;
             String estadoTipoContrato = "0";
+            Int32 idUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
             //3 fechade registro 2 cod venta 4 descripcion vehiculo 5 cliente 6 estado
 
             try
             {
-                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, datoBuscar, datoEstado, numPagina, tipoLLamada, tipoCon, 1, estadoTipoContrato,false,"");
+                datVentaG = objVentaGeneral.blBuscarInstalaciones(habilitarFechas, fechaInicial, fechaFinal, datoBuscar, datoEstado, numPagina,  tipoCon, 1, idUsuario);
 
                 Int32 totalResultados = datVentaG.Rows.Count;
                 if (totalResultados > 0)
@@ -142,16 +144,6 @@ namespace wfaIntegradoCom.Mantenedores
                         dgv.Rows.Clear();
 
                     }
-                    //DataTable dt = new DataTable();
-                    //dt.Clear();
-                    //dt.Columns.Add("ID");
-                    //dt.Columns.Add("N°");
-                    //dt.Columns.Add("COD. VENTA");
-                    //dt.Columns.Add("VEHÍCULOS");
-                    //dt.Columns.Add("CLIENTE / RAZÓN SOCIAL");
-                    //dt.Columns.Add("ESTADO");
-                    //dt.Columns.Add("USUARIO");
-                    //dt.Columns.Add("PLAN");
 
                     Int32 y;
 
@@ -192,7 +184,7 @@ namespace wfaIntegradoCom.Mantenedores
                     dgv.Columns[4].Width = 100;
                     dgv.Columns[5].Width = 80;
                     dgv.Columns[6].Width = 40;
-                    dgv.Columns[7].Width = 100;
+                    dgv.Columns[7].Width = 40;
 
                     //dgv.RowTemplate.Height = 70;
                     dgv.Visible = true;
@@ -264,7 +256,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void cboEstadosInst_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fnBuscarListaVentas(dgvListaInstalaciones, Convert.ToString(cboEstadosInst.SelectedValue), btnTotalRegistrosIns, 0, 1, -1);
+            //fnBuscarListaVentas(dgvListaInstalaciones, Convert.ToString(cboEstadosInst.SelectedValue), btnTotalRegistrosIns, 0, 1, -1);
 
             if (Convert.ToString(cboEstadosInst.SelectedValue) == "ESVG0001")
             {

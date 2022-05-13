@@ -69,6 +69,34 @@ namespace CapaNegocio
             }
 
         }
+        public List<Cargo> blLlenarCboSegunTablaTipoCon(String nomCampoId, String nomCampoNombre, String nomTabla, String nomEstado, String condicionDeEstado, Boolean buscar)
+        {
+
+            DACargo daobjUsuario = new DACargo();
+            try
+            {
+                return daobjUsuario.daLlenarCboSegunTablaTipoCon( nomCampoId,  nomCampoNombre,  nomTabla,  nomEstado,  condicionDeEstado,  buscar);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+        public List<Cargo> blDevolverUsuarioPorCargo(String cCodCargo,Boolean buscar)
+        {
+
+            DACargo daobjUsuario = new DACargo();
+            try
+            {
+                return daobjUsuario.daDevolverUsuarioPorCargo(cCodCargo, buscar);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
 
         public String blDevolverCorrelativo(String cCodTab)
         {

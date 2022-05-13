@@ -82,6 +82,7 @@ namespace wfaIntegradoCom.Mantenedores
         static List<validacion> lstValidacionRespPago;
         static List<validacion> lstValidacionVehiculo;
         static List<validacion> lstValidacionPlan;
+        static List<Cliente> lstClientesBusq = new List<Cliente>();
         public static String cCodigoVenta = "";
         static Double RestarDescuento = 0;
        
@@ -282,7 +283,7 @@ namespace wfaIntegradoCom.Mantenedores
                 lstValidacionPlan[2].mensaje = "";
                 fnOcultarCiclo(false);
 
-                fnOcultarParaRenovacion(dgvPagoPlan, lblPagoPlan, idTipoventa==2?false:true);
+                //fnOcultarParaRenovacion(dgvPagoPlan, lblPagoPlan, idTipoventa==2?false:true);
 
             }
             else
@@ -2277,6 +2278,7 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 HorasRestarIni = 0;
             Int32 HorasRestarFin = 0;
             String TipoFiltro = "";
+            DateTime fechaActual = Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy"));
             //if (fechaInicial== fechaFinal)
             //{
             HorasIni = Convert.ToInt32(fechaInicial.ToString("HH"));
@@ -2287,9 +2289,7 @@ namespace wfaIntegradoCom.Mantenedores
             HorasRestarFin = 24 - HorasFin;
             fechaFinal  = Convert.ToDateTime(fechaFinal.ToString("dd") + "/" + (fechaFinal.Month) + "/" + fechaFinal.Year+" 23:59:59");
             TipoFiltro = cboTipoFiltro.SelectedValue.ToString();
-
-            //fechaFinal = fechaFinal.AddHours(HorasRestarFin);
-            //}            
+       
             
             Int32 filas = 10;
             Double TotalGanacia = 0;
@@ -2299,6 +2299,7 @@ namespace wfaIntegradoCom.Mantenedores
                 datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro);
 
                 Int32 totalResultados = datVentaG.Rows.Count;
+
                 if (tipoCon==-4)
                 {
                     if (totalResultados>0)
@@ -2319,10 +2320,71 @@ namespace wfaIntegradoCom.Mantenedores
                     
                     estadoReturn = true;
                 }
+                else if (tipoCon==-5)
+                {
+                    lstClientesBusq.Clear();
+                    Int32 y=0;
+                    foreach (DataRow dr in datVentaG.Rows)
+                    {
+                        
+                        Int32 restaAnio = 0;
+                        Int32 restaMeses = 0;
+                        Int32 faltaDias = 0;
+                        String strEstado = "";
+                        DateTime fechaFinalContrato = Convert.ToDateTime(Convert.ToDateTime(dr["periodoFinal"]).ToString("dd/MM/yyyy"));
+
+                        TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
+
+                        //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
+                        if (fechaActual > fechaFinalContrato)
+                        {
+                            tiket = fechaActual - fechaFinalContrato;
+                        }
+                        else
+                        {
+                            tiket = fechaFinalContrato - fechaActual;
+                        }
+                        DateTime totalTime = new DateTime(tiket.Ticks);
+                        restaAnio = totalTime.Year - 1;
+                        restaMeses = totalTime.Month - 1;
+                        faltaDias = Convert.ToInt32(totalTime.Day);
+                        if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA")
+                        {
+                            strEstado = "❌ ANULADA";
+                        }
+                        else
+                        {
+                            strEstado = fnMostrarEstadoRenovacion(fechaActual, fechaFinalContrato, restaAnio, restaMeses, faltaDias);
+                        }
+
+                        y += 1;
+                        lstClientesBusq.Add(new Cliente
+                        {
+                            idCliente = y,
+                            cNombre = Convert.ToString(dr["nombreCliente"]),
+                            cApePat = Convert.ToString(dr["cApePat"]),
+                            cApeMat = Convert.ToString(dr["cApeMat"]),
+                            cCliente = FunGeneral.FormatearCadenaTitleCase(dr["nombreCliente"] + " " + dr["cApePat"] + " " + dr["cApeMat"]),
+                            cTelCelular = Convert.ToString(dr["cTelCelular"]),
+                            dFecNac = fechaFinalContrato,
+                            cContactoNom1 = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dr["cContactoNom1"])),
+                            cContactoCel1 = Convert.ToString(dr["cContactoCel1"]),
+                            codigoVentaGen = Convert.ToString(dr["descripcionVehiculo"]),
+                            cEmpresa = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dr["plan"])),
+                            cCorreo = Convert.ToInt64(dr["TotalPago"]) < 50 ? "S/." + string.Format("{0:0.00}", 0): "S/." + string.Format("{0:0.00}", dr["TotalPago"]),
+                            cContactoNom2 = Convert.ToString(dr["plan"]),
+                            cTelFijo = strEstado,
+                            cDireccion = fechaFinalContrato.ToString("dd/MMM/yyyy")
+
+
+                        });
+                    }
+                }
                 else
                 {
                     if (totalResultados > 0)
                     {
+                        btnExportarBusqueda.Visible = true;
                         if (dgv.Rows.Count > 0)
                         {
                             dgv.Rows.Clear();
@@ -2358,13 +2420,13 @@ namespace wfaIntegradoCom.Mantenedores
                             TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
 
                             //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
-                            if (Variables.gdFechaSis > fechaFinalContrato)
+                            if (fechaActual > fechaFinalContrato)
                             {
-                                tiket = Variables.gdFechaSis-fechaFinalContrato;
+                                tiket = fechaActual - fechaFinalContrato;
                             }
                             else
                             {
-                                tiket = fechaFinalContrato - Variables.gdFechaSis;
+                                tiket = fechaFinalContrato - fechaActual;
                             }
                             DateTime totalTime = new DateTime(tiket.Ticks);
                             restaAnio = totalTime.Year - 1;
@@ -2376,7 +2438,7 @@ namespace wfaIntegradoCom.Mantenedores
                             }
                             else
                             {
-                                strEstado = fnMostrarEstadoRenovacion(Variables.gdFechaSis, fechaFinalContrato, restaAnio, restaMeses, faltaDias);
+                                strEstado = fnMostrarEstadoRenovacion(fechaActual, fechaFinalContrato, restaAnio, restaMeses, faltaDias);
                             }
                             dgv.Rows.Add(
                                 dr["idCliente"],
@@ -2491,7 +2553,7 @@ namespace wfaIntegradoCom.Mantenedores
                     }
                     else
                     {
-
+                        btnExportarBusqueda.Visible = false;
                         //MessageBox.Show("NO SE ENCONTRÓ NINGÚN RESULTADO CON ESTAS COINCIDENCIAS","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         dgv.Rows.Clear();
                         estadoReturn= false;
@@ -2586,6 +2648,11 @@ namespace wfaIntegradoCom.Mantenedores
                         strEstado = "❌ El dia de revacion es hoy!!\n " + Variables.gdFechaSis.ToString("dd/MMM/yyyy");
                     }
                 }
+
+            }else if (dtActual == dtFinal)
+            {
+                strEstado = "🚫 El dia de revacion es hoy!!\n " + Variables.gdFechaSis.ToString("dd/MMM/yyyy");
+                //strEstado = "❌ El dia de revacion es hoy!!\n " + Variables.gdFechaSis.ToString("dd/MMM/yyyy");
 
             }
 
@@ -4637,5 +4704,11 @@ namespace wfaIntegradoCom.Mantenedores
             
         }
 
+        private void btnExportarBusqueda_Click(object sender, EventArgs e)
+        {
+            fnBuscarListaVentas(dgvListaVentas, 0, 0, -5);
+            frmExportConsultasCronograma frmExport = new frmExportConsultasCronograma();
+            frmExport.Inicio(lstClientesBusq,"Lista de vehiculos para renovación. ", 1);
+        }
     }
 }

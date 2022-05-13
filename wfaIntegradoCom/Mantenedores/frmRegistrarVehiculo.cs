@@ -807,7 +807,7 @@ namespace wfaIntegradoCom.Mantenedores
                    
                     String estado = "";
                     Int32 y;
-                    if (TipoConPagina == -1)
+                    if (Pagina == 0)
                     {
                         y = 0;
                     }
@@ -845,7 +845,7 @@ namespace wfaIntegradoCom.Mantenedores
                     dgVehiculo.Columns[7].Width = 70;
                     dgVehiculo.Columns[8].Width = 70;
 
-                    if (TipoConPagina == -1)
+                    if (Pagina == 0)
                     {
                         //cboPaginacion.Visible = true;
                         Int32 totalRegistros = Convert.ToInt32(datVehiculo.Rows[0][10]);
@@ -1250,7 +1250,7 @@ namespace wfaIntegradoCom.Mantenedores
         private void cboPaginacion_SelectedIndexChanged(object sender, EventArgs e)
         {
             Boolean bResul = false;
-            bResul = fnBuscarVehiculo(Convert.ToInt32(cboPaginacion.Text), -2);
+            bResul = fnBuscarVehiculo(Convert.ToInt32(cboPaginacion.Text), -1);
             if (!bResul)
             {
                 MessageBox.Show("Error al Buscar Vehiculo. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

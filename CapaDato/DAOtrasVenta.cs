@@ -63,9 +63,9 @@ namespace CapaDato
 
         }
 
-        public DataTable daListarVentas(Int32 idDocumento, String pcBusqueda, Boolean activarFechas, DateTime fechaInicio, DateTime fechaFin,Int32 pagInicio,Int32 TipoConPagina)
+        public DataTable daListarVentas(Int32 idDocumento, String pcBusqueda, Boolean activarFechas, DateTime fechaInicio, DateTime fechaFin, Int32 tipoVenta, Int32 idMarca, Int32 idModelo, Int32 pagInicio)
         {
-            SqlParameter[] pa = new SqlParameter[7];
+            SqlParameter[] pa = new SqlParameter[9];
             DataTable dtEquipo = new DataTable();
             clsConexion objCnx = null;
             List<Equipo> lstEquipo = null;
@@ -83,10 +83,14 @@ namespace CapaDato
                 pa[3].Value = fechaInicio;
                 pa[4] = new SqlParameter("@dFechaFin", SqlDbType.DateTime);
                 pa[4].Value = fechaFin;
-                pa[5] = new SqlParameter("@numPagina", SqlDbType.Int);
-                pa[5].Value = pagInicio;
-                pa[6] = new SqlParameter("@peiTipoConPagina", SqlDbType.Int);
-                pa[6].Value = TipoConPagina;
+                pa[5] = new SqlParameter("@peTipoTransaccion", SqlDbType.Int);
+                pa[5].Value = tipoVenta;
+                pa[6] = new SqlParameter("@idMarca", SqlDbType.Int);
+                pa[6].Value = idMarca;
+                pa[7] = new SqlParameter("@idModelo", SqlDbType.Int);
+                pa[7].Value = idModelo;
+                pa[8] = new SqlParameter("@numPagina", SqlDbType.Int);
+                pa[8].Value = pagInicio;
 
                 objCnx = new clsConexion("");
                 dtEquipo = objCnx.EjecutarProcedimientoDT("uspListarOtrasVenta", pa);
@@ -146,29 +150,87 @@ namespace CapaDato
 
         }
 
-        public Boolean daGuardarOtrasVenta(List<OtrasVentas> lstOtrasVentas, List<Pagos> lstPagos, List<xmlDocumentoVenta> xmlDocumentoVenta, Int32 tipoCon)
+        public Boolean daGuardarOtrasVenta(OtrasVentas clsOtrasVentas, List<xmlDocumentoVentaGeneral> xmlDocVenta, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[4];
+            SqlParameter[] pa = new SqlParameter[16];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             int intRowsAffected = 0;
-            string xmlData = clsUtil.Serialize(lstOtrasVentas);
-            string xmlTrandiaria = clsUtil.Serialize(lstPagos);
-            string xmlDocumentoDeVenta = clsUtil.Serialize(xmlDocumentoVenta);
+            List<xmlActaTitularidad> lstActaTitularidad = new List<xmlActaTitularidad>();
+            List<Cliente> lstCDV = new List<Cliente>();
+            lstCDV.Add(clsOtrasVentas.clsClienteDocumentoVenta);
+            List<Cliente> lstANT = new List<Cliente>();
+            lstANT.Add(clsOtrasVentas.clsClienteDocumentoVenta);
+            List<Vehiculo> lstVH = new List<Vehiculo>();
+            lstVH.Add(clsOtrasVentas.clsVehiculo);
+            lstActaTitularidad.Add(new xmlActaTitularidad
+            {
+                lstClienteDocVenta= lstCDV,
+                lstClienteAntecesor=lstANT,
+                lstVehiculo=lstVH
+
+            });
+
+            string xmlData = clsUtil.Serialize(clsOtrasVentas.lstDetalleVenta);
+            string xmlTrandiaria = clsUtil.Serialize(clsOtrasVentas.lstTrandiaria);
+            string xmlDocumentoDeVenta = clsUtil.Serialize(xmlDocVenta);
+            string xmlActaCambioTitularidad = clsUtil.Serialize(lstActaTitularidad);
             try
             {
+                if (clsOtrasVentas.lstOtrasVenta.Count == 1)
+                {
 
-                pa[0] = new SqlParameter("@xmlData", SqlDbType.Xml);
-                pa[0].Value = xmlData;
-                pa[1] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml);
-                pa[1].Value = xmlTrandiaria;
-                pa[2] = new SqlParameter("@xmlDocumentoDeVenta", SqlDbType.Xml);
-                pa[2].Value = xmlDocumentoDeVenta;
-                pa[3] = new SqlParameter("@peiTipoCon", SqlDbType.Int);
-                pa[3].Value = tipoCon;
+                }
+                pa[0] = new SqlParameter("@idTipoTransaccion", SqlDbType.Int);
+                pa[0].Value = clsOtrasVentas.lstOtrasVenta[0].idTipoTransaccion;
+
+                pa[1] = new SqlParameter("@idObjVenta", SqlDbType.Int);
+                pa[1].Value = clsOtrasVentas.lstOtrasVenta[0].idObjVenta;
+
+                pa[2] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml);
+                pa[2].Value = xmlData;
+
+                pa[3] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml);
+                pa[3].Value = xmlTrandiaria;
+
+                pa[4] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml);
+                pa[4].Value = xmlDocumentoDeVenta;
+
+                pa[5] = new SqlParameter("@xmlActaCambioTitularidad", SqlDbType.Xml);
+                pa[5].Value = xmlActaCambioTitularidad;
+
+                pa[6] = new SqlParameter("@idVenta", SqlDbType.Int);
+                pa[6].Value = clsOtrasVentas.clsClienteAntecesor.idVentaGen;
+
+                pa[7] = new SqlParameter("@idClienteAntecesor", SqlDbType.Int);
+                pa[7].Value = clsOtrasVentas.clsClienteAntecesor.idCliente;
+
+                pa[8] = new SqlParameter("@idClienteNuevo", SqlDbType.Int);
+                pa[8].Value = clsOtrasVentas.clsClienteDocumentoVenta.idCliente;
+
+                pa[9] = new SqlParameter("@idVehiculo", SqlDbType.Int);
+                pa[9].Value = clsOtrasVentas.clsVehiculo.idVehiculo;
+
+                pa[10] = new SqlParameter("@dFechaOperacion", SqlDbType.DateTime);
+                pa[10].Value = clsOtrasVentas.dFechaOperacion;
+
+                pa[11] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime);
+                pa[11].Value = clsOtrasVentas.dFechaRegistro;
+
+                pa[12] = new SqlParameter("@idUsuario", SqlDbType.Int);
+                pa[12].Value = clsOtrasVentas.iddUsuario;
+
+                pa[13] = new SqlParameter("@idMoneda", SqlDbType.Int);
+                pa[13].Value = clsOtrasVentas.idMoneda;
+
+                pa[14] = new SqlParameter("@peiTipoCon", SqlDbType.Int);
+                pa[14].Value = tipoCon;
+
+                pa[15] = new SqlParameter("@codigoDocumentoVentaTC", SqlDbType.NVarChar,15);
+                pa[15].Value = clsOtrasVentas.CodDocumento;
 
                 objCnx = new clsConexion("");
-                intRowsAffected=objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
+                intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
                 return true;
             }
             catch (Exception ex)
@@ -189,7 +251,7 @@ namespace CapaDato
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             DataTable dtDocumento = new DataTable();
-           xmlDocumentoVenta lstDocumentoVenta = new xmlDocumentoVenta();
+            xmlDocumentoVenta lstDocumentoVenta = new xmlDocumentoVenta();
             String xmlDocventa = "";
             //string xmlData = clsUtil.Serialize(lstOtrasVentas);
             try

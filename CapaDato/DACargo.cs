@@ -199,6 +199,112 @@ namespace CapaDato
             }
 
         }
+        public List<Cargo> daLlenarCboSegunTablaTipoCon(String nomCampoId, String nomCampoNombre, String nomTabla, String nomEstado, String condicionDeEstado, Boolean buscar)
+        {
+
+
+            SqlParameter[] pa = new SqlParameter[5];
+            DataTable dtUsuario = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@id", SqlDbType.NVarChar, 80);
+                pa[0].Value = nomCampoId;
+                pa[1] = new SqlParameter("@nombre", SqlDbType.NVarChar, 80);
+                pa[1].Value = nomCampoNombre;
+                pa[2] = new SqlParameter("@tabla", SqlDbType.NVarChar, 80);
+                pa[2].Value = nomTabla;
+                pa[3] = new SqlParameter("@estado", SqlDbType.NVarChar, 80);
+                pa[3].Value = nomEstado;
+                pa[4] = new SqlParameter("@conEstado", SqlDbType.NVarChar, 20);
+                pa[4].Value = condicionDeEstado;
+
+
+                objCnx = new clsConexion("");
+                dtUsuario = objCnx.EjecutarProcedimientoDT("uspLlenarComboboxSegunTabla", pa);
+
+                List<Cargo> lstCargo = new List<Cargo>();
+                lstCargo.Add(new Cargo(
+                        Convert.ToString("0"),
+                        Convert.ToString(buscar ? "TODOS" : "Selecc. opcion"),
+                        Convert.ToString("1")));
+
+                foreach (DataRow drMenu in dtUsuario.Rows)
+                {
+                    lstCargo.Add(new Cargo(
+                        Convert.ToString(drMenu[""+nomCampoId+""]),
+                        Convert.ToString(drMenu[""+ nomCampoNombre + ""]),
+                        Convert.ToString(drMenu[""+ nomEstado + ""])));
+                }
+
+                return lstCargo;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACargo.cs", "daDevolverTablaCod", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
+        public List<Cargo> daDevolverUsuarioPorCargo(String cCodTab,Boolean buscar)
+        {
+
+
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtUsuario = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@codcargo", SqlDbType.NVarChar, 8);
+                pa[0].Value = cCodTab;
+
+
+                objCnx = new clsConexion("");
+                dtUsuario = objCnx.EjecutarProcedimientoDT("uspObtenerUsuarioPorTipoCargo", pa);
+
+                List<Cargo> lstCargo = new List<Cargo>();
+                lstCargo.Add(new Cargo(
+                        Convert.ToString("0"),
+                        Convert.ToString(buscar ? "TODOS" : "Selecc. opcion"),
+                        Convert.ToString("1")));
+
+                foreach (DataRow drMenu in dtUsuario.Rows)
+                {
+                    lstCargo.Add(new Cargo(
+                        Convert.ToString(drMenu["idUsuario"]),
+                        Convert.ToString(drMenu["personal"]),
+                        Convert.ToString(drMenu["idUsuario"])));
+                }
+
+                return lstCargo;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACargo.cs", "daDevolverTablaCod", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
 
         public String daDevolverCorrelativo(String cCodTab)
         {

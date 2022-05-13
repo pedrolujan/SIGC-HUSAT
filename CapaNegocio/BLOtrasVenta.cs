@@ -26,13 +26,13 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable blListarVentas(Int32 idDocumento, String pcBusqueda, Boolean activarFechas, DateTime fechaInicio,DateTime fechaFin, Int32 pagInicio, Int32 TipoConPagina)
+        public DataTable blListarVentas(Int32 idDocumento, String pcBusqueda, Boolean activarFechas, DateTime fechaInicio, DateTime fechaFin, Int32 tipoVenta,Int32 idMarca,Int32 idModelo, Int32 pagInicio)
         {
             daObjTipoVenta = new DAOtrasVenta(); ;
 
             try
             {
-                return daObjTipoVenta.daListarVentas(idDocumento,  pcBusqueda,  activarFechas,  fechaInicio,  fechaFin,  pagInicio,  TipoConPagina);
+                return daObjTipoVenta.daListarVentas(idDocumento,  pcBusqueda,  activarFechas,  fechaInicio,  fechaFin,  tipoVenta,  idMarca,  idModelo, pagInicio);
             }
             catch (Exception ex)
             {
@@ -52,12 +52,12 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public Boolean blGuardarOtrasVentas(List<OtrasVentas>lstOtrasVentas, List<Pagos> lstPagos, List<xmlDocumentoVenta> xmlDocumentoVenta, Int32 tipCon)
+        public Boolean blGuardarOtrasVentas(OtrasVentas clsOtrasVentas, List<xmlDocumentoVentaGeneral> xmlDocumentoVenta, Int32 tipCon)
         {
             daObjTipoVenta = new DAOtrasVenta();
             try
             {
-                return daObjTipoVenta.daGuardarOtrasVenta(lstOtrasVentas,lstPagos,xmlDocumentoVenta, tipCon);
+                return daObjTipoVenta.daGuardarOtrasVenta(clsOtrasVentas,xmlDocumentoVenta, tipCon);
             }
             catch(Exception ex)
             {

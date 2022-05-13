@@ -78,6 +78,35 @@ namespace wfaIntegradoCom.Funciones
             }
 
         }
+        public static Boolean fnLlenarCboSegunTablaTipoCon(ComboBox cboCombo, String nomCampoId,String nomCampoNombre,String nomTabla,String nomEstado,String condicionDeEstado, Boolean buscar)
+        {
+            BLCargo objTablaCod = new BLCargo();
+            clsUtil objUtil = new clsUtil();
+            List<Cargo> lstTablaCod = new List<Cargo>();
+
+            try
+            {
+                lstTablaCod = objTablaCod.blLlenarCboSegunTablaTipoCon( nomCampoId,  nomCampoNombre,  nomTabla,  nomEstado,  condicionDeEstado,  buscar);
+                cboCombo.DataSource = null;
+                cboCombo.ValueMember = "cCodTab";
+                cboCombo.DisplayMember = "cNomTab";
+                cboCombo.DataSource = lstTablaCod;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FunGeneral", "fnLlenarTablaCod", ex.Message);
+                return false;
+            }
+            finally
+            {
+                objUtil = null;
+                objTablaCod = null;
+                lstTablaCod = null;
+            }
+
+        }
 
 
         //llenar combobox de la instalacion
@@ -539,6 +568,39 @@ namespace wfaIntegradoCom.Funciones
         {
             String dat = str.ToLower();
             return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(dat); ;
+        }
+        public static void cbo_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
+        public static Boolean fnLlenarUsuarioPorCargo(ComboBox cboCombo, String cCodCargo, Boolean buscar)
+        {
+            BLCargo objTablaCod = new BLCargo();
+            clsUtil objUtil = new clsUtil();
+            List<Cargo> lstTablaCod = new List<Cargo>();
+
+            try
+            {
+                lstTablaCod = objTablaCod.blDevolverUsuarioPorCargo(cCodCargo, buscar);
+                cboCombo.DataSource = null;
+                cboCombo.ValueMember = "cCodTab";
+                cboCombo.DisplayMember = "cNomTab";
+                cboCombo.DataSource = lstTablaCod;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FunGeneral", "fnLlenarTablaCod", ex.Message);
+                return false;
+            }
+            finally
+            {
+                objUtil = null;
+                objTablaCod = null;
+                lstTablaCod = null;
+            }
+
         }
 
     }

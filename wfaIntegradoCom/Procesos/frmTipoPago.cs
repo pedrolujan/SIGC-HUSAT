@@ -93,15 +93,22 @@ namespace wfaIntegradoCom.Procesos
 
         private void gunaControlBox1_Click(object sender, EventArgs e)
         {
-            if (lnTipoLLamada == 3)
+            if (lnTipoLLamada == 0)
             {
-                frmControlPagoVenta frm = new frmControlPagoVenta();
-                frm.fnCambiarEstadoVenta(false);
+                Mantenedores.frmRegistrarVenta fmr = new Mantenedores.frmRegistrarVenta();
+                fmr.fnCambiarEstadoVenta(false);
             }
-            else
+
+            if (lnTipoLLamada == -1)
             {
-                Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
-                fmr2.fnCambiarEstadoVenta(false);
+                frmControlPagoVenta frm1 = new frmControlPagoVenta();
+                frm1.fnCambiarEstadoVenta(false);
+            }
+            else if (lnTipoLLamada == -2)
+            {
+                frmOtrasVentas frm2 = new frmOtrasVentas();
+                frm2.fnRecuperarEstadoGenVenta(false);
+
             }
         }
 
@@ -204,7 +211,8 @@ namespace wfaIntegradoCom.Procesos
                     idUsario = Variables.gnCodUser,
                     cEstadoPP = estadoPrimerPago
                 });
-                if (lnTipoLLamada == 1)
+                //opcion para venta general
+                if (lnTipoLLamada == 0)
                 {
                     Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
                     //MessageBox.Show("Todo Correcto");
@@ -212,26 +220,23 @@ namespace wfaIntegradoCom.Procesos
                     frm.fnCambiarEstado(true);
                     this.Close();
                 }
-                else if (lnTipoLLamada == 2)
-                {
-
-                    frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
-                    this.Close();
-                } else if (lnTipoLLamada == 3)
+                // opcion para pagos mensuales
+                else if (lnTipoLLamada == -1)
                 {
                     Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
                     frmControlPagoVenta frm = new frmControlPagoVenta();
                     frm.fnCambiarEstadoVenta(true);
                     this.Close();
-                } else if (lnTipoLLamada == 4)
+                } 
+                // opcion para otrasVentas
+                else if (lnTipoLLamada == -2)
                 {
-                    Procesos.frmCambioTitularidad.fnTipoPagoTitularidad(lstEntidades);
-                    frmCambioTitularidad frm = new frmCambioTitularidad();
-                    frm.fnCambiarEstado(true);
+                    frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
+                    frmOtrasVentas frm2 = new frmOtrasVentas();
+                    frm2.fnRecuperarEstadoGenVenta(true);
                     this.Close();
 
                 }
-
                 else
                 {
                     frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
@@ -387,18 +392,22 @@ namespace wfaIntegradoCom.Procesos
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            frmOtrasVentas.fnRecuperarEstadoGenVenta(false);
-            Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
-            fmr2.fnCambiarEstadoVenta(false);
-            if (lnTipoLLamada == 3)
+            if (lnTipoLLamada==0)
             {
-                frmControlPagoVenta frm = new frmControlPagoVenta();
-                frm.fnCambiarEstadoVenta(false);
+                Mantenedores.frmRegistrarVenta fmr = new Mantenedores.frmRegistrarVenta();
+                fmr.fnCambiarEstadoVenta(false);
             }
-            else if (lnTipoLLamada == 4)
+            
+            if (lnTipoLLamada == -1)
             {
-                frmCambioTitularidad frm = new frmCambioTitularidad();
-                frm.fnCambiarEstado(false);
+                frmControlPagoVenta frm1 = new frmControlPagoVenta();
+                frm1.fnCambiarEstadoVenta(false);
+            }
+            else if (lnTipoLLamada == -2)
+            {
+                frmOtrasVentas frm2 = new frmOtrasVentas();
+                frm2.fnRecuperarEstadoGenVenta(false);
+                
             }
             this.Dispose();
         }
