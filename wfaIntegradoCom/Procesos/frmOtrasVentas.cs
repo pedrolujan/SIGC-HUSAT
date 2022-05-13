@@ -78,6 +78,7 @@ namespace wfaIntegradoCom.Procesos
        static Int32 IdObjetoExistente = 0;
         static DateTime dtFechaTitularidad = Variables.gdFechaSis;
         String msgPLACA;
+        frmListarTipoVentas frm = new frmListarTipoVentas();
         static Boolean estMostrarGb = false;
         static Boolean estOcultarFila = false;
         Boolean estadoTabla, estMoneda, estTipPersona, estTipDocumento, estTipoDescuento, estPLACA, estadoFechaPago, estCliente, estDocumentoEmitir, estImporte;
@@ -430,6 +431,9 @@ namespace wfaIntegradoCom.Procesos
             clsOtrasVentaGeneral = new OtrasVentas();
             try
             {
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboTipoVenta, "idTipoTransaccion", "nombre", "TipoTransaccion", "estado","1",true);
+                
+                frm.fnLLnenarMarcaxCategoria(1, 0, true, cboMarca);
                 fnHabilitarControles(true);
                 fnObtenerStok();
                 fnCargarCombobox(0);
@@ -1684,12 +1688,7 @@ namespace wfaIntegradoCom.Procesos
             return lstDocVenta;
         }
 
-        private void cboTipoVenta_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public Boolean fnListarVentas(Int32 numPaginacion, Int32 tipoConPagina)
+        public Boolean fnListarVentas(Int32 numPaginacion)
         {
             BLOtrasVenta objTipoVenta = new BLOtrasVenta();
             clsUtil objUtil = new clsUtil();
@@ -1699,19 +1698,14 @@ namespace wfaIntegradoCom.Procesos
 
             try
             {
+                Int32 tipoTrancaccion = Convert.ToInt32(cboTipoVenta.SelectedValue);
+                Int32 idMarca = tipoTrancaccion == 2 ? Convert.ToInt32(cboMarca.SelectedValue):0;
+                Int32 idModelo = tipoTrancaccion == 2 ? Convert.ToInt32(cboModelo.SelectedValue):0;
 
-                dtResp = objTipoVenta.blListarVentas(
-                    0,
-                    txtBusq.Text.ToString(),
-                    chkHabilitarFechas.Checked,
-                    dtHFechaInicio.Value,
-                    dtHfechaFinal.Value,
-                    numPaginacion,
-                    tipoConPagina
-                    );
+                dtResp = objTipoVenta.blListarVentas(0,txtBusq.Text.ToString(),chkHabilitarFechas.Checked,dtHFechaInicio.Value,dtHfechaFinal.Value, tipoTrancaccion, idMarca,idModelo, numPaginacion );
                 Int32 totalResultados = dtResp.Rows.Count;
                 Int32 y;
-                if (tipoConPagina == -1)
+                if (numPaginacion == 0)
                 {
                     y = 0;
                 }
@@ -1731,7 +1725,7 @@ namespace wfaIntegradoCom.Procesos
                                            dr["PrecioNeto"]);
                 }
                 dgListaVentas.Visible = true;
-                if (tipoConPagina == -1)
+                if (numPaginacion == 0)
                 {
                     Int32 totalRegistros = Convert.ToInt32(Totregistros);
                     gbPaginacion.Visible = true;
@@ -1786,7 +1780,10 @@ namespace wfaIntegradoCom.Procesos
 
         private void txtBusq_KeyPress(object sender, KeyPressEventArgs e)
         {
-            fnListarVentas(0, -1);
+            if (e.KeyChar== (Char)Keys.Enter)
+            {
+                fnListarVentas(0);
+            }
         }
 
         private void dgListaVentas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -2282,6 +2279,24 @@ namespace wfaIntegradoCom.Procesos
             var result = FunValidaciones.fnValidarTexboxs(txtPlacaT, lblPlacaT, pbplacaT, true, true, true, 3, 20, 20, 20, "Complete los campos");
             estPLACA = result.Item1;
             msgPLACA = result.Item2;
+        }
+
+        private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            frm.fnLlenarModeloxMarca(Convert.ToInt32(cboMarca.SelectedValue), 1, cboModelo, true);
+        }
+
+        private void cboTipoVenta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(cboTipoVenta.SelectedValue) == 2)
+            {
+                gbBusqMarcaModelo.Visible = true;              
+
+            }
+            else
+            {                
+                gbBusqMarcaModelo.Visible = false;
+            }
         }
 
         private void siticoneGroupBox2_Click(object sender, EventArgs e)

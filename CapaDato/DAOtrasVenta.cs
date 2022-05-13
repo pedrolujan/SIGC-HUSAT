@@ -63,9 +63,9 @@ namespace CapaDato
 
         }
 
-        public DataTable daListarVentas(Int32 idDocumento, String pcBusqueda, Boolean activarFechas, DateTime fechaInicio, DateTime fechaFin,Int32 pagInicio,Int32 TipoConPagina)
+        public DataTable daListarVentas(Int32 idDocumento, String pcBusqueda, Boolean activarFechas, DateTime fechaInicio, DateTime fechaFin, Int32 tipoVenta, Int32 idMarca, Int32 idModelo, Int32 pagInicio)
         {
-            SqlParameter[] pa = new SqlParameter[7];
+            SqlParameter[] pa = new SqlParameter[9];
             DataTable dtEquipo = new DataTable();
             clsConexion objCnx = null;
             List<Equipo> lstEquipo = null;
@@ -83,10 +83,14 @@ namespace CapaDato
                 pa[3].Value = fechaInicio;
                 pa[4] = new SqlParameter("@dFechaFin", SqlDbType.DateTime);
                 pa[4].Value = fechaFin;
-                pa[5] = new SqlParameter("@numPagina", SqlDbType.Int);
-                pa[5].Value = pagInicio;
-                pa[6] = new SqlParameter("@peiTipoConPagina", SqlDbType.Int);
-                pa[6].Value = TipoConPagina;
+                pa[5] = new SqlParameter("@peTipoTransaccion", SqlDbType.Int);
+                pa[5].Value = tipoVenta;
+                pa[6] = new SqlParameter("@idMarca", SqlDbType.Int);
+                pa[6].Value = idMarca;
+                pa[7] = new SqlParameter("@idModelo", SqlDbType.Int);
+                pa[7].Value = idModelo;
+                pa[8] = new SqlParameter("@numPagina", SqlDbType.Int);
+                pa[8].Value = pagInicio;
 
                 objCnx = new clsConexion("");
                 dtEquipo = objCnx.EjecutarProcedimientoDT("uspListarOtrasVenta", pa);
@@ -247,7 +251,7 @@ namespace CapaDato
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             DataTable dtDocumento = new DataTable();
-           xmlDocumentoVenta lstDocumentoVenta = new xmlDocumentoVenta();
+            xmlDocumentoVenta lstDocumentoVenta = new xmlDocumentoVenta();
             String xmlDocventa = "";
             //string xmlData = clsUtil.Serialize(lstOtrasVentas);
             try

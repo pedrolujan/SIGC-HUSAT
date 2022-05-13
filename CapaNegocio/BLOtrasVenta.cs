@@ -26,13 +26,13 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable blListarVentas(Int32 idDocumento, String pcBusqueda, Boolean activarFechas, DateTime fechaInicio,DateTime fechaFin, Int32 pagInicio, Int32 TipoConPagina)
+        public DataTable blListarVentas(Int32 idDocumento, String pcBusqueda, Boolean activarFechas, DateTime fechaInicio, DateTime fechaFin, Int32 tipoVenta,Int32 idMarca,Int32 idModelo, Int32 pagInicio)
         {
             daObjTipoVenta = new DAOtrasVenta(); ;
 
             try
             {
-                return daObjTipoVenta.daListarVentas(idDocumento,  pcBusqueda,  activarFechas,  fechaInicio,  fechaFin,  pagInicio,  TipoConPagina);
+                return daObjTipoVenta.daListarVentas(idDocumento,  pcBusqueda,  activarFechas,  fechaInicio,  fechaFin,  tipoVenta,  idMarca,  idModelo, pagInicio);
             }
             catch (Exception ex)
             {
