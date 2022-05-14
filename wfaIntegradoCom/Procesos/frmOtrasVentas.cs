@@ -1694,44 +1694,72 @@ namespace wfaIntegradoCom.Procesos
             clsUtil objUtil = new clsUtil();
             DataTable dtResp = new DataTable();
             List<TipoVenta> lsTipoVenta = new List<TipoVenta>();
-            Int32 filas = 20;
+            Int32 filas = 10;
 
             try
             {
                 Int32 tipoTrancaccion = Convert.ToInt32(cboTipoVenta.SelectedValue);
                 Int32 idMarca = tipoTrancaccion == 2 ? Convert.ToInt32(cboMarca.SelectedValue):0;
                 Int32 idModelo = tipoTrancaccion == 2 ? Convert.ToInt32(cboModelo.SelectedValue):0;
+                String tipoDocVenta = cboDocVentaBusq.SelectedValue.ToString();
 
-                dtResp = objTipoVenta.blListarVentas(0,txtBusq.Text.ToString(),chkHabilitarFechas.Checked,dtHFechaInicio.Value,dtHfechaFinal.Value, tipoTrancaccion, idMarca,idModelo, numPaginacion );
+                dtResp = objTipoVenta.blListarVentas(0,txtBusq.Text.ToString(),chkHabilitarFechas.Checked,dtHFechaInicio.Value,dtHfechaFinal.Value, tipoTrancaccion, tipoDocVenta, idMarca,idModelo, numPaginacion );
                 Int32 totalResultados = dtResp.Rows.Count;
                 Int32 y;
-                if (numPaginacion == 0)
+                if (totalResultados>0)
                 {
-                    y = 0;
+                    dgListaVentas.Rows.Clear();
+
+                    if (numPaginacion == 0)
+                    {
+                        y = 0;
+                    }
+                    else
+                    {
+                        tabInicio = (numPaginacion - 1) * filas;
+                        y = tabInicio;
+                    }
+                    Int32 Totregistros = Convert.ToInt32(dtResp.Rows[0][0]);
+                    foreach (DataRow dr in dtResp.Rows)
+                    {
+                        y++;
+                        dgListaVentas.Rows.Add(
+                            dr["idContrato"],
+                            dr["idVentaGeneral"],
+                            y,
+                            FunGeneral.GetFechaHoraFormato(Convert.ToDateTime(dr["fechaRegistro"]),1),
+                            FunGeneral.GetFechaHoraFormato(Convert.ToDateTime(dr["fechaVenta"]),1),
+                            dr["vPlaca"],
+                            FunGeneral.FormatearCadenaTitleCase(dr["Cliente"].ToString()),
+                            FunGeneral.FormatearCadenaTitleCase(dr["dTipoventa"].ToString()),
+                            FunGeneral.FormatearCadenaTitleCase(dr["Descripcion"].ToString()),
+                            FunGeneral.FormatearCadenaTitleCase(dr["cUser"].ToString()),
+                            FunGeneral.fnFormatearPrecio(dr["cSimbolo"].ToString(), Convert.ToDouble(dr["TotalPago"]), 1)
+                            );
+                    }
+                    dgListaVentas.Visible = true;
+                    if (numPaginacion == 0)
+                    {
+                        gbPaginacion.Visible = true;
+                        Int32 totalRegistros = Convert.ToInt32(dtResp.Rows[0][0]);
+                        FunValidaciones.fnCalcularPaginacion(
+                            totalRegistros,
+                            filas,
+                            totalResultados,
+                            cboPagina,
+                            btnTotalPaginas,
+                            btnRegistros,
+                            btnTotalRegistros
+                        );
+
+                    }
                 }
                 else
                 {
-                    tabInicio = (numPaginacion - 1) * filas;
-                    y = tabInicio;
+                    fnAlertas("No se encontraron registros", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    dgListaVentas.Rows.Clear();
                 }
-                Int32 Totregistros = 0;
-                foreach (DataRow dr in dtResp.Rows)
-                {
-                    y++;
-                    Totregistros =Convert.ToInt32(dr["ROW_COUNT"]);
-                    dgListaVentas.Rows.Add(y,dr["codigoVenta"],
-                                           dr["Servicio"]+" "+dr["Equipo"]+" "+dr["Accesorio"],
-                                           dr["dFechaRegistro"],
-                                           dr["PrecioNeto"]);
-                }
-                dgListaVentas.Visible = true;
-                if (numPaginacion == 0)
-                {
-                    Int32 totalRegistros = Convert.ToInt32(Totregistros);
-                    gbPaginacion.Visible = true;
-                    fnCalcularPaginacion(totalRegistros, filas, totalResultados, cboPagina, btnTotalPaginas, btnRegistros, btnTotalRegistros);
-
-                }
+                
 
 
                 return true;
@@ -1788,11 +1816,11 @@ namespace wfaIntegradoCom.Procesos
 
         private void dgListaVentas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && this.dgListaVentas.Columns[e.ColumnIndex].Name == "LvbtnImprimir" && e.RowIndex >= 0)
+            if (e.ColumnIndex >= 0 && this.dgListaVentas.Columns[e.ColumnIndex].Name == "lvBtnImprimir" && e.RowIndex >= 0)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                DataGridViewButtonCell celBoton = this.dgListaVentas.Rows[e.RowIndex].Cells["LvbtnImprimir"] as DataGridViewButtonCell;
+                DataGridViewButtonCell celBoton = this.dgListaVentas.Rows[e.RowIndex].Cells["lvBtnImprimir"] as DataGridViewButtonCell;
                 Icon icoAtomico = new Icon(Application.StartupPath + @"\Impresora.ico");
                 e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
 
@@ -2016,23 +2044,23 @@ namespace wfaIntegradoCom.Procesos
             
 
         }
-        private void fnBuscarDocumentoVenta(String cCodVenta)
+        private void fnBuscarDocumentoVenta(Int32 cCodVenta)
         {
             BLOtrasVenta objTipoVenta = new BLOtrasVenta();
             clsUtil objUtil = new clsUtil();
             DataTable dtResp = new DataTable();
             List<TipoVenta> lsTipoVenta = new List<TipoVenta>();
             Int32 filas = 20;
-            List<xmlDocumentoVenta> xmlDocumentoVenta = new List<xmlDocumentoVenta>();
-            xmlDocumentoVenta xmlDocVenta = new xmlDocumentoVenta();
+            List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
+            xmlDocumentoVentaGeneral xmlDocVenta = new xmlDocumentoVentaGeneral();
 
             try
             {
                 xmlDocVenta= objTipoVenta.blBuscarDocumentoVenta(cCodVenta);
                 xmlDocumentoVenta.Add(xmlDocVenta);
 
-                Consultas.frmVPOtrasVentas abrirFrmVPOtrasVentas = new Consultas.frmVPOtrasVentas();
-                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlResponsablePago,xmlDocumentoVenta[0].xmlDetalleVentas,1);
+                Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta,xmlDocumentoVenta[0].xmlDetalleVentas,-2);
 
             }
             catch (Exception ex)
@@ -2052,9 +2080,9 @@ namespace wfaIntegradoCom.Procesos
         {
             if (e.ColumnIndex == dgListaVentas.Columns["LvbtnImprimir"].Index && e.RowIndex >= 0)
             {
-                String cCodventa = Convert.ToString(dgListaVentas.Rows[e.RowIndex].Cells[1].Value);
+                Int32 idContrato = Convert.ToInt32(dgListaVentas.Rows[e.RowIndex].Cells[0].Value);
 
-                fnBuscarDocumentoVenta(cCodventa);
+                fnBuscarDocumentoVenta(idContrato);
             }
 
         }
@@ -2458,6 +2486,7 @@ namespace wfaIntegradoCom.Procesos
             lstvehiculo[0].Propietario = cboMotivo.SelectedValue.ToString();
             clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(cboTipoPersona.SelectedValue) == 2 ? "Rason social" : "Nombre";
             clsClienteDocumentoV.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
+            lstPagosTrand[0].idMoneda = Mon.idMoneda;
             clsOtrasVentaGeneral = new OtrasVentas
             {
                 lstOtrasVenta = lstOtrasVentas,

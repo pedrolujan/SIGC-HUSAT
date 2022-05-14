@@ -63,9 +63,9 @@ namespace CapaDato
 
         }
 
-        public DataTable daListarVentas(Int32 idDocumento, String pcBusqueda, Boolean activarFechas, DateTime fechaInicio, DateTime fechaFin, Int32 tipoVenta, Int32 idMarca, Int32 idModelo, Int32 pagInicio)
+        public DataTable daListarVentas(Int32 idDocumento, String pcBusqueda, Boolean activarFechas, DateTime fechaInicio, DateTime fechaFin, Int32 tipoVenta,String tipoDocVenta, Int32 idMarca, Int32 idModelo, Int32 pagInicio)
         {
-            SqlParameter[] pa = new SqlParameter[9];
+            SqlParameter[] pa = new SqlParameter[10];
             DataTable dtEquipo = new DataTable();
             clsConexion objCnx = null;
             List<Equipo> lstEquipo = null;
@@ -83,14 +83,16 @@ namespace CapaDato
                 pa[3].Value = fechaInicio;
                 pa[4] = new SqlParameter("@dFechaFin", SqlDbType.DateTime);
                 pa[4].Value = fechaFin;
-                pa[5] = new SqlParameter("@peTipoTransaccion", SqlDbType.Int);
+                pa[5] = new SqlParameter("@idTipoTransaccion", SqlDbType.Int);
                 pa[5].Value = tipoVenta;
-                pa[6] = new SqlParameter("@idMarca", SqlDbType.Int);
-                pa[6].Value = idMarca;
-                pa[7] = new SqlParameter("@idModelo", SqlDbType.Int);
-                pa[7].Value = idModelo;
-                pa[8] = new SqlParameter("@numPagina", SqlDbType.Int);
-                pa[8].Value = pagInicio;
+                pa[6] = new SqlParameter("@tipoDocVenta", SqlDbType.NVarChar,10);
+                pa[6].Value = tipoDocVenta;
+                pa[7] = new SqlParameter("@idMarca", SqlDbType.Int);
+                pa[7].Value = idMarca;
+                pa[8] = new SqlParameter("@idModelo", SqlDbType.Int);
+                pa[8].Value = idModelo;
+                pa[9] = new SqlParameter("@numPagina", SqlDbType.Int);
+                pa[9].Value = pagInicio;
 
                 objCnx = new clsConexion("");
                 dtEquipo = objCnx.EjecutarProcedimientoDT("uspListarOtrasVenta", pa);
@@ -245,22 +247,26 @@ namespace CapaDato
             }
         }
 
-        public xmlDocumentoVenta daBuscarDocumentoVenta(String codVenta)
+        public xmlDocumentoVentaGeneral daBuscarDocumentoVenta(Int32 codVenta)
         {
-            SqlParameter[] pa = new SqlParameter[2];
+            SqlParameter[] pa = new SqlParameter[4];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             DataTable dtDocumento = new DataTable();
-            xmlDocumentoVenta lstDocumentoVenta = new xmlDocumentoVenta();
+            xmlDocumentoVentaGeneral lstDocumentoVenta = new xmlDocumentoVentaGeneral();
             String xmlDocventa = "";
             //string xmlData = clsUtil.Serialize(lstOtrasVentas);
             try
             {
 
-                pa[0] = new SqlParameter("@codVenta", SqlDbType.VarChar,8);
-                pa[0].Value = codVenta;
+                pa[0] = new SqlParameter("@codVenta", SqlDbType.NVarChar,15);
+                pa[0].Value = "";
                 pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int);
-                pa[1].Value = 0;
+                pa[1].Value = codVenta;
+                pa[2] = new SqlParameter("@tipoTarifa", SqlDbType.Int);
+                pa[2].Value = 0;
+                pa[3] = new SqlParameter("@idContrato", SqlDbType.Int);
+                pa[3].Value = codVenta;
 
 
                 objCnx = new clsConexion("");
@@ -271,7 +277,7 @@ namespace CapaDato
                     xmlDocventa = Convert.ToString(drMenu["Documentoventa"]);
 
                 }
-                lstDocumentoVenta = clsUtil.Deserialize<xmlDocumentoVenta>(xmlDocventa);
+                lstDocumentoVenta = clsUtil.Deserialize<xmlDocumentoVentaGeneral>(xmlDocventa);
                 return lstDocumentoVenta;
             }
             catch (Exception ex)
