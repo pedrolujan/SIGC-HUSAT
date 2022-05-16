@@ -1555,6 +1555,7 @@ namespace wfaIntegradoCom.Procesos
         public static void fnRecuperarTipoPago(List<Pagos> lstPagos)
         {
             lstPagosTrand= lstPagos;
+            lstPagosTrand[0].idMoneda = Mon.idMoneda;
             if (lstPagosTrand.Count>0)
             {
                 //fnLimpiarControles();
@@ -2486,7 +2487,6 @@ namespace wfaIntegradoCom.Procesos
             lstvehiculo[0].Propietario = cboMotivo.SelectedValue.ToString();
             clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(cboTipoPersona.SelectedValue) == 2 ? "Rason social" : "Nombre";
             clsClienteDocumentoV.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
-            lstPagosTrand[0].idMoneda = Mon.idMoneda;
             clsOtrasVentaGeneral = new OtrasVentas
             {
                 lstOtrasVenta = lstOtrasVentas,
