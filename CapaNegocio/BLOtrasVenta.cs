@@ -39,7 +39,7 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable blDevloverTipoventas(String tipoVenta, Int32 idObtVenta)
+        public DataTable blDevloverTipoventas(Int32 tipoVenta, Int32 idObtVenta)
         {
             daObjTipoVenta = new DAOtrasVenta(); ;
 

@@ -56,6 +56,40 @@ namespace CapaDato
             }
 
         }
+        public DataTable daBuscarCliente(String nroDocumento, String estCliente,Int32 tipoCon)
+        {
+
+            SqlParameter[] pa = new SqlParameter[3];
+            DataTable dtCliente;
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@peNroDocumento", SqlDbType.NVarChar, 15) { Value = nroDocumento };
+                pa[1] = new SqlParameter("@peEstadoCliente", SqlDbType.NVarChar, 1) { Value = estCliente };
+                pa[2] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+
+                objCnx = new clsConexion("");
+                dtCliente = objCnx.EjecutarProcedimientoDT("uspBuscarDatosOtrasVenta", pa);
+
+                return dtCliente;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                dtCliente = null;
+            }
+
+        }
         public Int16 daBuscarNroDocumento(String pcBuscar, Int16 pnTipoCon)
         {
 

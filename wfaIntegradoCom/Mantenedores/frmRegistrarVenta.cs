@@ -683,7 +683,8 @@ namespace wfaIntegradoCom.Mantenedores
                 //    }
                 //    else
                 //    {
-                        fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, lnTipoCon);
+                Boolean estChk = siticoneCheckBox1.Checked;
+                fnDevolverPrecioTarifa(idPlan, Convert.ToInt32(cboTipoVenta.SelectedValue), ClsVentaGeneral.codigoVenta, lnTipoCon, estChk);
                         //ClsVentaGeneral.ClsTarifa = clsTarifa;
                 //    }
 
@@ -766,14 +767,14 @@ namespace wfaIntegradoCom.Mantenedores
             lstTotalDetalle = lstT;
            fnCalcularCabeceraDetalle(lstT, true);
         }
-        private Boolean fnDevolverPrecioTarifa(Int32 idPlan, Int32 peTipoTarifa, String codVenta,Int32 lnTipoCon)
+        private Boolean fnDevolverPrecioTarifa(Int32 idPlan, Int32 peTipoTarifa, String codVenta,Int32 lnTipoCon,Boolean estChk)
         {
             BLTipoTarifa objBlTipTarifa = new  BLTipoTarifa();
             clsUtil objUtil = new clsUtil();
             Tarifa clsTipTarifa = new Tarifa();
             try
             {
-                clsTipTarifa = objBlTipTarifa.blDevolverPrecios(idPlan, peTipoTarifa,  codVenta,  lnTipoCon);
+                clsTipTarifa = objBlTipTarifa.blDevolverPrecios(idPlan, peTipoTarifa,  codVenta,  lnTipoCon, estChk);
                 if (clsTipTarifa.IdTarifa>0)
                 {
                     clsTarifa = clsTipTarifa;
@@ -1963,35 +1964,41 @@ namespace wfaIntegradoCom.Mantenedores
                     {
                         if (lnTipoCon == -2)
                         {
-                            if (ClsVentaGeneral.clsCronograma is Cronograma && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
+                            if (ClsVentaGeneral.clsCronograma is Cronograma && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddDays(-20))
                             {
                                 arrayPrecio = new double[]
                                 {
                                         clsTarifa.PrecioReactivacion,
-                                        rentaAdelantada
+                                        rentaAdelantada,
+                                        ProrrateoRedondeado
                                 };
 
                                 arrayDescuentoCantidad = new double[]
                                 {
                                             clsTarifa.DescuentoReactivacion,
-                                            clsTarifa.DescuentoRentaAdelantada
+                                            clsTarifa.DescuentoRentaAdelantada,
+                                            
+                                            clsTarifa.DescuentoProrrateo
                                 };
 
                                 arrayDescuentoPrecio = new double[]
                                 {
                                             calcularDesReactivacion,
-                                            calcularDesRA
+                                            calcularDesRA,
+                                            calcularDesPR
                                 };
                                 arrayGananciaPro = new double[]
                                 {
                                             0,
-                                            0
+                                            0,
+                                            ganProrrateo
                                 };
                                 arrayPrimerPago = new string[]
                                 {
 
                                             "Reactivacion plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString())),
-                                            "Renta Adelantada"
+                                            "Renta Adelantada Reactivacion",
+                                            "Prorrateo"
                                 };
                             }
                             else if (clsPlanActual.idTipoPlan != clsPlan.idTipoPlan && clsPlan.idTipoPlan != 0)
@@ -3963,7 +3970,7 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 xmlDocVenta = objTipoVenta.blBuscarDocumentoVentaGeneral(cCodVenta, tipCon, idTipoTarifa, idContrato);
                 xmlDocVenta.xmlDocumentoVenta[0].cDireccion = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDireccion);
-                xmlDocVenta.xmlDocumentoVenta[0].cCliente = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cCliente);
+                //xmlDocVenta.xmlDocumentoVenta[0].cCliente = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cCliente);
                 xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago);
                 xmlDocumentoVenta.Add(xmlDocVenta);
 
@@ -4332,11 +4339,11 @@ namespace wfaIntegradoCom.Mantenedores
                 lstCliente.Add(new Cliente
                 {
                     cContactoNom2= Convert.ToString(dr["tipoDocumento"]),
-                    cNombre = Convert.ToString(dr["cNombre"]),
-                    cApePat = Convert.ToString(dr["cApePat"]),
-                    cApeMat = Convert.ToString(dr["cApeMat"]),
-                    cDocumento = Convert.ToString(dr["cDocumento"]),
-                    cDireccion = Convert.ToString(dr["cDireccion"]),
+                    cNombre = Convert.ToString("Maximo Erico"),
+                    cApePat = Convert.ToString("Avila"),
+                    cApeMat = Convert.ToString("Moreno"),
+                    cDocumento = Convert.ToString("17946628"),
+                    cDireccion = Convert.ToString("TOMAS MOSCOSO 1051 / El Porvenir / Trujillo  / La Libertad"),
                     dFecNac = Convert.ToDateTime(dr["dFechaRegistro"])
                 }) ;
 

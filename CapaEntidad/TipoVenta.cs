@@ -11,7 +11,7 @@ namespace CapaEntidad
     {
         public TipoVenta() { }
 
-        public String idTipoVenta { get; set; }
+        public Int32 idTipoVenta { get; set; }
         public Int32 idMarca { get; set; }
         public Int32 idModelo { get; set; }
     }

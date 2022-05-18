@@ -36,11 +36,12 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
-        private void fnAgregarDatosDeBusqueda(Int32 tipoConPagina, Int32 pagina, Int32 filas, DataTable dtDatosResp, Int32 totalResultados, String idTipoventa)
+        private void fnAgregarDatosDeBusqueda(Int32 tipoConPagina, Int32 pagina, Int32 filas, DataTable dtDatosResp, Int32 totalResultados, Int32 idTipoventa)
         {
            
             Int32 y;
-            if (tipoConPagina == -1)
+            
+            if (pagina == 0)
             {
                 y = 0;
             }
@@ -50,27 +51,8 @@ namespace wfaIntegradoCom.Procesos
                 y = tabInicio;
             }
 
-            if (idTipoventa == "TVNT0001")
-            {
-                DataTable dt = new DataTable();
-                dt.Clear();
-                dt.Columns.Add("ID");
-                dt.Columns.Add("N°");
-                dt.Columns.Add("NOMBRE");
-                dt.Columns.Add("PRECIO");
-                foreach (DataRow dr in dtDatosResp.Rows)
-                {
-                    y++;
-                    object[] dRow = {dr["idServicio"],
-                                        y,
-                                        dr["cNombre"]+" "+dr["cDescripcion"],
-                                        dr["cSimbolo"]+" "+string.Format("{0:0.00}",dr["cPrecio"])};
-
-                    dt.Rows.Add(dRow);
-                }
-                dgOtrasVentas.DataSource = dt; dgOtrasVentas.Visible = true; gbPaginacion.Visible = true;
-            }
-            else if(idTipoventa == "TVNT0002")
+            
+            if(idTipoventa == 2)
             {
                 DataTable dt = new DataTable();
                 dt.Clear();
@@ -92,7 +74,7 @@ namespace wfaIntegradoCom.Procesos
                 }
                 dgOtrasVentas.DataSource = dt; dgOtrasVentas.Visible = true; gbPaginacion.Visible = true;
             }
-            else if (idTipoventa == "TVNT0003")
+            else if (idTipoventa == 3)
             {
                 DataTable dt = new DataTable();
                 dt.Clear();
@@ -113,13 +95,32 @@ namespace wfaIntegradoCom.Procesos
                     dt.Rows.Add(dRow);
                 }
                 dgOtrasVentas.DataSource = dt; dgOtrasVentas.Visible = true; gbPaginacion.Visible = true;
+            }else if (idTipoventa == 4)
+            {
+                DataTable dt = new DataTable();
+                dt.Clear();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("N°");
+                dt.Columns.Add("NOMBRE");
+                dt.Columns.Add("PRECIO");
+                foreach (DataRow dr in dtDatosResp.Rows)
+                {
+                    y++;
+                    object[] dRow = {dr["idServicio"],
+                                        y,
+                                        dr["cNombre"]+" "+dr["cDescripcion"],
+                                        dr["cSimbolo"]+" "+string.Format("{0:0.00}",dr["cPrecio"])};
+
+                    dt.Rows.Add(dRow);
+                }
+                dgOtrasVentas.DataSource = dt; dgOtrasVentas.Visible = true; gbPaginacion.Visible = true;
             }
 
-            
+
             dgOtrasVentas.Columns[0].Visible = false;
             dgOtrasVentas.Columns[1].Width = 30;
 
-            if (tipoConPagina == -1)
+            if (pagina == 0)
             {
                 Int32 totalRegistros = Convert.ToInt32(dtDatosResp.Rows[0][0]);
                 gbPaginacion.Visible = true;
@@ -143,14 +144,14 @@ namespace wfaIntegradoCom.Procesos
             {
                 lsTipoVenta.Add(new TipoVenta
                 {
-                    idTipoVenta = Convert.ToString(cboTipoVenta.SelectedValue),
+                    idTipoVenta = Convert.ToInt32(cboTipoVenta.SelectedValue),
                     idMarca=Convert.ToInt32(cboMarca.SelectedValue),
                     idModelo=Convert.ToInt32(cboModelo.SelectedValue)
 
                 });
                 dtResp = objTipoVenta.blBuscarTipoventas(pcBuscar, lsTipoVenta,  numPaginacion, tipoCon);
                 DataTable dt = new DataTable();
-                fnAgregarDatosDeBusqueda(tipoCon, numPaginacion,filas,dtResp, dtResp.Rows.Count,Convert.ToString(cboTipoVenta.SelectedValue)) ;
+                fnAgregarDatosDeBusqueda(tipoCon, numPaginacion,filas,dtResp, dtResp.Rows.Count,Convert.ToInt32(cboTipoVenta.SelectedValue)) ;
                 return true;
             }
             catch (Exception ex)
@@ -230,7 +231,8 @@ namespace wfaIntegradoCom.Procesos
                         MessageBox.Show("Error al Cargar Marca", "Avise al Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                     }
-                    FunGeneral.fnLlenarTablaCod(cboTipoVenta,"TVNT");
+                    //FunGeneral.fnLlenarTablaCod(cboTipoVenta,"TVNT");
+                    FunGeneral.fnLlenarCboSegunTablaTipoCon(cboTipoVenta, "idTipoTransaccion", "nombre", "TipoTransaccion", "estado", "1", false);
                 }
             }
             catch (Exception ex)
@@ -273,7 +275,7 @@ namespace wfaIntegradoCom.Procesos
                 OtrasVentas clsOtrasVentas = new OtrasVentas();
 
                 Int32 idObjetoVenta = Convert.ToInt32(dgOtrasVentas.Rows[e.RowIndex].Cells[0].Value);
-                dtResp = obtTVenta.blDevloverTipoventas(Convert.ToString(cboTipoVenta.SelectedValue), idObjetoVenta);
+                dtResp = obtTVenta.blDevloverTipoventas(Convert.ToInt32(cboTipoVenta.SelectedValue), idObjetoVenta);
 
                 if (dtResp.Rows.Count>0)
                 {
@@ -285,6 +287,7 @@ namespace wfaIntegradoCom.Procesos
                         clsOtrasVentas.precioUnico= Convert.ToDouble(dr["cPrecio"].ToString());
                         clsOtrasVentas.idMoneda= Convert.ToInt32(dr["idMoneda"]);
                         clsOtrasVentas.idTipoTransaccion= Convert.ToInt32(dr["idTipoTransaccion"]);
+                        clsOtrasVentas.idValida = Convert.ToInt32(dr["idValida"]);
                     }
 
                 }

@@ -19,7 +19,7 @@ namespace CapaDato
         private clsUtil objUtil = null;
         public DataTable daBuscarTipoVenta(String pcBuscar, List<TipoVenta> lsTipoVenta,Int32 numPaginacion,Int32 tipocon)
         {
-            SqlParameter[] pa = new SqlParameter[6];
+            SqlParameter[] pa = new SqlParameter[5];
             DataTable dtEquipo = new DataTable();
             clsConexion objCnx = null;
             List<Equipo> lstEquipo = null;
@@ -29,7 +29,7 @@ namespace CapaDato
             {
                 pa[0] = new SqlParameter("@pecValorBuscar", SqlDbType.VarChar, 50);
                 pa[0].Value = pcBuscar;
-                pa[1] = new SqlParameter("@idTipoVenta", SqlDbType.VarChar, 8);
+                pa[1] = new SqlParameter("@idTipoVenta", SqlDbType.Int);
                 pa[1].Value = lsTipoVenta[0].idTipoVenta;
                 pa[2] = new SqlParameter("@idMarca", SqlDbType.Int);
                 pa[2].Value = lsTipoVenta[0].idMarca;
@@ -37,8 +37,7 @@ namespace CapaDato
                 pa[3].Value = lsTipoVenta[0].idModelo;
                 pa[4] = new SqlParameter("@numPagina", SqlDbType.Int);
                 pa[4].Value = numPaginacion;
-                pa[5] = new SqlParameter("@peiTipoConPagima", SqlDbType.Int);
-                pa[5].Value = tipocon;
+              
 
 
                 objCnx = new clsConexion("");
@@ -115,7 +114,7 @@ namespace CapaDato
             }
 
         }
-        public DataTable daDevolverTipoVenta(String TipoVenta, Int32 idObjVenta)
+        public DataTable daDevolverTipoVenta(Int32 TipoVenta, Int32 idObjVenta)
         {
             SqlParameter[] pa = new SqlParameter[2];
             DataTable dtEquipo = new DataTable();
@@ -124,7 +123,7 @@ namespace CapaDato
 
             try
             {
-                pa[0] = new SqlParameter("@idTipoVenta", SqlDbType.VarChar, 8);
+                pa[0] = new SqlParameter("@idTipoVenta", SqlDbType.Int);
                 pa[0].Value = TipoVenta;
                 pa[1] = new SqlParameter("@idObjVenta", SqlDbType.Int);
                 pa[1].Value = idObjVenta;
@@ -338,9 +337,9 @@ namespace CapaDato
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripEstadoPP = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(DescripEstadoPP);
                 lstDocumentoVenta.xmlDocumentoVenta[0].cVehiculos = PlacaVehiculos;
                 lstDocumentoVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = codigoDocumento;
-                lstDocumentoVenta.xmlDocumentoVenta[0].cCliente = Cliente;
+                //lstDocumentoVenta.xmlDocumentoVenta[0].cCliente = Cliente;
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = TipoPago;
-                lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Cdirrecion);
+                //lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Cdirrecion);
 
                 return lstDocumentoVenta;
             }

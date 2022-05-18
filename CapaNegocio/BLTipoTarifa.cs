@@ -36,12 +36,12 @@ namespace CapaNegocio
             }
 
         }
-        public Tarifa blDevolverPrecios(Int32 idPlan, Int32 peTipoTarifa, String codVenta, Int32 lnTipoCon)
+        public Tarifa blDevolverPrecios(Int32 idPlan, Int32 peTipoTarifa, String codVenta, Int32 lnTipoCon,Boolean estChk)
         {
             DATipoTarifa objAccesorio = new DATipoTarifa();
             try
             {
-                return objAccesorio.daListarPreciosTarifaDePlan(idPlan, peTipoTarifa,  codVenta,  lnTipoCon);
+                return objAccesorio.daListarPreciosTarifaDePlan(idPlan, peTipoTarifa,  codVenta,  lnTipoCon, estChk);
             }
             catch (Exception ex)
             {
