@@ -39,6 +39,7 @@ namespace wfaIntegradoCom.Procesos
         private static CambioMonedaVenta clsCUnico = new CambioMonedaVenta();
         static Cliente clsClienteDocumentoV = new Cliente();
         static Cliente clsClienteAntecesor = new Cliente();
+        static Equipo_imeis clsEquipo1 = new Equipo_imeis();
         static List<Vehiculo> lstvehiculo = new List<Vehiculo>();
         static List<ModeloVehiculo> lstModelo = new List<ModeloVehiculo>();
         static List<MarcaVehiculo> lstMarca = new List<MarcaVehiculo>();
@@ -81,7 +82,13 @@ namespace wfaIntegradoCom.Procesos
         frmListarTipoVentas frm = new frmListarTipoVentas();
         static Boolean estMostrarGb = false;
         static Boolean estOcultarFila = false;
-        Boolean estadoTabla, estMoneda, estTipPersona, estTipDocumento, estTipoDescuento, estPLACA, estadoFechaPago, estCliente, estDocumentoEmitir, estImporte,estMotivo;
+        static Boolean estMotivo = false;
+        static Boolean estMostEquipos1 = false;
+        static String tituloGbCliente = "";
+        static String tituloGbVehiculo = "";
+        static String phlBusqVehiculo = "";
+        static String phlBusqGbCliente = "";
+        Boolean estadoTabla, estMoneda, estTipPersona, estTipDocumento, estTipoDescuento, estPLACA, estadoFechaPago, estCliente, estDocumentoEmitir, estImporte;
         String lblMoneda, lblTipPersona, lblTipDocumento, lblTipoDescuento,lblCliente, lblDocumentoEmitir,msgMotivo;
         public  void fnObtenerObjVentas(OtrasVentas clsOtrasVentas)
         {
@@ -166,15 +173,32 @@ namespace wfaIntegradoCom.Procesos
                 {
                     
                     estad = true;
+                    lnTipoConCambio = idValida;
                     if (idValida == -1)
                     {
-                        lnTipoConCambio = -1;
+                        estMotivo = false;
+                        estMostEquipos1 = false;
+                        tituloGbCliente = "Ingrese datos del nuevo titular";
+                        tituloGbVehiculo = "Ingrese datos del vehiculo que desea de titular";
+                        phlBusqVehiculo = "Ingrese Placa:";
+                    }
+                    else if(idValida==-2)
+                    {
+                        tituloGbVehiculo = "Ingrese los datos del Equipo que desea hacer "+lstOtrasVentas[0].DetalleVentas;
+                        phlBusqVehiculo = "Ingrese los datos del nuevo vehiculo";
+                        phlBusqGbCliente = "Ingrese Placa";
+                        estMostEquipos1 = true;
                         estMotivo = true;
                     }
-                    else if (idValida == -2)
+                    else if (idValida==-3)
                     {
-                        lnTipoConCambio= -2;
-                        estMotivo = false;
+                        estMostEquipos1 = true;
+                        estMotivo = true;
+                    }
+                    else if (idValida==-4)
+                    {
+                        estMostEquipos1 = true;
+                        estMotivo = true;
                     }
 
                 }
@@ -377,7 +401,7 @@ namespace wfaIntegradoCom.Procesos
                 {
                     MessageBox.Show("Error al cargar Tipo descuento", "Avise al administrador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                result = fnLLenarTipoPersona(cboTipoPersona, 0, "", false);
+                //result = fnLLenarTipoPersona(cboTipoPersona, 0, "", false);
                 if (!result)
                 {
                     MessageBox.Show("Error al cargar Tipo descuento", "Avise al administrador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -433,8 +457,8 @@ namespace wfaIntegradoCom.Procesos
                 dgConsulta.Visible = false;
 
                 cboMoneda.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
-                cboTipoPersona.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
-                cboTipoDocumento.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                //cboTipoPersona.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                //cboTipoDocumento.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
                 cboTipoDescuento.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
                 cboTipoDocEmitir.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
                 cboMoneda.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
@@ -541,7 +565,6 @@ namespace wfaIntegradoCom.Procesos
             txtClientesN_A.Text="";
             txtDireccion.Text="";
             txtTelefono.Text = "";
-            cboTipoPersona.SelectedValue = 0;
             cboTipoDescuento.SelectedValue = 0;
             cboTipoDocEmitir.SelectedValue = "0";
             estDescuento = false;
@@ -701,23 +724,7 @@ namespace wfaIntegradoCom.Procesos
             }
         }
 
-        private void cboTipoClienteRP_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var result = FunValidaciones.fnValidarCombobox(cboTipoPersona, lblMsgTipoPersona, pbTipPersona);
-            estTipPersona = result.Item1;
-            lblTipPersona = result.Item2;
-
-            Int32 idTipoRP = Convert.ToInt32(cboTipoPersona.SelectedValue ?? 0);
-            fnLLenarDocumentoDeTipoPersona(cboTipoDocumento, idTipoRP, "", false);
-            if (idTipoRP == 0)
-            {
-                cboTipoDocumento.Enabled = false;
-            }
-            else
-            {
-                cboTipoDocumento.Enabled = true;
-            }
-        }
+        
         private Boolean fnBuscarCliente(SiticoneTextBox txt, DataGridView dgv, Int32 tipoCon)
         {
             BLCliente objVehi = new BLCliente();
@@ -731,7 +738,7 @@ namespace wfaIntegradoCom.Procesos
 
                 String nroDocumento = txt.Text.Trim();
                
-                String estCliente = "1";
+                String estCliente = clsClienteAntecesor.idCliente.ToString();
 
                 datCliente = objVehi.blBuscarCliente(nroDocumento,estCliente, tipoCon);
                 totalResultados = datCliente.Rows.Count;
@@ -794,7 +801,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 Boolean bResul;
 
-                bResul = fnBuscarCliente(txtDocumento,dgDocumento,-1);
+                bResul = fnBuscarCliente(txtDocumento,dgDocumento,lnTipoConCambio);
                 if (!bResul)
                 {
                     MessageBox.Show("Error al Buscar Cliente. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -835,8 +842,8 @@ namespace wfaIntegradoCom.Procesos
 
                         txtDoc.Text = lstPros.cDocumento;
                         txtIdCliente.Text = lstPros.idCliente.ToString();
-                        txtClienteN_A.Text = $"{ lstPros.cNombre.Trim()} {lstPros.cApePat.Trim()} {lstPros.cApeMat.Trim()}";
-                        txtDirrecion.Text = lstPros.cDireccion;
+                        txtClienteN_A.Text = FunGeneral.FormatearCadenaTitleCase($"{ lstPros.cNombre.Trim()} {lstPros.cApePat.Trim()} {lstPros.cApeMat.Trim()}");
+                        txtDirrecion.Text = FunGeneral.FormatearCadenaTitleCase(lstPros.cDireccion);
                         txtTelefono.Text = lstPros.cTelCelular;
                         dgv.Visible = false;
                     }
@@ -1225,6 +1232,13 @@ namespace wfaIntegradoCom.Procesos
             gbDatosVehiculo.Visible = estMostrarGb;
             dgOtrasVentas.AllowUserToAddRows=estOcultarFila;
             fncambiarPosicionGB(estMostrarGb);
+            bgEquipos1.Visible = estMostEquipos1;
+            txtBusca.PlaceholderText = phlBusqVehiculo;
+            gbDatosCliente.Text = tituloGbCliente;
+            gbDatosVehiculo.Text = tituloGbVehiculo;
+            cboMotivo.Visible = !estMotivo;
+            pbMotivo.Visible = !estMotivo;
+            label14.Visible = !estMotivo;
         }
         private void fncambiarPosicionGB(Boolean estado)
         {
@@ -1232,7 +1246,7 @@ namespace wfaIntegradoCom.Procesos
             if (estado)
             {
                 gbDatosVehiculo.Visible = estado;
-                gbDatosCliente.Location = new Point(6,(419 + posScroll));
+                gbDatosCliente.Location = new Point(6,(443 + posScroll));
             }
             else
             {
@@ -1497,12 +1511,11 @@ namespace wfaIntegradoCom.Procesos
 
         private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarCombobox(cboTipoDocumento, lblMsgTipoDocumento, pbTipDocumento);
-            estTipDocumento = result.Item1;
-            lblTipDocumento = result.Item2;
+            
             if (CargoForm==true)
             {
-                fnLlenarTablaCod(cboTipoDocEmitir, "DOVE", Convert.ToInt32(cboTipoDocumento.SelectedValue),0);
+                //funGuardar
+               // fnLlenarTablaCod(cboTipoDocEmitir, "DOVE", Convert.ToInt32(cboTipoDocumento.SelectedValue),0);
             }
         }
 
@@ -1515,16 +1528,16 @@ namespace wfaIntegradoCom.Procesos
 
         private void txtDireccion_TextChanged(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarTexboxs(txtDireccion, lblMsgDireccion, pbDireccion,true, true, false, 0, 0, 0, 200, "Busque y Elija un Cliente");
-            estCliente = result.Item1;
-            lblCliente = result.Item2;
+            //var result = FunValidaciones.fnValidarTexboxs(txtDireccion, lblMsgDireccion, pbDireccion,true, true, false, 0, 0, 0, 200, "Busque y Elija un Cliente");
+            //estCliente = result.Item1;
+            //lblCliente = result.Item2;
         }
 
         private void txtTelefono_TextChanged(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarTexboxs(txtTelefono, lblMsgTelefono, pbTelefono,false, true, false, 0, 0, 0, 200, "Busque y Elija un Cliente");
-            estCliente = result.Item1;
-            lblCliente = result.Item2;
+            //var result = FunValidaciones.fnValidarTexboxs(txtTelefono, lblMsgTelefono, pbTelefono,false, true, false, 0, 0, 0, 200, "Busque y Elija un Cliente");
+            //estCliente = result.Item1;
+            //lblCliente = result.Item2;
         }
 
         private void txtTotPrecio_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -1666,7 +1679,7 @@ namespace wfaIntegradoCom.Procesos
         private List<DocumentoVenta> fnlstDocumentoVenta()
         {
             List<DocumentoVenta> lstDocVenta = new List<DocumentoVenta>();
-            DocumentoVenta.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
+            //DocumentoVenta.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
             DocumentoVenta.cVehiculos = lstvehiculo[0].vPlaca;
             lstDocVenta.Add(DocumentoVenta);
 
@@ -2075,12 +2088,12 @@ namespace wfaIntegradoCom.Procesos
         private void txtBusca_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            //if (e.KeyChar == (Char)Keys.Enter)
-            //{
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
 
 
-            //    fnBuscarDatosCliente(lnTipoConCambio, clsClienteDocumentoV.idCliente);
-            //}
+                fnBuscarDatosCliente(lnTipoConCambio, clsClienteDocumentoV.idCliente);
+            }
         }
         private Boolean fnBuscarDatosCliente(Int32 cond,Int32 idCliente)
         {
@@ -2089,22 +2102,44 @@ namespace wfaIntegradoCom.Procesos
             DataTable datResultado = new DataTable();
             try
             {
-                string BuscaDato = Convert.ToString(txtBusca.Text);
+                string BuscaDato = Convert.ToString(txtBusca.Text.Trim());
                 datResultado = datCliente.BlBuscarTitularidad(cond, BuscaDato,  idCliente);
 
                 dgConsulta.Visible = true;
                 dgConsulta.Rows.Clear();
-
-                foreach (DataRow drMenu in datResultado.Rows)
+                dgConsulta.Columns.Clear();
+                if (cond==-2 || cond==-3 || cond==-4)
                 {
-                    dgConsulta.Rows.Add(
-                        Convert.ToString(drMenu["idventageneral"]),
-                       Convert.ToString(drMenu["cNombre"]),
-                       Convert.ToString(drMenu["vPlaca"])
-                       );
+                    dgConsulta.Columns.Add("ID","ID");
+                    dgConsulta.Columns.Add("IMEI","IMEI");
 
-
+                    foreach (DataRow drMenu in datResultado.Rows)
+                    {
+                        dgConsulta.Rows.Add(
+                            Convert.ToString(drMenu["idventageneral"]),
+                           Convert.ToString(drMenu["imei"])
+                           );
+                    }
                 }
+                else
+                {
+                    dgConsulta.Columns.Add("ID", "ID");
+                    dgConsulta.Columns.Add("CLIENTE", "CLIENTE");
+                    dgConsulta.Columns.Add("VEHICULO", "VEHICULO");
+                    foreach (DataRow drMenu in datResultado.Rows)
+                    {
+                        dgConsulta.Rows.Add(
+                            Convert.ToString(drMenu["idventageneral"]),
+                           Convert.ToString(drMenu["cNombre"]),
+                           Convert.ToString(drMenu["vPlaca"])
+                           );
+
+
+                    }
+                }
+                dgConsulta.Columns[0].Visible = false;
+
+
                 return true;
 
             }
@@ -2123,8 +2158,10 @@ namespace wfaIntegradoCom.Procesos
         {
 
             //lnTipoConCambio = 1;
+            var text = "";
 
             fnListarDatosCliente(1, e);
+            
         }
        
         private void fnListarDatosCliente(int condicion, DataGridViewCellEventArgs e)
@@ -2164,7 +2201,7 @@ namespace wfaIntegradoCom.Procesos
 
                         clsClienteAntecesor.cContactoNom1= Convert.ToInt32(drMenu["cTipPers"])==2?"Rason social":"Nombre";
 
-                        txtCliente.Text = clsClienteAntecesor.cNombre + " " + clsClienteAntecesor.cApePat + " " + clsClienteAntecesor.cApeMat;
+                        txtCliente.Text =FunGeneral.FormatearCadenaTitleCase( clsClienteAntecesor.cNombre + " " + clsClienteAntecesor.cApePat + " " + clsClienteAntecesor.cApeMat);
                         //txtdni.Text = Convert.ToString(drMenu["cDocumento"]);
                         //txtTelefono.Text = Convert.ToString(drMenu["cTelCelular"]);
                         //txtCorreo.Text = Convert.ToString(drMenu["cCorreo"]) != "" ? Convert.ToString(drMenu["cCorreo"]) : "SIN CORREO";
@@ -2186,7 +2223,7 @@ namespace wfaIntegradoCom.Procesos
 
 
 
-                        txtMarca.Text = Convert.ToString(drMenu["nombreMarcaV"]);
+                        txtMarca.Text = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["nombreMarcaV"]));
                         lstMarca.Add(new MarcaVehiculo
                         {
                             idMarca = Convert.ToInt32(drMenu["idMarcaV"]),
@@ -2201,7 +2238,17 @@ namespace wfaIntegradoCom.Procesos
                             idModelo = Convert.ToInt32(drMenu["idModeloV"]),
                             cNomModelo = Convert.ToString(drMenu["nombreModeloV"])
                         });
+
+                        //datos del equipo
+                        clsEquipo1.idEquipoImeis = Convert.ToInt32(drMenu["idEquipoImeis"]);
+                        clsEquipo1.imei = Convert.ToString(drMenu["imei"]);
+                        clsEquipo1.idSimCard = Convert.ToInt32(drMenu["idChip"]);
+                        clsEquipo1.SimCardEquipo = Convert.ToString(drMenu["cSimCard"]);
                         //txtModelo.Text = lstModelo[0].cNomModelo;
+
+                        txtImei1.Text = clsEquipo1.imei;
+                        txtSimcard1.Text = clsEquipo1.SimCardEquipo;
+
                     }
 
                 }
@@ -2296,7 +2343,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void cboMotivo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CargoForm == true)
+            if (CargoForm == true && estMotivo==false)
             {
                 var result2 = FunValidaciones.fnValidarCombobox(cboMotivo, lblMotivo, pbMotivo);
                 estMotivo = result2.Item1;
@@ -2308,7 +2355,7 @@ namespace wfaIntegradoCom.Procesos
         private void txtBusca_TextChanged(object sender, EventArgs e)
         {
             Int32 caracteres = Convert.ToInt32(txtBusca.Text.Length);
-            if(caracteres >2)
+            if (caracteres > 2)
             {
                 fnBuscarDatosCliente(lnTipoConCambio, clsClienteDocumentoV.idCliente);
             }
@@ -2477,18 +2524,12 @@ namespace wfaIntegradoCom.Procesos
 
         private void fnValidarCamposCliente(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarCombobox(cboTipoPersona, lblMsgTipoPersona, pbTipPersona);
-            estTipPersona = result.Item1;
-            lblTipPersona = result.Item2;
-            var result1 = FunValidaciones.fnValidarCombobox(cboTipoDocumento, lblMsgTipoDocumento, pbTipDocumento);
-            estTipDocumento = result1.Item1;
-            lblTipDocumento = result1.Item2;
+            
             var result2 = FunValidaciones.fnValidarCombobox(cboMotivo, lblMotivo, pbMotivo);
             estMotivo = result2.Item1;
             msgMotivo = result2.Item2;
 
             txtClientesN_A_TextChanged(sender, e);
-            txtDireccion_TextChanged(sender, e);
             txtIdCliente_TextChanged(sender, e);
             txtPlacaT_TextChanged(sender, e);
         }
@@ -2497,8 +2538,8 @@ namespace wfaIntegradoCom.Procesos
         {
             lstvehiculo[0].dFechaReg = dtFechaTitu.Value;
             lstvehiculo[0].Propietario = cboMotivo.SelectedValue.ToString();
-            clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(cboTipoPersona.SelectedValue) == 2 ? "Rason social" : "Nombre";
-            clsClienteDocumentoV.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
+            //clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(cboTipoPersona.SelectedValue) == 2 ? "Rason social" : "Nombre";
+            //clsClienteDocumentoV.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
             clsOtrasVentaGeneral = new OtrasVentas
             {
                 lstOtrasVenta = lstOtrasVentas,
