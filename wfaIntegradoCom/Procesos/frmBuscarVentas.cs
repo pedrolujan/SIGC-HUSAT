@@ -32,8 +32,9 @@ namespace wfaIntegradoCom.Procesos
         private static Plan clsPlan = new Plan();
         private static List<Cargo> lstTablaCod = new List<Cargo>();
         private static Cargo Cargo = new Cargo();
-        
+        static List<Cliente> lstClientes = new List<Cliente>();
         static List<validacion> lstValidacionPlan;
+        private static List<TipoDocumento> lstTD = new List<TipoDocumento>();
         static Int16 lnTipoCon;
         static DateTime dtpFechaInicialB = Variables.gdFechaSis;
         //string TipoVenta clsTVenta = new TipoVenta();
@@ -49,20 +50,28 @@ namespace wfaIntegradoCom.Procesos
               
                 lnTipoCon = 0;
                 cargoFrom = false;
-                //fnListarDatosVenta(dgDatosVenta, 0, 0, -1);
+              
                 fnLlenarTipoTarifa(0, cbTipoVenta, true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadoContrato, "TICN", true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstado, "ESVG", true);
-              
+               
                 cboPlanV.SelectedValue = 0;
-                //  totalResultados.clear();
-                
-
-                fnlistarUsuario(cboUsuario, 0, true);
+              
+                Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboTipoDocumento, "DOVE", 2, -1);
+               
+                fnlistarUsuario(cboUsuario,2, true);
 
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
+                if (Variables.gsCargoUsuario == "PETR0001" || Variables.gsCargoUsuario == "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
+                {
+                    pnMontoGanania.Visible = true;
+                }
+                else
+                {
+                    pnMontoGanania.Visible = false;
+                }
 
                 cboUsuario.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboEstadoContrato.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
@@ -70,6 +79,9 @@ namespace wfaIntegradoCom.Procesos
                 cboTipoPlan.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboPlanV.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cbTipoVenta.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                cboTipoDocumento.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+
+
                 fnValidarPlan();
                 fnLlenarTipoTarifa(0, cbTipoVenta, true);
               
@@ -130,7 +142,6 @@ namespace wfaIntegradoCom.Procesos
                 lstP = lstPlan;
                 
                 return true;
-               
             }
             catch (Exception ex)
             {
@@ -160,51 +171,15 @@ namespace wfaIntegradoCom.Procesos
             }
 
         }
-        //private Boolean fnValidaFechas(Label lbl, PictureBox pb)
-        //{
-        //    String msg = "";
-        //    Boolean bEstado = false;
-        //    PictureBox pbx = null;
-        //    Image img = null;
-        //    DateTime dtFechaSistema = Variables.gdFechaSis.AddDays(-2);
-        //    if (Convert.ToDateTime(dtpFechaFinalBus.Value.ToString("dd/MM/yyyy")) >= Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")) && Convert.ToDateTime(dtpFechaFinalBus.Value.ToString("dd/MM/yyyy")) <= Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
-        //    {
-        //        bEstado = true;
-        //        msg = "";
-        //        img = Properties.Resources.ok;
-        //    }
-        //    else
-        //    {
-        //        if (Convert.ToDateTime(dtpFechaFinalBus.Value.ToString("dd/MM/yyyy")) > Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
-        //        {
-        //            bEstado = false;
-        //            msg = "La fecha de pago no puede ser mayor a la fecha actual";
-        //            img = Properties.Resources.error;
-
-        //        }
-        //        else if (Convert.ToDateTime(dtpFechaFinalBus.Value.ToString("dd/MM/yyyy")) < Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")))
-        //        {
-        //            //bEstado = false;
-        //            //msg = "La fecha de pago no puede ser menor a: " + dtFechaSistema.ToString("dd/MM/yyyy");
-        //            //img = Properties.Resources.error;
-
-        //            bEstado = true;
-        //            msg = "";
-        //            img = Properties.Resources.ok;
-        //        }
-        //    }
-        //    lbl.Text = msg;
-        //    pb.Image = img;
-        //    return bEstado;
-        //}
+       
         private void dtpFechaInicialBus_ValueChanged(object sender, EventArgs e)
         {
         }
         private void txtBuscarVentas_TextChanged(object sender, EventArgs e)
         {
         }
-        public Boolean fnListarDatosVenta(DataGridView dgv, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon)
-        {
+        public Boolean fnListarDatosVenta(DataGridView dgv, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon)      
+       {
             BLClienteVenta objVentaGeneral = new BLClienteVenta();
             clsUtil objUtil = new clsUtil();
             DataTable datVenta = new DataTable();
@@ -222,7 +197,7 @@ namespace wfaIntegradoCom.Procesos
             Int32 estadoTipoPlan = Convert.ToInt32(cboTipoPlan.SelectedValue);
             Int32 estadoPlan = Convert.ToInt32(cboPlanV.SelectedValue);
             Int32 estadoUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
-
+            String Docventapago = cboTipoDocumento.SelectedValue.ToString();
             Int32 HorasIni = 0;
             Int32 HorasFin = 0;
             Int32 HorasRestarIni = 0;
@@ -244,7 +219,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 datVenta = objVentaGeneral.BlBuscarClienteV(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina,
                     tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro, estadoTipoPlan, 
-                    estadoPlan, estadoUsuario, estadoContrato);
+                    estadoPlan, estadoUsuario, estadoContrato , Docventapago);
 
                 totalResultados = datVenta.Rows.Count;
                 if (tipoCon == -4)
@@ -302,7 +277,7 @@ namespace wfaIntegradoCom.Procesos
                             DateTime fecha = Convert.ToDateTime(Convert.ToDateTime(dr["FechaRegistro"]).ToString("dd/MM/yyyy"));
                             DateTime fechaPago = Convert.ToDateTime(Convert.ToDateTime(dr["fechaPago"]).ToString("dd/MM/yyyy"));
                             DateTime fechaFinalContrato = Convert.ToDateTime(Convert.ToDateTime(dr["periodoFinal"]).ToString("dd/MM/yyyy"));
-
+                          
                             TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
 
                             if (Variables.gdFechaSis > fechaFinalContrato)
@@ -338,12 +313,14 @@ namespace wfaIntegradoCom.Procesos
                                 FunGeneral.FormatearCadenaTitleCase(dr["cUser"].ToString()),
                                 $"{dr["cSimbolo"]} {string.Format("{0:0.00}", dr["TotalPago"])}",
                                 strEstado,
+
+                                FunGeneral.FormatearCadenaTitleCase(dr["TipoDocumentoVenta"].ToString()),
                                 "",
                                 dr["idTipoTarifa"],
                                 dr["idContrato"]
                             );
 
-                            if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA")
+                            if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA" )
                             {
                                 dgv.Rows[contador].DefaultCellStyle.ForeColor = Color.Red;
                             }
@@ -352,6 +329,9 @@ namespace wfaIntegradoCom.Procesos
                             {
                                 dgv.Rows[contador].DefaultCellStyle.ForeColor = Color.DarkOrange;
                             }
+                           
+                           
+
                             contador += 1;
                         }
 
@@ -370,7 +350,7 @@ namespace wfaIntegradoCom.Procesos
                         dgv.Columns[11].Width = 45;
                         dgv.Columns[12].Width = 40;
                         dgv.Columns[13].Width = 40;
-                        dgv.Columns[14].Width = 100;
+                        dgv.Columns[14].Width = 40;
                         dgv.Columns[15].Width = 60;
 
                         dgv.Visible = true;
@@ -408,6 +388,7 @@ namespace wfaIntegradoCom.Procesos
                 return false;
             }
         }
+        
         private void txtBuscarVentas_KeyPress(object sender, KeyPressEventArgs e)
 
         {
@@ -446,10 +427,11 @@ namespace wfaIntegradoCom.Procesos
        
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            {
-               // fnListarDatosVenta(dgvLVentas, 0, 0, -1);
+            
+
+               fnListarDatosVenta(dgvLVentas, 0, 0, -1);
                 
-            }
+            
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {  
@@ -459,17 +441,17 @@ namespace wfaIntegradoCom.Procesos
         private void tlsDocumentoVenta_Click(object sender, EventArgs e)
         {
             cCodigoVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
-            Int32 idTipoTarifa = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[16].Value);
-            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            Int32 idTipoTarifa = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[18].Value);
             ////Mantenedores.frmRegistrarVenta frmrv = new Mantenedores.frmRegistrarVenta();
             fnBuscarDocumentoVent(cCodigoVenta, 1, idTipoTarifa, idContrato);
         }
         private void ActaInstalacion_Click(object sender, EventArgs e)
         {
             String CodVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
-            Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[16].Value);
-            Int32 idtipoPlan = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[18].Value);
-            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            Int32 idtipoPlan = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[19].Value);
+            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[18].Value);
             String RowVehiculos = Convert.ToString(dgvLVentas.CurrentRow.Cells[6].Value);
             String[] ArrayVehiculos = RowVehiculos.Split(';');
             List<Vehiculo> lstVehiculo = new List<Vehiculo>();
@@ -611,41 +593,29 @@ namespace wfaIntegradoCom.Procesos
 
         private void dgvLVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            DataGridView dgview = sender as DataGridView;
+            //DataGridView dgview = sender as DataGridView;
+            DataGridView dgV = sender as DataGridView;
+            //String nombreCabecera = dgv.Columns[e.ColumnIndex].Name;
 
-            String nombreCabecera = dgview.Columns[e.ColumnIndex].Name;
 
-            if (nombreCabecera == "txtEstado")
+            //if (nombreCabecera == "txtEstado" )
+            //{
+            if (dgV.Columns[e.ColumnIndex].Name == "EstadoContrato")
             {
-
-                if (e.Value.ToString().Contains("✔"))
-                {
-                    e.CellStyle.ForeColor = Variables.ColorSuccess;
-                }
-                else if (e.Value.ToString().Contains("🕐"))
-                {
-                    e.CellStyle.ForeColor = Color.YellowGreen;
-                }
-                else if (e.Value.ToString().Contains("👁"))
-                {
-                    e.CellStyle.ForeColor = Color.Orange;
-                }
-                else if (e.Value.ToString().Contains("❗"))
+                if (e.Value.ToString().Contains("Finalizado"))
                 {
                     e.CellStyle.ForeColor = Color.OrangeRed;
-
                 }
-                else if (e.Value.ToString().Contains("🚫"))
+                else
+                if (e.Value.ToString().Contains("Vigente"))
                 {
-                    e.CellStyle.ForeColor = Color.Purple;
-                }
-                else if (e.Value.ToString().Contains("❌"))
-                {
-                    e.CellStyle.ForeColor = Color.Red;
-
+                    e.CellStyle.ForeColor = Color.ForestGreen;
                 }
             }
-        }
+
+
+        }  
+        
         private Boolean fnLlenarTipoTarifa(Int32 idTipoPlan, SiticoneComboBox cbo, Boolean busqueda)
         {
 
@@ -705,8 +675,8 @@ namespace wfaIntegradoCom.Procesos
         {
 
             cCodigoVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
-            Int32 idTipoTarifa = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[16].Value);
-            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            Int32 idTipoTarifa = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[18].Value);
             fnBuscarDocumentoVenta(cCodigoVenta, 1, idTipoTarifa, idContrato);
         }
         private void fnBuscarDocumentoVenta(String cCodVenta, Int32 tipCon, Int32 idTipoTarifa, Int32 idContrato)
@@ -753,7 +723,7 @@ namespace wfaIntegradoCom.Procesos
 
             String[] ArrayVehiculos = RowVehiculos.Split(';');
             List<Vehiculo> lstVehiculo = new List<Vehiculo>();
-            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[18].Value);
             frmTipoImpresion frmTImpre = new frmTipoImpresion();
             frmRptContrato frmVPContrato = new frmRptContrato();
             if (ArrayVehiculos.Length - 1 == 1)
@@ -798,8 +768,8 @@ namespace wfaIntegradoCom.Procesos
         private void ActaInstalacion_Click_1(object sender, EventArgs e)
         {
             String CodVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
-            Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[16].Value);
-            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[18].Value);
 
             String RowVehiculos = Convert.ToString(dgvLVentas.CurrentRow.Cells[6].Value);
             String[] ArrayVehiculos = RowVehiculos.Split(';');
@@ -843,15 +813,18 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
-        private void cboEstado_SelectedIndexChanged(object sender, EventArgs e)
+       
+        private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
-        
+
         }
 
-        private void cboEstadoContrato_SelectedIndexChanged(object sender, EventArgs e)
-       {
-
-       }
+        private void buscar_Click(object sender, EventArgs e)
+        {
+            fnListarDatosVenta(dgvLVentas, 0, 0, -1);
+           
+        }
+        
     }
 }
 
