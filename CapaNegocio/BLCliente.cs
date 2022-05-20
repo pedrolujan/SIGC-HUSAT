@@ -27,20 +27,7 @@ namespace CapaNegocio
             }
 
         }
-        public DataTable blBuscarCliente(String nroDocumento, String estCliente, Int32 tipoCon)
-        {
-
-            DACliente objCliente = new DACliente();
-            try
-            {
-                return objCliente.daBuscarCliente(nroDocumento, estCliente,  tipoCon);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
-        }
+    
 
         public Int16 blBuscarNroDocumento(String pcBuscar, Int16 pnTipoCon)
         {

@@ -454,5 +454,76 @@ namespace CapaDato
 
         }
 
+        public DataTable daBuscarCliente(String nroDocumento, String estCliente, Int32 tipoCon)
+        {
+
+            SqlParameter[] pa = new SqlParameter[3];
+            DataTable dtCliente;
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@peNroDocumento", SqlDbType.NVarChar, 15) { Value = nroDocumento };
+                pa[1] = new SqlParameter("@peEstadoCliente", SqlDbType.NVarChar, 15) { Value = estCliente };
+                pa[2] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+
+                objCnx = new clsConexion("");
+                dtCliente = objCnx.EjecutarProcedimientoDT("uspBuscarDatosOtrasVenta", pa);
+
+                return dtCliente;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                dtCliente = null;
+            }
+
+        }
+        public DataTable daListarClienteOtrasVentas(Int32 idCliente, Int32 pnTipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[2];
+            DataTable dtUsuario;
+            clsConexion objCnx = null;
+            Cliente lstCliente;
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@peidCliente", SqlDbType.Int) { Value = idCliente };
+                pa[1] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = pnTipoCon };
+
+                objCnx = new clsConexion("");
+                dtUsuario = objCnx.EjecutarProcedimientoDT("uspListarClienteOtrasVentas", pa);
+
+                //lstCliente = new Cliente();
+                
+
+                return dtUsuario;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daListarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                lstCliente = null;
+            }
+
+        }
+
     }
 }

@@ -122,7 +122,32 @@ namespace CapaNegocio
             }
 
         }
+        public DataTable blBuscarCliente(String nroDocumento, String estCliente, Int32 tipoCon)
+        {
 
+            DAOtrasVenta objCliente = new DAOtrasVenta();
+            try
+            {
+                return objCliente.daBuscarCliente(nroDocumento, estCliente, tipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+        public DataTable blListarClienteOtrasVentas(Int32 idPersonal, Int32 pnTipoCon)
+        {
+            DAOtrasVenta objCliente = new DAOtrasVenta();
+            try
+            {
+                return objCliente.daListarClienteOtrasVentas(idPersonal, pnTipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
 
 
