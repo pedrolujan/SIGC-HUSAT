@@ -765,8 +765,9 @@ namespace wfaIntegradoCom.Procesos
                 String nroDocumento = txt.Text.Trim();
                
                 String estCliente = clsClienteAntecesor.idCliente.ToString();
+                Int32 idVehiculo = lstvehiculo.Count>0?lstvehiculo[0].idVehiculo:0;
 
-                datCliente = objVehi.blBuscarCliente(nroDocumento,estCliente, tipoCon);
+                datCliente = objVehi.blBuscarCliente(nroDocumento,estCliente, idVehiculo, tipoCon);
                 totalResultados = datCliente.Rows.Count;
 
                 if (totalResultados > 0)
@@ -908,11 +909,11 @@ namespace wfaIntegradoCom.Procesos
                         lbltxtTelefono.Text = "Serie";
 
                         dgv.Visible = false;
+
+                        clsClienteDocumentoV=clsClienteAntecesor;
                     }
 
-
-
-
+                    fnLlenarTablaCod(cboTipoDocEmitir, "DOVE", clsClienteDocumentoV.cTiDo, 0);
 
                     //if (lstPros.idCliente > 0) {
                     //    DocumentoVenta.idCliente = lstPros.idCliente;
@@ -2272,6 +2273,7 @@ namespace wfaIntegradoCom.Procesos
                         txtCliente.Text = Convert.ToString(drMenu["cNombre"]);
                         clsClienteAntecesor.idVentaGen = Convert.ToInt32(drMenu["idventageneral"]);
                         clsClienteAntecesor.idCliente = Convert.ToInt32(drMenu["idCliente"]);
+                        clsClienteAntecesor.cTiDo = Convert.ToInt32(drMenu["cTiDo"]);
                         clsClienteAntecesor.cNombre = Convert.ToString(drMenu["cNombre"]);
                         clsClienteAntecesor.cApePat = Convert.ToString(drMenu["cApePat"]);
                         clsClienteAntecesor.cApeMat = Convert.ToString(drMenu["cApeMat"]);
@@ -2593,10 +2595,16 @@ namespace wfaIntegradoCom.Procesos
 
         private void fnValidarCamposCliente(object sender, EventArgs e)
         {
-            
-            var result2 = FunValidaciones.fnValidarCombobox(cboMotivo, lblMotivo, pbMotivo);
-            estMotivo = result2.Item1;
-            msgMotivo = result2.Item2;
+            if (estMotivo == false)
+            {
+                var result2 = FunValidaciones.fnValidarCombobox(cboMotivo, lblMotivo, pbMotivo);
+                estMotivo = result2.Item1;
+                msgMotivo = result2.Item2;
+
+            }
+            var result = FunValidaciones.fnValidarCombobox(cboTipoDocEmitir, lblMsgDocumentoEmitir, pbTipoDocumentoEmitir);
+            estDocumentoEmitir = result.Item1;
+            lblDocumentoEmitir = result.Item2;
 
             txtClientesN_A_TextChanged(sender, e);
             txtIdCliente_TextChanged(sender, e);
@@ -2633,7 +2641,7 @@ namespace wfaIntegradoCom.Procesos
            
 
             List<OtrasVentas> lstDetalleVenta = fnRecorrerGrilla();
-            if (estCliente == true && estTipDocumento==true && estTipPersona==true&& estPLACA==true && estMotivo==true)
+            if (estCliente == true &&  estPLACA==true && estMotivo==true && estDocumentoEmitir==true)
             {
                 if (estDocumentoEmitir == true)
                 {
@@ -2701,7 +2709,7 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
-                MessageBox.Show("Porfavor Complete los Datos del Cliente","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Porfavor Complete los Datos","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
             //fnHabilitarControles(false);
             //fnLimpiarControles();

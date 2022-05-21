@@ -4339,11 +4339,11 @@ namespace wfaIntegradoCom.Mantenedores
                 lstCliente.Add(new Cliente
                 {
                     cContactoNom2= Convert.ToString(dr["tipoDocumento"]),
-                    cNombre = Convert.ToString("Maximo Erico"),
-                    cApePat = Convert.ToString("Avila"),
-                    cApeMat = Convert.ToString("Moreno"),
-                    cDocumento = Convert.ToString("17946628"),
-                    cDireccion = Convert.ToString("TOMAS MOSCOSO 1051 / El Porvenir / Trujillo  / La Libertad"),
+                    cNombre = Convert.ToString(dr["cNombre"]),
+                    cApePat = Convert.ToString(dr["cApePat"]),
+                    cApeMat = Convert.ToString(dr["cApeMat"]),
+                    cDocumento = Convert.ToString(dr["cDocumento"]),
+                    cDireccion = Convert.ToString(dr["cDireccion"]),
                     dFecNac = Convert.ToDateTime(dr["dFechaRegistro"])
                 }) ;
 

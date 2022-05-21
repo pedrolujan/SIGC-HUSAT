@@ -122,13 +122,13 @@ namespace CapaNegocio
             }
 
         }
-        public DataTable blBuscarCliente(String nroDocumento, String estCliente, Int32 tipoCon)
+        public DataTable blBuscarCliente(String nroDocumento, String estCliente, Int32 idVehiculo, Int32 tipoCon)
         {
 
             DAOtrasVenta objCliente = new DAOtrasVenta();
             try
             {
-                return objCliente.daBuscarCliente(nroDocumento, estCliente, tipoCon);
+                return objCliente.daBuscarCliente(nroDocumento, estCliente, idVehiculo, tipoCon);
             }
             catch (Exception ex)
             {
