@@ -1308,6 +1308,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.pbSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbSearch.TabIndex = 182;
             this.pbSearch.TabStop = false;
+            this.pbSearch.Click += new System.EventHandler(this.pbSearch_Click);
             // 
             // txtBuscarVehiculo
             // 

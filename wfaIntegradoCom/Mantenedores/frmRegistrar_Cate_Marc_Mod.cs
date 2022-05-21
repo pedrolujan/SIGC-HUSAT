@@ -1381,6 +1381,77 @@ namespace wfaIntegradoCom.Mantenedores
             fnBuscarTablaModelo(txtBuscar, pnTipocon, idCategoria, idMarca);
         }
 
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            Int16 pnTipocon = 0;
+
+            if (cboEstadoCategoria.SelectedIndex == 2)
+            {
+
+                pnTipocon = -2;
+            }
+            else if (cboEstadoCategoria.SelectedIndex == 1)
+            {
+                pnTipocon = -1;
+            }
+            else
+            {
+                pnTipocon = 0;
+            }
+            fnBuscarTablaCategoria(txtBuscarCategoria.Text.Trim(), pnTipocon, 1);
+        }
+
+        private void pictureBox11_Click(object sender, EventArgs e)
+        {
+            Int16 pnTipocon;
+
+            if (cboEstadoMarca.SelectedIndex == 2)
+            {
+
+                pnTipocon = -2;
+            }
+            else if (cboEstadoMarca.SelectedIndex == 1)
+            {
+                pnTipocon = -1;
+            }
+            else
+            {
+                pnTipocon = 0;
+            }
+
+            String txtBuscar = txtBuscarMarca.Text.Trim();
+            Int32 idCategoria = Convert.ToInt32(cboBuscarCategoria_Marca.SelectedValue == null ? "0" : cboBuscarCategoria_Marca.SelectedValue.ToString());
+
+
+            fnBuscarTablaMarca(txtBuscar, pnTipocon, idCategoria);
+        }
+
+        private void pictureBox10_Click(object sender, EventArgs e)
+        {
+            Int16 pnTipocon;
+
+            if (cboEstado_Modelo.SelectedIndex == 2)
+            {
+
+                pnTipocon = -2;
+            }
+            else if (cboEstado_Modelo.SelectedIndex == 1)
+            {
+                pnTipocon = -1;
+            }
+            else
+            {
+                pnTipocon = 0;
+            }
+
+            String txtBuscar = txtBuscarModelo.Text.Trim();
+
+            Int32 idCategoria = Convert.ToInt32(cboBuscarCategoria_Modelo.SelectedValue == null ? "0" : cboBuscarCategoria_Modelo.SelectedValue.ToString());
+            Int32 idMarca = Convert.ToInt32(cboBuscarMarca_Modelo.SelectedValue == null ? "0" : cboBuscarMarca_Modelo.SelectedValue.ToString());
+
+            fnBuscarTablaModelo(txtBuscar, pnTipocon, idCategoria, idMarca);
+        }
+
         private Boolean fnBuscarNombreMarca(String pcBuscar, Int16 pnTipoCon)
         {
             BLMarca objPlan = new BLMarca();

@@ -1065,6 +1065,48 @@ namespace wfaIntegradoCom.Mantenedores
                 fnLiberarSimCard();
             }
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            Boolean bResult = false;
+            bResult = fnBuscarTabla(txtBuscar.Text.Trim(), 0, -1, lnTipoLlamada);
+            if (!bResult)
+            {
+                MessageBox.Show("Error al buscar Imeis. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            if (txtBuscarXImei.Text.Length > 14)
+            {
+                lblMsgHistorial.Text = "";
+                fnBuscarHistorialImeis();
+
+            }
+            else
+            {
+                dgHistorial.Rows.Clear();
+                lblMsgHistorial.Text = "Porfavor ingrese completamente el IMEI (15 dijitos)";
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (txtBuscarXSimCard.Text.Length == 9)
+            {
+                lblMsgHistorial.Text = "";
+                fnBuscarHistorialImeis();
+
+            }
+            else
+            {
+                dgHistorial.Rows.Clear();
+                lblMsgHistorial.Text = "Porfavor ingrese SimCard correctamente (9 dijitos)";
+            }
+        }
+
         private void fnLiberarSimCard()
         {
             BLAdministrarEquipos obImeis = new BLAdministrarEquipos();

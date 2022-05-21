@@ -366,12 +366,13 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Image = global::wfaIntegradoCom.Properties.Resources.buscar_base;
-            this.pictureBox4.Location = new System.Drawing.Point(908, 66);
+            this.pictureBox4.Location = new System.Drawing.Point(906, 61);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox4.Size = new System.Drawing.Size(28, 27);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 131;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // erNumResultados
             // 

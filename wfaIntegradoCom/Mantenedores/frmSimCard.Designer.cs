@@ -54,6 +54,9 @@
             this.rbRecibo = new Guna.UI.WinForms.GunaRadioButton();
             this.rbSimCard = new Guna.UI.WinForms.GunaRadioButton();
             this.pnRegistrarChip = new Siticone.UI.WinForms.SiticonePanel();
+            this.dgChip = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.MenuSimCard = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.opcHistorial = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSalir = new Siticone.UI.WinForms.SiticoneButton();
             this.btnGuardar = new Siticone.UI.WinForms.SiticoneButton();
             this.btnEditar = new Siticone.UI.WinForms.SiticoneButton();
@@ -63,9 +66,6 @@
             this.lblCantRegistrosTotal = new System.Windows.Forms.Label();
             this.btnCantTotalRegistros = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label9 = new System.Windows.Forms.Label();
-            this.dgChip = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.MenuSimCard = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.opcHistorial = new System.Windows.Forms.ToolStripMenuItem();
             this.linkHistorial = new System.Windows.Forms.LinkLabel();
             this.gbPaginas = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.cboPaginacion = new Siticone.UI.WinForms.SiticoneComboBox();
@@ -161,9 +161,9 @@
             this.SimCard.SuspendLayout();
             this.rbOperador.SuspendLayout();
             this.pnRegistrarChip.SuspendLayout();
-            this.gbRegistros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgChip)).BeginInit();
             this.MenuSimCard.SuspendLayout();
+            this.gbRegistros.SuspendLayout();
             this.gbPaginas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbObservacion)).BeginInit();
             this.gbEstadoChip.SuspendLayout();
@@ -430,6 +430,87 @@
             this.pnRegistrarChip.Size = new System.Drawing.Size(1246, 612);
             this.pnRegistrarChip.TabIndex = 165;
             // 
+            // dgChip
+            // 
+            this.dgChip.AllowUserToAddRows = false;
+            this.dgChip.AllowUserToDeleteRows = false;
+            this.dgChip.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgChip.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgChip.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgChip.BackgroundColor = System.Drawing.Color.White;
+            this.dgChip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgChip.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgChip.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgChip.ColumnHeadersHeight = 24;
+            this.dgChip.ContextMenuStrip = this.MenuSimCard;
+            this.dgChip.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgChip.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgChip.EnableHeadersVisualStyles = false;
+            this.dgChip.GridColor = System.Drawing.Color.LightGray;
+            this.dgChip.Location = new System.Drawing.Point(327, 22);
+            this.dgChip.Name = "dgChip";
+            this.dgChip.ReadOnly = true;
+            this.dgChip.RowHeadersVisible = false;
+            this.dgChip.RowTemplate.ReadOnly = true;
+            this.dgChip.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgChip.Size = new System.Drawing.Size(907, 524);
+            this.dgChip.TabIndex = 86;
+            this.dgChip.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgChip.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgChip.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgChip.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgChip.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgChip.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgChip.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgChip.ThemeStyle.GridColor = System.Drawing.Color.LightGray;
+            this.dgChip.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.dgChip.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgChip.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgChip.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgChip.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgChip.ThemeStyle.HeaderStyle.Height = 24;
+            this.dgChip.ThemeStyle.ReadOnly = true;
+            this.dgChip.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgChip.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
+            this.dgChip.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgChip.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgChip.ThemeStyle.RowsStyle.Height = 22;
+            this.dgChip.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgChip.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgChip.Visible = false;
+            this.dgChip.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgChip_CellContentClick);
+            this.dgChip.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgOperador1_CellDoubleClick);
+            this.dgChip.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgChip_CellFormatting);
+            // 
+            // MenuSimCard
+            // 
+            this.MenuSimCard.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opcHistorial});
+            this.MenuSimCard.Name = "MenuImies";
+            this.MenuSimCard.Size = new System.Drawing.Size(272, 26);
+            // 
+            // opcHistorial
+            // 
+            this.opcHistorial.Name = "opcHistorial";
+            this.opcHistorial.Size = new System.Drawing.Size(271, 22);
+            this.opcHistorial.Text = "Ver historial de SimCard seleccionado";
+            this.opcHistorial.Click += new System.EventHandler(this.opcHistorial_Click);
+            // 
             // btnSalir
             // 
             this.btnSalir.BorderRadius = 3;
@@ -587,87 +668,6 @@
             this.label9.Size = new System.Drawing.Size(26, 17);
             this.label9.TabIndex = 147;
             this.label9.Text = "De";
-            // 
-            // dgChip
-            // 
-            this.dgChip.AllowUserToAddRows = false;
-            this.dgChip.AllowUserToDeleteRows = false;
-            this.dgChip.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgChip.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgChip.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgChip.BackgroundColor = System.Drawing.Color.White;
-            this.dgChip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgChip.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgChip.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgChip.ColumnHeadersHeight = 24;
-            this.dgChip.ContextMenuStrip = this.MenuSimCard;
-            this.dgChip.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgChip.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgChip.EnableHeadersVisualStyles = false;
-            this.dgChip.GridColor = System.Drawing.Color.LightGray;
-            this.dgChip.Location = new System.Drawing.Point(327, 22);
-            this.dgChip.Name = "dgChip";
-            this.dgChip.ReadOnly = true;
-            this.dgChip.RowHeadersVisible = false;
-            this.dgChip.RowTemplate.ReadOnly = true;
-            this.dgChip.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgChip.Size = new System.Drawing.Size(907, 524);
-            this.dgChip.TabIndex = 86;
-            this.dgChip.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
-            this.dgChip.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgChip.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgChip.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgChip.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgChip.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgChip.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgChip.ThemeStyle.GridColor = System.Drawing.Color.LightGray;
-            this.dgChip.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.dgChip.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgChip.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgChip.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgChip.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgChip.ThemeStyle.HeaderStyle.Height = 24;
-            this.dgChip.ThemeStyle.ReadOnly = true;
-            this.dgChip.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgChip.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgChip.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgChip.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgChip.ThemeStyle.RowsStyle.Height = 22;
-            this.dgChip.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgChip.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgChip.Visible = false;
-            this.dgChip.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgChip_CellContentClick);
-            this.dgChip.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgOperador1_CellDoubleClick);
-            this.dgChip.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgChip_CellFormatting);
-            // 
-            // MenuSimCard
-            // 
-            this.MenuSimCard.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.opcHistorial});
-            this.MenuSimCard.Name = "MenuImies";
-            this.MenuSimCard.Size = new System.Drawing.Size(272, 26);
-            // 
-            // opcHistorial
-            // 
-            this.opcHistorial.Name = "opcHistorial";
-            this.opcHistorial.Size = new System.Drawing.Size(271, 22);
-            this.opcHistorial.Text = "Ver historial de SimCard seleccionado";
-            this.opcHistorial.Click += new System.EventHandler(this.opcHistorial_Click);
             // 
             // linkHistorial
             // 
@@ -1125,6 +1125,7 @@
             this.pbSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbSearch.TabIndex = 74;
             this.pbSearch.TabStop = false;
+            this.pbSearch.Click += new System.EventHandler(this.pbSearch_Click);
             // 
             // gbFechasChip
             // 
@@ -2029,10 +2030,10 @@
             this.rbOperador.PerformLayout();
             this.pnRegistrarChip.ResumeLayout(false);
             this.pnRegistrarChip.PerformLayout();
-            this.gbRegistros.ResumeLayout(false);
-            this.gbRegistros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgChip)).EndInit();
             this.MenuSimCard.ResumeLayout(false);
+            this.gbRegistros.ResumeLayout(false);
+            this.gbRegistros.PerformLayout();
             this.gbPaginas.ResumeLayout(false);
             this.gbPaginas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbObservacion)).EndInit();

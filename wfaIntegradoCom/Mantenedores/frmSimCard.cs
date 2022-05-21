@@ -1301,6 +1301,18 @@ namespace wfaIntegradoCom.Mantenedores
             }
 
         }
+
+        private void pbSearch_Click(object sender, EventArgs e)
+        {
+           // if (e.KeyChar == (Char)Keys.Enter)
+           // {
+                //fnObtenerPaginacionEquipos(valorComboBuscar,lnTipoCon , txtBuscarChip.Text);
+                fnBuscarEquipo(0, -1);
+
+               //fnHabilitarControles(false);
+           // }
+        }
+
         private void fnColorBotonEsp(SiticoneButton btnNuevo)
         {
             btnNuevo.FillColor = Color.White;

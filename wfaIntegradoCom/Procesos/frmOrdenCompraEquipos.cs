@@ -2040,6 +2040,17 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            String ordencompra = cboseleccioningreso.Text;
+
+
+
+            String busqueda = txtDocumentoHistorial.Text.Trim().ToString();
+
+            fnBuscarHistorial(busqueda, ordencompra);
+        }
+
         private void cboseleccioningreso_SelectedIndexChanged(object sender, EventArgs e)
         {
 

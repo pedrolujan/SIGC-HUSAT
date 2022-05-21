@@ -1473,6 +1473,19 @@ namespace wfaIntegradoCom.Mantenedores
             fnBuscarConsultas(Condicion);
         }
 
+        private void pbSearch_Click(object sender, EventArgs e)
+        {
+
+                Boolean bResul = false;
+
+                bResul = fnBuscarVehiculo(0, -1);
+                if (!bResul)
+                {
+                    MessageBox.Show("Error al Buscar Vehiculo. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+        }
+
         private void dgConsultas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //Int32 Condicion = 0;

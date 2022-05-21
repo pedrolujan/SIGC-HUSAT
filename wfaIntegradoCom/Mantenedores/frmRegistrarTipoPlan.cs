@@ -515,6 +515,26 @@ namespace wfaIntegradoCom.Mantenedores
             fnBuscarTabla(txtBuscar.Text.Trim(), pnTipocon);
         }
 
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            Int16 pnTipocon = 0;
+
+            if (cboBuscar.SelectedIndex == 1)
+            {
+                pnTipocon = 1;
+            }
+            else if (cboBuscar.SelectedIndex == 2)
+            {
+                pnTipocon = 2;
+            }
+            else
+            {
+                pnTipocon = 0;
+            }
+
+            fnBuscarTabla(txtBuscar.Text.Trim(), pnTipocon);
+        }
+
         private void rdbNombre_CheckedChanged(object sender, EventArgs e)
         {
             fnLimpiarControles();

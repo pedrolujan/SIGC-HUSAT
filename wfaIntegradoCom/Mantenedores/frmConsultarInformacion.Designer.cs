@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultarInformacion));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbcDatos = new System.Windows.Forms.TabControl();
             this.DatosActuales = new System.Windows.Forms.TabPage();
             this.DotNetDatosSimCard = new wfaIntegradoCom.Mantenedores.DotNetBarTabControl();
@@ -64,13 +64,16 @@
             this.linkMarcaEquipo = new System.Windows.Forms.LinkLabel();
             this.linkEquipoUnico = new System.Windows.Forms.LinkLabel();
             this.linkOrdenCompra = new System.Windows.Forms.LinkLabel();
+            this.txtPlataformaEquipo = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
             this.lblMSerieEquipo = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
             this.lblMImeiEquipo = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
             this.lblMModeloEquipo = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
             this.lblMMarcaEquipo = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
             this.lblMNombreEquipo = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
             this.lblMOrdenIEquipo = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.siticoneSeparator12 = new Siticone.UI.WinForms.SiticoneSeparator();
+            this.siticoneSeparator19 = new Siticone.UI.WinForms.SiticoneSeparator();
             this.label41 = new System.Windows.Forms.Label();
             this.siticoneSeparator13 = new Siticone.UI.WinForms.SiticoneSeparator();
             this.siticoneSeparator14 = new Siticone.UI.WinForms.SiticoneSeparator();
@@ -176,9 +179,6 @@
             this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
             this.panelPrincipal = new Siticone.UI.WinForms.SiticonePanel();
             this.drcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
-            this.siticoneSeparator19 = new Siticone.UI.WinForms.SiticoneSeparator();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPlataformaEquipo = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
             this.tbcDatos.SuspendLayout();
             this.DatosActuales.SuspendLayout();
             this.DotNetDatosSimCard.SuspendLayout();
@@ -705,6 +705,34 @@
             this.linkOrdenCompra.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.linkOrdenCompra.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkOrdenCompra_LinkClicked);
             // 
+            // txtPlataformaEquipo
+            // 
+            this.txtPlataformaEquipo.Animated = false;
+            this.txtPlataformaEquipo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPlataformaEquipo.DefaultText = "";
+            this.txtPlataformaEquipo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPlataformaEquipo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPlataformaEquipo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPlataformaEquipo.DisabledState.Parent = this.txtPlataformaEquipo;
+            this.txtPlataformaEquipo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPlataformaEquipo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
+            this.txtPlataformaEquipo.FocusedState.Parent = this.txtPlataformaEquipo;
+            this.txtPlataformaEquipo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPlataformaEquipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPlataformaEquipo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
+            this.txtPlataformaEquipo.HoveredState.Parent = this.txtPlataformaEquipo;
+            this.txtPlataformaEquipo.Location = new System.Drawing.Point(186, 406);
+            this.txtPlataformaEquipo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPlataformaEquipo.Name = "txtPlataformaEquipo";
+            this.txtPlataformaEquipo.PasswordChar = '\0';
+            this.txtPlataformaEquipo.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPlataformaEquipo.PlaceholderText = "";
+            this.txtPlataformaEquipo.ReadOnly = true;
+            this.txtPlataformaEquipo.SelectedText = "";
+            this.txtPlataformaEquipo.ShadowDecoration.Parent = this.txtPlataformaEquipo;
+            this.txtPlataformaEquipo.Size = new System.Drawing.Size(325, 36);
+            this.txtPlataformaEquipo.TabIndex = 11;
+            // 
             // lblMSerieEquipo
             // 
             this.lblMSerieEquipo.Animated = false;
@@ -873,6 +901,18 @@
             this.lblMOrdenIEquipo.Size = new System.Drawing.Size(325, 36);
             this.lblMOrdenIEquipo.TabIndex = 11;
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(48, 410);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(144, 29);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Plataforma:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // siticoneSeparator12
             // 
             this.siticoneSeparator12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -880,6 +920,14 @@
             this.siticoneSeparator12.Name = "siticoneSeparator12";
             this.siticoneSeparator12.Size = new System.Drawing.Size(620, 18);
             this.siticoneSeparator12.TabIndex = 1;
+            // 
+            // siticoneSeparator19
+            // 
+            this.siticoneSeparator19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.siticoneSeparator19.Location = new System.Drawing.Point(38, 432);
+            this.siticoneSeparator19.Name = "siticoneSeparator19";
+            this.siticoneSeparator19.Size = new System.Drawing.Size(620, 18);
+            this.siticoneSeparator19.TabIndex = 1;
             // 
             // label41
             // 
@@ -2466,47 +2514,47 @@
             this.dgConsultas.AllowUserToAddRows = false;
             this.dgConsultas.AllowUserToDeleteRows = false;
             this.dgConsultas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.dgConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgConsultas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgConsultas.BackgroundColor = System.Drawing.Color.White;
             this.dgConsultas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgConsultas.CausesValidation = false;
             this.dgConsultas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgConsultas.ColumnHeadersHeight = 30;
             this.dgConsultas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SIMCARDD,
             this.IMEI});
             this.dgConsultas.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsultas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultas.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgConsultas.EnableHeadersVisualStyles = false;
             this.dgConsultas.GridColor = System.Drawing.Color.Silver;
             this.dgConsultas.Location = new System.Drawing.Point(36, 102);
             this.dgConsultas.Name = "dgConsultas";
             this.dgConsultas.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgConsultas.RowHeadersVisible = false;
             this.dgConsultas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgConsultas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -2558,12 +2606,13 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(45, 105);
+            this.pictureBox2.Location = new System.Drawing.Point(276, 99);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox2.Size = new System.Drawing.Size(36, 29);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 228;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // txtBuscar
             // 
@@ -2612,54 +2661,6 @@
             // drcMover
             // 
             this.drcMover.TargetControl = this.gunaPanel1;
-            // 
-            // siticoneSeparator19
-            // 
-            this.siticoneSeparator19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.siticoneSeparator19.Location = new System.Drawing.Point(38, 432);
-            this.siticoneSeparator19.Name = "siticoneSeparator19";
-            this.siticoneSeparator19.Size = new System.Drawing.Size(620, 18);
-            this.siticoneSeparator19.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(48, 410);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(144, 29);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Plataforma:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtPlataformaEquipo
-            // 
-            this.txtPlataformaEquipo.Animated = false;
-            this.txtPlataformaEquipo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPlataformaEquipo.DefaultText = "";
-            this.txtPlataformaEquipo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPlataformaEquipo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPlataformaEquipo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPlataformaEquipo.DisabledState.Parent = this.txtPlataformaEquipo;
-            this.txtPlataformaEquipo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPlataformaEquipo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
-            this.txtPlataformaEquipo.FocusedState.Parent = this.txtPlataformaEquipo;
-            this.txtPlataformaEquipo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtPlataformaEquipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPlataformaEquipo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
-            this.txtPlataformaEquipo.HoveredState.Parent = this.txtPlataformaEquipo;
-            this.txtPlataformaEquipo.Location = new System.Drawing.Point(186, 406);
-            this.txtPlataformaEquipo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPlataformaEquipo.Name = "txtPlataformaEquipo";
-            this.txtPlataformaEquipo.PasswordChar = '\0';
-            this.txtPlataformaEquipo.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPlataformaEquipo.PlaceholderText = "";
-            this.txtPlataformaEquipo.ReadOnly = true;
-            this.txtPlataformaEquipo.SelectedText = "";
-            this.txtPlataformaEquipo.ShadowDecoration.Parent = this.txtPlataformaEquipo;
-            this.txtPlataformaEquipo.Size = new System.Drawing.Size(325, 36);
-            this.txtPlataformaEquipo.TabIndex = 11;
             // 
             // frmConsultarInformacion
             // 

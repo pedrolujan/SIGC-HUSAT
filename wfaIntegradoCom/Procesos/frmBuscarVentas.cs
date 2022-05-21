@@ -562,7 +562,7 @@ namespace wfaIntegradoCom.Procesos
         {
             if (e.ColumnIndex == dgvLVentas.Columns["lvBtnImprimir"].Index && e.RowIndex >= 0)
             {
-                Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[16].Value);
+                Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
                 if (idTipoVenta == 2)
                 {
                     cmsImpresion.Items[2].Visible = false;
@@ -573,7 +573,7 @@ namespace wfaIntegradoCom.Procesos
                     cmsImpresion.Items[2].Visible = true;
                 }
                 var mousePosition = dgvLVentas.PointToClient(Cursor.Position);
-                cmsImpresion.Show(dgvLVentas, 940, mousePosition.Y);
+                cmsImpresion.Show(dgvLVentas, 10000, mousePosition.Y);
             }
         }
         private void dgvLVentas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -828,6 +828,32 @@ namespace wfaIntegradoCom.Procesos
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+        private String fnRecortarCadena(String cadena)
+        {
+            String[] valores = cadena.Split(';');
+            String debolver = "";
+            for (Int32 i = 0; i < valores.Length - 1; i++)
+            {
+                debolver += string.Format((i + 1) + " {1}{0}", Environment.NewLine, valores[i]);
+            }
+            return debolver;
+        }
+        private void dgvLVentas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FrmPrevisualizar frmPrev = new FrmPrevisualizar();
+            string dato = "";
+
+            if (e.ColumnIndex == dgvLVentas.Columns["Vehiculos_lv"].Index && e.RowIndex >= 0)
+            {
+                dato = fnRecortarCadena(Convert.ToString(dgvLVentas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value));
+                frmPrev.inicio(2, dato);
+            }
+            if (e.ColumnIndex == dgvLVentas.Columns["Ciente_Rs_lv"].Index && e.RowIndex >= 0)
+            {
+                dato = Convert.ToString(dgvLVentas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                frmPrev.inicio(2, dato);
+            }
         }
     }
 }

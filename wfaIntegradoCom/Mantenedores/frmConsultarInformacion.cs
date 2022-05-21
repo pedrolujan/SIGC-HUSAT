@@ -248,7 +248,7 @@ namespace wfaIntegradoCom.Mantenedores
             fnMostrarDatosImei(gbMEquipo, false, lblSmsMEquipoGps, "Busque algun dato", true);
             fnMostrarDatosImei(gbMCliente, false, lblSmsMCliente, "Busque algun dato", true);
             fnMostrarDatosImei(gbMVehiculo, false, lblSmsMVehiculo, "Busque algun dato", true);
-
+            fnMostrarDatosImei(gbPlan, false, lblsmsPlan, "Busque algun dato", true);
         }
 
         private void linkSimCard_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -434,6 +434,25 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void dgConsultas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+           Int32 Condicion = 0;
+           
+            
+                if (rbSimCard.Checked == true) { Condicion = 0; }
+                else
+                if (rbImei.Checked == true) { Condicion = 1; }
+                else
+                if (rbCliente.Checked == true) { Condicion = 2; }
+                else
+                if (rbVehiculo.Checked == true) { Condicion = 3; }
+
+                fnBuscarConsultas(Condicion);
+
+            
 
         }
     }

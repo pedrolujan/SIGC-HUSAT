@@ -1267,7 +1267,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1309, 611);
+            this.tabPage2.Size = new System.Drawing.Size(1292, 611);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "BUSCAR";
             // 
@@ -1523,9 +1523,9 @@ namespace wfaIntegradoCom.Mantenedores
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1220, 78);
+            this.pictureBox4.Location = new System.Drawing.Point(1216, 73);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox4.Size = new System.Drawing.Size(28, 29);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 68;
             this.pictureBox4.TabStop = false;
