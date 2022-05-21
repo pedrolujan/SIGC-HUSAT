@@ -896,7 +896,7 @@
             this.Contrato,
             this.ActaInstalacion});
             this.cmsImpresion.Name = "cmsImpresiones";
-            this.cmsImpresion.Size = new System.Drawing.Size(186, 70);
+            this.cmsImpresion.Size = new System.Drawing.Size(186, 92);
             // 
             // tlsDocumentoVenta
             // 

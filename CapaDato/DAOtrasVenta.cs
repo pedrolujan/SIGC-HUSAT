@@ -339,7 +339,7 @@ namespace CapaDato
                 lstDocumentoVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = codigoDocumento;
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cCliente = Cliente;
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = TipoPago;
-                //lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Cdirrecion);
+                lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Cdirrecion);
 
                 return lstDocumentoVenta;
             }
