@@ -416,7 +416,6 @@ namespace wfaIntegradoCom.Procesos
             {
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
-
                 gbBuscarListaVentas.Enabled = true;
             }
             else
