@@ -934,7 +934,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void siticonePictureBox1_Click(object sender, EventArgs e)
         {
-
+            fnBuscarDatosParaDatatables(0, -1);
         }
 
         private void siticoneCirclePictureBox2_Click(object sender, EventArgs e)
@@ -1119,6 +1119,24 @@ namespace wfaIntegradoCom.Mantenedores
         private void lblUsoVUso_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pbSearch_Click(object sender, EventArgs e)
+        {
+            fnBuscarDatosParaDatatables(0, -1);
+        }
+
+        private void gunaPictureBox1_Click(object sender, EventArgs e)
+        {
+            
+            
+                fnBuscarDatosParaDatatables(0, -1);
+            
+        }
+
+        private void gunaPictureBox2_Click(object sender, EventArgs e)
+        {
+            fnBuscarDatosParaDatatables(0, -1);
         }
 
         private void txtbuscarU_TextChanged(object sender, EventArgs e)

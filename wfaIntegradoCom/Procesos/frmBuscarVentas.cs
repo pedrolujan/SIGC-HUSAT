@@ -593,13 +593,11 @@ namespace wfaIntegradoCom.Procesos
 
         private void dgvLVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //DataGridView dgview = sender as DataGridView;
+           
             DataGridView dgV = sender as DataGridView;
-            //String nombreCabecera = dgv.Columns[e.ColumnIndex].Name;
+            
 
 
-            //if (nombreCabecera == "txtEstado" )
-            //{
             if (dgV.Columns[e.ColumnIndex].Name == "EstadoContrato")
             {
                 if (e.Value.ToString().Contains("Finalizado"))
