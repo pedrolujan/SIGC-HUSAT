@@ -231,7 +231,7 @@ namespace CapaDato
                 pa[15].Value = clsOtrasVentas.CodDocumento;
 
                 objCnx = new clsConexion("");
-                intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
+                //intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
                 return true;
             }
             catch (Exception ex)
@@ -454,10 +454,10 @@ namespace CapaDato
 
         }
 
-        public DataTable daBuscarCliente(String nroDocumento, String estCliente, Int32 tipoCon)
+        public DataTable daBuscarCliente(String nroDocumento, String estCliente,Int32 idVehiculo, Int32 tipoCon)
         {
 
-            SqlParameter[] pa = new SqlParameter[3];
+            SqlParameter[] pa = new SqlParameter[4];
             DataTable dtCliente;
             clsConexion objCnx = null;
             objUtil = new clsUtil();
@@ -466,7 +466,8 @@ namespace CapaDato
             {
                 pa[0] = new SqlParameter("@peNroDocumento", SqlDbType.NVarChar, 15) { Value = nroDocumento };
                 pa[1] = new SqlParameter("@peEstadoCliente", SqlDbType.NVarChar, 15) { Value = estCliente };
-                pa[2] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[2] = new SqlParameter("@idVehiculo", SqlDbType.Int) { Value = idVehiculo };
+                pa[3] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
 
                 objCnx = new clsConexion("");
                 dtCliente = objCnx.EjecutarProcedimientoDT("uspBuscarDatosOtrasVenta", pa);

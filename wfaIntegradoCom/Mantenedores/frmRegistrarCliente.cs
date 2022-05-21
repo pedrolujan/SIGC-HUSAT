@@ -1608,15 +1608,31 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void txtdni_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
-            if (Char.IsDigit(e.KeyChar) || (Char.IsControl(e.KeyChar)))
+            Int32 idTipoDocumento = Convert.ToInt32(cboTipoDoc.SelectedValue);
+            Int32 numKey = e.KeyChar;
+            if (idTipoDocumento==5)
             {
-                e.Handled = false;
+                if (Char.IsDigit(e.KeyChar) || (Char.IsControl(e.KeyChar)) || (Char.IsLetter(e.KeyChar)))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
             else
             {
-                e.Handled = true;
+                if (Char.IsDigit(e.KeyChar) || (Char.IsControl(e.KeyChar)))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
+            
 
         }
         private void fnvalidarComboCliente(Boolean estado)
