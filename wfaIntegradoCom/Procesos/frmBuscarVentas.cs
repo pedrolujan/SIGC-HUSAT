@@ -179,7 +179,8 @@ namespace wfaIntegradoCom.Procesos
         {
         }
         public Boolean fnListarDatosVenta(DataGridView dgv, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon)      
-       {
+       
+        {
             BLClienteVenta objVentaGeneral = new BLClienteVenta();
             clsUtil objUtil = new clsUtil();
             DataTable datVenta = new DataTable();
