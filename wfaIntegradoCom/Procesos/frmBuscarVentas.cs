@@ -435,7 +435,8 @@ namespace wfaIntegradoCom.Procesos
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {  
-                fnListarDatosVenta(dgvLVentas, 0, 0, -4);        
+                
+            fnListarDatosVenta(dgvLVentas, 0, 0, -4);        
         }
 
         private void tlsDocumentoVenta_Click(object sender, EventArgs e)
@@ -824,7 +825,11 @@ namespace wfaIntegradoCom.Procesos
             fnListarDatosVenta(dgvLVentas, 0, 0, -1);
            
         }
-        
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

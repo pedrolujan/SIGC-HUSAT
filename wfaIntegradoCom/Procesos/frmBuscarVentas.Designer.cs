@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarVentas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.buscar = new System.Windows.Forms.PictureBox();
-            this.cboTipoDocumento = new Siticone.UI.WinForms.SiticoneComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtBuscarVentas = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.chkHabilitarFechasBus = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.cboEstado = new Siticone.UI.WinForms.SiticoneComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.cboTipoDocumento = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.buscar = new System.Windows.Forms.PictureBox();
+            this.txtBuscarVentas = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.chkHabilitarFechasBus = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.cbTipoVenta = new Siticone.UI.WinForms.SiticoneComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -70,20 +70,6 @@
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.dgvLVentas = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.cmsImpresion = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tlsDocumentoVenta = new System.Windows.Forms.ToolStripMenuItem();
-            this.Contrato = new System.Windows.Forms.ToolStripMenuItem();
-            this.ActaInstalacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.gbPaginacion = new System.Windows.Forms.GroupBox();
-            this.btnNumF = new Siticone.UI.WinForms.SiticoneCircleButton();
-            this.label37 = new System.Windows.Forms.Label();
-            this.siticoneVSeparator1 = new Siticone.UI.WinForms.SiticoneVSeparator();
-            this.cboPaginaV = new System.Windows.Forms.ComboBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.btnTotalR = new Siticone.UI.WinForms.SiticoneCircleButton();
-            this.btnTotalP = new Siticone.UI.WinForms.SiticoneCircleButton();
-            this.label41 = new System.Windows.Forms.Label();
-            this.drcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numero_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodVenta_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,8 +87,22 @@
             this.txtEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DocVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lvBtnImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cmsImpresion = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tlsDocumentoVenta = new System.Windows.Forms.ToolStripMenuItem();
+            this.Contrato = new System.Windows.Forms.ToolStripMenuItem();
+            this.ActaInstalacion = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gbPaginacion = new System.Windows.Forms.GroupBox();
+            this.btnNumF = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.label37 = new System.Windows.Forms.Label();
+            this.siticoneVSeparator1 = new Siticone.UI.WinForms.SiticoneVSeparator();
+            this.cboPaginaV = new System.Windows.Forms.ComboBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.btnTotalR = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnTotalP = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.label41 = new System.Windows.Forms.Label();
+            this.drcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buscar)).BeginInit();
             this.pnMontoGanania.SuspendLayout();
@@ -119,13 +119,13 @@
             // 
             this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
             this.siticoneGroupBox1.BorderRadius = 5;
-            this.siticoneGroupBox1.Controls.Add(this.buscar);
-            this.siticoneGroupBox1.Controls.Add(this.cboTipoDocumento);
             this.siticoneGroupBox1.Controls.Add(this.label5);
-            this.siticoneGroupBox1.Controls.Add(this.txtBuscarVentas);
-            this.siticoneGroupBox1.Controls.Add(this.chkHabilitarFechasBus);
             this.siticoneGroupBox1.Controls.Add(this.cboEstado);
             this.siticoneGroupBox1.Controls.Add(this.label4);
+            this.siticoneGroupBox1.Controls.Add(this.cboTipoDocumento);
+            this.siticoneGroupBox1.Controls.Add(this.buscar);
+            this.siticoneGroupBox1.Controls.Add(this.txtBuscarVentas);
+            this.siticoneGroupBox1.Controls.Add(this.chkHabilitarFechasBus);
             this.siticoneGroupBox1.Controls.Add(this.cbTipoVenta);
             this.siticoneGroupBox1.Controls.Add(this.label3);
             this.siticoneGroupBox1.Controls.Add(this.label24);
@@ -143,28 +143,61 @@
             this.siticoneGroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.siticoneGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneGroupBox1.ForeColor = System.Drawing.Color.White;
-            this.siticoneGroupBox1.Location = new System.Drawing.Point(7, 29);
+            this.siticoneGroupBox1.Location = new System.Drawing.Point(5, 29);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(1246, 145);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(1248, 145);
             this.siticoneGroupBox1.TabIndex = 86;
             this.siticoneGroupBox1.Text = "Buscar por:";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -5);
             this.siticoneGroupBox1.Click += new System.EventHandler(this.siticoneGroupBox1_Click);
             // 
-            // buscar
+            // label5
             // 
-            this.buscar.BackColor = System.Drawing.Color.White;
-            this.buscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buscar.ErrorImage = null;
-            this.buscar.Image = global::wfaIntegradoCom.Properties.Resources.buscar_base;
-            this.buscar.Location = new System.Drawing.Point(1202, 100);
-            this.buscar.Name = "buscar";
-            this.buscar.Size = new System.Drawing.Size(33, 31);
-            this.buscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.buscar.TabIndex = 373;
-            this.buscar.TabStop = false;
-            this.buscar.Click += new System.EventHandler(this.buscar_Click);
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(1019, 42);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 34);
+            this.label5.TabIndex = 380;
+            this.label5.Text = "Documento\r\n   Venta:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // cboEstado
+            // 
+            this.cboEstado.BackColor = System.Drawing.Color.Transparent;
+            this.cboEstado.BorderColor = System.Drawing.Color.Silver;
+            this.cboEstado.BorderRadius = 5;
+            this.cboEstado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboEstado.DropDownHeight = 200;
+            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstado.DropDownWidth = 145;
+            this.cboEstado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboEstado.HoveredState.Parent = this.cboEstado;
+            this.cboEstado.IntegralHeight = false;
+            this.cboEstado.ItemHeight = 30;
+            this.cboEstado.ItemsAppearance.Parent = this.cboEstado;
+            this.cboEstado.Location = new System.Drawing.Point(806, 96);
+            this.cboEstado.Name = "cboEstado";
+            this.cboEstado.ShadowDecoration.Parent = this.cboEstado;
+            this.cboEstado.Size = new System.Drawing.Size(211, 36);
+            this.cboEstado.TabIndex = 379;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(735, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 34);
+            this.label4.TabIndex = 378;
+            this.label4.Text = "  Estado\r\nInstalación:";
             // 
             // cboTipoDocumento
             // 
@@ -179,24 +212,25 @@
             this.cboTipoDocumento.HoveredState.Parent = this.cboTipoDocumento;
             this.cboTipoDocumento.ItemHeight = 30;
             this.cboTipoDocumento.ItemsAppearance.Parent = this.cboTipoDocumento;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(1070, 42);
+            this.cboTipoDocumento.Location = new System.Drawing.Point(1094, 42);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.ShadowDecoration.Parent = this.cboTipoDocumento;
-            this.cboTipoDocumento.Size = new System.Drawing.Size(168, 36);
-            this.cboTipoDocumento.TabIndex = 371;
-            this.cboTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumento_SelectedIndexChanged);
+            this.cboTipoDocumento.Size = new System.Drawing.Size(147, 36);
+            this.cboTipoDocumento.TabIndex = 376;
             // 
-            // label5
+            // buscar
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(969, 42);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 34);
-            this.label5.TabIndex = 372;
-            this.label5.Text = "Tipo documento\r\n       de venta:";
+            this.buscar.BackColor = System.Drawing.Color.White;
+            this.buscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buscar.ErrorImage = null;
+            this.buscar.Image = global::wfaIntegradoCom.Properties.Resources.buscar_base;
+            this.buscar.Location = new System.Drawing.Point(1205, 100);
+            this.buscar.Name = "buscar";
+            this.buscar.Size = new System.Drawing.Size(33, 31);
+            this.buscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.buscar.TabIndex = 373;
+            this.buscar.TabStop = false;
+            this.buscar.Click += new System.EventHandler(this.buscar_Click);
             // 
             // txtBuscarVentas
             // 
@@ -215,7 +249,7 @@
             this.txtBuscarVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtBuscarVentas.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.txtBuscarVentas.HoveredState.Parent = this.txtBuscarVentas;
-            this.txtBuscarVentas.Location = new System.Drawing.Point(1070, 97);
+            this.txtBuscarVentas.Location = new System.Drawing.Point(1094, 97);
             this.txtBuscarVentas.Margin = new System.Windows.Forms.Padding(5);
             this.txtBuscarVentas.Name = "txtBuscarVentas";
             this.txtBuscarVentas.PasswordChar = '\0';
@@ -223,7 +257,7 @@
             this.txtBuscarVentas.PlaceholderText = "Placa / Cliente /DNI";
             this.txtBuscarVentas.SelectedText = "";
             this.txtBuscarVentas.ShadowDecoration.Parent = this.txtBuscarVentas;
-            this.txtBuscarVentas.Size = new System.Drawing.Size(168, 37);
+            this.txtBuscarVentas.Size = new System.Drawing.Size(147, 36);
             this.txtBuscarVentas.TabIndex = 230;
             this.txtBuscarVentas.TextChanged += new System.EventHandler(this.txtBuscarVentas_TextChanged);
             this.txtBuscarVentas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarVentas_KeyPress);
@@ -251,40 +285,6 @@
             this.chkHabilitarFechasBus.UseVisualStyleBackColor = false;
             this.chkHabilitarFechasBus.CheckedChanged += new System.EventHandler(this.chkHabilitarFechasBus_CheckedChanged);
             // 
-            // cboEstado
-            // 
-            this.cboEstado.BackColor = System.Drawing.Color.Transparent;
-            this.cboEstado.BorderColor = System.Drawing.Color.Silver;
-            this.cboEstado.BorderRadius = 5;
-            this.cboEstado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboEstado.DropDownHeight = 200;
-            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEstado.DropDownWidth = 145;
-            this.cboEstado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.cboEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboEstado.HoveredState.Parent = this.cboEstado;
-            this.cboEstado.IntegralHeight = false;
-            this.cboEstado.ItemHeight = 30;
-            this.cboEstado.ItemsAppearance.Parent = this.cboEstado;
-            this.cboEstado.Location = new System.Drawing.Point(812, 97);
-            this.cboEstado.Name = "cboEstado";
-            this.cboEstado.ShadowDecoration.Parent = this.cboEstado;
-            this.cboEstado.Size = new System.Drawing.Size(149, 36);
-            this.cboEstado.TabIndex = 370;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(731, 97);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 34);
-            this.label4.TabIndex = 369;
-            this.label4.Text = "  Estado\r\ninstalación:";
-            // 
             // cbTipoVenta
             // 
             this.cbTipoVenta.BackColor = System.Drawing.Color.Transparent;
@@ -298,10 +298,10 @@
             this.cbTipoVenta.HoveredState.Parent = this.cbTipoVenta;
             this.cbTipoVenta.ItemHeight = 30;
             this.cbTipoVenta.ItemsAppearance.Parent = this.cbTipoVenta;
-            this.cbTipoVenta.Location = new System.Drawing.Point(363, 42);
+            this.cbTipoVenta.Location = new System.Drawing.Point(353, 42);
             this.cbTipoVenta.Name = "cbTipoVenta";
             this.cbTipoVenta.ShadowDecoration.Parent = this.cbTipoVenta;
-            this.cbTipoVenta.Size = new System.Drawing.Size(147, 36);
+            this.cbTipoVenta.Size = new System.Drawing.Size(159, 36);
             this.cbTipoVenta.TabIndex = 367;
             // 
             // label3
@@ -310,7 +310,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(287, 53);
+            this.label3.Location = new System.Drawing.Point(278, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 17);
             this.label3.TabIndex = 368;
@@ -322,7 +322,7 @@
             this.label24.BackColor = System.Drawing.Color.Transparent;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label24.Location = new System.Drawing.Point(735, 53);
+            this.label24.Location = new System.Drawing.Point(743, 53);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(56, 17);
             this.label24.TabIndex = 131;
@@ -334,11 +334,11 @@
             this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label38.Location = new System.Drawing.Point(985, 106);
+            this.label38.Location = new System.Drawing.Point(1034, 106);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(74, 17);
+            this.label38.Size = new System.Drawing.Size(49, 17);
             this.label38.TabIndex = 131;
-            this.label38.Text = "Buscar por:\r\n";
+            this.label38.Text = "Buscar:";
             this.label38.Click += new System.EventHandler(this.label38_Click);
             // 
             // pnMontoGanania
@@ -351,7 +351,7 @@
             this.pnMontoGanania.Controls.Add(this.label9);
             this.pnMontoGanania.Controls.Add(this.lblTotaGanancia);
             this.pnMontoGanania.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.pnMontoGanania.Location = new System.Drawing.Point(792, 1);
+            this.pnMontoGanania.Location = new System.Drawing.Point(794, 1);
             this.pnMontoGanania.Name = "pnMontoGanania";
             this.pnMontoGanania.ShadowDecoration.Parent = this.pnMontoGanania;
             this.pnMontoGanania.Size = new System.Drawing.Size(453, 30);
@@ -409,10 +409,10 @@
             this.cboUsuario.IntegralHeight = false;
             this.cboUsuario.ItemHeight = 30;
             this.cboUsuario.ItemsAppearance.Parent = this.cboUsuario;
-            this.cboUsuario.Location = new System.Drawing.Point(812, 42);
+            this.cboUsuario.Location = new System.Drawing.Point(805, 42);
             this.cboUsuario.Name = "cboUsuario";
             this.cboUsuario.ShadowDecoration.Parent = this.cboUsuario;
-            this.cboUsuario.Size = new System.Drawing.Size(149, 36);
+            this.cboUsuario.Size = new System.Drawing.Size(212, 36);
             this.cboUsuario.TabIndex = 228;
             // 
             // cboPlanV
@@ -431,10 +431,10 @@
             this.cboPlanV.IntegralHeight = false;
             this.cboPlanV.ItemHeight = 30;
             this.cboPlanV.ItemsAppearance.Parent = this.cboPlanV;
-            this.cboPlanV.Location = new System.Drawing.Point(578, 97);
+            this.cboPlanV.Location = new System.Drawing.Point(573, 97);
             this.cboPlanV.Name = "cboPlanV";
             this.cboPlanV.ShadowDecoration.Parent = this.cboPlanV;
-            this.cboPlanV.Size = new System.Drawing.Size(147, 36);
+            this.cboPlanV.Size = new System.Drawing.Size(156, 36);
             this.cboPlanV.TabIndex = 228;
             this.cboPlanV.SelectedIndexChanged += new System.EventHandler(this.cboPlanV_SelectedIndexChanged);
             // 
@@ -451,10 +451,10 @@
             this.cboTipoPlan.HoveredState.Parent = this.cboTipoPlan;
             this.cboTipoPlan.ItemHeight = 30;
             this.cboTipoPlan.ItemsAppearance.Parent = this.cboTipoPlan;
-            this.cboTipoPlan.Location = new System.Drawing.Point(578, 42);
+            this.cboTipoPlan.Location = new System.Drawing.Point(573, 42);
             this.cboTipoPlan.Name = "cboTipoPlan";
             this.cboTipoPlan.ShadowDecoration.Parent = this.cboTipoPlan;
-            this.cboTipoPlan.Size = new System.Drawing.Size(147, 36);
+            this.cboTipoPlan.Size = new System.Drawing.Size(156, 36);
             this.cboTipoPlan.TabIndex = 228;
             this.cboTipoPlan.SelectedIndexChanged += new System.EventHandler(this.cboTipoPlan_SelectedIndexChanged);
             // 
@@ -471,10 +471,10 @@
             this.cboEstadoContrato.HoveredState.Parent = this.cboEstadoContrato;
             this.cboEstadoContrato.ItemHeight = 30;
             this.cboEstadoContrato.ItemsAppearance.Parent = this.cboEstadoContrato;
-            this.cboEstadoContrato.Location = new System.Drawing.Point(363, 97);
+            this.cboEstadoContrato.Location = new System.Drawing.Point(353, 97);
             this.cboEstadoContrato.Name = "cboEstadoContrato";
             this.cboEstadoContrato.ShadowDecoration.Parent = this.cboEstadoContrato;
-            this.cboEstadoContrato.Size = new System.Drawing.Size(147, 36);
+            this.cboEstadoContrato.Size = new System.Drawing.Size(159, 36);
             this.cboEstadoContrato.TabIndex = 228;
             // 
             // label2
@@ -483,7 +483,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(537, 106);
+            this.label2.Location = new System.Drawing.Point(522, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 17);
             this.label2.TabIndex = 229;
@@ -495,11 +495,11 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(517, 53);
+            this.label1.Location = new System.Drawing.Point(522, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 17);
+            this.label1.Size = new System.Drawing.Size(38, 34);
             this.label1.TabIndex = 229;
-            this.label1.Text = "Tipo Plan:";
+            this.label1.Text = "Tipo \r\nPlan:";
             // 
             // label23
             // 
@@ -507,7 +507,7 @@
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label23.Location = new System.Drawing.Point(287, 97);
+            this.label23.Location = new System.Drawing.Point(278, 97);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(62, 34);
             this.label23.TabIndex = 229;
@@ -521,9 +521,9 @@
             this.gbBuscarListaVentas.Controls.Add(this.label35);
             this.gbBuscarListaVentas.Controls.Add(this.label14);
             this.gbBuscarListaVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.gbBuscarListaVentas.Location = new System.Drawing.Point(9, 26);
+            this.gbBuscarListaVentas.Location = new System.Drawing.Point(4, 26);
             this.gbBuscarListaVentas.Name = "gbBuscarListaVentas";
-            this.gbBuscarListaVentas.Size = new System.Drawing.Size(269, 117);
+            this.gbBuscarListaVentas.Size = new System.Drawing.Size(268, 117);
             this.gbBuscarListaVentas.TabIndex = 224;
             this.gbBuscarListaVentas.TabStop = false;
             this.gbBuscarListaVentas.Enter += new System.EventHandler(this.gbBuscarListaVentas_Enter);
@@ -543,7 +543,7 @@
             this.dtpFechaFinalBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaFinalBus.Name = "dtpFechaFinalBus";
             this.dtpFechaFinalBus.ShadowDecoration.Parent = this.dtpFechaFinalBus;
-            this.dtpFechaFinalBus.Size = new System.Drawing.Size(255, 36);
+            this.dtpFechaFinalBus.Size = new System.Drawing.Size(254, 36);
             this.dtpFechaFinalBus.TabIndex = 233;
             this.dtpFechaFinalBus.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
             // 
@@ -562,7 +562,7 @@
             this.dtpFechaInicialBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaInicialBus.Name = "dtpFechaInicialBus";
             this.dtpFechaInicialBus.ShadowDecoration.Parent = this.dtpFechaInicialBus;
-            this.dtpFechaInicialBus.Size = new System.Drawing.Size(255, 36);
+            this.dtpFechaInicialBus.Size = new System.Drawing.Size(254, 36);
             this.dtpFechaInicialBus.TabIndex = 231;
             this.dtpFechaInicialBus.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
             this.dtpFechaInicialBus.ValueChanged += new System.EventHandler(this.dtpFechaInicialBus_ValueChanged);
@@ -649,12 +649,12 @@
             this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticonePanel1.BorderThickness = 3;
             this.siticonePanel1.Controls.Add(this.dgvLVentas);
-            this.siticonePanel1.Controls.Add(this.gbPaginacion);
             this.siticonePanel1.Controls.Add(this.siticoneGroupBox1);
+            this.siticonePanel1.Controls.Add(this.gbPaginacion);
             this.siticonePanel1.Location = new System.Drawing.Point(0, 2);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(1260, 711);
+            this.siticonePanel1.Size = new System.Drawing.Size(1260, 726);
             this.siticonePanel1.TabIndex = 89;
             this.siticonePanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.siticonePanel1_Paint);
             // 
@@ -663,20 +663,20 @@
             this.dgvLVentas.AllowUserToAddRows = false;
             this.dgvLVentas.AllowUserToDeleteRows = false;
             this.dgvLVentas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvLVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            this.dgvLVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvLVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLVentas.BackgroundColor = System.Drawing.Color.White;
             this.dgvLVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvLVentas.ColumnHeadersHeight = 45;
             this.dgvLVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvLVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -700,38 +700,38 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
             this.dgvLVentas.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLVentas.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLVentas.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvLVentas.EnableHeadersVisualStyles = false;
             this.dgvLVentas.GridColor = System.Drawing.Color.Silver;
             this.dgvLVentas.Location = new System.Drawing.Point(7, 180);
             this.dgvLVentas.Name = "dgvLVentas";
             this.dgvLVentas.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvLVentas.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLVentas.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLVentas.RowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvLVentas.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvLVentas.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvLVentas.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLVentas.RowTemplate.Height = 80;
             this.dgvLVentas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvLVentas.Size = new System.Drawing.Size(1247, 500);
+            this.dgvLVentas.Size = new System.Drawing.Size(1247, 503);
             this.dgvLVentas.TabIndex = 211;
             this.dgvLVentas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvLVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -761,160 +761,6 @@
             this.dgvLVentas.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLVentas_CellMouseDown);
             this.dgvLVentas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLVentas_CellMouseDown);
             this.dgvLVentas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvLVentas_CellPainting);
-            // 
-            // cmsImpresion
-            // 
-            this.cmsImpresion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsDocumentoVenta,
-            this.Contrato,
-            this.ActaInstalacion});
-            this.cmsImpresion.Name = "cmsImpresiones";
-            this.cmsImpresion.Size = new System.Drawing.Size(186, 70);
-            // 
-            // tlsDocumentoVenta
-            // 
-            this.tlsDocumentoVenta.Name = "tlsDocumentoVenta";
-            this.tlsDocumentoVenta.Size = new System.Drawing.Size(185, 22);
-            this.tlsDocumentoVenta.Text = "Documento de Venta";
-            this.tlsDocumentoVenta.Click += new System.EventHandler(this.tlsDocumentoVenta_Click_1);
-            // 
-            // Contrato
-            // 
-            this.Contrato.Name = "Contrato";
-            this.Contrato.Size = new System.Drawing.Size(185, 22);
-            this.Contrato.Text = "Contrato";
-            this.Contrato.Click += new System.EventHandler(this.Contrato_Click);
-            // 
-            // ActaInstalacion
-            // 
-            this.ActaInstalacion.Name = "ActaInstalacion";
-            this.ActaInstalacion.Size = new System.Drawing.Size(185, 22);
-            this.ActaInstalacion.Text = "Acta de Instalacion";
-            this.ActaInstalacion.Click += new System.EventHandler(this.ActaInstalacion_Click_1);
-            // 
-            // gbPaginacion
-            // 
-            this.gbPaginacion.Controls.Add(this.btnNumF);
-            this.gbPaginacion.Controls.Add(this.label37);
-            this.gbPaginacion.Controls.Add(this.siticoneVSeparator1);
-            this.gbPaginacion.Controls.Add(this.cboPaginaV);
-            this.gbPaginacion.Controls.Add(this.label40);
-            this.gbPaginacion.Controls.Add(this.btnTotalR);
-            this.gbPaginacion.Controls.Add(this.btnTotalP);
-            this.gbPaginacion.Controls.Add(this.label41);
-            this.gbPaginacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPaginacion.Location = new System.Drawing.Point(921, 667);
-            this.gbPaginacion.Name = "gbPaginacion";
-            this.gbPaginacion.Size = new System.Drawing.Size(334, 40);
-            this.gbPaginacion.TabIndex = 209;
-            this.gbPaginacion.TabStop = false;
-            // 
-            // btnNumF
-            // 
-            this.btnNumF.BackColor = System.Drawing.Color.Transparent;
-            this.btnNumF.CheckedState.Parent = this.btnNumF;
-            this.btnNumF.CustomImages.Parent = this.btnNumF;
-            this.btnNumF.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnNumF.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNumF.ForeColor = System.Drawing.Color.White;
-            this.btnNumF.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnNumF.HoveredState.Parent = this.btnNumF;
-            this.btnNumF.Location = new System.Drawing.Point(209, 12);
-            this.btnNumF.Name = "btnNumF";
-            this.btnNumF.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnNumF.ShadowDecoration.Parent = this.btnNumF;
-            this.btnNumF.Size = new System.Drawing.Size(25, 25);
-            this.btnNumF.TabIndex = 171;
-            this.btnNumF.TextOffset = new System.Drawing.Point(0, 1);
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(240, 17);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(68, 15);
-            this.label37.TabIndex = 173;
-            this.label37.Text = "registros de";
-            // 
-            // siticoneVSeparator1
-            // 
-            this.siticoneVSeparator1.FillColor = System.Drawing.Color.Gray;
-            this.siticoneVSeparator1.Location = new System.Drawing.Point(190, 8);
-            this.siticoneVSeparator1.Name = "siticoneVSeparator1";
-            this.siticoneVSeparator1.Size = new System.Drawing.Size(13, 27);
-            this.siticoneVSeparator1.TabIndex = 174;
-            // 
-            // cboPaginaV
-            // 
-            this.cboPaginaV.DropDownHeight = 90;
-            this.cboPaginaV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPaginaV.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cboPaginaV.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.cboPaginaV.FormattingEnabled = true;
-            this.cboPaginaV.IntegralHeight = false;
-            this.cboPaginaV.Location = new System.Drawing.Point(52, 13);
-            this.cboPaginaV.Name = "cboPaginaV";
-            this.cboPaginaV.Size = new System.Drawing.Size(63, 23);
-            this.cboPaginaV.TabIndex = 167;
-            this.cboPaginaV.SelectedIndexChanged += new System.EventHandler(this.cboPagina_SelectedIndexChanged);
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(6, 17);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(43, 15);
-            this.label40.TabIndex = 168;
-            this.label40.Text = "Página";
-            // 
-            // btnTotalR
-            // 
-            this.btnTotalR.BackColor = System.Drawing.Color.Transparent;
-            this.btnTotalR.CheckedState.Parent = this.btnTotalR;
-            this.btnTotalR.CustomImages.Parent = this.btnTotalR;
-            this.btnTotalR.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalR.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTotalR.ForeColor = System.Drawing.Color.White;
-            this.btnTotalR.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalR.HoveredState.Parent = this.btnTotalR;
-            this.btnTotalR.Location = new System.Drawing.Point(307, 12);
-            this.btnTotalR.Name = "btnTotalR";
-            this.btnTotalR.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnTotalR.ShadowDecoration.Parent = this.btnTotalR;
-            this.btnTotalR.Size = new System.Drawing.Size(25, 25);
-            this.btnTotalR.TabIndex = 172;
-            this.btnTotalR.TextOffset = new System.Drawing.Point(0, 1);
-            // 
-            // btnTotalP
-            // 
-            this.btnTotalP.BackColor = System.Drawing.Color.Transparent;
-            this.btnTotalP.CheckedState.Parent = this.btnTotalP;
-            this.btnTotalP.CustomImages.Parent = this.btnTotalP;
-            this.btnTotalP.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalP.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTotalP.ForeColor = System.Drawing.Color.White;
-            this.btnTotalP.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalP.HoveredState.Parent = this.btnTotalP;
-            this.btnTotalP.Location = new System.Drawing.Point(149, 12);
-            this.btnTotalP.Name = "btnTotalP";
-            this.btnTotalP.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnTotalP.ShadowDecoration.Parent = this.btnTotalP;
-            this.btnTotalP.Size = new System.Drawing.Size(25, 25);
-            this.btnTotalP.TabIndex = 169;
-            this.btnTotalP.TextOffset = new System.Drawing.Point(0, 1);
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(124, 17);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(20, 15);
-            this.label41.TabIndex = 170;
-            this.label41.Text = "de";
-            // 
-            // drcMover
-            // 
-            this.drcMover.TargetControl = this.gunaLabel10;
             // 
             // ID
             // 
@@ -1034,14 +880,44 @@
             // lvBtnImprimir
             // 
             this.lvBtnImprimir.ContextMenuStrip = this.cmsImpresion;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lvBtnImprimir.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvBtnImprimir.DefaultCellStyle = dataGridViewCellStyle19;
             this.lvBtnImprimir.FillWeight = 5.426739F;
             this.lvBtnImprimir.HeaderText = "";
             this.lvBtnImprimir.Name = "lvBtnImprimir";
             this.lvBtnImprimir.ReadOnly = true;
+            // 
+            // cmsImpresion
+            // 
+            this.cmsImpresion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsDocumentoVenta,
+            this.Contrato,
+            this.ActaInstalacion});
+            this.cmsImpresion.Name = "cmsImpresiones";
+            this.cmsImpresion.Size = new System.Drawing.Size(186, 70);
+            // 
+            // tlsDocumentoVenta
+            // 
+            this.tlsDocumentoVenta.Name = "tlsDocumentoVenta";
+            this.tlsDocumentoVenta.Size = new System.Drawing.Size(185, 22);
+            this.tlsDocumentoVenta.Text = "Documento de Venta";
+            this.tlsDocumentoVenta.Click += new System.EventHandler(this.tlsDocumentoVenta_Click_1);
+            // 
+            // Contrato
+            // 
+            this.Contrato.Name = "Contrato";
+            this.Contrato.Size = new System.Drawing.Size(185, 22);
+            this.Contrato.Text = "Contrato";
+            this.Contrato.Click += new System.EventHandler(this.Contrato_Click);
+            // 
+            // ActaInstalacion
+            // 
+            this.ActaInstalacion.Name = "ActaInstalacion";
+            this.ActaInstalacion.Size = new System.Drawing.Size(185, 22);
+            this.ActaInstalacion.Text = "Acta de Instalacion";
+            this.ActaInstalacion.Click += new System.EventHandler(this.ActaInstalacion_Click_1);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1057,12 +933,136 @@
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Visible = false;
             // 
+            // gbPaginacion
+            // 
+            this.gbPaginacion.Controls.Add(this.btnNumF);
+            this.gbPaginacion.Controls.Add(this.label37);
+            this.gbPaginacion.Controls.Add(this.siticoneVSeparator1);
+            this.gbPaginacion.Controls.Add(this.cboPaginaV);
+            this.gbPaginacion.Controls.Add(this.label40);
+            this.gbPaginacion.Controls.Add(this.btnTotalR);
+            this.gbPaginacion.Controls.Add(this.btnTotalP);
+            this.gbPaginacion.Controls.Add(this.label41);
+            this.gbPaginacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbPaginacion.Location = new System.Drawing.Point(921, 681);
+            this.gbPaginacion.Name = "gbPaginacion";
+            this.gbPaginacion.Size = new System.Drawing.Size(334, 39);
+            this.gbPaginacion.TabIndex = 209;
+            this.gbPaginacion.TabStop = false;
+            // 
+            // btnNumF
+            // 
+            this.btnNumF.BackColor = System.Drawing.Color.Transparent;
+            this.btnNumF.CheckedState.Parent = this.btnNumF;
+            this.btnNumF.CustomImages.Parent = this.btnNumF;
+            this.btnNumF.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumF.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNumF.ForeColor = System.Drawing.Color.White;
+            this.btnNumF.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumF.HoveredState.Parent = this.btnNumF;
+            this.btnNumF.Location = new System.Drawing.Point(209, 12);
+            this.btnNumF.Name = "btnNumF";
+            this.btnNumF.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnNumF.ShadowDecoration.Parent = this.btnNumF;
+            this.btnNumF.Size = new System.Drawing.Size(25, 25);
+            this.btnNumF.TabIndex = 171;
+            this.btnNumF.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(240, 17);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(68, 15);
+            this.label37.TabIndex = 173;
+            this.label37.Text = "registros de";
+            // 
+            // siticoneVSeparator1
+            // 
+            this.siticoneVSeparator1.FillColor = System.Drawing.Color.Gray;
+            this.siticoneVSeparator1.Location = new System.Drawing.Point(190, 8);
+            this.siticoneVSeparator1.Name = "siticoneVSeparator1";
+            this.siticoneVSeparator1.Size = new System.Drawing.Size(13, 27);
+            this.siticoneVSeparator1.TabIndex = 174;
+            // 
+            // cboPaginaV
+            // 
+            this.cboPaginaV.DropDownHeight = 90;
+            this.cboPaginaV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPaginaV.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboPaginaV.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.cboPaginaV.FormattingEnabled = true;
+            this.cboPaginaV.IntegralHeight = false;
+            this.cboPaginaV.Location = new System.Drawing.Point(52, 13);
+            this.cboPaginaV.Name = "cboPaginaV";
+            this.cboPaginaV.Size = new System.Drawing.Size(63, 23);
+            this.cboPaginaV.TabIndex = 167;
+            this.cboPaginaV.SelectedIndexChanged += new System.EventHandler(this.cboPagina_SelectedIndexChanged);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(6, 17);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(43, 15);
+            this.label40.TabIndex = 168;
+            this.label40.Text = "Página";
+            // 
+            // btnTotalR
+            // 
+            this.btnTotalR.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalR.CheckedState.Parent = this.btnTotalR;
+            this.btnTotalR.CustomImages.Parent = this.btnTotalR;
+            this.btnTotalR.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalR.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalR.ForeColor = System.Drawing.Color.White;
+            this.btnTotalR.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalR.HoveredState.Parent = this.btnTotalR;
+            this.btnTotalR.Location = new System.Drawing.Point(307, 12);
+            this.btnTotalR.Name = "btnTotalR";
+            this.btnTotalR.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalR.ShadowDecoration.Parent = this.btnTotalR;
+            this.btnTotalR.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalR.TabIndex = 172;
+            this.btnTotalR.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // btnTotalP
+            // 
+            this.btnTotalP.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalP.CheckedState.Parent = this.btnTotalP;
+            this.btnTotalP.CustomImages.Parent = this.btnTotalP;
+            this.btnTotalP.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalP.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalP.ForeColor = System.Drawing.Color.White;
+            this.btnTotalP.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalP.HoveredState.Parent = this.btnTotalP;
+            this.btnTotalP.Location = new System.Drawing.Point(149, 12);
+            this.btnTotalP.Name = "btnTotalP";
+            this.btnTotalP.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalP.ShadowDecoration.Parent = this.btnTotalP;
+            this.btnTotalP.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalP.TabIndex = 169;
+            this.btnTotalP.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(124, 17);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(20, 15);
+            this.label41.TabIndex = 170;
+            this.label41.Text = "de";
+            // 
+            // drcMover
+            // 
+            this.drcMover.TargetControl = this.gunaLabel10;
+            // 
             // frmBuscarVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1260, 713);
+            this.ClientSize = new System.Drawing.Size(1260, 729);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.siticonePanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1132,11 +1132,7 @@
         private System.Windows.Forms.ToolStripMenuItem Contrato;
         private System.Windows.Forms.ToolStripMenuItem ActaInstalacion;
         private Siticone.UI.WinForms.SiticoneDataGridView dgvLVentas;
-        private Siticone.UI.WinForms.SiticoneComboBox cboEstado;
-        private System.Windows.Forms.Label label4;
         private Siticone.UI.WinForms.SiticoneDragControl drcMover;
-        private System.Windows.Forms.Label label5;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocumento;
         private System.Windows.Forms.PictureBox buscar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero_lv;
@@ -1157,5 +1153,9 @@
         private System.Windows.Forms.DataGridViewButtonColumn lvBtnImprimir;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Label label5;
+        private Siticone.UI.WinForms.SiticoneComboBox cboEstado;
+        private System.Windows.Forms.Label label4;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocumento;
     }
 }
