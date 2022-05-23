@@ -34,9 +34,8 @@
             this.gunaControlBox3 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox4 = new Guna.UI.WinForms.GunaControlBox();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnVolver = new Siticone.UI.WinForms.SiticoneButton();
             this.btnGenerarVenta = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnVolver = new Siticone.UI.WinForms.SiticoneButton();
             this.gunaPanel2.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
             this.SuspendLayout();
@@ -108,44 +107,15 @@
             // 
             this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticonePanel1.BorderThickness = 2;
-            this.siticonePanel1.Controls.Add(this.label2);
             this.siticonePanel1.Controls.Add(this.btnVolver);
             this.siticonePanel1.Controls.Add(this.btnGenerarVenta);
             this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(554, 515);
+            this.siticonePanel1.Size = new System.Drawing.Size(554, 586);
             this.siticonePanel1.TabIndex = 165;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(128, 577);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(325, 37);
-            this.label2.TabIndex = 97;
-            this.label2.Text = "¿ Desea Generar la Venta ?";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.BorderRadius = 3;
-            this.btnVolver.BorderThickness = 1;
-            this.btnVolver.CheckedState.Parent = this.btnVolver;
-            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVolver.CustomImages.Parent = this.btnVolver;
-            this.btnVolver.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnVolver.ForeColor = System.Drawing.Color.White;
-            this.btnVolver.HoveredState.Parent = this.btnVolver;
-            this.btnVolver.Location = new System.Drawing.Point(328, 631);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.ShadowDecoration.Parent = this.btnVolver;
-            this.btnVolver.Size = new System.Drawing.Size(130, 42);
-            this.btnVolver.TabIndex = 99;
-            this.btnVolver.Text = "Volver";
+            this.siticonePanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.siticonePanel1_Paint);
             // 
             // btnGenerarVenta
             // 
@@ -159,24 +129,45 @@
             this.btnGenerarVenta.ForeColor = System.Drawing.Color.White;
             this.btnGenerarVenta.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnGenerarVenta.HoveredState.Parent = this.btnGenerarVenta;
-            this.btnGenerarVenta.Location = new System.Drawing.Point(134, 631);
+            this.btnGenerarVenta.Location = new System.Drawing.Point(118, 529);
             this.btnGenerarVenta.Name = "btnGenerarVenta";
             this.btnGenerarVenta.PressedColor = System.Drawing.Color.White;
             this.btnGenerarVenta.ShadowDecoration.Parent = this.btnGenerarVenta;
             this.btnGenerarVenta.Size = new System.Drawing.Size(130, 42);
             this.btnGenerarVenta.TabIndex = 98;
             this.btnGenerarVenta.Text = "Generar Venta";
+            this.btnGenerarVenta.Click += new System.EventHandler(this.btnGenerarVenta_Click);
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.BorderRadius = 3;
+            this.btnVolver.BorderThickness = 1;
+            this.btnVolver.CheckedState.Parent = this.btnVolver;
+            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVolver.CustomImages.Parent = this.btnVolver;
+            this.btnVolver.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnVolver.ForeColor = System.Drawing.Color.White;
+            this.btnVolver.HoveredState.Parent = this.btnVolver;
+            this.btnVolver.Location = new System.Drawing.Point(312, 529);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.ShadowDecoration.Parent = this.btnVolver;
+            this.btnVolver.Size = new System.Drawing.Size(130, 42);
+            this.btnVolver.TabIndex = 99;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // frmVPActaCambioTitularidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 515);
+            this.ClientSize = new System.Drawing.Size(554, 586);
             this.Controls.Add(this.gunaPanel2);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.siticonePanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmVPActaCambioTitularidad";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmVPActaCambioTitularidad";
             this.Load += new System.EventHandler(this.frmVPActaCambioTitularidad_Load);
             this.gunaPanel2.ResumeLayout(false);
@@ -194,7 +185,6 @@
         private Guna.UI.WinForms.GunaControlBox gunaControlBox3;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox4;
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
-        private System.Windows.Forms.Label label2;
         private Siticone.UI.WinForms.SiticoneButton btnVolver;
         private Siticone.UI.WinForms.SiticoneButton btnGenerarVenta;
     }

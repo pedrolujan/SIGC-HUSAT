@@ -617,6 +617,28 @@ namespace wfaIntegradoCom.Funciones
             }
             return srt;
         }
+        public static String fnObtenerUsuarioActual()
+        {
+            BLVentaGeneral blVG = new BLVentaGeneral();
+            clsUtil objUtil = new clsUtil();
+            Boolean bResult;
+            String cUsuario = "";
+            try
+            {
+                cUsuario = blVG.blObtenerUsuarioActual(Variables.gnCodUser);
+
+                return cUsuario;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("frmRegistrarVehiculo", "fnBuscarVehiculo", ex.Message);
+                return "";
+            }
+            finally
+            {
+                objUtil = null;
+            }
+        }
 
     }
 }

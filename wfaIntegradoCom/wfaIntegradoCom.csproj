@@ -769,6 +769,7 @@
     <Content Include="icono.ico" />
     <Content Include="Imagenes\carrito_opt.png" />
     <Content Include="Imagenes\salir.bmp" />
+    <EmbeddedResource Include="Consultas\ActaCambioVehicular.rdlc" />
     <EmbeddedResource Include="Consultas\DocumentoVenta.rdlc" />
     <EmbeddedResource Include="Consultas\frmExportConsultasCronograma.rdlc" />
     <EmbeddedResource Include="Consultas\frmExportConsultasCronograma.resx">
