@@ -459,7 +459,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=FormatDateTime(First(Fields!dFechaReg.Value, "dsVehiculo"),"dd/MMMM/yyyy")</Value>
+                    <Value>=cDate(First(Fields!dFechaReg.Value, "dsVehiculo")).ToString("dd/MM/yyyy")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>

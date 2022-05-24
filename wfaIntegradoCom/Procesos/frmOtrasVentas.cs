@@ -213,7 +213,10 @@ namespace wfaIntegradoCom.Procesos
                 else 
                 {
                     estad = false;
-                    estMotivo = true; 
+                    estMotivo = true;
+                    tituloGbCliente = "Ingrese datos del cliente";
+
+                    phlBusqGbCliente = "Ingrese DNI.";
                 }
             }
             
@@ -449,6 +452,7 @@ namespace wfaIntegradoCom.Procesos
             clsOtrasVentaGeneral = new OtrasVentas();
             try
             {
+                dtFechaTitu.Value = Variables.gdFechaSis;
                 FunGeneral.fnLlenarCboSegunTablaTipoCon(cboTipoVenta, "idTipoTransaccion", "nombre", "TipoTransaccion", "estado","1",true);
                 
                 frm.fnLLnenarMarcaxCategoria(1, 0, true, cboMarca);
@@ -873,6 +877,8 @@ namespace wfaIntegradoCom.Procesos
                             clsClienteDocumentoV.idProv = Convert.ToInt32(drMenu["idProv"]);
                             clsClienteDocumentoV.idDist = Convert.ToInt32(drMenu["idDist"]);
                             clsClienteDocumentoV.cDocumento = Convert.ToString(drMenu["cDocumento"]);
+                            clsClienteDocumentoV.cTipoDoc = Convert.ToString(drMenu["NomTdoc"]);
+
                             clsClienteDocumentoV.cContactoNom1 = Convert.ToString(drMenu["cContactoNom1"]);
                             clsClienteDocumentoV.cContactoNom2 = Convert.ToString(drMenu["cContactoNom2"]);
                             clsClienteDocumentoV.cContactoCel1 = Convert.ToString(drMenu["cContactoCel1"]);
@@ -880,6 +886,9 @@ namespace wfaIntegradoCom.Procesos
                             clsClienteDocumentoV.cEmpresa = Convert.ToString(drMenu["cEmpresa"]);
                             clsClienteDocumentoV.cCorreo = Convert.ToString(drMenu["cCorreo"]);
                             clsClienteDocumentoV.ubigeo = Convert.ToString(drMenu["cDireccion"] + " " + drMenu["cNomDist"] + " " + drMenu["cNomProv"] + " " + drMenu["cNomDep"]);
+
+                            clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(drMenu["cTipPers"]) == 2 ? "Rason social" : "Nombre";
+
                         }
                         txtDoc.Text = clsClienteDocumentoV.cDocumento;
                         txtIdCliente.Text = clsClienteDocumentoV.idCliente.ToString();
@@ -1786,7 +1795,7 @@ namespace wfaIntegradoCom.Procesos
                 nIGV = DocumentoVenta.nIGV,
                 nMontoTotal = DocumentoVenta.nMontoTotal,
                 cUsuario = FunGeneral.fnObtenerUsuarioActual(),
-                cVehiculos = clsVehiculoServicios is Vehiculo? clsVehiculoServicios.vPlaca: fnObtenerVehiculos(),
+                cVehiculos = clsVehiculoServicios is Vehiculo && clsVehiculoServicios.vPlaca.ToString()!=""? clsVehiculoServicios.vPlaca: fnObtenerVehiculos(),
                 cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
                 cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",
                 cTipoVenta = lstTipoVenta.Nombre
@@ -2160,34 +2169,35 @@ namespace wfaIntegradoCom.Procesos
             fnHabilitarControles(false);
             Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
             lstLdv = fnGenerarDetalleOtrasVentas();
+            abrirFrmVPOtrasVentas.fnEstadoProcesos(lnTipoConCambio);
             abrirFrmVPOtrasVentas.Inicio(fnlstDocumentoVenta(),/*lstOtrasVentas*/ lstLdv, -2);
 
-            if (lnTipoConCambio==0)
-            {
-
-            }
+            
             Consultas.frmVPActaCambioTitularidad frmCT = new Consultas.frmVPActaCambioTitularidad();
 
             if (stCondicionprocesos==-1)
             {
-                List<Cliente> lstCDV = new List<Cliente>();
-                List<Cliente> lstCAN = new List<Cliente>();
-                lstCDV.Add(clsOtrasVentaGeneral.clsClienteDocumentoVenta);
-                lstCAN.Add(clsOtrasVentaGeneral.clsClienteAntecesor);
+                
 
-                frmCT.Inicio(lstCDV, lstCAN, lstvehiculo, -1);
-            }else if (stCondicionprocesos==-2)
+                frmCT.Inicio(clsOtrasVentaGeneral.lstXmlActTitularidad[0].lstClienteDocVenta, clsOtrasVentaGeneral.lstXmlActTitularidad[0].lstClienteAntecesor, clsOtrasVentaGeneral.lstXmlActTitularidad[0].lstVehiculo, -1);
+                if (stCondicionprocesos == -3)
+                {
+                    Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                    Double sumaPrimerPago = lstLdv.Sum(i => i.Importe);
+                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo);
+                }
+            }
+            else if (stCondicionprocesos==-2)
             {
                 clsVehiculoServicios.dFechaReg = Convert.ToDateTime(dtFechaTitu.Value);
-                frmCT.Inicio2(lstvehiculo, clsVehiculoServicios, clsEquipo1, clsClienteDocumentoV, -2);
+                frmCT.Inicio2(clsOtrasVentaGeneral.lstXmlActCambioVehicular[0].lstVehiculo, clsOtrasVentaGeneral.lstXmlActCambioVehicular[0].clsVehiculoServicios,clsOtrasVentaGeneral.lstXmlActCambioVehicular[0].clsEquipoImeis, clsOtrasVentaGeneral.lstXmlActCambioVehicular[0].clsClienteDov, -2);
+                if (stCondicionprocesos == -3)
+                {
+                    Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                    Double sumaPrimerPago = lstLdv.Sum(i => i.Importe);
+                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo);
+                }
             }
-            else if (stCondicionprocesos==-3)
-            {
-                Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                Double sumaPrimerPago = lstLdv.Sum(i => i.Importe);
-                fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo);
-            }
-
            
             
             
@@ -2704,7 +2714,33 @@ namespace wfaIntegradoCom.Procesos
                 lstvehiculo[0].dFechaReg = dtFechaTitu.Value;
                 lstvehiculo[0].Propietario = cboMotivo.SelectedValue.ToString();
             }
-            
+            List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
+            xmlDocumentoVenta.Add(new xmlDocumentoVentaGeneral
+            {
+                xmlDocumentoVenta = fnlstDocumentoVenta(),
+                xmlDetalleVentas = fnGenerarDetalleOtrasVentas()
+            });
+
+            List<Cliente> lstCDV = new List<Cliente>();
+            List<Cliente> lstCAN = new List<Cliente>();
+            lstCDV.Add(clsClienteDocumentoV);
+            lstCAN.Add(clsClienteAntecesor);
+            List<xmlActaTitularidad> lstxmlCtitu = new List<xmlActaTitularidad>();
+            lstxmlCtitu.Add(new xmlActaTitularidad
+            {
+                lstClienteDocVenta= lstCDV,
+                lstClienteAntecesor= lstCAN,
+                lstVehiculo=lstvehiculo
+            });
+            List<xmlActaCambioVehicular> lstxmlCvh = new List<xmlActaCambioVehicular>();
+            clsVehiculoServicios.dFechaReg = Convert.ToDateTime(dtFechaTitu.Value);
+            lstxmlCvh.Add(new xmlActaCambioVehicular
+            {
+                lstVehiculo= lstvehiculo,
+                clsVehiculoServicios= clsVehiculoServicios,
+                clsEquipoImeis= clsEquipo1,
+                clsClienteDov= clsClienteDocumentoV
+            });
             //clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(cboTipoPersona.SelectedValue) == 2 ? "Rason social" : "Nombre";
             //clsClienteDocumentoV.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
             clsOtrasVentaGeneral = new OtrasVentas
@@ -2719,8 +2755,10 @@ namespace wfaIntegradoCom.Procesos
                 dFechaRegistro = Variables.gdFechaSis,
                 CodDocumento = cboTipoDocEmitir.SelectedValue.ToString(),
                 iddUsuario=Variables.gnCodUser,
-                idMoneda=Mon.idMoneda
-
+                idMoneda=Mon.idMoneda,
+                lstXmlDocVenta= xmlDocumentoVenta,
+                lstXmlActTitularidad= lstxmlCtitu,
+                lstXmlActCambioVehicular = lstxmlCvh
             } ;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -2745,14 +2783,9 @@ namespace wfaIntegradoCom.Procesos
                                 fnCargarClasePrincipal();
                                 if (fnMostrarVPDocumentoventa())
                                 {
-                                    List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
-                                    xmlDocumentoVenta.Add(new xmlDocumentoVentaGeneral
-                                    {
-                                       xmlDocumentoVenta= fnlstDocumentoVenta(),
-                                       xmlDetalleVentas= fnGenerarDetalleOtrasVentas()
-                                    });
+                                    
                                     fnCargarClasePrincipal();
-                                    blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral, xmlDocumentoVenta, lnTipoCon);
+                                    blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral, lnTipoCon);
                                     if (blnResultado)
                                     {
                                         //blnResultado = fnObtenerPreciosxProductoxUM(idEquipo);

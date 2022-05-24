@@ -113,18 +113,20 @@ namespace wfaIntegradoCom.Consultas
             if (lnTipoCon==-1)
             {
                 frmOtrasVentas fr = new frmOtrasVentas();
-                fr.fnCondicionProcesos(-2);
+                fr.fnCondicionProcesos(-3);
             }else if (lnTipoCon==-2)
             {
                 frmOtrasVentas fr = new frmOtrasVentas();
                 fr.fnCondicionProcesos(-3);
             }
+            this.Close();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
             frmOtrasVentas fr = new frmOtrasVentas();
             fr.fnCondicionProcesos(0);
+            this.Close();
         }
     }
 }

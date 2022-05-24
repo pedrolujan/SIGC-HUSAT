@@ -106,8 +106,9 @@ namespace wfaIntegradoCom.Procesos
             }
             else if (lnTipoLLamada == -2)
             {
-                frmOtrasVentas frm2 = new frmOtrasVentas();
-                frm2.fnRecuperarEstadoGenVenta(false);
+                frmOtrasVentas fr = new frmOtrasVentas();
+                fr.fnRecuperarEstadoGenVenta(false);
+                fr.fnCondicionProcesos(0);
 
             }
         }
@@ -405,9 +406,10 @@ namespace wfaIntegradoCom.Procesos
             }
             else if (lnTipoLLamada == -2)
             {
-                frmOtrasVentas frm2 = new frmOtrasVentas();
-                frm2.fnRecuperarEstadoGenVenta(false);
-                
+                frmOtrasVentas fr = new frmOtrasVentas();
+                fr.fnRecuperarEstadoGenVenta(false);
+                fr.fnCondicionProcesos(0);
+
             }
             this.Dispose();
         }

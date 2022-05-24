@@ -119,6 +119,7 @@ namespace wfaIntegradoCom.Consultas
             }else if (lnTipoCon == -2)
             {
                 frmOtrasVentas fr = new frmOtrasVentas();
+                fr.fnRecuperarEstadoGenVenta(false);
                 fr.fnCondicionProcesos(0);
             }
 
@@ -196,6 +197,12 @@ namespace wfaIntegradoCom.Consultas
                 frmControlPagoVenta frmCVent = new frmControlPagoVenta();
                 frmCVent.fnCambiarEstadoVenta(false);
 
+            }
+            else if (lnTipoCon==-2)
+            {
+                frmOtrasVentas fr = new frmOtrasVentas();
+                fr.fnRecuperarEstadoGenVenta(false);
+                fr.fnCondicionProcesos(0);
             }
         }
     }

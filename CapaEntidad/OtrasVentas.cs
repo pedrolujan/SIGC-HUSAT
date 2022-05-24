@@ -44,6 +44,9 @@ namespace CapaEntidad
         public List<Equipo_imeis> lstClienteImeis { get; set; }
         public List<DetalleVenta> lstDetalleVenta { get; set; }
         public List<Pagos> lstTrandiaria { get; set; }
+        public List<xmlDocumentoVentaGeneral> lstXmlDocVenta = new List<xmlDocumentoVentaGeneral>();
+        public List<xmlActaTitularidad> lstXmlActTitularidad = new List<xmlActaTitularidad>();
+        public List<xmlActaCambioVehicular> lstXmlActCambioVehicular = new List<xmlActaCambioVehicular>();
     }
 
     public class StokAccesorios
@@ -81,6 +84,15 @@ namespace CapaEntidad
         public List<Cliente> lstClienteDocVenta { get; set; }
         public List<Cliente> lstClienteAntecesor { get; set; }
         public List<Vehiculo> lstVehiculo { get; set; }
+    }
+
+    public class xmlActaCambioVehicular
+    {
+        public xmlActaCambioVehicular() { }
+        public List<Vehiculo> lstVehiculo = new List<Vehiculo>();
+        public Vehiculo clsVehiculoServicios = new Vehiculo();
+        public Equipo_imeis clsEquipoImeis = new Equipo_imeis();
+        public Cliente clsClienteDov = new Cliente();
     }
 
 }
