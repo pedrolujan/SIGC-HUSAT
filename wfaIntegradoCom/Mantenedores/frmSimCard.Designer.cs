@@ -305,11 +305,12 @@
             this.rbOperador.Controls.Add(this.rbRecibo);
             this.rbOperador.Controls.Add(this.rbSimCard);
             this.rbOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbOperador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rbOperador.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.rbOperador.ForeColor = System.Drawing.Color.White;
+            this.rbOperador.LineColor = System.Drawing.Color.DimGray;
             this.rbOperador.LineTop = 20;
             this.rbOperador.Location = new System.Drawing.Point(25, 6);
             this.rbOperador.Name = "rbOperador";
+            this.rbOperador.Radius = 5;
             this.rbOperador.Size = new System.Drawing.Size(292, 147);
             this.rbOperador.TabIndex = 164;
             this.rbOperador.Text = "BUSCAR POR:";
@@ -462,7 +463,7 @@
             this.dgChip.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgChip.EnableHeadersVisualStyles = false;
             this.dgChip.GridColor = System.Drawing.Color.LightGray;
-            this.dgChip.Location = new System.Drawing.Point(327, 22);
+            this.dgChip.Location = new System.Drawing.Point(328, 22);
             this.dgChip.Name = "dgChip";
             this.dgChip.ReadOnly = true;
             this.dgChip.RowHeadersVisible = false;
@@ -863,11 +864,13 @@
             this.gbEstadoChip.Controls.Add(this.lblEstado);
             this.gbEstadoChip.Controls.Add(this.pbEstado);
             this.gbEstadoChip.Controls.Add(this.cboEstado);
+            this.gbEstadoChip.Cursor = System.Windows.Forms.Cursors.Default;
             this.gbEstadoChip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbEstadoChip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbEstadoChip.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.gbEstadoChip.LineColor = System.Drawing.Color.DimGray;
             this.gbEstadoChip.Location = new System.Drawing.Point(747, 149);
             this.gbEstadoChip.Name = "gbEstadoChip";
+            this.gbEstadoChip.Radius = 5;
             this.gbEstadoChip.Size = new System.Drawing.Size(481, 142);
             this.gbEstadoChip.TabIndex = 83;
             this.gbEstadoChip.Text = "ESTADO:";
@@ -934,10 +937,11 @@
             this.gbDatosChip.Controls.Add(this.txtidChip);
             this.gbDatosChip.Controls.Add(this.label5);
             this.gbDatosChip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDatosChip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbDatosChip.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.gbDatosChip.ForeColor = System.Drawing.Color.White;
+            this.gbDatosChip.LineColor = System.Drawing.Color.DimGray;
             this.gbDatosChip.Location = new System.Drawing.Point(12, 149);
             this.gbDatosChip.Name = "gbDatosChip";
+            this.gbDatosChip.Radius = 5;
             this.gbDatosChip.Size = new System.Drawing.Size(697, 142);
             this.gbDatosChip.TabIndex = 76;
             this.gbDatosChip.Text = "DATOS DEL CHIP :";
@@ -1150,10 +1154,11 @@
             this.gbFechasChip.Controls.Add(this.pbFechaCompra);
             this.gbFechasChip.Controls.Add(this.gunaLabel1);
             this.gbFechasChip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFechasChip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbFechasChip.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.gbFechasChip.ForeColor = System.Drawing.Color.White;
+            this.gbFechasChip.LineColor = System.Drawing.Color.DimGray;
             this.gbFechasChip.Location = new System.Drawing.Point(8, 302);
             this.gbFechasChip.Name = "gbFechasChip";
+            this.gbFechasChip.Radius = 5;
             this.gbFechasChip.Size = new System.Drawing.Size(1220, 152);
             this.gbFechasChip.TabIndex = 77;
             this.gbFechasChip.Text = "FECHAS:";
@@ -1804,7 +1809,8 @@
             // 
             // siticoneGroupBox1
             // 
-            this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
+            this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gray;
+            this.siticoneGroupBox1.BorderRadius = 5;
             this.siticoneGroupBox1.Controls.Add(this.chkHabilitarFechas);
             this.siticoneGroupBox1.Controls.Add(this.btnNuevoHistorial);
             this.siticoneGroupBox1.Controls.Add(this.label17);
@@ -1814,7 +1820,7 @@
             this.siticoneGroupBox1.Controls.Add(this.dtHFechaInicio);
             this.siticoneGroupBox1.Controls.Add(this.label20);
             this.siticoneGroupBox1.Controls.Add(this.label19);
-            this.siticoneGroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.siticoneGroupBox1.CustomBorderColor = System.Drawing.Color.DimGray;
             this.siticoneGroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.siticoneGroupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneGroupBox1.ForeColor = System.Drawing.Color.White;
