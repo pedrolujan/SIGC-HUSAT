@@ -198,9 +198,10 @@
             this.gbDatosEquipo.Controls.Add(this.txtStokImeis);
             this.gbDatosEquipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDatosEquipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbDatosEquipo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gbDatosEquipo.LineColor = System.Drawing.Color.DimGray;
             this.gbDatosEquipo.Location = new System.Drawing.Point(23, 178);
             this.gbDatosEquipo.Name = "gbDatosEquipo";
+            this.gbDatosEquipo.Radius = 5;
             this.gbDatosEquipo.Size = new System.Drawing.Size(1219, 440);
             this.gbDatosEquipo.TabIndex = 64;
             this.gbDatosEquipo.Text = "DATOS DEL EQUIPO";
@@ -555,7 +556,7 @@
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -589,7 +590,7 @@
             this.dgImei_serie.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgImei_serie.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgImei_serie.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgImei_serie.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgImei_serie.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgImei_serie.ThemeStyle.RowsStyle.Height = 22;
             this.dgImei_serie.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgImei_serie.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -1071,8 +1072,8 @@
             // 
             this.gunaPanel2.BackColor = System.Drawing.SystemColors.Control;
             this.gunaPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gunaPanel2.Controls.Add(this.gbPaginacion);
             this.gunaPanel2.Controls.Add(this.dgEquipo);
+            this.gunaPanel2.Controls.Add(this.gbPaginacion);
             this.gunaPanel2.Controls.Add(this.gbDatosEquipo);
             this.gunaPanel2.Controls.Add(this.txtSeries2);
             this.gunaPanel2.Controls.Add(this.txtImeis2);
@@ -1354,12 +1355,13 @@
             // 
             // siticoneGroupBox3
             // 
-            this.siticoneGroupBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.siticoneGroupBox3.BorderColor = System.Drawing.Color.Gray;
+            this.siticoneGroupBox3.BorderRadius = 5;
             this.siticoneGroupBox3.Controls.Add(this.label12);
             this.siticoneGroupBox3.Controls.Add(this.cboBuscarModelo);
             this.siticoneGroupBox3.Controls.Add(this.label8);
             this.siticoneGroupBox3.Controls.Add(this.cboBuscarMarca);
-            this.siticoneGroupBox3.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.siticoneGroupBox3.CustomBorderColor = System.Drawing.Color.DimGray;
             this.siticoneGroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.siticoneGroupBox3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneGroupBox3.ForeColor = System.Drawing.Color.White;
