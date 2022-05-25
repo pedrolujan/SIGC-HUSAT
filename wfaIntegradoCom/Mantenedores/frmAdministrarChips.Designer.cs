@@ -129,8 +129,8 @@
             // siticonePanel1
             // 
             this.siticonePanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticonePanel1.BorderThickness = 1;
+            this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticonePanel1.BorderThickness = 3;
             this.siticonePanel1.Controls.Add(this.btnNuevo);
             this.siticonePanel1.Controls.Add(this.chkBuscar);
             this.siticonePanel1.Controls.Add(this.gbChkBuscar);
@@ -205,7 +205,7 @@
             // 
             this.gbChkBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gbChkBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gbChkBuscar.Location = new System.Drawing.Point(694, 34);
+            this.gbChkBuscar.Location = new System.Drawing.Point(692, 34);
             this.gbChkBuscar.Name = "gbChkBuscar";
             this.gbChkBuscar.Size = new System.Drawing.Size(122, 33);
             this.gbChkBuscar.TabIndex = 111;

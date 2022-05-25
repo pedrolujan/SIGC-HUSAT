@@ -287,7 +287,7 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(14, 35);
+            this.tabControl1.Location = new System.Drawing.Point(17, 33);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1134, 668);
@@ -548,11 +548,12 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbBuscar.Controls.Add(this.rbNombre);
             this.gbBuscar.Controls.Add(this.rbPlaca);
             this.gbBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbBuscar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.gbBuscar.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.gbBuscar.ForeColor = System.Drawing.Color.White;
+            this.gbBuscar.LineColor = System.Drawing.Color.DimGray;
             this.gbBuscar.LineTop = 20;
             this.gbBuscar.Location = new System.Drawing.Point(3, 5);
             this.gbBuscar.Name = "gbBuscar";
+            this.gbBuscar.Radius = 5;
             this.gbBuscar.Size = new System.Drawing.Size(160, 82);
             this.gbBuscar.TabIndex = 186;
             this.gbBuscar.Text = "BUSCAR POR:";
@@ -643,10 +644,11 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbDatosVehiculo.Controls.Add(this.lblSerie);
             this.gbDatosVehiculo.Controls.Add(this.label4);
             this.gbDatosVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDatosVehiculo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbDatosVehiculo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.gbDatosVehiculo.ForeColor = System.Drawing.Color.Silver;
+            this.gbDatosVehiculo.LineColor = System.Drawing.Color.DimGray;
             this.gbDatosVehiculo.Location = new System.Drawing.Point(3, 92);
             this.gbDatosVehiculo.Name = "gbDatosVehiculo";
+            this.gbDatosVehiculo.Radius = 5;
             this.gbDatosVehiculo.Size = new System.Drawing.Size(1075, 435);
             this.gbDatosVehiculo.TabIndex = 187;
             this.gbDatosVehiculo.Text = "DATOS DEL VEHICULO :";
@@ -1818,7 +1820,8 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             // siticoneGroupBox1
             // 
-            this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
+            this.siticoneGroupBox1.BorderColor = System.Drawing.Color.DarkGray;
+            this.siticoneGroupBox1.BorderRadius = 5;
             this.siticoneGroupBox1.Controls.Add(this.siticoneGroupBox2);
             this.siticoneGroupBox1.Controls.Add(this.chkHabilitarFechas);
             this.siticoneGroupBox1.Controls.Add(this.btnNuevoHistorial);
@@ -1826,7 +1829,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneGroupBox1.Controls.Add(this.dtHFechaInicio);
             this.siticoneGroupBox1.Controls.Add(this.label20);
             this.siticoneGroupBox1.Controls.Add(this.label19);
-            this.siticoneGroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.siticoneGroupBox1.CustomBorderColor = System.Drawing.Color.DimGray;
             this.siticoneGroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.siticoneGroupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneGroupBox1.ForeColor = System.Drawing.Color.White;
