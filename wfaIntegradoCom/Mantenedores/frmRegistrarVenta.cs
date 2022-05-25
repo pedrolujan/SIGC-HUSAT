@@ -401,7 +401,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cboTipoVetaBusq.SelectedValue = 1;
                 dtpFechaRegistro.Value = Variables.gdFechaSis;
                 dtFechaPago.Value = Variables.gdFechaSis;
-
+               fnActualizarEstadoContratoAutomatico();
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
                 if (Variables.gsCargoUsuario == "PETR0001" || Variables.gsCargoUsuario == "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
@@ -558,6 +558,16 @@ namespace wfaIntegradoCom.Mantenedores
             }
             
         }
+        private void fnActualizarEstadoContratoAutomatico()
+        {
+            clsUtil objUtil = new clsUtil();
+            BLVentaGeneral blVentaGeneral = new BLVentaGeneral();
+            Boolean bResult;
+
+                bResult = blVentaGeneral.blActualizarEstadoContratoAutomatico(0);
+             
+        }
+
 
         private Tuple<bool,string> fnValidarTabla(List<Vehiculo> lstVehiculo)
         {
@@ -2566,6 +2576,7 @@ namespace wfaIntegradoCom.Mantenedores
                         estadoReturn= false;
                     }
                 }
+              //  fnActualizarEstadoContratoAutomatico();
 
                 return estadoReturn;
                

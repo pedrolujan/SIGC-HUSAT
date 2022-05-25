@@ -84,6 +84,38 @@ namespace CapaDato
             }
 
         }
+
+        public Boolean DAActualizarEstadoContratoAutomatico(Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[1];
+
+            clsConexion objCnx = null;
+            DataTable dtAECA = new DataTable();
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
+
+                objCnx = new clsConexion("");
+                dtAECA = objCnx.EjecutarProcedimientoDT("uspActualizarEstadoContratoAutomatico", pa);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DAAccesorios.cs", "daDevolverAccesorio", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
+
         public String daBuscarVentaAImprimir(VentaGeneral clsVentaGeneral, Int16 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[12];

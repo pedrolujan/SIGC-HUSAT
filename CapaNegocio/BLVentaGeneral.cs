@@ -25,6 +25,21 @@ namespace CapaNegocio
 
         }
 
+        public Boolean blActualizarEstadoContratoAutomatico(Int32 tipoCon)
+        {
+
+            DAVentaGeneral objAECA = new DAVentaGeneral();
+            try
+            {
+                return objAECA.DAActualizarEstadoContratoAutomatico(tipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
         public DataTable blBuscarVentaGeneral(Boolean habilitarfechas,DateTime fechaInical,DateTime fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon,Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones, String valorRadio)
         {
             DAVentaGeneral objVentaG = new DAVentaGeneral();

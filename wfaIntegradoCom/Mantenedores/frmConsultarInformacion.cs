@@ -129,7 +129,7 @@ namespace wfaIntegradoCom.Mantenedores
                         lblMOperador.Text = Convert.ToString(drMenu["operador"]) != "" ? Convert.ToString(drMenu["operador"]) : "-------------";
                         lblMCuenta.Text = Convert.ToString(drMenu["numeroRecibo"]) != "" ? Convert.ToString(drMenu["numeroRecibo"]) : "-----------";
                         lblMEstadoSimCard.Text = Convert.ToString(drMenu["cNomTab"]) != "" ? Convert.ToString(drMenu["cNomTab"]) : "----------";
-
+                        lblTC.Text = Convert.ToString(drMenu["tipoContrato"]);
                         if (Convert.ToString(drMenu["cDocCompra"]) == "" || Convert.ToString(drMenu["cDocCompra"]) == null)
                         {
                             fnMostrarDatosImei(gbMEquipo, false, lblSmsMEquipoGps, "Aun no hay datos para esta opcion", true);
@@ -181,7 +181,7 @@ namespace wfaIntegradoCom.Mantenedores
                             fnMostrarDatosImei(gbMVehiculo, true, lblSmsMVehiculo, "", false);
                         }
 
-
+                        OcultarBotones(false);
                     }
                 }
                 else
@@ -454,6 +454,33 @@ namespace wfaIntegradoCom.Mantenedores
 
             
 
+        }
+        private void OcultarBotones(Boolean estad)
+        {
+            if (lblTC.Text == "TICN0001")
+            {
+                btnVerde.Visible = true;
+                lblTC.Visible = false;
+                btnRojo.Visible = false;
+                label12.Visible = true;
+                label7.Visible = false;
+            }
+            else if (lblTC.Text == "TICN0004")
+            {
+                btnVerde.Visible = false;
+                btnRojo.Visible = true;
+                lblTC.Visible = false;
+                label7.Visible = true;
+                label12.Visible = false;
+            }
+            else
+            {
+                btnVerde.Visible = false;
+                btnRojo.Visible = false;
+                lblTC.Visible = false;
+                label7.Visible = false;
+                label12.Visible = false;
+            }
         }
     }
 }
