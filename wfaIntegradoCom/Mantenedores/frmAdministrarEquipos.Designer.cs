@@ -228,7 +228,7 @@
             // 
             // siticonePanel1
             // 
-            this.siticonePanel1.BorderColor = System.Drawing.Color.DarkGray;
+            this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticonePanel1.BorderRadius = 3;
             this.siticonePanel1.BorderThickness = 3;
             this.siticonePanel1.Controls.Add(this.tabControl);
@@ -246,10 +246,10 @@
             // 
             this.tabControl.Controls.Add(this.asignar);
             this.tabControl.Controls.Add(this.historial);
-            this.tabControl.Location = new System.Drawing.Point(0, 25);
+            this.tabControl.Location = new System.Drawing.Point(0, 27);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1212, 687);
+            this.tabControl.Size = new System.Drawing.Size(1209, 681);
             this.tabControl.TabIndex = 171;
             // 
             // asignar
@@ -285,7 +285,7 @@
             this.asignar.Location = new System.Drawing.Point(4, 22);
             this.asignar.Name = "asignar";
             this.asignar.Padding = new System.Windows.Forms.Padding(3);
-            this.asignar.Size = new System.Drawing.Size(1204, 661);
+            this.asignar.Size = new System.Drawing.Size(1201, 655);
             this.asignar.TabIndex = 0;
             this.asignar.Text = "ASIGN: EQUIPOS";
             this.asignar.UseVisualStyleBackColor = true;
@@ -565,10 +565,11 @@
             this.gbFechas.Controls.Add(this.lblFechaMovimiento);
             this.gbFechas.Enabled = false;
             this.gbFechas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFechas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbFechas.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.gbFechas.ForeColor = System.Drawing.Color.White;
+            this.gbFechas.LineColor = System.Drawing.Color.DimGray;
             this.gbFechas.Location = new System.Drawing.Point(761, 387);
             this.gbFechas.Name = "gbFechas";
+            this.gbFechas.Radius = 5;
             this.gbFechas.Size = new System.Drawing.Size(399, 122);
             this.gbFechas.TabIndex = 175;
             this.gbFechas.Text = "Fecha";
@@ -657,13 +658,14 @@
             // siticoneGroupBox3
             // 
             this.siticoneGroupBox3.BorderColor = System.Drawing.Color.Gainsboro;
+            this.siticoneGroupBox3.BorderRadius = 5;
             this.siticoneGroupBox3.Controls.Add(this.cboEstadoBuscar);
             this.siticoneGroupBox3.Controls.Add(this.label15);
             this.siticoneGroupBox3.Controls.Add(this.label12);
             this.siticoneGroupBox3.Controls.Add(this.cboBuscarModelo);
             this.siticoneGroupBox3.Controls.Add(this.label14);
             this.siticoneGroupBox3.Controls.Add(this.cboBuscarMarca);
-            this.siticoneGroupBox3.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.siticoneGroupBox3.CustomBorderColor = System.Drawing.Color.DimGray;
             this.siticoneGroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.siticoneGroupBox3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneGroupBox3.ForeColor = System.Drawing.Color.White;
@@ -798,10 +800,11 @@
             this.gbDatosEquipo.Controls.Add(this.txtEquipoUnico);
             this.gbDatosEquipo.Controls.Add(this.lblSimCard);
             this.gbDatosEquipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDatosEquipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbDatosEquipo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.gbDatosEquipo.ForeColor = System.Drawing.Color.White;
+            this.gbDatosEquipo.LineColor = System.Drawing.Color.DimGray;
             this.gbDatosEquipo.Location = new System.Drawing.Point(21, 175);
             this.gbDatosEquipo.Name = "gbDatosEquipo";
+            this.gbDatosEquipo.Radius = 5;
             this.gbDatosEquipo.Size = new System.Drawing.Size(1139, 204);
             this.gbDatosEquipo.TabIndex = 185;
             this.gbDatosEquipo.Text = "Datos del Equipo";
@@ -1236,10 +1239,11 @@
             this.gbAsignAciones.Controls.Add(this.gunaRadioButton1);
             this.gbAsignAciones.Controls.Add(this.lblPlataforma);
             this.gbAsignAciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbAsignAciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbAsignAciones.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.gbAsignAciones.ForeColor = System.Drawing.Color.White;
+            this.gbAsignAciones.LineColor = System.Drawing.Color.DimGray;
             this.gbAsignAciones.Location = new System.Drawing.Point(20, 387);
             this.gbAsignAciones.Name = "gbAsignAciones";
+            this.gbAsignAciones.Radius = 5;
             this.gbAsignAciones.Size = new System.Drawing.Size(344, 122);
             this.gbAsignAciones.TabIndex = 174;
             this.gbAsignAciones.Text = "Asignaciones";
@@ -1365,10 +1369,11 @@
             this.gbEstado.Controls.Add(this.gunaRadioButton2);
             this.gbEstado.Controls.Add(this.lblEstado);
             this.gbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbEstado.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.gbEstado.ForeColor = System.Drawing.Color.White;
+            this.gbEstado.LineColor = System.Drawing.Color.DimGray;
             this.gbEstado.Location = new System.Drawing.Point(375, 387);
             this.gbEstado.Name = "gbEstado";
+            this.gbEstado.Radius = 5;
             this.gbEstado.Size = new System.Drawing.Size(370, 122);
             this.gbEstado.TabIndex = 177;
             this.gbEstado.Text = "Estado";
