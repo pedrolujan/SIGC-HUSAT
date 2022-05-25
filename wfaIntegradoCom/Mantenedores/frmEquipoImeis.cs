@@ -701,12 +701,6 @@ namespace wfaIntegradoCom.Mantenedores
             //msjModelo = result.Item2;
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
         private void tsSalir_Click(object sender, EventArgs e)
         {
 
