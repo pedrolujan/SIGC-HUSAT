@@ -153,7 +153,7 @@ namespace CapaDato
 
         public Boolean daGuardarOtrasVenta(OtrasVentas clsOtrasVentas, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[17];
+            SqlParameter[] pa = new SqlParameter[19];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             int intRowsAffected = 0;
@@ -188,38 +188,44 @@ namespace CapaDato
                 pa[5] = new SqlParameter("@xmlActa", SqlDbType.Xml);
                 pa[5].Value = clsOtrasVentas.lstOtrasVenta[0].idTipoTransaccion ==4 && clsOtrasVentas.lstOtrasVenta[0].idValida ==-1? xmlActaCambioTitularidad: xmlActaCambioVehicular;
 
-                pa[6] = new SqlParameter("@idVenta", SqlDbType.Int);
+                pa[6] = new SqlParameter("@idVentaAnterior", SqlDbType.Int);
                 pa[6].Value = clsOtrasVentas.clsClienteAntecesor.idVentaGen;
 
-                pa[7] = new SqlParameter("@idClienteAntecesor", SqlDbType.Int);
-                pa[7].Value = clsOtrasVentas.clsClienteAntecesor.idCliente;
+                pa[7] = new SqlParameter("@idVentaNuevo", SqlDbType.Int);
+                pa[7].Value = clsOtrasVentas.clsClienteDocumentoVenta.idVentaGen;
 
-                pa[8] = new SqlParameter("@idClienteNuevo", SqlDbType.Int);
-                pa[8].Value = clsOtrasVentas.clsClienteDocumentoVenta.idCliente;
+                pa[8] = new SqlParameter("@idClienteAntecesor", SqlDbType.Int);
+                pa[8].Value = clsOtrasVentas.clsClienteAntecesor.idCliente;
 
-                pa[9] = new SqlParameter("@idVehiculo", SqlDbType.Int);
-                pa[9].Value = clsOtrasVentas.clsVehiculo.idVehiculo;
+                pa[9] = new SqlParameter("@idClienteNuevo", SqlDbType.Int);
+                pa[9].Value = clsOtrasVentas.clsClienteDocumentoVenta.idCliente;
 
-                pa[10] = new SqlParameter("@dFechaOperacion", SqlDbType.DateTime);
-                pa[10].Value = clsOtrasVentas.dFechaOperacion;
+                pa[10] = new SqlParameter("@idVehiculo", SqlDbType.Int);
+                pa[10].Value = clsOtrasVentas.clsVehiculo.idVehiculo;
 
-                pa[11] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime);
-                pa[11].Value = clsOtrasVentas.dFechaRegistro;
+                pa[11] = new SqlParameter("@dFechaOperacion", SqlDbType.DateTime);
+                pa[11].Value = clsOtrasVentas.dFechaOperacion;
 
-                pa[12] = new SqlParameter("@idUsuario", SqlDbType.Int);
-                pa[12].Value = clsOtrasVentas.iddUsuario;
+                pa[12] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime);
+                pa[12].Value = clsOtrasVentas.dFechaRegistro;
 
-                pa[13] = new SqlParameter("@idMoneda", SqlDbType.Int);
-                pa[13].Value = clsOtrasVentas.idMoneda;
+                pa[13] = new SqlParameter("@idUsuario", SqlDbType.Int);
+                pa[13].Value = clsOtrasVentas.iddUsuario;
 
-                pa[14] = new SqlParameter("@peiTipoCon", SqlDbType.Int);
-                pa[14].Value = tipoCon;
+                pa[14] = new SqlParameter("@idMoneda", SqlDbType.Int);
+                pa[14].Value = clsOtrasVentas.idMoneda;
 
-                pa[15] = new SqlParameter("@codigoDocumentoVentaTC", SqlDbType.NVarChar,8);
-                pa[15].Value = clsOtrasVentas.CodDocumento;
+                pa[15] = new SqlParameter("@peiTipoCon", SqlDbType.Int);
+                pa[15].Value = tipoCon;
 
-                pa[16] = new SqlParameter("@idValida", SqlDbType.Int);
-                pa[16].Value = clsOtrasVentas.lstOtrasVenta[0].idValida;
+                pa[16] = new SqlParameter("@codigoDocumentoVentaTC", SqlDbType.NVarChar,8);
+                pa[16].Value = clsOtrasVentas.CodDocumento;
+
+                pa[17] = new SqlParameter("@idValida", SqlDbType.Int);
+                pa[17].Value = clsOtrasVentas.lstOtrasVenta[0].idValida;
+                
+                pa[18] = new SqlParameter("@idEquipo", SqlDbType.Int);
+                pa[18].Value = clsOtrasVentas.clsEquipoImeis.idEquipoImeis;
 
                 objCnx = new clsConexion("");
                 intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);

@@ -857,39 +857,73 @@ namespace wfaIntegradoCom.Procesos
                 {
                     dtResult = objAcc.blListarClienteOtrasVentas(idCliente, lnTipoConCambio);
                     //tabRegistroVisitas.AutoScroll = false;
+                    foreach (DataRow drMenu in dtResult.Rows)
+                    {
+                        clsClienteDocumentoV.idCliente = Convert.ToInt32(drMenu["idCliente"]);
+                        clsClienteDocumentoV.idVentaGen = Convert.ToInt32(drMenu["idventageneral"]);
+                        clsClienteDocumentoV.cApePat = Convert.ToString(drMenu["cApePat"]);
+                        clsClienteDocumentoV.cApeMat = Convert.ToString(drMenu["cApeMat"]);
+                        clsClienteDocumentoV.cNombre = Convert.ToString(drMenu["cNombre"]);
+                        clsClienteDocumentoV.cDireccion = Convert.ToString(drMenu["cDireccion"]);
+                        clsClienteDocumentoV.dFecNac = Convert.ToDateTime(drMenu["dFecNac"]);
+                        clsClienteDocumentoV.cTipPers = Convert.ToInt32(drMenu["cTipPers"]);
+                        clsClienteDocumentoV.cTiDo = Convert.ToInt32(drMenu["cTiDo"]);
+                        clsClienteDocumentoV.cTelFijo = Convert.ToString(drMenu["cTelFijo"]);
+                        clsClienteDocumentoV.cTelCelular = Convert.ToString(drMenu["cTelCelular"]);
+                        clsClienteDocumentoV.bEstado = Convert.ToBoolean(drMenu["bestado"]);
+                        //clsClienteDocumentoV.idDep = Convert.ToInt32(drMenu["idDepa"]);
+                        //clsClienteDocumentoV.idProv = Convert.ToInt32(drMenu["idProv"]);
+                        //clsClienteDocumentoV.idDist = Convert.ToInt32(drMenu["idDist"]);
+                        clsClienteDocumentoV.cDocumento = Convert.ToString(drMenu["cDocumento"]);
+                        clsClienteDocumentoV.cTipoDoc = Convert.ToString(drMenu["NomTdoc"]);
+
+                        //clsClienteDocumentoV.cContactoNom1 = Convert.ToString(drMenu["cContactoNom1"]);
+                        //clsClienteDocumentoV.cContactoNom2 = Convert.ToString(drMenu["cContactoNom2"]);
+                        //clsClienteDocumentoV.cContactoCel1 = Convert.ToString(drMenu["cContactoCel1"]);
+                        //clsClienteDocumentoV.cContactoCel2 = Convert.ToString(drMenu["cContactoCel2"]);
+                        clsClienteDocumentoV.cEmpresa = Convert.ToString(drMenu["cEmpresa"]);
+                        clsClienteDocumentoV.cCorreo = Convert.ToString(drMenu["cCorreo"]);
+                        clsClienteDocumentoV.ubigeo = Convert.ToString(drMenu["cDireccion"] + " " + drMenu["cNomDist"] + " " + drMenu["cNomProv"] + " " + drMenu["cNomDep"]);
+
+                        clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(drMenu["cTipPers"]) == 2 ? "Rason social" : "Nombre";
+
+
+                    }
 
                     if (lnTipoConCambio==-1 || lnTipoConCambio==0)
                     {
-                        foreach (DataRow drMenu in dtResult.Rows)
-                        {
-                            clsClienteDocumentoV.idCliente = Convert.ToInt32(drMenu["idCliente"]);
-                            clsClienteDocumentoV.cApePat = Convert.ToString(drMenu["cApePat"]);
-                            clsClienteDocumentoV.cApeMat = Convert.ToString(drMenu["cApeMat"]);
-                            clsClienteDocumentoV.cNombre = Convert.ToString(drMenu["cNombre"]);
-                            clsClienteDocumentoV.cDireccion = Convert.ToString(drMenu["cDireccion"]);
-                            clsClienteDocumentoV.dFecNac = Convert.ToDateTime(drMenu["dFecNac"]);
-                            clsClienteDocumentoV.cTipPers = Convert.ToInt32(drMenu["cTipPers"]);
-                            clsClienteDocumentoV.cTiDo = Convert.ToInt32(drMenu["cTiDo"]);
-                            clsClienteDocumentoV.cTelFijo = Convert.ToString(drMenu["cTelFijo"]);
-                            clsClienteDocumentoV.cTelCelular = Convert.ToString(drMenu["cTelCelular"]);
-                            clsClienteDocumentoV.bEstado = Convert.ToBoolean(drMenu["bestado"]);
-                            clsClienteDocumentoV.idDep = Convert.ToInt32(drMenu["idDepa"]);
-                            clsClienteDocumentoV.idProv = Convert.ToInt32(drMenu["idProv"]);
-                            clsClienteDocumentoV.idDist = Convert.ToInt32(drMenu["idDist"]);
-                            clsClienteDocumentoV.cDocumento = Convert.ToString(drMenu["cDocumento"]);
-                            clsClienteDocumentoV.cTipoDoc = Convert.ToString(drMenu["NomTdoc"]);
+                        //foreach (DataRow drMenu in dtResult.Rows)
+                        //{
+                        //    clsClienteDocumentoV.idCliente = Convert.ToInt32(drMenu["idCliente"]);
+                        //    clsClienteDocumentoV.idVentaGen = Convert.ToInt32(drMenu["idventageneral"]);
+                        //    clsClienteDocumentoV.cApePat = Convert.ToString(drMenu["cApePat"]);
+                        //    clsClienteDocumentoV.cApeMat = Convert.ToString(drMenu["cApeMat"]);
+                        //    clsClienteDocumentoV.cNombre = Convert.ToString(drMenu["cNombre"]);
+                        //    clsClienteDocumentoV.cDireccion = Convert.ToString(drMenu["cDireccion"]);
+                        //    clsClienteDocumentoV.dFecNac = Convert.ToDateTime(drMenu["dFecNac"]);
+                        //    clsClienteDocumentoV.cTipPers = Convert.ToInt32(drMenu["cTipPers"]);
+                        //    clsClienteDocumentoV.cTiDo = Convert.ToInt32(drMenu["cTiDo"]);
+                        //    clsClienteDocumentoV.cTelFijo = Convert.ToString(drMenu["cTelFijo"]);
+                        //    clsClienteDocumentoV.cTelCelular = Convert.ToString(drMenu["cTelCelular"]);
+                        //    clsClienteDocumentoV.bEstado = Convert.ToBoolean(drMenu["bestado"]);
+                        //    clsClienteDocumentoV.idDep = Convert.ToInt32(drMenu["idDepa"]);
+                        //    clsClienteDocumentoV.idProv = Convert.ToInt32(drMenu["idProv"]);
+                        //    clsClienteDocumentoV.idDist = Convert.ToInt32(drMenu["idDist"]);
+                        //    clsClienteDocumentoV.cDocumento = Convert.ToString(drMenu["cDocumento"]);
+                        //    clsClienteDocumentoV.cTipoDoc = Convert.ToString(drMenu["NomTdoc"]);
 
-                            clsClienteDocumentoV.cContactoNom1 = Convert.ToString(drMenu["cContactoNom1"]);
-                            clsClienteDocumentoV.cContactoNom2 = Convert.ToString(drMenu["cContactoNom2"]);
-                            clsClienteDocumentoV.cContactoCel1 = Convert.ToString(drMenu["cContactoCel1"]);
-                            clsClienteDocumentoV.cContactoCel2 = Convert.ToString(drMenu["cContactoCel2"]);
-                            clsClienteDocumentoV.cEmpresa = Convert.ToString(drMenu["cEmpresa"]);
-                            clsClienteDocumentoV.cCorreo = Convert.ToString(drMenu["cCorreo"]);
-                            clsClienteDocumentoV.ubigeo = Convert.ToString(drMenu["cDireccion"] + " " + drMenu["cNomDist"] + " " + drMenu["cNomProv"] + " " + drMenu["cNomDep"]);
+                        //    clsClienteDocumentoV.cContactoNom1 = Convert.ToString(drMenu["cContactoNom1"]);
+                        //    clsClienteDocumentoV.cContactoNom2 = Convert.ToString(drMenu["cContactoNom2"]);
+                        //    clsClienteDocumentoV.cContactoCel1 = Convert.ToString(drMenu["cContactoCel1"]);
+                        //    clsClienteDocumentoV.cContactoCel2 = Convert.ToString(drMenu["cContactoCel2"]);
+                        //    clsClienteDocumentoV.cEmpresa = Convert.ToString(drMenu["cEmpresa"]);
+                        //    clsClienteDocumentoV.cCorreo = Convert.ToString(drMenu["cCorreo"]);
+                        //    clsClienteDocumentoV.ubigeo = Convert.ToString(drMenu["cDireccion"] + " " + drMenu["cNomDist"] + " " + drMenu["cNomProv"] + " " + drMenu["cNomDep"]);
 
-                            clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(drMenu["cTipPers"]) == 2 ? "Rason social" : "Nombre";
+                        //    clsClienteDocumentoV.cContactoNom1 = Convert.ToInt32(drMenu["cTipPers"]) == 2 ? "Rason social" : "Nombre";
 
-                        }
+                        //}
+
                         txtDoc.Text = clsClienteDocumentoV.cDocumento;
                         txtIdCliente.Text = clsClienteDocumentoV.idCliente.ToString();
                         txtClienteN_A.Text = FunGeneral.FormatearCadenaTitleCase($"{ clsClienteDocumentoV.cNombre.Trim()} {clsClienteDocumentoV.cApePat.Trim()} {clsClienteDocumentoV.cApeMat.Trim()}");
@@ -899,6 +933,7 @@ namespace wfaIntegradoCom.Procesos
                     }
                     else if (lnTipoConCambio==-2)
                     {
+                       
                         foreach (DataRow drMenu in dtResult.Rows)
                         {
                             clsVehiculoServicios.idCliente = Convert.ToInt32(drMenu["idCliente"]);
@@ -921,7 +956,7 @@ namespace wfaIntegradoCom.Procesos
 
                         dgv.Visible = false;
 
-                        clsClienteDocumentoV=clsClienteAntecesor;
+                        //clsClienteDocumentoV=clsClienteAntecesor;
                     }
 
                     fnLlenarTablaCod(cboTipoDocEmitir, "DOVE", clsClienteDocumentoV.cTiDo, 0);
@@ -2756,7 +2791,8 @@ namespace wfaIntegradoCom.Procesos
                 CodDocumento = cboTipoDocEmitir.SelectedValue.ToString(),
                 iddUsuario=Variables.gnCodUser,
                 idMoneda=Mon.idMoneda,
-                lstXmlDocVenta= xmlDocumentoVenta,
+                clsEquipoImeis= clsEquipo1,
+                lstXmlDocVenta = xmlDocumentoVenta,
                 lstXmlActTitularidad= lstxmlCtitu,
                 lstXmlActCambioVehicular = lstxmlCvh
             } ;

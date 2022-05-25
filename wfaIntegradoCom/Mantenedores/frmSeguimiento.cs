@@ -1535,6 +1535,11 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnRojo_Click(object sender, EventArgs e)
         {
             letraColor = "R";
@@ -2265,7 +2270,6 @@ namespace wfaIntegradoCom.Mantenedores
            
         }
         private Boolean fnBuscarTablaProspectosPlan(String pcBuscar, Int32 numPagina, Int32 tipoCon, String lColor )
-        
         {
             BLProspecto objAcc = new BLProspecto();
             clsUtil objUtil = new clsUtil();
