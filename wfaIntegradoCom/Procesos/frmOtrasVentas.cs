@@ -1791,7 +1791,10 @@ namespace wfaIntegradoCom.Procesos
                     Cantidad = lstOtrasVentas[i].unidades,
                     Couta = 1,
                     Importe = lstOtrasVentas[i].precioNeto,
-                    cSimbolo = Mon.cSimbolo
+                    cSimbolo = Mon.cSimbolo,
+                    idObjetoVenta= lstOtrasVentas[i].idObjVenta,
+                    idTipoTransaccion=lstOtrasVentas[i].idTipoTransaccion
+
                 }) ;
 
             }

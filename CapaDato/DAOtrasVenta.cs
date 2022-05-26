@@ -153,7 +153,7 @@ namespace CapaDato
 
         public Boolean daGuardarOtrasVenta(OtrasVentas clsOtrasVentas, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[19];
+            SqlParameter[] pa = new SqlParameter[22];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             int intRowsAffected = 0;
@@ -164,6 +164,7 @@ namespace CapaDato
             string xmlDocumentoDeVenta = clsUtil.Serialize(clsOtrasVentas.lstXmlDocVenta);
             string xmlActaCambioTitularidad = clsUtil.Serialize(clsOtrasVentas.lstXmlActTitularidad);
             string xmlActaCambioVehicular = clsUtil.Serialize(clsOtrasVentas.lstXmlActCambioVehicular);
+            string xmOtrasVentas = clsUtil.Serialize(clsOtrasVentas.lstOtrasVenta);
             try
             {
                 if (clsOtrasVentas.lstOtrasVenta.Count == 1)
@@ -227,8 +228,17 @@ namespace CapaDato
                 pa[18] = new SqlParameter("@idEquipo", SqlDbType.Int);
                 pa[18].Value = clsOtrasVentas.clsEquipoImeis.idEquipoImeis;
 
+                pa[19] = new SqlParameter("@igvValor", SqlDbType.Money);
+                pa[19].Value = clsOtrasVentas.lstXmlDocVenta[0].xmlDocumentoVenta[0].nIGV;
+
+                pa[20] = new SqlParameter("@totalVenta", SqlDbType.Money);
+                pa[20].Value = clsOtrasVentas.lstXmlDocVenta[0].xmlDocumentoVenta[0].nMontoTotal;
+
+                pa[21] = new SqlParameter("@countItems", SqlDbType.Int);
+                pa[21].Value = clsOtrasVentas.lstDetalleVenta.Count;
+
                 objCnx = new clsConexion("");
-                intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
+                //intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
                 return true;
             }
             catch (Exception ex)
