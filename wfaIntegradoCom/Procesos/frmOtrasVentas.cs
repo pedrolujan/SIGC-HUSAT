@@ -269,7 +269,6 @@ namespace wfaIntegradoCom.Procesos
                     null,
                     cls.idTipoTransaccion
                 );
-                i += 1;
                 
                 
             }
@@ -1312,7 +1311,11 @@ namespace wfaIntegradoCom.Procesos
 
             if (posicionColumna == dgOtrasVentas.Columns["dgbtnNuevo"].Index && e.RowIndex >= 0)
             {
-                fnLimpiarControles();
+                if (e.RowIndex==0)
+                {
+                    fnLimpiarControles();
+
+                }
                 fnProcesarDatos(filaSeleccionada);
             }
 
