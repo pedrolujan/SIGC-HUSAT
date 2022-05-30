@@ -189,11 +189,11 @@ namespace CapaDato
                 pa[5] = new SqlParameter("@xmlActa", SqlDbType.Xml);
                 pa[5].Value = clsOtrasVentas.lstOtrasVenta[0].idTipoTransaccion ==4 && clsOtrasVentas.lstOtrasVenta[0].idValida ==-1? xmlActaCambioTitularidad: xmlActaCambioVehicular;
 
-                pa[6] = new SqlParameter("@idVentaAnterior", SqlDbType.Int);
-                pa[6].Value = clsOtrasVentas.clsClienteAntecesor.idVentaGen;
+                pa[6] = new SqlParameter("@idContratoAnterior", SqlDbType.Int);
+                pa[6].Value = clsOtrasVentas.clsClienteAntecesor.idContrato;
 
-                pa[7] = new SqlParameter("@idVentaNuevo", SqlDbType.Int);
-                pa[7].Value = clsOtrasVentas.clsClienteDocumentoVenta.idVentaGen;
+                pa[7] = new SqlParameter("@idContratoNuevo", SqlDbType.Int);
+                pa[7].Value = clsOtrasVentas.clsClienteDocumentoVenta.idContrato;
 
                 pa[8] = new SqlParameter("@idClienteAntecesor", SqlDbType.Int);
                 pa[8].Value = clsOtrasVentas.clsClienteAntecesor.idCliente;

@@ -860,6 +860,7 @@ namespace wfaIntegradoCom.Procesos
                     {
                         clsClienteDocumentoV.idCliente = Convert.ToInt32(drMenu["idCliente"]);
                         clsClienteDocumentoV.idVentaGen = Convert.ToInt32(drMenu["idventageneral"]);
+                        clsClienteDocumentoV.idContrato = Convert.ToInt32(drMenu["idContrato"]);
                         clsClienteDocumentoV.cApePat = Convert.ToString(drMenu["cApePat"]);
                         clsClienteDocumentoV.cApeMat = Convert.ToString(drMenu["cApeMat"]);
                         clsClienteDocumentoV.cNombre = Convert.ToString(drMenu["cNombre"]);
@@ -2333,18 +2334,23 @@ namespace wfaIntegradoCom.Procesos
                 else
                 {
                     dgConsulta.Columns.Add("ID", "ID");
-                    dgConsulta.Columns.Add("CLIENTE", "CLIENTE");
+                    dgConsulta.Columns.Add("CODIGOCONTRATO", "COD. CONTRATO");
+                    dgConsulta.Columns.Add("PERIODO", "PERIODO");
                     dgConsulta.Columns.Add("VEHICULO", "VEHICULO");
                     foreach (DataRow drMenu in datResultado.Rows)
                     {
                         dgConsulta.Rows.Add(
-                            Convert.ToString(drMenu["idventageneral"]),
-                           Convert.ToString(drMenu["cNombre"]),
+                            Convert.ToString(drMenu["idContrato"]),
+                           Convert.ToString(drMenu["codContrato"]),
+                          FunGeneral.GetFechaHoraFormato(Convert.ToDateTime(drMenu["periodoInicio"]),1)+" ↔ "+ FunGeneral.GetFechaHoraFormato(Convert.ToDateTime(drMenu["periodoFinal"]), 1),
                            Convert.ToString(drMenu["vPlaca"])
                            );
 
 
                     }
+                    dgConsulta.Columns[1].Width = 80;
+                    dgConsulta.Columns[2].Width = 100;
+                    dgConsulta.Columns[3].Width = 60;
                 }
                 dgConsulta.Columns[0].Visible = false;
 
@@ -2397,6 +2403,7 @@ namespace wfaIntegradoCom.Procesos
                     {
                         txtCliente.Text = Convert.ToString(drMenu["cNombre"]);
                         clsClienteAntecesor.idVentaGen = Convert.ToInt32(drMenu["idventageneral"]);
+                        clsClienteAntecesor.idContrato = Convert.ToInt32(drMenu["idContrato"]);
                         clsClienteAntecesor.idCliente = Convert.ToInt32(drMenu["idCliente"]);
                         clsClienteAntecesor.cTiDo = Convert.ToInt32(drMenu["cTiDo"]);
                         clsClienteAntecesor.cNombre = Convert.ToString(drMenu["cNombre"]);
