@@ -67,7 +67,7 @@ namespace CapaDato
                 pa[29] = new SqlParameter("@dFechaPago", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaPago };
                 pa[30] = new SqlParameter("@dFechaVenta", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta };
                 objCnx = new clsConexion("");
-                objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
+                //objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
 
                 return true;
             }
