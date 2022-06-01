@@ -492,7 +492,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             DateTime fechaProxSeguimiento = solofechaProxSeguimiento.AddHours(soloHoraFechSeg);
             DateTime fechaSistema = Variables.gdFechaSis;
-            DateTime fecha1mes = fechaSistema.AddMonths(1);
+            DateTime fecha1mes = fechaSistema.AddDays(15);
 
             if (fechaProxSeguimiento > fechaSistema && fechaProxSeguimiento < fecha1mes)
             {
@@ -1829,6 +1829,7 @@ namespace wfaIntegradoCom.Mantenedores
             rdbFechaSigSeg.Checked = true;
             dtpFechaInicialBusqueda.Value = Variables.gdFechaSis.AddDays(-30);
             dtpFechaFinalBusqueda.Value = Variables.gdFechaSis;
+            dtpFechaProximoSeguimiento.Value = Variables.gdFechaSis;
             cboBuscarEstadoCliente.SelectedValue = "ESPR0001";
             gbPaginacionProsPlan.Visible = false;
             gbPaginacionSeg.Visible = false;

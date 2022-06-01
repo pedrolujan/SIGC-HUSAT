@@ -40,6 +40,7 @@ namespace CapaEntidad
         public Cliente clsClienteDocumentoVenta { get; set; }
         public Cliente clsClienteAntecesor { get; set; }
         public Vehiculo clsVehiculo { get; set; }
+        public Vehiculo clsVehiculoProcesos { get; set; }
         public Equipo_imeis clsEquipoImeis { get; set; }
         public List<Equipo_imeis> lstClienteImeis { get; set; }
         public List<DetalleVenta> lstDetalleVenta { get; set; }

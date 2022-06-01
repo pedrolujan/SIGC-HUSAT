@@ -956,7 +956,7 @@ namespace wfaIntegradoCom.Procesos
 
                         dgv.Visible = false;
 
-                        //clsClienteDocumentoV=clsClienteAntecesor;
+                        clsClienteDocumentoV = clsClienteDocumentoV.idVentaGen==0?clsClienteAntecesor: clsClienteDocumentoV;
                     }
 
                     fnLlenarTablaCod(cboTipoDocEmitir, "DOVE", clsClienteDocumentoV.cTiDo, 0);
@@ -2211,6 +2211,10 @@ namespace wfaIntegradoCom.Procesos
             fnHabilitarControles(false);
             Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
             lstLdv = fnGenerarDetalleOtrasVentas();
+            //if (lstLdv.Count == 1 && lstOtrasVentas.Count==1 && lstOtrasVentas[0].idTipoTransaccion==4 && lstOtrasVentas[0].idObjVenta==2)
+            //{
+            //    lstLdv[0].Descripcion = lstLdv[0].Descripcion + " del Equipo " + clsEquipo1.imei;
+            //}
             abrirFrmVPOtrasVentas.fnEstadoProcesos(lnTipoConCambio);
             abrirFrmVPOtrasVentas.Inicio(fnlstDocumentoVenta(),/*lstOtrasVentas*/ lstLdv, -2);
 
@@ -2326,7 +2330,7 @@ namespace wfaIntegradoCom.Procesos
                     foreach (DataRow drMenu in datResultado.Rows)
                     {
                         dgConsulta.Rows.Add(
-                            Convert.ToString(drMenu["idventageneral"]),
+                            Convert.ToString(drMenu["idContrato"]),
                            Convert.ToString(drMenu["imei"])
                            );
                     }
@@ -2797,6 +2801,7 @@ namespace wfaIntegradoCom.Procesos
                 clsClienteDocumentoVenta = clsClienteDocumentoV,
                 clsClienteAntecesor = clsClienteAntecesor,
                 clsVehiculo = lstvehiculo.Count>0?lstvehiculo[0]: new Vehiculo(),
+                clsVehiculoProcesos=clsVehiculoServicios,
                 lstTrandiaria = lstPagosTrand,
                 lstDetalleVenta = fnGenerarDetalleOtrasVentas(),
                 dFechaOperacion = dtFechaTitu.Value,

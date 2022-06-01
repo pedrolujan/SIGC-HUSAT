@@ -153,7 +153,7 @@ namespace CapaDato
 
         public Boolean daGuardarOtrasVenta(OtrasVentas clsOtrasVentas, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[22];
+            SqlParameter[] pa = new SqlParameter[23];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             int intRowsAffected = 0;
@@ -204,41 +204,44 @@ namespace CapaDato
                 pa[10] = new SqlParameter("@idVehiculo", SqlDbType.Int);
                 pa[10].Value = clsOtrasVentas.clsVehiculo.idVehiculo;
 
-                pa[11] = new SqlParameter("@dFechaOperacion", SqlDbType.DateTime);
-                pa[11].Value = clsOtrasVentas.dFechaOperacion;
+                pa[11] = new SqlParameter("@idVehiculoProcesos", SqlDbType.Int);
+                pa[11].Value = clsOtrasVentas.clsVehiculoProcesos.idVehiculo;
 
-                pa[12] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime);
-                pa[12].Value = clsOtrasVentas.dFechaRegistro;
+                pa[12] = new SqlParameter("@dFechaOperacion", SqlDbType.DateTime);
+                pa[12].Value = clsOtrasVentas.dFechaOperacion;
 
-                pa[13] = new SqlParameter("@idUsuario", SqlDbType.Int);
-                pa[13].Value = clsOtrasVentas.iddUsuario;
+                pa[13] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime);
+                pa[13].Value = clsOtrasVentas.dFechaRegistro;
 
-                pa[14] = new SqlParameter("@idMoneda", SqlDbType.Int);
-                pa[14].Value = clsOtrasVentas.idMoneda;
+                pa[14] = new SqlParameter("@idUsuario", SqlDbType.Int);
+                pa[14].Value = clsOtrasVentas.iddUsuario;
 
-                pa[15] = new SqlParameter("@peiTipoCon", SqlDbType.Int);
-                pa[15].Value = tipoCon;
+                pa[15] = new SqlParameter("@idMoneda", SqlDbType.Int);
+                pa[15].Value = clsOtrasVentas.idMoneda;
 
-                pa[16] = new SqlParameter("@codigoDocumentoVentaTC", SqlDbType.NVarChar,8);
-                pa[16].Value = clsOtrasVentas.CodDocumento;
+                pa[16] = new SqlParameter("@peiTipoCon", SqlDbType.Int);
+                pa[16].Value = tipoCon;
 
-                pa[17] = new SqlParameter("@idValida", SqlDbType.Int);
-                pa[17].Value = clsOtrasVentas.lstOtrasVenta[0].idValida;
+                pa[17] = new SqlParameter("@codigoDocumentoVentaTC", SqlDbType.NVarChar,8);
+                pa[17].Value = clsOtrasVentas.CodDocumento;
+
+                pa[18] = new SqlParameter("@idValida", SqlDbType.Int);
+                pa[18].Value = clsOtrasVentas.lstOtrasVenta[0].idValida;
                 
-                pa[18] = new SqlParameter("@idEquipo", SqlDbType.Int);
-                pa[18].Value = clsOtrasVentas.clsEquipoImeis.idEquipoImeis;
+                pa[19] = new SqlParameter("@idEquipo", SqlDbType.Int);
+                pa[19].Value = clsOtrasVentas.clsEquipoImeis.idEquipoImeis;
 
-                pa[19] = new SqlParameter("@igvValor", SqlDbType.Money);
-                pa[19].Value = clsOtrasVentas.lstXmlDocVenta[0].xmlDocumentoVenta[0].nIGV;
+                pa[20] = new SqlParameter("@igvValor", SqlDbType.Money);
+                pa[20].Value = clsOtrasVentas.lstXmlDocVenta[0].xmlDocumentoVenta[0].nIGV;
 
-                pa[20] = new SqlParameter("@totalVenta", SqlDbType.Money);
-                pa[20].Value = clsOtrasVentas.lstXmlDocVenta[0].xmlDocumentoVenta[0].nMontoTotal;
+                pa[21] = new SqlParameter("@totalVenta", SqlDbType.Money);
+                pa[21].Value = clsOtrasVentas.lstXmlDocVenta[0].xmlDocumentoVenta[0].nMontoTotal;
 
-                pa[21] = new SqlParameter("@countItems", SqlDbType.Int);
-                pa[21].Value = clsOtrasVentas.lstDetalleVenta.Count;
+                pa[22] = new SqlParameter("@countItems", SqlDbType.Int);
+                pa[22].Value = clsOtrasVentas.lstDetalleVenta.Count;
 
                 objCnx = new clsConexion("");
-                intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
+                intRowsAffected = objCnx.EjecutarProcedimiento("uspguardarotrasventas", pa);
                 return true;
             }
             catch (Exception ex)
