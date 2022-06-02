@@ -854,6 +854,7 @@ namespace wfaIntegradoCom.Procesos
                 }
                 else
                 {
+                    clsVehiculoServicios = new Vehiculo();
                     dtResult = objAcc.blListarClienteOtrasVentas(idCliente, lnTipoConCambio);
                     //tabRegistroVisitas.AutoScroll = false;
                     foreach (DataRow drMenu in dtResult.Rows)
