@@ -1518,23 +1518,23 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
-                //bEstado = true;
-                //msg = "";
-                //img = Properties.Resources.ok;
+                bEstado = true;
+                msg = "";
+                img = Properties.Resources.ok;
 
-                if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) > Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
-                {
-                    bEstado = false;
-                    msg = "La fecha de pago no puede ser mayor a la fecha actual";
-                    img = Properties.Resources.error;
-                }
-                else if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) < Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")))
-                {
-                    bEstado = false;
-                    msg = "La fecha de pago no puede ser menor a: " + dtFechaSistema.ToString("dd/MM/yyyy");
-                    img = Properties.Resources.error;
+                //if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) > Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy")))
+                //{
+                //    bEstado = false;
+                //    msg = "La fecha de pago no puede ser mayor a la fecha actual";
+                //    img = Properties.Resources.error;
+                //}
+                //else if (Convert.ToDateTime(dtFechaPago.Value.ToString("dd/MM/yyyy")) < Convert.ToDateTime(dtFechaSistema.ToString("dd/MM/yyyy")))
+                //{
+                //    bEstado = false;
+                //    msg = "La fecha de pago no puede ser menor a: " + dtFechaSistema.ToString("dd/MM/yyyy");
+                //    img = Properties.Resources.error;
 
-                }
+                //}
             }
             lbl.Text = msg;
             pb.Image = img;

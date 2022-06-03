@@ -241,7 +241,7 @@ namespace CapaDato
                 pa[22].Value = clsOtrasVentas.lstDetalleVenta.Count;
 
                 objCnx = new clsConexion("");
-                intRowsAffected = objCnx.EjecutarProcedimiento("uspguardarotrasventas", pa);
+                //intRowsAffected = objCnx.EjecutarProcedimiento("uspguardarotrasventas", pa);
                 return true;
             }
             catch (Exception ex)
@@ -345,7 +345,7 @@ namespace CapaDato
                 }
                 lstDocumentoVenta = clsUtil.Deserialize<xmlDocumentoVentaGeneral>(xmlDocventa);
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripEstadoPP = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(DescripEstadoPP);
-                lstDocumentoVenta.xmlDocumentoVenta[0].cVehiculos = PlacaVehiculos;
+                //lstDocumentoVenta.xmlDocumentoVenta[0].cVehiculos = PlacaVehiculos;
                 lstDocumentoVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = codigoDocumento;
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cCliente = Cliente;
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = TipoPago;
