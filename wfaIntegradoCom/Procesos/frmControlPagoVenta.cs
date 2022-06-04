@@ -626,6 +626,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 EstadoCarga = true;
                 fnBuscarCronogramaAutomatico(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value, "ESPV0001", 0);
+                
             }
         }
 
@@ -1748,6 +1749,19 @@ namespace wfaIntegradoCom.Procesos
                 else
                 {
                     e.CellStyle.ForeColor = Color.Red;
+                }
+            }
+            if (dgv.Columns[e.ColumnIndex].Name == "dttFechapago")
+            {
+                if (e.Value.ToString()=="")
+                {
+                    //e.CellStyle.ForeColor = Color.OrangeRed;
+                    //e.CellStyle.BackColor = Color.Orange;
+                }
+                else
+                {
+                    e.CellStyle.BackColor = Variables.ColorSuccess;
+                    e.CellStyle.ForeColor = Color.WhiteSmoke;
                 }
             }
         }
