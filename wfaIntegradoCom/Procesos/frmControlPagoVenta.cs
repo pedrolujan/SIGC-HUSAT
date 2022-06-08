@@ -625,7 +625,16 @@ namespace wfaIntegradoCom.Procesos
             finally
             {
                 EstadoCarga = true;
-                fnBuscarCronogramaAutomatico(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value, "ESPV0001", 0);
+                Int32 numRows = 0;
+                DateTime dtt = dtFechaPago.Value;
+                String dtt1 = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5); ;
+
+                numRows =FunGeneral.fnBuscarAccionDiaria(0, dtt1);
+                if (numRows==0)
+                {
+                    fnBuscarCronogramaAutomatico(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value, "ESPV0001", 0);
+                    FunGeneral.fnRegistrarAccionDiaria("Actualizacion estados detalle cronograma",true,0, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3));
+                }
                 
             }
         }
@@ -653,46 +662,67 @@ namespace wfaIntegradoCom.Procesos
                 
                 for (Int32 i = 0; i < lstDetCronAutomatico.Count; i++)
                 {
-                    contadorVencido = 0;  
+                    contadorVencido = 0;
+                    List<DetalleCronograma> clsDetCro = new List<DetalleCronograma>();
 
-                    for (Int32 j=0;j< lstDetCronAutomaticoEsp.Count; j++)
-                    {
-                        if (lstDetCronAutomatico[i].idCronograma== lstDetCronAutomaticoEsp[j].idCronograma)
-                        {
-                            diaCicloPago = Convert.ToInt32(lstDetCronAutomaticoEsp[j].cDiaCiclo);
-                            var resulFechas = fnConvertirFechas(lstDetCronAutomaticoEsp[j].periodoInicio);
-                            lstDetCronAutomaticoEsp[j].periodoInicio = resulFechas.Item1;
-                            lstDetCronAutomaticoEsp[j].periodoFinal = resulFechas.Item2;
-                            lstDetCronAutomaticoEsp[j].fechaEmision = lstDetCronAutomaticoEsp[j].periodoFinal.AddDays(1);
-                            lstDetCronAutomaticoEsp[j].fechaVencimiento = lstDetCronAutomaticoEsp[j].periodoFinal.AddDays(7);
-
-                            if (lstDetCronAutomaticoEsp[j].fechaVencimiento < Variables.gdFechaSis)
-                            {
-                                contadorVencido = dtCP.daContadorEstadosVencidos(lstDetCronAutomatico[i].idCronograma, "ESPV0003");
-                              
-                                if (contadorVencido <2)
-                                {
-                                    if (lstDetCronAutomaticoEsp[j].estado!= "ESPV0002")
-                                    {
-                                        dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0003", 1);
-                                    }
-                                    //if(lstDetCronAutomaticoEsp[j].estado != "ESPV0002")
-                                    //{
-
-                                    //}
-                                    if (contadorVencido == 2)
-                                    {
-                                        contadorVencido += 1;
-                                    }
-                                }
-                                else if (contadorVencido>=2)
-                                {
-                                    dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
-                                }
-                            }
-                        }
-                    }
+                    clsDetCro = lstDetCronAutomaticoEsp.FindAll(r => r.idCronograma == lstDetCronAutomatico[i].idCronograma);
                     
+
+                    for (Int32 j = 0; j < clsDetCro.Count; j++)
+                    {
+                        //if (lstDetCronAutomatico[i].idCronograma == lstDetCronAutomaticoEsp[j].idCronograma)
+                        //{
+                        diaCicloPago = Convert.ToInt32(clsDetCro[j].cDiaCiclo);
+                        var resulFechas = fnConvertirFechas(clsDetCro[j].periodoInicio);
+                        clsDetCro[j].periodoInicio = resulFechas.Item1;
+                        clsDetCro[j].periodoFinal = resulFechas.Item2;
+                        clsDetCro[j].fechaEmision = clsDetCro[j].periodoFinal.AddDays(1);
+                        clsDetCro[j].fechaVencimiento = clsDetCro[j].periodoFinal.AddDays(7);
+
+                            if (clsDetCro[j].fechaVencimiento < Variables.gdFechaSis)
+                            {
+                                //contadorVencido = dtCP.daContadorEstadosVencidos(lstDetCronAutomatico[i].idCronograma, "ESPV0003");
+
+                                //if (contadorVencido <2)
+                                //{
+                                if (clsDetCro[j].estado != "ESPV0002")
+                                {
+                                    if (j > 0)
+                                    {
+                                        
+                                        if (clsDetCro[j].estado == "ESPV0003" && clsDetCro[j - 1].estado == "ESPV0003")
+                                        {
+                                            //dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                        }
+                                        else if (clsDetCro[j - 1].estado == "ESPV0003" && clsDetCro[j - 2].estado == "ESPV0003")
+                                        {
+                                            dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                        }
+                                        else if (clsDetCro[j - 1].estado == "ESPV0004")
+                                        {
+                                            dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                        }
+
+                                    }
+                                    //dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0003", 1);
+                                }
+                                //if(lstDetCronAutomaticoEsp[j].estado != "ESPV0002")
+                                //{
+
+                                //}
+                                //if (contadorVencido == 2)
+                                //{
+                                //    contadorVencido += 1;
+                                //}
+                                //}
+                                //else if (contadorVencido >= 2)
+                                //{
+                                //    dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                //}
+                            }
+                        //}
+                    }
+
                 }
 
 

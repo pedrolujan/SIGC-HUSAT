@@ -241,7 +241,7 @@ namespace CapaDato
                 pa[22].Value = clsOtrasVentas.lstDetalleVenta.Count;
 
                 objCnx = new clsConexion("");
-                //intRowsAffected = objCnx.EjecutarProcedimiento("uspguardarotrasventas", pa);
+                intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
                 return true;
             }
             catch (Exception ex)

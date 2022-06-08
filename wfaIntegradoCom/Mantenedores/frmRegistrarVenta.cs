@@ -953,7 +953,8 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 idTipDocumento = Convert.ToInt32(cboTipoDocumentoC.SelectedValue ?? 0);         
             Int32 maxCaracteres = TipoDocumento.fnObtenerTipoDocumentoSeleccionado(idTipDocumento, lstTD).TDmaxCaracteres;
             var result = FunValidaciones.fnValidarTexboxs(lstValidacionCliente[2].textbox, erDocumentoC, imgDocumentoC, true, true, true, maxCaracteres,maxCaracteres , maxCaracteres, maxCaracteres, "Ingrese correctamente");
-            lstValidacionCliente[2].estado = result.Item1;
+            lstValidacionCliente[2].estado = true;
+                //result.Item1;
             lstValidacionCliente[2].mensaje = result.Item2; 
 
             Int32 numCaracNroDocumento = txtDocumentoC.TextLength;

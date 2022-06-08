@@ -2593,6 +2593,23 @@ namespace wfaIntegradoCom.Procesos
             }
         }
 
+        private void pbBuscar_Click(object sender, EventArgs e)
+        {
+            fnListarVentas(0);
+        }
+
+        private void chkHabilitarFechas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkHabilitarFechas.Checked == true)
+            {
+                siticoneGroupBox2.Enabled = true;
+            }
+            else
+            {
+                siticoneGroupBox2.Enabled = false;
+            }
+        }
+
         private void msDocumentoVenta_Click(object sender, EventArgs e)
         {
             DataGridView dg = dgListaVentas;
