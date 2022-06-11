@@ -401,7 +401,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cboTipoVetaBusq.SelectedValue = 1;
                 dtpFechaRegistro.Value = Variables.gdFechaSis;
                 dtFechaPago.Value = Variables.gdFechaSis;
-               fnActualizarEstadoContratoAutomatico();
+               
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
                 if (Variables.gsCargoUsuario == "PETR0001" || Variables.gsCargoUsuario == "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
@@ -555,6 +555,15 @@ namespace wfaIntegradoCom.Mantenedores
             finally
             {
                 cargoFrom = true;
+                Int32 numRows = 0;
+                String dtt1 = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5); ;
+                numRows = FunGeneral.fnBuscarAccionDiaria(-1, dtt1);
+                if (numRows == 0)
+                {
+                    fnActualizarEstadoContratoAutomatico();
+                    FunGeneral.fnRegistrarAccionDiaria("Actualizacion estados Contrato", true, -1, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3));
+                }
+               
             }
             
         }
@@ -565,7 +574,8 @@ namespace wfaIntegradoCom.Mantenedores
             Boolean bResult;
 
                 bResult = blVentaGeneral.blActualizarEstadoContratoAutomatico(0);
-             
+            
+
         }
 
 
@@ -798,7 +808,7 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
        
-        private Boolean fnLlenarTipoTarifa(Int32 idTipoPlan, SiticoneComboBox cbo, Boolean busqueda)
+        public Boolean fnLlenarTipoTarifa(Int32 idTipoPlan, SiticoneComboBox cbo, Boolean busqueda)
         {
             BLTipoTarifa objTipTarifa = new BLTipoTarifa();
             clsUtil objUtil = new clsUtil();
@@ -963,7 +973,8 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 idTipDocumento = Convert.ToInt32(cboTipoDocumentoC.SelectedValue ?? 0);         
             Int32 maxCaracteres = TipoDocumento.fnObtenerTipoDocumentoSeleccionado(idTipDocumento, lstTD).TDmaxCaracteres;
             var result = FunValidaciones.fnValidarTexboxs(lstValidacionCliente[2].textbox, erDocumentoC, imgDocumentoC, true, true, true, maxCaracteres,maxCaracteres , maxCaracteres, maxCaracteres, "Ingrese correctamente");
-            lstValidacionCliente[2].estado = result.Item1;
+            lstValidacionCliente[2].estado = true;
+                //result.Item1;
             lstValidacionCliente[2].mensaje = result.Item2; 
 
             Int32 numCaracNroDocumento = txtDocumentoC.TextLength;
@@ -4350,11 +4361,11 @@ namespace wfaIntegradoCom.Mantenedores
                 lstCliente.Add(new Cliente
                 {
                     cContactoNom2= Convert.ToString(dr["tipoDocumento"]),
-                    cNombre = Convert.ToString("Maximo Erico"),
-                    cApePat = Convert.ToString("Avila"),
-                    cApeMat = Convert.ToString("Moreno"),
-                    cDocumento = Convert.ToString("17946628"),
-                    cDireccion = Convert.ToString("TOMAS MOSCOSO 1051 / El Porvenir / Trujillo  / La Libertad"),
+                    cNombre = Convert.ToString(dr["cNombre"]),
+                    cApePat = Convert.ToString(dr["cApePat"]),
+                    cApeMat = Convert.ToString(dr["cApeMat"]),
+                    cDocumento = Convert.ToString(dr["cDocumento"]),
+                    cDireccion = Convert.ToString(dr["cDireccion"]),
                     dFecNac = Convert.ToDateTime(dr["dFechaRegistro"])
                 }) ;
 

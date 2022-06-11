@@ -25,6 +25,9 @@ namespace CapaEntidad
         public Double Importe { get; set; }
         public String cSimbolo { get; set; }
 
+        public Int32 idObjetoVenta { get; set; }
+        public Int32 idTipoTransaccion { get; set; }
+
     }
     public class DetalleVentaMensual
     {

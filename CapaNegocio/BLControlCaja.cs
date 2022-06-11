@@ -8,21 +8,24 @@ using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
-    public class BLTipoPagos
+    public class BLControlCaja
     {
-        public List<EntidadesPago> blDevolverEntidadPago(String cCodTipoPago, Int32 lnTipoCon,Boolean estBusq)
-        {
+        public BLControlCaja() { }
 
-            DATipoPago daobjEntidad = new DATipoPago();
+        public List<ControlCaja> blFnLLenarTipoPago(String id,Boolean estado)
+        {
+            DAControlCaja dc = new DAControlCaja();
             try
             {
-                return daobjEntidad.daDevolverEntidadPago(cCodTipoPago,  lnTipoCon,  estBusq);
+                return dc.daFnLlenarTipoPago(id,estado);
+
+                
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-
+           
         }
     }
 }

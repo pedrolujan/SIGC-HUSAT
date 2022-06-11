@@ -14,7 +14,7 @@ namespace CapaDato
     public class DATipoPago
     {
         clsUtil objUtil;
-        public List<EntidadesPago> daDevolverEntidadPago(String cCodTab, Int32 lnTipoCon)
+        public List<EntidadesPago> daDevolverEntidadPago(String cCodTab, Int32 lnTipoCon, Boolean estBusq)
         {
             SqlParameter[] pa = new SqlParameter[2];
             DataTable dtUsuario = new DataTable();
@@ -38,7 +38,7 @@ namespace CapaDato
                 {
                     lstEntidades.Add(new EntidadesPago(
                         Convert.ToInt32(0),
-                        Convert.ToString("Seleccione Opcion")));
+                        estBusq==true?"TODOS": "Seleccione Opcion"));;
                 } 
                 foreach (DataRow drMenu in dtUsuario.Rows)
                 {

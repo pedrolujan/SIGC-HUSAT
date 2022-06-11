@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaEntidad;
 using CapaDato;
+using System.Data;
 
 namespace CapaNegocio
 {
@@ -105,6 +106,34 @@ namespace CapaNegocio
             {
                 return daobjUsuario.daDevolverCorrelativo(cCodTab);
             
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+        public Int32 blBuscarAccionDiaria(Int32 idOperacion, string dtFechaOpe)
+        {
+            DACargo daobjUsuario = new DACargo();
+            try
+            {
+                return daobjUsuario.daBusacarAccionDiaria( idOperacion,  dtFechaOpe);
+            
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+        public Boolean blRegistrarAccionDiaria(String descrip, Boolean estado, Int32 idOpera, String fechaOperacion)
+        {
+            DACargo daobjUsuario = new DACargo();
+            try
+            {
+                return daobjUsuario.daRegistrarAccionDiaria( descrip,  estado,  idOpera,  fechaOperacion);
+
             }
             catch (Exception ex)
             {

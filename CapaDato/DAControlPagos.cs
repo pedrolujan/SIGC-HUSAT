@@ -256,6 +256,58 @@ namespace CapaDato
 
         }
 
+        public List<DetalleCronograma> daBuscarCronogramaActualizarEstados(String dtFechaIni, String dFechaFin, String estadoPago, List<DetalleCronograma> lstCron, Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[5];
+            DataTable dtResult = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            List<DetalleCronograma> lstDetCron = new List<DetalleCronograma>();
+            String xmlids = clsUtil.Serialize(lstCron);
+
+            try
+            {
+                pa[0] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dtFechaIni };
+                pa[1] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dFechaFin };
+                pa[2] = new SqlParameter("@estado", SqlDbType.VarChar, 8) { Value = estadoPago };
+                pa[3] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[4] = new SqlParameter("@XmlIds", SqlDbType.Xml) { Value = xmlids };
+                objCnx = new clsConexion("");
+                //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
+                dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaActualizarEstado", pa);
+
+                foreach (DataRow dr in dtResult.Rows)
+                {
+                    lstDetCron.Add(new DetalleCronograma
+                    {
+                        idDetalleCronograma = Convert.ToInt32(dr["idDetalleCronograma"]),
+                        periodoInicio = Convert.ToDateTime(dr["periodoInicio"]),
+                        periodoFinal = Convert.ToDateTime(dr["periodoFinal"]),
+                        fechaVencimiento = Convert.ToDateTime(dr["fechaVencimiento"]),
+                        fechaPago = Convert.ToDateTime(dr["fechaPago"]),
+                        cDiaCiclo = Convert.ToString(dr["cDia"]),
+                        estado= Convert.ToString(dr["estado"]),
+                        idCronograma = Convert.ToInt32(dr["idCronograma"])
+                    });
+                }
+
+                return lstDetCron;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
+
         public List<DetalleCronograma> daBuscarCronogramaAutomaticoEspecifico(DateTime dtFechaIni, DateTime dFechaFin,String estado, List<DetalleCronograma> Datos,Int32 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[5];

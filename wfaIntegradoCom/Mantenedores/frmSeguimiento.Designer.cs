@@ -328,6 +328,7 @@
             this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
             this.gunaControlBox1.Size = new System.Drawing.Size(45, 25);
             this.gunaControlBox1.TabIndex = 76;
+            this.gunaControlBox1.Click += new System.EventHandler(this.gunaControlBox1_Click);
             // 
             // siticonePanel1
             // 

@@ -625,7 +625,17 @@ namespace wfaIntegradoCom.Procesos
             finally
             {
                 EstadoCarga = true;
-                fnBuscarCronogramaAutomatico(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value, "ESPV0001", 0);
+                Int32 numRows = 0;
+                DateTime dtt = dtFechaPago.Value;
+                String dtt1 = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
+
+                numRows =FunGeneral.fnBuscarAccionDiaria(0, dtt1);
+                if (numRows==0)
+                {
+                    fnBuscarCronogramaAutomatico(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value, "ESPV0001", 0);
+                    FunGeneral.fnRegistrarAccionDiaria("Actualizacion estados detalle cronograma",true,0, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3));
+                }
+                
             }
         }
 
@@ -652,46 +662,67 @@ namespace wfaIntegradoCom.Procesos
                 
                 for (Int32 i = 0; i < lstDetCronAutomatico.Count; i++)
                 {
-                    contadorVencido = 0;  
+                    contadorVencido = 0;
+                    List<DetalleCronograma> clsDetCro = new List<DetalleCronograma>();
 
-                    for (Int32 j=0;j< lstDetCronAutomaticoEsp.Count; j++)
-                    {
-                        if (lstDetCronAutomatico[i].idCronograma== lstDetCronAutomaticoEsp[j].idCronograma)
-                        {
-                            diaCicloPago = Convert.ToInt32(lstDetCronAutomaticoEsp[j].cDiaCiclo);
-                            var resulFechas = fnConvertirFechas(lstDetCronAutomaticoEsp[j].periodoInicio);
-                            lstDetCronAutomaticoEsp[j].periodoInicio = resulFechas.Item1;
-                            lstDetCronAutomaticoEsp[j].periodoFinal = resulFechas.Item2;
-                            lstDetCronAutomaticoEsp[j].fechaEmision = lstDetCronAutomaticoEsp[j].periodoFinal.AddDays(1);
-                            lstDetCronAutomaticoEsp[j].fechaVencimiento = lstDetCronAutomaticoEsp[j].periodoFinal.AddDays(7);
-
-                            if (lstDetCronAutomaticoEsp[j].fechaVencimiento < Variables.gdFechaSis)
-                            {
-                                contadorVencido = dtCP.daContadorEstadosVencidos(lstDetCronAutomatico[i].idCronograma, "ESPV0003");
-                              
-                                if (contadorVencido <2)
-                                {
-                                    if (lstDetCronAutomaticoEsp[j].estado!= "ESPV0002")
-                                    {
-                                        dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0003", 1);
-                                    }
-                                    //if(lstDetCronAutomaticoEsp[j].estado != "ESPV0002")
-                                    //{
-
-                                    //}
-                                    if (contadorVencido == 2)
-                                    {
-                                        contadorVencido += 1;
-                                    }
-                                }
-                                else if (contadorVencido>=2)
-                                {
-                                    dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
-                                }
-                            }
-                        }
-                    }
+                    clsDetCro = lstDetCronAutomaticoEsp.FindAll(r => r.idCronograma == lstDetCronAutomatico[i].idCronograma);
                     
+
+                    for (Int32 j = 0; j < clsDetCro.Count; j++)
+                    {
+                        //if (lstDetCronAutomatico[i].idCronograma == lstDetCronAutomaticoEsp[j].idCronograma)
+                        //{
+                        diaCicloPago = Convert.ToInt32(clsDetCro[j].cDiaCiclo);
+                        var resulFechas = fnConvertirFechas(clsDetCro[j].periodoInicio);
+                        clsDetCro[j].periodoInicio = resulFechas.Item1;
+                        clsDetCro[j].periodoFinal = resulFechas.Item2;
+                        clsDetCro[j].fechaEmision = clsDetCro[j].periodoFinal.AddDays(1);
+                        clsDetCro[j].fechaVencimiento = clsDetCro[j].periodoFinal.AddDays(7);
+
+                            if (clsDetCro[j].fechaVencimiento < Variables.gdFechaSis)
+                            {
+                                //contadorVencido = dtCP.daContadorEstadosVencidos(lstDetCronAutomatico[i].idCronograma, "ESPV0003");
+
+                                //if (contadorVencido <2)
+                                //{
+                                if (clsDetCro[j].estado != "ESPV0002")
+                                {
+                                    if (j > 0)
+                                    {
+                                        
+                                        if (clsDetCro[j].estado == "ESPV0003" && clsDetCro[j - 1].estado == "ESPV0003")
+                                        {
+                                            //dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                        }
+                                        else if (clsDetCro[j - 1].estado == "ESPV0003" && clsDetCro[j - 2].estado == "ESPV0003")
+                                        {
+                                            dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                        }
+                                        else if (clsDetCro[j - 1].estado == "ESPV0004")
+                                        {
+                                            dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                        }
+
+                                    }
+                                    //dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0003", 1);
+                                }
+                                //if(lstDetCronAutomaticoEsp[j].estado != "ESPV0002")
+                                //{
+
+                                //}
+                                //if (contadorVencido == 2)
+                                //{
+                                //    contadorVencido += 1;
+                                //}
+                                //}
+                                //else if (contadorVencido >= 2)
+                                //{
+                                //    dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                //}
+                            }
+                        //}
+                    }
+
                 }
 
 
@@ -1679,10 +1710,81 @@ namespace wfaIntegradoCom.Procesos
                 "Lista de vehiculos en estado: " 
                 + cboEstadopago.Text+", Periodo: "+ lstClientesBusq[0].cDireccion+", Ciclo: "+lstClientesBusq[0].cContactoNom2, 0);
         }
+        private void fnActualizarCronograma(DateTime dtIni, DateTime dtFin)
+        {
+            
+            DAControlPagos dtCP = new DAControlPagos();
+            List<DetalleCronograma> lstCronogramas = new List<DetalleCronograma>();
+            List<DetalleCronograma> lstDetCronAutomatico = new List<DetalleCronograma>();
+            List<DetalleCronograma> lstDetCronAutomaticoEsp = new List<DetalleCronograma>();
+            try
+            {
+                String sdtIni = FunGeneral.GetFechaHoraFormato(dtIni, 5);
+                String sdtFin = FunGeneral.GetFechaHoraFormato(dtFin, 5);
 
+                lstDetCronAutomatico = dtCP.daBuscarCronogramaActualizarEstados(sdtIni, sdtFin, "ESPV0001", lstDetCronAutomatico, 0);
+                String estadoCronograma = "";
+                Int32 contadorCorte = 0;
+                Int32 stIdCronograma = 0;
+
+                lstDetCronAutomaticoEsp = dtCP.daBuscarCronogramaActualizarEstados(sdtIni, sdtFin, "ESPV0001", lstDetCronAutomatico, 1);
+              
+                stIdCronograma = 0;
+
+                for (Int32 i = 0; i < lstDetCronAutomatico.Count; i++)
+                {
+                    contadorCorte = 0;
+                    List<DetalleCronograma> clsDetCro = new List<DetalleCronograma>();
+
+                    clsDetCro = lstDetCronAutomaticoEsp.FindAll(r => r.idCronograma == lstDetCronAutomatico[i].idCronograma);
+
+
+                    for (Int32 j = 0; j < clsDetCro.Count; j++)
+                    {
+                        
+
+                        //if (lstDetCronAutomatico[i].idCronograma == lstDetCronAutomaticoEsp[j].idCronograma)
+                        //{
+                        if (clsDetCro[j].estado!= "ESPV0002")
+                        {
+                            estadoCronograma = "ESPV0001";
+                            dtCP.daActualizarEstados(clsDetCro[j].idCronograma, estadoCronograma, 2);
+
+                            break;
+                        }
+                        else
+                        {
+                            contadorCorte += 1;
+                        }
+
+                    }
+                    if (contadorCorte ==12)
+                    {
+                        estadoCronograma = "ESPV0002";
+                        dtCP.daActualizarEstados(lstDetCronAutomatico[i].idCronograma, estadoCronograma, 2);
+
+                    }
+
+                }
+
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+
+            }
+        }
         private void btnValidarEstados_Click(object sender, EventArgs e)
         {
-           
+            fnActualizarCronograma(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value);
         }
 
         private void btnCambiarIncumplimiento_Click(object sender, EventArgs e)
@@ -1750,6 +1852,19 @@ namespace wfaIntegradoCom.Procesos
                     e.CellStyle.ForeColor = Color.Red;
                 }
             }
+            if (dgv.Columns[e.ColumnIndex].Name == "dttFechapago")
+            {
+                if (e.Value.ToString()=="")
+                {
+                    //e.CellStyle.ForeColor = Color.OrangeRed;
+                    //e.CellStyle.BackColor = Color.Orange;
+                }
+                else
+                {
+                    e.CellStyle.BackColor = Variables.ColorSuccess;
+                    e.CellStyle.ForeColor = Color.WhiteSmoke;
+                }
+            }
         }
 
         private void msPagarCuota_Click(object sender, EventArgs e)
@@ -1796,10 +1911,34 @@ namespace wfaIntegradoCom.Procesos
                     
 
                 }
-                //clsCronomaEspecifico= lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
-                //if (clsCronomaEspecifico.estado== "ESPV0002")
-                //{
-                    if (filaSeleccionada.Index != 0)
+                clsCronomaEspecifico= lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
+
+                Int32 index = lstCronograma.FindIndex(i => i.idCronograma == CronogramaSeleccionado);
+                if (lstCronograma.Count > 1)
+                {
+                    if (filaSeleccionada.Index==0)
+                    {
+                        if (lstCronograma[index + 1].estado == "ESPV0002")
+                        {
+                            DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n" + dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (EstadoDialog == DialogResult.Yes)
+                            {
+                                lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
+                                clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
+                                lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera);
+                                Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
+
+                                frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
+                                fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Aun no puede generar este pago ! \n porque falta Completar los pagos del contrato anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+                    else
                     {
                         if (lstDetalleCronograma[filaSeleccionada.Index - 1].estado == "PAGO PENDIENTE")
                         {
@@ -1823,30 +1962,23 @@ namespace wfaIntegradoCom.Procesos
 
                         }
                     }
-                    else if (filaSeleccionada.Index == 0)
+
+                }
+                else
+                {
+                    DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n" + dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (EstadoDialog == DialogResult.Yes)
                     {
-                        DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n" + dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (EstadoDialog == DialogResult.Yes)
-                        {
-                            lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
-                            clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
-                            lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera);
-                            Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
+                        lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
+                        clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
+                        lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera);
+                        Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
 
-                            frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
-                            fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
-                        }
-
-
-
+                        frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
+                        fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
                     }
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Aun no puede generar este pago ! \n porque falta las cuotas anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                }
                 
-
             }
             else
             {

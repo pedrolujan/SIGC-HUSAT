@@ -544,6 +544,57 @@ namespace wfaIntegradoCom.Funciones
             return strEstado;
         }
 
+        public static Boolean fnRegistrarAccionDiaria(String descrip,Boolean estado,Int32 idOpera,String fechaOperacion)
+        {
+            BLCargo objTablaCod = new BLCargo();
+            clsUtil objUtil = new clsUtil();
+            List<Cargo> lstTablaCod = new List<Cargo>();
+
+            try
+            {
+                return  objTablaCod.blRegistrarAccionDiaria( descrip,  estado,  idOpera,  fechaOperacion);
+               
+
+                 
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FunGeneral", "fnLlenarTablaCodValor", ex.Message);
+                return false;
+            }
+            finally
+            {
+                objUtil = null;
+                objTablaCod = null;
+                lstTablaCod = null;
+            }
+        }
+
+        public static Int32 fnBuscarAccionDiaria(Int32 idOpera, string fechaOperacion)
+        {
+            BLCargo objTablaCod = new BLCargo();
+            clsUtil objUtil = new clsUtil();
+            List<Cargo> lstTablaCod = new List<Cargo>();
+
+            try
+            {
+                return objTablaCod.blBuscarAccionDiaria(idOpera, fechaOperacion);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FunGeneral", "fnLlenarTablaCodValor", ex.Message);
+                return 0;
+            }
+            finally
+            {
+                objUtil = null;
+                objTablaCod = null;
+                lstTablaCod = null;
+            }
+        }
         public static Int32 fnValidarDatosExistentes(String txtPlaca, String txtPlaca2, Int16 pnTipoCon,String Procedimiento)
         {
             BLValidarDatosExistentes objDatosDuplicados = new BLValidarDatosExistentes();
@@ -616,6 +667,28 @@ namespace wfaIntegradoCom.Funciones
 
             }
             return srt;
+        }
+        public static String fnObtenerUsuarioActual()
+        {
+            BLVentaGeneral blVG = new BLVentaGeneral();
+            clsUtil objUtil = new clsUtil();
+            Boolean bResult;
+            String cUsuario = "";
+            try
+            {
+                cUsuario = blVG.blObtenerUsuarioActual(Variables.gnCodUser);
+
+                return cUsuario;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("frmRegistrarVehiculo", "fnBuscarVehiculo", ex.Message);
+                return "";
+            }
+            finally
+            {
+                objUtil = null;
+            }
         }
 
     }

@@ -58,6 +58,7 @@
     <Compile Include="BLClienteVenta.cs" />
     <Compile Include="BLConfigMesa.cs" />
     <Compile Include="BLConsultas.cs" />
+    <Compile Include="BLControlCaja.cs" />
     <Compile Include="BLControlPagos.cs" />
     <Compile Include="BLDocumentoVenta.cs" />
     <Compile Include="BLEquipo_Imeis.cs" />

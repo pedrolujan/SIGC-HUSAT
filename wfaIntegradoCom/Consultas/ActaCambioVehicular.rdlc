@@ -7,293 +7,11 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>8b65ac4f-afa6-46d6-b759-41e13f98a2db</rd:DataSourceID>
+      <rd:DataSourceID>666e3b57-8337-4d72-9d1c-c1e674b6277b</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="dsClienteNuevo">
-      <Query>
-        <DataSourceName>CapaEntidad</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="bEstado">
-          <DataField>bEstado</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="cApeMat">
-          <DataField>cApeMat</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cApePat">
-          <DataField>cApePat</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cCliente">
-          <DataField>cCliente</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cContactoCel1">
-          <DataField>cContactoCel1</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cContactoCel2">
-          <DataField>cContactoCel2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cContactoNom1">
-          <DataField>cContactoNom1</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cContactoNom2">
-          <DataField>cContactoNom2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cCorreo">
-          <DataField>cCorreo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cDireccion">
-          <DataField>cDireccion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cDocumento">
-          <DataField>cDocumento</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cEmpresa">
-          <DataField>cEmpresa</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="clsTC">
-          <DataField>clsTC</DataField>
-          <rd:TypeName>CapaEntidad.TipoCliente</rd:TypeName>
-        </Field>
-        <Field Name="clsTD">
-          <DataField>clsTD</DataField>
-          <rd:TypeName>CapaEntidad.TipoDocumento</rd:TypeName>
-        </Field>
-        <Field Name="cNombre">
-          <DataField>cNombre</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="codigoVentaGen">
-          <DataField>codigoVentaGen</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cTelCelular">
-          <DataField>cTelCelular</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cTelFijo">
-          <DataField>cTelFijo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cTiDo">
-          <DataField>cTiDo</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="cTipoDoc">
-          <DataField>cTipoDoc</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cTipPers">
-          <DataField>cTipPers</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="dFechaRegistro">
-          <DataField>dFechaRegistro</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="dFecNac">
-          <DataField>dFecNac</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="idCliente">
-          <DataField>idCliente</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idDep">
-          <DataField>idDep</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idDist">
-          <DataField>idDist</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idProv">
-          <DataField>idProv</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idReferencia">
-          <DataField>idReferencia</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="idUsuario">
-          <DataField>idUsuario</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idVentaGen">
-          <DataField>idVentaGen</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idZona">
-          <DataField>idZona</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ubigeo">
-          <DataField>ubigeo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>CapaEntidad</rd:DataSetName>
-        <rd:TableName>Cliente</rd:TableName>
-        <rd:ObjectDataSourceType>CapaEntidad.Cliente, CapaEntidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="dsClienteAntiguo">
-      <Query>
-        <DataSourceName>CapaEntidad</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="bEstado">
-          <DataField>bEstado</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="cApeMat">
-          <DataField>cApeMat</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cApePat">
-          <DataField>cApePat</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cCliente">
-          <DataField>cCliente</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cContactoCel1">
-          <DataField>cContactoCel1</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cContactoCel2">
-          <DataField>cContactoCel2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cContactoNom1">
-          <DataField>cContactoNom1</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cContactoNom2">
-          <DataField>cContactoNom2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cCorreo">
-          <DataField>cCorreo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cDireccion">
-          <DataField>cDireccion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cDocumento">
-          <DataField>cDocumento</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cEmpresa">
-          <DataField>cEmpresa</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="clsTC">
-          <DataField>clsTC</DataField>
-          <rd:TypeName>CapaEntidad.TipoCliente</rd:TypeName>
-        </Field>
-        <Field Name="clsTD">
-          <DataField>clsTD</DataField>
-          <rd:TypeName>CapaEntidad.TipoDocumento</rd:TypeName>
-        </Field>
-        <Field Name="cNombre">
-          <DataField>cNombre</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="codigoVentaGen">
-          <DataField>codigoVentaGen</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cTelCelular">
-          <DataField>cTelCelular</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cTelFijo">
-          <DataField>cTelFijo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cTiDo">
-          <DataField>cTiDo</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="cTipoDoc">
-          <DataField>cTipoDoc</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cTipPers">
-          <DataField>cTipPers</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="dFechaRegistro">
-          <DataField>dFechaRegistro</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="dFecNac">
-          <DataField>dFecNac</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="idCliente">
-          <DataField>idCliente</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idDep">
-          <DataField>idDep</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idDist">
-          <DataField>idDist</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idProv">
-          <DataField>idProv</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idReferencia">
-          <DataField>idReferencia</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="idUsuario">
-          <DataField>idUsuario</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idVentaGen">
-          <DataField>idVentaGen</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="idZona">
-          <DataField>idZona</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ubigeo">
-          <DataField>ubigeo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>CapaEntidad</rd:DataSetName>
-        <rd:TableName>Cliente</rd:TableName>
-        <rd:ObjectDataSourceType>CapaEntidad.Cliente, CapaEntidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="dsVehiculo">
+    <DataSet Name="dtVehiculoAnterior">
       <Query>
         <DataSourceName>CapaEntidad</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -386,43 +104,362 @@
         <rd:ObjectDataSourceType>CapaEntidad.Vehiculo, CapaEntidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
+    <DataSet Name="dtVehiculoActual">
+      <Query>
+        <DataSourceName>CapaEntidad</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="anio">
+          <DataField>anio</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="bEstado">
+          <DataField>bEstado</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="dFechaReg">
+          <DataField>dFechaReg</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="idClase">
+          <DataField>idClase</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idCliente">
+          <DataField>idCliente</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idDescriVehiculoEsp">
+          <DataField>idDescriVehiculoEsp</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idMarcaV">
+          <DataField>idMarcaV</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idModeloV">
+          <DataField>idModeloV</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idUsuario">
+          <DataField>idUsuario</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idVehiculo">
+          <DataField>idVehiculo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ModoUso">
+          <DataField>ModoUso</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Observaciones">
+          <DataField>Observaciones</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Propietario">
+          <DataField>Propietario</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="vClase">
+          <DataField>vClase</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="vColor">
+          <DataField>vColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="vMarcaV">
+          <DataField>vMarcaV</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="vModeloV">
+          <DataField>vModeloV</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="vModUso">
+          <DataField>vModUso</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="vPlaca">
+          <DataField>vPlaca</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="vSerie">
+          <DataField>vSerie</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>CapaEntidad</rd:DataSetName>
+        <rd:TableName>Vehiculo</rd:TableName>
+        <rd:ObjectDataSourceType>CapaEntidad.Vehiculo, CapaEntidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="dtEquipoImeis">
+      <Query>
+        <DataSourceName>CapaEntidad</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="bEstado">
+          <DataField>bEstado</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="bEstadoEquipo">
+          <DataField>bEstadoEquipo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cantPaginas">
+          <DataField>cantPaginas</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ClsMoneda">
+          <DataField>ClsMoneda</DataField>
+          <rd:TypeName>CapaEntidad.Moneda</rd:TypeName>
+        </Field>
+        <Field Name="CodOrden">
+          <DataField>CodOrden</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Descuento">
+          <DataField>Descuento</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="dFechaRegistro">
+          <DataField>dFechaRegistro</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="idEquipo">
+          <DataField>idEquipo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idEquipoImeis">
+          <DataField>idEquipoImeis</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idMoneda">
+          <DataField>idMoneda</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idOrdenIngreso">
+          <DataField>idOrdenIngreso</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idPlataformaEquipo">
+          <DataField>idPlataformaEquipo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="idSimCard">
+          <DataField>idSimCard</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idUsuario">
+          <DataField>idUsuario</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="imei">
+          <DataField>imei</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MarcaEquipo">
+          <DataField>MarcaEquipo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ModeloEquipo">
+          <DataField>ModeloEquipo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nomEquipo">
+          <DataField>nomEquipo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Observacion">
+          <DataField>Observacion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OperadorEquipo">
+          <DataField>OperadorEquipo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="origenEquipo">
+          <DataField>origenEquipo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="precioEquipo">
+          <DataField>precioEquipo</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="serie">
+          <DataField>serie</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SimCardEquipo">
+          <DataField>SimCardEquipo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TipoIngreso">
+          <DataField>TipoIngreso</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="totalRegistros">
+          <DataField>totalRegistros</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>CapaEntidad</rd:DataSetName>
+        <rd:TableName>Equipo_imeis</rd:TableName>
+        <rd:ObjectDataSourceType>CapaEntidad.Equipo_imeis, CapaEntidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="dtCliente">
+      <Query>
+        <DataSourceName>CapaEntidad</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="bEstado">
+          <DataField>bEstado</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="cApeMat">
+          <DataField>cApeMat</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cApePat">
+          <DataField>cApePat</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cCliente">
+          <DataField>cCliente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cContactoCel1">
+          <DataField>cContactoCel1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cContactoCel2">
+          <DataField>cContactoCel2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cContactoNom1">
+          <DataField>cContactoNom1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cContactoNom2">
+          <DataField>cContactoNom2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cCorreo">
+          <DataField>cCorreo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cDireccion">
+          <DataField>cDireccion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cDocumento">
+          <DataField>cDocumento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cEmpresa">
+          <DataField>cEmpresa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="clsTC">
+          <DataField>clsTC</DataField>
+          <rd:TypeName>CapaEntidad.TipoCliente</rd:TypeName>
+        </Field>
+        <Field Name="clsTD">
+          <DataField>clsTD</DataField>
+          <rd:TypeName>CapaEntidad.TipoDocumento</rd:TypeName>
+        </Field>
+        <Field Name="cNombre">
+          <DataField>cNombre</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="codigoVentaGen">
+          <DataField>codigoVentaGen</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cTelCelular">
+          <DataField>cTelCelular</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cTelFijo">
+          <DataField>cTelFijo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cTiDo">
+          <DataField>cTiDo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="cTipoDoc">
+          <DataField>cTipoDoc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cTipPers">
+          <DataField>cTipPers</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="dFechaRegistro">
+          <DataField>dFechaRegistro</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dFecNac">
+          <DataField>dFecNac</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="idCliente">
+          <DataField>idCliente</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idDep">
+          <DataField>idDep</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idDist">
+          <DataField>idDist</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idProv">
+          <DataField>idProv</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idReferencia">
+          <DataField>idReferencia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="idUsuario">
+          <DataField>idUsuario</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idVentaGen">
+          <DataField>idVentaGen</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idZona">
+          <DataField>idZona</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ubigeo">
+          <DataField>ubigeo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>CapaEntidad</rd:DataSetName>
+        <rd:TableName>Cliente</rd:TableName>
+        <rd:ObjectDataSourceType>CapaEntidad.Cliente, CapaEntidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
         <ReportItems>
-          <Textbox Name="Textbox3">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>CAMBIO DE TITULARIDAD</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>0.07761cm</Top>
-            <Height>0.6cm</Height>
-            <Width>16.51cm</Width>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox1">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -438,10 +475,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.854cm</Top>
+            <Top>0.85911cm</Top>
             <Height>0.6cm</Height>
             <Width>1.23529cm</Width>
-            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -459,7 +495,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=cDate(First(Fields!dFechaReg.Value, "dsVehiculo")).ToString("dd/MM/yyyy")</Value>
+                    <Value>=cDate(First(Fields!dFechaReg.Value, "dtVehiculoActual")).ToString("dd/MM/yyyy")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -467,11 +503,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>0.854cm</Top>
+            <Top>0.85911cm</Top>
             <Left>1.25624cm</Left>
             <Height>0.6cm</Height>
             <Width>6.12479cm</Width>
-            <ZIndex>2</ZIndex>
+            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -497,11 +533,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>0.854cm</Top>
+            <Top>0.85911cm</Top>
             <Left>10.76537cm</Left>
             <Height>0.6cm</Height>
             <Width>3.08208cm</Width>
-            <ZIndex>3</ZIndex>
+            <ZIndex>2</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -527,11 +563,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>0.854cm</Top>
+            <Top>0.85911cm</Top>
             <Left>13.85098cm</Left>
             <Height>0.6cm</Height>
             <Width>2.59609cm</Width>
-            <ZIndex>4</ZIndex>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -549,16 +585,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>A través de la presente,solicito a Husat GPS S.A.C a ejecutar el cambio de titularidad del vehiculo con</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value />
+                    <Value>A través de la presente,solicito a Husat GPS S.A.C a ejecutar el cambio vehicular del equipo especificado</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -566,10 +593,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>1.63039cm</Top>
+            <Top>1.6355cm</Top>
             <Height>0.54708cm</Height>
             <Width>16.44707cm</Width>
-            <ZIndex>5</ZIndex>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -580,448 +607,29 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox7">
+          <Textbox Name="Textbox3">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Placa:</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>2.13717cm</Top>
-            <Height>0.6cm</Height>
-            <Width>1.12946cm</Width>
-            <ZIndex>6</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox8">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!vPlaca.Value, "dsVehiculo")</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>2.13717cm</Top>
-            <Left>1.14977cm</Left>
-            <Height>0.6cm</Height>
-            <Width>2.95508cm</Width>
-            <ZIndex>7</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox9">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Motivo:</Value>
+                    <Value>CAMBIO VEHICULAR</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Top>3.10406cm</Top>
-            <Left>0.03175cm</Left>
-            <Height>0.6cm</Height>
-            <Width>16.44707cm</Width>
-            <ZIndex>8</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox10">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Gestion de posición contratual:</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>3.9757cm</Top>
-            <Height>0.6cm</Height>
-            <Width>5.44548cm</Width>
-            <ZIndex>9</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox11">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=IIf(First(Fields!Propietario.Value, "dsVehiculo")="MOTI0001", "X"," ")</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
                 <Style>
                   <TextAlign>Center</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>3.9757cm</Top>
-            <Left>5.52662cm</Left>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>0.1425cm</Top>
             <Height>0.6cm</Height>
-            <Width>0.64792cm</Width>
-            <ZIndex>10</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-              <TopBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </TopBorder>
-              <BottomBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </BottomBorder>
-              <LeftBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </LeftBorder>
-              <RightBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </RightBorder>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>1.3pt</PaddingRight>
-              <PaddingTop>3pt</PaddingTop>
-              <PaddingBottom>1pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox12">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>fallecimiento:</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>3.9757cm</Top>
-            <Left>7.34261cm</Left>
-            <Height>0.6cm</Height>
-            <Width>2.4362cm</Width>
-            <ZIndex>11</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox13">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=IIf(First(Fields!Propietario.Value, "dsVehiculo")="MOTI0002", "X"," ")</Value>
-                    <Style>
-                      <FontStyle>Italic</FontStyle>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>3.9757cm</Top>
-            <Left>9.78948cm</Left>
-            <Height>0.6cm</Height>
-            <Width>0.64792cm</Width>
-            <ZIndex>12</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-              <TopBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </TopBorder>
-              <BottomBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </BottomBorder>
-              <LeftBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </LeftBorder>
-              <RightBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </RightBorder>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>1.3pt</PaddingRight>
-              <PaddingTop>3pt</PaddingTop>
-              <PaddingBottom>1pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox14">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Función o Escisión:</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>3.9757cm</Top>
-            <Left>12.36704cm</Left>
-            <Height>0.6cm</Height>
-            <Width>3.38869cm</Width>
-            <ZIndex>13</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox15">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=IIf(First(Fields!Propietario.Value, "dsVehiculo")="MOTI0003", "X"," ")</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>3.9757cm</Top>
-            <Left>15.76641cm</Left>
-            <Height>0.6cm</Height>
-            <Width>0.64792cm</Width>
-            <ZIndex>14</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-              <TopBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </TopBorder>
-              <BottomBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </BottomBorder>
-              <LeftBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </LeftBorder>
-              <RightBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </RightBorder>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>1.3pt</PaddingRight>
-              <PaddingTop>3pt</PaddingTop>
-              <PaddingBottom>1pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox34">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>En caso de que el vehiculo, el cambio de titularidad està  sujeto a la aprobaciòn de la evaluacion crediticia, en la cual se velidara la existencia de deudas,comportamiento de pàgo è historial crediticio del nuevo titular. Comprendido la siguiente advertencia, se aprovarà ela cambio de titularidad</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox34</rd:DefaultName>
-            <Top>12.26196cm</Top>
-            <Left>0.08008cm</Left>
-            <Height>1.36729cm</Height>
-            <Width>16.33425cm</Width>
-            <ZIndex>15</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Line Name="Line1">
-            <Top>15.832cm</Top>
-            <Left>1.35974cm</Left>
-            <Height>0cm</Height>
-            <Width>4.66958cm</Width>
-            <ZIndex>16</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Textbox Name="Textbox35">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Firma del titular actual</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox35</rd:DefaultName>
-            <Top>15.86728cm</Top>
-            <Left>1.91771cm</Left>
-            <Height>0.6cm</Height>
-            <Width>3.71708cm</Width>
-            <ZIndex>17</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Line Name="Line2">
-            <Top>15.832cm</Top>
-            <Left>9.41271cm</Left>
-            <Height>0cm</Height>
-            <Width>4.66958cm</Width>
-            <ZIndex>18</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Textbox Name="Textbox36">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Firma del nuevo titular</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox35</rd:DefaultName>
-            <Top>15.86728cm</Top>
-            <Left>9.97068cm</Left>
-            <Height>0.6cm</Height>
-            <Width>3.71708cm</Width>
-            <ZIndex>19</ZIndex>
+            <Width>16.51cm</Width>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1055,7 +663,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!cContactoNom1.Value, "dsClienteAntiguo")</Value>
+                                  <Value>=First(Fields!cContactoNom1.Value, "dtCliente")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1085,7 +693,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!cNombre.Value, "dsClienteAntiguo")+" "+First(Fields!cApePat.Value, "dsClienteAntiguo")+" "+First(Fields!cApeMat.Value, "dsClienteAntiguo")</Value>
+                                  <Value>=First(Fields!cNombre.Value, "dtCliente")+" "+First(Fields!cApePat.Value, "dtCliente")+" "+First(Fields!cApeMat.Value, "dtCliente")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1120,7 +728,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!cTipoDoc.Value, "dsClienteAntiguo")</Value>
+                                  <Value>=First(Fields!cTipoDoc.Value, "dtCliente")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1150,7 +758,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!cDocumento.Value, "dsClienteAntiguo")</Value>
+                                  <Value>=First(Fields!cDocumento.Value, "dtCliente")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1215,7 +823,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!cTelCelular.Value, "dsClienteAntiguo")</Value>
+                                  <Value>=First(Fields!cTelCelular.Value, "dtCliente")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1280,7 +888,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!ubigeo.Value, "dsClienteAntiguo")</Value>
+                                  <Value>=First(Fields!ubigeo.Value, "dtCliente")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1327,11 +935,12 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>dsClienteAntiguo</DataSetName>
-            <Top>5.78926cm</Top>
+            <DataSetName>dtCliente</DataSetName>
+            <Top>3.24584cm</Top>
+            <Left>0.06371cm</Left>
             <Height>2.4cm</Height>
             <Width>16.38258cm</Width>
-            <ZIndex>20</ZIndex>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1345,7 +954,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Datos del actual titular del vehiculo (Candente)</Value>
+                    <Value>Datos del cliente:</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -1355,10 +964,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>5.08342cm</Top>
+            <Top>2.54cm</Top>
+            <Left>0.06371cm</Left>
             <Height>0.6cm</Height>
             <Width>16.38258cm</Width>
-            <ZIndex>21</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1392,7 +1002,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!cContactoNom1.Value, "dsClienteNuevo")</Value>
+                                  <Value>Imei</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1422,7 +1032,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!cNombre.Value, "dsClienteNuevo")+" "+First(Fields!cApePat.Value, "dsClienteNuevo")+" "+First(Fields!cApeMat.Value, "dsClienteNuevo")</Value>
+                                  <Value>=Fields!imei.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1457,7 +1067,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!cTipoDoc.Value, "dsClienteNuevo")</Value>
+                                  <Value>Marca</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1487,7 +1097,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!cDocumento.Value, "dsClienteNuevo")</Value>
+                                  <Value>=Fields!MarcaEquipo.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1522,7 +1132,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Telefono</Value>
+                                  <Value>Modelo</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1552,7 +1162,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!cTelCelular.Value, "dsClienteNuevo")</Value>
+                                  <Value>=Fields!ModeloEquipo.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1587,7 +1197,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Dirección</Value>
+                                  <Value>Sim Card</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1617,7 +1227,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!ubigeo.Value, "dsClienteNuevo")</Value>
+                                  <Value>=Fields!SimCardEquipo.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1664,11 +1274,12 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>dsClienteNuevo</DataSetName>
-            <Top>9.31842cm</Top>
+            <DataSetName>dtEquipoImeis</DataSetName>
+            <Top>6.4575cm</Top>
+            <Left>0.06371cm</Left>
             <Height>2.4cm</Height>
             <Width>16.38258cm</Width>
-            <ZIndex>22</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1682,7 +1293,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Datos del nuevo titular del vehiculo (Cesionario)</Value>
+                    <Value>Datos del equipo:</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -1692,10 +1303,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>8.68315cm</Top>
+            <Top>5.82223cm</Top>
+            <Left>0.06371cm</Left>
             <Height>0.6cm</Height>
             <Width>16.38258cm</Width>
-            <ZIndex>23</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1706,14 +1318,722 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Tablix Name="Tablix4">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.68254cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>14.70004cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox46">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Placa</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox42</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox59">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!vPlaca.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox44</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox60">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Marca</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox47</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox61">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!vMarcaV.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox48</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox62">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Modelo</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox50</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox63">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!vModeloV.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox51</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Detalles3" />
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>dtVehiculoAnterior</DataSetName>
+            <Top>9.64239cm</Top>
+            <Left>0.06371cm</Left>
+            <Height>1.8cm</Height>
+            <Width>16.38258cm</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Textbox Name="Textbox26">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Datos del vehiculo anterior:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox16</rd:DefaultName>
+            <Top>9.00712cm</Top>
+            <Left>0.06371cm</Left>
+            <Height>0.6cm</Height>
+            <Width>16.38258cm</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Tablix Name="Tablix5">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.68254cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>14.70004cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox64">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Placa</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox42</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox65">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!vPlaca.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox44</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox66">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Marca</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox47</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox67">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!vMarcaV.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox48</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox68">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Modelo</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox50</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox69">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!vModeloV.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox51</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Detalles4" />
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>dtVehiculoActual</DataSetName>
+            <Top>12.15395cm</Top>
+            <Left>0.06371cm</Left>
+            <Height>1.8cm</Height>
+            <Width>16.38258cm</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Textbox Name="Textbox27">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Datos del vehiculo actual:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox16</rd:DefaultName>
+            <Top>11.51868cm</Top>
+            <Left>0.06371cm</Left>
+            <Height>0.6cm</Height>
+            <Width>16.38258cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox24">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!cNombre.Value, "dtCliente") + " " + First(Fields!cApePat.Value, "dtCliente") + " " + First(Fields!cApeMat.Value, "dtCliente")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox24</rd:DefaultName>
+            <Top>16.23535cm</Top>
+            <Left>7.77526cm</Left>
+            <Height>0.6cm</Height>
+            <Width>8.57853cm</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox28">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>CLIENTE</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>7.5pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox25</rd:DefaultName>
+            <Top>16.8036cm</Top>
+            <Left>10.81453cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox29">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!rpRazonSocial.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox24</rd:DefaultName>
+            <Top>16.23535cm</Top>
+            <Left>0.18468cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.68174cm</Width>
+            <ZIndex>16</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox30">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Empresa</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>7.5pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox25</rd:DefaultName>
+            <Top>16.8036cm</Top>
+            <Left>2.77555cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>17</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line1">
+            <Top>16.29005cm</Top>
+            <Left>0.33268cm</Left>
+            <Height>0cm</Height>
+            <Width>7.38574cm</Width>
+            <ZIndex>18</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="Line2">
+            <Top>16.29005cm</Top>
+            <Left>8.30099cm</Left>
+            <Height>0cm</Height>
+            <Width>7.52708cm</Width>
+            <ZIndex>19</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
         </ReportItems>
-        <Height>6.48318in</Height>
+        <Height>6.85181in</Height>
         <Style />
       </Body>
       <Width>6.5in</Width>
       <Page>
         <PageHeader>
-          <Height>1.2569cm</Height>
+          <Height>1.30202cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1721,7 +2041,7 @@
               <Source>Embedded</Source>
               <Value>HUSAT_LOGO</Value>
               <Sizing>FitProportional</Sizing>
-              <Top>0.09525cm</Top>
+              <Top>0.1905cm</Top>
               <Height>1.11152cm</Height>
               <Width>4.97619cm</Width>
               <Style>
@@ -1737,6 +2057,159 @@
             </Border>
           </Style>
         </PageHeader>
+        <PageFooter>
+          <Height>1.77271cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox22">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Av. Federico Villareal N° 319 </Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>§</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Wingdings</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#666699</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Urb. Daniel Hoyle – Trujillo </Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>§</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Wingdings</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#666699</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <LeftIndent>0cm</LeftIndent>
+                  <RightIndent>0cm</RightIndent>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <LineHeight>9pt</LineHeight>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Teléfono: 932495084 </Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>§</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Wingdings</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#666699</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <LeftIndent>0cm</LeftIndent>
+                  <RightIndent>0cm</RightIndent>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <LineHeight>9pt</LineHeight>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Correo: info@husat.com.pe </Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>§</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Wingdings</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#666699</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <LeftIndent>0cm</LeftIndent>
+                  <RightIndent>0cm</RightIndent>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <LineHeight>9pt</LineHeight>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox22</rd:DefaultName>
+              <Top>0.03528cm</Top>
+              <Left>12.35879cm</Left>
+              <Height>1.65833cm</Height>
+              <Width>4.0875cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
@@ -1751,14 +2224,10 @@
   <ReportParameters>
     <ReportParameter Name="rpRazonSocial">
       <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="rpRucEmpresa">
       <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
@@ -1903,5 +2372,5 @@ SZIkSZIk5ZqBmCRJkiRJkiRJknLNQEySJEmSJEmSJEm5ZiAmSZIkSZIkSZKkXDMQkyRJkiRJkiRJUq4Z
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>a7f06741-1a60-4105-8c81-2e9920c8163f</rd:ReportID>
+  <rd:ReportID>b43c2db0-e6b3-45c7-9e3b-9395c9b38869</rd:ReportID>
 </Report>

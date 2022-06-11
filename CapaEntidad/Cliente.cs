@@ -39,6 +39,7 @@ namespace CapaEntidad
         public TipoCliente clsTC { get; set; }
         public String ubigeo { get; set; }
         public Int32 idVentaGen { get; set; }
+        public Int32 idContrato { get; set; }
         public String codigoVentaGen { get; set; }
         public String idReferencia { get; set; }
        

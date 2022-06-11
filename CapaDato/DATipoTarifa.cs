@@ -33,7 +33,7 @@ namespace CapaDato
                 List<TipoTarifa> lstCargo = new List<TipoTarifa>();
                 lstCargo.Add(new TipoTarifa(
                         Convert.ToInt32("0"),
-                        Convert.ToString(buscar ? "TODOS" : "Selecc. opcion"),
+                        Convert.ToString(buscar? "TODOS" : "Selecc. opcion"),
                         Convert.ToBoolean(1)));
 
                 foreach (DataRow drMenu in dtUsuario.Rows)

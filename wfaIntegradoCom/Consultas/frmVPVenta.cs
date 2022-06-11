@@ -23,6 +23,7 @@ namespace wfaIntegradoCom.Consultas
         VentaGeneral clsVentaGeneral;
         static Boolean estVP=false;
         static Int32 lnTipoCon = 0;
+        static Int32 lnEstadosProcesos = 0;
         static List<Pagos> lstPagosTrand = new List<Pagos>();
         public frmVPVenta()
         {
@@ -42,6 +43,10 @@ namespace wfaIntegradoCom.Consultas
         public void fnCambiarEstado(Boolean estado)
         {
             estVP = estado;
+        }
+        public void fnEstadoProcesos(Int32 lnEp)
+        {
+            lnEstadosProcesos = lnEp;
         }
         private void fmrVPVenta_Load(object sender, EventArgs e)
         {
@@ -113,8 +118,9 @@ namespace wfaIntegradoCom.Consultas
 
             }else if (lnTipoCon == -2)
             {
-                frmCambioTitularidad frmcTitu = new frmCambioTitularidad();
-                frmcTitu.fnCambiarEstado(false);
+                frmOtrasVentas fr = new frmOtrasVentas();
+                fr.fnRecuperarEstadoGenVenta(false);
+                fr.fnCondicionProcesos(0);
             }
 
             this.Close();
@@ -149,10 +155,23 @@ namespace wfaIntegradoCom.Consultas
             // opcion para otras ventas
             else if(lnTipoCon == -2)
             {
+                if (lnEstadosProcesos==0)
+                {
+                    Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                    Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
+                    fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo);
+                }else if (lnEstadosProcesos==-1)
+                {
+                    frmOtrasVentas fr = new frmOtrasVentas();
+                    fr.fnCondicionProcesos(-1);
+                }else if (lnEstadosProcesos == -2)
+                {
+                    frmOtrasVentas fr = new frmOtrasVentas();
+                    fr.fnCondicionProcesos(-2);
+                }
+               
 
-                Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo);
+
 
             }
 
@@ -178,6 +197,12 @@ namespace wfaIntegradoCom.Consultas
                 frmControlPagoVenta frmCVent = new frmControlPagoVenta();
                 frmCVent.fnCambiarEstadoVenta(false);
 
+            }
+            else if (lnTipoCon==-2)
+            {
+                frmOtrasVentas fr = new frmOtrasVentas();
+                fr.fnRecuperarEstadoGenVenta(false);
+                fr.fnCondicionProcesos(0);
             }
         }
     }

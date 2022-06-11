@@ -52,12 +52,12 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public Boolean blGuardarOtrasVentas(OtrasVentas clsOtrasVentas, List<xmlDocumentoVentaGeneral> xmlDocumentoVenta, Int32 tipCon)
+        public Boolean blGuardarOtrasVentas(OtrasVentas clsOtrasVentas, Int32 tipCon)
         {
             daObjTipoVenta = new DAOtrasVenta();
             try
             {
-                return daObjTipoVenta.daGuardarOtrasVenta(clsOtrasVentas,xmlDocumentoVenta, tipCon);
+                return daObjTipoVenta.daGuardarOtrasVenta(clsOtrasVentas, tipCon);
             }
             catch(Exception ex)
             {
@@ -122,13 +122,13 @@ namespace CapaNegocio
             }
 
         }
-        public DataTable blBuscarCliente(String nroDocumento, String estCliente, Int32 tipoCon)
+        public DataTable blBuscarCliente(String nroDocumento, String estCliente, Int32 idVehiculo, Int32 tipoCon)
         {
 
             DAOtrasVenta objCliente = new DAOtrasVenta();
             try
             {
-                return objCliente.daBuscarCliente(nroDocumento, estCliente, tipoCon);
+                return objCliente.daBuscarCliente(nroDocumento, estCliente, idVehiculo, tipoCon);
             }
             catch (Exception ex)
             {

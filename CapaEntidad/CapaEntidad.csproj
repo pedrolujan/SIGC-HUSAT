@@ -56,6 +56,7 @@
     <Compile Include="Cargo.cs" />
     <Compile Include="Ciclo.cs" />
     <Compile Include="Contrato.cs" />
+    <Compile Include="ControlCaja.cs" />
     <Compile Include="ControlPagos.cs" />
     <Compile Include="Cronograma.cs" />
     <Compile Include="DetalleEquipo.cs" />

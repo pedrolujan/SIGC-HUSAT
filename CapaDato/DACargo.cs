@@ -344,6 +344,84 @@ namespace CapaDato
             return lcCorrelativo;
 
         }
+        public Int32 daBusacarAccionDiaria(Int32 idOperacion,string dtFechaOpe)
+        {
 
+            
+            SqlParameter[] pa = new SqlParameter[2];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            DataTable dtt = new DataTable();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@idOperacion", SqlDbType.Int);
+                pa[0].Value = idOperacion;
+                pa[1] = new SqlParameter("@fechaOperacion", SqlDbType.Date);
+                pa[1].Value = dtFechaOpe;
+
+
+                objCnx = new clsConexion("");
+                dtt= objCnx.EjecutarProcedimientoDT("uspBuscarAccionDiaria", pa);
+                return dtt.Rows.Count;
+
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACargo.cs", "daDevolverCorrelativo", ex.Message);
+                return 0;
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+
+        }
+
+        public Boolean daRegistrarAccionDiaria(String descrip, Boolean estado, Int32 idOpera, string fechaOperacion)
+        {
+
+            String lcCorrelativo = "";
+            SqlParameter[] pa = new SqlParameter[4];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@descripcion", SqlDbType.NVarChar, 50);
+                pa[0].Value = descrip;
+                pa[1] = new SqlParameter("@estado", SqlDbType.TinyInt);
+                pa[1].Value = estado;
+                pa[2] = new SqlParameter("@idOperacion", SqlDbType.Int);
+                pa[2].Value = idOpera;
+                pa[3] = new SqlParameter("@fechaOperacion", SqlDbType.DateTime);
+                pa[3].Value = fechaOperacion;
+
+
+                objCnx = new clsConexion("");
+                objCnx.EjecutarProcedimiento("uspGuardarAccionDiaria", pa);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACargo.cs", "daDevolverCorrelativo", ex.Message);
+                lcCorrelativo = "XX";
+                return false;
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
     }
 }

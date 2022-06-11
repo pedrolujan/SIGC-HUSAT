@@ -492,7 +492,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             DateTime fechaProxSeguimiento = solofechaProxSeguimiento.AddHours(soloHoraFechSeg);
             DateTime fechaSistema = Variables.gdFechaSis;
-            DateTime fecha1mes = fechaSistema.AddMonths(1);
+            DateTime fecha1mes = fechaSistema.AddDays(15);
 
             if (fechaProxSeguimiento > fechaSistema && fechaProxSeguimiento < fecha1mes)
             {
@@ -1535,6 +1535,11 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnRojo_Click(object sender, EventArgs e)
         {
             letraColor = "R";
@@ -1824,6 +1829,7 @@ namespace wfaIntegradoCom.Mantenedores
             rdbFechaSigSeg.Checked = true;
             dtpFechaInicialBusqueda.Value = Variables.gdFechaSis.AddDays(-30);
             dtpFechaFinalBusqueda.Value = Variables.gdFechaSis;
+            dtpFechaProximoSeguimiento.Value = Variables.gdFechaSis;
             cboBuscarEstadoCliente.SelectedValue = "ESPR0001";
             gbPaginacionProsPlan.Visible = false;
             gbPaginacionSeg.Visible = false;
@@ -2265,7 +2271,6 @@ namespace wfaIntegradoCom.Mantenedores
            
         }
         private Boolean fnBuscarTablaProspectosPlan(String pcBuscar, Int32 numPagina, Int32 tipoCon, String lColor )
-        
         {
             BLProspecto objAcc = new BLProspecto();
             clsUtil objUtil = new clsUtil();

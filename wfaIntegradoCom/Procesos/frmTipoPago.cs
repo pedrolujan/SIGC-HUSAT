@@ -106,8 +106,9 @@ namespace wfaIntegradoCom.Procesos
             }
             else if (lnTipoLLamada == -2)
             {
-                frmOtrasVentas frm2 = new frmOtrasVentas();
-                frm2.fnRecuperarEstadoGenVenta(false);
+                frmOtrasVentas fr = new frmOtrasVentas();
+                fr.fnRecuperarEstadoGenVenta(false);
+                fr.fnCondicionProcesos(0);
 
             }
         }
@@ -155,7 +156,7 @@ namespace wfaIntegradoCom.Procesos
                 this.Close();
             }
            
-            fnLlenarCombobox(cboTipoVenta, "TIVTR00"+ lnTipoLLamada,2);
+            fnLlenarCombobox(cboTipoVenta, "TIVTR00"+ lnTipoLLamada,2,false);
             txtCanPagar.Text = string.Format("{0:0.00}", lnMontoPagar);
             lblMoneda.Text = SImboloMoneda;
             lblMoneda1.Text = SImboloMoneda;
@@ -374,7 +375,7 @@ namespace wfaIntegradoCom.Procesos
                 }
                 else
                 {
-                    fnLlenarCombobox(cboEntidadesPago, Convert.ToString(cboTipoPago.SelectedValue), 0);
+                    fnLlenarCombobox(cboEntidadesPago, Convert.ToString(cboTipoPago.SelectedValue), 0,false);
                     fnMostrarCombo(true);
                     fnActivarpagaConYVuelto(false);
                     estEntidadVenta = false;
@@ -405,9 +406,10 @@ namespace wfaIntegradoCom.Procesos
             }
             else if (lnTipoLLamada == -2)
             {
-                frmOtrasVentas frm2 = new frmOtrasVentas();
-                frm2.fnRecuperarEstadoGenVenta(false);
-                
+                frmOtrasVentas fr = new frmOtrasVentas();
+                fr.fnRecuperarEstadoGenVenta(false);
+                fr.fnCondicionProcesos(0);
+
             }
             this.Dispose();
         }
@@ -416,7 +418,7 @@ namespace wfaIntegradoCom.Procesos
         {
 
         }
-        public static Boolean fnLlenarCombobox(ComboBox cboCombo, String cCodTab,Int32 lnTipoCon)
+        public static Boolean fnLlenarCombobox(ComboBox cboCombo, String cCodTab,Int32 lnTipoCon, Boolean estBusq)
         {
             BLTipoPagos objTablaCod = new BLTipoPagos();
             clsUtil objUtil = new clsUtil();
@@ -424,7 +426,7 @@ namespace wfaIntegradoCom.Procesos
 
             try
             {
-                lstTablaCod = objTablaCod.blDevolverEntidadPago(cCodTab,  lnTipoCon);
+                lstTablaCod = objTablaCod.blDevolverEntidadPago(cCodTab,  lnTipoCon,  estBusq);
                 cboCombo.DataSource = null;
                 cboCombo.ValueMember = "cCodEntidad";
                 cboCombo.DisplayMember = "nomEntidadPago";

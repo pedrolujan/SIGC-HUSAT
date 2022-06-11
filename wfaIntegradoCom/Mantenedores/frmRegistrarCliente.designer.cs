@@ -1009,6 +1009,7 @@
             this.txtNrDocumento.Animated = false;
             this.txtNrDocumento.BorderColor = System.Drawing.Color.Gainsboro;
             this.txtNrDocumento.BorderRadius = 5;
+            this.txtNrDocumento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNrDocumento.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNrDocumento.DefaultText = "";
             this.txtNrDocumento.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -1023,6 +1024,7 @@
             this.txtNrDocumento.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNrDocumento.HoveredState.Parent = this.txtNrDocumento;
             this.txtNrDocumento.Location = new System.Drawing.Point(572, 48);
+            this.txtNrDocumento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNrDocumento.Name = "txtNrDocumento";
             this.txtNrDocumento.PasswordChar = '\0';
             this.txtNrDocumento.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1053,6 +1055,7 @@
             this.txtNombre.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombre.HoveredState.Parent = this.txtNombre;
             this.txtNombre.Location = new System.Drawing.Point(18, 126);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PasswordChar = '\0';
             this.txtNombre.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1083,6 +1086,7 @@
             this.txtApeMat.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApeMat.HoveredState.Parent = this.txtApeMat;
             this.txtApeMat.Location = new System.Drawing.Point(860, 126);
+            this.txtApeMat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtApeMat.Name = "txtApeMat";
             this.txtApeMat.PasswordChar = '\0';
             this.txtApeMat.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1113,6 +1117,7 @@
             this.txtApePat.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApePat.HoveredState.Parent = this.txtApePat;
             this.txtApePat.Location = new System.Drawing.Point(572, 126);
+            this.txtApePat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtApePat.Name = "txtApePat";
             this.txtApePat.PasswordChar = '\0';
             this.txtApePat.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1233,6 +1238,7 @@
             this.txtNombreBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombreBuscar.HoveredState.Parent = this.txtNombreBuscar;
             this.txtNombreBuscar.Location = new System.Drawing.Point(880, 61);
+            this.txtNombreBuscar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombreBuscar.Name = "txtNombreBuscar";
             this.txtNombreBuscar.PasswordChar = '\0';
             this.txtNombreBuscar.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1287,6 +1293,7 @@
             this.txtNroDocumentoBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNroDocumentoBuscar.HoveredState.Parent = this.txtNroDocumentoBuscar;
             this.txtNroDocumentoBuscar.Location = new System.Drawing.Point(674, 61);
+            this.txtNroDocumentoBuscar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNroDocumentoBuscar.Name = "txtNroDocumentoBuscar";
             this.txtNroDocumentoBuscar.PasswordChar = '\0';
             this.txtNroDocumentoBuscar.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1456,6 +1463,7 @@
             this.txtTelFijo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelFijo.HoveredState.Parent = this.txtTelFijo;
             this.txtTelFijo.Location = new System.Drawing.Point(18, 51);
+            this.txtTelFijo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTelFijo.Name = "txtTelFijo";
             this.txtTelFijo.PasswordChar = '\0';
             this.txtTelFijo.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1486,6 +1494,7 @@
             this.txtTelCelular.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelCelular.HoveredState.Parent = this.txtTelCelular;
             this.txtTelCelular.Location = new System.Drawing.Point(240, 51);
+            this.txtTelCelular.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTelCelular.Name = "txtTelCelular";
             this.txtTelCelular.PasswordChar = '\0';
             this.txtTelCelular.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1516,6 +1525,7 @@
             this.txtCorreo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCorreo.HoveredState.Parent = this.txtCorreo;
             this.txtCorreo.Location = new System.Drawing.Point(446, 49);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.PasswordChar = '\0';
             this.txtCorreo.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1648,6 +1658,7 @@
             this.txtDireccion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDireccion.HoveredState.Parent = this.txtDireccion;
             this.txtDireccion.Location = new System.Drawing.Point(18, 133);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.PasswordChar = '\0';
             this.txtDireccion.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1679,6 +1690,7 @@
             this.txtEmpresa.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmpresa.HoveredState.Parent = this.txtEmpresa;
             this.txtEmpresa.Location = new System.Drawing.Point(557, 133);
+            this.txtEmpresa.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEmpresa.Name = "txtEmpresa";
             this.txtEmpresa.PasswordChar = '\0';
             this.txtEmpresa.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1741,6 +1753,7 @@
             this.txtNombreContacto1.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombreContacto1.HoveredState.Parent = this.txtNombreContacto1;
             this.txtNombreContacto1.Location = new System.Drawing.Point(18, 48);
+            this.txtNombreContacto1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombreContacto1.Name = "txtNombreContacto1";
             this.txtNombreContacto1.PasswordChar = '\0';
             this.txtNombreContacto1.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1771,6 +1784,7 @@
             this.txtNombreContacto2.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombreContacto2.HoveredState.Parent = this.txtNombreContacto2;
             this.txtNombreContacto2.Location = new System.Drawing.Point(18, 121);
+            this.txtNombreContacto2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombreContacto2.Name = "txtNombreContacto2";
             this.txtNombreContacto2.PasswordChar = '\0';
             this.txtNombreContacto2.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1801,6 +1815,7 @@
             this.txtCelularContacto1.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCelularContacto1.HoveredState.Parent = this.txtCelularContacto1;
             this.txtCelularContacto1.Location = new System.Drawing.Point(880, 48);
+            this.txtCelularContacto1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCelularContacto1.Name = "txtCelularContacto1";
             this.txtCelularContacto1.PasswordChar = '\0';
             this.txtCelularContacto1.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1831,6 +1846,7 @@
             this.txtCelularContacto2.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCelularContacto2.HoveredState.Parent = this.txtCelularContacto2;
             this.txtCelularContacto2.Location = new System.Drawing.Point(880, 121);
+            this.txtCelularContacto2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCelularContacto2.Name = "txtCelularContacto2";
             this.txtCelularContacto2.PasswordChar = '\0';
             this.txtCelularContacto2.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1915,6 +1931,7 @@
             this.txtIdPersonal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdPersonal.HoveredState.Parent = this.txtIdPersonal;
             this.txtIdPersonal.Location = new System.Drawing.Point(1129, 21);
+            this.txtIdPersonal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtIdPersonal.Name = "txtIdPersonal";
             this.txtIdPersonal.PasswordChar = '\0';
             this.txtIdPersonal.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -2006,6 +2023,7 @@
             this.txtValidarDocumento.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtValidarDocumento.HoveredState.Parent = this.txtValidarDocumento;
             this.txtValidarDocumento.Location = new System.Drawing.Point(37, 46);
+            this.txtValidarDocumento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtValidarDocumento.Name = "txtValidarDocumento";
             this.txtValidarDocumento.PasswordChar = '\0';
             this.txtValidarDocumento.PlaceholderForeColor = System.Drawing.Color.Silver;

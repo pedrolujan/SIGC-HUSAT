@@ -100,7 +100,6 @@ namespace wfaIntegradoCom.Procesos
             this.imgComprobanteP = new System.Windows.Forms.PictureBox();
             this.dtFechaPago = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.txtCiclo = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.txtfechaoriginal = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.cboComprobanteP = new Siticone.UI.WinForms.SiticoneComboBox();
@@ -113,6 +112,7 @@ namespace wfaIntegradoCom.Procesos
             this.label8 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.chkHabilitarDescuentoP = new Siticone.UI.WinForms.SiticoneCheckBox();
+            this.btnCambiarIncumplimiento = new Siticone.UI.WinForms.SiticoneButton();
             this.siticoneButton2 = new Siticone.UI.WinForms.SiticoneButton();
             this.gbVehiculo = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.dgvCronograma = new System.Windows.Forms.DataGridView();
@@ -152,11 +152,11 @@ namespace wfaIntegradoCom.Procesos
             this.erMoneda = new System.Windows.Forms.Label();
             this.erFechaPago = new System.Windows.Forms.Label();
             this.erComprobanteP = new System.Windows.Forms.Label();
+            this.txtfechaoriginal = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticoneCustomGradientPanel1 = new Siticone.UI.WinForms.SiticoneCustomGradientPanel();
             this.cmsPagoCuotas = new Guna.UI.WinForms.GunaContextMenuStrip();
             this.msPagarCuota = new System.Windows.Forms.ToolStripMenuItem();
             this.msActializarPago = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCambiarIncumplimiento = new Siticone.UI.WinForms.SiticoneButton();
             this.PanelTop.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -984,39 +984,6 @@ namespace wfaIntegradoCom.Procesos
             this.txtCiclo.Size = new System.Drawing.Size(38, 36);
             this.txtCiclo.TabIndex = 153;
             // 
-            // txtfechaoriginal
-            // 
-            this.txtfechaoriginal.Animated = false;
-            this.txtfechaoriginal.BorderColor = System.Drawing.Color.Silver;
-            this.txtfechaoriginal.BorderRadius = 5;
-            this.txtfechaoriginal.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtfechaoriginal.DefaultText = "";
-            this.txtfechaoriginal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtfechaoriginal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtfechaoriginal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtfechaoriginal.DisabledState.Parent = this.txtfechaoriginal;
-            this.txtfechaoriginal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtfechaoriginal.Enabled = false;
-            this.txtfechaoriginal.FillColor = System.Drawing.Color.Gainsboro;
-            this.txtfechaoriginal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.txtfechaoriginal.FocusedState.Parent = this.txtfechaoriginal;
-            this.txtfechaoriginal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtfechaoriginal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtfechaoriginal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtfechaoriginal.HoveredState.Parent = this.txtfechaoriginal;
-            this.txtfechaoriginal.Location = new System.Drawing.Point(15, 474);
-            this.txtfechaoriginal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtfechaoriginal.Name = "txtfechaoriginal";
-            this.txtfechaoriginal.PasswordChar = '\0';
-            this.txtfechaoriginal.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtfechaoriginal.PlaceholderText = "";
-            this.txtfechaoriginal.ReadOnly = true;
-            this.txtfechaoriginal.SelectedText = "";
-            this.txtfechaoriginal.ShadowDecoration.Parent = this.txtfechaoriginal;
-            this.txtfechaoriginal.Size = new System.Drawing.Size(164, 36);
-            this.txtfechaoriginal.TabIndex = 153;
-            this.txtfechaoriginal.Visible = false;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -1197,6 +1164,32 @@ namespace wfaIntegradoCom.Procesos
             this.chkHabilitarDescuentoP.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.chkHabilitarDescuentoP.UseVisualStyleBackColor = false;
             this.chkHabilitarDescuentoP.CheckedChanged += new System.EventHandler(this.chkHabilitarDescuentoP_CheckedChanged);
+            // 
+            // btnCambiarIncumplimiento
+            // 
+            this.btnCambiarIncumplimiento.BackColor = System.Drawing.Color.Transparent;
+            this.btnCambiarIncumplimiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnCambiarIncumplimiento.BorderRadius = 5;
+            this.btnCambiarIncumplimiento.BorderThickness = 1;
+            this.btnCambiarIncumplimiento.CheckedState.Parent = this.btnCambiarIncumplimiento;
+            this.btnCambiarIncumplimiento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCambiarIncumplimiento.CustomImages.Parent = this.btnCambiarIncumplimiento;
+            this.btnCambiarIncumplimiento.FillColor = System.Drawing.Color.White;
+            this.btnCambiarIncumplimiento.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCambiarIncumplimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnCambiarIncumplimiento.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnCambiarIncumplimiento.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnCambiarIncumplimiento.HoveredState.ForeColor = System.Drawing.Color.White;
+            this.btnCambiarIncumplimiento.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
+            this.btnCambiarIncumplimiento.HoveredState.Parent = this.btnCambiarIncumplimiento;
+            this.btnCambiarIncumplimiento.Image = global::wfaIntegradoCom.Properties.Resources.actualizar;
+            this.btnCambiarIncumplimiento.Location = new System.Drawing.Point(6, 429);
+            this.btnCambiarIncumplimiento.Name = "btnCambiarIncumplimiento";
+            this.btnCambiarIncumplimiento.ShadowDecoration.Parent = this.btnCambiarIncumplimiento;
+            this.btnCambiarIncumplimiento.Size = new System.Drawing.Size(172, 35);
+            this.btnCambiarIncumplimiento.TabIndex = 260;
+            this.btnCambiarIncumplimiento.Text = "Cambiar a Incumplimiento";
+            this.btnCambiarIncumplimiento.Click += new System.EventHandler(this.btnCambiarIncumplimiento_Click);
             // 
             // siticoneButton2
             // 
@@ -1816,6 +1809,39 @@ namespace wfaIntegradoCom.Procesos
             this.erComprobanteP.TabIndex = 277;
             this.erComprobanteP.Text = "Error";
             // 
+            // txtfechaoriginal
+            // 
+            this.txtfechaoriginal.Animated = false;
+            this.txtfechaoriginal.BorderColor = System.Drawing.Color.Silver;
+            this.txtfechaoriginal.BorderRadius = 5;
+            this.txtfechaoriginal.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtfechaoriginal.DefaultText = "";
+            this.txtfechaoriginal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtfechaoriginal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtfechaoriginal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtfechaoriginal.DisabledState.Parent = this.txtfechaoriginal;
+            this.txtfechaoriginal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtfechaoriginal.Enabled = false;
+            this.txtfechaoriginal.FillColor = System.Drawing.Color.Gainsboro;
+            this.txtfechaoriginal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtfechaoriginal.FocusedState.Parent = this.txtfechaoriginal;
+            this.txtfechaoriginal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtfechaoriginal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtfechaoriginal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtfechaoriginal.HoveredState.Parent = this.txtfechaoriginal;
+            this.txtfechaoriginal.Location = new System.Drawing.Point(15, 474);
+            this.txtfechaoriginal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtfechaoriginal.Name = "txtfechaoriginal";
+            this.txtfechaoriginal.PasswordChar = '\0';
+            this.txtfechaoriginal.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtfechaoriginal.PlaceholderText = "";
+            this.txtfechaoriginal.ReadOnly = true;
+            this.txtfechaoriginal.SelectedText = "";
+            this.txtfechaoriginal.ShadowDecoration.Parent = this.txtfechaoriginal;
+            this.txtfechaoriginal.Size = new System.Drawing.Size(164, 36);
+            this.txtfechaoriginal.TabIndex = 153;
+            this.txtfechaoriginal.Visible = false;
+            // 
             // siticoneCustomGradientPanel1
             // 
             this.siticoneCustomGradientPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
@@ -1863,32 +1889,6 @@ namespace wfaIntegradoCom.Procesos
             this.msActializarPago.Size = new System.Drawing.Size(156, 22);
             this.msActializarPago.Text = "Actualizar Pago";
             this.msActializarPago.Click += new System.EventHandler(this.msActializarPago_Click);
-            // 
-            // btnCambiarIncumplimiento
-            // 
-            this.btnCambiarIncumplimiento.BackColor = System.Drawing.Color.Transparent;
-            this.btnCambiarIncumplimiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnCambiarIncumplimiento.BorderRadius = 5;
-            this.btnCambiarIncumplimiento.BorderThickness = 1;
-            this.btnCambiarIncumplimiento.CheckedState.Parent = this.btnCambiarIncumplimiento;
-            this.btnCambiarIncumplimiento.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCambiarIncumplimiento.CustomImages.Parent = this.btnCambiarIncumplimiento;
-            this.btnCambiarIncumplimiento.FillColor = System.Drawing.Color.White;
-            this.btnCambiarIncumplimiento.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCambiarIncumplimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnCambiarIncumplimiento.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnCambiarIncumplimiento.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnCambiarIncumplimiento.HoveredState.ForeColor = System.Drawing.Color.White;
-            this.btnCambiarIncumplimiento.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
-            this.btnCambiarIncumplimiento.HoveredState.Parent = this.btnCambiarIncumplimiento;
-            this.btnCambiarIncumplimiento.Image = global::wfaIntegradoCom.Properties.Resources.actualizar;
-            this.btnCambiarIncumplimiento.Location = new System.Drawing.Point(6, 429);
-            this.btnCambiarIncumplimiento.Name = "btnCambiarIncumplimiento";
-            this.btnCambiarIncumplimiento.ShadowDecoration.Parent = this.btnCambiarIncumplimiento;
-            this.btnCambiarIncumplimiento.Size = new System.Drawing.Size(172, 35);
-            this.btnCambiarIncumplimiento.TabIndex = 260;
-            this.btnCambiarIncumplimiento.Text = "Cambiar a Incumplimiento";
-            this.btnCambiarIncumplimiento.Click += new System.EventHandler(this.btnCambiarIncumplimiento_Click);
             // 
             // frmControlPagoVenta
             // 
