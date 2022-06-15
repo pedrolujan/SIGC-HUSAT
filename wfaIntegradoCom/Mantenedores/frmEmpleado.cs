@@ -220,31 +220,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void txtBuscarEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (Char)Keys.Enter)
-            {
-                Int16 pnTipocon = 0;
-                Boolean bResul = false;
-
-                if (rbCodigo.Checked == true)
-                {
-
-                    pnTipocon = 0;
-                }
-                else if (rbRazon.Checked == true)
-                {
-                    pnTipocon = 1;
-                }
-                else if (rbDoc.Checked == true)
-                {
-                    pnTipocon = 2;
-                }
-
-                bResul = fnBuscarEmpleado(txtBuscarEmpleado.Text.Trim(), pnTipocon);
-                if (!bResul)
-                {
-                    MessageBox.Show("Error al Buscar Empleado. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
+            fnBuscarEmpleado(txtBuscarEmpleado.Text, 0);
         }
 
         private Boolean fnListarPersonalEspecifico()
@@ -508,6 +484,11 @@ namespace wfaIntegradoCom.Mantenedores
                 fnLimpiarControles();
                 fnHabilitarControles(false);
             }
+        }
+
+        private void siticoneTextBox8_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
