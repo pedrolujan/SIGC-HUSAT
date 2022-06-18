@@ -53,6 +53,8 @@ namespace CapaEntidad
 
         Int32 _idUsuarioReg = 0;
         public Int32 idUsuarioReg { get { return _idUsuarioReg; } set { _idUsuarioReg = value; } }
+        Int32 _TotalRows = 0;
+        public Int32 TotalRows { get { return _TotalRows; } set { _TotalRows = value; } }
 
         Int32 _idZona = 0;
         public Int32 idZona { get { return _idZona; } set { _idZona = value; } }
@@ -72,11 +74,12 @@ namespace CapaEntidad
             cPersonal = pcPersonal;
         }
 
-        public Personal(Int32 pnidPersonal, String pcPersonal, String pcDocumento)
+        public Personal(Int32 pnidPersonal, String pcPersonal, String pcDocumento, Int32 TotRows)
         {
             idPersonal = pnidPersonal;
             cPersonal = pcPersonal;
             cDocumento = pcDocumento;
+            TotalRows= TotRows;
         }
 
         public Personal(Int32 pdidPersonal, String pcApePat,String pcApeMat,String pcPrimerNom,String pcSegundoNom

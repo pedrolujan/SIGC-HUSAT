@@ -16,3 +16,21 @@ D:\SISTEMA-HUSAT\CapaNegocio\bin\Debug\CapaConexion.pdb
 D:\SISTEMA-HUSAT\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
 D:\SISTEMA-HUSAT\CapaNegocio\obj\Debug\CapaNegocio.dll
 D:\SISTEMA-HUSAT\CapaNegocio\obj\Debug\CapaNegocio.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaNegocio.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaNegocio.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaConexion.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaDato.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaEntidad.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaUtil.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\Encripta.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\Siticone.UI.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaConexion.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaDato.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaDato.dll.config
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaEntidad.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\bin\Debug\CapaUtil.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\obj\Debug\CapaNegocio.csproj.AssemblyReference.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\obj\Debug\CapaNegocio.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaNegocio\obj\Debug\CapaNegocio.pdb

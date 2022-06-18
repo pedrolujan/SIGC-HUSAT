@@ -1095,6 +1095,10 @@
     <None Include="Resources\CheckCircle_30px1.png" />
     <None Include="Resources\null_symbol_30px.png" />
     <None Include="Resources\todo_list_30px.png" />
+    <None Include="Resources\guardar-datos.png" />
+    <None Include="Resources\cerrar-sesion.png" />
+    <None Include="Resources\archivo-nuevo.png" />
+    <None Include="Resources\ahorrar.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

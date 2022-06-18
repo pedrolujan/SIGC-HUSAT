@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tsBotonera = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSalir = new System.Windows.Forms.ToolStripButton();
-            this.gbBuscar = new System.Windows.Forms.GroupBox();
-            this.rbDoc = new System.Windows.Forms.RadioButton();
-            this.rbRazon = new System.Windows.Forms.RadioButton();
-            this.rbCodigo = new System.Windows.Forms.RadioButton();
             this.gbUbigeo = new System.Windows.Forms.GroupBox();
             this.cboDistrito = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboProvincia = new Siticone.UI.WinForms.SiticoneComboBox();
@@ -60,8 +60,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.gbEmpleado = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.cboCargo = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.dateTimePicker1 = new Siticone.UI.WinForms.SiticoneRoundedDateTimePicker();
             this.txtIdPersonal = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtDireccion = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtTelefono = new Siticone.UI.WinForms.SiticoneTextBox();
@@ -70,22 +70,41 @@
             this.txtSegundoNom = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtApeMat = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtApePat = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.lvempleado = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.epUsuario = new System.Windows.Forms.ErrorProvider(this.components);
             this.epControlOk = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtBuscarEmpleado = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
-            this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
+            this.picBuscarPersonal = new Siticone.UI.WinForms.SiticonePictureBox();
+            this.gbPaginacion = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.siticoneVSeparator1 = new Siticone.UI.WinForms.SiticoneVSeparator();
+            this.cboPaginacion = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.btnTotalReg = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnTotalPaginas = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnNumFilas = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.label26 = new System.Windows.Forms.Label();
+            this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.SiticoneEncabezado = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePictureBox1 = new Siticone.UI.WinForms.SiticonePictureBox();
+            this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
+            this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
+            this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
+            this.lvempleado = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.Código = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsBotonera.SuspendLayout();
-            this.gbBuscar.SuspendLayout();
             this.gbUbigeo.SuspendLayout();
             this.gbEmpleado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epControlOk)).BeginInit();
             this.siticonePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBuscarPersonal)).BeginInit();
+            this.gbPaginacion.SuspendLayout();
+            this.SiticoneEncabezado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.siticonePictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lvempleado)).BeginInit();
             this.SuspendLayout();
             // 
             // tsBotonera
@@ -109,7 +128,7 @@
             // 
             // newToolStripButton
             // 
-            this.newToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripButton.Image")));
+            this.newToolStripButton.Image = global::wfaIntegradoCom.Properties.Resources.archivo_nuevo;
             this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripButton.Name = "newToolStripButton";
             this.newToolStripButton.Size = new System.Drawing.Size(46, 35);
@@ -124,7 +143,7 @@
             // 
             // saveToolStripButton
             // 
-            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
+            this.saveToolStripButton.Image = global::wfaIntegradoCom.Properties.Resources.ahorrar;
             this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripButton.Name = "saveToolStripButton";
             this.saveToolStripButton.Size = new System.Drawing.Size(53, 35);
@@ -139,7 +158,7 @@
             // 
             // tsSalir
             // 
-            this.tsSalir.Image = ((System.Drawing.Image)(resources.GetObject("tsSalir.Image")));
+            this.tsSalir.Image = global::wfaIntegradoCom.Properties.Resources.cerrar_sesion;
             this.tsSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsSalir.Name = "tsSalir";
             this.tsSalir.Size = new System.Drawing.Size(33, 35);
@@ -147,53 +166,6 @@
             this.tsSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsSalir.ToolTipText = "Salir de Formulario";
             this.tsSalir.Click += new System.EventHandler(this.tsSalir_Click);
-            // 
-            // gbBuscar
-            // 
-            this.gbBuscar.Controls.Add(this.rbDoc);
-            this.gbBuscar.Controls.Add(this.rbRazon);
-            this.gbBuscar.Controls.Add(this.rbCodigo);
-            this.gbBuscar.Location = new System.Drawing.Point(90, 55);
-            this.gbBuscar.Name = "gbBuscar";
-            this.gbBuscar.Size = new System.Drawing.Size(297, 47);
-            this.gbBuscar.TabIndex = 20;
-            this.gbBuscar.TabStop = false;
-            this.gbBuscar.Text = "Buscar por:";
-            // 
-            // rbDoc
-            // 
-            this.rbDoc.AutoSize = true;
-            this.rbDoc.Location = new System.Drawing.Point(204, 18);
-            this.rbDoc.Name = "rbDoc";
-            this.rbDoc.Size = new System.Drawing.Size(44, 17);
-            this.rbDoc.TabIndex = 3;
-            this.rbDoc.Text = "DNI";
-            this.rbDoc.UseVisualStyleBackColor = true;
-            this.rbDoc.CheckedChanged += new System.EventHandler(this.rbDoc_CheckedChanged);
-            // 
-            // rbRazon
-            // 
-            this.rbRazon.AutoSize = true;
-            this.rbRazon.Checked = true;
-            this.rbRazon.Location = new System.Drawing.Point(8, 18);
-            this.rbRazon.Name = "rbRazon";
-            this.rbRazon.Size = new System.Drawing.Size(62, 17);
-            this.rbRazon.TabIndex = 1;
-            this.rbRazon.TabStop = true;
-            this.rbRazon.Text = "Nombre";
-            this.rbRazon.UseVisualStyleBackColor = true;
-            this.rbRazon.CheckedChanged += new System.EventHandler(this.rbRazon_CheckedChanged);
-            // 
-            // rbCodigo
-            // 
-            this.rbCodigo.AutoSize = true;
-            this.rbCodigo.Location = new System.Drawing.Point(102, 18);
-            this.rbCodigo.Name = "rbCodigo";
-            this.rbCodigo.Size = new System.Drawing.Size(58, 17);
-            this.rbCodigo.TabIndex = 2;
-            this.rbCodigo.Text = "Código";
-            this.rbCodigo.UseVisualStyleBackColor = true;
-            this.rbCodigo.CheckedChanged += new System.EventHandler(this.rbCodigo_CheckedChanged);
             // 
             // gbUbigeo
             // 
@@ -213,12 +185,14 @@
             // cboDistrito
             // 
             this.cboDistrito.BackColor = System.Drawing.Color.Transparent;
+            this.cboDistrito.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.cboDistrito.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDistrito.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboDistrito.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboDistrito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboDistrito.ForeColor = System.Drawing.Color.Black;
             this.cboDistrito.HoveredState.Parent = this.cboDistrito;
+            this.cboDistrito.IntegralHeight = false;
             this.cboDistrito.ItemHeight = 30;
             this.cboDistrito.ItemsAppearance.Parent = this.cboDistrito;
             this.cboDistrito.Location = new System.Drawing.Point(538, 44);
@@ -234,8 +208,9 @@
             this.cboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProvincia.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboProvincia.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboProvincia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboProvincia.ForeColor = System.Drawing.Color.Black;
             this.cboProvincia.HoveredState.Parent = this.cboProvincia;
+            this.cboProvincia.IntegralHeight = false;
             this.cboProvincia.ItemHeight = 30;
             this.cboProvincia.ItemsAppearance.Parent = this.cboProvincia;
             this.cboProvincia.Location = new System.Drawing.Point(269, 44);
@@ -252,8 +227,9 @@
             this.cboDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartamento.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboDepartamento.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboDepartamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboDepartamento.ForeColor = System.Drawing.Color.Black;
             this.cboDepartamento.HoveredState.Parent = this.cboDepartamento;
+            this.cboDepartamento.IntegralHeight = false;
             this.cboDepartamento.ItemHeight = 30;
             this.cboDepartamento.ItemsAppearance.Parent = this.cboDepartamento;
             this.cboDepartamento.Location = new System.Drawing.Point(16, 44);
@@ -415,9 +391,8 @@
             // 
             // gbEmpleado
             // 
-            this.gbEmpleado.Controls.Add(this.lvempleado);
-            this.gbEmpleado.Controls.Add(this.cboCargo);
             this.gbEmpleado.Controls.Add(this.dateTimePicker1);
+            this.gbEmpleado.Controls.Add(this.cboCargo);
             this.gbEmpleado.Controls.Add(this.txtIdPersonal);
             this.gbEmpleado.Controls.Add(this.txtDireccion);
             this.gbEmpleado.Controls.Add(this.txtTelefono);
@@ -440,10 +415,27 @@
             this.gbEmpleado.Controls.Add(this.lblIdUsuario);
             this.gbEmpleado.Location = new System.Drawing.Point(62, 108);
             this.gbEmpleado.Name = "gbEmpleado";
-            this.gbEmpleado.Size = new System.Drawing.Size(849, 306);
+            this.gbEmpleado.Size = new System.Drawing.Size(849, 318);
             this.gbEmpleado.TabIndex = 13;
             this.gbEmpleado.TabStop = false;
             this.gbEmpleado.Text = "Datos Principales";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.BorderColor = System.Drawing.Color.Silver;
+            this.dateTimePicker1.BorderThickness = 1;
+            this.dateTimePicker1.CheckedState.Parent = this.dateTimePicker1;
+            this.dateTimePicker1.FillColor = System.Drawing.Color.White;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dateTimePicker1.HoveredState.Parent = this.dateTimePicker1;
+            this.dateTimePicker1.Location = new System.Drawing.Point(29, 267);
+            this.dateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker1.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShadowDecoration.Parent = this.dateTimePicker1;
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 36);
+            this.dateTimePicker1.TabIndex = 29;
+            this.dateTimePicker1.Value = new System.DateTime(2022, 6, 17, 13, 9, 5, 226);
             // 
             // cboCargo
             // 
@@ -452,7 +444,7 @@
             this.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCargo.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboCargo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboCargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboCargo.ForeColor = System.Drawing.Color.Black;
             this.cboCargo.HoveredState.Parent = this.cboCargo;
             this.cboCargo.ItemHeight = 30;
             this.cboCargo.ItemsAppearance.Parent = this.cboCargo;
@@ -461,23 +453,6 @@
             this.cboCargo.ShadowDecoration.Parent = this.cboCargo;
             this.cboCargo.Size = new System.Drawing.Size(221, 36);
             this.cboCargo.TabIndex = 28;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.BackColor = System.Drawing.Color.Transparent;
-            this.dateTimePicker1.CheckedState.Parent = this.dateTimePicker1;
-            this.dateTimePicker1.FillColor = System.Drawing.Color.White;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dateTimePicker1.HoveredState.Parent = this.dateTimePicker1;
-            this.dateTimePicker1.Location = new System.Drawing.Point(29, 267);
-            this.dateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShadowDecoration.Parent = this.dateTimePicker1;
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 36);
-            this.dateTimePicker1.TabIndex = 27;
-            this.dateTimePicker1.UseTransparentBackground = true;
-            this.dateTimePicker1.Value = new System.DateTime(2022, 6, 14, 13, 14, 15, 763);
             // 
             // txtIdPersonal
             // 
@@ -491,6 +466,7 @@
             this.txtIdPersonal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtIdPersonal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdPersonal.FocusedState.Parent = this.txtIdPersonal;
+            this.txtIdPersonal.ForeColor = System.Drawing.Color.Black;
             this.txtIdPersonal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdPersonal.HoveredState.Parent = this.txtIdPersonal;
             this.txtIdPersonal.Location = new System.Drawing.Point(16, 40);
@@ -514,6 +490,7 @@
             this.txtDireccion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtDireccion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDireccion.FocusedState.Parent = this.txtDireccion;
+            this.txtDireccion.ForeColor = System.Drawing.Color.Black;
             this.txtDireccion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDireccion.HoveredState.Parent = this.txtDireccion;
             this.txtDireccion.Location = new System.Drawing.Point(311, 170);
@@ -538,6 +515,7 @@
             this.txtTelefono.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTelefono.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelefono.FocusedState.Parent = this.txtTelefono;
+            this.txtTelefono.ForeColor = System.Drawing.Color.Black;
             this.txtTelefono.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelefono.HoveredState.Parent = this.txtTelefono;
             this.txtTelefono.Location = new System.Drawing.Point(141, 170);
@@ -561,6 +539,7 @@
             this.txtdni.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtdni.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtdni.FocusedState.Parent = this.txtdni;
+            this.txtdni.ForeColor = System.Drawing.Color.Black;
             this.txtdni.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtdni.HoveredState.Parent = this.txtdni;
             this.txtdni.Location = new System.Drawing.Point(16, 170);
@@ -584,6 +563,7 @@
             this.txtPrimerNom.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPrimerNom.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrimerNom.FocusedState.Parent = this.txtPrimerNom;
+            this.txtPrimerNom.ForeColor = System.Drawing.Color.Black;
             this.txtPrimerNom.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrimerNom.HoveredState.Parent = this.txtPrimerNom;
             this.txtPrimerNom.Location = new System.Drawing.Point(109, 101);
@@ -607,6 +587,7 @@
             this.txtSegundoNom.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtSegundoNom.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSegundoNom.FocusedState.Parent = this.txtSegundoNom;
+            this.txtSegundoNom.ForeColor = System.Drawing.Color.Black;
             this.txtSegundoNom.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSegundoNom.HoveredState.Parent = this.txtSegundoNom;
             this.txtSegundoNom.Location = new System.Drawing.Point(412, 101);
@@ -630,6 +611,7 @@
             this.txtApeMat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtApeMat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApeMat.FocusedState.Parent = this.txtApeMat;
+            this.txtApeMat.ForeColor = System.Drawing.Color.Black;
             this.txtApeMat.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApeMat.HoveredState.Parent = this.txtApeMat;
             this.txtApeMat.Location = new System.Drawing.Point(412, 40);
@@ -653,6 +635,7 @@
             this.txtApePat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtApePat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApePat.FocusedState.Parent = this.txtApePat;
+            this.txtApePat.ForeColor = System.Drawing.Color.Black;
             this.txtApePat.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApePat.HoveredState.Parent = this.txtApePat;
             this.txtApePat.Location = new System.Drawing.Point(109, 40);
@@ -663,41 +646,6 @@
             this.txtApePat.ShadowDecoration.Parent = this.txtApePat;
             this.txtApePat.Size = new System.Drawing.Size(285, 36);
             this.txtApePat.TabIndex = 26;
-            // 
-            // lvempleado
-            // 
-            this.lvempleado.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.lvempleado.FullRowSelect = true;
-            this.lvempleado.GridLines = true;
-            this.lvempleado.HideSelection = false;
-            this.lvempleado.Location = new System.Drawing.Point(452, -22);
-            this.lvempleado.MultiSelect = false;
-            this.lvempleado.Name = "lvempleado";
-            this.lvempleado.Size = new System.Drawing.Size(397, 218);
-            this.lvempleado.TabIndex = 5;
-            this.lvempleado.UseCompatibleStateImageBehavior = false;
-            this.lvempleado.View = System.Windows.Forms.View.Details;
-            this.lvempleado.Visible = false;
-            this.lvempleado.DoubleClick += new System.EventHandler(this.lvempleado_DoubleClick);
-            this.lvempleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvempleado_KeyPress);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Código";
-            this.columnHeader1.Width = 70;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Nombre Empleado";
-            this.columnHeader2.Width = 240;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "DNI";
-            this.columnHeader3.Width = 80;
             // 
             // epUsuario
             // 
@@ -722,53 +670,347 @@
             this.txtBuscarEmpleado.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtBuscarEmpleado.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarEmpleado.FocusedState.Parent = this.txtBuscarEmpleado;
+            this.txtBuscarEmpleado.ForeColor = System.Drawing.Color.Black;
             this.txtBuscarEmpleado.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarEmpleado.HoveredState.Parent = this.txtBuscarEmpleado;
-            this.txtBuscarEmpleado.Location = new System.Drawing.Point(514, 54);
+            this.txtBuscarEmpleado.Location = new System.Drawing.Point(393, 54);
             this.txtBuscarEmpleado.Name = "txtBuscarEmpleado";
             this.txtBuscarEmpleado.PasswordChar = '\0';
             this.txtBuscarEmpleado.PlaceholderText = "";
             this.txtBuscarEmpleado.SelectedText = "";
             this.txtBuscarEmpleado.ShadowDecoration.Parent = this.txtBuscarEmpleado;
-            this.txtBuscarEmpleado.Size = new System.Drawing.Size(397, 36);
+            this.txtBuscarEmpleado.Size = new System.Drawing.Size(518, 36);
             this.txtBuscarEmpleado.TabIndex = 23;
+            this.txtBuscarEmpleado.Click += new System.EventHandler(this.txtBuscarEmpleado_Click);
             this.txtBuscarEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarEmpleado_KeyPress);
             // 
             // siticonePanel1
             // 
             this.siticonePanel1.BorderColor = System.Drawing.Color.Red;
             this.siticonePanel1.BorderThickness = 2;
-            this.siticonePanel1.Controls.Add(this.siticonePanel2);
-            this.siticonePanel1.Controls.Add(this.gbBuscar);
+            this.siticonePanel1.Controls.Add(this.picBuscarPersonal);
+            this.siticonePanel1.Controls.Add(this.gbPaginacion);
+            this.siticonePanel1.Controls.Add(this.siticoneLabel1);
+            this.siticonePanel1.Controls.Add(this.SiticoneEncabezado);
             this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
             this.siticonePanel1.Size = new System.Drawing.Size(984, 661);
             this.siticonePanel1.TabIndex = 24;
+            this.siticonePanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.siticonePanel1_Paint);
             // 
-            // siticonePanel2
+            // picBuscarPersonal
             // 
-            this.siticonePanel2.BackColor = System.Drawing.Color.Red;
-            this.siticonePanel2.BorderColor = System.Drawing.Color.Red;
-            this.siticonePanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.siticonePanel2.Location = new System.Drawing.Point(0, 0);
-            this.siticonePanel2.Name = "siticonePanel2";
-            this.siticonePanel2.ShadowDecoration.Parent = this.siticonePanel2;
-            this.siticonePanel2.Size = new System.Drawing.Size(984, 45);
-            this.siticonePanel2.TabIndex = 0;
+            this.picBuscarPersonal.BackColor = System.Drawing.Color.Transparent;
+            this.picBuscarPersonal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picBuscarPersonal.Cursor = System.Windows.Forms.Cursors.Default;
+            this.picBuscarPersonal.Image = ((System.Drawing.Image)(resources.GetObject("picBuscarPersonal.Image")));
+            this.picBuscarPersonal.Location = new System.Drawing.Point(175, 57);
+            this.picBuscarPersonal.Name = "picBuscarPersonal";
+            this.picBuscarPersonal.ShadowDecoration.Parent = this.picBuscarPersonal;
+            this.picBuscarPersonal.Size = new System.Drawing.Size(35, 29);
+            this.picBuscarPersonal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBuscarPersonal.TabIndex = 234;
+            this.picBuscarPersonal.TabStop = false;
+            this.picBuscarPersonal.UseTransparentBackground = true;
+            // 
+            // gbPaginacion
+            // 
+            this.gbPaginacion.Controls.Add(this.label24);
+            this.gbPaginacion.Controls.Add(this.siticoneVSeparator1);
+            this.gbPaginacion.Controls.Add(this.cboPaginacion);
+            this.gbPaginacion.Controls.Add(this.label25);
+            this.gbPaginacion.Controls.Add(this.btnTotalReg);
+            this.gbPaginacion.Controls.Add(this.btnTotalPaginas);
+            this.gbPaginacion.Controls.Add(this.btnNumFilas);
+            this.gbPaginacion.Controls.Add(this.label26);
+            this.gbPaginacion.Location = new System.Drawing.Point(599, 610);
+            this.gbPaginacion.Name = "gbPaginacion";
+            this.gbPaginacion.Size = new System.Drawing.Size(340, 40);
+            this.gbPaginacion.TabIndex = 233;
+            this.gbPaginacion.TabStop = false;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(240, 16);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(61, 13);
+            this.label24.TabIndex = 173;
+            this.label24.Text = "registros de";
+            // 
+            // siticoneVSeparator1
+            // 
+            this.siticoneVSeparator1.FillColor = System.Drawing.Color.Gray;
+            this.siticoneVSeparator1.Location = new System.Drawing.Point(186, 8);
+            this.siticoneVSeparator1.Name = "siticoneVSeparator1";
+            this.siticoneVSeparator1.Size = new System.Drawing.Size(13, 27);
+            this.siticoneVSeparator1.TabIndex = 174;
+            // 
+            // cboPaginacion
+            // 
+            this.cboPaginacion.FormattingEnabled = true;
+            this.cboPaginacion.Location = new System.Drawing.Point(52, 12);
+            this.cboPaginacion.Name = "cboPaginacion";
+            this.cboPaginacion.Size = new System.Drawing.Size(63, 21);
+            this.cboPaginacion.TabIndex = 167;
+            this.cboPaginacion.SelectedIndexChanged += new System.EventHandler(this.cboPaginacion_SelectedIndexChanged);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 17);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(40, 13);
+            this.label25.TabIndex = 168;
+            this.label25.Text = "Página";
+            // 
+            // btnTotalReg
+            // 
+            this.btnTotalReg.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalReg.CheckedState.Parent = this.btnTotalReg;
+            this.btnTotalReg.CustomImages.Parent = this.btnTotalReg;
+            this.btnTotalReg.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalReg.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalReg.ForeColor = System.Drawing.Color.White;
+            this.btnTotalReg.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalReg.HoveredState.Parent = this.btnTotalReg;
+            this.btnTotalReg.Location = new System.Drawing.Point(307, 9);
+            this.btnTotalReg.Name = "btnTotalReg";
+            this.btnTotalReg.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalReg.ShadowDecoration.Parent = this.btnTotalReg;
+            this.btnTotalReg.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalReg.TabIndex = 172;
+            this.btnTotalReg.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // btnTotalPaginas
+            // 
+            this.btnTotalPaginas.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalPaginas.CheckedState.Parent = this.btnTotalPaginas;
+            this.btnTotalPaginas.CustomImages.Parent = this.btnTotalPaginas;
+            this.btnTotalPaginas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalPaginas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalPaginas.ForeColor = System.Drawing.Color.White;
+            this.btnTotalPaginas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalPaginas.HoveredState.Parent = this.btnTotalPaginas;
+            this.btnTotalPaginas.Location = new System.Drawing.Point(149, 9);
+            this.btnTotalPaginas.Name = "btnTotalPaginas";
+            this.btnTotalPaginas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalPaginas.ShadowDecoration.Parent = this.btnTotalPaginas;
+            this.btnTotalPaginas.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalPaginas.TabIndex = 169;
+            this.btnTotalPaginas.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // btnNumFilas
+            // 
+            this.btnNumFilas.BackColor = System.Drawing.Color.Transparent;
+            this.btnNumFilas.CheckedState.Parent = this.btnNumFilas;
+            this.btnNumFilas.CustomImages.Parent = this.btnNumFilas;
+            this.btnNumFilas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumFilas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNumFilas.ForeColor = System.Drawing.Color.White;
+            this.btnNumFilas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumFilas.HoveredState.Parent = this.btnNumFilas;
+            this.btnNumFilas.Location = new System.Drawing.Point(209, 9);
+            this.btnNumFilas.Name = "btnNumFilas";
+            this.btnNumFilas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnNumFilas.ShadowDecoration.Parent = this.btnNumFilas;
+            this.btnNumFilas.Size = new System.Drawing.Size(25, 25);
+            this.btnNumFilas.TabIndex = 171;
+            this.btnNumFilas.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(124, 17);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(19, 13);
+            this.label26.TabIndex = 170;
+            this.label26.Text = "de";
+            // 
+            // siticoneLabel1
+            // 
+            this.siticoneLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel1.Font = new System.Drawing.Font("Arial", 11.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneLabel1.Location = new System.Drawing.Point(213, 62);
+            this.siticoneLabel1.Name = "siticoneLabel1";
+            this.siticoneLabel1.Size = new System.Drawing.Size(167, 21);
+            this.siticoneLabel1.TabIndex = 1;
+            this.siticoneLabel1.Text = "BUSCAR PERSONAL";
+            this.siticoneLabel1.Click += new System.EventHandler(this.siticoneLabel1_Click);
+            // 
+            // SiticoneEncabezado
+            // 
+            this.SiticoneEncabezado.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
+            this.SiticoneEncabezado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.SiticoneEncabezado.BorderColor = System.Drawing.Color.Red;
+            this.SiticoneEncabezado.Controls.Add(this.siticonePictureBox1);
+            this.SiticoneEncabezado.Controls.Add(this.gunaLabel10);
+            this.SiticoneEncabezado.Controls.Add(this.siticoneControlBox2);
+            this.SiticoneEncabezado.Controls.Add(this.siticoneControlBox1);
+            this.SiticoneEncabezado.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SiticoneEncabezado.Location = new System.Drawing.Point(0, 0);
+            this.SiticoneEncabezado.Name = "SiticoneEncabezado";
+            this.SiticoneEncabezado.ShadowDecoration.Parent = this.SiticoneEncabezado;
+            this.SiticoneEncabezado.Size = new System.Drawing.Size(984, 33);
+            this.SiticoneEncabezado.TabIndex = 0;
+            // 
+            // siticonePictureBox1
+            // 
+            this.siticonePictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.siticonePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("siticonePictureBox1.Image")));
+            this.siticonePictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.siticonePictureBox1.Name = "siticonePictureBox1";
+            this.siticonePictureBox1.ShadowDecoration.Parent = this.siticonePictureBox1;
+            this.siticonePictureBox1.Size = new System.Drawing.Size(30, 33);
+            this.siticonePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.siticonePictureBox1.TabIndex = 77;
+            this.siticonePictureBox1.TabStop = false;
+            // 
+            // gunaLabel10
+            // 
+            this.gunaLabel10.AutoSize = true;
+            this.gunaLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.gunaLabel10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel10.ForeColor = System.Drawing.SystemColors.Control;
+            this.gunaLabel10.Location = new System.Drawing.Point(42, 8);
+            this.gunaLabel10.Name = "gunaLabel10";
+            this.gunaLabel10.Size = new System.Drawing.Size(111, 15);
+            this.gunaLabel10.TabIndex = 76;
+            this.gunaLabel10.Text = "PERSONAL-HUSAT";
+            this.gunaLabel10.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.gunaLabel10.Click += new System.EventHandler(this.gunaLabel10_Click);
+            // 
+            // siticoneControlBox2
+            // 
+            this.siticoneControlBox2.ControlBoxType = Siticone.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.siticoneControlBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.siticoneControlBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneControlBox2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneControlBox2.HoveredState.Parent = this.siticoneControlBox2;
+            this.siticoneControlBox2.IconColor = System.Drawing.Color.White;
+            this.siticoneControlBox2.Location = new System.Drawing.Point(894, 0);
+            this.siticoneControlBox2.Name = "siticoneControlBox2";
+            this.siticoneControlBox2.ShadowDecoration.Parent = this.siticoneControlBox2;
+            this.siticoneControlBox2.Size = new System.Drawing.Size(45, 33);
+            this.siticoneControlBox2.TabIndex = 75;
+            // 
+            // siticoneControlBox1
+            // 
+            this.siticoneControlBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.siticoneControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneControlBox1.HoveredState.Parent = this.siticoneControlBox1;
+            this.siticoneControlBox1.IconColor = System.Drawing.Color.White;
+            this.siticoneControlBox1.Location = new System.Drawing.Point(939, 0);
+            this.siticoneControlBox1.Name = "siticoneControlBox1";
+            this.siticoneControlBox1.ShadowDecoration.Parent = this.siticoneControlBox1;
+            this.siticoneControlBox1.Size = new System.Drawing.Size(45, 33);
+            this.siticoneControlBox1.TabIndex = 1;
+            // 
+            // lvempleado
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
+            this.lvempleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.lvempleado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.lvempleado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.lvempleado.BackgroundColor = System.Drawing.Color.Azure;
+            this.lvempleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lvempleado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.lvempleado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightCoral;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvempleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.lvempleado.ColumnHeadersHeight = 40;
+            this.lvempleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Código,
+            this.NombreEmpleado,
+            this.DNI});
+            this.lvempleado.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(217)))), ((int)(((byte)(215)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(129)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lvempleado.DefaultCellStyle = dataGridViewCellStyle3;
+            this.lvempleado.EnableHeadersVisualStyles = false;
+            this.lvempleado.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(189)))), ((int)(((byte)(184)))));
+            this.lvempleado.Location = new System.Drawing.Point(393, 92);
+            this.lvempleado.Name = "lvempleado";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvempleado.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.lvempleado.RowHeadersVisible = false;
+            this.lvempleado.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.lvempleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.lvempleado.Size = new System.Drawing.Size(518, 276);
+            this.lvempleado.TabIndex = 35;
+            this.lvempleado.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Red;
+            this.lvempleado.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
+            this.lvempleado.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.lvempleado.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.lvempleado.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.lvempleado.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.lvempleado.ThemeStyle.BackColor = System.Drawing.Color.Azure;
+            this.lvempleado.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(189)))), ((int)(((byte)(184)))));
+            this.lvempleado.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.lvempleado.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.lvempleado.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lvempleado.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.lvempleado.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.lvempleado.ThemeStyle.HeaderStyle.Height = 40;
+            this.lvempleado.ThemeStyle.ReadOnly = false;
+            this.lvempleado.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(217)))), ((int)(((byte)(215)))));
+            this.lvempleado.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.lvempleado.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lvempleado.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.lvempleado.ThemeStyle.RowsStyle.Height = 22;
+            this.lvempleado.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(129)))), ((int)(((byte)(121)))));
+            this.lvempleado.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.lvempleado.Visible = false;
+            this.lvempleado.DoubleClick += new System.EventHandler(this.lvempleado_DoubleClick);
+            this.lvempleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvempleado_KeyPress);
+            // 
+            // Código
+            // 
+            this.Código.HeaderText = "Código";
+            this.Código.Name = "Código";
+            // 
+            // NombreEmpleado
+            // 
+            this.NombreEmpleado.HeaderText = "Nombre Empleado";
+            this.NombreEmpleado.Name = "NombreEmpleado";
+            // 
+            // DNI
+            // 
+            this.DNI.HeaderText = "DNI";
+            this.DNI.Name = "DNI";
             // 
             // frmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 661);
-            this.Controls.Add(this.txtBuscarEmpleado);
+            this.Controls.Add(this.lvempleado);
             this.Controls.Add(this.gbUbigeo);
             this.Controls.Add(this.tsBotonera);
             this.Controls.Add(this.gbEmpleado);
+            this.Controls.Add(this.txtBuscarEmpleado);
             this.Controls.Add(this.siticonePanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmEmpleado";
@@ -777,8 +1019,6 @@
             this.Load += new System.EventHandler(this.frmEmpleado_Load);
             this.tsBotonera.ResumeLayout(false);
             this.tsBotonera.PerformLayout();
-            this.gbBuscar.ResumeLayout(false);
-            this.gbBuscar.PerformLayout();
             this.gbUbigeo.ResumeLayout(false);
             this.gbUbigeo.PerformLayout();
             this.gbEmpleado.ResumeLayout(false);
@@ -786,6 +1026,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.epUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epControlOk)).EndInit();
             this.siticonePanel1.ResumeLayout(false);
+            this.siticonePanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBuscarPersonal)).EndInit();
+            this.gbPaginacion.ResumeLayout(false);
+            this.gbPaginacion.PerformLayout();
+            this.SiticoneEncabezado.ResumeLayout(false);
+            this.SiticoneEncabezado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.siticonePictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lvempleado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -798,10 +1046,6 @@
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsSalir;
-        private System.Windows.Forms.GroupBox gbBuscar;
-        private System.Windows.Forms.RadioButton rbDoc;
-        private System.Windows.Forms.RadioButton rbRazon;
-        private System.Windows.Forms.RadioButton rbCodigo;
         private System.Windows.Forms.GroupBox gbUbigeo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -821,10 +1065,6 @@
         private System.Windows.Forms.GroupBox gbEmpleado;
         private System.Windows.Forms.ErrorProvider epUsuario;
         private System.Windows.Forms.ErrorProvider epControlOk;
-        private System.Windows.Forms.ListView lvempleado;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private Siticone.UI.WinForms.SiticoneTextBox txtBuscarEmpleado;
         private Siticone.UI.WinForms.SiticoneTextBox txtIdPersonal;
         private Siticone.UI.WinForms.SiticoneTextBox txtDireccion;
@@ -838,8 +1078,27 @@
         private Siticone.UI.WinForms.SiticoneComboBox cboProvincia;
         private Siticone.UI.WinForms.SiticoneComboBox cboDepartamento;
         private Siticone.UI.WinForms.SiticoneComboBox cboCargo;
-        private Siticone.UI.WinForms.SiticoneRoundedDateTimePicker dateTimePicker1;
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel2;
+        private Siticone.UI.WinForms.SiticonePanel SiticoneEncabezado;
+        private Siticone.UI.WinForms.SiticoneDataGridView lvempleado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Código;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreEmpleado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DNI;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel1;
+        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
+        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox2;
+        private Guna.UI.WinForms.GunaLabel gunaLabel10;
+        private System.Windows.Forms.GroupBox gbPaginacion;
+        private System.Windows.Forms.Label label24;
+        private Siticone.UI.WinForms.SiticoneVSeparator siticoneVSeparator1;
+        private System.Windows.Forms.ComboBox cboPaginacion;
+        private System.Windows.Forms.Label label25;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalReg;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalPaginas;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnNumFilas;
+        private System.Windows.Forms.Label label26;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dateTimePicker1;
+        private Siticone.UI.WinForms.SiticonePictureBox siticonePictureBox1;
+        private Siticone.UI.WinForms.SiticonePictureBox picBuscarPersonal;
     }
 }

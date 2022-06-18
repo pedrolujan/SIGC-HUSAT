@@ -6,3 +6,11 @@ D:\SISTEMA-HUSAT\CapaConexion\obj\Debug\CapaConexion.csproj.CoreCompileInputs.ca
 D:\SISTEMA-HUSAT\CapaConexion\obj\Debug\CapaConexion.csproj.CopyComplete
 D:\SISTEMA-HUSAT\CapaConexion\obj\Debug\CapaConexion.dll
 D:\SISTEMA-HUSAT\CapaConexion\obj\Debug\CapaConexion.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaConexion\bin\Debug\CapaConexion.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaConexion\bin\Debug\CapaConexion.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaConexion\bin\Debug\Encripta.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaConexion\obj\Debug\CapaConexion.csproj.AssemblyReference.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaConexion\obj\Debug\CapaConexion.csproj.CoreCompileInputs.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaConexion\obj\Debug\CapaConexion.csproj.CopyComplete
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaConexion\obj\Debug\CapaConexion.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaConexion\obj\Debug\CapaConexion.pdb

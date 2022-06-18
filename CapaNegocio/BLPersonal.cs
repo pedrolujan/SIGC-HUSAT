@@ -24,13 +24,13 @@ namespace CapaNegocio
             }
         }
 
-        public List<Personal> blBuscarPersonal(String pcBuscar, Int16 pnTipoCon)
+        public List<Personal> blBuscarPersonal(Int32 NumPagina ,String pcBuscar, Int32 pnTipoCon)
         {
 
             daPersonal objPersonal = new daPersonal();
             try
             {
-                return objPersonal.daBuscarPersonal(pcBuscar, pnTipoCon);
+                return objPersonal.daBuscarPersonal(NumPagina, pcBuscar, pnTipoCon);
             }
             catch (Exception ex)
             {
