@@ -13,7 +13,7 @@ namespace CapaNegocio
     {
         public BLControlPagos() { }
         DAControlPagos objControlPagos= null;
-        public DataTable blBuscarCronograma(Boolean habilitarfechas,DateTime dtFechaIni, DateTime dFechaFin,String pcBuscar,Int32 tipoCon, Int32 TipConPaginacion, Int32 numPagina,String estadoPago,Int32 idCiclo)
+        public DataTable blBuscarCronograma(Boolean habilitarfechas,String dtFechaIni, String dFechaFin,String pcBuscar,Int32 tipoCon, Int32 TipConPaginacion, Int32 numPagina,String estadoPago,Int32 idCiclo)
         {
             objControlPagos = new DAControlPagos();
             try

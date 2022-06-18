@@ -37,7 +37,7 @@ namespace CapaDato
                 if (lnTipoCon == 0)
                 {
                     lstEntidades.Add(new EntidadesPago(
-                        Convert.ToInt32(0),
+                        Convert.ToString(-1),
                         estBusq==true?"TODOS": "Seleccione Opcion"));;
                 } 
                 foreach (DataRow drMenu in dtUsuario.Rows)

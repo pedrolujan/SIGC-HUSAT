@@ -14,7 +14,7 @@ namespace CapaDato
     public class DAControlPagos
     {
         clsUtil objUtil = null;
-        public DataTable daBuscarCronograma(Boolean habilitarfechas, DateTime dtFechaIni, DateTime dFechaFin, String pcBuscar,Int32 tipoCon, Int32 TipConPaginacion, Int32 numPagina,String estadoPago,Int32 idCiclo)
+        public DataTable daBuscarCronograma(Boolean habilitarfechas, String dtFechaIni, String dFechaFin, String pcBuscar,Int32 tipoCon, Int32 TipConPaginacion, Int32 numPagina,String estadoPago,Int32 idCiclo)
         {
             SqlParameter[] pa = new SqlParameter[9];
             DataTable dtResult = new DataTable();
@@ -24,8 +24,8 @@ namespace CapaDato
             try
             {
                 pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.TinyInt) { Value = habilitarfechas };
-                pa[1] = new SqlParameter("@peFechaInical", SqlDbType.DateTime) { Value = dtFechaIni };
-                pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.DateTime) { Value = dFechaFin };
+                pa[1] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dtFechaIni };
+                pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dFechaFin };
                 pa[3] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = pcBuscar };
                 pa[4] = new SqlParameter("@idCiclo", SqlDbType.Int) { Value = idCiclo };
                 pa[5] = new SqlParameter("@estadoDetCronograma", SqlDbType.VarChar, 8) { Value = estadoPago };
@@ -205,7 +205,7 @@ namespace CapaDato
         }
 
 
-        public List<DetalleCronograma> daBuscarCronogramaAutomatico(DateTime dtFechaIni, DateTime dFechaFin,String estadoPago, List<DetalleCronograma>lstCron ,Int32 tipoCon)
+        public List<DetalleCronograma> daBuscarCronogramaAutomatico(String dtFechaIni, String dFechaFin,String estadoPago, List<DetalleCronograma>lstCron ,Int32 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[5];
             DataTable dtResult = new DataTable();
@@ -216,8 +216,8 @@ namespace CapaDato
 
             try
             {
-                pa[0] = new SqlParameter("@peFechaInical", SqlDbType.DateTime) { Value = dtFechaIni };
-                pa[1] = new SqlParameter("@peFechaFinal", SqlDbType.DateTime) { Value = dFechaFin };
+                pa[0] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dtFechaIni };
+                pa[1] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dFechaFin };
                 pa[2] = new SqlParameter("@estado", SqlDbType.VarChar, 8) { Value = estadoPago };
                 pa[3] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = tipoCon };
                 pa[4] = new SqlParameter("@XmlIds", SqlDbType.Xml) { Value = xmlids };
@@ -308,7 +308,7 @@ namespace CapaDato
 
         }
 
-        public List<DetalleCronograma> daBuscarCronogramaAutomaticoEspecifico(DateTime dtFechaIni, DateTime dFechaFin,String estado, List<DetalleCronograma> Datos,Int32 tipoCon)
+        public List<DetalleCronograma> daBuscarCronogramaAutomaticoEspecifico(String dtFechaIni, String dFechaFin,String estado, List<DetalleCronograma> Datos,Int32 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[5];
             DataTable dtResult = new DataTable();
@@ -318,8 +318,8 @@ namespace CapaDato
             String xmlIds = clsUtil.Serialize(Datos);
             try
             {
-                pa[0] = new SqlParameter("@peFechaInical", SqlDbType.DateTime) { Value = dtFechaIni };
-                pa[1] = new SqlParameter("@peFechaFinal", SqlDbType.DateTime) { Value = dFechaFin };
+                pa[0] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dtFechaIni };
+                pa[1] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dFechaFin };
                 pa[2] = new SqlParameter("@estado", SqlDbType.NVarChar,8) { Value = estado };
                 pa[3] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = tipoCon };
                 pa[4] = new SqlParameter("@XmlIds", SqlDbType.Xml) { Value = xmlIds };

@@ -151,7 +151,7 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
-        private Boolean fnlistarUsuario(SiticoneComboBox cbo, Int32 tipoCon, Boolean buscar)
+        public Boolean fnlistarUsuario(SiticoneComboBox cbo, Int32 tipoCon, Boolean buscar)
         {
             BLUsuario objUsuario = new BLUsuario();
             clsUtil objUtil = new clsUtil();

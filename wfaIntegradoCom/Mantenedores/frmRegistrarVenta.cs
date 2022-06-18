@@ -196,7 +196,7 @@ namespace wfaIntegradoCom.Mantenedores
             return estado;
 
         }
-        private Boolean fnLlenarTipoPlan(Int32 idTipoPlan, SiticoneComboBox cbo, Int32 tipBusqueda)
+        public Boolean fnLlenarTipoPlan(Int32 idTipoPlan, SiticoneComboBox cbo, Int32 tipBusqueda)
         {
             BLTipoPlan objTipPlan = new BLTipoPlan();
             clsUtil objUtil = new clsUtil();
@@ -2967,7 +2967,15 @@ namespace wfaIntegradoCom.Mantenedores
                                         }
                                         else
                                         {
-                                            clsTarifa.DescuentoRentaAdelantada = PrecioADescontar;
+                                            if (clsTarifa.PrecioPlan < 30)
+                                            {
+                                                clsTarifa.DescuentoReactivacion = PrecioADescontar;
+                                            }
+                                            else
+                                            {
+                                                clsTarifa.DescuentoRentaAdelantada = PrecioADescontar;
+
+                                            }
                                         }
                                         //lstDV[filaIndice].Descuento = Convert.ToDouble(filaData.Cells[posicionColumna].Value ?? 0);
                                     }
@@ -3228,7 +3236,8 @@ namespace wfaIntegradoCom.Mantenedores
                                 }
                                 else
                                 {
-                                    if (PrecioADescontar > (clsTarifa.PrecioPlan * lstVehiculo.Count) * lstDV[0].Couta)
+                                    Double precioRegular = clsTarifa.PrecioPlan < 30 ? clsTarifa.PrecioReactivacion : clsTarifa.PrecioPlan;
+                                    if (PrecioADescontar > (precioRegular * lstVehiculo.Count) * lstDV[0].Couta)
                                     {
                                         MessageBox.Show("El descuento no puede ser mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

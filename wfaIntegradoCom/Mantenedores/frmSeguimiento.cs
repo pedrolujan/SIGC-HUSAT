@@ -2254,7 +2254,7 @@ namespace wfaIntegradoCom.Mantenedores
             cboEstadoSeguimiento.SelectedValue = "0";
             txtHoraSigSeguimiento.Value = 0;
             ////DATATIMEPICKER
-            dtpFechaProximoSeguimiento.Value = Variables.gdFechaSis.AddDays(-1);
+            dtpFechaProximoSeguimiento.Value = Variables.gdFechaSis;
             dtpFechaRegSeguimiento.Value = Variables.gdFechaSis;
 
             /////LABELS
@@ -2287,7 +2287,7 @@ namespace wfaIntegradoCom.Mantenedores
                 tipoContacto = cboBuscarTipoContacto.SelectedValue.ToString();
                 celular = txtBuscarCelular.Text.ToString();
                 fechaInicial = fnCalcularSoloFecha(dtpFechaInicialBusqueda.Value);
-                fechaFinal = fnCalcularSoloFecha(dtpFechaFinalBusqueda.Value).AddDays(1);
+                fechaFinal = fnCalcularSoloFecha(dtpFechaFinalBusqueda.Value);
                 HabilitarFechas = Convert.ToBoolean(chkHabilitarFechas.Checked);
                 estFechaVisita = Convert.ToBoolean(rdbFechaVisita.Checked);
                 estFechaRegSeg = Convert.ToBoolean(rdbFechaRegSeg.Checked);
@@ -2298,7 +2298,7 @@ namespace wfaIntegradoCom.Mantenedores
                 idPlan = Convert.ToInt32(cboBuscarPlan.SelectedValue);
                 idTipoTarifa = Convert.ToInt32(cboBuscarTipoTarifa.SelectedValue);
 
-                DateTime DateFechActual = Convert.ToDateTime(fechaActual.ToString("dd/MM/yyyy"));
+                DateTime DateFechActual = Convert.ToDateTime(fechaActual.ToString("dd/MM/yyyy HH:mm"));
 
                 if (estado == "ESPR0001")
                 {
@@ -2393,21 +2393,43 @@ namespace wfaIntegradoCom.Mantenedores
                             }
                             else
                             {
-                                DateTime fechaultimaSeg = Convert.ToDateTime(datAcces.Rows[i][9].ToString());
-                                DateTime DateUltimaSeg = Convert.ToDateTime(fechaultimaSeg.ToString("dd/MM/yyyy"));
+                                DateTime fechaAMostrar = DateFechActual;
+                                DateTime fechaultimaSeg = Convert.ToDateTime(datAcces.Rows[i][9]);
+                                DateTime DateUltimaSeg = Convert.ToDateTime(fechaultimaSeg.ToString("dd/MM/yyyy HH:mm"));
                                 if (DateUltimaSeg >= DateFechActual)
                                 {
+                                    DateTime dtEdit = DateUltimaSeg.Hour==0? DateUltimaSeg.AddHours(-24): DateUltimaSeg;
                                     TimeSpan timDias = DateUltimaSeg - DateFechActual;
+                                    TimeSpan timDiasHora =dtEdit - DateFechActual;
+                                    if (DateUltimaSeg.Hour == 0 && dtEdit.Day == DateFechActual.Day)
+                                    {
+
+                                         fechaAMostrar = Convert.ToDateTime(DateFechActual.ToString("dd/MM/yyyy")).AddHours(Math.Abs(timDiasHora.Hours)).AddMinutes(Math.Abs(timDiasHora.Minutes));
+                                    }
+                                    else
+                                    {
+                                         fechaAMostrar = DateFechActual.AddHours(Math.Abs(timDiasHora.Hours)).AddMinutes(Math.Abs(timDiasHora.Minutes));
+                                         
+
+                                    }
+                                    if (i==8)
+                                    {
+
+                                    }
                                     Int32 numDias = timDias.Days;
                                     String cDias = numDias==1?" dia ":" dias ";
                                     
-                                    if (numDias == 0 )
+                                    if (numDias == 0 && DateUltimaSeg.Day== DateFechActual.Day)
                                     {
-                                        ultimoSeg = "❗ Llamar hoy (" + DateUltimaSeg.ToString("dd, MMMM, yyyy") + ")";
+                                        ultimoSeg = "❗ Llamar hoy  a las(" + fechaAMostrar.ToString("hh:mm tt")+")";
                                     }
                                     else if (numDias >= 1 && numDias <= 3)
                                     {
-                                        ultimoSeg = "🕑 Llamar en " + numDias + cDias+ "(" + DateUltimaSeg.ToString("dd, MMMM, yyyy")+ ")";
+                                        ultimoSeg = "🕑 Llamar en " + (DateUltimaSeg.Day - DateFechActual.Day) + " Dias (" + DateUltimaSeg.ToString("dd, MMMM, yyyy hh:mm tt")+ ")";
+                                    }else if ((DateUltimaSeg.Day - DateFechActual.Day)==1)
+                                    {
+                                        ultimoSeg = "🕑 Llamar en " + (DateUltimaSeg.Day - DateFechActual.Day) + " Dia "+ "(" + DateUltimaSeg.ToString("dd, MMMM, yyyy")+ ")";
+
                                     }
                                     else
                                     {
@@ -2418,9 +2440,27 @@ namespace wfaIntegradoCom.Mantenedores
                                 else
                                 {
                                     TimeSpan timDias = DateFechActual-DateUltimaSeg;
+                                    TimeSpan timDiasHora = DateFechActual-DateUltimaSeg;
+                                    if (DateUltimaSeg.Hour == 0)
+                                    {
+
+                                        fechaAMostrar = Convert.ToDateTime(DateFechActual.ToString("dd/MM/yyyy")).AddHours(Math.Abs(timDias.Hours)).AddMinutes(Math.Abs(timDias.Minutes));
+                                    }
+                                    else
+                                    {
+                                        fechaAMostrar = DateFechActual.AddHours(Math.Abs(timDias.Hours)).AddMinutes(Math.Abs(timDias.Minutes));
+
+                                    }
                                     Int32 numDias = timDias.Days;
                                     String cDias = numDias == 1 ? " dia " : " dias ";
-                                    ultimoSeg = "❗ Retraso de llamada, pasó " + numDias + cDias + " (" + DateUltimaSeg.ToString("dd/MM/yyyy") + ") 👁 " ;
+                                    if (numDias == 0)
+                                    {
+                                        ultimoSeg = "❗ Llamar hoy  a las(" + fechaAMostrar.ToString("hh:mm tt") + ")";
+                                    }
+                                    else
+                                    {
+                                        ultimoSeg = "❗ Retraso de llamada, pasó " + numDias + cDias + " (" + DateUltimaSeg.ToString("dd/MM/yyyy") + ") 👁 " ;
+                                    }
                                 }
                             }
                         }else if (EstadoVisita == "COMPRADOR")

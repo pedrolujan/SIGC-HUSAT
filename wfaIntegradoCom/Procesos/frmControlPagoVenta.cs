@@ -67,6 +67,8 @@ namespace wfaIntegradoCom.Procesos
         static DateTime dtFechaPagoCuota = Variables.gdFechaSis;
         Boolean estadoComprabanteP, estadoFechaPago, estadoDescuento, estadoMoneda;
         String msgComprabanteP, msgMoneda, msgDescuento;
+
+        Boolean estadoDeBoton = false;
         private void pbBuscar_Click(object sender, EventArgs e)
         {
             if (EstadoCarga==true)
@@ -81,8 +83,8 @@ namespace wfaIntegradoCom.Procesos
             obControPagos = new BLControlPagos();
             DataTable dtResult = new DataTable();
             Boolean HabilitarFechas = chkHabilitarFechasBus.Checked;
-            DateTime dtFIni = dtpFechaInicialBus.Value;
-            DateTime dtFFin = dtpFechaFinalBus.Value;
+            String dtFIni =FunGeneral.GetFechaHoraFormato(dtpFechaInicialBus.Value,5);
+            String dtFFin = FunGeneral.GetFechaHoraFormato(dtpFechaFinalBus.Value,5);
             Int32 idCiclo = Convert.ToInt32(cboCicloPago.SelectedValue);
             List<Cronograma> lstCrngr = new List<Cronograma>();
             String estadoPago = Convert.ToString(cboEstadopago.SelectedValue);
@@ -591,13 +593,14 @@ namespace wfaIntegradoCom.Procesos
         {
             try
             {
+                btnValidarEstados.Visible = false;
                 EstadoCarga = false;
                 Boolean bResult = false;
                 lstC.Clear();
                 dtFechaPago.Value = Variables.gdFechaSis;
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
-                gbBuscarListaVentas.Enabled = false;
+                //gbBuscarListaVentas.Enabled = false;
                 CronogramaSeleccionado = 0;
                 frmRegistrarVenta frmRV = new frmRegistrarVenta();
                 fnLLenarMoneda(cboMoneda, 0, false);
@@ -617,6 +620,15 @@ namespace wfaIntegradoCom.Procesos
                 cboComprobanteP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboMoneda.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
 
+                if (Variables.gsCargoUsuario == "PETR0001" || Variables.gsCargoUsuario == "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
+                {
+                    btnValidarEstados.Visible = true;
+                }
+                else
+                {
+                    btnValidarEstados.Visible = false;
+                }
+
             }
             catch (Exception ex)
             {
@@ -632,14 +644,16 @@ namespace wfaIntegradoCom.Procesos
                 numRows =FunGeneral.fnBuscarAccionDiaria(0, dtt1);
                 if (numRows==0)
                 {
-                    fnBuscarCronogramaAutomatico(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value, "ESPV0001", 0);
+                    DateTime dttt= dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1)).AddMonths(-1);
+
+                    fnBuscarCronogramaAutomatico(FunGeneral.GetFechaHoraFormato(dttt, 5), FunGeneral.GetFechaHoraFormato(dtpFechaFinalBus.Value,5), "ESPV0001", 0);
                     FunGeneral.fnRegistrarAccionDiaria("Actualizacion estados detalle cronograma",true,0, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3));
                 }
                 
             }
         }
 
-        private void fnBuscarCronogramaAutomatico(DateTime dtIni,DateTime dtFin,String estado,Int32 tipoCon)
+        private void fnBuscarCronogramaAutomatico(String dtIni, String dtFin,String estado,Int32 tipoCon)
         {
             DAControlPagos dtCP = new DAControlPagos();
             List<DetalleCronograma> lstCronogramas = new List<DetalleCronograma>();
@@ -647,9 +661,10 @@ namespace wfaIntegradoCom.Procesos
             List<DetalleCronograma> lstDetCronAutomaticoEsp = new List<DetalleCronograma>();
             List<DetalleCronograma> lstDetCronAutomaticoEspUnico = new List<DetalleCronograma>();
             ;
+            //try
             try
             {
-                lstDetCronAutomatico = dtCP.daBuscarCronogramaAutomatico(dtFin.AddDays(-(dtFin.Day - 1)).AddMonths(-1), dtFin, estado, lstDetCronAutomatico, tipoCon);
+                lstDetCronAutomatico = dtCP.daBuscarCronogramaAutomatico(dtIni, dtFin, estado, lstDetCronAutomatico, tipoCon);
                 String ArrIdsCronograma = "";
                 Int32 contadorVencido = 0;
                 Int32 contadorCorte = 0;
@@ -662,6 +677,10 @@ namespace wfaIntegradoCom.Procesos
                 
                 for (Int32 i = 0; i < lstDetCronAutomatico.Count; i++)
                 {
+                    if (lstDetCronAutomatico[i].idCronograma== 23)
+                    {
+
+                    }
                     contadorVencido = 0;
                     List<DetalleCronograma> clsDetCro = new List<DetalleCronograma>();
 
@@ -689,23 +708,32 @@ namespace wfaIntegradoCom.Procesos
                                 {
                                     if (j > 0)
                                     {
-                                        
+
                                         if (clsDetCro[j].estado == "ESPV0003" && clsDetCro[j - 1].estado == "ESPV0003")
                                         {
-                                            //dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                            //dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0003", 1);
                                         }
                                         else if (clsDetCro[j - 1].estado == "ESPV0003" && clsDetCro[j - 2].estado == "ESPV0003")
                                         {
-                                            dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                            dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
                                         }
                                         else if (clsDetCro[j - 1].estado == "ESPV0004")
                                         {
-                                            dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
+                                            dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
                                         }
 
                                     }
-                                    //dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0003", 1);
+                                    else
+                                    {
+                                        if (clsDetCro[j].estado == "ESPV0001" || clsDetCro[j].estado == "ESPV0004")
+                                        {
+                                            dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0003", 1);
+                                        }
+                                    
+                                    }
+                                        //dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0003", 1);
                                 }
+                            
                                 //if(lstDetCronAutomaticoEsp[j].estado != "ESPV0002")
                                 //{
 
@@ -719,6 +747,13 @@ namespace wfaIntegradoCom.Procesos
                                 //{
                                 //    dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0004", 1);
                                 //}
+                            }
+                            else
+                            {
+                                if (clsDetCro[j].estado == "ESPV0003" || clsDetCro[j].estado == "ESPV0004")
+                                {
+                                    dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0001", 1);
+                                }
                             }
                         //}
                     }
@@ -904,6 +939,7 @@ namespace wfaIntegradoCom.Procesos
             String Placa = Convert.ToString(dgvListaVentas.CurrentRow.Cells[5].Value);
 
             fnBuscarCronograma(1, Placa, -1, 0);
+
             cboCronograma.SelectedIndex = 0;
             fnObtenerCronogramaEspecifico(Convert.ToInt32(cboCronograma.SelectedValue), idContrato);
         }
@@ -1784,7 +1820,11 @@ namespace wfaIntegradoCom.Procesos
         }
         private void btnValidarEstados_Click(object sender, EventArgs e)
         {
-            fnActualizarCronograma(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value);
+            //fnActualizarCronograma(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value);
+            //fnBuscarCronogramaAutomatico(dtpFechaInicialBus.Value, dtpFechaFinalBus.Value, "ESPV0001", 0);
+
+            fnBuscarCronogramaAutomatico(FunGeneral.GetFechaHoraFormato(dtpFechaInicialBus.Value, 5), FunGeneral.GetFechaHoraFormato(dtpFechaFinalBus.Value, 5), "ESPV0001", 0);
+            MessageBox.Show("Actualizacion exitosa", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnCambiarIncumplimiento_Click(object sender, EventArgs e)
@@ -1818,6 +1858,11 @@ namespace wfaIntegradoCom.Procesos
 
             }
 
+        }
+
+        private void siticoneButton1_Click_1(object sender, EventArgs e)
+        {
+            fnActualizarCronograma(dtpFechaInicialBus.Value,dtpFechaFinalBus.Value);
         }
 
         private void btnVerDatos_Click(object sender, EventArgs e)

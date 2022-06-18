@@ -656,7 +656,11 @@ namespace wfaIntegradoCom.Funciones
         public static String fnFormatearPrecio(String simbolo,Double Precio,Int32 lnTipoCon)
         {
             String srt = "";
-            if (lnTipoCon==1)
+            if (lnTipoCon==0)
+            {
+                srt = $"{simbolo} {String.Format("{0:#,##0.00}", Precio)}";
+
+            }else if (lnTipoCon==1)
             {
 
                 srt = $"{simbolo} {string.Format("{0:0.00}", Precio)}";
