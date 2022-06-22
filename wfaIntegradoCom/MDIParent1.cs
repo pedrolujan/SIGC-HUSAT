@@ -27,11 +27,12 @@ using Newtonsoft.Json.Linq;
 using wfaIntegradoCom.Funciones.Models.Order;
 
 namespace wfaIntegradoCom
+
 {
     public partial class MDIParent1 : Form, IDisposable
     {
-
-        DataSet dtMenu = new DataSet();
+     
+       static DataSet dtMenu = new DataSet();
         clsUtil objUtil = new clsUtil();
         ImageList imgList = new ImageList();
         String lcCodMenu = "";
@@ -40,12 +41,34 @@ namespace wfaIntegradoCom
             1
         };
         int lintIdTipoProceso = 1;
+        static Boolean LoadCarga = false;
 
+        public void fnLoadCarga ( Boolean Load)
+        {
+            LoadCarga = Load;
+            if (this.treeView1.Controls.Count > 0)
+                this.treeView1.Controls.RemoveAt(0);
+
+        }
         public MDIParent1()
         {
             InitializeComponent();
         }
+        private Boolean AbrirFrmLoad(object frmload)
+        {
+            if (this.treeView1.Controls.Count > 0)
+                this.treeView1.Controls.RemoveAt(0);
+            Form fn = frmload as Form;
+            fn.TopLevel = false;
+            fn.Dock = DockStyle.None;
+            this.treeView1.Controls.Add(fn);
+            this.treeView1.Tag = fn;
+            fn.Show();
 
+            return true;
+
+
+        }
         private void fnLoadControlWPF()
         {
             lintIdCodigoGeneral = 1;
@@ -63,6 +86,7 @@ namespace wfaIntegradoCom
         {
             fnAbrirFormularioDinamico(sender);
         }
+
 
 
         private void fnAbrirFormularioDinamico(object e)
@@ -136,6 +160,7 @@ namespace wfaIntegradoCom
                         if (ts.Text.Trim() == lcItemMenu)
                         {
                             ts.Enabled = true;
+                            
                         }
                         
                         
@@ -179,43 +204,64 @@ namespace wfaIntegradoCom
             }
         }
         
-        public Boolean Loading() {
-        frmUsuario login = new frmUsuario();
-        Boolean bLoading=false;
-        BLMenu objMenu = new BLMenu();
-
-        try
+        public Boolean Loading()
         {
-            if(login.ShowDialog() == System.Windows.Forms.DialogResult.OK )
-            {
-                bLoading = true;
-                frmLoad frm = new frmLoad();
-                dtMenu = objMenu.BLCargarMenu(Variables.gnCodUser, 1);
-                fnCargarVariableGlobal();
-                fnCargarVariableImpresion();
 
-                frm.Inicio();
-                fnCargarMenuPrin();
-                fnCargarMenuAccesoRapido();
-                lcCodMenu = "8888100000";
-                imgList = ListaImagenes;
-                fnCargarMenuGeneral(lcCodMenu);
+            frmUsuario login = new frmUsuario();
+            Boolean bLoading=false;
+            BLMenu objMenu = new BLMenu();
+
+            try
+            {
+                if(login.ShowDialog() == System.Windows.Forms.DialogResult.OK )
+                {
+                    bLoading = true;
+                    frmLoad frm = new frmLoad();
+                    dtMenu = objMenu.BLCargarMenu(Variables.gnCodUser, 1);
+
+
+                    fnCargarVariableGlobal();
+                    fnCargarVariableImpresion();
+                    if (dtMenu.Tables.Count > 0)
+                    {
+                        if(AbrirFrmLoad(new frmLoad()))
+                        {
+
+                            
+                        }
+
+                    }
+                    
+
+
+                    //frm.Inicio();
+
                 }          
-            else
-            {
-                bLoading = false;
+                else
+                {
+                    bLoading = false;
                 
-                this.Close();
+                    this.Close();
 
+
+                }
 
             }
-
-        }
-        catch(Exception ex){
-            bLoading = false;
-            MessageBox.Show(ex.Message, "Avisar a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
+            catch(Exception ex){
+                bLoading = false;
+                MessageBox.Show(ex.Message, "Avisar a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         return bLoading;
+        }
+
+        private void Frm_FormClosed()
+        {
+            fnCargarMenuPrin();
+            fnCargarMenuAccesoRapido();
+            lcCodMenu = "8888100000";
+            imgList = ListaImagenes;
+            treeView1.Nodes.Clear();
+            fnCargarMenuGeneral(lcCodMenu);
         }
 
         public void fnCargarVariableGlobal()
@@ -379,6 +425,7 @@ namespace wfaIntegradoCom
            
             try
             {
+                
                 Loading();
                 SystemEvents.PowerModeChanged += OnPowerModeChange;
                 InitializeTimer();
@@ -390,6 +437,7 @@ namespace wfaIntegradoCom
             }
             finally
             {
+                
 
             }
             
@@ -397,8 +445,12 @@ namespace wfaIntegradoCom
 
         public void OnTimerEvent(object source, EventArgs e)
         {
+            if (LoadCarga == true)
+            {
+                Frm_FormClosed();
+            }
             string strFechaIso = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
-            string strFechaHourIso = strFechaIso +" "+ (DateTime.Now.TimeOfDay.ToString()).Substring(0,12);
+             string strFechaHourIso = strFechaIso +" "+ (DateTime.Now.TimeOfDay.ToString()).Substring(0,12);
             Variables.gdFechaSis = Convert.ToDateTime(strFechaHourIso);
             toolStripStatusLabel3.Text = "Fecha del Sistema: " + Variables.gdFechaSis.ToString("dd/MM/yyyy HH:mm:ss");
         }
@@ -796,6 +848,9 @@ namespace wfaIntegradoCom
 
         private void tsbVenta_Click(object sender, EventArgs e)
         {
+            fnColorWhiteSelec();
+            tsbVenta.BackColor = Color.FromArgb(255, 192, 192);
+
             tslMenuIzquierdo.Text = "Ventas";
             tslMenuIzquierdo.Image = Properties.Resources.venta_blanco_32;
             treeView1.Nodes.Clear();
@@ -805,15 +860,22 @@ namespace wfaIntegradoCom
 
         private void tsbSistemas_Click(object sender, EventArgs e)
         {
-            tslMenuIzquierdo.Text = "Configuración";
-            tslMenuIzquierdo.Image = Properties.Resources.sistema_blanco_32;
+            fnColorWhiteSelec();
+            tsbSistemas.BackColor = Color.FromArgb(255, 192, 192);
+
+            tslMenuIzquierdo.Text = "Sistemas";
+            tslMenuIzquierdo.Image = Properties.Resources.compu_ok_blanco_32;
             treeView1.Nodes.Clear();
-            lcCodMenu = "8888700000";
+            lcCodMenu = "8888300000";
             fnCargarMenuGeneral(lcCodMenu);
         }
 
         private void tsbLogistica_Click(object sender, EventArgs e)
         {
+
+            fnColorWhiteSelec();
+            tsbLogistica.BackColor = Color.FromArgb(255, 192, 192);
+
             tslMenuIzquierdo.Text = "Logística";
             tslMenuIzquierdo.Image = Properties.Resources.logistica_blanc_32;
             treeView1.Nodes.Clear();
@@ -823,6 +885,9 @@ namespace wfaIntegradoCom
 
         private void tsbComercial_Click(object sender, EventArgs e)
         {
+            fnColorWhiteSelec();
+            tsbComercial.BackColor = Color.FromArgb(255, 192, 192);
+
             tslMenuIzquierdo.Text = "Comercial";
             tslMenuIzquierdo.Image = Properties.Resources.comercial_blanco_32;
             treeView1.Nodes.Clear();
@@ -832,6 +897,8 @@ namespace wfaIntegradoCom
 
         private void tsbCompra_Click(object sender, EventArgs e)
         {
+
+
             tslMenuIzquierdo.Text = "Compras";
             tslMenuIzquierdo.Image = Properties.Resources.compras_blanco_32;
             treeView1.Nodes.Clear();
@@ -841,6 +908,9 @@ namespace wfaIntegradoCom
 
         private void tsbSistemas_Click_1(object sender, EventArgs e)
         {
+            fnColorWhiteSelec();
+            tsbSistemas.BackColor = Color.FromArgb(255, 192, 192);
+
             tslMenuIzquierdo.Text = "Sistemas";
             tslMenuIzquierdo.Image = Properties.Resources.compu_ok_blanco_32;
             treeView1.Nodes.Clear();
@@ -850,6 +920,9 @@ namespace wfaIntegradoCom
 
         private void tsbRrHh_Click(object sender, EventArgs e)
         {
+            fnColorWhiteSelec();
+            tsbRrHh.BackColor = Color.FromArgb(255, 192, 192);
+
             tslMenuIzquierdo.Text = "RRHH";
             tslMenuIzquierdo.Image = Properties.Resources.rrHh_blanco_32;
             treeView1.Nodes.Clear();
@@ -859,6 +932,9 @@ namespace wfaIntegradoCom
 
         private void tsbSoporte_Click(object sender, EventArgs e)
         {
+            fnColorWhiteSelec();
+            tsbSoporte.BackColor = Color.FromArgb(255, 192, 192);
+
             tslMenuIzquierdo.Text = "Soporte";
             tslMenuIzquierdo.Image = Properties.Resources.rrHh_blanco_32;
             treeView1.Nodes.Clear();
@@ -888,14 +964,77 @@ namespace wfaIntegradoCom
             pnlCerrarSession.Visible = false;
             fnOcultarObjetos();
             this.Loading();
+           
         }
 
         private void tsbRecaudacion_Click(object sender, EventArgs e)
         {
+            fnColorWhiteSelec();
+            tsbRecaudacion.BackColor = Color.FromArgb(255, 192, 192);
+            
+
             tslMenuIzquierdo.Text = "Recaudación";
             tslMenuIzquierdo.Image = Properties.Resources.recaudacion_Blanco;
             treeView1.Nodes.Clear();
             lcCodMenu = "8881000000";
+            fnCargarMenuGeneral(lcCodMenu);
+        }
+
+        private void PruebaLoad_Click(object sender, EventArgs e)
+        {
+            AbrirFrmLoad(new frmLoad());
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            Img_Husat_Negro.Visible = false;
+            Img_Husat_Blanco.Visible = true;
+        }
+
+
+        private void pictureBox5_Click_(object sender, EventArgs e)
+        {
+            Img_Husat_Blanco.Visible = false;
+            Img_Husat_Negro.Visible = true;
+        }
+
+        private void SplitIzquierdo_Panel2_Click(object sender, EventArgs e)
+        {
+            LoadCarga = false;
+        }
+
+        private void tvOpes_Click(object sender, EventArgs e)
+        {
+            LoadCarga = false;
+        }
+
+        private void tsMenuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            LoadCarga = false;
+        }
+        private void fnColorWhiteSelec()
+        {
+            tsbRecaudacion.BackColor = Color.White;
+            tsbVenta.BackColor = Color.White;
+            tsbComercial.BackColor = Color.White;
+            tsbLogistica.BackColor = Color.White;
+            tsbSistemas.BackColor = Color.White;
+            tsbRrHh.BackColor = Color.White;
+            tsbConfiguracion.BackColor = Color.White;
+            tsbSoporte.BackColor = Color.White;
+
+
+        }
+
+        private void tsbConfiguracion_Click(object sender, EventArgs e)
+        {
+            fnColorWhiteSelec();
+            tsbConfiguracion.BackColor = Color.FromArgb(255, 192, 192);
+
+            tslMenuIzquierdo.Text = "Configuración";
+            tslMenuIzquierdo.Image = Properties.Resources.sistema_blanco_32;
+            treeView1.Nodes.Clear();
+            lcCodMenu = "8888700000";
             fnCargarMenuGeneral(lcCodMenu);
         }
     }

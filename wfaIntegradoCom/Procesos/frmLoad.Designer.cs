@@ -63,7 +63,7 @@ namespace wfaIntegradoCom.Procesos
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.lblStatus.Location = new System.Drawing.Point(291, 213);
+            this.lblStatus.Location = new System.Drawing.Point(237, 291);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(46, 26);
             this.lblStatus.TabIndex = 4;
@@ -73,13 +73,12 @@ namespace wfaIntegradoCom.Procesos
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.label1.Location = new System.Drawing.Point(264, 97);
+            this.label1.Location = new System.Drawing.Point(206, 173);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 24);
+            this.label1.Size = new System.Drawing.Size(107, 32);
             this.label1.TabIndex = 4;
             this.label1.Text = "Cargando";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -87,19 +86,20 @@ namespace wfaIntegradoCom.Procesos
             // 
             // siticoneWinProgressIndicator1
             // 
+            this.siticoneWinProgressIndicator1.BackColor = System.Drawing.Color.Transparent;
             this.siticoneWinProgressIndicator1.CircleSize = 1F;
-            this.siticoneWinProgressIndicator1.Location = new System.Drawing.Point(227, 22);
+            this.siticoneWinProgressIndicator1.Location = new System.Drawing.Point(160, 100);
             this.siticoneWinProgressIndicator1.Name = "siticoneWinProgressIndicator1";
             this.siticoneWinProgressIndicator1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneWinProgressIndicator1.Size = new System.Drawing.Size(175, 175);
+            this.siticoneWinProgressIndicator1.Size = new System.Drawing.Size(177, 177);
             this.siticoneWinProgressIndicator1.TabIndex = 6;
             // 
             // frmLoad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(562, 251);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(562, 500);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.ProgressBar1);

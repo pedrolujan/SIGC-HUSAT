@@ -501,6 +501,26 @@ namespace wfaIntegradoCom.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap HUSAT_LOGO {
+            get {
+                object obj = ResourceManager.GetObject("HUSAT_LOGO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap HUSAT_LOGO__Blanco_sombra_color_ {
+            get {
+                object obj = ResourceManager.GetObject("HUSAT_LOGO (Blanco sombra color)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
         /// </summary>
         public static System.Drawing.Icon icono {
