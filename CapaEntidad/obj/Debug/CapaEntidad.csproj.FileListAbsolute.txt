@@ -13,3 +13,10 @@ D:\EDWAR\SYSTEM HUSAT EDWAR\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompile
 D:\EDWAR\SYSTEM HUSAT EDWAR\CapaEntidad\obj\Debug\CapaEntidad.csproj.CopyComplete
 D:\EDWAR\SYSTEM HUSAT EDWAR\CapaEntidad\obj\Debug\CapaEntidad.dll
 D:\EDWAR\SYSTEM HUSAT EDWAR\CapaEntidad\obj\Debug\CapaEntidad.pdb
+D:\System Husat\CapaEntidad\bin\Debug\CapaEntidad.dll
+D:\System Husat\CapaEntidad\bin\Debug\CapaEntidad.pdb
+D:\System Husat\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+D:\System Husat\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+D:\System Husat\CapaEntidad\obj\Debug\CapaEntidad.csproj.CopyComplete
+D:\System Husat\CapaEntidad\obj\Debug\CapaEntidad.dll
+D:\System Husat\CapaEntidad\obj\Debug\CapaEntidad.pdb

@@ -68,6 +68,7 @@ namespace wfaIntegradoCom
             this.treeView1.Tag = fn;
             fn.Show();
 
+            FunValidaciones.fnColorBotonEspecifico(btnVenta);
             return true;
 
 
@@ -850,6 +851,7 @@ namespace wfaIntegradoCom
 
         #endregion Auxiliar methods
 
+#region tsMenuPrincipal  (Botones)
         private void tsbVenta_Click(object sender, EventArgs e)
         {
             fnColorWhiteSelec();
@@ -940,12 +942,12 @@ namespace wfaIntegradoCom
             tsbSoporte.BackColor = Color.FromArgb(255, 192, 192);
 
             tslMenuIzquierdo.Text = "Soporte";
-            tslMenuIzquierdo.Image = Properties.Resources.soporte_blanco_1;
+            //tslMenuIzquierdo.Image = Properties.Resources.soporte_blanco_1;
             treeView1.Nodes.Clear();
             lcCodMenu = "8888400000";
             fnCargarMenuGeneral(lcCodMenu);
         }
-
+#endregion tsMenuPrincipal  (Botones)
         private void tsCerraSession_Click(object sender, EventArgs e)
         {
             fnOcultarPanelCerrarSession();
@@ -1028,8 +1030,7 @@ namespace wfaIntegradoCom
             tsbConfiguracion.BackColor = Color.White;
             tsbSoporte.BackColor = Color.White;
 
-
-        }
+       }
 
         private void tsbConfiguracion_Click(object sender, EventArgs e)
         {
@@ -1042,6 +1043,7 @@ namespace wfaIntegradoCom
             lcCodMenu = "8888700000";
             fnCargarMenuGeneral(lcCodMenu);
         }
+
 
         private void btnPanel1_Click(object sender, EventArgs e)
         {
@@ -1084,6 +1086,7 @@ namespace wfaIntegradoCom
         private int conteo = 0;
         private void btnPrueba_Click(object sender, EventArgs e)
         {
+            
          System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
 
             temp.Height = 23;
@@ -1114,7 +1117,7 @@ namespace wfaIntegradoCom
             subMenuSoporte.Visible = false;
 
         }
-        private void OcultarSubMenu()
+        private void OcultarSubMenu ()
         {
             if (subMenuVentas.Visible == true)
                 subMenuVentas.Visible = false;
@@ -1136,18 +1139,22 @@ namespace wfaIntegradoCom
         }
         private void MostrarSubMenu(System.Windows.Forms.Panel subMenu)
         {
-            if (subMenuVentas.Visible == false)
+            if (subMenu.Visible == false)
             {
                 OcultarSubMenu();
-                subMenuVentas.Visible = true;
+                subMenu.Visible = true;
             }
             else 
                 subMenu.Visible = false;
         }
 
+    #region Click Botones Menu Principal
         private void btnVenta_Click(object sender, EventArgs e)
         {
+            //FunValidaciones.fnColorBotonEspecifico(btnVenta);
+
             MostrarSubMenu(subMenuVentas);
+
             tslMenuIzquierdo.Text = "Ventas";
             tslMenuIzquierdo.Image = Properties.Resources.venta_blanco_32;
             treeView1.Nodes.Clear();
@@ -1219,10 +1226,11 @@ namespace wfaIntegradoCom
         {
             MostrarSubMenu(subMenuSoporte);
             tslMenuIzquierdo.Text = "Soporte";
-            tslMenuIzquierdo.Image = Properties.Resources.soporte_blanco_1;
+            //tslMenuIzquierdo.Image = Properties.Resources.soporte_blanco_1;
             treeView1.Nodes.Clear();
             lcCodMenu = "8888400000";
             fnCargarMenuGeneral(lcCodMenu);
         }
+        #endregion Click Botones Menu Principal
     }
 }

@@ -599,6 +599,8 @@
             // 
             // btnPanel1
             // 
+            this.btnPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPanel1.CheckedState.Parent = this.btnPanel1;
             this.btnPanel1.CustomImages.Parent = this.btnPanel1;
             this.btnPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(102)))), ((int)(((byte)(201)))));
@@ -615,6 +617,8 @@
             // 
             // btnPanel2
             // 
+            this.btnPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPanel2.CheckedState.Parent = this.btnPanel2;
             this.btnPanel2.CustomImages.Parent = this.btnPanel2;
             this.btnPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(102)))), ((int)(((byte)(201)))));
@@ -797,7 +801,7 @@
             // 
             // panelBotones
             // 
-            this.panelBotones.BackColor = System.Drawing.Color.White;
+            this.panelBotones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.panelBotones.Controls.Add(this.subMenuSoporte);
             this.panelBotones.Controls.Add(this.btnSoporte);
             this.panelBotones.Controls.Add(this.subMenuConfiguracion);
@@ -825,7 +829,7 @@
             // 
             this.subMenuSoporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuSoporte.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuSoporte.Location = new System.Drawing.Point(0, 350);
+            this.subMenuSoporte.Location = new System.Drawing.Point(0, 340);
             this.subMenuSoporte.Name = "subMenuSoporte";
             this.subMenuSoporte.ShadowDecoration.Parent = this.subMenuSoporte;
             this.subMenuSoporte.Size = new System.Drawing.Size(310, 10);
@@ -833,20 +837,20 @@
             // 
             // btnSoporte
             // 
-            this.btnSoporte.BackColor = System.Drawing.Color.White;
+            this.btnSoporte.BackColor = System.Drawing.Color.Transparent;
             this.btnSoporte.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnSoporte.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
             this.btnSoporte.CheckedState.Parent = this.btnSoporte;
             this.btnSoporte.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSoporte.CustomImages.Parent = this.btnSoporte;
             this.btnSoporte.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSoporte.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnSoporte.FillColor = System.Drawing.Color.Transparent;
             this.btnSoporte.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSoporte.ForeColor = System.Drawing.Color.Black;
             this.btnSoporte.HoveredState.Parent = this.btnSoporte;
             this.btnSoporte.Image = global::wfaIntegradoCom.Properties.Resources.soporte1;
             this.btnSoporte.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSoporte.Location = new System.Drawing.Point(0, 315);
+            this.btnSoporte.Location = new System.Drawing.Point(0, 305);
             this.btnSoporte.Name = "btnSoporte";
             this.btnSoporte.PressedColor = System.Drawing.Color.Aqua;
             this.btnSoporte.ShadowDecoration.Parent = this.btnSoporte;
@@ -860,7 +864,7 @@
             // 
             this.subMenuConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuConfiguracion.Location = new System.Drawing.Point(0, 305);
+            this.subMenuConfiguracion.Location = new System.Drawing.Point(0, 295);
             this.subMenuConfiguracion.Name = "subMenuConfiguracion";
             this.subMenuConfiguracion.ShadowDecoration.Parent = this.subMenuConfiguracion;
             this.subMenuConfiguracion.Size = new System.Drawing.Size(310, 10);
@@ -868,20 +872,20 @@
             // 
             // btnConfiguracion
             // 
-            this.btnConfiguracion.BackColor = System.Drawing.Color.White;
+            this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
             this.btnConfiguracion.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnConfiguracion.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
             this.btnConfiguracion.CheckedState.Parent = this.btnConfiguracion;
             this.btnConfiguracion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfiguracion.CustomImages.Parent = this.btnConfiguracion;
             this.btnConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnConfiguracion.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnConfiguracion.FillColor = System.Drawing.Color.Transparent;
             this.btnConfiguracion.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfiguracion.ForeColor = System.Drawing.Color.Black;
             this.btnConfiguracion.HoveredState.Parent = this.btnConfiguracion;
             this.btnConfiguracion.Image = global::wfaIntegradoCom.Properties.Resources.sistemas_naranja_32;
             this.btnConfiguracion.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnConfiguracion.Location = new System.Drawing.Point(0, 270);
+            this.btnConfiguracion.Location = new System.Drawing.Point(0, 260);
             this.btnConfiguracion.Name = "btnConfiguracion";
             this.btnConfiguracion.PressedColor = System.Drawing.Color.Aqua;
             this.btnConfiguracion.ShadowDecoration.Parent = this.btnConfiguracion;
@@ -895,7 +899,7 @@
             // 
             this.subMenuRrhh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuRrhh.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuRrhh.Location = new System.Drawing.Point(0, 260);
+            this.subMenuRrhh.Location = new System.Drawing.Point(0, 250);
             this.subMenuRrhh.Name = "subMenuRrhh";
             this.subMenuRrhh.ShadowDecoration.Parent = this.subMenuRrhh;
             this.subMenuRrhh.Size = new System.Drawing.Size(310, 10);
@@ -903,20 +907,20 @@
             // 
             // btnRrhh
             // 
-            this.btnRrhh.BackColor = System.Drawing.Color.White;
+            this.btnRrhh.BackColor = System.Drawing.Color.Transparent;
             this.btnRrhh.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnRrhh.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
             this.btnRrhh.CheckedState.Parent = this.btnRrhh;
             this.btnRrhh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRrhh.CustomImages.Parent = this.btnRrhh;
             this.btnRrhh.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRrhh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnRrhh.FillColor = System.Drawing.Color.Transparent;
             this.btnRrhh.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRrhh.ForeColor = System.Drawing.Color.Black;
             this.btnRrhh.HoveredState.Parent = this.btnRrhh;
             this.btnRrhh.Image = global::wfaIntegradoCom.Properties.Resources.rrHh_naranja_32;
             this.btnRrhh.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnRrhh.Location = new System.Drawing.Point(0, 225);
+            this.btnRrhh.Location = new System.Drawing.Point(0, 215);
             this.btnRrhh.Name = "btnRrhh";
             this.btnRrhh.PressedColor = System.Drawing.Color.Aqua;
             this.btnRrhh.ShadowDecoration.Parent = this.btnRrhh;
@@ -930,7 +934,7 @@
             // 
             this.subMenuSistemas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuSistemas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuSistemas.Location = new System.Drawing.Point(0, 215);
+            this.subMenuSistemas.Location = new System.Drawing.Point(0, 205);
             this.subMenuSistemas.Name = "subMenuSistemas";
             this.subMenuSistemas.ShadowDecoration.Parent = this.subMenuSistemas;
             this.subMenuSistemas.Size = new System.Drawing.Size(310, 10);
@@ -938,20 +942,20 @@
             // 
             // btnSistemas
             // 
-            this.btnSistemas.BackColor = System.Drawing.Color.White;
+            this.btnSistemas.BackColor = System.Drawing.Color.Transparent;
             this.btnSistemas.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnSistemas.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
             this.btnSistemas.CheckedState.Parent = this.btnSistemas;
             this.btnSistemas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSistemas.CustomImages.Parent = this.btnSistemas;
             this.btnSistemas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSistemas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnSistemas.FillColor = System.Drawing.Color.Transparent;
             this.btnSistemas.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSistemas.ForeColor = System.Drawing.Color.Black;
             this.btnSistemas.HoveredState.Parent = this.btnSistemas;
             this.btnSistemas.Image = global::wfaIntegradoCom.Properties.Resources.compu_ok_naranja_32;
             this.btnSistemas.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSistemas.Location = new System.Drawing.Point(0, 180);
+            this.btnSistemas.Location = new System.Drawing.Point(0, 170);
             this.btnSistemas.Name = "btnSistemas";
             this.btnSistemas.PressedColor = System.Drawing.Color.Aqua;
             this.btnSistemas.ShadowDecoration.Parent = this.btnSistemas;
@@ -965,7 +969,7 @@
             // 
             this.subMenuLogistica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuLogistica.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuLogistica.Location = new System.Drawing.Point(0, 170);
+            this.subMenuLogistica.Location = new System.Drawing.Point(0, 160);
             this.subMenuLogistica.Name = "subMenuLogistica";
             this.subMenuLogistica.ShadowDecoration.Parent = this.subMenuLogistica;
             this.subMenuLogistica.Size = new System.Drawing.Size(310, 10);
@@ -973,20 +977,20 @@
             // 
             // btnLogistica
             // 
-            this.btnLogistica.BackColor = System.Drawing.Color.White;
+            this.btnLogistica.BackColor = System.Drawing.Color.Transparent;
             this.btnLogistica.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnLogistica.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
             this.btnLogistica.CheckedState.Parent = this.btnLogistica;
             this.btnLogistica.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogistica.CustomImages.Parent = this.btnLogistica;
             this.btnLogistica.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLogistica.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnLogistica.FillColor = System.Drawing.Color.Transparent;
             this.btnLogistica.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogistica.ForeColor = System.Drawing.Color.Black;
             this.btnLogistica.HoveredState.Parent = this.btnLogistica;
             this.btnLogistica.Image = global::wfaIntegradoCom.Properties.Resources.logistica_naranja_32;
             this.btnLogistica.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogistica.Location = new System.Drawing.Point(0, 135);
+            this.btnLogistica.Location = new System.Drawing.Point(0, 125);
             this.btnLogistica.Name = "btnLogistica";
             this.btnLogistica.PressedColor = System.Drawing.Color.Aqua;
             this.btnLogistica.ShadowDecoration.Parent = this.btnLogistica;
@@ -1000,7 +1004,7 @@
             // 
             this.subMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuComercial.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuComercial.Location = new System.Drawing.Point(0, 125);
+            this.subMenuComercial.Location = new System.Drawing.Point(0, 115);
             this.subMenuComercial.Name = "subMenuComercial";
             this.subMenuComercial.ShadowDecoration.Parent = this.subMenuComercial;
             this.subMenuComercial.Size = new System.Drawing.Size(310, 10);
@@ -1008,20 +1012,20 @@
             // 
             // btnComercial
             // 
-            this.btnComercial.BackColor = System.Drawing.Color.White;
+            this.btnComercial.BackColor = System.Drawing.Color.Transparent;
             this.btnComercial.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnComercial.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
             this.btnComercial.CheckedState.Parent = this.btnComercial;
             this.btnComercial.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnComercial.CustomImages.Parent = this.btnComercial;
             this.btnComercial.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnComercial.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnComercial.FillColor = System.Drawing.Color.Transparent;
             this.btnComercial.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnComercial.ForeColor = System.Drawing.Color.Black;
             this.btnComercial.HoveredState.Parent = this.btnComercial;
             this.btnComercial.Image = global::wfaIntegradoCom.Properties.Resources.commercial_naranja_32;
             this.btnComercial.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnComercial.Location = new System.Drawing.Point(0, 90);
+            this.btnComercial.Location = new System.Drawing.Point(0, 80);
             this.btnComercial.Name = "btnComercial";
             this.btnComercial.PressedColor = System.Drawing.Color.Aqua;
             this.btnComercial.ShadowDecoration.Parent = this.btnComercial;
@@ -1035,7 +1039,7 @@
             // 
             this.subMenuRecaudacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuRecaudacion.Location = new System.Drawing.Point(0, 80);
+            this.subMenuRecaudacion.Location = new System.Drawing.Point(0, 70);
             this.subMenuRecaudacion.Name = "subMenuRecaudacion";
             this.subMenuRecaudacion.ShadowDecoration.Parent = this.subMenuRecaudacion;
             this.subMenuRecaudacion.Size = new System.Drawing.Size(310, 10);
@@ -1043,20 +1047,20 @@
             // 
             // btnRecaudacion
             // 
-            this.btnRecaudacion.BackColor = System.Drawing.Color.White;
+            this.btnRecaudacion.BackColor = System.Drawing.Color.Transparent;
             this.btnRecaudacion.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnRecaudacion.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
             this.btnRecaudacion.CheckedState.Parent = this.btnRecaudacion;
             this.btnRecaudacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRecaudacion.CustomImages.Parent = this.btnRecaudacion;
             this.btnRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRecaudacion.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnRecaudacion.FillColor = System.Drawing.Color.Transparent;
             this.btnRecaudacion.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecaudacion.ForeColor = System.Drawing.Color.Black;
             this.btnRecaudacion.HoveredState.Parent = this.btnRecaudacion;
             this.btnRecaudacion.Image = global::wfaIntegradoCom.Properties.Resources.refund_32px;
             this.btnRecaudacion.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnRecaudacion.Location = new System.Drawing.Point(0, 45);
+            this.btnRecaudacion.Location = new System.Drawing.Point(0, 35);
             this.btnRecaudacion.Name = "btnRecaudacion";
             this.btnRecaudacion.PressedColor = System.Drawing.Color.Aqua;
             this.btnRecaudacion.ShadowDecoration.Parent = this.btnRecaudacion;
@@ -1068,24 +1072,25 @@
             // 
             // subMenuVentas
             // 
+            this.subMenuVentas.AutoSize = true;
             this.subMenuVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuVentas.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuVentas.Location = new System.Drawing.Point(0, 35);
             this.subMenuVentas.Name = "subMenuVentas";
             this.subMenuVentas.ShadowDecoration.Parent = this.subMenuVentas;
-            this.subMenuVentas.Size = new System.Drawing.Size(310, 10);
+            this.subMenuVentas.Size = new System.Drawing.Size(310, 0);
             this.subMenuVentas.TabIndex = 1;
             // 
             // btnVenta
             // 
-            this.btnVenta.BackColor = System.Drawing.Color.White;
+            this.btnVenta.BackColor = System.Drawing.Color.Transparent;
             this.btnVenta.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnVenta.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
             this.btnVenta.CheckedState.Parent = this.btnVenta;
             this.btnVenta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVenta.CustomImages.Parent = this.btnVenta;
             this.btnVenta.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnVenta.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnVenta.FillColor = System.Drawing.Color.Transparent;
             this.btnVenta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVenta.ForeColor = System.Drawing.Color.Black;
             this.btnVenta.HoveredState.Parent = this.btnVenta;
@@ -1732,6 +1737,7 @@
             this.tsMenuPrincipal.ResumeLayout(false);
             this.tsMenuPrincipal.PerformLayout();
             this.panelBotones.ResumeLayout(false);
+            this.panelBotones.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();

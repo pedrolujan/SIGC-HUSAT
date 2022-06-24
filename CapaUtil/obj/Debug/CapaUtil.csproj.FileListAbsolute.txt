@@ -10,3 +10,9 @@ D:\EDWAR\SYSTEM HUSAT EDWAR\CapaUtil\obj\Debug\CapaUtil.csproj.AssemblyReference
 D:\EDWAR\SYSTEM HUSAT EDWAR\CapaUtil\obj\Debug\CapaUtil.csproj.CoreCompileInputs.cache
 D:\EDWAR\SYSTEM HUSAT EDWAR\CapaUtil\obj\Debug\CapaUtil.dll
 D:\EDWAR\SYSTEM HUSAT EDWAR\CapaUtil\obj\Debug\CapaUtil.pdb
+D:\System Husat\CapaUtil\bin\Debug\CapaUtil.dll
+D:\System Husat\CapaUtil\bin\Debug\CapaUtil.pdb
+D:\System Husat\CapaUtil\obj\Debug\CapaUtil.csproj.AssemblyReference.cache
+D:\System Husat\CapaUtil\obj\Debug\CapaUtil.csproj.CoreCompileInputs.cache
+D:\System Husat\CapaUtil\obj\Debug\CapaUtil.dll
+D:\System Husat\CapaUtil\obj\Debug\CapaUtil.pdb
