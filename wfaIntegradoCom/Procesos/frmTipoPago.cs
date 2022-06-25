@@ -79,7 +79,7 @@ namespace wfaIntegradoCom.Procesos
         private void txtNumeroOperacion_TextChanged(object sender, EventArgs e)
         {
             String valorTipoPago = Convert.ToString(cboTipoPago.SelectedValue);
-            if (valorTipoPago == "TIPA0001" || valorTipoPago == "TIPA0005" || valorTipoPago == "TIPA0006")
+            if (valorTipoPago == "TIPA0001" || valorTipoPago == "TIPA0005")
             {
 
             }
@@ -328,10 +328,24 @@ namespace wfaIntegradoCom.Procesos
             lblEntidad.Visible = estado;
             pbEntidad.Visible = estado;
             lblEntidadPagos.Visible = estado;
-            lblNOperacion.Visible = estado;
-            txtNumeroOperacion.Visible = estado;
-            pbTipoVenta.Visible = estado;
-            lblTipoVenta.Visible = estado;
+            
+            if (cboTipoPago.SelectedValue.ToString()== "TIPA0006" && estado==false)
+            {
+                lblNOperacion.Visible = !estado;
+                txtNumeroOperacion.Visible = !estado;
+                pbTipoVenta.Visible = !estado;
+                lblTipoVenta.Visible = !estado;
+
+            }
+            else
+            {
+                lblNOperacion.Visible = estado;
+                txtNumeroOperacion.Visible = estado;
+                pbTipoVenta.Visible = estado;
+                lblTipoVenta.Visible = estado;
+
+            }
+            
 
             
 
@@ -357,6 +371,8 @@ namespace wfaIntegradoCom.Procesos
             lblTipoVentaa = res.Item2;
             String ValorCombo = cboTipoPago.SelectedValue.ToString().Trim();
 
+            txtNumeroOperacion_TextChanged(sender, e);
+
             if (ValorCombo== "TIPA0001" || ValorCombo=="0")
             {
                 estEntidadVenta = true;
@@ -366,16 +382,17 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
+                    fnLlenarCombobox(cboEntidadesPago, Convert.ToString(cboTipoPago.SelectedValue), 0,false);
                 if (ValorCombo == "TIPA0005" || ValorCombo == "TIPA0006")
                 {
                     fnActivarpagaConYVuelto(false);
                     fnMostrarCombo(false);
                     estEntidadVenta = true;
-                    estNroOperacion = true;
+                    estNroOperacion = ValorCombo == "TIPA0005"? true: estNroOperacion;
+                    cboEntidadesPago.SelectedIndex = 1;
                 }
                 else
                 {
-                    fnLlenarCombobox(cboEntidadesPago, Convert.ToString(cboTipoPago.SelectedValue), 0,false);
                     fnMostrarCombo(true);
                     fnActivarpagaConYVuelto(false);
                     estEntidadVenta = false;

@@ -300,6 +300,89 @@ namespace CapaDato
                 objCnx = null;
             }
         }
+
+        public xmlActaTitularidad daBuscarActaCambio(Int32 idContrato ,Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[2];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            DataTable dtDocumento = new DataTable();
+            xmlActaTitularidad lstActaCambio = new xmlActaTitularidad();
+            String xmlActaCambio = "";
+            //string xmlData = clsUtil.Serialize(lstOtrasVentas);
+            try
+            {
+
+                pa[0] = new SqlParameter("@idContrato", SqlDbType.Int);
+                pa[0].Value = idContrato;
+                pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[1].Value = tipoCon;
+               
+
+
+                objCnx = new clsConexion("");
+                dtDocumento = objCnx.EjecutarProcedimientoDT("uspBuscarActaCambioTit_Vehi", pa);
+
+                foreach (DataRow drMenu in dtDocumento.Rows)
+                {
+                    xmlActaCambio = Convert.ToString(drMenu["actaCambio"]);
+
+                }
+                lstActaCambio = clsUtil.Deserialize<xmlActaTitularidad>(xmlActaCambio);
+                return lstActaCambio;
+            }
+            catch (Exception ex)
+            {
+                return lstActaCambio;
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+        public xmlActaCambioVehicular daBuscarActaCambioVehicular(Int32 idContrato ,Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[2];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            DataTable dtDocumento = new DataTable();
+            xmlActaCambioVehicular lstActaCambio = new xmlActaCambioVehicular();
+            String xmlActaCambio = "";
+            //string xmlData = clsUtil.Serialize(lstOtrasVentas);
+            try
+            {
+
+                pa[0] = new SqlParameter("@idContrato", SqlDbType.Int);
+                pa[0].Value = idContrato;
+                pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[1].Value = tipoCon;
+               
+
+
+                objCnx = new clsConexion("");
+                dtDocumento = objCnx.EjecutarProcedimientoDT("uspBuscarActaCambioTit_Vehi", pa);
+
+                foreach (DataRow drMenu in dtDocumento.Rows)
+                {
+                    xmlActaCambio = Convert.ToString(drMenu["actaCambio"]);
+
+                }
+                lstActaCambio = clsUtil.Deserialize<xmlActaCambioVehicular>(xmlActaCambio);
+                return lstActaCambio;
+            }
+            catch (Exception ex)
+            {
+                return lstActaCambio;
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
         public xmlDocumentoVentaGeneral daBuscarDocumentoVentaGeneral(String codVenta,Int32 idTipoCon, Int32 idTipoTarifa,Int32 idContrato)
         {
             SqlParameter[] pa = new SqlParameter[4];

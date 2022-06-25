@@ -79,6 +79,33 @@ namespace CapaNegocio
 
             }
         }
+
+        public xmlActaTitularidad blBuscarActaCambio(Int32 codVenta,Int32 tipoCon)
+        {
+            daObjTipoVenta = new DAOtrasVenta();
+            try
+            {
+                return daObjTipoVenta.daBuscarActaCambio(codVenta, tipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+        }
+        public xmlActaCambioVehicular daBuscarActaCambioVehicular(Int32 codVenta,Int32 tipoCon)
+        {
+            daObjTipoVenta = new DAOtrasVenta();
+            try
+            {
+                return daObjTipoVenta.daBuscarActaCambioVehicular(codVenta, tipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+        }
         public xmlDocumentoVentaGeneral blBuscarDocumentoVentaGeneral(String codVenta,Int32 idTipoCon ,Int32 idTipoTarifa,Int32 idContrato)
         {
             daObjTipoVenta = new DAOtrasVenta();

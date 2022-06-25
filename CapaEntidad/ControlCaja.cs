@@ -15,4 +15,23 @@ namespace CapaEntidad
         public Boolean estado { get; set; }
 
     }
+
+    public class ReporteBloque
+    {
+        public ReporteBloque() { }
+
+        public String Codigoreporte { get; set; }
+        public String Detallereporte { get; set; }
+        public Int32 Cantidad { get; set; }
+        public Double ImporteRow { get; set; }
+        public Double ImporteTipoCambio { get; set; }
+
+        public Double ImporteSumado { get; set; }
+        public Double ImporteTotal { get; set; }
+        public Int32 idMoneda { get; set; }
+        public String SimboloMoneda { get; set; }
+        public Boolean estado { get; set; }
+
+    }
+
 }

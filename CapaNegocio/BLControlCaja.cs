@@ -43,5 +43,20 @@ namespace CapaNegocio
             }
            
         }
+        public List<ReporteBloque> BuscarReporteGeneralVentas(Boolean chk,Boolean chkDiaEsp, String fini, String ffin, String codTipoReporte, String codTipoOprecacion,  Int32 tipPlan, Int32 tipTarifa, String cBuscar,Int32 numPagina, Int32 tipoCon)
+        {
+            dc = new DAControlCaja();
+            try
+            {
+                return dc.daBuscarReporteGeneralVentas( chk,  chkDiaEsp,  fini,  ffin,  codTipoReporte,  codTipoOprecacion,  tipPlan,  tipTarifa,  cBuscar,  numPagina,  tipoCon);
+
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+           
+        }
     }
 }

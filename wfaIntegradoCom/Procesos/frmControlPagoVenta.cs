@@ -709,15 +709,15 @@ namespace wfaIntegradoCom.Procesos
                                     if (j > 0)
                                     {
 
-                                        if (clsDetCro[j].estado == "ESPV0003" && clsDetCro[j - 1].estado == "ESPV0003")
+                                        if (clsDetCro[j].estado == "ESPV0001" && clsDetCro[j - 1].estado == "ESPV0003")
                                         {
-                                            //dtCP.daActualizarEstados(lstDetCronAutomaticoEsp[j].idDetalleCronograma, "ESPV0003", 1);
+                                            dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0003", 1);
                                         }
-                                        else if (clsDetCro[j - 1].estado == "ESPV0003" && clsDetCro[j - 2].estado == "ESPV0003")
+                                        else if (clsDetCro[j].estado == "ESPV0003" && clsDetCro[j - 1].estado == "ESPV0003")
                                         {
-                                            dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
+                                            //dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
                                         }
-                                        else if (clsDetCro[j - 1].estado == "ESPV0004")
+                                        else if (clsDetCro[j].estado == "ESPV0001" && clsDetCro[j - 1].estado == "ESPV0004")
                                         {
                                             dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
                                         }

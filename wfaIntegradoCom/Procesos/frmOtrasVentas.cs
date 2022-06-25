@@ -1922,7 +1922,8 @@ namespace wfaIntegradoCom.Procesos
                             FunGeneral.FormatearCadenaTitleCase(dr["dTipoventa"].ToString()),
                             FunGeneral.FormatearCadenaTitleCase(dr["Descripcion"].ToString()),
                             FunGeneral.FormatearCadenaTitleCase(dr["cUser"].ToString()),
-                            FunGeneral.fnFormatearPrecio(dr["cSimbolo"].ToString(), Convert.ToDouble(dr["TotalPago"]), 1)
+                            FunGeneral.fnFormatearPrecio(dr["cSimbolo"].ToString(), Convert.ToDouble(dr["TotalPago"]), 1),
+                            dr["idTarifa"]
                             );
                     }
                     dgListaVentas.Visible = true;
@@ -2298,7 +2299,8 @@ namespace wfaIntegradoCom.Procesos
 
         private void dgListaVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            var mousePosition = dgListaVentas.PointToClient(Cursor.Position);
+            cmsImpresion.Show(dgListaVentas, mousePosition.X, mousePosition.Y);
 
         }
 
@@ -2616,6 +2618,51 @@ namespace wfaIntegradoCom.Procesos
             {
                 siticoneGroupBox2.Enabled = false;
             }
+        }
+
+        private void msActializarPago_Click(object sender, EventArgs e)
+        {
+            DataGridView dg = dgListaVentas;
+
+            Int32 idContrato = Convert.ToInt32(dg.CurrentRow.Cells[0].Value);
+            Int32 idTipoTransaccion = Convert.ToInt32(dg.CurrentRow.Cells[10].Value);
+            fnBuscarActa(idContrato, idTipoTransaccion, 0);
+        }
+        private void fnBuscarActa(Int32 idContrato,Int32 idTipoTransaccion,Int32 TipoCon)
+        {
+            BLOtrasVenta objTipoVenta = new BLOtrasVenta();
+            List<xmlActaTitularidad> xmlDocumentoVenta = new List<xmlActaTitularidad>();
+            List<xmlActaCambioVehicular> xmlDocumentoVentaCamVeh = new List<xmlActaCambioVehicular>();
+            xmlActaTitularidad xmlActa = new xmlActaTitularidad();
+            xmlActaCambioVehicular xmlActaCamVeh = new xmlActaCambioVehicular();
+
+              Consultas.frmVPActaCambioTitularidad frmVP = new Consultas.frmVPActaCambioTitularidad();
+
+            if (idTipoTransaccion==-1)
+            {
+                xmlActa = objTipoVenta.blBuscarActaCambio(idContrato, 0);
+                xmlDocumentoVenta.Add(xmlActa);
+                frmVP.Inicio(xmlDocumentoVenta[0].lstClienteDocVenta, xmlDocumentoVenta[0].lstClienteAntecesor, xmlDocumentoVenta[0].lstVehiculo, -1);
+            }else if (idTipoTransaccion == -2)
+            {
+                xmlActaCamVeh = objTipoVenta.daBuscarActaCambioVehicular(idContrato, 1);
+                xmlDocumentoVentaCamVeh.Add(xmlActaCamVeh);
+                frmVP.Inicio2(xmlDocumentoVentaCamVeh[0].lstVehiculo, xmlDocumentoVentaCamVeh[0].clsVehiculoServicios, xmlDocumentoVentaCamVeh[0].clsEquipoImeis, xmlDocumentoVentaCamVeh[0].clsClienteDov, -2);
+
+            }
+
+
+
+        }
+
+        private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fnListarVentas(Convert.ToInt32(cboPagina.Text));
+        }
+
+        private void txtBusq_TextChanged(object sender, EventArgs e)
+        {
+           
         }
 
         private void msDocumentoVenta_Click(object sender, EventArgs e)

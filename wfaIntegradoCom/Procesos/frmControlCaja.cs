@@ -26,13 +26,14 @@ namespace wfaIntegradoCom.Procesos
         {
             try
             {
-                dtFechaFin.Value = Variables.gdFechaSis;
-                dtFechaInicio.Value = dtFechaFin.Value.AddDays(-(dtFechaFin.Value.Day - 1));
+                dtFechaFinG.Value = Variables.gdFechaSis;
+                dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
 
-                FunGeneral.fnLlenarTablaCodTipoCon(cboMetodopago, "TIPA",true);
-                FunGeneral.fnLlenarTablaCodTipoCon(cboDocumentoVenta, "DOVE",true);
+                //FunGeneral.fnLlenarTablaCodTipoCon(cboMetodopago, "TIPA",true);
+                FunGeneral.fnLlenarTablaCodTipoCon(cboTipoReporte, "TRPT", false);
+                //FunGeneral.fnLlenarTablaCodTipoCon(cboDocumentoVenta, "DOVE",true);
                 frmBuscarVentas frmBV = new frmBuscarVentas();
-                frmBV.fnlistarUsuario(cboUsuario, 2, true);
+                //frmBV.fnlistarUsuario(cboUsuario, 2, true);
 
                 frmRegistrarVenta frm = new frmRegistrarVenta();
                 frm.fnLlenarTipoTarifa(0, cboTipoVenta, true);
@@ -63,39 +64,38 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
-        private void cboMetodopago_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            frmTipoPago.fnLlenarCombobox(btnEntidadPago,cboMetodopago.SelectedValue.ToString(),0,true);
-        }
+        //private void cboMetodopago_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    frmTipoPago.fnLlenarCombobox(btnEntidadPago,cboMetodopago.SelectedValue.ToString(),0,true);
+        //}
 
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar==(char)Keys.Enter)
             {
-                fnBuscarVentasCaja(0,-1);
+                fnBuscarVentasCaja("",0,-1);
             }
         }
-        private void fnBuscarVentasCaja(Int32 numPagina, Int32 tipoCon)
+        private void fnBuscarVentasCaja(String codOperacion, Int32 numPagina, Int32 tipoCon)
         {
             bl = new BLControlCaja();
             DataTable dtRes = new DataTable();
 
-            String fechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value,5);
-            String fechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFin.Value,5);
-            String metodPago = cboMetodopago.SelectedValue.ToString();
+            String fechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value,5);
+            String fechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value,5);
             Int32 entidadPago =Convert.ToInt32(btnEntidadPago.SelectedValue);
-            String documentoVenta = cboDocumentoVenta.SelectedValue.ToString();
+            String codTipoReporte = cboTipoReporte.SelectedValue.ToString();
             Int32 TipoPlan = Convert.ToInt32(cboTipoPlanP.SelectedValue);
             Int32 tipotarifa = Convert.ToInt32(cboTipoVenta.SelectedValue);
-            Int32 idUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
+            Int32 idUsuario = 0;
             String tipoPago = cboTipoPago.SelectedValue.ToString();
-            String cBuscar = txtBuscar.Text.ToString();
-            Boolean chkHabilitarFechas = chkHabilitarFechasBus.Checked;
-            Boolean chkDiaEsp = chkDiaEspecifico.Checked;
+            String cBuscar = txtBuscarRepGeneral.Text.ToString();
+            Boolean chkHabilitarFechas = chkHabilitarFechasBusG.Checked;
+            Boolean chkDiaEsp = chkDiaEspecificoG.Checked;
 
             Int32 filas = 10;
 
-            dtRes = bl.blfnBuscarVentasCaja(chkHabilitarFechas, chkDiaEsp, fechaIni, fechaFin, metodPago, entidadPago, documentoVenta, TipoPlan, tipotarifa, tipoPago, idUsuario, cBuscar, numPagina,  tipoCon);
+            dtRes = bl.blfnBuscarVentasCaja(chkHabilitarFechas, chkDiaEsp, fechaIni, fechaFin, codTipoReporte , entidadPago, codOperacion, TipoPlan, tipotarifa, tipoPago, idUsuario, cBuscar, numPagina,  tipoCon);
             Int32 totalRows = dtRes.Rows.Count;
             dgvListaVentas.Rows.Clear();
 
@@ -116,7 +116,7 @@ namespace wfaIntegradoCom.Procesos
                 {
                     dgvListaVentas.Rows.Add(
                         dr["idTrandiaria"].ToString(),
-                        dr["idDocumentoVenta"].ToString(),
+                        //dr["idDocumentoVenta"].ToString(),
                         y+1,
                        FunGeneral.GetFechaHoraFormato(Convert.ToDateTime(dr["fechaPago"]), 1),
                        dr["cNombreOperacion"],
@@ -135,15 +135,103 @@ namespace wfaIntegradoCom.Procesos
                 {
                     //cboPaginacion.Visible = true;
                     Int32 totalRegistros = Convert.ToInt32(dtRes.Rows[0][0]);
-                    FunValidaciones.fnCalcularPaginacion(totalRegistros, filas,  totalRows, cboPagina,btnTotalPag,btnNumFilas,btnTotalReg);
+                    //FunValidaciones.fnCalcularPaginacion(totalRegistros, filas,  totalRows, cboPagina,btnTotalPag,btnNumFilas,btnTotalReg);
                 }
 
-                btnMontoTotal.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(dtRes.Rows[0][1]), 0);
+                //btnMontoTotal.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(dtRes.Rows[0][1]), 0);
                 dgvListaVentas.Visible = true;
             }
             else
             {
-                btnMontoTotal.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(000), 0);
+                //btnMontoTotal.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(000), 0);
+            }
+            
+        }
+        private void fnBuscarReporteGeneralVentas(Int32 numPagina, Int32 tipoCon)
+        {
+            bl = new BLControlCaja();
+            DataTable dtRes = new DataTable();
+            List<ReporteBloque> lsReporteBloque = new List<ReporteBloque>();
+
+            String fechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value,5);
+            String fechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value,5);
+
+            String codTipoReporte = cboTipoReporte.SelectedValue.ToString();
+            String codTipoOperacion = "";
+
+            Int32 TipoPlan = Convert.ToInt32(cboTipoPlanP.SelectedValue);
+            Int32 tipotarifa = Convert.ToInt32(cboTipoVenta.SelectedValue);
+
+            String cBuscar = txtBuscarRepGeneral.Text.ToString();
+            Boolean chkHabilitarFechas = chkHabilitarFechasBusG.Checked;
+            Boolean chkDiaEsp = chkDiaEspecificoG.Checked;
+
+            Int32 filas = 10;
+
+            lsReporteBloque = bl.BuscarReporteGeneralVentas(chkHabilitarFechas, chkDiaEsp, fechaIni, fechaFin, codTipoReporte, codTipoOperacion, TipoPlan, tipotarifa, cBuscar, numPagina,  tipoCon);
+            Int32 totalRows = lsReporteBloque.Count;
+            dgvListaPorBloque.Columns.Clear();
+            dgvListaPorBloque.Rows.Clear();
+
+            Int32 y = 0;
+
+            if (totalRows>0)
+            {
+                dgvListaPorBloque.Columns.Add("id", "id");
+                dgvListaPorBloque.Columns.Add("num", "N°");
+                dgvListaPorBloque.Columns.Add("detalle", "Detalle");
+                dgvListaPorBloque.Columns.Add("cantidad", "Cantidad");
+                dgvListaPorBloque.Columns.Add("Importe", "Importe");
+                this.dgvListaPorBloque.Columns["importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                if (numPagina == 0)
+                {
+                    y = 0;
+                }
+                else
+                {
+                    tabInicio = (numPagina - 1) * filas;
+                    y = tabInicio;
+                }
+
+                for(Int32 i=0; i < totalRows; i++)
+                {
+                    ReporteBloque clsRep = lsReporteBloque[i];
+                    dgvListaPorBloque.Rows.Add(
+                        clsRep.Codigoreporte,
+                        y + 1,
+                        clsRep.Detallereporte,
+                        clsRep.Cantidad,
+                        FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)                        
+                        );
+                    y += 1;
+                    dgvListaPorBloque.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    dgvListaPorBloque.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                }
+                dgvListaPorBloque.Columns[0].Visible = false;
+                dgvListaPorBloque.Columns[1].Width = 10;
+                dgvListaPorBloque.Columns[2].Width = 100;
+                dgvListaPorBloque.Columns[3].Width = 20;
+                dgvListaPorBloque.Columns[4].Width = 100;
+                //this.dgvListaPorBloque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+
+
+
+                //if (numPagina == 0)
+                //{
+                //    //cboPaginacion.Visible = true;
+                //    Int32 totalRegistros = Convert.ToInt32(dtRes.Rows[0][0]);
+                //    FunValidaciones.fnCalcularPaginacion(totalRegistros, filas,  totalRows, cboPagina,btnTotalPag,btnNumFilas,btnTotalReg);
+                //}
+
+                lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i=>i.ImporteRow), 0);
+            
+            }
+            else
+            {
+                dgvListaPorBloque.Columns.Add("id", "NO SE ENCONTRARON RESULTADOS PARA LA BUSQUEDA");
+                lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(000), 0);
             }
             
         }
@@ -155,7 +243,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fnBuscarVentasCaja(Convert.ToInt32(cboPagina.Text), -1);
+            fnBuscarVentasCaja("",0, -1);
         }
 
         private void cboTipoPlanP_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,16 +253,16 @@ namespace wfaIntegradoCom.Procesos
 
         private void chkHabilitarFechasBus_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkHabilitarFechasBus.Checked == true)
+            if (chkHabilitarFechasBusG.Checked == true)
             {
-                gbFechasBusq.Enabled = true;
-                chkDiaEspecifico.Visible = true;
+                gbHabilitarBusqFechas.Enabled = true;
+                chkDiaEspecificoG.Visible = true;
             }
             else
             {
-                gbFechasBusq.Enabled = false;
-                chkDiaEspecifico.Visible = false;
-                chkDiaEspecifico.Checked = false;
+                gbHabilitarBusqFechas.Enabled = false;
+                chkDiaEspecificoG.Visible = false;
+                chkDiaEspecificoG.Checked = false;
             }
         }
 
@@ -184,23 +272,90 @@ namespace wfaIntegradoCom.Procesos
         }
         private void fnValidarBusquedaDia()
         {
-            if (chkDiaEspecifico.Checked==true)
+            if (chkDiaEspecificoG.Checked==true)
             {
-                label22.Visible = false;
-                dtFechaInicio.Visible = false;
-                label35.Text = "Elija el dia para buscar:";
+                label2.Visible = false;
+                dtFechaFinG.Visible = false;
+                label1.Text = "Elija el dia para buscar:";
             }
             else
             {
-                label22.Visible = true;
-                dtFechaInicio.Visible = true;
-                label35.Text = "Fecha Final:";
+                label2.Visible = true;
+                dtFechaFinG.Visible = true;
+                label1.Text = "Fecha Final:";
             }
         }
 
         private void pbBuscar_Click(object sender, EventArgs e)
         {
-            fnBuscarVentasCaja(0, -1);
+            fnBuscarVentasCaja("",0, -1);
+        }
+
+        private void cboTipoReporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            siticonePanel2.Visible = false;
+            String CodOperacion = cboTipoReporte.SelectedValue.ToString();
+            if (CodOperacion== "TRPT0001")
+            {
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "idOperacion", "cNombreOperacion", "OperacionHusat", "estValida", "1", false);
+            }
+            else if (CodOperacion == "TRPT0002")
+            {
+                siticonePanel2.Visible = true;
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "cCodTab", "cNomTab", "TablaCod", "cCodTab", "TIPA", false);
+
+            }
+            else if (CodOperacion == "TRPT0003")
+            {
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "idUsuario", "cUser", "Usuario", "estValida", "1", false);
+
+            }
+            else if (CodOperacion == "TRPT0004")
+            {
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "cCodTab", "cNomTab", "TablaCod", "cCodTab", "DOVE", false);
+
+
+            }
+        }
+
+        private void txtBuscarRepGeneral_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                fnBuscarReporteGeneralVentas(0,-1);
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvListaPorBloque_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            String codOperacion = dgvListaPorBloque.Rows[e.RowIndex].Cells[0].Value.ToString();
+            fnBuscarVentasCaja(codOperacion, 0, -1);
+
+        }
+
+        private void dgvListaPorBloque_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            String codTipoReporte = cboTipoReporte.SelectedValue.ToString();
+            String codOperacion = dgvListaPorBloque.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (codTipoReporte== "TRPT0001")
+            {
+                if (codOperacion == "4")
+                {
+                    cboTipoPlanP.SelectedValue=2; ;
+                    cboTipoPlanP.Enabled=false ;
+
+                }else if (codOperacion == "3")
+                {
+                    cboTipoPlanP.Items.Remove(2);
+                }
+            }
+            frmTipoPago.fnLlenarCombobox(btnEntidadPago, codOperacion, 0, true);
+
         }
     }
 }
