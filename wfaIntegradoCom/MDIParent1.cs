@@ -1315,6 +1315,8 @@ namespace wfaIntegradoCom
             tvOpes.Nodes.Clear();
 
             SplitIzquierdo.SplitterDistance = 40;
+            
+
             OcultarSubMenu();
             FnColorwhiteselectBtns();
                 
