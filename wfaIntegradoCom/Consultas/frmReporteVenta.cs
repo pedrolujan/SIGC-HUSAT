@@ -27,6 +27,7 @@ namespace wfaIntegradoCom.Consultas
         {
             BLDocumentoVenta objVenta = new BLDocumentoVenta();
             List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
+            List<ReporteBloque> lstDetalleVentaOtra = new List<ReporteBloque>();
             clsUtil objUtil = new clsUtil();
             ReportParameter[] parameters = new ReportParameter[4];
             try
@@ -41,7 +42,9 @@ namespace wfaIntegradoCom.Consultas
                 parameters[3] = new ReportParameter("TipoConsuta", "0");
                 reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.rptReporteVenta.rdlc";
                 reportViewer1.LocalReport.SetParameters(parameters);
-                lstDetalleVenta = objVenta.BLReporteVenta(pcFechaIni, pcFechaFin);
+                lstDetalleVentaOtra = objVenta.BLReporteVentaXCliente(1);
+                //lstDetalleVenta = objVenta.BLReporteVenta(pcFechaIni, pcFechaFin);
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReporteBloque", lstDetalleVentaOtra));
                 reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsVenta", lstDetalleVenta));
                 reportViewer1.ZoomMode = ZoomMode.PageWidth;
                 reportViewer1.RefreshReport();
@@ -105,6 +108,7 @@ namespace wfaIntegradoCom.Consultas
         {
             BLDocumentoVenta objVenta = new BLDocumentoVenta();
             List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
+            List<ReporteBloque> lstDetalleVentaOtra = new List<ReporteBloque>();
             clsUtil objUtil = new clsUtil();
             string lcFecha = "";
             ReportParameter[] parameters = new ReportParameter[5];
@@ -121,7 +125,7 @@ namespace wfaIntegradoCom.Consultas
                 parameters[4] = new ReportParameter("TipoConsuta", "2");
                 reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.rptReporteVenta.rdlc";
                 reportViewer1.LocalReport.SetParameters(parameters);
-                lstDetalleVenta = objVenta.BLReporteVentaXCliente(pintidCliente);
+                lstDetalleVentaOtra = objVenta.BLReporteVentaXCliente(1);
                 reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsVenta", lstDetalleVenta));
                 reportViewer1.ZoomMode = ZoomMode.PageWidth;
                 reportViewer1.RefreshReport();

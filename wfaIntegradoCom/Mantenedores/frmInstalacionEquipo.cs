@@ -1014,7 +1014,7 @@ namespace wfaIntegradoCom.Mantenedores
             Consultas.frmRptActa abrirFrmRptActa = new Consultas.frmRptActa();
 
 
-            abrirFrmRptActa.Inicio(xmlInstal[0].ListaCliente, xmlInstal[0].ListaVehiculo, xmlInstal[0].ListaEquipo, xmlInstal[0].ListaPlan, xmlInstal[0].ListaAccesorio, xmlInstal[0].ListaServicio, xmlInstal[0].observaciones, xmlInstal[0].clsInstalacion, 0);
+            abrirFrmRptActa.Inicio(xmlInstal[0].ListaCliente, xmlInstal[0].ListaVehiculo, xmlInstal[0].ListaEquipo.Count> 0?xmlInstal[0].ListaEquipo:xmlInstal[0].ListaEquipoActual, xmlInstal[0].ListaPlan, xmlInstal[0].ListaAccesorio, xmlInstal[0].ListaServicio, xmlInstal[0].observaciones, xmlInstal[0].clsInstalacion, 0);
 
             return true;
 

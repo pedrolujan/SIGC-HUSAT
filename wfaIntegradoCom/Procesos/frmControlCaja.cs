@@ -54,6 +54,8 @@ namespace wfaIntegradoCom.Procesos
             {
 
             }
+            this.reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();
         }
 
         private void fnListarTipoPago(ComboBox cbo,Int32 idTipPlan,String id,Boolean estado)
@@ -475,7 +477,7 @@ namespace wfaIntegradoCom.Procesos
             fnBuscarVentasCaja(codOperacion, 0, -1);
 
             fnActivarControles(true);
-            panel1.AutoScrollPosition = new Point(0, 342);
+            tabControl1.SelectedIndex = 1;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

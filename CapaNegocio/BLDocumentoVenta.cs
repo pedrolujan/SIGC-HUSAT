@@ -262,7 +262,7 @@ namespace CapaNegocio
             }
         }
 
-        public List<DetalleVenta> BLReporteVentaXCliente(Int32 pintIdCliente)
+        public List<ReporteBloque> BLReporteVentaXCliente(Int32 pintIdCliente)
         {
             DADocumentoVenta objDocVenta = new DADocumentoVenta();
             try

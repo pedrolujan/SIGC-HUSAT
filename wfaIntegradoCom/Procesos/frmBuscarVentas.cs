@@ -277,6 +277,7 @@ namespace wfaIntegradoCom.Procesos
                             String desVehiculos = Convert.ToString(dr["descripcionVehiculo"]);
                             DateTime fecha = Convert.ToDateTime(Convert.ToDateTime(dr["FechaRegistro"]).ToString("dd/MM/yyyy"));
                             DateTime fechaPago = Convert.ToDateTime(Convert.ToDateTime(dr["fechaPago"]).ToString("dd/MM/yyyy"));
+                            DateTime fechaInicioContrato = Convert.ToDateTime(Convert.ToDateTime(dr["periodoInicio"]).ToString("dd/MM/yyyy"));
                             DateTime fechaFinalContrato = Convert.ToDateTime(Convert.ToDateTime(dr["periodoFinal"]).ToString("dd/MM/yyyy"));
                           
                             TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
@@ -303,7 +304,7 @@ namespace wfaIntegradoCom.Procesos
                                 y,
                                 dr["codigoVenta"],
                                 fechaPago.ToString("dd/MM/yyyy"),
-                                fecha.ToString("dd/MM/yyyy"),
+                                fechaInicioContrato.ToString("dd/MM/yyyy"),
                                 fechaFinalContrato.ToString("dd/MM/yyyy"),
                                 desVehiculos,
                                 FunGeneral.FormatearCadenaTitleCase(dr["descripcionCliente"].ToString()),

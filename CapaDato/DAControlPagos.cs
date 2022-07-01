@@ -14,9 +14,9 @@ namespace CapaDato
     public class DAControlPagos
     {
         clsUtil objUtil = null;
-        public DataTable daBuscarCronograma(Boolean habilitarfechas, String dtFechaIni, String dFechaFin, String pcBuscar,Int32 tipoCon, Int32 TipConPaginacion, Int32 numPagina,String estadoPago,Int32 idCiclo)
+        public DataTable daBuscarCronograma(Boolean habilitarfechas,Boolean chkIncump, String dtFechaIni, String dFechaFin, String pcBuscar,Int32 tipoCon, Int32 TipConPaginacion, Int32 numPagina,String estadoPago,Int32 idCiclo)
         {
-            SqlParameter[] pa = new SqlParameter[9];
+            SqlParameter[] pa = new SqlParameter[10];
             DataTable dtResult = new DataTable();
             clsConexion objCnx = null;
             objUtil = new clsUtil();
@@ -32,6 +32,7 @@ namespace CapaDato
                 pa[6] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = tipoCon };
                 pa[7] = new SqlParameter("@numPagina", SqlDbType.Int) { Value = numPagina };
                 pa[8] = new SqlParameter("@TipoConPagina", SqlDbType.Int) { Value = TipConPaginacion };
+                pa[9] = new SqlParameter("@chkIncumplimiento", SqlDbType.Int) { Value = chkIncump };
                 objCnx = new clsConexion("");
                 //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
                 dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronograma", pa);

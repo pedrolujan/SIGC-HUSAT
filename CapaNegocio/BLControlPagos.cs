@@ -13,12 +13,12 @@ namespace CapaNegocio
     {
         public BLControlPagos() { }
         DAControlPagos objControlPagos= null;
-        public DataTable blBuscarCronograma(Boolean habilitarfechas,String dtFechaIni, String dFechaFin,String pcBuscar,Int32 tipoCon, Int32 TipConPaginacion, Int32 numPagina,String estadoPago,Int32 idCiclo)
+        public DataTable blBuscarCronograma(Boolean habilitarfechas,Boolean chkIncump, String dtFechaIni, String dFechaFin,String pcBuscar,Int32 tipoCon, Int32 TipConPaginacion, Int32 numPagina,String estadoPago,Int32 idCiclo)
         {
             objControlPagos = new DAControlPagos();
             try
             {
-                return objControlPagos.daBuscarCronograma( habilitarfechas,  dtFechaIni,  dFechaFin,  pcBuscar, tipoCon,  TipConPaginacion,  numPagina, estadoPago, idCiclo);
+                return objControlPagos.daBuscarCronograma( habilitarfechas, chkIncump,  dtFechaIni,  dFechaFin,  pcBuscar, tipoCon,  TipConPaginacion,  numPagina, estadoPago, idCiclo);
             }
             catch (Exception ex)
             {

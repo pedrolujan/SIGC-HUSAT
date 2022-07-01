@@ -83,12 +83,13 @@ namespace wfaIntegradoCom.Procesos
             obControPagos = new BLControlPagos();
             DataTable dtResult = new DataTable();
             Boolean HabilitarFechas = chkHabilitarFechasBus.Checked;
+            Boolean chkIncump = chkIncumplimiento.Checked;
             String dtFIni =FunGeneral.GetFechaHoraFormato(dtpFechaInicialBus.Value,5);
             String dtFFin = FunGeneral.GetFechaHoraFormato(dtpFechaFinalBus.Value,5);
             Int32 idCiclo = Convert.ToInt32(cboCicloPago.SelectedValue);
             List<Cronograma> lstCrngr = new List<Cronograma>();
             String estadoPago = Convert.ToString(cboEstadopago.SelectedValue);
-            dtResult =obControPagos.blBuscarCronograma(HabilitarFechas, dtFIni, dtFFin, pcBuscar, tipoCon,  TipConPaginacion,  numPagina, estadoPago, idCiclo);
+            dtResult =obControPagos.blBuscarCronograma(HabilitarFechas, chkIncump, dtFIni, dtFFin, pcBuscar, tipoCon,  TipConPaginacion,  numPagina, estadoPago, idCiclo);
             if (tipoCon==1)
             {
                 for (Int32 i=0;i< dtResult.Rows.Count;i++)
@@ -447,7 +448,7 @@ namespace wfaIntegradoCom.Procesos
                         }
 
                         DateTime dtFechaPagoCronograma = fechaInicio.AddDays((diasASumar - restarFinal));
-                        dtFechapagoCronogramaGeneral = dtFechaPagoCronograma;
+                        
                         //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
                         if (dtFechActual > dtFechaPagoCronograma)
                         {
@@ -517,7 +518,7 @@ namespace wfaIntegradoCom.Procesos
                         }
                         else if (Convert.ToString(drMenu["cNomTab"]) == "CUOTA PAGADA")
                         {
-
+                            dtFechaPagoCronograma = Convert.ToDateTime(drMenu["dtFechaCorte"]);
                             tiempoTranscurrido = "\n✅ El ( " + Convert.ToDateTime(drMenu["dtFechaCorte"]).ToString("dd/MMM/yyyy") + " )";
                             estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
                         }
@@ -535,7 +536,7 @@ namespace wfaIntegradoCom.Procesos
                             estadoCuota = FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cNomTab"])) + tiempoTranscurrido;
 
                         }
-
+                        dtFechapagoCronogramaGeneral = dtFechaPagoCronograma;
 
 
 
@@ -544,7 +545,7 @@ namespace wfaIntegradoCom.Procesos
                             drMenu["idContrato"],
                             y,
                            drMenu["codContrato"],
-                            dtFechaPagoCronograma.ToString("dd/MMM/yyyy"),
+                            dtFechapagoCronogramaGeneral.ToString("dd/MMM/yyyy"),
                             drMenu["vPlaca"],
                             drMenu["nombreCliente"] + " " + drMenu["cApePat"] +" "+ drMenu["cApeMat"],
                             drMenu["cNombre"],

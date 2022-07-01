@@ -840,28 +840,50 @@ namespace CapaDato
 
         }
 
-        public List<DetalleVenta> daReporteVentaXCliente(Int32 pintidCliente)
+        public List<ReporteBloque> daReporteVentaXCliente(Int32 pintidCliente)
         {
-            SqlParameter[] pa = new SqlParameter[1];
+            SqlParameter[] pa = new SqlParameter[6];
             DataTable dtVenta = new DataTable();
             clsConexion objCnx = null;
-            List<DetalleVenta> lstVenta = null;
+            List<DetalleVenta> lstVenta = new List<DetalleVenta>();
+            List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
             objUtil = new clsUtil();
 
             try
             {
-                pa[0] = new SqlParameter("@peidCliente", SqlDbType.Int);
-                pa[0].Value = pintidCliente;
+                pa[0] = new SqlParameter("@chkHabilitarFecha", SqlDbType.Bit);
+                pa[0].Value = true;
+                pa[1] = new SqlParameter("@chkDiaEspecifico", SqlDbType.Bit);
+                pa[1].Value = false;
+                pa[2] = new SqlParameter("@dtFechaIni", SqlDbType.Date);
+                pa[2].Value = "2022/06/01";
+                pa[3] = new SqlParameter("@dtFechaFin", SqlDbType.Date);
+                pa[3].Value = "2022/06/23";
+                pa[4] = new SqlParameter("@codTipoReporte", SqlDbType.NVarChar,10);
+                pa[4].Value = "TRPT0001";
+                pa[5] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[5].Value = -1;
 
                 objCnx = new clsConexion("");
-                dtVenta = objCnx.EjecutarProcedimientoDT("uspReportarVentaXCliente", pa);
+                dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarReporteConGrafica", pa);
 
-                lstVenta = new List<DetalleVenta>();
-                foreach (DataRow drMenu in dtVenta.Rows)
+                
+                foreach (DataRow dr in dtVenta.Rows)
                 {
-                    //lstVenta.Add(new DetalleVenta(
+                    lsRepBloque.Add(new ReporteBloque
+                    {
+                        Codigoreporte = dr["id"].ToString(),
+                        Detallereporte = dr["descripcion"].ToString(),
+                        Cantidad = Convert.ToInt32(dr["cantidad"]),
+                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        SimboloMoneda = dr["cSimbolo"].ToString(),
+                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                    });
+                    //lstVenta.Add(new DetalleVenta
+                    //    (
                     //    Convert.ToInt32(drMenu["idVenta"]),
-                    //    Convert.ToInt32(drMenu["Cantidad"]), 
+                    //    Convert.ToInt32(drMenu["Cantidad"]),
                     //    Convert.ToDecimal(drMenu["PrecioVenta"]),
                     //     Convert.ToDecimal(drMenu["Importe"])
                     //    , Convert.ToDecimal(drMenu["Ganancia"]), Convert.ToDecimal(drMenu["PorcGanancia"]),
@@ -870,7 +892,7 @@ namespace CapaDato
                     //    ));
                 }
 
-                return lstVenta;
+                return lsRepBloque;
 
             }
             catch (Exception ex)

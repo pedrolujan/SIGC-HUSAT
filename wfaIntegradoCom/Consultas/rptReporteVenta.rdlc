@@ -88,6 +88,59 @@
         <rd:ObjectDataSourceType>CapaEntidad.DetalleVenta, CapaEntidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
+    <DataSet Name="dsReporteBloque">
+      <Query>
+        <DataSourceName>CapaEntidad</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Cantidad">
+          <DataField>Cantidad</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Codigoreporte">
+          <DataField>Codigoreporte</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Detallereporte">
+          <DataField>Detallereporte</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="estado">
+          <DataField>estado</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="idMoneda">
+          <DataField>idMoneda</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ImporteRow">
+          <DataField>ImporteRow</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ImporteSumado">
+          <DataField>ImporteSumado</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ImporteTipoCambio">
+          <DataField>ImporteTipoCambio</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ImporteTotal">
+          <DataField>ImporteTotal</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="SimboloMoneda">
+          <DataField>SimboloMoneda</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>CapaEntidad</rd:DataSetName>
+        <rd:TableName>ReporteBloque</rd:TableName>
+        <rd:ObjectDataSourceType>CapaEntidad.ReporteBloque, CapaEntidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -99,22 +152,22 @@
                 <ChartMember>
                   <Group Name="Chart1_CategoryGroup">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!idLote.Value</GroupExpression>
+                      <GroupExpression>=Fields!Detallereporte.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!idUnidadMedida.Value</Value>
+                      <Value>=Fields!Detallereporte.Value</Value>
                     </SortExpression>
                   </SortExpressions>
-                  <Label>=Fields!idUnidadMedida.Value</Label>
+                  <Label>=Fields!Detallereporte.Value</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>Ganancia</Label>
+                  <Label>Importe Row</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
@@ -124,7 +177,7 @@
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Round(Sum(Fields!Ganancia.Value),2)</Y>
+                        <Y>=Sum(Fields!ImporteRow.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
@@ -133,7 +186,7 @@
                         <UseValueAsLabel>true</UseValueAsLabel>
                         <Visible>true</Visible>
                       </ChartDataLabel>
-                      <ToolTip>=Sum(Fields!Ganancia.Value)</ToolTip>
+                      <ToolTip>=Count(Fields!Detallereporte.Value)</ToolTip>
                       <Style />
                       <ChartMarker>
                         <Type>Square</Type>
@@ -363,8 +416,9 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>dsVenta</DataSetName>
+            <DataSetName>dsReporteBloque</DataSetName>
             <Top>4.58364cm</Top>
+            <Left>0.01587cm</Left>
             <Height>6.61396cm</Height>
             <Width>16.16604cm</Width>
             <Style>
@@ -380,7 +434,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.78413cm</Width>
+                  <Width>2.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.77658cm</Width>
@@ -407,14 +461,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox5">
+                        <Textbox Name="Textbox3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Venta</Value>
+                                  <Value>Descripcion</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -425,7 +479,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -737,14 +791,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="idVenta">
+                        <Textbox Name="Detallereporte">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!idVenta.Value</Value>
+                                  <Value>=Fields!Detallereporte.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -753,27 +807,12 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>idVenta</rd:DefaultName>
-                          <ActionInfo>
-                            <Actions>
-                              <Action>
-                                <Drillthrough>
-                                  <ReportName>wfaIntegradoCom.Impresiones.Report1.rdlc</ReportName>
-                                  <Parameters>
-                                    <Parameter Name="idVenta">
-                                      <Value>=Fields!idVenta.Value</Value>
-                                    </Parameter>
-                                  </Parameters>
-                                </Drillthrough>
-                              </Action>
-                            </Actions>
-                          </ActionInfo>
+                          <rd:DefaultName>Detallereporte</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>= Switch(Fields!idUnidadMedida.Value=1,"Red",Fields!idUnidadMedida.Value=2,"Yellow",Fields!idUnidadMedida.Value=3,"Green")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -816,14 +855,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PrecioVenta">
+                        <Textbox Name="ImporteRow">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(Fields!PrecioVenta.Value,2)</Value>
+                                  <Value>=Fields!ImporteRow.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -832,7 +871,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PrecioVenta</rd:DefaultName>
+                          <rd:DefaultName>ImporteRow</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -848,14 +887,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Importe">
+                        <Textbox Name="ImporteRow1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(Fields!Importe.Value,2)</Value>
+                                  <Value>=Fields!ImporteRow.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -864,7 +903,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Importe</rd:DefaultName>
+                          <rd:DefaultName>ImporteRow1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -880,14 +919,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Deuda">
+                        <Textbox Name="ImporteRow2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(Fields!Deuda.Value,2)</Value>
+                                  <Value>=Fields!ImporteRow.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -896,7 +935,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Deuda</rd:DefaultName>
+                          <rd:DefaultName>ImporteRow2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -912,14 +951,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Ganancia">
+                        <Textbox Name="ImporteRow3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(Fields!Ganancia.Value,2)</Value>
+                                  <Value>=Fields!ImporteRow.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -928,7 +967,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Ganancia</rd:DefaultName>
+                          <rd:DefaultName>ImporteRow3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -948,7 +987,7 @@
                           <StateIndicators>
                             <StateIndicator Name="Indicator1">
                               <GaugeInputValue>
-                                <Value>=Fields!PorcGanancia.Value</Value>
+                                <Value>=Sum(Fields!ImporteRow.Value)</Value>
                                 <Multiplier>1</Multiplier>
                                 <DataElementOutput>NoOutput</DataElementOutput>
                               </GaugeInputValue>
@@ -992,7 +1031,7 @@
                                     <Multiplier>1</Multiplier>
                                   </StartValue>
                                   <EndValue>
-                                    <Value>60</Value>
+                                    <Value>100</Value>
                                     <Multiplier>1</Multiplier>
                                   </EndValue>
                                   <Color>Yellow</Color>
@@ -1005,11 +1044,11 @@
                                 </IndicatorState>
                                 <IndicatorState Name="ArrowUp">
                                   <StartValue>
-                                    <Value>60</Value>
+                                    <Value>100</Value>
                                     <Multiplier>1</Multiplier>
                                   </StartValue>
                                   <EndValue>
-                                    <Value>1000</Value>
+                                    <Value>5000</Value>
                                     <Multiplier>1</Multiplier>
                                   </EndValue>
                                   <Color>Green</Color>
@@ -1065,7 +1104,7 @@
                             <Source>External</Source>
                             <Value />
                           </TopImage>
-                          <DataSetName>dsVenta</DataSetName>
+                          <DataSetName>dsReporteBloque</DataSetName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1074,6 +1113,7 @@
                             <BackgroundColor>White</BackgroundColor>
                           </Style>
                         </GaugePanel>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -1083,25 +1123,23 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox56">
+                        <Textbox Name="Textbox6">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Total: </Value>
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
+                                  <Value />
+                                  <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox56</rd:DefaultName>
+                          <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1156,7 +1194,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Sum(Fields!ImporteRow.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1188,7 +1226,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(Sum(Fields!Importe.Value),2)</Value>
+                                  <Value>=Round(Sum(Fields!ImporteRow.Value),2)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1220,7 +1258,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(Sum(Fields!Deuda.Value),2)</Value>
+                                  <Value>=Round(Sum(Fields!ImporteRow.Value),2)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1252,7 +1290,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Round(Sum(Fields!Ganancia.Value),2)</Value>
+                                  <Value>=Round(Sum(Fields!ImporteRow.Value),2)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1312,9 +1350,7 @@
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
-                <TablixMember>
-                  <FixedData>true</FixedData>
-                </TablixMember>
+                <TablixMember />
                 <TablixMember>
                   <FixedData>true</FixedData>
                 </TablixMember>
@@ -1350,11 +1386,11 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>dsVenta</DataSetName>
+            <DataSetName>dsReporteBloque</DataSetName>
             <Top>1.45399cm</Top>
             <Left>0.01587cm</Left>
             <Height>2.19688cm</Height>
-            <Width>11.84679cm</Width>
+            <Width>12.56266cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1383,7 +1419,7 @@
         <Height>4.40851in</Height>
         <Style />
       </Body>
-      <Width>6.36458in</Width>
+      <Width>6.37083in</Width>
       <Page>
         <PageHeader>
           <Height>2.09021cm</Height>

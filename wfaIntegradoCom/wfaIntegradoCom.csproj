@@ -804,6 +804,7 @@
     <EmbeddedResource Include="Consultas\rptActaInstalacion.rdlc" />
     <EmbeddedResource Include="Consultas\rptComprobantePago.rdlc" />
     <EmbeddedResource Include="Consultas\rptContrato.rdlc" />
+    <EmbeddedResource Include="Consultas\rptGraficos.rdlc" />
     <EmbeddedResource Include="Consultas\rptVPOtrasVentas.rdlc" />
     <EmbeddedResource Include="Consultas\rptCronograma.rdlc" />
     <EmbeddedResource Include="Consultas\rptReporteVenta2.rdlc" />
@@ -960,6 +961,7 @@
     <None Include="Properties\DataSources\CapaEntidad.RealizarPago.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.ReciboChips.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.RegistrarEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ReporteBloque.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.Seguimiento.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.ServicioEquipo.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.SimCard.datasource" />

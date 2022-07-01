@@ -119,7 +119,7 @@ namespace CapaDato
                 pa[2].Value = xmlInstal[0].ListaVehiculo[0].idVehiculo;
 
                 pa[3] = new SqlParameter("@peidEquipo", SqlDbType.Int);
-                pa[3].Value = xmlInstal[0].ListaEquipo[0].idEquipo;
+                pa[3].Value = xmlInstal[0].ListaEquipo.Count>0? xmlInstal[0].ListaEquipo[0].idEquipo: xmlInstal[0].ListaEquipoActual[0].idEquipo;
 
                 pa[4] = new SqlParameter("@peidReferencia", SqlDbType.Int);                                                                    
                 pa[4].Value = xmlInstal[0].ListaCliente[0].idReferencia;
