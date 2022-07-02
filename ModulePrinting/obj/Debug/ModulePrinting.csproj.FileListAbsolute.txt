@@ -7,3 +7,21 @@ D:\SISTEMA-HUSAT\ModulePrinting\obj\Debug\ModulePrinting.csproj.CoreCompileInput
 D:\SISTEMA-HUSAT\ModulePrinting\obj\Debug\ModulePrinting.csproj.CopyComplete
 D:\SISTEMA-HUSAT\ModulePrinting\obj\Debug\ModulePrinting.dll
 D:\SISTEMA-HUSAT\ModulePrinting\obj\Debug\ModulePrinting.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\ModulePrinting\bin\Debug\ModulePrinting.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\ModulePrinting\bin\Debug\ModulePrinting.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\ModulePrinting\bin\Debug\HubblePOSPrintModule.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\ModulePrinting\bin\Debug\Newtonsoft.Json.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\ModulePrinting\obj\Debug\ModulePrinting.csproj.AssemblyReference.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\ModulePrinting\obj\Debug\ModulePrinting.csproj.CoreCompileInputs.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\ModulePrinting\obj\Debug\ModulePrinting.csproj.CopyComplete
+D:\EDWAR\SYSTEM HUSAT EDWAR\ModulePrinting\obj\Debug\ModulePrinting.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\ModulePrinting\obj\Debug\ModulePrinting.pdb
+D:\System Husat\ModulePrinting\bin\Debug\ModulePrinting.dll
+D:\System Husat\ModulePrinting\bin\Debug\ModulePrinting.pdb
+D:\System Husat\ModulePrinting\bin\Debug\HubblePOSPrintModule.dll
+D:\System Husat\ModulePrinting\bin\Debug\Newtonsoft.Json.dll
+D:\System Husat\ModulePrinting\obj\Debug\ModulePrinting.csproj.AssemblyReference.cache
+D:\System Husat\ModulePrinting\obj\Debug\ModulePrinting.csproj.CoreCompileInputs.cache
+D:\System Husat\ModulePrinting\obj\Debug\ModulePrinting.csproj.CopyComplete
+D:\System Husat\ModulePrinting\obj\Debug\ModulePrinting.dll
+D:\System Husat\ModulePrinting\obj\Debug\ModulePrinting.pdb

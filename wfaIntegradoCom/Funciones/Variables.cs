@@ -45,5 +45,14 @@ namespace wfaIntegradoCom.Funciones
         public static Color ColorSuccess = Color.FromArgb(39, 168, 68);
         public static Color ColorWarning = Color.FromArgb(250, 211, 23);
         public static Color Colororangeclaro = Color.FromArgb(235, 142, 54);
+
+        #region thema principal
+        //Colores SubMenus de Botones Menu Principal
+        public static Color ColorBackColorSubMenus = Color.Gray;
+        public static Color ColorForeColorSubMenus = Color.White;
+        public static Color ColorSelectSubMenus = Color.FromArgb(66, 66, 66);
+        //public static Color ColorSelectSubMenus = Color.DimGray;
+
+        #endregion
     }
 }

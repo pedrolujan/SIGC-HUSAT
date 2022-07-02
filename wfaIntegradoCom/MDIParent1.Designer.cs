@@ -31,18 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIParent1));
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tsAccesoRapido = new System.Windows.Forms.ToolStrip();
-            this.tsConfiguracion = new System.Windows.Forms.ToolStripButton();
-            this.tsSistemas = new System.Windows.Forms.ToolStripButton();
-            this.tsVenta = new System.Windows.Forms.ToolStripButton();
-            this.tsCaja = new System.Windows.Forms.ToolStripButton();
-            this.tsCompra = new System.Windows.Forms.ToolStripButton();
-            this.tsTraslado = new System.Windows.Forms.ToolStripButton();
-            this.tsExtorna = new System.Windows.Forms.ToolStripButton();
-            this.tsConsulta = new System.Windows.Forms.ToolStripButton();
-            this.tsDeuda = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnn = new System.Windows.Forms.ToolStripButton();
-            this.tsCerraSession = new System.Windows.Forms.ToolStripButton();
             this.SplitDerecho = new System.Windows.Forms.SplitContainer();
             this.ssBarraInferiorMenu = new System.Windows.Forms.StatusStrip();
             this.tsslUsuario = new System.Windows.Forms.ToolStripStatusLabel();
@@ -70,20 +58,47 @@
             this.lblTextCompra = new System.Windows.Forms.Label();
             this.SplitCentro = new System.Windows.Forms.SplitContainer();
             this.SplitIzquierdo = new System.Windows.Forms.SplitContainer();
+            this.SwitchMenus = new Siticone.UI.WinForms.SiticoneToggleSwitch();
+            this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
             this.tvOpes = new System.Windows.Forms.TreeView();
             this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
             this.tsTituloMenuIzquierdo = new System.Windows.Forms.ToolStrip();
             this.tslMenuIzquierdo = new System.Windows.Forms.ToolStripLabel();
+            this.btnPanel1 = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnPanel2 = new Siticone.UI.WinForms.SiticoneButton();
+            this.panelBotones = new Siticone.UI.WinForms.SiticonePanel();
+            this.subMenuSoporte = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnSoporte = new Siticone.UI.WinForms.SiticoneButton();
+            this.subMenuConfiguracion = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnConfiguracion = new Siticone.UI.WinForms.SiticoneButton();
+            this.subMenuRrhh = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnRrhh = new Siticone.UI.WinForms.SiticoneButton();
+            this.subMenuSistemas = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnSistemas = new Siticone.UI.WinForms.SiticoneButton();
+            this.subMenuLogistica = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnLogistica = new Siticone.UI.WinForms.SiticoneButton();
+            this.subMenuComercial = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnComercial = new Siticone.UI.WinForms.SiticoneButton();
+            this.subMenuRecaudacion = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnRecaudacion = new Siticone.UI.WinForms.SiticoneButton();
+            this.subMenuVentas = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnVenta = new Siticone.UI.WinForms.SiticoneButton();
+            this.panelToosStrip = new Siticone.UI.WinForms.SiticonePanel();
             this.tsMenuPrincipal = new System.Windows.Forms.ToolStrip();
             this.tsbVenta = new System.Windows.Forms.ToolStripButton();
-            this.tsbRecaudacion = new System.Windows.Forms.ToolStripButton();
             this.tsbComercial = new System.Windows.Forms.ToolStripButton();
             this.tsbLogistica = new System.Windows.Forms.ToolStripButton();
             this.tsbSistemas = new System.Windows.Forms.ToolStripButton();
             this.tsbRrHh = new System.Windows.Forms.ToolStripButton();
             this.tsbConfiguracion = new System.Windows.Forms.ToolStripButton();
             this.tsbSoporte = new System.Windows.Forms.ToolStripButton();
+            this.tsbRecaudacion = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.Img_Husat_Negro = new System.Windows.Forms.PictureBox();
+            this.Img_Husat_Blanco = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -92,8 +107,6 @@
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tlsStatus = new System.Windows.Forms.ToolStrip();
             this.tsbSignalr = new System.Windows.Forms.ToolStripButton();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.elhAlert = new System.Windows.Forms.Integration.ElementHost();
             this.ucOpcion1 = new WPF.CTRL.Colocaciones.ucOpcion();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -109,7 +122,20 @@
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.tsPerfil = new System.Windows.Forms.ToolStripButton();
             this.tsCerrarSession = new System.Windows.Forms.ToolStripButton();
-            this.tsAccesoRapido.SuspendLayout();
+            this.miniToolStrip = new System.Windows.Forms.ToolStrip();
+            this.tsConfiguracion = new System.Windows.Forms.ToolStripButton();
+            this.tsSistemas = new System.Windows.Forms.ToolStripButton();
+            this.tsVenta = new System.Windows.Forms.ToolStripButton();
+            this.tsCaja = new System.Windows.Forms.ToolStripButton();
+            this.tsCompra = new System.Windows.Forms.ToolStripButton();
+            this.tsTraslado = new System.Windows.Forms.ToolStripButton();
+            this.tsExtorna = new System.Windows.Forms.ToolStripButton();
+            this.tsCerraSession = new System.Windows.Forms.ToolStripButton();
+            this.tsDeuda = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnn = new System.Windows.Forms.ToolStripButton();
+            this.tsConsulta = new System.Windows.Forms.ToolStripButton();
+            this.PanelEncavezadoFondo = new Siticone.UI.WinForms.SiticonePanel();
+            this.tsAccesoRapido = new System.Windows.Forms.ToolStrip();
             ((System.ComponentModel.ISupportInitialize)(this.SplitDerecho)).BeginInit();
             this.SplitDerecho.Panel1.SuspendLayout();
             this.SplitDerecho.Panel2.SuspendLayout();
@@ -127,11 +153,20 @@
             this.SplitIzquierdo.Panel2.SuspendLayout();
             this.SplitIzquierdo.SuspendLayout();
             this.tsTituloMenuIzquierdo.SuspendLayout();
+            this.panelBotones.SuspendLayout();
+            this.panelToosStrip.SuspendLayout();
             this.tsMenuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Negro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Blanco)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -143,176 +178,15 @@
             this.pnlCerrarSession.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
             this.toolStrip4.SuspendLayout();
+            this.PanelEncavezadoFondo.SuspendLayout();
+            this.tsAccesoRapido.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tsAccesoRapido
-            // 
-            this.tsAccesoRapido.AutoSize = false;
-            this.tsAccesoRapido.BackColor = System.Drawing.Color.White;
-            this.tsAccesoRapido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsAccesoRapido.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tsAccesoRapido.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsConfiguracion,
-            this.tsSistemas,
-            this.tsVenta,
-            this.tsCaja,
-            this.tsCompra,
-            this.tsTraslado,
-            this.tsExtorna,
-            this.tsConsulta,
-            this.tsDeuda,
-            this.tsBtnn,
-            this.tsCerraSession});
-            this.tsAccesoRapido.Location = new System.Drawing.Point(0, 0);
-            this.tsAccesoRapido.Name = "tsAccesoRapido";
-            this.tsAccesoRapido.Size = new System.Drawing.Size(1176, 51);
-            this.tsAccesoRapido.Stretch = true;
-            this.tsAccesoRapido.TabIndex = 4;
-            this.tsAccesoRapido.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsAccesoRapido_ItemClicked);
-            // 
-            // tsConfiguracion
-            // 
-            this.tsConfiguracion.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsConfiguracion.ForeColor = System.Drawing.Color.Black;
-            this.tsConfiguracion.Image = global::wfaIntegradoCom.Properties.Resources.acceso_32;
-            this.tsConfiguracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsConfiguracion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsConfiguracion.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsConfiguracion.Name = "tsConfiguracion";
-            this.tsConfiguracion.Size = new System.Drawing.Size(98, 48);
-            this.tsConfiguracion.Text = "Accesos";
-            this.tsConfiguracion.Visible = false;
-            // 
-            // tsSistemas
-            // 
-            this.tsSistemas.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsSistemas.ForeColor = System.Drawing.Color.Black;
-            this.tsSistemas.Image = global::wfaIntegradoCom.Properties.Resources.user_32;
-            this.tsSistemas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsSistemas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsSistemas.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsSistemas.Name = "tsSistemas";
-            this.tsSistemas.Size = new System.Drawing.Size(102, 48);
-            this.tsSistemas.Text = "Usuarios";
-            this.tsSistemas.Visible = false;
-            // 
-            // tsVenta
-            // 
-            this.tsVenta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsVenta.ForeColor = System.Drawing.Color.Black;
-            this.tsVenta.Image = global::wfaIntegradoCom.Properties.Resources.tipoVenta_32;
-            this.tsVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsVenta.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsVenta.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsVenta.Name = "tsVenta";
-            this.tsVenta.Size = new System.Drawing.Size(134, 48);
-            this.tsVenta.Text = "Tipo de Venta";
-            this.tsVenta.Visible = false;
-            // 
-            // tsCaja
-            // 
-            this.tsCaja.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsCaja.ForeColor = System.Drawing.Color.Black;
-            this.tsCaja.Image = global::wfaIntegradoCom.Properties.Resources.cadreCaja_32;
-            this.tsCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsCaja.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsCaja.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsCaja.Name = "tsCaja";
-            this.tsCaja.Size = new System.Drawing.Size(124, 48);
-            this.tsCaja.Text = "Cuadre Caja";
-            this.tsCaja.Visible = false;
-            // 
-            // tsCompra
-            // 
-            this.tsCompra.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsCompra.ForeColor = System.Drawing.Color.Black;
-            this.tsCompra.Image = global::wfaIntegradoCom.Properties.Resources.compra_32;
-            this.tsCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsCompra.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsCompra.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsCompra.Name = "tsCompra";
-            this.tsCompra.Size = new System.Drawing.Size(102, 48);
-            this.tsCompra.Text = "Compras";
-            this.tsCompra.Visible = false;
-            // 
-            // tsTraslado
-            // 
-            this.tsTraslado.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsTraslado.ForeColor = System.Drawing.Color.Black;
-            this.tsTraslado.Image = global::wfaIntegradoCom.Properties.Resources.compras_32;
-            this.tsTraslado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsTraslado.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsTraslado.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsTraslado.Name = "tsTraslado";
-            this.tsTraslado.Size = new System.Drawing.Size(100, 48);
-            this.tsTraslado.Text = "Traslado";
-            this.tsTraslado.Visible = false;
-            // 
-            // tsExtorna
-            // 
-            this.tsExtorna.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsExtorna.ForeColor = System.Drawing.Color.Black;
-            this.tsExtorna.Image = global::wfaIntegradoCom.Properties.Resources.devoluciones_32;
-            this.tsExtorna.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsExtorna.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsExtorna.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsExtorna.Name = "tsExtorna";
-            this.tsExtorna.Size = new System.Drawing.Size(132, 48);
-            this.tsExtorna.Text = "Devoluciones";
-            this.tsExtorna.Visible = false;
-            // 
-            // tsConsulta
-            // 
-            this.tsConsulta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsConsulta.ForeColor = System.Drawing.Color.Black;
-            this.tsConsulta.Image = global::wfaIntegradoCom.Properties.Resources.consultar_32;
-            this.tsConsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsConsulta.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsConsulta.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsConsulta.Name = "tsConsulta";
-            this.tsConsulta.Size = new System.Drawing.Size(107, 48);
-            this.tsConsulta.Text = "Consultar";
-            this.tsConsulta.Visible = false;
-            // 
-            // tsDeuda
-            // 
-            this.tsDeuda.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsDeuda.ForeColor = System.Drawing.Color.Black;
-            this.tsDeuda.Image = global::wfaIntegradoCom.Properties.Resources.deuda_32;
-            this.tsDeuda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsDeuda.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsDeuda.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsDeuda.Name = "tsDeuda";
-            this.tsDeuda.Size = new System.Drawing.Size(94, 48);
-            this.tsDeuda.Text = "Deudas";
-            this.tsDeuda.Visible = false;
-            // 
-            // tsBtnn
-            // 
-            this.tsBtnn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsBtnn.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnn.Image")));
-            this.tsBtnn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnn.Name = "tsBtnn";
-            this.tsBtnn.Size = new System.Drawing.Size(23, 48);
-            // 
-            // tsCerraSession
-            // 
-            this.tsCerraSession.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsCerraSession.Image = global::wfaIntegradoCom.Properties.Resources.usser;
-            this.tsCerraSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsCerraSession.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsCerraSession.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsCerraSession.Name = "tsCerraSession";
-            this.tsCerraSession.Size = new System.Drawing.Size(145, 48);
-            this.tsCerraSession.Text = "Cerrar Session";
-            this.tsCerraSession.Visible = false;
-            this.tsCerraSession.Click += new System.EventHandler(this.tsCerraSession_Click);
             // 
             // SplitDerecho
             // 
             this.SplitDerecho.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.SplitDerecho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SplitDerecho.Location = new System.Drawing.Point(0, 51);
+            this.SplitDerecho.Location = new System.Drawing.Point(0, 57);
             this.SplitDerecho.Name = "SplitDerecho";
             // 
             // SplitDerecho.Panel1
@@ -329,8 +203,8 @@
             this.SplitDerecho.Panel2.Controls.Add(this.gbAlertaCreditos);
             this.SplitDerecho.Panel2.Controls.Add(this.tsAlertaCreditos);
             this.SplitDerecho.Panel2.Controls.Add(this.gbTipoCambio);
-            this.SplitDerecho.Size = new System.Drawing.Size(1176, 431);
-            this.SplitDerecho.SplitterDistance = 929;
+            this.SplitDerecho.Size = new System.Drawing.Size(1284, 554);
+            this.SplitDerecho.SplitterDistance = 1014;
             this.SplitDerecho.TabIndex = 5;
             // 
             // ssBarraInferiorMenu
@@ -340,9 +214,9 @@
             this.tsslServidor,
             this.tsslFecha,
             this.tsslVersion});
-            this.ssBarraInferiorMenu.Location = new System.Drawing.Point(0, 404);
+            this.ssBarraInferiorMenu.Location = new System.Drawing.Point(0, 527);
             this.ssBarraInferiorMenu.Name = "ssBarraInferiorMenu";
-            this.ssBarraInferiorMenu.Size = new System.Drawing.Size(925, 23);
+            this.ssBarraInferiorMenu.Size = new System.Drawing.Size(1010, 23);
             this.ssBarraInferiorMenu.TabIndex = 6;
             this.ssBarraInferiorMenu.Text = "StatusStrip1";
             // 
@@ -406,7 +280,7 @@
             this.tvMenuHijos.ShowNodeToolTips = true;
             this.tvMenuHijos.ShowPlusMinus = false;
             this.tvMenuHijos.ShowRootLines = false;
-            this.tvMenuHijos.Size = new System.Drawing.Size(925, 402);
+            this.tvMenuHijos.Size = new System.Drawing.Size(1010, 525);
             this.tvMenuHijos.TabIndex = 5;
             // 
             // tsTituloMenuCentro
@@ -416,7 +290,7 @@
             this.tsTituloMenuCentro.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsTituloMenuCentro.Location = new System.Drawing.Point(0, 0);
             this.tsTituloMenuCentro.Name = "tsTituloMenuCentro";
-            this.tsTituloMenuCentro.Size = new System.Drawing.Size(925, 25);
+            this.tsTituloMenuCentro.Size = new System.Drawing.Size(1010, 25);
             this.tsTituloMenuCentro.Stretch = true;
             this.tsTituloMenuCentro.TabIndex = 4;
             this.tsTituloMenuCentro.Text = "ToolStrip1";
@@ -429,7 +303,7 @@
             this.gbAlertaRiesgos.ForeColor = System.Drawing.Color.Gray;
             this.gbAlertaRiesgos.Location = new System.Drawing.Point(0, 315);
             this.gbAlertaRiesgos.Name = "gbAlertaRiesgos";
-            this.gbAlertaRiesgos.Size = new System.Drawing.Size(239, 166);
+            this.gbAlertaRiesgos.Size = new System.Drawing.Size(262, 166);
             this.gbAlertaRiesgos.TabIndex = 13;
             this.gbAlertaRiesgos.TabStop = false;
             // 
@@ -444,7 +318,7 @@
             this.tsbActualizarAR});
             this.tsAlertaRiesgos.Location = new System.Drawing.Point(0, 290);
             this.tsAlertaRiesgos.Name = "tsAlertaRiesgos";
-            this.tsAlertaRiesgos.Size = new System.Drawing.Size(239, 25);
+            this.tsAlertaRiesgos.Size = new System.Drawing.Size(262, 25);
             this.tsAlertaRiesgos.Stretch = true;
             this.tsAlertaRiesgos.TabIndex = 12;
             this.tsAlertaRiesgos.Text = "ToolStrip4";
@@ -485,7 +359,7 @@
             this.gbAlertaCreditos.ForeColor = System.Drawing.Color.Gray;
             this.gbAlertaCreditos.Location = new System.Drawing.Point(0, 124);
             this.gbAlertaCreditos.Name = "gbAlertaCreditos";
-            this.gbAlertaCreditos.Size = new System.Drawing.Size(239, 166);
+            this.gbAlertaCreditos.Size = new System.Drawing.Size(262, 166);
             this.gbAlertaCreditos.TabIndex = 11;
             this.gbAlertaCreditos.TabStop = false;
             // 
@@ -500,7 +374,7 @@
             this.tsbActualizarAC});
             this.tsAlertaCreditos.Location = new System.Drawing.Point(0, 99);
             this.tsAlertaCreditos.Name = "tsAlertaCreditos";
-            this.tsAlertaCreditos.Size = new System.Drawing.Size(239, 25);
+            this.tsAlertaCreditos.Size = new System.Drawing.Size(262, 25);
             this.tsAlertaCreditos.Stretch = true;
             this.tsAlertaCreditos.TabIndex = 10;
             this.tsAlertaCreditos.Text = "ToolStrip3";
@@ -547,7 +421,7 @@
             this.gbTipoCambio.ForeColor = System.Drawing.Color.Gray;
             this.gbTipoCambio.Location = new System.Drawing.Point(0, 0);
             this.gbTipoCambio.Name = "gbTipoCambio";
-            this.gbTipoCambio.Size = new System.Drawing.Size(239, 99);
+            this.gbTipoCambio.Size = new System.Drawing.Size(262, 99);
             this.gbTipoCambio.TabIndex = 9;
             this.gbTipoCambio.TabStop = false;
             // 
@@ -627,7 +501,7 @@
             // 
             this.SplitCentro.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.SplitCentro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SplitCentro.Location = new System.Drawing.Point(0, 51);
+            this.SplitCentro.Location = new System.Drawing.Point(0, 57);
             this.SplitCentro.Name = "SplitCentro";
             // 
             // SplitCentro.Panel1
@@ -637,8 +511,8 @@
             // SplitCentro.Panel2
             // 
             this.SplitCentro.Panel2.Controls.Add(this.splitContainer1);
-            this.SplitCentro.Size = new System.Drawing.Size(1176, 431);
-            this.SplitCentro.SplitterDistance = 311;
+            this.SplitCentro.Size = new System.Drawing.Size(1284, 554);
+            this.SplitCentro.SplitterDistance = 333;
             this.SplitCentro.TabIndex = 6;
             // 
             // SplitIzquierdo
@@ -651,6 +525,8 @@
             // 
             // SplitIzquierdo.Panel1
             // 
+            this.SplitIzquierdo.Panel1.Controls.Add(this.SwitchMenus);
+            this.SplitIzquierdo.Panel1.Controls.Add(this.siticoneLabel1);
             this.SplitIzquierdo.Panel1.Controls.Add(this.tvOpes);
             this.SplitIzquierdo.Panel1.Controls.Add(this.tsTituloMenuIzquierdo);
             // 
@@ -658,10 +534,47 @@
             // 
             this.SplitIzquierdo.Panel2.AutoScroll = true;
             this.SplitIzquierdo.Panel2.BackColor = System.Drawing.Color.White;
-            this.SplitIzquierdo.Panel2.Controls.Add(this.tsMenuPrincipal);
-            this.SplitIzquierdo.Size = new System.Drawing.Size(311, 431);
-            this.SplitIzquierdo.SplitterDistance = 221;
+            this.SplitIzquierdo.Panel2.Controls.Add(this.btnPanel1);
+            this.SplitIzquierdo.Panel2.Controls.Add(this.btnPanel2);
+            this.SplitIzquierdo.Panel2.Controls.Add(this.panelBotones);
+            this.SplitIzquierdo.Panel2.Controls.Add(this.panelToosStrip);
+            this.SplitIzquierdo.Size = new System.Drawing.Size(333, 554);
+            this.SplitIzquierdo.SplitterDistance = 233;
             this.SplitIzquierdo.TabIndex = 0;
+            // 
+            // SwitchMenus
+            // 
+            this.SwitchMenus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SwitchMenus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.SwitchMenus.CheckedState.BorderColor = System.Drawing.Color.Lime;
+            this.SwitchMenus.CheckedState.FillColor = System.Drawing.Color.LavenderBlush;
+            this.SwitchMenus.CheckedState.InnerBorderColor = System.Drawing.Color.Red;
+            this.SwitchMenus.CheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.SwitchMenus.CheckedState.Parent = this.SwitchMenus;
+            this.SwitchMenus.Location = new System.Drawing.Point(280, 9);
+            this.SwitchMenus.Name = "SwitchMenus";
+            this.SwitchMenus.ShadowDecoration.Parent = this.SwitchMenus;
+            this.SwitchMenus.Size = new System.Drawing.Size(35, 20);
+            this.SwitchMenus.TabIndex = 6;
+            this.SwitchMenus.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.SwitchMenus.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.SwitchMenus.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.SwitchMenus.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.SwitchMenus.UncheckedState.Parent = this.SwitchMenus;
+            this.SwitchMenus.CheckedChanged += new System.EventHandler(this.siticoneToggleSwitch1_CheckedChanged);
+            // 
+            // siticoneLabel1
+            // 
+            this.siticoneLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.siticoneLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneLabel1.ForeColor = System.Drawing.Color.White;
+            this.siticoneLabel1.Location = new System.Drawing.Point(199, 12);
+            this.siticoneLabel1.Name = "siticoneLabel1";
+            this.siticoneLabel1.Size = new System.Drawing.Size(75, 15);
+            this.siticoneLabel1.TabIndex = 9;
+            this.siticoneLabel1.Text = "Nuevo Menu";
             // 
             // tvOpes
             // 
@@ -678,9 +591,10 @@
             this.tvOpes.Margin = new System.Windows.Forms.Padding(10);
             this.tvOpes.Name = "tvOpes";
             this.tvOpes.SelectedImageKey = "A1.bmp";
-            this.tvOpes.Size = new System.Drawing.Size(307, 177);
+            this.tvOpes.Size = new System.Drawing.Size(329, 189);
             this.tvOpes.TabIndex = 8;
             this.tvOpes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOpes_AfterSelect);
+            this.tvOpes.Click += new System.EventHandler(this.tvOpes_Click);
             // 
             // ListaImagenes
             // 
@@ -689,6 +603,8 @@
             this.ListaImagenes.Images.SetKeyName(0, "eaTekn5i4.png");
             this.ListaImagenes.Images.SetKeyName(1, "z7cak5eTA.png");
             this.ListaImagenes.Images.SetKeyName(2, "7eiM5q9cn.png");
+            this.ListaImagenes.Images.SetKeyName(3, "flecha-derecha_Naranja.png");
+            this.ListaImagenes.Images.SetKeyName(4, "flecha-derecha.png");
             // 
             // tsTituloMenuIzquierdo
             // 
@@ -700,7 +616,7 @@
             this.tslMenuIzquierdo});
             this.tsTituloMenuIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.tsTituloMenuIzquierdo.Name = "tsTituloMenuIzquierdo";
-            this.tsTituloMenuIzquierdo.Size = new System.Drawing.Size(307, 40);
+            this.tsTituloMenuIzquierdo.Size = new System.Drawing.Size(329, 40);
             this.tsTituloMenuIzquierdo.Stretch = true;
             this.tsTituloMenuIzquierdo.TabIndex = 7;
             this.tsTituloMenuIzquierdo.Text = "ToolStrip1";
@@ -718,6 +634,444 @@
             this.tslMenuIzquierdo.Size = new System.Drawing.Size(270, 37);
             this.tslMenuIzquierdo.Text = "Ventas";
             // 
+            // btnPanel1
+            // 
+            this.btnPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnPanel1.BorderColor = System.Drawing.Color.Transparent;
+            this.btnPanel1.BorderRadius = 12;
+            this.btnPanel1.BorderThickness = 2;
+            this.btnPanel1.CheckedState.Parent = this.btnPanel1;
+            this.btnPanel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPanel1.CustomImages.Parent = this.btnPanel1;
+            this.btnPanel1.FillColor = System.Drawing.Color.White;
+            this.btnPanel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnPanel1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnPanel1.HoveredState.ForeColor = System.Drawing.Color.Black;
+            this.btnPanel1.HoveredState.Parent = this.btnPanel1;
+            this.btnPanel1.Location = new System.Drawing.Point(195, 2943);
+            this.btnPanel1.Name = "btnPanel1";
+            this.btnPanel1.ShadowDecoration.Parent = this.btnPanel1;
+            this.btnPanel1.Size = new System.Drawing.Size(68, 35);
+            this.btnPanel1.TabIndex = 8;
+            this.btnPanel1.Text = "Panel 1";
+            this.btnPanel1.Visible = false;
+            this.btnPanel1.Click += new System.EventHandler(this.btnPanel1_Click);
+            // 
+            // btnPanel2
+            // 
+            this.btnPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.btnPanel2.BorderColor = System.Drawing.Color.Transparent;
+            this.btnPanel2.BorderRadius = 12;
+            this.btnPanel2.BorderThickness = 2;
+            this.btnPanel2.CheckedState.Parent = this.btnPanel2;
+            this.btnPanel2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPanel2.CustomImages.Parent = this.btnPanel2;
+            this.btnPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnPanel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPanel2.ForeColor = System.Drawing.Color.White;
+            this.btnPanel2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnPanel2.HoveredState.ForeColor = System.Drawing.Color.Black;
+            this.btnPanel2.HoveredState.Parent = this.btnPanel2;
+            this.btnPanel2.Location = new System.Drawing.Point(119, 2943);
+            this.btnPanel2.Name = "btnPanel2";
+            this.btnPanel2.ShadowDecoration.Parent = this.btnPanel2;
+            this.btnPanel2.Size = new System.Drawing.Size(68, 35);
+            this.btnPanel2.TabIndex = 7;
+            this.btnPanel2.Text = "Panel 2";
+            // 
+            // panelBotones
+            // 
+            this.panelBotones.BackColor = System.Drawing.Color.White;
+            this.panelBotones.Controls.Add(this.subMenuSoporte);
+            this.panelBotones.Controls.Add(this.btnSoporte);
+            this.panelBotones.Controls.Add(this.subMenuConfiguracion);
+            this.panelBotones.Controls.Add(this.btnConfiguracion);
+            this.panelBotones.Controls.Add(this.subMenuRrhh);
+            this.panelBotones.Controls.Add(this.btnRrhh);
+            this.panelBotones.Controls.Add(this.subMenuSistemas);
+            this.panelBotones.Controls.Add(this.btnSistemas);
+            this.panelBotones.Controls.Add(this.subMenuLogistica);
+            this.panelBotones.Controls.Add(this.btnLogistica);
+            this.panelBotones.Controls.Add(this.subMenuComercial);
+            this.panelBotones.Controls.Add(this.btnComercial);
+            this.panelBotones.Controls.Add(this.subMenuRecaudacion);
+            this.panelBotones.Controls.Add(this.btnRecaudacion);
+            this.panelBotones.Controls.Add(this.subMenuVentas);
+            this.panelBotones.Controls.Add(this.btnVenta);
+            this.panelBotones.FillColor = System.Drawing.Color.Transparent;
+            this.panelBotones.Location = new System.Drawing.Point(3, 418);
+            this.panelBotones.Name = "panelBotones";
+            this.panelBotones.ShadowDecoration.Parent = this.panelBotones;
+            this.panelBotones.Size = new System.Drawing.Size(310, 791);
+            this.panelBotones.TabIndex = 1;
+            this.panelBotones.Visible = false;
+            this.panelBotones.Click += new System.EventHandler(this.panelBotones_Click);
+            // 
+            // subMenuSoporte
+            // 
+            this.subMenuSoporte.AutoSize = true;
+            this.subMenuSoporte.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.subMenuSoporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuSoporte.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subMenuSoporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuSoporte.Location = new System.Drawing.Point(0, 420);
+            this.subMenuSoporte.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuSoporte.Name = "subMenuSoporte";
+            this.subMenuSoporte.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.subMenuSoporte.ShadowDecoration.Parent = this.subMenuSoporte;
+            this.subMenuSoporte.Size = new System.Drawing.Size(310, 20);
+            this.subMenuSoporte.TabIndex = 15;
+            this.subMenuSoporte.Click += new System.EventHandler(this.subMenuSoporte_Click);
+            // 
+            // btnSoporte
+            // 
+            this.btnSoporte.BackColor = System.Drawing.Color.White;
+            this.btnSoporte.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnSoporte.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnSoporte.CheckedState.Parent = this.btnSoporte;
+            this.btnSoporte.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSoporte.CustomImages.Parent = this.btnSoporte;
+            this.btnSoporte.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSoporte.Enabled = false;
+            this.btnSoporte.FillColor = System.Drawing.Color.Transparent;
+            this.btnSoporte.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSoporte.ForeColor = System.Drawing.Color.Black;
+            this.btnSoporte.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.soporte_blanco_1;
+            this.btnSoporte.HoveredState.Parent = this.btnSoporte;
+            this.btnSoporte.Image = global::wfaIntegradoCom.Properties.Resources.soporte1;
+            this.btnSoporte.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSoporte.Location = new System.Drawing.Point(0, 385);
+            this.btnSoporte.Name = "btnSoporte";
+            this.btnSoporte.PressedColor = System.Drawing.Color.Aqua;
+            this.btnSoporte.ShadowDecoration.Parent = this.btnSoporte;
+            this.btnSoporte.Size = new System.Drawing.Size(310, 35);
+            this.btnSoporte.TabIndex = 14;
+            this.btnSoporte.Text = "Soporte";
+            this.btnSoporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSoporte.Click += new System.EventHandler(this.btnSoporte_Click);
+            // 
+            // subMenuConfiguracion
+            // 
+            this.subMenuConfiguracion.AutoSize = true;
+            this.subMenuConfiguracion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.subMenuConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subMenuConfiguracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuConfiguracion.Location = new System.Drawing.Point(0, 365);
+            this.subMenuConfiguracion.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuConfiguracion.Name = "subMenuConfiguracion";
+            this.subMenuConfiguracion.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.subMenuConfiguracion.ShadowDecoration.Parent = this.subMenuConfiguracion;
+            this.subMenuConfiguracion.Size = new System.Drawing.Size(310, 20);
+            this.subMenuConfiguracion.TabIndex = 13;
+            this.subMenuConfiguracion.Click += new System.EventHandler(this.subMenuConfiguracion_Click);
+            // 
+            // btnConfiguracion
+            // 
+            this.btnConfiguracion.BackColor = System.Drawing.Color.White;
+            this.btnConfiguracion.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnConfiguracion.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnConfiguracion.CheckedState.Parent = this.btnConfiguracion;
+            this.btnConfiguracion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfiguracion.CustomImages.Parent = this.btnConfiguracion;
+            this.btnConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConfiguracion.Enabled = false;
+            this.btnConfiguracion.FillColor = System.Drawing.Color.Transparent;
+            this.btnConfiguracion.Font = new System.Drawing.Font("Calibri", 12.75F);
+            this.btnConfiguracion.ForeColor = System.Drawing.Color.Black;
+            this.btnConfiguracion.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.sistema_blanco_32;
+            this.btnConfiguracion.HoveredState.Parent = this.btnConfiguracion;
+            this.btnConfiguracion.Image = global::wfaIntegradoCom.Properties.Resources.sistemas_naranja_32;
+            this.btnConfiguracion.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnConfiguracion.Location = new System.Drawing.Point(0, 330);
+            this.btnConfiguracion.Name = "btnConfiguracion";
+            this.btnConfiguracion.PressedColor = System.Drawing.Color.Aqua;
+            this.btnConfiguracion.ShadowDecoration.Parent = this.btnConfiguracion;
+            this.btnConfiguracion.Size = new System.Drawing.Size(310, 35);
+            this.btnConfiguracion.TabIndex = 12;
+            this.btnConfiguracion.Text = "Configuración";
+            this.btnConfiguracion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnConfiguracion.Click += new System.EventHandler(this.btnConfiguracion_Click);
+            // 
+            // subMenuRrhh
+            // 
+            this.subMenuRrhh.AutoSize = true;
+            this.subMenuRrhh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.subMenuRrhh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuRrhh.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subMenuRrhh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuRrhh.Location = new System.Drawing.Point(0, 310);
+            this.subMenuRrhh.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuRrhh.Name = "subMenuRrhh";
+            this.subMenuRrhh.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.subMenuRrhh.ShadowDecoration.Parent = this.subMenuRrhh;
+            this.subMenuRrhh.Size = new System.Drawing.Size(310, 20);
+            this.subMenuRrhh.TabIndex = 11;
+            this.subMenuRrhh.Click += new System.EventHandler(this.subMenuRrhh_Click);
+            // 
+            // btnRrhh
+            // 
+            this.btnRrhh.BackColor = System.Drawing.Color.White;
+            this.btnRrhh.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnRrhh.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnRrhh.CheckedState.Parent = this.btnRrhh;
+            this.btnRrhh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRrhh.CustomImages.Parent = this.btnRrhh;
+            this.btnRrhh.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRrhh.Enabled = false;
+            this.btnRrhh.FillColor = System.Drawing.Color.Transparent;
+            this.btnRrhh.Font = new System.Drawing.Font("Calibri", 12.75F);
+            this.btnRrhh.ForeColor = System.Drawing.Color.Black;
+            this.btnRrhh.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.rrHh_blanco_32;
+            this.btnRrhh.HoveredState.Parent = this.btnRrhh;
+            this.btnRrhh.Image = global::wfaIntegradoCom.Properties.Resources.rrHh_naranja_32;
+            this.btnRrhh.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnRrhh.Location = new System.Drawing.Point(0, 275);
+            this.btnRrhh.Name = "btnRrhh";
+            this.btnRrhh.PressedColor = System.Drawing.Color.Aqua;
+            this.btnRrhh.ShadowDecoration.Parent = this.btnRrhh;
+            this.btnRrhh.Size = new System.Drawing.Size(310, 35);
+            this.btnRrhh.TabIndex = 10;
+            this.btnRrhh.Text = "RRHH";
+            this.btnRrhh.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnRrhh.Click += new System.EventHandler(this.btnRrhh_Click);
+            // 
+            // subMenuSistemas
+            // 
+            this.subMenuSistemas.AutoSize = true;
+            this.subMenuSistemas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.subMenuSistemas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuSistemas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subMenuSistemas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuSistemas.Location = new System.Drawing.Point(0, 255);
+            this.subMenuSistemas.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuSistemas.Name = "subMenuSistemas";
+            this.subMenuSistemas.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.subMenuSistemas.ShadowDecoration.Parent = this.subMenuSistemas;
+            this.subMenuSistemas.Size = new System.Drawing.Size(310, 20);
+            this.subMenuSistemas.TabIndex = 9;
+            this.subMenuSistemas.Click += new System.EventHandler(this.subMenuSistemas_Click);
+            // 
+            // btnSistemas
+            // 
+            this.btnSistemas.BackColor = System.Drawing.Color.White;
+            this.btnSistemas.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnSistemas.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnSistemas.CheckedState.Parent = this.btnSistemas;
+            this.btnSistemas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSistemas.CustomImages.Parent = this.btnSistemas;
+            this.btnSistemas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSistemas.Enabled = false;
+            this.btnSistemas.FillColor = System.Drawing.Color.Transparent;
+            this.btnSistemas.Font = new System.Drawing.Font("Calibri", 12.75F);
+            this.btnSistemas.ForeColor = System.Drawing.Color.Black;
+            this.btnSistemas.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.compu_ok_blanco_32;
+            this.btnSistemas.HoveredState.Parent = this.btnSistemas;
+            this.btnSistemas.Image = global::wfaIntegradoCom.Properties.Resources.compu_ok_naranja_32;
+            this.btnSistemas.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSistemas.Location = new System.Drawing.Point(0, 220);
+            this.btnSistemas.Name = "btnSistemas";
+            this.btnSistemas.PressedColor = System.Drawing.Color.Aqua;
+            this.btnSistemas.ShadowDecoration.Parent = this.btnSistemas;
+            this.btnSistemas.Size = new System.Drawing.Size(310, 35);
+            this.btnSistemas.TabIndex = 8;
+            this.btnSistemas.Text = "Sistemas";
+            this.btnSistemas.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSistemas.Click += new System.EventHandler(this.btnSistemas_Click);
+            // 
+            // subMenuLogistica
+            // 
+            this.subMenuLogistica.AutoScroll = true;
+            this.subMenuLogistica.AutoSize = true;
+            this.subMenuLogistica.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.subMenuLogistica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuLogistica.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subMenuLogistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuLogistica.Location = new System.Drawing.Point(0, 200);
+            this.subMenuLogistica.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuLogistica.Name = "subMenuLogistica";
+            this.subMenuLogistica.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.subMenuLogistica.ShadowDecoration.Parent = this.subMenuLogistica;
+            this.subMenuLogistica.Size = new System.Drawing.Size(310, 20);
+            this.subMenuLogistica.TabIndex = 7;
+            this.subMenuLogistica.Click += new System.EventHandler(this.subMenuLogistica_Click);
+            // 
+            // btnLogistica
+            // 
+            this.btnLogistica.BackColor = System.Drawing.Color.White;
+            this.btnLogistica.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnLogistica.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnLogistica.CheckedState.Parent = this.btnLogistica;
+            this.btnLogistica.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogistica.CustomImages.Parent = this.btnLogistica;
+            this.btnLogistica.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLogistica.Enabled = false;
+            this.btnLogistica.FillColor = System.Drawing.Color.Transparent;
+            this.btnLogistica.Font = new System.Drawing.Font("Calibri", 12.75F);
+            this.btnLogistica.ForeColor = System.Drawing.Color.Black;
+            this.btnLogistica.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.logistica_blanc_32;
+            this.btnLogistica.HoveredState.Parent = this.btnLogistica;
+            this.btnLogistica.Image = global::wfaIntegradoCom.Properties.Resources.logistica_naranja_32;
+            this.btnLogistica.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogistica.Location = new System.Drawing.Point(0, 165);
+            this.btnLogistica.Name = "btnLogistica";
+            this.btnLogistica.PressedColor = System.Drawing.Color.Aqua;
+            this.btnLogistica.ShadowDecoration.Parent = this.btnLogistica;
+            this.btnLogistica.Size = new System.Drawing.Size(310, 35);
+            this.btnLogistica.TabIndex = 6;
+            this.btnLogistica.Text = "Logística";
+            this.btnLogistica.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogistica.Click += new System.EventHandler(this.btnLogistica_Click);
+            // 
+            // subMenuComercial
+            // 
+            this.subMenuComercial.AutoSize = true;
+            this.subMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuComercial.Cursor = System.Windows.Forms.Cursors.Default;
+            this.subMenuComercial.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subMenuComercial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuComercial.Location = new System.Drawing.Point(0, 145);
+            this.subMenuComercial.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuComercial.Name = "subMenuComercial";
+            this.subMenuComercial.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.subMenuComercial.ShadowDecoration.Parent = this.subMenuComercial;
+            this.subMenuComercial.Size = new System.Drawing.Size(310, 20);
+            this.subMenuComercial.TabIndex = 5;
+            this.subMenuComercial.Click += new System.EventHandler(this.subMenuComercial_Click);
+            // 
+            // btnComercial
+            // 
+            this.btnComercial.BackColor = System.Drawing.Color.White;
+            this.btnComercial.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnComercial.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnComercial.CheckedState.Parent = this.btnComercial;
+            this.btnComercial.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnComercial.CustomImages.Parent = this.btnComercial;
+            this.btnComercial.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnComercial.Enabled = false;
+            this.btnComercial.FillColor = System.Drawing.Color.Transparent;
+            this.btnComercial.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComercial.ForeColor = System.Drawing.Color.Black;
+            this.btnComercial.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.comercial_blanco_32;
+            this.btnComercial.HoveredState.Parent = this.btnComercial;
+            this.btnComercial.Image = global::wfaIntegradoCom.Properties.Resources.commercial_naranja_32;
+            this.btnComercial.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnComercial.Location = new System.Drawing.Point(0, 110);
+            this.btnComercial.Name = "btnComercial";
+            this.btnComercial.PressedColor = System.Drawing.Color.Aqua;
+            this.btnComercial.ShadowDecoration.Parent = this.btnComercial;
+            this.btnComercial.Size = new System.Drawing.Size(310, 35);
+            this.btnComercial.TabIndex = 4;
+            this.btnComercial.Text = "Comercial";
+            this.btnComercial.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnComercial.Click += new System.EventHandler(this.btnComercial_Click);
+            // 
+            // subMenuRecaudacion
+            // 
+            this.subMenuRecaudacion.AutoSize = true;
+            this.subMenuRecaudacion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.subMenuRecaudacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subMenuRecaudacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuRecaudacion.Location = new System.Drawing.Point(0, 90);
+            this.subMenuRecaudacion.Margin = new System.Windows.Forms.Padding(50);
+            this.subMenuRecaudacion.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuRecaudacion.Name = "subMenuRecaudacion";
+            this.subMenuRecaudacion.ShadowDecoration.Parent = this.subMenuRecaudacion;
+            this.subMenuRecaudacion.Size = new System.Drawing.Size(310, 20);
+            this.subMenuRecaudacion.TabIndex = 3;
+            this.subMenuRecaudacion.Click += new System.EventHandler(this.subMenuRecaudacion_Click);
+            // 
+            // btnRecaudacion
+            // 
+            this.btnRecaudacion.BackColor = System.Drawing.Color.White;
+            this.btnRecaudacion.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnRecaudacion.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnRecaudacion.CheckedState.Parent = this.btnRecaudacion;
+            this.btnRecaudacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRecaudacion.CustomImages.Parent = this.btnRecaudacion;
+            this.btnRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRecaudacion.Enabled = false;
+            this.btnRecaudacion.FillColor = System.Drawing.Color.Transparent;
+            this.btnRecaudacion.Font = new System.Drawing.Font("Calibri", 12.75F);
+            this.btnRecaudacion.ForeColor = System.Drawing.Color.Black;
+            this.btnRecaudacion.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.recaudacion_Blanco;
+            this.btnRecaudacion.HoveredState.Parent = this.btnRecaudacion;
+            this.btnRecaudacion.Image = global::wfaIntegradoCom.Properties.Resources.refund_32px;
+            this.btnRecaudacion.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnRecaudacion.Location = new System.Drawing.Point(0, 55);
+            this.btnRecaudacion.Margin = new System.Windows.Forms.Padding(10);
+            this.btnRecaudacion.Name = "btnRecaudacion";
+            this.btnRecaudacion.Padding = new System.Windows.Forms.Padding(10);
+            this.btnRecaudacion.PressedColor = System.Drawing.Color.Aqua;
+            this.btnRecaudacion.ShadowDecoration.Parent = this.btnRecaudacion;
+            this.btnRecaudacion.Size = new System.Drawing.Size(310, 35);
+            this.btnRecaudacion.TabIndex = 2;
+            this.btnRecaudacion.Text = "Recaudación";
+            this.btnRecaudacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnRecaudacion.Click += new System.EventHandler(this.btnRecaudacion_Click);
+            // 
+            // subMenuVentas
+            // 
+            this.subMenuVentas.AutoSize = true;
+            this.subMenuVentas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.subMenuVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuVentas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subMenuVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuVentas.Location = new System.Drawing.Point(0, 35);
+            this.subMenuVentas.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuVentas.Name = "subMenuVentas";
+            this.subMenuVentas.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.subMenuVentas.ShadowDecoration.Parent = this.subMenuVentas;
+            this.subMenuVentas.Size = new System.Drawing.Size(310, 20);
+            this.subMenuVentas.TabIndex = 1;
+            this.subMenuVentas.Click += new System.EventHandler(this.subMenuVentas_Click);
+            // 
+            // btnVenta
+            // 
+            this.btnVenta.BackColor = System.Drawing.Color.White;
+            this.btnVenta.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnVenta.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnVenta.CheckedState.Parent = this.btnVenta;
+            this.btnVenta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVenta.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.btnVenta.CustomBorderThickness = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.btnVenta.CustomImages.Parent = this.btnVenta;
+            this.btnVenta.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnVenta.Enabled = false;
+            this.btnVenta.FillColor = System.Drawing.Color.Transparent;
+            this.btnVenta.Font = new System.Drawing.Font("Calibri", 12.75F);
+            this.btnVenta.ForeColor = System.Drawing.Color.Black;
+            this.btnVenta.HoveredState.Parent = this.btnVenta;
+            this.btnVenta.Image = global::wfaIntegradoCom.Properties.Resources.ventaBase_32;
+            this.btnVenta.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnVenta.Location = new System.Drawing.Point(0, 0);
+            this.btnVenta.Name = "btnVenta";
+            this.btnVenta.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnVenta.PressedColor = System.Drawing.Color.Aquamarine;
+            this.btnVenta.ShadowDecoration.Parent = this.btnVenta;
+            this.btnVenta.Size = new System.Drawing.Size(310, 35);
+            this.btnVenta.TabIndex = 0;
+            this.btnVenta.Text = "Ventas";
+            this.btnVenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnVenta.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.btnVenta.Click += new System.EventHandler(this.btnVenta_Click);
+            // 
+            // panelToosStrip
+            // 
+            this.panelToosStrip.Controls.Add(this.tsMenuPrincipal);
+            this.panelToosStrip.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelToosStrip.Location = new System.Drawing.Point(0, 0);
+            this.panelToosStrip.Name = "panelToosStrip";
+            this.panelToosStrip.ShadowDecoration.Parent = this.panelToosStrip;
+            this.panelToosStrip.Size = new System.Drawing.Size(313, 316);
+            this.panelToosStrip.TabIndex = 6;
+            // 
             // tsMenuPrincipal
             // 
             this.tsMenuPrincipal.AutoSize = false;
@@ -727,20 +1081,21 @@
             this.tsMenuPrincipal.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsMenuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbVenta,
-            this.tsbRecaudacion,
             this.tsbComercial,
             this.tsbLogistica,
             this.tsbSistemas,
             this.tsbRrHh,
             this.tsbConfiguracion,
-            this.tsbSoporte});
+            this.tsbSoporte,
+            this.tsbRecaudacion});
             this.tsMenuPrincipal.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.tsMenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.tsMenuPrincipal.Name = "tsMenuPrincipal";
-            this.tsMenuPrincipal.Size = new System.Drawing.Size(307, 202);
+            this.tsMenuPrincipal.Size = new System.Drawing.Size(313, 316);
             this.tsMenuPrincipal.Stretch = true;
             this.tsMenuPrincipal.TabIndex = 0;
             this.tsMenuPrincipal.Text = "ToolStrip1";
+            this.tsMenuPrincipal.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsMenuPrincipal_ItemClicked);
             // 
             // tsbVenta
             // 
@@ -754,22 +1109,10 @@
             this.tsbVenta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbVenta.Name = "tsbVenta";
             this.tsbVenta.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tsbVenta.Size = new System.Drawing.Size(305, 36);
+            this.tsbVenta.Size = new System.Drawing.Size(311, 36);
             this.tsbVenta.Text = "Ventas";
             this.tsbVenta.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.tsbVenta.Click += new System.EventHandler(this.tsbVenta_Click);
-            // 
-            // tsbRecaudacion
-            // 
-            this.tsbRecaudacion.Enabled = false;
-            this.tsbRecaudacion.Image = global::wfaIntegradoCom.Properties.Resources.refund_32px;
-            this.tsbRecaudacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbRecaudacion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbRecaudacion.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRecaudacion.Name = "tsbRecaudacion";
-            this.tsbRecaudacion.Size = new System.Drawing.Size(305, 36);
-            this.tsbRecaudacion.Text = "Recaudación";
-            this.tsbRecaudacion.Click += new System.EventHandler(this.tsbRecaudacion_Click);
             // 
             // tsbComercial
             // 
@@ -783,7 +1126,7 @@
             this.tsbComercial.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbComercial.Name = "tsbComercial";
             this.tsbComercial.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tsbComercial.Size = new System.Drawing.Size(305, 36);
+            this.tsbComercial.Size = new System.Drawing.Size(311, 36);
             this.tsbComercial.Text = "Comercial";
             this.tsbComercial.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.tsbComercial.Click += new System.EventHandler(this.tsbComercial_Click);
@@ -800,7 +1143,7 @@
             this.tsbLogistica.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLogistica.Name = "tsbLogistica";
             this.tsbLogistica.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tsbLogistica.Size = new System.Drawing.Size(305, 36);
+            this.tsbLogistica.Size = new System.Drawing.Size(311, 36);
             this.tsbLogistica.Text = "Logística";
             this.tsbLogistica.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.tsbLogistica.Click += new System.EventHandler(this.tsbLogistica_Click);
@@ -817,10 +1160,10 @@
             this.tsbSistemas.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSistemas.Name = "tsbSistemas";
             this.tsbSistemas.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tsbSistemas.Size = new System.Drawing.Size(305, 36);
+            this.tsbSistemas.Size = new System.Drawing.Size(311, 36);
             this.tsbSistemas.Text = "Sistemas";
             this.tsbSistemas.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.tsbSistemas.Click += new System.EventHandler(this.tsbSistemas_Click_1);
+            this.tsbSistemas.Click += new System.EventHandler(this.tsbSistemas_Click);
             // 
             // tsbRrHh
             // 
@@ -834,7 +1177,7 @@
             this.tsbRrHh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRrHh.Name = "tsbRrHh";
             this.tsbRrHh.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tsbRrHh.Size = new System.Drawing.Size(305, 36);
+            this.tsbRrHh.Size = new System.Drawing.Size(311, 36);
             this.tsbRrHh.Text = "RRHH";
             this.tsbRrHh.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.tsbRrHh.Click += new System.EventHandler(this.tsbRrHh_Click);
@@ -851,10 +1194,10 @@
             this.tsbConfiguracion.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbConfiguracion.Name = "tsbConfiguracion";
             this.tsbConfiguracion.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tsbConfiguracion.Size = new System.Drawing.Size(305, 36);
+            this.tsbConfiguracion.Size = new System.Drawing.Size(311, 36);
             this.tsbConfiguracion.Text = "Configuración";
             this.tsbConfiguracion.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.tsbConfiguracion.Click += new System.EventHandler(this.tsbSistemas_Click);
+            this.tsbConfiguracion.Click += new System.EventHandler(this.tsbConfiguracion_Click);
             // 
             // tsbSoporte
             // 
@@ -868,11 +1211,23 @@
             this.tsbSoporte.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSoporte.Name = "tsbSoporte";
             this.tsbSoporte.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tsbSoporte.Size = new System.Drawing.Size(305, 34);
+            this.tsbSoporte.Size = new System.Drawing.Size(311, 34);
             this.tsbSoporte.Text = "Soporte";
             this.tsbSoporte.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.tsbSoporte.ToolTipText = "Soporte";
             this.tsbSoporte.Click += new System.EventHandler(this.tsbSoporte_Click);
+            // 
+            // tsbRecaudacion
+            // 
+            this.tsbRecaudacion.Enabled = false;
+            this.tsbRecaudacion.Image = global::wfaIntegradoCom.Properties.Resources.refund_32px;
+            this.tsbRecaudacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbRecaudacion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbRecaudacion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRecaudacion.Name = "tsbRecaudacion";
+            this.tsbRecaudacion.Size = new System.Drawing.Size(311, 36);
+            this.tsbRecaudacion.Text = "Recaudación";
+            this.tsbRecaudacion.Click += new System.EventHandler(this.tsbRecaudacion_Click);
             // 
             // splitContainer1
             // 
@@ -883,9 +1238,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer4);
             this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
-            this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
             // 
             // splitContainer1.Panel2
             // 
@@ -893,14 +1247,96 @@
             this.splitContainer1.Panel2.Controls.Add(this.elhAlert);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip2);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip3);
-            this.splitContainer1.Size = new System.Drawing.Size(861, 431);
-            this.splitContainer1.SplitterDistance = 678;
+            this.splitContainer1.Size = new System.Drawing.Size(947, 554);
+            this.splitContainer1.SplitterDistance = 744;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.splitContainer4.Panel1.Controls.Add(this.Img_Husat_Negro);
+            this.splitContainer4.Panel1.Controls.Add(this.Img_Husat_Blanco);
+            this.splitContainer4.Panel1.Controls.Add(this.pictureBox3);
+            this.splitContainer4.Panel1MinSize = 0;
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.treeView1);
+            this.splitContainer4.Panel2MinSize = 0;
+            this.splitContainer4.Size = new System.Drawing.Size(740, 527);
+            this.splitContainer4.SplitterDistance = 33;
+            this.splitContainer4.TabIndex = 0;
+            // 
+            // Img_Husat_Negro
+            // 
+            this.Img_Husat_Negro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Img_Husat_Negro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Img_Husat_Negro.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO;
+            this.Img_Husat_Negro.Location = new System.Drawing.Point(0, 0);
+            this.Img_Husat_Negro.Name = "Img_Husat_Negro";
+            this.Img_Husat_Negro.Size = new System.Drawing.Size(740, 33);
+            this.Img_Husat_Negro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Img_Husat_Negro.TabIndex = 3;
+            this.Img_Husat_Negro.TabStop = false;
+            this.Img_Husat_Negro.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // Img_Husat_Blanco
+            // 
+            this.Img_Husat_Blanco.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Img_Husat_Blanco.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO__Blanco_sombra_color_;
+            this.Img_Husat_Blanco.Location = new System.Drawing.Point(0, 0);
+            this.Img_Husat_Blanco.Name = "Img_Husat_Blanco";
+            this.Img_Husat_Blanco.Size = new System.Drawing.Size(740, 33);
+            this.Img_Husat_Blanco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Img_Husat_Blanco.TabIndex = 4;
+            this.Img_Husat_Blanco.TabStop = false;
+            this.Img_Husat_Blanco.Click += new System.EventHandler(this.pictureBox5_Click_);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox3.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO;
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(740, 33);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            // 
+            // treeView1
+            // 
+            this.treeView1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.treeView1.FullRowSelect = true;
+            this.treeView1.HideSelection = false;
+            this.treeView1.ImageIndex = 3;
+            this.treeView1.ImageList = this.ListaImagenes;
+            this.treeView1.LineColor = System.Drawing.Color.WhiteSmoke;
+            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(10);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.treeView1.SelectedImageIndex = 4;
+            this.treeView1.ShowNodeToolTips = true;
+            this.treeView1.Size = new System.Drawing.Size(740, 490);
+            this.treeView1.TabIndex = 5;
+            this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
+            this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 404);
+            this.splitContainer2.Location = new System.Drawing.Point(0, 527);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -910,8 +1346,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tlsStatus);
-            this.splitContainer2.Size = new System.Drawing.Size(674, 23);
-            this.splitContainer2.SplitterDistance = 521;
+            this.splitContainer2.Size = new System.Drawing.Size(740, 23);
+            this.splitContainer2.SplitterDistance = 571;
             this.splitContainer2.TabIndex = 7;
             // 
             // statusStrip1
@@ -924,7 +1360,7 @@
             this.toolStripStatusLabel4});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(521, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(571, 23);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "StatusStrip1";
             // 
@@ -979,7 +1415,7 @@
             this.tlsStatus.Location = new System.Drawing.Point(0, 0);
             this.tlsStatus.Name = "tlsStatus";
             this.tlsStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tlsStatus.Size = new System.Drawing.Size(149, 25);
+            this.tlsStatus.Size = new System.Drawing.Size(165, 25);
             this.tlsStatus.TabIndex = 0;
             this.tlsStatus.Text = "toolStrip4";
             // 
@@ -991,46 +1427,12 @@
             this.tsbSignalr.Name = "tsbSignalr";
             this.tsbSignalr.Size = new System.Drawing.Size(23, 22);
             // 
-            // treeView1
-            // 
-            this.treeView1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.treeView1.FullRowSelect = true;
-            this.treeView1.HideSelection = false;
-            this.treeView1.ImageIndex = 0;
-            this.treeView1.ImageList = this.ListaImagenes;
-            this.treeView1.LineColor = System.Drawing.Color.WhiteSmoke;
-            this.treeView1.Location = new System.Drawing.Point(0, 25);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(10);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(674, 402);
-            this.treeView1.TabIndex = 5;
-            this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
-            this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.BackColor = System.Drawing.Color.Gainsboro;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(674, 25);
-            this.toolStrip1.Stretch = true;
-            this.toolStrip1.TabIndex = 4;
-            this.toolStrip1.Text = "ToolStrip1";
-            // 
             // elhAlert
             // 
             this.elhAlert.Dock = System.Windows.Forms.DockStyle.Fill;
             this.elhAlert.Location = new System.Drawing.Point(0, 0);
             this.elhAlert.Name = "elhAlert";
-            this.elhAlert.Size = new System.Drawing.Size(175, 427);
+            this.elhAlert.Size = new System.Drawing.Size(195, 550);
             this.elhAlert.TabIndex = 13;
             this.elhAlert.Text = "elhAlert";
             this.elhAlert.Child = this.ucOpcion1;
@@ -1131,10 +1533,10 @@
             this.pnlCerrarSession.BackColor = System.Drawing.Color.White;
             this.pnlCerrarSession.Controls.Add(this.siticonePanel1);
             this.pnlCerrarSession.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlCerrarSession.Location = new System.Drawing.Point(1024, 51);
+            this.pnlCerrarSession.Location = new System.Drawing.Point(1132, 57);
             this.pnlCerrarSession.Name = "pnlCerrarSession";
             this.pnlCerrarSession.ShadowDecoration.Parent = this.pnlCerrarSession;
-            this.pnlCerrarSession.Size = new System.Drawing.Size(152, 431);
+            this.pnlCerrarSession.Size = new System.Drawing.Size(152, 554);
             this.pnlCerrarSession.TabIndex = 14;
             this.pnlCerrarSession.Visible = false;
             // 
@@ -1171,6 +1573,7 @@
             // tsPerfil
             // 
             this.tsPerfil.BackColor = System.Drawing.Color.Transparent;
+            this.tsPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tsPerfil.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsPerfil.ForeColor = System.Drawing.Color.Black;
             this.tsPerfil.Image = global::wfaIntegradoCom.Properties.Resources.user_perfil;
@@ -1197,15 +1600,205 @@
             this.tsCerrarSession.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.tsCerrarSession.Click += new System.EventHandler(this.tsCerrarSession_Click);
             // 
+            // miniToolStrip
+            // 
+            this.miniToolStrip.AccessibleName = "Selección de nuevo elemento";
+            this.miniToolStrip.AccessibleRole = System.Windows.Forms.AccessibleRole.ButtonDropDown;
+            this.miniToolStrip.AutoSize = false;
+            this.miniToolStrip.BackColor = System.Drawing.Color.White;
+            this.miniToolStrip.CanOverflow = false;
+            this.miniToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.miniToolStrip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.miniToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.miniToolStrip.Location = new System.Drawing.Point(1, 124);
+            this.miniToolStrip.Name = "miniToolStrip";
+            this.miniToolStrip.Size = new System.Drawing.Size(851, 69);
+            this.miniToolStrip.Stretch = true;
+            this.miniToolStrip.TabIndex = 4;
+            // 
+            // tsConfiguracion
+            // 
+            this.tsConfiguracion.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsConfiguracion.ForeColor = System.Drawing.Color.Black;
+            this.tsConfiguracion.Image = global::wfaIntegradoCom.Properties.Resources.acceso_32;
+            this.tsConfiguracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsConfiguracion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsConfiguracion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsConfiguracion.Name = "tsConfiguracion";
+            this.tsConfiguracion.Size = new System.Drawing.Size(98, 54);
+            this.tsConfiguracion.Text = "Accesos";
+            this.tsConfiguracion.Visible = false;
+            // 
+            // tsSistemas
+            // 
+            this.tsSistemas.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsSistemas.ForeColor = System.Drawing.Color.Black;
+            this.tsSistemas.Image = global::wfaIntegradoCom.Properties.Resources.user_32;
+            this.tsSistemas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsSistemas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsSistemas.Name = "tsSistemas";
+            this.tsSistemas.Size = new System.Drawing.Size(102, 54);
+            this.tsSistemas.Text = "Usuarios";
+            this.tsSistemas.Visible = false;
+            // 
+            // tsVenta
+            // 
+            this.tsVenta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsVenta.ForeColor = System.Drawing.Color.Black;
+            this.tsVenta.Image = global::wfaIntegradoCom.Properties.Resources.tipoVenta_32;
+            this.tsVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsVenta.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsVenta.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsVenta.Name = "tsVenta";
+            this.tsVenta.Size = new System.Drawing.Size(134, 54);
+            this.tsVenta.Text = "Tipo de Venta";
+            this.tsVenta.Visible = false;
+            // 
+            // tsCaja
+            // 
+            this.tsCaja.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsCaja.ForeColor = System.Drawing.Color.Black;
+            this.tsCaja.Image = global::wfaIntegradoCom.Properties.Resources.cadreCaja_32;
+            this.tsCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsCaja.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsCaja.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCaja.Name = "tsCaja";
+            this.tsCaja.Size = new System.Drawing.Size(124, 54);
+            this.tsCaja.Text = "Cuadre Caja";
+            this.tsCaja.Visible = false;
+            // 
+            // tsCompra
+            // 
+            this.tsCompra.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsCompra.ForeColor = System.Drawing.Color.Black;
+            this.tsCompra.Image = global::wfaIntegradoCom.Properties.Resources.compra_32;
+            this.tsCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsCompra.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsCompra.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCompra.Name = "tsCompra";
+            this.tsCompra.Size = new System.Drawing.Size(102, 54);
+            this.tsCompra.Text = "Compras";
+            this.tsCompra.Visible = false;
+            // 
+            // tsTraslado
+            // 
+            this.tsTraslado.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsTraslado.ForeColor = System.Drawing.Color.Black;
+            this.tsTraslado.Image = global::wfaIntegradoCom.Properties.Resources.compras_32;
+            this.tsTraslado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsTraslado.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsTraslado.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsTraslado.Name = "tsTraslado";
+            this.tsTraslado.Size = new System.Drawing.Size(100, 54);
+            this.tsTraslado.Text = "Traslado";
+            this.tsTraslado.Visible = false;
+            // 
+            // tsExtorna
+            // 
+            this.tsExtorna.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsExtorna.ForeColor = System.Drawing.Color.Black;
+            this.tsExtorna.Image = global::wfaIntegradoCom.Properties.Resources.devoluciones_32;
+            this.tsExtorna.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsExtorna.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsExtorna.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsExtorna.Name = "tsExtorna";
+            this.tsExtorna.Size = new System.Drawing.Size(132, 54);
+            this.tsExtorna.Text = "Devoluciones";
+            this.tsExtorna.Visible = false;
+            // 
+            // tsCerraSession
+            // 
+            this.tsCerraSession.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsCerraSession.Image = global::wfaIntegradoCom.Properties.Resources.usser;
+            this.tsCerraSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsCerraSession.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsCerraSession.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCerraSession.Name = "tsCerraSession";
+            this.tsCerraSession.Size = new System.Drawing.Size(145, 54);
+            this.tsCerraSession.Text = "Cerrar Session";
+            this.tsCerraSession.Visible = false;
+            this.tsCerraSession.Click += new System.EventHandler(this.tsCerraSession_Click);
+            // 
+            // tsDeuda
+            // 
+            this.tsDeuda.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsDeuda.ForeColor = System.Drawing.Color.Black;
+            this.tsDeuda.Image = global::wfaIntegradoCom.Properties.Resources.deuda_32;
+            this.tsDeuda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsDeuda.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsDeuda.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsDeuda.Name = "tsDeuda";
+            this.tsDeuda.Size = new System.Drawing.Size(94, 54);
+            this.tsDeuda.Text = "Deudas";
+            this.tsDeuda.Visible = false;
+            // 
+            // tsBtnn
+            // 
+            this.tsBtnn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsBtnn.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnn.Image")));
+            this.tsBtnn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnn.Name = "tsBtnn";
+            this.tsBtnn.Size = new System.Drawing.Size(23, 54);
+            // 
+            // tsConsulta
+            // 
+            this.tsConsulta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsConsulta.ForeColor = System.Drawing.Color.Black;
+            this.tsConsulta.Image = global::wfaIntegradoCom.Properties.Resources.consultar_32;
+            this.tsConsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsConsulta.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsConsulta.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsConsulta.Name = "tsConsulta";
+            this.tsConsulta.Size = new System.Drawing.Size(107, 54);
+            this.tsConsulta.Text = "Consultar";
+            this.tsConsulta.Visible = false;
+            // 
+            // PanelEncavezadoFondo
+            // 
+            this.PanelEncavezadoFondo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.PanelEncavezadoFondo.Controls.Add(this.tsAccesoRapido);
+            this.PanelEncavezadoFondo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelEncavezadoFondo.Location = new System.Drawing.Point(0, 0);
+            this.PanelEncavezadoFondo.Name = "PanelEncavezadoFondo";
+            this.PanelEncavezadoFondo.ShadowDecoration.Parent = this.PanelEncavezadoFondo;
+            this.PanelEncavezadoFondo.Size = new System.Drawing.Size(1284, 57);
+            this.PanelEncavezadoFondo.TabIndex = 16;
+            // 
+            // tsAccesoRapido
+            // 
+            this.tsAccesoRapido.AutoSize = false;
+            this.tsAccesoRapido.BackColor = System.Drawing.Color.White;
+            this.tsAccesoRapido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tsAccesoRapido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsAccesoRapido.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tsAccesoRapido.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsConfiguracion,
+            this.tsSistemas,
+            this.tsVenta,
+            this.tsCaja,
+            this.tsCompra,
+            this.tsTraslado,
+            this.tsExtorna,
+            this.tsCerraSession,
+            this.tsDeuda,
+            this.tsBtnn,
+            this.tsConsulta});
+            this.tsAccesoRapido.Location = new System.Drawing.Point(0, 0);
+            this.tsAccesoRapido.Name = "tsAccesoRapido";
+            this.tsAccesoRapido.Size = new System.Drawing.Size(1284, 57);
+            this.tsAccesoRapido.Stretch = true;
+            this.tsAccesoRapido.TabIndex = 4;
+            this.tsAccesoRapido.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsAccesoRapido_ItemClicked);
+            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1176, 482);
+            this.ClientSize = new System.Drawing.Size(1284, 611);
             this.Controls.Add(this.pnlCerrarSession);
             this.Controls.Add(this.SplitCentro);
             this.Controls.Add(this.SplitDerecho);
-            this.Controls.Add(this.tsAccesoRapido);
+            this.Controls.Add(this.PanelEncavezadoFondo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -1214,8 +1807,6 @@
             this.Text = "SISTEMA DE GESTION COMERCIAL";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MDIParent1_Load);
-            this.tsAccesoRapido.ResumeLayout(false);
-            this.tsAccesoRapido.PerformLayout();
             this.SplitDerecho.Panel1.ResumeLayout(false);
             this.SplitDerecho.Panel1.PerformLayout();
             this.SplitDerecho.Panel2.ResumeLayout(false);
@@ -1234,19 +1825,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.SplitCentro)).EndInit();
             this.SplitCentro.ResumeLayout(false);
             this.SplitIzquierdo.Panel1.ResumeLayout(false);
+            this.SplitIzquierdo.Panel1.PerformLayout();
             this.SplitIzquierdo.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SplitIzquierdo)).EndInit();
             this.SplitIzquierdo.ResumeLayout(false);
             this.tsTituloMenuIzquierdo.ResumeLayout(false);
             this.tsTituloMenuIzquierdo.PerformLayout();
+            this.panelBotones.ResumeLayout(false);
+            this.panelBotones.PerformLayout();
+            this.panelToosStrip.ResumeLayout(false);
             this.tsMenuPrincipal.ResumeLayout(false);
             this.tsMenuPrincipal.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Negro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Blanco)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -1265,15 +1866,15 @@
             this.siticonePanel1.ResumeLayout(false);
             this.toolStrip4.ResumeLayout(false);
             this.toolStrip4.PerformLayout();
+            this.PanelEncavezadoFondo.ResumeLayout(false);
+            this.tsAccesoRapido.ResumeLayout(false);
+            this.tsAccesoRapido.PerformLayout();
             this.ResumeLayout(false);
 
         }
         #endregion
 
         private System.Windows.Forms.ToolTip toolTip;
-        internal System.Windows.Forms.ToolStrip tsAccesoRapido;
-        internal System.Windows.Forms.ToolStripButton tsConfiguracion;
-        internal System.Windows.Forms.ToolStripButton tsSistemas;
         internal System.Windows.Forms.SplitContainer SplitDerecho;
         internal System.Windows.Forms.StatusStrip ssBarraInferiorMenu;
         internal System.Windows.Forms.ToolStripStatusLabel tsslUsuario;
@@ -1311,8 +1912,6 @@
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
-        internal System.Windows.Forms.TreeView treeView1;
-        internal System.Windows.Forms.ToolStrip toolStrip1;
         internal System.Windows.Forms.ToolStrip toolStrip2;
         internal System.Windows.Forms.ToolStripLabel toolStripLabel1;
         internal System.Windows.Forms.ToolStripButton toolStripButton1;
@@ -1322,13 +1921,6 @@
         internal System.Windows.Forms.ToolStripButton toolStripButton3;
         internal System.Windows.Forms.ToolStripButton toolStripButton4;
         internal System.Windows.Forms.ImageList ListaImagenes;
-        internal System.Windows.Forms.ToolStripButton tsCaja;
-        internal System.Windows.Forms.ToolStripButton tsVenta;
-        internal System.Windows.Forms.ToolStripButton tsCompra;
-        internal System.Windows.Forms.ToolStripButton tsTraslado;
-        internal System.Windows.Forms.ToolStripButton tsExtorna;
-        private System.Windows.Forms.ToolStripButton tsConsulta;
-        private System.Windows.Forms.ToolStripButton tsDeuda;
         private System.Windows.Forms.Integration.ElementHost elhAlert;
         private WPF.CTRL.Colocaciones.ucOpcion ucOpcion1;
         private System.Windows.Forms.SplitContainer splitContainer2;
@@ -1341,14 +1933,53 @@
         private System.Windows.Forms.ToolStripButton tsbSistemas;
         private System.Windows.Forms.ToolStripButton tsbRrHh;
         private System.Windows.Forms.ToolStripButton tsbSoporte;
-        private System.Windows.Forms.ToolStripButton tsBtnn;
-        private System.Windows.Forms.ToolStripButton tsCerraSession;
         private Siticone.UI.WinForms.SiticonePanel pnlCerrarSession;
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
         internal System.Windows.Forms.ToolStrip toolStrip4;
         private System.Windows.Forms.ToolStripButton tsPerfil;
         private System.Windows.Forms.ToolStripButton tsCerrarSession;
         private System.Windows.Forms.ToolStripButton tsbRecaudacion;
+        internal System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ToolStrip miniToolStrip;
+        internal System.Windows.Forms.ToolStripButton tsConfiguracion;
+        internal System.Windows.Forms.ToolStripButton tsSistemas;
+        internal System.Windows.Forms.ToolStripButton tsVenta;
+        internal System.Windows.Forms.ToolStripButton tsCaja;
+        internal System.Windows.Forms.ToolStripButton tsCompra;
+        internal System.Windows.Forms.ToolStripButton tsTraslado;
+        internal System.Windows.Forms.ToolStripButton tsExtorna;
+        private System.Windows.Forms.ToolStripButton tsCerraSession;
+        private System.Windows.Forms.ToolStripButton tsDeuda;
+        private System.Windows.Forms.ToolStripButton tsBtnn;
+        private System.Windows.Forms.ToolStripButton tsConsulta;
+        private Siticone.UI.WinForms.SiticonePanel PanelEncavezadoFondo;
+        internal System.Windows.Forms.ToolStrip tsAccesoRapido;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.PictureBox Img_Husat_Negro;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox Img_Husat_Blanco;
+        private Siticone.UI.WinForms.SiticoneButton btnPanel1;
+        private Siticone.UI.WinForms.SiticoneButton btnPanel2;
+        private Siticone.UI.WinForms.SiticonePanel panelBotones;
+        private Siticone.UI.WinForms.SiticonePanel subMenuConfiguracion;
+        private Siticone.UI.WinForms.SiticoneButton btnConfiguracion;
+        private Siticone.UI.WinForms.SiticonePanel subMenuRrhh;
+        private Siticone.UI.WinForms.SiticoneButton btnRrhh;
+        private Siticone.UI.WinForms.SiticonePanel subMenuSistemas;
+        private Siticone.UI.WinForms.SiticoneButton btnSistemas;
+        private Siticone.UI.WinForms.SiticonePanel subMenuLogistica;
+        private Siticone.UI.WinForms.SiticoneButton btnLogistica;
+        private Siticone.UI.WinForms.SiticonePanel subMenuComercial;
+        private Siticone.UI.WinForms.SiticoneButton btnComercial;
+        private Siticone.UI.WinForms.SiticonePanel subMenuRecaudacion;
+        private Siticone.UI.WinForms.SiticoneButton btnRecaudacion;
+        private Siticone.UI.WinForms.SiticonePanel subMenuVentas;
+        private Siticone.UI.WinForms.SiticoneButton btnVenta;
+        private Siticone.UI.WinForms.SiticonePanel subMenuSoporte;
+        private Siticone.UI.WinForms.SiticoneButton btnSoporte;
+        private Siticone.UI.WinForms.SiticonePanel panelToosStrip;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel1;
+        private Siticone.UI.WinForms.SiticoneToggleSwitch SwitchMenus;
     }
 }
 

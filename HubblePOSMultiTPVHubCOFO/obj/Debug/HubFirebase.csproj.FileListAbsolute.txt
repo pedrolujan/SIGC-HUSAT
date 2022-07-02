@@ -28,3 +28,63 @@ D:\SISTEMA-HUSAT\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.CopyCompl
 D:\SISTEMA-HUSAT\HubblePOSMultiTPVHubCOFO\obj\Debug\HubblePOSMultiTPVHubCOFO.dll
 D:\SISTEMA-HUSAT\HubblePOSMultiTPVHubCOFO\obj\Debug\HubblePOSMultiTPVHubCOFO.pdb
 D:\SISTEMA-HUSAT\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\HubblePOSMultiTPVHubCOFO.dll.config
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\HubblePOSMultiTPVHubCOFO.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\HubblePOSMultiTPVHubCOFO.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Firebase.Auth.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Firebase.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\LiteDB.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Cors.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Security.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Newtonsoft.Json.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Owin.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Reactive.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Web.Cors.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Firebase.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\LiteDB.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.AspNet.SignalR.Core.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Cors.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Security.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\Newtonsoft.Json.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Reactive.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.AssemblyReference.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.CoreCompileInputs.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.CopyComplete
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\obj\Debug\HubblePOSMultiTPVHubCOFO.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\HubblePOSMultiTPVHubCOFO\obj\Debug\HubblePOSMultiTPVHubCOFO.pdb
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\HubblePOSMultiTPVHubCOFO.dll.config
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\HubblePOSMultiTPVHubCOFO.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\HubblePOSMultiTPVHubCOFO.pdb
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Firebase.Auth.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Firebase.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\LiteDB.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Cors.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Security.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Newtonsoft.Json.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Owin.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Reactive.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Web.Cors.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Firebase.xml
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\LiteDB.xml
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.AspNet.SignalR.Core.pdb
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.xml
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Cors.xml
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Security.xml
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\Newtonsoft.Json.xml
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\System Husat\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Reactive.xml
+D:\System Husat\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.AssemblyReference.cache
+D:\System Husat\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.CoreCompileInputs.cache
+D:\System Husat\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.CopyComplete
+D:\System Husat\HubblePOSMultiTPVHubCOFO\obj\Debug\HubblePOSMultiTPVHubCOFO.dll
+D:\System Husat\HubblePOSMultiTPVHubCOFO\obj\Debug\HubblePOSMultiTPVHubCOFO.pdb

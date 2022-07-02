@@ -14,3 +14,35 @@ D:\SISTEMA-HUSAT\CapaDato\bin\Debug\CapaUtil.pdb
 D:\SISTEMA-HUSAT\CapaDato\obj\Debug\CapaDato.csproj.CopyComplete
 D:\SISTEMA-HUSAT\CapaDato\obj\Debug\CapaDato.dll
 D:\SISTEMA-HUSAT\CapaDato\obj\Debug\CapaDato.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\CapaDato.dll.config
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\CapaDato.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\CapaDato.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\CapaConexion.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\CapaEntidad.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\CapaUtil.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\Encripta.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\Siticone.UI.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\CapaConexion.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\CapaEntidad.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\bin\Debug\CapaUtil.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\obj\Debug\CapaDato.csproj.AssemblyReference.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\obj\Debug\CapaDato.csproj.CoreCompileInputs.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\obj\Debug\CapaDato.csproj.CopyComplete
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\obj\Debug\CapaDato.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\CapaDato\obj\Debug\CapaDato.pdb
+D:\System Husat\CapaDato\bin\Debug\CapaDato.dll.config
+D:\System Husat\CapaDato\bin\Debug\CapaDato.dll
+D:\System Husat\CapaDato\bin\Debug\CapaDato.pdb
+D:\System Husat\CapaDato\bin\Debug\CapaConexion.dll
+D:\System Husat\CapaDato\bin\Debug\CapaEntidad.dll
+D:\System Husat\CapaDato\bin\Debug\CapaUtil.dll
+D:\System Husat\CapaDato\bin\Debug\Encripta.dll
+D:\System Husat\CapaDato\bin\Debug\Siticone.UI.dll
+D:\System Husat\CapaDato\bin\Debug\CapaConexion.pdb
+D:\System Husat\CapaDato\bin\Debug\CapaEntidad.pdb
+D:\System Husat\CapaDato\bin\Debug\CapaUtil.pdb
+D:\System Husat\CapaDato\obj\Debug\CapaDato.csproj.AssemblyReference.cache
+D:\System Husat\CapaDato\obj\Debug\CapaDato.csproj.CoreCompileInputs.cache
+D:\System Husat\CapaDato\obj\Debug\CapaDato.csproj.CopyComplete
+D:\System Husat\CapaDato\obj\Debug\CapaDato.dll
+D:\System Husat\CapaDato\obj\Debug\CapaDato.pdb

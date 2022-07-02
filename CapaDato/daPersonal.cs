@@ -57,11 +57,11 @@ namespace CapaDato
             }
         }
 
-        public List<Personal> daBuscarPersonal(String pcBuscar, Int16 pnTipoCon)
+        public List<Personal> daBuscarPersonal(Int32 NumPagina, String pcBuscar, Int32 pnTipoCon)
         {
 
 
-            SqlParameter[] pa = new SqlParameter[2];
+            SqlParameter[] pa = new SqlParameter[3];
             DataTable dtUsuario = new DataTable();
             clsConexion objCnx = null;
             List<Personal> lstPersonal = null;
@@ -72,8 +72,10 @@ namespace CapaDato
 
                 pa[0] = new SqlParameter("@pecValorBuscar", SqlDbType.VarChar, 50);
                 pa[0].Value = pcBuscar;
-                pa[1] = new SqlParameter("@peiTipoCon", SqlDbType.TinyInt);
+                pa[1] = new SqlParameter("@peiTipoCon", SqlDbType.Int);
                 pa[1].Value = pnTipoCon;
+                pa[2] = new SqlParameter("@pePagina", SqlDbType.Int);
+                pa[2].Value = NumPagina;
 
 
                 objCnx = new clsConexion("");
@@ -82,8 +84,14 @@ namespace CapaDato
                 lstPersonal = new List<Personal>();
                 foreach (DataRow drMenu in dtUsuario.Rows)
                 {
-                    lstPersonal.Add(new Personal(Convert.ToInt32(drMenu["idPersonal"]), Convert.ToString(drMenu["cPersonal"]),
-                           Convert.ToString(drMenu["cDocumento"])));
+                    lstPersonal.Add(new Personal(
+
+                        Convert.ToInt32(drMenu["idPersonal"]), 
+                        Convert.ToString(drMenu["cPersonal"]),
+                        Convert.ToString(drMenu["cDocumento"]),
+                        Convert.ToInt32(drMenu["ROW_COUNT"])
+                        
+                        ));
                 }
 
                 return lstPersonal;

@@ -61,3 +61,129 @@ D:\SISTEMA-HUSAT\repsol-peru-tpv-selfervice\obj\Debug\selferviceSIGC.csproj.Core
 D:\SISTEMA-HUSAT\repsol-peru-tpv-selfervice\obj\Debug\selferviceSIGC.csproj.CopyComplete
 D:\SISTEMA-HUSAT\repsol-peru-tpv-selfervice\obj\Debug\repsol-peru-tpv-selfervice.dll
 D:\SISTEMA-HUSAT\repsol-peru-tpv-selfervice\obj\Debug\repsol-peru-tpv-selfervice.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\repsol-peru-tpv-selfervice.dll.config
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\repsol-peru-tpv-selfervice.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\repsol-peru-tpv-selfervice.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Autofac.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.Owin.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.WebApi.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.WebApi.Owin.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\CapaConexion.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\HubblePOSMultiTPVHubCOFO.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Cors.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Diagnostics.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Host.HttpListener.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Hosting.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Security.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\ModulePrinting.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Newtonsoft.Json.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Owin.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Net.Http.Formatting.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Cors.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.Cors.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.Owin.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Encripta.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Firebase.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Firebase.Auth.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Reactive.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\HubblePOSPrintModule.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\LiteDB.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\CapaConexion.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\HubblePOSMultiTPVHubCOFO.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\HubblePOSMultiTPVHubCOFO.dll.config
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\ModulePrinting.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Autofac.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.Owin.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.WebApi.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.WebApi.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.WebApi.Owin.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Client.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Core.pdb
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Cors.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Diagnostics.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Host.HttpListener.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Hosting.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Security.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Newtonsoft.Json.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Net.Http.Formatting.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.Cors.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.Owin.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\Firebase.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\System.Reactive.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\bin\Debug\LiteDB.xml
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\obj\Debug\selferviceSIGC.csproj.AssemblyReference.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\obj\Debug\selferviceSIGC.csproj.CoreCompileInputs.cache
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\obj\Debug\selferviceSIGC.csproj.CopyComplete
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\obj\Debug\repsol-peru-tpv-selfervice.dll
+D:\EDWAR\SYSTEM HUSAT EDWAR\repsol-peru-tpv-selfervice\obj\Debug\repsol-peru-tpv-selfervice.pdb
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\repsol-peru-tpv-selfervice.dll.config
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\repsol-peru-tpv-selfervice.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\repsol-peru-tpv-selfervice.pdb
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Autofac.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.Owin.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.WebApi.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.WebApi.Owin.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\CapaConexion.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\HubblePOSMultiTPVHubCOFO.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Cors.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Diagnostics.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Host.HttpListener.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Hosting.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Security.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\ModulePrinting.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Newtonsoft.Json.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Owin.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Net.Http.Formatting.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Cors.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.Cors.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.Owin.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Encripta.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Firebase.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Firebase.Auth.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Reactive.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\HubblePOSPrintModule.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\LiteDB.dll
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\CapaConexion.pdb
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\HubblePOSMultiTPVHubCOFO.pdb
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\HubblePOSMultiTPVHubCOFO.dll.config
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\ModulePrinting.pdb
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Autofac.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.Owin.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.WebApi.pdb
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.WebApi.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Autofac.Integration.WebApi.Owin.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Client.pdb
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Core.pdb
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Cors.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Diagnostics.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Host.HttpListener.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Hosting.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Microsoft.Owin.Security.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Newtonsoft.Json.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Net.Http.Formatting.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.Cors.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Web.Http.Owin.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\Firebase.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\System.Reactive.xml
+D:\System Husat\repsol-peru-tpv-selfervice\bin\Debug\LiteDB.xml
+D:\System Husat\repsol-peru-tpv-selfervice\obj\Debug\selferviceSIGC.csproj.AssemblyReference.cache
+D:\System Husat\repsol-peru-tpv-selfervice\obj\Debug\selferviceSIGC.csproj.CoreCompileInputs.cache
+D:\System Husat\repsol-peru-tpv-selfervice\obj\Debug\selferviceSIGC.csproj.CopyComplete
+D:\System Husat\repsol-peru-tpv-selfervice\obj\Debug\repsol-peru-tpv-selfervice.dll
+D:\System Husat\repsol-peru-tpv-selfervice\obj\Debug\repsol-peru-tpv-selfervice.pdb

@@ -21,6 +21,7 @@ namespace wfaIntegradoCom.Mantenedores
             InitializeComponent();
         }
 
+        static Int32 tabInicio;
         Int16 lnTipoCon = 0;
 
         private Boolean fnLLenarCargo()
@@ -147,6 +148,7 @@ namespace wfaIntegradoCom.Mantenedores
             gbEmpleado.Enabled = pbHabilitar;
             gbUbigeo.Enabled = pbHabilitar;
             saveToolStripButton.Enabled = pbHabilitar;
+           
         }
 
         private void fnLimpiarControles()
@@ -166,44 +168,90 @@ namespace wfaIntegradoCom.Mantenedores
             cboProvincia.SelectedIndex = -1;
             cboDistrito.SelectedIndex = -1;
             txtBuscarEmpleado.Text = "";
+            gbPaginacion.Enabled = true;
+            lvempleado.Visible = false;
             epUsuario.Clear();
             epControlOk.Clear();
             txtBuscarEmpleado.Focus();
+
         }
 
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
             lnTipoCon = 0;
             fnHabilitarControles(true);
+
             fnLimpiarControles();
+            gbPaginacion.Enabled = false;
         }
 
-        private Boolean fnBuscarEmpleado(String pcBuscar, Int16 pnTipoCon)
+        private Boolean fnBuscarEmpleado(Int32 NumPagina, Int32 pnTipoCon)
         {
             BLPersonal objPers = new BLPersonal();
+            
+            DataTable datPersonal = new DataTable();
             Boolean pbhabilitaLista = false;
 
+            String pcBuscar = txtBuscarEmpleado.Text;
 
             clsUtil objUtil = new clsUtil();
             List<Personal> lsPersonal = null;
             ListViewItem lstItem = null;
+        
+            Int32 filas = 10;
+           
+            
             try
             {
 
                 lsPersonal = new List<Personal>();
-                lsPersonal = objPers.blBuscarPersonal(pcBuscar, pnTipoCon);
-                lvempleado.Items.Clear();
-                foreach (Personal objPersona in lsPersonal)
+                lsPersonal = objPers.blBuscarPersonal(NumPagina ,pcBuscar, pnTipoCon);
+                lvempleado.Rows.Clear();
+                Int32 totalResultados = lsPersonal.Count;
+                if (lsPersonal.Count > 0)
                 {
-                    lstItem = lvempleado.Items.Add(objPersona.idPersonal.ToString());
-                    lstItem.SubItems.Add(objPersona.cPersonal);
-                    lstItem.SubItems.Add(objPersona.cDocumento);
-                    pbhabilitaLista = true;
-                }
 
-                lvempleado.Visible = pbhabilitaLista;
+                    String estado = "";
+                    Int32 y;
+                    if (NumPagina == 0)
+                    {
+                        y = 0;
+                    }
+                    else
+                    {
+                        tabInicio = (NumPagina - 1) * filas;
+                        y = tabInicio;
+                    }
+                    foreach (Personal objPersona in lsPersonal)
+                    {
+                        lvempleado.Rows.Add(objPersona.idPersonal.ToString(), objPersona.cPersonal, objPersona.cDocumento);
+
+                        pbhabilitaLista = true;
+                    }
+                    if (NumPagina == 0)
+                    {
+                        gbPaginacion.Visible = true;
+                        Int32 totalRegistros = Convert.ToInt32(lsPersonal[0].TotalRows);
+                        FunValidaciones.fnCalcularPaginacion(
+                            totalRegistros,
+                            filas,
+                            totalResultados,
+                            cboPaginacion,
+                            btnTotalPaginas,
+                            btnNumFilas,
+                            btnTotalReg
+                        );
+                    }
+                    
+                    btnNumFilas.Text = Convert.ToString(lsPersonal.Count);
+
+                    lvempleado.Visible = true;
+                }
                 return true;
             }
+
+            
+
             catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("frmEmpleado", "fnBuscarEmpleado", ex.Message);
@@ -220,30 +268,14 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void txtBuscarEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (Char)Keys.Enter)
+            if (e.KeyChar==(char)Keys.Enter)
             {
-                Int16 pnTipocon = 0;
-                Boolean bResul = false;
 
-                if (rbCodigo.Checked == true)
-                {
+                gbPaginacion.Enabled = true;
+                gbEmpleado.Enabled = false;
+                gbUbigeo.Enabled = false;
+                fnBuscarEmpleado(0, 0);
 
-                    pnTipocon = 0;
-                }
-                else if (rbRazon.Checked == true)
-                {
-                    pnTipocon = 1;
-                }
-                else if (rbDoc.Checked == true)
-                {
-                    pnTipocon = 2;
-                }
-
-                bResul = fnBuscarEmpleado(txtBuscarEmpleado.Text.Trim(), pnTipocon);
-                if (!bResul)
-                {
-                    MessageBox.Show("Error al Buscar Empleado. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
             }
         }
 
@@ -253,13 +285,15 @@ namespace wfaIntegradoCom.Mantenedores
             try
             {
 
-                if (lvempleado.Items.Count > 0)
+                if (lvempleado.Rows.Count > 0)
                 {
                     BLPersonal objPers = new BLPersonal();
                     Personal[] lstPers = new Personal[1];
 
-                    ListView.SelectedListViewItemCollection item = lvempleado.SelectedItems;
-                    lstPers = objPers.blListarPersonal(Convert.ToInt32(item[0].SubItems[0].Text)).ToArray();
+                    //ListView.SelectedListViewItemCollection item = lvempleado.SelectedItems;
+
+                    Int32 idPersonal = Convert.ToInt32(lvempleado.CurrentRow.Cells[0].Value);
+                    lstPers = objPers.blListarPersonal(idPersonal).ToArray();
                     txtIdPersonal.Text = Convert.ToString(lstPers[0].idPersonal);
                     txtApePat.Text = Convert.ToString(lstPers[0].cApePat);
                     txtApeMat.Text = Convert.ToString(lstPers[0].cApeMat);
@@ -276,6 +310,11 @@ namespace wfaIntegradoCom.Mantenedores
                     cboDistrito.Text = Convert.ToString(lstPers[0].cNomDist.Trim());
                     lvempleado.Visible = false;
                     fnHabilitarControles(true);
+                    gbPaginacion.Enabled = false;
+                    btnTotalPaginas.Text = "";
+                    btnNumFilas.Text = "";
+                    btnTotalReg.Text = "";
+                    cboPaginacion.Text = "";
                     txtBuscarEmpleado.Text = "";
                     lnTipoCon = 1;
                 }
@@ -483,31 +522,47 @@ namespace wfaIntegradoCom.Mantenedores
             this.Dispose();
         }
 
-        private void rbRazon_CheckedChanged(object sender, EventArgs e)
+
+
+        private void siticoneTextBox8_TextChanged(object sender, EventArgs e)
         {
-            if (rbRazon.Checked == true)
-            {
-                fnLimpiarControles();
-                fnHabilitarControles(false);
-            }
+
         }
 
-        private void rbCodigo_CheckedChanged(object sender, EventArgs e)
+        private void siticonePanel1_Paint(object sender, PaintEventArgs e)
         {
-            if (rbCodigo.Checked == true)
-            {
-                fnLimpiarControles();
-                fnHabilitarControles(false);
-            }
+
         }
 
-        private void rbDoc_CheckedChanged(object sender, EventArgs e)
+        private void lvempleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (rbDoc.Checked == true)
-            {
-                fnLimpiarControles();
-                fnHabilitarControles(false);
-            }
+
+        }
+
+        private void cboPaginacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Boolean bResul = false;
+            bResul = fnBuscarEmpleado(Convert.ToInt32(cboPaginacion.Text), 0);
+            
+        }
+
+        private void gunaLabel10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void siticoneLabel1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtBuscarEmpleado_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
+
+
+
+		

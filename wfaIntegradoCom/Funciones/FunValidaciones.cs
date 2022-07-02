@@ -718,7 +718,17 @@ namespace wfaIntegradoCom.Funciones
             btnNuevo.HoveredState.Image = Properties.Resources.nuevo_hover;
             btnNuevo.HoveredState.ForeColor = Color.White;
         }
+        public static void fnColorBotonMenuPrincipal(SiticoneButton btnNuevo)
+        {
+            //btnNuevo.FillColor = Color.White;
+            btnNuevo.BorderColor = Variables.ColorEmpresa;
+            btnNuevo.ForeColor = Variables.ColorEmpresa;
+            //btnNuevo.Image = Properties.Resources.nuevo_base;
 
+            btnNuevo.HoveredState.FillColor = Variables.ColorEmpresa;
+            //btnNuevo.HoveredState.Image = Properties.Resources.nuevo_hover;
+            btnNuevo.HoveredState.ForeColor = Color.White;
+        }
         public static void fnColorTresBotones(SiticoneButton btnNuevo, SiticoneButton btnEditar, SiticoneButton btnGuardar)
         {
             btnNuevo.FillColor = Color.White;

@@ -39,14 +39,15 @@ namespace wfaIntegradoCom.Procesos
                 if (ProgressBar1.Value >= 100)
                 {
                     timer1.Stop();
+                    MDIParent1 frm = new MDIParent1();
+
+                    frm.fnLoadCarga(true);
                     this.Dispose();
+
                 }
                 
             }
                
-
-
-
         }
 
         private void frmLoad_Load(object sender, EventArgs e)

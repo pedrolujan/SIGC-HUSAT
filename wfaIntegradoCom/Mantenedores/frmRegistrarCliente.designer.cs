@@ -2076,7 +2076,7 @@
             this.gbPaginacion.Controls.Add(this.btnTotalPaginas);
             this.gbPaginacion.Controls.Add(this.btnNumFilas);
             this.gbPaginacion.Controls.Add(this.label26);
-            this.gbPaginacion.Location = new System.Drawing.Point(895, 535);
+            this.gbPaginacion.Location = new System.Drawing.Point(895, 536);
             this.gbPaginacion.Name = "gbPaginacion";
             this.gbPaginacion.Size = new System.Drawing.Size(340, 40);
             this.gbPaginacion.TabIndex = 232;

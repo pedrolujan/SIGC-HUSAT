@@ -256,6 +256,7 @@
             this.siticonePanel2.ShadowDecoration.Parent = this.siticonePanel2;
             this.siticonePanel2.Size = new System.Drawing.Size(585, 455);
             this.siticonePanel2.TabIndex = 34;
+            this.siticonePanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.siticonePanel2_Paint);
             // 
             // frmUsuario
             // 
