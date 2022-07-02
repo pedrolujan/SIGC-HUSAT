@@ -25,6 +25,7 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using Newtonsoft.Json.Linq;
 using wfaIntegradoCom.Funciones.Models.Order;
+using Siticone.UI.WinForms;
 
 namespace wfaIntegradoCom
 
@@ -151,7 +152,53 @@ namespace wfaIntegradoCom
                     ts.Visible = false;
                 }
             }
-           
+            var Controles = panelBotones.Controls.OfType<SiticoneButton>();
+            foreach (SiticoneButton btn in Controles)
+            {
+                foreach (ToolStripButton ts in tsMenuPrincipal.Items)
+                {
+
+                    btn.Enabled = false;
+
+                }
+               
+            }
+
+        }
+         public void fnCargarMenuPrinBotones()
+        {
+            DataTable dtMenuPrin = new DataTable();
+            DataView dvMenuPrincipal = new DataView(dtMenu.Tables[0]);
+            String lcItemMenu = "";
+            int iNumMenu = 0;
+
+            dvMenuPrincipal.RowFilter = "cMenuPadre = '0' ";
+            iNumMenu = dvMenuPrincipal.Table.Rows.Count;
+
+            var Controles = panelBotones.Controls.OfType<SiticoneButton>();
+            
+
+
+
+            if (iNumMenu > 0)
+            {
+                foreach (DataRowView drFila in dvMenuPrincipal)
+                {
+                    lcItemMenu = drFila["cMenuNombre"].ToString().Trim();
+
+                    
+                    foreach (SiticoneButton btn in Controles)
+                    {
+                        if (btn.Text == lcItemMenu)
+                        {
+                             btn.Enabled=true;
+                        }
+
+                    }
+                }
+             
+            }         
+
         }
         public void fnCargarMenuPrin()
         {
@@ -270,6 +317,7 @@ namespace wfaIntegradoCom
         private void Frm_FormClosed()
         {
             fnCargarMenuPrin();
+            fnCargarMenuPrinBotones();
             fnCargarMenuAccesoRapido();
             lcCodMenu = "8888100000";
             imgList = ListaImagenes;
@@ -375,76 +423,203 @@ namespace wfaIntegradoCom
         {
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
             dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
-            treeViewSubMenuVentas.Nodes.Clear();
-            treeViewSubMenuVentas.ImageList = imgList;
-            //subMenuVentas.Controls.Add(dvMenu);
+
+            y = 0;
+            int posX, posY;
+            int alto, ancho;
+            ancho = (subMenuVentas.Width / 4);
+            alto = (subMenuVentas.Height / 3);
+            posX = 0;
+            posY = 0;
+            title = new System.Windows.Forms.Label();
+            this.subMenuVentas.Controls.Clear();
+
             foreach (DataRowView drv in dvMenu)
             {
-                TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Name = drv["cMenuCod"].ToString().Trim();
-                nuevoNodo.Text = drv["cMenuNombre"].ToString().Trim();
-                nuevoNodo.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
-                nuevoNodo.ImageIndex = 1;
-                treeViewSubMenuVentas.Nodes.Add(nuevoNodo);
-                nuevoNodo.Expand();
+                System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+
+                temp.Height = 35;
+                temp.Width = 200;
+
+                temp.Name = drv["cMenuCod"].ToString().Trim();
+                temp.Text = drv["cMenuNombre"].ToString().Trim();
+                temp.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
+
+                temp.Dock = DockStyle.Top;
+                temp.ForeColor = Variables.ColorForeColorSubMenus;
+                temp.BackColor = Variables.ColorBackColorSubMenus;
+                temp.FlatAppearance.BorderSize = 0;
+                temp.Cursor = System.Windows.Forms.Cursors.Hand;
+                temp.FlatStyle = FlatStyle.Flat;
+                temp.TextAlign = ContentAlignment.MiddleLeft;
+                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+
+                temp.Click += subMenuVentas_Click;
+                temp.Location = new Point(10, (y + 5));
+                y += temp.Height;
+
+                if (subMenuVentas.Controls.Count > 0)
+                {
+                    posX = posX + ancho;
+                }
+                this.subMenuVentas.Controls.Add(temp);
+
+
             }
         }
+        private int y = 0;
+        private int conteo = 0;
+        System.Windows.Forms.Label title = new System.Windows.Forms.Label();
         private void fnCargarSubMenuRecaudacion(String pcCodMenu)
         {
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
             dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
-            treeViewSubMenuRecaudacion.Nodes.Clear();
-            treeViewSubMenuRecaudacion.ImageList = imgList;
-            //subMenuRecaudacion.Controls.Add(dvMenu);
+
+            y = 0;
+            int posX, posY;
+            int alto, ancho;
+            ancho = (subMenuRecaudacion.Width / 4);
+            alto = (subMenuRecaudacion.Height / 3);
+            posX = 0;
+            posY = 0;
+            title = new System.Windows.Forms.Label();
+            this.subMenuRecaudacion.Controls.Clear();
+
             foreach (DataRowView drv in dvMenu)
             {
-                TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Name = drv["cMenuCod"].ToString().Trim();
-                nuevoNodo.Text = drv["cMenuNombre"].ToString().Trim();
-                nuevoNodo.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
-                nuevoNodo.ImageIndex = 1;
-                treeViewSubMenuRecaudacion.Nodes.Add(nuevoNodo);
-                nuevoNodo.Expand();
+                //TreeNode nuevoNodo = new TreeNode();
+
+                System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+
+                temp.Height = 35;
+                temp.Width = 200;
+
+                temp.Name = drv["cMenuCod"].ToString().Trim();
+                temp.Text = drv["cMenuNombre"].ToString().Trim();
+                temp.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
+
+                temp.Dock = DockStyle.Top;
+                temp.ForeColor = Variables.ColorForeColorSubMenus;
+                temp.BackColor = Variables.ColorBackColorSubMenus;
+                temp.FlatAppearance.BorderSize = 0;
+                temp.Cursor = System.Windows.Forms.Cursors.Hand;
+                temp.FlatStyle = FlatStyle.Flat;
+                temp.TextAlign = ContentAlignment.MiddleLeft;
+                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+
+                temp.Click += subMenuRecaudacion_Click;
+                temp.Location = new Point(10, (y + 5));
+                y += temp.Height;
+
+                if (subMenuRecaudacion.Controls.Count > 0)
+                {
+                    posX = posX + ancho;
+                }
+                this.subMenuRecaudacion.Controls.Add(temp);
+
+
             }
         }
-
+        private int BorderSize = 0;
+       
         private void fnCargarSubMenuComercial(String pcCodMenu)
         {
-            string espacio = " 1234 ";
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
             dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
-            treeViewSubMenuComercial.Nodes.Clear();
-            treeViewSubMenuComercial.ImageList = imgList;
-            //subMenuComercial.Controls.Add(dvMenu);
+
+            y = 0;
+            int posX, posY;
+            int alto, ancho;
+            ancho = (subMenuComercial.Width / 4);
+            alto = (subMenuComercial.Height / 3);
+            posX = 0;
+            posY = 0;
+            title = new System.Windows.Forms.Label();
+            this.subMenuComercial.Controls.Clear();
+
             foreach (DataRowView drv in dvMenu)
             {
-                TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Name = drv["cMenuCod"].ToString().Trim();
-                nuevoNodo.Text = drv["cMenuNombre"].ToString().Trim();
-                nuevoNodo.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
-                nuevoNodo.ImageIndex = 1;
-                treeViewSubMenuComercial.Nodes.Add(nuevoNodo);
-                nuevoNodo.Expand();
-            }
-            //espacio =  "123 ";
+                //TreeNode nuevoNodo = new TreeNode();
+
+                System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+
+                temp.Height = 35;
+                temp.Width = 200;
+                
+                temp.Name = drv["cMenuCod"].ToString().Trim();
+                temp.Text = drv["cMenuNombre"].ToString().Trim();
+                temp.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
+
+                temp.Dock = DockStyle.Top;
+                temp.ForeColor = Variables.ColorForeColorSubMenus;
+                temp.BackColor = Variables.ColorBackColorSubMenus;
+                temp.FlatAppearance.BorderSize = 0;
+                temp.Cursor = System.Windows.Forms.Cursors.Hand;
+                temp.FlatStyle = FlatStyle.Flat;
+                temp.TextAlign = ContentAlignment.MiddleLeft;
+                temp.Padding = new System.Windows.Forms.Padding (40,0,0,0);
+
+                temp.Click += subMenuComercial_Click;
+                temp.Location = new Point(10, (y + 5));
+                y += temp.Height;
+
+                if (subMenuComercial.Controls.Count > 0)
+                {
+                    posX = posX + ancho;
+                }
+                this.subMenuComercial.Controls.Add(temp);
+             
+            }          
+           
         }
 
         private void fnCargarSubMenuLogistica(String pcCodMenu)
         {
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
             dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
-            treeViewSubMenuLogistica.Nodes.Clear();
-            treeViewSubMenuLogistica.ImageList = imgList;
-            //subMenuLogistica.Controls.Add(dvMenu);
+
+            y = 0;
+            int posX, posY;
+            int alto, ancho;
+            ancho = (subMenuLogistica.Width / 4);
+            alto = (subMenuLogistica.Height / 3);
+            posX = 0;
+            posY = 0;
+            title = new System.Windows.Forms.Label();
+            this.subMenuLogistica.Controls.Clear();
+
             foreach (DataRowView drv in dvMenu)
             {
-                TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Name = drv["cMenuCod"].ToString().Trim();
-                nuevoNodo.Text = drv["cMenuNombre"].ToString().Trim();
-                nuevoNodo.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
-                nuevoNodo.ImageIndex = 1;
-                treeViewSubMenuLogistica.Nodes.Add(nuevoNodo);
-                nuevoNodo.Expand();
+
+                System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+
+                temp.Height = 35;
+                temp.Width = 200;
+
+                temp.Name = drv["cMenuCod"].ToString().Trim();
+                temp.Text = drv["cMenuNombre"].ToString().Trim();
+                temp.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
+
+                temp.Dock = DockStyle.Top;
+                temp.ForeColor = Variables.ColorForeColorSubMenus;
+                temp.BackColor = Variables.ColorBackColorSubMenus;
+                temp.FlatAppearance.BorderSize = 0;
+                temp.Cursor = System.Windows.Forms.Cursors.Hand;
+                temp.FlatStyle = FlatStyle.Flat;
+                temp.TextAlign = ContentAlignment.MiddleLeft;
+                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+
+                temp.Click += subMenuLogistica_Click;
+                temp.Location = new Point(10, (y + 5));
+                y += temp.Height;
+
+              
+                if (subMenuLogistica.Controls.Count > 0)
+                {
+                    posX = posX + ancho;
+                }
+
+                this.subMenuLogistica.Controls.Add(temp);
             }
         }
 
@@ -452,18 +627,49 @@ namespace wfaIntegradoCom
         {
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
             dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
-            treeViewSubMenuSistema.Nodes.Clear();
-            treeViewSubMenuSistema.ImageList = imgList;
-            //subMenuSistemas.Controls.Add(dvMenu);
+
+            y = 0;
+            int posX, posY;
+            int alto, ancho;
+            ancho = (subMenuSistemas.Width / 4);
+            alto = (subMenuSistemas.Height / 3);
+            posX = 0;
+            posY = 0;
+            title = new System.Windows.Forms.Label();
+            this.subMenuSistemas.Controls.Clear();
+
             foreach (DataRowView drv in dvMenu)
             {
-                TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Name = drv["cMenuCod"].ToString().Trim();
-                nuevoNodo.Text = drv["cMenuNombre"].ToString().Trim();
-                nuevoNodo.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
-                nuevoNodo.ImageIndex = 1;
-                treeViewSubMenuSistema.Nodes.Add(nuevoNodo);
-                nuevoNodo.Expand();
+                //TreeNode nuevoNodo = new TreeNode();
+
+                System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+
+                temp.Height = 35;
+                temp.Width = 200;
+
+                temp.Name = drv["cMenuCod"].ToString().Trim();
+                temp.Text = drv["cMenuNombre"].ToString().Trim();
+                temp.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
+
+                temp.Dock = DockStyle.Top;
+                temp.ForeColor = Variables.ColorForeColorSubMenus;
+                temp.BackColor = Variables.ColorBackColorSubMenus;
+                temp.FlatAppearance.BorderSize = 0;
+                temp.Cursor = System.Windows.Forms.Cursors.Hand;
+                temp.FlatStyle = FlatStyle.Flat;
+                temp.TextAlign = ContentAlignment.MiddleLeft;
+                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+
+                temp.Click += subMenuSistemas_Click;
+                temp.Location = new Point(10, (y + 5));
+                y += temp.Height;
+
+                if (subMenuSistemas.Controls.Count > 0)
+                {
+                    posX = posX + ancho;
+                }
+                this.subMenuSistemas.Controls.Add(temp);
+
             }
         }
 
@@ -471,36 +677,99 @@ namespace wfaIntegradoCom
         {
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
             dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
-            treeViewSubMenuRrhh.Nodes.Clear();
-            treeViewSubMenuRrhh.ImageList = imgList;
-            //subMenuRrhh.Controls.Add(dvMenu);
+
+            y = 0;
+            int posX, posY;
+            int alto, ancho;
+            ancho = (subMenuRrhh.Width / 4);
+            alto = (subMenuRrhh.Height / 3);
+            posX = 0;
+            posY = 0;
+            title = new System.Windows.Forms.Label();
+            this.subMenuRrhh.Controls.Clear();
+
             foreach (DataRowView drv in dvMenu)
             {
-                TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Name = drv["cMenuCod"].ToString().Trim();
-                nuevoNodo.Text = drv["cMenuNombre"].ToString().Trim();
-                nuevoNodo.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
-                nuevoNodo.ImageIndex = 1;
-                treeViewSubMenuRrhh.Nodes.Add(nuevoNodo);
-                nuevoNodo.Expand();
+                //TreeNode nuevoNodo = new TreeNode();
+
+                System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+
+                temp.Height = 35;
+                temp.Width = 200;
+
+                temp.Name = drv["cMenuCod"].ToString().Trim();
+                temp.Text = drv["cMenuNombre"].ToString().Trim();
+                temp.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
+
+                temp.Dock = DockStyle.Top;
+                temp.ForeColor = Variables.ColorForeColorSubMenus;
+                temp.BackColor = Variables.ColorBackColorSubMenus;
+                temp.FlatAppearance.BorderSize = 0;
+                temp.Cursor = System.Windows.Forms.Cursors.Hand;
+                temp.FlatStyle = FlatStyle.Flat;
+                temp.TextAlign = ContentAlignment.MiddleLeft;
+                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+
+                temp.Click += subMenuRrhh_Click;
+                temp.Location = new Point(10, (y + 5));
+                y += temp.Height;
+
+                if (subMenuRrhh.Controls.Count > 0)
+                {
+                    posX = posX + ancho;
+                }
+                this.subMenuRrhh.Controls.Add(temp);
+
+
             }
         }
         private void fnCargarSubMenuSoporte(String pcCodMenu)
         {
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
             dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
-            treeViewSubMenuSoporte.Nodes.Clear();
-            treeViewSubMenuSoporte.ImageList = imgList;
-            //subMenuSoporte.Controls.Add(dvMenu);
+
+            y = 0;
+            int posX, posY;
+            int alto, ancho;
+            ancho = (subMenuSoporte.Width / 4);
+            alto = (subMenuSoporte.Height / 3);
+            posX = 0;
+            posY = 0;
+            title = new System.Windows.Forms.Label();
+            this.subMenuSoporte.Controls.Clear();
+
             foreach (DataRowView drv in dvMenu)
             {
-                TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Name = drv["cMenuCod"].ToString().Trim();
-                nuevoNodo.Text = drv["cMenuNombre"].ToString().Trim();
-                nuevoNodo.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
-                nuevoNodo.ImageIndex = 1;
-                treeViewSubMenuSoporte.Nodes.Add(nuevoNodo);
-                nuevoNodo.Expand();
+                //TreeNode nuevoNodo = new TreeNode();
+
+                System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+
+                temp.Height = 35;
+                temp.Width = 200;
+
+                temp.Name = drv["cMenuCod"].ToString().Trim();
+                temp.Text = drv["cMenuNombre"].ToString().Trim();
+                temp.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
+
+                temp.Dock = DockStyle.Top;
+                temp.ForeColor = Variables.ColorForeColorSubMenus;
+                temp.BackColor = Variables.ColorBackColorSubMenus;
+                temp.FlatAppearance.BorderSize = 0;
+                temp.Cursor = System.Windows.Forms.Cursors.Hand;
+                temp.FlatStyle = FlatStyle.Flat;
+                temp.TextAlign = ContentAlignment.MiddleLeft;
+                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+
+                temp.Click += subMenuSoporte_Click;
+                temp.Location = new Point(10, (y + 5));
+                y += temp.Height;
+
+                if (subMenuSistemas.Controls.Count > 0)
+                {
+                    posX = posX + ancho;
+                }
+                this.subMenuSoporte.Controls.Add(temp);
+
             }
         }
 
@@ -508,18 +777,49 @@ namespace wfaIntegradoCom
         {
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
             dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
-            treeViewSubMenuConfiguracion.Nodes.Clear();
-            treeViewSubMenuConfiguracion.ImageList = imgList;
-            //subMenuConfiguracion.Controls.Add(dvMenu);
+
+            y = 0;
+            int posX, posY;
+            int alto, ancho;
+            ancho = (subMenuConfiguracion.Width / 4);
+            alto = (subMenuConfiguracion.Height / 3);
+            posX = 0;
+            posY = 0;
+            title = new System.Windows.Forms.Label();
+            this.subMenuConfiguracion.Controls.Clear();
+
             foreach (DataRowView drv in dvMenu)
             {
-                TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Name = drv["cMenuCod"].ToString().Trim();
-                nuevoNodo.Text = drv["cMenuNombre"].ToString().Trim();
-                nuevoNodo.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
-                nuevoNodo.ImageIndex = 1;
-                treeViewSubMenuConfiguracion.Nodes.Add(nuevoNodo);
-                nuevoNodo.Expand();
+                //TreeNode nuevoNodo = new TreeNode();
+
+                System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+
+                temp.Height = 35;
+                temp.Width = 200;
+
+                temp.Name = drv["cMenuCod"].ToString().Trim();
+                temp.Text = drv["cMenuNombre"].ToString().Trim();
+                temp.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
+
+                temp.Dock = DockStyle.Top;
+                temp.ForeColor = Variables.ColorForeColorSubMenus;
+                temp.BackColor = Variables.ColorBackColorSubMenus;
+                temp.FlatAppearance.BorderSize = 0;
+                temp.Cursor = System.Windows.Forms.Cursors.Hand;
+                temp.FlatStyle = FlatStyle.Flat;
+                temp.TextAlign = ContentAlignment.MiddleLeft;
+                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+
+                temp.Click += subMenuConfiguracion_Click;
+                temp.Location = new Point(10, (y + 5));
+                y += temp.Height;
+
+                if (subMenuConfiguracion.Controls.Count > 0)
+                {
+                    posX = posX + ancho;
+                }
+                this.subMenuConfiguracion.Controls.Add(temp);
+
             }
         }
         #endregion
@@ -1300,56 +1600,45 @@ namespace wfaIntegradoCom
 
 
         }
-
-        private void btnPanel2_Click(object sender, EventArgs e)
+        private void siticoneToggleSwitch1_CheckedChanged(object sender, EventArgs e)
         {
-            //fnselectslMenuIzquierdo();
-            panelToosStrip.Visible = false;
-            panelToosStrip.Dock = DockStyle.None;
-            panelBotones.Visible = true;
-            panelBotones.Dock = DockStyle.Fill;
-            btnPanel2.Visible = false;
-            btnPanel1.Visible = true;
+            if (SwitchMenus.Checked == true)
+            {
+                panelToosStrip.Visible = false;
+                panelToosStrip.Dock = DockStyle.None;
+                panelBotones.Visible = true;
+                panelBotones.Dock = DockStyle.Fill;
+                btnPanel2.Visible = false;
+                btnPanel1.Visible = true;
 
-            treeView1.Nodes.Clear();
-            tvOpes.Nodes.Clear();
+                treeView1.Nodes.Clear();
+                tvOpes.Nodes.Clear();
 
-            SplitIzquierdo.SplitterDistance = 40;
-            
-
-            OcultarSubMenu();
-            FnColorwhiteselectBtns();
-                
-        }
+                SplitIzquierdo.SplitterDistance = 40;
 
 
+                OcultarSubMenu();
+                FnColorwhiteselectBtns();
 
-        private int y = 50;
-        private int conteo = 0;
-        private void btnPrueba_Click(object sender, EventArgs e)
-        {
-            
+            }
+            else
+            {
+                panelBotones.Visible = false;
+                panelBotones.Dock = DockStyle.None;
+                panelToosStrip.Visible = true;
+                panelToosStrip.Dock = DockStyle.Fill;
+                btnPanel1.Visible = false;
+                btnPanel2.Visible = true;
 
-         System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+                treeView1.Nodes.Clear();
+                tvOpes.Nodes.Clear();
 
-            temp.Height = 23;
-            temp.Width = 200;
-            temp.Location = new Point(50, y);
-           
-            temp.Name = "btnBoton" + conteo.ToString();
-            temp.Text = "Boton #" + conteo.ToString();
-
-            this.subMenuVentas.Controls.Add(temp);
-
-            fnselectslMenuIzquierdo();
-
-            //conteo++;
-
-            //temp.Click += new EventHandler(HandleComun_Click);
-
-            //Controls.Add(temp);
+                SplitIzquierdo.SplitterDistance = 233;
+                fnselectslMenuIzquierdo();
+            }
 
         }
+     
         private void SubmenusOcultos()
         {
             subMenuVentas.Visible = false;
@@ -1398,8 +1687,9 @@ namespace wfaIntegradoCom
     #region Click Botones Menu Principal
         private void btnVenta_Click(object sender, EventArgs e)
         {
+            LoadCarga = false;
             FnColorwhiteselectBtns();
-            btnVenta.BackColor = Color.Transparent;
+            btnVenta.BackColor = Variables.ColorEmpresa;
             btnVenta.ForeColor = Color.White;
             btnVenta.HoveredState.Image = Properties.Resources.venta_blanco_32;
             btnVenta.Image = Properties.Resources.venta_blanco_32;
@@ -1419,8 +1709,9 @@ namespace wfaIntegradoCom
 
         private void btnRecaudacion_Click(object sender, EventArgs e)
         {
+            LoadCarga = false;
             FnColorwhiteselectBtns();
-            btnRecaudacion.BackColor = Color.Transparent;
+            btnRecaudacion.BackColor = Variables.ColorEmpresa;
             btnRecaudacion.ForeColor = Color.White;
             btnRecaudacion.HoveredState.Image = Properties.Resources.recaudacion_Blanco;
             btnRecaudacion.Image = Properties.Resources.recaudacion_Blanco;
@@ -1436,8 +1727,9 @@ namespace wfaIntegradoCom
 
         private void btnComercial_Click(object sender, EventArgs e)
         {
+            LoadCarga = false;
             FnColorwhiteselectBtns();
-            btnComercial.BackColor = Color.Transparent;
+            btnComercial.BackColor = Variables.ColorEmpresa;
             btnComercial.ForeColor = Color.White;
             btnComercial.HoveredState.Image = Properties.Resources.comercial_blanco_32;
             btnComercial.Image = Properties.Resources.comercial_blanco_32;
@@ -1445,7 +1737,9 @@ namespace wfaIntegradoCom
 
             MostrarSubMenu(subMenuComercial);
             tslMenuIzquierdo.Text = "Comercial";
+
             tslMenuIzquierdo.Image = Properties.Resources.comercial_blanco_32;
+
             treeView1.Nodes.Clear();
             lcCodMenu = "8888900000";
             fnCargarSubMenuComercial(lcCodMenu);
@@ -1453,8 +1747,9 @@ namespace wfaIntegradoCom
 
         private void btnLogistica_Click(object sender, EventArgs e)
         {
+            LoadCarga = false;
             FnColorwhiteselectBtns();
-            btnLogistica.BackColor = Color.Transparent;
+            btnLogistica.BackColor = Variables.ColorEmpresa;
             btnLogistica.ForeColor = Color.White;
             btnLogistica.HoveredState.Image = Properties.Resources.logistica_blanc_32;
             btnLogistica.Image = Properties.Resources.logistica_blanc_32;
@@ -1469,8 +1764,9 @@ namespace wfaIntegradoCom
 
         private void btnSistemas_Click(object sender, EventArgs e)
         {
+            LoadCarga = false;
             FnColorwhiteselectBtns();
-            btnSistemas.BackColor = Color.Transparent;
+            btnSistemas.BackColor = Variables.ColorEmpresa;
             btnSistemas.ForeColor = Color.White;
 
             btnSistemas.HoveredState.Image = Properties.Resources.compu_ok_blanco_32;
@@ -1486,8 +1782,9 @@ namespace wfaIntegradoCom
 
         private void btnRrhh_Click(object sender, EventArgs e)
         {
+            LoadCarga = false;
             FnColorwhiteselectBtns();
-            btnRrhh.BackColor = Color.Transparent;
+            btnRrhh.BackColor = Variables.ColorEmpresa;
             btnRrhh.ForeColor = Color.White;
 
             btnRrhh.HoveredState.Image = Properties.Resources.rrHh_blanco_32;
@@ -1503,8 +1800,9 @@ namespace wfaIntegradoCom
 
         private void btnConfiguracion_Click(object sender, EventArgs e)
         {
+            LoadCarga = false;
             FnColorwhiteselectBtns();
-            btnConfiguracion.BackColor = Color.Transparent;
+            btnConfiguracion.BackColor = Variables.ColorEmpresa;
             btnConfiguracion.ForeColor = Color.White;
 
             btnConfiguracion.HoveredState.Image = Properties.Resources.sistema_blanco_32;
@@ -1520,8 +1818,9 @@ namespace wfaIntegradoCom
 
         private void btnSoporte_Click(object sender, EventArgs e)
         {
+            LoadCarga = false;
             FnColorwhiteselectBtns();
-            btnSoporte.BackColor = Color.Transparent;
+            btnSoporte.BackColor = Variables.ColorEmpresa;
             btnSoporte.ForeColor = Color.White;
 
             btnSoporte.HoveredState.Image = Properties.Resources.soporte_blanco_1;
@@ -1542,54 +1841,114 @@ namespace wfaIntegradoCom
             LoadCarga = false;
         }
 
-        private void treeViewSubMenuVentas_AfterSelect(object sender, TreeViewEventArgs e)
+        private System.Windows.Forms.Button fnObtenerBotonEsp(object sender , SiticonePanel panel)
+        {
+            var Controles = panel.Controls.OfType<System.Windows.Forms.Button>();
+            System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+            String Cadena = sender.ToString();
+            String[] array = Cadena.Split(':');
+            String item = array[1].ToString().Trim();
+            foreach (System.Windows.Forms.Button btn in Controles)
+            {
+                btn.BackColor = Color.Gray;
+                if (btn.Text == item)
+                {
+                    temp = btn;
+                    //break;
+                }
+
+            }
+            return temp;
+        }
+        private void subMenuVentas_Click(object sender, EventArgs e)
         {
             String lcCodMenu = "";
-            lcCodMenu = treeViewSubMenuVentas.SelectedNode.Name.Trim();
+
+            lcCodMenu = fnObtenerBotonEsp(sender, subMenuVentas).Name;
+
+            fnObtenerBotonEsp(sender, subMenuVentas).BackColor = Variables.ColorSelectSubMenus;
+
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
 
-        private void treeViewSubMenuRecaudacion_AfterSelect(object sender, TreeViewEventArgs e)
+        private void subMenuRecaudacion_Click(object sender, EventArgs e)
         {
             String lcCodMenu = "";
-            lcCodMenu = treeViewSubMenuRecaudacion.SelectedNode.Name.Trim();
+
+            lcCodMenu = fnObtenerBotonEsp(sender, subMenuRecaudacion).Name;
+
+            fnObtenerBotonEsp(sender, subMenuRecaudacion).BackColor = Variables.ColorSelectSubMenus;
+
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
+
         }
-        private void treeViewSubMenuComercial_AfterSelect(object sender, TreeViewEventArgs e)
+        private void subMenuComercial_Click(object sender, EventArgs e)
         {
             String lcCodMenu = "";
-            lcCodMenu = treeViewSubMenuComercial.SelectedNode.Name.Trim();
+
+
+            lcCodMenu = fnObtenerBotonEsp(sender, subMenuComercial).Name;
+
+            fnObtenerBotonEsp(sender, subMenuComercial).BackColor = Variables.ColorSelectSubMenus;
+
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
-        private void treeViewSubMenuLogistica_AfterSelect(object sender, TreeViewEventArgs e)
+
+        private void subMenuLogistica_Click(object sender, EventArgs e)
         {
             String lcCodMenu = "";
-            lcCodMenu = treeViewSubMenuLogistica.SelectedNode.Name.Trim();
+
+            lcCodMenu = fnObtenerBotonEsp(sender, subMenuLogistica).Name;
+
+            fnObtenerBotonEsp(sender, subMenuLogistica).BackColor = Variables.ColorSelectSubMenus;
+
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
-        private void treeViewSubMenuSistema_AfterSelect(object sender, TreeViewEventArgs e)
+
+        private void subMenuSistemas_Click(object sender, EventArgs e)
         {
             String lcCodMenu = "";
-            lcCodMenu = treeViewSubMenuSistema.SelectedNode.Name.Trim();
+
+            lcCodMenu = fnObtenerBotonEsp(sender, subMenuSistemas).Name;
+
+            fnObtenerBotonEsp(sender, subMenuSistemas).BackColor = Variables.ColorSelectSubMenus;
+
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
-        private void treeViewSubMenuRrhh_AfterSelect(object sender, TreeViewEventArgs e)
+
+        private void subMenuRrhh_Click(object sender, EventArgs e)
         {
             String lcCodMenu = "";
-            lcCodMenu = treeViewSubMenuRrhh.SelectedNode.Name.Trim();
+
+            lcCodMenu = fnObtenerBotonEsp(sender, subMenuRrhh).Name;
+
+            fnObtenerBotonEsp(sender, subMenuRrhh).BackColor = Variables.ColorSelectSubMenus;
+
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
-        private void treeViewSubMenuConfiguracion_AfterSelect(object sender, TreeViewEventArgs e)
+
+        private void subMenuConfiguracion_Click(object sender, EventArgs e)
         {
             String lcCodMenu = "";
-            lcCodMenu = treeViewSubMenuConfiguracion.SelectedNode.Name.Trim();
+
+            lcCodMenu = fnObtenerBotonEsp(sender, subMenuConfiguracion).Name;
+
+            fnObtenerBotonEsp(sender, subMenuConfiguracion).BackColor = Variables.ColorSelectSubMenus;
+
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
-        private void treeViewSubMenuSoporte_AfterSelect(object sender, TreeViewEventArgs e)
+
+        private void subMenuSoporte_Click(object sender, EventArgs e)
         {
             String lcCodMenu = "";
-            lcCodMenu = treeViewSubMenuSoporte.SelectedNode.Name.Trim();
+
+            lcCodMenu = fnObtenerBotonEsp(sender, subMenuSoporte).Name;
+
+            fnObtenerBotonEsp(sender, subMenuSoporte).BackColor = Variables.ColorSelectSubMenus;
+
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
+
+
     }
 }

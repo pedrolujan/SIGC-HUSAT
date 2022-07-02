@@ -883,6 +883,16 @@ namespace wfaIntegradoCom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap soporte_blanco_1 {
+            get {
+                object obj = ResourceManager.GetObject("soporte_blanco_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap soporte1 {
             get {
                 object obj = ResourceManager.GetObject("soporte1", resourceCulture);

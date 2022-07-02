@@ -58,6 +58,8 @@
             this.lblTextCompra = new System.Windows.Forms.Label();
             this.SplitCentro = new System.Windows.Forms.SplitContainer();
             this.SplitIzquierdo = new System.Windows.Forms.SplitContainer();
+            this.SwitchMenus = new Siticone.UI.WinForms.SiticoneToggleSwitch();
+            this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
             this.tvOpes = new System.Windows.Forms.TreeView();
             this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
             this.tsTituloMenuIzquierdo = new System.Windows.Forms.ToolStrip();
@@ -135,14 +137,6 @@
             this.tsConsulta = new System.Windows.Forms.ToolStripButton();
             this.PanelEncavezadoFondo = new Siticone.UI.WinForms.SiticonePanel();
             this.tsAccesoRapido = new System.Windows.Forms.ToolStrip();
-            this.treeViewSubMenuVentas = new System.Windows.Forms.TreeView();
-            this.treeViewSubMenuRecaudacion = new System.Windows.Forms.TreeView();
-            this.treeViewSubMenuComercial = new System.Windows.Forms.TreeView();
-            this.treeViewSubMenuLogistica = new System.Windows.Forms.TreeView();
-            this.treeViewSubMenuSistema = new System.Windows.Forms.TreeView();
-            this.treeViewSubMenuConfiguracion = new System.Windows.Forms.TreeView();
-            this.treeViewSubMenuRrhh = new System.Windows.Forms.TreeView();
-            this.treeViewSubMenuSoporte = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.SplitDerecho)).BeginInit();
             this.SplitDerecho.Panel1.SuspendLayout();
             this.SplitDerecho.Panel2.SuspendLayout();
@@ -161,14 +155,6 @@
             this.SplitIzquierdo.SuspendLayout();
             this.tsTituloMenuIzquierdo.SuspendLayout();
             this.panelBotones.SuspendLayout();
-            this.subMenuSoporte.SuspendLayout();
-            this.subMenuConfiguracion.SuspendLayout();
-            this.subMenuRrhh.SuspendLayout();
-            this.subMenuSistemas.SuspendLayout();
-            this.subMenuLogistica.SuspendLayout();
-            this.subMenuComercial.SuspendLayout();
-            this.subMenuRecaudacion.SuspendLayout();
-            this.subMenuVentas.SuspendLayout();
             this.panelToosStrip.SuspendLayout();
             this.tsMenuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -540,6 +526,8 @@
             // 
             // SplitIzquierdo.Panel1
             // 
+            this.SplitIzquierdo.Panel1.Controls.Add(this.SwitchMenus);
+            this.SplitIzquierdo.Panel1.Controls.Add(this.siticoneLabel1);
             this.SplitIzquierdo.Panel1.Controls.Add(this.tvOpes);
             this.SplitIzquierdo.Panel1.Controls.Add(this.tsTituloMenuIzquierdo);
             // 
@@ -554,6 +542,40 @@
             this.SplitIzquierdo.Size = new System.Drawing.Size(333, 554);
             this.SplitIzquierdo.SplitterDistance = 233;
             this.SplitIzquierdo.TabIndex = 0;
+            // 
+            // SwitchMenus
+            // 
+            this.SwitchMenus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SwitchMenus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.SwitchMenus.CheckedState.BorderColor = System.Drawing.Color.Lime;
+            this.SwitchMenus.CheckedState.FillColor = System.Drawing.Color.LavenderBlush;
+            this.SwitchMenus.CheckedState.InnerBorderColor = System.Drawing.Color.Red;
+            this.SwitchMenus.CheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.SwitchMenus.CheckedState.Parent = this.SwitchMenus;
+            this.SwitchMenus.Location = new System.Drawing.Point(280, 9);
+            this.SwitchMenus.Name = "SwitchMenus";
+            this.SwitchMenus.ShadowDecoration.Parent = this.SwitchMenus;
+            this.SwitchMenus.Size = new System.Drawing.Size(35, 20);
+            this.SwitchMenus.TabIndex = 6;
+            this.SwitchMenus.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.SwitchMenus.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.SwitchMenus.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.SwitchMenus.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.SwitchMenus.UncheckedState.Parent = this.SwitchMenus;
+            this.SwitchMenus.CheckedChanged += new System.EventHandler(this.siticoneToggleSwitch1_CheckedChanged);
+            // 
+            // siticoneLabel1
+            // 
+            this.siticoneLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.siticoneLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneLabel1.ForeColor = System.Drawing.Color.White;
+            this.siticoneLabel1.Location = new System.Drawing.Point(199, 12);
+            this.siticoneLabel1.Name = "siticoneLabel1";
+            this.siticoneLabel1.Size = new System.Drawing.Size(75, 15);
+            this.siticoneLabel1.TabIndex = 9;
+            this.siticoneLabel1.Text = "Nuevo Menu";
             // 
             // tvOpes
             // 
@@ -628,10 +650,10 @@
             this.btnPanel1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPanel1.HoveredState.ForeColor = System.Drawing.Color.Black;
             this.btnPanel1.HoveredState.Parent = this.btnPanel1;
-            this.btnPanel1.Location = new System.Drawing.Point(195, 255);
+            this.btnPanel1.Location = new System.Drawing.Point(195, 2943);
             this.btnPanel1.Name = "btnPanel1";
             this.btnPanel1.ShadowDecoration.Parent = this.btnPanel1;
-            this.btnPanel1.Size = new System.Drawing.Size(70, 35);
+            this.btnPanel1.Size = new System.Drawing.Size(68, 35);
             this.btnPanel1.TabIndex = 8;
             this.btnPanel1.Text = "Panel 1";
             this.btnPanel1.Visible = false;
@@ -654,17 +676,16 @@
             this.btnPanel2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPanel2.HoveredState.ForeColor = System.Drawing.Color.Black;
             this.btnPanel2.HoveredState.Parent = this.btnPanel2;
-            this.btnPanel2.Location = new System.Drawing.Point(119, 255);
+            this.btnPanel2.Location = new System.Drawing.Point(119, 2943);
             this.btnPanel2.Name = "btnPanel2";
             this.btnPanel2.ShadowDecoration.Parent = this.btnPanel2;
-            this.btnPanel2.Size = new System.Drawing.Size(70, 35);
+            this.btnPanel2.Size = new System.Drawing.Size(68, 35);
             this.btnPanel2.TabIndex = 7;
             this.btnPanel2.Text = "Panel 2";
-            this.btnPanel2.Click += new System.EventHandler(this.btnPanel2_Click);
             // 
             // panelBotones
             // 
-            this.panelBotones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.panelBotones.BackColor = System.Drawing.Color.White;
             this.panelBotones.Controls.Add(this.subMenuSoporte);
             this.panelBotones.Controls.Add(this.btnSoporte);
             this.panelBotones.Controls.Add(this.subMenuConfiguracion);
@@ -682,7 +703,7 @@
             this.panelBotones.Controls.Add(this.subMenuVentas);
             this.panelBotones.Controls.Add(this.btnVenta);
             this.panelBotones.FillColor = System.Drawing.Color.Transparent;
-            this.panelBotones.Location = new System.Drawing.Point(3, 360);
+            this.panelBotones.Location = new System.Drawing.Point(3, 418);
             this.panelBotones.Name = "panelBotones";
             this.panelBotones.ShadowDecoration.Parent = this.panelBotones;
             this.panelBotones.Size = new System.Drawing.Size(310, 791);
@@ -692,16 +713,19 @@
             // 
             // subMenuSoporte
             // 
+            this.subMenuSoporte.AutoSize = true;
             this.subMenuSoporte.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.subMenuSoporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.subMenuSoporte.Controls.Add(this.treeViewSubMenuSoporte);
             this.subMenuSoporte.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuSoporte.Location = new System.Drawing.Point(0, 690);
+            this.subMenuSoporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuSoporte.Location = new System.Drawing.Point(0, 420);
             this.subMenuSoporte.MinimumSize = new System.Drawing.Size(310, 20);
             this.subMenuSoporte.Name = "subMenuSoporte";
+            this.subMenuSoporte.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuSoporte.ShadowDecoration.Parent = this.subMenuSoporte;
-            this.subMenuSoporte.Size = new System.Drawing.Size(310, 40);
+            this.subMenuSoporte.Size = new System.Drawing.Size(310, 20);
             this.subMenuSoporte.TabIndex = 15;
+            this.subMenuSoporte.Click += new System.EventHandler(this.subMenuSoporte_Click);
             // 
             // btnSoporte
             // 
@@ -712,6 +736,7 @@
             this.btnSoporte.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSoporte.CustomImages.Parent = this.btnSoporte;
             this.btnSoporte.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSoporte.Enabled = false;
             this.btnSoporte.FillColor = System.Drawing.Color.Transparent;
             this.btnSoporte.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSoporte.ForeColor = System.Drawing.Color.Black;
@@ -719,7 +744,7 @@
             this.btnSoporte.HoveredState.Parent = this.btnSoporte;
             this.btnSoporte.Image = global::wfaIntegradoCom.Properties.Resources.soporte1;
             this.btnSoporte.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSoporte.Location = new System.Drawing.Point(0, 655);
+            this.btnSoporte.Location = new System.Drawing.Point(0, 385);
             this.btnSoporte.Name = "btnSoporte";
             this.btnSoporte.PressedColor = System.Drawing.Color.Aqua;
             this.btnSoporte.ShadowDecoration.Parent = this.btnSoporte;
@@ -731,16 +756,19 @@
             // 
             // subMenuConfiguracion
             // 
+            this.subMenuConfiguracion.AutoSize = true;
             this.subMenuConfiguracion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.subMenuConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.subMenuConfiguracion.Controls.Add(this.treeViewSubMenuConfiguracion);
             this.subMenuConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuConfiguracion.Location = new System.Drawing.Point(0, 555);
+            this.subMenuConfiguracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuConfiguracion.Location = new System.Drawing.Point(0, 365);
             this.subMenuConfiguracion.MinimumSize = new System.Drawing.Size(310, 20);
             this.subMenuConfiguracion.Name = "subMenuConfiguracion";
+            this.subMenuConfiguracion.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuConfiguracion.ShadowDecoration.Parent = this.subMenuConfiguracion;
-            this.subMenuConfiguracion.Size = new System.Drawing.Size(310, 100);
+            this.subMenuConfiguracion.Size = new System.Drawing.Size(310, 20);
             this.subMenuConfiguracion.TabIndex = 13;
+            this.subMenuConfiguracion.Click += new System.EventHandler(this.subMenuConfiguracion_Click);
             // 
             // btnConfiguracion
             // 
@@ -751,14 +779,15 @@
             this.btnConfiguracion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfiguracion.CustomImages.Parent = this.btnConfiguracion;
             this.btnConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConfiguracion.Enabled = false;
             this.btnConfiguracion.FillColor = System.Drawing.Color.Transparent;
-            this.btnConfiguracion.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfiguracion.Font = new System.Drawing.Font("Calibri", 12.75F);
             this.btnConfiguracion.ForeColor = System.Drawing.Color.Black;
             this.btnConfiguracion.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.sistema_blanco_32;
             this.btnConfiguracion.HoveredState.Parent = this.btnConfiguracion;
             this.btnConfiguracion.Image = global::wfaIntegradoCom.Properties.Resources.sistemas_naranja_32;
             this.btnConfiguracion.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnConfiguracion.Location = new System.Drawing.Point(0, 520);
+            this.btnConfiguracion.Location = new System.Drawing.Point(0, 330);
             this.btnConfiguracion.Name = "btnConfiguracion";
             this.btnConfiguracion.PressedColor = System.Drawing.Color.Aqua;
             this.btnConfiguracion.ShadowDecoration.Parent = this.btnConfiguracion;
@@ -770,16 +799,19 @@
             // 
             // subMenuRrhh
             // 
+            this.subMenuRrhh.AutoSize = true;
             this.subMenuRrhh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.subMenuRrhh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.subMenuRrhh.Controls.Add(this.treeViewSubMenuRrhh);
             this.subMenuRrhh.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuRrhh.Location = new System.Drawing.Point(0, 490);
+            this.subMenuRrhh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuRrhh.Location = new System.Drawing.Point(0, 310);
             this.subMenuRrhh.MinimumSize = new System.Drawing.Size(310, 20);
             this.subMenuRrhh.Name = "subMenuRrhh";
+            this.subMenuRrhh.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuRrhh.ShadowDecoration.Parent = this.subMenuRrhh;
-            this.subMenuRrhh.Size = new System.Drawing.Size(310, 30);
+            this.subMenuRrhh.Size = new System.Drawing.Size(310, 20);
             this.subMenuRrhh.TabIndex = 11;
+            this.subMenuRrhh.Click += new System.EventHandler(this.subMenuRrhh_Click);
             // 
             // btnRrhh
             // 
@@ -790,14 +822,15 @@
             this.btnRrhh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRrhh.CustomImages.Parent = this.btnRrhh;
             this.btnRrhh.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRrhh.Enabled = false;
             this.btnRrhh.FillColor = System.Drawing.Color.Transparent;
-            this.btnRrhh.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRrhh.Font = new System.Drawing.Font("Calibri", 12.75F);
             this.btnRrhh.ForeColor = System.Drawing.Color.Black;
             this.btnRrhh.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.rrHh_blanco_32;
             this.btnRrhh.HoveredState.Parent = this.btnRrhh;
             this.btnRrhh.Image = global::wfaIntegradoCom.Properties.Resources.rrHh_naranja_32;
             this.btnRrhh.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnRrhh.Location = new System.Drawing.Point(0, 455);
+            this.btnRrhh.Location = new System.Drawing.Point(0, 275);
             this.btnRrhh.Name = "btnRrhh";
             this.btnRrhh.PressedColor = System.Drawing.Color.Aqua;
             this.btnRrhh.ShadowDecoration.Parent = this.btnRrhh;
@@ -809,16 +842,19 @@
             // 
             // subMenuSistemas
             // 
+            this.subMenuSistemas.AutoSize = true;
             this.subMenuSistemas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.subMenuSistemas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.subMenuSistemas.Controls.Add(this.treeViewSubMenuSistema);
             this.subMenuSistemas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuSistemas.Location = new System.Drawing.Point(0, 395);
+            this.subMenuSistemas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuSistemas.Location = new System.Drawing.Point(0, 255);
             this.subMenuSistemas.MinimumSize = new System.Drawing.Size(310, 20);
             this.subMenuSistemas.Name = "subMenuSistemas";
+            this.subMenuSistemas.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuSistemas.ShadowDecoration.Parent = this.subMenuSistemas;
-            this.subMenuSistemas.Size = new System.Drawing.Size(310, 60);
+            this.subMenuSistemas.Size = new System.Drawing.Size(310, 20);
             this.subMenuSistemas.TabIndex = 9;
+            this.subMenuSistemas.Click += new System.EventHandler(this.subMenuSistemas_Click);
             // 
             // btnSistemas
             // 
@@ -829,14 +865,15 @@
             this.btnSistemas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSistemas.CustomImages.Parent = this.btnSistemas;
             this.btnSistemas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSistemas.Enabled = false;
             this.btnSistemas.FillColor = System.Drawing.Color.Transparent;
-            this.btnSistemas.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSistemas.Font = new System.Drawing.Font("Calibri", 12.75F);
             this.btnSistemas.ForeColor = System.Drawing.Color.Black;
             this.btnSistemas.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.compu_ok_blanco_32;
             this.btnSistemas.HoveredState.Parent = this.btnSistemas;
             this.btnSistemas.Image = global::wfaIntegradoCom.Properties.Resources.compu_ok_naranja_32;
             this.btnSistemas.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSistemas.Location = new System.Drawing.Point(0, 360);
+            this.btnSistemas.Location = new System.Drawing.Point(0, 220);
             this.btnSistemas.Name = "btnSistemas";
             this.btnSistemas.PressedColor = System.Drawing.Color.Aqua;
             this.btnSistemas.ShadowDecoration.Parent = this.btnSistemas;
@@ -848,16 +885,20 @@
             // 
             // subMenuLogistica
             // 
+            this.subMenuLogistica.AutoScroll = true;
+            this.subMenuLogistica.AutoSize = true;
             this.subMenuLogistica.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.subMenuLogistica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.subMenuLogistica.Controls.Add(this.treeViewSubMenuLogistica);
             this.subMenuLogistica.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuLogistica.Location = new System.Drawing.Point(0, 300);
+            this.subMenuLogistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuLogistica.Location = new System.Drawing.Point(0, 200);
             this.subMenuLogistica.MinimumSize = new System.Drawing.Size(310, 20);
             this.subMenuLogistica.Name = "subMenuLogistica";
+            this.subMenuLogistica.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuLogistica.ShadowDecoration.Parent = this.subMenuLogistica;
-            this.subMenuLogistica.Size = new System.Drawing.Size(310, 60);
+            this.subMenuLogistica.Size = new System.Drawing.Size(310, 20);
             this.subMenuLogistica.TabIndex = 7;
+            this.subMenuLogistica.Click += new System.EventHandler(this.subMenuLogistica_Click);
             // 
             // btnLogistica
             // 
@@ -868,14 +909,15 @@
             this.btnLogistica.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogistica.CustomImages.Parent = this.btnLogistica;
             this.btnLogistica.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLogistica.Enabled = false;
             this.btnLogistica.FillColor = System.Drawing.Color.Transparent;
-            this.btnLogistica.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogistica.Font = new System.Drawing.Font("Calibri", 12.75F);
             this.btnLogistica.ForeColor = System.Drawing.Color.Black;
             this.btnLogistica.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.logistica_blanc_32;
             this.btnLogistica.HoveredState.Parent = this.btnLogistica;
             this.btnLogistica.Image = global::wfaIntegradoCom.Properties.Resources.logistica_naranja_32;
             this.btnLogistica.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogistica.Location = new System.Drawing.Point(0, 265);
+            this.btnLogistica.Location = new System.Drawing.Point(0, 165);
             this.btnLogistica.Name = "btnLogistica";
             this.btnLogistica.PressedColor = System.Drawing.Color.Aqua;
             this.btnLogistica.ShadowDecoration.Parent = this.btnLogistica;
@@ -887,15 +929,19 @@
             // 
             // subMenuComercial
             // 
-            this.subMenuComercial.AutoScroll = true;
+            this.subMenuComercial.AutoSize = true;
             this.subMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.subMenuComercial.Controls.Add(this.treeViewSubMenuComercial);
+            this.subMenuComercial.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuComercial.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuComercial.Location = new System.Drawing.Point(0, 165);
+            this.subMenuComercial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuComercial.Location = new System.Drawing.Point(0, 145);
+            this.subMenuComercial.MinimumSize = new System.Drawing.Size(310, 20);
             this.subMenuComercial.Name = "subMenuComercial";
+            this.subMenuComercial.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuComercial.ShadowDecoration.Parent = this.subMenuComercial;
-            this.subMenuComercial.Size = new System.Drawing.Size(310, 100);
+            this.subMenuComercial.Size = new System.Drawing.Size(310, 20);
             this.subMenuComercial.TabIndex = 5;
+            this.subMenuComercial.Click += new System.EventHandler(this.subMenuComercial_Click);
             // 
             // btnComercial
             // 
@@ -906,14 +952,15 @@
             this.btnComercial.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnComercial.CustomImages.Parent = this.btnComercial;
             this.btnComercial.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnComercial.Enabled = false;
             this.btnComercial.FillColor = System.Drawing.Color.Transparent;
-            this.btnComercial.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComercial.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnComercial.ForeColor = System.Drawing.Color.Black;
             this.btnComercial.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.comercial_blanco_32;
             this.btnComercial.HoveredState.Parent = this.btnComercial;
             this.btnComercial.Image = global::wfaIntegradoCom.Properties.Resources.commercial_naranja_32;
             this.btnComercial.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnComercial.Location = new System.Drawing.Point(0, 130);
+            this.btnComercial.Location = new System.Drawing.Point(0, 110);
             this.btnComercial.Name = "btnComercial";
             this.btnComercial.PressedColor = System.Drawing.Color.Aqua;
             this.btnComercial.ShadowDecoration.Parent = this.btnComercial;
@@ -925,16 +972,19 @@
             // 
             // subMenuRecaudacion
             // 
+            this.subMenuRecaudacion.AutoSize = true;
             this.subMenuRecaudacion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.subMenuRecaudacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.subMenuRecaudacion.Controls.Add(this.treeViewSubMenuRecaudacion);
             this.subMenuRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subMenuRecaudacion.Location = new System.Drawing.Point(0, 100);
+            this.subMenuRecaudacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuRecaudacion.Location = new System.Drawing.Point(0, 90);
+            this.subMenuRecaudacion.Margin = new System.Windows.Forms.Padding(50);
             this.subMenuRecaudacion.MinimumSize = new System.Drawing.Size(310, 20);
             this.subMenuRecaudacion.Name = "subMenuRecaudacion";
             this.subMenuRecaudacion.ShadowDecoration.Parent = this.subMenuRecaudacion;
-            this.subMenuRecaudacion.Size = new System.Drawing.Size(310, 30);
+            this.subMenuRecaudacion.Size = new System.Drawing.Size(310, 20);
             this.subMenuRecaudacion.TabIndex = 3;
+            this.subMenuRecaudacion.Click += new System.EventHandler(this.subMenuRecaudacion_Click);
             // 
             // btnRecaudacion
             // 
@@ -945,15 +995,18 @@
             this.btnRecaudacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRecaudacion.CustomImages.Parent = this.btnRecaudacion;
             this.btnRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRecaudacion.Enabled = false;
             this.btnRecaudacion.FillColor = System.Drawing.Color.Transparent;
-            this.btnRecaudacion.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecaudacion.Font = new System.Drawing.Font("Calibri", 12.75F);
             this.btnRecaudacion.ForeColor = System.Drawing.Color.Black;
             this.btnRecaudacion.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.recaudacion_Blanco;
             this.btnRecaudacion.HoveredState.Parent = this.btnRecaudacion;
             this.btnRecaudacion.Image = global::wfaIntegradoCom.Properties.Resources.refund_32px;
             this.btnRecaudacion.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnRecaudacion.Location = new System.Drawing.Point(0, 65);
+            this.btnRecaudacion.Location = new System.Drawing.Point(0, 55);
+            this.btnRecaudacion.Margin = new System.Windows.Forms.Padding(10);
             this.btnRecaudacion.Name = "btnRecaudacion";
+            this.btnRecaudacion.Padding = new System.Windows.Forms.Padding(10);
             this.btnRecaudacion.PressedColor = System.Drawing.Color.Aqua;
             this.btnRecaudacion.ShadowDecoration.Parent = this.btnRecaudacion;
             this.btnRecaudacion.Size = new System.Drawing.Size(310, 35);
@@ -964,16 +1017,19 @@
             // 
             // subMenuVentas
             // 
+            this.subMenuVentas.AutoSize = true;
             this.subMenuVentas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.subMenuVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.subMenuVentas.Controls.Add(this.treeViewSubMenuVentas);
             this.subMenuVentas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subMenuVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subMenuVentas.Location = new System.Drawing.Point(0, 35);
             this.subMenuVentas.MinimumSize = new System.Drawing.Size(310, 20);
             this.subMenuVentas.Name = "subMenuVentas";
+            this.subMenuVentas.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuVentas.ShadowDecoration.Parent = this.subMenuVentas;
-            this.subMenuVentas.Size = new System.Drawing.Size(310, 30);
+            this.subMenuVentas.Size = new System.Drawing.Size(310, 20);
             this.subMenuVentas.TabIndex = 1;
+            this.subMenuVentas.Click += new System.EventHandler(this.subMenuVentas_Click);
             // 
             // btnVenta
             // 
@@ -986,15 +1042,17 @@
             this.btnVenta.CustomBorderThickness = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.btnVenta.CustomImages.Parent = this.btnVenta;
             this.btnVenta.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnVenta.Enabled = false;
             this.btnVenta.FillColor = System.Drawing.Color.Transparent;
-            this.btnVenta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVenta.Font = new System.Drawing.Font("Calibri", 12.75F);
             this.btnVenta.ForeColor = System.Drawing.Color.Black;
             this.btnVenta.HoveredState.Parent = this.btnVenta;
             this.btnVenta.Image = global::wfaIntegradoCom.Properties.Resources.ventaBase_32;
             this.btnVenta.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnVenta.Location = new System.Drawing.Point(0, 0);
             this.btnVenta.Name = "btnVenta";
-            this.btnVenta.PressedColor = System.Drawing.Color.Aqua;
+            this.btnVenta.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnVenta.PressedColor = System.Drawing.Color.Aquamarine;
             this.btnVenta.ShadowDecoration.Parent = this.btnVenta;
             this.btnVenta.Size = new System.Drawing.Size(310, 35);
             this.btnVenta.TabIndex = 0;
@@ -1382,7 +1440,6 @@
             this.btnPrueba.Size = new System.Drawing.Size(180, 45);
             this.btnPrueba.TabIndex = 9;
             this.btnPrueba.Text = "Boton Prueba";
-            this.btnPrueba.Click += new System.EventHandler(this.btnPrueba_Click);
             // 
             // elhAlert
             // 
@@ -1747,87 +1804,6 @@
             this.tsAccesoRapido.TabIndex = 4;
             this.tsAccesoRapido.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsAccesoRapido_ItemClicked);
             // 
-            // treeViewSubMenuVentas
-            // 
-            this.treeViewSubMenuVentas.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.treeViewSubMenuVentas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewSubMenuVentas.Location = new System.Drawing.Point(0, 0);
-            this.treeViewSubMenuVentas.Name = "treeViewSubMenuVentas";
-            this.treeViewSubMenuVentas.Size = new System.Drawing.Size(310, 30);
-            this.treeViewSubMenuVentas.TabIndex = 6;
-            this.treeViewSubMenuVentas.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSubMenuVentas_AfterSelect);
-            // 
-            // treeViewSubMenuRecaudacion
-            // 
-            this.treeViewSubMenuRecaudacion.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.treeViewSubMenuRecaudacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewSubMenuRecaudacion.Location = new System.Drawing.Point(0, 0);
-            this.treeViewSubMenuRecaudacion.Name = "treeViewSubMenuRecaudacion";
-            this.treeViewSubMenuRecaudacion.Scrollable = false;
-            this.treeViewSubMenuRecaudacion.Size = new System.Drawing.Size(310, 30);
-            this.treeViewSubMenuRecaudacion.TabIndex = 6;
-            this.treeViewSubMenuRecaudacion.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSubMenuRecaudacion_AfterSelect);
-            // 
-            // treeViewSubMenuComercial
-            // 
-            this.treeViewSubMenuComercial.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.treeViewSubMenuComercial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewSubMenuComercial.Location = new System.Drawing.Point(0, 0);
-            this.treeViewSubMenuComercial.Name = "treeViewSubMenuComercial";
-            this.treeViewSubMenuComercial.Size = new System.Drawing.Size(310, 100);
-            this.treeViewSubMenuComercial.TabIndex = 6;
-            this.treeViewSubMenuComercial.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSubMenuComercial_AfterSelect);
-            // 
-            // treeViewSubMenuLogistica
-            // 
-            this.treeViewSubMenuLogistica.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.treeViewSubMenuLogistica.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewSubMenuLogistica.Location = new System.Drawing.Point(0, 0);
-            this.treeViewSubMenuLogistica.Name = "treeViewSubMenuLogistica";
-            this.treeViewSubMenuLogistica.Size = new System.Drawing.Size(310, 60);
-            this.treeViewSubMenuLogistica.TabIndex = 6;
-            this.treeViewSubMenuLogistica.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSubMenuLogistica_AfterSelect);
-            // 
-            // treeViewSubMenuSistema
-            // 
-            this.treeViewSubMenuSistema.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.treeViewSubMenuSistema.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewSubMenuSistema.Location = new System.Drawing.Point(0, 0);
-            this.treeViewSubMenuSistema.Name = "treeViewSubMenuSistema";
-            this.treeViewSubMenuSistema.Size = new System.Drawing.Size(310, 60);
-            this.treeViewSubMenuSistema.TabIndex = 6;
-            this.treeViewSubMenuSistema.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSubMenuSistema_AfterSelect);
-            // 
-            // treeViewSubMenuConfiguracion
-            // 
-            this.treeViewSubMenuConfiguracion.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.treeViewSubMenuConfiguracion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewSubMenuConfiguracion.Location = new System.Drawing.Point(0, 0);
-            this.treeViewSubMenuConfiguracion.Name = "treeViewSubMenuConfiguracion";
-            this.treeViewSubMenuConfiguracion.Size = new System.Drawing.Size(310, 100);
-            this.treeViewSubMenuConfiguracion.TabIndex = 6;
-            this.treeViewSubMenuConfiguracion.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSubMenuConfiguracion_AfterSelect);
-            // 
-            // treeViewSubMenuRrhh
-            // 
-            this.treeViewSubMenuRrhh.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.treeViewSubMenuRrhh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewSubMenuRrhh.Location = new System.Drawing.Point(0, 0);
-            this.treeViewSubMenuRrhh.Name = "treeViewSubMenuRrhh";
-            this.treeViewSubMenuRrhh.Size = new System.Drawing.Size(310, 30);
-            this.treeViewSubMenuRrhh.TabIndex = 6;
-            this.treeViewSubMenuRrhh.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSubMenuRrhh_AfterSelect);
-            // 
-            // treeViewSubMenuSoporte
-            // 
-            this.treeViewSubMenuSoporte.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.treeViewSubMenuSoporte.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewSubMenuSoporte.Location = new System.Drawing.Point(0, 0);
-            this.treeViewSubMenuSoporte.Name = "treeViewSubMenuSoporte";
-            this.treeViewSubMenuSoporte.Size = new System.Drawing.Size(310, 40);
-            this.treeViewSubMenuSoporte.TabIndex = 7;
-            this.treeViewSubMenuSoporte.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSubMenuSoporte_AfterSelect);
-            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1863,20 +1839,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.SplitCentro)).EndInit();
             this.SplitCentro.ResumeLayout(false);
             this.SplitIzquierdo.Panel1.ResumeLayout(false);
+            this.SplitIzquierdo.Panel1.PerformLayout();
             this.SplitIzquierdo.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SplitIzquierdo)).EndInit();
             this.SplitIzquierdo.ResumeLayout(false);
             this.tsTituloMenuIzquierdo.ResumeLayout(false);
             this.tsTituloMenuIzquierdo.PerformLayout();
             this.panelBotones.ResumeLayout(false);
-            this.subMenuSoporte.ResumeLayout(false);
-            this.subMenuConfiguracion.ResumeLayout(false);
-            this.subMenuRrhh.ResumeLayout(false);
-            this.subMenuSistemas.ResumeLayout(false);
-            this.subMenuLogistica.ResumeLayout(false);
-            this.subMenuComercial.ResumeLayout(false);
-            this.subMenuRecaudacion.ResumeLayout(false);
-            this.subMenuVentas.ResumeLayout(false);
+            this.panelBotones.PerformLayout();
             this.panelToosStrip.ResumeLayout(false);
             this.tsMenuPrincipal.ResumeLayout(false);
             this.tsMenuPrincipal.PerformLayout();
@@ -2019,18 +1989,12 @@
         private Siticone.UI.WinForms.SiticoneButton btnRecaudacion;
         private Siticone.UI.WinForms.SiticonePanel subMenuVentas;
         private Siticone.UI.WinForms.SiticoneButton btnVenta;
-        private Siticone.UI.WinForms.SiticonePanel panelToosStrip;
         private Siticone.UI.WinForms.SiticonePanel subMenuSoporte;
         private Siticone.UI.WinForms.SiticoneButton btnSoporte;
         private Siticone.UI.WinForms.SiticoneButton btnPrueba;
-        private System.Windows.Forms.TreeView treeViewSubMenuVentas;
-        private System.Windows.Forms.TreeView treeViewSubMenuConfiguracion;
-        private System.Windows.Forms.TreeView treeViewSubMenuRrhh;
-        private System.Windows.Forms.TreeView treeViewSubMenuSistema;
-        private System.Windows.Forms.TreeView treeViewSubMenuLogistica;
-        private System.Windows.Forms.TreeView treeViewSubMenuComercial;
-        private System.Windows.Forms.TreeView treeViewSubMenuRecaudacion;
-        private System.Windows.Forms.TreeView treeViewSubMenuSoporte;
+        private Siticone.UI.WinForms.SiticonePanel panelToosStrip;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel1;
+        private Siticone.UI.WinForms.SiticoneToggleSwitch SwitchMenus;
     }
 }
 
