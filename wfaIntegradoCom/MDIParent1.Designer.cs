@@ -546,6 +546,7 @@
             // 
             this.SwitchMenus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SwitchMenus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.SwitchMenus.Checked = true;
             this.SwitchMenus.CheckedState.BorderColor = System.Drawing.Color.Lime;
             this.SwitchMenus.CheckedState.FillColor = System.Drawing.Color.LavenderBlush;
             this.SwitchMenus.CheckedState.InnerBorderColor = System.Drawing.Color.Red;
@@ -651,10 +652,10 @@
             this.btnPanel1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPanel1.HoveredState.ForeColor = System.Drawing.Color.Black;
             this.btnPanel1.HoveredState.Parent = this.btnPanel1;
-            this.btnPanel1.Location = new System.Drawing.Point(195, 2943);
+            this.btnPanel1.Location = new System.Drawing.Point(195, 3839);
             this.btnPanel1.Name = "btnPanel1";
             this.btnPanel1.ShadowDecoration.Parent = this.btnPanel1;
-            this.btnPanel1.Size = new System.Drawing.Size(68, 35);
+            this.btnPanel1.Size = new System.Drawing.Size(52, 35);
             this.btnPanel1.TabIndex = 8;
             this.btnPanel1.Text = "Panel 1";
             this.btnPanel1.Visible = false;
@@ -677,10 +678,10 @@
             this.btnPanel2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPanel2.HoveredState.ForeColor = System.Drawing.Color.Black;
             this.btnPanel2.HoveredState.Parent = this.btnPanel2;
-            this.btnPanel2.Location = new System.Drawing.Point(119, 2943);
+            this.btnPanel2.Location = new System.Drawing.Point(119, 3839);
             this.btnPanel2.Name = "btnPanel2";
             this.btnPanel2.ShadowDecoration.Parent = this.btnPanel2;
-            this.btnPanel2.Size = new System.Drawing.Size(68, 35);
+            this.btnPanel2.Size = new System.Drawing.Size(52, 35);
             this.btnPanel2.TabIndex = 7;
             this.btnPanel2.Text = "Panel 2";
             // 

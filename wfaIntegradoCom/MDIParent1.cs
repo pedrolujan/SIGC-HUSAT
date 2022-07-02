@@ -52,6 +52,7 @@ namespace wfaIntegradoCom
             if (this.treeView1.Controls.Count > 0)
                 this.treeView1.Controls.RemoveAt(0);
 
+
         }
         public MDIParent1()
         {
@@ -892,6 +893,7 @@ namespace wfaIntegradoCom
             try
             {
                 
+                fnCambiarMenu();
                 Loading();
                 SystemEvents.PowerModeChanged += OnPowerModeChange;
                 InitializeTimer();
@@ -1600,7 +1602,7 @@ namespace wfaIntegradoCom
 
 
         }
-        private void siticoneToggleSwitch1_CheckedChanged(object sender, EventArgs e)
+        private void fnCambiarMenu()
         {
             if (SwitchMenus.Checked == true)
             {
@@ -1636,6 +1638,10 @@ namespace wfaIntegradoCom
                 SplitIzquierdo.SplitterDistance = 233;
                 fnselectslMenuIzquierdo();
             }
+        }
+        private void siticoneToggleSwitch1_CheckedChanged(object sender, EventArgs e)
+        {
+            fnCambiarMenu();
 
         }
      
