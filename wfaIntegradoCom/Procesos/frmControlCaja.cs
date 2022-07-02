@@ -159,10 +159,18 @@ namespace wfaIntegradoCom.Procesos
         {
             bl = new BLControlCaja();
             DataTable dtRes = new DataTable();
-            
-
-            String fechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value,5);
-            String fechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value,5);
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.chkActivarFechas = chkHabilitarFechasBusG.Checked;
+            clsBusq.chkActivarDia = chkDiaEspecificoG.Checked;
+            clsBusq.dtFechaIni= FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
+            clsBusq.dtFechaFin= FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
+            clsBusq.cod1= cboTipoReporte.SelectedValue.ToString();
+            clsBusq.cod2= "";
+            clsBusq.cod3= "";
+            clsBusq.cod4= "";
+            clsBusq.cBuscar= txtBuscarRepGeneral.Text.ToString();
+            clsBusq.numPagina = numPagina;
+            clsBusq.tipoCon = tipoCon;
 
             String codTipoReporte = cboTipoReporte.SelectedValue.ToString();
             String codTipoOperacion = "";
@@ -176,7 +184,7 @@ namespace wfaIntegradoCom.Procesos
 
             Int32 filas = 10;
 
-            lsReporteBloque = bl.BuscarReporteGeneralVentas(chkHabilitarFechas, chkDiaEsp, fechaIni, fechaFin, codTipoReporte, codTipoOperacion, TipoPlan, tipotarifa, cBuscar, numPagina,  tipoCon);
+            lsReporteBloque = bl.BuscarReporteGeneralVentas( clsBusq);
             Int32 totalRows = lsReporteBloque.Count;
             dgvListaPorBloque.Columns.Clear();
             dgvListaPorBloque.Rows.Clear();
@@ -423,61 +431,45 @@ namespace wfaIntegradoCom.Procesos
             }
         }
 
-        //private void fnMostrarCombobox(String codTipoReporte,String codOperacion)
-        //{
-        //    siticonePanel2.Visible = false;
-        //    siticonePanel3.Visible = true;
-        //    siticonePanel4.Visible = true;
-        //    siticonePanel5.Visible = true;
-        //    if (codTipoReporte == "TRPT0001")
-        //    {
-        //        if (codOperacion == "4")
-        //        {
-        //            cboTipoPlanP.SelectedValue = 2; ;
-        //            cboTipoPlanP.Enabled = false;
-        //            cboTipoPago.SelectedValue = "ESDOV005";
-        //            cboTipoPago.Enabled = false;
+        private void fnMostrarCombobox(String codTipoReporte, String codOperacion)
+        {
+            
+            if (codTipoReporte == "TRPT0001")
+            {
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltro, "cCodTab", "cNomTab", "TablaCod", "cCodTab", "TIPA", true);
+                if (codOperacion == "4")
+                {
+                    //FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltro,"idUsuario","cUser","Usuario","estValida","1",true);
 
-        //        }
-        //        else if (codOperacion == "3" || codOperacion == "5")
-        //        {
-        //            cboTipoPlanP.SelectedValue = 0; ;
-        //            cboTipoPlanP.Enabled = true;
-        //            cboTipoPago.SelectedValue = "0";
-        //            cboTipoPago.Enabled = true;
-        //            if (codOperacion=="3")
-        //            {
-        //                cboTipoVenta.SelectedValue = 1;
-        //                cboTipoVenta.Enabled = false;
-        //            }
-        //            else if (codOperacion=="5")
-        //            {
-        //                cboTipoVenta.SelectedValue = 2;
-        //                cboTipoVenta.Enabled = false;
-        //            }
-        //        }
-        //        else if (codOperacion=="6" || codOperacion=="7")
-        //        {
-        //            siticonePanel2.Visible = false;
-        //            siticonePanel3.Visible = false;
-        //            siticonePanel4.Visible = false;
-        //            siticonePanel5.Visible = false;
-        //        }
-        //    }
-        //}
+                }
+                else if (codOperacion == "3" || codOperacion == "5")
+                {
+                    
+                  
+                }
+                else if (codOperacion == "6" || codOperacion == "7")
+                {
+                    
+                }
+            }
+        }
         private void verDetalletsm_Click(object sender, EventArgs e)
         {
-            codTipoReporte = cboTipoReporte.SelectedValue.ToString();            
-            //frmTipoPago.fnLlenarCombobox(btnEntidadPago, codOperacion, 0, true);
-            codOperacion = dgvListaPorBloque.CurrentRow.Cells[0].Value.ToString();
-            //fnMostrarCombobox(codTipoReporte, codOperacion);
+            if (dgvListaPorBloque.CurrentRow!=  null)
+            {
+                codTipoReporte = cboTipoReporte.SelectedValue.ToString();
 
-            ReporteBloque clsReporte = lsReporteBloque.Find(i => i.Codigoreporte == codOperacion);
-            lblDetalleInfo.Text = clsReporte.Detallereporte + " Cantidad. " + clsReporte.Cantidad + " Importe. " + FunGeneral.fnFormatearPrecio(clsReporte.SimboloMoneda,clsReporte.ImporteRow, 0);
-            fnBuscarVentasCaja(codOperacion, 0, -1);
+                codOperacion = dgvListaPorBloque.CurrentRow.Cells[0].Value.ToString();
+                fnMostrarCombobox(codTipoReporte, codOperacion);
 
-            fnActivarControles(true);
-            tabControl1.SelectedIndex = 1;
+                ReporteBloque clsReporte = lsReporteBloque.Find(i => i.Codigoreporte == codOperacion);
+                lblDetalleInfo.Text = clsReporte.Detallereporte + " Cantidad. " + clsReporte.Cantidad + " Importe. " + FunGeneral.fnFormatearPrecio(clsReporte.SimboloMoneda, clsReporte.ImporteRow, 0);
+                fnBuscarVentasCaja(codOperacion, 0, -1);
+
+                fnActivarControles(true);
+                tabControl1.SelectedIndex = 1;
+            }
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -513,6 +505,37 @@ namespace wfaIntegradoCom.Procesos
         {
             var mousePosition = dgvListaPorBloque.PointToClient(Cursor.Position);
             cmsAccion.Show(dgvListaPorBloque, mousePosition.X, mousePosition.Y);
+        }
+
+        private void dgvListaPorBloque_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex != -1 && e.ColumnIndex != -1)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    DataGridViewRow clickedRow = (sender as DataGridView).Rows[e.RowIndex];
+                    if (!clickedRow.Selected)
+                    {
+                        dgvListaPorBloque.CurrentCell = clickedRow.Cells[e.ColumnIndex];
+
+                    }
+                    else
+                    {
+                        var mousePosition = dgvListaPorBloque.PointToClient(Cursor.Position);
+                        cmsAccion.Show(dgvListaPorBloque, mousePosition);
+                    }
+
+                }
+            }
+        }
+
+        private void cboFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (codTipoReporte != "TRPT0002")
+            {
+                frmTipoPago.fnLlenarCombobox(cboSubFiltro, cboFiltro.SelectedValue.ToString(), 0, true);
+
+            }
         }
     }
 }

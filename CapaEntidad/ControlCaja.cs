@@ -34,4 +34,25 @@ namespace CapaEntidad
 
     }
 
+    public class Busquedas
+    {
+        public Busquedas() { }
+
+        public Boolean chkActivarFechas { get; set; }
+        public Boolean chkActivarDia { get; set; }
+        public String dtFechaIni { get; set; }
+        public String dtFechaFin { get; set; }
+        public String cod1 { get; set; }
+        public String cod2 { get; set; }
+        public String cod3 { get; set; }
+        public String cod4 { get; set; }
+        public String cod5 { get; set; }
+        public String cod6 { get; set; }
+        public String cod7 { get; set; }
+        public String cBuscar { get; set; }
+        public Int32 numPagina { get; set; }
+        public Int32 tipoCon { get; set; }
+
+    }
+
 }

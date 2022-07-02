@@ -856,70 +856,74 @@ namespace wfaIntegradoCom.Procesos
         }
         private void fnCargarDatos(DataTable dtResult)
         {
-            BLTipoTarifa objBlTipTarifa = new BLTipoTarifa();
-            BLCiclo objCiclo = new BLCiclo();
-            BLTipoCliente objTipoCliente = new BLTipoCliente();
-            lstDetalleCronograma.Clear();
-            clsVentaGeneral.codigoVenta = Convert.ToString(dtResult.Rows[0][24]);
-            clsTarifa = objBlTipTarifa.blDevolverPreciosPagosMensuales(Convert.ToInt32(dtResult.Rows[0][1]), Convert.ToString(dtResult.Rows[0][24]), Convert.ToInt32(dtResult.Rows[0][33]));
-            cboMoneda.SelectedValue = clsTarifa.IdMoneda;
-            clsCiclo.IdCiclo = Convert.ToInt32(dtResult.Rows[0][17]);           
-           
-            lstCiclo = objCiclo.blDevolverCiclo(Convert.ToInt32(dtResult.Rows[0][17]), false);
-
-            clsVehiculo.idVehiculo= Convert.ToInt32(dtResult.Rows[0][3]);
-            clsVehiculo.vPlaca= Convert.ToString(dtResult.Rows[0][4]);
-            clsVehiculo.Observaciones= Convert.ToString(dtResult.Rows[0][5]);
-
-            clsCliente.cApePat = dtResult.Rows[0][6].ToString();
-            clsCliente.cApeMat = dtResult.Rows[0][7].ToString();
-            clsCliente.cNombre = dtResult.Rows[0][8].ToString();
-            clsCliente.cDireccion = dtResult.Rows[0][9].ToString();
-            clsCliente.cContactoNom1 = dtResult.Rows[0][10].ToString();
-            clsCliente.cTiDo = Convert.ToInt32(dtResult.Rows[0][11]);
-            clsCliente.cDocumento= Convert.ToString(dtResult.Rows[0][13]);
-
-            Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboComprobanteP, "DOVE", clsCliente.cTiDo, 0);
-            lstTD = objTipoCliente.blDevolverDocumentoDeTipoCliente(Convert.ToInt32(dtResult.Rows[0][12]),"1", false);
-
-            txtDatosCliente.Text = Convert.ToString(clsCliente.cNombre+' '+ clsCliente.cApePat+' '+ clsCliente.cApeMat);
-            txtPlacaVehiculo.Text = clsVehiculo.vPlaca;
-            txtDatosVehiculo.Text = clsVehiculo.Observaciones;
-            txtTarifa.Text = Convert.ToString(dtResult.Rows[0][14]);
-            txtTipoventa.Text = Convert.ToString(dtResult.Rows[0][15]);
-            txtPlan.Text = Convert.ToString(dtResult.Rows[0][16]);
-            clsVentaGeneral.codigoVenta= Convert.ToString(dtResult.Rows[0][24]);
-
-            txtfechaoriginal.Text = Convert.ToDateTime(dtResult.Rows[0][31]).ToString("dd/MM/yyyy");
-            diaCicloPago = Convert.ToInt32(dtResult.Rows[0][27]);
-
-
-            for (Int32 i=0; i< dtResult.Rows.Count;i++)
+            if (dtResult.Rows.Count > 0)
             {
-                lstDetalleCronograma.Add(new DetalleCronograma
+                BLTipoTarifa objBlTipTarifa = new BLTipoTarifa();
+                BLCiclo objCiclo = new BLCiclo();
+                BLTipoCliente objTipoCliente = new BLTipoCliente();
+                lstDetalleCronograma.Clear();
+                clsVentaGeneral.codigoVenta = Convert.ToString(dtResult.Rows[0][24]);
+                clsTarifa = objBlTipTarifa.blDevolverPreciosPagosMensuales(Convert.ToInt32(dtResult.Rows[0][1]), Convert.ToString(dtResult.Rows[0][24]), Convert.ToInt32(dtResult.Rows[0][33]));
+                cboMoneda.SelectedValue = clsTarifa.IdMoneda;
+                clsCiclo.IdCiclo = Convert.ToInt32(dtResult.Rows[0][17]);
+
+                lstCiclo = objCiclo.blDevolverCiclo(Convert.ToInt32(dtResult.Rows[0][17]), false);
+
+                clsVehiculo.idVehiculo = Convert.ToInt32(dtResult.Rows[0][3]);
+                clsVehiculo.vPlaca = Convert.ToString(dtResult.Rows[0][4]);
+                clsVehiculo.Observaciones = Convert.ToString(dtResult.Rows[0][5]);
+
+                clsCliente.cApePat = dtResult.Rows[0][6].ToString();
+                clsCliente.cApeMat = dtResult.Rows[0][7].ToString();
+                clsCliente.cNombre = dtResult.Rows[0][8].ToString();
+                clsCliente.cDireccion = dtResult.Rows[0][9].ToString();
+                clsCliente.cContactoNom1 = dtResult.Rows[0][10].ToString();
+                clsCliente.cTiDo = Convert.ToInt32(dtResult.Rows[0][11]);
+                clsCliente.cDocumento = Convert.ToString(dtResult.Rows[0][13]);
+
+                Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboComprobanteP, "DOVE", clsCliente.cTiDo, 0);
+                lstTD = objTipoCliente.blDevolverDocumentoDeTipoCliente(Convert.ToInt32(dtResult.Rows[0][12]), "1", false);
+
+                txtDatosCliente.Text = Convert.ToString(clsCliente.cNombre + ' ' + clsCliente.cApePat + ' ' + clsCliente.cApeMat);
+                txtPlacaVehiculo.Text = clsVehiculo.vPlaca;
+                txtDatosVehiculo.Text = clsVehiculo.Observaciones;
+                txtTarifa.Text = Convert.ToString(dtResult.Rows[0][14]);
+                txtTipoventa.Text = Convert.ToString(dtResult.Rows[0][15]);
+                txtPlan.Text = Convert.ToString(dtResult.Rows[0][16]);
+                clsVentaGeneral.codigoVenta = Convert.ToString(dtResult.Rows[0][24]);
+
+                txtfechaoriginal.Text = Convert.ToDateTime(dtResult.Rows[0][31]).ToString("dd/MM/yyyy");
+                diaCicloPago = Convert.ToInt32(dtResult.Rows[0][27]);
+
+
+                for (Int32 i = 0; i < dtResult.Rows.Count; i++)
                 {
-                    numItem=(i+1),
-                    idDetalleCronograma = Convert.ToInt32(dtResult.Rows[i][0]),
-                    fechaRegistro = Convert.ToDateTime(dtResult.Rows[i][18]),
-                    periodoInicio = Convert.ToDateTime(dtResult.Rows[i][19]),
-                    periodoFinal = Convert.ToDateTime(dtResult.Rows[i][20]),
-                    fechaVencimiento = Convert.ToDateTime(dtResult.Rows[i][21]),
-                    fechaEmision = Convert.ToDateTime(dtResult.Rows[i][25]),
-                    fechaPago = Convert.ToDateTime(dtResult.Rows[i][26]),
-                    precioUnitario = clsTarifa.PrecioPlan,
-                    descuento = Convert.ToDouble(dtResult.Rows[i][28]),
-                    //descuentoCantidad = Convert.ToDouble(dtResult.Rows[i][28]),
-                    descuentoPrecio = Convert.ToDouble(dtResult.Rows[i][29]),
-                    total = Convert.ToInt32(dtResult.Rows[i][30]) == 0 ? clsTarifa.PrecioPlan : Convert.ToDouble(dtResult.Rows[i][30]),
-                    estado = Convert.ToString(dtResult.Rows[i][23]),
-                    idDetallePago=Convert.ToInt32(dtResult.Rows[i][32]),
-                    strTipoDescuento = Convert.ToString(dtResult.Rows[i][34])
+                    lstDetalleCronograma.Add(new DetalleCronograma
+                    {
+                        numItem = (i + 1),
+                        idDetalleCronograma = Convert.ToInt32(dtResult.Rows[i][0]),
+                        fechaRegistro = Convert.ToDateTime(dtResult.Rows[i][18]),
+                        periodoInicio = Convert.ToDateTime(dtResult.Rows[i][19]),
+                        periodoFinal = Convert.ToDateTime(dtResult.Rows[i][20]),
+                        fechaVencimiento = Convert.ToDateTime(dtResult.Rows[i][21]),
+                        fechaEmision = Convert.ToDateTime(dtResult.Rows[i][25]),
+                        fechaPago = Convert.ToDateTime(dtResult.Rows[i][26]),
+                        precioUnitario = clsTarifa.PrecioPlan,
+                        descuento = Convert.ToDouble(dtResult.Rows[i][28]),
+                        //descuentoCantidad = Convert.ToDouble(dtResult.Rows[i][28]),
+                        descuentoPrecio = Convert.ToDouble(dtResult.Rows[i][29]),
+                        total = Convert.ToInt32(dtResult.Rows[i][30]) == 0 ? clsTarifa.PrecioPlan : Convert.ToDouble(dtResult.Rows[i][30]),
+                        estado = Convert.ToString(dtResult.Rows[i][23]),
+                        idDetallePago = Convert.ToInt32(dtResult.Rows[i][32]),
+                        strTipoDescuento = Convert.ToString(dtResult.Rows[i][34])
 
-                }) ;
+                    });
 
 
+                }
+                fnCargarTablaLista(false, 0, 0);
             }
-            fnCargarTablaLista(false,0,0);
+            
             
         }
         private void dgvListaVentas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

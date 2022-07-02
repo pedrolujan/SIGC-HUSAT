@@ -97,7 +97,7 @@ namespace CapaDato
 
             }
         }
-        public List<ReporteBloque> daBuscarReporteGeneralVentas(Boolean chk, Boolean chkDiaEsp, String fini, String ffin, String codTipoReporte, String codTipoOprecacion, Int32 tipPlan, Int32 tipTarifa, String cBuscar, Int32 numPagina, Int32 tipoCon)
+        public List<ReporteBloque> daBuscarReporteGeneralVentas(Busquedas clsBusq)
         {
             SqlParameter[] pa = new SqlParameter[11];
             List<ControlCaja> lstControl = new List<ControlCaja>();
@@ -107,17 +107,17 @@ namespace CapaDato
             objUtil = new clsUtil();
             try
             {
-                pa[0] = new SqlParameter("@dtFechaIni", SqlDbType.Date) { Value = fini };
-                pa[1] = new SqlParameter("@dtFechaFin", SqlDbType.Date) { Value = ffin };
-                pa[2] = new SqlParameter("@codTipoReporte", SqlDbType.VarChar) { Value = codTipoReporte };
-                pa[3] = new SqlParameter("@codTipoOperacion", SqlDbType.VarChar) { Value = codTipoOprecacion };
-                pa[4] = new SqlParameter("@idTipoPlan", SqlDbType.Int) { Value = tipPlan };
-                pa[5] = new SqlParameter("@idTipoTarifa", SqlDbType.Int) { Value = tipTarifa };
-                pa[6] = new SqlParameter("@cBuscar", SqlDbType.VarChar) { Value = cBuscar }; 
-                pa[7] = new SqlParameter("@numPagina", SqlDbType.VarChar) { Value = numPagina }; 
-                pa[8] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = tipoCon }; 
-                pa[9] = new SqlParameter("@chkHabilitarFecha", SqlDbType.TinyInt) { Value =  chk }; 
-                pa[10] = new SqlParameter("@chkDiaEspecifico", SqlDbType.TinyInt) { Value = chkDiaEsp }; 
+                pa[0] = new SqlParameter("@dtFechaIni", SqlDbType.Date) { Value = clsBusq.dtFechaIni };
+                pa[1] = new SqlParameter("@dtFechaFin", SqlDbType.Date) { Value = clsBusq.dtFechaFin };
+                pa[2] = new SqlParameter("@codTipoReporte", SqlDbType.VarChar) { Value = clsBusq.cod1 };
+                pa[3] = new SqlParameter("@codTipoOperacion", SqlDbType.VarChar) { Value = clsBusq.cod2 };
+                pa[4] = new SqlParameter("@idTipoPlan", SqlDbType.Int) { Value = 0 };
+                pa[5] = new SqlParameter("@idTipoTarifa", SqlDbType.Int) { Value = 0 };
+                pa[6] = new SqlParameter("@cBuscar", SqlDbType.VarChar) { Value = clsBusq.cBuscar }; 
+                pa[7] = new SqlParameter("@numPagina", SqlDbType.VarChar) { Value = clsBusq.numPagina }; 
+                pa[8] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = clsBusq.tipoCon }; 
+                pa[9] = new SqlParameter("@chkHabilitarFecha", SqlDbType.TinyInt) { Value = clsBusq.chkActivarFechas }; 
+                pa[10] = new SqlParameter("@chkDiaEspecifico", SqlDbType.TinyInt) { Value = clsBusq.chkActivarDia }; 
 
                  objCnx = new clsConexion("");
 
