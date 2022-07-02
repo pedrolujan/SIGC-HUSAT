@@ -107,7 +107,6 @@
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tlsStatus = new System.Windows.Forms.ToolStrip();
             this.tsbSignalr = new System.Windows.Forms.ToolStripButton();
-            this.btnPrueba = new Siticone.UI.WinForms.SiticoneButton();
             this.elhAlert = new System.Windows.Forms.Integration.ElementHost();
             this.ucOpcion1 = new WPF.CTRL.Colocaciones.ucOpcion();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -1243,7 +1242,6 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Panel2.Controls.Add(this.btnPrueba);
             this.splitContainer1.Panel2.Controls.Add(this.elhAlert);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip2);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip3);
@@ -1426,20 +1424,6 @@
             this.tsbSignalr.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSignalr.Name = "tsbSignalr";
             this.tsbSignalr.Size = new System.Drawing.Size(23, 22);
-            // 
-            // btnPrueba
-            // 
-            this.btnPrueba.CheckedState.Parent = this.btnPrueba;
-            this.btnPrueba.CustomImages.Parent = this.btnPrueba;
-            this.btnPrueba.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnPrueba.ForeColor = System.Drawing.Color.White;
-            this.btnPrueba.HoveredState.Parent = this.btnPrueba;
-            this.btnPrueba.Location = new System.Drawing.Point(5, 476);
-            this.btnPrueba.Name = "btnPrueba";
-            this.btnPrueba.ShadowDecoration.Parent = this.btnPrueba;
-            this.btnPrueba.Size = new System.Drawing.Size(180, 45);
-            this.btnPrueba.TabIndex = 9;
-            this.btnPrueba.Text = "Boton Prueba";
             // 
             // elhAlert
             // 
@@ -1991,7 +1975,6 @@
         private Siticone.UI.WinForms.SiticoneButton btnVenta;
         private Siticone.UI.WinForms.SiticonePanel subMenuSoporte;
         private Siticone.UI.WinForms.SiticoneButton btnSoporte;
-        private Siticone.UI.WinForms.SiticoneButton btnPrueba;
         private Siticone.UI.WinForms.SiticonePanel panelToosStrip;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel1;
         private Siticone.UI.WinForms.SiticoneToggleSwitch SwitchMenus;
