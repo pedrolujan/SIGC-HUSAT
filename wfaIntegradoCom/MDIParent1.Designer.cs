@@ -603,6 +603,8 @@
             this.ListaImagenes.Images.SetKeyName(0, "eaTekn5i4.png");
             this.ListaImagenes.Images.SetKeyName(1, "z7cak5eTA.png");
             this.ListaImagenes.Images.SetKeyName(2, "7eiM5q9cn.png");
+            this.ListaImagenes.Images.SetKeyName(3, "flecha-derecha_Naranja.png");
+            this.ListaImagenes.Images.SetKeyName(4, "flecha-derecha.png");
             // 
             // tsTituloMenuIzquierdo
             // 
@@ -1317,14 +1319,14 @@
             this.treeView1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.treeView1.FullRowSelect = true;
             this.treeView1.HideSelection = false;
-            this.treeView1.ImageIndex = 0;
+            this.treeView1.ImageIndex = 3;
             this.treeView1.ImageList = this.ListaImagenes;
             this.treeView1.LineColor = System.Drawing.Color.WhiteSmoke;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(10);
             this.treeView1.Name = "treeView1";
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.treeView1.SelectedImageIndex = 0;
+            this.treeView1.SelectedImageIndex = 4;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.Size = new System.Drawing.Size(740, 490);
             this.treeView1.TabIndex = 5;
