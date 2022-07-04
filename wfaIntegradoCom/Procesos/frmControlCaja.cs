@@ -81,29 +81,31 @@ namespace wfaIntegradoCom.Procesos
         {
             if (e.KeyChar==(char)Keys.Enter)
             {
-                fnBuscarVentasCaja("",0,-1);
+                fnBuscarVentasCaja(codOperacion, 0,-1);
             }
         }
         private void fnBuscarVentasCaja(String codOperacion, Int32 numPagina, Int32 tipoCon)
         {
             bl = new BLControlCaja();
             DataTable dtRes = new DataTable();
+            Busquedas clsBus = new Busquedas();
 
-            String fechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value,5);
-            String fechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value,5);
-            Int32 entidadPago =0;
-            String codTipoReporte = cboTipoReporte.SelectedValue.ToString();
-            Int32 TipoPlan = 0;
-            Int32 tipotarifa = 0;
-            Int32 idUsuario = 0;
-            String tipoPago = "0";
-            String cBuscar = siticoneTextBox1.Text.ToString();
-            Boolean chkHabilitarFechas = chkHabilitarFechasBusG.Checked;
-            Boolean chkDiaEsp = chkDiaEspecificoG.Checked;
+            clsBus.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value,5);
+            clsBus.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value,5);
+            clsBus.cod1 = cboTipoReporte.SelectedValue.ToString();
+            clsBus.cod2 = codOperacion;
+            clsBus.cod3 = siticonePanel3.Visible == false? codOperacion: cboFiltro.SelectedValue.ToString();
+            clsBus.cod4 = cboSubFiltro.SelectedValue.ToString();
+            clsBus.numPagina = numPagina;
+            clsBus.tipoCon = tipoCon;
+            clsBus.cBuscar = siticoneTextBox1.Text.ToString();
+            clsBus.chkActivarFechas = chkHabilitarFechasBusG.Checked;
+            clsBus.chkActivarDia = chkDiaEspecificoG.Checked;
+            clsBus.idUsuario = 0;
 
             Int32 filas = 10;
 
-            dtRes = bl.blfnBuscarVentasCaja(chkHabilitarFechas, chkDiaEsp, fechaIni, fechaFin, codTipoReporte , entidadPago, codOperacion, TipoPlan, tipotarifa, tipoPago, idUsuario, cBuscar, numPagina,  tipoCon);
+            dtRes = bl.blfnBuscarVentasCaja(clsBus);
             Int32 totalRows = dtRes.Rows.Count;
             dgvListaVentas.Rows.Clear();
 
@@ -338,7 +340,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void pbBuscar_Click(object sender, EventArgs e)
         {
-            fnBuscarVentasCaja("",0, -1);
+            fnBuscarVentasCaja(codOperacion, 0, -1);
         }
 
         private void cboTipoReporte_SelectedIndexChanged(object sender, EventArgs e)
@@ -433,7 +435,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void fnMostrarCombobox(String codTipoReporte, String codOperacion)
         {
-            
+            siticonePanel3.Visible = true;
             if (codTipoReporte == "TRPT0001")
             {
                 FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltro, "cCodTab", "cNomTab", "TablaCod", "cCodTab", "TIPA", true);
@@ -451,6 +453,15 @@ namespace wfaIntegradoCom.Procesos
                 {
                     
                 }
+            }
+            else if (codTipoReporte == "TRPT0002")
+            {
+                siticonePanel3.Visible = false;
+                frmTipoPago.fnLlenarCombobox(cboSubFiltro,codOperacion, 0, true);
+            }else if (codTipoReporte == "TRPT0004")
+            {
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltro, "cCodTab", "cNomTab", "TablaCod", "cCodTab", "TIPA", true);
+
             }
         }
         private void verDetalletsm_Click(object sender, EventArgs e)
@@ -533,7 +544,10 @@ namespace wfaIntegradoCom.Procesos
         {
             if (codTipoReporte != "TRPT0002")
             {
-                frmTipoPago.fnLlenarCombobox(cboSubFiltro, cboFiltro.SelectedValue.ToString(), 0, true);
+                if (cboFiltro.SelectedValue != null)
+                {
+                    frmTipoPago.fnLlenarCombobox(cboSubFiltro, cboFiltro.SelectedValue.ToString(), 0, true);
+                }
 
             }
         }

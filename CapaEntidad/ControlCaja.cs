@@ -52,6 +52,7 @@ namespace CapaEntidad
         public String cBuscar { get; set; }
         public Int32 numPagina { get; set; }
         public Int32 tipoCon { get; set; }
+        public Int32 idUsuario { get; set; }
 
     }
 

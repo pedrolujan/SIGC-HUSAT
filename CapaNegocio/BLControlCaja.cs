@@ -28,12 +28,12 @@ namespace CapaNegocio
             }
            
         }
-        public DataTable blfnBuscarVentasCaja(Boolean chk,Boolean chkDiaEsp, String fini, String ffin, String mtPago, Int32 entPago, String doVenta, Int32 tipPlan, Int32 tipTarifa, String tipPago,Int32 idUsuario, String cBuscar,Int32 numPagina, Int32 tipoCon)
+        public DataTable blfnBuscarVentasCaja(Busquedas clsBus)
         {
             dc = new DAControlCaja();
             try
             {
-                return dc.daFnBuscarVentasCaja( chk, chkDiaEsp, fini,  ffin,  mtPago,  entPago,  doVenta,  tipPlan,  tipTarifa,  tipPago,  idUsuario,  cBuscar, numPagina,  tipoCon);
+                return dc.daFnBuscarVentasCaja(clsBus);
 
                 
             }
