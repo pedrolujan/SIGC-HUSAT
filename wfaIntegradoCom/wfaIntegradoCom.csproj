@@ -513,6 +513,12 @@
     <Compile Include="Procesos\frmBuscarVentas.Designer.cs">
       <DependentUpon>frmBuscarVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmCaja.Designer.cs">
+      <DependentUpon>frmCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\frmCambioTitularidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -862,6 +868,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmBuscarVentas.resx">
       <DependentUpon>frmBuscarVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmCaja.resx">
+      <DependentUpon>frmCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmCambioTitularidad.resx">
       <DependentUpon>frmCambioTitularidad.cs</DependentUpon>

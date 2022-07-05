@@ -136,6 +136,7 @@
             this.tsConsulta = new System.Windows.Forms.ToolStripButton();
             this.PanelEncavezadoFondo = new Siticone.UI.WinForms.SiticonePanel();
             this.tsAccesoRapido = new System.Windows.Forms.ToolStrip();
+            this.tsMiCaja = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.SplitDerecho)).BeginInit();
             this.SplitDerecho.Panel1.SuspendLayout();
             this.SplitDerecho.Panel2.SuspendLayout();
@@ -512,7 +513,7 @@
             // 
             this.SplitCentro.Panel2.Controls.Add(this.splitContainer1);
             this.SplitCentro.Size = new System.Drawing.Size(1284, 554);
-            this.SplitCentro.SplitterDistance = 333;
+            this.SplitCentro.SplitterDistance = 227;
             this.SplitCentro.TabIndex = 6;
             // 
             // SplitIzquierdo
@@ -538,7 +539,7 @@
             this.SplitIzquierdo.Panel2.Controls.Add(this.btnPanel2);
             this.SplitIzquierdo.Panel2.Controls.Add(this.panelBotones);
             this.SplitIzquierdo.Panel2.Controls.Add(this.panelToosStrip);
-            this.SplitIzquierdo.Size = new System.Drawing.Size(333, 554);
+            this.SplitIzquierdo.Size = new System.Drawing.Size(227, 554);
             this.SplitIzquierdo.SplitterDistance = 233;
             this.SplitIzquierdo.TabIndex = 0;
             // 
@@ -552,7 +553,7 @@
             this.SwitchMenus.CheckedState.InnerBorderColor = System.Drawing.Color.Red;
             this.SwitchMenus.CheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.SwitchMenus.CheckedState.Parent = this.SwitchMenus;
-            this.SwitchMenus.Location = new System.Drawing.Point(280, 9);
+            this.SwitchMenus.Location = new System.Drawing.Point(185, 12);
             this.SwitchMenus.Name = "SwitchMenus";
             this.SwitchMenus.ShadowDecoration.Parent = this.SwitchMenus;
             this.SwitchMenus.Size = new System.Drawing.Size(35, 20);
@@ -571,7 +572,7 @@
             this.siticoneLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticoneLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneLabel1.ForeColor = System.Drawing.Color.White;
-            this.siticoneLabel1.Location = new System.Drawing.Point(199, 12);
+            this.siticoneLabel1.Location = new System.Drawing.Point(104, 12);
             this.siticoneLabel1.Name = "siticoneLabel1";
             this.siticoneLabel1.Size = new System.Drawing.Size(75, 15);
             this.siticoneLabel1.TabIndex = 9;
@@ -592,7 +593,7 @@
             this.tvOpes.Margin = new System.Windows.Forms.Padding(10);
             this.tvOpes.Name = "tvOpes";
             this.tvOpes.SelectedImageKey = "A1.bmp";
-            this.tvOpes.Size = new System.Drawing.Size(329, 189);
+            this.tvOpes.Size = new System.Drawing.Size(223, 189);
             this.tvOpes.TabIndex = 8;
             this.tvOpes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOpes_AfterSelect);
             this.tvOpes.Click += new System.EventHandler(this.tvOpes_Click);
@@ -617,14 +618,13 @@
             this.tslMenuIzquierdo});
             this.tsTituloMenuIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.tsTituloMenuIzquierdo.Name = "tsTituloMenuIzquierdo";
-            this.tsTituloMenuIzquierdo.Size = new System.Drawing.Size(329, 40);
+            this.tsTituloMenuIzquierdo.Size = new System.Drawing.Size(223, 40);
             this.tsTituloMenuIzquierdo.Stretch = true;
             this.tsTituloMenuIzquierdo.TabIndex = 7;
             this.tsTituloMenuIzquierdo.Text = "ToolStrip1";
             // 
             // tslMenuIzquierdo
             // 
-            this.tslMenuIzquierdo.AutoSize = false;
             this.tslMenuIzquierdo.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tslMenuIzquierdo.ForeColor = System.Drawing.Color.White;
             this.tslMenuIzquierdo.Image = global::wfaIntegradoCom.Properties.Resources.venta_blanco_32;
@@ -632,7 +632,7 @@
             this.tslMenuIzquierdo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tslMenuIzquierdo.Name = "tslMenuIzquierdo";
             this.tslMenuIzquierdo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tslMenuIzquierdo.Size = new System.Drawing.Size(270, 37);
+            this.tslMenuIzquierdo.Size = new System.Drawing.Size(90, 37);
             this.tslMenuIzquierdo.Text = "Ventas";
             // 
             // btnPanel1
@@ -652,10 +652,10 @@
             this.btnPanel1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPanel1.HoveredState.ForeColor = System.Drawing.Color.Black;
             this.btnPanel1.HoveredState.Parent = this.btnPanel1;
-            this.btnPanel1.Location = new System.Drawing.Point(195, 3839);
+            this.btnPanel1.Location = new System.Drawing.Point(195, 6527);
             this.btnPanel1.Name = "btnPanel1";
             this.btnPanel1.ShadowDecoration.Parent = this.btnPanel1;
-            this.btnPanel1.Size = new System.Drawing.Size(52, 35);
+            this.btnPanel1.Size = new System.Drawing.Size(4, 35);
             this.btnPanel1.TabIndex = 8;
             this.btnPanel1.Text = "Panel 1";
             this.btnPanel1.Visible = false;
@@ -678,10 +678,10 @@
             this.btnPanel2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPanel2.HoveredState.ForeColor = System.Drawing.Color.Black;
             this.btnPanel2.HoveredState.Parent = this.btnPanel2;
-            this.btnPanel2.Location = new System.Drawing.Point(119, 3839);
+            this.btnPanel2.Location = new System.Drawing.Point(119, 6527);
             this.btnPanel2.Name = "btnPanel2";
             this.btnPanel2.ShadowDecoration.Parent = this.btnPanel2;
-            this.btnPanel2.Size = new System.Drawing.Size(52, 35);
+            this.btnPanel2.Size = new System.Drawing.Size(4, 35);
             this.btnPanel2.TabIndex = 7;
             this.btnPanel2.Text = "Panel 2";
             // 
@@ -1248,8 +1248,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.elhAlert);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip2);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip3);
-            this.splitContainer1.Size = new System.Drawing.Size(947, 554);
-            this.splitContainer1.SplitterDistance = 744;
+            this.splitContainer1.Size = new System.Drawing.Size(1053, 554);
+            this.splitContainer1.SplitterDistance = 897;
             this.splitContainer1.TabIndex = 1;
             // 
             // splitContainer4
@@ -1271,7 +1271,7 @@
             // 
             this.splitContainer4.Panel2.Controls.Add(this.treeView1);
             this.splitContainer4.Panel2MinSize = 0;
-            this.splitContainer4.Size = new System.Drawing.Size(740, 527);
+            this.splitContainer4.Size = new System.Drawing.Size(893, 527);
             this.splitContainer4.SplitterDistance = 33;
             this.splitContainer4.TabIndex = 0;
             // 
@@ -1282,7 +1282,7 @@
             this.Img_Husat_Negro.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO;
             this.Img_Husat_Negro.Location = new System.Drawing.Point(0, 0);
             this.Img_Husat_Negro.Name = "Img_Husat_Negro";
-            this.Img_Husat_Negro.Size = new System.Drawing.Size(740, 33);
+            this.Img_Husat_Negro.Size = new System.Drawing.Size(893, 33);
             this.Img_Husat_Negro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Img_Husat_Negro.TabIndex = 3;
             this.Img_Husat_Negro.TabStop = false;
@@ -1294,7 +1294,7 @@
             this.Img_Husat_Blanco.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO__Blanco_sombra_color_;
             this.Img_Husat_Blanco.Location = new System.Drawing.Point(0, 0);
             this.Img_Husat_Blanco.Name = "Img_Husat_Blanco";
-            this.Img_Husat_Blanco.Size = new System.Drawing.Size(740, 33);
+            this.Img_Husat_Blanco.Size = new System.Drawing.Size(893, 33);
             this.Img_Husat_Blanco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Img_Husat_Blanco.TabIndex = 4;
             this.Img_Husat_Blanco.TabStop = false;
@@ -1307,7 +1307,7 @@
             this.pictureBox3.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO;
             this.pictureBox3.Location = new System.Drawing.Point(0, 0);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(740, 33);
+            this.pictureBox3.Size = new System.Drawing.Size(893, 33);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
@@ -1329,7 +1329,7 @@
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.treeView1.SelectedImageIndex = 4;
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(740, 490);
+            this.treeView1.Size = new System.Drawing.Size(893, 490);
             this.treeView1.TabIndex = 5;
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
@@ -1347,8 +1347,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tlsStatus);
-            this.splitContainer2.Size = new System.Drawing.Size(740, 23);
-            this.splitContainer2.SplitterDistance = 571;
+            this.splitContainer2.Size = new System.Drawing.Size(893, 23);
+            this.splitContainer2.SplitterDistance = 689;
             this.splitContainer2.TabIndex = 7;
             // 
             // statusStrip1
@@ -1361,7 +1361,7 @@
             this.toolStripStatusLabel4});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(571, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(689, 23);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "StatusStrip1";
             // 
@@ -1416,7 +1416,7 @@
             this.tlsStatus.Location = new System.Drawing.Point(0, 0);
             this.tlsStatus.Name = "tlsStatus";
             this.tlsStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tlsStatus.Size = new System.Drawing.Size(165, 25);
+            this.tlsStatus.Size = new System.Drawing.Size(200, 25);
             this.tlsStatus.TabIndex = 0;
             this.tlsStatus.Text = "toolStrip4";
             // 
@@ -1433,7 +1433,7 @@
             this.elhAlert.Dock = System.Windows.Forms.DockStyle.Fill;
             this.elhAlert.Location = new System.Drawing.Point(0, 0);
             this.elhAlert.Name = "elhAlert";
-            this.elhAlert.Size = new System.Drawing.Size(195, 550);
+            this.elhAlert.Size = new System.Drawing.Size(148, 550);
             this.elhAlert.TabIndex = 13;
             this.elhAlert.Text = "elhAlert";
             this.elhAlert.Child = this.ucOpcion1;
@@ -1780,16 +1780,29 @@
             this.tsCompra,
             this.tsTraslado,
             this.tsExtorna,
-            this.tsCerraSession,
             this.tsDeuda,
             this.tsBtnn,
-            this.tsConsulta});
+            this.tsConsulta,
+            this.tsCerraSession,
+            this.tsMiCaja});
             this.tsAccesoRapido.Location = new System.Drawing.Point(0, 0);
             this.tsAccesoRapido.Name = "tsAccesoRapido";
             this.tsAccesoRapido.Size = new System.Drawing.Size(1284, 57);
             this.tsAccesoRapido.Stretch = true;
             this.tsAccesoRapido.TabIndex = 4;
             this.tsAccesoRapido.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsAccesoRapido_ItemClicked);
+            // 
+            // tsMiCaja
+            // 
+            this.tsMiCaja.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsMiCaja.Image = ((System.Drawing.Image)(resources.GetObject("tsMiCaja.Image")));
+            this.tsMiCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsMiCaja.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsMiCaja.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsMiCaja.Name = "tsMiCaja";
+            this.tsMiCaja.Size = new System.Drawing.Size(96, 54);
+            this.tsMiCaja.Text = "Mi Caja";
+            this.tsMiCaja.Visible = false;
             // 
             // MDIParent1
             // 
@@ -1981,6 +1994,7 @@
         private Siticone.UI.WinForms.SiticonePanel panelToosStrip;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel1;
         private Siticone.UI.WinForms.SiticoneToggleSwitch SwitchMenus;
+        private System.Windows.Forms.ToolStripButton tsMiCaja;
     }
 }
 

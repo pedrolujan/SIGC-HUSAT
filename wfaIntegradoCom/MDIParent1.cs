@@ -59,6 +59,49 @@ namespace wfaIntegradoCom
             InitializeComponent();
             SubmenusOcultos();
         }
+
+        private void fnCargarFormAPanel(object frm)
+        {
+            if (this.treeView1.Controls.Count > 0)
+                this.treeView1.Controls.Clear();
+            Form fn = frm as Form;
+            fn.TopLevel = false;
+
+            var gbControl = fn.Controls.OfType<SiticoneGroupBox>();
+
+            foreach (SiticoneGroupBox sgb in gbControl)
+            {
+
+                var gb = sgb.Controls.OfType<System.Windows.Forms.GroupBox>();
+
+                foreach (System.Windows.Forms.Control c in gb)
+                {
+                    string val = "";
+
+                    if (c is System.Windows.Forms.GroupBox)
+                    {
+                        //c.Width = 300;
+                        
+                        foreach (System.Windows.Forms.Control item in c.Controls)
+                        {
+                            if (item is SiticoneDateTimePicker)
+                            {
+                                item.Height = 20;
+                                item.Width = 140;
+                               
+                            }
+                        }
+                    }
+
+                }
+
+            }
+            fn.Dock = DockStyle.Fill;
+            this.treeView1.Controls.Add(fn);
+            this.treeView1.Tag = fn;
+            
+            fn.Show();
+        }
         private Boolean AbrirFrmLoad(object frmload)
         {
             if (this.treeView1.Controls.Count > 0)
@@ -1060,12 +1103,17 @@ namespace wfaIntegradoCom
 
         private void tsAccesoRapido_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            if (e.ClickedItem.Name!= "tsCerraSession")
+            if (e.ClickedItem.Name== "tsCerraSession")
             {
-                fnActivarFormulario(e.ClickedItem.ToolTipText.Trim(), Convert.ToInt32(e.ClickedItem.Tag));
+
+            }
+            else if (e.ClickedItem.Name=="tsMiCaja")
+            {
+                fnCargarFormAPanel(new frmCaja());
             }
             else
             {
+                fnActivarFormulario(e.ClickedItem.ToolTipText.Trim(), Convert.ToInt32(e.ClickedItem.Tag));
 
             }
             
@@ -1679,6 +1727,7 @@ namespace wfaIntegradoCom
         }
         private void MostrarSubMenu(System.Windows.Forms.Panel subMenu )
         {
+            this.treeView1.Controls.Clear();
             if (subMenu.Visible == false)
             {
                 OcultarSubMenu();
@@ -1693,6 +1742,7 @@ namespace wfaIntegradoCom
     #region Click Botones Menu Principal
         private void btnVenta_Click(object sender, EventArgs e)
         {
+           
             LoadCarga = false;
             FnColorwhiteselectBtns();
             btnVenta.BackColor = Variables.ColorEmpresa;
@@ -1715,6 +1765,7 @@ namespace wfaIntegradoCom
 
         private void btnRecaudacion_Click(object sender, EventArgs e)
         {
+            
             LoadCarga = false;
             FnColorwhiteselectBtns();
             btnRecaudacion.BackColor = Variables.ColorEmpresa;
@@ -1955,6 +2006,6 @@ namespace wfaIntegradoCom
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
 
-
+        
     }
 }
