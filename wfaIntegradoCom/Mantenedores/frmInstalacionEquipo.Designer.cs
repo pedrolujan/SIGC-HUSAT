@@ -30,12 +30,12 @@ namespace wfaIntegradoCom.Mantenedores
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,13 +45,13 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgvAccesorios = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
             this.lblGuardarAccYServ = new System.Windows.Forms.Label();
             this.lblSeleccionar = new System.Windows.Forms.Label();
             this.pbBajar = new Siticone.UI.WinForms.SiticonePictureBox();
             this.pbSubir = new Siticone.UI.WinForms.SiticonePictureBox();
             this.dgvServicios = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.dgvAccesorios = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.txtidRefInstalacion = new Siticone.UI.WinForms.SiticoneTextBox();
             this.btnTRegistros = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -130,19 +130,10 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneLabel5 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel4 = new Siticone.UI.WinForms.SiticoneLabel();
             this.dgvListaInstalaciones = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.codVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.N = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechadeInstalacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idTipoTarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cmsMenuSeleccion = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.seleccionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarInstalacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mostrarUbicacionDeInstalacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.cboUsuario = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboEstadosInst = new Siticone.UI.WinForms.SiticoneComboBox();
@@ -162,14 +153,26 @@ namespace wfaIntegradoCom.Mantenedores
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.siticoneDragControl1 = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
+            this.vIsualizarUbicacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.codVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechadeInstalacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idTipoTarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UbicacionEquipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.siticonePanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).BeginInit();
             this.siticonePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBajar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSubir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServicios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).BeginInit();
             this.gbDatosPersona.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbtextcliente)).BeginInit();
             this.gbDatosVehiculo.SuspendLayout();
@@ -245,6 +248,68 @@ namespace wfaIntegradoCom.Mantenedores
             this.tabPage1.Text = "Instalaciones";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // dgvAccesorios
+            // 
+            this.dgvAccesorios.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvAccesorios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvAccesorios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAccesorios.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAccesorios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvAccesorios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAccesorios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvAccesorios.ColumnHeadersHeight = 25;
+            this.dgvAccesorios.Cursor = System.Windows.Forms.Cursors.Arrow;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAccesorios.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvAccesorios.EnableHeadersVisualStyles = false;
+            this.dgvAccesorios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvAccesorios.Location = new System.Drawing.Point(507, 414);
+            this.dgvAccesorios.Name = "dgvAccesorios";
+            this.dgvAccesorios.RowHeadersVisible = false;
+            this.dgvAccesorios.RowHeadersWidth = 10;
+            this.dgvAccesorios.RowTemplate.Height = 20;
+            this.dgvAccesorios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAccesorios.Size = new System.Drawing.Size(283, 208);
+            this.dgvAccesorios.TabIndex = 273;
+            this.dgvAccesorios.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvAccesorios.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvAccesorios.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvAccesorios.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvAccesorios.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvAccesorios.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvAccesorios.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvAccesorios.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvAccesorios.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.dgvAccesorios.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.dgvAccesorios.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvAccesorios.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvAccesorios.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvAccesorios.ThemeStyle.HeaderStyle.Height = 25;
+            this.dgvAccesorios.ThemeStyle.ReadOnly = false;
+            this.dgvAccesorios.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvAccesorios.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvAccesorios.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvAccesorios.ThemeStyle.RowsStyle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvAccesorios.ThemeStyle.RowsStyle.Height = 20;
+            this.dgvAccesorios.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvAccesorios.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvAccesorios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccesorios_CellContentClick);
+            this.dgvAccesorios.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAccesorios_CellMouseMove);
             // 
             // siticonePanel2
             // 
@@ -377,68 +442,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvServicios.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvServicios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServicios_CellContentClick);
             this.dgvServicios.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvServicios_CellMouseMove);
-            // 
-            // dgvAccesorios
-            // 
-            this.dgvAccesorios.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvAccesorios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvAccesorios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvAccesorios.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAccesorios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvAccesorios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAccesorios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvAccesorios.ColumnHeadersHeight = 25;
-            this.dgvAccesorios.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAccesorios.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvAccesorios.EnableHeadersVisualStyles = false;
-            this.dgvAccesorios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvAccesorios.Location = new System.Drawing.Point(507, 414);
-            this.dgvAccesorios.Name = "dgvAccesorios";
-            this.dgvAccesorios.RowHeadersVisible = false;
-            this.dgvAccesorios.RowHeadersWidth = 10;
-            this.dgvAccesorios.RowTemplate.Height = 20;
-            this.dgvAccesorios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAccesorios.Size = new System.Drawing.Size(283, 208);
-            this.dgvAccesorios.TabIndex = 273;
-            this.dgvAccesorios.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
-            this.dgvAccesorios.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvAccesorios.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgvAccesorios.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgvAccesorios.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgvAccesorios.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvAccesorios.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgvAccesorios.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvAccesorios.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.dgvAccesorios.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.dgvAccesorios.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvAccesorios.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvAccesorios.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvAccesorios.ThemeStyle.HeaderStyle.Height = 25;
-            this.dgvAccesorios.ThemeStyle.ReadOnly = false;
-            this.dgvAccesorios.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvAccesorios.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvAccesorios.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvAccesorios.ThemeStyle.RowsStyle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvAccesorios.ThemeStyle.RowsStyle.Height = 20;
-            this.dgvAccesorios.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvAccesorios.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvAccesorios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccesorios_CellContentClick);
-            this.dgvAccesorios.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAccesorios_CellMouseMove);
             // 
             // txtidRefInstalacion
             // 
@@ -665,7 +668,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbDatosPersona.TabIndex = 261;
             this.gbDatosPersona.Text = "Datos de la Persona de Contacto";
             this.gbDatosPersona.TextOffset = new System.Drawing.Point(0, -7);
-            this.gbDatosPersona.Click += new System.EventHandler(this.gbDatosPersona_Click);
             // 
             // pbtextcliente
             // 
@@ -1974,6 +1976,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.Estado,
             this.Usuario,
             this.idTipoTarifa,
+            this.UbicacionEquipo,
             this.btImprimir});
             this.dgvListaInstalaciones.ContextMenuStrip = this.cmsMenuSeleccion;
             this.dgvListaInstalaciones.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2033,94 +2036,37 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaInstalaciones.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaInstalaciones_CellDoubleClick);
             this.dgvListaInstalaciones.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListaInstalaciones_CellMouseDown);
             this.dgvListaInstalaciones.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvListaInstalaciones_CellPainting);
-            this.dgvListaInstalaciones.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvListaInstalaciones_MouseDown);
-            // 
-            // codVenta
-            // 
-            this.codVenta.HeaderText = "CodVenta";
-            this.codVenta.Name = "codVenta";
-            this.codVenta.ReadOnly = true;
-            this.codVenta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.codVenta.Visible = false;
-            // 
-            // N
-            // 
-            this.N.HeaderText = "Nro";
-            this.N.Name = "N";
-            this.N.ReadOnly = true;
-            this.N.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // FechadeInstalacion
-            // 
-            this.FechadeInstalacion.HeaderText = "Fecha de Instalacion";
-            this.FechadeInstalacion.Name = "FechadeInstalacion";
-            this.FechadeInstalacion.ReadOnly = true;
-            // 
-            // Cliente
-            // 
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Lugar De Instalacion";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // Vehiculo
-            // 
-            this.Vehiculo.HeaderText = "Vehiculo";
-            this.Vehiculo.Name = "Vehiculo";
-            this.Vehiculo.ReadOnly = true;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // Usuario
-            // 
-            this.Usuario.HeaderText = "Técnico";
-            this.Usuario.Name = "Usuario";
-            this.Usuario.ReadOnly = true;
-            // 
-            // idTipoTarifa
-            // 
-            this.idTipoTarifa.HeaderText = "id Tipo Tarifa";
-            this.idTipoTarifa.Name = "idTipoTarifa";
-            this.idTipoTarifa.ReadOnly = true;
-            this.idTipoTarifa.Visible = false;
-            // 
-            // btImprimir
-            // 
-            this.btImprimir.HeaderText = "";
-            this.btImprimir.Name = "btImprimir";
-            this.btImprimir.ReadOnly = true;
             // 
             // cmsMenuSeleccion
             // 
             this.cmsMenuSeleccion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.seleccionarToolStripMenuItem,
-            this.actualizarInstalacionToolStripMenuItem});
+            this.actualizarInstalacionToolStripMenuItem,
+            this.mostrarUbicacionDeInstalacionToolStripMenuItem,
+            this.vIsualizarUbicacionToolStripMenuItem});
             this.cmsMenuSeleccion.Name = "cmsMenuSeleccion";
-            this.cmsMenuSeleccion.Size = new System.Drawing.Size(187, 48);
-            this.cmsMenuSeleccion.Opening += new System.ComponentModel.CancelEventHandler(this.cmsMenuSeleccion_Opening);
+            this.cmsMenuSeleccion.Size = new System.Drawing.Size(247, 92);
             // 
             // seleccionarToolStripMenuItem
             // 
             this.seleccionarToolStripMenuItem.Name = "seleccionarToolStripMenuItem";
-            this.seleccionarToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.seleccionarToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.seleccionarToolStripMenuItem.Text = "Instalar Seleccionado";
             this.seleccionarToolStripMenuItem.Click += new System.EventHandler(this.seleccionarToolStripMenuItem_Click);
             // 
             // actualizarInstalacionToolStripMenuItem
             // 
             this.actualizarInstalacionToolStripMenuItem.Name = "actualizarInstalacionToolStripMenuItem";
-            this.actualizarInstalacionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.actualizarInstalacionToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.actualizarInstalacionToolStripMenuItem.Text = "Actualizar Instalacion";
             this.actualizarInstalacionToolStripMenuItem.Click += new System.EventHandler(this.actualizarInstalacionToolStripMenuItem_Click);
+            // 
+            // mostrarUbicacionDeInstalacionToolStripMenuItem
+            // 
+            this.mostrarUbicacionDeInstalacionToolStripMenuItem.Name = "mostrarUbicacionDeInstalacionToolStripMenuItem";
+            this.mostrarUbicacionDeInstalacionToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.mostrarUbicacionDeInstalacionToolStripMenuItem.Text = "Mostrar ubicacion de instalacion";
+            this.mostrarUbicacionDeInstalacionToolStripMenuItem.Click += new System.EventHandler(this.mostrarUbicacionDeInstalacionToolStripMenuItem_Click);
             // 
             // siticoneGroupBox1
             // 
@@ -2411,6 +2357,88 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.siticoneDragControl1.TargetControl = this.gunaPanel1;
             // 
+            // vIsualizarUbicacionToolStripMenuItem
+            // 
+            this.vIsualizarUbicacionToolStripMenuItem.Name = "vIsualizarUbicacionToolStripMenuItem";
+            this.vIsualizarUbicacionToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.vIsualizarUbicacionToolStripMenuItem.Text = "VIsualizar Ubicacion";
+            this.vIsualizarUbicacionToolStripMenuItem.Click += new System.EventHandler(this.vIsualizarUbicacionToolStripMenuItem_Click);
+            // 
+            // codVenta
+            // 
+            this.codVenta.HeaderText = "CodVenta";
+            this.codVenta.Name = "codVenta";
+            this.codVenta.ReadOnly = true;
+            this.codVenta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.codVenta.Visible = false;
+            // 
+            // N
+            // 
+            this.N.HeaderText = "Nro";
+            this.N.Name = "N";
+            this.N.ReadOnly = true;
+            this.N.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // FechadeInstalacion
+            // 
+            this.FechadeInstalacion.HeaderText = "Fecha de Instalacion";
+            this.FechadeInstalacion.Name = "FechadeInstalacion";
+            this.FechadeInstalacion.ReadOnly = true;
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Lugar De Instalacion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // Vehiculo
+            // 
+            this.Vehiculo.HeaderText = "Vehiculo";
+            this.Vehiculo.Name = "Vehiculo";
+            this.Vehiculo.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // Usuario
+            // 
+            this.Usuario.HeaderText = "Técnico";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            // 
+            // idTipoTarifa
+            // 
+            this.idTipoTarifa.HeaderText = "id Tipo Tarifa";
+            this.idTipoTarifa.Name = "idTipoTarifa";
+            this.idTipoTarifa.ReadOnly = true;
+            this.idTipoTarifa.Visible = false;
+            // 
+            // UbicacionEquipo
+            // 
+            this.UbicacionEquipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.UbicacionEquipo.HeaderText = "UbicacionEquipo";
+            this.UbicacionEquipo.Name = "UbicacionEquipo";
+            this.UbicacionEquipo.ReadOnly = true;
+            this.UbicacionEquipo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.UbicacionEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.UbicacionEquipo.Visible = false;
+            this.UbicacionEquipo.Width = 118;
+            // 
+            // btImprimir
+            // 
+            this.btImprimir.HeaderText = "";
+            this.btImprimir.Name = "btImprimir";
+            this.btImprimir.ReadOnly = true;
+            // 
             // frmInstalacionEquipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2427,12 +2455,12 @@ namespace wfaIntegradoCom.Mantenedores
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
             this.siticonePanel2.ResumeLayout(false);
             this.siticonePanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBajar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSubir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServicios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
             this.gbDatosPersona.ResumeLayout(false);
             this.gbDatosPersona.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbtextcliente)).EndInit();
@@ -2576,6 +2604,8 @@ namespace wfaIntegradoCom.Mantenedores
         private Siticone.UI.WinForms.SiticoneComboBox cboUsuario;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel8;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel7;
+        private System.Windows.Forms.ToolStripMenuItem mostrarUbicacionDeInstalacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vIsualizarUbicacionToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn codVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn N;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechadeInstalacion;
@@ -2585,6 +2615,7 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTipoTarifa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UbicacionEquipo;
         private System.Windows.Forms.DataGridViewButtonColumn btImprimir;
     }
 }

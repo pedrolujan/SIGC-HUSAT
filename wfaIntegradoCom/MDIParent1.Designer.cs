@@ -652,10 +652,10 @@
             this.btnPanel1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPanel1.HoveredState.ForeColor = System.Drawing.Color.Black;
             this.btnPanel1.HoveredState.Parent = this.btnPanel1;
-            this.btnPanel1.Location = new System.Drawing.Point(195, 3839);
+            this.btnPanel1.Location = new System.Drawing.Point(195, 7423);
             this.btnPanel1.Name = "btnPanel1";
             this.btnPanel1.ShadowDecoration.Parent = this.btnPanel1;
-            this.btnPanel1.Size = new System.Drawing.Size(52, 35);
+            this.btnPanel1.Size = new System.Drawing.Size(0, 35);
             this.btnPanel1.TabIndex = 8;
             this.btnPanel1.Text = "Panel 1";
             this.btnPanel1.Visible = false;
@@ -678,10 +678,10 @@
             this.btnPanel2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPanel2.HoveredState.ForeColor = System.Drawing.Color.Black;
             this.btnPanel2.HoveredState.Parent = this.btnPanel2;
-            this.btnPanel2.Location = new System.Drawing.Point(119, 3839);
+            this.btnPanel2.Location = new System.Drawing.Point(119, 7423);
             this.btnPanel2.Name = "btnPanel2";
             this.btnPanel2.ShadowDecoration.Parent = this.btnPanel2;
-            this.btnPanel2.Size = new System.Drawing.Size(52, 35);
+            this.btnPanel2.Size = new System.Drawing.Size(0, 35);
             this.btnPanel2.TabIndex = 7;
             this.btnPanel2.Text = "Panel 2";
             // 
