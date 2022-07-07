@@ -190,6 +190,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WPF\WPF.CTRL.Colocaciones\bin\Debug\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -281,6 +282,7 @@
     <Compile Include="Consultas\frmVPOtrasVentas.Designer.cs">
       <DependentUpon>frmVPOtrasVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="datetimePrueba.cs" />
     <Compile Include="Funciones\Enum\StateOrder.cs" />
     <Compile Include="Funciones\Format.cs" />
     <Compile Include="Funciones\FunValidaciones.cs" />

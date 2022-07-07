@@ -66,36 +66,36 @@ namespace wfaIntegradoCom
                 this.treeView1.Controls.Clear();
             Form fn = frm as Form;
             fn.TopLevel = false;
-
+            fn.Width = this.treeView1.Width;
             var gbControl = fn.Controls.OfType<SiticoneGroupBox>();
 
-            foreach (SiticoneGroupBox sgb in gbControl)
-            {
+            //foreach (SiticoneGroupBox sgb in gbControl)
+            //{
 
-                var gb = sgb.Controls.OfType<System.Windows.Forms.GroupBox>();
+            //    var gb = sgb.Controls.OfType<System.Windows.Forms.GroupBox>();
 
-                foreach (System.Windows.Forms.Control c in gb)
-                {
-                    string val = "";
+            //    foreach (System.Windows.Forms.Control c in gb)
+            //    {
+            //        string val = "";
 
-                    if (c is System.Windows.Forms.GroupBox)
-                    {
-                        //c.Width = 300;
+            //        if (c is System.Windows.Forms.GroupBox)
+            //        {
+            //            //c.Width = 300;
                         
-                        foreach (System.Windows.Forms.Control item in c.Controls)
-                        {
-                            if (item is SiticoneDateTimePicker)
-                            {
-                                item.Height = 20;
-                                item.Width = 140;
+            //            foreach (System.Windows.Forms.Control item in c.Controls)
+            //            {
+            //                if (item is SiticoneDateTimePicker)
+            //                {
+            //                    item.Height = 20;
+            //                    item.Width = 140;
                                
-                            }
-                        }
-                    }
+            //                }
+            //            }
+            //        }
 
-                }
+            //    }
 
-            }
+            //}
             fn.Dock = DockStyle.Fill;
             this.treeView1.Controls.Add(fn);
             this.treeView1.Tag = fn;
@@ -1109,7 +1109,9 @@ namespace wfaIntegradoCom
             }
             else if (e.ClickedItem.Name=="tsMiCaja")
             {
-                fnCargarFormAPanel(new frmCaja());
+                frmCaja frmCaja = new frmCaja();
+                //fnCargarFormAPanel(new frmCaja());
+                frmCaja.Show();
             }
             else
             {

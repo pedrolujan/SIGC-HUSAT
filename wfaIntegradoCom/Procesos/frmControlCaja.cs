@@ -23,6 +23,7 @@ namespace wfaIntegradoCom.Procesos
         BLControlCaja bl;
         static Int32 tabInicio=0;
         List<ReporteBloque> lsReporteBloque = new List<ReporteBloque>();
+        List<ReporteBloque> lsReporteBloqueGen = new List<ReporteBloque>();
         String codOperacion = "";
         String codTipoReporte = "";
         private void frmControlCaja_Load(object sender, EventArgs e)
@@ -197,6 +198,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 if (tipoCon == -1)
                 {
+                    lsReporteBloqueGen = lsReporteBloque;
                     dgvListaPorBloque.Columns.Clear();
                     dgvListaPorBloque.Rows.Clear();
                     dgvListaPorBloque.Columns.Add("id", "id");
@@ -230,16 +232,20 @@ namespace wfaIntegradoCom.Procesos
                         dgvListaPorBloque.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                         dgvListaPorBloque.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     }
+                    lblTotalBloque.Text="IMPORTE TOTAL: "+ FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0);
+                   
                     dgvListaPorBloque.Columns[0].Visible = false;
                     dgvListaPorBloque.Columns[1].Width = 10;
                     dgvListaPorBloque.Columns[2].Width = 100;
                     dgvListaPorBloque.Columns[3].Width = 20;
                     dgvListaPorBloque.Columns[4].Width = 100;
-                    lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.ImporteRow), 0);
+                    dgvListaPorBloque.Height = ((totalRows+1) * (dgvListaPorBloque.ThemeStyle.RowsStyle.Height+3));
+                    lblTotalBloque.Location = new Point(lblTotalBloque.Location.X, dgvListaPorBloque.Height+15);
+                    lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda==2?(i.ImporteTipoCambio*i.ImporteRow):i.ImporteRow), 0);
 
                 }else if (tipoCon==-2)
                 {
-                    ReporteBloque clsReporte = lsReporteBloque.Find(i => i.Codigoreporte == codOperacion);
+                    ReporteBloque clsReporte = lsReporteBloqueGen.Find(i => i.Codigoreporte == codOperacion);
                     siticoneDataGridView1.Columns.Clear();
                     siticoneDataGridView1.Rows.Clear();
                     siticoneDataGridView1.Columns.Add("id", "id");
@@ -263,11 +269,19 @@ namespace wfaIntegradoCom.Procesos
                         siticoneDataGridView1.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                         siticoneDataGridView1.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     }
+
+                    siticoneDataGridView1.Rows.Add("","","","","");
+                    siticoneDataGridView1.Rows.Add("TOTAL","","IMPORTE TOTAL","", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                    siticoneDataGridView1.Rows[y+1].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    siticoneDataGridView1.Rows[y+1].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    siticoneDataGridView1.Rows[y + 1].DefaultCellStyle.ForeColor = Color.Red;
                     siticoneDataGridView1.Columns[0].Visible = false;
                     siticoneDataGridView1.Columns[1].Width = 10;
                     siticoneDataGridView1.Columns[2].Width = 100;
                     siticoneDataGridView1.Columns[3].Width = 20;
                     siticoneDataGridView1.Columns[4].Width = 100;
+                    siticoneDataGridView1.ColumnHeadersVisible = false;
+                    siticoneDataGridView1.Height = ((totalRows+2) * (siticoneDataGridView1.ThemeStyle.RowsStyle.Height+3));
 
                 }
 
@@ -428,9 +442,14 @@ namespace wfaIntegradoCom.Procesos
         private void dgvListaPorBloque_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             codTipoReporte = cboTipoReporte.SelectedValue.ToString();
-
+            Int32 pointToWindow = MousePosition.Y;
             codOperacion = dgvListaPorBloque.CurrentRow.Cells[0].Value.ToString();
-            
+            Int32 x = dgvListaPorBloque.GetCellDisplayRectangle(e.RowIndex, e.ColumnIndex,false).Right ;
+            Int32 y = dgvListaPorBloque.GetRowDisplayRectangle(e.RowIndex,false).Y;
+            siticoneDataGridView1.Location = new Point(dgvListaPorBloque.Right, y+2);
+            siticoneDataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.None;
+            siticoneDataGridView1.BorderStyle = BorderStyle.FixedSingle;
+           
             fnBuscarReporteGeneralVentas(0, -2);
 
         }
@@ -593,6 +612,23 @@ namespace wfaIntegradoCom.Procesos
                 }
 
             }
+        }
+
+        private void dgvListaPorBloque_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+            DataGridView dgview = sender as DataGridView;
+
+            String nombreCabecera = dgview.Columns[e.ColumnIndex].Name;
+           
+
+                if (e.Value.ToString()== "Total")
+                {
+                    dgview.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Variables.ColorSuccess;
+                    //e.CellStyle.ForeColor = Variables.ColorSuccess;
+                }
+                
+            
         }
     }
 }
