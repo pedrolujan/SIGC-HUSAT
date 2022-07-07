@@ -180,35 +180,35 @@ namespace wfaIntegradoCom
                 return null;
         }
 
-        private void fnOcultarObjetos()
-        {
-            DataView dvMenuPrincipal = new DataView(dtMenu.Tables[0]);
-            foreach (DataRowView drFila in dvMenuPrincipal)
-            {
-                foreach (ToolStripButton ts in tsMenuPrincipal.Items)
-                {
+        //private void fnOcultarObjetos()
+        //{
+        //    DataView dvMenuPrincipal = new DataView(dtMenu.Tables[0]);
+        //    foreach (DataRowView drFila in dvMenuPrincipal)
+        //    {
+        //        foreach (ToolStripButton ts in tsMenuPrincipal.Items)
+        //        {
                     
-                        ts.Enabled = false;
+        //                ts.Enabled = false;
                    
-                }
-                foreach (ToolStripButton ts in tsAccesoRapido.Items)
-                {
-                    ts.Visible = false;
-                }
-            }
-            var Controles = panelBotones.Controls.OfType<SiticoneButton>();
-            foreach (SiticoneButton btn in Controles)
-            {
-                foreach (ToolStripButton ts in tsMenuPrincipal.Items)
-                {
+        //        }
+        //        foreach (ToolStripButton ts in tsAccesoRapido.Items)
+        //        {
+        //            ts.Visible = false;
+        //        }
+        //    }
+        //    var Controles = panelMenuPrincipal.Controls.OfType<SiticoneButton>();
+        //    foreach (SiticoneButton btn in Controles)
+        //    {
+        //        foreach (ToolStripButton ts in tsMenuPrincipal.Items)
+        //        {
 
-                    btn.Enabled = false;
+        //            btn.Enabled = false;
 
-                }
+        //        }
                
-            }
+        //    }
 
-        }
+        //}
          public void fnCargarMenuPrinBotones()
         {
             DataTable dtMenuPrin = new DataTable();
@@ -219,7 +219,7 @@ namespace wfaIntegradoCom
             dvMenuPrincipal.RowFilter = "cMenuPadre = '0' ";
             iNumMenu = dvMenuPrincipal.Table.Rows.Count;
 
-            var Controles = panelBotones.Controls.OfType<SiticoneButton>();
+            var Controles = panelMenuPrincipal.Controls.OfType<SiticoneButton>();
             
 
 
@@ -259,19 +259,20 @@ namespace wfaIntegradoCom
                 foreach (DataRowView drFila in dvMenuPrincipal)
                 {
                     lcItemMenu = drFila["cMenuNombre"].ToString().Trim();
-                    foreach (ToolStripButton ts in tsMenuPrincipal.Items)
-                    {
-                        if (ts.Text.Trim() == lcItemMenu)
-                        {
-                            ts.Enabled = true;
-                            
-                        }
-                        
-                        
+                    //tsMenuPrincipal
+                    //foreach (ToolStripButton ts in tsMenuPrincipal.Items)
+                    //{
+                    //    if (ts.Text.Trim() == lcItemMenu)
+                    //    {
+                    //        ts.Enabled = true;
 
-                    }
+                    //    }
+
+
+
+                    //}
                 }
-             
+
             }         
 
         }
@@ -317,7 +318,7 @@ namespace wfaIntegradoCom
 
             try
             {
-                if(login.ShowDialog() == System.Windows.Forms.DialogResult.OK )
+                if(login.ShowDialog() == DialogResult.OK )
                 {
                     bLoading = true;
                     frmLoad frm = new frmLoad();
@@ -366,7 +367,7 @@ namespace wfaIntegradoCom
             lcCodMenu = "8888100000";
             imgList = ListaImagenes;
             treeView1.Nodes.Clear();
-            fnCargarMenuGeneral(lcCodMenu);
+           
         }
 
         public void fnCargarVariableGlobal()
@@ -446,21 +447,21 @@ namespace wfaIntegradoCom
 
         private void fnCargarMenuGeneral(String pcCodMenu)
         {
-            DataView dvMenu = new DataView(dtMenu.Tables[0]);
-            dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
-            tvOpes.Nodes.Clear();
-            tvOpes.ImageList = imgList;
-            //subMenuVentas.Controls.Add(dvMenu);
-            foreach (DataRowView drv in dvMenu)
-            {
-                TreeNode nuevoNodo = new TreeNode();
-                nuevoNodo.Name = drv["cMenuCod"].ToString().Trim();
-                nuevoNodo.Text = drv["cMenuNombre"].ToString().Trim();
-                nuevoNodo.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
-                nuevoNodo.ImageIndex = 1;
-                tvOpes.Nodes.Add(nuevoNodo);
-                nuevoNodo.Expand();
-            }
+            //DataView dvMenu = new DataView(dtMenu.Tables[0]);
+            //dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
+            //tvOpes.Nodes.Clear();
+            //tvOpes.ImageList = imgList;
+            ////subMenuVentas.Controls.Add(dvMenu);
+            //foreach (DataRowView drv in dvMenu)
+            //{
+            //    TreeNode nuevoNodo = new TreeNode();
+            //    nuevoNodo.Name = drv["cMenuCod"].ToString().Trim();
+            //    nuevoNodo.Text = drv["cMenuNombre"].ToString().Trim();
+            //    nuevoNodo.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
+            //    nuevoNodo.ImageIndex = 1;
+            //    tvOpes.Nodes.Add(nuevoNodo);
+            //    nuevoNodo.Expand();
+            //}
         }
         #region Cargar submenus a los botones 
         private void fnCargarSubMenuVentas(String pcCodMenu)
@@ -936,7 +937,7 @@ namespace wfaIntegradoCom
             try
             {
                 
-                fnCambiarMenu();
+                
                 Loading();
                 SystemEvents.PowerModeChanged += OnPowerModeChange;
                 InitializeTimer();
@@ -974,37 +975,12 @@ namespace wfaIntegradoCom
                 FunGeneral.fnVerificarFechaSistema(this.OwnedForms);
             }
         }
-        private void tsbCaptaciones_Click(object sender, EventArgs e)
-        {
-            tslMenuIzquierdo.Text = "Ventas";
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888100000";
-            fnCargarMenuGeneral(lcCodMenu);
-            
-        }
 
-        private void tvOpes_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            String lcCodMenu="";
-            lcCodMenu = tvOpes.SelectedNode.Name.Trim();
-            fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
-        }
 
-        private void tsbRiesgos_Click(object sender, EventArgs e)
-        {
-            tslMenuIzquierdo.Text = "Compras";
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888200000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
 
-        private void tsbContabilidad_Click(object sender, EventArgs e)
-        {
-            tslMenuIzquierdo.Text = "Almacén";
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888300000";
-            fnCargarMenuGeneral(lcCodMenu);   
-        }
+
+
+
 
         private Form fnMenuDinamico(String pcNomForm, int pnTipoLlamada)
         {
@@ -1308,28 +1284,7 @@ namespace wfaIntegradoCom
             });
         }
 
-        private async Task Hub_StateChanged(object s, StateChange e)
-        {
-            await Task.Run(() =>
-            {
-                try
-                {
-                    if (e.NewState == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                    {
-                        tsbSignalr.ToolTipText = "Conectado a Red - SignalR";
-                        tsbSignalr.Text = "Conectado";
-                        tsbSignalr.ForeColor = Color.Blue;
-                    }
-                    else if (e.NewState == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                    {
-                        tsbSignalr.ToolTipText = "Desconectado a Red";
-                        tsbSignalr.Text = "Desconectado";
-                        tsbSignalr.ForeColor = Color.Red;
-                    }
-                }
-                catch (Exception) { }
-            });
-        }
+      
 
         private void saveOrder(Funciones.Models.OrderRequest objOrder, int lnTipoLlamada = 0)
         {
@@ -1363,149 +1318,8 @@ namespace wfaIntegradoCom
 
 
         #endregion Auxiliar methods
-        private void fnselectslMenuIzquierdo()
-        {
-            if (tslMenuIzquierdo.Text == "Ventas")
-                tsbVenta.BackColor = Color.FromArgb(255, 192, 192);
-                else
-                tsbVenta.BackColor = Color.White;
+        
 
-            if (tslMenuIzquierdo.Text == "Sistemas")
-                tsbSistemas.BackColor = Color.FromArgb(255, 192, 192);
-            else
-                tsbSistemas.BackColor = Color.White;
-
-            if (tslMenuIzquierdo.Text == "Comercial")
-                tsbComercial.BackColor = Color.FromArgb(255, 192, 192);
-            else
-                tsbComercial.BackColor = Color.White;
-
-            if (tslMenuIzquierdo.Text == "Logística")
-                tsbLogistica.BackColor = Color.FromArgb(255, 192, 192);
-            else
-                tsbLogistica.BackColor = Color.White;
-
-            if (tslMenuIzquierdo.Text == "RRHH")
-                tsbRrHh.BackColor = Color.FromArgb(255, 192, 192);
-            else
-                tsbRrHh.BackColor = Color.White;
-
-            if (tslMenuIzquierdo.Text == "Soporte")
-                tsbSoporte.BackColor = Color.FromArgb(255, 192, 192);
-            else
-                tsbSoporte.BackColor = Color.White;
-
-            if (tslMenuIzquierdo.Text == "Configuración")
-                tsbConfiguracion.BackColor = Color.FromArgb(255, 192, 192);
-            else
-                tsbConfiguracion.BackColor = Color.White;
-
-            if (tslMenuIzquierdo.Text == "Recaudación")
-                tsbRecaudacion.BackColor = Color.FromArgb(255, 192, 192);
-            else
-                tsbRecaudacion.BackColor = Color.White;
-
-
-
-        }
-
-#region tsMenuPrincipal  (Botones)
-        private void tsbVenta_Click(object sender, EventArgs e)
-        {
-            fnColorWhiteSelec();
-            tsbVenta.BackColor = Color.FromArgb(255, 192, 192);
-
-            tslMenuIzquierdo.Text = "Ventas";
-            tslMenuIzquierdo.Image = Properties.Resources.venta_blanco_32;
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888800000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
-
-        private void tsbSistemas_Click(object sender, EventArgs e)
-        {
-            fnColorWhiteSelec();
-            tsbSistemas.BackColor = Color.FromArgb(255, 192, 192);
-
-            tslMenuIzquierdo.Text = "Sistemas";
-            tslMenuIzquierdo.Image = Properties.Resources.compu_ok_blanco_32;
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888300000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
-
-        private void tsbLogistica_Click(object sender, EventArgs e)
-        {
-
-            fnColorWhiteSelec();
-            tsbLogistica.BackColor = Color.FromArgb(255, 192, 192);
-
-            tslMenuIzquierdo.Text = "Logística";
-            tslMenuIzquierdo.Image = Properties.Resources.logistica_blanc_32;
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888600000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
-
-        private void tsbComercial_Click(object sender, EventArgs e)
-        {
-            fnColorWhiteSelec();
-            tsbComercial.BackColor = Color.FromArgb(255, 192, 192);
-
-            tslMenuIzquierdo.Text = "Comercial";
-            tslMenuIzquierdo.Image = Properties.Resources.comercial_blanco_32;
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888900000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
-
-        private void tsbCompra_Click(object sender, EventArgs e)
-        {
-
-
-            tslMenuIzquierdo.Text = "Compras";
-            tslMenuIzquierdo.Image = Properties.Resources.compras_blanco_32;
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888400000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
-
-        private void tsbSistemas_Click_1(object sender, EventArgs e)
-        {
-            fnColorWhiteSelec();
-            tsbSistemas.BackColor = Color.FromArgb(255, 192, 192);
-
-            tslMenuIzquierdo.Text = "Sistemas";
-            tslMenuIzquierdo.Image = Properties.Resources.compu_ok_blanco_32;
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888300000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
-
-        private void tsbRrHh_Click(object sender, EventArgs e)
-        {
-            fnColorWhiteSelec();
-            tsbRrHh.BackColor = Color.FromArgb(255, 192, 192);
-
-            tslMenuIzquierdo.Text = "RRHH";
-            tslMenuIzquierdo.Image = Properties.Resources.rrHh_blanco_32;
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888200000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
-
-        private void tsbSoporte_Click(object sender, EventArgs e)
-        {
-            fnColorWhiteSelec();
-            tsbSoporte.BackColor = Color.FromArgb(255, 192, 192);
-
-            tslMenuIzquierdo.Text = "Soporte";
-            //tslMenuIzquierdo.Image = Properties.Resources.soporte_blanco_1;
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888400000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
-#endregion tsMenuPrincipal  (Botones)
         private void tsCerraSession_Click(object sender, EventArgs e)
         {
             fnOcultarPanelCerrarSession();
@@ -1513,37 +1327,25 @@ namespace wfaIntegradoCom
 
         private void fnOcultarPanelCerrarSession()
         {
-            if (pnlCerrarSession.Visible == true)
+            if (panelCerrarSession.Visible == true)
             {
-                pnlCerrarSession.Visible = false;
+                panelCerrarSession.Visible = false;
             }
             else
             {
-                pnlCerrarSession.Visible = true;
+                panelCerrarSession.Visible = true;
             }
         }
         private void tsCerrarSession_Click(object sender, EventArgs e)
         {
             //this.Close();
-            pnlCerrarSession.Visible = false;
-            fnOcultarObjetos();
+            panelCerrarSession.Visible = false;
+            //fnOcultarObjetos();
             this.Loading();
            
         }
 
-        private void tsbRecaudacion_Click(object sender, EventArgs e)
-        {
-           
-            fnColorWhiteSelec();
-            tsbRecaudacion.BackColor = Color.FromArgb(255, 192, 192);
-            
 
-            tslMenuIzquierdo.Text = "Recaudación";
-            tslMenuIzquierdo.Image = Properties.Resources.recaudacion_Blanco;
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8881000000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
 
         private void PruebaLoad_Click(object sender, EventArgs e)
         {
@@ -1565,10 +1367,7 @@ namespace wfaIntegradoCom
 
 
 
-        private void tvOpes_Click(object sender, EventArgs e)
-        {
-            LoadCarga = false;
-        }
+
 
         private void tsMenuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -1608,92 +1407,49 @@ namespace wfaIntegradoCom
             btnSoporte.ForeColor = Color.Black;
             btnSoporte.Image = Properties.Resources.soporte1;
         }
-        private void fnColorWhiteSelec()
-        {
-            tsbRecaudacion.BackColor = Color.White;
-            tsbVenta.BackColor = Color.White;
-            tsbComercial.BackColor = Color.White;
-            tsbLogistica.BackColor = Color.White;
-            tsbSistemas.BackColor = Color.White;
-            tsbRrHh.BackColor = Color.White;
-            tsbConfiguracion.BackColor = Color.White;
-            tsbSoporte.BackColor = Color.White;
-
-        }
-
-        private void tsbConfiguracion_Click(object sender, EventArgs e)
-        {
-            fnColorWhiteSelec();
-            tsbConfiguracion.BackColor = Color.FromArgb(255, 192, 192);
-
-            tslMenuIzquierdo.Text = "Configuración";
-            tslMenuIzquierdo.Image = Properties.Resources.sistema_blanco_32;
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888700000";
-            fnCargarMenuGeneral(lcCodMenu);
-        }
 
 
-        private void btnPanel1_Click(object sender, EventArgs e)
-        {
-
-            panelBotones.Visible = false;
-            panelBotones.Dock = DockStyle.None;
-            panelToosStrip.Visible = true;
-            panelToosStrip.Dock = DockStyle.Fill;
-            btnPanel1.Visible = false;
-            btnPanel2.Visible = true;
-
-            treeView1.Nodes.Clear();
-            tvOpes.Nodes.Clear();
-
-            SplitIzquierdo.SplitterDistance = 233;
-            fnselectslMenuIzquierdo();
 
 
-        }
-        private void fnCambiarMenu()
-        {
-            if (SwitchMenus.Checked == true)
-            {
-                panelToosStrip.Visible = false;
-                panelToosStrip.Dock = DockStyle.None;
-                panelBotones.Visible = true;
-                panelBotones.Dock = DockStyle.Fill;
-                btnPanel2.Visible = false;
-                btnPanel1.Visible = true;
 
-                treeView1.Nodes.Clear();
-                tvOpes.Nodes.Clear();
+        //private void fnCambiarMenu()
+        //{
+        //    if (SwitchMenus.Checked == true)
+        //    {
+        //        panelToosStrip.Visible = false;
+        //        panelToosStrip.Dock = DockStyle.None;
+        //        panelBotones.Visible = true;
+        //        panelBotones.Dock = DockStyle.Fill;
+        //        btnPanel2.Visible = false;
+        //        btnPanel1.Visible = true;
 
-                SplitIzquierdo.SplitterDistance = 40;
+        //        treeView1.Nodes.Clear();
+        //        tvOpes.Nodes.Clear();
+
+        //        SplitIzquierdo.SplitterDistance = 40;
 
 
-                OcultarSubMenu();
-                FnColorwhiteselectBtns();
+        //        OcultarSubMenu();
+        //        FnColorwhiteselectBtns();
 
-            }
-            else
-            {
-                panelBotones.Visible = false;
-                panelBotones.Dock = DockStyle.None;
-                panelToosStrip.Visible = true;
-                panelToosStrip.Dock = DockStyle.Fill;
-                btnPanel1.Visible = false;
-                btnPanel2.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        panelBotones.Visible = false;
+        //        panelBotones.Dock = DockStyle.None;
+        //        panelToosStrip.Visible = true;
+        //        panelToosStrip.Dock = DockStyle.Fill;
+        //        btnPanel1.Visible = false;
+        //        btnPanel2.Visible = true;
 
-                treeView1.Nodes.Clear();
-                tvOpes.Nodes.Clear();
+        //        treeView1.Nodes.Clear();
+        //        tvOpes.Nodes.Clear();
 
-                SplitIzquierdo.SplitterDistance = 233;
-                fnselectslMenuIzquierdo();
-            }
-        }
-        private void siticoneToggleSwitch1_CheckedChanged(object sender, EventArgs e)
-        {
-            fnCambiarMenu();
+        //        SplitIzquierdo.SplitterDistance = 233;
+        //        fnselectslMenuIzquierdo();
+        //    }
+        //}
 
-        }
      
         private void SubmenusOcultos()
         {
@@ -2008,7 +1764,7 @@ namespace wfaIntegradoCom
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
 
-        
+
     }
 
 }
