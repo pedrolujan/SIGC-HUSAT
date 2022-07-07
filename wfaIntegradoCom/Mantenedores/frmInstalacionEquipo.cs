@@ -129,7 +129,7 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 filas = 10;
             String estadoTipoContrato = "0";
             Int32 idUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
-            //3 fechade registro 2 cod venta 4 descripcion vehiculo 5 cliente 6 estado
+            //3 fecha de registro 2 cod venta 4 descripcion vehiculo 5 cliente 6 estado
 
             try
             {
@@ -137,7 +137,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                 Int32 totalResultados = datVentaG.Rows.Count;
                 if (totalResultados > 0)
-                {
+                 {
                     if (dgv.Rows.Count > 0)
 
                     {
@@ -171,7 +171,11 @@ namespace wfaIntegradoCom.Mantenedores
                             desVehiculos,
                             datVentaG.Rows[i][6],
                             datVentaG.Rows[i][7],
-                            datVentaG.Rows[i][11]
+                            datVentaG.Rows[i][11],
+                            datVentaG.Rows[i][12]
+                            //datVentaG.Rows[i][12]
+
+
                         );//3 fechade registro 2 cod venta 4 descripcion vehiculo 5 cliente 6 estado
 
                     }
@@ -185,6 +189,7 @@ namespace wfaIntegradoCom.Mantenedores
                     dgv.Columns[5].Width = 80;
                     dgv.Columns[6].Width = 40;
                     dgv.Columns[7].Width = 40;
+                    dgv.Columns[8].Width = 40;
 
                     //dgv.RowTemplate.Height = 70;
                     dgv.Visible = true;
@@ -227,7 +232,7 @@ namespace wfaIntegradoCom.Mantenedores
             }
 
         }
-
+  
         private void dgvListaInstalaciones_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             FrmPrevisualizar frmPrev = new FrmPrevisualizar();
@@ -252,26 +257,38 @@ namespace wfaIntegradoCom.Mantenedores
                 dato = Convert.ToString(dgvListaInstalaciones.Rows[e.RowIndex].Cells[6].Value);
                 frmPrev.inicio(1, dato);
             }
+            if (e.ColumnIndex == dgvListaInstalaciones.Columns["UbicacionEquipo"].Index && e.RowIndex >= 0)
+            {
+                dato = Convert.ToString(dgvListaInstalaciones.Rows[e.RowIndex].Cells[12].Value);
+                frmPrev.inicio(1, dato);
+            }
         }
 
         private void cboEstadosInst_SelectedIndexChanged(object sender, EventArgs e)
         {
             //fnBuscarListaVentas(dgvListaInstalaciones, Convert.ToString(cboEstadosInst.SelectedValue), btnTotalRegistrosIns, 0, 1, -1);
-
+            
             if (Convert.ToString(cboEstadosInst.SelectedValue) == "ESVG0001")
             {
                 cmsMenuSeleccion.Items[0].Visible = true;
                 cmsMenuSeleccion.Items[1].Visible = false;
+                cmsMenuSeleccion.Items[2].Visible = false;
+               
+
             }
             else if (Convert.ToString(cboEstadosInst.SelectedValue) == "ESVG0002")
             {
                 cmsMenuSeleccion.Items[0].Visible = false;
                 cmsMenuSeleccion.Items[1].Visible = true;
+                cmsMenuSeleccion.Items[2].Visible = true;
+
             }
+            
             else
             {
                 cmsMenuSeleccion.Items[0].Visible = false;
                 cmsMenuSeleccion.Items[1].Visible = false;
+                cmsMenuSeleccion.Items[2].Visible = false;
             }
         }
 
@@ -965,15 +982,7 @@ namespace wfaIntegradoCom.Mantenedores
             msjEquipo = Result.Item2;
         }
 
-        private void gbDatosPersona_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvListaInstalaciones_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
+ 
 
         private void dgvListaInstalaciones_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -990,7 +999,7 @@ namespace wfaIntegradoCom.Mantenedores
                     else
                     {
                         var mousePosition = dgvListaInstalaciones.PointToClient(Cursor.Position);
-                        cmsMenuSeleccion.Show(dgvListaInstalaciones, mousePosition);
+                        //cmsMenuSeleccion.Show(dgvListaInstalaciones, mousePosition);
 
                     }
 
@@ -1246,7 +1255,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void dgvListaInstalaciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 9)
+            if (e.ColumnIndex == 10)
             {
                 xmlInstalacion xmlInst = new xmlInstalacion();
                 String codVenta = "";
@@ -1273,10 +1282,7 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
 
-        private void cmsMenuSeleccion_Opening(object sender, CancelEventArgs e)
-        {
 
-        }
 
         private void actualizarInstalacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1314,6 +1320,25 @@ namespace wfaIntegradoCom.Mantenedores
 
             fnActivarCamposActualizacion(true);
             fnMostrtarTablas();
+
+        }
+
+        private void mostrarUbicacionDeInstalacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            if (UbicacionEquipo.Visible == true)
+            {
+                
+            mostrarUbicacionDeInstalacionToolStripMenuItem.Text = "Mostrar ubicacion de Instalacion";
+               UbicacionEquipo.Visible = false;
+            }
+            else if (UbicacionEquipo.Visible == false)
+            {
+
+                mostrarUbicacionDeInstalacionToolStripMenuItem.Text = "Ocultar ubicacion de Instalacion";
+                UbicacionEquipo.Visible = true;
+                     
+            }
 
         }
 
@@ -1392,7 +1417,14 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
 
+        private void vIsualizarUbicacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPrevisualizar frmPrev = new FrmPrevisualizar();
+            String dato = "";
+            dato = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[9].Value);
 
+            frmPrev.inicio(1, dato);
+        }
 
         private void cboSeleccionarUbicacionE_SelectedIndexChanged(object sender, EventArgs e)
        
