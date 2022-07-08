@@ -415,6 +415,8 @@ namespace wfaIntegradoCom.Procesos
 
                         DateTime dtFechaInicio = Convert.ToDateTime(Convert.ToDateTime(drMenu["periodoInicio"].ToString()).ToString("dd/MM/yyyy"));
 
+                       
+
                         DateTime dtFechaTemp = Convert.ToDateTime(Convert.ToDateTime(drMenu["periodoInicio"].ToString()).ToString("dd/MM/yyyy")).AddMonths(1);
                         numDiasMespago = DateTime.DaysInMonth(dtFechaInicio.Year, dtFechaInicio.Month);
                         numDiasMesAdd = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
@@ -448,7 +450,8 @@ namespace wfaIntegradoCom.Procesos
                         }
 
                         DateTime dtFechaPagoCronograma = fechaInicio.AddDays((diasASumar - restarFinal));
-                        
+                        var resulFechas = fnConvertirFechas(dtFechaInicio);
+
                         //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
                         if (dtFechActual > dtFechaPagoCronograma)
                         {
@@ -526,6 +529,7 @@ namespace wfaIntegradoCom.Procesos
                         {
                             if (Convert.ToString(drMenu["cNomTab"]) == "VENCIDO")
                             {
+                                //dtFechaPagoCronograma = Convert.ToDateTime(drMenu["dtFechaCorte"]);
                                 tiempoTranscurrido = "\n🚫 Desde ( " + dtFechaPagoCronograma.AddDays(7).ToString("dd/MMM/yyyy") + " )";
                             }
                             else

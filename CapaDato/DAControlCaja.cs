@@ -97,7 +97,7 @@ namespace CapaDato
         }
         public List<ReporteBloque> daBuscarReporteGeneralVentas(Busquedas clsBusq)
         {
-            SqlParameter[] pa = new SqlParameter[11];
+            SqlParameter[] pa = new SqlParameter[12];
             List<ControlCaja> lstControl = new List<ControlCaja>();
             DataTable dt = new DataTable();
             List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
@@ -109,17 +109,18 @@ namespace CapaDato
                 pa[1] = new SqlParameter("@dtFechaFin", SqlDbType.Date) { Value = clsBusq.dtFechaFin };
                 pa[2] = new SqlParameter("@codTipoReporte", SqlDbType.VarChar) { Value = clsBusq.cod1 };
                 pa[3] = new SqlParameter("@codTipoOperacion", SqlDbType.VarChar) { Value = clsBusq.cod2 };
-                pa[4] = new SqlParameter("@idTipoPlan", SqlDbType.Int) { Value = 0 };
-                pa[5] = new SqlParameter("@idTipoTarifa", SqlDbType.Int) { Value = 0 };
-                pa[6] = new SqlParameter("@cBuscar", SqlDbType.VarChar) { Value = clsBusq.cBuscar }; 
-                pa[7] = new SqlParameter("@numPagina", SqlDbType.VarChar) { Value = clsBusq.numPagina }; 
-                pa[8] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = clsBusq.tipoCon }; 
-                pa[9] = new SqlParameter("@chkHabilitarFecha", SqlDbType.TinyInt) { Value = clsBusq.chkActivarFechas }; 
-                pa[10] = new SqlParameter("@chkDiaEspecifico", SqlDbType.TinyInt) { Value = clsBusq.chkActivarDia }; 
+                pa[4] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = clsBusq.cod3 };
+                pa[5] = new SqlParameter("@codSubConsulta", SqlDbType.VarChar) { Value = clsBusq.cod4 };
+                pa[6] = new SqlParameter("@idTipoTarifa", SqlDbType.Int) { Value = 0 };
+                pa[7] = new SqlParameter("@cBuscar", SqlDbType.VarChar) { Value = clsBusq.cBuscar }; 
+                pa[8] = new SqlParameter("@numPagina", SqlDbType.VarChar) { Value = clsBusq.numPagina }; 
+                pa[9] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = clsBusq.tipoCon }; 
+                pa[10] = new SqlParameter("@chkHabilitarFecha", SqlDbType.TinyInt) { Value = clsBusq.chkActivarFechas }; 
+                pa[11] = new SqlParameter("@chkDiaEspecifico", SqlDbType.TinyInt) { Value = clsBusq.chkActivarDia }; 
 
                  objCnx = new clsConexion("");
 
-                 dt = objCnx.EjecutarProcedimientoDT("uspBuscarReporteGeneralVentas", pa);
+                dt = objCnx.EjecutarProcedimientoDT("uspBuscarReporteGeneralVentas", pa);
                 foreach (DataRow dr in dt.Rows)
                 {
                     lsRepBloque.Add(new ReporteBloque
@@ -145,6 +146,48 @@ namespace CapaDato
             {
 
             }
+        }
+
+        public DataTable daDevolverSoloUsuario(Boolean chk, String dtI, String dtFin)
+        {
+            SqlParameter[] pa = new SqlParameter[3];
+            DataTable dtVehiculo = new DataTable();
+            clsConexion objCnx = null;
+            List<Usuario> lstUsuario = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@dtInicio", SqlDbType.Date);
+                pa[0].Value = dtI;
+                pa[1] = new SqlParameter("@dtFin", SqlDbType.Date);
+                pa[1].Value = dtFin;
+                pa[2] = new SqlParameter("@chk", SqlDbType.Date);
+                pa[2].Value = chk;
+
+
+                objCnx = new clsConexion("");
+                dtVehiculo = objCnx.EjecutarProcedimientoDT("uspListarUsuariosConTrandiarias", pa);
+
+                
+
+                return dtVehiculo;
+
+            }
+            catch (Exception ex)
+            {
+                lstUsuario = null;
+                objUtil.gsLogAplicativo("DAAttrVehiculo.cs", "daDevolverClaseV", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                lstUsuario = null;
+            }
+
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using CapaEntidad;
+﻿using CapaDato;
+using CapaEntidad;
 using CapaNegocio;
+using Siticone.UI.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -158,7 +160,7 @@ namespace wfaIntegradoCom.Procesos
             }
             
         }
-        private void fnBuscarReporteGeneralVentas(Int32 numPagina, Int32 tipoCon)
+        private void fnBuscarReporteGeneralVentas(SiticoneDataGridView dgv, Int32 numPagina, Int32 tipoCon)
         {
             bl = new BLControlCaja();
             DataTable dtRes = new DataTable();
@@ -167,15 +169,14 @@ namespace wfaIntegradoCom.Procesos
             clsBusq.chkActivarDia = chkDiaEspecificoG.Checked;
             clsBusq.dtFechaIni= FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
             clsBusq.dtFechaFin= FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
-            clsBusq.cod1= cboTipoReporte.SelectedValue.ToString();
+            clsBusq.cod1= cboTipoReporte.Items.Count == 0?"0": cboTipoReporte.SelectedValue.ToString();
             clsBusq.cod2= tipoCon==-1?"": codOperacion;
-            clsBusq.cod3= "";
+            clsBusq.cod3= cboOperacion.SelectedValue.ToString();
             clsBusq.cod4= "";
             clsBusq.cBuscar= txtBuscarRepGeneral.Text.ToString();
             clsBusq.numPagina = numPagina;
             clsBusq.tipoCon = tipoCon;
 
-            String codTipoReporte = cboTipoReporte.SelectedValue.ToString();
             String codTipoOperacion = "";
 
             Int32 TipoPlan = 0;
@@ -189,24 +190,25 @@ namespace wfaIntegradoCom.Procesos
 
             lsReporteBloque = bl.BuscarReporteGeneralVentas( clsBusq);
             Int32 totalRows = lsReporteBloque.Count;
-            
-           
 
-            Int32 y = 0;
+            siticoneDataGridView1.Visible = false;
+            lblHeaderDetalle.Visible = false;
+            dgvEmergente.Visible = false;
+
+             Int32 y = 0;
 
             if (totalRows>0)
             {
                 if (tipoCon == -1)
                 {
                     lsReporteBloqueGen = lsReporteBloque;
-                    dgvListaPorBloque.Columns.Clear();
-                    dgvListaPorBloque.Rows.Clear();
-                    dgvListaPorBloque.Columns.Add("id", "id");
-                    dgvListaPorBloque.Columns.Add("num", "N°");
-                    dgvListaPorBloque.Columns.Add("detalle", "Detalle");
-                    dgvListaPorBloque.Columns.Add("cantidad", "Cantidad");
-                    dgvListaPorBloque.Columns.Add("Importe", "Importe");
-                    this.dgvListaPorBloque.Columns["importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgv.Columns.Clear();
+                    dgv.Rows.Clear();
+                    dgv.Columns.Add("id", "id");
+                    dgv.Columns.Add("num", "N°");
+                    dgv.Columns.Add("detalle", "Detalle");
+                    dgv.Columns.Add("cantidad", "Cantidad");
+                    dgv.Columns.Add("Importe", "Importe");
 
                     if (numPagina == 0)
                     {
@@ -221,7 +223,7 @@ namespace wfaIntegradoCom.Procesos
                     for (Int32 i = 0; i < totalRows; i++)
                     {
                         ReporteBloque clsRep = lsReporteBloque[i];
-                        dgvListaPorBloque.Rows.Add(
+                        dgv.Rows.Add(
                             clsRep.Codigoreporte,
                             y + 1,
                             clsRep.Detallereporte,
@@ -229,62 +231,68 @@ namespace wfaIntegradoCom.Procesos
                             FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
                             );
                         y += 1;
-                        dgvListaPorBloque.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                        dgvListaPorBloque.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        dgv.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        dgv.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     }
-                    lblTotalBloque.Text="IMPORTE TOTAL: "+ FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0);
-                   
-                    dgvListaPorBloque.Columns[0].Visible = false;
-                    dgvListaPorBloque.Columns[1].Width = 10;
-                    dgvListaPorBloque.Columns[2].Width = 100;
-                    dgvListaPorBloque.Columns[3].Width = 20;
-                    dgvListaPorBloque.Columns[4].Width = 100;
-                    dgvListaPorBloque.Height = ((totalRows+1) * (dgvListaPorBloque.ThemeStyle.RowsStyle.Height+3));
-                    lblTotalBloque.Location = new Point(lblTotalBloque.Location.X, dgvListaPorBloque.Height+15);
+                    dgv.Rows.Add("", "", "", "", "");
+                    dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                    dgv.Rows[y + 1].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    dgv.Rows[y + 1].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                    dgv.Columns[0].Visible = false;
+                    dgv.Columns[1].Width = 10;
+                    dgv.Columns[2].Width = 100;
+                    dgv.Columns[3].Width = 20;
+                    dgv.Columns[4].Width = 100;
+                    dgv.Height = ((totalRows+3) * (dgv.ThemeStyle.RowsStyle.Height+ 2));
+                    dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
                     lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda==2?(i.ImporteTipoCambio*i.ImporteRow):i.ImporteRow), 0);
 
                 }else if (tipoCon==-2)
                 {
                     ReporteBloque clsReporte = lsReporteBloqueGen.Find(i => i.Codigoreporte == codOperacion);
-                    siticoneDataGridView1.Columns.Clear();
-                    siticoneDataGridView1.Rows.Clear();
-                    siticoneDataGridView1.Columns.Add("id", "id");
-                    siticoneDataGridView1.Columns.Add("num", "N°");
-                    siticoneDataGridView1.Columns.Add("detalle", "Detalle de "+clsReporte.Detallereporte);
-                    siticoneDataGridView1.Columns.Add("cantidad", "Cantidad");
-                    siticoneDataGridView1.Columns.Add("Importe", "Importe");
-                    this.siticoneDataGridView1.Columns["importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+                    dgv.Columns.Clear();
+                    dgv.Rows.Clear();
+                    dgv.Columns.Add("id", "id");
+                    dgv.Columns.Add("detalle", "Detalle de "+clsReporte.Detallereporte);
+                    dgv.Columns.Add("cantidad", "Cantidad");
+                    dgv.Columns.Add("Importe", "Importe");
+                    dgv.Columns["importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    lblHeaderDetalle.Text = "Detalle de " + clsReporte.Detallereporte;
+                    lblHeaderDetalle.Visible = true;
                     for (Int32 i = 0; i < totalRows; i++)
                     {
                         ReporteBloque clsRep = lsReporteBloque[i];
-                        siticoneDataGridView1.Rows.Add(
+                        dgv.Rows.Add(
                             clsRep.Codigoreporte,
-                            y + 1,
                             clsRep.Detallereporte,
                             clsRep.Cantidad,
                             FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
                             );
                         y += 1;
-                        siticoneDataGridView1.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                        siticoneDataGridView1.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        dgv.Rows[i].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        dgv.Rows[i].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     }
+                    dgv.Visible = true;
 
-                    siticoneDataGridView1.Rows.Add("","","","","");
-                    siticoneDataGridView1.Rows.Add("TOTAL","","IMPORTE TOTAL","", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
-                    siticoneDataGridView1.Rows[y+1].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    siticoneDataGridView1.Rows[y+1].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    siticoneDataGridView1.Rows[y + 1].DefaultCellStyle.ForeColor = Color.Red;
-                    siticoneDataGridView1.Columns[0].Visible = false;
-                    siticoneDataGridView1.Columns[1].Width = 10;
-                    siticoneDataGridView1.Columns[2].Width = 100;
-                    siticoneDataGridView1.Columns[3].Width = 20;
-                    siticoneDataGridView1.Columns[4].Width = 100;
-                    siticoneDataGridView1.ColumnHeadersVisible = false;
-                    siticoneDataGridView1.Height = ((totalRows+2) * (siticoneDataGridView1.ThemeStyle.RowsStyle.Height+3));
+                    dgv.Rows.Add("","","","");
+                    dgv.Rows.Add("TOTAL","IMPORTE TOTAL","", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                    dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    dgv.Rows[y + 1].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    dgv.Columns[0].Visible = false;
+                    dgv.Columns[1].Width = 100;
+                    dgv.Columns[2].Width = 20;
+                    dgv.Columns[3].Width = 100;
+                    dgv.ColumnHeadersVisible = false;
 
+                    
+                    dgv.Height = ((totalRows+2) * (dgv.ThemeStyle.RowsStyle.Height+2));
+                    dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
                 }
-
+                
+                dgv.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
+                dgv.Rows[y + 1].DefaultCellStyle.BackColor = Color.Red;
+                dgv.Rows[y + 1].DefaultCellStyle.Font= new Font("Arial", 15F, GraphicsUnit.Pixel);
                 //this.dgvListaPorBloque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
 
@@ -301,6 +309,7 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
+                dgv.Columns.Clear();
                 dgvListaPorBloque.Columns.Add("id", "NO SE ENCONTRARON RESULTADOS PARA LA BUSQUEDA");
                 lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(000), 0);
             }
@@ -399,39 +408,70 @@ namespace wfaIntegradoCom.Procesos
         private void cboTipoReporte_SelectedIndexChanged(object sender, EventArgs e)
         {
             //siticonePanel2.Visible = false;
+            pbIndica.Visible = false;
             String CodOperacion = cboTipoReporte.SelectedValue.ToString();
-            if (CodOperacion== "TRPT0001")
-            {
-                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "idOperacion", "cNombreOperacion", "OperacionHusat", "estValida", "1", false);
-            }
-            else if (CodOperacion == "TRPT0002")
-            {
-                //siticonePanel2.Visible = true;
-                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "cCodTab", "cNomTab", "TablaCod", "cCodTab", "TIPA", false);
+            //if (CodOperacion== "TRPT0001")
+            //{
+            //    FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "idOperacion", "cNombreOperacion", "OperacionHusat", "estValida", "1", false);
+            //}
+            //else if (CodOperacion == "TRPT0002")
+            //{
+            //    //siticonePanel2.Visible = true;
+            //    FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "cCodTab", "cNomTab", "TablaCod", "cCodTab", "TIPA", false);
 
-            }
-            else if (CodOperacion == "TRPT0003")
-            {
-                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "idUsuario", "cUser", "Usuario", "estValida", "1", false);
+            //}
+            //else if (CodOperacion == "TRPT0003")
+            //{
+            //    FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "idUsuario", "cUser", "Usuario", "estValida", "1", false);
 
-            }
-            else if (CodOperacion == "TRPT0004")
-            {
-                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "cCodTab", "cNomTab", "TablaCod", "cCodTab", "DOVE", false);
-
-
-            }
+            //}
+            //else if (CodOperacion == "TRPT0004")
+            //{
+            //    FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "cCodTab", "cNomTab", "TablaCod", "cCodTab", "DOVE", false);
 
 
-            fnBuscarReporteGeneralVentas(0, -1);
+            //}
+
+
+            fnBuscarReporteGeneralVentas(dgvListaPorBloque,0, -1);
+           
         }
 
         private void txtBuscarRepGeneral_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                fnBuscarReporteGeneralVentas(0,-1);
+                fnBuscarReporteGeneralVentas(dgvListaPorBloque,0, -1);
             }
+        }
+
+        private void fnLlenarUsuariosConAccion(ComboBox cbo,SiticoneDateTimePicker dtIni, SiticoneDateTimePicker dtFin,Boolean estado)
+        {
+            DAControlCaja dc = new DAControlCaja();
+            List<Usuario> lstUsuario = new List<Usuario>();
+            DataTable dt = new DataTable();
+            String FI = FunGeneral.GetFechaHoraFormato(dtIni.Value, 5);
+            String FF = FunGeneral.GetFechaHoraFormato(dtFin.Value, 5);
+            Boolean chk = chkDiaEspecificoG.Checked;
+            
+            dt = dc.daDevolverSoloUsuario(chk, FI, FF);
+
+                lstUsuario.Add(new Usuario(
+                    Convert.ToInt32(0),
+                    Convert.ToString(estado ? "TODOS" : "Selecc. Usuario")
+                  ));
+
+            foreach (DataRow drMenu in dt.Rows)
+            {
+                lstUsuario.Add(new Usuario(
+                    Convert.ToInt32(drMenu["idUsuario"]),
+                    Convert.ToString(drMenu["cUser"])
+                    ));
+            }
+            cbo.ValueMember = "idUsuario";
+            cbo.DisplayMember = "cUser";
+            cbo.DataSource = lstUsuario;    
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -442,15 +482,38 @@ namespace wfaIntegradoCom.Procesos
         private void dgvListaPorBloque_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             codTipoReporte = cboTipoReporte.SelectedValue.ToString();
-            Int32 pointToWindow = MousePosition.Y;
             codOperacion = dgvListaPorBloque.CurrentRow.Cells[0].Value.ToString();
-            Int32 x = dgvListaPorBloque.GetCellDisplayRectangle(e.RowIndex, e.ColumnIndex,false).Right ;
-            Int32 y = dgvListaPorBloque.GetRowDisplayRectangle(e.RowIndex,false).Y;
-            siticoneDataGridView1.Location = new Point(dgvListaPorBloque.Right, y+2);
-            siticoneDataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.None;
-            siticoneDataGridView1.BorderStyle = BorderStyle.FixedSingle;
-           
-            fnBuscarReporteGeneralVentas(0, -2);
+
+            dgvEmergente.Visible = false;
+            if (codOperacion=="" || codOperacion == "TOTAL")
+            {
+
+            }
+            else
+            {
+                if (codTipoReporte == "TRPT0001" || codTipoReporte == "TRPT0002")
+                {
+                    fnBuscarReporteGeneralVentas(siticoneDataGridView1, 0, -2);
+
+                }
+                else
+                {
+                    ReporteBloque clsReporte = lsReporteBloqueGen.Find(i => i.Codigoreporte == codOperacion);
+                    lblHeaderDetalle.Text = "Detalle de " + clsReporte.Detallereporte;
+                    lblHeaderDetalle.Visible = true;
+                    fnBuscarDatosTablaEmergente(dgvEmergente, codOperacion);
+                    dgvEmergente.Width = siticoneDataGridView1.Width;
+                    dgvEmergente.Location = siticoneDataGridView1.Location;
+
+                }
+                Int32 x = dgvListaPorBloque.GetCellDisplayRectangle(e.RowIndex, e.ColumnIndex, false).Right;
+                Int32 y = dgvListaPorBloque.GetRowDisplayRectangle(e.RowIndex, false).Y;
+                //siticoneDataGridView1.Location = new Point(dgvListaPorBloque.Right + 15, y + 2);
+                pbIndica.Location = new Point(dgvListaPorBloque.Right + 15, y + 2);
+                pbIndica.Visible = true;
+            }
+            
+
 
         }
 
@@ -458,6 +521,7 @@ namespace wfaIntegradoCom.Procesos
         {
             //var mousePosition = dgvListaPorBloque.PointToClient(Cursor.Position);
             //cmsAccion.Show(dgvListaPorBloque, mousePosition.X, mousePosition.Y);
+            dgvEmergente.Visible = false;
 
         }
 
@@ -535,7 +599,7 @@ namespace wfaIntegradoCom.Procesos
                 codOperacion = dgvListaPorBloque.CurrentRow.Cells[0].Value.ToString();
                 fnMostrarCombobox(codTipoReporte, codOperacion);
 
-                ReporteBloque clsReporte = lsReporteBloque.Find(i => i.Codigoreporte == codOperacion);
+                ReporteBloque clsReporte = lsReporteBloqueGen.Find(i => i.Codigoreporte == codOperacion);
                 lblDetalleInfo.Text = clsReporte.Detallereporte + " Cantidad. " + clsReporte.Cantidad + " Importe. " + FunGeneral.fnFormatearPrecio(clsReporte.SimboloMoneda, clsReporte.ImporteRow, 0);
                 fnBuscarVentasCaja(codOperacion, 0, -1);
 
@@ -571,13 +635,13 @@ namespace wfaIntegradoCom.Procesos
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            fnBuscarReporteGeneralVentas(0, -1);
+            fnBuscarReporteGeneralVentas(dgvListaPorBloque,0, -1);
         }
 
         private void dgvListaPorBloque_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var mousePosition = dgvListaPorBloque.PointToClient(Cursor.Position);
-            cmsAccion.Show(dgvListaPorBloque, mousePosition.X, mousePosition.Y);
+            //var mousePosition = dgvListaPorBloque.PointToClient(Cursor.Position);
+            //cmsAccion.Show(dgvListaPorBloque, mousePosition.X, mousePosition.Y);
         }
 
         private void dgvListaPorBloque_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -622,13 +686,124 @@ namespace wfaIntegradoCom.Procesos
             String nombreCabecera = dgview.Columns[e.ColumnIndex].Name;
            
 
-                if (e.Value.ToString()== "Total")
-                {
-                    dgview.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Variables.ColorSuccess;
-                    //e.CellStyle.ForeColor = Variables.ColorSuccess;
-                }
+               
                 
             
+        }
+
+        private void cboPagina_SelectedIndexChanged_2(object sender, EventArgs e)
+        {
+            fnBuscarVentasCaja(codOperacion, Convert.ToInt32(cboPagina.Text), -1);
+        }
+
+        private void dtFechaInicioG_ValueChanged(object sender, EventArgs e)
+        {
+            fnLlenarUsuariosConAccion(cboOperacion, dtFechaInicioG, dtFechaFinG, true);
+        }
+
+        private void dtFechaFinG_ValueChanged(object sender, EventArgs e)
+        {
+            fnLlenarUsuariosConAccion(cboOperacion, dtFechaInicioG, dtFechaFinG, true);
+        }
+
+        private void cboOperacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
+        }
+
+        private void siticoneDataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            String codSubReporte = siticoneDataGridView1.CurrentRow.Cells[0].Value.ToString();
+            if (codSubReporte=="" || codSubReporte == "TOTAL")
+            {
+                
+            }
+            else
+            {
+                Int32 x = siticoneDataGridView1.Left + 135;
+                Int32 y = siticoneDataGridView1.GetRowDisplayRectangle(e.RowIndex, false).Y;
+                dgvEmergente.Location = new Point(x, y + 60);
+                dgvEmergente.Width = siticoneDataGridView1.Width - 135;
+                fnBuscarDatosTablaEmergente(dgvEmergente, codSubReporte);
+            }
+            
+        }
+        private void fnBuscarDatosTablaEmergente(SiticoneDataGridView dgv,String codSubReporte)
+        {
+
+            bl = new BLControlCaja();
+            DataTable dtRes = new DataTable();
+            Busquedas clsBus = new Busquedas();
+            List<ReporteBloque> lstRep = new List<ReporteBloque>();
+
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.chkActivarFechas = chkHabilitarFechasBusG.Checked;
+            clsBusq.chkActivarDia = chkDiaEspecificoG.Checked;
+            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
+            clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
+            clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
+            clsBusq.cod2 =  codOperacion;
+            clsBusq.cod3 = cboOperacion.SelectedValue.ToString();
+            clsBusq.cod4 = codSubReporte;
+            clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
+            clsBusq.numPagina = 0;
+            clsBusq.tipoCon = -3;
+
+            lstRep = bl.BuscarReporteGeneralVentas(clsBusq);
+            dgv.Visible = false;
+            dgv.Columns.Clear();
+            dgv.Rows.Clear();
+            ReporteBloque clsReporte = lsReporteBloque.Find(i => i.Codigoreporte == codSubReporte);
+            dgv.Columns.Add("id", "id");
+            dgv.Columns.Add("detalle", "Detalle de ");
+            dgv.Columns.Add("cantidad", "Cantidad");
+            dgv.Columns.Add("Importe", "Importe");
+            dgv.Columns["importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.None;
+            //lblHeaderDetalle.Text = "Detalle de " + clsReporte.Detallereporte;
+            lblHeaderDetalle.Visible = true;
+            Int32 y = 0;
+            if (clsBusq.numPagina == 0)
+            {
+                y = 0;
+            }
+            else
+            {
+                tabInicio = (clsBusq.numPagina - 1) * 20;
+                y = tabInicio;
+            }
+            for (Int32 i = 0; i < lstRep.Count; i++)
+            {
+                ReporteBloque clsRep = lstRep[i];
+                dgv.Rows.Add(
+                    clsRep.Codigoreporte,
+                   clsRep.Detallereporte.Length<=10?  Convert.ToDateTime(clsRep.Detallereporte).ToString("dd MMM yyyy"): clsRep.Detallereporte,
+                    clsRep.Cantidad,
+                    FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                    );
+                y += 1;
+                dgv.Rows[i].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Rows[i].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Rows[i].Cells[1].Style.Padding = new Padding(30, 0, 0, 0);
+            }
+            dgv.Visible = true;
+
+            dgv.Rows.Add("", "", "", "");
+            dgv.Rows.Add("TOTAL", "IMPORTE TOTAL DE " + clsReporte.Detallereporte, "", FunGeneral.fnFormatearPrecio("S/.", lstRep.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+            dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgv.Rows[y + 1].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgv.Columns[0].Visible = false;
+            dgv.Columns[1].Width = 100;
+            dgv.Columns[2].Width = 20;
+            dgv.Columns[3].Width = 100;
+            dgv.ColumnHeadersVisible = false;
+
+
+            dgv.Height = ((lstRep.Count + 2) * (dgv.ThemeStyle.RowsStyle.Height+1));
+            dgv.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
+            dgv.Rows[y + 1].DefaultCellStyle.BackColor = Color.DarkRed;
+            dgv.Rows[y + 1].Cells[1].Style.Padding = new Padding(30, 0, 0, 0);
+            dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Arial", 12F, GraphicsUnit.Pixel);
         }
     }
 }
