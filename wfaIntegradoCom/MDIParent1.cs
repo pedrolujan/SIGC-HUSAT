@@ -26,6 +26,8 @@ using System.Windows.Controls;
 using Newtonsoft.Json.Linq;
 using wfaIntegradoCom.Funciones.Models.Order;
 using Siticone.UI.WinForms;
+using FontAwesome.Sharp;
+
 
 namespace wfaIntegradoCom
 
@@ -34,8 +36,8 @@ namespace wfaIntegradoCom
     {
         
 
-
-       static DataSet dtMenu = new DataSet();
+        //Field (Campos)
+        static DataSet dtMenu = new DataSet();
         clsUtil objUtil = new clsUtil();
         ImageList imgList = new ImageList();
         String lcCodMenu = "";
@@ -46,6 +48,9 @@ namespace wfaIntegradoCom
         int lintIdTipoProceso = 1;
         static Boolean LoadCarga = false;
 
+        private IconButton BtnActual;
+        private System.Windows.Forms.Panel LeftBordeBtn;
+
         public void fnLoadCarga ( Boolean Load)
         {
             LoadCarga = Load;
@@ -54,10 +59,17 @@ namespace wfaIntegradoCom
 
 
         }
+        //Constructor
         public MDIParent1()
         {
             InitializeComponent();
             SubmenusOcultos();
+
+            LeftBordeBtn = new System.Windows.Forms.Panel();
+            LeftBordeBtn.Size = new Size(7,60);
+
+            this.DoubleBuffered = true;
+
         }
 
         private void fnCargarFormAPanel(object frm)
@@ -978,10 +990,6 @@ namespace wfaIntegradoCom
 
 
 
-
-
-
-
         private Form fnMenuDinamico(String pcNomForm, int pnTipoLlamada)
         {
             Object obj = null;
@@ -1356,6 +1364,7 @@ namespace wfaIntegradoCom
         {
             Img_Husat_Negro.Visible = false;
             Img_Husat_Blanco.Visible = true;
+            reset();
         }
 
 
@@ -1363,50 +1372,54 @@ namespace wfaIntegradoCom
         {
             Img_Husat_Blanco.Visible = false;
             Img_Husat_Negro.Visible = true;
+            reset();
         }
 
-
-
-
-
-        private void tsMenuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void fnBotonActivo(object senderBtn, Color color)
         {
-            LoadCarga = false;
+            
+            if (senderBtn != null)
+            {   
+                //desactivamos el Boton
+                fnBotoninactivo();
+                //Personalizando Boton
+                BtnActual = (IconButton)senderBtn;//asigna el boton actual con el Boton remitente
+                BtnActual.BackColor = Color.White;
+                BtnActual.ForeColor = color;
+                BtnActual.TextAlign = ContentAlignment.MiddleCenter;
+                BtnActual.IconColor = color;
+                BtnActual.TextImageRelation = TextImageRelation.TextBeforeImage;
+                BtnActual.ImageAlign = ContentAlignment.MiddleRight;
+                //borde Izquierdo del boton
+                LeftBordeBtn.BackColor = color;
+                LeftBordeBtn.Location = new Point(0, BtnActual.Location.Y);
+                LeftBordeBtn.Visible = true;
+                LeftBordeBtn.BringToFront();
+
+            }
+
         }
-        private void FnColorwhiteselectBtns()
+
+        private void fnBotoninactivo()
         {
-            btnVenta.BackColor = Color.White;
-            btnVenta.ForeColor = Color.Black;
-            btnVenta.Image = Properties.Resources.ventaBase_32;
-
-            btnRecaudacion.BackColor = Color.White;
-            btnRecaudacion.ForeColor = Color.Black;
-            btnRecaudacion.Image = Properties.Resources.refund_32px;
-
-            btnComercial.BackColor = Color.White;
-            btnComercial.ForeColor = Color.Black;
-            btnComercial.Image = Properties.Resources.commercial_naranja_32;
-
-            btnLogistica.BackColor = Color.White;
-            btnLogistica.ForeColor = Color.Black;
-            btnLogistica.Image = Properties.Resources.logistica_naranja_32;
-
-            btnSistemas.BackColor = Color.White;
-            btnSistemas.ForeColor = Color.Black;
-            btnSistemas.Image = Properties.Resources.compu_ok_naranja_32;
-
-            btnRrhh.BackColor = Color.White;
-            btnRrhh.ForeColor = Color.Black;
-            btnRrhh.Image = Properties.Resources.rrHh_naranja_32;
-
-            btnConfiguracion.BackColor = Color.White;
-            btnConfiguracion.ForeColor = Color.Black;
-            btnConfiguracion.Image = Properties.Resources.sistemas_naranja_32;
-
-            btnSoporte.BackColor = Color.White;
-            btnSoporte.ForeColor = Color.Black;
-            btnSoporte.Image = Properties.Resources.soporte1;
+            if (BtnActual != null)
+            {
+                BtnActual.BackColor = Color.Black;
+                BtnActual.ForeColor = Color.Gainsboro;
+                BtnActual.TextAlign = ContentAlignment.MiddleLeft;
+                BtnActual.IconColor = Color.Gainsboro;
+                BtnActual.TextImageRelation = TextImageRelation.ImageBeforeText;
+                BtnActual.ImageAlign = ContentAlignment.MiddleLeft;
+            }
         }
+
+        //resetear los botones
+        private void reset()
+        {
+            fnBotoninactivo();
+            LeftBordeBtn.Visible = false;   
+        }
+
 
 
 
@@ -1502,7 +1515,7 @@ namespace wfaIntegradoCom
         {
            
             LoadCarga = false;
-            FnColorwhiteselectBtns();
+            
             btnVenta.BackColor = Variables.ColorEmpresa;
             btnVenta.ForeColor = Color.White;
             btnVenta.HoveredState.Image = Properties.Resources.venta_blanco_32;
@@ -1525,7 +1538,7 @@ namespace wfaIntegradoCom
         {
             
             LoadCarga = false;
-            FnColorwhiteselectBtns();
+           
             btnRecaudacion.BackColor = Variables.ColorEmpresa;
             btnRecaudacion.ForeColor = Color.White;
             btnRecaudacion.HoveredState.Image = Properties.Resources.recaudacion_Blanco;
@@ -1543,7 +1556,7 @@ namespace wfaIntegradoCom
         private void btnComercial_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-            FnColorwhiteselectBtns();
+            
             btnComercial.BackColor = Variables.ColorEmpresa;
             btnComercial.ForeColor = Color.White;
             btnComercial.HoveredState.Image = Properties.Resources.comercial_blanco_32;
@@ -1563,7 +1576,7 @@ namespace wfaIntegradoCom
         private void btnLogistica_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-            FnColorwhiteselectBtns();
+          
             btnLogistica.BackColor = Variables.ColorEmpresa;
             btnLogistica.ForeColor = Color.White;
             btnLogistica.HoveredState.Image = Properties.Resources.logistica_blanc_32;
@@ -1580,7 +1593,7 @@ namespace wfaIntegradoCom
         private void btnSistemas_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-            FnColorwhiteselectBtns();
+            
             btnSistemas.BackColor = Variables.ColorEmpresa;
             btnSistemas.ForeColor = Color.White;
 
@@ -1598,7 +1611,7 @@ namespace wfaIntegradoCom
         private void btnRrhh_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-            FnColorwhiteselectBtns();
+        
             btnRrhh.BackColor = Variables.ColorEmpresa;
             btnRrhh.ForeColor = Color.White;
 
@@ -1616,7 +1629,7 @@ namespace wfaIntegradoCom
         private void btnConfiguracion_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-            FnColorwhiteselectBtns();
+         
             btnConfiguracion.BackColor = Variables.ColorEmpresa;
             btnConfiguracion.ForeColor = Color.White;
 
@@ -1634,7 +1647,7 @@ namespace wfaIntegradoCom
         private void btnSoporte_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-            FnColorwhiteselectBtns();
+           
             btnSoporte.BackColor = Variables.ColorEmpresa;
             btnSoporte.ForeColor = Color.White;
 
@@ -1764,7 +1777,11 @@ namespace wfaIntegradoCom
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
 
-
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            fnBotonActivo(sender,Variables.ColorEmpresa);
+            
+        }
     }
 
 }

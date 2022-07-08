@@ -365,11 +365,10 @@ namespace wfaIntegradoCom
             // 
             // Img_Husat_Blanco
             // 
-            this.Img_Husat_Blanco.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Img_Husat_Blanco.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO__Blanco_sombra_color_;
-            this.Img_Husat_Blanco.Location = new System.Drawing.Point(0, 0);
+            this.Img_Husat_Blanco.Location = new System.Drawing.Point(23, 12);
             this.Img_Husat_Blanco.Name = "Img_Husat_Blanco";
-            this.Img_Husat_Blanco.Size = new System.Drawing.Size(242, 129);
+            this.Img_Husat_Blanco.Size = new System.Drawing.Size(178, 90);
             this.Img_Husat_Blanco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Img_Husat_Blanco.TabIndex = 4;
             this.Img_Husat_Blanco.TabStop = false;
@@ -396,7 +395,7 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.Controls.Add(this.btnVenta);
             this.panelMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenuPrincipal.FillColor = System.Drawing.Color.Transparent;
-            this.panelMenuPrincipal.Location = new System.Drawing.Point(0, 129);
+            this.panelMenuPrincipal.Location = new System.Drawing.Point(0, 140);
             this.panelMenuPrincipal.Name = "panelMenuPrincipal";
             this.panelMenuPrincipal.ShadowDecoration.Parent = this.panelMenuPrincipal;
             this.panelMenuPrincipal.Size = new System.Drawing.Size(242, 791);
@@ -765,24 +764,23 @@ namespace wfaIntegradoCom
             // 
             // panelImagenLogo
             // 
-            this.panelImagenLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.panelImagenLogo.BackColor = System.Drawing.Color.Transparent;
             this.panelImagenLogo.Controls.Add(this.Img_Husat_Negro);
             this.panelImagenLogo.Controls.Add(this.Img_Husat_Blanco);
             this.panelImagenLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelImagenLogo.Location = new System.Drawing.Point(0, 0);
             this.panelImagenLogo.Name = "panelImagenLogo";
             this.panelImagenLogo.ShadowDecoration.Parent = this.panelImagenLogo;
-            this.panelImagenLogo.Size = new System.Drawing.Size(242, 129);
+            this.panelImagenLogo.Size = new System.Drawing.Size(242, 140);
             this.panelImagenLogo.TabIndex = 21;
             // 
             // Img_Husat_Negro
             // 
             this.Img_Husat_Negro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Img_Husat_Negro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Img_Husat_Negro.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO;
-            this.Img_Husat_Negro.Location = new System.Drawing.Point(0, 0);
+            this.Img_Husat_Negro.Location = new System.Drawing.Point(23, 12);
             this.Img_Husat_Negro.Name = "Img_Husat_Negro";
-            this.Img_Husat_Negro.Size = new System.Drawing.Size(242, 129);
+            this.Img_Husat_Negro.Size = new System.Drawing.Size(178, 90);
             this.Img_Husat_Negro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Img_Husat_Negro.TabIndex = 3;
             this.Img_Husat_Negro.TabStop = false;
@@ -948,20 +946,23 @@ namespace wfaIntegradoCom
             // 
             this.iconButton1.FlatAppearance.BorderSize = 0;
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.Color.Gainsboro;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.SackDollar;
             this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
+            this.iconButton1.IconSize = 32;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.Location = new System.Drawing.Point(0, 60);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(145, 40);
+            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton1.Size = new System.Drawing.Size(252, 60);
             this.iconButton1.TabIndex = 15;
             this.iconButton1.Text = "Ventas";
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // statusStrip1
             // 
