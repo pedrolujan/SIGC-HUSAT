@@ -48,39 +48,42 @@ namespace wfaIntegradoCom
             this.tsConsulta = new System.Windows.Forms.ToolStripButton();
             this.tsCerraSession = new System.Windows.Forms.ToolStripButton();
             this.tsMiCaja = new System.Windows.Forms.ToolStripButton();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.tsTituloMenuIzquierdo = new System.Windows.Forms.ToolStrip();
-            this.tslMenuIzquierdo = new System.Windows.Forms.ToolStripLabel();
+            this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
+            this.iconChildForm = new FontAwesome.Sharp.IconPictureBox();
+            this.lblChilForm = new System.Windows.Forms.Label();
             this.Img_Husat_Blanco = new System.Windows.Forms.PictureBox();
             this.panelMenuPrincipal = new Siticone.UI.WinForms.SiticonePanel();
             this.subMenuSoporte = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnSoporte = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnSoporte = new FontAwesome.Sharp.IconButton();
             this.subMenuConfiguracion = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnConfiguracion = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnConfiguracion = new FontAwesome.Sharp.IconButton();
             this.subMenuRrhh = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnRrhh = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnRrhh = new FontAwesome.Sharp.IconButton();
             this.subMenuSistemas = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnSistemas = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnSistemas = new FontAwesome.Sharp.IconButton();
             this.subMenuLogistica = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnLogistica = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnLogistica = new FontAwesome.Sharp.IconButton();
             this.subMenuComercial = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnComercial = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnComercial = new FontAwesome.Sharp.IconButton();
             this.subMenuRecaudacion = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnRecaudacion = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnRecaudacion = new FontAwesome.Sharp.IconButton();
             this.subMenuVentas = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnVenta = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnVenta = new FontAwesome.Sharp.IconButton();
             this.panelIzquierdo = new Siticone.UI.WinForms.SiticonePanel();
             this.panelImagenLogo = new Siticone.UI.WinForms.SiticonePanel();
             this.Img_Husat_Negro = new System.Windows.Forms.PictureBox();
             this.panelCentral = new Siticone.UI.WinForms.SiticonePanel();
-            this.iconButton8 = new FontAwesome.Sharp.IconButton();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
+            this.iconButton5 = new FontAwesome.Sharp.IconButton();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.iconButton7 = new FontAwesome.Sharp.IconButton();
+            this.iconButton8 = new FontAwesome.Sharp.IconButton();
+            this.iconButton9 = new FontAwesome.Sharp.IconButton();
+            this.iconButton10 = new FontAwesome.Sharp.IconButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -96,14 +99,15 @@ namespace wfaIntegradoCom
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.PanelEncavezadoFondo.SuspendLayout();
             this.tsAccesoRapido.SuspendLayout();
-            this.toolStripContainer1.SuspendLayout();
-            this.tsTituloMenuIzquierdo.SuspendLayout();
+            this.siticonePanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconChildForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Blanco)).BeginInit();
             this.panelMenuPrincipal.SuspendLayout();
             this.panelIzquierdo.SuspendLayout();
             this.panelImagenLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Negro)).BeginInit();
             this.panelCentral.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip4.SuspendLayout();
             this.panelCerrarSession.SuspendLayout();
@@ -137,10 +141,9 @@ namespace wfaIntegradoCom
             // 
             // PanelEncavezadoFondo
             // 
-            this.PanelEncavezadoFondo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.PanelEncavezadoFondo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
             this.PanelEncavezadoFondo.Controls.Add(this.tsAccesoRapido);
-            this.PanelEncavezadoFondo.Controls.Add(this.toolStripContainer1);
-            this.PanelEncavezadoFondo.Controls.Add(this.tsTituloMenuIzquierdo);
+            this.PanelEncavezadoFondo.Controls.Add(this.siticonePanel2);
             this.PanelEncavezadoFondo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelEncavezadoFondo.Location = new System.Drawing.Point(242, 0);
             this.PanelEncavezadoFondo.Name = "PanelEncavezadoFondo";
@@ -150,7 +153,7 @@ namespace wfaIntegradoCom
             // 
             // tsAccesoRapido
             // 
-            this.tsAccesoRapido.BackColor = System.Drawing.Color.RosyBrown;
+            this.tsAccesoRapido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
             this.tsAccesoRapido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tsAccesoRapido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsAccesoRapido.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -167,10 +170,10 @@ namespace wfaIntegradoCom
             this.tsConsulta,
             this.tsCerraSession,
             this.tsMiCaja});
-            this.tsAccesoRapido.Location = new System.Drawing.Point(125, 0);
+            this.tsAccesoRapido.Location = new System.Drawing.Point(116, 0);
             this.tsAccesoRapido.Name = "tsAccesoRapido";
             this.tsAccesoRapido.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsAccesoRapido.Size = new System.Drawing.Size(917, 69);
+            this.tsAccesoRapido.Size = new System.Drawing.Size(926, 69);
             this.tsAccesoRapido.TabIndex = 4;
             this.tsAccesoRapido.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsAccesoRapido_ItemClicked);
             // 
@@ -323,45 +326,41 @@ namespace wfaIntegradoCom
             this.tsMiCaja.Text = "Mi Caja";
             this.tsMiCaja.Visible = false;
             // 
-            // toolStripContainer1
+            // siticonePanel2
             // 
+            this.siticonePanel2.BackColor = System.Drawing.Color.Transparent;
+            this.siticonePanel2.Controls.Add(this.iconChildForm);
+            this.siticonePanel2.Controls.Add(this.lblChilForm);
+            this.siticonePanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.siticonePanel2.Location = new System.Drawing.Point(0, 0);
+            this.siticonePanel2.Name = "siticonePanel2";
+            this.siticonePanel2.ShadowDecoration.Parent = this.siticonePanel2;
+            this.siticonePanel2.Size = new System.Drawing.Size(116, 69);
+            this.siticonePanel2.TabIndex = 5;
             // 
-            // toolStripContainer1.ContentPanel
+            // iconChildForm
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(391, 32);
-            this.toolStripContainer1.Location = new System.Drawing.Point(259, 3);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(391, 57);
-            this.toolStripContainer1.TabIndex = 21;
-            this.toolStripContainer1.Text = "toolStripContainer1";
+            this.iconChildForm.BackColor = System.Drawing.Color.Transparent;
+            this.iconChildForm.ForeColor = System.Drawing.Color.Snow;
+            this.iconChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.iconChildForm.IconColor = System.Drawing.Color.Snow;
+            this.iconChildForm.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconChildForm.Location = new System.Drawing.Point(8, 15);
+            this.iconChildForm.Name = "iconChildForm";
+            this.iconChildForm.Size = new System.Drawing.Size(32, 32);
+            this.iconChildForm.TabIndex = 22;
+            this.iconChildForm.TabStop = false;
             // 
-            // tsTituloMenuIzquierdo
+            // lblChilForm
             // 
-            this.tsTituloMenuIzquierdo.AutoSize = false;
-            this.tsTituloMenuIzquierdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.tsTituloMenuIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsTituloMenuIzquierdo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.tsTituloMenuIzquierdo.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tsTituloMenuIzquierdo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslMenuIzquierdo});
-            this.tsTituloMenuIzquierdo.Location = new System.Drawing.Point(0, 0);
-            this.tsTituloMenuIzquierdo.Name = "tsTituloMenuIzquierdo";
-            this.tsTituloMenuIzquierdo.Size = new System.Drawing.Size(125, 69);
-            this.tsTituloMenuIzquierdo.Stretch = true;
-            this.tsTituloMenuIzquierdo.TabIndex = 7;
-            this.tsTituloMenuIzquierdo.Text = "ToolStrip1";
-            // 
-            // tslMenuIzquierdo
-            // 
-            this.tslMenuIzquierdo.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tslMenuIzquierdo.ForeColor = System.Drawing.Color.White;
-            this.tslMenuIzquierdo.Image = global::wfaIntegradoCom.Properties.Resources.venta_blanco_32;
-            this.tslMenuIzquierdo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tslMenuIzquierdo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tslMenuIzquierdo.Name = "tslMenuIzquierdo";
-            this.tslMenuIzquierdo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tslMenuIzquierdo.Size = new System.Drawing.Size(123, 32);
-            this.tslMenuIzquierdo.Text = "Ventas";
+            this.lblChilForm.AutoSize = true;
+            this.lblChilForm.BackColor = System.Drawing.Color.Transparent;
+            this.lblChilForm.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblChilForm.Location = new System.Drawing.Point(52, 24);
+            this.lblChilForm.Name = "lblChilForm";
+            this.lblChilForm.Size = new System.Drawing.Size(35, 13);
+            this.lblChilForm.TabIndex = 23;
+            this.lblChilForm.Text = "Home";
             // 
             // Img_Husat_Blanco
             // 
@@ -376,7 +375,9 @@ namespace wfaIntegradoCom
             // 
             // panelMenuPrincipal
             // 
-            this.panelMenuPrincipal.BackColor = System.Drawing.Color.White;
+            this.panelMenuPrincipal.AutoScroll = true;
+            this.panelMenuPrincipal.AutoSize = true;
+            this.panelMenuPrincipal.BackColor = System.Drawing.Color.Transparent;
             this.panelMenuPrincipal.Controls.Add(this.subMenuSoporte);
             this.panelMenuPrincipal.Controls.Add(this.btnSoporte);
             this.panelMenuPrincipal.Controls.Add(this.subMenuConfiguracion);
@@ -393,373 +394,343 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.Controls.Add(this.btnRecaudacion);
             this.panelMenuPrincipal.Controls.Add(this.subMenuVentas);
             this.panelMenuPrincipal.Controls.Add(this.btnVenta);
-            this.panelMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMenuPrincipal.FillColor = System.Drawing.Color.Transparent;
             this.panelMenuPrincipal.Location = new System.Drawing.Point(0, 140);
             this.panelMenuPrincipal.Name = "panelMenuPrincipal";
             this.panelMenuPrincipal.ShadowDecoration.Parent = this.panelMenuPrincipal;
-            this.panelMenuPrincipal.Size = new System.Drawing.Size(242, 791);
+            this.panelMenuPrincipal.Size = new System.Drawing.Size(242, 531);
             this.panelMenuPrincipal.TabIndex = 1;
             // 
             // subMenuSoporte
             // 
             this.subMenuSoporte.AutoSize = true;
-            this.subMenuSoporte.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.subMenuSoporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuSoporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuSoporte.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuSoporte.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuSoporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subMenuSoporte.Location = new System.Drawing.Point(0, 420);
-            this.subMenuSoporte.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuSoporte.Location = new System.Drawing.Point(0, 580);
+            this.subMenuSoporte.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuSoporte.Name = "subMenuSoporte";
             this.subMenuSoporte.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuSoporte.ShadowDecoration.Parent = this.subMenuSoporte;
-            this.subMenuSoporte.Size = new System.Drawing.Size(310, 20);
-            this.subMenuSoporte.TabIndex = 15;
+            this.subMenuSoporte.Size = new System.Drawing.Size(250, 20);
+            this.subMenuSoporte.TabIndex = 26;
             this.subMenuSoporte.Click += new System.EventHandler(this.subMenuSoporte_Click);
             // 
             // btnSoporte
             // 
-            this.btnSoporte.BackColor = System.Drawing.Color.White;
-            this.btnSoporte.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnSoporte.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnSoporte.CheckedState.Parent = this.btnSoporte;
-            this.btnSoporte.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSoporte.CustomImages.Parent = this.btnSoporte;
+            this.btnSoporte.BackColor = System.Drawing.Color.Transparent;
             this.btnSoporte.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSoporte.Enabled = false;
-            this.btnSoporte.FillColor = System.Drawing.Color.Transparent;
-            this.btnSoporte.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSoporte.ForeColor = System.Drawing.Color.Black;
-            this.btnSoporte.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.soporte_blanco_1;
-            this.btnSoporte.HoveredState.Parent = this.btnSoporte;
-            this.btnSoporte.Image = global::wfaIntegradoCom.Properties.Resources.soporte1;
-            this.btnSoporte.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSoporte.Location = new System.Drawing.Point(0, 385);
+            this.btnSoporte.FlatAppearance.BorderSize = 0;
+            this.btnSoporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSoporte.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSoporte.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSoporte.IconChar = FontAwesome.Sharp.IconChar.ScrewdriverWrench;
+            this.btnSoporte.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnSoporte.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSoporte.IconSize = 32;
+            this.btnSoporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSoporte.Location = new System.Drawing.Point(0, 525);
             this.btnSoporte.Name = "btnSoporte";
-            this.btnSoporte.PressedColor = System.Drawing.Color.Aqua;
-            this.btnSoporte.ShadowDecoration.Parent = this.btnSoporte;
-            this.btnSoporte.Size = new System.Drawing.Size(242, 35);
-            this.btnSoporte.TabIndex = 14;
+            this.btnSoporte.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnSoporte.Size = new System.Drawing.Size(225, 55);
+            this.btnSoporte.TabIndex = 27;
             this.btnSoporte.Text = "Soporte";
-            this.btnSoporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSoporte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSoporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSoporte.UseVisualStyleBackColor = false;
             this.btnSoporte.Click += new System.EventHandler(this.btnSoporte_Click);
             // 
             // subMenuConfiguracion
             // 
             this.subMenuConfiguracion.AutoSize = true;
-            this.subMenuConfiguracion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.subMenuConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuConfiguracion.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuConfiguracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subMenuConfiguracion.Location = new System.Drawing.Point(0, 365);
-            this.subMenuConfiguracion.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuConfiguracion.Location = new System.Drawing.Point(0, 505);
+            this.subMenuConfiguracion.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuConfiguracion.Name = "subMenuConfiguracion";
             this.subMenuConfiguracion.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuConfiguracion.ShadowDecoration.Parent = this.subMenuConfiguracion;
-            this.subMenuConfiguracion.Size = new System.Drawing.Size(310, 20);
-            this.subMenuConfiguracion.TabIndex = 13;
+            this.subMenuConfiguracion.Size = new System.Drawing.Size(250, 20);
+            this.subMenuConfiguracion.TabIndex = 24;
             this.subMenuConfiguracion.Click += new System.EventHandler(this.subMenuConfiguracion_Click);
             // 
             // btnConfiguracion
             // 
-            this.btnConfiguracion.BackColor = System.Drawing.Color.White;
-            this.btnConfiguracion.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnConfiguracion.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnConfiguracion.CheckedState.Parent = this.btnConfiguracion;
-            this.btnConfiguracion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConfiguracion.CustomImages.Parent = this.btnConfiguracion;
+            this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
             this.btnConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnConfiguracion.Enabled = false;
-            this.btnConfiguracion.FillColor = System.Drawing.Color.Transparent;
-            this.btnConfiguracion.Font = new System.Drawing.Font("Calibri", 12.75F);
-            this.btnConfiguracion.ForeColor = System.Drawing.Color.Black;
-            this.btnConfiguracion.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.sistema_blanco_32;
-            this.btnConfiguracion.HoveredState.Parent = this.btnConfiguracion;
-            this.btnConfiguracion.Image = global::wfaIntegradoCom.Properties.Resources.sistemas_naranja_32;
-            this.btnConfiguracion.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnConfiguracion.Location = new System.Drawing.Point(0, 330);
+            this.btnConfiguracion.FlatAppearance.BorderSize = 0;
+            this.btnConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfiguracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfiguracion.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnConfiguracion.IconChar = FontAwesome.Sharp.IconChar.Cogs;
+            this.btnConfiguracion.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnConfiguracion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnConfiguracion.IconSize = 32;
+            this.btnConfiguracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConfiguracion.Location = new System.Drawing.Point(0, 450);
             this.btnConfiguracion.Name = "btnConfiguracion";
-            this.btnConfiguracion.PressedColor = System.Drawing.Color.Aqua;
-            this.btnConfiguracion.ShadowDecoration.Parent = this.btnConfiguracion;
-            this.btnConfiguracion.Size = new System.Drawing.Size(242, 35);
-            this.btnConfiguracion.TabIndex = 12;
-            this.btnConfiguracion.Text = "Configuración";
-            this.btnConfiguracion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnConfiguracion.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnConfiguracion.Size = new System.Drawing.Size(225, 55);
+            this.btnConfiguracion.TabIndex = 25;
+            this.btnConfiguracion.Text = "Cofiguración";
+            this.btnConfiguracion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConfiguracion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConfiguracion.UseVisualStyleBackColor = false;
             this.btnConfiguracion.Click += new System.EventHandler(this.btnConfiguracion_Click);
             // 
             // subMenuRrhh
             // 
             this.subMenuRrhh.AutoSize = true;
-            this.subMenuRrhh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.subMenuRrhh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuRrhh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuRrhh.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuRrhh.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuRrhh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subMenuRrhh.Location = new System.Drawing.Point(0, 310);
-            this.subMenuRrhh.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuRrhh.Location = new System.Drawing.Point(0, 430);
+            this.subMenuRrhh.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuRrhh.Name = "subMenuRrhh";
             this.subMenuRrhh.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuRrhh.ShadowDecoration.Parent = this.subMenuRrhh;
-            this.subMenuRrhh.Size = new System.Drawing.Size(310, 20);
-            this.subMenuRrhh.TabIndex = 11;
+            this.subMenuRrhh.Size = new System.Drawing.Size(250, 20);
+            this.subMenuRrhh.TabIndex = 22;
             this.subMenuRrhh.Click += new System.EventHandler(this.subMenuRrhh_Click);
             // 
             // btnRrhh
             // 
-            this.btnRrhh.BackColor = System.Drawing.Color.White;
-            this.btnRrhh.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnRrhh.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnRrhh.CheckedState.Parent = this.btnRrhh;
-            this.btnRrhh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRrhh.CustomImages.Parent = this.btnRrhh;
+            this.btnRrhh.BackColor = System.Drawing.Color.Transparent;
             this.btnRrhh.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRrhh.Enabled = false;
-            this.btnRrhh.FillColor = System.Drawing.Color.Transparent;
-            this.btnRrhh.Font = new System.Drawing.Font("Calibri", 12.75F);
-            this.btnRrhh.ForeColor = System.Drawing.Color.Black;
-            this.btnRrhh.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.rrHh_blanco_32;
-            this.btnRrhh.HoveredState.Parent = this.btnRrhh;
-            this.btnRrhh.Image = global::wfaIntegradoCom.Properties.Resources.rrHh_naranja_32;
-            this.btnRrhh.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnRrhh.Location = new System.Drawing.Point(0, 275);
+            this.btnRrhh.FlatAppearance.BorderSize = 0;
+            this.btnRrhh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRrhh.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRrhh.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRrhh.IconChar = FontAwesome.Sharp.IconChar.PeopleGroup;
+            this.btnRrhh.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnRrhh.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRrhh.IconSize = 32;
+            this.btnRrhh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRrhh.Location = new System.Drawing.Point(0, 375);
             this.btnRrhh.Name = "btnRrhh";
-            this.btnRrhh.PressedColor = System.Drawing.Color.Aqua;
-            this.btnRrhh.ShadowDecoration.Parent = this.btnRrhh;
-            this.btnRrhh.Size = new System.Drawing.Size(242, 35);
-            this.btnRrhh.TabIndex = 10;
+            this.btnRrhh.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnRrhh.Size = new System.Drawing.Size(225, 55);
+            this.btnRrhh.TabIndex = 23;
             this.btnRrhh.Text = "RRHH";
-            this.btnRrhh.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnRrhh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRrhh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRrhh.UseVisualStyleBackColor = false;
             this.btnRrhh.Click += new System.EventHandler(this.btnRrhh_Click);
             // 
             // subMenuSistemas
             // 
             this.subMenuSistemas.AutoSize = true;
-            this.subMenuSistemas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.subMenuSistemas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuSistemas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuSistemas.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuSistemas.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuSistemas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subMenuSistemas.Location = new System.Drawing.Point(0, 255);
-            this.subMenuSistemas.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuSistemas.Location = new System.Drawing.Point(0, 355);
+            this.subMenuSistemas.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuSistemas.Name = "subMenuSistemas";
             this.subMenuSistemas.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuSistemas.ShadowDecoration.Parent = this.subMenuSistemas;
-            this.subMenuSistemas.Size = new System.Drawing.Size(310, 20);
-            this.subMenuSistemas.TabIndex = 9;
+            this.subMenuSistemas.Size = new System.Drawing.Size(250, 20);
+            this.subMenuSistemas.TabIndex = 20;
             this.subMenuSistemas.Click += new System.EventHandler(this.subMenuSistemas_Click);
             // 
             // btnSistemas
             // 
-            this.btnSistemas.BackColor = System.Drawing.Color.White;
-            this.btnSistemas.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnSistemas.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnSistemas.CheckedState.Parent = this.btnSistemas;
-            this.btnSistemas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSistemas.CustomImages.Parent = this.btnSistemas;
+            this.btnSistemas.BackColor = System.Drawing.Color.Transparent;
             this.btnSistemas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSistemas.Enabled = false;
-            this.btnSistemas.FillColor = System.Drawing.Color.Transparent;
-            this.btnSistemas.Font = new System.Drawing.Font("Calibri", 12.75F);
-            this.btnSistemas.ForeColor = System.Drawing.Color.Black;
-            this.btnSistemas.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.compu_ok_blanco_32;
-            this.btnSistemas.HoveredState.Parent = this.btnSistemas;
-            this.btnSistemas.Image = global::wfaIntegradoCom.Properties.Resources.compu_ok_naranja_32;
-            this.btnSistemas.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSistemas.Location = new System.Drawing.Point(0, 220);
+            this.btnSistemas.FlatAppearance.BorderSize = 0;
+            this.btnSistemas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSistemas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSistemas.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSistemas.IconChar = FontAwesome.Sharp.IconChar.Laptop;
+            this.btnSistemas.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnSistemas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSistemas.IconSize = 32;
+            this.btnSistemas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSistemas.Location = new System.Drawing.Point(0, 300);
             this.btnSistemas.Name = "btnSistemas";
-            this.btnSistemas.PressedColor = System.Drawing.Color.Aqua;
-            this.btnSistemas.ShadowDecoration.Parent = this.btnSistemas;
-            this.btnSistemas.Size = new System.Drawing.Size(242, 35);
-            this.btnSistemas.TabIndex = 8;
+            this.btnSistemas.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnSistemas.Size = new System.Drawing.Size(225, 55);
+            this.btnSistemas.TabIndex = 21;
             this.btnSistemas.Text = "Sistemas";
-            this.btnSistemas.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSistemas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSistemas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSistemas.UseVisualStyleBackColor = false;
             this.btnSistemas.Click += new System.EventHandler(this.btnSistemas_Click);
             // 
             // subMenuLogistica
             // 
-            this.subMenuLogistica.AutoScroll = true;
             this.subMenuLogistica.AutoSize = true;
-            this.subMenuLogistica.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.subMenuLogistica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuLogistica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuLogistica.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuLogistica.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuLogistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subMenuLogistica.Location = new System.Drawing.Point(0, 200);
-            this.subMenuLogistica.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuLogistica.Location = new System.Drawing.Point(0, 280);
+            this.subMenuLogistica.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuLogistica.Name = "subMenuLogistica";
             this.subMenuLogistica.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuLogistica.ShadowDecoration.Parent = this.subMenuLogistica;
-            this.subMenuLogistica.Size = new System.Drawing.Size(310, 20);
-            this.subMenuLogistica.TabIndex = 7;
-            this.subMenuLogistica.Click += new System.EventHandler(this.subMenuLogistica_Click);
+            this.subMenuLogistica.Size = new System.Drawing.Size(250, 20);
+            this.subMenuLogistica.TabIndex = 18;
+            this.subMenuLogistica.Click += new System.EventHandler(this.btnLogistica_Click);
             // 
             // btnLogistica
             // 
-            this.btnLogistica.BackColor = System.Drawing.Color.White;
-            this.btnLogistica.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnLogistica.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnLogistica.CheckedState.Parent = this.btnLogistica;
-            this.btnLogistica.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogistica.CustomImages.Parent = this.btnLogistica;
+            this.btnLogistica.BackColor = System.Drawing.Color.Transparent;
             this.btnLogistica.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLogistica.Enabled = false;
-            this.btnLogistica.FillColor = System.Drawing.Color.Transparent;
-            this.btnLogistica.Font = new System.Drawing.Font("Calibri", 12.75F);
-            this.btnLogistica.ForeColor = System.Drawing.Color.Black;
-            this.btnLogistica.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.logistica_blanc_32;
-            this.btnLogistica.HoveredState.Parent = this.btnLogistica;
-            this.btnLogistica.Image = global::wfaIntegradoCom.Properties.Resources.logistica_naranja_32;
-            this.btnLogistica.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogistica.Location = new System.Drawing.Point(0, 165);
+            this.btnLogistica.FlatAppearance.BorderSize = 0;
+            this.btnLogistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogistica.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogistica.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnLogistica.IconChar = FontAwesome.Sharp.IconChar.Indent;
+            this.btnLogistica.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnLogistica.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLogistica.IconSize = 32;
+            this.btnLogistica.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogistica.Location = new System.Drawing.Point(0, 225);
             this.btnLogistica.Name = "btnLogistica";
-            this.btnLogistica.PressedColor = System.Drawing.Color.Aqua;
-            this.btnLogistica.ShadowDecoration.Parent = this.btnLogistica;
-            this.btnLogistica.Size = new System.Drawing.Size(242, 35);
-            this.btnLogistica.TabIndex = 6;
-            this.btnLogistica.Text = "Logística";
-            this.btnLogistica.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogistica.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnLogistica.Size = new System.Drawing.Size(225, 55);
+            this.btnLogistica.TabIndex = 19;
+            this.btnLogistica.Text = "Logistica";
+            this.btnLogistica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogistica.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogistica.UseVisualStyleBackColor = false;
             this.btnLogistica.Click += new System.EventHandler(this.btnLogistica_Click);
             // 
             // subMenuComercial
             // 
             this.subMenuComercial.AutoSize = true;
-            this.subMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
             this.subMenuComercial.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuComercial.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuComercial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subMenuComercial.Location = new System.Drawing.Point(0, 145);
-            this.subMenuComercial.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuComercial.Location = new System.Drawing.Point(0, 205);
+            this.subMenuComercial.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuComercial.Name = "subMenuComercial";
             this.subMenuComercial.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuComercial.ShadowDecoration.Parent = this.subMenuComercial;
-            this.subMenuComercial.Size = new System.Drawing.Size(310, 20);
-            this.subMenuComercial.TabIndex = 5;
+            this.subMenuComercial.Size = new System.Drawing.Size(250, 20);
+            this.subMenuComercial.TabIndex = 6;
             this.subMenuComercial.Click += new System.EventHandler(this.subMenuComercial_Click);
             // 
             // btnComercial
             // 
-            this.btnComercial.BackColor = System.Drawing.Color.White;
-            this.btnComercial.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnComercial.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnComercial.CheckedState.Parent = this.btnComercial;
-            this.btnComercial.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnComercial.CustomImages.Parent = this.btnComercial;
+            this.btnComercial.BackColor = System.Drawing.Color.Transparent;
             this.btnComercial.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnComercial.Enabled = false;
-            this.btnComercial.FillColor = System.Drawing.Color.Transparent;
-            this.btnComercial.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComercial.ForeColor = System.Drawing.Color.Black;
-            this.btnComercial.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.comercial_blanco_32;
-            this.btnComercial.HoveredState.Parent = this.btnComercial;
-            this.btnComercial.Image = global::wfaIntegradoCom.Properties.Resources.commercial_naranja_32;
-            this.btnComercial.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnComercial.Location = new System.Drawing.Point(0, 110);
+            this.btnComercial.FlatAppearance.BorderSize = 0;
+            this.btnComercial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComercial.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComercial.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnComercial.IconChar = FontAwesome.Sharp.IconChar.Dumpster;
+            this.btnComercial.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnComercial.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnComercial.IconSize = 32;
+            this.btnComercial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnComercial.Location = new System.Drawing.Point(0, 150);
             this.btnComercial.Name = "btnComercial";
-            this.btnComercial.PressedColor = System.Drawing.Color.Aqua;
-            this.btnComercial.ShadowDecoration.Parent = this.btnComercial;
-            this.btnComercial.Size = new System.Drawing.Size(242, 35);
-            this.btnComercial.TabIndex = 4;
+            this.btnComercial.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnComercial.Size = new System.Drawing.Size(225, 55);
+            this.btnComercial.TabIndex = 17;
             this.btnComercial.Text = "Comercial";
-            this.btnComercial.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnComercial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnComercial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnComercial.UseVisualStyleBackColor = false;
             this.btnComercial.Click += new System.EventHandler(this.btnComercial_Click);
             // 
             // subMenuRecaudacion
             // 
             this.subMenuRecaudacion.AutoSize = true;
             this.subMenuRecaudacion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.subMenuRecaudacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuRecaudacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
             this.subMenuRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuRecaudacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subMenuRecaudacion.Location = new System.Drawing.Point(0, 90);
+            this.subMenuRecaudacion.Location = new System.Drawing.Point(0, 130);
             this.subMenuRecaudacion.Margin = new System.Windows.Forms.Padding(50);
-            this.subMenuRecaudacion.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuRecaudacion.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuRecaudacion.Name = "subMenuRecaudacion";
             this.subMenuRecaudacion.ShadowDecoration.Parent = this.subMenuRecaudacion;
-            this.subMenuRecaudacion.Size = new System.Drawing.Size(310, 20);
-            this.subMenuRecaudacion.TabIndex = 3;
+            this.subMenuRecaudacion.Size = new System.Drawing.Size(250, 20);
+            this.subMenuRecaudacion.TabIndex = 4;
             this.subMenuRecaudacion.Click += new System.EventHandler(this.subMenuRecaudacion_Click);
             // 
             // btnRecaudacion
             // 
-            this.btnRecaudacion.BackColor = System.Drawing.Color.White;
-            this.btnRecaudacion.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnRecaudacion.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnRecaudacion.CheckedState.Parent = this.btnRecaudacion;
-            this.btnRecaudacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRecaudacion.CustomImages.Parent = this.btnRecaudacion;
+            this.btnRecaudacion.BackColor = System.Drawing.Color.Transparent;
             this.btnRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRecaudacion.Enabled = false;
-            this.btnRecaudacion.FillColor = System.Drawing.Color.Transparent;
-            this.btnRecaudacion.Font = new System.Drawing.Font("Calibri", 12.75F);
-            this.btnRecaudacion.ForeColor = System.Drawing.Color.Black;
-            this.btnRecaudacion.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.recaudacion_Blanco;
-            this.btnRecaudacion.HoveredState.Parent = this.btnRecaudacion;
-            this.btnRecaudacion.Image = global::wfaIntegradoCom.Properties.Resources.refund_32px;
-            this.btnRecaudacion.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnRecaudacion.Location = new System.Drawing.Point(0, 55);
-            this.btnRecaudacion.Margin = new System.Windows.Forms.Padding(10);
+            this.btnRecaudacion.FlatAppearance.BorderSize = 0;
+            this.btnRecaudacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecaudacion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecaudacion.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRecaudacion.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.btnRecaudacion.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnRecaudacion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRecaudacion.IconSize = 32;
+            this.btnRecaudacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRecaudacion.Location = new System.Drawing.Point(0, 75);
             this.btnRecaudacion.Name = "btnRecaudacion";
-            this.btnRecaudacion.Padding = new System.Windows.Forms.Padding(10);
-            this.btnRecaudacion.PressedColor = System.Drawing.Color.Aqua;
-            this.btnRecaudacion.ShadowDecoration.Parent = this.btnRecaudacion;
-            this.btnRecaudacion.Size = new System.Drawing.Size(242, 35);
-            this.btnRecaudacion.TabIndex = 2;
-            this.btnRecaudacion.Text = "Recaudación";
-            this.btnRecaudacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnRecaudacion.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnRecaudacion.Size = new System.Drawing.Size(225, 55);
+            this.btnRecaudacion.TabIndex = 16;
+            this.btnRecaudacion.Text = "Recaudacion";
+            this.btnRecaudacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRecaudacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRecaudacion.UseVisualStyleBackColor = false;
             this.btnRecaudacion.Click += new System.EventHandler(this.btnRecaudacion_Click);
             // 
             // subMenuVentas
             // 
             this.subMenuVentas.AutoSize = true;
             this.subMenuVentas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.subMenuVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
             this.subMenuVentas.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subMenuVentas.Location = new System.Drawing.Point(0, 35);
+            this.subMenuVentas.Location = new System.Drawing.Point(0, 55);
             this.subMenuVentas.MinimumSize = new System.Drawing.Size(310, 20);
             this.subMenuVentas.Name = "subMenuVentas";
             this.subMenuVentas.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuVentas.ShadowDecoration.Parent = this.subMenuVentas;
             this.subMenuVentas.Size = new System.Drawing.Size(310, 20);
-            this.subMenuVentas.TabIndex = 1;
+            this.subMenuVentas.TabIndex = 2;
             this.subMenuVentas.Click += new System.EventHandler(this.subMenuVentas_Click);
             // 
             // btnVenta
             // 
-            this.btnVenta.BackColor = System.Drawing.Color.White;
-            this.btnVenta.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnVenta.CheckedState.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnVenta.CheckedState.Parent = this.btnVenta;
-            this.btnVenta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVenta.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.btnVenta.CustomBorderThickness = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.btnVenta.CustomImages.Parent = this.btnVenta;
             this.btnVenta.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnVenta.Enabled = false;
-            this.btnVenta.FillColor = System.Drawing.Color.Transparent;
-            this.btnVenta.Font = new System.Drawing.Font("Calibri", 12.75F);
-            this.btnVenta.ForeColor = System.Drawing.Color.Black;
-            this.btnVenta.HoveredState.Parent = this.btnVenta;
-            this.btnVenta.Image = global::wfaIntegradoCom.Properties.Resources.ventaBase_32;
-            this.btnVenta.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnVenta.FlatAppearance.BorderSize = 0;
+            this.btnVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVenta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVenta.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnVenta.IconChar = FontAwesome.Sharp.IconChar.SackDollar;
+            this.btnVenta.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnVenta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnVenta.IconSize = 32;
+            this.btnVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVenta.Location = new System.Drawing.Point(0, 0);
             this.btnVenta.Name = "btnVenta";
-            this.btnVenta.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnVenta.PressedColor = System.Drawing.Color.Aquamarine;
-            this.btnVenta.ShadowDecoration.Parent = this.btnVenta;
-            this.btnVenta.Size = new System.Drawing.Size(242, 35);
-            this.btnVenta.TabIndex = 0;
+            this.btnVenta.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnVenta.Size = new System.Drawing.Size(225, 55);
+            this.btnVenta.TabIndex = 15;
             this.btnVenta.Text = "Ventas";
-            this.btnVenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnVenta.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.btnVenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVenta.UseVisualStyleBackColor = true;
             this.btnVenta.Click += new System.EventHandler(this.btnVenta_Click);
             // 
             // panelIzquierdo
             // 
+            this.panelIzquierdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.panelIzquierdo.Controls.Add(this.panelMenuPrincipal);
             this.panelIzquierdo.Controls.Add(this.panelImagenLogo);
             this.panelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelIzquierdo.Name = "panelIzquierdo";
             this.panelIzquierdo.ShadowDecoration.Parent = this.panelIzquierdo;
-            this.panelIzquierdo.Size = new System.Drawing.Size(242, 611);
+            this.panelIzquierdo.Size = new System.Drawing.Size(242, 671);
             this.panelIzquierdo.TabIndex = 20;
             // 
             // panelImagenLogo
@@ -776,7 +747,7 @@ namespace wfaIntegradoCom
             // 
             // Img_Husat_Negro
             // 
-            this.Img_Husat_Negro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Img_Husat_Negro.BackColor = System.Drawing.Color.Transparent;
             this.Img_Husat_Negro.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO;
             this.Img_Husat_Negro.Location = new System.Drawing.Point(23, 12);
             this.Img_Husat_Negro.Name = "Img_Husat_Negro";
@@ -788,14 +759,7 @@ namespace wfaIntegradoCom
             // 
             // panelCentral
             // 
-            this.panelCentral.Controls.Add(this.iconButton8);
-            this.panelCentral.Controls.Add(this.iconButton7);
-            this.panelCentral.Controls.Add(this.iconButton6);
-            this.panelCentral.Controls.Add(this.iconButton5);
-            this.panelCentral.Controls.Add(this.iconButton4);
-            this.panelCentral.Controls.Add(this.iconButton3);
-            this.panelCentral.Controls.Add(this.iconButton2);
-            this.panelCentral.Controls.Add(this.iconButton1);
+            this.panelCentral.Controls.Add(this.flowLayoutPanel1);
             this.panelCentral.Controls.Add(this.statusStrip1);
             this.panelCentral.Controls.Add(this.toolStrip4);
             this.panelCentral.Controls.Add(this.elhAlert);
@@ -805,164 +769,247 @@ namespace wfaIntegradoCom
             this.panelCentral.Location = new System.Drawing.Point(242, 69);
             this.panelCentral.Name = "panelCentral";
             this.panelCentral.ShadowDecoration.Parent = this.panelCentral;
-            this.panelCentral.Size = new System.Drawing.Size(1042, 542);
+            this.panelCentral.Size = new System.Drawing.Size(1042, 602);
             this.panelCentral.TabIndex = 22;
             // 
-            // iconButton8
+            // flowLayoutPanel1
             // 
-            this.iconButton8.FlatAppearance.BorderSize = 0;
-            this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.ScrewdriverWrench;
-            this.iconButton8.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton8.IconSize = 30;
-            this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton8.Location = new System.Drawing.Point(0, 445);
-            this.iconButton8.Name = "iconButton8";
-            this.iconButton8.Size = new System.Drawing.Size(145, 40);
-            this.iconButton8.TabIndex = 19;
-            this.iconButton8.Text = "Soporte";
-            this.iconButton8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton8.UseVisualStyleBackColor = true;
-            // 
-            // iconButton7
-            // 
-            this.iconButton7.FlatAppearance.BorderSize = 0;
-            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.Cogs;
-            this.iconButton7.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton7.IconSize = 30;
-            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.Location = new System.Drawing.Point(0, 385);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Size = new System.Drawing.Size(145, 40);
-            this.iconButton7.TabIndex = 19;
-            this.iconButton7.Text = "Configuración";
-            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton7.UseVisualStyleBackColor = true;
-            // 
-            // iconButton6
-            // 
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.PeopleGroup;
-            this.iconButton6.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton6.IconSize = 30;
-            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton6.Location = new System.Drawing.Point(0, 330);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(145, 40);
-            this.iconButton6.TabIndex = 19;
-            this.iconButton6.Text = "RRHH";
-            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton6.UseVisualStyleBackColor = true;
-            // 
-            // iconButton5
-            // 
-            this.iconButton5.FlatAppearance.BorderSize = 0;
-            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.Indent;
-            this.iconButton5.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton5.IconSize = 30;
-            this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.Location = new System.Drawing.Point(0, 214);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Size = new System.Drawing.Size(145, 40);
-            this.iconButton5.TabIndex = 19;
-            this.iconButton5.Text = "Logística";
-            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton5.UseVisualStyleBackColor = true;
-            // 
-            // iconButton4
-            // 
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Laptop;
-            this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton4.IconSize = 30;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 269);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(145, 40);
-            this.iconButton4.TabIndex = 18;
-            this.iconButton4.Text = "Sistemas";
-            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton4.UseVisualStyleBackColor = true;
-            // 
-            // iconButton3
-            // 
-            this.iconButton3.FlatAppearance.BorderSize = 0;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Dumpster;
-            this.iconButton3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.IconSize = 30;
-            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.Location = new System.Drawing.Point(0, 156);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(145, 40);
-            this.iconButton3.TabIndex = 17;
-            this.iconButton3.Text = "Comercial";
-            this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton3.UseVisualStyleBackColor = true;
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal;
-            this.iconButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 30;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(0, 110);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(145, 40);
-            this.iconButton2.TabIndex = 16;
-            this.iconButton2.Text = "Recaudación";
-            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Gray;
+            this.flowLayoutPanel1.Controls.Add(this.iconButton1);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton2);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton3);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton4);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton5);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton6);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton7);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton8);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton9);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton10);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(49, 22);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(749, 162);
+            this.flowLayoutPanel1.TabIndex = 15;
             // 
             // iconButton1
             // 
+            this.iconButton1.BackColor = System.Drawing.Color.Transparent;
             this.iconButton1.FlatAppearance.BorderSize = 0;
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconButton1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.SackDollar;
-            this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.iconButton1.IconColor = System.Drawing.Color.Gainsboro;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 32;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 60);
+            this.iconButton1.Location = new System.Drawing.Point(3, 3);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton1.Size = new System.Drawing.Size(252, 60);
-            this.iconButton1.TabIndex = 15;
-            this.iconButton1.Text = "Ventas";
+            this.iconButton1.Size = new System.Drawing.Size(136, 60);
+            this.iconButton1.TabIndex = 17;
+            this.iconButton1.Text = "Accesos";
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton2.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.iconButton2.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 32;
+            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton2.Location = new System.Drawing.Point(145, 3);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton2.Size = new System.Drawing.Size(136, 60);
+            this.iconButton2.TabIndex = 18;
+            this.iconButton2.Text = "Usuarios";
+            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton2.UseVisualStyleBackColor = false;
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton3.FlatAppearance.BorderSize = 0;
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton3.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.iconButton3.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.IconSize = 32;
+            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton3.Location = new System.Drawing.Point(287, 3);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton3.Size = new System.Drawing.Size(136, 60);
+            this.iconButton3.TabIndex = 19;
+            this.iconButton3.Text = "Tipo de Venta";
+            this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton3.UseVisualStyleBackColor = false;
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton4.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.iconButton4.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton4.IconSize = 32;
+            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.Location = new System.Drawing.Point(429, 3);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton4.Size = new System.Drawing.Size(136, 60);
+            this.iconButton4.TabIndex = 20;
+            this.iconButton4.Text = "Cuadre Caja";
+            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton4.UseVisualStyleBackColor = false;
+            // 
+            // iconButton5
+            // 
+            this.iconButton5.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton5.FlatAppearance.BorderSize = 0;
+            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton5.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.iconButton5.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton5.IconSize = 32;
+            this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton5.Location = new System.Drawing.Point(571, 3);
+            this.iconButton5.Name = "iconButton5";
+            this.iconButton5.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton5.Size = new System.Drawing.Size(136, 60);
+            this.iconButton5.TabIndex = 21;
+            this.iconButton5.Text = "Compras";
+            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton5.UseVisualStyleBackColor = false;
+            // 
+            // iconButton6
+            // 
+            this.iconButton6.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton6.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.iconButton6.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton6.IconSize = 32;
+            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton6.Location = new System.Drawing.Point(3, 69);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton6.Size = new System.Drawing.Size(136, 60);
+            this.iconButton6.TabIndex = 22;
+            this.iconButton6.Text = "Traslado";
+            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton6.UseVisualStyleBackColor = false;
+            // 
+            // iconButton7
+            // 
+            this.iconButton7.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton7.FlatAppearance.BorderSize = 0;
+            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton7.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.iconButton7.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton7.IconSize = 32;
+            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton7.Location = new System.Drawing.Point(145, 69);
+            this.iconButton7.Name = "iconButton7";
+            this.iconButton7.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton7.Size = new System.Drawing.Size(136, 60);
+            this.iconButton7.TabIndex = 23;
+            this.iconButton7.Text = "Devoluciones";
+            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton7.UseVisualStyleBackColor = false;
+            // 
+            // iconButton8
+            // 
+            this.iconButton8.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton8.FlatAppearance.BorderSize = 0;
+            this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton8.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.iconButton8.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton8.IconSize = 32;
+            this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton8.Location = new System.Drawing.Point(287, 69);
+            this.iconButton8.Name = "iconButton8";
+            this.iconButton8.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton8.Size = new System.Drawing.Size(136, 60);
+            this.iconButton8.TabIndex = 24;
+            this.iconButton8.Text = "Deudas";
+            this.iconButton8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton8.UseVisualStyleBackColor = false;
+            // 
+            // iconButton9
+            // 
+            this.iconButton9.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton9.FlatAppearance.BorderSize = 0;
+            this.iconButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton9.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.iconButton9.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton9.IconSize = 32;
+            this.iconButton9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton9.Location = new System.Drawing.Point(429, 69);
+            this.iconButton9.Name = "iconButton9";
+            this.iconButton9.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton9.Size = new System.Drawing.Size(150, 60);
+            this.iconButton9.TabIndex = 25;
+            this.iconButton9.Text = "Consultar";
+            this.iconButton9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton9.UseVisualStyleBackColor = false;
+            // 
+            // iconButton10
+            // 
+            this.iconButton10.BackColor = System.Drawing.Color.Transparent;
+            this.iconButton10.FlatAppearance.BorderSize = 0;
+            this.iconButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton10.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton10.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
+            this.iconButton10.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton10.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton10.IconSize = 32;
+            this.iconButton10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton10.Location = new System.Drawing.Point(585, 69);
+            this.iconButton10.Name = "iconButton10";
+            this.iconButton10.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton10.Size = new System.Drawing.Size(136, 60);
+            this.iconButton10.TabIndex = 26;
+            this.iconButton10.Text = "Mi Caja";
+            this.iconButton10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton10.UseVisualStyleBackColor = false;
             // 
             // statusStrip1
             // 
@@ -974,7 +1021,7 @@ namespace wfaIntegradoCom
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 519);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 579);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(390, 23);
             this.statusStrip1.TabIndex = 6;
@@ -1074,9 +1121,9 @@ namespace wfaIntegradoCom
             // 
             // elhAlert
             // 
-            this.elhAlert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.elhAlert.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.elhAlert.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.elhAlert.Location = new System.Drawing.Point(885, 361);
+            this.elhAlert.Location = new System.Drawing.Point(875, 421);
             this.elhAlert.Name = "elhAlert";
             this.elhAlert.Size = new System.Drawing.Size(151, 178);
             this.elhAlert.TabIndex = 13;
@@ -1088,7 +1135,7 @@ namespace wfaIntegradoCom
             this.panelCerrarSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCerrarSession.BackColor = System.Drawing.Color.White;
             this.panelCerrarSession.Controls.Add(this.siticonePanel1);
-            this.panelCerrarSession.Location = new System.Drawing.Point(885, 27);
+            this.panelCerrarSession.Location = new System.Drawing.Point(875, 87);
             this.panelCerrarSession.Name = "panelCerrarSession";
             this.panelCerrarSession.ShadowDecoration.Parent = this.panelCerrarSession;
             this.panelCerrarSession.Size = new System.Drawing.Size(154, 182);
@@ -1108,7 +1155,7 @@ namespace wfaIntegradoCom
             // 
             // treeView1
             // 
-            this.treeView1.BackColor = System.Drawing.Color.White;
+            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(77)))), ((int)(((byte)(50)))));
             this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -1123,7 +1170,7 @@ namespace wfaIntegradoCom
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.treeView1.SelectedImageIndex = 4;
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(1042, 542);
+            this.treeView1.Size = new System.Drawing.Size(1042, 602);
             this.treeView1.TabIndex = 5;
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
@@ -1132,7 +1179,7 @@ namespace wfaIntegradoCom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 611);
+            this.ClientSize = new System.Drawing.Size(1284, 671);
             this.Controls.Add(this.panelCentral);
             this.Controls.Add(this.PanelEncavezadoFondo);
             this.Controls.Add(this.panelIzquierdo);
@@ -1148,18 +1195,19 @@ namespace wfaIntegradoCom
             this.PanelEncavezadoFondo.PerformLayout();
             this.tsAccesoRapido.ResumeLayout(false);
             this.tsAccesoRapido.PerformLayout();
-            this.toolStripContainer1.ResumeLayout(false);
-            this.toolStripContainer1.PerformLayout();
-            this.tsTituloMenuIzquierdo.ResumeLayout(false);
-            this.tsTituloMenuIzquierdo.PerformLayout();
+            this.siticonePanel2.ResumeLayout(false);
+            this.siticonePanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconChildForm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Blanco)).EndInit();
             this.panelMenuPrincipal.ResumeLayout(false);
             this.panelMenuPrincipal.PerformLayout();
             this.panelIzquierdo.ResumeLayout(false);
+            this.panelIzquierdo.PerformLayout();
             this.panelImagenLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Negro)).EndInit();
             this.panelCentral.ResumeLayout(false);
             this.panelCentral.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStrip4.ResumeLayout(false);
@@ -1174,28 +1222,9 @@ namespace wfaIntegradoCom
         internal System.Windows.Forms.ImageList ListaImagenes;
         private System.Windows.Forms.ToolStrip miniToolStrip;
         private Siticone.UI.WinForms.SiticonePanel panelMenuPrincipal;
-        private Siticone.UI.WinForms.SiticonePanel subMenuSoporte;
-        private Siticone.UI.WinForms.SiticoneButton btnSoporte;
-        private Siticone.UI.WinForms.SiticonePanel subMenuConfiguracion;
-        private Siticone.UI.WinForms.SiticoneButton btnConfiguracion;
-        private Siticone.UI.WinForms.SiticonePanel subMenuRrhh;
-        private Siticone.UI.WinForms.SiticoneButton btnRrhh;
-        private Siticone.UI.WinForms.SiticonePanel subMenuSistemas;
-        private Siticone.UI.WinForms.SiticoneButton btnSistemas;
-        private Siticone.UI.WinForms.SiticonePanel subMenuLogistica;
-        private Siticone.UI.WinForms.SiticoneButton btnLogistica;
-        private Siticone.UI.WinForms.SiticonePanel subMenuComercial;
-        private Siticone.UI.WinForms.SiticoneButton btnComercial;
-        private Siticone.UI.WinForms.SiticonePanel subMenuRecaudacion;
-        private Siticone.UI.WinForms.SiticoneButton btnRecaudacion;
-        private Siticone.UI.WinForms.SiticonePanel subMenuVentas;
-        private Siticone.UI.WinForms.SiticoneButton btnVenta;
-        internal System.Windows.Forms.ToolStrip tsTituloMenuIzquierdo;
-        internal System.Windows.Forms.ToolStripLabel tslMenuIzquierdo;
         private Siticone.UI.WinForms.SiticonePanel PanelEncavezadoFondo;
         private System.Windows.Forms.PictureBox Img_Husat_Blanco;
         internal System.Windows.Forms.ToolStrip tsAccesoRapido;
-        internal System.Windows.Forms.ToolStripButton tsConfiguracion;
         internal System.Windows.Forms.ToolStripButton tsSistemas;
         internal System.Windows.Forms.ToolStripButton tsVenta;
         internal System.Windows.Forms.ToolStripButton tsCaja;
@@ -1210,7 +1239,6 @@ namespace wfaIntegradoCom
         private WPF.CTRL.Colocaciones.ucOpcion ucOpcion1;
         private Siticone.UI.WinForms.SiticonePanel panelIzquierdo;
         private Siticone.UI.WinForms.SiticonePanel panelImagenLogo;
-        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private Siticone.UI.WinForms.SiticonePanel panelCentral;
         private System.Windows.Forms.Integration.ElementHost elhAlert;
         private WPF.CTRL.Colocaciones.ucOpcion ucOpcion2;
@@ -1226,14 +1254,37 @@ namespace wfaIntegradoCom
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
         internal System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.PictureBox Img_Husat_Negro;
+        private FontAwesome.Sharp.IconButton btnVenta;
+        private Siticone.UI.WinForms.SiticonePanel subMenuSoporte;
+        private FontAwesome.Sharp.IconButton btnSoporte;
+        private Siticone.UI.WinForms.SiticonePanel subMenuConfiguracion;
+        private FontAwesome.Sharp.IconButton btnConfiguracion;
+        private Siticone.UI.WinForms.SiticonePanel subMenuRrhh;
+        private FontAwesome.Sharp.IconButton btnRrhh;
+        private Siticone.UI.WinForms.SiticonePanel subMenuSistemas;
+        private FontAwesome.Sharp.IconButton btnSistemas;
+        private Siticone.UI.WinForms.SiticonePanel subMenuLogistica;
+        private FontAwesome.Sharp.IconButton btnLogistica;
+        private Siticone.UI.WinForms.SiticonePanel subMenuComercial;
+        private FontAwesome.Sharp.IconButton btnComercial;
+        private Siticone.UI.WinForms.SiticonePanel subMenuRecaudacion;
+        private FontAwesome.Sharp.IconButton btnRecaudacion;
+        private Siticone.UI.WinForms.SiticonePanel subMenuVentas;
+        private System.Windows.Forms.Label lblChilForm;
+        private FontAwesome.Sharp.IconPictureBox iconChildForm;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton iconButton5;
-        private FontAwesome.Sharp.IconButton iconButton4;
-        private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton8;
-        private FontAwesome.Sharp.IconButton iconButton7;
+        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton iconButton5;
         private FontAwesome.Sharp.IconButton iconButton6;
+        private FontAwesome.Sharp.IconButton iconButton7;
+        private FontAwesome.Sharp.IconButton iconButton8;
+        private FontAwesome.Sharp.IconButton iconButton9;
+        private FontAwesome.Sharp.IconButton iconButton10;
+        internal System.Windows.Forms.ToolStripButton tsConfiguracion;
+        private Siticone.UI.WinForms.SiticonePanel siticonePanel2;
     }
 }
 

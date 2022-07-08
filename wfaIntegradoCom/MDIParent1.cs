@@ -50,6 +50,9 @@ namespace wfaIntegradoCom
 
         private IconButton BtnActual;
         private System.Windows.Forms.Panel LeftBordeBtn;
+        //pading botones temporales de submenus 
+         Padding PaddingbtnSubMenu = new Padding(10,0,0,0);
+       
 
         public void fnLoadCarga ( Boolean Load)
         {
@@ -66,7 +69,7 @@ namespace wfaIntegradoCom
             SubmenusOcultos();
 
             LeftBordeBtn = new System.Windows.Forms.Panel();
-            LeftBordeBtn.Size = new Size(7,60);
+            LeftBordeBtn.Size = new Size(15,55);
 
             this.DoubleBuffered = true;
 
@@ -125,15 +128,6 @@ namespace wfaIntegradoCom
             this.treeView1.Tag = fn;
             fn.Show();
 
-            //coloreo a los botones de menu principal
-            FunValidaciones.fnColorBotonMenuPrincipal(btnVenta);
-            FunValidaciones.fnColorBotonMenuPrincipal(btnRecaudacion);
-            FunValidaciones.fnColorBotonMenuPrincipal(btnComercial);
-            FunValidaciones.fnColorBotonMenuPrincipal(btnLogistica);
-            FunValidaciones.fnColorBotonMenuPrincipal(btnSistemas);
-            FunValidaciones.fnColorBotonMenuPrincipal(btnConfiguracion);
-            FunValidaciones.fnColorBotonMenuPrincipal(btnSoporte);
-            FunValidaciones.fnColorBotonMenuPrincipal(btnRrhh);
 
             return true;
 
@@ -476,6 +470,7 @@ namespace wfaIntegradoCom
             //}
         }
         #region Cargar submenus a los botones 
+        
         private void fnCargarSubMenuVentas(String pcCodMenu)
         {
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
@@ -509,7 +504,7 @@ namespace wfaIntegradoCom
                 temp.Cursor = System.Windows.Forms.Cursors.Hand;
                 temp.FlatStyle = FlatStyle.Flat;
                 temp.TextAlign = ContentAlignment.MiddleLeft;
-                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+                temp.Padding = new Padding(10,0,0,0);
 
                 temp.Click += subMenuVentas_Click;
                 temp.Location = new Point(10, (y + 5));
@@ -562,7 +557,7 @@ namespace wfaIntegradoCom
                 temp.Cursor = System.Windows.Forms.Cursors.Hand;
                 temp.FlatStyle = FlatStyle.Flat;
                 temp.TextAlign = ContentAlignment.MiddleLeft;
-                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+                temp.Padding = new Padding(10, 0, 0, 0);
 
                 temp.Click += subMenuRecaudacion_Click;
                 temp.Location = new Point(10, (y + 5));
@@ -614,7 +609,7 @@ namespace wfaIntegradoCom
                 temp.Cursor = System.Windows.Forms.Cursors.Hand;
                 temp.FlatStyle = FlatStyle.Flat;
                 temp.TextAlign = ContentAlignment.MiddleLeft;
-                temp.Padding = new System.Windows.Forms.Padding (40,0,0,0);
+                temp.Padding = new Padding(10, 0, 0, 0);
 
                 temp.Click += subMenuComercial_Click;
                 temp.Location = new Point(10, (y + 5));
@@ -664,7 +659,7 @@ namespace wfaIntegradoCom
                 temp.Cursor = System.Windows.Forms.Cursors.Hand;
                 temp.FlatStyle = FlatStyle.Flat;
                 temp.TextAlign = ContentAlignment.MiddleLeft;
-                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+                temp.Padding = new Padding(10, 0, 0, 0);
 
                 temp.Click += subMenuLogistica_Click;
                 temp.Location = new Point(10, (y + 5));
@@ -715,7 +710,7 @@ namespace wfaIntegradoCom
                 temp.Cursor = System.Windows.Forms.Cursors.Hand;
                 temp.FlatStyle = FlatStyle.Flat;
                 temp.TextAlign = ContentAlignment.MiddleLeft;
-                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+                temp.Padding = new Padding(10, 0, 0, 0);
 
                 temp.Click += subMenuSistemas_Click;
                 temp.Location = new Point(10, (y + 5));
@@ -765,7 +760,7 @@ namespace wfaIntegradoCom
                 temp.Cursor = System.Windows.Forms.Cursors.Hand;
                 temp.FlatStyle = FlatStyle.Flat;
                 temp.TextAlign = ContentAlignment.MiddleLeft;
-                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+                temp.Padding = new Padding(10, 0, 0, 0);
 
                 temp.Click += subMenuRrhh_Click;
                 temp.Location = new Point(10, (y + 5));
@@ -815,7 +810,7 @@ namespace wfaIntegradoCom
                 temp.Cursor = System.Windows.Forms.Cursors.Hand;
                 temp.FlatStyle = FlatStyle.Flat;
                 temp.TextAlign = ContentAlignment.MiddleLeft;
-                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+                temp.Padding = new Padding(10, 0, 0, 0);
 
                 temp.Click += subMenuSoporte_Click;
                 temp.Location = new Point(10, (y + 5));
@@ -865,7 +860,7 @@ namespace wfaIntegradoCom
                 temp.Cursor = System.Windows.Forms.Cursors.Hand;
                 temp.FlatStyle = FlatStyle.Flat;
                 temp.TextAlign = ContentAlignment.MiddleLeft;
-                temp.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+                temp.Padding = new Padding(10, 0, 0, 0);
 
                 temp.Click += subMenuConfiguracion_Click;
                 temp.Location = new Point(10, (y + 5));
@@ -1099,6 +1094,7 @@ namespace wfaIntegradoCom
             }
             else
             {
+
                 fnActivarFormulario(e.ClickedItem.ToolTipText.Trim(), Convert.ToInt32(e.ClickedItem.Tag));
 
             }
@@ -1364,14 +1360,20 @@ namespace wfaIntegradoCom
         {
             Img_Husat_Negro.Visible = false;
             Img_Husat_Blanco.Visible = true;
+
+            iconChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
+            lblChilForm.Text = "Home";
+            SubmenusOcultos();
             reset();
         }
-
 
         private void pictureBox5_Click_(object sender, EventArgs e)
         {
             Img_Husat_Blanco.Visible = false;
             Img_Husat_Negro.Visible = true;
+            iconChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
+            lblChilForm.Text = "Home";
+            SubmenusOcultos();
             reset();
         }
 
@@ -1391,10 +1393,13 @@ namespace wfaIntegradoCom
                 BtnActual.TextImageRelation = TextImageRelation.TextBeforeImage;
                 BtnActual.ImageAlign = ContentAlignment.MiddleRight;
                 //borde Izquierdo del boton
-                LeftBordeBtn.BackColor = color;
+                LeftBordeBtn.BackColor = Color.Black;
                 LeftBordeBtn.Location = new Point(0, BtnActual.Location.Y);
                 LeftBordeBtn.Visible = true;
                 LeftBordeBtn.BringToFront();
+                //iconChildForm seleccion icono y nombre en la cabezera 
+                iconChildForm.IconChar = BtnActual.IconChar;
+                lblChilForm.Text = BtnActual.Text;
 
             }
 
@@ -1404,7 +1409,7 @@ namespace wfaIntegradoCom
         {
             if (BtnActual != null)
             {
-                BtnActual.BackColor = Color.Black;
+                BtnActual.BackColor = Variables.ColorEmpresa;
                 BtnActual.ForeColor = Color.Gainsboro;
                 BtnActual.TextAlign = ContentAlignment.MiddleLeft;
                 BtnActual.IconColor = Color.Gainsboro;
@@ -1459,7 +1464,7 @@ namespace wfaIntegradoCom
         //        tvOpes.Nodes.Clear();
 
         //        SplitIzquierdo.SplitterDistance = 233;
-        //        fnselectslMenuIzquierdo();
+          //      fnselectslMenuIzquierdo();
         //    }
         //}
 
@@ -1515,19 +1520,13 @@ namespace wfaIntegradoCom
         {
            
             LoadCarga = false;
-            
-            btnVenta.BackColor = Variables.ColorEmpresa;
-            btnVenta.ForeColor = Color.White;
-            btnVenta.HoveredState.Image = Properties.Resources.venta_blanco_32;
-            btnVenta.Image = Properties.Resources.venta_blanco_32;
+
+            fnBotonActivo(sender, Variables.ColorEmpresa);
+
             //btnVenta.BorderThickness.Left = 4 ;
 
-        
-
             MostrarSubMenu(subMenuVentas);
-            btnVenta.HoveredState.Image = Properties.Resources.venta_blanco_32;
-            tslMenuIzquierdo.Text = "Ventas";
-            tslMenuIzquierdo.Image = Properties.Resources.venta_blanco_32;
+
             treeView1.Nodes.Clear();
             lcCodMenu = "8888800000";
             //fnCargarMenuGeneral(lcCodMenu);
@@ -1538,15 +1537,13 @@ namespace wfaIntegradoCom
         {
             
             LoadCarga = false;
+
+            fnBotonActivo(sender, Variables.ColorEmpresa);
            
-            btnRecaudacion.BackColor = Variables.ColorEmpresa;
-            btnRecaudacion.ForeColor = Color.White;
-            btnRecaudacion.HoveredState.Image = Properties.Resources.recaudacion_Blanco;
-            btnRecaudacion.Image = Properties.Resources.recaudacion_Blanco;
+
 
             MostrarSubMenu(subMenuRecaudacion);
-            tslMenuIzquierdo.Text = "Recaudación";
-            tslMenuIzquierdo.Image = Properties.Resources.recaudacion_Blanco;
+
             treeView1.Nodes.Clear();
             lcCodMenu = "8881000000";
             fnCargarSubMenuRecaudacion(lcCodMenu);
@@ -1556,17 +1553,11 @@ namespace wfaIntegradoCom
         private void btnComercial_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-            
-            btnComercial.BackColor = Variables.ColorEmpresa;
-            btnComercial.ForeColor = Color.White;
-            btnComercial.HoveredState.Image = Properties.Resources.comercial_blanco_32;
-            btnComercial.Image = Properties.Resources.comercial_blanco_32;
+
+            fnBotonActivo(sender, Variables.ColorEmpresa);
 
 
             MostrarSubMenu(subMenuComercial);
-            tslMenuIzquierdo.Text = "Comercial";
-
-            tslMenuIzquierdo.Image = Properties.Resources.comercial_blanco_32;
 
             treeView1.Nodes.Clear();
             lcCodMenu = "8888900000";
@@ -1576,15 +1567,11 @@ namespace wfaIntegradoCom
         private void btnLogistica_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-          
-            btnLogistica.BackColor = Variables.ColorEmpresa;
-            btnLogistica.ForeColor = Color.White;
-            btnLogistica.HoveredState.Image = Properties.Resources.logistica_blanc_32;
-            btnLogistica.Image = Properties.Resources.logistica_blanc_32;
+
+            fnBotonActivo(sender, Variables.ColorEmpresa);
 
             MostrarSubMenu(subMenuLogistica);
-            tslMenuIzquierdo.Text = "Logística";
-            tslMenuIzquierdo.Image = Properties.Resources.logistica_blanc_32;
+
             treeView1.Nodes.Clear();
             lcCodMenu = "8888600000";
             fnCargarSubMenuLogistica(lcCodMenu);
@@ -1593,16 +1580,12 @@ namespace wfaIntegradoCom
         private void btnSistemas_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-            
-            btnSistemas.BackColor = Variables.ColorEmpresa;
-            btnSistemas.ForeColor = Color.White;
 
-            btnSistemas.HoveredState.Image = Properties.Resources.compu_ok_blanco_32;
-            btnSistemas.Image = Properties.Resources.compu_ok_blanco_32;
+            fnBotonActivo(sender, Variables.ColorEmpresa);
+
 
             MostrarSubMenu(subMenuSistemas);
-            tslMenuIzquierdo.Text = "Sistemas";
-            tslMenuIzquierdo.Image = Properties.Resources.compu_ok_blanco_32;
+
             treeView1.Nodes.Clear();
             lcCodMenu = "8888300000";
             fnCargarSubMenuSistemas(lcCodMenu);
@@ -1611,16 +1594,13 @@ namespace wfaIntegradoCom
         private void btnRrhh_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-        
-            btnRrhh.BackColor = Variables.ColorEmpresa;
-            btnRrhh.ForeColor = Color.White;
 
-            btnRrhh.HoveredState.Image = Properties.Resources.rrHh_blanco_32;
-            btnRrhh.Image = Properties.Resources.rrHh_blanco_32;
+            fnBotonActivo(sender, Variables.ColorEmpresa);
+
+
 
             MostrarSubMenu(subMenuRrhh);
-            tslMenuIzquierdo.Text = "RRHH";
-            tslMenuIzquierdo.Image = Properties.Resources.rrHh_blanco_32;
+
             treeView1.Nodes.Clear();
             lcCodMenu = "8888200000";
             fnCargarSubMenuRrhh(lcCodMenu);
@@ -1629,16 +1609,12 @@ namespace wfaIntegradoCom
         private void btnConfiguracion_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-         
-            btnConfiguracion.BackColor = Variables.ColorEmpresa;
-            btnConfiguracion.ForeColor = Color.White;
 
-            btnConfiguracion.HoveredState.Image = Properties.Resources.sistema_blanco_32;
-            btnConfiguracion.Image = Properties.Resources.sistema_blanco_32;
+            fnBotonActivo(sender, Variables.ColorEmpresa);
+
 
             MostrarSubMenu(subMenuConfiguracion);
-            tslMenuIzquierdo.Text = "Configuración";
-            tslMenuIzquierdo.Image = Properties.Resources.sistema_blanco_32;
+
             treeView1.Nodes.Clear();
             lcCodMenu = "8888700000";
             fnCargarSubMenuConfiguracion(lcCodMenu);
@@ -1647,16 +1623,13 @@ namespace wfaIntegradoCom
         private void btnSoporte_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
-           
-            btnSoporte.BackColor = Variables.ColorEmpresa;
-            btnSoporte.ForeColor = Color.White;
 
-            btnSoporte.HoveredState.Image = Properties.Resources.soporte_blanco_1;
-            btnSoporte.Image = Properties.Resources.soporte_blanco_1;
+            fnBotonActivo(sender, Variables.ColorEmpresa);
+
+
 
             MostrarSubMenu(subMenuSoporte);
-            tslMenuIzquierdo.Text = "Soporte";
-            tslMenuIzquierdo.Image = Properties.Resources.soporte_blanco_1;
+
 
             treeView1.Nodes.Clear();
             lcCodMenu = "8888400000";
@@ -1678,7 +1651,7 @@ namespace wfaIntegradoCom
             String item = array[1].ToString().Trim();
             foreach (System.Windows.Forms.Button btn in Controles)
             {
-                btn.BackColor = Color.Gray;
+                btn.BackColor = Variables.ColorBackColorSubMenus;
                 if (btn.Text == item)
                 {
                     temp = btn;
@@ -1779,9 +1752,20 @@ namespace wfaIntegradoCom
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            fnBotonActivo(sender,Variables.ColorEmpresa);
-            
+            LoadCarga = false;
+            fnBotonActivo(sender, Variables.ColorEmpresa);
+
+            //btnVenta.BorderThickness.Left = 4 ;
+
+            MostrarSubMenu(subMenuVentas);
+
+            treeView1.Nodes.Clear();
+            lcCodMenu = "8888800000";
+            //fnCargarMenuGeneral(lcCodMenu);
+            fnCargarSubMenuVentas(lcCodMenu);
         }
+
+
     }
 
 }
