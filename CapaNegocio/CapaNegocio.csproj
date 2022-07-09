@@ -50,6 +50,7 @@
     <Compile Include="BLAdministrarEquipos.cs" />
     <Compile Include="BLAlmacen.cs" />
     <Compile Include="BLAsociacion.cs" />
+    <Compile Include="BLCaja.cs" />
     <Compile Include="BLCate_Mar_Mod.cs" />
     <Compile Include="BLCargo.cs" />
     <Compile Include="BLCategoria.cs" />

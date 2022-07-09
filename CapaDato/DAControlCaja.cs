@@ -162,7 +162,7 @@ namespace CapaDato
                 pa[0].Value = dtI;
                 pa[1] = new SqlParameter("@dtFin", SqlDbType.Date);
                 pa[1].Value = dtFin;
-                pa[2] = new SqlParameter("@chk", SqlDbType.Date);
+                pa[2] = new SqlParameter("@chk", SqlDbType.Bit);
                 pa[2].Value = chk;
 
 

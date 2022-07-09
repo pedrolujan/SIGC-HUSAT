@@ -51,6 +51,7 @@
     <Compile Include="DAAdministrarEquipos.cs" />
     <Compile Include="DAAlmacen.cs" />
     <Compile Include="DAAsociacion.cs" />
+    <Compile Include="DACaja.cs" />
     <Compile Include="DACate_Mar_Mod.cs" />
     <Compile Include="DACargo.cs" />
     <Compile Include="DACategoria.cs" />

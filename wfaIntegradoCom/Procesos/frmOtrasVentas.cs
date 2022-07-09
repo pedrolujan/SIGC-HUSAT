@@ -200,6 +200,11 @@ namespace wfaIntegradoCom.Procesos
                     }
                     else if (idValida==-3)
                     {
+                        tituloGbVehiculo = "Ingrese los datos del Vehiculo que desea hacer " + lstOtrasVentas[0].DetalleVentas;
+                        tituloGbCliente = "";
+
+                        phlBusqVehiculo = "Ingrese Palaca";
+                        phlBusqGbCliente = "";
                         estMostEquipos1 = true;
                         estMotivo = true;
                     }
@@ -1659,6 +1664,7 @@ namespace wfaIntegradoCom.Procesos
             var result = FunValidaciones.fnValidarTexboxs(txtClientesN_A, lblMsgNombresRS, pbNombres_razonS,true,true,false,0,0,0,200,"Busque y Elija un Cliente");
             estCliente = result.Item1;
             lblCliente = result.Item2;
+            
         }
 
         private void txtDireccion_TextChanged(object sender, EventArgs e)
@@ -2332,7 +2338,7 @@ namespace wfaIntegradoCom.Procesos
                 dgConsulta.Visible = true;
                 dgConsulta.Rows.Clear();
                 dgConsulta.Columns.Clear();
-                if (cond==-2 || cond==-3 || cond==-4)
+                if (cond==-2 ||  cond==-4)
                 {
                     dgConsulta.Columns.Add("ID","ID");
                     dgConsulta.Columns.Add("IMEI","IMEI");
@@ -2341,6 +2347,21 @@ namespace wfaIntegradoCom.Procesos
                     {
                         dgConsulta.Rows.Add(
                             Convert.ToString(drMenu["idContrato"]),
+                           Convert.ToString(drMenu["imei"])
+                           );
+                    }
+                }
+                else if (cond == -3)
+                {
+                    dgConsulta.Columns.Add("ID", "ID");
+                    dgConsulta.Columns.Add("VEHICULO", "VEHICULO");
+                    dgConsulta.Columns.Add("IMEI", "IMEI");
+
+                    foreach (DataRow drMenu in datResultado.Rows)
+                    {
+                        dgConsulta.Rows.Add(
+                            Convert.ToString(drMenu["idContrato"]),
+                             Convert.ToString(drMenu["vPlaca"]),
                            Convert.ToString(drMenu["imei"])
                            );
                     }
@@ -2435,8 +2456,10 @@ namespace wfaIntegradoCom.Procesos
                         //txtdni.Text = Convert.ToString(drMenu["cDocumento"]);
                         //txtTelefono.Text = Convert.ToString(drMenu["cTelCelular"]);
                         //txtCorreo.Text = Convert.ToString(drMenu["cCorreo"]) != "" ? Convert.ToString(drMenu["cCorreo"]) : "SIN CORREO";
-
-
+                        if (lnTipoConCambio==-3)
+                        {
+                            fnLlenarTablaCod(cboTipoDocEmitir, "DOVE", clsClienteAntecesor.cTiDo, 0);
+                        }
                         txtPlacaT.Text = Convert.ToString(drMenu["vPlaca"]);
 
                         txtSerie.Text = Convert.ToString(drMenu["vSerie"]);
@@ -2829,6 +2852,10 @@ namespace wfaIntegradoCom.Procesos
             txtClientesN_A_TextChanged(sender, e);
             txtIdCliente_TextChanged(sender, e);
             txtPlacaT_TextChanged(sender, e);
+            if (lnTipoConCambio == -3)
+            {
+                estCliente = true;
+            }
         }
         
         private void fnCargarClasePrincipal()
