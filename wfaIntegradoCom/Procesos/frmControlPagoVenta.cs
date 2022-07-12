@@ -220,6 +220,9 @@ namespace wfaIntegradoCom.Procesos
                     
 
                     String strDescuento = "";
+                    Int32 chk = 0;
+                    Boolean estBloquear = false;
+                    Color colorBg = Color.White;
                     if (lstDetalleCronograma[i].strTipoDescuento == "PORCENTUAL" && lstDetalleCronograma[i].descuento != 0)
                     {
                         strDescuento = lstDetalleCronograma[i].descuento + " % ";
@@ -229,10 +232,13 @@ namespace wfaIntegradoCom.Procesos
                         strDescuento = clsMoneda.cSimbolo + " " + lstDetalleCronograma[i].descuento;
                     }
 
-
+                    chk = 0;
                     if (lstDetalleCronograma[i].estado == "CUOTA PAGADA")
                     {
                         estadoCuota = "✅ " + lstDetalleCronograma[i].estado;
+                        chk = 1;
+                        estBloquear = true;
+                        colorBg = Color.LightGray;
                     }
                     else if (lstDetalleCronograma[i].estado == "PAGO PENDIENTE")
                     {
@@ -254,6 +260,7 @@ namespace wfaIntegradoCom.Procesos
                     dgvCronograma.Rows.Add(
                        lstDetalleCronograma[i].idDetalleCronograma,
                        i + 1,
+                       chk,
                       lstDetalleCronograma[i].periodoInicio.ToString("dd/MM/yyyy"),
                       lstDetalleCronograma[i].periodoFinal.ToString("dd/MM/yyyy"),
                       lstDetalleCronograma[i].fechaEmision.ToString("dd/MM/yyyy"),
@@ -265,6 +272,16 @@ namespace wfaIntegradoCom.Procesos
                       clsMoneda.cSimbolo + ' ' + string.Format("{0:0.00}", lstDetalleCronograma[i].total),
                       estadoCuota
                    );
+                    dgvCronograma.Rows[i].DefaultCellStyle.BackColor = colorBg;
+                    dgvCronograma.Rows[i].ReadOnly = estBloquear;
+                    
+                    dgvCronograma.Rows[i].Cells[12].ReadOnly = true;
+                    dgvCronograma.Rows[i].Cells[12].Style.BackColor = Color.White;
+                    dgvCronograma.Rows[i].Cells[13].ReadOnly = true;
+                    dgvCronograma.Rows[i].Cells[13].Style.BackColor = Color.White;
+                    dgvCronograma.Rows[i].Cells[14].ReadOnly = true;
+                    dgvCronograma.Rows[i].Cells[14].Style.BackColor = Color.White;
+
                 }
             }           
 
@@ -1022,6 +1039,7 @@ namespace wfaIntegradoCom.Procesos
         }
         private void dgvCronograma_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             if (e.ColumnIndex == dgvCronograma.Columns["btnPagar"].Index && e.RowIndex >= 0)
             {
                 if (dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex-1].Value.ToString().Contains("✅"))
