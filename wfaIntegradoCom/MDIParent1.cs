@@ -1411,7 +1411,7 @@ namespace wfaIntegradoCom
         {
             Img_Husat_Blanco.Visible = false;
             Img_Husat_Negro.Visible = true;
-            iconChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
+            iconChildForm.IconChar = IconChar.Home;
             lblChilForm.Text = "Home";
             SubmenusOcultos();
             reset();
@@ -1429,10 +1429,16 @@ namespace wfaIntegradoCom
                 BtnActual = (IconButton)senderBtn;//asigna el boton actual con el Boton remitente
                 BtnActual.BackColor = Color.White;
                 //BtnActual.ForeColor = color;
-                BtnActual.ForeColor = ColorThemas.PanelBotones; 
+
+                //BtnActual.ForeColor = ColorThemas.PanelBotones;
+                BtnActual.ForeColor =panelIzquierdo.BackColor ;
+
                 BtnActual.TextAlign = ContentAlignment.MiddleCenter;
                 //BtnActual.IconColor = color;
+
                 BtnActual.IconColor = ColorThemas.PanelBotones; 
+                BtnActual.IconColor = panelIzquierdo.BackColor;
+
                 BtnActual.TextImageRelation = TextImageRelation.TextBeforeImage;
                 BtnActual.ImageAlign = ContentAlignment.MiddleRight;
                 //BtnActual.FlatAppearance.MouseOverBackColor = color;
@@ -1454,10 +1460,11 @@ namespace wfaIntegradoCom
         }
 
         private void fnBotoninactivo()
-        {
+        { 
+            
             if (BtnActual != null)
             {
-                BtnActual.BackColor = ColorThemas.PanelBotones;
+                BtnActual.BackColor =panelIzquierdo.BackColor ;
                 BtnActual.ForeColor = Color.White ;
                 BtnActual.TextAlign = ContentAlignment.MiddleLeft;
                 BtnActual.IconColor = Color.White;
@@ -1876,13 +1883,19 @@ namespace wfaIntegradoCom
                 treeView1.ForeColor = Color.Black;
                 btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
                 btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
-               
+                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
+              
+
+
             }
             else 
             {
                 treeView1.ForeColor = Color.White;
                 btnOpciones.IconColor = Color.White;
                 btnOpciones.ForeColor = Color.White;
+                btnPersonalizacion.ForeColor = Color.White;
+                btnPersonalizacion.IconColor = Color.White;
             }
 
         }
@@ -1907,6 +1920,7 @@ namespace wfaIntegradoCom
         private void treeView1_MouseEnter(object sender, EventArgs e)
         {
             cboxSelecThema.Visible = false;
+            panelPersonalizarColores.Visible = false;
             btnOpciones.IconChar = IconChar.Sliders;
         }
 
@@ -1918,6 +1932,103 @@ namespace wfaIntegradoCom
 
 
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+            // Sets the initial color select to the current text color.
+            MyDialog.Color = panelColorMenuPrincipal.BackColor;
+            // Keeps the user from selecting a custom color.
+            MyDialog.AllowFullOpen = true;
+            // Allows the user to get help. (The default is false.)
+            MyDialog.ShowHelp = true;
+            MyDialog.Color = Color.FromArgb(255, 128, 0);
+
+            // Update the text box color if the user clicks OK 
+            if (MyDialog.ShowDialog() == DialogResult.OK)
+                panelColorMenuPrincipal.BackColor = MyDialog.Color;
+        }
+
+
+
+        private void panelColorAccesoDirecto_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+            MyDialog.Color = panelColorAccesoDirecto.BackColor;
+            MyDialog.AllowFullOpen = true;
+            MyDialog.ShowHelp = true;
+            MyDialog.Color = Color.FromArgb(255, 128, 0);
+            if (MyDialog.ShowDialog() == DialogResult.OK)
+            {
+                panelColorAccesoDirecto.BackColor = MyDialog.Color;
+                PanelEncavezadoFondo.BackColor = MyDialog.Color;
+                PanelEncavezadoFondo.BackColor = MyDialog.Color;
+
+               
+
+            }
+
+
+        }
+
+        private void panelColorPanelCentral_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+            MyDialog.Color = panelColorPanelCentral.BackColor;
+            MyDialog.AllowFullOpen = true;
+            MyDialog.ShowHelp = true;
+            MyDialog.Color = Color.FromArgb(255, 128, 0);
+            if (MyDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                panelColorPanelCentral.BackColor = MyDialog.Color;
+               treeView1.BackColor = MyDialog.Color;
+
+                btnPersonalizacion.BackColor = MyDialog.Color;
+                btnOpciones.BackColor = MyDialog.Color;
+
+            }
+        //    ColorThemas.ElegirThema(cboxSelecThema.Text);
+
+        }
+
+        private void panelColorMenuPrincipal_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+            MyDialog.Color = panelColorMenuPrincipal.BackColor;
+            MyDialog.AllowFullOpen = true;
+            MyDialog.ShowHelp = true;
+            MyDialog.Color = Color.FromArgb(255, 128, 0);
+            if (MyDialog.ShowDialog() == DialogResult.OK)
+            {
+                panelColorMenuPrincipal.BackColor = MyDialog.Color;
+                panelIzquierdo.BackColor = MyDialog.Color;
+               
+                btnVenta.BackColor = MyDialog.Color;
+                btnRecaudacion.BackColor = MyDialog.Color;
+                btnComercial.BackColor = MyDialog.Color;
+                btnLogistica.BackColor = MyDialog.Color;
+                btnSistemas.BackColor = MyDialog.Color;
+                btnRrhh.BackColor = MyDialog.Color;
+                btnConfiguracion.BackColor = MyDialog.Color;
+                btnSoporte.BackColor = MyDialog.Color;
+
+                iconChildForm.IconChar = IconChar.Home;
+                lblChilForm.Text = "Home";
+                SubmenusOcultos();
+                reset();
+
+            }
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            panelPersonalizarColores.Visible = true;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

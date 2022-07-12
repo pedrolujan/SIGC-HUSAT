@@ -70,6 +70,11 @@ namespace wfaIntegradoCom
             this.Img_Husat_Negro = new System.Windows.Forms.PictureBox();
             this.panelCentral = new Siticone.UI.WinForms.SiticonePanel();
             this.cboxSelecThema = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.btnPersonalizacion = new FontAwesome.Sharp.IconButton();
+            this.panelPersonalizarColores = new Siticone.UI.WinForms.SiticonePanel();
+            this.panelColorPanelCentral = new System.Windows.Forms.Panel();
+            this.panelColorAccesoDirecto = new System.Windows.Forms.Panel();
+            this.panelColorMenuPrincipal = new System.Windows.Forms.Panel();
             this.btnOpciones = new FontAwesome.Sharp.IconButton();
             this.panelCerrarSession = new Siticone.UI.WinForms.SiticonePanel();
             this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
@@ -83,6 +88,8 @@ namespace wfaIntegradoCom
             this.elhAlert = new System.Windows.Forms.Integration.ElementHost();
             this.ucOpcion2 = new WPF.CTRL.Colocaciones.ucOpcion();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.label1 = new System.Windows.Forms.Label();
             this.PanelEncavezadoFondo.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.siticonePanel2.SuspendLayout();
@@ -93,6 +100,8 @@ namespace wfaIntegradoCom
             this.panelImagenLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Negro)).BeginInit();
             this.panelCentral.SuspendLayout();
+            this.panelPersonalizarColores.SuspendLayout();
+            this.panelColorAccesoDirecto.SuspendLayout();
             this.panelCerrarSession.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -781,6 +790,8 @@ namespace wfaIntegradoCom
             // panelCentral
             // 
             this.panelCentral.Controls.Add(this.cboxSelecThema);
+            this.panelCentral.Controls.Add(this.btnPersonalizacion);
+            this.panelCentral.Controls.Add(this.panelPersonalizarColores);
             this.panelCentral.Controls.Add(this.btnOpciones);
             this.panelCentral.Controls.Add(this.panelCerrarSession);
             this.panelCentral.Controls.Add(this.pnlSombra);
@@ -811,14 +822,90 @@ namespace wfaIntegradoCom
             "Darck",
             "Pink"});
             this.cboxSelecThema.ItemsAppearance.Parent = this.cboxSelecThema;
-            this.cboxSelecThema.Location = new System.Drawing.Point(880, 490);
+            this.cboxSelecThema.Location = new System.Drawing.Point(942, 490);
             this.cboxSelecThema.Name = "cboxSelecThema";
             this.cboxSelecThema.ShadowDecoration.Parent = this.cboxSelecThema;
-            this.cboxSelecThema.Size = new System.Drawing.Size(164, 36);
+            this.cboxSelecThema.Size = new System.Drawing.Size(102, 36);
             this.cboxSelecThema.StartIndex = 0;
             this.cboxSelecThema.TabIndex = 17;
             this.cboxSelecThema.Visible = false;
             this.cboxSelecThema.SelectedIndexChanged += new System.EventHandler(this.siticoneComboBox1_SelectedIndexChanged);
+            // 
+            // btnPersonalizacion
+            // 
+            this.btnPersonalizacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPersonalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
+            this.btnPersonalizacion.FlatAppearance.BorderSize = 0;
+            this.btnPersonalizacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.btnPersonalizacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPersonalizacion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPersonalizacion.ForeColor = System.Drawing.Color.Transparent;
+            this.btnPersonalizacion.IconChar = FontAwesome.Sharp.IconChar.Paintbrush;
+            this.btnPersonalizacion.IconColor = System.Drawing.Color.White;
+            this.btnPersonalizacion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPersonalizacion.IconSize = 40;
+            this.btnPersonalizacion.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPersonalizacion.Location = new System.Drawing.Point(955, 438);
+            this.btnPersonalizacion.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnPersonalizacion.Name = "btnPersonalizacion";
+            this.btnPersonalizacion.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnPersonalizacion.Size = new System.Drawing.Size(89, 83);
+            this.btnPersonalizacion.TabIndex = 33;
+            this.btnPersonalizacion.Text = "Personalizar";
+            this.btnPersonalizacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPersonalizacion.UseVisualStyleBackColor = false;
+            this.btnPersonalizacion.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // panelPersonalizarColores
+            // 
+            this.panelPersonalizarColores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelPersonalizarColores.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelPersonalizarColores.BorderRadius = 50;
+            this.panelPersonalizarColores.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.panelPersonalizarColores.BorderThickness = 50;
+            this.panelPersonalizarColores.Controls.Add(this.panelColorPanelCentral);
+            this.panelPersonalizarColores.Controls.Add(this.panelColorAccesoDirecto);
+            this.panelPersonalizarColores.Controls.Add(this.panelColorMenuPrincipal);
+            this.panelPersonalizarColores.CustomBorderColor = System.Drawing.Color.Red;
+            this.panelPersonalizarColores.CustomBorderThickness = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.panelPersonalizarColores.Location = new System.Drawing.Point(825, 277);
+            this.panelPersonalizarColores.Name = "panelPersonalizarColores";
+            this.panelPersonalizarColores.ShadowDecoration.Parent = this.panelPersonalizarColores;
+            this.panelPersonalizarColores.Size = new System.Drawing.Size(220, 161);
+            this.panelPersonalizarColores.TabIndex = 32;
+            this.panelPersonalizarColores.Visible = false;
+            // 
+            // panelColorPanelCentral
+            // 
+            this.panelColorPanelCentral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
+            this.panelColorPanelCentral.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelColorPanelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelColorPanelCentral.Location = new System.Drawing.Point(55, 41);
+            this.panelColorPanelCentral.Name = "panelColorPanelCentral";
+            this.panelColorPanelCentral.Size = new System.Drawing.Size(165, 120);
+            this.panelColorPanelCentral.TabIndex = 30;
+            this.panelColorPanelCentral.Click += new System.EventHandler(this.panelColorPanelCentral_Click);
+            // 
+            // panelColorAccesoDirecto
+            // 
+            this.panelColorAccesoDirecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
+            this.panelColorAccesoDirecto.Controls.Add(this.label1);
+            this.panelColorAccesoDirecto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelColorAccesoDirecto.Location = new System.Drawing.Point(55, 0);
+            this.panelColorAccesoDirecto.Name = "panelColorAccesoDirecto";
+            this.panelColorAccesoDirecto.Size = new System.Drawing.Size(165, 41);
+            this.panelColorAccesoDirecto.TabIndex = 29;
+            this.panelColorAccesoDirecto.Click += new System.EventHandler(this.panelColorAccesoDirecto_Click);
+            // 
+            // panelColorMenuPrincipal
+            // 
+            this.panelColorMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.panelColorMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelColorMenuPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.panelColorMenuPrincipal.Name = "panelColorMenuPrincipal";
+            this.panelColorMenuPrincipal.Size = new System.Drawing.Size(55, 161);
+            this.panelColorMenuPrincipal.TabIndex = 28;
+            this.panelColorMenuPrincipal.Click += new System.EventHandler(this.panelColorMenuPrincipal_Click);
             // 
             // btnOpciones
             // 
@@ -994,7 +1081,7 @@ namespace wfaIntegradoCom
             this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.treeView1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView1.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.treeView1.FullRowSelect = true;
             this.treeView1.HideSelection = false;
@@ -1012,6 +1099,22 @@ namespace wfaIntegradoCom
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
             this.treeView1.MouseEnter += new System.EventHandler(this.treeView1_MouseEnter);
+            // 
+            // colorDialog1
+            // 
+            this.colorDialog1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(28, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "PERSONALIZACION";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // MDIParent1
             // 
@@ -1043,6 +1146,9 @@ namespace wfaIntegradoCom
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Negro)).EndInit();
             this.panelCentral.ResumeLayout(false);
             this.panelCentral.PerformLayout();
+            this.panelPersonalizarColores.ResumeLayout(false);
+            this.panelColorAccesoDirecto.ResumeLayout(false);
+            this.panelColorAccesoDirecto.PerformLayout();
             this.panelCerrarSession.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -1104,6 +1210,13 @@ namespace wfaIntegradoCom
         private WPF.CTRL.Colocaciones.ucOpcion ucOpcion2;
         private Siticone.UI.WinForms.SiticoneComboBox cboxSelecThema;
         private FontAwesome.Sharp.IconButton btnOpciones;
+        private System.Windows.Forms.Panel panelColorMenuPrincipal;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private Siticone.UI.WinForms.SiticonePanel panelPersonalizarColores;
+        private System.Windows.Forms.Panel panelColorPanelCentral;
+        private System.Windows.Forms.Panel panelColorAccesoDirecto;
+        private FontAwesome.Sharp.IconButton btnPersonalizacion;
+        private System.Windows.Forms.Label label1;
     }
 }
 
