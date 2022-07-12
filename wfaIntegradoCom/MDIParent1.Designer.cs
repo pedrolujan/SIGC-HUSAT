@@ -35,19 +35,15 @@ namespace wfaIntegradoCom
             this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
             this.miniToolStrip = new System.Windows.Forms.ToolStrip();
             this.PanelEncavezadoFondo = new Siticone.UI.WinForms.SiticonePanel();
-            this.tsAccesoRapido = new System.Windows.Forms.ToolStrip();
-            this.tsConfiguracion = new System.Windows.Forms.ToolStripButton();
-            this.tsSistemas = new System.Windows.Forms.ToolStripButton();
-            this.tsVenta = new System.Windows.Forms.ToolStripButton();
-            this.tsCaja = new System.Windows.Forms.ToolStripButton();
-            this.tsCompra = new System.Windows.Forms.ToolStripButton();
-            this.tsTraslado = new System.Windows.Forms.ToolStripButton();
-            this.tsExtorna = new System.Windows.Forms.ToolStripButton();
-            this.tsDeuda = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnn = new System.Windows.Forms.ToolStripButton();
-            this.tsConsulta = new System.Windows.Forms.ToolStripButton();
-            this.tsCerraSession = new System.Windows.Forms.ToolStripButton();
-            this.tsMiCaja = new System.Windows.Forms.ToolStripButton();
+            this.tsCerraSession = new FontAwesome.Sharp.IconButton();
+            this.LayoutPanelAccesoRapido = new System.Windows.Forms.FlowLayoutPanel();
+            this.tsConfiguracion = new FontAwesome.Sharp.IconButton();
+            this.tsUsuarios = new FontAwesome.Sharp.IconButton();
+            this.tsVenta = new FontAwesome.Sharp.IconButton();
+            this.tsCaja = new FontAwesome.Sharp.IconButton();
+            this.tsCompra = new FontAwesome.Sharp.IconButton();
+            this.tsConsulta = new FontAwesome.Sharp.IconButton();
+            this.tsMiCaja = new FontAwesome.Sharp.IconButton();
             this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
             this.iconChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.lblChilForm = new System.Windows.Forms.Label();
@@ -73,32 +69,22 @@ namespace wfaIntegradoCom
             this.panelImagenLogo = new Siticone.UI.WinForms.SiticonePanel();
             this.Img_Husat_Negro = new System.Windows.Forms.PictureBox();
             this.panelCentral = new Siticone.UI.WinForms.SiticonePanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
-            this.iconButton8 = new FontAwesome.Sharp.IconButton();
-            this.iconButton9 = new FontAwesome.Sharp.IconButton();
-            this.iconButton10 = new FontAwesome.Sharp.IconButton();
+            this.cboxSelecThema = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.btnOpciones = new FontAwesome.Sharp.IconButton();
+            this.panelCerrarSession = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
+            this.btnPerfil = new FontAwesome.Sharp.IconButton();
+            this.pnlSombra = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStrip4 = new System.Windows.Forms.ToolStrip();
-            this.tsPerfil = new System.Windows.Forms.ToolStripButton();
-            this.tsCerrarSession = new System.Windows.Forms.ToolStripButton();
             this.elhAlert = new System.Windows.Forms.Integration.ElementHost();
             this.ucOpcion2 = new WPF.CTRL.Colocaciones.ucOpcion();
-            this.panelCerrarSession = new Siticone.UI.WinForms.SiticonePanel();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.PanelEncavezadoFondo.SuspendLayout();
-            this.tsAccesoRapido.SuspendLayout();
+            this.LayoutPanelAccesoRapido.SuspendLayout();
             this.siticonePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconChildForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Blanco)).BeginInit();
@@ -107,10 +93,8 @@ namespace wfaIntegradoCom
             this.panelImagenLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Negro)).BeginInit();
             this.panelCentral.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.toolStrip4.SuspendLayout();
             this.panelCerrarSession.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListaImagenes
@@ -142,189 +126,224 @@ namespace wfaIntegradoCom
             // PanelEncavezadoFondo
             // 
             this.PanelEncavezadoFondo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
-            this.PanelEncavezadoFondo.Controls.Add(this.tsAccesoRapido);
+            this.PanelEncavezadoFondo.Controls.Add(this.tsCerraSession);
+            this.PanelEncavezadoFondo.Controls.Add(this.LayoutPanelAccesoRapido);
             this.PanelEncavezadoFondo.Controls.Add(this.siticonePanel2);
             this.PanelEncavezadoFondo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelEncavezadoFondo.Location = new System.Drawing.Point(242, 0);
+            this.PanelEncavezadoFondo.Location = new System.Drawing.Point(239, 0);
             this.PanelEncavezadoFondo.Name = "PanelEncavezadoFondo";
             this.PanelEncavezadoFondo.ShadowDecoration.Parent = this.PanelEncavezadoFondo;
-            this.PanelEncavezadoFondo.Size = new System.Drawing.Size(1042, 69);
+            this.PanelEncavezadoFondo.Size = new System.Drawing.Size(1045, 72);
             this.PanelEncavezadoFondo.TabIndex = 16;
-            // 
-            // tsAccesoRapido
-            // 
-            this.tsAccesoRapido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
-            this.tsAccesoRapido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tsAccesoRapido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsAccesoRapido.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tsAccesoRapido.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsConfiguracion,
-            this.tsSistemas,
-            this.tsVenta,
-            this.tsCaja,
-            this.tsCompra,
-            this.tsTraslado,
-            this.tsExtorna,
-            this.tsDeuda,
-            this.tsBtnn,
-            this.tsConsulta,
-            this.tsCerraSession,
-            this.tsMiCaja});
-            this.tsAccesoRapido.Location = new System.Drawing.Point(116, 0);
-            this.tsAccesoRapido.Name = "tsAccesoRapido";
-            this.tsAccesoRapido.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsAccesoRapido.Size = new System.Drawing.Size(926, 69);
-            this.tsAccesoRapido.TabIndex = 4;
-            this.tsAccesoRapido.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsAccesoRapido_ItemClicked);
-            // 
-            // tsConfiguracion
-            // 
-            this.tsConfiguracion.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsConfiguracion.ForeColor = System.Drawing.Color.Black;
-            this.tsConfiguracion.Image = global::wfaIntegradoCom.Properties.Resources.acceso_32;
-            this.tsConfiguracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsConfiguracion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsConfiguracion.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsConfiguracion.Name = "tsConfiguracion";
-            this.tsConfiguracion.Size = new System.Drawing.Size(98, 66);
-            this.tsConfiguracion.Text = "Accesos";
-            this.tsConfiguracion.Visible = false;
-            // 
-            // tsSistemas
-            // 
-            this.tsSistemas.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsSistemas.ForeColor = System.Drawing.Color.Black;
-            this.tsSistemas.Image = global::wfaIntegradoCom.Properties.Resources.user_32;
-            this.tsSistemas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsSistemas.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsSistemas.Name = "tsSistemas";
-            this.tsSistemas.Size = new System.Drawing.Size(102, 66);
-            this.tsSistemas.Text = "Usuarios";
-            this.tsSistemas.Visible = false;
-            // 
-            // tsVenta
-            // 
-            this.tsVenta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsVenta.ForeColor = System.Drawing.Color.Black;
-            this.tsVenta.Image = global::wfaIntegradoCom.Properties.Resources.tipoVenta_32;
-            this.tsVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsVenta.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsVenta.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsVenta.Name = "tsVenta";
-            this.tsVenta.Size = new System.Drawing.Size(134, 66);
-            this.tsVenta.Text = "Tipo de Venta";
-            this.tsVenta.Visible = false;
-            // 
-            // tsCaja
-            // 
-            this.tsCaja.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsCaja.ForeColor = System.Drawing.Color.Black;
-            this.tsCaja.Image = global::wfaIntegradoCom.Properties.Resources.cadreCaja_32;
-            this.tsCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsCaja.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsCaja.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsCaja.Name = "tsCaja";
-            this.tsCaja.Size = new System.Drawing.Size(124, 66);
-            this.tsCaja.Text = "Cuadre Caja";
-            this.tsCaja.Visible = false;
-            // 
-            // tsCompra
-            // 
-            this.tsCompra.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsCompra.ForeColor = System.Drawing.Color.Black;
-            this.tsCompra.Image = global::wfaIntegradoCom.Properties.Resources.compra_32;
-            this.tsCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsCompra.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsCompra.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsCompra.Name = "tsCompra";
-            this.tsCompra.Size = new System.Drawing.Size(102, 66);
-            this.tsCompra.Text = "Compras";
-            this.tsCompra.Visible = false;
-            // 
-            // tsTraslado
-            // 
-            this.tsTraslado.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsTraslado.ForeColor = System.Drawing.Color.Black;
-            this.tsTraslado.Image = global::wfaIntegradoCom.Properties.Resources.compras_32;
-            this.tsTraslado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsTraslado.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsTraslado.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsTraslado.Name = "tsTraslado";
-            this.tsTraslado.Size = new System.Drawing.Size(100, 66);
-            this.tsTraslado.Text = "Traslado";
-            this.tsTraslado.Visible = false;
-            // 
-            // tsExtorna
-            // 
-            this.tsExtorna.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsExtorna.ForeColor = System.Drawing.Color.Black;
-            this.tsExtorna.Image = global::wfaIntegradoCom.Properties.Resources.devoluciones_32;
-            this.tsExtorna.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsExtorna.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsExtorna.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsExtorna.Name = "tsExtorna";
-            this.tsExtorna.Size = new System.Drawing.Size(132, 66);
-            this.tsExtorna.Text = "Devoluciones";
-            this.tsExtorna.Visible = false;
-            // 
-            // tsDeuda
-            // 
-            this.tsDeuda.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsDeuda.ForeColor = System.Drawing.Color.Black;
-            this.tsDeuda.Image = global::wfaIntegradoCom.Properties.Resources.deuda_32;
-            this.tsDeuda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsDeuda.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsDeuda.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsDeuda.Name = "tsDeuda";
-            this.tsDeuda.Size = new System.Drawing.Size(94, 66);
-            this.tsDeuda.Text = "Deudas";
-            this.tsDeuda.Visible = false;
-            // 
-            // tsBtnn
-            // 
-            this.tsBtnn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsBtnn.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnn.Image")));
-            this.tsBtnn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnn.Name = "tsBtnn";
-            this.tsBtnn.Size = new System.Drawing.Size(23, 66);
-            // 
-            // tsConsulta
-            // 
-            this.tsConsulta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsConsulta.ForeColor = System.Drawing.Color.Black;
-            this.tsConsulta.Image = global::wfaIntegradoCom.Properties.Resources.consultar_32;
-            this.tsConsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsConsulta.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsConsulta.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsConsulta.Name = "tsConsulta";
-            this.tsConsulta.Size = new System.Drawing.Size(107, 66);
-            this.tsConsulta.Text = "Consultar";
-            this.tsConsulta.Visible = false;
             // 
             // tsCerraSession
             // 
-            this.tsCerraSession.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsCerraSession.Image = global::wfaIntegradoCom.Properties.Resources.usser;
-            this.tsCerraSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsCerraSession.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsCerraSession.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCerraSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsCerraSession.BackColor = System.Drawing.Color.Transparent;
+            this.tsCerraSession.FlatAppearance.BorderSize = 0;
+            this.tsCerraSession.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.tsCerraSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tsCerraSession.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsCerraSession.ForeColor = System.Drawing.Color.Gainsboro;
+            this.tsCerraSession.IconChar = FontAwesome.Sharp.IconChar.UserLock;
+            this.tsCerraSession.IconColor = System.Drawing.Color.Gainsboro;
+            this.tsCerraSession.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.tsCerraSession.IconSize = 32;
+            this.tsCerraSession.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsCerraSession.Location = new System.Drawing.Point(915, 6);
+            this.tsCerraSession.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.tsCerraSession.Name = "tsCerraSession";
-            this.tsCerraSession.Size = new System.Drawing.Size(145, 66);
-            this.tsCerraSession.Text = "Cerrar Session";
-            this.tsCerraSession.Visible = false;
+            this.tsCerraSession.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tsCerraSession.Size = new System.Drawing.Size(130, 60);
+            this.tsCerraSession.TabIndex = 27;
+            this.tsCerraSession.Text = "Cerra Session";
+            this.tsCerraSession.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsCerraSession.UseVisualStyleBackColor = false;
             this.tsCerraSession.Click += new System.EventHandler(this.tsCerraSession_Click);
+            // 
+            // LayoutPanelAccesoRapido
+            // 
+            this.LayoutPanelAccesoRapido.BackColor = System.Drawing.Color.Transparent;
+            this.LayoutPanelAccesoRapido.Controls.Add(this.tsConfiguracion);
+            this.LayoutPanelAccesoRapido.Controls.Add(this.tsUsuarios);
+            this.LayoutPanelAccesoRapido.Controls.Add(this.tsVenta);
+            this.LayoutPanelAccesoRapido.Controls.Add(this.tsCaja);
+            this.LayoutPanelAccesoRapido.Controls.Add(this.tsCompra);
+            this.LayoutPanelAccesoRapido.Controls.Add(this.tsConsulta);
+            this.LayoutPanelAccesoRapido.Controls.Add(this.tsMiCaja);
+            this.LayoutPanelAccesoRapido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LayoutPanelAccesoRapido.Location = new System.Drawing.Point(122, 0);
+            this.LayoutPanelAccesoRapido.Name = "LayoutPanelAccesoRapido";
+            this.LayoutPanelAccesoRapido.Size = new System.Drawing.Size(923, 72);
+            this.LayoutPanelAccesoRapido.TabIndex = 15;
+            this.LayoutPanelAccesoRapido.Click += new System.EventHandler(this.flowLayoutPanel1_Click);
+            // 
+            // tsConfiguracion
+            // 
+            this.tsConfiguracion.BackColor = System.Drawing.Color.Transparent;
+            this.tsConfiguracion.FlatAppearance.BorderSize = 0;
+            this.tsConfiguracion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.tsConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tsConfiguracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsConfiguracion.ForeColor = System.Drawing.Color.Gainsboro;
+            this.tsConfiguracion.IconChar = FontAwesome.Sharp.IconChar.ListCheck;
+            this.tsConfiguracion.IconColor = System.Drawing.Color.Gainsboro;
+            this.tsConfiguracion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.tsConfiguracion.IconSize = 32;
+            this.tsConfiguracion.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsConfiguracion.Location = new System.Drawing.Point(0, 3);
+            this.tsConfiguracion.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.tsConfiguracion.Name = "tsConfiguracion";
+            this.tsConfiguracion.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tsConfiguracion.Size = new System.Drawing.Size(83, 60);
+            this.tsConfiguracion.TabIndex = 17;
+            this.tsConfiguracion.Text = "Accesos";
+            this.tsConfiguracion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsConfiguracion.UseVisualStyleBackColor = false;
+            this.tsConfiguracion.Click += new System.EventHandler(this.tsAccesos_Click);
+            // 
+            // tsUsuarios
+            // 
+            this.tsUsuarios.BackColor = System.Drawing.Color.Transparent;
+            this.tsUsuarios.FlatAppearance.BorderSize = 0;
+            this.tsUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.tsUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tsUsuarios.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsUsuarios.ForeColor = System.Drawing.Color.Gainsboro;
+            this.tsUsuarios.IconChar = FontAwesome.Sharp.IconChar.Users;
+            this.tsUsuarios.IconColor = System.Drawing.Color.Gainsboro;
+            this.tsUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.tsUsuarios.IconSize = 32;
+            this.tsUsuarios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsUsuarios.Location = new System.Drawing.Point(83, 3);
+            this.tsUsuarios.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.tsUsuarios.Name = "tsUsuarios";
+            this.tsUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tsUsuarios.Size = new System.Drawing.Size(85, 60);
+            this.tsUsuarios.TabIndex = 18;
+            this.tsUsuarios.Text = "Usuarios";
+            this.tsUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsUsuarios.UseVisualStyleBackColor = false;
+            this.tsUsuarios.Click += new System.EventHandler(this.tsSistemas_Click);
+            // 
+            // tsVenta
+            // 
+            this.tsVenta.BackColor = System.Drawing.Color.Transparent;
+            this.tsVenta.FlatAppearance.BorderSize = 0;
+            this.tsVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.tsVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tsVenta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsVenta.ForeColor = System.Drawing.Color.Gainsboro;
+            this.tsVenta.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckDollar;
+            this.tsVenta.IconColor = System.Drawing.Color.Gainsboro;
+            this.tsVenta.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.tsVenta.IconSize = 32;
+            this.tsVenta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsVenta.Location = new System.Drawing.Point(168, 3);
+            this.tsVenta.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.tsVenta.Name = "tsVenta";
+            this.tsVenta.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tsVenta.Size = new System.Drawing.Size(116, 60);
+            this.tsVenta.TabIndex = 19;
+            this.tsVenta.Text = "Tipo de Venta";
+            this.tsVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsVenta.UseVisualStyleBackColor = false;
+            this.tsVenta.Click += new System.EventHandler(this.tsVenta_Click);
+            // 
+            // tsCaja
+            // 
+            this.tsCaja.BackColor = System.Drawing.Color.Transparent;
+            this.tsCaja.FlatAppearance.BorderSize = 0;
+            this.tsCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.tsCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tsCaja.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsCaja.ForeColor = System.Drawing.Color.Gainsboro;
+            this.tsCaja.IconChar = FontAwesome.Sharp.IconChar.Donate;
+            this.tsCaja.IconColor = System.Drawing.Color.Gainsboro;
+            this.tsCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.tsCaja.IconSize = 32;
+            this.tsCaja.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsCaja.Location = new System.Drawing.Point(284, 3);
+            this.tsCaja.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.tsCaja.Name = "tsCaja";
+            this.tsCaja.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tsCaja.Size = new System.Drawing.Size(118, 60);
+            this.tsCaja.TabIndex = 20;
+            this.tsCaja.Text = "Cuadre Caja";
+            this.tsCaja.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsCaja.UseVisualStyleBackColor = false;
+            this.tsCaja.Click += new System.EventHandler(this.tsCaja_Click);
+            // 
+            // tsCompra
+            // 
+            this.tsCompra.BackColor = System.Drawing.Color.Transparent;
+            this.tsCompra.FlatAppearance.BorderSize = 0;
+            this.tsCompra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.tsCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tsCompra.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsCompra.ForeColor = System.Drawing.Color.Gainsboro;
+            this.tsCompra.IconChar = FontAwesome.Sharp.IconChar.Shopify;
+            this.tsCompra.IconColor = System.Drawing.Color.Gainsboro;
+            this.tsCompra.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.tsCompra.IconSize = 32;
+            this.tsCompra.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsCompra.Location = new System.Drawing.Point(402, 3);
+            this.tsCompra.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.tsCompra.Name = "tsCompra";
+            this.tsCompra.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tsCompra.Size = new System.Drawing.Size(88, 60);
+            this.tsCompra.TabIndex = 21;
+            this.tsCompra.Text = "Compras";
+            this.tsCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsCompra.UseVisualStyleBackColor = false;
+            this.tsCompra.Click += new System.EventHandler(this.tsCompra_Click);
+            // 
+            // tsConsulta
+            // 
+            this.tsConsulta.BackColor = System.Drawing.Color.Transparent;
+            this.tsConsulta.FlatAppearance.BorderSize = 0;
+            this.tsConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.tsConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tsConsulta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsConsulta.ForeColor = System.Drawing.Color.Gainsboro;
+            this.tsConsulta.IconChar = FontAwesome.Sharp.IconChar.CircleQuestion;
+            this.tsConsulta.IconColor = System.Drawing.Color.Gainsboro;
+            this.tsConsulta.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.tsConsulta.IconSize = 32;
+            this.tsConsulta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsConsulta.Location = new System.Drawing.Point(490, 3);
+            this.tsConsulta.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.tsConsulta.Name = "tsConsulta";
+            this.tsConsulta.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tsConsulta.Size = new System.Drawing.Size(95, 60);
+            this.tsConsulta.TabIndex = 25;
+            this.tsConsulta.Text = "Consultar";
+            this.tsConsulta.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsConsulta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsConsulta.UseVisualStyleBackColor = false;
             // 
             // tsMiCaja
             // 
-            this.tsMiCaja.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsMiCaja.Image = ((System.Drawing.Image)(resources.GetObject("tsMiCaja.Image")));
-            this.tsMiCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsMiCaja.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsMiCaja.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsMiCaja.BackColor = System.Drawing.Color.Transparent;
+            this.tsMiCaja.FlatAppearance.BorderSize = 0;
+            this.tsMiCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.tsMiCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tsMiCaja.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsMiCaja.ForeColor = System.Drawing.Color.Gainsboro;
+            this.tsMiCaja.IconChar = FontAwesome.Sharp.IconChar.CashRegister;
+            this.tsMiCaja.IconColor = System.Drawing.Color.Gainsboro;
+            this.tsMiCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.tsMiCaja.IconSize = 32;
+            this.tsMiCaja.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsMiCaja.Location = new System.Drawing.Point(585, 3);
+            this.tsMiCaja.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.tsMiCaja.Name = "tsMiCaja";
-            this.tsMiCaja.Size = new System.Drawing.Size(96, 66);
+            this.tsMiCaja.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tsMiCaja.Size = new System.Drawing.Size(86, 60);
+            this.tsMiCaja.TabIndex = 26;
             this.tsMiCaja.Text = "Mi Caja";
-            this.tsMiCaja.Visible = false;
+            this.tsMiCaja.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsMiCaja.UseVisualStyleBackColor = false;
             // 
             // siticonePanel2
             // 
@@ -335,7 +354,7 @@ namespace wfaIntegradoCom
             this.siticonePanel2.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel2.Name = "siticonePanel2";
             this.siticonePanel2.ShadowDecoration.Parent = this.siticonePanel2;
-            this.siticonePanel2.Size = new System.Drawing.Size(116, 69);
+            this.siticonePanel2.Size = new System.Drawing.Size(122, 72);
             this.siticonePanel2.TabIndex = 5;
             // 
             // iconChildForm
@@ -355,10 +374,11 @@ namespace wfaIntegradoCom
             // 
             this.lblChilForm.AutoSize = true;
             this.lblChilForm.BackColor = System.Drawing.Color.Transparent;
+            this.lblChilForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChilForm.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblChilForm.Location = new System.Drawing.Point(52, 24);
+            this.lblChilForm.Location = new System.Drawing.Point(41, 24);
             this.lblChilForm.Name = "lblChilForm";
-            this.lblChilForm.Size = new System.Drawing.Size(35, 13);
+            this.lblChilForm.Size = new System.Drawing.Size(49, 17);
             this.lblChilForm.TabIndex = 23;
             this.lblChilForm.Text = "Home";
             // 
@@ -399,7 +419,7 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.Location = new System.Drawing.Point(0, 140);
             this.panelMenuPrincipal.Name = "panelMenuPrincipal";
             this.panelMenuPrincipal.ShadowDecoration.Parent = this.panelMenuPrincipal;
-            this.panelMenuPrincipal.Size = new System.Drawing.Size(242, 531);
+            this.panelMenuPrincipal.Size = new System.Drawing.Size(239, 531);
             this.panelMenuPrincipal.TabIndex = 1;
             // 
             // subMenuSoporte
@@ -420,7 +440,7 @@ namespace wfaIntegradoCom
             // 
             // btnSoporte
             // 
-            this.btnSoporte.BackColor = System.Drawing.Color.Transparent;
+            this.btnSoporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnSoporte.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSoporte.FlatAppearance.BorderSize = 0;
             this.btnSoporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -434,7 +454,7 @@ namespace wfaIntegradoCom
             this.btnSoporte.Location = new System.Drawing.Point(0, 525);
             this.btnSoporte.Name = "btnSoporte";
             this.btnSoporte.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnSoporte.Size = new System.Drawing.Size(225, 55);
+            this.btnSoporte.Size = new System.Drawing.Size(222, 55);
             this.btnSoporte.TabIndex = 27;
             this.btnSoporte.Text = "Soporte";
             this.btnSoporte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -460,7 +480,7 @@ namespace wfaIntegradoCom
             // 
             // btnConfiguracion
             // 
-            this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
+            this.btnConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnConfiguracion.FlatAppearance.BorderSize = 0;
             this.btnConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -474,7 +494,7 @@ namespace wfaIntegradoCom
             this.btnConfiguracion.Location = new System.Drawing.Point(0, 450);
             this.btnConfiguracion.Name = "btnConfiguracion";
             this.btnConfiguracion.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnConfiguracion.Size = new System.Drawing.Size(225, 55);
+            this.btnConfiguracion.Size = new System.Drawing.Size(222, 55);
             this.btnConfiguracion.TabIndex = 25;
             this.btnConfiguracion.Text = "Cofiguración";
             this.btnConfiguracion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -500,7 +520,7 @@ namespace wfaIntegradoCom
             // 
             // btnRrhh
             // 
-            this.btnRrhh.BackColor = System.Drawing.Color.Transparent;
+            this.btnRrhh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnRrhh.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRrhh.FlatAppearance.BorderSize = 0;
             this.btnRrhh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -514,7 +534,7 @@ namespace wfaIntegradoCom
             this.btnRrhh.Location = new System.Drawing.Point(0, 375);
             this.btnRrhh.Name = "btnRrhh";
             this.btnRrhh.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnRrhh.Size = new System.Drawing.Size(225, 55);
+            this.btnRrhh.Size = new System.Drawing.Size(222, 55);
             this.btnRrhh.TabIndex = 23;
             this.btnRrhh.Text = "RRHH";
             this.btnRrhh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -540,7 +560,7 @@ namespace wfaIntegradoCom
             // 
             // btnSistemas
             // 
-            this.btnSistemas.BackColor = System.Drawing.Color.Transparent;
+            this.btnSistemas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnSistemas.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSistemas.FlatAppearance.BorderSize = 0;
             this.btnSistemas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -554,7 +574,7 @@ namespace wfaIntegradoCom
             this.btnSistemas.Location = new System.Drawing.Point(0, 300);
             this.btnSistemas.Name = "btnSistemas";
             this.btnSistemas.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnSistemas.Size = new System.Drawing.Size(225, 55);
+            this.btnSistemas.Size = new System.Drawing.Size(222, 55);
             this.btnSistemas.TabIndex = 21;
             this.btnSistemas.Text = "Sistemas";
             this.btnSistemas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -580,7 +600,7 @@ namespace wfaIntegradoCom
             // 
             // btnLogistica
             // 
-            this.btnLogistica.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogistica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnLogistica.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLogistica.FlatAppearance.BorderSize = 0;
             this.btnLogistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -594,7 +614,7 @@ namespace wfaIntegradoCom
             this.btnLogistica.Location = new System.Drawing.Point(0, 225);
             this.btnLogistica.Name = "btnLogistica";
             this.btnLogistica.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnLogistica.Size = new System.Drawing.Size(225, 55);
+            this.btnLogistica.Size = new System.Drawing.Size(222, 55);
             this.btnLogistica.TabIndex = 19;
             this.btnLogistica.Text = "Logistica";
             this.btnLogistica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -620,7 +640,7 @@ namespace wfaIntegradoCom
             // 
             // btnComercial
             // 
-            this.btnComercial.BackColor = System.Drawing.Color.Transparent;
+            this.btnComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnComercial.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnComercial.FlatAppearance.BorderSize = 0;
             this.btnComercial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -634,7 +654,7 @@ namespace wfaIntegradoCom
             this.btnComercial.Location = new System.Drawing.Point(0, 150);
             this.btnComercial.Name = "btnComercial";
             this.btnComercial.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnComercial.Size = new System.Drawing.Size(225, 55);
+            this.btnComercial.Size = new System.Drawing.Size(222, 55);
             this.btnComercial.TabIndex = 17;
             this.btnComercial.Text = "Comercial";
             this.btnComercial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -660,7 +680,7 @@ namespace wfaIntegradoCom
             // 
             // btnRecaudacion
             // 
-            this.btnRecaudacion.BackColor = System.Drawing.Color.Transparent;
+            this.btnRecaudacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRecaudacion.FlatAppearance.BorderSize = 0;
             this.btnRecaudacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -674,7 +694,7 @@ namespace wfaIntegradoCom
             this.btnRecaudacion.Location = new System.Drawing.Point(0, 75);
             this.btnRecaudacion.Name = "btnRecaudacion";
             this.btnRecaudacion.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnRecaudacion.Size = new System.Drawing.Size(225, 55);
+            this.btnRecaudacion.Size = new System.Drawing.Size(222, 55);
             this.btnRecaudacion.TabIndex = 16;
             this.btnRecaudacion.Text = "Recaudacion";
             this.btnRecaudacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -700,6 +720,7 @@ namespace wfaIntegradoCom
             // 
             // btnVenta
             // 
+            this.btnVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnVenta.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnVenta.FlatAppearance.BorderSize = 0;
             this.btnVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -713,12 +734,12 @@ namespace wfaIntegradoCom
             this.btnVenta.Location = new System.Drawing.Point(0, 0);
             this.btnVenta.Name = "btnVenta";
             this.btnVenta.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnVenta.Size = new System.Drawing.Size(225, 55);
+            this.btnVenta.Size = new System.Drawing.Size(222, 55);
             this.btnVenta.TabIndex = 15;
             this.btnVenta.Text = "Ventas";
             this.btnVenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnVenta.UseVisualStyleBackColor = true;
+            this.btnVenta.UseVisualStyleBackColor = false;
             this.btnVenta.Click += new System.EventHandler(this.btnVenta_Click);
             // 
             // panelIzquierdo
@@ -730,19 +751,19 @@ namespace wfaIntegradoCom
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelIzquierdo.Name = "panelIzquierdo";
             this.panelIzquierdo.ShadowDecoration.Parent = this.panelIzquierdo;
-            this.panelIzquierdo.Size = new System.Drawing.Size(242, 671);
+            this.panelIzquierdo.Size = new System.Drawing.Size(239, 671);
             this.panelIzquierdo.TabIndex = 20;
             // 
             // panelImagenLogo
             // 
             this.panelImagenLogo.BackColor = System.Drawing.Color.Transparent;
-            this.panelImagenLogo.Controls.Add(this.Img_Husat_Negro);
             this.panelImagenLogo.Controls.Add(this.Img_Husat_Blanco);
+            this.panelImagenLogo.Controls.Add(this.Img_Husat_Negro);
             this.panelImagenLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelImagenLogo.Location = new System.Drawing.Point(0, 0);
             this.panelImagenLogo.Name = "panelImagenLogo";
             this.panelImagenLogo.ShadowDecoration.Parent = this.panelImagenLogo;
-            this.panelImagenLogo.Size = new System.Drawing.Size(242, 140);
+            this.panelImagenLogo.Size = new System.Drawing.Size(239, 140);
             this.panelImagenLogo.TabIndex = 21;
             // 
             // Img_Husat_Negro
@@ -759,257 +780,141 @@ namespace wfaIntegradoCom
             // 
             // panelCentral
             // 
-            this.panelCentral.Controls.Add(this.flowLayoutPanel1);
-            this.panelCentral.Controls.Add(this.statusStrip1);
-            this.panelCentral.Controls.Add(this.toolStrip4);
-            this.panelCentral.Controls.Add(this.elhAlert);
+            this.panelCentral.Controls.Add(this.cboxSelecThema);
+            this.panelCentral.Controls.Add(this.btnOpciones);
             this.panelCentral.Controls.Add(this.panelCerrarSession);
+            this.panelCentral.Controls.Add(this.pnlSombra);
+            this.panelCentral.Controls.Add(this.statusStrip1);
+            this.panelCentral.Controls.Add(this.elhAlert);
             this.panelCentral.Controls.Add(this.treeView1);
             this.panelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCentral.Location = new System.Drawing.Point(242, 69);
+            this.panelCentral.Location = new System.Drawing.Point(239, 72);
             this.panelCentral.Name = "panelCentral";
             this.panelCentral.ShadowDecoration.Parent = this.panelCentral;
-            this.panelCentral.Size = new System.Drawing.Size(1042, 602);
+            this.panelCentral.Size = new System.Drawing.Size(1045, 599);
             this.panelCentral.TabIndex = 22;
             // 
-            // flowLayoutPanel1
+            // cboxSelecThema
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Gray;
-            this.flowLayoutPanel1.Controls.Add(this.iconButton1);
-            this.flowLayoutPanel1.Controls.Add(this.iconButton2);
-            this.flowLayoutPanel1.Controls.Add(this.iconButton3);
-            this.flowLayoutPanel1.Controls.Add(this.iconButton4);
-            this.flowLayoutPanel1.Controls.Add(this.iconButton5);
-            this.flowLayoutPanel1.Controls.Add(this.iconButton6);
-            this.flowLayoutPanel1.Controls.Add(this.iconButton7);
-            this.flowLayoutPanel1.Controls.Add(this.iconButton8);
-            this.flowLayoutPanel1.Controls.Add(this.iconButton9);
-            this.flowLayoutPanel1.Controls.Add(this.iconButton10);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(49, 22);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(749, 162);
-            this.flowLayoutPanel1.TabIndex = 15;
+            this.cboxSelecThema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboxSelecThema.Animated = true;
+            this.cboxSelecThema.BackColor = System.Drawing.Color.Transparent;
+            this.cboxSelecThema.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboxSelecThema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxSelecThema.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboxSelecThema.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboxSelecThema.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboxSelecThema.HoveredState.Parent = this.cboxSelecThema;
+            this.cboxSelecThema.ItemHeight = 30;
+            this.cboxSelecThema.Items.AddRange(new object[] {
+            "Defecto",
+            "Darck",
+            "Pink"});
+            this.cboxSelecThema.ItemsAppearance.Parent = this.cboxSelecThema;
+            this.cboxSelecThema.Location = new System.Drawing.Point(880, 490);
+            this.cboxSelecThema.Name = "cboxSelecThema";
+            this.cboxSelecThema.ShadowDecoration.Parent = this.cboxSelecThema;
+            this.cboxSelecThema.Size = new System.Drawing.Size(164, 36);
+            this.cboxSelecThema.StartIndex = 0;
+            this.cboxSelecThema.TabIndex = 17;
+            this.cboxSelecThema.Visible = false;
+            this.cboxSelecThema.SelectedIndexChanged += new System.EventHandler(this.siticoneComboBox1_SelectedIndexChanged);
             // 
-            // iconButton1
+            // btnOpciones
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton1.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 32;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(3, 3);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton1.Size = new System.Drawing.Size(136, 60);
-            this.iconButton1.TabIndex = 17;
-            this.iconButton1.Text = "Accesos";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            this.btnOpciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
+            this.btnOpciones.FlatAppearance.BorderSize = 0;
+            this.btnOpciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.btnOpciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpciones.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpciones.ForeColor = System.Drawing.Color.Transparent;
+            this.btnOpciones.IconChar = FontAwesome.Sharp.IconChar.Sliders;
+            this.btnOpciones.IconColor = System.Drawing.Color.White;
+            this.btnOpciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnOpciones.IconSize = 40;
+            this.btnOpciones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnOpciones.Location = new System.Drawing.Point(956, 526);
+            this.btnOpciones.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnOpciones.Name = "btnOpciones";
+            this.btnOpciones.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnOpciones.Size = new System.Drawing.Size(89, 83);
+            this.btnOpciones.TabIndex = 27;
+            this.btnOpciones.Text = "Opciones";
+            this.btnOpciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnOpciones.UseVisualStyleBackColor = false;
+            this.btnOpciones.Click += new System.EventHandler(this.iconButton2_Click);
+            this.btnOpciones.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnOpciones_MouseMove);
             // 
-            // iconButton2
+            // panelCerrarSession
             // 
-            this.iconButton2.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton2.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 32;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(145, 3);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton2.Size = new System.Drawing.Size(136, 60);
-            this.iconButton2.TabIndex = 18;
-            this.iconButton2.Text = "Usuarios";
-            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = false;
+            this.panelCerrarSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelCerrarSession.BackColor = System.Drawing.Color.White;
+            this.panelCerrarSession.Controls.Add(this.btnCerrarSesion);
+            this.panelCerrarSession.Controls.Add(this.btnPerfil);
+            this.panelCerrarSession.Location = new System.Drawing.Point(878, 0);
+            this.panelCerrarSession.Name = "panelCerrarSession";
+            this.panelCerrarSession.ShadowDecoration.Parent = this.panelCerrarSession;
+            this.panelCerrarSession.Size = new System.Drawing.Size(174, 78);
+            this.panelCerrarSession.TabIndex = 14;
+            this.panelCerrarSession.Visible = false;
             // 
-            // iconButton3
+            // btnCerrarSesion
             // 
-            this.iconButton3.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton3.FlatAppearance.BorderSize = 0;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton3.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.IconSize = 32;
-            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.Location = new System.Drawing.Point(287, 3);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton3.Size = new System.Drawing.Size(136, 60);
-            this.iconButton3.TabIndex = 19;
-            this.iconButton3.Text = "Tipo de Venta";
-            this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton3.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnCerrarSesion.IconChar = FontAwesome.Sharp.IconChar.PersonWalkingArrowRight;
+            this.btnCerrarSesion.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnCerrarSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCerrarSesion.IconSize = 32;
+            this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 40);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(174, 40);
+            this.btnCerrarSesion.TabIndex = 17;
+            this.btnCerrarSesion.Text = "Cerrar Session";
+            this.btnCerrarSesion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.tsCerrarSession_Click);
+            this.btnCerrarSesion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCerrarSesion_MouseMove);
             // 
-            // iconButton4
+            // btnPerfil
             // 
-            this.iconButton4.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton4.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton4.IconSize = 32;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(429, 3);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton4.Size = new System.Drawing.Size(136, 60);
-            this.iconButton4.TabIndex = 20;
-            this.iconButton4.Text = "Cuadre Caja";
-            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton4.UseVisualStyleBackColor = false;
+            this.btnPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.btnPerfil.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPerfil.FlatAppearance.BorderSize = 0;
+            this.btnPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPerfil.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPerfil.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnPerfil.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.btnPerfil.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnPerfil.IconFont = FontAwesome.Sharp.IconFont.Regular;
+            this.btnPerfil.IconSize = 32;
+            this.btnPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPerfil.Location = new System.Drawing.Point(0, 0);
+            this.btnPerfil.Name = "btnPerfil";
+            this.btnPerfil.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnPerfil.Size = new System.Drawing.Size(174, 40);
+            this.btnPerfil.TabIndex = 16;
+            this.btnPerfil.Text = "Perfil";
+            this.btnPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPerfil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPerfil.UseVisualStyleBackColor = false;
+            this.btnPerfil.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnPerfil_MouseMove);
             // 
-            // iconButton5
+            // pnlSombra
             // 
-            this.iconButton5.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton5.FlatAppearance.BorderSize = 0;
-            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton5.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton5.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton5.IconSize = 32;
-            this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.Location = new System.Drawing.Point(571, 3);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton5.Size = new System.Drawing.Size(136, 60);
-            this.iconButton5.TabIndex = 21;
-            this.iconButton5.Text = "Compras";
-            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton5.UseVisualStyleBackColor = false;
-            // 
-            // iconButton6
-            // 
-            this.iconButton6.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton6.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton6.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton6.IconSize = 32;
-            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton6.Location = new System.Drawing.Point(3, 69);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton6.Size = new System.Drawing.Size(136, 60);
-            this.iconButton6.TabIndex = 22;
-            this.iconButton6.Text = "Traslado";
-            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton6.UseVisualStyleBackColor = false;
-            // 
-            // iconButton7
-            // 
-            this.iconButton7.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton7.FlatAppearance.BorderSize = 0;
-            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton7.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton7.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton7.IconSize = 32;
-            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.Location = new System.Drawing.Point(145, 69);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton7.Size = new System.Drawing.Size(136, 60);
-            this.iconButton7.TabIndex = 23;
-            this.iconButton7.Text = "Devoluciones";
-            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton7.UseVisualStyleBackColor = false;
-            // 
-            // iconButton8
-            // 
-            this.iconButton8.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton8.FlatAppearance.BorderSize = 0;
-            this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton8.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton8.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton8.IconSize = 32;
-            this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton8.Location = new System.Drawing.Point(287, 69);
-            this.iconButton8.Name = "iconButton8";
-            this.iconButton8.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton8.Size = new System.Drawing.Size(136, 60);
-            this.iconButton8.TabIndex = 24;
-            this.iconButton8.Text = "Deudas";
-            this.iconButton8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton8.UseVisualStyleBackColor = false;
-            // 
-            // iconButton9
-            // 
-            this.iconButton9.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton9.FlatAppearance.BorderSize = 0;
-            this.iconButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton9.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton9.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton9.IconSize = 32;
-            this.iconButton9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton9.Location = new System.Drawing.Point(429, 69);
-            this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton9.Size = new System.Drawing.Size(150, 60);
-            this.iconButton9.TabIndex = 25;
-            this.iconButton9.Text = "Consultar";
-            this.iconButton9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton9.UseVisualStyleBackColor = false;
-            // 
-            // iconButton10
-            // 
-            this.iconButton10.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton10.FlatAppearance.BorderSize = 0;
-            this.iconButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton10.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton10.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
-            this.iconButton10.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton10.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton10.IconSize = 32;
-            this.iconButton10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton10.Location = new System.Drawing.Point(585, 69);
-            this.iconButton10.Name = "iconButton10";
-            this.iconButton10.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton10.Size = new System.Drawing.Size(136, 60);
-            this.iconButton10.TabIndex = 26;
-            this.iconButton10.Text = "Mi Caja";
-            this.iconButton10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton10.UseVisualStyleBackColor = false;
+            this.pnlSombra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(96)))), ((int)(((byte)(63)))));
+            this.pnlSombra.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSombra.Location = new System.Drawing.Point(0, 0);
+            this.pnlSombra.Name = "pnlSombra";
+            this.pnlSombra.Size = new System.Drawing.Size(1045, 3);
+            this.pnlSombra.TabIndex = 16;
             // 
             // statusStrip1
             // 
@@ -1021,7 +926,7 @@ namespace wfaIntegradoCom
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 579);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 576);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(390, 23);
             this.statusStrip1.TabIndex = 6;
@@ -1071,109 +976,42 @@ namespace wfaIntegradoCom
             this.toolStripStatusLabel4.Size = new System.Drawing.Size(74, 18);
             this.toolStripStatusLabel4.Text = "Versión: ";
             // 
-            // toolStrip4
-            // 
-            this.toolStrip4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.toolStrip4.AutoSize = false;
-            this.toolStrip4.BackColor = System.Drawing.Color.White;
-            this.toolStrip4.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStrip4.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsPerfil,
-            this.tsCerrarSession});
-            this.toolStrip4.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.toolStrip4.Location = new System.Drawing.Point(894, 6);
-            this.toolStrip4.Name = "toolStrip4";
-            this.toolStrip4.Size = new System.Drawing.Size(148, 80);
-            this.toolStrip4.Stretch = true;
-            this.toolStrip4.TabIndex = 2;
-            this.toolStrip4.Text = "ToolStrip1";
-            // 
-            // tsPerfil
-            // 
-            this.tsPerfil.BackColor = System.Drawing.Color.Transparent;
-            this.tsPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsPerfil.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsPerfil.ForeColor = System.Drawing.Color.Black;
-            this.tsPerfil.Image = global::wfaIntegradoCom.Properties.Resources.user_perfil;
-            this.tsPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsPerfil.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsPerfil.Name = "tsPerfil";
-            this.tsPerfil.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tsPerfil.Size = new System.Drawing.Size(146, 25);
-            this.tsPerfil.Text = "Perfil";
-            this.tsPerfil.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            // 
-            // tsCerrarSession
-            // 
-            this.tsCerrarSession.BackColor = System.Drawing.Color.Transparent;
-            this.tsCerrarSession.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsCerrarSession.ForeColor = System.Drawing.Color.Black;
-            this.tsCerrarSession.Image = global::wfaIntegradoCom.Properties.Resources.salir_base;
-            this.tsCerrarSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsCerrarSession.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsCerrarSession.Name = "tsCerrarSession";
-            this.tsCerrarSession.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tsCerrarSession.Size = new System.Drawing.Size(146, 25);
-            this.tsCerrarSession.Text = "Cerrar Session";
-            this.tsCerrarSession.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            // 
             // elhAlert
             // 
             this.elhAlert.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.elhAlert.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.elhAlert.Location = new System.Drawing.Point(875, 421);
+            this.elhAlert.Location = new System.Drawing.Point(1016, 581);
             this.elhAlert.Name = "elhAlert";
-            this.elhAlert.Size = new System.Drawing.Size(151, 178);
+            this.elhAlert.Size = new System.Drawing.Size(29, 18);
             this.elhAlert.TabIndex = 13;
             this.elhAlert.Text = "elhAlert";
+            this.elhAlert.Visible = false;
             this.elhAlert.Child = this.ucOpcion2;
-            // 
-            // panelCerrarSession
-            // 
-            this.panelCerrarSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelCerrarSession.BackColor = System.Drawing.Color.White;
-            this.panelCerrarSession.Controls.Add(this.siticonePanel1);
-            this.panelCerrarSession.Location = new System.Drawing.Point(875, 87);
-            this.panelCerrarSession.Name = "panelCerrarSession";
-            this.panelCerrarSession.ShadowDecoration.Parent = this.panelCerrarSession;
-            this.panelCerrarSession.Size = new System.Drawing.Size(154, 182);
-            this.panelCerrarSession.TabIndex = 14;
-            this.panelCerrarSession.Visible = false;
-            // 
-            // siticonePanel1
-            // 
-            this.siticonePanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticonePanel1.BorderThickness = 5;
-            this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
-            this.siticonePanel1.Name = "siticonePanel1";
-            this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(154, 50);
-            this.siticonePanel1.TabIndex = 2;
             // 
             // treeView1
             // 
-            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(77)))), ((int)(((byte)(50)))));
+            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.treeView1.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.treeView1.FullRowSelect = true;
             this.treeView1.HideSelection = false;
             this.treeView1.ImageIndex = 3;
             this.treeView1.ImageList = this.ListaImagenes;
-            this.treeView1.LineColor = System.Drawing.Color.WhiteSmoke;
+            this.treeView1.LineColor = System.Drawing.Color.White;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(10);
             this.treeView1.Name = "treeView1";
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.treeView1.SelectedImageIndex = 4;
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(1042, 602);
+            this.treeView1.Size = new System.Drawing.Size(1045, 599);
             this.treeView1.TabIndex = 5;
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
+            this.treeView1.MouseEnter += new System.EventHandler(this.treeView1_MouseEnter);
             // 
             // MDIParent1
             // 
@@ -1192,9 +1030,7 @@ namespace wfaIntegradoCom
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MDIParent1_Load);
             this.PanelEncavezadoFondo.ResumeLayout(false);
-            this.PanelEncavezadoFondo.PerformLayout();
-            this.tsAccesoRapido.ResumeLayout(false);
-            this.tsAccesoRapido.PerformLayout();
+            this.LayoutPanelAccesoRapido.ResumeLayout(false);
             this.siticonePanel2.ResumeLayout(false);
             this.siticonePanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconChildForm)).EndInit();
@@ -1207,12 +1043,9 @@ namespace wfaIntegradoCom
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Negro)).EndInit();
             this.panelCentral.ResumeLayout(false);
             this.panelCentral.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panelCerrarSession.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.toolStrip4.ResumeLayout(false);
-            this.toolStrip4.PerformLayout();
-            this.panelCerrarSession.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1224,35 +1057,16 @@ namespace wfaIntegradoCom
         private Siticone.UI.WinForms.SiticonePanel panelMenuPrincipal;
         private Siticone.UI.WinForms.SiticonePanel PanelEncavezadoFondo;
         private System.Windows.Forms.PictureBox Img_Husat_Blanco;
-        internal System.Windows.Forms.ToolStrip tsAccesoRapido;
-        internal System.Windows.Forms.ToolStripButton tsSistemas;
-        internal System.Windows.Forms.ToolStripButton tsVenta;
-        internal System.Windows.Forms.ToolStripButton tsCaja;
-        internal System.Windows.Forms.ToolStripButton tsCompra;
-        internal System.Windows.Forms.ToolStripButton tsTraslado;
-        internal System.Windows.Forms.ToolStripButton tsExtorna;
-        private System.Windows.Forms.ToolStripButton tsDeuda;
-        private System.Windows.Forms.ToolStripButton tsBtnn;
-        private System.Windows.Forms.ToolStripButton tsConsulta;
-        private System.Windows.Forms.ToolStripButton tsCerraSession;
-        private System.Windows.Forms.ToolStripButton tsMiCaja;
         private WPF.CTRL.Colocaciones.ucOpcion ucOpcion1;
         private Siticone.UI.WinForms.SiticonePanel panelIzquierdo;
         private Siticone.UI.WinForms.SiticonePanel panelImagenLogo;
         private Siticone.UI.WinForms.SiticonePanel panelCentral;
-        private System.Windows.Forms.Integration.ElementHost elhAlert;
-        private WPF.CTRL.Colocaciones.ucOpcion ucOpcion2;
-        internal System.Windows.Forms.ToolStrip toolStrip4;
-        private System.Windows.Forms.ToolStripButton tsPerfil;
-        private System.Windows.Forms.ToolStripButton tsCerrarSession;
         internal System.Windows.Forms.StatusStrip statusStrip1;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private Siticone.UI.WinForms.SiticonePanel panelCerrarSession;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
-        internal System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.PictureBox Img_Husat_Negro;
         private FontAwesome.Sharp.IconButton btnVenta;
         private Siticone.UI.WinForms.SiticonePanel subMenuSoporte;
@@ -1272,19 +1086,24 @@ namespace wfaIntegradoCom
         private Siticone.UI.WinForms.SiticonePanel subMenuVentas;
         private System.Windows.Forms.Label lblChilForm;
         private FontAwesome.Sharp.IconPictureBox iconChildForm;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton4;
-        private FontAwesome.Sharp.IconButton iconButton5;
-        private FontAwesome.Sharp.IconButton iconButton6;
-        private FontAwesome.Sharp.IconButton iconButton7;
-        private FontAwesome.Sharp.IconButton iconButton8;
-        private FontAwesome.Sharp.IconButton iconButton9;
-        private FontAwesome.Sharp.IconButton iconButton10;
-        internal System.Windows.Forms.ToolStripButton tsConfiguracion;
+        private System.Windows.Forms.FlowLayoutPanel LayoutPanelAccesoRapido;
+        private FontAwesome.Sharp.IconButton tsConfiguracion;
+        private FontAwesome.Sharp.IconButton tsUsuarios;
+        private FontAwesome.Sharp.IconButton tsVenta;
+        private FontAwesome.Sharp.IconButton tsCaja;
+        private FontAwesome.Sharp.IconButton tsCompra;
+        private FontAwesome.Sharp.IconButton tsConsulta;
+        private FontAwesome.Sharp.IconButton tsMiCaja;
         private Siticone.UI.WinForms.SiticonePanel siticonePanel2;
+        private System.Windows.Forms.Panel pnlSombra;
+        private FontAwesome.Sharp.IconButton tsCerraSession;
+        private FontAwesome.Sharp.IconButton btnPerfil;
+        private FontAwesome.Sharp.IconButton btnCerrarSesion;
+        internal System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Integration.ElementHost elhAlert;
+        private WPF.CTRL.Colocaciones.ucOpcion ucOpcion2;
+        private Siticone.UI.WinForms.SiticoneComboBox cboxSelecThema;
+        private FontAwesome.Sharp.IconButton btnOpciones;
     }
 }
 

@@ -50,6 +50,7 @@ namespace wfaIntegradoCom
 
         private IconButton BtnActual;
         private System.Windows.Forms.Panel LeftBordeBtn;
+
         //pading botones temporales de submenus 
          Padding PaddingbtnSubMenu = new Padding(10,0,0,0);
        
@@ -123,7 +124,7 @@ namespace wfaIntegradoCom
                 this.treeView1.Controls.RemoveAt(0);
             Form fn = frmload as Form;
             fn.TopLevel = false;
-            fn.Dock = DockStyle.None;
+            fn.Dock = DockStyle.Fill;
             this.treeView1.Controls.Add(fn);
             this.treeView1.Tag = fn;
             fn.Show();
@@ -286,7 +287,8 @@ namespace wfaIntegradoCom
         {
             dtMenu = dt;
         }
-        public void fnCargarMenuAccesoRapido()
+       
+        public void fnCargarMenuAccesoRapidoBtn()
         {
             DataTable dtMenuPrin = new DataTable();
             DataView dvMenuPrincipal = new DataView(dtMenu.Tables[0]);
@@ -296,16 +298,18 @@ namespace wfaIntegradoCom
             dvMenuPrincipal.RowFilter = "cMenuPadre = '8888500000' ";
             iNumMenu = dvMenuPrincipal.Table.Rows.Count;
 
+            var controlPanel = LayoutPanelAccesoRapido.Controls.OfType<IconButton>();
+
             if (iNumMenu > 0)
             {
                 foreach (DataRowView drFila in dvMenuPrincipal)
                 {
                     lcItemMenu = drFila["cMenuNombre"].ToString().Trim();
-                    foreach (ToolStripButton ts in tsAccesoRapido.Items)
+                    foreach (IconButton ts in controlPanel)
                     {
                         if (ts.Name.Trim() == lcItemMenu)
                         {
-                            ts.ToolTipText = drFila["cNomFormulario"].ToString();
+                            ts.Name = drFila["cNomFormulario"].ToString();
                             ts.Tag = Convert.ToInt32(drFila["intIdTipoLlamada"]);
                             ts.Visible = true;
                         }
@@ -337,8 +341,9 @@ namespace wfaIntegradoCom
                     {
                         if(AbrirFrmLoad(new frmLoad()))
                         {
+                          
 
-                            
+
                         }
 
                     }
@@ -369,7 +374,8 @@ namespace wfaIntegradoCom
         {
             fnCargarMenuPrin();
             fnCargarMenuPrinBotones();
-            fnCargarMenuAccesoRapido();
+         
+            fnCargarMenuAccesoRapidoBtn();
             lcCodMenu = "8888100000";
             imgList = ListaImagenes;
             treeView1.Nodes.Clear();
@@ -939,12 +945,28 @@ namespace wfaIntegradoCom
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+
+            //Aplicando Themas a los paneles
+            ColorThemas.ElegirThema(cboxSelecThema.Text);
+            treeView1.BackColor = ColorThemas.PanelPadre;
+            panelIzquierdo.BackColor = ColorThemas.PanelBotones;
+            PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
+            PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
+            //colores inicio a los botones de panel botones
+            btnVenta.BackColor = ColorThemas.PanelBotones;
+            btnRecaudacion.BackColor = ColorThemas.PanelBotones;
+            btnComercial.BackColor = ColorThemas.PanelBotones;
+            btnLogistica.BackColor = ColorThemas.PanelBotones;
+            btnSistemas.BackColor = ColorThemas.PanelBotones;
+            btnRrhh.BackColor = ColorThemas.PanelBotones;
+            btnConfiguracion.BackColor = ColorThemas.PanelBotones;
+            btnSoporte.BackColor = ColorThemas.PanelBotones;
+
+
             //inicio de funciones de cargado de menus y formulario load
-           
+
             try
-            {
-                
-                
+            {                
                 Loading();
                 SystemEvents.PowerModeChanged += OnPowerModeChange;
                 InitializeTimer();
@@ -1027,6 +1049,13 @@ namespace wfaIntegradoCom
             }
         }
 
+        private void fnActivarFormularioConBoton(string pcNomreFormulario , int pintidTipoLlamada)
+        {
+            Form frmFormulario;
+
+
+        }
+
         private void fnActivarFormulario(String pcNombreFormulario,int pintidTipoLlamada)
         {
             Form frmFormulario;
@@ -1088,9 +1117,9 @@ namespace wfaIntegradoCom
             }
             else if (e.ClickedItem.Name=="tsMiCaja")
             {
-                frmCaja frmCaja = new frmCaja();
-                //fnCargarFormAPanel(new frmCaja());
-                frmCaja.Show();
+               // frmCaja frmCaja = new frmCaja();
+                fnCargarFormAPanel(new frmCaja());
+                //frmCaja.Show();
             }
             else
             {
@@ -1351,9 +1380,20 @@ namespace wfaIntegradoCom
 
 
 
-        private void PruebaLoad_Click(object sender, EventArgs e)
+        private Boolean PruebaLoad_Click(object frmload)
         {
-            AbrirFrmLoad(new frmLoad());
+            
+            if (this.treeView1.Controls.Count > 0)
+                this.treeView1.Controls.RemoveAt(0);
+            Form fn = frmload as Form;
+            fn.TopLevel = false;
+            fn.Dock = DockStyle.Fill;
+            this.treeView1.Controls.Add(fn);
+            this.treeView1.Tag = fn;
+            fn.Show();
+
+
+            return true;
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -1379,7 +1419,8 @@ namespace wfaIntegradoCom
 
         private void fnBotonActivo(object senderBtn, Color color)
         {
-            
+            ColorThemas.ElegirThema(cboxSelecThema.Text);
+
             if (senderBtn != null)
             {   
                 //desactivamos el Boton
@@ -1387,11 +1428,15 @@ namespace wfaIntegradoCom
                 //Personalizando Boton
                 BtnActual = (IconButton)senderBtn;//asigna el boton actual con el Boton remitente
                 BtnActual.BackColor = Color.White;
-                BtnActual.ForeColor = color;
+                //BtnActual.ForeColor = color;
+                BtnActual.ForeColor = ColorThemas.PanelBotones; 
                 BtnActual.TextAlign = ContentAlignment.MiddleCenter;
-                BtnActual.IconColor = color;
+                //BtnActual.IconColor = color;
+                BtnActual.IconColor = ColorThemas.PanelBotones; 
                 BtnActual.TextImageRelation = TextImageRelation.TextBeforeImage;
                 BtnActual.ImageAlign = ContentAlignment.MiddleRight;
+                //BtnActual.FlatAppearance.MouseOverBackColor = color;
+
                 //borde Izquierdo del boton
                 LeftBordeBtn.BackColor = Color.Black;
                 LeftBordeBtn.Location = new Point(0, BtnActual.Location.Y);
@@ -1401,6 +1446,9 @@ namespace wfaIntegradoCom
                 iconChildForm.IconChar = BtnActual.IconChar;
                 lblChilForm.Text = BtnActual.Text;
 
+                //BtnActual.FlatAppearance.MouseOverBackColor = Color.FromArgb(244, 96, 63);
+                //BtnActual.FlatAppearance.text
+
             }
 
         }
@@ -1409,10 +1457,10 @@ namespace wfaIntegradoCom
         {
             if (BtnActual != null)
             {
-                BtnActual.BackColor = Variables.ColorEmpresa;
-                BtnActual.ForeColor = Color.Gainsboro;
+                BtnActual.BackColor = ColorThemas.PanelBotones;
+                BtnActual.ForeColor = Color.White ;
                 BtnActual.TextAlign = ContentAlignment.MiddleLeft;
-                BtnActual.IconColor = Color.Gainsboro;
+                BtnActual.IconColor = Color.White;
                 BtnActual.TextImageRelation = TextImageRelation.ImageBeforeText;
                 BtnActual.ImageAlign = ContentAlignment.MiddleLeft;
             }
@@ -1520,16 +1568,14 @@ namespace wfaIntegradoCom
         {
            
             LoadCarga = false;
-
+     
+            //fnBotonActivo(sender, Variables.ColorEmpresa);
             fnBotonActivo(sender, Variables.ColorEmpresa);
-
-            //btnVenta.BorderThickness.Left = 4 ;
-
             MostrarSubMenu(subMenuVentas);
 
             treeView1.Nodes.Clear();
             lcCodMenu = "8888800000";
-            //fnCargarMenuGeneral(lcCodMenu);
+            
             fnCargarSubMenuVentas(lcCodMenu);
         }
 
@@ -1539,8 +1585,6 @@ namespace wfaIntegradoCom
             LoadCarga = false;
 
             fnBotonActivo(sender, Variables.ColorEmpresa);
-           
-
 
             MostrarSubMenu(subMenuRecaudacion);
 
@@ -1555,7 +1599,6 @@ namespace wfaIntegradoCom
             LoadCarga = false;
 
             fnBotonActivo(sender, Variables.ColorEmpresa);
-
 
             MostrarSubMenu(subMenuComercial);
 
@@ -1583,7 +1626,6 @@ namespace wfaIntegradoCom
 
             fnBotonActivo(sender, Variables.ColorEmpresa);
 
-
             MostrarSubMenu(subMenuSistemas);
 
             treeView1.Nodes.Clear();
@@ -1596,8 +1638,6 @@ namespace wfaIntegradoCom
             LoadCarga = false;
 
             fnBotonActivo(sender, Variables.ColorEmpresa);
-
-
 
             MostrarSubMenu(subMenuRrhh);
 
@@ -1612,7 +1652,6 @@ namespace wfaIntegradoCom
 
             fnBotonActivo(sender, Variables.ColorEmpresa);
 
-
             MostrarSubMenu(subMenuConfiguracion);
 
             treeView1.Nodes.Clear();
@@ -1625,8 +1664,6 @@ namespace wfaIntegradoCom
             LoadCarga = false;
 
             fnBotonActivo(sender, Variables.ColorEmpresa);
-
-
 
             MostrarSubMenu(subMenuSoporte);
 
@@ -1750,20 +1787,135 @@ namespace wfaIntegradoCom
             fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+
+        private void flowLayoutPanel1_Click(object sender, EventArgs e)
         {
-            LoadCarga = false;
-            fnBotonActivo(sender, Variables.ColorEmpresa);
+            IconButton btn = new IconButton();
+            btn = fnObtenerBotonEspIconButton(sender, LayoutPanelAccesoRapido);
+            fnActivarFormulario(btn.Name, Convert.ToInt32(btn.Tag));
 
-            //btnVenta.BorderThickness.Left = 4 ;
-
-            MostrarSubMenu(subMenuVentas);
-
-            treeView1.Nodes.Clear();
-            lcCodMenu = "8888800000";
-            //fnCargarMenuGeneral(lcCodMenu);
-            fnCargarSubMenuVentas(lcCodMenu);
         }
+        private IconButton fnObtenerBotonEspIconButton(object sender, FlowLayoutPanel panel)
+        {
+            var Controles = panel.Controls.OfType<IconButton>();
+            IconButton temp = new IconButton();
+            String Cadena = sender.ToString();
+            String[] array = Cadena.Split(':');
+            String item = array[1].ToString().Trim();
+            foreach (IconButton btn in Controles)
+            {
+                //btn.BackColor = Variables.ColorBackColorSubMenus;
+                if (btn.Text == item)
+                {
+                    temp = btn;
+                    //break;
+                }
+
+            }
+            return temp;
+        }
+
+        private void tsSistemas_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1_Click(sender, e);
+        }
+
+        private void tsAccesos_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1_Click(sender, e);
+        }
+        private void tsVenta_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1_Click(sender, e);
+        }
+        private void tsCaja_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1_Click(sender, e);
+        }
+        private void tsCompra_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1_Click(sender, e);
+        }
+
+
+        private void btnCerrarSesion_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            btnCerrarSesion.IconChar =IconChar.PersonWalkingDashedLineArrowRight;
+            btnPerfil.IconFont = IconFont.Regular;
+        }
+
+        private void btnPerfil_MouseMove(object sender, EventArgs e)
+        {
+            btnPerfil.IconFont =IconFont.Solid;
+            btnCerrarSesion.IconChar = IconChar.PersonWalkingArrowRight;
+        }
+
+        private void siticoneComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            ColorThemas.ElegirThema(cboxSelecThema.Text);
+            SubmenusOcultos();
+            reset();
+
+            treeView1.BackColor = ColorThemas.PanelPadre;
+            panelIzquierdo.BackColor = ColorThemas.PanelBotones;
+            //Botones del Menu Principal
+            btnVenta.BackColor = ColorThemas.PanelBotones;
+            btnRecaudacion.BackColor = ColorThemas.PanelBotones;
+            btnComercial.BackColor = ColorThemas.PanelBotones;
+            btnLogistica.BackColor = ColorThemas.PanelBotones;
+            btnSistemas.BackColor = ColorThemas.PanelBotones;
+            btnRrhh.BackColor = ColorThemas.PanelBotones;
+            btnConfiguracion.BackColor = ColorThemas.PanelBotones;
+            btnSoporte.BackColor = ColorThemas.PanelBotones;
+            PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
+            btnOpciones.BackColor = ColorThemas.PanelPadre;
+
+            if (cboxSelecThema.Text == "Pink")
+            {
+                treeView1.ForeColor = Color.Black;
+                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
+                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
+               
+            }
+            else 
+            {
+                treeView1.ForeColor = Color.White;
+                btnOpciones.IconColor = Color.White;
+                btnOpciones.ForeColor = Color.White;
+            }
+
+        }
+
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+
+            if (cboxSelecThema.Visible == false)
+            {
+                cboxSelecThema.Visible = true;
+                btnOpciones.IconChar = IconChar.Gear;
+
+            }
+            else
+            {
+                cboxSelecThema.Visible = false;
+                btnOpciones.IconChar = IconChar.Sliders;
+            }
+        }
+
+        private void treeView1_MouseEnter(object sender, EventArgs e)
+        {
+            cboxSelecThema.Visible = false;
+            btnOpciones.IconChar = IconChar.Sliders;
+        }
+
+        private void btnOpciones_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            cboxSelecThema.Visible = true;
+            btnOpciones.IconChar = IconChar.Gear;
+        }
+
 
 
     }

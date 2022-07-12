@@ -286,6 +286,7 @@
       <DependentUpon>frmVPOtrasVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="datetimePrueba.cs" />
+    <Compile Include="Funciones\ColorThemas.cs" />
     <Compile Include="Funciones\Enum\StateOrder.cs" />
     <Compile Include="Funciones\Format.cs" />
     <Compile Include="Funciones\FunValidaciones.cs" />
