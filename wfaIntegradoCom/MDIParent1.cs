@@ -1109,9 +1109,9 @@ namespace wfaIntegradoCom
             }
             else if (e.ClickedItem.Name=="tsMiCaja")
             {
-                frmCaja frmCaja = new frmCaja();
-                //fnCargarFormAPanel(new frmCaja());
-                frmCaja.Show();
+                //frmCaja frmCaja = new frmCaja();
+                ////fnCargarFormAPanel(new frmCaja());
+                //frmCaja.Show();
             }
             else
             {

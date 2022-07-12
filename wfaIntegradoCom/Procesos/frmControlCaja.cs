@@ -53,7 +53,7 @@ namespace wfaIntegradoCom.Procesos
                     cboTipoReporte.Visible = true;
                     cboOperacion.SelectedValue = 0;
                     cboOperacion.Visible = true;
-                    txtBuscarRepGeneral.Location = new Point(876, 49);             
+                    txtBuscarRepGeneral.Location = new Point(1091, 49);             
                     txtBuscarRepGeneral.Width = 134;             
 
                 }

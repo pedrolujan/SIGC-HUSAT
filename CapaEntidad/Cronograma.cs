@@ -39,23 +39,32 @@ namespace CapaEntidad
         public Int32 idTipoDescuento { get; set; }
         public String strTipoDescuento { get; set; }
         public Double descuento { get; set; }
+        public Boolean estChk { get; set; }
         public Double descuentoCantidad { get; set; }
         public Double descuentoPrecio { get; set; }
         public String sDescuento { get; set; }
         public Double cantidad { get; set; }
         public Double total { get; set; }
+        public Double MontoTotalDocumento { get; set; }
         public String sTotal { get; set; }
         public Double montoPago { get; set; }
         public String estado { get; set; }
         public DateTime fechaRegistro { get; set; }
         public Int32 idUsuario { get; set; }
+        public Int32 idPlan { get; set; }
         public String cSimbolo { get; set; }
         public Int32 idDetallePago { get; set; }
+        public Int32 idOperacion { get; set; }
         public String cCliente { get; set; }
         public String cVehiculo { get; set; }
         public String cPlan { get; set; }
         public String cPeriodo { get; set; }
         public String cDiaCiclo { get; set; }
+        public String CodigoVenta { get; set; }
+        public String strFechaPago { get; set; }
+        public Cliente clsCliente { get; set; }
+        public Vehiculo clsVehiculo { get; set; }
+        public Tarifa clsTarifa{ get; set; }
         public DetalleCronograma(DetalleCronograma add)
         {
             idDetalleCronograma = add.idDetalleCronograma;

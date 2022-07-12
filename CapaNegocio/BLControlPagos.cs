@@ -49,5 +49,18 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public Boolean blAniadirADocumentoVenta(List<DetalleCronograma> clsCPC,Int32 idusuario, Int32 tipoCon)
+        {
+            objControlPagos = new DAControlPagos();
+            try
+            {
+                //return objControlPagos.daAniadirADocumentoVenta(clsCPC, idusuario, tipoCon);
+                return false;
+            }
+            catch ( Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

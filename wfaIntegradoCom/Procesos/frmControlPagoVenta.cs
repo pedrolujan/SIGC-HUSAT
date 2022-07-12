@@ -49,6 +49,8 @@ namespace wfaIntegradoCom.Procesos
         static List<DocumentoVenta> lstDocumentoVenta = new List<DocumentoVenta>();
         static DetalleVentaCabecera clsDetallecabecera = new DetalleVentaCabecera();
         static VentaGeneral clsVentaGeneral = new VentaGeneral();
+
+        List<DetalleCronograma> lstCronoGramasParaDocumentoVenta = new List<DetalleCronograma>();
         static Int32 CronogramaSeleccionado = 0;
         static Boolean estDescuento = false;
         static List<Ciclo> lstC = new List<Ciclo>();
@@ -141,6 +143,7 @@ namespace wfaIntegradoCom.Procesos
                 }
 
                 String strDescuento = "";
+                Color colorBg = new Color();
                 if (lstDetalleCronograma[fila].strTipoDescuento == "PORCENTUAL" && lstDetalleCronograma[fila].descuento != 0)
                 {
                     strDescuento = lstDetalleCronograma[fila].descuento + " % ";
@@ -149,24 +152,43 @@ namespace wfaIntegradoCom.Procesos
                 {
                     strDescuento = clsMoneda.cSimbolo + " " + lstDetalleCronograma[fila].descuento;
                 }
+                DetalleCronograma dtc = lstCronoGramasParaDocumentoVenta.Find(j => j.idDetalleCronograma == lstDetalleCronograma[fila].idDetalleCronograma);
+                if (dtc is DetalleCronograma)
+                {
+                    colorBg = Color.Gainsboro;
+                }
+                else
+                {
+                    colorBg = Color.White;
+                }
                 Double DescuentoPrecio = fnConvertirATipoDescuento(lstDetalleCronograma[fila].precioUnitario, lstDetalleCronograma[fila].strTipoDescuento, lstDetalleCronograma[fila].descuento);
                 lstDetalleCronograma[fila].descuentoPrecio = DescuentoPrecio;
                 Double ImporteTotal = (lstDetalleCronograma[fila].precioUnitario - DescuentoPrecio);
                 lstDetalleCronograma[fila].total = ImporteTotal;
                 dgvCronograma.Rows[fila].Cells[0].Value = lstDetalleCronograma[fila].idDetalleCronograma;
                 dgvCronograma.Rows[fila].Cells[1].Value = fila + 1;
-                dgvCronograma.Rows[fila].Cells[2].Value = lstDetalleCronograma[fila].periodoInicio.ToString("dd/MM/yyyy");
-                dgvCronograma.Rows[fila].Cells[3].Value = lstDetalleCronograma[fila].periodoFinal.ToString("dd/MM/yyyy");
-                dgvCronograma.Rows[fila].Cells[4].Value = lstDetalleCronograma[fila].fechaEmision.ToString("dd/MM/yyyy");
+                dgvCronograma.Rows[fila].Cells[2].Value = Convert.ToInt32(lstDetalleCronograma[fila].estChk);
+                dgvCronograma.Rows[fila].Cells[3].Value = lstDetalleCronograma[fila].periodoInicio.ToString("dd/MM/yyyy");
+                dgvCronograma.Rows[fila].Cells[4].Value = lstDetalleCronograma[fila].periodoFinal.ToString("dd/MM/yyyy");
+                dgvCronograma.Rows[fila].Cells[5].Value = lstDetalleCronograma[fila].fechaEmision.ToString("dd/MM/yyyy");
 
-                dgvCronograma.Rows[fila].Cells[5].Value = lstDetalleCronograma[fila].fechaVencimiento.ToString("dd/MM/yyyy");
-                dgvCronograma.Rows[fila].Cells[6].Value = lstDetalleCronograma[fila].fechaPago.ToString("dd/MM/yyyy") == "01/01/1900" ? "" : lstDetalleCronograma[fila].fechaPago.ToString("dd/MM/yyyy");
-                dgvCronograma.Rows[fila].Cells[7].Value = clsMoneda.cSimbolo + ' ' + string.Format("{0:0.00}", lstDetalleCronograma[fila].precioUnitario);
-                dgvCronograma.Rows[fila].Cells[8].Value = strDescuento != "" ? strDescuento : "" + lstDetalleCronograma[fila].descuento;
-                dgvCronograma.Rows[fila].Cells[9].Value = clsMoneda.cSimbolo + ' ' + string.Format("{0:0.00}", lstDetalleCronograma[fila].descuentoPrecio);
-                dgvCronograma.Rows[fila].Cells[10].Value = clsMoneda.cSimbolo + ' ' + string.Format("{0:0.00}", lstDetalleCronograma[fila].total);
-                dgvCronograma.Rows[fila].Cells[11].Value = estadoCuota;
-               
+                dgvCronograma.Rows[fila].Cells[6].Value = lstDetalleCronograma[fila].fechaVencimiento.ToString("dd/MM/yyyy");
+                dgvCronograma.Rows[fila].Cells[7].Value = lstDetalleCronograma[fila].fechaPago.ToString("dd/MM/yyyy") == "01/01/1900" ? "" : lstDetalleCronograma[fila].fechaPago.ToString("dd/MM/yyyy");
+                dgvCronograma.Rows[fila].Cells[8].Value = clsMoneda.cSimbolo + ' ' + string.Format("{0:0.00}", lstDetalleCronograma[fila].precioUnitario);
+                dgvCronograma.Rows[fila].Cells[9].Value = strDescuento != "" ? strDescuento : "" + lstDetalleCronograma[fila].descuento;
+                dgvCronograma.Rows[fila].Cells[10].Value = clsMoneda.cSimbolo + ' ' + string.Format("{0:0.00}", lstDetalleCronograma[fila].descuentoPrecio);
+                dgvCronograma.Rows[fila].Cells[11].Value = clsMoneda.cSimbolo + ' ' + string.Format("{0:0.00}", lstDetalleCronograma[fila].total);
+                dgvCronograma.Rows[fila].Cells[12].Value = estadoCuota;
+
+
+                dgvCronograma.Rows[fila].DefaultCellStyle.BackColor = colorBg;
+
+                //dgvCronograma.Rows[fila].Cells[12].ReadOnly = true;
+                dgvCronograma.Rows[fila].Cells[12].Style.BackColor = Color.White;
+                //dgvCronograma.Rows[fila].Cells[13].ReadOnly = true;
+                dgvCronograma.Rows[fila].Cells[13].Style.BackColor = Color.White;
+                //dgvCronograma.Rows[fila].Cells[14].ReadOnly = true;
+                dgvCronograma.Rows[fila].Cells[14].Style.BackColor = Color.White;
             }
             else
             {
@@ -236,9 +258,9 @@ namespace wfaIntegradoCom.Procesos
                     if (lstDetalleCronograma[i].estado == "CUOTA PAGADA")
                     {
                         estadoCuota = "✅ " + lstDetalleCronograma[i].estado;
-                        chk = 1;
+                        lstDetalleCronograma[i].estChk = true;
                         estBloquear = true;
-                        colorBg = Color.LightGray;
+                        colorBg = Color.Silver;
                     }
                     else if (lstDetalleCronograma[i].estado == "PAGO PENDIENTE")
                     {
@@ -253,6 +275,12 @@ namespace wfaIntegradoCom.Procesos
                         estadoCuota = "❌ " + lstDetalleCronograma[i].estado;
                     }
 
+                    DetalleCronograma dtc = lstCronoGramasParaDocumentoVenta.Find(j => j.idDetalleCronograma == lstDetalleCronograma[i].idDetalleCronograma);
+                    if (dtc is DetalleCronograma)
+                    {
+                        lstDetalleCronograma[i].estChk = true;
+                        colorBg = Color.Gainsboro;
+                    }
                     Double DescuentoPrecio = fnConvertirATipoDescuento(lstDetalleCronograma[i].precioUnitario, lstDetalleCronograma[i].strTipoDescuento, lstDetalleCronograma[i].descuento);
                     lstDetalleCronograma[i].descuentoPrecio = DescuentoPrecio;
                     Double ImporteTotal = (lstDetalleCronograma[i].precioUnitario - DescuentoPrecio);
@@ -260,7 +288,7 @@ namespace wfaIntegradoCom.Procesos
                     dgvCronograma.Rows.Add(
                        lstDetalleCronograma[i].idDetalleCronograma,
                        i + 1,
-                       chk,
+                       lstDetalleCronograma[i].estChk,
                       lstDetalleCronograma[i].periodoInicio.ToString("dd/MM/yyyy"),
                       lstDetalleCronograma[i].periodoFinal.ToString("dd/MM/yyyy"),
                       lstDetalleCronograma[i].fechaEmision.ToString("dd/MM/yyyy"),
@@ -615,6 +643,7 @@ namespace wfaIntegradoCom.Procesos
         {
             try
             {
+                lstCronoGramasParaDocumentoVenta.Clear();
                 btnValidarEstados.Visible = false;
                 EstadoCarga = false;
                 Boolean bResult = false;
@@ -923,6 +952,8 @@ namespace wfaIntegradoCom.Procesos
                     {
                         numItem = (i + 1),
                         idDetalleCronograma = Convert.ToInt32(dtResult.Rows[i][0]),
+                        CodigoVenta= Convert.ToString(dtResult.Rows[0][24]),
+                        idPlan= Convert.ToInt32(dtResult.Rows[0][1]),
                         fechaRegistro = Convert.ToDateTime(dtResult.Rows[i][18]),
                         periodoInicio = Convert.ToDateTime(dtResult.Rows[i][19]),
                         periodoFinal = Convert.ToDateTime(dtResult.Rows[i][20]),
@@ -1037,8 +1068,71 @@ namespace wfaIntegradoCom.Procesos
                 lstMoneda = null;
             }
         }
+        private void obtenerNumeroDeItems()
+        {
+            SiticoneDataGridView dgv = dgvDatosDocumentosVenta;
+            dgv.Rows.Clear();
+            btnContadorItems.Text = ""+ lstCronoGramasParaDocumentoVenta.Count;
+            Int32 totalRows= lstCronoGramasParaDocumentoVenta.Count;
+            Int32 y = 0;
+            foreach (DetalleCronograma dc in lstCronoGramasParaDocumentoVenta)
+            {
+                dgv.Rows.Add
+                (
+                    dc.idDetalleCronograma,
+                    y + 1,
+                    "Cuota " + dc.fechaEmision.ToString("MMMM  yyyy") + " - Placa " + dc.clsVehiculo.vPlaca,
+                    FunGeneral.fnFormatearPrecio("S/.",dc.total,0)
+
+                ); 
+                y++;
+            }
+            dgv.Rows.Add("","","","");
+            dgv.Rows.Add
+                (
+                    0,
+                    "",
+                    "IMPORTE TOTAL ",
+                    FunGeneral.fnFormatearPrecio("S/.", lstCronoGramasParaDocumentoVenta.Sum(I=>I.total), 0)
+
+                );
+            dgv.Rows[y].DefaultCellStyle.BackColor = Color.Red;
+            dgv.Height= ((totalRows+2) *dgv.ThemeStyle.RowsStyle.Height);
+            pnDocumentos.Height = dgv.Height + 10;
+
+
+        }
         private void dgvCronograma_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            DataGridViewCell fila = dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex ];
+            if (e.ColumnIndex==2 && lstDetalleCronograma[e.RowIndex].estado!="CUOTA PAGADA")
+            {
+                Int32 idDetalle = Convert.ToInt32(dgvCronograma.Rows[e.RowIndex].Cells[0].Value);
+                DetalleCronograma dtc = lstCronoGramasParaDocumentoVenta.Find(i => i.idDetalleCronograma == idDetalle);
+                if (dtc is DetalleCronograma)
+                {
+                    lstCronoGramasParaDocumentoVenta.Remove(dtc);
+                    lstDetalleCronograma[e.RowIndex].estChk = false;
+                }
+                else
+                {
+                    lstDetalleCronograma[e.RowIndex].estChk = true;
+                    lstDetalleCronograma[e.RowIndex].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
+                    lstDetalleCronograma[e.RowIndex].clsCliente = clsCliente;
+                    lstDetalleCronograma[e.RowIndex].clsVehiculo = clsVehiculo;
+                    lstDetalleCronograma[e.RowIndex].clsTarifa = clsTarifa;
+                    lstDetalleCronograma[e.RowIndex].idOperacion = 3;
+                    lstDetalleCronograma[e.RowIndex].fechaPago = Variables.gdFechaSis;
+                    lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[e.RowIndex]);
+                }
+
+                
+                fnCargarTablaLista(true, e.RowIndex, e.ColumnIndex);
+                obtenerNumeroDeItems();
+
+
+            }
             
             if (e.ColumnIndex == dgvCronograma.Columns["btnPagar"].Index && e.RowIndex >= 0)
             {
@@ -1890,6 +1984,62 @@ namespace wfaIntegradoCom.Procesos
         private void siticoneButton1_Click_1(object sender, EventArgs e)
         {
             fnActualizarCronograma(dtpFechaInicialBus.Value,dtpFechaFinalBus.Value);
+        }
+
+        private void btnAniadirADocumento_Click(object sender, EventArgs e)
+        {
+            
+            //DetalleCronograma clsDcr = new DetalleCronograma();
+            //Double mTotal = 0;
+            //foreach (DetalleCronograma dcr in lstDetalleCronograma)
+            //{
+            //    dcr.clsCliente = clsCliente;
+            //    dcr.clsVehiculo = clsVehiculo;
+            //    dcr.clsTarifa = clsTarifa;
+            //    dcr.idOperacion = 3;
+            //    dcr.fechaPago = Variables.gdFechaSis;
+            //    if (dcr.estChk==true && dcr.estado!= "CUOTA PAGADA")
+            //    {
+            //        lstCronoGramasParaDocumentoVenta.Add(dcr);
+            //    mTotal += (dcr.precioUnitario - dcr.descuentoPrecio);
+            //    }
+            //}
+            //lstDcr[0].MontoTotalDocumento = mTotal;
+            //fnAniadirADocumento(lstDcr, Variables.gnCodUser, 0);
+
+
+
+        }
+
+        private void fnAniadirADocumento(List<DetalleCronograma> dcr,Int32 idusuario,Int32 tipoCon)
+        {
+            BLControlPagos BL = new BLControlPagos();
+            Boolean resp = false;
+            resp= BL.blAniadirADocumentoVenta(dcr, idusuario, tipoCon);
+
+            if (resp)
+            {
+
+            }
+
+        }
+        private void dgvCronograma_Click(object sender, EventArgs e)
+        {
+            //aca debe irCodigo
+            //dgvCronograma.Rows[9].Cells[2].Value = 0;
+        }
+
+        private void lblNumDocumentos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (pnDocumentos.Visible==true)
+            {
+                pnDocumentos.Visible=false;
+            }
+            else
+            {
+                pnDocumentos.Visible=true;
+            }
+            //pnDocumentos.Location = new Point(782, (330- tabControl1.TabPages[1].AutoScrollPosition.Y));
         }
 
         private void btnVerDatos_Click(object sender, EventArgs e)
