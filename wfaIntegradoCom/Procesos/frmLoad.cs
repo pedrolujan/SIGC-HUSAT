@@ -17,6 +17,7 @@ namespace wfaIntegradoCom.Procesos
         public frmLoad()
         {
             InitializeComponent();
+
         }
         DataSet dtMenu = new DataSet();
 
@@ -50,8 +51,10 @@ namespace wfaIntegradoCom.Procesos
                
         }
 
-        private void frmLoad_Load(object sender, EventArgs e)
+        private void frmLoad_Load(object sender, EventArgs e) 
         {
+           TransparencyKey = Color.Transparent;
+
             this.timer1.Start();
             BLMenu objMenu = new BLMenu();
             MDIParent1 frmMDI = new MDIParent1();
