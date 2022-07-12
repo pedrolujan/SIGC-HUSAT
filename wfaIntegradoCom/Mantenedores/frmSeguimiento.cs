@@ -789,7 +789,8 @@ namespace wfaIntegradoCom.Mantenedores
             estEstadoSeguimiento = result1.Item1;
             msjEstadoSeguimiento = result1.Item2;
 
-            if (estObservacionSeguimiento & estfechaSeguimiento & estEstadoSeguimiento)
+               
+            if (estObservacionSeguimiento & estfechaSeguimiento & estEstadoSeguimiento && erFechaRegSeguimiento.Text.ToString().Trim()=="")
             {
                 lcResultado = fnGuardarSeguimiento();
                 if (lcResultado == "OK")
@@ -1250,7 +1251,26 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void dtpFechaRegSeguimiento_ValueChanged(object sender, EventArgs e)
         {
-            
+            if (dtpFechaRegSeguimiento.Value>Variables.gdFechaSis)
+            {
+                MessageBox.Show("La fecha de registro no puede ser mayor a la fecha actual\n "+ Variables.gdFechaSis.ToString("dd-MMM-yyyy hh:mm"),"Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Warning) ;
+                imgFechaRegSeguimiento.Image = Properties.Resources.error;
+                erFechaRegSeguimiento.Text = "La fecha de registro no puede ser mayor a la fecha actual\n " + Variables.gdFechaSis.ToString("dd-MMM-yyyy hh:mm");
+            }
+            else if (dtpFechaRegSeguimiento.Value < Convert.ToDateTime(Variables.gdFechaSis.AddDays(-3).ToString("dd-MM-yyyy")))
+            {
+                MessageBox.Show("La fecha de registro no puede ser menor a la fecha: \n " + Variables.gdFechaSis.AddDays(-3).ToString("dd-MMM-yyyy hh:mm"), "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                imgFechaRegSeguimiento.Image = Properties.Resources.error;
+
+                erFechaRegSeguimiento.Text = "La fecha de registro no puede ser Menor a la fecha:\n " + Variables.gdFechaSis.AddDays(-3).ToString("dd-MMM-yyyy hh:mm");
+
+            }
+            else
+            {
+                imgFechaRegSeguimiento.Image = Properties.Resources.ok;
+
+                erFechaRegSeguimiento.Text = "";
+            }
         }
 
         private void tabRegistroVisitas_Click(object sender, EventArgs e)

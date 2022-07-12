@@ -1985,7 +1985,7 @@ namespace wfaIntegradoCom.Mantenedores
                     {
                         if (lnTipoCon == -2)
                         {
-                            if (ClsVentaGeneral.clsCronograma is Cronograma && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddDays(-20))
+                            if (ClsVentaGeneral.clsCronograma is Cronograma && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
                             {
                                 arrayPrecio = new double[]
                                 {

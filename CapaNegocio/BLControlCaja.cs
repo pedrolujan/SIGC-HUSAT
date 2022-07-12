@@ -43,7 +43,7 @@ namespace CapaNegocio
             }
            
         }
-        public List<ReporteBloque> BuscarReporteGeneralVentas(Busquedas clsBusq)
+        public Tuple<List<ReporteBloque>,List<ReporteBloque>> BuscarReporteGeneralVentas(Busquedas clsBusq)
         {
             dc = new DAControlCaja();
             try

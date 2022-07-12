@@ -95,11 +95,12 @@ namespace CapaDato
 
             }
         }
-        public List<ReporteBloque> daBuscarReporteGeneralVentas(Busquedas clsBusq)
+        public Tuple<List<ReporteBloque>,List<ReporteBloque>> daBuscarReporteGeneralVentas(Busquedas clsBusq)
         {
             SqlParameter[] pa = new SqlParameter[12];
             List<ControlCaja> lstControl = new List<ControlCaja>();
-            DataTable dt = new DataTable();
+            DataSet dtMenu = new DataSet();
+            List<ReporteBloque> lsDasboard = new List<ReporteBloque>();
             List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
             clsConexion objCnx = null;
             objUtil = new clsUtil();
@@ -120,22 +121,43 @@ namespace CapaDato
 
                  objCnx = new clsConexion("");
 
-                dt = objCnx.EjecutarProcedimientoDT("uspBuscarReporteGeneralVentas", pa);
-                foreach (DataRow dr in dt.Rows)
+                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarReporteGeneralVentas", pa);
+                if (clsBusq.cod1.Length>5)
                 {
-                    lsRepBloque.Add(new ReporteBloque
-                    {
-                        Codigoreporte=dr["id"].ToString(),
-                        Detallereporte=dr["descripcion"].ToString(),
-                        Cantidad=Convert.ToInt32(dr["cantidad"]),
-                        idMoneda=Convert.ToInt32(dr["idMoneda"]),
-                        SimboloMoneda=dr["cSimbolo"].ToString(),
-                        ImporteTipoCambio=Convert.ToDouble(dr["cTipoCambio"]),
-                        ImporteRow=Convert.ToDouble(dr["montoTotal"])
-                    });
-                }
+                    DataView dvDasboard = new DataView(dtMenu.Tables[0]);
+                    DataView dvParatablas = new DataView(dtMenu.Tables[1]);
 
-                return lsRepBloque;
+                    foreach (DataRowView dr in dvDasboard)
+                    {
+                        lsDasboard.Add(new ReporteBloque
+                        {
+                            Codigoreporte = dr["id"].ToString(),
+                            Detallereporte = dr["descripcion"].ToString(),
+                            Cantidad = Convert.ToInt32(dr["cantidad"]),
+                            idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                            SimboloMoneda = dr["cSimbolo"].ToString(),
+                            ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
+                            ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                        });
+                    }
+                    foreach (DataRowView dr in dvParatablas)
+                    {
+                        lsRepBloque.Add(new ReporteBloque
+                        {
+                            Codigoreporte = dr["id"].ToString(),
+                            Detallereporte = dr["descripcion"].ToString(),
+                            Cantidad = Convert.ToInt32(dr["cantidad"]),
+                            idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                            SimboloMoneda = dr["cSimbolo"].ToString(),
+                            ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
+                            ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                        });
+
+                    }
+                }
+               
+
+                return Tuple.Create(lsDasboard, lsRepBloque);
 
             }
             catch (Exception ex)

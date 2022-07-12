@@ -34,18 +34,29 @@ namespace wfaIntegradoCom.Procesos
             {
                 dtFechaFinG.Value = Variables.gdFechaSis;
                 dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
-
-                //FunGeneral.fnLlenarTablaCodTipoCon(cboMetodopago, "TIPA",true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboTipoReporte, "TRPT", false);
-                //FunGeneral.fnLlenarTablaCodTipoCon(cboDocumentoVenta, "DOVE",true);
                 frmBuscarVentas frmBV = new frmBuscarVentas();
-                //frmBV.fnlistarUsuario(cboUsuario, 2, true);
-
                 frmRegistrarVenta frm = new frmRegistrarVenta();
-                //frm.fnLlenarTipoTarifa(0, cboTipoVenta, true);
-                //frm.fnLlenarTipoPlan(0, cboTipoPlanP, 0);
-                //fnListarTipoPago(cboTipoPago,0, "ESDOV", true);
 
+                if (Variables.gsCargoUsuario== "PETR0006")
+                {
+                    cboTipoReporte.SelectedValue = "TRPT0002";
+                    cboTipoReporte.Visible = false;
+                    cboOperacion.SelectedValue = Variables.gnCodUser;
+                    cboOperacion.Visible = false;
+                    txtBuscarRepGeneral.Location = new Point(559, 49);             
+                    txtBuscarRepGeneral.Width = 451;             
+                }
+                else
+                {
+                    cboTipoReporte.SelectedValue = "0";
+                    cboTipoReporte.Visible = true;
+                    cboOperacion.SelectedValue = "0";
+                    cboOperacion.Visible = true;
+                    txtBuscarRepGeneral.Location = new Point(876, 49);             
+                    txtBuscarRepGeneral.Width = 134;             
+
+                }
                 //panel1.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 //fnActivarControles(false);
             }
@@ -160,7 +171,7 @@ namespace wfaIntegradoCom.Procesos
             }
             
         }
-        private void fnBuscarReporteGeneralVentas(SiticoneDataGridView dgv, Int32 numPagina, Int32 tipoCon)
+        public void fnBuscarReporteGeneralVentas(SiticoneDataGridView dgv, Int32 numPagina, Int32 tipoCon)
         {
             bl = new BLControlCaja();
             DataTable dtRes = new DataTable();
@@ -188,7 +199,9 @@ namespace wfaIntegradoCom.Procesos
 
             Int32 filas = 10;
 
-            lsReporteBloque = bl.BuscarReporteGeneralVentas( clsBusq);
+            var result = bl.BuscarReporteGeneralVentas( clsBusq);
+            fnGenerarPaneles(result.Item2);
+            lsReporteBloque = result.Item2;
             Int32 totalRows = lsReporteBloque.Count;
 
             siticoneDataGridView1.Visible = false;
@@ -315,7 +328,139 @@ namespace wfaIntegradoCom.Procesos
             }
             
         }
+        
+        private void fnGenerarPaneles(List<ReporteBloque> lstBusq)
+        {
+            Color colorFondo = new Color();
+            Color colorHeaderFooter = new Color();
+            Color colorLetraHF = new Color();
+            Color colorLetraBody = new Color();
+            flowLayoutPanel1.Controls.Clear();
+            colorLetraHF = Color.LightGray;
+            colorLetraBody = Color.Black;
+            for (Int32 i = 0; i < lstBusq.Count; i++)
+            {
+                if (lstBusq[i].ImporteRow < 100)
+                {
+                    colorFondo = Color.FromArgb(205, 76, 70);
+                }
+                else if (lstBusq[i].ImporteRow >= 100 && lstBusq[i].ImporteRow < 300)
+                {
+                    colorFondo = Color.FromArgb(240, 130, 33);
+                }
+                else if (lstBusq[i].ImporteRow >= 300 && lstBusq[i].ImporteRow < 700)
+                {
+                    colorFondo = Color.FromArgb(251, 191, 69);
+                }
+                else if (lstBusq[i].ImporteRow >= 700 && lstBusq[i].ImporteRow < 1000)
+                {
+                    colorFondo = Color.FromArgb(1, 139, 211);
+                }
+                else if (lstBusq[i].ImporteRow >= 1000)
+                {
+                    colorFondo = Color.FromArgb(2, 195, 130);
+                }
+                colorHeaderFooter = fnDevolVerColorTransparente(120, Color.Black);
+                //Panel princilal
+                SiticonePanel panelFondo = new SiticonePanel();
+                panelFondo.Name = "panel" + i;
+                panelFondo.Size = new Size(190, 120);
+                panelFondo.BorderRadius = 10;
+                panelFondo.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
 
+                panelFondo.BackColor = Color.Transparent;
+                panelFondo.FillColor = colorFondo;
+
+                SiticonePanel panel = new SiticonePanel();
+                panel.Name = "panel" + i;
+                panel.Size = new Size(190, 120);
+                panel.BorderRadius = 10;
+                panel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+                panel.BackColor = Color.Transparent;
+                panel.FillColor = colorHeaderFooter;
+                panelFondo.Controls.Add(panel);
+                // panel Header
+                SiticonePanel pnHead = new SiticonePanel();
+                pnHead.Name = "pnHead" + i;
+                pnHead.Size = new Size(190, 25);
+                pnHead.BackColor = Color.Transparent;
+                //pnHead.FillColor = ;
+                pnHead.BorderRadius = 10;
+
+
+
+
+
+                SiticoneLabel lblH = new SiticoneLabel();
+                lblH.Name = "lblHeader" + i;
+                lblH.AutoSize = false;
+                lblH.Size = new Size(190, 25);
+                lblH.BackColor = Color.Transparent;
+                lblH.Location = new Point(0, 0);
+                lblH.Text = FunGeneral.FormatearCadenaTitleCase(lstBusq[i].Detallereporte);
+                lblH.TextAlignment = ContentAlignment.MiddleCenter;
+                lblH.Font = new Font("Arial", 13F, GraphicsUnit.Pixel);
+                lblH.ForeColor = colorLetraHF;
+                pnHead.Controls.Add(lblH);
+                panel.Controls.Add(pnHead);
+
+                //Panel Izquierdo
+                SiticonePanel pnIzquierdo = new SiticonePanel();
+                pnIzquierdo.Name = "pnIzquierdo" + i;
+                pnIzquierdo.BackColor = colorFondo;
+                pnIzquierdo.Size = new Size(95, 70);
+                pnIzquierdo.Location = new Point(0, 25);
+
+
+                SiticoneLabel lblIzq = new SiticoneLabel();
+                lblIzq.Name = "lblIzquierdo" + i;
+                lblIzq.AutoSize = false;
+                lblIzq.Size = new Size(95, 70);
+                lblIzq.Location = new Point(0, 0);
+                lblIzq.Text = "" + lstBusq[i].Cantidad;
+                lblIzq.TextAlignment = ContentAlignment.MiddleCenter;
+                lblIzq.Font = new Font("Arial", 20F, GraphicsUnit.Pixel);
+                lblIzq.ForeColor = colorLetraBody;
+                pnIzquierdo.Controls.Add(lblIzq);
+
+                panel.Controls.Add(pnIzquierdo);
+                //Panel Derecho
+                SiticonePanel pnDerecho = new SiticonePanel();
+                pnDerecho.Name = "pnDerecho" + i;
+                pnDerecho.BackColor = colorFondo;
+                pnDerecho.Size = new Size(95, 70);
+                pnDerecho.Location = new Point(95, 25);
+                panel.Controls.Add(pnDerecho);
+
+                //Panel Footer
+                SiticonePanel pnFooter = new SiticonePanel();
+                pnFooter.Name = "pnFooter" + i;
+                //pnFooter.BackColor = colorHeader;
+                pnFooter.Size = new Size(190, 25);
+                pnFooter.Location = new Point(0, 95);
+
+                SiticoneLabel lblF = new SiticoneLabel();
+                lblF.Name = "lblFooter" + i;
+                lblF.AutoSize = false;
+                lblF.Size = new Size(190, 25); ;
+                lblF.Location = new Point(0, 0);
+                lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecio("S/.", lstBusq[i].ImporteRow, 0);
+                //lblF.BackColor = "Dark"+ color;
+                lblF.TextAlignment = ContentAlignment.MiddleCenter;
+                lblF.Font = new Font("Arial", 13F, GraphicsUnit.Pixel);
+                lblF.ForeColor = colorLetraHF;
+                pnFooter.Controls.Add(lblF);
+
+
+                panel.Controls.Add(pnFooter);
+
+                flowLayoutPanel1.Controls.Add(panelFondo);
+            }
+        }
+        private Color fnDevolVerColorTransparente(Int32 alfa, Color colr)
+        {
+            return Color.FromArgb(alfa, colr);
+        }
         private void siticoneLabel3_Click(object sender, EventArgs e)
         {
 
@@ -749,7 +894,8 @@ namespace wfaIntegradoCom.Procesos
             clsBusq.numPagina = 0;
             clsBusq.tipoCon = -3;
 
-            lstRep = bl.BuscarReporteGeneralVentas(clsBusq);
+            var result = bl.BuscarReporteGeneralVentas(clsBusq);
+            lstRep = result.Item2;
             dgv.Visible = false;
             dgv.Columns.Clear();
             dgv.Rows.Clear();

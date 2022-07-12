@@ -837,7 +837,6 @@
             this.dtpFechaRegSeguimiento.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtpFechaRegSeguimiento.BorderThickness = 1;
             this.dtpFechaRegSeguimiento.CheckedState.Parent = this.dtpFechaRegSeguimiento;
-            this.dtpFechaRegSeguimiento.Enabled = false;
             this.dtpFechaRegSeguimiento.FillColor = System.Drawing.Color.White;
             this.dtpFechaRegSeguimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaRegSeguimiento.Format = System.Windows.Forms.DateTimePickerFormat.Long;
