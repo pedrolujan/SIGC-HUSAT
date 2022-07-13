@@ -50,7 +50,7 @@ namespace wfaIntegradoCom.Procesos
         static DetalleVentaCabecera clsDetallecabecera = new DetalleVentaCabecera();
         static VentaGeneral clsVentaGeneral = new VentaGeneral();
 
-        List<DetalleCronograma> lstCronoGramasParaDocumentoVenta = new List<DetalleCronograma>();
+       static List<DetalleCronograma> lstCronoGramasParaDocumentoVenta = new List<DetalleCronograma>();
         static Int32 CronogramaSeleccionado = 0;
         static Boolean estDescuento = false;
         static List<Ciclo> lstC = new List<Ciclo>();
@@ -923,6 +923,20 @@ namespace wfaIntegradoCom.Procesos
                 clsVehiculo.vPlaca = Convert.ToString(dtResult.Rows[0][4]);
                 clsVehiculo.Observaciones = Convert.ToString(dtResult.Rows[0][5]);
 
+                Vehiculo clsvh = new Vehiculo();
+                clsvh.idVehiculo = Convert.ToInt32(dtResult.Rows[0][3]);
+                clsvh.vPlaca = Convert.ToString(dtResult.Rows[0][4]);
+                clsvh.Observaciones = Convert.ToString(dtResult.Rows[0][5]);
+
+                Cliente clsCli= new Cliente();
+                clsCli.cApePat = dtResult.Rows[0][6].ToString();
+                clsCli.cApeMat = dtResult.Rows[0][7].ToString();
+                clsCli.cNombre = dtResult.Rows[0][8].ToString();
+                clsCli.cDireccion = dtResult.Rows[0][9].ToString();
+                clsCli.cContactoNom1 = dtResult.Rows[0][10].ToString();
+                clsCli.cTiDo = Convert.ToInt32(dtResult.Rows[0][11]);
+                clsCli.cDocumento = Convert.ToString(dtResult.Rows[0][13]);
+
                 clsCliente.cApePat = dtResult.Rows[0][6].ToString();
                 clsCliente.cApeMat = dtResult.Rows[0][7].ToString();
                 clsCliente.cNombre = dtResult.Rows[0][8].ToString();
@@ -952,8 +966,8 @@ namespace wfaIntegradoCom.Procesos
                     {
                         numItem = (i + 1),
                         idDetalleCronograma = Convert.ToInt32(dtResult.Rows[i][0]),
-                        CodigoVenta= Convert.ToString(dtResult.Rows[0][24]),
-                        idPlan= Convert.ToInt32(dtResult.Rows[0][1]),
+                        CodigoVenta = Convert.ToString(dtResult.Rows[0][24]),
+                        idPlan = Convert.ToInt32(dtResult.Rows[0][1]),
                         fechaRegistro = Convert.ToDateTime(dtResult.Rows[i][18]),
                         periodoInicio = Convert.ToDateTime(dtResult.Rows[i][19]),
                         periodoFinal = Convert.ToDateTime(dtResult.Rows[i][20]),
@@ -967,9 +981,15 @@ namespace wfaIntegradoCom.Procesos
                         total = Convert.ToInt32(dtResult.Rows[i][30]) == 0 ? clsTarifa.PrecioPlan : Convert.ToDouble(dtResult.Rows[i][30]),
                         estado = Convert.ToString(dtResult.Rows[i][23]),
                         idDetallePago = Convert.ToInt32(dtResult.Rows[i][32]),
-                        strTipoDescuento = Convert.ToString(dtResult.Rows[i][34])
+                        strTipoDescuento = Convert.ToString(dtResult.Rows[i][34]),
+                        idVehiculo = Convert.ToInt32(dtResult.Rows[0][3]),
+                        PlacaVehiculo = Convert.ToString(dtResult.Rows[0][4]),
+                        cCliente = dtResult.Rows[0][8].ToString() + " " + dtResult.Rows[0][6].ToString() + " " + dtResult.Rows[0][7].ToString(),
+                        ClaseVehiculo = clsvh,
+                        ClaseCliente = clsCli
 
-                    });
+
+                    }); ; ;
 
 
                 }
@@ -1081,7 +1101,7 @@ namespace wfaIntegradoCom.Procesos
                 (
                     dc.idDetalleCronograma,
                     y + 1,
-                    "Cuota " + dc.fechaEmision.ToString("MMMM  yyyy") + " - Placa " + dc.clsVehiculo.vPlaca,
+                    "Cuota " + dc.fechaEmision.ToString("MMMM  yyyy") + " - Placa " + dc.ClaseVehiculo.vPlaca,
                     FunGeneral.fnFormatearPrecio("S/.",dc.total,0)
 
                 ); 
@@ -1096,9 +1116,13 @@ namespace wfaIntegradoCom.Procesos
                     FunGeneral.fnFormatearPrecio("S/.", lstCronoGramasParaDocumentoVenta.Sum(I=>I.total), 0)
 
                 );
-            dgv.Rows[y].DefaultCellStyle.BackColor = Color.Red;
-            dgv.Height= ((totalRows+2) *dgv.ThemeStyle.RowsStyle.Height);
-            pnDocumentos.Height = dgv.Height + 10;
+            dgv.Rows[y+1].DefaultCellStyle.BackColor = Color.Red;
+            dgv.Rows[y+1].DefaultCellStyle.ForeColor = Color.White;
+            dgv.Height= ((totalRows+3) *dgv.ThemeStyle.RowsStyle.Height);
+            pnDocumentos.Height = dgv.Height + 40;
+            dgv.Columns[1].Width=5;
+            dgv.Columns[2].Width=100;
+            dgv.Columns[3].Width=60;
 
 
         }
@@ -1117,14 +1141,34 @@ namespace wfaIntegradoCom.Procesos
                 }
                 else
                 {
-                    lstDetalleCronograma[e.RowIndex].estChk = true;
-                    lstDetalleCronograma[e.RowIndex].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
-                    lstDetalleCronograma[e.RowIndex].clsCliente = clsCliente;
-                    lstDetalleCronograma[e.RowIndex].clsVehiculo = clsVehiculo;
-                    lstDetalleCronograma[e.RowIndex].clsTarifa = clsTarifa;
-                    lstDetalleCronograma[e.RowIndex].idOperacion = 3;
-                    lstDetalleCronograma[e.RowIndex].fechaPago = Variables.gdFechaSis;
-                    lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[e.RowIndex]);
+                    if (lstCronoGramasParaDocumentoVenta.Count>0)
+                    {
+                        DetalleCronograma dtc1 = lstCronoGramasParaDocumentoVenta.Find(i => i.ClaseCliente.cDocumento == lstDetalleCronograma[e.RowIndex].ClaseCliente.cDocumento);
+
+                        if (dtc1 is DetalleCronograma)
+                        {
+                            lstDetalleCronograma[e.RowIndex].estChk = true;
+                            lstDetalleCronograma[e.RowIndex].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
+                            lstDetalleCronograma[e.RowIndex].idOperacion = 3;
+                            lstDetalleCronograma[e.RowIndex].fechaPago = Variables.gdFechaSis;
+                            lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[e.RowIndex]);
+                        }
+                        else
+                        {
+                            MessageBox.Show("El Cliente no es el mismo a su seleccion anterior ", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        lstDetalleCronograma[e.RowIndex].estChk = true;
+                        lstDetalleCronograma[e.RowIndex].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
+
+                        lstDetalleCronograma[e.RowIndex].idOperacion = 3;
+                        lstDetalleCronograma[e.RowIndex].fechaPago = Variables.gdFechaSis;
+                        lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[e.RowIndex]);
+                    }
+                    
+                    
                 }
 
                 
@@ -2034,12 +2078,18 @@ namespace wfaIntegradoCom.Procesos
             if (pnDocumentos.Visible==true)
             {
                 pnDocumentos.Visible=false;
+                lblNumDocumentos.Width =161;
+                lblNumDocumentos.Location = new Point(877, (328 + tabControl1.TabPages[1].AutoScrollPosition.Y));
             }
             else
             {
                 pnDocumentos.Visible=true;
+                lblNumDocumentos.Width=396;
+                pnDocumentos.Width = 420;
+                dgvDatosDocumentosVenta.Width = 416;
+                lblNumDocumentos.Location = new Point(642, (328+tabControl1.TabPages[1].AutoScrollPosition.Y));
             }
-            //pnDocumentos.Location = new Point(782, (330- tabControl1.TabPages[1].AutoScrollPosition.Y));
+            pnDocumentos.Location = new Point(642, (350+tabControl1.TabPages[1].AutoScrollPosition.Y));
         }
 
         private void btnVerDatos_Click(object sender, EventArgs e)

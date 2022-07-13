@@ -62,8 +62,12 @@ namespace CapaEntidad
         public String cDiaCiclo { get; set; }
         public String CodigoVenta { get; set; }
         public String strFechaPago { get; set; }
-        public Cliente clsCliente { get; set; }
-        public Vehiculo clsVehiculo { get; set; }
+        public Int32 idVehiculo { get; set; }
+        public String PlacaVehiculo { get; set; }
+        public Int32 idCliente { get; set; }
+        public Cliente ClaseCliente { get; set; }
+
+        public Vehiculo ClaseVehiculo { get; set; }
         public Tarifa clsTarifa{ get; set; }
         public DetalleCronograma(DetalleCronograma add)
         {
