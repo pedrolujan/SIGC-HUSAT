@@ -2553,24 +2553,24 @@ namespace wfaIntegradoCom.Procesos
             //&& estNroDocumento
             if (estTipoIngreso && estFechaIngreso  && estCboEstado && estFechaCompra && estCboProveedor && estTabla && estObservacion && estEstadoExterno && estObservacionExterna && estMoneda)
             {
-                
 
-                    lcResultado = fnGuardarOrdenCompra(lnTipoCon, clsOperador, tipoordencompra, out lidOrden, out lcImprimirLote);
-                    if (lcResultado == "OK")
+
+                lcResultado = fnGuardarOrdenCompra(lnTipoCon, clsOperador, tipoordencompra, out lidOrden, out lcImprimirLote);
+                if (lcResultado == "OK")
+                {
+                    btnNuevo_Click(sender, e);
+                    string strActivarImpresion = FunGeneral.fnDevolverParametro("ACIM0001") != null ? (FunGeneral.fnDevolverParametro("ACIM0001")[0].cValor) : "1";
+                    if (strActivarImpresion == "1")
                     {
-                        btnNuevo_Click(sender, e);
-                        string strActivarImpresion = FunGeneral.fnDevolverParametro("ACIM0001") != null ? (FunGeneral.fnDevolverParametro("ACIM0001")[0].cValor) : "1";
-                        if (strActivarImpresion == "1")
-                        {
-                            Impresiones.frmImpresion frmImpre = new Impresiones.frmImpresion();
-                            frmImpre.fnInicio(1, "Imprimir Orden de Compra", lidOrden);
-                        }
-                        MessageBox.Show("Se Grabo Satisfactoriamente la Orden de Compra." + "\n" + lcImprimirLote, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Impresiones.frmImpresion frmImpre = new Impresiones.frmImpresion();
+                        frmImpre.fnInicio(1, "Imprimir Orden de Compra", lidOrden);
                     }
-                    else
-                    {
-                        MessageBox.Show("Error al Grabar Orden de Compra. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
+                    MessageBox.Show("Se Grabo Satisfactoriamente la Orden de Compra." + "\n" + lcImprimirLote, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al Grabar Orden de Compra. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
                 
 
             }

@@ -68,7 +68,7 @@ namespace CapaEntidad
         public Cliente ClaseCliente { get; set; }
 
         public Vehiculo ClaseVehiculo { get; set; }
-        public Tarifa clsTarifa{ get; set; }
+        public Tarifa ClaseTarifa{ get; set; }
         public DetalleCronograma(DetalleCronograma add)
         {
             idDetalleCronograma = add.idDetalleCronograma;

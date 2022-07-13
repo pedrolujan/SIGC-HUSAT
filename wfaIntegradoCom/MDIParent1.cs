@@ -1791,7 +1791,7 @@ namespace wfaIntegradoCom
         {
             IconButton btn = new IconButton();
             btn = fnObtenerBotonEspIconButton(sender, LayoutPanelAccesoRapido);
-            fnActivarFormulario(btn.Name, Convert.ToInt32(btn.Tag));
+            fnActivarFormulario(btn.Name,0);
 
         }
         private IconButton fnObtenerBotonEspIconButton(object sender, FlowLayoutPanel panel)

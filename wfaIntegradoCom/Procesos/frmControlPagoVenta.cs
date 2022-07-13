@@ -913,7 +913,9 @@ namespace wfaIntegradoCom.Procesos
                 BLTipoCliente objTipoCliente = new BLTipoCliente();
                 lstDetalleCronograma.Clear();
                 clsVentaGeneral.codigoVenta = Convert.ToString(dtResult.Rows[0][24]);
+                Tarifa trf = new Tarifa();
                 clsTarifa = objBlTipTarifa.blDevolverPreciosPagosMensuales(Convert.ToInt32(dtResult.Rows[0][1]), Convert.ToString(dtResult.Rows[0][24]), Convert.ToInt32(dtResult.Rows[0][33]));
+                trf = objBlTipTarifa.blDevolverPreciosPagosMensuales(Convert.ToInt32(dtResult.Rows[0][1]), Convert.ToString(dtResult.Rows[0][24]), Convert.ToInt32(dtResult.Rows[0][33]));
                 cboMoneda.SelectedValue = clsTarifa.IdMoneda;
                 clsCiclo.IdCiclo = Convert.ToInt32(dtResult.Rows[0][17]);
 
@@ -986,8 +988,8 @@ namespace wfaIntegradoCom.Procesos
                         PlacaVehiculo = Convert.ToString(dtResult.Rows[0][4]),
                         cCliente = dtResult.Rows[0][8].ToString() + " " + dtResult.Rows[0][6].ToString() + " " + dtResult.Rows[0][7].ToString(),
                         ClaseVehiculo = clsvh,
-                        ClaseCliente = clsCli
-
+                        ClaseCliente = clsCli,
+                        ClaseTarifa= trf
 
                     }); ; ;
 
@@ -1325,6 +1327,60 @@ namespace wfaIntegradoCom.Procesos
 
             return lstDetV;
         }
+
+        private List<DetalleVenta> fnGenerarPagoPrincipalBloque()
+        {
+            List<DetalleVenta> lstDetV = new List<DetalleVenta>();
+            Int32 y = 0;
+
+            Boolean est = false;
+            foreach (DetalleCronograma item in lstCronoGramasParaDocumentoVenta)
+            {
+                if (item.ClaseVehiculo.idVehiculo != clsVehiculo.idVehiculo)
+                {
+                    est = true;
+                    break;
+                }
+                    
+            }
+
+            foreach (DetalleCronograma dcr in lstCronoGramasParaDocumentoVenta)
+            {
+                String dato = "";
+                if (est == true )
+                {
+                    dato = " - Placa " + dcr.ClaseVehiculo.vPlaca;
+                }
+                else
+                {
+                    dato = " - Plan " + dcr.cPlan;
+
+                }
+                
+                lstDetV.Add(new DetalleVenta
+                {
+                    IdDetalleVenta = dcr.idDetalleCronograma,
+                    Numeracion = 1+y,
+                    Descripcion = "Cuota " + dcr.fechaEmision.ToString("MMMM  yyyy") + dato,
+                    idTipoTarifa = dcr.ClaseTarifa.IdTarifa,
+                    PrecioUni = dcr.precioUnitario,
+                    Descuento = dcr.descuento,
+                    TotalTipoDescuento = dcr.descuentoPrecio,
+                    IdTipoDescuento = Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue),
+                    Cantidad = 1,
+                    Couta = 0,
+                    Importe = dcr.total,
+                    cSimbolo = clsMoneda.cSimbolo
+                });
+                y++;
+            }
+
+            
+
+
+
+            return lstDetV;
+        }
         private DetalleVentaCabecera fnCalcularCabeceraDetalle(List<DetalleVenta> lstDV)
         {
             DetalleVentaCabecera clsDVC = new DetalleVentaCabecera();
@@ -1346,34 +1402,97 @@ namespace wfaIntegradoCom.Procesos
             List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
             if (estPagoCuota == true)
             {
-                clsCronograma = lstCronograma.Find(i =>i.idCronograma== CronogramaSeleccionado);
+                clsCronograma = lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
                 lstPagosTrand[0].idMoneda = clsMoneda.idMoneda;
+                lstPagosTrand[0].Unidades = 1;
                 claseControlPagos = new ControlPagos
                 {
                     fechaRegistro = Variables.gdFechaSis,
-                    fechaPago=dtFechaPagoCuota,
-                    fechaVenta= clsDetCronogramaEspecifico.fechaRegistro,
+                    fechaPago = dtFechaPagoCuota,
+                    fechaVenta = clsDetCronogramaEspecifico.fechaRegistro,
                     claseCliente = clsCliente,
                     claseCronograma = clsCronograma,
                     listaDetalleCronograma = lstDetalleCronograma,
-                    claseDetalleCronograma= clsDetCronogramaEspecifico,
+                    claseDetalleCronograma = clsDetCronogramaEspecifico,
                     claseVehiculo = clsVehiculo,
                     listaPagosTrandiaria = lstPagosTrand,
-                    claseTarifa=clsTarifa,
-                    listaDocumentoVenta=lstDocumentoVenta,
-                    listaDetalleVenta=lstDetalleVenta,
-                    idUsuario=Variables.gnCodUser,
-                    idCiclo=1
-                    
+                    claseTarifa = clsTarifa,
+                    listaDocumentoVenta = lstDocumentoVenta,
+                    listaDetalleVenta = lstDetalleVenta,
+                    idUsuario = Variables.gnCodUser,
+                    idCiclo = 1
+
 
                 };
-                xmlDocumentoVenta.Add(new xmlDocumentoVentaGeneral
-                {
-                    xmlDocumentoVenta = lstDocumentoVenta,
-                    xmlDetalleVentas = lstDetalleVenta,
-                });
                 fnGuardarPagoCuota(claseControlPagos, xmlDocumentoVenta, lnTipoCon);
-                
+
+                //if (lstCronoGramasParaDocumentoVenta.Count < 2)
+                //{
+                //    clsCronograma = lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
+                //    lstPagosTrand[0].idMoneda = clsMoneda.idMoneda;
+                //    lstPagosTrand[0].Unidades = 1;
+                //    claseControlPagos = new ControlPagos
+                //    {
+                //        fechaRegistro = Variables.gdFechaSis,
+                //        fechaPago = dtFechaPagoCuota,
+                //        fechaVenta = clsDetCronogramaEspecifico.fechaRegistro,
+                //        claseCliente = clsCliente,
+                //        claseCronograma = clsCronograma,
+                //        listaDetalleCronograma = lstDetalleCronograma,
+                //        claseDetalleCronograma = clsDetCronogramaEspecifico,
+                //        claseVehiculo = clsVehiculo,
+                //        listaPagosTrandiaria = lstPagosTrand,
+                //        claseTarifa = clsTarifa,
+                //        listaDocumentoVenta = lstDocumentoVenta,
+                //        listaDetalleVenta = lstDetalleVenta,
+                //        idUsuario = Variables.gnCodUser,
+                //        idCiclo = 1
+
+
+                //    };
+                //    xmlDocumentoVenta.Add(new xmlDocumentoVentaGeneral
+                //    {
+                //        xmlDocumentoVenta = lstDocumentoVenta,
+                //        xmlDetalleVentas = lstDetalleVenta,
+                //    });
+                //    fnGuardarPagoCuota(claseControlPagos, xmlDocumentoVenta, lnTipoCon);
+                //}
+                //else
+                //{
+                //   List<Pagos> lstPagosT= new List<Pagos>();
+
+                //    clsCronograma = lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
+                //    lstPagosTrand[0].idMoneda = clsMoneda.idMoneda;
+                //    lstPagosTrand[0].Unidades = lstCronoGramasParaDocumentoVenta.Count;
+                //    claseControlPagos = new ControlPagos
+                //    {
+                //        fechaRegistro = Variables.gdFechaSis,
+                //        fechaPago = dtFechaPagoCuota,
+                //        fechaVenta = clsDetCronogramaEspecifico.fechaRegistro,
+                //        claseCliente = clsCliente,
+                //        claseCronograma = clsCronograma,
+                //        listaDetalleCronograma = lstCronoGramasParaDocumentoVenta,
+                //        claseDetalleCronograma = clsDetCronogramaEspecifico,
+                //        claseVehiculo = clsVehiculo,
+                //        listaPagosTrandiaria = lstPagosTrand,
+                //        claseTarifa = clsTarifa,
+                //        listaDocumentoVenta = lstDocumentoVenta,
+                //        listaDetalleVenta = lstDetalleVenta,
+                //        idUsuario = Variables.gnCodUser,
+                //        idCiclo = 1
+
+
+                //    };
+                //    xmlDocumentoVenta.Add(new xmlDocumentoVentaGeneral
+                //    {
+                //        xmlDocumentoVenta = lstDocumentoVenta,
+                //        xmlDetalleVentas = lstDetalleVenta,
+                //    });
+
+                //}
+
+
+
             }
             else
             {
@@ -1403,35 +1522,77 @@ namespace wfaIntegradoCom.Procesos
             lstPagosTrand = lstEntidades;
            
         }
-        private List<DocumentoVenta> fnCargarDocumentoVenta(DetalleVentaCabecera lstdvc)
+        private List<DocumentoVenta> fnCargarDocumentoVenta(DetalleVentaCabecera lstdvc,Int32 tipCon)
         {
             List<DocumentoVenta> lsDocVenta = new List<DocumentoVenta>();
             TipoTarifa lstTipoVenta = new TipoTarifa();
             frmRegistrarVenta frmRV = new frmRegistrarVenta();
-
-            lsDocVenta.Add(new DocumentoVenta
+            
+            if (tipCon==0)
             {
-                idCliente = clsCliente.idCliente,
-                cCliente = FunGeneral.FormatearCadenaTitleCase(clsCliente.cNombre + " " + clsCliente.cApePat + " " + clsCliente.cApeMat),
-                cTipoDoc = fnDevolverTipoDocPersona(clsCliente.cTiDo),
-                cDireccion = FunGeneral.FormatearCadenaTitleCase(clsCliente.cDireccion+' '+clsCliente.cContactoNom1),
-                cDocumento = clsCliente.cDocumento,
-                SimboloMoneda = clsMoneda.cSimbolo,
-                cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),
-                NombreDocumento = Convert.ToString(cboComprobanteP.Text),
-                dFechaVenta = Convert.ToDateTime(dtFechaPago.Value),
-                idMoneda = clsMoneda.idMoneda,
-                nSubtotal = lstdvc.SubTotal,
-                nNroIGV = 18,
-                nIGV = lstdvc.IGV,
-                nMontoTotal = lstdvc.Total,
-                cUsuario = frmRV.fnObtenerUsuarioActual(),
-                cVehiculos = clsVehiculo.vPlaca,
-                cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
-                cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",
-                cTipoVenta = lstTipoVenta.Nombre
+                lsDocVenta.Add(new DocumentoVenta
+                {
+                    idCliente = clsCliente.idCliente,
+                    cCliente = FunGeneral.FormatearCadenaTitleCase(clsCliente.cNombre + " " + clsCliente.cApePat + " " + clsCliente.cApeMat),
+                    cTipoDoc = fnDevolverTipoDocPersona(clsCliente.cTiDo),
+                    cDireccion = FunGeneral.FormatearCadenaTitleCase(clsCliente.cDireccion + ' ' + clsCliente.cContactoNom1),
+                    cDocumento = clsCliente.cDocumento,
+                    SimboloMoneda = clsMoneda.cSimbolo,
+                    cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),
+                    NombreDocumento = Convert.ToString(cboComprobanteP.Text),
+                    dFechaVenta = Convert.ToDateTime(dtFechaPago.Value),
+                    idMoneda = clsMoneda.idMoneda,
+                    nSubtotal = lstdvc.SubTotal,
+                    nNroIGV = 18,
+                    nIGV = lstdvc.IGV,
+                    nMontoTotal = lstdvc.Total,
+                    cUsuario = frmRV.fnObtenerUsuarioActual(),
+                    cVehiculos = clsVehiculo.vPlaca,
+                    cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
+                    cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",
+                    cTipoVenta = lstTipoVenta.Nombre
 
-            });
+                });
+            }else if (tipCon==1)
+            {
+                String vPlacas = "";
+                foreach (DetalleCronograma item in lstCronoGramasParaDocumentoVenta)
+                {
+                    if (item.ClaseVehiculo.idVehiculo!=clsVehiculo.idVehiculo)
+                    {
+                        vPlacas = "Varias";
+                    }
+                    else
+                    {
+                        vPlacas = item.ClaseVehiculo.vPlaca;
+                    }
+                }
+
+                lsDocVenta.Add(new DocumentoVenta
+                {
+                    idCliente = clsCliente.idCliente,
+                    cCliente = FunGeneral.FormatearCadenaTitleCase(lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cNombre + " " + lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cApePat + " " + lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cApeMat),
+                    cTipoDoc = fnDevolverTipoDocPersona(lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cTiDo),
+                    cDireccion = FunGeneral.FormatearCadenaTitleCase(lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cDireccion + ' ' + lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cContactoNom1),
+                    cDocumento = lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cDocumento,
+                    SimboloMoneda = clsMoneda.cSimbolo,
+                    cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),
+                    NombreDocumento = Convert.ToString(cboComprobanteP.Text),
+                    dFechaVenta = Convert.ToDateTime(dtFechaPago.Value),
+                    idMoneda = clsMoneda.idMoneda,
+                    nSubtotal = lstdvc.SubTotal,
+                    nNroIGV = 18,
+                    nIGV = lstdvc.IGV,
+                    nMontoTotal = lstdvc.Total,
+                    cUsuario = frmRV.fnObtenerUsuarioActual(),
+                    cVehiculos = vPlacas,
+                    cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
+                    cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",
+                    cTipoVenta = lstTipoVenta.Nombre
+
+                });
+            }
+           
             return lsDocVenta;
         }
         private String fnDevolverTipoDocPersona(Int32 tipoDoc)
@@ -2033,24 +2194,9 @@ namespace wfaIntegradoCom.Procesos
 
         private void btnAniadirADocumento_Click(object sender, EventArgs e)
         {
-            
-            //DetalleCronograma clsDcr = new DetalleCronograma();
-            //Double mTotal = 0;
-            //foreach (DetalleCronograma dcr in lstDetalleCronograma)
-            //{
-            //    dcr.clsCliente = clsCliente;
-            //    dcr.clsVehiculo = clsVehiculo;
-            //    dcr.clsTarifa = clsTarifa;
-            //    dcr.idOperacion = 3;
-            //    dcr.fechaPago = Variables.gdFechaSis;
-            //    if (dcr.estChk==true && dcr.estado!= "CUOTA PAGADA")
-            //    {
-            //        lstCronoGramasParaDocumentoVenta.Add(dcr);
-            //    mTotal += (dcr.precioUnitario - dcr.descuentoPrecio);
-            //    }
-            //}
-            //lstDcr[0].MontoTotalDocumento = mTotal;
-            //fnAniadirADocumento(lstDcr, Variables.gnCodUser, 0);
+
+            MessageBox.Show("Aun en desarrollo espere la proxima version","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            //fnAniadirADocumento(lstCronoGramasParaDocumentoVenta, Variables.gnCodUser, 0);
 
 
 
@@ -2059,6 +2205,21 @@ namespace wfaIntegradoCom.Procesos
         private void fnAniadirADocumento(List<DetalleCronograma> dcr,Int32 idusuario,Int32 tipoCon)
         {
             BLControlPagos BL = new BLControlPagos();
+
+            List<DetalleVenta> lstdv = new List<DetalleVenta>();
+            DetalleVentaCabecera dcv = new DetalleVentaCabecera();
+            List<DocumentoVenta> DocVenta = new List<DocumentoVenta>();
+            lstDetalleVenta = fnGenerarPagoPrincipalBloque();
+
+            dcv = fnCalcularCabeceraDetalle(lstDetalleVenta);
+            lstDocumentoVenta = fnCargarDocumentoVenta(dcv,1);
+
+            
+                
+            Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
+            frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
+
+
             Boolean resp = false;
             resp= BL.blAniadirADocumentoVenta(dcr, idusuario, tipoCon);
 
@@ -2198,7 +2359,7 @@ namespace wfaIntegradoCom.Procesos
                             {
                                 lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
                                 clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
-                                lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera);
+                                lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera,0);
                                 Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
 
                                 frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
@@ -2224,7 +2385,7 @@ namespace wfaIntegradoCom.Procesos
                             {
                                 lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
                                 clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
-                                lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera);
+                                lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera,0);
                                 Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
 
                                 frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
@@ -2244,7 +2405,7 @@ namespace wfaIntegradoCom.Procesos
                     {
                         lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
                         clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
-                        lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera);
+                        lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera,0);
                         Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
 
                         frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
