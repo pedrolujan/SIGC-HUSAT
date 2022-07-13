@@ -1119,7 +1119,8 @@ namespace wfaIntegradoCom.Procesos
             dgv.Rows[y+1].DefaultCellStyle.BackColor = Color.Red;
             dgv.Rows[y+1].DefaultCellStyle.ForeColor = Color.White;
             dgv.Height= ((totalRows+3) *dgv.ThemeStyle.RowsStyle.Height);
-            pnDocumentos.Height = dgv.Height + 40;
+            pnDocumentos.Height = dgv.Height + 50;
+            btnAniadirADocumento.Location = new Point(((pnDocumentos.Width / 2)/2), (dgv.Height+3));
             dgv.Columns[1].Width=5;
             dgv.Columns[2].Width=100;
             dgv.Columns[3].Width=60;

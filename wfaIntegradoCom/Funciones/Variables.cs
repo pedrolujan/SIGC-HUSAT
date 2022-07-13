@@ -48,9 +48,9 @@ namespace wfaIntegradoCom.Funciones
 
         #region thema principal
         //Colores SubMenus de Botones Menu Principal
-        public static Color ColorBackColorSubMenus = Color.Gray;
+        public static Color ColorBackColorSubMenus = Color.FromArgb(115, 32, 14);
         public static Color ColorForeColorSubMenus = Color.White;
-        public static Color ColorSelectSubMenus = Color.FromArgb(66, 66, 66);
+        public static Color ColorSelectSubMenus = Color.FromArgb(117, 46, 30);
         //public static Color ColorSelectSubMenus = Color.DimGray;
 
         #endregion

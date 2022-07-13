@@ -185,14 +185,6 @@ namespace wfaIntegradoCom
            
         }
 
-        private void txtUser_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void siticonePanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

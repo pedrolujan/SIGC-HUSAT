@@ -187,25 +187,36 @@ namespace wfaIntegradoCom
                 return null;
         }
 
-        private void fnOcultarObjetos()
-        {
-            var ControlesAccesoDirecto = LayoutPanelAccesoRapido.Controls.OfType<IconButton>();
-            foreach (IconButton btn in ControlesAccesoDirecto)
-            {
+        //private void fnOcultarObjetos()
+        //{
+        //    DataView dvMenuPrincipal = new DataView(dtMenu.Tables[0]);
+        //    foreach (DataRowView drFila in dvMenuPrincipal)
+        //    {
+        //        foreach (ToolStripButton ts in tsMenuPrincipal.Items)
+        //        {
+                    
+        //                ts.Enabled = false;
+                   
+        //        }
+        //        foreach (ToolStripButton ts in tsAccesoRapido.Items)
+        //        {
+        //            ts.Visible = false;
+        //        }
+        //    }
+        //    var Controles = panelMenuPrincipal.Controls.OfType<SiticoneButton>();
+        //    foreach (SiticoneButton btn in Controles)
+        //    {
+        //        foreach (ToolStripButton ts in tsMenuPrincipal.Items)
+        //        {
 
-                btn.Visible = false;
+        //            btn.Enabled = false;
 
-            }
-            var Controles = panelMenuPrincipal.Controls.OfType<IconButton>();
-            foreach (IconButton btn in Controles)
-            {
-                
-                    btn.Enabled = false;
+        //        }
+               
+        //    }
 
-            }
-
-        }
-        public void fnCargarMenuPrinBotones()
+        //}
+         public void fnCargarMenuPrinBotones()
         {
             DataTable dtMenuPrin = new DataTable();
             DataView dvMenuPrincipal = new DataView(dtMenu.Tables[0]);
@@ -215,7 +226,7 @@ namespace wfaIntegradoCom
             dvMenuPrincipal.RowFilter = "cMenuPadre = '0' ";
             iNumMenu = dvMenuPrincipal.Table.Rows.Count;
 
-            var Controles = panelMenuPrincipal.Controls.OfType<IconButton>();
+            var Controles = panelMenuPrincipal.Controls.OfType<SiticoneButton>();
             
 
 
@@ -227,7 +238,7 @@ namespace wfaIntegradoCom
                     lcItemMenu = drFila["cMenuNombre"].ToString().Trim();
 
                     
-                    foreach (IconButton btn in Controles)
+                    foreach (SiticoneButton btn in Controles)
                     {
                         if (btn.Text == lcItemMenu)
                         {
@@ -296,10 +307,10 @@ namespace wfaIntegradoCom
                     lcItemMenu = drFila["cMenuNombre"].ToString().Trim();
                     foreach (IconButton ts in controlPanel)
                     {
-                        if (ts.Tag.ToString() == lcItemMenu)
+                        if (ts.Name.Trim() == lcItemMenu)
                         {
                             ts.Name = drFila["cNomFormulario"].ToString();
-                            //ts.Tag = Convert.ToInt32(drFila["intIdTipoLlamada"]);
+                            ts.Tag = Convert.ToInt32(drFila["intIdTipoLlamada"]);
                             ts.Visible = true;
                         }
                     }
@@ -955,8 +966,7 @@ namespace wfaIntegradoCom
             //inicio de funciones de cargado de menus y formulario load
 
             try
-            {
-                fnOcultarObjetos();
+            {                
                 Loading();
                 SystemEvents.PowerModeChanged += OnPowerModeChange;
                 InitializeTimer();
@@ -1107,8 +1117,13 @@ namespace wfaIntegradoCom
             }
             else if (e.ClickedItem.Name=="tsMiCaja")
             {
+<<<<<<< HEAD
+                //frmCaja frmCaja = new frmCaja();
+                ////fnCargarFormAPanel(new frmCaja());
+=======
                // frmCaja frmCaja = new frmCaja();
-                //fnCargarFormAPanel(new frmCaja());
+                fnCargarFormAPanel(new frmCaja());
+>>>>>>> desarrollo_merge_2
                 //frmCaja.Show();
             }
             else
@@ -1363,11 +1378,9 @@ namespace wfaIntegradoCom
         {
             //this.Close();
             panelCerrarSession.Visible = false;
-            LoadCarga = false;
-            fnOcultarObjetos();
+            //fnOcultarObjetos();
             this.Loading();
-
-
+           
         }
 
 
