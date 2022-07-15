@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tsBotonera = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -94,6 +94,21 @@
             this.Código = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblImgPerfil = new System.Windows.Forms.Label();
+            this.picBoxImgPerfil = new System.Windows.Forms.PictureBox();
+            this.panelImagenes = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.picAddImagen = new System.Windows.Forms.PictureBox();
+            this.lblNameImagen = new System.Windows.Forms.Label();
+            this.btnClosepanelImagenes = new FontAwesome.Sharp.IconPictureBox();
             this.tsBotonera.SuspendLayout();
             this.gbUbigeo.SuspendLayout();
             this.gbEmpleado.SuspendLayout();
@@ -105,6 +120,19 @@
             this.SiticoneEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.siticonePictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lvempleado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxImgPerfil)).BeginInit();
+            this.panelImagenes.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClosepanelImagenes)).BeginInit();
             this.SuspendLayout();
             // 
             // tsBotonera
@@ -292,7 +320,7 @@
             // lblClave
             // 
             this.lblClave.AutoSize = true;
-            this.lblClave.Location = new System.Drawing.Point(411, 22);
+            this.lblClave.Location = new System.Drawing.Point(369, 22);
             this.lblClave.Name = "lblClave";
             this.lblClave.Size = new System.Drawing.Size(89, 13);
             this.lblClave.TabIndex = 4;
@@ -332,7 +360,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(411, 82);
+            this.label2.Location = new System.Drawing.Point(369, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 10;
@@ -391,6 +419,10 @@
             // 
             // gbEmpleado
             // 
+            this.gbEmpleado.Controls.Add(this.lblNameImagen);
+            this.gbEmpleado.Controls.Add(this.panelImagenes);
+            this.gbEmpleado.Controls.Add(this.lblImgPerfil);
+            this.gbEmpleado.Controls.Add(this.picBoxImgPerfil);
             this.gbEmpleado.Controls.Add(this.dateTimePicker1);
             this.gbEmpleado.Controls.Add(this.cboCargo);
             this.gbEmpleado.Controls.Add(this.txtIdPersonal);
@@ -572,7 +604,7 @@
             this.txtPrimerNom.PlaceholderText = "";
             this.txtPrimerNom.SelectedText = "";
             this.txtPrimerNom.ShadowDecoration.Parent = this.txtPrimerNom;
-            this.txtPrimerNom.Size = new System.Drawing.Size(285, 36);
+            this.txtPrimerNom.Size = new System.Drawing.Size(200, 36);
             this.txtPrimerNom.TabIndex = 26;
             // 
             // txtSegundoNom
@@ -590,13 +622,13 @@
             this.txtSegundoNom.ForeColor = System.Drawing.Color.Black;
             this.txtSegundoNom.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSegundoNom.HoveredState.Parent = this.txtSegundoNom;
-            this.txtSegundoNom.Location = new System.Drawing.Point(412, 101);
+            this.txtSegundoNom.Location = new System.Drawing.Point(370, 101);
             this.txtSegundoNom.Name = "txtSegundoNom";
             this.txtSegundoNom.PasswordChar = '\0';
             this.txtSegundoNom.PlaceholderText = "";
             this.txtSegundoNom.SelectedText = "";
             this.txtSegundoNom.ShadowDecoration.Parent = this.txtSegundoNom;
-            this.txtSegundoNom.Size = new System.Drawing.Size(315, 38);
+            this.txtSegundoNom.Size = new System.Drawing.Size(200, 36);
             this.txtSegundoNom.TabIndex = 26;
             // 
             // txtApeMat
@@ -614,13 +646,13 @@
             this.txtApeMat.ForeColor = System.Drawing.Color.Black;
             this.txtApeMat.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApeMat.HoveredState.Parent = this.txtApeMat;
-            this.txtApeMat.Location = new System.Drawing.Point(412, 40);
+            this.txtApeMat.Location = new System.Drawing.Point(370, 40);
             this.txtApeMat.Name = "txtApeMat";
             this.txtApeMat.PasswordChar = '\0';
             this.txtApeMat.PlaceholderText = "";
             this.txtApeMat.SelectedText = "";
             this.txtApeMat.ShadowDecoration.Parent = this.txtApeMat;
-            this.txtApeMat.Size = new System.Drawing.Size(315, 36);
+            this.txtApeMat.Size = new System.Drawing.Size(200, 36);
             this.txtApeMat.TabIndex = 26;
             // 
             // txtApePat
@@ -644,7 +676,7 @@
             this.txtApePat.PlaceholderText = "";
             this.txtApePat.SelectedText = "";
             this.txtApePat.ShadowDecoration.Parent = this.txtApePat;
-            this.txtApePat.Size = new System.Drawing.Size(285, 36);
+            this.txtApePat.Size = new System.Drawing.Size(200, 36);
             this.txtApePat.TabIndex = 26;
             // 
             // epUsuario
@@ -910,52 +942,52 @@
             // 
             // lvempleado
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
-            this.lvempleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
+            this.lvempleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.lvempleado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lvempleado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.lvempleado.BackgroundColor = System.Drawing.Color.Azure;
             this.lvempleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvempleado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.lvempleado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightCoral;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lvempleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightCoral;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvempleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.lvempleado.ColumnHeadersHeight = 40;
             this.lvempleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Código,
             this.NombreEmpleado,
             this.DNI});
             this.lvempleado.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(217)))), ((int)(((byte)(215)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(129)))), ((int)(((byte)(121)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lvempleado.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(217)))), ((int)(((byte)(215)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(129)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lvempleado.DefaultCellStyle = dataGridViewCellStyle7;
             this.lvempleado.EnableHeadersVisualStyles = false;
             this.lvempleado.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(189)))), ((int)(((byte)(184)))));
             this.lvempleado.Location = new System.Drawing.Point(393, 92);
             this.lvempleado.Name = "lvempleado";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lvempleado.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvempleado.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.lvempleado.RowHeadersVisible = false;
             this.lvempleado.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.lvempleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.lvempleado.Size = new System.Drawing.Size(518, 276);
+            this.lvempleado.Size = new System.Drawing.Size(474, 277);
             this.lvempleado.TabIndex = 35;
             this.lvempleado.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Red;
             this.lvempleado.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
@@ -998,6 +1030,178 @@
             this.DNI.HeaderText = "DNI";
             this.DNI.Name = "DNI";
             // 
+            // lblImgPerfil
+            // 
+            this.lblImgPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblImgPerfil.Location = new System.Drawing.Point(661, 33);
+            this.lblImgPerfil.Name = "lblImgPerfil";
+            this.lblImgPerfil.Size = new System.Drawing.Size(130, 130);
+            this.lblImgPerfil.TabIndex = 30;
+            this.lblImgPerfil.Text = "Elige tu imagen";
+            this.lblImgPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblImgPerfil.Click += new System.EventHandler(this.lblImgPerfil_Click);
+            // 
+            // picBoxImgPerfil
+            // 
+            this.picBoxImgPerfil.Location = new System.Drawing.Point(664, 33);
+            this.picBoxImgPerfil.Name = "picBoxImgPerfil";
+            this.picBoxImgPerfil.Size = new System.Drawing.Size(130, 130);
+            this.picBoxImgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBoxImgPerfil.TabIndex = 31;
+            this.picBoxImgPerfil.TabStop = false;
+            this.picBoxImgPerfil.Click += new System.EventHandler(this.picBoxImgPerfil_Click);
+            // 
+            // panelImagenes
+            // 
+            this.panelImagenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.panelImagenes.Controls.Add(this.btnClosepanelImagenes);
+            this.panelImagenes.Controls.Add(this.flowLayoutPanel2);
+            this.panelImagenes.Controls.Add(this.flowLayoutPanel1);
+            this.panelImagenes.Location = new System.Drawing.Point(359, 33);
+            this.panelImagenes.Name = "panelImagenes";
+            this.panelImagenes.Size = new System.Drawing.Size(474, 270);
+            this.panelImagenes.TabIndex = 235;
+            this.panelImagenes.Visible = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox2);
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox3);
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox4);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 31);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(467, 100);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox5);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox6);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox7);
+            this.flowLayoutPanel2.Controls.Add(this.picAddImagen);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 151);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(467, 100);
+            this.flowLayoutPanel2.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(119, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(235, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(351, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 3;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 1;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(119, 3);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 2;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(235, 3);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 3;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            // 
+            // picAddImagen
+            // 
+            this.picAddImagen.Image = ((System.Drawing.Image)(resources.GetObject("picAddImagen.Image")));
+            this.picAddImagen.Location = new System.Drawing.Point(351, 3);
+            this.picAddImagen.Name = "picAddImagen";
+            this.picAddImagen.Size = new System.Drawing.Size(110, 90);
+            this.picAddImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAddImagen.TabIndex = 4;
+            this.picAddImagen.TabStop = false;
+            this.picAddImagen.Click += new System.EventHandler(this.pictureBox8_Click);
+            // 
+            // lblNameImagen
+            // 
+            this.lblNameImagen.AutoSize = true;
+            this.lblNameImagen.Location = new System.Drawing.Point(683, 16);
+            this.lblNameImagen.Name = "lblNameImagen";
+            this.lblNameImagen.Size = new System.Drawing.Size(73, 13);
+            this.lblNameImagen.TabIndex = 236;
+            this.lblNameImagen.Text = "Name Imagen";
+            // 
+            // btnClosepanelImagenes
+            // 
+            this.btnClosepanelImagenes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClosepanelImagenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnClosepanelImagenes.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.epUsuario.SetIconAlignment(this.btnClosepanelImagenes, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.btnClosepanelImagenes.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.btnClosepanelImagenes.IconColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnClosepanelImagenes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClosepanelImagenes.IconSize = 20;
+            this.btnClosepanelImagenes.Location = new System.Drawing.Point(428, 3);
+            this.btnClosepanelImagenes.Name = "btnClosepanelImagenes";
+            this.btnClosepanelImagenes.Size = new System.Drawing.Size(46, 26);
+            this.btnClosepanelImagenes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnClosepanelImagenes.TabIndex = 2;
+            this.btnClosepanelImagenes.TabStop = false;
+            this.btnClosepanelImagenes.Click += new System.EventHandler(this.btnClosepanelImagenes_Click);
+            // 
             // frmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1034,6 +1238,19 @@
             this.SiticoneEncabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.siticonePictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lvempleado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxImgPerfil)).EndInit();
+            this.panelImagenes.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClosepanelImagenes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1100,5 +1317,20 @@
         private Siticone.UI.WinForms.SiticoneDateTimePicker dateTimePicker1;
         private Siticone.UI.WinForms.SiticonePictureBox siticonePictureBox1;
         private Siticone.UI.WinForms.SiticonePictureBox picBuscarPersonal;
+        private System.Windows.Forms.Label lblImgPerfil;
+        private System.Windows.Forms.PictureBox picBoxImgPerfil;
+        private System.Windows.Forms.Panel panelImagenes;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox picAddImagen;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label lblNameImagen;
+        private FontAwesome.Sharp.IconPictureBox btnClosepanelImagenes;
     }
 }

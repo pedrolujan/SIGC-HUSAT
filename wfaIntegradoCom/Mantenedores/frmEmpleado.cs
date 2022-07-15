@@ -560,6 +560,82 @@ namespace wfaIntegradoCom.Mantenedores
         {
 
         }
+
+        private void lblImgPerfil_Click(object sender, EventArgs e)
+        {
+            panelImagenes.Visible = true;
+        }
+
+        private void picBoxImgPerfil_Click(object sender, EventArgs e)
+        {
+            panelImagenes.Visible = true;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox1.Image;
+            lblNameImagen.Text = "Imagen 1";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox2.Image;
+            lblNameImagen.Text = "Imagen 2";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox3.Image;
+            lblNameImagen.Text = "Imagen 3";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox4.Image;
+            lblNameImagen.Text = "Imagen 4";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox5.Image;
+            lblNameImagen.Text = "Imagen 5";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox6.Image;
+            lblNameImagen.Text = "Imagen 6";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox7.Image;
+            lblNameImagen.Text = "Imagen 7";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClosepanelImagenes_Click(object sender, EventArgs e)
+        {
+            panelImagenes.Visible = false;
+        }
     }
 }
 

@@ -67,9 +67,15 @@ namespace wfaIntegradoCom
             this.btnVenta = new FontAwesome.Sharp.IconButton();
             this.panelIzquierdo = new Siticone.UI.WinForms.SiticonePanel();
             this.panelImagenLogo = new Siticone.UI.WinForms.SiticonePanel();
-            this.Img_Husat_Negro = new System.Windows.Forms.PictureBox();
+            this.Img_Husat_Naranja = new System.Windows.Forms.PictureBox();
             this.panelCentral = new Siticone.UI.WinForms.SiticonePanel();
+            this.panelOpciones = new System.Windows.Forms.Panel();
+            this.ToggleTextoNegrita = new RJCodeAdvance.RJControls.RJToggleButton();
+            this.ToggleBotonesAnchos = new RJCodeAdvance.RJControls.RJToggleButton();
             this.cboxSelecThema = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnPersonalizacion = new FontAwesome.Sharp.IconButton();
             this.panelPersonalizarColores = new Siticone.UI.WinForms.SiticonePanel();
             this.panelColorPanelCentral = new System.Windows.Forms.Panel();
@@ -98,8 +104,9 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.SuspendLayout();
             this.panelIzquierdo.SuspendLayout();
             this.panelImagenLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Negro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Naranja)).BeginInit();
             this.panelCentral.SuspendLayout();
+            this.panelOpciones.SuspendLayout();
             this.panelPersonalizarColores.SuspendLayout();
             this.panelColorAccesoDirecto.SuspendLayout();
             this.panelCerrarSession.SuspendLayout();
@@ -115,6 +122,7 @@ namespace wfaIntegradoCom
             this.ListaImagenes.Images.SetKeyName(2, "7eiM5q9cn.png");
             this.ListaImagenes.Images.SetKeyName(3, "flecha-derecha_Naranja.png");
             this.ListaImagenes.Images.SetKeyName(4, "flecha-derecha.png");
+            this.ListaImagenes.Images.SetKeyName(5, "flecha-derecha_Naranja-select.png");
             // 
             // miniToolStrip
             // 
@@ -139,10 +147,10 @@ namespace wfaIntegradoCom
             this.PanelEncavezadoFondo.Controls.Add(this.LayoutPanelAccesoRapido);
             this.PanelEncavezadoFondo.Controls.Add(this.siticonePanel2);
             this.PanelEncavezadoFondo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelEncavezadoFondo.Location = new System.Drawing.Point(239, 0);
+            this.PanelEncavezadoFondo.Location = new System.Drawing.Point(230, 0);
             this.PanelEncavezadoFondo.Name = "PanelEncavezadoFondo";
             this.PanelEncavezadoFondo.ShadowDecoration.Parent = this.PanelEncavezadoFondo;
-            this.PanelEncavezadoFondo.Size = new System.Drawing.Size(1045, 72);
+            this.PanelEncavezadoFondo.Size = new System.Drawing.Size(1054, 72);
             this.PanelEncavezadoFondo.TabIndex = 16;
             // 
             // tsCerraSession
@@ -150,7 +158,6 @@ namespace wfaIntegradoCom
             this.tsCerraSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tsCerraSession.BackColor = System.Drawing.Color.Transparent;
             this.tsCerraSession.FlatAppearance.BorderSize = 0;
-            this.tsCerraSession.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.tsCerraSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tsCerraSession.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsCerraSession.ForeColor = System.Drawing.Color.Gainsboro;
@@ -159,7 +166,7 @@ namespace wfaIntegradoCom
             this.tsCerraSession.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.tsCerraSession.IconSize = 32;
             this.tsCerraSession.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tsCerraSession.Location = new System.Drawing.Point(915, 6);
+            this.tsCerraSession.Location = new System.Drawing.Point(924, 6);
             this.tsCerraSession.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.tsCerraSession.Name = "tsCerraSession";
             this.tsCerraSession.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -182,9 +189,9 @@ namespace wfaIntegradoCom
             this.LayoutPanelAccesoRapido.Controls.Add(this.tsConsulta);
             this.LayoutPanelAccesoRapido.Controls.Add(this.tsMiCaja);
             this.LayoutPanelAccesoRapido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LayoutPanelAccesoRapido.Location = new System.Drawing.Point(122, 0);
+            this.LayoutPanelAccesoRapido.Location = new System.Drawing.Point(150, 0);
             this.LayoutPanelAccesoRapido.Name = "LayoutPanelAccesoRapido";
-            this.LayoutPanelAccesoRapido.Size = new System.Drawing.Size(923, 72);
+            this.LayoutPanelAccesoRapido.Size = new System.Drawing.Size(904, 72);
             this.LayoutPanelAccesoRapido.TabIndex = 15;
             this.LayoutPanelAccesoRapido.Click += new System.EventHandler(this.flowLayoutPanel1_Click);
             // 
@@ -192,9 +199,8 @@ namespace wfaIntegradoCom
             // 
             this.tsConfiguracion.BackColor = System.Drawing.Color.Transparent;
             this.tsConfiguracion.FlatAppearance.BorderSize = 0;
-            this.tsConfiguracion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.tsConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tsConfiguracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsConfiguracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsConfiguracion.ForeColor = System.Drawing.Color.Gainsboro;
             this.tsConfiguracion.IconChar = FontAwesome.Sharp.IconChar.ListCheck;
             this.tsConfiguracion.IconColor = System.Drawing.Color.Gainsboro;
@@ -218,9 +224,8 @@ namespace wfaIntegradoCom
             // 
             this.tsUsuarios.BackColor = System.Drawing.Color.Transparent;
             this.tsUsuarios.FlatAppearance.BorderSize = 0;
-            this.tsUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.tsUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tsUsuarios.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsUsuarios.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsUsuarios.ForeColor = System.Drawing.Color.Gainsboro;
             this.tsUsuarios.IconChar = FontAwesome.Sharp.IconChar.Users;
             this.tsUsuarios.IconColor = System.Drawing.Color.Gainsboro;
@@ -244,9 +249,8 @@ namespace wfaIntegradoCom
             // 
             this.tsVenta.BackColor = System.Drawing.Color.Transparent;
             this.tsVenta.FlatAppearance.BorderSize = 0;
-            this.tsVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.tsVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tsVenta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsVenta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsVenta.ForeColor = System.Drawing.Color.Gainsboro;
             this.tsVenta.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckDollar;
             this.tsVenta.IconColor = System.Drawing.Color.Gainsboro;
@@ -270,9 +274,8 @@ namespace wfaIntegradoCom
             // 
             this.tsCaja.BackColor = System.Drawing.Color.Transparent;
             this.tsCaja.FlatAppearance.BorderSize = 0;
-            this.tsCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.tsCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tsCaja.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsCaja.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsCaja.ForeColor = System.Drawing.Color.Gainsboro;
             this.tsCaja.IconChar = FontAwesome.Sharp.IconChar.Donate;
             this.tsCaja.IconColor = System.Drawing.Color.Gainsboro;
@@ -296,9 +299,8 @@ namespace wfaIntegradoCom
             // 
             this.tsCompra.BackColor = System.Drawing.Color.Transparent;
             this.tsCompra.FlatAppearance.BorderSize = 0;
-            this.tsCompra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.tsCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tsCompra.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsCompra.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsCompra.ForeColor = System.Drawing.Color.Gainsboro;
             this.tsCompra.IconChar = FontAwesome.Sharp.IconChar.Shopify;
             this.tsCompra.IconColor = System.Drawing.Color.Gainsboro;
@@ -322,9 +324,8 @@ namespace wfaIntegradoCom
             // 
             this.tsConsulta.BackColor = System.Drawing.Color.Transparent;
             this.tsConsulta.FlatAppearance.BorderSize = 0;
-            this.tsConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.tsConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tsConsulta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsConsulta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsConsulta.ForeColor = System.Drawing.Color.Gainsboro;
             this.tsConsulta.IconChar = FontAwesome.Sharp.IconChar.CircleQuestion;
             this.tsConsulta.IconColor = System.Drawing.Color.Gainsboro;
@@ -348,9 +349,9 @@ namespace wfaIntegradoCom
             // 
             this.tsMiCaja.BackColor = System.Drawing.Color.Transparent;
             this.tsMiCaja.FlatAppearance.BorderSize = 0;
-            this.tsMiCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.tsMiCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tsMiCaja.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LayoutPanelAccesoRapido.SetFlowBreak(this.tsMiCaja, true);
+            this.tsMiCaja.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsMiCaja.ForeColor = System.Drawing.Color.Gainsboro;
             this.tsMiCaja.IconChar = FontAwesome.Sharp.IconChar.CashRegister;
             this.tsMiCaja.IconColor = System.Drawing.Color.Gainsboro;
@@ -378,7 +379,7 @@ namespace wfaIntegradoCom
             this.siticonePanel2.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel2.Name = "siticonePanel2";
             this.siticonePanel2.ShadowDecoration.Parent = this.siticonePanel2;
-            this.siticonePanel2.Size = new System.Drawing.Size(122, 72);
+            this.siticonePanel2.Size = new System.Drawing.Size(150, 72);
             this.siticonePanel2.TabIndex = 5;
             // 
             // iconChildForm
@@ -411,7 +412,7 @@ namespace wfaIntegradoCom
             this.Img_Husat_Blanco.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO__Blanco_sombra_color_;
             this.Img_Husat_Blanco.Location = new System.Drawing.Point(23, 12);
             this.Img_Husat_Blanco.Name = "Img_Husat_Blanco";
-            this.Img_Husat_Blanco.Size = new System.Drawing.Size(178, 90);
+            this.Img_Husat_Blanco.Size = new System.Drawing.Size(178, 91);
             this.Img_Husat_Blanco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Img_Husat_Blanco.TabIndex = 4;
             this.Img_Husat_Blanco.TabStop = false;
@@ -443,13 +444,13 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.Location = new System.Drawing.Point(0, 140);
             this.panelMenuPrincipal.Name = "panelMenuPrincipal";
             this.panelMenuPrincipal.ShadowDecoration.Parent = this.panelMenuPrincipal;
-            this.panelMenuPrincipal.Size = new System.Drawing.Size(239, 531);
+            this.panelMenuPrincipal.Size = new System.Drawing.Size(230, 531);
             this.panelMenuPrincipal.TabIndex = 1;
             // 
             // subMenuSoporte
             // 
             this.subMenuSoporte.AutoSize = true;
-            this.subMenuSoporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuSoporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuSoporte.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuSoporte.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuSoporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -468,7 +469,7 @@ namespace wfaIntegradoCom
             this.btnSoporte.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSoporte.FlatAppearance.BorderSize = 0;
             this.btnSoporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSoporte.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSoporte.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSoporte.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnSoporte.IconChar = FontAwesome.Sharp.IconChar.ScrewdriverWrench;
             this.btnSoporte.IconColor = System.Drawing.Color.Gainsboro;
@@ -478,7 +479,7 @@ namespace wfaIntegradoCom
             this.btnSoporte.Location = new System.Drawing.Point(0, 525);
             this.btnSoporte.Name = "btnSoporte";
             this.btnSoporte.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnSoporte.Size = new System.Drawing.Size(222, 55);
+            this.btnSoporte.Size = new System.Drawing.Size(213, 55);
             this.btnSoporte.TabIndex = 27;
             this.btnSoporte.Text = "Soporte";
             this.btnSoporte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -489,7 +490,7 @@ namespace wfaIntegradoCom
             // subMenuConfiguracion
             // 
             this.subMenuConfiguracion.AutoSize = true;
-            this.subMenuConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuConfiguracion.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuConfiguracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -508,7 +509,7 @@ namespace wfaIntegradoCom
             this.btnConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnConfiguracion.FlatAppearance.BorderSize = 0;
             this.btnConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfiguracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfiguracion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfiguracion.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnConfiguracion.IconChar = FontAwesome.Sharp.IconChar.Cogs;
             this.btnConfiguracion.IconColor = System.Drawing.Color.Gainsboro;
@@ -518,7 +519,7 @@ namespace wfaIntegradoCom
             this.btnConfiguracion.Location = new System.Drawing.Point(0, 450);
             this.btnConfiguracion.Name = "btnConfiguracion";
             this.btnConfiguracion.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnConfiguracion.Size = new System.Drawing.Size(222, 55);
+            this.btnConfiguracion.Size = new System.Drawing.Size(213, 55);
             this.btnConfiguracion.TabIndex = 25;
             this.btnConfiguracion.Text = "Configuración";
             this.btnConfiguracion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -529,7 +530,7 @@ namespace wfaIntegradoCom
             // subMenuRrhh
             // 
             this.subMenuRrhh.AutoSize = true;
-            this.subMenuRrhh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuRrhh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuRrhh.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuRrhh.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuRrhh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -548,7 +549,7 @@ namespace wfaIntegradoCom
             this.btnRrhh.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRrhh.FlatAppearance.BorderSize = 0;
             this.btnRrhh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRrhh.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRrhh.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRrhh.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnRrhh.IconChar = FontAwesome.Sharp.IconChar.PeopleGroup;
             this.btnRrhh.IconColor = System.Drawing.Color.Gainsboro;
@@ -558,7 +559,7 @@ namespace wfaIntegradoCom
             this.btnRrhh.Location = new System.Drawing.Point(0, 375);
             this.btnRrhh.Name = "btnRrhh";
             this.btnRrhh.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnRrhh.Size = new System.Drawing.Size(222, 55);
+            this.btnRrhh.Size = new System.Drawing.Size(213, 55);
             this.btnRrhh.TabIndex = 23;
             this.btnRrhh.Text = "RRHH";
             this.btnRrhh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -569,7 +570,7 @@ namespace wfaIntegradoCom
             // subMenuSistemas
             // 
             this.subMenuSistemas.AutoSize = true;
-            this.subMenuSistemas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuSistemas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuSistemas.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuSistemas.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuSistemas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -588,7 +589,7 @@ namespace wfaIntegradoCom
             this.btnSistemas.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSistemas.FlatAppearance.BorderSize = 0;
             this.btnSistemas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSistemas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSistemas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSistemas.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnSistemas.IconChar = FontAwesome.Sharp.IconChar.Laptop;
             this.btnSistemas.IconColor = System.Drawing.Color.Gainsboro;
@@ -598,7 +599,7 @@ namespace wfaIntegradoCom
             this.btnSistemas.Location = new System.Drawing.Point(0, 300);
             this.btnSistemas.Name = "btnSistemas";
             this.btnSistemas.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnSistemas.Size = new System.Drawing.Size(222, 55);
+            this.btnSistemas.Size = new System.Drawing.Size(213, 55);
             this.btnSistemas.TabIndex = 21;
             this.btnSistemas.Text = "Sistemas";
             this.btnSistemas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -609,7 +610,7 @@ namespace wfaIntegradoCom
             // subMenuLogistica
             // 
             this.subMenuLogistica.AutoSize = true;
-            this.subMenuLogistica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuLogistica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuLogistica.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuLogistica.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuLogistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -628,7 +629,7 @@ namespace wfaIntegradoCom
             this.btnLogistica.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLogistica.FlatAppearance.BorderSize = 0;
             this.btnLogistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogistica.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogistica.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogistica.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnLogistica.IconChar = FontAwesome.Sharp.IconChar.Indent;
             this.btnLogistica.IconColor = System.Drawing.Color.Gainsboro;
@@ -638,7 +639,7 @@ namespace wfaIntegradoCom
             this.btnLogistica.Location = new System.Drawing.Point(0, 225);
             this.btnLogistica.Name = "btnLogistica";
             this.btnLogistica.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnLogistica.Size = new System.Drawing.Size(222, 55);
+            this.btnLogistica.Size = new System.Drawing.Size(213, 55);
             this.btnLogistica.TabIndex = 19;
             this.btnLogistica.Text = "Logística";
             this.btnLogistica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -649,7 +650,7 @@ namespace wfaIntegradoCom
             // subMenuComercial
             // 
             this.subMenuComercial.AutoSize = true;
-            this.subMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuComercial.Cursor = System.Windows.Forms.Cursors.Default;
             this.subMenuComercial.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuComercial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -668,7 +669,7 @@ namespace wfaIntegradoCom
             this.btnComercial.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnComercial.FlatAppearance.BorderSize = 0;
             this.btnComercial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnComercial.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComercial.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnComercial.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnComercial.IconChar = FontAwesome.Sharp.IconChar.Dumpster;
             this.btnComercial.IconColor = System.Drawing.Color.Gainsboro;
@@ -678,7 +679,7 @@ namespace wfaIntegradoCom
             this.btnComercial.Location = new System.Drawing.Point(0, 150);
             this.btnComercial.Name = "btnComercial";
             this.btnComercial.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnComercial.Size = new System.Drawing.Size(222, 55);
+            this.btnComercial.Size = new System.Drawing.Size(213, 55);
             this.btnComercial.TabIndex = 17;
             this.btnComercial.Text = "Comercial";
             this.btnComercial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -690,7 +691,7 @@ namespace wfaIntegradoCom
             // 
             this.subMenuRecaudacion.AutoSize = true;
             this.subMenuRecaudacion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.subMenuRecaudacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuRecaudacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuRecaudacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subMenuRecaudacion.Location = new System.Drawing.Point(0, 130);
@@ -708,7 +709,7 @@ namespace wfaIntegradoCom
             this.btnRecaudacion.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRecaudacion.FlatAppearance.BorderSize = 0;
             this.btnRecaudacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecaudacion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecaudacion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecaudacion.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnRecaudacion.IconChar = FontAwesome.Sharp.IconChar.HandHoldingDollar;
             this.btnRecaudacion.IconColor = System.Drawing.Color.Gainsboro;
@@ -718,7 +719,7 @@ namespace wfaIntegradoCom
             this.btnRecaudacion.Location = new System.Drawing.Point(0, 75);
             this.btnRecaudacion.Name = "btnRecaudacion";
             this.btnRecaudacion.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnRecaudacion.Size = new System.Drawing.Size(222, 55);
+            this.btnRecaudacion.Size = new System.Drawing.Size(213, 55);
             this.btnRecaudacion.TabIndex = 16;
             this.btnRecaudacion.Text = "Recaudación";
             this.btnRecaudacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -730,15 +731,15 @@ namespace wfaIntegradoCom
             // 
             this.subMenuVentas.AutoSize = true;
             this.subMenuVentas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.subMenuVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(32)))), ((int)(((byte)(14)))));
+            this.subMenuVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.subMenuVentas.Dock = System.Windows.Forms.DockStyle.Top;
             this.subMenuVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subMenuVentas.Location = new System.Drawing.Point(0, 55);
-            this.subMenuVentas.MinimumSize = new System.Drawing.Size(310, 20);
+            this.subMenuVentas.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuVentas.Name = "subMenuVentas";
             this.subMenuVentas.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.subMenuVentas.ShadowDecoration.Parent = this.subMenuVentas;
-            this.subMenuVentas.Size = new System.Drawing.Size(310, 20);
+            this.subMenuVentas.Size = new System.Drawing.Size(250, 20);
             this.subMenuVentas.TabIndex = 2;
             this.subMenuVentas.Click += new System.EventHandler(this.subMenuVentas_Click);
             // 
@@ -748,7 +749,7 @@ namespace wfaIntegradoCom
             this.btnVenta.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnVenta.FlatAppearance.BorderSize = 0;
             this.btnVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVenta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVenta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVenta.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnVenta.IconChar = FontAwesome.Sharp.IconChar.SackDollar;
             this.btnVenta.IconColor = System.Drawing.Color.Gainsboro;
@@ -758,7 +759,7 @@ namespace wfaIntegradoCom
             this.btnVenta.Location = new System.Drawing.Point(0, 0);
             this.btnVenta.Name = "btnVenta";
             this.btnVenta.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnVenta.Size = new System.Drawing.Size(222, 55);
+            this.btnVenta.Size = new System.Drawing.Size(213, 55);
             this.btnVenta.TabIndex = 15;
             this.btnVenta.Text = "Ventas";
             this.btnVenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -775,36 +776,36 @@ namespace wfaIntegradoCom
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelIzquierdo.Name = "panelIzquierdo";
             this.panelIzquierdo.ShadowDecoration.Parent = this.panelIzquierdo;
-            this.panelIzquierdo.Size = new System.Drawing.Size(239, 671);
+            this.panelIzquierdo.Size = new System.Drawing.Size(230, 671);
             this.panelIzquierdo.TabIndex = 20;
             // 
             // panelImagenLogo
             // 
             this.panelImagenLogo.BackColor = System.Drawing.Color.Transparent;
             this.panelImagenLogo.Controls.Add(this.Img_Husat_Blanco);
-            this.panelImagenLogo.Controls.Add(this.Img_Husat_Negro);
+            this.panelImagenLogo.Controls.Add(this.Img_Husat_Naranja);
             this.panelImagenLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelImagenLogo.Location = new System.Drawing.Point(0, 0);
             this.panelImagenLogo.Name = "panelImagenLogo";
             this.panelImagenLogo.ShadowDecoration.Parent = this.panelImagenLogo;
-            this.panelImagenLogo.Size = new System.Drawing.Size(239, 140);
+            this.panelImagenLogo.Size = new System.Drawing.Size(230, 140);
             this.panelImagenLogo.TabIndex = 21;
             // 
-            // Img_Husat_Negro
+            // Img_Husat_Naranja
             // 
-            this.Img_Husat_Negro.BackColor = System.Drawing.Color.Transparent;
-            this.Img_Husat_Negro.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO;
-            this.Img_Husat_Negro.Location = new System.Drawing.Point(23, 12);
-            this.Img_Husat_Negro.Name = "Img_Husat_Negro";
-            this.Img_Husat_Negro.Size = new System.Drawing.Size(178, 90);
-            this.Img_Husat_Negro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Img_Husat_Negro.TabIndex = 3;
-            this.Img_Husat_Negro.TabStop = false;
-            this.Img_Husat_Negro.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.Img_Husat_Naranja.BackColor = System.Drawing.Color.Transparent;
+            this.Img_Husat_Naranja.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO__Letras_Naranjas__;
+            this.Img_Husat_Naranja.Location = new System.Drawing.Point(23, 12);
+            this.Img_Husat_Naranja.Name = "Img_Husat_Naranja";
+            this.Img_Husat_Naranja.Size = new System.Drawing.Size(178, 90);
+            this.Img_Husat_Naranja.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Img_Husat_Naranja.TabIndex = 3;
+            this.Img_Husat_Naranja.TabStop = false;
+            this.Img_Husat_Naranja.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // panelCentral
             // 
-            this.panelCentral.Controls.Add(this.cboxSelecThema);
+            this.panelCentral.Controls.Add(this.panelOpciones);
             this.panelCentral.Controls.Add(this.btnPersonalizacion);
             this.panelCentral.Controls.Add(this.panelPersonalizarColores);
             this.panelCentral.Controls.Add(this.btnOpciones);
@@ -814,37 +815,127 @@ namespace wfaIntegradoCom
             this.panelCentral.Controls.Add(this.elhAlert);
             this.panelCentral.Controls.Add(this.treeView1);
             this.panelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCentral.Location = new System.Drawing.Point(239, 72);
+            this.panelCentral.Location = new System.Drawing.Point(230, 72);
             this.panelCentral.Name = "panelCentral";
             this.panelCentral.ShadowDecoration.Parent = this.panelCentral;
-            this.panelCentral.Size = new System.Drawing.Size(1045, 599);
+            this.panelCentral.Size = new System.Drawing.Size(1054, 599);
             this.panelCentral.TabIndex = 22;
+            // 
+            // panelOpciones
+            // 
+            this.panelOpciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelOpciones.AutoSize = true;
+            this.panelOpciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.panelOpciones.Controls.Add(this.ToggleTextoNegrita);
+            this.panelOpciones.Controls.Add(this.ToggleBotonesAnchos);
+            this.panelOpciones.Controls.Add(this.cboxSelecThema);
+            this.panelOpciones.Controls.Add(this.label3);
+            this.panelOpciones.Controls.Add(this.label2);
+            this.panelOpciones.Controls.Add(this.label4);
+            this.panelOpciones.Location = new System.Drawing.Point(898, 412);
+            this.panelOpciones.Name = "panelOpciones";
+            this.panelOpciones.Size = new System.Drawing.Size(156, 115);
+            this.panelOpciones.TabIndex = 34;
+            this.panelOpciones.Visible = false;
+            // 
+            // ToggleTextoNegrita
+            // 
+            this.ToggleTextoNegrita.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ToggleTextoNegrita.AutoSize = true;
+            this.ToggleTextoNegrita.Location = new System.Drawing.Point(108, 53);
+            this.ToggleTextoNegrita.MinimumSize = new System.Drawing.Size(40, 18);
+            this.ToggleTextoNegrita.Name = "ToggleTextoNegrita";
+            this.ToggleTextoNegrita.OffBackColor = System.Drawing.Color.Gray;
+            this.ToggleTextoNegrita.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.ToggleTextoNegrita.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
+            this.ToggleTextoNegrita.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.ToggleTextoNegrita.Size = new System.Drawing.Size(40, 18);
+            this.ToggleTextoNegrita.TabIndex = 3;
+            this.ToggleTextoNegrita.UseVisualStyleBackColor = true;
+            this.ToggleTextoNegrita.CheckedChanged += new System.EventHandler(this.ToggleTextoNegrita_CheckedChanged);
+            // 
+            // ToggleBotonesAnchos
+            // 
+            this.ToggleBotonesAnchos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ToggleBotonesAnchos.AutoSize = true;
+            this.ToggleBotonesAnchos.Checked = true;
+            this.ToggleBotonesAnchos.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ToggleBotonesAnchos.Location = new System.Drawing.Point(108, 29);
+            this.ToggleBotonesAnchos.MinimumSize = new System.Drawing.Size(40, 18);
+            this.ToggleBotonesAnchos.Name = "ToggleBotonesAnchos";
+            this.ToggleBotonesAnchos.OffBackColor = System.Drawing.Color.Gray;
+            this.ToggleBotonesAnchos.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.ToggleBotonesAnchos.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
+            this.ToggleBotonesAnchos.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.ToggleBotonesAnchos.Size = new System.Drawing.Size(40, 18);
+            this.ToggleBotonesAnchos.TabIndex = 1;
+            this.ToggleBotonesAnchos.UseVisualStyleBackColor = true;
+            this.ToggleBotonesAnchos.CheckedChanged += new System.EventHandler(this.ToggleBotonesAnchos_CheckedChanged);
             // 
             // cboxSelecThema
             // 
-            this.cboxSelecThema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cboxSelecThema.Animated = true;
             this.cboxSelecThema.BackColor = System.Drawing.Color.Transparent;
+            this.cboxSelecThema.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.cboxSelecThema.Dock = System.Windows.Forms.DockStyle.Top;
             this.cboxSelecThema.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboxSelecThema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxSelecThema.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboxSelecThema.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.cboxSelecThema.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
             this.cboxSelecThema.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboxSelecThema.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboxSelecThema.ForeColor = System.Drawing.Color.White;
             this.cboxSelecThema.HoveredState.Parent = this.cboxSelecThema;
             this.cboxSelecThema.ItemHeight = 30;
             this.cboxSelecThema.Items.AddRange(new object[] {
             "Defecto",
+            "Orange",
             "Darck",
             "Pink"});
             this.cboxSelecThema.ItemsAppearance.Parent = this.cboxSelecThema;
-            this.cboxSelecThema.Location = new System.Drawing.Point(942, 490);
+            this.cboxSelecThema.Location = new System.Drawing.Point(0, 75);
             this.cboxSelecThema.Name = "cboxSelecThema";
             this.cboxSelecThema.ShadowDecoration.Parent = this.cboxSelecThema;
-            this.cboxSelecThema.Size = new System.Drawing.Size(102, 36);
+            this.cboxSelecThema.Size = new System.Drawing.Size(156, 36);
             this.cboxSelecThema.StartIndex = 0;
             this.cboxSelecThema.TabIndex = 17;
-            this.cboxSelecThema.Visible = false;
             this.cboxSelecThema.SelectedIndexChanged += new System.EventHandler(this.siticoneComboBox1_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(0, 50);
+            this.label3.Name = "label3";
+            this.label3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.label3.Size = new System.Drawing.Size(156, 25);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Letras en Negrita";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(0, 25);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.label2.Size = new System.Drawing.Size(156, 25);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Botones Anchos";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(156, 25);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "MENU OPCIONES";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnPersonalizacion
             // 
@@ -860,7 +951,7 @@ namespace wfaIntegradoCom
             this.btnPersonalizacion.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnPersonalizacion.IconSize = 40;
             this.btnPersonalizacion.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPersonalizacion.Location = new System.Drawing.Point(955, 438);
+            this.btnPersonalizacion.Location = new System.Drawing.Point(964, 438);
             this.btnPersonalizacion.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnPersonalizacion.Name = "btnPersonalizacion";
             this.btnPersonalizacion.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -883,7 +974,7 @@ namespace wfaIntegradoCom
             this.panelPersonalizarColores.Controls.Add(this.panelColorMenuPrincipal);
             this.panelPersonalizarColores.CustomBorderColor = System.Drawing.Color.Red;
             this.panelPersonalizarColores.CustomBorderThickness = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.panelPersonalizarColores.Location = new System.Drawing.Point(825, 277);
+            this.panelPersonalizarColores.Location = new System.Drawing.Point(834, 277);
             this.panelPersonalizarColores.Name = "panelPersonalizarColores";
             this.panelPersonalizarColores.ShadowDecoration.Parent = this.panelPersonalizarColores;
             this.panelPersonalizarColores.Size = new System.Drawing.Size(220, 161);
@@ -948,7 +1039,7 @@ namespace wfaIntegradoCom
             this.btnOpciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnOpciones.IconSize = 40;
             this.btnOpciones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnOpciones.Location = new System.Drawing.Point(956, 526);
+            this.btnOpciones.Location = new System.Drawing.Point(965, 526);
             this.btnOpciones.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnOpciones.Name = "btnOpciones";
             this.btnOpciones.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -966,7 +1057,7 @@ namespace wfaIntegradoCom
             this.panelCerrarSession.BackColor = System.Drawing.Color.White;
             this.panelCerrarSession.Controls.Add(this.btnCerrarSesion);
             this.panelCerrarSession.Controls.Add(this.btnPerfil);
-            this.panelCerrarSession.Location = new System.Drawing.Point(878, 0);
+            this.panelCerrarSession.Location = new System.Drawing.Point(887, 0);
             this.panelCerrarSession.Name = "panelCerrarSession";
             this.panelCerrarSession.ShadowDecoration.Parent = this.panelCerrarSession;
             this.panelCerrarSession.Size = new System.Drawing.Size(174, 78);
@@ -1027,7 +1118,7 @@ namespace wfaIntegradoCom
             this.pnlSombra.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSombra.Location = new System.Drawing.Point(0, 0);
             this.pnlSombra.Name = "pnlSombra";
-            this.pnlSombra.Size = new System.Drawing.Size(1045, 3);
+            this.pnlSombra.Size = new System.Drawing.Size(1054, 3);
             this.pnlSombra.TabIndex = 16;
             // 
             // statusStrip1
@@ -1094,7 +1185,7 @@ namespace wfaIntegradoCom
             // 
             this.elhAlert.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.elhAlert.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.elhAlert.Location = new System.Drawing.Point(1016, 581);
+            this.elhAlert.Location = new System.Drawing.Point(1025, 581);
             this.elhAlert.Name = "elhAlert";
             this.elhAlert.Size = new System.Drawing.Size(29, 18);
             this.elhAlert.TabIndex = 13;
@@ -1108,7 +1199,7 @@ namespace wfaIntegradoCom
             this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView1.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.treeView1.FullRowSelect = true;
             this.treeView1.HideSelection = false;
@@ -1119,9 +1210,9 @@ namespace wfaIntegradoCom
             this.treeView1.Margin = new System.Windows.Forms.Padding(10);
             this.treeView1.Name = "treeView1";
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.treeView1.SelectedImageIndex = 4;
+            this.treeView1.SelectedImageIndex = 5;
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(1045, 599);
+            this.treeView1.Size = new System.Drawing.Size(1054, 599);
             this.treeView1.TabIndex = 5;
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
@@ -1158,9 +1249,11 @@ namespace wfaIntegradoCom
             this.panelIzquierdo.ResumeLayout(false);
             this.panelIzquierdo.PerformLayout();
             this.panelImagenLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Negro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Naranja)).EndInit();
             this.panelCentral.ResumeLayout(false);
             this.panelCentral.PerformLayout();
+            this.panelOpciones.ResumeLayout(false);
+            this.panelOpciones.PerformLayout();
             this.panelPersonalizarColores.ResumeLayout(false);
             this.panelColorAccesoDirecto.ResumeLayout(false);
             this.panelColorAccesoDirecto.PerformLayout();
@@ -1188,7 +1281,7 @@ namespace wfaIntegradoCom
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private Siticone.UI.WinForms.SiticonePanel panelCerrarSession;
-        private System.Windows.Forms.PictureBox Img_Husat_Negro;
+        private System.Windows.Forms.PictureBox Img_Husat_Naranja;
         private FontAwesome.Sharp.IconButton btnVenta;
         private Siticone.UI.WinForms.SiticonePanel subMenuSoporte;
         private FontAwesome.Sharp.IconButton btnSoporte;
@@ -1232,6 +1325,12 @@ namespace wfaIntegradoCom
         private System.Windows.Forms.Panel panelColorAccesoDirecto;
         private FontAwesome.Sharp.IconButton btnPersonalizacion;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelOpciones;
+        private System.Windows.Forms.Label label2;
+        private RJCodeAdvance.RJControls.RJToggleButton ToggleTextoNegrita;
+        private System.Windows.Forms.Label label3;
+        private RJCodeAdvance.RJControls.RJToggleButton ToggleBotonesAnchos;
+        private System.Windows.Forms.Label label4;
     }
 }
 

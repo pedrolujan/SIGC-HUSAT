@@ -934,8 +934,9 @@ namespace wfaIntegradoCom
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+            ToggleBotonesAnchos.CheckState=CheckState.Unchecked;
 
-            //Aplicando Themas a los paneles
+            //Aplicando Themas a los paneles cboxSelecThema
             ColorThemas.ElegirThema(cboxSelecThema.Text);
             treeView1.BackColor = ColorThemas.PanelPadre;
             panelIzquierdo.BackColor = ColorThemas.PanelBotones;
@@ -950,6 +951,63 @@ namespace wfaIntegradoCom
             btnRrhh.BackColor = ColorThemas.PanelBotones;
             btnConfiguracion.BackColor = ColorThemas.PanelBotones;
             btnSoporte.BackColor = ColorThemas.PanelBotones;
+            //colores al label y icono children
+            iconChildForm.IconColor = ColorThemas.IconoBotones;
+            lblChilForm.ForeColor = ColorThemas.FuenteBotones;
+
+            Img_Husat_Naranja.Visible = true;
+            Img_Husat_Blanco.Visible = false;
+            if (cboxSelecThema.Text == "Defecto")
+            {
+                treeView1.ForeColor = Color.Black;
+                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
+                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
+
+                LayoutPanelAccesoRapido.ForeColor = Color.Black;
+                tsConfiguracion.ForeColor = ColorThemas.FuenteBotones;
+                tsConfiguracion.IconColor = ColorThemas.IconoBotones;
+                tsUsuarios.ForeColor = ColorThemas.FuenteBotones;
+                tsUsuarios.IconColor = ColorThemas.IconoBotones;
+                tsVenta.ForeColor = ColorThemas.FuenteBotones;
+                tsVenta.IconColor = ColorThemas.IconoBotones;
+                tsCaja.ForeColor = ColorThemas.FuenteBotones;
+                tsCaja.IconColor = ColorThemas.IconoBotones;
+                tsCompra.ForeColor = ColorThemas.FuenteBotones;
+                tsCompra.IconColor = ColorThemas.IconoBotones;
+                tsConsulta.ForeColor = ColorThemas.FuenteBotones;
+                tsConsulta.IconColor = ColorThemas.IconoBotones;
+                tsMiCaja.ForeColor = ColorThemas.FuenteBotones;
+                tsMiCaja.IconColor = ColorThemas.IconoBotones;
+                tsCerraSession.ForeColor = ColorThemas.FuenteBotones;
+                tsCerraSession.IconColor = ColorThemas.IconoBotones;
+
+                //Color a las letra he iconos de los botones
+                btnVenta.ForeColor = ColorThemas.FuenteBotones;
+                btnVenta.IconColor = ColorThemas.IconoBotones;
+                btnRecaudacion.ForeColor = ColorThemas.FuenteBotones;
+                btnRecaudacion.IconColor = ColorThemas.IconoBotones;
+                btnComercial.ForeColor = ColorThemas.FuenteBotones;
+                btnComercial.IconColor = ColorThemas.IconoBotones;
+                btnLogistica.ForeColor = ColorThemas.FuenteBotones;
+                btnLogistica.IconColor = ColorThemas.IconoBotones;
+                btnSistemas.IconColor = ColorThemas.IconoBotones;
+                btnSistemas.ForeColor = ColorThemas.FuenteBotones;
+                btnRrhh.IconColor = ColorThemas.IconoBotones;
+                btnRrhh.ForeColor = ColorThemas.FuenteBotones;
+                btnConfiguracion.IconColor = ColorThemas.IconoBotones;
+                btnConfiguracion.ForeColor = ColorThemas.FuenteBotones;
+                btnSoporte.IconColor = ColorThemas.IconoBotones;
+                btnSoporte.ForeColor = ColorThemas.FuenteBotones;
+                treeView1.BackColor = ColorThemas.PanelPadre;
+                panelIzquierdo.BackColor = ColorThemas.PanelBotones;
+
+                btnOpciones.BackColor = ColorThemas.PanelPadre;
+                btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
+
+
+            }
 
 
             //inicio de funciones de cargado de menus y formulario load
@@ -1362,6 +1420,11 @@ namespace wfaIntegradoCom
         private void tsCerrarSession_Click(object sender, EventArgs e)
         {
             //this.Close();
+            iconChildForm.IconChar = IconChar.Home;
+            lblChilForm.Text = "Home";
+            SubmenusOcultos();
+            reset();
+
             panelCerrarSession.Visible = false;
             LoadCarga = false;
             fnOcultarObjetos();
@@ -1390,23 +1453,27 @@ namespace wfaIntegradoCom
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            Img_Husat_Negro.Visible = false;
-            Img_Husat_Blanco.Visible = true;
+            //Img_Husat_Naranja.Visible = false;
+            //Img_Husat_Blanco.Visible = true;
 
-            iconChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
+            iconChildForm.IconChar =IconChar.Home;
             lblChilForm.Text = "Home";
             SubmenusOcultos();
             reset();
+
+            treeView1.Nodes.Clear();
         }
 
         private void pictureBox5_Click_(object sender, EventArgs e)
         {
-            Img_Husat_Blanco.Visible = false;
-            Img_Husat_Negro.Visible = true;
+            //Img_Husat_Blanco.Visible = false;
+            //Img_Husat_Naranja.Visible = true;
             iconChildForm.IconChar = IconChar.Home;
             lblChilForm.Text = "Home";
             SubmenusOcultos();
             reset();
+
+            treeView1.Nodes.Clear();
         }
 
         private void fnBotonActivo(object senderBtn, Color color)
@@ -1419,7 +1486,7 @@ namespace wfaIntegradoCom
                 fnBotoninactivo();
                 //Personalizando Boton
                 BtnActual = (IconButton)senderBtn;//asigna el boton actual con el Boton remitente
-                BtnActual.BackColor = Color.White;
+                BtnActual.BackColor = ColorThemas.FondoBotones;
                 //BtnActual.ForeColor = color;
 
                 //BtnActual.ForeColor = ColorThemas.PanelBotones;
@@ -1427,9 +1494,17 @@ namespace wfaIntegradoCom
 
                 BtnActual.TextAlign = ContentAlignment.MiddleCenter;
                 //BtnActual.IconColor = color;
+       
 
-                BtnActual.IconColor = ColorThemas.PanelBotones; 
+                BtnActual.IconColor = ColorThemas.IconoBotones; 
+
                 BtnActual.IconColor = panelIzquierdo.BackColor;
+                if (cboxSelecThema.Text == "Darck")
+                {
+                    BtnActual.IconColor = Color.FromArgb(255, 72, 31);
+
+                    BtnActual.ForeColor = Color.FromArgb(255, 72, 31);
+                }
 
                 BtnActual.TextImageRelation = TextImageRelation.TextBeforeImage;
                 BtnActual.ImageAlign = ContentAlignment.MiddleRight;
@@ -1456,12 +1531,18 @@ namespace wfaIntegradoCom
             
             if (BtnActual != null)
             {
-                BtnActual.BackColor =panelIzquierdo.BackColor ;
-                BtnActual.ForeColor = Color.White ;
+                BtnActual.BackColor = ColorThemas.PanelBotones;
+                BtnActual.ForeColor = ColorThemas.FuenteBotones;
                 BtnActual.TextAlign = ContentAlignment.MiddleLeft;
-                BtnActual.IconColor = Color.White;
+                BtnActual.IconColor = ColorThemas.IconoBotones;
                 BtnActual.TextImageRelation = TextImageRelation.ImageBeforeText;
                 BtnActual.ImageAlign = ContentAlignment.MiddleLeft;
+                //BtnActual.BackColor = panelIzquierdo.BackColor;
+                //BtnActual.ForeColor = Color.White;
+                //BtnActual.TextAlign = ContentAlignment.MiddleLeft;
+                //BtnActual.IconColor = Color.White;
+                //BtnActual.TextImageRelation = TextImageRelation.ImageBeforeText;
+                //BtnActual.ImageAlign = ContentAlignment.MiddleLeft;
             }
         }
 
@@ -1855,9 +1936,89 @@ namespace wfaIntegradoCom
             ColorThemas.ElegirThema(cboxSelecThema.Text);
             SubmenusOcultos();
             reset();
+           
+            Img_Husat_Blanco.Visible = true;
 
+            iconChildForm.IconColor = ColorThemas.IconoBotones;
+            lblChilForm.ForeColor = ColorThemas.FuenteBotones;
+            treeView1.ForeColor = Color.White;
+
+            btnOpciones.IconColor = Color.White;
+            btnOpciones.ForeColor = Color.White;
+            btnPersonalizacion.ForeColor = Color.White;
+            btnPersonalizacion.IconColor = Color.White;
+
+            if (cboxSelecThema.Text == "Defecto")
+            {
+                treeView1.ForeColor = Color.Black;
+                Img_Husat_Naranja.Visible = true;
+                Img_Husat_Blanco.Visible = false;
+
+                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
+                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
+
+
+                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
+                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
+                btnVenta.ForeColor = ColorThemas.FuenteBotones;
+                btnVenta.IconColor = ColorThemas.IconoBotones;
+                btnRecaudacion.ForeColor = ColorThemas.FuenteBotones;
+                btnRecaudacion.IconColor = ColorThemas.IconoBotones;
+                btnComercial.ForeColor = ColorThemas.FuenteBotones;
+                btnComercial.IconColor = ColorThemas.IconoBotones;
+                btnLogistica.ForeColor = ColorThemas.FuenteBotones;
+                btnLogistica.IconColor = ColorThemas.IconoBotones;
+                btnSistemas.IconColor = ColorThemas.IconoBotones;
+                btnSistemas.ForeColor = ColorThemas.FuenteBotones;
+                btnRrhh.IconColor = ColorThemas.IconoBotones;
+                btnRrhh.ForeColor = ColorThemas.FuenteBotones;
+                btnConfiguracion.IconColor = ColorThemas.IconoBotones;
+                btnConfiguracion.ForeColor = ColorThemas.FuenteBotones;
+                btnSoporte.IconColor = ColorThemas.IconoBotones;
+                btnSoporte.ForeColor = ColorThemas.FuenteBotones;
+                      
+                btnOpciones.IconColor = ColorThemas.IconoBotones;
+                btnOpciones.ForeColor = ColorThemas.FuenteBotones;
+                btnPersonalizacion.IconColor = ColorThemas.IconoBotones;
+                btnPersonalizacion.ForeColor = ColorThemas.FuenteBotones;
+
+                //iconChildForm.IconColor = ColorThemas.Fuente_Iconos;
+                //lblChilForm.ForeColor = ColorThemas.Fuente_Iconos;
+                btnOpciones.BackColor = ColorThemas.PanelPadre;
+                btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
+                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
+                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
+
+            }
+
+          
+
+            //Color a las letra he iconos de los botones
+            btnVenta.ForeColor = ColorThemas.FuenteBotones;
+            btnVenta.IconColor = ColorThemas.IconoBotones;
+            btnRecaudacion.ForeColor = ColorThemas.FuenteBotones;
+            btnRecaudacion.IconColor = ColorThemas.IconoBotones;
+            btnComercial.ForeColor = ColorThemas.FuenteBotones;
+            btnComercial.IconColor = ColorThemas.IconoBotones;
+            btnLogistica.ForeColor = ColorThemas.FuenteBotones;
+            btnLogistica.IconColor = ColorThemas.IconoBotones;
+            btnSistemas.IconColor = ColorThemas.IconoBotones;
+            btnSistemas.ForeColor = ColorThemas.FuenteBotones;
+            btnRrhh.IconColor = ColorThemas.IconoBotones;
+            btnRrhh.ForeColor = ColorThemas.FuenteBotones;
+            btnConfiguracion.IconColor = ColorThemas.IconoBotones;
+            btnConfiguracion.ForeColor = ColorThemas.FuenteBotones;
+            btnSoporte.IconColor = ColorThemas.IconoBotones;
+            btnSoporte.ForeColor = ColorThemas.FuenteBotones;
             treeView1.BackColor = ColorThemas.PanelPadre;
             panelIzquierdo.BackColor = ColorThemas.PanelBotones;
+
             //Botones del Menu Principal
             btnVenta.BackColor = ColorThemas.PanelBotones;
             btnRecaudacion.BackColor = ColorThemas.PanelBotones;
@@ -1869,6 +2030,40 @@ namespace wfaIntegradoCom
             btnSoporte.BackColor = ColorThemas.PanelBotones;
             PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
             btnOpciones.BackColor = ColorThemas.PanelPadre;
+            btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
+            //Botones del panel de acceso Directo
+
+            tsConfiguracion.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsConfiguracion.ForeColor = ColorThemas.FuenteBotones;
+            tsConfiguracion.IconColor = ColorThemas.IconoBotones;
+
+            tsUsuarios.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsUsuarios.ForeColor = ColorThemas.FuenteBotones;
+            tsUsuarios.IconColor = ColorThemas.IconoBotones;
+
+            tsVenta.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsVenta.ForeColor = ColorThemas.FuenteBotones;
+            tsVenta.IconColor = ColorThemas.IconoBotones;
+
+            tsCaja.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsCaja.ForeColor = ColorThemas.FuenteBotones;
+            tsCaja.IconColor = ColorThemas.IconoBotones;
+
+            tsCompra.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsCompra.ForeColor = ColorThemas.FuenteBotones;
+            tsCompra.IconColor = ColorThemas.IconoBotones;
+
+            tsConsulta.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsConsulta.ForeColor = ColorThemas.FuenteBotones;
+            tsConsulta.IconColor = ColorThemas.IconoBotones;
+
+            tsMiCaja.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsMiCaja.ForeColor = ColorThemas.FuenteBotones;
+            tsMiCaja.IconColor = ColorThemas.IconoBotones;
+
+            tsCerraSession.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsCerraSession.ForeColor = ColorThemas.FuenteBotones;
+            tsCerraSession.IconColor = ColorThemas.IconoBotones;
 
             if (cboxSelecThema.Text == "Pink")
             {
@@ -1877,48 +2072,36 @@ namespace wfaIntegradoCom
                 btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
                 btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
                 btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
-              
-
-
-            }
-            else 
-            {
-                treeView1.ForeColor = Color.White;
-                btnOpciones.IconColor = Color.White;
-                btnOpciones.ForeColor = Color.White;
-                btnPersonalizacion.ForeColor = Color.White;
-                btnPersonalizacion.IconColor = Color.White;
             }
 
         }
-
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
 
             if (cboxSelecThema.Visible == false)
             {
-                cboxSelecThema.Visible = true;
+               
                 btnOpciones.IconChar = IconChar.Gear;
 
             }
             else
             {
-                cboxSelecThema.Visible = false;
+               
                 btnOpciones.IconChar = IconChar.Sliders;
             }
         }
 
         private void treeView1_MouseEnter(object sender, EventArgs e)
         {
-            cboxSelecThema.Visible = false;
+            panelOpciones.Visible = false;
             panelPersonalizarColores.Visible = false;
             btnOpciones.IconChar = IconChar.Sliders;
         }
 
         private void btnOpciones_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            cboxSelecThema.Visible = true;
+            panelOpciones.Visible = true;
             btnOpciones.IconChar = IconChar.Gear;
         }
 
@@ -2019,6 +2202,103 @@ namespace wfaIntegradoCom
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void ToggleBotonesAnchos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ToggleBotonesAnchos.Checked == false)
+            {
+                int sizebtn = 25;
+                btnVenta.Size= new Size(222, 35);
+                btnVenta.IconSize = sizebtn;
+                btnComercial.Size= new Size(222, 35);
+                btnComercial.IconSize = sizebtn;
+                btnConfiguracion.Size= new Size(222, 35);
+                btnConfiguracion.IconSize = sizebtn;
+                btnLogistica.Size= new Size(222, 35);
+                btnLogistica.IconSize = sizebtn;
+                btnSistemas.Size= new Size(222, 35);
+                btnSistemas.IconSize = sizebtn;
+                btnRrhh.Size= new Size(222, 35);
+                btnRrhh.IconSize = sizebtn;
+                btnRecaudacion.Size= new Size(222, 35);
+                btnRecaudacion.IconSize = sizebtn;
+                btnSoporte.Size = new Size(222, 35);
+                btnSoporte.IconSize = sizebtn;
+            }
+            else
+            {
+               int sizebtn = 32;
+                btnVenta.Size = new Size(222, 55);
+                btnVenta.IconSize = sizebtn;
+                btnComercial.Size = new Size(222, 55);
+                btnComercial.IconSize = sizebtn;
+                btnConfiguracion.Size = new Size(222, 55);
+                btnConfiguracion.IconSize = sizebtn;
+                btnLogistica.Size = new Size(222, 55);
+                btnLogistica.IconSize = sizebtn;
+                btnSistemas.Size = new Size(222, 55);
+                btnSistemas.IconSize = sizebtn;
+                btnRrhh.Size = new Size(222, 55);
+                btnRrhh.IconSize = sizebtn;
+                btnRecaudacion.Size = new Size(222, 55);
+                btnRecaudacion.IconSize = sizebtn;
+                btnSoporte.Size = new Size(222, 35);
+                btnSoporte.IconSize = sizebtn;
+            }
+
+        }
+
+        private void ToggleTextoNegrita_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ToggleTextoNegrita.Checked == false)
+            {
+               
+                btnVenta.Font = new Font(btnVenta.Font, FontStyle.Regular);
+                btnComercial.Font = new Font(btnComercial.Font, FontStyle.Regular);
+                btnConfiguracion.Font = new Font(btnConfiguracion.Font, FontStyle.Regular);
+                btnLogistica.Font = new Font(btnLogistica.Font, FontStyle.Regular);
+                btnSistemas.Font = new Font(btnSistemas.Font, FontStyle.Regular);
+                btnRrhh.Font = new Font(btnRrhh.Font, FontStyle.Regular);
+                btnRecaudacion.Font = new Font(btnRecaudacion.Font, FontStyle.Regular);
+                btnSoporte.Font = new Font(btnSoporte.Font, FontStyle.Regular);
+
+                tsConfiguracion.Font = new Font(tsConfiguracion.Font, FontStyle.Regular);
+                tsUsuarios.Font = new Font(tsUsuarios.Font, FontStyle.Regular);
+                tsVenta.Font = new Font(tsVenta.Font, FontStyle.Regular);
+                tsCaja.Font = new Font(tsCaja.Font, FontStyle.Regular);
+                tsCompra.Font = new Font(tsCompra.Font, FontStyle.Regular);
+                tsConsulta.Font = new Font(tsConsulta.Font, FontStyle.Regular);
+                tsMiCaja.Font = new Font(tsMiCaja.Font, FontStyle.Regular);
+
+
+            }
+            else
+            {
+               
+                btnVenta.Font = new Font(btnVenta.Font, FontStyle.Bold);
+                btnVenta.Font = new Font(btnVenta.Font, FontStyle.Bold);
+                btnComercial.Font = new Font(btnComercial.Font, FontStyle.Bold);
+                btnConfiguracion.Font = new Font(btnConfiguracion.Font, FontStyle.Bold);
+                btnLogistica.Font = new Font(btnLogistica.Font, FontStyle.Bold);
+                btnSistemas.Font = new Font(btnSistemas.Font, FontStyle.Bold);
+                btnRrhh.Font = new Font(btnRrhh.Font, FontStyle.Bold);
+                btnRecaudacion.Font = new Font(btnRecaudacion.Font, FontStyle.Bold);
+                btnSoporte.Font = new Font(btnSoporte.Font, FontStyle.Bold);
+
+                tsConfiguracion.Font = new Font(tsConfiguracion.Font, FontStyle.Bold);
+                tsUsuarios.Font = new Font(tsUsuarios.Font, FontStyle.Bold);
+                tsVenta.Font = new Font(tsVenta.Font, FontStyle.Bold);
+                tsCaja.Font = new Font(tsCaja.Font, FontStyle.Bold);
+                tsCompra.Font = new Font(tsCompra.Font, FontStyle.Bold);
+                tsConsulta.Font = new Font(tsConsulta.Font, FontStyle.Bold);
+                tsMiCaja.Font = new Font(tsMiCaja.Font, FontStyle.Bold);
+
+
+
+
+            }
 
         }
     }

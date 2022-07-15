@@ -100,6 +100,9 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="RJCodeAdvance.RJControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RJCodeAdvance.RJControls.1.0.0\lib\net45\RJCodeAdvance.RJControls.dll</HintPath>
+    </Reference>
     <Reference Include="Siticone.UI">
       <HintPath>C:\Users\USUARIO\Downloads\siticone\Siticone.UI.dll</HintPath>
     </Reference>
@@ -1110,6 +1113,7 @@
     <None Include="Resources\HUSAT_LOGO.png" />
     <None Include="Resources\HUSAT_LOGO %28Blanco sombra color%29.png" />
     <None Include="Resources\soporte_blanco_1.png" />
+    <None Include="Resources\HUSAT_LOGO %28Letras Naranjas%29 .png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
