@@ -2237,21 +2237,35 @@ namespace wfaIntegradoCom.Procesos
 
         private void lblNumDocumentos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (pnDocumentos.Visible==true)
+            
+        }
+
+        private void fnOcultarDatosParaDocumentoVenta()
+        {
+            if (pnDocumentos.Visible == true)
             {
-                pnDocumentos.Visible=false;
-                lblNumDocumentos.Width =161;
-                lblNumDocumentos.Location = new Point(877, (328 + tabControl1.TabPages[1].AutoScrollPosition.Y));
+                pnDocumentos.Visible = false;
+                //lblNumDocumentos.Width = 161;
+                //lblNumDocumentos.Location = new Point(877, (328 + tabControl1.TabPages[1].AutoScrollPosition.Y));
             }
             else
             {
-                pnDocumentos.Visible=true;
-                lblNumDocumentos.Width=396;
-                pnDocumentos.Width = 420;
-                dgvDatosDocumentosVenta.Width = 416;
-                lblNumDocumentos.Location = new Point(642, (328+tabControl1.TabPages[1].AutoScrollPosition.Y));
+                pnDocumentos.Visible = true;
+                //lblNumDocumentos.Width = 396;
+                //pnDocumentos.Width = 420;
+                dgvDatosDocumentosVenta.Width = 338;
+                //lblNumDocumentos.Location = new Point(642, (328 + tabControl1.TabPages[1].AutoScrollPosition.Y));
             }
-            pnDocumentos.Location = new Point(642, (350+tabControl1.TabPages[1].AutoScrollPosition.Y));
+            //pnDocumentos.Location = new Point(642, (350 + tabControl1.TabPages[1].AutoScrollPosition.Y));
+        }
+        private void lblNumDocumentos_LinkClicked(object sender, EventArgs e)
+        {
+            fnOcultarDatosParaDocumentoVenta();
+        }
+
+        private void btnContadorItems_Click(object sender, EventArgs e)
+        {
+            fnOcultarDatosParaDocumentoVenta();
         }
 
         private void btnVerDatos_Click(object sender, EventArgs e)
