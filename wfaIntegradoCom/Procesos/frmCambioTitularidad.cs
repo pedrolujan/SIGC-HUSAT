@@ -380,8 +380,9 @@ namespace wfaIntegradoCom.Procesos
             lstDventa.Clear();
             lstdocumentoV.Clear();
 
-            Mantenedores.frmRegistrarVenta frmRVenta = new Mantenedores.frmRegistrarVenta();
-            frmRVenta.fnObtenerUsuarioActual();
+           
+            Personal clsPersonal = FunGeneral.fnObtenerUsuarioActual();
+           
 
             lstDventa.Add(new DetalleVenta
             {
@@ -406,7 +407,7 @@ namespace wfaIntegradoCom.Procesos
                 cTipoDoc = lstClientes[0].cTipoDoc,
                 cDireccion = lstClientes[0].cDireccion,
                 cVehiculos = lstvehiculo[0].vPlaca,
-                cUsuario = frmRVenta.fnObtenerUsuarioActual(),
+                cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat + " " + clsPersonal.cApeMat,
 
 
 

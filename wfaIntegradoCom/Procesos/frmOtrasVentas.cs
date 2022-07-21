@@ -1834,7 +1834,7 @@ namespace wfaIntegradoCom.Procesos
             List<DocumentoVenta> lsDocVenta = new List<DocumentoVenta>();
             TipoTarifa lstTipoVenta = new TipoTarifa();
             //lstTipoVenta = lstTipoTarifa.First(s => s.IdTipoTarifa == Convert.ToInt32(cboTipoVenta.SelectedValue));
-
+            Personal clsPers = FunGeneral.fnObtenerUsuarioActual();
             lsDocVenta.Add(new DocumentoVenta
             {
                 idCliente = clsClienteDocumentoV.idCliente,
@@ -1851,7 +1851,7 @@ namespace wfaIntegradoCom.Procesos
                 nNroIGV = DocumentoVenta.nNroIGV,
                 nIGV = DocumentoVenta.nIGV,
                 nMontoTotal = DocumentoVenta.nMontoTotal,
-                cUsuario = FunGeneral.fnObtenerUsuarioActual(),
+                cUsuario = clsPers.cPrimerNom+" "+ clsPers.cApePat + " " + clsPers.cApeMat,
                 cVehiculos = clsVehiculoServicios is Vehiculo && clsVehiculoServicios.vPlaca.ToString()!=""? clsVehiculoServicios.vPlaca: fnObtenerVehiculos(),
                 cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
                 cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",

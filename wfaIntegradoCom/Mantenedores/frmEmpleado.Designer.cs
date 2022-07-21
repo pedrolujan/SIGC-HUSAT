@@ -60,6 +60,21 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.gbEmpleado = new System.Windows.Forms.GroupBox();
+            this.panelImagenes = new System.Windows.Forms.Panel();
+            this.btnClosepanelImagenes = new FontAwesome.Sharp.IconPictureBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.picAddImagen = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.lblNameImagen = new System.Windows.Forms.Label();
+            this.lblImgPerfil = new System.Windows.Forms.Label();
+            this.picBoxImgPerfil = new System.Windows.Forms.PictureBox();
             this.dateTimePicker1 = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.cboCargo = new Siticone.UI.WinForms.SiticoneComboBox();
             this.txtIdPersonal = new Siticone.UI.WinForms.SiticoneTextBox();
@@ -97,6 +112,19 @@
             this.tsBotonera.SuspendLayout();
             this.gbUbigeo.SuspendLayout();
             this.gbEmpleado.SuspendLayout();
+            this.panelImagenes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClosepanelImagenes)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddImagen)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxImgPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epControlOk)).BeginInit();
             this.siticonePanel1.SuspendLayout();
@@ -184,6 +212,7 @@
             // 
             // cboDistrito
             // 
+            this.cboDistrito.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboDistrito.BackColor = System.Drawing.Color.Transparent;
             this.cboDistrito.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.cboDistrito.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -195,7 +224,7 @@
             this.cboDistrito.IntegralHeight = false;
             this.cboDistrito.ItemHeight = 30;
             this.cboDistrito.ItemsAppearance.Parent = this.cboDistrito;
-            this.cboDistrito.Location = new System.Drawing.Point(538, 44);
+            this.cboDistrito.Location = new System.Drawing.Point(536, 44);
             this.cboDistrito.Name = "cboDistrito";
             this.cboDistrito.ShadowDecoration.Parent = this.cboDistrito;
             this.cboDistrito.Size = new System.Drawing.Size(189, 36);
@@ -203,6 +232,7 @@
             // 
             // cboProvincia
             // 
+            this.cboProvincia.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboProvincia.BackColor = System.Drawing.Color.Transparent;
             this.cboProvincia.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -213,7 +243,7 @@
             this.cboProvincia.IntegralHeight = false;
             this.cboProvincia.ItemHeight = 30;
             this.cboProvincia.ItemsAppearance.Parent = this.cboProvincia;
-            this.cboProvincia.Location = new System.Drawing.Point(269, 44);
+            this.cboProvincia.Location = new System.Drawing.Point(267, 44);
             this.cboProvincia.Name = "cboProvincia";
             this.cboProvincia.ShadowDecoration.Parent = this.cboProvincia;
             this.cboProvincia.Size = new System.Drawing.Size(189, 36);
@@ -222,6 +252,7 @@
             // 
             // cboDepartamento
             // 
+            this.cboDepartamento.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboDepartamento.BackColor = System.Drawing.Color.Transparent;
             this.cboDepartamento.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -241,6 +272,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(534, 21);
             this.label10.Name = "label10";
@@ -251,6 +283,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(266, 21);
             this.label9.Name = "label9";
@@ -261,6 +294,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(12, 21);
             this.label8.Name = "label8";
@@ -292,7 +326,7 @@
             // lblClave
             // 
             this.lblClave.AutoSize = true;
-            this.lblClave.Location = new System.Drawing.Point(411, 22);
+            this.lblClave.Location = new System.Drawing.Point(369, 22);
             this.lblClave.Name = "lblClave";
             this.lblClave.Size = new System.Drawing.Size(89, 13);
             this.lblClave.TabIndex = 4;
@@ -332,7 +366,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(411, 82);
+            this.label2.Location = new System.Drawing.Point(369, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 10;
@@ -391,6 +425,10 @@
             // 
             // gbEmpleado
             // 
+            this.gbEmpleado.Controls.Add(this.panelImagenes);
+            this.gbEmpleado.Controls.Add(this.lblNameImagen);
+            this.gbEmpleado.Controls.Add(this.lblImgPerfil);
+            this.gbEmpleado.Controls.Add(this.picBoxImgPerfil);
             this.gbEmpleado.Controls.Add(this.dateTimePicker1);
             this.gbEmpleado.Controls.Add(this.cboCargo);
             this.gbEmpleado.Controls.Add(this.txtIdPersonal);
@@ -420,12 +458,188 @@
             this.gbEmpleado.TabStop = false;
             this.gbEmpleado.Text = "Datos Principales";
             // 
+            // panelImagenes
+            // 
+            this.panelImagenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.panelImagenes.Controls.Add(this.btnClosepanelImagenes);
+            this.panelImagenes.Controls.Add(this.flowLayoutPanel2);
+            this.panelImagenes.Controls.Add(this.flowLayoutPanel1);
+            this.panelImagenes.Location = new System.Drawing.Point(359, 33);
+            this.panelImagenes.Name = "panelImagenes";
+            this.panelImagenes.Size = new System.Drawing.Size(474, 270);
+            this.panelImagenes.TabIndex = 235;
+            this.panelImagenes.Visible = false;
+            // 
+            // btnClosepanelImagenes
+            // 
+            this.btnClosepanelImagenes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClosepanelImagenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnClosepanelImagenes.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.epUsuario.SetIconAlignment(this.btnClosepanelImagenes, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.btnClosepanelImagenes.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.btnClosepanelImagenes.IconColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnClosepanelImagenes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClosepanelImagenes.IconSize = 26;
+            this.btnClosepanelImagenes.Location = new System.Drawing.Point(428, 3);
+            this.btnClosepanelImagenes.Name = "btnClosepanelImagenes";
+            this.btnClosepanelImagenes.Size = new System.Drawing.Size(46, 26);
+            this.btnClosepanelImagenes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnClosepanelImagenes.TabIndex = 2;
+            this.btnClosepanelImagenes.TabStop = false;
+            this.btnClosepanelImagenes.Click += new System.EventHandler(this.btnClosepanelImagenes_Click);
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox5);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox6);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox7);
+            this.flowLayoutPanel2.Controls.Add(this.picAddImagen);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 151);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(467, 100);
+            this.flowLayoutPanel2.TabIndex = 1;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 1;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(119, 3);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 2;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(235, 3);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 3;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            // 
+            // picAddImagen
+            // 
+            this.picAddImagen.Image = ((System.Drawing.Image)(resources.GetObject("picAddImagen.Image")));
+            this.picAddImagen.Location = new System.Drawing.Point(351, 3);
+            this.picAddImagen.Name = "picAddImagen";
+            this.picAddImagen.Size = new System.Drawing.Size(110, 90);
+            this.picAddImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAddImagen.TabIndex = 4;
+            this.picAddImagen.TabStop = false;
+            this.picAddImagen.Click += new System.EventHandler(this.pictureBox8_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox2);
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox3);
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox4);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 31);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(467, 100);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(119, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(235, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(351, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(110, 90);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 3;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // lblNameImagen
+            // 
+            this.lblNameImagen.AutoSize = true;
+            this.lblNameImagen.Location = new System.Drawing.Point(683, 175);
+            this.lblNameImagen.Name = "lblNameImagen";
+            this.lblNameImagen.Size = new System.Drawing.Size(73, 13);
+            this.lblNameImagen.TabIndex = 236;
+            this.lblNameImagen.Text = "Name Imagen";
+            // 
+            // lblImgPerfil
+            // 
+            this.lblImgPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblImgPerfil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblImgPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblImgPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblImgPerfil.Location = new System.Drawing.Point(661, 33);
+            this.lblImgPerfil.Name = "lblImgPerfil";
+            this.lblImgPerfil.Size = new System.Drawing.Size(130, 130);
+            this.lblImgPerfil.TabIndex = 30;
+            this.lblImgPerfil.Text = "Elige tu imagen";
+            this.lblImgPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblImgPerfil.Click += new System.EventHandler(this.lblImgPerfil_Click);
+            // 
+            // picBoxImgPerfil
+            // 
+            this.picBoxImgPerfil.Location = new System.Drawing.Point(664, 33);
+            this.picBoxImgPerfil.Name = "picBoxImgPerfil";
+            this.picBoxImgPerfil.Size = new System.Drawing.Size(130, 130);
+            this.picBoxImgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBoxImgPerfil.TabIndex = 31;
+            this.picBoxImgPerfil.TabStop = false;
+            this.picBoxImgPerfil.Click += new System.EventHandler(this.picBoxImgPerfil_Click);
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.BorderColor = System.Drawing.Color.Silver;
             this.dateTimePicker1.BorderThickness = 1;
             this.dateTimePicker1.CheckedState.Parent = this.dateTimePicker1;
             this.dateTimePicker1.FillColor = System.Drawing.Color.White;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateTimePicker1.HoveredState.Parent = this.dateTimePicker1;
             this.dateTimePicker1.Location = new System.Drawing.Point(29, 267);
@@ -493,13 +707,13 @@
             this.txtDireccion.ForeColor = System.Drawing.Color.Black;
             this.txtDireccion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDireccion.HoveredState.Parent = this.txtDireccion;
-            this.txtDireccion.Location = new System.Drawing.Point(311, 170);
+            this.txtDireccion.Location = new System.Drawing.Point(304, 170);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.PasswordChar = '\0';
             this.txtDireccion.PlaceholderText = "";
             this.txtDireccion.SelectedText = "";
             this.txtDireccion.ShadowDecoration.Parent = this.txtDireccion;
-            this.txtDireccion.Size = new System.Drawing.Size(362, 36);
+            this.txtDireccion.Size = new System.Drawing.Size(330, 36);
             this.txtDireccion.TabIndex = 26;
             this.txtDireccion.TextChanged += new System.EventHandler(this.siticoneTextBox8_TextChanged);
             // 
@@ -518,7 +732,7 @@
             this.txtTelefono.ForeColor = System.Drawing.Color.Black;
             this.txtTelefono.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelefono.HoveredState.Parent = this.txtTelefono;
-            this.txtTelefono.Location = new System.Drawing.Point(141, 170);
+            this.txtTelefono.Location = new System.Drawing.Point(136, 170);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.PasswordChar = '\0';
             this.txtTelefono.PlaceholderText = "";
@@ -572,7 +786,7 @@
             this.txtPrimerNom.PlaceholderText = "";
             this.txtPrimerNom.SelectedText = "";
             this.txtPrimerNom.ShadowDecoration.Parent = this.txtPrimerNom;
-            this.txtPrimerNom.Size = new System.Drawing.Size(285, 36);
+            this.txtPrimerNom.Size = new System.Drawing.Size(200, 36);
             this.txtPrimerNom.TabIndex = 26;
             // 
             // txtSegundoNom
@@ -590,13 +804,13 @@
             this.txtSegundoNom.ForeColor = System.Drawing.Color.Black;
             this.txtSegundoNom.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSegundoNom.HoveredState.Parent = this.txtSegundoNom;
-            this.txtSegundoNom.Location = new System.Drawing.Point(412, 101);
+            this.txtSegundoNom.Location = new System.Drawing.Point(370, 101);
             this.txtSegundoNom.Name = "txtSegundoNom";
             this.txtSegundoNom.PasswordChar = '\0';
             this.txtSegundoNom.PlaceholderText = "";
             this.txtSegundoNom.SelectedText = "";
             this.txtSegundoNom.ShadowDecoration.Parent = this.txtSegundoNom;
-            this.txtSegundoNom.Size = new System.Drawing.Size(315, 38);
+            this.txtSegundoNom.Size = new System.Drawing.Size(200, 36);
             this.txtSegundoNom.TabIndex = 26;
             // 
             // txtApeMat
@@ -614,13 +828,13 @@
             this.txtApeMat.ForeColor = System.Drawing.Color.Black;
             this.txtApeMat.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApeMat.HoveredState.Parent = this.txtApeMat;
-            this.txtApeMat.Location = new System.Drawing.Point(412, 40);
+            this.txtApeMat.Location = new System.Drawing.Point(370, 40);
             this.txtApeMat.Name = "txtApeMat";
             this.txtApeMat.PasswordChar = '\0';
             this.txtApeMat.PlaceholderText = "";
             this.txtApeMat.SelectedText = "";
             this.txtApeMat.ShadowDecoration.Parent = this.txtApeMat;
-            this.txtApeMat.Size = new System.Drawing.Size(315, 36);
+            this.txtApeMat.Size = new System.Drawing.Size(200, 36);
             this.txtApeMat.TabIndex = 26;
             // 
             // txtApePat
@@ -644,7 +858,7 @@
             this.txtApePat.PlaceholderText = "";
             this.txtApePat.SelectedText = "";
             this.txtApePat.ShadowDecoration.Parent = this.txtApePat;
-            this.txtApePat.Size = new System.Drawing.Size(285, 36);
+            this.txtApePat.Size = new System.Drawing.Size(200, 36);
             this.txtApePat.TabIndex = 26;
             // 
             // epUsuario
@@ -698,7 +912,6 @@
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
             this.siticonePanel1.Size = new System.Drawing.Size(984, 661);
             this.siticonePanel1.TabIndex = 24;
-            this.siticonePanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.siticonePanel1_Paint);
             // 
             // picBuscarPersonal
             // 
@@ -955,7 +1168,7 @@
             this.lvempleado.RowHeadersVisible = false;
             this.lvempleado.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.lvempleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.lvempleado.Size = new System.Drawing.Size(518, 276);
+            this.lvempleado.Size = new System.Drawing.Size(518, 293);
             this.lvempleado.TabIndex = 35;
             this.lvempleado.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Red;
             this.lvempleado.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
@@ -981,7 +1194,7 @@
             this.lvempleado.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.lvempleado.Visible = false;
             this.lvempleado.DoubleClick += new System.EventHandler(this.lvempleado_DoubleClick);
-            this.lvempleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvempleado_KeyPress);
+            this.lvempleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarEmpleado_KeyPress);
             // 
             // Código
             // 
@@ -1023,6 +1236,19 @@
             this.gbUbigeo.PerformLayout();
             this.gbEmpleado.ResumeLayout(false);
             this.gbEmpleado.PerformLayout();
+            this.panelImagenes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnClosepanelImagenes)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddImagen)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxImgPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epControlOk)).EndInit();
             this.siticonePanel1.ResumeLayout(false);
@@ -1100,5 +1326,20 @@
         private Siticone.UI.WinForms.SiticoneDateTimePicker dateTimePicker1;
         private Siticone.UI.WinForms.SiticonePictureBox siticonePictureBox1;
         private Siticone.UI.WinForms.SiticonePictureBox picBuscarPersonal;
+        private System.Windows.Forms.Label lblImgPerfil;
+        private System.Windows.Forms.Panel panelImagenes;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox picAddImagen;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label lblNameImagen;
+        private FontAwesome.Sharp.IconPictureBox btnClosepanelImagenes;
+        private System.Windows.Forms.PictureBox picBoxImgPerfil;
     }
 }

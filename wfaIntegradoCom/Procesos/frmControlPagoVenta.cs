@@ -1558,7 +1558,8 @@ namespace wfaIntegradoCom.Procesos
             List<DocumentoVenta> lsDocVenta = new List<DocumentoVenta>();
             TipoTarifa lstTipoVenta = new TipoTarifa();
             frmRegistrarVenta frmRV = new frmRegistrarVenta();
-            
+            Personal clsPersonal = FunGeneral.fnObtenerUsuarioActual();
+
             if (tipCon==0)
             {
                 lsDocVenta.Add(new DocumentoVenta
@@ -1577,7 +1578,7 @@ namespace wfaIntegradoCom.Procesos
                     nNroIGV = 18,
                     nIGV = lstdvc.IGV,
                     nMontoTotal = lstdvc.Total,
-                    cUsuario = frmRV.fnObtenerUsuarioActual(),
+                    cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat + " " + clsPersonal.cApeMat,
                     cVehiculos = clsVehiculo.vPlaca,
                     cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
                     cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",
@@ -1620,7 +1621,7 @@ namespace wfaIntegradoCom.Procesos
                     nNroIGV = 18,
                     nIGV = lstdvc.IGV,
                     nMontoTotal = lstdvc.Total,
-                    cUsuario = frmRV.fnObtenerUsuarioActual(),
+                    cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat + " " + clsPersonal.cApeMat,
                     cVehiculos = vPlacas,
                     cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
                     cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",

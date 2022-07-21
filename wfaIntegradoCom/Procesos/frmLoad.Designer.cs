@@ -66,7 +66,7 @@ namespace wfaIntegradoCom.Procesos
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.lblStatus.Location = new System.Drawing.Point(514, 380);
+            this.lblStatus.Location = new System.Drawing.Point(497, 380);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(46, 26);
             this.lblStatus.TabIndex = 4;
@@ -80,7 +80,7 @@ namespace wfaIntegradoCom.Procesos
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.label1.Location = new System.Drawing.Point(484, 262);
+            this.label1.Location = new System.Drawing.Point(467, 262);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 32);
             this.label1.TabIndex = 4;
@@ -93,7 +93,7 @@ namespace wfaIntegradoCom.Procesos
             this.siticoneWinProgressIndicator1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.siticoneWinProgressIndicator1.BackColor = System.Drawing.Color.Transparent;
             this.siticoneWinProgressIndicator1.CircleSize = 1F;
-            this.siticoneWinProgressIndicator1.Location = new System.Drawing.Point(449, 189);
+            this.siticoneWinProgressIndicator1.Location = new System.Drawing.Point(432, 189);
             this.siticoneWinProgressIndicator1.Name = "siticoneWinProgressIndicator1";
             this.siticoneWinProgressIndicator1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticoneWinProgressIndicator1.Size = new System.Drawing.Size(177, 177);

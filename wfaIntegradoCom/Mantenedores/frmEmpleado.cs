@@ -11,6 +11,7 @@ using CapaNegocio;
 using CapaEntidad;
 using CapaUtil;
 using wfaIntegradoCom.Funciones;
+using System.IO;
 
 namespace wfaIntegradoCom.Mantenedores
 {
@@ -23,7 +24,12 @@ namespace wfaIntegradoCom.Mantenedores
 
         static Int32 tabInicio;
         Int16 lnTipoCon = 0;
-
+        public void Inicio(Int32 idPersonal)
+        {
+            fnListarPersonalEspecifico(idPersonal);
+          
+            ShowDialog();
+        }
         private Boolean fnLLenarCargo()
         {
             BLCargo objCargo = new BLCargo();
@@ -140,7 +146,7 @@ namespace wfaIntegradoCom.Mantenedores
                 MessageBox.Show("Error al Cargar Cargos", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
-            fnHabilitarControles(false);
+            //fnHabilitarControles(false);
         }
              
         private void fnHabilitarControles(Boolean pbHabilitar)
@@ -172,7 +178,10 @@ namespace wfaIntegradoCom.Mantenedores
             lvempleado.Visible = false;
             epUsuario.Clear();
             epControlOk.Clear();
+            picBoxImgPerfil.Image = null;
+            lblImgPerfil.Visible = true;
             txtBuscarEmpleado.Focus();
+
 
         }
 
@@ -265,21 +274,18 @@ namespace wfaIntegradoCom.Mantenedores
             }
 
         }
-
+    
         private void txtBuscarEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar==(char)Keys.Enter)
             {
-
-                gbPaginacion.Enabled = true;
-                gbEmpleado.Enabled = false;
-                gbUbigeo.Enabled = false;
+                
                 fnBuscarEmpleado(0, 0);
 
             }
         }
 
-        private Boolean fnListarPersonalEspecifico()
+        private Boolean fnListarPersonalEspecifico(Int32 idPersonal)
         {
             clsUtil objUtil = new clsUtil();
             try
@@ -292,7 +298,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                     //ListView.SelectedListViewItemCollection item = lvempleado.SelectedItems;
 
-                    Int32 idPersonal = Convert.ToInt32(lvempleado.CurrentRow.Cells[0].Value);
+                    
                     lstPers = objPers.blListarPersonal(idPersonal).ToArray();
                     txtIdPersonal.Text = Convert.ToString(lstPers[0].idPersonal);
                     txtApePat.Text = Convert.ToString(lstPers[0].cApePat);
@@ -308,6 +314,20 @@ namespace wfaIntegradoCom.Mantenedores
                     cboDepartamento.Text = Convert.ToString(lstPers[0].cNomDep.Trim());
                     cboProvincia.Text = Convert.ToString(lstPers[0].cNomProv.Trim());
                     cboDistrito.Text = Convert.ToString(lstPers[0].cNomDist.Trim());
+
+                    picBoxImgPerfil.BackgroundImage = null;
+
+
+                    picBoxImgPerfil.Image = Image.FromStream(lstPers[0].strPerfil);
+                    lblImgPerfil.Visible = false;
+                    fnHabilitarControles(true);
+
+                    //Byte b = Convert.ToByte(lstPers[0].pPerfil.Value);
+                    //Byte b = Convert.ToByte(lstPers[0].strPerfil);
+                    //MemoryStream ms = new MemoryStream(b);
+
+                    lblNameImagen.Text = Convert.ToString(lstPers[0].Name_ImgPerfil.Trim());
+
                     lvempleado.Visible = false;
                     fnHabilitarControles(true);
                     gbPaginacion.Enabled = false;
@@ -331,26 +351,15 @@ namespace wfaIntegradoCom.Mantenedores
         private void lvempleado_DoubleClick(object sender, EventArgs e)
         {
             Boolean bResul = false;
-            bResul = fnListarPersonalEspecifico();
+            Int32 idPersonal = Convert.ToInt32(lvempleado.CurrentRow.Cells[0].Value);
+            bResul = fnListarPersonalEspecifico(idPersonal);
             if (!bResul)
             {
+
                 MessageBox.Show("Error al Cargar Personal Especifico", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
-        }
-
-        private void lvempleado_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (Char)Keys.Enter)
-            {
-                Boolean bResul = false;
-                bResul = fnListarPersonalEspecifico();
-                if (!bResul)
-                {
-                    MessageBox.Show("Error al Cargar Personal Especifico", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
-                }
-            }
+            
         }
 
         private void cboDepartamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -383,6 +392,13 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
 
+        private Byte[] ConvertirImg()
+        {
+            MemoryStream ms = new MemoryStream();
+            picBoxImgPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.GetBuffer();
+        }
+
         private String fnGuardarPersonal(Int16 idTipoCon)
         {
             DateTime dFechaSis = Variables.gdFechaSis;
@@ -406,6 +422,14 @@ namespace wfaIntegradoCom.Mantenedores
                 objPersonal.dFechaRegistro = dFechaSis;
                 objPersonal.idUsuarioReg = Variables.gnCodUser;
                 objPersonal.idZona = Convert.ToInt32(cboDistrito.SelectedValue);
+      
+
+                objPersonal.Perfil = ConvertirImg();
+                //objPersonal.Perfil = Image.FromStream(ByteConverter);
+
+                objPersonal.Name_ImgPerfil = Convert.ToString(lblNameImagen.Text.Trim());
+
+
 
                 lcValidar = blobjPersonal.blGrabarPersonal(objPersonal, idTipoCon).Trim();
                 fnLimpiarControles();
@@ -529,10 +553,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private void siticonePanel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
         private void lvempleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -559,6 +580,93 @@ namespace wfaIntegradoCom.Mantenedores
         private void txtBuscarEmpleado_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblImgPerfil_Click(object sender, EventArgs e)
+        {
+            panelImagenes.Visible = true;
+        }
+
+        private void picBoxImgPerfil_Click(object sender, EventArgs e)
+        {
+            panelImagenes.Visible = true;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox1.Image;
+            lblNameImagen.Text = "Imagen 1";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox2.Image;
+            lblNameImagen.Text = "Imagen 2";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox3.Image;
+            lblNameImagen.Text = "Imagen 3";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox4.Image;
+            lblNameImagen.Text = "Imagen 4";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox5.Image;
+            lblNameImagen.Text = "Imagen 5";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox6.Image;
+            lblNameImagen.Text = "Imagen 6";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            picBoxImgPerfil.Image = pictureBox7.Image;
+            lblNameImagen.Text = "Imagen 7";
+            lblImgPerfil.Visible = false;
+            panelImagenes.Visible = false;
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofdSeleccionar = new OpenFileDialog();
+            ofdSeleccionar.Filter = "Imagenes (*.jpg) (*.png)|*.jpg ; *.png";
+            ofdSeleccionar.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            ofdSeleccionar.Title = "Seleccionar Imagen de Perfil";
+
+            if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
+            {
+                picBoxImgPerfil.Image = Image.FromFile(ofdSeleccionar.FileName);
+
+                panelImagenes.Visible = false;
+                lblImgPerfil.Visible = false;
+            }
+        }
+
+        private void btnClosepanelImagenes_Click(object sender, EventArgs e)
+        {
+            panelImagenes.Visible = false;
         }
     }
 }

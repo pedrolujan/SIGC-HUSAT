@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -318,13 +319,15 @@ namespace CapaDato
             }
         }
 
-        public String daDevolverUsuarioActual(Int32 Usuario)
+        public Personal daDevolverUsuarioActual(Int32 Usuario)
         {
             SqlParameter[] pa = new SqlParameter[1];
             DataTable dtVentaG=new DataTable();
             clsConexion objCnx = null;
-            String cUsuario = "";
+            Personal cUsuario = new Personal();
             objUtil = new clsUtil();
+
+            List<Personal> lstPersonal = new List<Personal>();
             try
             {
                 pa[0] = new SqlParameter("@idUsuario", SqlDbType.TinyInt) { Value = Usuario };
@@ -334,7 +337,32 @@ namespace CapaDato
                 dtVentaG = objCnx.EjecutarProcedimientoDT("uspObtenerUsuarioActual", pa);
                 foreach (DataRow drMenu in dtVentaG.Rows)
                 {
-                    cUsuario =Convert.ToString(drMenu["personal"]);
+                    if ( drMenu["Perfil"].ToString() =="")
+                    {
+                        cUsuario.idUsuario = Convert.ToInt32(drMenu["idUsuario"]);
+                        cUsuario.idPersonal = Convert.ToInt32(drMenu["idPersonal"]);
+                        cUsuario.cUsuario = Convert.ToString(drMenu["cUser"]);
+                        cUsuario.cPrimerNom = Convert.ToString(drMenu["cPrimerNom"]);
+                        cUsuario.cApePat = Convert.ToString(drMenu["cApePat"]);
+                        cUsuario.cApeMat = Convert.ToString(drMenu["cApeMat"]);
+                    }
+                    else
+                    {
+
+                       
+
+                        byte[] b = (Byte[])drMenu["Perfil"];
+                        MemoryStream ms = new MemoryStream(b);
+
+                        cUsuario.idUsuario = Convert.ToInt32(drMenu["idUsuario"]);
+                        cUsuario.idPersonal = Convert.ToInt32(drMenu["idPersonal"]);
+                        cUsuario.cUsuario = Convert.ToString(drMenu["cUser"]);
+                        cUsuario.cPrimerNom = Convert.ToString(drMenu["cPrimerNom"]);
+                        cUsuario.cApePat = Convert.ToString(drMenu["cApePat"]);
+                        cUsuario.cApeMat = Convert.ToString(drMenu["cApeMat"]);
+
+                        cUsuario.strPerfil = ms;
+                    }
                 }
                 return cUsuario;
             }

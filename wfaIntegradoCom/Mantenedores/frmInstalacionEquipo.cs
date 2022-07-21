@@ -100,6 +100,7 @@ namespace wfaIntegradoCom.Mantenedores
 
           
             fnActivarCamposInst(0, true);
+            dtpFechaRegistro.Enabled = true;
 
         }
 
@@ -1450,9 +1451,11 @@ namespace wfaIntegradoCom.Mantenedores
             DateTime FechaInstalacion = dtpFechaRegistro.Value;
             Boolean respuesta = false;
             Boolean resul = false;
+            Personal clsPersonal = FunGeneral.fnObtenerUsuarioActual(); 
+
 
             frmRegistrarVenta fntecnico = new frmRegistrarVenta();
-            instalacion.cUsuario = fntecnico.fnObtenerUsuarioActual();
+            instalacion.cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat + " " + clsPersonal.cApeMat;
             instalacion.dFechaIntal = Convert.ToDateTime(dtpFechaRegistro.Value);
             lstUbicacionEquipo.Clear();
             lstUbicacionEquipo.Add(new UbicacionEquipoInstalacion {

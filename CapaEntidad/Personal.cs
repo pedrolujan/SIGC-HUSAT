@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace CapaEntidad
 
         public Personal()
         { }
+        Int32 _idUsuario = 0;
+        public Int32 idUsuario { get { return _idUsuario; } set { _idUsuario = value; } }
 
         Int32 _idPersonal=0;
         public Int32 idPersonal { get { return _idPersonal; } set { _idPersonal = value; } }
@@ -29,6 +32,8 @@ namespace CapaEntidad
 
         String _cSegundoNom = "";
         public String cSegundoNom { get { return _cSegundoNom; } set { _cSegundoNom = value; } }
+        String _cUsuario = "";
+        public String cUsuario { get { return _cUsuario; } set { _cUsuario = value; } }
 
         String _cDocumento = "";
         public String cDocumento { get { return _cDocumento; } set { _cDocumento = value; } }
@@ -68,6 +73,20 @@ namespace CapaEntidad
         String _cNomDist = "";
         public String cNomDist { get { return _cNomDist; } set { _cNomDist = value; } }
 
+        byte[] _Perfil;
+        public byte[] Perfil { get { return _Perfil; } set { _Perfil = value; } }
+
+
+
+        MemoryStream _strPerfil;
+        public MemoryStream strPerfil { get { return _strPerfil; } set { _strPerfil = value; } }
+
+        //private Byte _Perfil;
+        //public Byte Perfil { get { return _Perfil; } set { _Perfil = value; } }
+
+        String _Name_ImgPerfil = "";
+        public String Name_ImgPerfil { get { return _Name_ImgPerfil; } set { _Name_ImgPerfil = value; } }
+
         public Personal(Int32 pnidPersonal, String pcPersonal)
         {
             idPersonal = pnidPersonal;
@@ -82,17 +101,17 @@ namespace CapaEntidad
             TotalRows= TotRows;
         }
 
-        public Personal(Int32 pdidPersonal, String pcApePat,String pcApeMat,String pcPrimerNom,String pcSegundoNom
+        public Personal(Int32 pdidPersonal, String pcApePat, String pcApeMat, String pcPrimerNom, String pcSegundoNom
             , String pcDocumento, String pcDireccion, DateTime pdFecNac,
             String pcTipoCargo, String pcTelefono, Boolean pbEstado,
-            String pcNomDep, String pcNomProv, String pcNomDist)
+           String pcNomDep, String pcNomProv, String pcNomDist, MemoryStream pPerfil, String pName_ImgPerfil)
         {
             idPersonal = pdidPersonal;
             cApePat = pcApePat;
             cApeMat = pcApeMat;
             cPrimerNom = pcPrimerNom;
             cSegundoNom = pcSegundoNom;
-            cDocumento=pcDocumento;
+            cDocumento = pcDocumento;
             cDireccion = pcDireccion;
             dFecNac = pdFecNac;
             cTipoCargo = pcTipoCargo;
@@ -101,7 +120,31 @@ namespace CapaEntidad
             cNomDep = pcNomDep;
             cNomProv = pcNomProv;
             cNomDist = pcNomDist;
-        }             
+            strPerfil = pPerfil;
+
+            Name_ImgPerfil = pName_ImgPerfil;
+        }
+        public Personal(Int32 pdidPersonal, String pcApePat, String pcApeMat, String pcPrimerNom, String pcSegundoNom
+          , String pcDocumento, String pcDireccion, DateTime pdFecNac,
+          String pcTipoCargo, String pcTelefono, Boolean pbEstado,
+         String pcNomDep, String pcNomProv, String pcNomDist )
+        {
+            idPersonal = pdidPersonal;
+            cApePat = pcApePat;
+            cApeMat = pcApeMat;
+            cPrimerNom = pcPrimerNom;
+            cSegundoNom = pcSegundoNom;
+            cDocumento = pcDocumento;
+            cDireccion = pcDireccion;
+            dFecNac = pdFecNac;
+            cTipoCargo = pcTipoCargo;
+            cTelefono = pcTelefono;
+            bEstado = pbEstado;
+            cNomDep = pcNomDep;
+            cNomProv = pcNomProv;
+            cNomDist = pcNomDist;
+   
+        }
 
     }
 }

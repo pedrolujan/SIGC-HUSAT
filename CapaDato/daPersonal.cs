@@ -8,7 +8,7 @@ using CapaUtil;
 using CapaConexion;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.IO;
 namespace CapaDato
 {
     public class daPersonal
@@ -136,13 +136,43 @@ namespace CapaDato
                 lstPersonal = new List<Personal>();
                 foreach (DataRow drMenu in dtUsuario.Rows)
                 {
-                    lstPersonal.Add(new Personal(Convert.ToInt32(drMenu["idPersonal"]), Convert.ToString(drMenu["cApePat"]),
+                    if (drMenu["Perfil"].ToString() =="")
+                    {
+                        lstPersonal.Add(new Personal(
+
+                          Convert.ToInt32(drMenu["idPersonal"]), Convert.ToString(drMenu["cApePat"]),
+                          Convert.ToString(drMenu["cApeMat"]), Convert.ToString(drMenu["cPrimerNom"]),
+                          Convert.ToString(drMenu["cSegundoNom"]), Convert.ToString(drMenu["cDocumento"]),
+                          Convert.ToString(drMenu["cDireccion"]), Convert.ToDateTime(drMenu["dFecNac"]),
+                          Convert.ToString(drMenu["cTipoCargo"]), Convert.ToString(drMenu["cTelefono"]),
+                          Convert.ToBoolean(drMenu["bestado"]), Convert.ToString(drMenu["cNomDep"]),
+                          Convert.ToString(drMenu["cNomProv"]), Convert.ToString(drMenu["cNomDist"])));
+                    }
+                    else
+                    {
+                    byte[] b = (Byte[])drMenu["Perfil"];
+                    MemoryStream ms = new MemoryStream(b);
+
+
+                    lstPersonal.Add(new Personal(
+
+                           Convert.ToInt32(drMenu["idPersonal"]), Convert.ToString(drMenu["cApePat"]),
                            Convert.ToString(drMenu["cApeMat"]), Convert.ToString(drMenu["cPrimerNom"]),
                            Convert.ToString(drMenu["cSegundoNom"]), Convert.ToString(drMenu["cDocumento"]),
                            Convert.ToString(drMenu["cDireccion"]), Convert.ToDateTime(drMenu["dFecNac"]),
                            Convert.ToString(drMenu["cTipoCargo"]), Convert.ToString(drMenu["cTelefono"]),
-                           Convert.ToBoolean(drMenu["bestado"]),Convert.ToString(drMenu["cNomDep"]), 
-                           Convert.ToString(drMenu["cNomProv"]), Convert.ToString(drMenu["cNomDist"])));
+                           Convert.ToBoolean(drMenu["bestado"]), Convert.ToString(drMenu["cNomDep"]),
+                           Convert.ToString(drMenu["cNomProv"]), Convert.ToString(drMenu["cNomDist"]),
+                          ms, Convert.ToString(drMenu["Name_ImgPerfil"])
+
+                           ));
+
+                    }
+                    //lstPersonal.Add(new Personal
+                    //{
+                    //    idPersonal = Convert.ToInt32(drMenu["idPersonal"]),
+                    //    strPerfil = Convert.ToString(drMenu["Perfil"])
+                    //});
                 }
 
                 return lstPersonal;
@@ -165,7 +195,7 @@ namespace CapaDato
 
         public String daGrabarPersonal(Personal objPersonal, Int16 pnTipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[15];
+            SqlParameter[] pa = new SqlParameter[17];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
 
@@ -202,7 +232,11 @@ namespace CapaDato
                 pa[13].Value = objPersonal.idZona;
                 pa[14] = new SqlParameter("@peiTipoCon", SqlDbType.SmallInt);
                 pa[14].Value = pnTipoCon;
-                
+                pa[15] = new SqlParameter("@Perfil", SqlDbType.Image);
+                pa[15].Value = objPersonal.Perfil;
+                pa[16] = new SqlParameter("@Name_ImgPerfil", SqlDbType.VarChar);
+                pa[16].Value = objPersonal.Name_ImgPerfil;
+
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspGuardarPersonal", pa);
 

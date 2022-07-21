@@ -15,6 +15,7 @@ namespace wfaIntegradoCom.Funciones
     {
         public static String gsVersion = string.Empty;
         public static Int32 gnCodUser = 0;
+        public static Personal clasePersonal = new Personal();
         public static String gsCodUser = string.Empty;
         public static String gsCodPers = string.Empty;
         public static String gsNomPers = string.Empty;
@@ -30,7 +31,8 @@ namespace wfaIntegradoCom.Funciones
         public static string gsImpresora = "EPSON099E3E (L395 Series)";
         public static IList<string> template = new List<string>();
         public static bool bitActivePrintDirect = false;
-        public static Sucursal sucursal = null;      
+        public static Sucursal sucursal = null; 
+        
 
 
 
@@ -48,7 +50,7 @@ namespace wfaIntegradoCom.Funciones
 
         #region thema principal
         //Colores SubMenus de Botones Menu Principal
-        public static Color ColorBackColorSubMenus = Color.FromArgb(115, 32, 14);
+        public static Color ColorBackColorSubMenus = Color.FromArgb(109, 109, 109);
         public static Color ColorForeColorSubMenus = Color.White;
         public static Color ColorSelectSubMenus = Color.FromArgb(117, 46, 30);
         //public static Color ColorSelectSubMenus = Color.DimGray;
