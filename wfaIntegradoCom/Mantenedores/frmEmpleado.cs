@@ -23,11 +23,11 @@ namespace wfaIntegradoCom.Mantenedores
         }
 
         static Int32 tabInicio;
-        Int16 lnTipoCon = 0;
+        static Int16 lnTipoCon = 0;
         public void Inicio(Int32 idPersonal)
         {
             fnListarPersonalEspecifico(idPersonal);
-          
+            lnTipoCon = 1;
             ShowDialog();
         }
         private Boolean fnLLenarCargo()

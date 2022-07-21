@@ -1453,7 +1453,7 @@ namespace wfaIntegradoCom.Procesos
                         xmlDocumentoVenta = lstDocumentoVenta,
                         xmlDetalleVentas = lstDetalleVenta,
                     });
-                    //fnGuardarPagoCuota(claseControlPagos, xmlDocumentoVenta, lnTipoCon);
+                    fnGuardarPagoCuota(claseControlPagos, xmlDocumentoVenta, lnTipoCon);
                 }
                 else
                 {
