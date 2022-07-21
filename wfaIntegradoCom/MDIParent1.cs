@@ -409,7 +409,18 @@ namespace wfaIntegradoCom
             }
 
             toolStripStatusLabel1.Text = "Usuario: " + Variables.gsCodUser;
-            tsCerraSession.Text = "Usuario: " +FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
+            tsCerraSession.Text = " " + FunGeneral.FormatearCadenaTitleCase(Variables.clasePersonal.cPrimerNom);
+            
+                //ImgPerfil.Image = Image.FromStream(lstPers[0].strPerfil);
+                if (Variables.clasePersonal.strPerfil ==null)
+            {
+
+            }
+                else
+            {
+                ImgPerfil.Image = System.Drawing.Image.FromStream(Variables.clasePersonal.strPerfil);
+
+            }
 
             toolStripStatusLabel4.Text = toolStripStatusLabel4.Text + Variables.gsVersion;
 
@@ -982,6 +993,7 @@ namespace wfaIntegradoCom
                 tsMiCaja.IconColor = ColorThemas.IconoBotones;
                 tsCerraSession.ForeColor = ColorThemas.FuenteBotones;
                 tsCerraSession.IconColor = ColorThemas.IconoBotones;
+                panelPerfil.BackColor = ColorThemas.BarraAccesoDirectos;
 
                 //Color a las letra he iconos de los botones
                 btnVenta.ForeColor = ColorThemas.FuenteBotones;
@@ -1422,6 +1434,8 @@ namespace wfaIntegradoCom
             //this.Close();
             iconChildForm.IconChar = IconChar.Home;
             lblChilForm.Text = "Home";
+            ImgPerfil.BackgroundImage = null;
+            ImgPerfil.Image = null;
             SubmenusOcultos();
             reset();
 
@@ -2062,6 +2076,8 @@ namespace wfaIntegradoCom
             tsMiCaja.IconColor = ColorThemas.IconoBotones;
 
             tsCerraSession.BackColor = ColorThemas.BarraAccesoDirectos;
+
+            panelPerfil.BackColor = ColorThemas.BarraAccesoDirectos;
             tsCerraSession.ForeColor = ColorThemas.FuenteBotones;
             tsCerraSession.IconColor = ColorThemas.IconoBotones;
 
@@ -2299,6 +2315,14 @@ namespace wfaIntegradoCom
 
 
             }
+
+        }
+
+        private void btnPerfil_Click(object sender, EventArgs e)
+        {
+            frmEmpleado emp = new frmEmpleado();
+            emp.Inicio(Variables.clasePersonal.idPersonal);
+            
 
         }
     }

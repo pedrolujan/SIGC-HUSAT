@@ -3502,6 +3502,7 @@ namespace wfaIntegradoCom.Mantenedores
             TipoTarifa lstTipoVenta = new TipoTarifa();
             lstTipoVenta = lstTipoTarifa.First(s => s.IdTipoTarifa == Convert.ToInt32(cboTipoVenta.SelectedValue));
 
+            Personal clsPersonal = FunGeneral.fnObtenerUsuarioActual();
             lsDocVenta.Add(new DocumentoVenta
             {
                 idCliente = clsRespPago.idCliente,
@@ -3518,7 +3519,7 @@ namespace wfaIntegradoCom.Mantenedores
                 nNroIGV = 18,
                 nIGV = lstdvc[0].IGV,
                 nMontoTotal = lstdvc[0].Total,
-                cUsuario = fnObtenerUsuarioActual(),
+                cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat + " " + clsPersonal.cApeMat,
                 cVehiculos = fnObtenerVehiculos(),
                 cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
                 cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",
@@ -3528,28 +3529,7 @@ namespace wfaIntegradoCom.Mantenedores
             return lsDocVenta;
         }
 
-        public string fnObtenerUsuarioActual()
-        {
-            BLVentaGeneral blVG = new BLVentaGeneral();
-            clsUtil objUtil = new clsUtil();
-            Boolean bResult;
-            String cUsuario = "";
-            try
-            {
-                cUsuario = blVG.blObtenerUsuarioActual(Variables.gnCodUser);
-
-                return cUsuario;
-            }
-            catch (Exception ex)
-            {
-                objUtil.gsLogAplicativo("frmRegistrarVehiculo", "fnBuscarVehiculo", ex.Message);
-                return "";
-            }
-            finally
-            {
-                objUtil = null;
-            }
-        }
+        
         private String fnDevolverTipoDocPersona(Int32 tipoDoc)
         {
             String cDoc = "";

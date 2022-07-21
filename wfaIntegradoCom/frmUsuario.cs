@@ -52,9 +52,9 @@ namespace wfaIntegradoCom
                 DialogResult = DialogResult.OK;
                 DataTable dtResp = new DataTable();
                 dtResp = objAccesso.BLBuscarCargoUsuario(Variables.gnCodUser);
+                Variables.clasePersonal=FunGeneral.fnObtenerUsuarioActual();
 
 
-                
                 //Loading();
 
                 foreach (DataRow dr in dtResp.Rows)

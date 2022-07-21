@@ -66,7 +66,7 @@ namespace CapaNegocio
             }
 
         }
-        public String blObtenerUsuarioActual(Int32 tipoCon)
+        public Personal blObtenerUsuarioActual(Int32 tipoCon)
         {
             DAVentaGeneral objVentaG = new DAVentaGeneral();
             try

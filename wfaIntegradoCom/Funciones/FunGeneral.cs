@@ -672,12 +672,12 @@ namespace wfaIntegradoCom.Funciones
             }
             return srt;
         }
-        public static String fnObtenerUsuarioActual()
+        public static Personal fnObtenerUsuarioActual()
         {
             BLVentaGeneral blVG = new BLVentaGeneral();
             clsUtil objUtil = new clsUtil();
             Boolean bResult;
-            String cUsuario = "";
+            Personal cUsuario = new Personal();
             try
             {
                 cUsuario = blVG.blObtenerUsuarioActual(Variables.gnCodUser);
@@ -687,7 +687,7 @@ namespace wfaIntegradoCom.Funciones
             catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("frmRegistrarVehiculo", "fnBuscarVehiculo", ex.Message);
-                return "";
+                return cUsuario;
             }
             finally
             {
