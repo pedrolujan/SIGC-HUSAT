@@ -11,6 +11,7 @@ namespace CapaEntidad
         public ControlPagos() { }
 
         public Int32 idUsuario { get; set; }
+        public String cCodVenta { get; set; }
         public DateTime fechaRegistro { get; set; }
         public DateTime fechaVenta { get; set; }
         public DateTime fechaPago { get; set; }

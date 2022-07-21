@@ -174,42 +174,39 @@ namespace CapaDato
 
         public Boolean daGuardarPagoCuotasPorDocumento(ControlPagos clsCPC, List<xmlDocumentoVentaGeneral> lstDV, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[20];
+            SqlParameter[] pa = new SqlParameter[18];
             DataTable dtResult = new DataTable();
             clsConexion objCnx = null;
             Int32 numRows = 0;
 
             String xmlTrandiaria = clsUtil.Serialize(clsCPC.listaPagosTrandiaria);
             String xmlDetalleVenta = clsUtil.Serialize(clsCPC.listaDetalleVenta);
-            String xmlDetalleCronograma = clsUtil.Serialize(clsCPC.listaDetalleVenta);
+            String xmlDetalleCronograma = clsUtil.Serialize(clsCPC.listaDetalleCronograma);
             String xmlDocumentoVenta = clsUtil.Serialize(lstDV);
             objUtil = new clsUtil();
             try
             {
                 pa[0] = new SqlParameter("@idCronograma", SqlDbType.Int) { Value = clsCPC.claseCronograma.idCronograma };
                 pa[1] = new SqlParameter("@idContrato", SqlDbType.Int) { Value = clsCPC.claseCronograma.idContrato };
-                pa[2] = new SqlParameter("@idDetalleCronograma", SqlDbType.Int) { Value = clsCPC.claseDetalleCronograma.idDetalleCronograma };
-                pa[3] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime) { Value = clsCPC.fechaRegistro };
-                pa[4] = new SqlParameter("@dFechaVenta", SqlDbType.DateTime) { Value = clsCPC.fechaVenta };
-                pa[5] = new SqlParameter("@dFechaPago", SqlDbType.DateTime) { Value = clsCPC.fechaPago };
-                pa[6] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = clsCPC.idUsuario };
-                pa[7] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmlDocumentoVenta };
-                pa[8] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml) { Value = xmlDetalleVenta };
+                pa[2] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime) { Value = clsCPC.fechaRegistro };
+                pa[3] = new SqlParameter("@dFechaVenta", SqlDbType.DateTime) { Value = clsCPC.fechaPago };
+                pa[4] = new SqlParameter("@dFechaPago", SqlDbType.DateTime) { Value = clsCPC.fechaPago };
+                pa[5] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = clsCPC.idUsuario };
+                pa[6] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmlDocumentoVenta };
+                pa[7] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml) { Value = xmlDetalleVenta };
+                pa[8] = new SqlParameter("@xmlDetalleCronograma", SqlDbType.Xml) { Value = xmlDetalleCronograma };
                 pa[9] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml) { Value = xmlTrandiaria };
                 pa[10] = new SqlParameter("@TotalCuota", SqlDbType.Money) { Value = clsCPC.listaPagosTrandiaria[0].cantAPagar };
                 pa[11] = new SqlParameter("@idMoneda", SqlDbType.Int) { Value = clsCPC.listaPagosTrandiaria[0].idMoneda };
                 pa[12] = new SqlParameter("@idCiclo", SqlDbType.Int) { Value = clsCPC.idCiclo };
                 pa[13] = new SqlParameter("@IGVPrecio", SqlDbType.Money) { Value = lstDV[0].xmlDocumentoVenta[0].nIGV };
                 pa[14] = new SqlParameter("@IdTarifa", SqlDbType.Int) { Value = clsCPC.claseTarifa.IdTarifa };
+                pa[15] = new SqlParameter("@codVenta", SqlDbType.NVarChar,50) { Value = clsCPC.cCodVenta };
+                pa[16] = new SqlParameter("@totalRow", SqlDbType.Int) { Value = clsCPC.listaDetalleCronograma.Count };
 
-                pa[15] = new SqlParameter("@dPeriodoInicio", SqlDbType.DateTime) { Value = clsCPC.claseDetalleCronograma.periodoInicio };
-                pa[16] = new SqlParameter("@dPeriodoFinal", SqlDbType.DateTime) { Value = clsCPC.claseDetalleCronograma.periodoFinal };
-                pa[17] = new SqlParameter("@dFechaVencimiento", SqlDbType.DateTime) { Value = clsCPC.claseDetalleCronograma.fechaVencimiento };
-                pa[18] = new SqlParameter("@dFechaEmision", SqlDbType.DateTime) { Value = clsCPC.claseDetalleCronograma.fechaEmision };
-
-                pa[19] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[17] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
                 objCnx = new clsConexion("");
-                objCnx.EjecutarProcedimiento("uspGuardarPagoCuotas", pa);
+                objCnx.EjecutarProcedimiento("uspGuardarPagoCuotasPorDocumento", pa);
                 return true;
             }
             catch (Exception ex)
