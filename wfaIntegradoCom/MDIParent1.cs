@@ -1234,6 +1234,7 @@ namespace wfaIntegradoCom
                 //StartSignalR();
                 setTemplate();
                 setSettings();
+                //ImgPerfil.Padding = new Padding(15,15,15,15);
                 /*
                 hubClient.connectAsync();
                 hubClient.changeStatusFirebase += async (s, e) => await StateChangedFirebase(s, e);

@@ -1130,6 +1130,15 @@ namespace wfaIntegradoCom.Procesos
 
 
         }
+
+        private void fnAgregardatosACarrito(Int32 row)
+        {
+            lstDetalleCronograma[row].estChk = true;
+            lstDetalleCronograma[row].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
+            lstDetalleCronograma[row].idOperacion = 3;
+            lstDetalleCronograma[row].fechaPago = Variables.gdFechaSis;
+            lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[row]);
+        }
         private void dgvCronograma_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -1146,39 +1155,43 @@ namespace wfaIntegradoCom.Procesos
                 }
                 else
                 {
-                    if (lstDetalleCronograma[e.RowIndex - 1].estado == "PAGO PENDIENTE" && lstDetalleCronograma[e.RowIndex - 1].estChk==false)
+                    if (e.RowIndex>0)
                     {
-                        MessageBox.Show("Aun no puede agregar este pago ! \n porque falta la cuota anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        if (lstCronoGramasParaDocumentoVenta.Count > 0)
+                        if (lstDetalleCronograma[e.RowIndex - 1].estado == "PAGO PENDIENTE" && lstDetalleCronograma[e.RowIndex - 1].estChk == false)
                         {
-                            DetalleCronograma dtc1 = lstCronoGramasParaDocumentoVenta.Find(i => i.ClaseCliente.cDocumento == lstDetalleCronograma[e.RowIndex].ClaseCliente.cDocumento);
+                            MessageBox.Show("Aun no puede agregar este pago ! \n porque falta la cuota anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            if (lstCronoGramasParaDocumentoVenta.Count > 0)
+                            {
+                                DetalleCronograma dtc1 = lstCronoGramasParaDocumentoVenta.Find(i => i.ClaseCliente.cDocumento == lstDetalleCronograma[e.RowIndex].ClaseCliente.cDocumento);
 
-                            if (dtc1 is DetalleCronograma)
+                                if (dtc1 is DetalleCronograma)
+                                {
+                                    fnAgregardatosACarrito(e.RowIndex);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El Cliente no es el mismo a su seleccion anterior ", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
                             {
                                 lstDetalleCronograma[e.RowIndex].estChk = true;
                                 lstDetalleCronograma[e.RowIndex].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
+
                                 lstDetalleCronograma[e.RowIndex].idOperacion = 3;
                                 lstDetalleCronograma[e.RowIndex].fechaPago = Variables.gdFechaSis;
                                 lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[e.RowIndex]);
                             }
-                            else
-                            {
-                                MessageBox.Show("El Cliente no es el mismo a su seleccion anterior ", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
                         }
-                        else
-                        {
-                            lstDetalleCronograma[e.RowIndex].estChk = true;
-                            lstDetalleCronograma[e.RowIndex].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
+                    }
+                    else
+                    {
 
-                            lstDetalleCronograma[e.RowIndex].idOperacion = 3;
-                            lstDetalleCronograma[e.RowIndex].fechaPago = Variables.gdFechaSis;
-                            lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[e.RowIndex]);
-                        }
-                    }      
+                    }
+                         
                 }
 
                 

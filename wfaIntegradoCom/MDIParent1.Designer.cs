@@ -96,8 +96,8 @@ namespace wfaIntegradoCom
             this.ucOpcion2 = new WPF.CTRL.Colocaciones.ucOpcion();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelPerfil = new System.Windows.Forms.Panel();
+            this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.PanelEncavezadoFondo.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.siticonePanel2.SuspendLayout();
@@ -113,8 +113,8 @@ namespace wfaIntegradoCom
             this.panelColorAccesoDirecto.SuspendLayout();
             this.panelCerrarSession.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).BeginInit();
             this.panelPerfil.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).BeginInit();
             this.SuspendLayout();
             // 
             // ListaImagenes
@@ -405,7 +405,7 @@ namespace wfaIntegradoCom
             this.tsCerraSession.Size = new System.Drawing.Size(182, 72);
             this.tsCerraSession.TabIndex = 27;
             this.tsCerraSession.Tag = "tsCerraSession";
-            this.tsCerraSession.Text = "Cerra Session";
+            this.tsCerraSession.Text = "   Cerra Session";
             this.tsCerraSession.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tsCerraSession.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.tsCerraSession.UseVisualStyleBackColor = false;
@@ -1227,21 +1227,6 @@ namespace wfaIntegradoCom
             // 
             this.colorDialog1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             // 
-            // ImgPerfil
-            // 
-            this.ImgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Triangle;
-            this.ImgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.ImgPerfil.BorderColor2 = System.Drawing.Color.HotPink;
-            this.ImgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
-            this.ImgPerfil.BorderSize = 3;
-            this.ImgPerfil.GradientAngle = 20F;
-            this.ImgPerfil.Location = new System.Drawing.Point(1, 4);
-            this.ImgPerfil.Name = "ImgPerfil";
-            this.ImgPerfil.Size = new System.Drawing.Size(65, 65);
-            this.ImgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ImgPerfil.TabIndex = 236;
-            this.ImgPerfil.TabStop = false;
-            // 
             // panelPerfil
             // 
             this.panelPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1252,6 +1237,25 @@ namespace wfaIntegradoCom
             this.panelPerfil.Name = "panelPerfil";
             this.panelPerfil.Size = new System.Drawing.Size(182, 72);
             this.panelPerfil.TabIndex = 24;
+            // 
+            // ImgPerfil
+            // 
+            this.ImgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Triangle;
+            this.ImgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.ImgPerfil.BorderColor2 = System.Drawing.Color.HotPink;
+            this.ImgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.ImgPerfil.BorderSize = 3;
+            this.ImgPerfil.GradientAngle = 20F;
+            this.ImgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("ImgPerfil.Image")));
+            this.ImgPerfil.ImageLocation = "";
+            this.ImgPerfil.Location = new System.Drawing.Point(2, 4);
+            this.ImgPerfil.Margin = new System.Windows.Forms.Padding(0);
+            this.ImgPerfil.Name = "ImgPerfil";
+            this.ImgPerfil.Padding = new System.Windows.Forms.Padding(3);
+            this.ImgPerfil.Size = new System.Drawing.Size(65, 65);
+            this.ImgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ImgPerfil.TabIndex = 237;
+            this.ImgPerfil.TabStop = false;
             // 
             // MDIParent1
             // 
@@ -1292,8 +1296,8 @@ namespace wfaIntegradoCom
             this.panelCerrarSession.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).EndInit();
             this.panelPerfil.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1365,8 +1369,8 @@ namespace wfaIntegradoCom
         private System.Windows.Forms.Label label3;
         private RJCodeAdvance.RJControls.RJToggleButton ToggleBotonesAnchos;
         private System.Windows.Forms.Label label4;
-        private RJCodeAdvance.RJControls.RJCircularPictureBox ImgPerfil;
         private System.Windows.Forms.Panel panelPerfil;
+        private RJCodeAdvance.RJControls.RJCircularPictureBox ImgPerfil;
     }
 }
 
