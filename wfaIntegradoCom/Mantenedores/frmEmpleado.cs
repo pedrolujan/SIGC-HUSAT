@@ -651,7 +651,7 @@ namespace wfaIntegradoCom.Mantenedores
         private void pictureBox8_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofdSeleccionar = new OpenFileDialog();
-            ofdSeleccionar.Filter = "Imagenes (*.jpg) (*.png)|*.jpg ; *.png";
+            ofdSeleccionar.Filter = "Imagenes (*.jpg) (*.png)(*.jpeg)|*.jpg ; *.png;*.jpeg ;*.JPG;*.JPEG ";
             ofdSeleccionar.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             ofdSeleccionar.Title = "Seleccionar Imagen de Perfil";
 
