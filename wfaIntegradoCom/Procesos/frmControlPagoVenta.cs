@@ -1178,18 +1178,13 @@ namespace wfaIntegradoCom.Procesos
                             }
                             else
                             {
-                                lstDetalleCronograma[e.RowIndex].estChk = true;
-                                lstDetalleCronograma[e.RowIndex].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
-
-                                lstDetalleCronograma[e.RowIndex].idOperacion = 3;
-                                lstDetalleCronograma[e.RowIndex].fechaPago = Variables.gdFechaSis;
-                                lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[e.RowIndex]);
+                                fnAgregardatosACarrito(e.RowIndex);
                             }
                         }
                     }
                     else
                     {
-
+                        fnAgregardatosACarrito(e.RowIndex);
                     }
                          
                 }
@@ -1350,23 +1345,30 @@ namespace wfaIntegradoCom.Procesos
 
         private List<DetalleVenta> fnGenerarPagoPrincipalBloque()
         {
+            Boolean est = false;
             List<DetalleVenta> lstDetV = new List<DetalleVenta>();
             Int32 y = 0;
             String dato = "";
-           
+
 
             foreach (DetalleCronograma dcr in lstCronoGramasParaDocumentoVenta)
             {
 
-                if (dcr.ClaseVehiculo.idVehiculo != clsVehiculo.idVehiculo && lstCronoGramasParaDocumentoVenta.Count<=1)
+                if (dcr.ClaseVehiculo.idVehiculo != clsVehiculo.idVehiculo && lstCronoGramasParaDocumentoVenta.Count <= 1)
                 {
                     dato = " - Plan " + dcr.cPlan;
-                    
+
                 }
                 else
                 {
                     dato = " - Placa " + dcr.ClaseVehiculo.vPlaca;
+                    est = true;
                 }
+                if (lstCronoGramasParaDocumentoVenta.Count >= 1 && dcr.ClaseVehiculo.idVehiculo == clsVehiculo.idVehiculo && est==false)
+                {
+                    dato = " - Plan " + dcr.cPlan;
+                }
+
 
                 lstDetV.Add(new DetalleVenta
                 {
