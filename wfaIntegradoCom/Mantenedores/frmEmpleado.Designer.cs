@@ -274,7 +274,7 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(534, 21);
+            this.label10.Location = new System.Drawing.Point(540, 21);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(68, 13);
             this.label10.TabIndex = 22;
@@ -285,7 +285,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(266, 21);
+            this.label9.Location = new System.Drawing.Point(270, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 13);
             this.label9.TabIndex = 20;
@@ -296,7 +296,7 @@
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 21);
+            this.label8.Location = new System.Drawing.Point(18, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 13);
             this.label8.TabIndex = 18;
@@ -336,7 +336,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 82);
+            this.label1.Location = new System.Drawing.Point(25, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 6;
@@ -356,7 +356,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(109, 82);
+            this.label4.Location = new System.Drawing.Point(109, 85);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 13);
             this.label4.TabIndex = 8;
@@ -406,7 +406,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(26, 247);
+            this.label7.Location = new System.Drawing.Point(37, 247);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 13);
             this.label7.TabIndex = 24;
@@ -635,21 +635,23 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.BackColor = System.Drawing.Color.Transparent;
             this.dateTimePicker1.BorderColor = System.Drawing.Color.Silver;
             this.dateTimePicker1.BorderThickness = 1;
             this.dateTimePicker1.CheckedState.Parent = this.dateTimePicker1;
             this.dateTimePicker1.FillColor = System.Drawing.Color.White;
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.HoveredState.Parent = this.dateTimePicker1;
             this.dateTimePicker1.Location = new System.Drawing.Point(29, 267);
-            this.dateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker1.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.ShadowDecoration.Parent = this.dateTimePicker1;
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 36);
+            this.dateTimePicker1.Size = new System.Drawing.Size(119, 36);
             this.dateTimePicker1.TabIndex = 29;
-            this.dateTimePicker1.Value = new System.DateTime(2022, 6, 17, 13, 9, 5, 226);
+            this.dateTimePicker1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.dateTimePicker1.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // cboCargo
             // 

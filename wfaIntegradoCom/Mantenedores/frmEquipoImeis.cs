@@ -49,7 +49,7 @@ namespace wfaIntegradoCom.Mantenedores
         Boolean estOrdenCompra,estImeis,estSeries,estOrigen,estPlataforma, estObservaciones;
         String msjOrdenCompra, msjImeis,msjSeries, msjOrigen, msjPlataforma, msjObservaciones;
 
-        DataGridViewComboBoxColumn comboboxColumn;
+        
         public void Inicio(Int16 pnTipoLlamda)
         {
             lnTipoLlamada = pnTipoLlamda;
