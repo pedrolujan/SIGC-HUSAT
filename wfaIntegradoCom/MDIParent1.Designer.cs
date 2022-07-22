@@ -811,6 +811,7 @@ namespace wfaIntegradoCom
             // 
             // panelCentral
             // 
+            this.panelCentral.Controls.Add(this.panelCerrarSession);
             this.panelCentral.Controls.Add(this.panelOpciones);
             this.panelCentral.Controls.Add(this.panelPersonalizarColores);
             this.panelCentral.Controls.Add(this.statusStrip1);
@@ -818,7 +819,6 @@ namespace wfaIntegradoCom
             this.panelCentral.Controls.Add(this.btnPersonalizacion);
             this.panelCentral.Controls.Add(this.treeView1);
             this.panelCentral.Controls.Add(this.panelEspaciado);
-            this.panelCentral.Controls.Add(this.panelCerrarSession);
             this.panelCentral.Controls.Add(this.pnlSombra);
             this.panelCentral.Controls.Add(this.elhAlert);
             this.panelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
