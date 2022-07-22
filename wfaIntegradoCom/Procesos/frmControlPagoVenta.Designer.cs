@@ -123,6 +123,7 @@ namespace wfaIntegradoCom.Procesos
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.lblNumDocumentos = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.chkHabilitarDescuentoP = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.btnCambiarIncumplimiento = new Siticone.UI.WinForms.SiticoneButton();
@@ -175,7 +176,6 @@ namespace wfaIntegradoCom.Procesos
             this.cmsPagoCuotas = new Guna.UI.WinForms.GunaContextMenuStrip();
             this.msPagarCuota = new System.Windows.Forms.ToolStripMenuItem();
             this.msActializarPago = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblNumDocumentos = new System.Windows.Forms.Label();
             this.PanelTop.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -1104,9 +1104,9 @@ namespace wfaIntegradoCom.Procesos
             this.btnAniadirADocumento.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnAniadirADocumento.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnAniadirADocumento.HoveredState.ForeColor = System.Drawing.Color.White;
-            this.btnAniadirADocumento.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
+            this.btnAniadirADocumento.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.pagado_hover;
             this.btnAniadirADocumento.HoveredState.Parent = this.btnAniadirADocumento;
-            this.btnAniadirADocumento.Image = global::wfaIntegradoCom.Properties.Resources.pdf_32px;
+            this.btnAniadirADocumento.Image = global::wfaIntegradoCom.Properties.Resources.pagado_base;
             this.btnAniadirADocumento.Location = new System.Drawing.Point(79, 61);
             this.btnAniadirADocumento.Name = "btnAniadirADocumento";
             this.btnAniadirADocumento.ShadowDecoration.Parent = this.btnAniadirADocumento;
@@ -1326,6 +1326,20 @@ namespace wfaIntegradoCom.Procesos
             this.label8.Size = new System.Drawing.Size(128, 18);
             this.label8.TabIndex = 262;
             this.label8.Text = "Moneda:";
+            // 
+            // lblNumDocumentos
+            // 
+            this.lblNumDocumentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.lblNumDocumentos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblNumDocumentos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumDocumentos.ForeColor = System.Drawing.Color.White;
+            this.lblNumDocumentos.Location = new System.Drawing.Point(745, 354);
+            this.lblNumDocumentos.Name = "lblNumDocumentos";
+            this.lblNumDocumentos.Size = new System.Drawing.Size(280, 36);
+            this.lblNumDocumentos.TabIndex = 262;
+            this.lblNumDocumentos.Text = "Items para documento de venta";
+            this.lblNumDocumentos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNumDocumentos.Click += new System.EventHandler(this.lblNumDocumentos_LinkClicked);
             // 
             // label42
             // 
@@ -2179,20 +2193,6 @@ namespace wfaIntegradoCom.Procesos
             this.msActializarPago.Size = new System.Drawing.Size(156, 22);
             this.msActializarPago.Text = "Actualizar Pago";
             this.msActializarPago.Click += new System.EventHandler(this.msActializarPago_Click);
-            // 
-            // lblNumDocumentos
-            // 
-            this.lblNumDocumentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.lblNumDocumentos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblNumDocumentos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumDocumentos.ForeColor = System.Drawing.Color.White;
-            this.lblNumDocumentos.Location = new System.Drawing.Point(745, 354);
-            this.lblNumDocumentos.Name = "lblNumDocumentos";
-            this.lblNumDocumentos.Size = new System.Drawing.Size(280, 36);
-            this.lblNumDocumentos.TabIndex = 262;
-            this.lblNumDocumentos.Text = "Items para documento de venta";
-            this.lblNumDocumentos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblNumDocumentos.Click += new System.EventHandler(this.lblNumDocumentos_LinkClicked);
             // 
             // frmControlPagoVenta
             // 

@@ -2365,7 +2365,7 @@ namespace wfaIntegradoCom.Procesos
                     e.CellStyle.ForeColor = Color.Red;
                 }
             }
-            if (dgv.Columns[e.ColumnIndex].Name == "dttFechapago")
+            if (dgv.Columns[e.ColumnIndex].Name == "dttFechapago" && dgv.Rows[e.RowIndex].Cells[12].Value.ToString().Contains("✅"))
             {
                 if (e.Value.ToString()=="")
                 {
