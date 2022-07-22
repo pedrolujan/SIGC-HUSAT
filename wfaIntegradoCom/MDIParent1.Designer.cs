@@ -76,25 +76,26 @@ namespace wfaIntegradoCom
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnPersonalizacion = new FontAwesome.Sharp.IconButton();
             this.panelPersonalizarColores = new Siticone.UI.WinForms.SiticonePanel();
             this.panelColorPanelCentral = new System.Windows.Forms.Panel();
             this.panelColorAccesoDirecto = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelColorMenuPrincipal = new System.Windows.Forms.Panel();
-            this.btnOpciones = new FontAwesome.Sharp.IconButton();
-            this.panelCerrarSession = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
-            this.btnPerfil = new FontAwesome.Sharp.IconButton();
-            this.pnlSombra = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnOpciones = new FontAwesome.Sharp.IconButton();
+            this.btnPersonalizacion = new FontAwesome.Sharp.IconButton();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.panelEspaciado = new System.Windows.Forms.Panel();
+            this.panelCerrarSession = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
+            this.btnPerfil = new FontAwesome.Sharp.IconButton();
+            this.pnlSombra = new System.Windows.Forms.Panel();
             this.elhAlert = new System.Windows.Forms.Integration.ElementHost();
             this.ucOpcion2 = new WPF.CTRL.Colocaciones.ucOpcion();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.panelPerfil = new System.Windows.Forms.Panel();
             this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
@@ -111,8 +112,8 @@ namespace wfaIntegradoCom
             this.panelOpciones.SuspendLayout();
             this.panelPersonalizarColores.SuspendLayout();
             this.panelColorAccesoDirecto.SuspendLayout();
-            this.panelCerrarSession.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.panelCerrarSession.SuspendLayout();
             this.panelPerfil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).BeginInit();
             this.SuspendLayout();
@@ -322,6 +323,7 @@ namespace wfaIntegradoCom
             this.tsConsulta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsConsulta.UseVisualStyleBackColor = false;
             this.tsConsulta.Visible = false;
+            this.tsConsulta.Click += new System.EventHandler(this.tsConsulta_Click);
             // 
             // tsMiCaja
             // 
@@ -810,14 +812,15 @@ namespace wfaIntegradoCom
             // panelCentral
             // 
             this.panelCentral.Controls.Add(this.panelOpciones);
-            this.panelCentral.Controls.Add(this.btnPersonalizacion);
             this.panelCentral.Controls.Add(this.panelPersonalizarColores);
+            this.panelCentral.Controls.Add(this.statusStrip1);
             this.panelCentral.Controls.Add(this.btnOpciones);
+            this.panelCentral.Controls.Add(this.btnPersonalizacion);
+            this.panelCentral.Controls.Add(this.treeView1);
+            this.panelCentral.Controls.Add(this.panelEspaciado);
             this.panelCentral.Controls.Add(this.panelCerrarSession);
             this.panelCentral.Controls.Add(this.pnlSombra);
-            this.panelCentral.Controls.Add(this.statusStrip1);
             this.panelCentral.Controls.Add(this.elhAlert);
-            this.panelCentral.Controls.Add(this.treeView1);
             this.panelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCentral.Location = new System.Drawing.Point(230, 72);
             this.panelCentral.Name = "panelCentral";
@@ -941,31 +944,6 @@ namespace wfaIntegradoCom
             this.label4.Text = "MENU OPCIONES";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnPersonalizacion
-            // 
-            this.btnPersonalizacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPersonalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
-            this.btnPersonalizacion.FlatAppearance.BorderSize = 0;
-            this.btnPersonalizacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
-            this.btnPersonalizacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPersonalizacion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPersonalizacion.ForeColor = System.Drawing.Color.Transparent;
-            this.btnPersonalizacion.IconChar = FontAwesome.Sharp.IconChar.Paintbrush;
-            this.btnPersonalizacion.IconColor = System.Drawing.Color.White;
-            this.btnPersonalizacion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnPersonalizacion.IconSize = 40;
-            this.btnPersonalizacion.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPersonalizacion.Location = new System.Drawing.Point(964, 438);
-            this.btnPersonalizacion.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.btnPersonalizacion.Name = "btnPersonalizacion";
-            this.btnPersonalizacion.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnPersonalizacion.Size = new System.Drawing.Size(89, 83);
-            this.btnPersonalizacion.TabIndex = 33;
-            this.btnPersonalizacion.Text = "Personalizar";
-            this.btnPersonalizacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPersonalizacion.UseVisualStyleBackColor = false;
-            this.btnPersonalizacion.Click += new System.EventHandler(this.iconButton1_Click);
-            // 
             // panelPersonalizarColores
             // 
             this.panelPersonalizarColores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1029,6 +1007,66 @@ namespace wfaIntegradoCom
             this.panelColorMenuPrincipal.TabIndex = 28;
             this.panelColorMenuPrincipal.Click += new System.EventHandler(this.panelColorMenuPrincipal_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3,
+            this.toolStripStatusLabel4});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 576);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(390, 23);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "StatusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(74, 18);
+            this.toolStripStatusLabel1.Text = "Usuario: ";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
+            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 18);
+            this.toolStripStatusLabel2.Text = "Servidor: ";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
+            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(144, 18);
+            this.toolStripStatusLabel3.Text = "Fecha del Sistema: ";
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
+            this.toolStripStatusLabel4.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(74, 18);
+            this.toolStripStatusLabel4.Text = "Versión: ";
+            // 
             // btnOpciones
             // 
             this.btnOpciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1054,6 +1092,64 @@ namespace wfaIntegradoCom
             this.btnOpciones.UseVisualStyleBackColor = false;
             this.btnOpciones.Click += new System.EventHandler(this.iconButton2_Click);
             this.btnOpciones.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnOpciones_MouseMove);
+            // 
+            // btnPersonalizacion
+            // 
+            this.btnPersonalizacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPersonalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
+            this.btnPersonalizacion.FlatAppearance.BorderSize = 0;
+            this.btnPersonalizacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.btnPersonalizacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPersonalizacion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPersonalizacion.ForeColor = System.Drawing.Color.Transparent;
+            this.btnPersonalizacion.IconChar = FontAwesome.Sharp.IconChar.Paintbrush;
+            this.btnPersonalizacion.IconColor = System.Drawing.Color.White;
+            this.btnPersonalizacion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPersonalizacion.IconSize = 40;
+            this.btnPersonalizacion.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPersonalizacion.Location = new System.Drawing.Point(964, 438);
+            this.btnPersonalizacion.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnPersonalizacion.Name = "btnPersonalizacion";
+            this.btnPersonalizacion.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnPersonalizacion.Size = new System.Drawing.Size(89, 83);
+            this.btnPersonalizacion.TabIndex = 33;
+            this.btnPersonalizacion.Text = "Personalizar";
+            this.btnPersonalizacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPersonalizacion.UseVisualStyleBackColor = false;
+            this.btnPersonalizacion.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // treeView1
+            // 
+            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.treeView1.FullRowSelect = true;
+            this.treeView1.HideSelection = false;
+            this.treeView1.ImageIndex = 3;
+            this.treeView1.ImageList = this.ListaImagenes;
+            this.treeView1.LineColor = System.Drawing.Color.White;
+            this.treeView1.Location = new System.Drawing.Point(0, 23);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(50);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.treeView1.SelectedImageIndex = 5;
+            this.treeView1.ShowNodeToolTips = true;
+            this.treeView1.Size = new System.Drawing.Size(1054, 576);
+            this.treeView1.TabIndex = 5;
+            this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
+            this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
+            this.treeView1.MouseEnter += new System.EventHandler(this.treeView1_MouseEnter);
+            // 
+            // panelEspaciado
+            // 
+            this.panelEspaciado.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEspaciado.Location = new System.Drawing.Point(0, 3);
+            this.panelEspaciado.Name = "panelEspaciado";
+            this.panelEspaciado.Size = new System.Drawing.Size(1054, 20);
+            this.panelEspaciado.TabIndex = 35;
             // 
             // panelCerrarSession
             // 
@@ -1126,66 +1222,6 @@ namespace wfaIntegradoCom
             this.pnlSombra.Size = new System.Drawing.Size(1054, 3);
             this.pnlSombra.TabIndex = 16;
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3,
-            this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 576);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(390, 23);
-            this.statusStrip1.TabIndex = 6;
-            this.statusStrip1.Text = "StatusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
-            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(74, 18);
-            this.toolStripStatusLabel1.Text = "Usuario: ";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
-            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 18);
-            this.toolStripStatusLabel2.Text = "Servidor: ";
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
-            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(144, 18);
-            this.toolStripStatusLabel3.Text = "Fecha del Sistema: ";
-            // 
-            // toolStripStatusLabel4
-            // 
-            this.toolStripStatusLabel4.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
-            this.toolStripStatusLabel4.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(74, 18);
-            this.toolStripStatusLabel4.Text = "Versión: ";
-            // 
             // elhAlert
             // 
             this.elhAlert.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -1197,31 +1233,6 @@ namespace wfaIntegradoCom
             this.elhAlert.Text = "elhAlert";
             this.elhAlert.Visible = false;
             this.elhAlert.Child = this.ucOpcion2;
-            // 
-            // treeView1
-            // 
-            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.treeView1.FullRowSelect = true;
-            this.treeView1.HideSelection = false;
-            this.treeView1.ImageIndex = 3;
-            this.treeView1.ImageList = this.ListaImagenes;
-            this.treeView1.LineColor = System.Drawing.Color.White;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(10);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.treeView1.SelectedImageIndex = 5;
-            this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(1054, 599);
-            this.treeView1.TabIndex = 5;
-            this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
-            this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
-            this.treeView1.MouseEnter += new System.EventHandler(this.treeView1_MouseEnter);
             // 
             // colorDialog1
             // 
@@ -1293,9 +1304,9 @@ namespace wfaIntegradoCom
             this.panelPersonalizarColores.ResumeLayout(false);
             this.panelColorAccesoDirecto.ResumeLayout(false);
             this.panelColorAccesoDirecto.PerformLayout();
-            this.panelCerrarSession.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panelCerrarSession.ResumeLayout(false);
             this.panelPerfil.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).EndInit();
             this.ResumeLayout(false);
@@ -1371,6 +1382,7 @@ namespace wfaIntegradoCom
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelPerfil;
         private RJCodeAdvance.RJControls.RJCircularPictureBox ImgPerfil;
+        private System.Windows.Forms.Panel panelEspaciado;
     }
 }
 

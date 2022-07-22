@@ -534,6 +534,7 @@ namespace wfaIntegradoCom
             dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
 
             y = 0;
+
             int posX, posY;
             int alto, ancho;
             ancho = (subMenuRecaudacion.Width / 4);
@@ -578,7 +579,7 @@ namespace wfaIntegradoCom
 
             }
         }
-        private int BorderSize = 0;
+      
        
         private void fnCargarSubMenuComercial(String pcCodMenu)
         {
@@ -897,6 +898,12 @@ namespace wfaIntegradoCom
                     parentnode1.Name = childView["cMenuCod"].ToString();
                     parentnode1.ToolTipText = childView["cNomFormulario"].ToString();
                     parentnode1.Tag = Convert.ToInt32(childView["intIdTipoLlamada"]);
+                  
+                  
+
+                    //parentnode1.BackColor = Color.FromArgb(66, 66, 66);
+                    //parentnode1.
+                    //parentnode1.Mar = ;
                     treeView1.Nodes.Add(parentnode1);
                     fnObtenerNodoHijo(parentnode1, dtMenuHijo);
                 }
@@ -2005,6 +2012,7 @@ namespace wfaIntegradoCom
                 //lblChilForm.ForeColor = ColorThemas.Fuente_Iconos;
                 btnOpciones.BackColor = ColorThemas.PanelPadre;
                 btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
+              
                 btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
                 btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
                 btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
@@ -2046,6 +2054,7 @@ namespace wfaIntegradoCom
             PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
             btnOpciones.BackColor = ColorThemas.PanelPadre;
             btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
+            panelEspaciado.BackColor = ColorThemas.PanelPadre;
             //Botones del panel de acceso Directo
 
             tsConfiguracion.BackColor = ColorThemas.BarraAccesoDirectos;
@@ -2325,6 +2334,11 @@ namespace wfaIntegradoCom
             emp.Inicio(Variables.clasePersonal.idPersonal);
             
 
+        }
+
+        private void tsConsulta_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1_Click(sender, e);
         }
     }
 
