@@ -27,7 +27,8 @@ using Newtonsoft.Json.Linq;
 using wfaIntegradoCom.Funciones.Models.Order;
 using Siticone.UI.WinForms;
 using FontAwesome.Sharp;
-
+using CapaEntidad;
+using CapaDato;
 
 namespace wfaIntegradoCom
 
@@ -50,10 +51,16 @@ namespace wfaIntegradoCom
 
         private IconButton BtnActual;
         private System.Windows.Forms.Panel LeftBordeBtn;
-
+        BLControlCaja bl;
         //pading botones temporales de submenus 
-         Padding PaddingbtnSubMenu = new Padding(10,0,0,0);
-       
+        Padding PaddingbtnSubMenu = new Padding(10,0,0,0);
+
+        static Int32 tabInicio = 0;
+        List<ReporteBloque> lsReporteBloque = new List<ReporteBloque>();
+        List<ReporteBloque> lsReporteBloqueGen = new List<ReporteBloque>();
+        String codOperacion = "";
+        String codTipoReporte = "";
+
 
         public void fnLoadCarga ( Boolean Load)
         {
@@ -952,6 +959,8 @@ namespace wfaIntegradoCom
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+            bl = new BLControlCaja();
+            flowLayoutPanel1.Controls.Clear();
             ToggleBotonesAnchos.CheckState=CheckState.Unchecked;
 
             //Aplicando Themas a los paneles cboxSelecThema
@@ -1037,7 +1046,12 @@ namespace wfaIntegradoCom
                 Loading();
                 SystemEvents.PowerModeChanged += OnPowerModeChange;
                 InitializeTimer();
+
                 SafelySubscribeToControllerEvents();
+                dtFechaFinG.Value = Variables.gdFechaSis;
+                dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
+                FunGeneral.fnLlenarTablaCodTipoCon(cboTipoReporte, "TRPT", false);
+
             }
             catch (Exception ex)
             {
@@ -1045,7 +1059,21 @@ namespace wfaIntegradoCom
             }
             finally
             {
-                
+                pnlParaDashboard.Size = treeView1.Size;
+                var gbx = pnlParaDashboard.Controls.OfType<SiticoneGroupBox>();
+                var pn = pnlParaDashboard.Controls.OfType<SiticonePanel>();
+                flowLayoutPanel1.Width = pnlParaDashboard.Size.Width - 20;
+                flowLayoutPanel1.Location = new Point(10, flowLayoutPanel1.Location.Y);
+                foreach (SiticoneGroupBox gb in gbx)
+                {
+                    gb.Width = pnlParaDashboard.Size.Width-10;
+                    gb.Location = new Point(5, gb.Location.Y);
+                }
+                foreach (SiticonePanel pnn in pn)
+                {
+                    pnn.Width = pnlParaDashboard.Size.Width-10;
+                    pnn.Location = new Point(5, pnn.Location.Y);
+                }
 
             }
             
@@ -2339,6 +2367,538 @@ namespace wfaIntegradoCom
         private void tsConsulta_Click(object sender, EventArgs e)
         {
             flowLayoutPanel1_Click(sender, e);
+        }
+
+        public void fnBuscarReporteGeneralVentas(SiticoneDataGridView dgv, Int32 numPagina, Int32 tipoCon)
+        {
+            bl = new BLControlCaja();
+            DataTable dtRes = new DataTable();
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.chkActivarFechas = chkHabilitarFechasBusG.Checked;
+            clsBusq.chkActivarDia = chkDiaEspecificoG.Checked;
+            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
+            clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
+            clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
+            clsBusq.cod2 = tipoCon == -1 ? "" : codOperacion;
+            clsBusq.cod3 = cboOperacion.SelectedValue.ToString();
+            clsBusq.cod4 = "";
+            clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
+            clsBusq.numPagina = numPagina;
+            clsBusq.tipoCon = tipoCon;
+
+            String codTipoOperacion = "";
+
+            Int32 TipoPlan = 0;
+            Int32 tipotarifa = 0;
+
+            String cBuscar = txtBuscarRepGeneral.Text.ToString();
+            Boolean chkHabilitarFechas = chkHabilitarFechasBusG.Checked;
+            Boolean chkDiaEsp = chkDiaEspecificoG.Checked;
+
+            Int32 filas = 10;
+
+            var result = bl.BuscarReporteGeneralVentas(clsBusq);
+            fnGenerarPaneles(result.Item2);
+            lsReporteBloque = result.Item2;
+            Int32 totalRows = lsReporteBloque.Count;
+
+            siticoneDataGridView1.Visible = false;
+            lblHeaderDetalle.Visible = false;
+            dgvEmergente.Visible = false;
+
+            Int32 y = 0;
+
+            if (totalRows > 0)
+            {
+                if (tipoCon == -1)
+                {
+                    lsReporteBloqueGen = lsReporteBloque;
+                    dgv.Columns.Clear();
+                    dgv.Rows.Clear();
+                    dgv.Columns.Add("id", "id");
+                    dgv.Columns.Add("num", "N°");
+                    dgv.Columns.Add("detalle", "Detalle");
+                    dgv.Columns.Add("cantidad", "Cantidad");
+                    dgv.Columns.Add("Importe", "Importe");
+
+                    if (numPagina == 0)
+                    {
+                        y = 0;
+                    }
+                    else
+                    {
+                        tabInicio = (numPagina - 1) * filas;
+                        y = tabInicio;
+                    }
+
+                    for (Int32 i = 0; i < totalRows; i++)
+                    {
+                        ReporteBloque clsRep = lsReporteBloque[i];
+                        dgv.Rows.Add(
+                            clsRep.Codigoreporte,
+                            y + 1,
+                            clsRep.Detallereporte,
+                            clsRep.Cantidad,
+                            FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                            );
+                        y += 1;
+                        dgv.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        dgv.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    }
+                    dgv.Rows.Add("", "", "", "", "");
+                    dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                    dgv.Rows[y + 1].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    dgv.Rows[y + 1].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                    dgv.Columns[0].Visible = false;
+                    dgv.Columns[1].Width = 10;
+                    dgv.Columns[2].Width = 100;
+                    dgv.Columns[3].Width = 20;
+                    dgv.Columns[4].Width = 100;
+                    dgv.Height = ((totalRows + 3) * (dgv.ThemeStyle.RowsStyle.Height + 2));
+                    dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                    //lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0);
+
+                }
+                else if (tipoCon == -2)
+                {
+                    ReporteBloque clsReporte = lsReporteBloqueGen.Find(i => i.Codigoreporte == codOperacion);
+                    dgv.Columns.Clear();
+                    dgv.Rows.Clear();
+                    dgv.Columns.Add("id", "id");
+                    dgv.Columns.Add("detalle", "Detalle de " + clsReporte.Detallereporte);
+                    dgv.Columns.Add("cantidad", "Cantidad");
+                    dgv.Columns.Add("Importe", "Importe");
+                    dgv.Columns["importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    lblHeaderDetalle.Text = "Detalle de " + clsReporte.Detallereporte;
+                    lblHeaderDetalle.Visible = true;
+                    for (Int32 i = 0; i < totalRows; i++)
+                    {
+                        ReporteBloque clsRep = lsReporteBloque[i];
+                        dgv.Rows.Add(
+                            clsRep.Codigoreporte,
+                            clsRep.Detallereporte,
+                            clsRep.Cantidad,
+                            FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                            );
+                        y += 1;
+                        dgv.Rows[i].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        dgv.Rows[i].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    }
+                    dgv.Visible = true;
+
+                    dgv.Rows.Add("", "", "", "");
+                    dgv.Rows.Add("TOTAL", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                    dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    dgv.Rows[y + 1].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    dgv.Columns[0].Visible = false;
+                    dgv.Columns[1].Width = 100;
+                    dgv.Columns[2].Width = 20;
+                    dgv.Columns[3].Width = 100;
+                    dgv.ColumnHeadersVisible = false;
+
+
+                    dgv.Height = ((totalRows + 2) * (dgv.ThemeStyle.RowsStyle.Height + 2));
+                    dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                }
+
+                dgv.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
+                dgv.Rows[y + 1].DefaultCellStyle.BackColor = Color.Red;
+                dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Arial", 15F, GraphicsUnit.Pixel);
+                //this.dgvListaPorBloque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+
+
+
+                //if (numPagina == 0)
+                //{
+                //    //cboPaginacion.Visible = true;
+                //    Int32 totalRegistros = Convert.ToInt32(dtRes.Rows[0][0]);
+                //    FunValidaciones.fnCalcularPaginacion(totalRegistros, filas,  totalRows, cboPagina,btnTotalPag,btnNumFilas,btnTotalReg);
+                //}
+
+
+            }
+            else
+            {
+                dgv.Columns.Clear();
+                dgvListaPorBloque.Columns.Add("id", "NO SE ENCONTRARON RESULTADOS PARA LA BUSQUEDA");
+                //lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(000), 0);
+            }
+
+        }
+        private void fnGenerarPaneles(List<ReporteBloque> lstBusq)
+        {
+            Color colorFondo = new Color();
+            Color colorHeaderFooter = new Color();
+            Color colorLetraHF = new Color();
+            Color colorLetraBody = new Color();
+            flowLayoutPanel1.Controls.Clear();
+            colorLetraHF = Color.LightGray;
+            colorLetraBody = Color.Black;
+            for (Int32 i = 0; i < lstBusq.Count; i++)
+            {
+                if (lstBusq[i].ImporteRow < 100)
+                {
+                    colorFondo = Color.FromArgb(205, 76, 70);
+                }
+                else if (lstBusq[i].ImporteRow >= 100 && lstBusq[i].ImporteRow < 300)
+                {
+                    colorFondo = Color.FromArgb(240, 130, 33);
+                }
+                else if (lstBusq[i].ImporteRow >= 300 && lstBusq[i].ImporteRow < 700)
+                {
+                    colorFondo = Color.FromArgb(251, 191, 69);
+                }
+                else if (lstBusq[i].ImporteRow >= 700 && lstBusq[i].ImporteRow < 1000)
+                {
+                    colorFondo = Color.FromArgb(1, 139, 211);
+                }
+                else if (lstBusq[i].ImporteRow >= 1000)
+                {
+                    colorFondo = Color.FromArgb(2, 195, 130);
+                }
+                colorHeaderFooter = fnDevolVerColorTransparente(120, Color.Black);
+                //Panel princilal
+                SiticonePanel panelFondo = new SiticonePanel();
+                panelFondo.Name = "panel" + i;
+                panelFondo.Size = new Size(190, 120);
+                panelFondo.BorderRadius = 10;
+                panelFondo.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+
+                panelFondo.BackColor = Color.Transparent;
+                panelFondo.FillColor = colorFondo;
+
+                SiticonePanel panel = new SiticonePanel();
+                panel.Name = "panel" + i;
+                panel.Size = new Size(190, 120);
+                panel.BorderRadius = 10;
+                panel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+                panel.BackColor = Color.Transparent;
+                panel.FillColor = colorHeaderFooter;
+                panelFondo.Controls.Add(panel);
+                // panel Header
+                SiticonePanel pnHead = new SiticonePanel();
+                pnHead.Name = "pnHead" + i;
+                pnHead.Size = new Size(190, 25);
+                pnHead.BackColor = Color.Transparent;
+                //pnHead.FillColor = ;
+                pnHead.BorderRadius = 10;
+
+
+
+
+
+                SiticoneLabel lblH = new SiticoneLabel();
+                lblH.Name = "lblHeader" + i;
+                lblH.AutoSize = false;
+                lblH.Size = new Size(190, 25);
+                lblH.BackColor = Color.Transparent;
+                lblH.Location = new Point(0, 0);
+                lblH.Text = FunGeneral.FormatearCadenaTitleCase(lstBusq[i].Detallereporte);
+                lblH.TextAlignment = ContentAlignment.MiddleCenter;
+                lblH.Font = new Font("Arial", 13F, GraphicsUnit.Pixel);
+                lblH.ForeColor = colorLetraHF;
+                pnHead.Controls.Add(lblH);
+                panel.Controls.Add(pnHead);
+
+                //Panel Izquierdo
+                SiticonePanel pnIzquierdo = new SiticonePanel();
+                pnIzquierdo.Name = "pnIzquierdo" + i;
+                pnIzquierdo.Size = new Size(95, 70);
+                pnIzquierdo.Location = new Point(0, 25);
+
+
+                SiticoneLabel lblIzq = new SiticoneLabel();
+                lblIzq.Name = "lblIzquierdo" + i;
+                lblIzq.AutoSize = false;
+                lblIzq.Size = new Size(95, 70);
+                lblIzq.Location = new Point(0, 0);
+                lblIzq.Text = "" + lstBusq[i].Cantidad;
+                lblIzq.TextAlignment = ContentAlignment.MiddleCenter;
+                lblIzq.Font = new Font("Arial", 20F, GraphicsUnit.Pixel);
+                lblIzq.ForeColor = colorLetraBody;
+                pnIzquierdo.Controls.Add(lblIzq);
+
+                panel.Controls.Add(pnIzquierdo);
+                //Panel Derecho
+                SiticonePanel pnDerecho = new SiticonePanel();
+                pnDerecho.Name = "pnDerecho" + i;
+                pnDerecho.BackColor = colorFondo;
+                pnDerecho.Size = new Size(95, 70);
+                pnDerecho.Location = new Point(95, 25);
+                panel.Controls.Add(pnDerecho);
+
+                //Panel Footer
+                SiticonePanel pnFooter = new SiticonePanel();
+                pnFooter.Name = "pnFooter" + i;
+                //pnFooter.BackColor = colorHeader;
+                pnFooter.Size = new Size(190, 25);
+                pnFooter.Location = new Point(0, 95);
+
+                SiticoneLabel lblF = new SiticoneLabel();
+                lblF.Name = "lblFooter" + i;
+                lblF.AutoSize = false;
+                lblF.Size = new Size(190, 25); ;
+                lblF.Location = new Point(0, 0);
+                lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecio("S/.", lstBusq[i].ImporteRow, 0);
+                //lblF.BackColor = "Dark"+ color;
+                lblF.TextAlignment = ContentAlignment.MiddleCenter;
+                lblF.Font = new Font("Arial", 13F, GraphicsUnit.Pixel);
+                lblF.ForeColor = colorLetraHF;
+                pnFooter.Controls.Add(lblF);
+
+
+                panel.Controls.Add(pnFooter);
+
+                flowLayoutPanel1.Controls.Add(panelFondo);
+            }
+        }
+
+        private void dgvListaPorBloque_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            codTipoReporte = cboTipoReporte.SelectedValue.ToString();
+            codOperacion = dgvListaPorBloque.CurrentRow.Cells[0].Value.ToString();
+
+            dgvEmergente.Visible = false;
+            if (codOperacion == "" || codOperacion == "TOTAL")
+            {
+
+            }
+            else
+            {
+                if (codTipoReporte == "TRPT0001" || codTipoReporte == "TRPT0002")
+                {
+                    fnBuscarReporteGeneralVentas(siticoneDataGridView1, 0, -2);
+
+                }
+                else
+                {
+                    ReporteBloque clsReporte = lsReporteBloqueGen.Find(i => i.Codigoreporte == codOperacion);
+                    lblHeaderDetalle.Text = "Detalle de " + clsReporte.Detallereporte;
+                    lblHeaderDetalle.Visible = true;
+                    fnBuscarDatosTablaEmergente(dgvEmergente, codOperacion);
+                    dgvEmergente.Width = siticoneDataGridView1.Width;
+                    dgvEmergente.Location = siticoneDataGridView1.Location;
+
+                }
+                Int32 x = dgvListaPorBloque.GetCellDisplayRectangle(e.RowIndex, e.ColumnIndex, false).Right;
+                Int32 y = dgvListaPorBloque.GetRowDisplayRectangle(e.RowIndex, false).Y;
+                //siticoneDataGridView1.Location = new Point(dgvListaPorBloque.Right + 15, y + 2);
+                pbIndica.Location = new Point(dgvListaPorBloque.Right + 15, y + 2);
+                pbIndica.Visible = true;
+            }
+
+        }
+
+        private void fnBuscarDatosTablaEmergente(SiticoneDataGridView dgv, String codSubReporte)
+        {
+
+            bl = new BLControlCaja();
+            DataTable dtRes = new DataTable();
+            Busquedas clsBus = new Busquedas();
+            List<ReporteBloque> lstRep = new List<ReporteBloque>();
+
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.chkActivarFechas = chkHabilitarFechasBusG.Checked;
+            clsBusq.chkActivarDia = chkDiaEspecificoG.Checked;
+            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
+            clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
+            clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
+            clsBusq.cod2 = codOperacion;
+            clsBusq.cod3 = cboOperacion.SelectedValue.ToString();
+            clsBusq.cod4 = codSubReporte;
+            clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
+            clsBusq.numPagina = 0;
+            clsBusq.tipoCon = -3;
+
+            var result = bl.BuscarReporteGeneralVentas(clsBusq);
+            lstRep = result.Item2;
+            dgv.Visible = false;
+            dgv.Columns.Clear();
+            dgv.Rows.Clear();
+            ReporteBloque clsReporte = lsReporteBloque.Find(i => i.Codigoreporte == codSubReporte);
+            dgv.Columns.Add("id", "id");
+            dgv.Columns.Add("detalle", "Detalle de ");
+            dgv.Columns.Add("cantidad", "Cantidad");
+            dgv.Columns.Add("Importe", "Importe");
+            dgv.Columns["importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.None;
+            //lblHeaderDetalle.Text = "Detalle de " + clsReporte.Detallereporte;
+            lblHeaderDetalle.Visible = true;
+            Int32 y = 0;
+            if (clsBusq.numPagina == 0)
+            {
+                y = 0;
+            }
+            else
+            {
+                tabInicio = (clsBusq.numPagina - 1) * 20;
+                y = tabInicio;
+            }
+            for (Int32 i = 0; i < lstRep.Count; i++)
+            {
+                ReporteBloque clsRep = lstRep[i];
+                dgv.Rows.Add(
+                    clsRep.Codigoreporte,
+                   clsRep.Detallereporte.Length <= 10 ? Convert.ToDateTime(clsRep.Detallereporte).ToString("dd MMM yyyy") : clsRep.Detallereporte,
+                    clsRep.Cantidad,
+                    FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                    );
+                y += 1;
+                dgv.Rows[i].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Rows[i].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Rows[i].Cells[1].Style.Padding = new Padding(30, 0, 0, 0);
+            }
+            dgv.Visible = true;
+
+            dgv.Rows.Add("", "", "", "");
+            dgv.Rows.Add("TOTAL", "IMPORTE TOTAL DE " + clsReporte.Detallereporte, "", FunGeneral.fnFormatearPrecio("S/.", lstRep.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+            dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgv.Rows[y + 1].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgv.Columns[0].Visible = false;
+            dgv.Columns[1].Width = 100;
+            dgv.Columns[2].Width = 20;
+            dgv.Columns[3].Width = 100;
+            dgv.ColumnHeadersVisible = false;
+
+
+            dgv.Height = ((lstRep.Count + 2) * (dgv.ThemeStyle.RowsStyle.Height + 1));
+            dgv.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
+            dgv.Rows[y + 1].DefaultCellStyle.BackColor = Color.DarkRed;
+            dgv.Rows[y + 1].Cells[1].Style.Padding = new Padding(30, 0, 0, 0);
+            dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Arial", 12F, GraphicsUnit.Pixel);
+        }
+        private Color fnDevolVerColorTransparente(Int32 alfa, Color colr)
+        {
+            return Color.FromArgb(alfa, colr);
+        }
+
+        private void chkHabilitarFechasBusG_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkHabilitarFechasBusG.Checked == true)
+            {
+                gbHabilitarBusqFechas.Enabled = true;
+                chkDiaEspecificoG.Visible = true;
+            }
+            else
+            {
+                gbHabilitarBusqFechas.Enabled = false;
+                chkDiaEspecificoG.Visible = false;
+                chkDiaEspecificoG.Checked = false;
+            }
+        }
+
+        private void chkDiaEspecificoG_CheckedChanged(object sender, EventArgs e)
+        {
+            fnValidarBusquedaDia();
+        }
+        private void fnValidarBusquedaDia()
+        {
+            if (chkDiaEspecificoG.Checked == true)
+            {
+                label2.Visible = false;
+                dtFechaFinG.Visible = false;
+                label1.Text = "Elija el dia para buscar:";
+            }
+            else
+            {
+                label2.Visible = true;
+                dtFechaFinG.Visible = true;
+                label1.Text = "Fecha Inicio:";
+            }
+        }
+
+        private void cboTipoReporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pbIndica.Visible = false;
+            String CodOperacion = cboTipoReporte.SelectedValue.ToString();
+           
+            fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
+        }
+
+        private void fnLlenarUsuariosConAccion(SiticoneComboBox cbo, SiticoneDateTimePicker dtIni, SiticoneDateTimePicker dtFin, Boolean estado)
+        {
+            DAControlCaja dc = new DAControlCaja();
+            List<Usuario> lstUsuario = new List<Usuario>();
+            DataTable dt = new DataTable();
+            String FI = FunGeneral.GetFechaHoraFormato(dtIni.Value, 5);
+            String FF = FunGeneral.GetFechaHoraFormato(dtFin.Value, 5);
+            Boolean chk = chkDiaEspecificoG.Checked;
+
+            dt = dc.daDevolverSoloUsuario(chk, FI, FF);
+
+            lstUsuario.Add(new Usuario(
+                Convert.ToInt32(0),
+                Convert.ToString(estado ? "TODOS" : "Selecc. Usuario")
+              ));
+
+            foreach (DataRow drMenu in dt.Rows)
+            {
+                lstUsuario.Add(new Usuario(
+                    Convert.ToInt32(drMenu["idUsuario"]),
+                    Convert.ToString(drMenu["cUser"])
+                    ));
+            }
+            cbo.ValueMember = "idUsuario";
+            cbo.DisplayMember = "cUser";
+            cbo.DataSource = lstUsuario;
+
+        }
+
+        private void dtFechaFinG_ValueChanged(object sender, EventArgs e)
+        {
+            fnLlenarUsuariosConAccion(cboOperacion, dtFechaInicioG, dtFechaFinG, true);
+        }
+
+        private void dtFechaInicioG_ValueChanged(object sender, EventArgs e)
+        {
+            fnLlenarUsuariosConAccion(cboOperacion, dtFechaInicioG, dtFechaFinG, true);
+        }
+
+        private void cboOperacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
+        }
+
+        private void txtBuscarRepGeneral_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
+            }
+        }
+
+        private void dgvListaPorBloque_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvEmergente.Visible = false;
+        }
+
+        private void siticoneDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvEmergente.Visible = false;
+        }
+
+        private void siticoneDataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            String codSubReporte = siticoneDataGridView1.CurrentRow.Cells[0].Value.ToString();
+            if (codSubReporte == "" || codSubReporte == "TOTAL")
+            {
+
+            }
+            else
+            {
+                Int32 x = siticoneDataGridView1.Left + 135;
+                Int32 y = siticoneDataGridView1.GetRowDisplayRectangle(e.RowIndex, false).Y;
+                dgvEmergente.Location = new Point(x, y + 60);
+                dgvEmergente.Width = siticoneDataGridView1.Width - 135;
+                fnBuscarDatosTablaEmergente(dgvEmergente, codSubReporte);
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
         }
     }
 
