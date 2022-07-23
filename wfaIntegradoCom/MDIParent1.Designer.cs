@@ -1631,7 +1631,7 @@ namespace wfaIntegradoCom
             this.siticoneGroupBox1.Location = new System.Drawing.Point(8, 160);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(12, 104);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(19, 104);
             this.siticoneGroupBox1.TabIndex = 271;
             this.siticoneGroupBox1.Text = "Buscar por";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -7);

@@ -58,5 +58,20 @@ namespace CapaNegocio
             }
            
         }
+        public Tuple<List<ReporteBloque>,List<ReporteBloque>> blBuscarDashBoard(Busquedas clsBusq)
+        {
+            dc = new DAControlCaja();
+            try
+            {
+                return dc.daBuscarDashBoard( clsBusq);
+
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+           
+        }
     }
 }

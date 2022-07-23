@@ -959,6 +959,7 @@ namespace wfaIntegradoCom
 
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+            treeView1.Controls.Clear();
             bl = new BLControlCaja();
             flowLayoutPanel1.Controls.Clear();
             ToggleBotonesAnchos.CheckState=CheckState.Unchecked;
@@ -1059,6 +1060,7 @@ namespace wfaIntegradoCom
             }
             finally
             {
+                treeView1.Controls.Add(pnlParaDashboard);
                 pnlParaDashboard.Size = treeView1.Size;
                 var gbx = pnlParaDashboard.Controls.OfType<SiticoneGroupBox>();
                 var pn = pnlParaDashboard.Controls.OfType<SiticonePanel>();
@@ -1506,12 +1508,13 @@ namespace wfaIntegradoCom
             //Img_Husat_Naranja.Visible = false;
             //Img_Husat_Blanco.Visible = true;
 
-            iconChildForm.IconChar =IconChar.Home;
-            lblChilForm.Text = "Home";
-            SubmenusOcultos();
-            reset();
+            //iconChildForm.IconChar =IconChar.Home;
+            //lblChilForm.Text = "Home";
+            //SubmenusOcultos();
+            //reset();
 
-            treeView1.Nodes.Clear();
+            //treeView1.Nodes.Clear();
+            pictureBox5_Click_(sender, e);
         }
 
         private void pictureBox5_Click_(object sender, EventArgs e)
@@ -1524,6 +1527,8 @@ namespace wfaIntegradoCom
             reset();
 
             treeView1.Nodes.Clear();
+            treeView1.Controls.Clear();
+            treeView1.Controls.Add(pnlParaDashboard);
         }
 
         private void fnBotonActivo(object senderBtn, Color color)
@@ -2397,8 +2402,12 @@ namespace wfaIntegradoCom
 
             Int32 filas = 10;
 
-            var result = bl.BuscarReporteGeneralVentas(clsBusq);
-            fnGenerarPaneles(result.Item2);
+            var result = bl.blBuscarDashBoard(clsBusq);
+            //if (flowLayoutPanel1.Controls.Count<=0)
+            //{
+                fnGenerarPaneles(result.Item1);
+
+            //}
             lsReporteBloque = result.Item2;
             Int32 totalRows = lsReporteBloque.Count;
 
@@ -2527,17 +2536,54 @@ namespace wfaIntegradoCom
             }
 
         }
+        private IconPictureBox fngenerarIconos(ReporteBloque rpt)
+        {
+            IconPictureBox icono = new IconPictureBox();
+            if (rpt.Codigoreporte== "3")
+            {
+                icono.IconChar = IconChar.DollyBox;
+            }else if (rpt.Codigoreporte== "4")
+            {
+                icono.IconChar = IconChar.ClockFour;
+
+            }
+            else if (rpt.Codigoreporte== "5")
+            {
+                icono.IconChar = IconChar.RotateLeft;
+
+            }
+            else if (rpt.Codigoreporte== "7")
+            {
+                icono.IconChar = IconChar.CarBurst;
+
+            }
+            else if (rpt.Codigoreporte== "11")
+            {
+                icono.IconChar = IconChar.ArrowDownUpAcrossLine;
+
+            }
+            return icono;
+        }
         private void fnGenerarPaneles(List<ReporteBloque> lstBusq)
         {
             Color colorFondo = new Color();
             Color colorHeaderFooter = new Color();
             Color colorLetraHF = new Color();
             Color colorLetraBody = new Color();
+            Color colorLetraIcono = new Color();
             flowLayoutPanel1.Controls.Clear();
-            colorLetraHF = Color.LightGray;
-            colorLetraBody = Color.Black;
+            Int32 pnfW = 150;
+            Int32 pnfH = 80;
+            Int32 borderRadius = 2;
+            Int32 tamLetraHF = 12;
+            colorLetraHF = Color.Gainsboro;
+            String tipoLetra = "Roboto";
+            colorLetraBody = Color.DimGray;
+            colorLetraIcono = fnDevolVerColorTransparente(120, Color.Black);
+            colorHeaderFooter = fnDevolVerColorTransparente(110, Color.Black);
             for (Int32 i = 0; i < lstBusq.Count; i++)
             {
+                ReporteBloque rpt = lstBusq[i];
                 if (lstBusq[i].ImporteRow < 100)
                 {
                     colorFondo = Color.FromArgb(205, 76, 70);
@@ -2558,12 +2604,12 @@ namespace wfaIntegradoCom
                 {
                     colorFondo = Color.FromArgb(2, 195, 130);
                 }
-                colorHeaderFooter = fnDevolVerColorTransparente(120, Color.Black);
+                
                 //Panel princilal
                 SiticonePanel panelFondo = new SiticonePanel();
                 panelFondo.Name = "panel" + i;
-                panelFondo.Size = new Size(190, 120);
-                panelFondo.BorderRadius = 10;
+                panelFondo.Size = new Size(pnfW, pnfH);
+                panelFondo.BorderRadius = borderRadius;
                 panelFondo.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
 
                 panelFondo.BackColor = Color.Transparent;
@@ -2571,33 +2617,36 @@ namespace wfaIntegradoCom
 
                 SiticonePanel panel = new SiticonePanel();
                 panel.Name = "panel" + i;
-                panel.Size = new Size(190, 120);
-                panel.BorderRadius = 10;
+                //panel.Size = new Size(panelFondo.Width, panelFondo.Height);
+                panel.Size = new Size(pnfW+1, pnfH);
+                panel.BorderRadius = borderRadius;
                 panel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
                 panel.BackColor = Color.Transparent;
                 panel.FillColor = colorHeaderFooter;
+                panel.Location = new Point(0, 0);
                 panelFondo.Controls.Add(panel);
+
                 // panel Header
                 SiticonePanel pnHead = new SiticonePanel();
                 pnHead.Name = "pnHead" + i;
-                pnHead.Size = new Size(190, 25);
+                pnHead.Size = new Size(panel.Width, (panel.Height/2)/2);
                 pnHead.BackColor = Color.Transparent;
-                //pnHead.FillColor = ;
-                pnHead.BorderRadius = 10;
-
-
-
+                //pnHead.FillColor = Color.Yellow;
+                pnHead.Location = new Point(0, 0);
+                pnHead.BorderRadius = borderRadius;
 
 
                 SiticoneLabel lblH = new SiticoneLabel();
                 lblH.Name = "lblHeader" + i;
                 lblH.AutoSize = false;
-                lblH.Size = new Size(190, 25);
-                lblH.BackColor = Color.Transparent;
-                lblH.Location = new Point(0, 0);
+                lblH.Size = new Size(pnHead.Width, pnHead.Height);
+                //lblH.BackColor = Color.Red;
+                lblH.Location = new Point(0, 1);
                 lblH.Text = FunGeneral.FormatearCadenaTitleCase(lstBusq[i].Detallereporte);
                 lblH.TextAlignment = ContentAlignment.MiddleCenter;
-                lblH.Font = new Font("Arial", 13F, GraphicsUnit.Pixel);
+                lblH.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
+                lblH.Font = new Font(lblH.Font, FontStyle.Regular);
+
                 lblH.ForeColor = colorLetraHF;
                 pnHead.Controls.Add(lblH);
                 panel.Controls.Add(pnHead);
@@ -2605,18 +2654,18 @@ namespace wfaIntegradoCom
                 //Panel Izquierdo
                 SiticonePanel pnIzquierdo = new SiticonePanel();
                 pnIzquierdo.Name = "pnIzquierdo" + i;
-                pnIzquierdo.Size = new Size(95, 70);
-                pnIzquierdo.Location = new Point(0, 25);
-
+                pnIzquierdo.Size = new Size(panel.Width/2, panel.Height- (pnHead.Height * 2));
+                pnIzquierdo.Location = new Point(0, pnHead.Height);
+                pnIzquierdo.FillColor = colorFondo;
 
                 SiticoneLabel lblIzq = new SiticoneLabel();
                 lblIzq.Name = "lblIzquierdo" + i;
                 lblIzq.AutoSize = false;
-                lblIzq.Size = new Size(95, 70);
+                lblIzq.Size = pnIzquierdo.Size;
                 lblIzq.Location = new Point(0, 0);
                 lblIzq.Text = "" + lstBusq[i].Cantidad;
                 lblIzq.TextAlignment = ContentAlignment.MiddleCenter;
-                lblIzq.Font = new Font("Arial", 20F, GraphicsUnit.Pixel);
+                lblIzq.Font = new Font(tipoLetra, 16F);
                 lblIzq.ForeColor = colorLetraBody;
                 pnIzquierdo.Controls.Add(lblIzq);
 
@@ -2625,26 +2674,37 @@ namespace wfaIntegradoCom
                 SiticonePanel pnDerecho = new SiticonePanel();
                 pnDerecho.Name = "pnDerecho" + i;
                 pnDerecho.BackColor = colorFondo;
-                pnDerecho.Size = new Size(95, 70);
-                pnDerecho.Location = new Point(95, 25);
+                pnDerecho.Size = pnIzquierdo.Size;
+                pnDerecho.Location = new Point(panel.Width / 2, pnHead.Height);
+
+                IconPictureBox icon = fngenerarIconos(rpt);
+                icon.Size = new Size(pnDerecho.Width-8, pnDerecho.Height-8);
+                icon.Location = new Point((pnDerecho.Width/3), 1);
+                icon.ForeColor = colorLetraIcono;
+                icon.Dock = DockStyle.Fill;
+                //icon.SizeMode = PictureBoxSizeMode.AutoSize;
+                icon.Padding = new Padding(icon.Width/3, 0, 0, 0);
+                pnDerecho.Controls.Add(icon);
+
                 panel.Controls.Add(pnDerecho);
 
                 //Panel Footer
                 SiticonePanel pnFooter = new SiticonePanel();
                 pnFooter.Name = "pnFooter" + i;
                 //pnFooter.BackColor = colorHeader;
-                pnFooter.Size = new Size(190, 25);
-                pnFooter.Location = new Point(0, 95);
+                pnFooter.Size = new Size(panel.Width, (panel.Height / 2) / 2);
+                pnFooter.Location = new Point(0, pnDerecho.Height+pnHead.Height);
 
                 SiticoneLabel lblF = new SiticoneLabel();
                 lblF.Name = "lblFooter" + i;
                 lblF.AutoSize = false;
-                lblF.Size = new Size(190, 25); ;
+                lblF.Size = pnFooter.Size;
                 lblF.Location = new Point(0, 0);
                 lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecio("S/.", lstBusq[i].ImporteRow, 0);
                 //lblF.BackColor = "Dark"+ color;
                 lblF.TextAlignment = ContentAlignment.MiddleCenter;
-                lblF.Font = new Font("Arial", 13F, GraphicsUnit.Pixel);
+                lblF.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
+               
                 lblF.ForeColor = colorLetraHF;
                 pnFooter.Controls.Add(lblF);
 
