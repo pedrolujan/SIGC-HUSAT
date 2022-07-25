@@ -90,6 +90,9 @@ namespace wfaIntegradoCom
             this.panelImagenLogo = new Siticone.UI.WinForms.SiticonePanel();
             this.Img_Husat_Naranja = new System.Windows.Forms.PictureBox();
             this.panelCentral = new Siticone.UI.WinForms.SiticonePanel();
+            this.panelCerrarSession = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
+            this.btnPerfil = new FontAwesome.Sharp.IconButton();
             this.panelOpciones = new System.Windows.Forms.Panel();
             this.ToggleTextoNegrita = new RJCodeAdvance.RJControls.RJToggleButton();
             this.ToggleBotonesAnchos = new RJCodeAdvance.RJControls.RJToggleButton();
@@ -132,10 +135,10 @@ namespace wfaIntegradoCom
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.lblBuscar = new Siticone.UI.WinForms.SiticoneLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.chkDiaEspecificoG = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.chkHabilitarFechasBusG = new Siticone.UI.WinForms.SiticoneCheckBox();
-            this.siticoneLabel10 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel13 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel11 = new Siticone.UI.WinForms.SiticoneLabel();
             this.txtBuscarRepGeneral = new Siticone.UI.WinForms.SiticoneTextBox();
@@ -146,9 +149,6 @@ namespace wfaIntegradoCom
             this.dtFechaInicioG = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.panelCerrarSession = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
-            this.btnPerfil = new FontAwesome.Sharp.IconButton();
             this.btnPersonalizacion = new FontAwesome.Sharp.IconButton();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panelEspaciado = new System.Windows.Forms.Panel();
@@ -158,6 +158,7 @@ namespace wfaIntegradoCom
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.panelPerfil = new System.Windows.Forms.Panel();
             this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.PanelEncavezadoFondo.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.siticonePanel2.SuspendLayout();
@@ -168,6 +169,7 @@ namespace wfaIntegradoCom
             this.panelImagenLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Naranja)).BeginInit();
             this.panelCentral.SuspendLayout();
+            this.panelCerrarSession.SuspendLayout();
             this.panelOpciones.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panelPersonalizarColores.SuspendLayout();
@@ -181,7 +183,6 @@ namespace wfaIntegradoCom
             this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbHabilitarBusqFechas.SuspendLayout();
-            this.panelCerrarSession.SuspendLayout();
             this.panelPerfil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).BeginInit();
             this.SuspendLayout();
@@ -879,12 +880,12 @@ namespace wfaIntegradoCom
             // 
             // panelCentral
             // 
+            this.panelCentral.Controls.Add(this.panelCerrarSession);
             this.panelCentral.Controls.Add(this.panelOpciones);
             this.panelCentral.Controls.Add(this.statusStrip1);
             this.panelCentral.Controls.Add(this.btnOpciones);
             this.panelCentral.Controls.Add(this.panelPersonalizarColores);
             this.panelCentral.Controls.Add(this.pnlParaDashboard);
-            this.panelCentral.Controls.Add(this.panelCerrarSession);
             this.panelCentral.Controls.Add(this.btnPersonalizacion);
             this.panelCentral.Controls.Add(this.treeView1);
             this.panelCentral.Controls.Add(this.panelEspaciado);
@@ -896,6 +897,68 @@ namespace wfaIntegradoCom
             this.panelCentral.ShadowDecoration.Parent = this.panelCentral;
             this.panelCentral.Size = new System.Drawing.Size(1054, 599);
             this.panelCentral.TabIndex = 22;
+            // 
+            // panelCerrarSession
+            // 
+            this.panelCerrarSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelCerrarSession.BackColor = System.Drawing.Color.White;
+            this.panelCerrarSession.Controls.Add(this.btnCerrarSesion);
+            this.panelCerrarSession.Controls.Add(this.btnPerfil);
+            this.panelCerrarSession.Location = new System.Drawing.Point(887, 0);
+            this.panelCerrarSession.Name = "panelCerrarSession";
+            this.panelCerrarSession.ShadowDecoration.Parent = this.panelCerrarSession;
+            this.panelCerrarSession.Size = new System.Drawing.Size(174, 78);
+            this.panelCerrarSession.TabIndex = 14;
+            this.panelCerrarSession.Visible = false;
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnCerrarSesion.IconChar = FontAwesome.Sharp.IconChar.PersonWalkingArrowRight;
+            this.btnCerrarSesion.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnCerrarSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCerrarSesion.IconSize = 32;
+            this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 40);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(174, 40);
+            this.btnCerrarSesion.TabIndex = 17;
+            this.btnCerrarSesion.Text = "Cerrar Session";
+            this.btnCerrarSesion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.tsCerrarSession_Click);
+            this.btnCerrarSesion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCerrarSesion_MouseMove);
+            // 
+            // btnPerfil
+            // 
+            this.btnPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.btnPerfil.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPerfil.FlatAppearance.BorderSize = 0;
+            this.btnPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPerfil.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPerfil.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnPerfil.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.btnPerfil.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnPerfil.IconFont = FontAwesome.Sharp.IconFont.Regular;
+            this.btnPerfil.IconSize = 32;
+            this.btnPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPerfil.Location = new System.Drawing.Point(0, 0);
+            this.btnPerfil.Name = "btnPerfil";
+            this.btnPerfil.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnPerfil.Size = new System.Drawing.Size(174, 40);
+            this.btnPerfil.TabIndex = 16;
+            this.btnPerfil.Text = "Perfil";
+            this.btnPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPerfil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPerfil.UseVisualStyleBackColor = false;
+            this.btnPerfil.Click += new System.EventHandler(this.btnPerfil_Click);
+            this.btnPerfil.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnPerfil_MouseMove);
             // 
             // panelOpciones
             // 
@@ -1175,6 +1238,7 @@ namespace wfaIntegradoCom
             this.pnlParaDashboard.ShadowDecoration.Parent = this.pnlParaDashboard;
             this.pnlParaDashboard.Size = new System.Drawing.Size(1051, 573);
             this.pnlParaDashboard.TabIndex = 37;
+            this.pnlParaDashboard.MouseEnter += new System.EventHandler(this.pnlParaDashboard_MouseEnter_1);
             // 
             // flowLayoutPanel1
             // 
@@ -1197,6 +1261,7 @@ namespace wfaIntegradoCom
             this.siticonePanel3.ShadowDecoration.Parent = this.siticonePanel3;
             this.siticonePanel3.Size = new System.Drawing.Size(17, 300);
             this.siticonePanel3.TabIndex = 273;
+            this.siticonePanel3.MouseEnter += new System.EventHandler(this.siticonePanel3_MouseEnter);
             // 
             // dgvEmergente
             // 
@@ -1614,10 +1679,10 @@ namespace wfaIntegradoCom
             // 
             this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
             this.siticoneGroupBox1.BorderRadius = 5;
+            this.siticoneGroupBox1.Controls.Add(this.lblBuscar);
             this.siticoneGroupBox1.Controls.Add(this.pictureBox1);
             this.siticoneGroupBox1.Controls.Add(this.chkDiaEspecificoG);
             this.siticoneGroupBox1.Controls.Add(this.chkHabilitarFechasBusG);
-            this.siticoneGroupBox1.Controls.Add(this.siticoneLabel10);
             this.siticoneGroupBox1.Controls.Add(this.siticoneLabel13);
             this.siticoneGroupBox1.Controls.Add(this.siticoneLabel11);
             this.siticoneGroupBox1.Controls.Add(this.txtBuscarRepGeneral);
@@ -1631,10 +1696,19 @@ namespace wfaIntegradoCom
             this.siticoneGroupBox1.Location = new System.Drawing.Point(8, 160);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(19, 104);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(1082, 104);
             this.siticoneGroupBox1.TabIndex = 271;
             this.siticoneGroupBox1.Text = "Buscar por";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -7);
+            // 
+            // lblBuscar
+            // 
+            this.lblBuscar.BackColor = System.Drawing.Color.Transparent;
+            this.lblBuscar.Location = new System.Drawing.Point(969, 37);
+            this.lblBuscar.Name = "lblBuscar";
+            this.lblBuscar.Size = new System.Drawing.Size(39, 15);
+            this.lblBuscar.TabIndex = 1;
+            this.lblBuscar.Text = "Buscar:";
             // 
             // pictureBox1
             // 
@@ -1693,20 +1767,11 @@ namespace wfaIntegradoCom
             this.chkHabilitarFechasBusG.UseVisualStyleBackColor = false;
             this.chkHabilitarFechasBusG.CheckedChanged += new System.EventHandler(this.chkHabilitarFechasBusG_CheckedChanged);
             // 
-            // siticoneLabel10
-            // 
-            this.siticoneLabel10.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel10.Location = new System.Drawing.Point(970, 37);
-            this.siticoneLabel10.Name = "siticoneLabel10";
-            this.siticoneLabel10.Size = new System.Drawing.Size(39, 15);
-            this.siticoneLabel10.TabIndex = 1;
-            this.siticoneLabel10.Text = "Buscar:";
-            // 
             // siticoneLabel13
             // 
             this.siticoneLabel13.BackColor = System.Drawing.Color.Transparent;
             this.siticoneLabel13.ForeColor = System.Drawing.Color.Black;
-            this.siticoneLabel13.Location = new System.Drawing.Point(812, 37);
+            this.siticoneLabel13.Location = new System.Drawing.Point(812, 35);
             this.siticoneLabel13.Name = "siticoneLabel13";
             this.siticoneLabel13.Size = new System.Drawing.Size(39, 15);
             this.siticoneLabel13.TabIndex = 1;
@@ -1716,7 +1781,7 @@ namespace wfaIntegradoCom
             // 
             this.siticoneLabel11.BackColor = System.Drawing.Color.Transparent;
             this.siticoneLabel11.ForeColor = System.Drawing.Color.Black;
-            this.siticoneLabel11.Location = new System.Drawing.Point(539, 37);
+            this.siticoneLabel11.Location = new System.Drawing.Point(539, 35);
             this.siticoneLabel11.Name = "siticoneLabel11";
             this.siticoneLabel11.Size = new System.Drawing.Size(68, 15);
             this.siticoneLabel11.TabIndex = 1;
@@ -1737,7 +1802,7 @@ namespace wfaIntegradoCom
             this.txtBuscarRepGeneral.FocusedState.Parent = this.txtBuscarRepGeneral;
             this.txtBuscarRepGeneral.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarRepGeneral.HoveredState.Parent = this.txtBuscarRepGeneral;
-            this.txtBuscarRepGeneral.Location = new System.Drawing.Point(970, 55);
+            this.txtBuscarRepGeneral.Location = new System.Drawing.Point(969, 55);
             this.txtBuscarRepGeneral.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscarRepGeneral.Name = "txtBuscarRepGeneral";
             this.txtBuscarRepGeneral.PasswordChar = '\0';
@@ -1863,68 +1928,6 @@ namespace wfaIntegradoCom
             this.label6.TabIndex = 232;
             this.label6.Text = "Fecha Final:";
             // 
-            // panelCerrarSession
-            // 
-            this.panelCerrarSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelCerrarSession.BackColor = System.Drawing.Color.White;
-            this.panelCerrarSession.Controls.Add(this.btnCerrarSesion);
-            this.panelCerrarSession.Controls.Add(this.btnPerfil);
-            this.panelCerrarSession.Location = new System.Drawing.Point(887, 0);
-            this.panelCerrarSession.Name = "panelCerrarSession";
-            this.panelCerrarSession.ShadowDecoration.Parent = this.panelCerrarSession;
-            this.panelCerrarSession.Size = new System.Drawing.Size(174, 78);
-            this.panelCerrarSession.TabIndex = 14;
-            this.panelCerrarSession.Visible = false;
-            // 
-            // btnCerrarSesion
-            // 
-            this.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
-            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
-            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarSesion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesion.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnCerrarSesion.IconChar = FontAwesome.Sharp.IconChar.PersonWalkingArrowRight;
-            this.btnCerrarSesion.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnCerrarSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCerrarSesion.IconSize = 32;
-            this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 40);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnCerrarSesion.Size = new System.Drawing.Size(174, 40);
-            this.btnCerrarSesion.TabIndex = 17;
-            this.btnCerrarSesion.Text = "Cerrar Session";
-            this.btnCerrarSesion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCerrarSesion.UseVisualStyleBackColor = false;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.tsCerrarSession_Click);
-            this.btnCerrarSesion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCerrarSesion_MouseMove);
-            // 
-            // btnPerfil
-            // 
-            this.btnPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
-            this.btnPerfil.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPerfil.FlatAppearance.BorderSize = 0;
-            this.btnPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPerfil.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPerfil.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnPerfil.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.btnPerfil.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnPerfil.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            this.btnPerfil.IconSize = 32;
-            this.btnPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPerfil.Location = new System.Drawing.Point(0, 0);
-            this.btnPerfil.Name = "btnPerfil";
-            this.btnPerfil.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnPerfil.Size = new System.Drawing.Size(174, 40);
-            this.btnPerfil.TabIndex = 16;
-            this.btnPerfil.Text = "Perfil";
-            this.btnPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPerfil.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPerfil.UseVisualStyleBackColor = false;
-            this.btnPerfil.Click += new System.EventHandler(this.btnPerfil_Click);
-            this.btnPerfil.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnPerfil_MouseMove);
-            // 
             // btnPersonalizacion
             // 
             this.btnPersonalizacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -2038,11 +2041,26 @@ namespace wfaIntegradoCom
             this.ImgPerfil.TabIndex = 237;
             this.ImgPerfil.TabStop = false;
             // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
+            this.iconButton1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.Location = new System.Drawing.Point(976, 635);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(143, 36);
+            this.iconButton1.TabIndex = 26;
+            this.iconButton1.Text = "Cerrar Caja";
+            this.iconButton1.UseVisualStyleBackColor = false;
+            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 671);
+            this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.panelPerfil);
             this.Controls.Add(this.panelCentral);
             this.Controls.Add(this.PanelEncavezadoFondo);
@@ -2069,6 +2087,7 @@ namespace wfaIntegradoCom
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Naranja)).EndInit();
             this.panelCentral.ResumeLayout(false);
             this.panelCentral.PerformLayout();
+            this.panelCerrarSession.ResumeLayout(false);
             this.panelOpciones.ResumeLayout(false);
             this.panelOpciones.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -2088,7 +2107,6 @@ namespace wfaIntegradoCom
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbHabilitarBusqFechas.ResumeLayout(false);
             this.gbHabilitarBusqFechas.PerformLayout();
-            this.panelCerrarSession.ResumeLayout(false);
             this.panelPerfil.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).EndInit();
             this.ResumeLayout(false);
@@ -2195,7 +2213,7 @@ namespace wfaIntegradoCom
         private System.Windows.Forms.PictureBox pictureBox1;
         private Siticone.UI.WinForms.SiticoneCheckBox chkDiaEspecificoG;
         private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBusG;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel10;
+        private Siticone.UI.WinForms.SiticoneLabel lblBuscar;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel13;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel11;
         private Siticone.UI.WinForms.SiticoneTextBox txtBuscarRepGeneral;
@@ -2203,6 +2221,7 @@ namespace wfaIntegradoCom
         private Siticone.UI.WinForms.SiticoneComboBox cboOperacion;
         private Siticone.UI.WinForms.SiticonePanel siticonePanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }
 

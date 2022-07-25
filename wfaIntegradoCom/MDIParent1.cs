@@ -29,6 +29,7 @@ using Siticone.UI.WinForms;
 using FontAwesome.Sharp;
 using CapaEntidad;
 using CapaDato;
+using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 
 namespace wfaIntegradoCom
 
@@ -363,9 +364,20 @@ namespace wfaIntegradoCom
                 bLoading = false;
                 MessageBox.Show(ex.Message, "Avisar a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            finally
+            {
+                fnValidarusuarioEnSession();
+                fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
+                pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008"?false: true;
+                treeView1.Controls.Add(pnlParaDashboard);
+                //fnMostrarDashboard();
+            }
         return bLoading;
         }
-
+        void cbos_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
         private void Frm_FormClosed()
         {
             fnCargarMenuPrin();
@@ -419,11 +431,11 @@ namespace wfaIntegradoCom
             tsCerraSession.Text = " " + FunGeneral.FormatearCadenaTitleCase(Variables.clasePersonal.cPrimerNom);
             
                 //ImgPerfil.Image = Image.FromStream(lstPers[0].strPerfil);
-                if (Variables.clasePersonal.strPerfil ==null)
+            if (Variables.clasePersonal.strPerfil ==null)
             {
 
             }
-                else
+            else
             {
                 ImgPerfil.Image = System.Drawing.Image.FromStream(Variables.clasePersonal.strPerfil);
 
@@ -460,7 +472,7 @@ namespace wfaIntegradoCom
             }
 
             toolStripStatusLabel1.Text = "Usuario: " + Variables.gsCodUser;
-            toolStripStatusLabel4.Text = toolStripStatusLabel4.Text + Variables.gsVersion;
+            //toolStripStatusLabel4.Text = toolStripStatusLabel4.Text + Variables.gsVersion;
 
         }
 
@@ -957,13 +969,8 @@ namespace wfaIntegradoCom
             timer1.Tick += new System.EventHandler(OnTimerEvent);
         }
 
-        private void MDIParent1_Load(object sender, EventArgs e)
+        private void fnCambiartemas()
         {
-            treeView1.Controls.Clear();
-            bl = new BLControlCaja();
-            flowLayoutPanel1.Controls.Clear();
-            ToggleBotonesAnchos.CheckState=CheckState.Unchecked;
-
             //Aplicando Themas a los paneles cboxSelecThema
             ColorThemas.ElegirThema(cboxSelecThema.Text);
             treeView1.BackColor = ColorThemas.PanelPadre;
@@ -1037,14 +1044,51 @@ namespace wfaIntegradoCom
 
 
             }
+        }
+        private void fnValidarusuarioEnSession()
+        {
+            if (Variables.gsCargoUsuario == "PETR0006")
+            {
+                cboTipoReporte.SelectedValue = "TRPT0002";
+                cboTipoReporte.Visible = false;
+                cboOperacion.SelectedValue = Variables.gnCodUser;
+                cboOperacion.Visible = false;
+                txtBuscarRepGeneral.Location = new Point(659, 55);
+                //pictureBox1.Location = new Point(pictureBox1.Location.X, 49+(txtBuscarRepGeneral.Height/5)) ;
+                txtBuscarRepGeneral.Width = 451;
+                siticoneLabel11.Visible = false;
+                siticoneLabel13.Visible = false;
+            }
+            else
+            {
+                cboTipoReporte.SelectedValue = "0";
+                cboTipoReporte.Visible = true;
+                cboOperacion.SelectedValue = 0;
+                cboOperacion.Visible = true;
+                txtBuscarRepGeneral.Location = new Point((cboOperacion.Location.X+cboOperacion.Width)+10, 55);
+                txtBuscarRepGeneral.Width = 134;
+                siticoneLabel11.Visible = true;
+                siticoneLabel13.Visible = true;
 
 
+            }
+            lblBuscar.Location = new Point(txtBuscarRepGeneral.Location.X, (txtBuscarRepGeneral.Location.Y - lblBuscar.Height));
+            lblBuscar.ForeColor = Color.Black;
+            pictureBox1.Location = new Point(pictureBox1.Location.X, 49 + (txtBuscarRepGeneral.Height / 4));
+        }
+        private void MDIParent1_Load(object sender, EventArgs e)
+        {
+            pnlParaDashboard.Visible = false;
+            treeView1.Controls.Clear();
+            bl = new BLControlCaja();
+            flowLayoutPanel1.Controls.Clear();
+            ToggleBotonesAnchos.CheckState=CheckState.Unchecked;
             //inicio de funciones de cargado de menus y formulario load
 
             try
             {
+                fnCambiartemas();
                 fnOcultarObjetos();
-                Loading();
                 SystemEvents.PowerModeChanged += OnPowerModeChange;
                 InitializeTimer();
 
@@ -1052,7 +1096,10 @@ namespace wfaIntegradoCom
                 dtFechaFinG.Value = Variables.gdFechaSis;
                 dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
                 FunGeneral.fnLlenarTablaCodTipoCon(cboTipoReporte, "TRPT", false);
-
+                Loading();
+                cboTipoReporte.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
+                cboOperacion.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
+                cboxSelecThema.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
             }
             catch (Exception ex)
             {
@@ -1060,23 +1107,23 @@ namespace wfaIntegradoCom
             }
             finally
             {
+                pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008"?false: true;
                 treeView1.Controls.Add(pnlParaDashboard);
                 pnlParaDashboard.Size = treeView1.Size;
                 var gbx = pnlParaDashboard.Controls.OfType<SiticoneGroupBox>();
                 var pn = pnlParaDashboard.Controls.OfType<SiticonePanel>();
                 //flowLayoutPanel1.Width = pnlParaDashboard.Size.Width - 20;
-                flowLayoutPanel1.Location = new Point(10, flowLayoutPanel1.Location.Y);
+                //flowLayoutPanel1.Location = new Point(10, flowLayoutPanel1.Location.Y);
                 foreach (SiticoneGroupBox gb in gbx)
                 {
-                    gb.Width = pnlParaDashboard.Size.Width-10;
+                    gb.Width = pnlParaDashboard.Size.Width-20;
                     gb.Location = new Point(5, gb.Location.Y);
                 }
                 foreach (SiticonePanel pnn in pn)
                 {
-                    pnn.Width = pnlParaDashboard.Size.Width-10;
+                    pnn.Width = pnlParaDashboard.Size.Width-20;
                     pnn.Location = new Point(5, pnn.Location.Y);
                 }
-
             }
             
         }
@@ -1470,6 +1517,7 @@ namespace wfaIntegradoCom
         private void tsCerrarSession_Click(object sender, EventArgs e)
         {
             //this.Close();
+            pnlParaDashboard.Visible = false;
             iconChildForm.IconChar = IconChar.Home;
             lblChilForm.Text = "Home";
             ImgPerfil.BackgroundImage = null;
@@ -1526,9 +1574,22 @@ namespace wfaIntegradoCom
             SubmenusOcultos();
             reset();
 
+            fnMostrarDashboard();
+        }
+        private void fnMostrarDashboard()
+        {
             treeView1.Nodes.Clear();
             treeView1.Controls.Clear();
-            treeView1.Controls.Add(pnlParaDashboard);
+            if (Variables.gsCargoUsuario == "PETR0008")
+            {
+                pnlParaDashboard.Visible = false;
+            }
+            else
+            {
+                pnlParaDashboard.Visible = true;
+                treeView1.Controls.Add(pnlParaDashboard);
+            }
+            
         }
 
         private void fnBotonActivo(object senderBtn, Color color)
@@ -2516,7 +2577,7 @@ namespace wfaIntegradoCom
                 dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Arial", 15F, GraphicsUnit.Pixel);
                 //this.dgvListaPorBloque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
-
+                siticonePanel3.Height = dgv.Height + (dgv.Height / 2);
 
 
                 //if (numPagina == 0)
@@ -2580,9 +2641,9 @@ namespace wfaIntegradoCom
             colorLetraHF = Color.Gainsboro;
             String tipoLetra = "Roboto";
             colorLetraBody = Color.DimGray;
-            colorLetraIcono = fnDevolVerColorTransparente(120, Color.Black);
+            colorLetraIcono = fnDevolVerColorTransparente(15, Color.Black);
             colorHeaderFooter = fnDevolVerColorTransparente(110, Color.Black);
-            flowLayoutPanel1.BackColor = Color.Blue;
+            pnlParaDashboard.Location = new Point(pnlParaDashboard.Location.X,0); ;
             flowLayoutPanel1.AutoScroll = false;
             if (lstBusq.Count<=6)
             {
@@ -2592,7 +2653,8 @@ namespace wfaIntegradoCom
             {
                 flowLayoutPanel1.Width = pnlParaDashboard.Size.Width - 17;
             }
-            flowLayoutPanel1.Location = new Point(((treeView1.Width/2)-(flowLayoutPanel1.Width/2)),flowLayoutPanel1.Location.Y);
+            siticoneGroupBox1.Width = pnlParaDashboard.Size.Width - 17;
+            flowLayoutPanel1.Location = new Point(((treeView1.Width/2)-(flowLayoutPanel1.Width/2)),0);
 
             Int32 residuo;
             Int32 cantidadPaginas;
@@ -2611,7 +2673,7 @@ namespace wfaIntegradoCom
             flowLayoutPanel1.Height = (int)((cantidadPaginas+ rextWFlow) * pnfH );
 
             siticoneGroupBox1.Location = new Point(siticoneGroupBox1.Location.X, flowLayoutPanel1.Height+20);
-            //siticonePanel3.Location = new Point(siticonePanel3.Location.X, siticoneGroupBox1.Height+20);
+            siticonePanel3.Location = new Point(siticonePanel3.Location.X, (flowLayoutPanel1.Height + 20+siticoneGroupBox1.Height));
 
             for (Int32 i = 0; i < lstBusq.Count; i++)
             {
@@ -2663,9 +2725,10 @@ namespace wfaIntegradoCom
                 pnHead.Name = "pnHead" + i;
                 pnHead.Size = new Size(panel.Width, (panel.Height/2)/2);
                 pnHead.BackColor = Color.Transparent;
-                //pnHead.FillColor = Color.Yellow;
+                pnHead.FillColor = colorFondo;
                 pnHead.Location = new Point(0, 0);
-                pnHead.BorderRadius = borderRadius;
+                //pnHead.Padding = new Padding(0, 0, 0, 0);
+                //pnHead.BorderRadius = borderRadius;
 
 
                 SiticoneLabel lblH = new SiticoneLabel();
@@ -2677,9 +2740,9 @@ namespace wfaIntegradoCom
                 lblH.Text = FunGeneral.FormatearCadenaTitleCase(lstBusq[i].Detallereporte);
                 lblH.TextAlignment = ContentAlignment.MiddleCenter;
                 lblH.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
-                lblH.Font = new Font(lblH.Font, FontStyle.Regular);
+                //lblH.Font = new Font(lblH.Font, FontStyle.Bold);
 
-                lblH.ForeColor = colorLetraHF;
+                lblH.ForeColor = Color.Gainsboro;
                 pnHead.Controls.Add(lblH);
                 panel.Controls.Add(pnHead);
 
@@ -2906,7 +2969,7 @@ namespace wfaIntegradoCom
             pbIndica.Visible = false;
             String CodOperacion = cboTipoReporte.SelectedValue.ToString();
            
-            fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
+            //fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
         }
 
         private void fnLlenarUsuariosConAccion(SiticoneComboBox cbo, SiticoneDateTimePicker dtIni, SiticoneDateTimePicker dtFin, Boolean estado)
@@ -2950,7 +3013,7 @@ namespace wfaIntegradoCom
 
         private void cboOperacion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
+            //fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
         }
 
         private void txtBuscarRepGeneral_KeyPress(object sender, KeyPressEventArgs e)
@@ -2991,6 +3054,16 @@ namespace wfaIntegradoCom
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
+        }
+
+        private void pnlParaDashboard_MouseEnter_1(object sender, EventArgs e)
+        {
+            treeView1_MouseEnter(sender, e);
+        }
+
+        private void siticonePanel3_MouseEnter(object sender, EventArgs e)
+        {
+            treeView1_MouseEnter(sender, e);
         }
     }
 

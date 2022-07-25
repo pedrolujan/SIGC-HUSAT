@@ -196,28 +196,34 @@
                   <Width>0.78021cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.23542cm</Width>
+                  <Width>1.57396cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.83375cm</Width>
+                  <Width>5.25167cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.20896cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.9498cm</Width>
+                  <Width>2.26188cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.65333cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.82834cm</Width>
+                  <Width>4.51084cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.64125cm</Width>
+                  <Width>1.8475cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.90772cm</Width>
+                  <Width>3.02917cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.97083cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>4.0346cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -492,6 +498,70 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox10">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Contacto 2</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox12">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Celular</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Textbox5">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -538,7 +608,7 @@
                                 <TextRun>
                                   <Value>=Fields!idCliente.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7.4pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -569,7 +639,7 @@
                                 <TextRun>
                                   <Value>=Fields!codigoVentaGen.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7.4pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -600,7 +670,7 @@
                                 <TextRun>
                                   <Value>=Fields!cCliente.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7.4pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -631,7 +701,7 @@
                                 <TextRun>
                                   <Value>=Fields!cTelCelular.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7.4pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -662,7 +732,7 @@
                                 <TextRun>
                                   <Value>=Fields!cEmpresa.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7.4pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -693,7 +763,7 @@
                                 <TextRun>
                                   <Value>=Fields!cCorreo.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7.4pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -724,7 +794,7 @@
                                 <TextRun>
                                   <Value>=Fields!cContactoNom1.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7.4pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -755,7 +825,7 @@
                                 <TextRun>
                                   <Value>=Fields!cContactoCel1.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7.4pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -777,6 +847,68 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="ubigeo1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ubigeo.Value</Value>
+                                  <Style>
+                                    <FontSize>7.4pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ubigeo1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="idReferencia">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!idReferencia.Value</Value>
+                                  <Style>
+                                    <FontSize>7.4pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>idReferencia</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="cTelFijo">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -786,7 +918,7 @@
                                 <TextRun>
                                   <Value>=Fields!cTelFijo.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7.4pt</FontSize>
                                     <Color>=IIf(Fields!cTelFijo.Value = "CUOTA PAGADA","Green", IIf(Fields!cTelFijo.Value = "PAGO PENDIENTE", "Orange",IIf(Fields!cTelFijo.Value = "CORTE", "Red","Purple")))</Color>
                                   </Style>
                                 </TextRun>
@@ -822,6 +954,8 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -838,7 +972,7 @@
             <Top>1.44314cm</Top>
             <Left>0.09737cm</Left>
             <Height>1.2cm</Height>
-            <Width>28.03878cm</Width>
+            <Width>29.12295cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -850,7 +984,7 @@
         <Height>1.16561in</Height>
         <Style />
       </Body>
-      <Width>11.07722in</Width>
+      <Width>11.50406in</Width>
       <Page>
         <PageHeight>21cm</PageHeight>
         <PageWidth>29.7cm</PageWidth>

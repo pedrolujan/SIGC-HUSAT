@@ -426,8 +426,9 @@ namespace wfaIntegradoCom.Procesos
                             cCorreo = "S/."+ string.Format("{0:0.00}", drMenu["precioPlan"]),
                             cContactoNom2 = Convert.ToString(drMenu["cDia"]),
                             cTelFijo = Convert.ToString(drMenu["cNomTab"]),
-                            cDireccion= dtFechapagoCronogramaGeneral.AddDays(1).ToString("dd/MMM/yyyy")
-                           
+                            cDireccion= dtFechapagoCronogramaGeneral.AddDays(1).ToString("dd/MMM/yyyy"),
+                            ubigeo= FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cContactoNom2"])),
+                            idReferencia= Convert.ToString(drMenu["cContactoCel1"]),
 
                         });
                     }
