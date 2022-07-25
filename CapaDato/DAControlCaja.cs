@@ -196,24 +196,26 @@ namespace CapaDato
                  objCnx = new clsConexion("");
 
                 dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarDashBoard", pa);
+
+                DataView dvDasboard = new DataView(dtMenu.Tables[0]);
+                foreach (DataRowView dr in dvDasboard)
+                {
+                    lsDasboard.Add(new ReporteBloque
+                    {
+                        Codigoreporte = dr["id"].ToString(),
+                        Detallereporte = dr["descripcion"].ToString(),
+                        Cantidad = Convert.ToInt32(dr["cantidad"]),
+                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        SimboloMoneda = dr["cSimbolo"].ToString(),
+                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                    });
+                }
                 if (clsBusq.cod1.Length>5)
                 {
-                    DataView dvDasboard = new DataView(dtMenu.Tables[0]);
                     DataView dvParatablas = new DataView(dtMenu.Tables[1]);
 
-                    foreach (DataRowView dr in dvDasboard)
-                    {
-                        lsDasboard.Add(new ReporteBloque
-                        {
-                            Codigoreporte = dr["id"].ToString(),
-                            Detallereporte = dr["descripcion"].ToString(),
-                            Cantidad = Convert.ToInt32(dr["cantidad"]),
-                            idMoneda = Convert.ToInt32(dr["idMoneda"]),
-                            SimboloMoneda = dr["cSimbolo"].ToString(),
-                            ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                            ImporteRow = Convert.ToDouble(dr["montoTotal"])
-                        });
-                    }
+                    
                     foreach (DataRowView dr in dvParatablas)
                     {
                         lsRepBloque.Add(new ReporteBloque

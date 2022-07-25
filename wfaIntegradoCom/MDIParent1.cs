@@ -1064,7 +1064,7 @@ namespace wfaIntegradoCom
                 pnlParaDashboard.Size = treeView1.Size;
                 var gbx = pnlParaDashboard.Controls.OfType<SiticoneGroupBox>();
                 var pn = pnlParaDashboard.Controls.OfType<SiticonePanel>();
-                flowLayoutPanel1.Width = pnlParaDashboard.Size.Width - 20;
+                //flowLayoutPanel1.Width = pnlParaDashboard.Size.Width - 20;
                 flowLayoutPanel1.Location = new Point(10, flowLayoutPanel1.Location.Y);
                 foreach (SiticoneGroupBox gb in gbx)
                 {
@@ -2572,15 +2572,47 @@ namespace wfaIntegradoCom
             Color colorLetraBody = new Color();
             Color colorLetraIcono = new Color();
             flowLayoutPanel1.Controls.Clear();
-            Int32 pnfW = 150;
-            Int32 pnfH = 80;
+            Int32 pnfW = 180;
+            Int32 pnfH = 110;
             Int32 borderRadius = 2;
             Int32 tamLetraHF = 12;
+            Double rextWFlow = 0.2;
             colorLetraHF = Color.Gainsboro;
             String tipoLetra = "Roboto";
             colorLetraBody = Color.DimGray;
             colorLetraIcono = fnDevolVerColorTransparente(120, Color.Black);
             colorHeaderFooter = fnDevolVerColorTransparente(110, Color.Black);
+            flowLayoutPanel1.BackColor = Color.Blue;
+            flowLayoutPanel1.AutoScroll = false;
+            if (lstBusq.Count<=6)
+            {
+                flowLayoutPanel1.Width= (int)((lstBusq.Count+ rextWFlow) * pnfW);
+            }
+            else
+            {
+                flowLayoutPanel1.Width = pnlParaDashboard.Size.Width - 17;
+            }
+            flowLayoutPanel1.Location = new Point(((treeView1.Width/2)-(flowLayoutPanel1.Width/2)),flowLayoutPanel1.Location.Y);
+
+            Int32 residuo;
+            Int32 cantidadPaginas;
+            Int32 filas=6;
+            Int32 totalRegistros = lstBusq.Count;
+            residuo = totalRegistros % filas;
+            if (residuo == 0)
+            {
+                cantidadPaginas = (totalRegistros / filas);
+            }
+            else
+            {
+                cantidadPaginas = (totalRegistros / filas) + 1;
+            }
+
+            flowLayoutPanel1.Height = (int)((cantidadPaginas+ rextWFlow) * pnfH );
+
+            siticoneGroupBox1.Location = new Point(siticoneGroupBox1.Location.X, flowLayoutPanel1.Height+20);
+            //siticonePanel3.Location = new Point(siticonePanel3.Location.X, siticoneGroupBox1.Height+20);
+
             for (Int32 i = 0; i < lstBusq.Count; i++)
             {
                 ReporteBloque rpt = lstBusq[i];
