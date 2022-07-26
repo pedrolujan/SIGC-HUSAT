@@ -428,7 +428,7 @@ namespace wfaIntegradoCom.Procesos
                             cTelFijo = Convert.ToString(drMenu["cNomTab"]),
                             cDireccion= dtFechapagoCronogramaGeneral.AddDays(1).ToString("dd/MMM/yyyy"),
                             ubigeo= FunGeneral.FormatearCadenaTitleCase(Convert.ToString(drMenu["cContactoNom2"])),
-                            idReferencia= Convert.ToString(drMenu["cContactoCel1"]),
+                            idReferencia= Convert.ToString(drMenu["cContactoCel2"]),
 
                         });
                     }
