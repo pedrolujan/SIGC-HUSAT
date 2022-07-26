@@ -41,17 +41,20 @@
             this.cboSucursal = new Siticone.UI.WinForms.SiticoneComboBox();
             this.txtClave = new Guna.UI.WinForms.GunaLineTextBox();
             this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
+            this.iconVerContrasena = new FontAwesome.Sharp.IconPictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.siticonePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.siticonePanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconVerContrasena)).BeginInit();
             this.SuspendLayout();
             // 
             // UsernameLabel
             // 
             this.UsernameLabel.AutoSize = true;
             this.UsernameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsernameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.UsernameLabel.Location = new System.Drawing.Point(155, 188);
+            this.UsernameLabel.ForeColor = System.Drawing.Color.Gray;
+            this.UsernameLabel.Location = new System.Drawing.Point(159, 211);
             this.UsernameLabel.Name = "UsernameLabel";
             this.UsernameLabel.Size = new System.Drawing.Size(73, 21);
             this.UsernameLabel.TabIndex = 17;
@@ -62,8 +65,8 @@
             // 
             this.PasswordLabel.AutoSize = true;
             this.PasswordLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.PasswordLabel.Location = new System.Drawing.Point(155, 265);
+            this.PasswordLabel.ForeColor = System.Drawing.Color.Gray;
+            this.PasswordLabel.Location = new System.Drawing.Point(159, 284);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(100, 21);
             this.PasswordLabel.TabIndex = 18;
@@ -102,7 +105,7 @@
             this.txtUser.ForeColor = System.Drawing.Color.Gray;
             this.txtUser.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.txtUser.HoveredState.Parent = this.txtUser;
-            this.txtUser.Location = new System.Drawing.Point(159, 212);
+            this.txtUser.Location = new System.Drawing.Point(159, 233);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
@@ -117,19 +120,21 @@
             // siticonePanel1
             // 
             this.siticonePanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticonePanel1.Controls.Add(this.cboSucursal);
             this.siticonePanel1.Controls.Add(this.pictureBox1);
             this.siticonePanel1.Controls.Add(this.siticoneControlBox1);
+            this.siticonePanel1.Controls.Add(this.label1);
             this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(585, 168);
+            this.siticonePanel1.Size = new System.Drawing.Size(585, 183);
             this.siticonePanel1.TabIndex = 28;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::wfaIntegradoCom.Properties.Resources.logo_husat;
-            this.pictureBox1.Location = new System.Drawing.Point(183, 40);
+            this.pictureBox1.Location = new System.Drawing.Point(183, 21);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(225, 88);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -177,7 +182,7 @@
             this.chkVerContraseña.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.chkVerContraseña.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkVerContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.chkVerContraseña.Location = new System.Drawing.Point(243, 344);
+            this.chkVerContraseña.Location = new System.Drawing.Point(466, 392);
             this.chkVerContraseña.Name = "chkVerContraseña";
             this.chkVerContraseña.Size = new System.Drawing.Size(116, 21);
             this.chkVerContraseña.TabIndex = 3;
@@ -186,6 +191,7 @@
             this.chkVerContraseña.UncheckedState.BorderRadius = 0;
             this.chkVerContraseña.UncheckedState.BorderThickness = 0;
             this.chkVerContraseña.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkVerContraseña.Visible = false;
             this.chkVerContraseña.CheckedChanged += new System.EventHandler(this.chkVerContraseña_CheckedChanged);
             // 
             // dateTimePicker1
@@ -209,21 +215,21 @@
             // cboSucursal
             // 
             this.cboSucursal.BackColor = System.Drawing.Color.Transparent;
+            this.cboSucursal.BorderRadius = 5;
             this.cboSucursal.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSucursal.Enabled = false;
-            this.cboSucursal.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboSucursal.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.cboSucursal.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cboSucursal.HoveredState.Parent = this.cboSucursal;
             this.cboSucursal.ItemHeight = 30;
             this.cboSucursal.ItemsAppearance.Parent = this.cboSucursal;
-            this.cboSucursal.Location = new System.Drawing.Point(16, 329);
+            this.cboSucursal.Location = new System.Drawing.Point(157, 137);
             this.cboSucursal.Name = "cboSucursal";
             this.cboSucursal.ShadowDecoration.Parent = this.cboSucursal;
-            this.cboSucursal.Size = new System.Drawing.Size(90, 36);
+            this.cboSucursal.Size = new System.Drawing.Size(277, 36);
             this.cboSucursal.TabIndex = 33;
-            this.cboSucursal.Visible = false;
+            this.cboSucursal.SelectedIndexChanged += new System.EventHandler(this.cboSucursal_SelectedIndexChanged);
             // 
             // txtClave
             // 
@@ -234,7 +240,7 @@
             this.txtClave.ForeColor = System.Drawing.Color.Gray;
             this.txtClave.LineColor = System.Drawing.Color.Silver;
             this.txtClave.LineSize = 2;
-            this.txtClave.Location = new System.Drawing.Point(159, 289);
+            this.txtClave.Location = new System.Drawing.Point(159, 306);
             this.txtClave.MaxLength = 45;
             this.txtClave.Name = "txtClave";
             this.txtClave.PasswordChar = '\0';
@@ -249,6 +255,7 @@
             this.siticonePanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticonePanel2.BorderThickness = 1;
             this.siticonePanel2.Controls.Add(this.lblVersion);
+            this.siticonePanel2.Controls.Add(this.chkVerContraseña);
             this.siticonePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.siticonePanel2.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel2.Name = "siticonePanel2";
@@ -256,16 +263,42 @@
             this.siticonePanel2.Size = new System.Drawing.Size(585, 455);
             this.siticonePanel2.TabIndex = 34;
             // 
+            // iconVerContrasena
+            // 
+            this.iconVerContrasena.BackColor = System.Drawing.Color.White;
+            this.iconVerContrasena.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.iconVerContrasena.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconVerContrasena.IconColor = System.Drawing.SystemColors.ControlText;
+            this.iconVerContrasena.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconVerContrasena.IconSize = 25;
+            this.iconVerContrasena.Location = new System.Drawing.Point(411, 313);
+            this.iconVerContrasena.Name = "iconVerContrasena";
+            this.iconVerContrasena.Size = new System.Drawing.Size(25, 25);
+            this.iconVerContrasena.TabIndex = 35;
+            this.iconVerContrasena.TabStop = false;
+            this.iconVerContrasena.Click += new System.EventHandler(this.iconVerContrasena_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label1.Location = new System.Drawing.Point(260, 114);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 20);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Sucursal:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(585, 455);
+            this.Controls.Add(this.iconVerContrasena);
             this.Controls.Add(this.txtClave);
-            this.Controls.Add(this.cboSucursal);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.chkVerContraseña);
             this.Controls.Add(this.siticoneButton1);
             this.Controls.Add(this.siticonePanel1);
             this.Controls.Add(this.txtUser);
@@ -281,9 +314,11 @@
             this.Text = "Ingresar al Sistema";
             this.Load += new System.EventHandler(this.frmUsuario_Load);
             this.siticonePanel1.ResumeLayout(false);
+            this.siticonePanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.siticonePanel2.ResumeLayout(false);
             this.siticonePanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconVerContrasena)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +338,7 @@
         private Guna.UI.WinForms.GunaLineTextBox txtClave;
         private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
         private Siticone.UI.WinForms.SiticonePanel siticonePanel2;
+        private FontAwesome.Sharp.IconPictureBox iconVerContrasena;
+        internal System.Windows.Forms.Label label1;
     }
 }

@@ -228,6 +228,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultas\frmActaCierreCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\frmActaCierreCaja.Designer.cs">
+      <DependentUpon>frmActaCierreCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\frmExportConsultasCronograma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -786,6 +792,9 @@
     <Content Include="Imagenes\salir.bmp" />
     <EmbeddedResource Include="Consultas\ActaCambioVehicular.rdlc" />
     <EmbeddedResource Include="Consultas\DocumentoVenta.rdlc" />
+    <EmbeddedResource Include="Consultas\frmActaCierreCaja.resx">
+      <DependentUpon>frmActaCierreCaja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\frmExportConsultasCronograma.rdlc" />
     <EmbeddedResource Include="Consultas\frmExportConsultasCronograma.resx">
       <DependentUpon>frmExportConsultasCronograma.cs</DependentUpon>
@@ -809,6 +818,7 @@
     <EmbeddedResource Include="Consultas\frmVPOtrasVentas.resx">
       <DependentUpon>frmVPOtrasVentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\prtActaCierreCaja.rdlc" />
     <EmbeddedResource Include="Consultas\rptActaCambioTitularidad.rdlc" />
     <EmbeddedResource Include="Consultas\rptActaInstalacion.rdlc" />
     <EmbeddedResource Include="Consultas\rptComprobantePago.rdlc" />

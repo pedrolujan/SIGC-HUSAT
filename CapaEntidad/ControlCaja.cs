@@ -20,6 +20,7 @@ namespace CapaEntidad
     {
         public ReporteBloque() { }
 
+        public Int32 numero { get; set; }
         public String Codigoreporte { get; set; }
         public String Detallereporte { get; set; }
         public Int32 Cantidad { get; set; }

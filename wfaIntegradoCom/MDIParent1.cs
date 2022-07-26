@@ -30,6 +30,7 @@ using FontAwesome.Sharp;
 using CapaEntidad;
 using CapaDato;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
+using wfaIntegradoCom.Consultas;
 
 namespace wfaIntegradoCom
 
@@ -61,7 +62,7 @@ namespace wfaIntegradoCom
         List<ReporteBloque> lsReporteBloqueGen = new List<ReporteBloque>();
         String codOperacion = "";
         String codTipoReporte = "";
-
+        static Boolean estAperturaCaja = false;
 
         public void fnLoadCarga(Boolean Load)
         {
@@ -1127,6 +1128,7 @@ namespace wfaIntegradoCom
                     pnn.Width = pnlParaDashboard.Size.Width - 20;
                     pnn.Location = new Point(5, pnn.Location.Y);
                 }
+                fnVerifApertura();
             }
 
         }
@@ -2532,6 +2534,7 @@ namespace wfaIntegradoCom
 
                     for (Int32 i = 0; i < totalRows; i++)
                     {
+                        lsReporteBloque[i].numero = y + 1;
                         ReporteBloque clsRep = lsReporteBloque[i];
                         dgv.Rows.Add(
                             clsRep.Codigoreporte,
@@ -3097,6 +3100,42 @@ namespace wfaIntegradoCom
         private void siticonePanel3_MouseEnter(object sender, EventArgs e)
         {
             treeView1_MouseEnter(sender, e);
+        }
+
+        private void fnTextoABotonCaja()
+        {
+            if (estAperturaCaja==true)
+            {
+                btnMovimientosCaja.Text = "Cerrar Caja";
+                btnMovimientosCaja.Tag = "2";
+            }
+            else
+            {
+                btnMovimientosCaja.Text = "Aperturar Caja";
+                btnMovimientosCaja.Tag = "1";
+
+            }
+        }
+        private void fnVerifApertura()
+        {
+            estAperturaCaja= FunGeneral.fnVerificarApertura();
+            fnTextoABotonCaja();
+        }
+        private void iconButton1_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Opcion aun no disponible");
+            //fnVerifApertura();
+            //if (estAperturaCaja==false)
+            //{
+            //    frmAperturaCaja frmAp = new frmAperturaCaja();
+            //    frmAp.ShowDialog();
+            //}
+            //else
+            //{
+            //    frmActaCierreCaja frmCierreC = new frmActaCierreCaja();
+            //    frmCierreC.Inicio(lsReporteBloque,1);
+
+            //}
         }
     }
 

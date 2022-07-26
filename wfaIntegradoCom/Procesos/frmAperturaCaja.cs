@@ -61,7 +61,7 @@ namespace wfaIntegradoCom.Procesos
             try
             {
 
-                lcResultado = obj.blAperturarCaja(Variables.idSucursal, lnMonto, Variables.gnCodUser, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3),10);
+                lcResultado = obj.blAperturarCaja(Variables.idSucursal, lnMonto, Variables.gnCodUser, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3),1);
                 if (lcResultado=="OK")
                 this.Dispose();
                 return lcResultado;
@@ -81,15 +81,36 @@ namespace wfaIntegradoCom.Procesos
             decimal lnMonto = 0;
             epUsuario.Clear();
             lnMonto = Convert.ToDecimal(txtMonto.Text.Trim() == "" ? "0" : txtMonto.Text.Trim());
-            if (lnMonto > 0)
+            if (lnMonto>=0)
             {
-                lcResultado = fnAperturarCaja(lnMonto);
-                if (lcResultado != "OK")
+                if (lnMonto == 0)
                 {
-                    MessageBox.Show("Error al Aperturar Caja. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    DialogResult mr = MessageBox.Show("En realidad desea aperturar caja en Cero ?", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (mr == DialogResult.Yes)
+                    {
+                        lcResultado = fnAperturarCaja(lnMonto);
+                        if (lcResultado != "OK")
+                        {
+                            MessageBox.Show("Error al Aperturar Caja. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+
+                }
+                else
+                {
+                    lcResultado = fnAperturarCaja(lnMonto);
+                    if (lcResultado != "OK")
+                    {
+                        MessageBox.Show("Error al Aperturar Caja. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
-            else { epUsuario.SetError(txtMonto, "Ingresar un monto de Apertura de Caja"); }
+            else
+            {
+                MessageBox.Show("El Monto no puede ser Menor a cero", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }    
 
         private void frmAperturaCaja_Load(object sender, EventArgs e)

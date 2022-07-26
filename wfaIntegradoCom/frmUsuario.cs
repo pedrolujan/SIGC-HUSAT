@@ -144,7 +144,10 @@ namespace wfaIntegradoCom
         {
             pCargarSucursal();
             lblVersion.Text = "Versión: " + ProductVersion.Trim();
-            
+            iconVerContrasena.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            iconVerContrasena.IconColor = Variables.ColorEmpresa;
+
+
         }
 
         private void txtUser_KeyPress(object sender, KeyPressEventArgs e)
@@ -164,12 +167,13 @@ namespace wfaIntegradoCom
             if (chkVerContraseña.Checked == true)
             {
                 txtClave.UseSystemPasswordChar = false;
+                iconVerContrasena.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
 
             }
             else
             {
                 txtClave.UseSystemPasswordChar = true;
-
+                iconVerContrasena.IconChar = FontAwesome.Sharp.IconChar.Eye;
 
             }
         }
@@ -185,6 +189,22 @@ namespace wfaIntegradoCom
            
         }
 
+        private void iconVerContrasena_Click(object sender, EventArgs e)
+        {
+            if (chkVerContraseña.Checked == true)
+            {
+                chkVerContraseña.Checked = false;
+            }
+            else
+            {
+                chkVerContraseña.Checked = true;
 
+            }
+        }
+
+        private void cboSucursal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
