@@ -392,6 +392,7 @@ namespace wfaIntegradoCom
 
         public void fnCargarVariableGlobal()
         {
+            toolStripStatusLabel4.Text = "Versión: ";
             DataTable dt = new DataTable();
             BLMenu objMenu = new BLMenu();
             string lcCodTab = "";
