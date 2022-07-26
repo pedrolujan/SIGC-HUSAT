@@ -135,6 +135,11 @@ namespace wfaIntegradoCom
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.gbHabilitarBusqFechas = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.dtFechaFinG = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.dtFechaInicioG = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.lblFechaFinal = new Siticone.UI.WinForms.SiticoneLabel();
+            this.lblFechaInicial = new Siticone.UI.WinForms.SiticoneLabel();
             this.lblBuscar = new Siticone.UI.WinForms.SiticoneLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.chkDiaEspecificoG = new Siticone.UI.WinForms.SiticoneCheckBox();
@@ -144,11 +149,6 @@ namespace wfaIntegradoCom
             this.txtBuscarRepGeneral = new Siticone.UI.WinForms.SiticoneTextBox();
             this.cboTipoReporte = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboOperacion = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.gbHabilitarBusqFechas = new System.Windows.Forms.GroupBox();
-            this.dtFechaFinG = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.dtFechaInicioG = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnPersonalizacion = new FontAwesome.Sharp.IconButton();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panelEspaciado = new System.Windows.Forms.Panel();
@@ -181,8 +181,8 @@ namespace wfaIntegradoCom
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPorBloque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneDataGridView1)).BeginInit();
             this.siticoneGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbHabilitarBusqFechas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelPerfil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).BeginInit();
             this.SuspendLayout();
@@ -1250,16 +1250,15 @@ namespace wfaIntegradoCom
             // 
             // siticonePanel3
             // 
-            this.siticonePanel3.AutoScroll = true;
             this.siticonePanel3.Controls.Add(this.dgvEmergente);
             this.siticonePanel3.Controls.Add(this.lblHeaderDetalle);
             this.siticonePanel3.Controls.Add(this.pbIndica);
             this.siticonePanel3.Controls.Add(this.dgvListaPorBloque);
             this.siticonePanel3.Controls.Add(this.siticoneDataGridView1);
-            this.siticonePanel3.Location = new System.Drawing.Point(3, 270);
+            this.siticonePanel3.Location = new System.Drawing.Point(8, 270);
             this.siticonePanel3.Name = "siticonePanel3";
             this.siticonePanel3.ShadowDecoration.Parent = this.siticonePanel3;
-            this.siticonePanel3.Size = new System.Drawing.Size(17, 300);
+            this.siticonePanel3.Size = new System.Drawing.Size(805, 230);
             this.siticonePanel3.TabIndex = 273;
             this.siticonePanel3.MouseEnter += new System.EventHandler(this.siticonePanel3_MouseEnter);
             // 
@@ -1399,9 +1398,9 @@ namespace wfaIntegradoCom
             this.lblHeaderDetalle.BackColor = System.Drawing.Color.DimGray;
             this.lblHeaderDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeaderDetalle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblHeaderDetalle.Location = new System.Drawing.Point(550, 6);
+            this.lblHeaderDetalle.Location = new System.Drawing.Point(536, 6);
             this.lblHeaderDetalle.Name = "lblHeaderDetalle";
-            this.lblHeaderDetalle.Size = new System.Drawing.Size(498, 30);
+            this.lblHeaderDetalle.Size = new System.Drawing.Size(510, 30);
             this.lblHeaderDetalle.TabIndex = 277;
             this.lblHeaderDetalle.Text = null;
             this.lblHeaderDetalle.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1455,7 +1454,7 @@ namespace wfaIntegradoCom
             this.dgvListaPorBloque.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvListaPorBloque.EnableHeadersVisualStyles = false;
             this.dgvListaPorBloque.GridColor = System.Drawing.Color.Silver;
-            this.dgvListaPorBloque.Location = new System.Drawing.Point(18, 6);
+            this.dgvListaPorBloque.Location = new System.Drawing.Point(3, 6);
             this.dgvListaPorBloque.Name = "dgvListaPorBloque";
             this.dgvListaPorBloque.ReadOnly = true;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1477,7 +1476,7 @@ namespace wfaIntegradoCom
             this.dgvListaPorBloque.RowTemplate.Height = 25;
             this.dgvListaPorBloque.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaPorBloque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaPorBloque.Size = new System.Drawing.Size(474, 241);
+            this.dgvListaPorBloque.Size = new System.Drawing.Size(482, 241);
             this.dgvListaPorBloque.TabIndex = 270;
             this.dgvListaPorBloque.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvListaPorBloque.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -1585,7 +1584,7 @@ namespace wfaIntegradoCom
             this.siticoneDataGridView1.DefaultCellStyle = dataGridViewCellStyle19;
             this.siticoneDataGridView1.EnableHeadersVisualStyles = false;
             this.siticoneDataGridView1.GridColor = System.Drawing.Color.Silver;
-            this.siticoneDataGridView1.Location = new System.Drawing.Point(550, 39);
+            this.siticoneDataGridView1.Location = new System.Drawing.Point(536, 39);
             this.siticoneDataGridView1.Name = "siticoneDataGridView1";
             this.siticoneDataGridView1.ReadOnly = true;
             this.siticoneDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -1608,7 +1607,7 @@ namespace wfaIntegradoCom
             this.siticoneDataGridView1.RowTemplate.Height = 25;
             this.siticoneDataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.siticoneDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.siticoneDataGridView1.Size = new System.Drawing.Size(498, 208);
+            this.siticoneDataGridView1.Size = new System.Drawing.Size(510, 208);
             this.siticoneDataGridView1.TabIndex = 270;
             this.siticoneDataGridView1.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -1679,6 +1678,7 @@ namespace wfaIntegradoCom
             // 
             this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
             this.siticoneGroupBox1.BorderRadius = 5;
+            this.siticoneGroupBox1.Controls.Add(this.gbHabilitarBusqFechas);
             this.siticoneGroupBox1.Controls.Add(this.lblBuscar);
             this.siticoneGroupBox1.Controls.Add(this.pictureBox1);
             this.siticoneGroupBox1.Controls.Add(this.chkDiaEspecificoG);
@@ -1688,7 +1688,6 @@ namespace wfaIntegradoCom
             this.siticoneGroupBox1.Controls.Add(this.txtBuscarRepGeneral);
             this.siticoneGroupBox1.Controls.Add(this.cboTipoReporte);
             this.siticoneGroupBox1.Controls.Add(this.cboOperacion);
-            this.siticoneGroupBox1.Controls.Add(this.gbHabilitarBusqFechas);
             this.siticoneGroupBox1.CustomBorderColor = System.Drawing.Color.DimGray;
             this.siticoneGroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.siticoneGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1696,10 +1695,87 @@ namespace wfaIntegradoCom
             this.siticoneGroupBox1.Location = new System.Drawing.Point(8, 160);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(1082, 104);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(783, 104);
             this.siticoneGroupBox1.TabIndex = 271;
             this.siticoneGroupBox1.Text = "Buscar por";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -7);
+            // 
+            // gbHabilitarBusqFechas
+            // 
+            this.gbHabilitarBusqFechas.BorderThickness = 0;
+            this.gbHabilitarBusqFechas.Controls.Add(this.dtFechaFinG);
+            this.gbHabilitarBusqFechas.Controls.Add(this.dtFechaInicioG);
+            this.gbHabilitarBusqFechas.Controls.Add(this.lblFechaFinal);
+            this.gbHabilitarBusqFechas.Controls.Add(this.lblFechaInicial);
+            this.gbHabilitarBusqFechas.CustomBorderThickness = new System.Windows.Forms.Padding(0);
+            this.gbHabilitarBusqFechas.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbHabilitarBusqFechas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.gbHabilitarBusqFechas.Location = new System.Drawing.Point(0, 27);
+            this.gbHabilitarBusqFechas.Name = "gbHabilitarBusqFechas";
+            this.gbHabilitarBusqFechas.ShadowDecoration.Parent = this.gbHabilitarBusqFechas;
+            this.gbHabilitarBusqFechas.Size = new System.Drawing.Size(530, 67);
+            this.gbHabilitarBusqFechas.TabIndex = 276;
+            // 
+            // dtFechaFinG
+            // 
+            this.dtFechaFinG.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaFinG.BorderRadius = 3;
+            this.dtFechaFinG.BorderThickness = 1;
+            this.dtFechaFinG.CheckedState.Parent = this.dtFechaFinG;
+            this.dtFechaFinG.FillColor = System.Drawing.Color.White;
+            this.dtFechaFinG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaFinG.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaFinG.HoveredState.Parent = this.dtFechaFinG;
+            this.dtFechaFinG.Location = new System.Drawing.Point(287, 28);
+            this.dtFechaFinG.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaFinG.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaFinG.Name = "dtFechaFinG";
+            this.dtFechaFinG.ShadowDecoration.Parent = this.dtFechaFinG;
+            this.dtFechaFinG.Size = new System.Drawing.Size(242, 36);
+            this.dtFechaFinG.TabIndex = 233;
+            this.dtFechaFinG.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            this.dtFechaFinG.ValueChanged += new System.EventHandler(this.dtFechaFinG_ValueChanged);
+            // 
+            // dtFechaInicioG
+            // 
+            this.dtFechaInicioG.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaInicioG.BorderRadius = 3;
+            this.dtFechaInicioG.BorderThickness = 1;
+            this.dtFechaInicioG.CheckedState.Parent = this.dtFechaInicioG;
+            this.dtFechaInicioG.FillColor = System.Drawing.Color.White;
+            this.dtFechaInicioG.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.dtFechaInicioG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaInicioG.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaInicioG.HoveredState.Parent = this.dtFechaInicioG;
+            this.dtFechaInicioG.Location = new System.Drawing.Point(8, 28);
+            this.dtFechaInicioG.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaInicioG.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaInicioG.Name = "dtFechaInicioG";
+            this.dtFechaInicioG.ShadowDecoration.Parent = this.dtFechaInicioG;
+            this.dtFechaInicioG.Size = new System.Drawing.Size(273, 36);
+            this.dtFechaInicioG.TabIndex = 231;
+            this.dtFechaInicioG.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            this.dtFechaInicioG.ValueChanged += new System.EventHandler(this.dtFechaInicioG_ValueChanged);
+            // 
+            // lblFechaFinal
+            // 
+            this.lblFechaFinal.BackColor = System.Drawing.Color.Transparent;
+            this.lblFechaFinal.ForeColor = System.Drawing.Color.Black;
+            this.lblFechaFinal.Location = new System.Drawing.Point(287, 7);
+            this.lblFechaFinal.Name = "lblFechaFinal";
+            this.lblFechaFinal.Size = new System.Drawing.Size(61, 15);
+            this.lblFechaFinal.TabIndex = 1;
+            this.lblFechaFinal.Text = "Fecha Final:";
+            // 
+            // lblFechaInicial
+            // 
+            this.lblFechaInicial.BackColor = System.Drawing.Color.Transparent;
+            this.lblFechaInicial.ForeColor = System.Drawing.Color.Black;
+            this.lblFechaInicial.Location = new System.Drawing.Point(8, 7);
+            this.lblFechaInicial.Name = "lblFechaInicial";
+            this.lblFechaInicial.Size = new System.Drawing.Size(66, 15);
+            this.lblFechaInicial.TabIndex = 1;
+            this.lblFechaInicial.Text = "Fecha Inicial:";
             // 
             // lblBuscar
             // 
@@ -1803,7 +1879,6 @@ namespace wfaIntegradoCom
             this.txtBuscarRepGeneral.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarRepGeneral.HoveredState.Parent = this.txtBuscarRepGeneral;
             this.txtBuscarRepGeneral.Location = new System.Drawing.Point(969, 55);
-            this.txtBuscarRepGeneral.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscarRepGeneral.Name = "txtBuscarRepGeneral";
             this.txtBuscarRepGeneral.PasswordChar = '\0';
             this.txtBuscarRepGeneral.PlaceholderText = "";
@@ -1850,83 +1925,6 @@ namespace wfaIntegradoCom
             this.cboOperacion.Size = new System.Drawing.Size(151, 36);
             this.cboOperacion.TabIndex = 2;
             this.cboOperacion.SelectedIndexChanged += new System.EventHandler(this.cboOperacion_SelectedIndexChanged);
-            // 
-            // gbHabilitarBusqFechas
-            // 
-            this.gbHabilitarBusqFechas.Controls.Add(this.dtFechaFinG);
-            this.gbHabilitarBusqFechas.Controls.Add(this.dtFechaInicioG);
-            this.gbHabilitarBusqFechas.Controls.Add(this.label5);
-            this.gbHabilitarBusqFechas.Controls.Add(this.label6);
-            this.gbHabilitarBusqFechas.Location = new System.Drawing.Point(2, 26);
-            this.gbHabilitarBusqFechas.Name = "gbHabilitarBusqFechas";
-            this.gbHabilitarBusqFechas.Size = new System.Drawing.Size(530, 72);
-            this.gbHabilitarBusqFechas.TabIndex = 275;
-            this.gbHabilitarBusqFechas.TabStop = false;
-            // 
-            // dtFechaFinG
-            // 
-            this.dtFechaFinG.BorderColor = System.Drawing.Color.Gainsboro;
-            this.dtFechaFinG.BorderRadius = 3;
-            this.dtFechaFinG.BorderThickness = 1;
-            this.dtFechaFinG.CheckedState.Parent = this.dtFechaFinG;
-            this.dtFechaFinG.FillColor = System.Drawing.Color.White;
-            this.dtFechaFinG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtFechaFinG.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaFinG.HoveredState.Parent = this.dtFechaFinG;
-            this.dtFechaFinG.Location = new System.Drawing.Point(282, 26);
-            this.dtFechaFinG.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtFechaFinG.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtFechaFinG.Name = "dtFechaFinG";
-            this.dtFechaFinG.ShadowDecoration.Parent = this.dtFechaFinG;
-            this.dtFechaFinG.Size = new System.Drawing.Size(242, 36);
-            this.dtFechaFinG.TabIndex = 233;
-            this.dtFechaFinG.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
-            this.dtFechaFinG.ValueChanged += new System.EventHandler(this.dtFechaFinG_ValueChanged);
-            // 
-            // dtFechaInicioG
-            // 
-            this.dtFechaInicioG.BorderColor = System.Drawing.Color.Gainsboro;
-            this.dtFechaInicioG.BorderRadius = 3;
-            this.dtFechaInicioG.BorderThickness = 1;
-            this.dtFechaInicioG.CheckedState.Parent = this.dtFechaInicioG;
-            this.dtFechaInicioG.FillColor = System.Drawing.Color.White;
-            this.dtFechaInicioG.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.dtFechaInicioG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtFechaInicioG.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaInicioG.HoveredState.Parent = this.dtFechaInicioG;
-            this.dtFechaInicioG.Location = new System.Drawing.Point(3, 26);
-            this.dtFechaInicioG.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtFechaInicioG.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtFechaInicioG.Name = "dtFechaInicioG";
-            this.dtFechaInicioG.ShadowDecoration.Parent = this.dtFechaInicioG;
-            this.dtFechaInicioG.Size = new System.Drawing.Size(273, 36);
-            this.dtFechaInicioG.TabIndex = 231;
-            this.dtFechaInicioG.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
-            this.dtFechaInicioG.ValueChanged += new System.EventHandler(this.dtFechaInicioG_ValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(3, 6);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 17);
-            this.label5.TabIndex = 227;
-            this.label5.Text = "Fecha Inicial:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(282, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 17);
-            this.label6.TabIndex = 232;
-            this.label6.Text = "Fecha Final:";
             // 
             // btnPersonalizacion
             // 
@@ -2054,6 +2052,7 @@ namespace wfaIntegradoCom
             this.iconButton1.TabIndex = 26;
             this.iconButton1.Text = "Cerrar Caja";
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Visible = false;
             // 
             // MDIParent1
             // 
@@ -2104,9 +2103,9 @@ namespace wfaIntegradoCom
             ((System.ComponentModel.ISupportInitialize)(this.siticoneDataGridView1)).EndInit();
             this.siticoneGroupBox1.ResumeLayout(false);
             this.siticoneGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbHabilitarBusqFechas.ResumeLayout(false);
             this.gbHabilitarBusqFechas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelPerfil.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).EndInit();
             this.ResumeLayout(false);
@@ -2205,11 +2204,8 @@ namespace wfaIntegradoCom
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad1;
         private System.Windows.Forms.DataGridViewTextBoxColumn importeRow;
         private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
-        private System.Windows.Forms.GroupBox gbHabilitarBusqFechas;
         private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaFinG;
         private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaInicioG;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Siticone.UI.WinForms.SiticoneCheckBox chkDiaEspecificoG;
         private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBusG;
@@ -2222,6 +2218,9 @@ namespace wfaIntegradoCom
         private Siticone.UI.WinForms.SiticonePanel siticonePanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private Siticone.UI.WinForms.SiticoneGroupBox gbHabilitarBusqFechas;
+        private Siticone.UI.WinForms.SiticoneLabel lblFechaFinal;
+        private Siticone.UI.WinForms.SiticoneLabel lblFechaInicial;
     }
 }
 

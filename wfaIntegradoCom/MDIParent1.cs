@@ -36,7 +36,7 @@ namespace wfaIntegradoCom
 {
     public partial class MDIParent1 : Form, IDisposable
     {
-        
+
 
         //Field (Campos)
         static DataSet dtMenu = new DataSet();
@@ -54,7 +54,7 @@ namespace wfaIntegradoCom
         private System.Windows.Forms.Panel LeftBordeBtn;
         BLControlCaja bl;
         //pading botones temporales de submenus 
-        Padding PaddingbtnSubMenu = new Padding(10,0,0,0);
+        Padding PaddingbtnSubMenu = new Padding(10, 0, 0, 0);
 
         static Int32 tabInicio = 0;
         List<ReporteBloque> lsReporteBloque = new List<ReporteBloque>();
@@ -63,7 +63,7 @@ namespace wfaIntegradoCom
         String codTipoReporte = "";
 
 
-        public void fnLoadCarga ( Boolean Load)
+        public void fnLoadCarga(Boolean Load)
         {
             LoadCarga = Load;
             if (this.treeView1.Controls.Count > 0)
@@ -78,7 +78,7 @@ namespace wfaIntegradoCom
             SubmenusOcultos();
 
             LeftBordeBtn = new System.Windows.Forms.Panel();
-            LeftBordeBtn.Size = new Size(15,55);
+            LeftBordeBtn.Size = new Size(15, 55);
 
             this.DoubleBuffered = true;
 
@@ -105,14 +105,14 @@ namespace wfaIntegradoCom
             //        if (c is System.Windows.Forms.GroupBox)
             //        {
             //            //c.Width = 300;
-                        
+
             //            foreach (System.Windows.Forms.Control item in c.Controls)
             //            {
             //                if (item is SiticoneDateTimePicker)
             //                {
             //                    item.Height = 20;
             //                    item.Width = 140;
-                               
+
             //                }
             //            }
             //        }
@@ -123,7 +123,7 @@ namespace wfaIntegradoCom
             fn.Dock = DockStyle.Fill;
             this.treeView1.Controls.Add(fn);
             this.treeView1.Tag = fn;
-            
+
             fn.Show();
         }
         private Boolean AbrirFrmLoad(object frmload)
@@ -145,7 +145,7 @@ namespace wfaIntegradoCom
         private void fnLoadControlWPF()
         {
             lintIdCodigoGeneral = 1;
-            List < WPF.CTRL.Colocaciones.DCPedido > lstDCPedidos = fnGetAllorEspecificOrder();
+            List<WPF.CTRL.Colocaciones.DCPedido> lstDCPedidos = fnGetAllorEspecificOrder();
             ucOpcion1 = new WPF.CTRL.Colocaciones.ucOpcion(lintIdCodigoGeneral, lintIdTipoProceso, 1, llstRol, 1, 1, 1, false, 0, true, lstDCPedidos);
             ucOpcion1.acdPrincipal.MouseDoubleClick += acdPrincipal_MouseDoubleClick;
             //AddHandler ucListaOpcion.acdPrincipal.MouseDoubleClick, AddressOf acdPrincipal_MouseDoubleClick
@@ -207,8 +207,8 @@ namespace wfaIntegradoCom
             var Controles = panelMenuPrincipal.Controls.OfType<IconButton>();
             foreach (IconButton btn in Controles)
             {
-                
-                    btn.Enabled = false;
+
+                btn.Enabled = false;
 
             }
 
@@ -224,7 +224,7 @@ namespace wfaIntegradoCom
             iNumMenu = dvMenuPrincipal.Table.Rows.Count;
 
             var Controles = panelMenuPrincipal.Controls.OfType<IconButton>();
-            
+
 
 
 
@@ -234,18 +234,18 @@ namespace wfaIntegradoCom
                 {
                     lcItemMenu = drFila["cMenuNombre"].ToString().Trim();
 
-                    
+
                     foreach (IconButton btn in Controles)
                     {
                         if (btn.Text == lcItemMenu)
                         {
-                             btn.Enabled=true;
+                            btn.Enabled = true;
                         }
 
                     }
                 }
-             
-            }         
+
+            }
 
         }
         public void fnCargarMenuPrin()
@@ -277,14 +277,14 @@ namespace wfaIntegradoCom
                     //}
                 }
 
-            }         
+            }
 
         }
         public void fnRecibirDtMenu(DataSet dt)
         {
             dtMenu = dt;
         }
-       
+
         public void fnCargarMenuAccesoRapidoBtn()
         {
             DataTable dtMenuPrin = new DataTable();
@@ -315,17 +315,17 @@ namespace wfaIntegradoCom
 
             }
         }
-        
+
         public Boolean Loading()
         {
 
             frmUsuario login = new frmUsuario();
-            Boolean bLoading=false;
+            Boolean bLoading = false;
             BLMenu objMenu = new BLMenu();
 
             try
             {
-                if(login.ShowDialog() == DialogResult.OK )
+                if (login.ShowDialog() == DialogResult.OK)
                 {
                     bLoading = true;
                     frmLoad frm = new frmLoad();
@@ -336,31 +336,31 @@ namespace wfaIntegradoCom
                     fnCargarVariableImpresion();
                     if (dtMenu.Tables.Count > 0)
                     {
-                        if(AbrirFrmLoad(new frmLoad()))
+                        if (AbrirFrmLoad(new frmLoad()))
                         {
-                          
+
 
 
                         }
 
                     }
-                    
+
 
 
                     //frm.Inicio();
 
-                }          
+                }
                 else
                 {
                     bLoading = false;
-                
+
                     this.Close();
 
 
                 }
 
             }
-            catch(Exception ex){
+            catch (Exception ex) {
                 bLoading = false;
                 MessageBox.Show(ex.Message, "Avisar a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -368,11 +368,11 @@ namespace wfaIntegradoCom
             {
                 fnValidarusuarioEnSession();
                 fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
-                pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008"?false: true;
+                pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008" ? false : true;
                 treeView1.Controls.Add(pnlParaDashboard);
                 //fnMostrarDashboard();
             }
-        return bLoading;
+            return bLoading;
         }
         void cbos_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -382,12 +382,12 @@ namespace wfaIntegradoCom
         {
             fnCargarMenuPrin();
             fnCargarMenuPrinBotones();
-         
+
             fnCargarMenuAccesoRapidoBtn();
             lcCodMenu = "8888100000";
             imgList = ListaImagenes;
             treeView1.Nodes.Clear();
-           
+
         }
 
         public void fnCargarVariableGlobal()
@@ -399,7 +399,7 @@ namespace wfaIntegradoCom
 
             foreach (DataRow dr in dt.Rows)
             {
-                lcCodTab=dr["cCodTab"].ToString().Trim();
+                lcCodTab = dr["cCodTab"].ToString().Trim();
                 switch (lcCodTab)
                 {
                     case "PAVA0001":
@@ -411,16 +411,16 @@ namespace wfaIntegradoCom
                     case "PAVA0003":
                         this.Text = "SISTEMA INTEGRADO DE GESTIÓN COMERCIAL - HUSAT";
                         Variables.gsSucursal = dr["cValor"].ToString();
-                        Variables.gsEmpresa = dr["cNomTab"].ToString(); 
-                        
+                        Variables.gsEmpresa = dr["cNomTab"].ToString();
+
                         //+ dr["cNomTab"].ToString() + " (" + Variables.gsSucursal + ") ";
                         break;
                     case "PAVA0004":
                         Variables.gsRuc = dr["cNomTab"].ToString();
                         break;
                     case "PAVA0005":
-                        Variables.gsEmpresaDir =dr["cValor"].ToString();
-                        Variables.gsSucursalUbigeo= dr["cNomTab"].ToString();
+                        Variables.gsEmpresaDir = dr["cValor"].ToString();
+                        Variables.gsSucursalUbigeo = dr["cNomTab"].ToString();
                         break;
 
                 }
@@ -429,9 +429,9 @@ namespace wfaIntegradoCom
 
             toolStripStatusLabel1.Text = "Usuario: " + Variables.gsCodUser;
             tsCerraSession.Text = " " + FunGeneral.FormatearCadenaTitleCase(Variables.clasePersonal.cPrimerNom);
-            
-                //ImgPerfil.Image = Image.FromStream(lstPers[0].strPerfil);
-            if (Variables.clasePersonal.strPerfil ==null)
+
+            //ImgPerfil.Image = Image.FromStream(lstPers[0].strPerfil);
+            if (Variables.clasePersonal.strPerfil == null)
             {
 
             }
@@ -465,7 +465,7 @@ namespace wfaIntegradoCom
                         break;
                     case "PAI0003":
                         Variables.bitActivePrintDirect = dr.IsNull("cValor") ? false : Convert.ToBoolean(dr["cValor"]);
-                        
+
                         break;
                 }
 
@@ -495,7 +495,7 @@ namespace wfaIntegradoCom
             //}
         }
         #region Cargar submenus a los botones 
-        
+
         private void fnCargarSubMenuVentas(String pcCodMenu)
         {
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
@@ -529,7 +529,7 @@ namespace wfaIntegradoCom
                 temp.Cursor = System.Windows.Forms.Cursors.Hand;
                 temp.FlatStyle = FlatStyle.Flat;
                 temp.TextAlign = ContentAlignment.MiddleLeft;
-                temp.Padding = new Padding(10,0,0,0);
+                temp.Padding = new Padding(10, 0, 0, 0);
 
                 temp.Click += subMenuVentas_Click;
                 temp.Location = new Point(10, (y + 5));
@@ -598,8 +598,8 @@ namespace wfaIntegradoCom
 
             }
         }
-      
-       
+
+
         private void fnCargarSubMenuComercial(String pcCodMenu)
         {
             DataView dvMenu = new DataView(dtMenu.Tables[0]);
@@ -623,7 +623,7 @@ namespace wfaIntegradoCom
 
                 temp.Height = 35;
                 temp.Width = 200;
-                
+
                 temp.Name = drv["cMenuCod"].ToString().Trim();
                 temp.Text = drv["cMenuNombre"].ToString().Trim();
                 temp.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
@@ -646,9 +646,9 @@ namespace wfaIntegradoCom
                     posX = posX + ancho;
                 }
                 this.subMenuComercial.Controls.Add(temp);
-             
-            }          
-           
+
+            }
+
         }
 
         private void fnCargarSubMenuLogistica(String pcCodMenu)
@@ -691,7 +691,7 @@ namespace wfaIntegradoCom
                 temp.Location = new Point(10, (y + 5));
                 y += temp.Height;
 
-              
+
                 if (subMenuLogistica.Controls.Count > 0)
                 {
                     posX = posX + ancho;
@@ -917,8 +917,8 @@ namespace wfaIntegradoCom
                     parentnode1.Name = childView["cMenuCod"].ToString();
                     parentnode1.ToolTipText = childView["cNomFormulario"].ToString();
                     parentnode1.Tag = Convert.ToInt32(childView["intIdTipoLlamada"]);
-                  
-                  
+
+
 
                     //parentnode1.BackColor = Color.FromArgb(66, 66, 66);
                     //parentnode1.
@@ -977,6 +977,8 @@ namespace wfaIntegradoCom
             panelIzquierdo.BackColor = ColorThemas.PanelBotones;
             PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
             PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
+
+            siticoneGroupBox1.FillColor = ColorThemas.BarraAccesoDirectos;
             //colores inicio a los botones de panel botones
             btnVenta.BackColor = ColorThemas.PanelBotones;
             btnRecaudacion.BackColor = ColorThemas.PanelBotones;
@@ -1065,7 +1067,7 @@ namespace wfaIntegradoCom
                 cboTipoReporte.Visible = true;
                 cboOperacion.SelectedValue = 0;
                 cboOperacion.Visible = true;
-                txtBuscarRepGeneral.Location = new Point((cboOperacion.Location.X+cboOperacion.Width)+10, 55);
+                txtBuscarRepGeneral.Location = new Point((cboOperacion.Location.X + cboOperacion.Width) + 10, 55);
                 txtBuscarRepGeneral.Width = 134;
                 siticoneLabel11.Visible = true;
                 siticoneLabel13.Visible = true;
@@ -1082,7 +1084,7 @@ namespace wfaIntegradoCom
             treeView1.Controls.Clear();
             bl = new BLControlCaja();
             flowLayoutPanel1.Controls.Clear();
-            ToggleBotonesAnchos.CheckState=CheckState.Unchecked;
+            ToggleBotonesAnchos.CheckState = CheckState.Unchecked;
             //inicio de funciones de cargado de menus y formulario load
 
             try
@@ -1107,7 +1109,7 @@ namespace wfaIntegradoCom
             }
             finally
             {
-                pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008"?false: true;
+                pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008" ? false : true;
                 treeView1.Controls.Add(pnlParaDashboard);
                 pnlParaDashboard.Size = treeView1.Size;
                 var gbx = pnlParaDashboard.Controls.OfType<SiticoneGroupBox>();
@@ -1116,16 +1118,16 @@ namespace wfaIntegradoCom
                 //flowLayoutPanel1.Location = new Point(10, flowLayoutPanel1.Location.Y);
                 foreach (SiticoneGroupBox gb in gbx)
                 {
-                    gb.Width = pnlParaDashboard.Size.Width-20;
+                    gb.Width = pnlParaDashboard.Size.Width - 20;
                     gb.Location = new Point(5, gb.Location.Y);
                 }
                 foreach (SiticonePanel pnn in pn)
                 {
-                    pnn.Width = pnlParaDashboard.Size.Width-20;
+                    pnn.Width = pnlParaDashboard.Size.Width - 20;
                     pnn.Location = new Point(5, pnn.Location.Y);
                 }
             }
-            
+
         }
 
         public void OnTimerEvent(object source, EventArgs e)
@@ -1135,7 +1137,7 @@ namespace wfaIntegradoCom
                 Frm_FormClosed();
             }
             string strFechaIso = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
-             string strFechaHourIso = strFechaIso +" "+ (DateTime.Now.TimeOfDay.ToString()).Substring(0,12);
+            string strFechaHourIso = strFechaIso + " " + (DateTime.Now.TimeOfDay.ToString()).Substring(0, 12);
             Variables.gdFechaSis = Convert.ToDateTime(strFechaHourIso);
             toolStripStatusLabel3.Text = "Fecha del Sistema: " + Variables.gdFechaSis.ToString("dd/MM/yyyy HH:mm:ss");
         }
@@ -1154,7 +1156,7 @@ namespace wfaIntegradoCom
         private Form fnMenuDinamico(String pcNomForm, int pnTipoLlamada)
         {
             Object obj = null;
-            object[] pa=new object[1];
+            object[] pa = new object[1];
             try
             {
 
@@ -1170,7 +1172,7 @@ namespace wfaIntegradoCom
                 }
                 if (pnTipoLlamada == 0)
                 {
-                     obj = sm.CreateInstance(pcNomForm);
+                    obj = sm.CreateInstance(pcNomForm);
                 }
                 else
                 {
@@ -1183,24 +1185,24 @@ namespace wfaIntegradoCom
                         pa[0] = pnTipoLlamada;
                         obj = sm.CreateInstance(pcNomForm, false, BindingFlags.CreateInstance, null, pa, null, null);
                     }
-                    
+
                 }
 
                 return (Form)obj;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { return null;
             }
         }
 
-        private void fnActivarFormularioConBoton(string pcNomreFormulario , int pintidTipoLlamada)
+        private void fnActivarFormularioConBoton(string pcNomreFormulario, int pintidTipoLlamada)
         {
             Form frmFormulario;
 
 
         }
 
-        private void fnActivarFormulario(String pcNombreFormulario,int pintidTipoLlamada)
+        private void fnActivarFormulario(String pcNombreFormulario, int pintidTipoLlamada)
         {
             Form frmFormulario;
 
@@ -1209,7 +1211,7 @@ namespace wfaIntegradoCom
                 frmFormulario = fnMenuDinamico(pcNombreFormulario, pintidTipoLlamada);
                 if (frmFormulario != null)
                 {
-                    if (frmFormulario.Name== "frmRegistrarVenta" && pintidTipoLlamada==1)
+                    if (frmFormulario.Name == "frmRegistrarVenta" && pintidTipoLlamada == 1)
                     {
                         frmRegistrarVenta frmRegVenta = new frmRegistrarVenta();
                         frmRegVenta.Inicio(3);
@@ -1220,11 +1222,11 @@ namespace wfaIntegradoCom
                     }
                 }
                 else
-                    MessageBox.Show("El nombre formulario asignado al menu del usuario no se encuentra en el Proyecto. Verificar en mantenedor de Menus.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Stop);                 
+                    MessageBox.Show("El nombre formulario asignado al menu del usuario no se encuentra en el Proyecto. Verificar en mantenedor de Menus.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
 
         }
-        
+
 
         private void treeView1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1232,7 +1234,7 @@ namespace wfaIntegradoCom
             {
                 fnActivarFormulario(treeView1.SelectedNode.ToolTipText.Trim(), Convert.ToInt32(treeView1.SelectedNode.Tag));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("MDIParent1", "treeView1_KeyPress", ex.Message);
                 MessageBox.Show(ex.Message, "Avisar a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1255,13 +1257,13 @@ namespace wfaIntegradoCom
 
         private void tsAccesoRapido_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            if (e.ClickedItem.Name== "tsCerraSession")
+            if (e.ClickedItem.Name == "tsCerraSession")
             {
 
             }
-            else if (e.ClickedItem.Name=="tsMiCaja")
+            else if (e.ClickedItem.Name == "tsMiCaja")
             {
-               // frmCaja frmCaja = new frmCaja();
+                // frmCaja frmCaja = new frmCaja();
                 //fnCargarFormAPanel(new frmCaja());
                 //frmCaja.Show();
             }
@@ -1271,7 +1273,7 @@ namespace wfaIntegradoCom
                 fnActivarFormulario(e.ClickedItem.ToolTipText.Trim(), Convert.ToInt32(e.ClickedItem.Tag));
 
             }
-            
+
         }
 
         #region Private members
@@ -1343,11 +1345,11 @@ namespace wfaIntegradoCom
         {
             _selfServiceModule = new SelfServiceModule();
             _baseSelfService = new SinglentonSelfService();
-            
+
         }
         ///
         #endregion Web Api Startup
-        
+
         #region Private Methods
         /// <summary>
         /// Start Web Api and SignalR
@@ -1406,14 +1408,14 @@ namespace wfaIntegradoCom
                     OrderEspecificResponse<dynamic> orderEspecific = null;
                     if (e != null && e.key.Trim() != "")
                     {
-                        bool blnIsExistsObject = e.obj.ToString().Length >6 ? true : false;
+                        bool blnIsExistsObject = e.obj.ToString().Length > 6 ? true : false;
                         int intResul = 0;
                         if (!blnIsExistsObject && e.evenType == 0)
                         {
                             orderEspecific = hubClient.fnGetOrderId(e.key).Result;
                             intResul = Convert.ToInt32(orderEspecific.Status);
                         }
-                        else intResul =200;
+                        else intResul = 200;
 
                         if (intResul == 200)
                         {
@@ -1421,7 +1423,7 @@ namespace wfaIntegradoCom
                             OrderWeb order = JsonConvert.DeserializeObject<OrderWeb>((blnIsExistsObject ? e.obj.ToString() : orderEspecific.obj));
                             int intEstado = order.intEstado;
 
-                            if (intEstado==0 || intEstado==1)
+                            if (intEstado == 0 || intEstado == 1)
                             {
                                 WPF.CTRL.Colocaciones.DCPedido pedido = new WPF.CTRL.Colocaciones.DCPedido();
                                 pedido.Codigo = e.key;
@@ -1442,7 +1444,7 @@ namespace wfaIntegradoCom
                                 orderRequest.order.xmlObject = (blnIsExistsObject ? e.obj.ToString() : orderEspecific.obj);
                                 saveOrder(orderRequest);
                             }
-                            else if(orderResponse.Status == 200 && e.evenType == 1)
+                            else if (orderResponse.Status == 200 && e.evenType == 1)
                             {
                                 Funciones.Models.OrderRequest orderRequest = new Funciones.Models.OrderRequest();
                                 orderRequest.order.Codigo = e.key;
@@ -1454,7 +1456,7 @@ namespace wfaIntegradoCom
                                 orderRequest.order.xmlObject = "";
                                 saveOrder(orderRequest, 1);
                             }
-                          
+
                         }
                     }
                 }
@@ -1462,14 +1464,14 @@ namespace wfaIntegradoCom
             });
         }
 
-      
+
 
         private void saveOrder(Funciones.Models.OrderRequest objOrder, int lnTipoLlamada = 0)
         {
             OrderResponse orden = new OrderResponse();
             bool blnResult = false;
-            orden =FunGeneral.fnSaveOrder(objOrder);
-            if(orden.Status == 200)
+            orden = FunGeneral.fnSaveOrder(objOrder);
+            if (orden.Status == 200)
             {
                 if (lnTipoLlamada == 0)
                 {
@@ -1496,7 +1498,7 @@ namespace wfaIntegradoCom
 
 
         #endregion Auxiliar methods
-        
+
 
         private void tsCerraSession_Click(object sender, EventArgs e)
         {
@@ -1537,7 +1539,7 @@ namespace wfaIntegradoCom
 
         private Boolean PruebaLoad_Click(object frmload)
         {
-            
+
             if (this.treeView1.Controls.Count > 0)
                 this.treeView1.Controls.RemoveAt(0);
             Form fn = frmload as Form;
@@ -1589,7 +1591,7 @@ namespace wfaIntegradoCom
                 pnlParaDashboard.Visible = true;
                 treeView1.Controls.Add(pnlParaDashboard);
             }
-            
+
         }
 
         private void fnBotonActivo(object senderBtn, Color color)
@@ -1597,7 +1599,7 @@ namespace wfaIntegradoCom
             ColorThemas.ElegirThema(cboxSelecThema.Text);
 
             if (senderBtn != null)
-            {   
+            {
                 //desactivamos el Boton
                 fnBotoninactivo();
                 //Personalizando Boton
@@ -1606,13 +1608,13 @@ namespace wfaIntegradoCom
                 //BtnActual.ForeColor = color;
 
                 //BtnActual.ForeColor = ColorThemas.PanelBotones;
-                BtnActual.ForeColor =panelIzquierdo.BackColor ;
+                BtnActual.ForeColor = panelIzquierdo.BackColor;
 
                 BtnActual.TextAlign = ContentAlignment.MiddleCenter;
                 //BtnActual.IconColor = color;
-       
 
-                BtnActual.IconColor = ColorThemas.IconoBotones; 
+
+                BtnActual.IconColor = ColorThemas.IconoBotones;
 
                 BtnActual.IconColor = panelIzquierdo.BackColor;
                 if (cboxSelecThema.Text == "Darck")
@@ -1643,8 +1645,8 @@ namespace wfaIntegradoCom
         }
 
         private void fnBotoninactivo()
-        { 
-            
+        {
+
             if (BtnActual != null)
             {
                 BtnActual.BackColor = ColorThemas.PanelBotones;
@@ -1666,7 +1668,7 @@ namespace wfaIntegradoCom
         private void reset()
         {
             fnBotoninactivo();
-            LeftBordeBtn.Visible = false;   
+            LeftBordeBtn.Visible = false;
         }
 
 
@@ -1708,11 +1710,11 @@ namespace wfaIntegradoCom
         //        tvOpes.Nodes.Clear();
 
         //        SplitIzquierdo.SplitterDistance = 233;
-          //      fnselectslMenuIzquierdo();
+        //      fnselectslMenuIzquierdo();
         //    }
         //}
 
-     
+
         private void SubmenusOcultos()
         {
             subMenuVentas.Visible = false;
@@ -1725,15 +1727,15 @@ namespace wfaIntegradoCom
             subMenuSoporte.Visible = false;
 
         }
-        private void OcultarSubMenu ()
+        private void OcultarSubMenu()
         {
             if (subMenuVentas.Visible == true)
                 subMenuVentas.Visible = false;
             if (subMenuRecaudacion.Visible == true)
                 subMenuRecaudacion.Visible = false;
-            if (subMenuComercial.Visible ==true)
+            if (subMenuComercial.Visible == true)
                 subMenuComercial.Visible = false;
-            if(subMenuLogistica.Visible == true)
+            if (subMenuLogistica.Visible == true)
                 subMenuLogistica.Visible = false;
             if (subMenuSistemas.Visible == true)
                 subMenuSistemas.Visible = false;
@@ -1741,43 +1743,43 @@ namespace wfaIntegradoCom
                 subMenuRrhh.Visible = false;
             if (subMenuConfiguracion.Visible == true)
                 subMenuConfiguracion.Visible = false;
-            if (subMenuSoporte.Visible ==true)
+            if (subMenuSoporte.Visible == true)
                 subMenuSoporte.Visible = false;
 
         }
-        private void MostrarSubMenu(System.Windows.Forms.Panel subMenu )
+        private void MostrarSubMenu(System.Windows.Forms.Panel subMenu)
         {
             this.treeView1.Controls.Clear();
             if (subMenu.Visible == false)
             {
                 OcultarSubMenu();
                 subMenu.Visible = true;
-               
+
             }
-            else 
+            else
                 subMenu.Visible = false;
         }
-      
 
-    #region Click Botones Menu Principal
+
+        #region Click Botones Menu Principal
         private void btnVenta_Click(object sender, EventArgs e)
         {
-           
+
             LoadCarga = false;
-     
+
             //fnBotonActivo(sender, Variables.ColorEmpresa);
             fnBotonActivo(sender, Variables.ColorEmpresa);
             MostrarSubMenu(subMenuVentas);
 
             treeView1.Nodes.Clear();
             lcCodMenu = "8888800000";
-            
+
             fnCargarSubMenuVentas(lcCodMenu);
         }
 
         private void btnRecaudacion_Click(object sender, EventArgs e)
         {
-            
+
             LoadCarga = false;
 
             fnBotonActivo(sender, Variables.ColorEmpresa);
@@ -1787,7 +1789,7 @@ namespace wfaIntegradoCom
             treeView1.Nodes.Clear();
             lcCodMenu = "8881000000";
             fnCargarSubMenuRecaudacion(lcCodMenu);
-           
+
         }
 
         private void btnComercial_Click(object sender, EventArgs e)
@@ -1875,7 +1877,7 @@ namespace wfaIntegradoCom
             LoadCarga = false;
         }
 
-        private System.Windows.Forms.Button fnObtenerBotonEsp(object sender , SiticonePanel panel)
+        private System.Windows.Forms.Button fnObtenerBotonEsp(object sender, SiticonePanel panel)
         {
             var Controles = panel.Controls.OfType<System.Windows.Forms.Button>();
             System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
@@ -1988,7 +1990,7 @@ namespace wfaIntegradoCom
         {
             IconButton btn = new IconButton();
             btn = fnObtenerBotonEspIconButton(sender, LayoutPanelAccesoRapido);
-            fnActivarFormulario(btn.Name,0);
+            fnActivarFormulario(btn.Name, 0);
 
         }
         private IconButton fnObtenerBotonEspIconButton(object sender, FlowLayoutPanel panel)
@@ -2036,16 +2038,35 @@ namespace wfaIntegradoCom
 
         private void btnCerrarSesion_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            btnCerrarSesion.IconChar =IconChar.PersonWalkingDashedLineArrowRight;
+            btnCerrarSesion.IconChar = IconChar.PersonWalkingDashedLineArrowRight;
             btnPerfil.IconFont = IconFont.Regular;
         }
 
         private void btnPerfil_MouseMove(object sender, EventArgs e)
         {
-            btnPerfil.IconFont =IconFont.Solid;
+            btnPerfil.IconFont = IconFont.Solid;
             btnCerrarSesion.IconChar = IconChar.PersonWalkingArrowRight;
         }
 
+        private void fnObtenerLabels(SiticoneGroupBox gb)
+        {
+            var lbl = gb.Controls.OfType<SiticoneLabel>();
+            foreach (SiticoneLabel llb in lbl)
+            {
+                llb.ForeColor = ColorThemas.FuenteBotones;
+            }
+        }
+
+        private void fnColoresDatagridView(SiticoneDataGridView dg)
+        {
+            dg.BackgroundColor = ColorThemas.BarraAccesoDirectos;
+            dg.ThemeStyle.RowsStyle.BackColor= ColorThemas.BarraAccesoDirectos;
+            //dg.DefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+            dg.RowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+            //dg.ThemeStyle.BackColor= ColorThemas.BarraAccesoDirectos;
+            dg.ThemeStyle.AlternatingRowsStyle.BackColor= ColorThemas.BarraAccesoDirectos;
+            dg.ThemeStyle.RowsStyle.ForeColor= ColorThemas.FuenteBotones;
+        }
         private void siticoneComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -2054,6 +2075,13 @@ namespace wfaIntegradoCom
             reset();
            
             Img_Husat_Blanco.Visible = true;
+            siticoneGroupBox1.FillColor = ColorThemas.BarraAccesoDirectos;
+            gbHabilitarBusqFechas.FillColor = ColorThemas.BarraAccesoDirectos;
+            fnObtenerLabels(siticoneGroupBox1);
+            fnObtenerLabels(gbHabilitarBusqFechas);
+            fnColoresDatagridView(dgvListaPorBloque);
+            fnColoresDatagridView(siticoneDataGridView1);
+            fnColoresDatagridView(dgvEmergente);
 
             iconChildForm.IconColor = ColorThemas.IconoBotones;
             lblChilForm.ForeColor = ColorThemas.FuenteBotones;
@@ -2577,7 +2605,7 @@ namespace wfaIntegradoCom
                 dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Arial", 15F, GraphicsUnit.Pixel);
                 //this.dgvListaPorBloque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
-                siticonePanel3.Height = dgv.Height + (dgv.Height / 2);
+                siticonePanel3.Height = dgvListaPorBloque.Height+20;
 
 
                 //if (numPagina == 0)
@@ -2640,8 +2668,8 @@ namespace wfaIntegradoCom
             Double rextWFlow = 0.2;
             colorLetraHF = Color.Gainsboro;
             String tipoLetra = "Roboto";
-            colorLetraBody = Color.DimGray;
-            colorLetraIcono = fnDevolVerColorTransparente(15, Color.Black);
+            colorLetraBody = Color.Gainsboro;
+            colorLetraIcono = fnDevolVerColorTransparente(35, Color.Black);
             colorHeaderFooter = fnDevolVerColorTransparente(110, Color.Black);
             pnlParaDashboard.Location = new Point(pnlParaDashboard.Location.X,0); ;
             flowLayoutPanel1.AutoScroll = false;
@@ -2680,15 +2708,16 @@ namespace wfaIntegradoCom
                 ReporteBloque rpt = lstBusq[i];
                 if (lstBusq[i].ImporteRow < 100)
                 {
-                    colorFondo = Color.FromArgb(205, 76, 70);
+                    colorFondo = Color.FromArgb(161, 20, 1);
                 }
                 else if (lstBusq[i].ImporteRow >= 100 && lstBusq[i].ImporteRow < 300)
                 {
-                    colorFondo = Color.FromArgb(240, 130, 33);
+                    colorFondo = Color.FromArgb(228, 163, 0);
                 }
                 else if (lstBusq[i].ImporteRow >= 300 && lstBusq[i].ImporteRow < 700)
                 {
-                    colorFondo = Color.FromArgb(251, 191, 69);
+                    
+                    colorFondo = Color.FromArgb(173, 115, 17);
                 }
                 else if (lstBusq[i].ImporteRow >= 700 && lstBusq[i].ImporteRow < 1000)
                 {
@@ -2696,7 +2725,7 @@ namespace wfaIntegradoCom
                 }
                 else if (lstBusq[i].ImporteRow >= 1000)
                 {
-                    colorFondo = Color.FromArgb(2, 195, 130);
+                    colorFondo = Color.FromArgb(0, 126, 63);
                 }
                 
                 //Panel princilal
@@ -2760,8 +2789,9 @@ namespace wfaIntegradoCom
                 lblIzq.Location = new Point(0, 0);
                 lblIzq.Text = "" + lstBusq[i].Cantidad;
                 lblIzq.TextAlignment = ContentAlignment.MiddleCenter;
-                lblIzq.Font = new Font(tipoLetra, 16F);
+                lblIzq.Font = new Font(tipoLetra, 18F);
                 lblIzq.ForeColor = colorLetraBody;
+                lblIzq.Font = new Font(lblIzq.Font, FontStyle.Bold);
                 pnIzquierdo.Controls.Add(lblIzq);
 
                 panel.Controls.Add(pnIzquierdo);
@@ -2922,7 +2952,9 @@ namespace wfaIntegradoCom
             dgv.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
             dgv.Rows[y + 1].DefaultCellStyle.BackColor = Color.DarkRed;
             dgv.Rows[y + 1].Cells[1].Style.Padding = new Padding(30, 0, 0, 0);
-            dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Arial", 12F, GraphicsUnit.Pixel);
+            dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Roboto", 10F, GraphicsUnit.Pixel);
+
+            siticonePanel3.Height = (dgvListaPorBloque.Height + dgv.Height);
         }
         private Color fnDevolVerColorTransparente(Int32 alfa, Color colr)
         {
@@ -2952,15 +2984,15 @@ namespace wfaIntegradoCom
         {
             if (chkDiaEspecificoG.Checked == true)
             {
-                label2.Visible = false;
+                lblFechaFinal.Visible = false;
                 dtFechaFinG.Visible = false;
-                label1.Text = "Elija el dia para buscar:";
+                lblFechaInicial.Text = "Elija el dia para buscar:";
             }
             else
             {
-                label2.Visible = true;
+                lblFechaFinal.Visible = true;
                 dtFechaFinG.Visible = true;
-                label1.Text = "Fecha Inicio:";
+                lblFechaInicial.Text = "Fecha Inicio:";
             }
         }
 
@@ -3043,10 +3075,10 @@ namespace wfaIntegradoCom
             }
             else
             {
-                Int32 x = siticoneDataGridView1.Left + 135;
+                Int32 x = siticoneDataGridView1.Left + 125;
                 Int32 y = siticoneDataGridView1.GetRowDisplayRectangle(e.RowIndex, false).Y;
                 dgvEmergente.Location = new Point(x, y + 60);
-                dgvEmergente.Width = siticoneDataGridView1.Width - 135;
+                dgvEmergente.Width = siticoneDataGridView1.Width - 125;
                 fnBuscarDatosTablaEmergente(dgvEmergente, codSubReporte);
             }
         }
