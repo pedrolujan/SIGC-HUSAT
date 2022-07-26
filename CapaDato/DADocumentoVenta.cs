@@ -503,7 +503,6 @@ namespace CapaDato
                 pa[1].Value = pidSucursal;
                 pa[2] = new SqlParameter("@psbVerifica", SqlDbType.Bit);
                 pa[2].Direction = ParameterDirection.Output; ;
-
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspVerificarApertura", pa);
 
