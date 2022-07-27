@@ -408,7 +408,7 @@ namespace wfaIntegradoCom
                         toolStripStatusLabel3.Text = toolStripStatusLabel3.Text + String.Format(Variables.gdFechaSis.ToShortDateString(), "dd/MM/yyyy");
                         break;
                     case "PAVA0002":
-                        toolStripStatusLabel2.Text = toolStripStatusLabel2.Text + dr["cValor"].ToString();
+                        toolStripStatusLabel2.Text = "Servidor: " + dr["cValor"].ToString();
                         break;
                     case "PAVA0003":
                         this.Text = "SISTEMA INTEGRADO DE GESTIÓN COMERCIAL - HUSAT";
@@ -1058,19 +1058,27 @@ namespace wfaIntegradoCom
                 cboOperacion.SelectedValue = Variables.gnCodUser;
                 cboOperacion.Visible = false;
                 txtBuscarRepGeneral.Location = new Point(659, 55);
-                //pictureBox1.Location = new Point(pictureBox1.Location.X, 49+(txtBuscarRepGeneral.Height/5)) ;
-                txtBuscarRepGeneral.Width = 451;
+                txtBuscarRepGeneral.Width = 440;
                 siticoneLabel11.Visible = false;
                 siticoneLabel13.Visible = false;
+                chkDiaEspecificoG.Checked = true;
+                dtFechaInicioG.Value = Variables.gdFechaSis;
+                chkDiaEspecificoG.Enabled=false;
+                chkHabilitarFechasBusG.Enabled=false;
+
             }
             else
             {
+                chkDiaEspecificoG.Enabled = true;
+                chkHabilitarFechasBusG.Enabled = true;
+                dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
+                chkDiaEspecificoG.Checked = false;
                 cboTipoReporte.SelectedValue = "0";
                 cboTipoReporte.Visible = true;
                 cboOperacion.SelectedValue = 0;
                 cboOperacion.Visible = true;
-                txtBuscarRepGeneral.Location = new Point((cboOperacion.Location.X + cboOperacion.Width) + 10, 55);
-                txtBuscarRepGeneral.Width = 134;
+                txtBuscarRepGeneral.Location = new Point((cboOperacion.Location.X + cboOperacion.Width) + 5, 55);
+                txtBuscarRepGeneral.Width = 130;
                 siticoneLabel11.Visible = true;
                 siticoneLabel13.Visible = true;
 
@@ -1078,7 +1086,9 @@ namespace wfaIntegradoCom
             }
             lblBuscar.Location = new Point(txtBuscarRepGeneral.Location.X, (txtBuscarRepGeneral.Location.Y - lblBuscar.Height));
             lblBuscar.ForeColor = Color.Black;
-            pictureBox1.Location = new Point(pictureBox1.Location.X, 49 + (txtBuscarRepGeneral.Height / 4));
+            //pictureBox1.Location = new Point(pictureBox1.Location.X, 49 + (txtBuscarRepGeneral.Height / 4));
+            pictureBox1.Location = new Point((txtBuscarRepGeneral.Location.X + txtBuscarRepGeneral.Width)-30, pictureBox1.Location.Y);
+
         }
         private void MDIParent1_Load(object sender, EventArgs e)
         {
@@ -1117,7 +1127,7 @@ namespace wfaIntegradoCom
                 var gbx = pnlParaDashboard.Controls.OfType<SiticoneGroupBox>();
                 var pn = pnlParaDashboard.Controls.OfType<SiticonePanel>();
                 //flowLayoutPanel1.Width = pnlParaDashboard.Size.Width - 20;
-                //flowLayoutPanel1.Location = new Point(10, flowLayoutPanel1.Location.Y);
+                flowLayoutPanel1.Location = new Point(10, flowLayoutPanel1.Location.Y);
                 foreach (SiticoneGroupBox gb in gbx)
                 {
                     gb.Width = pnlParaDashboard.Size.Width - 20;
@@ -1129,6 +1139,8 @@ namespace wfaIntegradoCom
                     pnn.Location = new Point(5, pnn.Location.Y);
                 }
                 fnVerifApertura();
+                fnLocationElementos();
+                fnPosicionDeCajas();
             }
 
         }
@@ -2609,8 +2621,7 @@ namespace wfaIntegradoCom
                 dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Arial", 15F, GraphicsUnit.Pixel);
                 //this.dgvListaPorBloque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
-                siticonePanel3.Height = dgvListaPorBloque.Height+20;
-
+                fnLocationElementos();
 
                 //if (numPagina == 0)
                 //{
@@ -2629,6 +2640,19 @@ namespace wfaIntegradoCom
             }
 
         }
+
+        private void fnLocationElementos()
+        {
+            Int32 espacios = 15;
+            Int32 espaciosPequenos = 5;
+            dgvListaPorBloque.Location = new Point(lblIngresos.Location.X, (lblIngresos.Location.Y+lblIngresos.Height )+ espacios);
+            lblHeaderDetalle.Location = new Point(lblIngresos.Location.X, (lblIngresos.Location.Y+lblIngresos.Height) + espacios);
+            siticoneDataGridView1.Location = new Point(siticoneDataGridView1.Location.X, (lblHeaderDetalle.Location.Y+lblHeaderDetalle.Height) + 5);
+            lblEgresos.Location = new Point(lblIngresos.Location.X, (siticoneDataGridView1.Location.Y+ siticoneDataGridView1.Height));
+            dgvEgresos.Location = new Point(lblIngresos.Location.X, (lblEgresos.Location.Y+ lblEgresos.Height)+ espacios);
+
+            siticonePanel3.Height = (dgvListaPorBloque.Height + dgvEmergente.Height+ lblEgresos.Height+ lblIngresos.Height+ dgvEgresos.Height);
+        }
         private IconPictureBox fngenerarIconos(ReporteBloque rpt)
         {
             IconPictureBox icono = new IconPictureBox();
@@ -2645,6 +2669,11 @@ namespace wfaIntegradoCom
                 icono.IconChar = IconChar.RotateLeft;
 
             }
+            else if (rpt.Codigoreporte== "6")
+            {
+                icono.IconChar = IconChar.PeopleCarryBox;
+
+            }
             else if (rpt.Codigoreporte== "7")
             {
                 icono.IconChar = IconChar.CarBurst;
@@ -2656,6 +2685,10 @@ namespace wfaIntegradoCom
 
             }
             return icono;
+        }
+        private void fnPosicionDeCajas()
+        {
+            flowLayoutPanel1.Location = new Point(((treeView1.Width / 2) - (flowLayoutPanel1.Width / 2)), 0 + (pnlParaDashboard.AutoScrollPosition.Y));
         }
         private void fnGenerarPaneles(List<ReporteBloque> lstBusq)
         {
@@ -2685,8 +2718,8 @@ namespace wfaIntegradoCom
             {
                 flowLayoutPanel1.Width = pnlParaDashboard.Size.Width - 17;
             }
-            siticoneGroupBox1.Width = pnlParaDashboard.Size.Width - 17;
-            flowLayoutPanel1.Location = new Point(((treeView1.Width/2)-(flowLayoutPanel1.Width/2)),0);
+            fnPosicionDeCajas();
+            siticoneGroupBox1.Width = pnlParaDashboard.Size.Width - 30;           
 
             Int32 residuo;
             Int32 cantidadPaginas;
@@ -2703,9 +2736,9 @@ namespace wfaIntegradoCom
             }
 
             flowLayoutPanel1.Height = (int)((cantidadPaginas+ rextWFlow) * pnfH );
-
-            siticoneGroupBox1.Location = new Point(siticoneGroupBox1.Location.X, flowLayoutPanel1.Height+20);
-            siticonePanel3.Location = new Point(siticonePanel3.Location.X, (flowLayoutPanel1.Height + 20+siticoneGroupBox1.Height));
+            siticoneGroupBox1.Location = new Point(siticoneGroupBox1.Location.X, flowLayoutPanel1.Location.Y + flowLayoutPanel1.Height);
+            //siticoneGroupBox1.Location = new Point(siticoneGroupBox1.Location.X, flowLayoutPanel1.Height+20);
+            siticonePanel3.Location = new Point(siticonePanel3.Location.X, (siticoneGroupBox1.Height+ siticoneGroupBox1.Location.Y));
 
             for (Int32 i = 0; i < lstBusq.Count; i++)
             {
@@ -2958,7 +2991,9 @@ namespace wfaIntegradoCom
             dgv.Rows[y + 1].Cells[1].Style.Padding = new Padding(30, 0, 0, 0);
             dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Roboto", 10F, GraphicsUnit.Pixel);
 
-            siticonePanel3.Height = (dgvListaPorBloque.Height + dgv.Height);
+            fnLocationElementos();
+
+
         }
         private Color fnDevolVerColorTransparente(Int32 alfa, Color colr)
         {
@@ -3136,6 +3171,12 @@ namespace wfaIntegradoCom
             //    frmCierreC.Inicio(lsReporteBloque,1);
 
             //}
+        }
+
+        private void tsMiCaja_Click(object sender, EventArgs e)
+        {
+            frmMovimientoCaja frmMC = new frmMovimientoCaja();
+            frmMC.Inicio(lsReporteBloque, 0);
         }
     }
 

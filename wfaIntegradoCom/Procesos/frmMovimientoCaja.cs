@@ -24,11 +24,21 @@ namespace wfaIntegradoCom.Procesos
             InitializeComponent();
         }
 
+
         public frmMovimientoCaja(int pintTipoLllamada)
         {
             InitializeComponent();
             intTipoLlamada = pintTipoLllamada;
         }
+        static List<ReporteBloque> lstReporteBloque = new List<ReporteBloque>();
+        static Int32 lnTipoCon = 0;
+        public void Inicio(List<ReporteBloque> rpb,Int32 tipoCon)
+        {
+            lstReporteBloque = rpb;
+            intTipoLlamada = tipoCon;
+            this.ShowDialog();
+        }
+
 
         public Boolean fnCargarUsuario()
         {
@@ -98,32 +108,51 @@ namespace wfaIntegradoCom.Procesos
         {
             bool bResult = false;
             decimal nSaldo = 0;
-            int intUsuario = 0; 
+            int intUsuario = 0;
 
-            if (intTipoLlamada == 0)
+            if (intTipoLlamada==0)
             {
-                //paBusqueda.Visible = true;
-                //bResult = fnCargarUsuario();
-                //pcFecha = FunGeneral.GetFechaHoraFormato(dateTimePicker1.Value, 5);
-                //intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
-                paBusqueda.Visible = false;
-                pcFecha = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
-                intUsuario = Variables.gnCodUser;
+                Int32 TotCantidad = 0;
+                Double TotImporte = 0;
+                Int32 y = 0;
+                foreach (ReporteBloque rp in lstReporteBloque)
+                {
+                    
+                    TotImporte += rp.ImporteRow;
+                    TotCantidad += rp.Cantidad;
+                    dataGridView1.Rows.Add(rp.Codigoreporte, rp.numero,FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecio("S/.",rp.ImporteRow,0));
+                    y ++;
+                }
+                dataGridView1.Rows.Add("", "", "", "", "");
+                dataGridView1.Rows.Add("TOTAL", "", "IMPORTE TOTAL INGRESOS", TotCantidad, FunGeneral.fnFormatearPrecio("S/.", TotImporte,0));
+                dataGridView1.Rows[y + 1].DefaultCellStyle.BackColor = Color.Red;
+                dataGridView1.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
+            }
 
-            }
-            else
-            {
-                paBusqueda.Visible = true;
-                bResult = fnCargarUsuario();
-                pcFecha = FunGeneral.GetFechaHoraFormato(dateTimePicker1.Value, 5);
-                intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
-            }
-            bResult = fnListarCajaDia(pcFecha, intUsuario, out nSaldo);
-            if (!bResult)
-            {
-                MessageBox.Show("Error al Cargar Movimientos en Caja", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.Close();
-            }
+            //if (intTipoLlamada == 0)
+            //{
+            //    paBusqueda.Visible = true;
+            //    bResult = fnCargarUsuario();
+            //    pcFecha = FunGeneral.GetFechaHoraFormato(dateTimePicker1.Value, 5);
+            //    intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
+            //    //paBusqueda.Visible = false;
+            //    //pcFecha = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
+            //    //intUsuario = Variables.gnCodUser;
+
+            //}
+            //else
+            //{
+            //    paBusqueda.Visible = true;
+            //    bResult = fnCargarUsuario();
+            //    pcFecha = FunGeneral.GetFechaHoraFormato(dateTimePicker1.Value, 5);
+            //    intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
+            //}
+            //bResult = fnListarCajaDia(pcFecha, intUsuario, out nSaldo);
+            //if (!bResult)
+            //{
+            //    MessageBox.Show("Error al Cargar Movimientos en Caja", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    this.Close();
+            //}
             textBox1.Text = nSaldo.ToString();
         }
 
@@ -135,7 +164,7 @@ namespace wfaIntegradoCom.Procesos
             //Boolean bFilaSele = false;
             if (dataGridView1.RowCount > 0)
             {
-                lidTrandiaria = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                //lidTrandiaria = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             }
         }
 
