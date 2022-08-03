@@ -238,6 +238,10 @@ namespace wfaIntegradoCom.Procesos
                     this.Close();
 
                 }
+                else if (lnTipoLLamada == -3)
+                {
+
+                }
                 else
                 {
                     frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
@@ -422,6 +426,13 @@ namespace wfaIntegradoCom.Procesos
                 frm1.fnCambiarEstadoVenta(false);
             }
             else if (lnTipoLLamada == -2)
+            {
+                frmOtrasVentas fr = new frmOtrasVentas();
+                fr.fnRecuperarEstadoGenVenta(false);
+                fr.fnCondicionProcesos(0);
+
+            }
+            else if (lnTipoLLamada == -3)
             {
                 frmOtrasVentas fr = new frmOtrasVentas();
                 fr.fnRecuperarEstadoGenVenta(false);

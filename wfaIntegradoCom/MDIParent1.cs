@@ -1055,8 +1055,6 @@ namespace wfaIntegradoCom
             {
                 cboTipoReporte.SelectedValue = "TRPT0002";
                 cboTipoReporte.Visible = false;
-                cboOperacion.SelectedValue = Variables.gnCodUser;
-                cboOperacion.Visible = false;
                 txtBuscarRepGeneral.Location = new Point(659, 55);
                 txtBuscarRepGeneral.Width = 440;
                 siticoneLabel11.Visible = false;
@@ -1065,6 +1063,8 @@ namespace wfaIntegradoCom
                 dtFechaInicioG.Value = Variables.gdFechaSis;
                 chkDiaEspecificoG.Enabled=false;
                 chkHabilitarFechasBusG.Enabled=false;
+                cboOperacion.SelectedValue = Variables.gnCodUser;
+                cboOperacion.Visible = false;
 
             }
             else
@@ -1107,13 +1107,13 @@ namespace wfaIntegradoCom
                 InitializeTimer();
 
                 SafelySubscribeToControllerEvents();
-                dtFechaFinG.Value = Variables.gdFechaSis;
-                dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
                 FunGeneral.fnLlenarTablaCodTipoCon(cboTipoReporte, "TRPT", false);
                 Loading();
                 cboTipoReporte.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
                 cboOperacion.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
                 cboxSelecThema.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
+                dtFechaFinG.Value = Variables.gdFechaSis;
+                dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
             }
             catch (Exception ex)
             {
@@ -1141,6 +1141,15 @@ namespace wfaIntegradoCom
                 fnVerifApertura();
                 fnLocationElementos();
                 fnPosicionDeCajas();
+
+                if (Variables.gsCargoUsuario == "PETR0006")
+                {
+                    cboOperacion.SelectedValue = Variables.gnCodUser;
+                }
+                else
+                {
+                    cboOperacion.SelectedValue = 0;
+                }
             }
 
         }
@@ -2480,6 +2489,8 @@ namespace wfaIntegradoCom
 
         public void fnBuscarReporteGeneralVentas(SiticoneDataGridView dgv, Int32 numPagina, Int32 tipoCon)
         {
+           
+
             bl = new BLControlCaja();
             DataTable dtRes = new DataTable();
             Busquedas clsBusq = new Busquedas();
@@ -2489,7 +2500,7 @@ namespace wfaIntegradoCom
             clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
             clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
             clsBusq.cod2 = tipoCon == -1 ? "" : codOperacion;
-            clsBusq.cod3 = cboOperacion.SelectedValue.ToString();
+            clsBusq.cod3 = cboOperacion.SelectedValue.ToString() == null?"0": cboOperacion.SelectedValue.ToString();
             clsBusq.cod4 = "";
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
             clsBusq.numPagina = numPagina;
@@ -2646,12 +2657,12 @@ namespace wfaIntegradoCom
             Int32 espacios = 15;
             Int32 espaciosPequenos = 5;
             dgvListaPorBloque.Location = new Point(lblIngresos.Location.X, (lblIngresos.Location.Y+lblIngresos.Height )+ espacios);
-            lblHeaderDetalle.Location = new Point(lblIngresos.Location.X, (lblIngresos.Location.Y+lblIngresos.Height) + espacios);
+            lblHeaderDetalle.Location = new Point(lblHeaderDetalle.Location.X, (lblIngresos.Location.Y+lblIngresos.Height) + espacios);
             siticoneDataGridView1.Location = new Point(siticoneDataGridView1.Location.X, (lblHeaderDetalle.Location.Y+lblHeaderDetalle.Height) + 5);
-            lblEgresos.Location = new Point(lblIngresos.Location.X, (siticoneDataGridView1.Location.Y+ siticoneDataGridView1.Height));
+            lblEgresos.Location = new Point(lblIngresos.Location.X, (dgvListaPorBloque.Location.Y+ dgvListaPorBloque.Height)+espacios);
             dgvEgresos.Location = new Point(lblIngresos.Location.X, (lblEgresos.Location.Y+ lblEgresos.Height)+ espacios);
-
-            siticonePanel3.Height = (dgvListaPorBloque.Height + dgvEmergente.Height+ lblEgresos.Height+ lblIngresos.Height+ dgvEgresos.Height);
+            btnRegistrarEgresos.Location = new Point(lblIngresos.Location.X, (dgvEgresos.Location.Y+ dgvEgresos.Height)+espacios);
+            siticonePanel3.Height = (dgvListaPorBloque.Height + dgvEmergente.Height+ lblEgresos.Height+ lblIngresos.Height+ dgvEgresos.Height+ btnRegistrarEgresos.Height);
         }
         private IconPictureBox fngenerarIconos(ReporteBloque rpt)
         {
@@ -3051,8 +3062,9 @@ namespace wfaIntegradoCom
             String FI = FunGeneral.GetFechaHoraFormato(dtIni.Value, 5);
             String FF = FunGeneral.GetFechaHoraFormato(dtFin.Value, 5);
             Boolean chk = chkDiaEspecificoG.Checked;
+            Int32 tipCOn = Variables.gsCargoUsuario != "PETR0006" ? 0 : Variables.gnCodUser;
 
-            dt = dc.daDevolverSoloUsuario(chk, FI, FF);
+            dt = dc.daDevolverSoloUsuario(chk, FI, FF, tipCOn);
 
             lstUsuario.Add(new Usuario(
                 Convert.ToInt32(0),
@@ -3069,6 +3081,8 @@ namespace wfaIntegradoCom
             cbo.ValueMember = "idUsuario";
             cbo.DisplayMember = "cUser";
             cbo.DataSource = lstUsuario;
+           cbo.SelectedValue = Variables.gsCargoUsuario != "PETR0006" ? 0 : Variables.gnCodUser;
+
 
         }
 
@@ -3177,6 +3191,12 @@ namespace wfaIntegradoCom
         {
             frmMovimientoCaja frmMC = new frmMovimientoCaja();
             frmMC.Inicio(lsReporteBloque, 0);
+        }
+
+        private void btnRegistrarEgresos_Click(object sender, EventArgs e)
+        {
+            frmRegistrarEgresos frmRE = new frmRegistrarEgresos();
+            frmRE.ShowDialog();
         }
     }
 

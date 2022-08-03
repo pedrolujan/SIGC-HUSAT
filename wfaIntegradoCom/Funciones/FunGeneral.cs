@@ -656,7 +656,12 @@ namespace wfaIntegradoCom.Funciones
         public static String fnFormatearPrecio(String simbolo,Double Precio,Int32 lnTipoCon)
         {
             String srt = "";
-            if (lnTipoCon==0)
+            if (lnTipoCon == -1)
+            {
+                srt =String.Format("{0:#,##0.00}", Precio);
+
+            }
+            else if (lnTipoCon==0)
             {
                 srt = $"{simbolo} {String.Format("{0:#,##0.00}", Precio)}";
 
@@ -692,6 +697,32 @@ namespace wfaIntegradoCom.Funciones
             finally
             {
                 objUtil = null;
+            }
+        }
+
+        public static List<Moneda> fnLLenarMoneda(ComboBox cbo, Int32 idMoneda, Boolean buscar)
+        {
+            BLMoneda objMoneda = new BLMoneda();
+            clsUtil objUtil = new clsUtil();
+            List<Moneda> lstMoneda=new List<Moneda>();
+
+            try
+            {
+                lstMoneda = objMoneda.blDevolverMoneda(idMoneda, buscar);
+                cbo.ValueMember = "idMoneda";
+                cbo.DisplayMember = "cNombre";
+                cbo.DataSource = lstMoneda;
+
+                return lstMoneda;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FrmRegistrarVehiculo", "fnLLenarClaseVehiculo", ex.Message);
+                return lstMoneda;
+            }
+            finally
+            {
+                lstMoneda = null;
             }
         }
 

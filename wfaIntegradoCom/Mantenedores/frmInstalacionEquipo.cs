@@ -125,8 +125,8 @@ namespace wfaIntegradoCom.Mantenedores
             String datoBuscar = txtBuscarIns.Text.Trim();
             String datoEstado = ValueCBO;
             Boolean habilitarFechas = chkHabilitarFechasI.Checked ? true : false;
-            DateTime fechaInicial = dtpFechaInicialIns.Value;
-            DateTime fechaFinal = dtpFechaFinalBusIns.Value;
+            String fechaInicial = FunGeneral.GetFechaHoraFormato(dtpFechaInicialIns.Value,5);
+            String fechaFinal = FunGeneral.GetFechaHoraFormato(dtpFechaFinalBusIns.Value,5);
             Int32 filas = 10;
             String estadoTipoContrato = "0";
             Int32 idUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
@@ -134,7 +134,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             try
             {
-                datVentaG = objVentaGeneral.blBuscarInstalaciones(habilitarFechas, fechaInicial, fechaFinal, datoBuscar, datoEstado, numPagina,  tipoCon, 1, idUsuario);
+                datVentaG = objVentaGeneral.blBuscarInstalaciones(habilitarFechas, fechaInicial, fechaFinal, datoBuscar, datoEstado, numPagina, tipoCon, 1, idUsuario);
 
                 Int32 totalResultados = datVentaG.Rows.Count;
                 if (totalResultados > 0)
@@ -1425,6 +1425,11 @@ namespace wfaIntegradoCom.Mantenedores
             dato = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[9].Value);
 
             frmPrev.inicio(1, dato);
+        }
+
+        private void txtBuscarIns_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void cboSeleccionarUbicacionE_SelectedIndexChanged(object sender, EventArgs e)

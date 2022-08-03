@@ -130,10 +130,22 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneLabel5 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel4 = new Siticone.UI.WinForms.SiticoneLabel();
             this.dgvListaInstalaciones = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.codVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechadeInstalacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idTipoTarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UbicacionEquipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cmsMenuSeleccion = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.seleccionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarInstalacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mostrarUbicacionDeInstalacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vIsualizarUbicacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.cboUsuario = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboEstadosInst = new Siticone.UI.WinForms.SiticoneComboBox();
@@ -153,18 +165,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.siticoneDragControl1 = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
-            this.vIsualizarUbicacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.codVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.N = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechadeInstalacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idTipoTarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UbicacionEquipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.siticonePanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -2037,6 +2037,81 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaInstalaciones.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListaInstalaciones_CellMouseDown);
             this.dgvListaInstalaciones.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvListaInstalaciones_CellPainting);
             // 
+            // codVenta
+            // 
+            this.codVenta.HeaderText = "CodVenta";
+            this.codVenta.Name = "codVenta";
+            this.codVenta.ReadOnly = true;
+            this.codVenta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.codVenta.Visible = false;
+            // 
+            // N
+            // 
+            this.N.HeaderText = "Nro";
+            this.N.Name = "N";
+            this.N.ReadOnly = true;
+            this.N.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // FechadeInstalacion
+            // 
+            this.FechadeInstalacion.HeaderText = "Fecha de Instalacion";
+            this.FechadeInstalacion.Name = "FechadeInstalacion";
+            this.FechadeInstalacion.ReadOnly = true;
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Lugar De Instalacion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // Vehiculo
+            // 
+            this.Vehiculo.HeaderText = "Vehiculo";
+            this.Vehiculo.Name = "Vehiculo";
+            this.Vehiculo.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // Usuario
+            // 
+            this.Usuario.HeaderText = "Técnico";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            // 
+            // idTipoTarifa
+            // 
+            this.idTipoTarifa.HeaderText = "id Tipo Tarifa";
+            this.idTipoTarifa.Name = "idTipoTarifa";
+            this.idTipoTarifa.ReadOnly = true;
+            this.idTipoTarifa.Visible = false;
+            // 
+            // UbicacionEquipo
+            // 
+            this.UbicacionEquipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.UbicacionEquipo.HeaderText = "UbicacionEquipo";
+            this.UbicacionEquipo.Name = "UbicacionEquipo";
+            this.UbicacionEquipo.ReadOnly = true;
+            this.UbicacionEquipo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.UbicacionEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.UbicacionEquipo.Visible = false;
+            this.UbicacionEquipo.Width = 118;
+            // 
+            // btImprimir
+            // 
+            this.btImprimir.HeaderText = "";
+            this.btImprimir.Name = "btImprimir";
+            this.btImprimir.ReadOnly = true;
+            // 
             // cmsMenuSeleccion
             // 
             this.cmsMenuSeleccion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2067,6 +2142,13 @@ namespace wfaIntegradoCom.Mantenedores
             this.mostrarUbicacionDeInstalacionToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.mostrarUbicacionDeInstalacionToolStripMenuItem.Text = "Mostrar ubicacion de instalacion";
             this.mostrarUbicacionDeInstalacionToolStripMenuItem.Click += new System.EventHandler(this.mostrarUbicacionDeInstalacionToolStripMenuItem_Click);
+            // 
+            // vIsualizarUbicacionToolStripMenuItem
+            // 
+            this.vIsualizarUbicacionToolStripMenuItem.Name = "vIsualizarUbicacionToolStripMenuItem";
+            this.vIsualizarUbicacionToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.vIsualizarUbicacionToolStripMenuItem.Text = "VIsualizar Ubicacion";
+            this.vIsualizarUbicacionToolStripMenuItem.Click += new System.EventHandler(this.vIsualizarUbicacionToolStripMenuItem_Click);
             // 
             // siticoneGroupBox1
             // 
@@ -2166,6 +2248,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtBuscarIns.ShadowDecoration.Parent = this.txtBuscarIns;
             this.txtBuscarIns.Size = new System.Drawing.Size(183, 36);
             this.txtBuscarIns.TabIndex = 5;
+            this.txtBuscarIns.TextChanged += new System.EventHandler(this.txtBuscarIns_TextChanged);
             this.txtBuscarIns.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarIns_KeyPress);
             // 
             // siticoneLabel8
@@ -2356,88 +2439,6 @@ namespace wfaIntegradoCom.Mantenedores
             // siticoneDragControl1
             // 
             this.siticoneDragControl1.TargetControl = this.gunaPanel1;
-            // 
-            // vIsualizarUbicacionToolStripMenuItem
-            // 
-            this.vIsualizarUbicacionToolStripMenuItem.Name = "vIsualizarUbicacionToolStripMenuItem";
-            this.vIsualizarUbicacionToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
-            this.vIsualizarUbicacionToolStripMenuItem.Text = "VIsualizar Ubicacion";
-            this.vIsualizarUbicacionToolStripMenuItem.Click += new System.EventHandler(this.vIsualizarUbicacionToolStripMenuItem_Click);
-            // 
-            // codVenta
-            // 
-            this.codVenta.HeaderText = "CodVenta";
-            this.codVenta.Name = "codVenta";
-            this.codVenta.ReadOnly = true;
-            this.codVenta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.codVenta.Visible = false;
-            // 
-            // N
-            // 
-            this.N.HeaderText = "Nro";
-            this.N.Name = "N";
-            this.N.ReadOnly = true;
-            this.N.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // FechadeInstalacion
-            // 
-            this.FechadeInstalacion.HeaderText = "Fecha de Instalacion";
-            this.FechadeInstalacion.Name = "FechadeInstalacion";
-            this.FechadeInstalacion.ReadOnly = true;
-            // 
-            // Cliente
-            // 
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Lugar De Instalacion";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // Vehiculo
-            // 
-            this.Vehiculo.HeaderText = "Vehiculo";
-            this.Vehiculo.Name = "Vehiculo";
-            this.Vehiculo.ReadOnly = true;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // Usuario
-            // 
-            this.Usuario.HeaderText = "Técnico";
-            this.Usuario.Name = "Usuario";
-            this.Usuario.ReadOnly = true;
-            // 
-            // idTipoTarifa
-            // 
-            this.idTipoTarifa.HeaderText = "id Tipo Tarifa";
-            this.idTipoTarifa.Name = "idTipoTarifa";
-            this.idTipoTarifa.ReadOnly = true;
-            this.idTipoTarifa.Visible = false;
-            // 
-            // UbicacionEquipo
-            // 
-            this.UbicacionEquipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.UbicacionEquipo.HeaderText = "UbicacionEquipo";
-            this.UbicacionEquipo.Name = "UbicacionEquipo";
-            this.UbicacionEquipo.ReadOnly = true;
-            this.UbicacionEquipo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UbicacionEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.UbicacionEquipo.Visible = false;
-            this.UbicacionEquipo.Width = 118;
-            // 
-            // btImprimir
-            // 
-            this.btImprimir.HeaderText = "";
-            this.btImprimir.Name = "btImprimir";
-            this.btImprimir.ReadOnly = true;
             // 
             // frmInstalacionEquipo
             // 

@@ -1091,6 +1091,13 @@ namespace wfaIntegradoCom.Procesos
                 lstMoneda = null;
             }
         }
+        private void fnLimpiarSeleccion()
+        {
+            lstCronoGramasParaDocumentoVenta.Clear();
+            dgvDatosDocumentosVenta.Rows.Clear();
+            cboCronograma.SelectedValue = CronogramaSeleccionado;
+
+        }
         private void obtenerNumeroDeItems()
         {
             SiticoneDataGridView dgv = dgvDatosDocumentosVenta;
@@ -1351,30 +1358,45 @@ namespace wfaIntegradoCom.Procesos
             Int32 y = 0;
             String dato = "";
 
-
-            foreach (DetalleCronograma dcr in lstCronoGramasParaDocumentoVenta)
+            for (int i = 0; i < lstCronoGramasParaDocumentoVenta.Count; i++)
             {
+                DetalleCronograma dcr = lstCronoGramasParaDocumentoVenta[i];
 
-                if (dcr.ClaseVehiculo.idVehiculo != clsVehiculo.idVehiculo && lstCronoGramasParaDocumentoVenta.Count <= 1)
+                if (lstCronoGramasParaDocumentoVenta.Count>1)
                 {
-                    dato = " - Plan " + dcr.cPlan;
-
+                    if (i>0)
+                    {
+                        if (lstCronoGramasParaDocumentoVenta[i].ClaseVehiculo.vPlaca== lstCronoGramasParaDocumentoVenta[i-1].ClaseVehiculo.vPlaca)
+                        {
+                            dato = " - Plan " + dcr.cPlan;
+                        }
+                        else
+                        {
+                            dato = " - Placa " + dcr.ClaseVehiculo.vPlaca;
+                        }
+                    }
+                    else
+                    {
+                        if (dcr.ClaseVehiculo.idVehiculo==clsVehiculo.idVehiculo)
+                        {
+                            dato = " - Plan " + dcr.cPlan;
+                        }
+                        else
+                        {
+                            dato = " - Placa " + dcr.ClaseVehiculo.vPlaca;
+                        }
+                    }
                 }
                 else
                 {
-                    dato = " - Placa " + dcr.ClaseVehiculo.vPlaca;
-                    est = true;
-                }
-                if (lstCronoGramasParaDocumentoVenta.Count >= 1 && dcr.ClaseVehiculo.idVehiculo == clsVehiculo.idVehiculo && est==false)
-                {
                     dato = " - Plan " + dcr.cPlan;
                 }
-
+                
 
                 lstDetV.Add(new DetalleVenta
                 {
                     IdDetalleVenta = dcr.idDetalleCronograma,
-                    Numeracion = 1+y,
+                    Numeracion = 1 + y,
                     Descripcion = "Cuota " + dcr.fechaEmision.ToString("MMMM  yyyy") + dato,
                     idTipoTarifa = dcr.ClaseTarifa.IdTarifa,
                     PrecioUni = dcr.precioUnitario,
@@ -1387,6 +1409,20 @@ namespace wfaIntegradoCom.Procesos
                     cSimbolo = clsMoneda.cSimbolo
                 });
                 y++;
+
+            }
+
+
+
+
+
+            foreach (DetalleCronograma dcr in lstCronoGramasParaDocumentoVenta)
+            {
+
+                
+
+
+                
             }
 
             
@@ -1556,6 +1592,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 MessageBox.Show("Págo "+ strTipo + " Correctamente ✅", "Informacion ",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 chkHabilitarDescuentoP.Checked = false;
+                fnLimpiarSeleccion();
             }
             else
             {

@@ -599,7 +599,7 @@ namespace wfaIntegradoCom.Procesos
             String FF = FunGeneral.GetFechaHoraFormato(dtFin.Value, 5);
             Boolean chk = chkDiaEspecificoG.Checked;
             
-            dt = dc.daDevolverSoloUsuario(chk, FI, FF);
+            dt = dc.daDevolverSoloUsuario(chk, FI, FF,0);
 
                 lstUsuario.Add(new Usuario(
                     Convert.ToInt32(0),

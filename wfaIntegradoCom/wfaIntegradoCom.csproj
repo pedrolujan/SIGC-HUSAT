@@ -735,6 +735,12 @@
     <Compile Include="Procesos\frmRegistrarDeuda.Designer.cs">
       <DependentUpon>frmRegistrarDeuda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmRegistrarEgresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmRegistrarEgresos.Designer.cs">
+      <DependentUpon>frmRegistrarEgresos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\frmRegistrarSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -911,6 +917,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmReferenciaInstalacion.resx">
       <DependentUpon>frmReferenciaInstalacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmRegistrarEgresos.resx">
+      <DependentUpon>frmRegistrarEgresos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmVentaEspecifica.resx">
       <DependentUpon>frmVentaEspecifica.cs</DependentUpon>

@@ -351,7 +351,7 @@ namespace CapaDato
 
         }
 
-        public DataTable daBuscarInstalacion(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoCon, Int32 codTipoVenta, Int32 idUsuario)
+        public DataTable daBuscarInstalacion(Boolean habilitarfechas, String fechaInical, String fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoCon, Int32 codTipoVenta, Int32 idUsuario)
         {
             SqlParameter[] pa = new SqlParameter[9];
             DataTable dtVentaG;
@@ -361,8 +361,8 @@ namespace CapaDato
             try
             {
                 pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.TinyInt) { Value = habilitarfechas };
-                pa[1] = new SqlParameter("@peFechaInical", SqlDbType.DateTime) { Value = fechaInical };
-                pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.DateTime) { Value = fechaFinal };
+                pa[1] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = fechaInical };
+                pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = fechaFinal };
                 pa[3] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = placaVehiculo };
                 pa[4] = new SqlParameter("@pcEstadoInstal", SqlDbType.VarChar, 15) { Value = cEstadoInstal };
                 pa[5] = new SqlParameter("@numPagina", SqlDbType.Int) { Value = numPagina };

@@ -102,7 +102,7 @@ namespace CapaNegocio
             }
 
         }
-        public DataTable blBuscarInstalaciones(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoCon, Int32 codTipoVenta,Int32 idUsuario)
+        public DataTable blBuscarInstalaciones(Boolean habilitarfechas, String fechaInical, String fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoCon, Int32 codTipoVenta,Int32 idUsuario)
         {
             DAInstalacion objVentaG = new DAInstalacion();
             try

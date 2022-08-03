@@ -246,9 +246,9 @@ namespace CapaDato
             }
         }
 
-        public DataTable daDevolverSoloUsuario(Boolean chk, String dtI, String dtFin)
+        public DataTable daDevolverSoloUsuario(Boolean chk, String dtI, String dtFin, Int32 tipCOn)
         {
-            SqlParameter[] pa = new SqlParameter[3];
+            SqlParameter[] pa = new SqlParameter[4];
             DataTable dtVehiculo = new DataTable();
             clsConexion objCnx = null;
             List<Usuario> lstUsuario = null;
@@ -262,6 +262,8 @@ namespace CapaDato
                 pa[1].Value = dtFin;
                 pa[2] = new SqlParameter("@chk", SqlDbType.Bit);
                 pa[2].Value = chk;
+                pa[3] = new SqlParameter("@tipoCOn", SqlDbType.Int);
+                pa[3].Value = tipCOn;
 
 
                 objCnx = new clsConexion("");
