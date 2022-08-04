@@ -1,4 +1,5 @@
 ﻿using CapaEntidad;
+using CapaNegocio;
 using Siticone.UI.WinForms;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,14 @@ namespace wfaIntegradoCom.Procesos
         static List<Moneda> lstMoneda = new List<Moneda>();
         static Moneda clsMoneda = new Moneda();
         Boolean estArea, estUsuario, estMoneda, estImporte, estDescripcion;
-
+        static Int32 lnTipoLlamada = 0;
+        static List<Pagos> lstPagosTrandiaria = new List<Pagos>();
+        static Boolean estadoGuardarEgreso = false;
+        public void Inicio(Int32 tipoLlam)
+        {
+            lnTipoLlamada = tipoLlam;
+            this.ShowDialog();
+        }
         private void frmRegistrarEgresos_Load(object sender, EventArgs e)
         {
             try
@@ -31,6 +39,11 @@ namespace wfaIntegradoCom.Procesos
                 FunGeneral.fnLlenarTablaCodTipoCon(cboArea, "PETR",false);
                 lstMoneda=FunGeneral.fnLLenarMoneda(cboMoneda,0,false);
 
+                cboArea.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                cboUsuario.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                cboMoneda.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                frmOtrasVentas.fnLlenarTablaCod(cboTipoDocEmitir, "DOVE", 1, 0);
+                cboTipoDocEmitir.SelectedValue = "DOVE0003";
             }
             catch (Exception)
             {
@@ -38,7 +51,15 @@ namespace wfaIntegradoCom.Procesos
                 throw;
             }
         }
+        public static void fnRecuperarTipoPago(List<Pagos> lstEntidades)
+        {
+            lstPagosTrandiaria = lstEntidades;
 
+        }
+        public void fnRecuperarEstadoGenVenta(Boolean estado)
+        {
+            estadoGuardarEgreso = estado;
+        }
         private void cboArea_SelectedIndexChanged(object sender, EventArgs e)
         {
             estArea=FunValidaciones.fnValidarCombobox(cboArea,lblArea,pbArea).Item1;
@@ -95,6 +116,89 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
+        private List<DetalleVenta> fnDetalleVenta()
+        {
+            List<DetalleVenta> lstDetV = new List<DetalleVenta>();
+            Int32 cantidad = 1;
+            Double precioUnitario = Convert.ToDouble(txtImporte.Text.ToString());
+            double importe = (precioUnitario * cantidad) - 0;
+            lstDetV.Add(new DetalleVenta
+            {
+                Numeracion = 1,
+                Descripcion = FunGeneral.FormatearCadenaTitleCase(txtDescripcion.Text.ToString()),
+                idTipoTarifa = 0,
+                PrecioUni = precioUnitario,
+                Descuento = 0,
+                gananciaRedondeo = 0,
+                TotalTipoDescuento = 0,
+                IdTipoDescuento = 0,
+                Cantidad = 1,
+                Couta = 0,
+                Importe = importe,
+                cSimbolo = clsMoneda.cSimbolo
+            });
+
+            return lstDetV;
+        }
+        private DetalleVentaCabecera fnCalcularCabeceraDetalle(List<DetalleVenta> lstDV)
+        {
+            DetalleVentaCabecera clsDVC = new DetalleVentaCabecera();
+            DetalleVenta dvMensual = new DetalleVenta();
+            clsDVC.IGV = 0;
+            clsDVC.Total = lstDV.Sum(item => item.Importe);
+            clsDVC.IGV = clsDVC.IGV;
+            clsDVC.SubTotal = clsDVC.Total - clsDVC.IGV;
+            clsDVC.SimboloMoneda = clsMoneda.cSimbolo;
+            clsDVC.NombreDocumento = Convert.ToString(cboTipoDocEmitir.Text);
+            clsDVC.CodDocumento = Convert.ToString(cboTipoDocEmitir.SelectedValue);
+           
+            return clsDVC;
+        }
+        private List<DocumentoVenta> fnDocumentoVentaHeader(DetalleVentaCabecera dvc )
+        {
+
+            List<DocumentoVenta> lsDocVenta = new List<DocumentoVenta>();
+            TipoTarifa lstTipoVenta = new TipoTarifa();
+            BLVentaGeneral blVG = new BLVentaGeneral();
+            //lstTipoVenta = lstTipoTarifa.First(s => s.IdTipoTarifa == Convert.ToInt32(cboTipoVenta.SelectedValue));
+            Personal clsUsuario = Variables.clasePersonal;
+            Personal clsPers = blVG.blObtenerUsuarioActual(Convert.ToInt32(cboUsuario.SelectedValue));
+            lsDocVenta.Add(new DocumentoVenta
+            {
+                idCliente = clsPers.idPersonal,
+                cCliente = FunGeneral.FormatearCadenaTitleCase(clsPers.cPrimerNom + " " + clsPers.cApePat + " " + clsPers.cApeMat),
+                cTipoDoc = "DNI",
+                cDireccion = FunGeneral.FormatearCadenaTitleCase(cboArea.Text.ToString()),
+                cDocumento = clsPers.cDocumento,
+                SimboloMoneda = clsMoneda.cSimbolo,
+                cCodDocumentoVenta = Convert.ToString(cboTipoDocEmitir.SelectedValue),
+                NombreDocumento = Convert.ToString(cboTipoDocEmitir.Text),
+                dFechaVenta = Convert.ToDateTime(Variables.gdFechaSis),
+                idMoneda = clsMoneda.idMoneda,
+                nSubtotal = dvc.SubTotal,
+                nNroIGV = 18,
+                nIGV = dvc.IGV,
+                nMontoTotal = dvc.Total,
+                cUsuario = clsUsuario.cPrimerNom + " " + clsUsuario.cApePat + " " + clsUsuario.cApeMat,
+                cVehiculos = "Egresos",
+                cDescripcionTipoPago = (lstPagosTrandiaria.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrandiaria[0].cDescripTipoPago) : "",
+                cDescripEstadoPP = (lstPagosTrandiaria.Count > 0) ? lstPagosTrandiaria[0].cEstadoPP : "",
+                cTipoVenta = "EGRESOS"
+
+            });
+            return lsDocVenta;
+
+
+            //DocumentoVenta.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
+            //DocumentoVenta.cVehiculos = lstvehiculo[0].vPlaca;
+            //lstDocVenta.Add(DocumentoVenta);
+        }
+        private void fnGenerarDocumento()
+        {
+            Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
+            List<DetalleVenta> lstDetalleVenta = fnDetalleVenta();
+            frm.Inicio(fnDocumentoVentaHeader(fnCalcularCabeceraDetalle(lstDetalleVenta)),/*lstOtrasVentas*/ lstDetalleVenta, -3);
+        }
         private void btnGuardarEgreso_Click(object sender, EventArgs e)
         {
             frmTipoPago frmtp = new frmTipoPago();
@@ -105,7 +209,12 @@ namespace wfaIntegradoCom.Procesos
             siticoneTextBox1_TextChanged( sender,  e);
             if (estArea && estUsuario && estMoneda && estImporte && estDescripcion)
             {
+                fnGenerarDocumento();
+                if (estadoGuardarEgreso)
+                {
+
                 frmtp.Inicio(-3, Convert.ToDouble(txtImporte.Text.ToString()), clsMoneda.cSimbolo);
+                }
             }
             else
             {
@@ -113,6 +222,10 @@ namespace wfaIntegradoCom.Procesos
             }
         }
 
+        private void fnGuardarEgreso()
+        {
+
+        }
         private void cboMoneda_SelectedIndexChanged(object sender, EventArgs e)
         {
            estMoneda= FunValidaciones.fnValidarCombobox(cboMoneda, lblMoneda, pbMoneda).Item1;

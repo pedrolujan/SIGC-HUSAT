@@ -345,6 +345,8 @@ namespace CapaDato
                         cUsuario.cPrimerNom = Convert.ToString(drMenu["cPrimerNom"]);
                         cUsuario.cApePat = Convert.ToString(drMenu["cApePat"]);
                         cUsuario.cApeMat = Convert.ToString(drMenu["cApeMat"]);
+                        cUsuario.cDireccion= Convert.ToString(drMenu["cDireccion"]);
+                        cUsuario.cDocumento= Convert.ToString(drMenu["cDocumento"]);
                     }
                     else
                     {
@@ -360,7 +362,8 @@ namespace CapaDato
                         cUsuario.cPrimerNom = Convert.ToString(drMenu["cPrimerNom"]);
                         cUsuario.cApePat = Convert.ToString(drMenu["cApePat"]);
                         cUsuario.cApeMat = Convert.ToString(drMenu["cApeMat"]);
-
+                        cUsuario.cDireccion = Convert.ToString(drMenu["cDireccion"]);
+                        cUsuario.cDocumento = Convert.ToString(drMenu["cDocumento"]);
                         cUsuario.strPerfil = ms;
                     }
                 }

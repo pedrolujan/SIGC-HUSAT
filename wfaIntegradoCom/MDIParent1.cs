@@ -31,6 +31,7 @@ using CapaEntidad;
 using CapaDato;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using wfaIntegradoCom.Consultas;
+using System.Drawing.Drawing2D;
 
 namespace wfaIntegradoCom
 
@@ -3196,8 +3197,10 @@ namespace wfaIntegradoCom
         private void btnRegistrarEgresos_Click(object sender, EventArgs e)
         {
             frmRegistrarEgresos frmRE = new frmRegistrarEgresos();
-            frmRE.ShowDialog();
-        }
+            frmRE.Inicio(0);
+
+        }       
+      
     }
 
 }

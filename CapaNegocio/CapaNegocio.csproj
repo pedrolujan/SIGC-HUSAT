@@ -62,6 +62,7 @@
     <Compile Include="BLControlCaja.cs" />
     <Compile Include="BLControlPagos.cs" />
     <Compile Include="BLDocumentoVenta.cs" />
+    <Compile Include="BLEgresos.cs" />
     <Compile Include="BLEquipo_Imeis.cs" />
     <Compile Include="BLEquivalencia.cs" />
     <Compile Include="BLInstalacion.cs" />

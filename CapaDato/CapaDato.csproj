@@ -60,6 +60,7 @@
     <Compile Include="DAconsultas.cs" />
     <Compile Include="DAControlCaja.cs" />
     <Compile Include="DAControlPagos.cs" />
+    <Compile Include="DAEgresos.cs" />
     <Compile Include="DAEquipo.cs" />
     <Compile Include="DACliente.cs" />
     <Compile Include="DAConfigMesa.cs" />

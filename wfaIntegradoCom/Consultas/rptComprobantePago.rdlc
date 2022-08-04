@@ -526,7 +526,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Cliente</Value>
+                    <Value>=IIf(First(Fields!cTipoVenta.Value, "DocumentoVenta") = "EGRESOS", "Receptor", "Cliente")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1723,7 +1723,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Vehiculo</Value>
+                    <Value>=IIf(First(Fields!cTipoVenta.Value, "DocumentoVenta") = "EGRESOS", "Tipo", "Vehiculo")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1757,7 +1757,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Dirrección</Value>
+                    <Value>=IIf(First(Fields!cTipoVenta.Value, "DocumentoVenta") = "EGRESOS", "Cargo", "Direccion")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
