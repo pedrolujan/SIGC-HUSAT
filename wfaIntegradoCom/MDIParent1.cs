@@ -60,6 +60,7 @@ namespace wfaIntegradoCom
 
         static Int32 tabInicio = 0;
         List<ReporteBloque> lsReporteBloque = new List<ReporteBloque>();
+        List<ReporteBloque> lsReporteBloqueEgresos = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueGen = new List<ReporteBloque>();
         String codOperacion = "";
         String codTipoReporte = "";
@@ -975,56 +976,127 @@ namespace wfaIntegradoCom
         private void fnCambiartemas()
         {
             //Aplicando Themas a los paneles cboxSelecThema
-            ColorThemas.ElegirThema(cboxSelecThema.Text);
-            treeView1.BackColor = ColorThemas.PanelPadre;
-            panelIzquierdo.BackColor = ColorThemas.PanelBotones;
-            PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
-            PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
+            //ColorThemas.ElegirThema(cboxSelecThema.Text);
+            //treeView1.BackColor = ColorThemas.PanelPadre;
+            //panelIzquierdo.BackColor = ColorThemas.PanelBotones;
+            //PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
+            //PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
 
+            //siticoneGroupBox1.FillColor = ColorThemas.BarraAccesoDirectos;
+            ////colores inicio a los botones de panel botones
+            //btnVenta.BackColor = ColorThemas.PanelBotones;
+            //btnRecaudacion.BackColor = ColorThemas.PanelBotones;
+            //btnComercial.BackColor = ColorThemas.PanelBotones;
+            //btnLogistica.BackColor = ColorThemas.PanelBotones;
+            //btnSistemas.BackColor = ColorThemas.PanelBotones;
+            //btnRrhh.BackColor = ColorThemas.PanelBotones;
+            //btnConfiguracion.BackColor = ColorThemas.PanelBotones;
+            //btnSoporte.BackColor = ColorThemas.PanelBotones;
+            ////colores al label y icono children
+            //iconChildForm.IconColor = ColorThemas.IconoBotones;
+            //lblChilForm.ForeColor = ColorThemas.FuenteBotones;
+
+            //Img_Husat_Naranja.Visible = true;
+            //Img_Husat_Blanco.Visible = false;
+            //if (cboxSelecThema.Text == "Defecto")
+            //{
+            //    treeView1.ForeColor = Color.Black;
+            //    btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
+            //    btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
+            //    btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
+            //    btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
+
+            //    LayoutPanelAccesoRapido.ForeColor = Color.Black;
+            //    tsConfiguracion.ForeColor = ColorThemas.FuenteBotones;
+            //    tsConfiguracion.IconColor = ColorThemas.IconoBotones;
+            //    tsUsuarios.ForeColor = ColorThemas.FuenteBotones;
+            //    tsUsuarios.IconColor = ColorThemas.IconoBotones;
+            //    tsVenta.ForeColor = ColorThemas.FuenteBotones;
+            //    tsVenta.IconColor = ColorThemas.IconoBotones;
+            //    tsCaja.ForeColor = ColorThemas.FuenteBotones;
+            //    tsCaja.IconColor = ColorThemas.IconoBotones;
+            //    tsCompra.ForeColor = ColorThemas.FuenteBotones;
+            //    tsCompra.IconColor = ColorThemas.IconoBotones;
+            //    tsConsulta.ForeColor = ColorThemas.FuenteBotones;
+            //    tsConsulta.IconColor = ColorThemas.IconoBotones;
+            //    tsMiCaja.ForeColor = ColorThemas.FuenteBotones;
+            //    tsMiCaja.IconColor = ColorThemas.IconoBotones;
+            //    tsCerraSession.ForeColor = ColorThemas.FuenteBotones;
+            //    tsCerraSession.IconColor = ColorThemas.IconoBotones;
+            //    panelPerfil.BackColor = ColorThemas.BarraAccesoDirectos;
+
+            //    //Color a las letra he iconos de los botones
+            //    btnVenta.ForeColor = ColorThemas.FuenteBotones;
+            //    btnVenta.IconColor = ColorThemas.IconoBotones;
+            //    btnRecaudacion.ForeColor = ColorThemas.FuenteBotones;
+            //    btnRecaudacion.IconColor = ColorThemas.IconoBotones;
+            //    btnComercial.ForeColor = ColorThemas.FuenteBotones;
+            //    btnComercial.IconColor = ColorThemas.IconoBotones;
+            //    btnLogistica.ForeColor = ColorThemas.FuenteBotones;
+            //    btnLogistica.IconColor = ColorThemas.IconoBotones;
+            //    btnSistemas.IconColor = ColorThemas.IconoBotones;
+            //    btnSistemas.ForeColor = ColorThemas.FuenteBotones;
+            //    btnRrhh.IconColor = ColorThemas.IconoBotones;
+            //    btnRrhh.ForeColor = ColorThemas.FuenteBotones;
+            //    btnConfiguracion.IconColor = ColorThemas.IconoBotones;
+            //    btnConfiguracion.ForeColor = ColorThemas.FuenteBotones;
+            //    btnSoporte.IconColor = ColorThemas.IconoBotones;
+            //    btnSoporte.ForeColor = ColorThemas.FuenteBotones;
+            //    treeView1.BackColor = ColorThemas.PanelPadre;
+            //    panelIzquierdo.BackColor = ColorThemas.PanelBotones;
+
+            //    btnOpciones.BackColor = ColorThemas.PanelPadre;
+            //    btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
+
+
+            //}
+
+
+            ColorThemas.ElegirThema(cboxSelecThema.Text);
+            SubmenusOcultos();
+            reset();
+
+            Img_Husat_Blanco.Visible = true;
             siticoneGroupBox1.FillColor = ColorThemas.BarraAccesoDirectos;
-            //colores inicio a los botones de panel botones
-            btnVenta.BackColor = ColorThemas.PanelBotones;
-            btnRecaudacion.BackColor = ColorThemas.PanelBotones;
-            btnComercial.BackColor = ColorThemas.PanelBotones;
-            btnLogistica.BackColor = ColorThemas.PanelBotones;
-            btnSistemas.BackColor = ColorThemas.PanelBotones;
-            btnRrhh.BackColor = ColorThemas.PanelBotones;
-            btnConfiguracion.BackColor = ColorThemas.PanelBotones;
-            btnSoporte.BackColor = ColorThemas.PanelBotones;
-            //colores al label y icono children
+            gbHabilitarBusqFechas.FillColor = ColorThemas.BarraAccesoDirectos;
+            fnObtenerLabels(siticoneGroupBox1);
+            fnObtenerLabels(gbHabilitarBusqFechas);
+            fnColoresDatagridView(dgvListaPorBloque);
+            fnColoresDatagridView(siticoneDataGridView1);
+            fnColoresDatagridView(dgvEmergente);
+            fnColoresDatagridView(dgvEgresos);
+
+            lblIngresos.BackColor = ColorThemas.BarraAccesoDirectos;
+            lblEgresos.BackColor = ColorThemas.BarraAccesoDirectos;
+            lblIngresos.ForeColor = ColorThemas.FuenteBotones;
+            lblEgresos.ForeColor = ColorThemas.FuenteBotones;
+            lblBuscar.ForeColor = ColorThemas.FuenteBotones;
+
             iconChildForm.IconColor = ColorThemas.IconoBotones;
             lblChilForm.ForeColor = ColorThemas.FuenteBotones;
+            treeView1.ForeColor = Color.White;
 
-            Img_Husat_Naranja.Visible = true;
-            Img_Husat_Blanco.Visible = false;
+            btnOpciones.IconColor = Color.White;
+            btnOpciones.ForeColor = Color.White;
+            btnPersonalizacion.ForeColor = Color.White;
+            btnPersonalizacion.IconColor = Color.White;
+
             if (cboxSelecThema.Text == "Defecto")
             {
                 treeView1.ForeColor = Color.Black;
+                Img_Husat_Naranja.Visible = true;
+                Img_Husat_Blanco.Visible = false;
+
                 btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
                 btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
                 btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
                 btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
 
-                LayoutPanelAccesoRapido.ForeColor = Color.Black;
-                tsConfiguracion.ForeColor = ColorThemas.FuenteBotones;
-                tsConfiguracion.IconColor = ColorThemas.IconoBotones;
-                tsUsuarios.ForeColor = ColorThemas.FuenteBotones;
-                tsUsuarios.IconColor = ColorThemas.IconoBotones;
-                tsVenta.ForeColor = ColorThemas.FuenteBotones;
-                tsVenta.IconColor = ColorThemas.IconoBotones;
-                tsCaja.ForeColor = ColorThemas.FuenteBotones;
-                tsCaja.IconColor = ColorThemas.IconoBotones;
-                tsCompra.ForeColor = ColorThemas.FuenteBotones;
-                tsCompra.IconColor = ColorThemas.IconoBotones;
-                tsConsulta.ForeColor = ColorThemas.FuenteBotones;
-                tsConsulta.IconColor = ColorThemas.IconoBotones;
-                tsMiCaja.ForeColor = ColorThemas.FuenteBotones;
-                tsMiCaja.IconColor = ColorThemas.IconoBotones;
-                tsCerraSession.ForeColor = ColorThemas.FuenteBotones;
-                tsCerraSession.IconColor = ColorThemas.IconoBotones;
-                panelPerfil.BackColor = ColorThemas.BarraAccesoDirectos;
 
-                //Color a las letra he iconos de los botones
+                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
+                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
                 btnVenta.ForeColor = ColorThemas.FuenteBotones;
                 btnVenta.IconColor = ColorThemas.IconoBotones;
                 btnRecaudacion.ForeColor = ColorThemas.FuenteBotones;
@@ -1041,14 +1113,104 @@ namespace wfaIntegradoCom
                 btnConfiguracion.ForeColor = ColorThemas.FuenteBotones;
                 btnSoporte.IconColor = ColorThemas.IconoBotones;
                 btnSoporte.ForeColor = ColorThemas.FuenteBotones;
-                treeView1.BackColor = ColorThemas.PanelPadre;
-                panelIzquierdo.BackColor = ColorThemas.PanelBotones;
 
+                btnOpciones.IconColor = ColorThemas.IconoBotones;
+                btnOpciones.ForeColor = ColorThemas.FuenteBotones;
+                btnPersonalizacion.IconColor = ColorThemas.IconoBotones;
+                btnPersonalizacion.ForeColor = ColorThemas.FuenteBotones;
+
+                //iconChildForm.IconColor = ColorThemas.Fuente_Iconos;
+                //lblChilForm.ForeColor = ColorThemas.Fuente_Iconos;
                 btnOpciones.BackColor = ColorThemas.PanelPadre;
                 btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
 
+                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
+                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
 
             }
+
+
+
+            //Color a las letra he iconos de los botones
+            btnVenta.ForeColor = ColorThemas.FuenteBotones;
+            btnVenta.IconColor = ColorThemas.IconoBotones;
+            btnRecaudacion.ForeColor = ColorThemas.FuenteBotones;
+            btnRecaudacion.IconColor = ColorThemas.IconoBotones;
+            btnComercial.ForeColor = ColorThemas.FuenteBotones;
+            btnComercial.IconColor = ColorThemas.IconoBotones;
+            btnLogistica.ForeColor = ColorThemas.FuenteBotones;
+            btnLogistica.IconColor = ColorThemas.IconoBotones;
+            btnSistemas.IconColor = ColorThemas.IconoBotones;
+            btnSistemas.ForeColor = ColorThemas.FuenteBotones;
+            btnRrhh.IconColor = ColorThemas.IconoBotones;
+            btnRrhh.ForeColor = ColorThemas.FuenteBotones;
+            btnConfiguracion.IconColor = ColorThemas.IconoBotones;
+            btnConfiguracion.ForeColor = ColorThemas.FuenteBotones;
+            btnSoporte.IconColor = ColorThemas.IconoBotones;
+            btnSoporte.ForeColor = ColorThemas.FuenteBotones;
+            treeView1.BackColor = ColorThemas.PanelPadre;
+            panelIzquierdo.BackColor = ColorThemas.PanelBotones;
+
+            //Botones del Menu Principal
+            btnVenta.BackColor = ColorThemas.PanelBotones;
+            btnRecaudacion.BackColor = ColorThemas.PanelBotones;
+            btnComercial.BackColor = ColorThemas.PanelBotones;
+            btnLogistica.BackColor = ColorThemas.PanelBotones;
+            btnSistemas.BackColor = ColorThemas.PanelBotones;
+            btnRrhh.BackColor = ColorThemas.PanelBotones;
+            btnConfiguracion.BackColor = ColorThemas.PanelBotones;
+            btnSoporte.BackColor = ColorThemas.PanelBotones;
+            PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
+            btnOpciones.BackColor = ColorThemas.PanelPadre;
+            btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
+            panelEspaciado.BackColor = ColorThemas.PanelPadre;
+            //Botones del panel de acceso Directo
+
+            tsConfiguracion.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsConfiguracion.ForeColor = ColorThemas.FuenteBotones;
+            tsConfiguracion.IconColor = ColorThemas.IconoBotones;
+
+            tsUsuarios.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsUsuarios.ForeColor = ColorThemas.FuenteBotones;
+            tsUsuarios.IconColor = ColorThemas.IconoBotones;
+
+            tsVenta.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsVenta.ForeColor = ColorThemas.FuenteBotones;
+            tsVenta.IconColor = ColorThemas.IconoBotones;
+
+            tsCaja.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsCaja.ForeColor = ColorThemas.FuenteBotones;
+            tsCaja.IconColor = ColorThemas.IconoBotones;
+
+            tsCompra.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsCompra.ForeColor = ColorThemas.FuenteBotones;
+            tsCompra.IconColor = ColorThemas.IconoBotones;
+
+            tsConsulta.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsConsulta.ForeColor = ColorThemas.FuenteBotones;
+            tsConsulta.IconColor = ColorThemas.IconoBotones;
+
+            tsMiCaja.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsMiCaja.ForeColor = ColorThemas.FuenteBotones;
+            tsMiCaja.IconColor = ColorThemas.IconoBotones;
+
+            tsCerraSession.BackColor = ColorThemas.BarraAccesoDirectos;
+
+            panelPerfil.BackColor = ColorThemas.BarraAccesoDirectos;
+            tsCerraSession.ForeColor = ColorThemas.FuenteBotones;
+            tsCerraSession.IconColor = ColorThemas.IconoBotones;
+
+            if (cboxSelecThema.Text == "Pink")
+            {
+                treeView1.ForeColor = Color.Black;
+                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
+                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
+                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
+            }
+
         }
         private void fnValidarusuarioEnSession()
         {
@@ -1102,6 +1264,7 @@ namespace wfaIntegradoCom
 
             try
             {
+                cboxSelecThema.SelectedIndex = 2;
                 fnCambiartemas();
                 fnOcultarObjetos();
                 SystemEvents.PowerModeChanged += OnPowerModeChange;
@@ -2094,158 +2257,7 @@ namespace wfaIntegradoCom
         }
         private void siticoneComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            ColorThemas.ElegirThema(cboxSelecThema.Text);
-            SubmenusOcultos();
-            reset();
-           
-            Img_Husat_Blanco.Visible = true;
-            siticoneGroupBox1.FillColor = ColorThemas.BarraAccesoDirectos;
-            gbHabilitarBusqFechas.FillColor = ColorThemas.BarraAccesoDirectos;
-            fnObtenerLabels(siticoneGroupBox1);
-            fnObtenerLabels(gbHabilitarBusqFechas);
-            fnColoresDatagridView(dgvListaPorBloque);
-            fnColoresDatagridView(siticoneDataGridView1);
-            fnColoresDatagridView(dgvEmergente);
-
-            iconChildForm.IconColor = ColorThemas.IconoBotones;
-            lblChilForm.ForeColor = ColorThemas.FuenteBotones;
-            treeView1.ForeColor = Color.White;
-
-            btnOpciones.IconColor = Color.White;
-            btnOpciones.ForeColor = Color.White;
-            btnPersonalizacion.ForeColor = Color.White;
-            btnPersonalizacion.IconColor = Color.White;
-
-            if (cboxSelecThema.Text == "Defecto")
-            {
-                treeView1.ForeColor = Color.Black;
-                Img_Husat_Naranja.Visible = true;
-                Img_Husat_Blanco.Visible = false;
-
-                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
-                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
-                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
-                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
-
-
-                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
-                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
-                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
-                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
-                btnVenta.ForeColor = ColorThemas.FuenteBotones;
-                btnVenta.IconColor = ColorThemas.IconoBotones;
-                btnRecaudacion.ForeColor = ColorThemas.FuenteBotones;
-                btnRecaudacion.IconColor = ColorThemas.IconoBotones;
-                btnComercial.ForeColor = ColorThemas.FuenteBotones;
-                btnComercial.IconColor = ColorThemas.IconoBotones;
-                btnLogistica.ForeColor = ColorThemas.FuenteBotones;
-                btnLogistica.IconColor = ColorThemas.IconoBotones;
-                btnSistemas.IconColor = ColorThemas.IconoBotones;
-                btnSistemas.ForeColor = ColorThemas.FuenteBotones;
-                btnRrhh.IconColor = ColorThemas.IconoBotones;
-                btnRrhh.ForeColor = ColorThemas.FuenteBotones;
-                btnConfiguracion.IconColor = ColorThemas.IconoBotones;
-                btnConfiguracion.ForeColor = ColorThemas.FuenteBotones;
-                btnSoporte.IconColor = ColorThemas.IconoBotones;
-                btnSoporte.ForeColor = ColorThemas.FuenteBotones;
-                      
-                btnOpciones.IconColor = ColorThemas.IconoBotones;
-                btnOpciones.ForeColor = ColorThemas.FuenteBotones;
-                btnPersonalizacion.IconColor = ColorThemas.IconoBotones;
-                btnPersonalizacion.ForeColor = ColorThemas.FuenteBotones;
-
-                //iconChildForm.IconColor = ColorThemas.Fuente_Iconos;
-                //lblChilForm.ForeColor = ColorThemas.Fuente_Iconos;
-                btnOpciones.BackColor = ColorThemas.PanelPadre;
-                btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
-              
-                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
-                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
-                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
-                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
-
-            }
-
-          
-
-            //Color a las letra he iconos de los botones
-            btnVenta.ForeColor = ColorThemas.FuenteBotones;
-            btnVenta.IconColor = ColorThemas.IconoBotones;
-            btnRecaudacion.ForeColor = ColorThemas.FuenteBotones;
-            btnRecaudacion.IconColor = ColorThemas.IconoBotones;
-            btnComercial.ForeColor = ColorThemas.FuenteBotones;
-            btnComercial.IconColor = ColorThemas.IconoBotones;
-            btnLogistica.ForeColor = ColorThemas.FuenteBotones;
-            btnLogistica.IconColor = ColorThemas.IconoBotones;
-            btnSistemas.IconColor = ColorThemas.IconoBotones;
-            btnSistemas.ForeColor = ColorThemas.FuenteBotones;
-            btnRrhh.IconColor = ColorThemas.IconoBotones;
-            btnRrhh.ForeColor = ColorThemas.FuenteBotones;
-            btnConfiguracion.IconColor = ColorThemas.IconoBotones;
-            btnConfiguracion.ForeColor = ColorThemas.FuenteBotones;
-            btnSoporte.IconColor = ColorThemas.IconoBotones;
-            btnSoporte.ForeColor = ColorThemas.FuenteBotones;
-            treeView1.BackColor = ColorThemas.PanelPadre;
-            panelIzquierdo.BackColor = ColorThemas.PanelBotones;
-
-            //Botones del Menu Principal
-            btnVenta.BackColor = ColorThemas.PanelBotones;
-            btnRecaudacion.BackColor = ColorThemas.PanelBotones;
-            btnComercial.BackColor = ColorThemas.PanelBotones;
-            btnLogistica.BackColor = ColorThemas.PanelBotones;
-            btnSistemas.BackColor = ColorThemas.PanelBotones;
-            btnRrhh.BackColor = ColorThemas.PanelBotones;
-            btnConfiguracion.BackColor = ColorThemas.PanelBotones;
-            btnSoporte.BackColor = ColorThemas.PanelBotones;
-            PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
-            btnOpciones.BackColor = ColorThemas.PanelPadre;
-            btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
-            panelEspaciado.BackColor = ColorThemas.PanelPadre;
-            //Botones del panel de acceso Directo
-
-            tsConfiguracion.BackColor = ColorThemas.BarraAccesoDirectos;
-            tsConfiguracion.ForeColor = ColorThemas.FuenteBotones;
-            tsConfiguracion.IconColor = ColorThemas.IconoBotones;
-
-            tsUsuarios.BackColor = ColorThemas.BarraAccesoDirectos;
-            tsUsuarios.ForeColor = ColorThemas.FuenteBotones;
-            tsUsuarios.IconColor = ColorThemas.IconoBotones;
-
-            tsVenta.BackColor = ColorThemas.BarraAccesoDirectos;
-            tsVenta.ForeColor = ColorThemas.FuenteBotones;
-            tsVenta.IconColor = ColorThemas.IconoBotones;
-
-            tsCaja.BackColor = ColorThemas.BarraAccesoDirectos;
-            tsCaja.ForeColor = ColorThemas.FuenteBotones;
-            tsCaja.IconColor = ColorThemas.IconoBotones;
-
-            tsCompra.BackColor = ColorThemas.BarraAccesoDirectos;
-            tsCompra.ForeColor = ColorThemas.FuenteBotones;
-            tsCompra.IconColor = ColorThemas.IconoBotones;
-
-            tsConsulta.BackColor = ColorThemas.BarraAccesoDirectos;
-            tsConsulta.ForeColor = ColorThemas.FuenteBotones;
-            tsConsulta.IconColor = ColorThemas.IconoBotones;
-
-            tsMiCaja.BackColor = ColorThemas.BarraAccesoDirectos;
-            tsMiCaja.ForeColor = ColorThemas.FuenteBotones;
-            tsMiCaja.IconColor = ColorThemas.IconoBotones;
-
-            tsCerraSession.BackColor = ColorThemas.BarraAccesoDirectos;
-
-            panelPerfil.BackColor = ColorThemas.BarraAccesoDirectos;
-            tsCerraSession.ForeColor = ColorThemas.FuenteBotones;
-            tsCerraSession.IconColor = ColorThemas.IconoBotones;
-
-            if (cboxSelecThema.Text == "Pink")
-            {
-                treeView1.ForeColor = Color.Black;
-                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
-                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
-                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
-                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
-            }
+            fnCambiartemas();
 
         }
 
@@ -2519,12 +2531,10 @@ namespace wfaIntegradoCom
             Int32 filas = 10;
 
             var result = bl.blBuscarDashBoard(clsBusq);
-            //if (flowLayoutPanel1.Controls.Count<=0)
-            //{
-                fnGenerarPaneles(result.Item1);
-
-            //}
+            fnGenerarPaneles(result.Item1);
             lsReporteBloque = result.Item2;
+            lsReporteBloqueEgresos = result.Item3;
+
             Int32 totalRows = lsReporteBloque.Count;
 
             siticoneDataGridView1.Visible = false;
@@ -2533,130 +2543,131 @@ namespace wfaIntegradoCom
 
             Int32 y = 0;
 
-            if (totalRows > 0)
+            if (tipoCon == -1)
             {
-                if (tipoCon == -1)
+                lsReporteBloqueGen = lsReporteBloque;
+                fnGenerarTabla(dgv, lsReporteBloque.Count, lsReporteBloque);
+                fnGenerarTabla(dgvEgresos, lsReporteBloqueEgresos.Count, lsReporteBloqueEgresos);
+                //lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0);
+
+            }
+            else if (tipoCon == -2)
+            {
+                ReporteBloque clsReporte = lsReporteBloqueGen.Find(i => i.Codigoreporte == codOperacion);
+                dgv.Columns.Clear();
+                dgv.Rows.Clear();
+                dgv.Columns.Add("id", "id");
+                dgv.Columns.Add("detalle", "Detalle de " + clsReporte.Detallereporte);
+                dgv.Columns.Add("cantidad", "Cantidad");
+                dgv.Columns.Add("Importe", "Importe");
+                dgv.Columns["importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                lblHeaderDetalle.Text = "Detalle de " + clsReporte.Detallereporte;
+                lblHeaderDetalle.Visible = true;
+                for (Int32 i = 0; i < totalRows; i++)
                 {
-                    lsReporteBloqueGen = lsReporteBloque;
-                    dgv.Columns.Clear();
-                    dgv.Rows.Clear();
-                    dgv.Columns.Add("id", "id");
-                    dgv.Columns.Add("num", "N°");
-                    dgv.Columns.Add("detalle", "Detalle");
-                    dgv.Columns.Add("cantidad", "Cantidad");
-                    dgv.Columns.Add("Importe", "Importe");
-
-                    if (numPagina == 0)
-                    {
-                        y = 0;
-                    }
-                    else
-                    {
-                        tabInicio = (numPagina - 1) * filas;
-                        y = tabInicio;
-                    }
-
-                    for (Int32 i = 0; i < totalRows; i++)
-                    {
-                        lsReporteBloque[i].numero = y + 1;
-                        ReporteBloque clsRep = lsReporteBloque[i];
-                        dgv.Rows.Add(
-                            clsRep.Codigoreporte,
-                            y + 1,
-                            clsRep.Detallereporte,
-                            clsRep.Cantidad,
-                            FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
-                            );
-                        y += 1;
-                        dgv.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                        dgv.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    }
-                    dgv.Rows.Add("", "", "", "", "");
-                    dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
-                    dgv.Rows[y + 1].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    dgv.Rows[y + 1].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-                    dgv.Columns[0].Visible = false;
-                    dgv.Columns[1].Width = 10;
-                    dgv.Columns[2].Width = 100;
-                    dgv.Columns[3].Width = 20;
-                    dgv.Columns[4].Width = 100;
-                    dgv.Height = ((totalRows + 3) * (dgv.ThemeStyle.RowsStyle.Height + 2));
-                    dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-                    //lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0);
-
+                    ReporteBloque clsRep = lsReporteBloque[i];
+                    dgv.Rows.Add(
+                        clsRep.Codigoreporte,
+                        clsRep.Detallereporte,
+                        clsRep.Cantidad,
+                        FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                        );
+                    y += 1;
+                    dgv.Rows[i].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    dgv.Rows[i].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 }
-                else if (tipoCon == -2)
-                {
-                    ReporteBloque clsReporte = lsReporteBloqueGen.Find(i => i.Codigoreporte == codOperacion);
-                    dgv.Columns.Clear();
-                    dgv.Rows.Clear();
-                    dgv.Columns.Add("id", "id");
-                    dgv.Columns.Add("detalle", "Detalle de " + clsReporte.Detallereporte);
-                    dgv.Columns.Add("cantidad", "Cantidad");
-                    dgv.Columns.Add("Importe", "Importe");
-                    dgv.Columns["importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    lblHeaderDetalle.Text = "Detalle de " + clsReporte.Detallereporte;
-                    lblHeaderDetalle.Visible = true;
-                    for (Int32 i = 0; i < totalRows; i++)
-                    {
-                        ReporteBloque clsRep = lsReporteBloque[i];
-                        dgv.Rows.Add(
-                            clsRep.Codigoreporte,
-                            clsRep.Detallereporte,
-                            clsRep.Cantidad,
-                            FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
-                            );
-                        y += 1;
-                        dgv.Rows[i].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                        dgv.Rows[i].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    }
-                    dgv.Visible = true;
+                dgv.Visible = true;
 
-                    dgv.Rows.Add("", "", "", "");
-                    dgv.Rows.Add("TOTAL", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
-                    dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    dgv.Rows[y + 1].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    dgv.Columns[0].Visible = false;
-                    dgv.Columns[1].Width = 100;
-                    dgv.Columns[2].Width = 20;
-                    dgv.Columns[3].Width = 100;
-                    dgv.ColumnHeadersVisible = false;
+                dgv.Rows.Add("", "", "", "");
+                dgv.Rows.Add("TOTAL", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Rows[y + 1].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Columns[0].Visible = false;
+                dgv.Columns[1].Width = 100;
+                dgv.Columns[2].Width = 20;
+                dgv.Columns[3].Width = 100;
+                dgv.ColumnHeadersVisible = false;
 
 
-                    dgv.Height = ((totalRows + 2) * (dgv.ThemeStyle.RowsStyle.Height + 2));
-                    dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-                }
+                dgv.Height = ((totalRows + 2) * (dgv.ThemeStyle.RowsStyle.Height + 2));
+                dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
 
                 dgv.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
                 dgv.Rows[y + 1].DefaultCellStyle.BackColor = Color.Red;
                 dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Arial", 15F, GraphicsUnit.Pixel);
-                //this.dgvListaPorBloque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
 
-                fnLocationElementos();
 
-                //if (numPagina == 0)
-                //{
-                //    //cboPaginacion.Visible = true;
-                //    Int32 totalRegistros = Convert.ToInt32(dtRes.Rows[0][0]);
-                //    FunValidaciones.fnCalcularPaginacion(totalRegistros, filas,  totalRows, cboPagina,btnTotalPag,btnNumFilas,btnTotalReg);
-                //}
+            //this.dgvListaPorBloque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
+            fnLocationElementos();
+
+        }
+
+        private void fnGenerarTabla(SiticoneDataGridView dgv,Int32 totalRows,List<ReporteBloque>lstRep)
+        {
+            dgv.Columns.Clear();
+            dgv.Rows.Clear();
+            if (totalRows > 0)
+            {
+                dgv.Columns.Add("id", "id");
+                dgv.Columns.Add("num", "N°");
+                dgv.Columns.Add("detalle", "Detalle");
+                dgv.Columns.Add("cantidad", "Cantidad");
+                dgv.Columns.Add("Importe", "Importe");
+
+                Int32 y = 0;
+
+                for (Int32 i = 0; i < totalRows; i++)
+                {
+                    lstRep[i].numero = y + 1;
+                    ReporteBloque clsRep = lstRep[i];
+                    dgv.Rows.Add(
+                        clsRep.Codigoreporte,
+                        y + 1,
+                        clsRep.Detallereporte,
+                        clsRep.Cantidad,
+                        FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                        );
+                    y += 1;
+                    dgv.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    dgv.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                }
+                dgv.Rows.Add("", "", "", "", "");
+                dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lstRep.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                dgv.Rows[y + 1].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.Rows[y + 1].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                dgv.Columns[0].Visible = false;
+                dgv.Columns[1].Width = 10;
+                dgv.Columns[2].Width = 100;
+                dgv.Columns[3].Width = 20;
+                dgv.Columns[4].Width = 100;
+                dgv.Height = ((totalRows + 3) * (dgv.ThemeStyle.RowsStyle.Height + 2));
+                dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+
+                dgv.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
+                dgv.Rows[y + 1].DefaultCellStyle.BackColor = Color.FromArgb(192, 64, 0);
+                dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Arial", 15F, GraphicsUnit.Pixel);
 
             }
             else
             {
                 dgv.Columns.Clear();
-                dgvListaPorBloque.Columns.Add("id", "NO SE ENCONTRARON RESULTADOS PARA LA BUSQUEDA");
-                //lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(000), 0);
+                dgv.Columns.Add("id", "NO SE ENCONTRARON RESULTADOS PARA LA BUSQUEDA");
             }
-
         }
-
         private void fnLocationElementos()
         {
             Int32 espacios = 15;
             Int32 espaciosPequenos = 5;
+            lblIngresos.Padding = new Padding(15, 0, 0, 0);
+            lblIngresos.Size = new Size(siticonePanel3.Width - 20, 40);
+            lblEgresos.Padding = lblIngresos.Padding;
+            lblEgresos.Size = lblIngresos.Size;
+            lblEgresos.TextAlignment =  ContentAlignment.MiddleLeft;
+            lblIngresos.TextAlignment =  ContentAlignment.MiddleLeft;
+
             dgvListaPorBloque.Location = new Point(lblIngresos.Location.X, (lblIngresos.Location.Y+lblIngresos.Height )+ espacios);
             lblHeaderDetalle.Location = new Point(lblHeaderDetalle.Location.X, (lblIngresos.Location.Y+lblIngresos.Height) + espacios);
             siticoneDataGridView1.Location = new Point(siticoneDataGridView1.Location.X, (lblHeaderDetalle.Location.Y+lblHeaderDetalle.Height) + 5);
@@ -2664,6 +2675,8 @@ namespace wfaIntegradoCom
             dgvEgresos.Location = new Point(lblIngresos.Location.X, (lblEgresos.Location.Y+ lblEgresos.Height)+ espacios);
             btnRegistrarEgresos.Location = new Point(lblIngresos.Location.X, (dgvEgresos.Location.Y+ dgvEgresos.Height)+espacios);
             siticonePanel3.Height = (dgvListaPorBloque.Height + dgvEmergente.Height+ lblEgresos.Height+ lblIngresos.Height+ dgvEgresos.Height+ btnRegistrarEgresos.Height);
+
+            
         }
         private IconPictureBox fngenerarIconos(ReporteBloque rpt)
         {
@@ -3191,7 +3204,7 @@ namespace wfaIntegradoCom
         private void tsMiCaja_Click(object sender, EventArgs e)
         {
             frmMovimientoCaja frmMC = new frmMovimientoCaja();
-            frmMC.Inicio(lsReporteBloque, 0);
+            frmMC.Inicio(lsReporteBloque,lsReporteBloqueEgresos, 0);
         }
 
         private void btnRegistrarEgresos_Click(object sender, EventArgs e)

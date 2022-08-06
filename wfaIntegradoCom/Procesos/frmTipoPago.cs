@@ -93,24 +93,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void gunaControlBox1_Click(object sender, EventArgs e)
         {
-            if (lnTipoLLamada == 0)
-            {
-                Mantenedores.frmRegistrarVenta fmr = new Mantenedores.frmRegistrarVenta();
-                fmr.fnCambiarEstadoVenta(false);
-            }
-
-            if (lnTipoLLamada == -1)
-            {
-                frmControlPagoVenta frm1 = new frmControlPagoVenta();
-                frm1.fnCambiarEstadoVenta(false);
-            }
-            else if (lnTipoLLamada == -2)
-            {
-                frmOtrasVentas fr = new frmOtrasVentas();
-                fr.fnRecuperarEstadoGenVenta(false);
-                fr.fnCondicionProcesos(0);
-
-            }
+            fnVolver();
         }
 
         private void txtVuelto_TextChanged(object sender, EventArgs e)
@@ -240,7 +223,10 @@ namespace wfaIntegradoCom.Procesos
                 }
                 else if (lnTipoLLamada == -3)
                 {
-
+                    frmRegistrarEgresos frm = new frmRegistrarEgresos();
+                    frm.fnRecuperarEstadoGenVenta(true);
+                    frm.fnRecuperarTipoPago(lstEntidades);
+                    this.Close();
                 }
                 else
                 {
@@ -412,14 +398,14 @@ namespace wfaIntegradoCom.Procesos
             //}
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void fnVolver()
         {
-            if (lnTipoLLamada==0)
+            if (lnTipoLLamada == 0)
             {
                 Mantenedores.frmRegistrarVenta fmr = new Mantenedores.frmRegistrarVenta();
                 fmr.fnCambiarEstadoVenta(false);
             }
-            
+
             if (lnTipoLLamada == -1)
             {
                 frmControlPagoVenta frm1 = new frmControlPagoVenta();
@@ -434,11 +420,15 @@ namespace wfaIntegradoCom.Procesos
             }
             else if (lnTipoLLamada == -3)
             {
-                frmOtrasVentas fr = new frmOtrasVentas();
-                fr.fnRecuperarEstadoGenVenta(false);
-                fr.fnCondicionProcesos(0);
+                frmRegistrarEgresos frm = new frmRegistrarEgresos();
+                frm.fnRecuperarEstadoGenVenta(false);
 
             }
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            fnVolver();
+
             this.Dispose();
         }
 

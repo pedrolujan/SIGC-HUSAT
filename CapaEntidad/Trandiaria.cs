@@ -23,7 +23,8 @@ namespace CapaEntidad
 
         public Int32 idEgreso { get; set; }
         public String cargo { get; set; }
-        public String Usuario { get; set; }
+        public Int32 UsuarioReceptor { get; set; }
+        public Int32 lnTipoCon { get; set; }
 
         public Double importe { get; set; }
         public String  DetalleEgreso { get; set; }

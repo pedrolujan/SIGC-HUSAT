@@ -12,12 +12,12 @@ namespace CapaNegocio
     {
         public BLEgresos() { }
         DAEgresos daEgre;
-        public Boolean blGuardarEgresos(List<Pagos> lstPagos)
+        public Boolean blGuardarEgresos(List<Pagos> lstPagos, List<xmlDocumentoVentaGeneral> xmlDVG, Egresos clsEgresos)
         {
             daEgre = new DAEgresos();
             try
             {
-                return daEgre.daGuardarEgresos(lstPagos);
+                return daEgre.daGuardarEgresos(lstPagos,xmlDVG, clsEgresos);
             }
             catch (Exception)
             {

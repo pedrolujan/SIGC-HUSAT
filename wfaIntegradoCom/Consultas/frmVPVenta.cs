@@ -121,7 +121,12 @@ namespace wfaIntegradoCom.Consultas
                 frmOtrasVentas fr = new frmOtrasVentas();
                 fr.fnRecuperarEstadoGenVenta(false);
                 fr.fnCondicionProcesos(0);
+            }else if (lnTipoCon == -3)
+            {
+                frmRegistrarEgresos frm = new frmRegistrarEgresos();
+                frm.fnRecuperarEstadoGenVenta(false);
             }
+
 
             this.Close();
         }
@@ -173,6 +178,11 @@ namespace wfaIntegradoCom.Consultas
 
 
 
+            }else if (lnTipoCon == -3)
+            {
+                Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
+                fmr.Inicio(-3, sumaPrimerPago, lstDVenta[0].cSimbolo);
             }
 
             this.Close();

@@ -15,48 +15,43 @@ namespace CapaDato
     {
         public DAEgresos() { }
         clsUtil objUtil;
-        public Boolean daGuardarEgresos(List<Pagos> lstTTrand)
+        public Boolean daGuardarEgresos(List<Pagos> lstTTrand, List<xmlDocumentoVentaGeneral> xmlDvg, Egresos clsEgresos)
         {
-            SqlParameter[] pa = new SqlParameter[11];
+            SqlParameter[] pa = new SqlParameter[9];
             List<ControlCaja> lstControl = new List<ControlCaja>();
             DataTable dt = new DataTable();
-            List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
             clsConexion objCnx = null;
             objUtil = new clsUtil();
 
             String xmlTrandiaria = clsUtil.Serialize(lstTTrand);
+            String xmlDocumetoVenta = clsUtil.Serialize(xmlDvg);
+            String xmlDetalelVenta = clsUtil.Serialize(xmlDvg[0].xmlDetalleVentas);
             try
             {
-                //pa[0] = new SqlParameter("@dtFechaIni", SqlDbType.Date) { Value = clsBusq.dtFechaIni };
-                //pa[1] = new SqlParameter("@dtFechaFin", SqlDbType.Date) { Value = clsBusq.dtFechaFin };
-                //pa[2] = new SqlParameter("@codTipoReporte", SqlDbType.VarChar) { Value = clsBusq.cod1 };
-                //pa[3] = new SqlParameter("@codTipoOperacion", SqlDbType.VarChar) { Value = clsBusq.cod2 };
-                //pa[4] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = clsBusq.cod3 };
-                //pa[5] = new SqlParameter("@codSubConsulta", SqlDbType.VarChar) { Value = clsBusq.cod4 };
-                //pa[6] = new SqlParameter("@cBuscar", SqlDbType.VarChar) { Value = clsBusq.cBuscar };
-                //pa[7] = new SqlParameter("@numPagina", SqlDbType.VarChar) { Value = clsBusq.numPagina };
-                //pa[8] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = clsBusq.tipoCon };
-                //pa[9] = new SqlParameter("@chkHabilitarFecha", SqlDbType.TinyInt) { Value = clsBusq.chkActivarFechas };
-                //pa[10] = new SqlParameter("@chkDiaEspecifico", SqlDbType.TinyInt) { Value = clsBusq.chkActivarDia };
+                pa[0] = new SqlParameter("@idEgreso", SqlDbType.Int) { Value = clsEgresos.idEgreso };
+                pa[1] = new SqlParameter("@dtFechaRegistro", SqlDbType.Date) { Value = lstTTrand[0].dFechaRegistro };
+                pa[2] = new SqlParameter("@idUsuarioReceptor", SqlDbType.Int) { Value = clsEgresos.UsuarioReceptor };
+                pa[3] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = lstTTrand[0] .idUsario};
+                pa[4] = new SqlParameter("@idMoneda", SqlDbType.Int) { Value = lstTTrand[0] .idMoneda};
+                pa[5] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmlDocumetoVenta };
+                pa[6] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml) { Value = xmlTrandiaria };
+                pa[7] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml) { Value = xmlDetalelVenta };
+                pa[8] = new SqlParameter("@lnTipoCon", SqlDbType.Int) { Value = clsEgresos.lnTipoCon };
+               
 
                 objCnx = new clsConexion("");
 
-                dt = objCnx.EjecutarProcedimientoDT("uspBuscarVentasCaja", pa);
-                foreach (DataRow dr in dt.Rows)
+                Int32 rows = objCnx.EjecutarProcedimiento("uspGuardarEgresos", pa);
+                //Int32 rows = 0;
+                if (rows>0)
                 {
-                    lsRepBloque.Add(new ReporteBloque
-                    {
-                        Codigoreporte = dr["id"].ToString(),
-                        Detallereporte = dr["descripcion"].ToString(),
-                        Cantidad = Convert.ToInt32(dr["cantidad"]),
-                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
-                        SimboloMoneda = dr["cSimbolo"].ToString(),
-                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
-                    });
-                }
+                    return true;
 
-                return true;
+                }
+                else
+                {
+                    return true;
+                }
 
             }
             catch (Exception ex)

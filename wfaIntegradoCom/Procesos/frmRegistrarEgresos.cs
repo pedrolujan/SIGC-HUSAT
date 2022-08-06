@@ -26,6 +26,8 @@ namespace wfaIntegradoCom.Procesos
         Boolean estArea, estUsuario, estMoneda, estImporte, estDescripcion;
         static Int32 lnTipoLlamada = 0;
         static List<Pagos> lstPagosTrandiaria = new List<Pagos>();
+        static List<DocumentoVenta> lstDocumentoVenta = new List<DocumentoVenta>();
+        static List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
         static Boolean estadoGuardarEgreso = false;
         public void Inicio(Int32 tipoLlam)
         {
@@ -51,7 +53,7 @@ namespace wfaIntegradoCom.Procesos
                 throw;
             }
         }
-        public static void fnRecuperarTipoPago(List<Pagos> lstEntidades)
+        public  void fnRecuperarTipoPago(List<Pagos> lstEntidades)
         {
             lstPagosTrandiaria = lstEntidades;
 
@@ -180,7 +182,7 @@ namespace wfaIntegradoCom.Procesos
                 nIGV = dvc.IGV,
                 nMontoTotal = dvc.Total,
                 cUsuario = clsUsuario.cPrimerNom + " " + clsUsuario.cApePat + " " + clsUsuario.cApeMat,
-                cVehiculos = "Egresos",
+                cVehiculos = "Egreso",
                 cDescripcionTipoPago = (lstPagosTrandiaria.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrandiaria[0].cDescripTipoPago) : "",
                 cDescripEstadoPP = (lstPagosTrandiaria.Count > 0) ? lstPagosTrandiaria[0].cEstadoPP : "",
                 cTipoVenta = "EGRESOS"
@@ -196,12 +198,12 @@ namespace wfaIntegradoCom.Procesos
         private void fnGenerarDocumento()
         {
             Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
-            List<DetalleVenta> lstDetalleVenta = fnDetalleVenta();
-            frm.Inicio(fnDocumentoVentaHeader(fnCalcularCabeceraDetalle(lstDetalleVenta)),/*lstOtrasVentas*/ lstDetalleVenta, -3);
+            lstDetalleVenta = fnDetalleVenta();
+            lstDocumentoVenta = fnDocumentoVentaHeader(fnCalcularCabeceraDetalle(lstDetalleVenta));
+            frm.Inicio(lstDocumentoVenta,lstDetalleVenta, -3);
         }
         private void btnGuardarEgreso_Click(object sender, EventArgs e)
         {
-            frmTipoPago frmtp = new frmTipoPago();
             estArea = FunValidaciones.fnValidarCombobox(cboArea, lblArea, pbArea).Item1;
             cboUsuario_SelectedIndexChanged(sender, e);
             estMoneda = FunValidaciones.fnValidarCombobox(cboMoneda, lblMoneda, pbMoneda).Item1;
@@ -212,8 +214,7 @@ namespace wfaIntegradoCom.Procesos
                 fnGenerarDocumento();
                 if (estadoGuardarEgreso)
                 {
-
-                frmtp.Inicio(-3, Convert.ToDouble(txtImporte.Text.ToString()), clsMoneda.cSimbolo);
+                    fnGuardarEgreso();
                 }
             }
             else
@@ -224,6 +225,32 @@ namespace wfaIntegradoCom.Procesos
 
         private void fnGuardarEgreso()
         {
+            BLEgresos blE = new BLEgresos();
+            Egresos clsEgresos = new Egresos();
+            clsEgresos.idEgreso = 0;
+            clsEgresos.cargo = cboArea.SelectedValue.ToString();
+            clsEgresos.UsuarioReceptor = Convert.ToInt32(cboUsuario.SelectedValue);
+            clsEgresos.importe = Convert.ToDouble(txtImporte.Text.ToString());
+            clsEgresos.DetalleEgreso = txtDescripcion.Text.ToString();
+            clsEgresos.lnTipoCon = 0;
+            lstPagosTrandiaria[0].idMoneda = clsMoneda.idMoneda;
+            List<xmlDocumentoVentaGeneral> xmlDVG = new List<xmlDocumentoVentaGeneral>();
+            xmlDVG.Add(new xmlDocumentoVentaGeneral
+            {
+                xmlDocumentoVenta = lstDocumentoVenta,
+                xmlDetalleVentas = lstDetalleVenta
+            });
+
+            Boolean estado= blE.blGuardarEgresos(lstPagosTrandiaria,xmlDVG, clsEgresos);
+            if (estado)
+            {
+                MessageBox.Show("datos Guardados Correctamente");
+            }
+            else
+            {
+
+                MessageBox.Show("Error al guardar egresos");
+            }
 
         }
         private void cboMoneda_SelectedIndexChanged(object sender, EventArgs e)

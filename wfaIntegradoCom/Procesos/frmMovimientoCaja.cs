@@ -11,6 +11,8 @@ using CapaNegocio;
 using CapaEntidad;
 using CapaUtil;
 using wfaIntegradoCom.Funciones;
+using Siticone.UI.WinForms;
+using wfaIntegradoCom.Consultas;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -30,11 +32,14 @@ namespace wfaIntegradoCom.Procesos
             InitializeComponent();
             intTipoLlamada = pintTipoLllamada;
         }
-        static List<ReporteBloque> lstReporteBloque = new List<ReporteBloque>();
+        static List<ReporteBloque> lstReporteIngresos = new List<ReporteBloque>();
+        static List<ReporteBloque> lstReporteEgresos = new List<ReporteBloque>();
+        CuadreCaja clsCuadreCaja = new CuadreCaja();
         static Int32 lnTipoCon = 0;
-        public void Inicio(List<ReporteBloque> rpb,Int32 tipoCon)
+        public void Inicio(List<ReporteBloque> lstIngresos, List<ReporteBloque> lstEgresos, Int32 tipoCon)
         {
-            lstReporteBloque = rpb;
+            lstReporteIngresos = lstIngresos;
+            lstReporteEgresos = lstEgresos;
             intTipoLlamada = tipoCon;
             this.ShowDialog();
         }
@@ -86,7 +91,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 lstCaja = new List<Cuadre>();
                 lstCaja = objOrden.blListarCajaDia(pcFecha, pidUsuario, Variables.idSucursal, out pnSaldo);
-                dataGridView1.DataSource = lstCaja;
+                dgvIngresos.DataSource = lstCaja;
                 return true;
             }
             catch (Exception ex)
@@ -112,21 +117,12 @@ namespace wfaIntegradoCom.Procesos
 
             if (intTipoLlamada==0)
             {
-                Int32 TotCantidad = 0;
-                Double TotImporte = 0;
-                Int32 y = 0;
-                foreach (ReporteBloque rp in lstReporteBloque)
-                {
-                    
-                    TotImporte += rp.ImporteRow;
-                    TotCantidad += rp.Cantidad;
-                    dataGridView1.Rows.Add(rp.Codigoreporte, rp.numero,FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecio("S/.",rp.ImporteRow,0));
-                    y ++;
-                }
-                dataGridView1.Rows.Add("", "", "", "", "");
-                dataGridView1.Rows.Add("TOTAL", "", "IMPORTE TOTAL INGRESOS", TotCantidad, FunGeneral.fnFormatearPrecio("S/.", TotImporte,0));
-                dataGridView1.Rows[y + 1].DefaultCellStyle.BackColor = Color.Red;
-                dataGridView1.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
+                fnLlenarTablas(lstReporteIngresos, dgvIngresos, txtTotalIngresos);
+                fnLlenarTablas(lstReporteEgresos, dgvEgresos, txtTotalEgresos);
+                clsCuadreCaja.importeTotalIngresos = lstReporteIngresos.Sum(i => i.ImporteRow);
+                clsCuadreCaja.importeTotalEgresos = lstReporteEgresos.Sum(i => i.ImporteRow);
+                clsCuadreCaja.importeSaldo = clsCuadreCaja.importeTotalIngresos + (clsCuadreCaja.importeTotalEgresos * -1);
+                txtTotalCerrarCaja.Text= FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0); 
             }
 
             //if (intTipoLlamada == 0)
@@ -156,13 +152,33 @@ namespace wfaIntegradoCom.Procesos
             textBox1.Text = nSaldo.ToString();
         }
 
+        private void fnLlenarTablas(List<ReporteBloque> lst,DataGridView dgv,SiticoneTextBox txt)
+        {
+            Int32 TotCantidad = 0;
+            Double TotImporte = 0;
+            Int32 y = 0;
+            foreach (ReporteBloque rp in lst)
+            {
+
+                TotImporte += rp.ImporteRow;
+                TotCantidad += rp.Cantidad;
+                dgv.Rows.Add(rp.Codigoreporte, rp.numero, FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecio("S/.", rp.ImporteRow, 0));
+                y++;
+            }
+            txt.Text = FunGeneral.fnFormatearPrecio("S/.", TotImporte, 0);
+           
+            //dgv.Rows.Add("", "", "", "", "");
+            //dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL INGRESOS", TotCantidad, FunGeneral.fnFormatearPrecio("S/.", TotImporte, 0));
+            //dgv.Rows[y + 1].DefaultCellStyle.BackColor = Color.Red;
+            //dgv.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
+        }
         Int32 lidTrandiaria = 0;
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             lidTrandiaria = 0;
             //Boolean bFilaSele = false;
-            if (dataGridView1.RowCount > 0)
+            if (dgvIngresos.RowCount > 0)
             {
                 //lidTrandiaria = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             }
@@ -197,7 +213,7 @@ namespace wfaIntegradoCom.Procesos
         {
             bool lbResul = false;
             decimal  lnSaldo = 0;
-                    if (dataGridView1.Rows.Count > 0)
+                    if (dgvIngresos.Rows.Count > 0)
                     {
                         if (lidTrandiaria > 0)
                         {
@@ -232,9 +248,9 @@ namespace wfaIntegradoCom.Procesos
             bool lbResul = false;
             decimal lnSaldo = 0;
 
-            if (dataGridView1.Rows.Count > 0)
+            if (dgvIngresos.Rows.Count > 0)
             {
-                lidTrandiaria = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                lidTrandiaria = Convert.ToInt32(dgvIngresos.CurrentRow.Cells[0].Value);
                 if (lidTrandiaria > 0)
                 {
                     if (MessageBox.Show("Desea eliminar el Movimiento de Caja Seleccionado?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -285,27 +301,28 @@ namespace wfaIntegradoCom.Procesos
             String lcResultado = "";
             decimal lnMontoSaldo=0;
             decimal lnMontoArqueo=0;
-
-            if (FunGeneral.fnVerificarApertura())
-            {
-                lnMontoSaldo=Convert.ToDecimal(textBox1.Text.Trim() == "" ? "0" : textBox1.Text.Trim());
-                lnMontoArqueo=Convert.ToDecimal(txtMontoArqueo.Text.Trim() == "" ? "0" : txtMontoArqueo.Text.Trim());
-                if (lnMontoArqueo >= lnMontoSaldo)
-                {
-                    lcResultado = fnCerrarCaja(lnMontoArqueo);
-                    if (lcResultado != "OK")
-                    {
-                        btnCerrar.Enabled = false;
-                        MessageBox.Show("Error al Cerrar Caja. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-                else {
-                    MessageBox.Show("Verificar su caja tiene un descuadre.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else {
-                MessageBox.Show("Debe Aperturar Caja", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            frmActaCierreCaja frmCierreC = new frmActaCierreCaja();
+            frmCierreC.Inicio(lstReporteIngresos, 1);
+            //if (FunGeneral.fnVerificarApertura())
+            //{
+            //    lnMontoSaldo=Convert.ToDecimal(textBox1.Text.Trim() == "" ? "0" : textBox1.Text.Trim());
+            //    lnMontoArqueo=Convert.ToDecimal(txtMontoArqueo.Text.Trim() == "" ? "0" : txtMontoArqueo.Text.Trim());
+            //    if (lnMontoArqueo >= lnMontoSaldo)
+            //    {
+            //        lcResultado = fnCerrarCaja(lnMontoArqueo);
+            //        if (lcResultado != "OK")
+            //        {
+            //            btnCerrar.Enabled = false;
+            //            MessageBox.Show("Error al Cerrar Caja. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //        }
+            //    }
+            //    else {
+            //        MessageBox.Show("Verificar su caja tiene un descuadre.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //}
+            //else {
+            //    MessageBox.Show("Debe Aperturar Caja", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         private void btnArqueo_Click(object sender, EventArgs e)

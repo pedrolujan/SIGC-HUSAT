@@ -58,7 +58,7 @@ namespace CapaNegocio
             }
            
         }
-        public Tuple<List<ReporteBloque>,List<ReporteBloque>> blBuscarDashBoard(Busquedas clsBusq)
+        public Tuple<List<ReporteBloque>,List<ReporteBloque>, List<ReporteBloque>> blBuscarDashBoard(Busquedas clsBusq)
         {
             dc = new DAControlCaja();
             try

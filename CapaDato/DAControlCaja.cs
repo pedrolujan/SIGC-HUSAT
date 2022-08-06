@@ -169,13 +169,15 @@ namespace CapaDato
 
             }
         }
-        public Tuple<List<ReporteBloque>,List<ReporteBloque>> daBuscarDashBoard(Busquedas clsBusq)
+        public Tuple<List<ReporteBloque>,List<ReporteBloque>, List<ReporteBloque>> daBuscarDashBoard(Busquedas clsBusq)
         {
             SqlParameter[] pa = new SqlParameter[12];
             List<ControlCaja> lstControl = new List<ControlCaja>();
             DataSet dtMenu = new DataSet();
             List<ReporteBloque> lsDasboard = new List<ReporteBloque>();
             List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
+            List<ReporteBloque> lstEgresos= new List<ReporteBloque>();
+            DataView dvEgresos = new DataView();
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             try
@@ -197,7 +199,18 @@ namespace CapaDato
 
                 dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarDashBoard", pa);
 
-                DataView dvDasboard = new DataView(dtMenu.Tables[0]);
+                if (dtMenu.Tables.Count==3)
+                {
+                    dvEgresos= new DataView(dtMenu.Tables[2]);
+
+                }
+                else
+                {
+                    dvEgresos= new DataView(dtMenu.Tables[1]);
+
+                }
+                    DataView dvDasboard = new DataView(dtMenu.Tables[0]);
+                
                 foreach (DataRowView dr in dvDasboard)
                 {
                     lsDasboard.Add(new ReporteBloque
@@ -231,9 +244,24 @@ namespace CapaDato
 
                     }
                 }
-               
+                foreach (DataRowView dr in dvEgresos)
+                {
+                    lstEgresos.Add(new ReporteBloque
+                    {
+                        Codigoreporte = dr["id"].ToString(),
+                        Detallereporte = dr["descripcion"].ToString(),
+                        Cantidad = Convert.ToInt32(dr["cantidad"]),
+                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        SimboloMoneda = dr["cSimbolo"].ToString(),
+                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                    });
 
-                return Tuple.Create(lsDasboard, lsRepBloque);
+                }
+
+
+
+                return Tuple.Create(lsDasboard, lsRepBloque, lstEgresos);
 
             }
             catch (Exception ex)
