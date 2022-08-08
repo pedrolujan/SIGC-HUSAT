@@ -20,6 +20,7 @@ namespace CapaEntidad
         public DateTime dFecNac { get; set; }
         public Int32 cTipPers { get; set; }
         public Int32 cTiDo { get; set; }
+
         public String cTelFijo { get; set; }
         public String cTelCelular { get; set; }
         public Boolean bEstado { get; set; }
@@ -42,10 +43,30 @@ namespace CapaEntidad
         public Int32 idContrato { get; set; }
         public String codigoVentaGen { get; set; }
         public String idReferencia { get; set; }
-       
 
-  
-                        
+        //public Int32 idCliente { get; set; }
+        //public String Cargo { get; set; }
+        public Boolean Estado { get; set; }
+        //public DateTime fechaRegistro { get; set; }
+
+        //MOD REPRESENTANTE//
+        public Int32 idRepreLegal { get; set; }
+        public Int32 idClienteRepre { get; set; }
+        
+        public String NombreRepreLegal { get; set; }
+        public Int32 cTiDoRepre { get; set; }
+        public String cDocumentoRepre { get; set; }
+        public String cCorreoRepre { get; set; }
+        public String cTelCelularRepre { get; set; }
+        public String Cargo { get; set; }
+        public String cDireccionRepre { get; set; }
+
+
+
+
+
+
+
 
         public Cliente(Int32 pnidCliente, String pcCliente, String pcDocumento, Int32 pcTiDo,String pcTelefono, Boolean pbEstado)
         {
@@ -105,7 +126,17 @@ namespace CapaEntidad
             cCorreo = pcCorreo;
         }
 
-      
+        public Cliente(Int32 pidRepreLegal,Int32 pidCliente, Int32 pidEmpresa, String pCargo, Boolean pEstado)
+        {
+            idRepreLegal = pidRepreLegal;
+            idCliente = pidCliente;
+           
+            Cargo = pCargo;
+            Estado = pEstado;
+            
+        }
+
+
     }
 
 }

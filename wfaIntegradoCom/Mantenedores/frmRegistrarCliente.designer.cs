@@ -30,11 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrarCliente));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imgEmpresa = new System.Windows.Forms.PictureBox();
             this.erEmpresa = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -137,8 +141,39 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gboDatosRepres = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.lblInfoCorreo = new System.Windows.Forms.Label();
+            this.txtDocRepre = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.dgDocumentoRP = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.label36 = new System.Windows.Forms.Label();
+            this.cboCargoRepre = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.erTipoDocRepre = new System.Windows.Forms.Label();
+            this.imgTipoDocRepre = new System.Windows.Forms.PictureBox();
+            this.erTipoClienteRepre = new System.Windows.Forms.Label();
+            this.imgTipoClienteRepre = new System.Windows.Forms.PictureBox();
+            this.imgDocumentoRP = new System.Windows.Forms.PictureBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtDireccionRepre = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtCelularRP = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtTelefonoFijoRepre = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtCorreoRepre = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtNombreRepre = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.cboTipoDocRepre = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.btnLimpiarRepre = new Siticone.UI.WinForms.SiticoneButton();
+            this.cboTipoClienteRepre = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.erDocumentoRP = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtIdPersonal = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtidRepreLegal = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtIdCliente = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnGuardar = new Siticone.UI.WinForms.SiticoneButton();
@@ -195,6 +230,11 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.gboDatosRepres.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDocumentoRP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgTipoDocRepre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgTipoClienteRepre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDocumentoRP)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.gbPaginacion.SuspendLayout();
@@ -1416,10 +1456,10 @@
             this.gboSecun.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gboSecun.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gboSecun.ForeColor = System.Drawing.Color.White;
-            this.gboSecun.Location = new System.Drawing.Point(17, 263);
+            this.gboSecun.Location = new System.Drawing.Point(17, 473);
             this.gboSecun.Name = "gboSecun";
             this.gboSecun.ShadowDecoration.Parent = this.gboSecun;
-            this.gboSecun.Size = new System.Drawing.Size(1201, 116);
+            this.gboSecun.Size = new System.Drawing.Size(1201, 122);
             this.gboSecun.TabIndex = 229;
             this.gboSecun.Text = "Datos Secundarios";
             this.gboSecun.TextOffset = new System.Drawing.Point(0, -7);
@@ -1565,7 +1605,7 @@
             this.gbUbicacion.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbUbicacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbUbicacion.ForeColor = System.Drawing.Color.White;
-            this.gbUbicacion.Location = new System.Drawing.Point(17, 396);
+            this.gbUbicacion.Location = new System.Drawing.Point(13, 621);
             this.gbUbicacion.Name = "gbUbicacion";
             this.gbUbicacion.ShadowDecoration.Parent = this.gbUbicacion;
             this.gbUbicacion.Size = new System.Drawing.Size(1201, 193);
@@ -1726,7 +1766,7 @@
             this.gboContacto.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gboContacto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gboContacto.ForeColor = System.Drawing.Color.White;
-            this.gboContacto.Location = new System.Drawing.Point(17, 610);
+            this.gboContacto.Location = new System.Drawing.Point(17, 823);
             this.gboContacto.Name = "gboContacto";
             this.gboContacto.ShadowDecoration.Parent = this.gboContacto;
             this.gboContacto.Size = new System.Drawing.Size(1201, 183);
@@ -1885,12 +1925,16 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.gboDatosRepres);
             this.panel1.Controls.Add(this.gboContacto);
-            this.panel1.Controls.Add(this.gboSecun);
-            this.panel1.Controls.Add(this.txtIdPersonal);
-            this.panel1.Controls.Add(this.lblIdUsuario);
             this.panel1.Controls.Add(this.gbUbicacion);
+            this.panel1.Controls.Add(this.gboSecun);
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.txtidRepreLegal);
+            this.panel1.Controls.Add(this.txtIdCliente);
+            this.panel1.Controls.Add(this.label38);
+            this.panel1.Controls.Add(this.label37);
+            this.panel1.Controls.Add(this.lblIdUsuario);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.gboPrinci);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1898,6 +1942,571 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1252, 478);
             this.panel1.TabIndex = 253;
+            // 
+            // gboDatosRepres
+            // 
+            this.gboDatosRepres.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gboDatosRepres.BorderRadius = 5;
+            this.gboDatosRepres.Controls.Add(this.lblInfoCorreo);
+            this.gboDatosRepres.Controls.Add(this.txtDocRepre);
+            this.gboDatosRepres.Controls.Add(this.dgDocumentoRP);
+            this.gboDatosRepres.Controls.Add(this.label36);
+            this.gboDatosRepres.Controls.Add(this.cboCargoRepre);
+            this.gboDatosRepres.Controls.Add(this.erTipoDocRepre);
+            this.gboDatosRepres.Controls.Add(this.imgTipoDocRepre);
+            this.gboDatosRepres.Controls.Add(this.erTipoClienteRepre);
+            this.gboDatosRepres.Controls.Add(this.imgTipoClienteRepre);
+            this.gboDatosRepres.Controls.Add(this.imgDocumentoRP);
+            this.gboDatosRepres.Controls.Add(this.label28);
+            this.gboDatosRepres.Controls.Add(this.txtDireccionRepre);
+            this.gboDatosRepres.Controls.Add(this.label29);
+            this.gboDatosRepres.Controls.Add(this.txtCelularRP);
+            this.gboDatosRepres.Controls.Add(this.label30);
+            this.gboDatosRepres.Controls.Add(this.txtTelefonoFijoRepre);
+            this.gboDatosRepres.Controls.Add(this.label31);
+            this.gboDatosRepres.Controls.Add(this.txtCorreoRepre);
+            this.gboDatosRepres.Controls.Add(this.txtNombreRepre);
+            this.gboDatosRepres.Controls.Add(this.label32);
+            this.gboDatosRepres.Controls.Add(this.cboTipoDocRepre);
+            this.gboDatosRepres.Controls.Add(this.label33);
+            this.gboDatosRepres.Controls.Add(this.btnLimpiarRepre);
+            this.gboDatosRepres.Controls.Add(this.cboTipoClienteRepre);
+            this.gboDatosRepres.Controls.Add(this.label34);
+            this.gboDatosRepres.Controls.Add(this.label35);
+            this.gboDatosRepres.Controls.Add(this.erDocumentoRP);
+            this.gboDatosRepres.CustomBorderColor = System.Drawing.Color.DimGray;
+            this.gboDatosRepres.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
+            this.gboDatosRepres.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gboDatosRepres.ForeColor = System.Drawing.Color.White;
+            this.gboDatosRepres.Location = new System.Drawing.Point(17, 265);
+            this.gboDatosRepres.Name = "gboDatosRepres";
+            this.gboDatosRepres.ShadowDecoration.Parent = this.gboDatosRepres;
+            this.gboDatosRepres.Size = new System.Drawing.Size(1201, 187);
+            this.gboDatosRepres.TabIndex = 235;
+            this.gboDatosRepres.Text = "Datos de Respresentante";
+            this.gboDatosRepres.TextOffset = new System.Drawing.Point(0, -7);
+            // 
+            // lblInfoCorreo
+            // 
+            this.lblInfoCorreo.AutoSize = true;
+            this.lblInfoCorreo.BackColor = System.Drawing.Color.Transparent;
+            this.lblInfoCorreo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfoCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblInfoCorreo.Location = new System.Drawing.Point(70, 109);
+            this.lblInfoCorreo.Name = "lblInfoCorreo";
+            this.lblInfoCorreo.Size = new System.Drawing.Size(0, 17);
+            this.lblInfoCorreo.TabIndex = 239;
+            // 
+            // txtDocRepre
+            // 
+            this.txtDocRepre.Animated = false;
+            this.txtDocRepre.BorderColor = System.Drawing.Color.Silver;
+            this.txtDocRepre.BorderRadius = 5;
+            this.txtDocRepre.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDocRepre.DefaultText = "";
+            this.txtDocRepre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDocRepre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDocRepre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDocRepre.DisabledState.Parent = this.txtDocRepre;
+            this.txtDocRepre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDocRepre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtDocRepre.FocusedState.Parent = this.txtDocRepre;
+            this.txtDocRepre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDocRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDocRepre.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDocRepre.HoveredState.Parent = this.txtDocRepre;
+            this.txtDocRepre.Location = new System.Drawing.Point(386, 54);
+            this.txtDocRepre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtDocRepre.Name = "txtDocRepre";
+            this.txtDocRepre.PasswordChar = '\0';
+            this.txtDocRepre.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtDocRepre.PlaceholderText = "";
+            this.txtDocRepre.SelectedText = "";
+            this.txtDocRepre.ShadowDecoration.Parent = this.txtDocRepre;
+            this.txtDocRepre.Size = new System.Drawing.Size(166, 36);
+            this.txtDocRepre.TabIndex = 130;
+            this.txtDocRepre.TextChanged += new System.EventHandler(this.txtDocumentoRP_TextChanged);
+            this.txtDocRepre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocRepre_KeyPress);
+            // 
+            // dgDocumentoRP
+            // 
+            this.dgDocumentoRP.AllowUserToAddRows = false;
+            this.dgDocumentoRP.AllowUserToDeleteRows = false;
+            this.dgDocumentoRP.AllowUserToResizeColumns = false;
+            this.dgDocumentoRP.AllowUserToResizeRows = false;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDocumentoRP.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgDocumentoRP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgDocumentoRP.BackgroundColor = System.Drawing.Color.White;
+            this.dgDocumentoRP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgDocumentoRP.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDocumentoRP.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgDocumentoRP.ColumnHeadersHeight = 4;
+            this.dgDocumentoRP.ColumnHeadersVisible = false;
+            this.dgDocumentoRP.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDocumentoRP.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgDocumentoRP.EnableHeadersVisualStyles = false;
+            this.dgDocumentoRP.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgDocumentoRP.Location = new System.Drawing.Point(373, 76);
+            this.dgDocumentoRP.Name = "dgDocumentoRP";
+            this.dgDocumentoRP.ReadOnly = true;
+            this.dgDocumentoRP.RowHeadersVisible = false;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDocumentoRP.RowsDefaultCellStyle = dataGridViewCellStyle13;
+            this.dgDocumentoRP.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgDocumentoRP.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDocumentoRP.RowTemplate.Height = 40;
+            this.dgDocumentoRP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgDocumentoRP.Size = new System.Drawing.Size(182, 89);
+            this.dgDocumentoRP.TabIndex = 238;
+            this.dgDocumentoRP.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgDocumentoRP.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgDocumentoRP.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgDocumentoRP.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.White;
+            this.dgDocumentoRP.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgDocumentoRP.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgDocumentoRP.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgDocumentoRP.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgDocumentoRP.ThemeStyle.HeaderStyle.Height = 4;
+            this.dgDocumentoRP.ThemeStyle.ReadOnly = true;
+            this.dgDocumentoRP.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgDocumentoRP.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
+            this.dgDocumentoRP.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgDocumentoRP.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgDocumentoRP.ThemeStyle.RowsStyle.Height = 40;
+            this.dgDocumentoRP.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.AliceBlue;
+            this.dgDocumentoRP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.CornflowerBlue;
+            this.dgDocumentoRP.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDocumentoRP_CellDoubleClick);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label36.Location = new System.Drawing.Point(396, 109);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(49, 17);
+            this.label36.TabIndex = 237;
+            this.label36.Text = "Cargo*";
+            // 
+            // cboCargoRepre
+            // 
+            this.cboCargoRepre.BackColor = System.Drawing.Color.Transparent;
+            this.cboCargoRepre.BorderColor = System.Drawing.Color.Silver;
+            this.cboCargoRepre.BorderRadius = 5;
+            this.cboCargoRepre.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboCargoRepre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCargoRepre.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboCargoRepre.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboCargoRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboCargoRepre.HoveredState.Parent = this.cboCargoRepre;
+            this.cboCargoRepre.ItemHeight = 30;
+            this.cboCargoRepre.Items.AddRange(new object[] {
+            ""});
+            this.cboCargoRepre.ItemsAppearance.Parent = this.cboCargoRepre;
+            this.cboCargoRepre.Location = new System.Drawing.Point(399, 129);
+            this.cboCargoRepre.Name = "cboCargoRepre";
+            this.cboCargoRepre.ShadowDecoration.Parent = this.cboCargoRepre;
+            this.cboCargoRepre.Size = new System.Drawing.Size(165, 36);
+            this.cboCargoRepre.TabIndex = 236;
+            // 
+            // erTipoDocRepre
+            // 
+            this.erTipoDocRepre.AutoSize = true;
+            this.erTipoDocRepre.BackColor = System.Drawing.Color.Transparent;
+            this.erTipoDocRepre.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erTipoDocRepre.ForeColor = System.Drawing.Color.Red;
+            this.erTipoDocRepre.Location = new System.Drawing.Point(200, 94);
+            this.erTipoDocRepre.Name = "erTipoDocRepre";
+            this.erTipoDocRepre.Size = new System.Drawing.Size(32, 13);
+            this.erTipoDocRepre.TabIndex = 235;
+            this.erTipoDocRepre.Text = "Error";
+            // 
+            // imgTipoDocRepre
+            // 
+            this.imgTipoDocRepre.BackColor = System.Drawing.Color.White;
+            this.imgTipoDocRepre.Location = new System.Drawing.Point(347, 32);
+            this.imgTipoDocRepre.Name = "imgTipoDocRepre";
+            this.imgTipoDocRepre.Size = new System.Drawing.Size(20, 20);
+            this.imgTipoDocRepre.TabIndex = 234;
+            this.imgTipoDocRepre.TabStop = false;
+            // 
+            // erTipoClienteRepre
+            // 
+            this.erTipoClienteRepre.AutoSize = true;
+            this.erTipoClienteRepre.BackColor = System.Drawing.Color.Transparent;
+            this.erTipoClienteRepre.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erTipoClienteRepre.ForeColor = System.Drawing.Color.Red;
+            this.erTipoClienteRepre.Location = new System.Drawing.Point(16, 94);
+            this.erTipoClienteRepre.Name = "erTipoClienteRepre";
+            this.erTipoClienteRepre.Size = new System.Drawing.Size(32, 13);
+            this.erTipoClienteRepre.TabIndex = 233;
+            this.erTipoClienteRepre.Text = "Error";
+            // 
+            // imgTipoClienteRepre
+            // 
+            this.imgTipoClienteRepre.BackColor = System.Drawing.Color.White;
+            this.imgTipoClienteRepre.Location = new System.Drawing.Point(163, 32);
+            this.imgTipoClienteRepre.Name = "imgTipoClienteRepre";
+            this.imgTipoClienteRepre.Size = new System.Drawing.Size(20, 20);
+            this.imgTipoClienteRepre.TabIndex = 232;
+            this.imgTipoClienteRepre.TabStop = false;
+            // 
+            // imgDocumentoRP
+            // 
+            this.imgDocumentoRP.BackColor = System.Drawing.Color.White;
+            this.imgDocumentoRP.Location = new System.Drawing.Point(532, 31);
+            this.imgDocumentoRP.Name = "imgDocumentoRP";
+            this.imgDocumentoRP.Size = new System.Drawing.Size(20, 20);
+            this.imgDocumentoRP.TabIndex = 227;
+            this.imgDocumentoRP.TabStop = false;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label28.Location = new System.Drawing.Point(591, 107);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(62, 17);
+            this.label28.TabIndex = 158;
+            this.label28.Text = "Dirección";
+            // 
+            // txtDireccionRepre
+            // 
+            this.txtDireccionRepre.Animated = false;
+            this.txtDireccionRepre.BorderColor = System.Drawing.Color.Silver;
+            this.txtDireccionRepre.BorderRadius = 5;
+            this.txtDireccionRepre.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDireccionRepre.DefaultText = "";
+            this.txtDireccionRepre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDireccionRepre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDireccionRepre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDireccionRepre.DisabledState.Parent = this.txtDireccionRepre;
+            this.txtDireccionRepre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDireccionRepre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtDireccionRepre.FocusedState.Parent = this.txtDireccionRepre;
+            this.txtDireccionRepre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDireccionRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDireccionRepre.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDireccionRepre.HoveredState.Parent = this.txtDireccionRepre;
+            this.txtDireccionRepre.Location = new System.Drawing.Point(594, 129);
+            this.txtDireccionRepre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtDireccionRepre.Name = "txtDireccionRepre";
+            this.txtDireccionRepre.PasswordChar = '\0';
+            this.txtDireccionRepre.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtDireccionRepre.PlaceholderText = "";
+            this.txtDireccionRepre.SelectedText = "";
+            this.txtDireccionRepre.ShadowDecoration.Parent = this.txtDireccionRepre;
+            this.txtDireccionRepre.Size = new System.Drawing.Size(414, 36);
+            this.txtDireccionRepre.TabIndex = 157;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label29.Location = new System.Drawing.Point(398, 107);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(51, 17);
+            this.label29.TabIndex = 156;
+            this.label29.Text = "Celular:";
+            // 
+            // txtCelularRP
+            // 
+            this.txtCelularRP.Animated = false;
+            this.txtCelularRP.BorderColor = System.Drawing.Color.Silver;
+            this.txtCelularRP.BorderRadius = 5;
+            this.txtCelularRP.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCelularRP.DefaultText = "";
+            this.txtCelularRP.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCelularRP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCelularRP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCelularRP.DisabledState.Parent = this.txtCelularRP;
+            this.txtCelularRP.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCelularRP.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtCelularRP.FocusedState.Parent = this.txtCelularRP;
+            this.txtCelularRP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCelularRP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCelularRP.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCelularRP.HoveredState.Parent = this.txtCelularRP;
+            this.txtCelularRP.Location = new System.Drawing.Point(401, 129);
+            this.txtCelularRP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtCelularRP.Name = "txtCelularRP";
+            this.txtCelularRP.PasswordChar = '\0';
+            this.txtCelularRP.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCelularRP.PlaceholderText = "";
+            this.txtCelularRP.SelectedText = "";
+            this.txtCelularRP.ShadowDecoration.Parent = this.txtCelularRP;
+            this.txtCelularRP.Size = new System.Drawing.Size(151, 36);
+            this.txtCelularRP.TabIndex = 155;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label30.Location = new System.Drawing.Point(234, 108);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(82, 17);
+            this.label30.TabIndex = 154;
+            this.label30.Text = "Telefono Fijo";
+            // 
+            // txtTelefonoFijoRepre
+            // 
+            this.txtTelefonoFijoRepre.Animated = false;
+            this.txtTelefonoFijoRepre.BorderColor = System.Drawing.Color.Silver;
+            this.txtTelefonoFijoRepre.BorderRadius = 5;
+            this.txtTelefonoFijoRepre.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTelefonoFijoRepre.DefaultText = "";
+            this.txtTelefonoFijoRepre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTelefonoFijoRepre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTelefonoFijoRepre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTelefonoFijoRepre.DisabledState.Parent = this.txtTelefonoFijoRepre;
+            this.txtTelefonoFijoRepre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTelefonoFijoRepre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtTelefonoFijoRepre.FocusedState.Parent = this.txtTelefonoFijoRepre;
+            this.txtTelefonoFijoRepre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefonoFijoRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTelefonoFijoRepre.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTelefonoFijoRepre.HoveredState.Parent = this.txtTelefonoFijoRepre;
+            this.txtTelefonoFijoRepre.Location = new System.Drawing.Point(237, 129);
+            this.txtTelefonoFijoRepre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtTelefonoFijoRepre.Name = "txtTelefonoFijoRepre";
+            this.txtTelefonoFijoRepre.PasswordChar = '\0';
+            this.txtTelefonoFijoRepre.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtTelefonoFijoRepre.PlaceholderText = "";
+            this.txtTelefonoFijoRepre.SelectedText = "";
+            this.txtTelefonoFijoRepre.ShadowDecoration.Parent = this.txtTelefonoFijoRepre;
+            this.txtTelefonoFijoRepre.Size = new System.Drawing.Size(146, 36);
+            this.txtTelefonoFijoRepre.TabIndex = 153;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label31.Location = new System.Drawing.Point(15, 108);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(49, 17);
+            this.label31.TabIndex = 152;
+            this.label31.Text = "Correo";
+            // 
+            // txtCorreoRepre
+            // 
+            this.txtCorreoRepre.Animated = false;
+            this.txtCorreoRepre.BorderColor = System.Drawing.Color.Silver;
+            this.txtCorreoRepre.BorderRadius = 5;
+            this.txtCorreoRepre.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCorreoRepre.DefaultText = "";
+            this.txtCorreoRepre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCorreoRepre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCorreoRepre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCorreoRepre.DisabledState.Parent = this.txtCorreoRepre;
+            this.txtCorreoRepre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCorreoRepre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtCorreoRepre.FocusedState.Parent = this.txtCorreoRepre;
+            this.txtCorreoRepre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCorreoRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCorreoRepre.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCorreoRepre.HoveredState.Parent = this.txtCorreoRepre;
+            this.txtCorreoRepre.Location = new System.Drawing.Point(18, 129);
+            this.txtCorreoRepre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtCorreoRepre.Name = "txtCorreoRepre";
+            this.txtCorreoRepre.PasswordChar = '\0';
+            this.txtCorreoRepre.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCorreoRepre.PlaceholderText = "";
+            this.txtCorreoRepre.SelectedText = "";
+            this.txtCorreoRepre.ShadowDecoration.Parent = this.txtCorreoRepre;
+            this.txtCorreoRepre.Size = new System.Drawing.Size(205, 36);
+            this.txtCorreoRepre.TabIndex = 151;
+            // 
+            // txtNombreRepre
+            // 
+            this.txtNombreRepre.Animated = false;
+            this.txtNombreRepre.BorderColor = System.Drawing.Color.Silver;
+            this.txtNombreRepre.BorderRadius = 5;
+            this.txtNombreRepre.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNombreRepre.DefaultText = "";
+            this.txtNombreRepre.DisabledState.BorderColor = System.Drawing.Color.Gainsboro;
+            this.txtNombreRepre.DisabledState.FillColor = System.Drawing.SystemColors.Control;
+            this.txtNombreRepre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtNombreRepre.DisabledState.Parent = this.txtNombreRepre;
+            this.txtNombreRepre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNombreRepre.Enabled = false;
+            this.txtNombreRepre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtNombreRepre.FocusedState.Parent = this.txtNombreRepre;
+            this.txtNombreRepre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtNombreRepre.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNombreRepre.HoveredState.Parent = this.txtNombreRepre;
+            this.txtNombreRepre.Location = new System.Drawing.Point(658, 54);
+            this.txtNombreRepre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtNombreRepre.Name = "txtNombreRepre";
+            this.txtNombreRepre.PasswordChar = '\0';
+            this.txtNombreRepre.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtNombreRepre.PlaceholderText = "";
+            this.txtNombreRepre.SelectedText = "";
+            this.txtNombreRepre.ShadowDecoration.Parent = this.txtNombreRepre;
+            this.txtNombreRepre.Size = new System.Drawing.Size(457, 36);
+            this.txtNombreRepre.TabIndex = 147;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label32.Location = new System.Drawing.Point(200, 35);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(114, 17);
+            this.label32.TabIndex = 150;
+            this.label32.Text = "Tipo Documento *";
+            // 
+            // cboTipoDocRepre
+            // 
+            this.cboTipoDocRepre.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoDocRepre.BorderColor = System.Drawing.Color.Silver;
+            this.cboTipoDocRepre.BorderRadius = 5;
+            this.cboTipoDocRepre.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoDocRepre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoDocRepre.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboTipoDocRepre.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoDocRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboTipoDocRepre.HoveredState.Parent = this.cboTipoDocRepre;
+            this.cboTipoDocRepre.ItemHeight = 30;
+            this.cboTipoDocRepre.ItemsAppearance.Parent = this.cboTipoDocRepre;
+            this.cboTipoDocRepre.Location = new System.Drawing.Point(203, 55);
+            this.cboTipoDocRepre.Name = "cboTipoDocRepre";
+            this.cboTipoDocRepre.ShadowDecoration.Parent = this.cboTipoDocRepre;
+            this.cboTipoDocRepre.Size = new System.Drawing.Size(164, 36);
+            this.cboTipoDocRepre.TabIndex = 149;
+            this.cboTipoDocRepre.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumentoRP_SelectedIndexChanged);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.Transparent;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label33.Location = new System.Drawing.Point(15, 35);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(94, 17);
+            this.label33.TabIndex = 148;
+            this.label33.Text = "Tipo Persona *";
+            // 
+            // btnLimpiarRepre
+            // 
+            this.btnLimpiarRepre.BackColor = System.Drawing.Color.Transparent;
+            this.btnLimpiarRepre.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnLimpiarRepre.BorderRadius = 15;
+            this.btnLimpiarRepre.BorderThickness = 1;
+            this.btnLimpiarRepre.CheckedState.Parent = this.btnLimpiarRepre;
+            this.btnLimpiarRepre.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiarRepre.CustomImages.Parent = this.btnLimpiarRepre;
+            this.btnLimpiarRepre.FillColor = System.Drawing.Color.White;
+            this.btnLimpiarRepre.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnLimpiarRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnLimpiarRepre.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnLimpiarRepre.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnLimpiarRepre.HoveredState.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiarRepre.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
+            this.btnLimpiarRepre.HoveredState.Parent = this.btnLimpiarRepre;
+            this.btnLimpiarRepre.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_32;
+            this.btnLimpiarRepre.Location = new System.Drawing.Point(1033, 129);
+            this.btnLimpiarRepre.Name = "btnLimpiarRepre";
+            this.btnLimpiarRepre.ShadowDecoration.Parent = this.btnLimpiarRepre;
+            this.btnLimpiarRepre.Size = new System.Drawing.Size(118, 36);
+            this.btnLimpiarRepre.TabIndex = 146;
+            this.btnLimpiarRepre.Text = "Limpiar";
+            this.btnLimpiarRepre.Click += new System.EventHandler(this.btnLimpiarRepre_Click);
+            // 
+            // cboTipoClienteRepre
+            // 
+            this.cboTipoClienteRepre.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoClienteRepre.BorderColor = System.Drawing.Color.Silver;
+            this.cboTipoClienteRepre.BorderRadius = 5;
+            this.cboTipoClienteRepre.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoClienteRepre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoClienteRepre.Enabled = false;
+            this.cboTipoClienteRepre.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboTipoClienteRepre.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoClienteRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboTipoClienteRepre.HoveredState.Parent = this.cboTipoClienteRepre;
+            this.cboTipoClienteRepre.ItemHeight = 30;
+            this.cboTipoClienteRepre.Items.AddRange(new object[] {
+            "NATURAL"});
+            this.cboTipoClienteRepre.ItemsAppearance.Parent = this.cboTipoClienteRepre;
+            this.cboTipoClienteRepre.Location = new System.Drawing.Point(18, 55);
+            this.cboTipoClienteRepre.Name = "cboTipoClienteRepre";
+            this.cboTipoClienteRepre.ShadowDecoration.Parent = this.cboTipoClienteRepre;
+            this.cboTipoClienteRepre.Size = new System.Drawing.Size(165, 36);
+            this.cboTipoClienteRepre.StartIndex = 0;
+            this.cboTipoClienteRepre.TabIndex = 147;
+            this.cboTipoClienteRepre.SelectedIndexChanged += new System.EventHandler(this.cboTipoClienteRP_SelectedIndexChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.Transparent;
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label34.Location = new System.Drawing.Point(655, 34);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(215, 17);
+            this.label34.TabIndex = 133;
+            this.label34.Text = "Nombre y Apellido / Razón Social *";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label35.Location = new System.Drawing.Point(383, 33);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(107, 17);
+            this.label35.TabIndex = 131;
+            this.label35.Text = "N° Documento  *";
+            // 
+            // erDocumentoRP
+            // 
+            this.erDocumentoRP.AutoSize = true;
+            this.erDocumentoRP.BackColor = System.Drawing.Color.Transparent;
+            this.erDocumentoRP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erDocumentoRP.ForeColor = System.Drawing.Color.Red;
+            this.erDocumentoRP.Location = new System.Drawing.Point(383, 94);
+            this.erDocumentoRP.Name = "erDocumentoRP";
+            this.erDocumentoRP.Size = new System.Drawing.Size(32, 13);
+            this.erDocumentoRP.TabIndex = 226;
+            this.erDocumentoRP.Text = "Error";
             // 
             // label16
             // 
@@ -1912,35 +2521,89 @@
             this.label16.Text = "Registro de Clientes";
             this.label16.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // txtIdPersonal
+            // txtidRepreLegal
             // 
-            this.txtIdPersonal.Animated = false;
-            this.txtIdPersonal.BorderColor = System.Drawing.Color.Silver;
-            this.txtIdPersonal.BorderRadius = 5;
-            this.txtIdPersonal.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtIdPersonal.DefaultText = "";
-            this.txtIdPersonal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtIdPersonal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtIdPersonal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtIdPersonal.DisabledState.Parent = this.txtIdPersonal;
-            this.txtIdPersonal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtIdPersonal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.txtIdPersonal.FocusedState.Parent = this.txtIdPersonal;
-            this.txtIdPersonal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtIdPersonal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtIdPersonal.HoveredState.Parent = this.txtIdPersonal;
-            this.txtIdPersonal.Location = new System.Drawing.Point(1129, 21);
-            this.txtIdPersonal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtIdPersonal.Name = "txtIdPersonal";
-            this.txtIdPersonal.PasswordChar = '\0';
-            this.txtIdPersonal.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtIdPersonal.PlaceholderText = "";
-            this.txtIdPersonal.SelectedText = "";
-            this.txtIdPersonal.ShadowDecoration.Parent = this.txtIdPersonal;
-            this.txtIdPersonal.Size = new System.Drawing.Size(89, 20);
-            this.txtIdPersonal.TabIndex = 233;
-            this.txtIdPersonal.Visible = false;
+            this.txtidRepreLegal.Animated = false;
+            this.txtidRepreLegal.BorderColor = System.Drawing.Color.Silver;
+            this.txtidRepreLegal.BorderRadius = 5;
+            this.txtidRepreLegal.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtidRepreLegal.DefaultText = "";
+            this.txtidRepreLegal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtidRepreLegal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtidRepreLegal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtidRepreLegal.DisabledState.Parent = this.txtidRepreLegal;
+            this.txtidRepreLegal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtidRepreLegal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtidRepreLegal.FocusedState.Parent = this.txtidRepreLegal;
+            this.txtidRepreLegal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtidRepreLegal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtidRepreLegal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtidRepreLegal.HoveredState.Parent = this.txtidRepreLegal;
+            this.txtidRepreLegal.Location = new System.Drawing.Point(982, 21);
+            this.txtidRepreLegal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtidRepreLegal.Name = "txtidRepreLegal";
+            this.txtidRepreLegal.PasswordChar = '\0';
+            this.txtidRepreLegal.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtidRepreLegal.PlaceholderText = "";
+            this.txtidRepreLegal.SelectedText = "";
+            this.txtidRepreLegal.ShadowDecoration.Parent = this.txtidRepreLegal;
+            this.txtidRepreLegal.Size = new System.Drawing.Size(89, 20);
+            this.txtidRepreLegal.TabIndex = 233;
+            // 
+            // txtIdCliente
+            // 
+            this.txtIdCliente.Animated = false;
+            this.txtIdCliente.BorderColor = System.Drawing.Color.Silver;
+            this.txtIdCliente.BorderRadius = 5;
+            this.txtIdCliente.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIdCliente.DefaultText = "";
+            this.txtIdCliente.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtIdCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtIdCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtIdCliente.DisabledState.Parent = this.txtIdCliente;
+            this.txtIdCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtIdCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtIdCliente.FocusedState.Parent = this.txtIdCliente;
+            this.txtIdCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtIdCliente.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtIdCliente.HoveredState.Parent = this.txtIdCliente;
+            this.txtIdCliente.Location = new System.Drawing.Point(1129, 21);
+            this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtIdCliente.Name = "txtIdCliente";
+            this.txtIdCliente.PasswordChar = '\0';
+            this.txtIdCliente.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtIdCliente.PlaceholderText = "";
+            this.txtIdCliente.SelectedText = "";
+            this.txtIdCliente.ShadowDecoration.Parent = this.txtIdCliente;
+            this.txtIdCliente.Size = new System.Drawing.Size(89, 20);
+            this.txtIdCliente.TabIndex = 233;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Transparent;
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label38.Location = new System.Drawing.Point(668, 24);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(81, 13);
+            this.label38.TabIndex = 86;
+            this.label38.Text = "CodRepreLegal";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label38.Visible = false;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.Transparent;
+            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label37.Location = new System.Drawing.Point(851, 21);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(124, 13);
+            this.label37.TabIndex = 86;
+            this.label37.Text = "CodigoRepresesentante:";
+            this.label37.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label37.Visible = false;
             // 
             // label7
             // 
@@ -2185,46 +2848,46 @@
             this.dgCliente.AllowUserToAddRows = false;
             this.dgCliente.AllowUserToDeleteRows = false;
             this.dgCliente.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgCliente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            this.dgCliente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
             this.dgCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgCliente.BackgroundColor = System.Drawing.Color.White;
             this.dgCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgCliente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgCliente.ColumnHeadersHeight = 30;
             this.dgCliente.ContextMenuStrip = this.cmsMenu;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgCliente.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCliente.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgCliente.EnableHeadersVisualStyles = false;
             this.dgCliente.GridColor = System.Drawing.Color.Silver;
             this.dgCliente.Location = new System.Drawing.Point(24, 164);
             this.dgCliente.Name = "dgCliente";
             this.dgCliente.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCliente.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCliente.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgCliente.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgCliente.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgCliente.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dgCliente.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgCliente.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgCliente.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -2395,6 +3058,12 @@
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.gboDatosRepres.ResumeLayout(false);
+            this.gboDatosRepres.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDocumentoRP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgTipoDocRepre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgTipoClienteRepre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDocumentoRP)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -2479,7 +3148,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label19;
-        private Siticone.UI.WinForms.SiticoneTextBox txtIdPersonal;
+        private Siticone.UI.WinForms.SiticoneTextBox txtIdCliente;
         private Siticone.UI.WinForms.SiticoneComboBox cboTipoDoc;
         private Siticone.UI.WinForms.SiticoneComboBox cboTipoCliente;
         private Siticone.UI.WinForms.SiticoneTextBox txtNrDocumento;
@@ -2539,5 +3208,36 @@
         private Guna.UI.WinForms.GunaLabel gunaLabel10;
         private Siticone.UI.WinForms.SiticoneDragControl barraMovimiento;
         private Siticone.UI.WinForms.SiticoneDragControl siticoneDragControl1;
+        private Siticone.UI.WinForms.SiticoneGroupBox gboDatosRepres;
+        private System.Windows.Forms.Label erTipoDocRepre;
+        private System.Windows.Forms.PictureBox imgTipoDocRepre;
+        private System.Windows.Forms.Label erTipoClienteRepre;
+        private System.Windows.Forms.PictureBox imgTipoClienteRepre;
+        private System.Windows.Forms.PictureBox imgDocumentoRP;
+        private Siticone.UI.WinForms.SiticoneTextBox txtDocRepre;
+        private System.Windows.Forms.Label label28;
+        private Siticone.UI.WinForms.SiticoneTextBox txtDireccionRepre;
+        private System.Windows.Forms.Label label29;
+        private Siticone.UI.WinForms.SiticoneTextBox txtCelularRP;
+        private System.Windows.Forms.Label label30;
+        private Siticone.UI.WinForms.SiticoneTextBox txtTelefonoFijoRepre;
+        private System.Windows.Forms.Label label31;
+        private Siticone.UI.WinForms.SiticoneTextBox txtCorreoRepre;
+        private Siticone.UI.WinForms.SiticoneTextBox txtNombreRepre;
+        private System.Windows.Forms.Label label32;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocRepre;
+        private System.Windows.Forms.Label label33;
+        private Siticone.UI.WinForms.SiticoneButton btnLimpiarRepre;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label erDocumentoRP;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoClienteRepre;
+        private System.Windows.Forms.Label label36;
+        private Siticone.UI.WinForms.SiticoneComboBox cboCargoRepre;
+        private Siticone.UI.WinForms.SiticoneDataGridView dgDocumentoRP;
+        private System.Windows.Forms.Label lblInfoCorreo;
+        private System.Windows.Forms.Label label37;
+        private Siticone.UI.WinForms.SiticoneTextBox txtidRepreLegal;
+        private System.Windows.Forms.Label label38;
     }
 }
