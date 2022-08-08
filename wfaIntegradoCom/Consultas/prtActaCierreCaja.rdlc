@@ -275,7 +275,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.04702cm</Width>
+                  <Width>3.95292cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -332,7 +332,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>ImporteRow1</rd:DefaultName>
@@ -410,7 +412,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>0.59562cm</Size>
+                    <Size>1.50152cm</Size>
                     <CellContents>
                       <Textbox Name="numero">
                         <CanGrow>true</CanGrow>
@@ -423,7 +425,9 @@
                                 <Style />
                               </TextRun>
                             </TextRuns>
-                            <Style />
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>numero</rd:DefaultName>
@@ -443,7 +447,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>6.93639cm</Size>
+                        <Size>7.84229cm</Size>
                         <CellContents>
                           <Textbox Name="Detallereporte">
                             <CanGrow>true</CanGrow>
@@ -456,7 +460,9 @@
                                     <Style />
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Left</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
                             <rd:DefaultName>Detallereporte</rd:DefaultName>
@@ -476,7 +482,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>1.7241cm</Size>
+                            <Size>2.63cm</Size>
                             <CellContents>
                               <Textbox Name="Cantidad">
                                 <CanGrow>true</CanGrow>
@@ -489,7 +495,9 @@
                                         <Style />
                                       </TextRun>
                                     </TextRuns>
-                                    <Style />
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
                                   </Paragraph>
                                 </Paragraphs>
                                 <rd:DefaultName>Cantidad</rd:DefaultName>
@@ -513,7 +521,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.59562cm</Size>
+                    <Size>1.50152cm</Size>
                     <CellContents>
                       <Textbox Name="Cantidad1">
                         <CanGrow>true</CanGrow>
@@ -523,9 +531,7 @@
                             <TextRuns>
                               <TextRun>
                                 <Value />
-                                <Style>
-                                  <Color>White</Color>
-                                </Style>
+                                <Style />
                               </TextRun>
                             </TextRuns>
                             <Style />
@@ -535,9 +541,8 @@
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
-                            <Style>Solid</Style>
+                            <Style>None</Style>
                           </Border>
-                          <BackgroundColor>Red</BackgroundColor>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -549,7 +554,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>6.93639cm</Size>
+                        <Size>7.84229cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox3">
                             <CanGrow>true</CanGrow>
@@ -559,21 +564,20 @@
                                 <TextRuns>
                                   <TextRun>
                                     <Value>Importe Total</Value>
-                                    <Style>
-                                      <Color>White</Color>
-                                    </Style>
+                                    <Style />
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Right</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
                             <rd:DefaultName>Textbox3</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
-                                <Style>Solid</Style>
+                                <Style>None</Style>
                               </Border>
-                              <BackgroundColor>Red</BackgroundColor>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
@@ -585,7 +589,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>1.7241cm</Size>
+                            <Size>2.63cm</Size>
                             <CellContents>
                               <Textbox Name="Cantidad2">
                                 <CanGrow>true</CanGrow>
@@ -594,10 +598,8 @@
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Sum(Fields!Cantidad.Value)</Value>
-                                        <Style>
-                                          <Color>White</Color>
-                                        </Style>
+                                        <Value />
+                                        <Style />
                                       </TextRun>
                                     </TextRuns>
                                     <Style />
@@ -607,9 +609,8 @@
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
-                                    <Style>Solid</Style>
+                                    <Style>None</Style>
                                   </Border>
-                                  <BackgroundColor>Red</BackgroundColor>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
                                   <PaddingTop>2pt</PaddingTop>
@@ -629,7 +630,7 @@
             <DataSetName>dsReporte</DataSetName>
             <Top>4.08199cm</Top>
             <Height>2.01166cm</Height>
-            <Width>12.30313cm</Width>
+            <Width>15.92673cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -660,7 +661,7 @@
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
-                            <Style>Solid</Style>
+                            <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -692,7 +693,7 @@
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
-                            <Style>Solid</Style>
+                            <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -724,7 +725,7 @@
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
-                            <Style>Solid</Style>
+                            <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -740,7 +741,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>9.80312cm</Width>
+                  <Width>11.61493cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -767,7 +768,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -810,7 +811,7 @@
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
-                            <Style>Solid</Style>
+                            <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -843,7 +844,7 @@
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
-                                <Style>Solid</Style>
+                                <Style>None</Style>
                               </Border>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
@@ -878,7 +879,7 @@
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
-                                    <Style>Solid</Style>
+                                    <Style>None</Style>
                                   </Border>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
@@ -904,7 +905,7 @@
                     </GroupExpressions>
                   </Group>
                   <TablixHeader>
-                    <Size>2.5cm</Size>
+                    <Size>4.31181cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox11">
                         <CanGrow>true</CanGrow>
@@ -924,7 +925,7 @@
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
-                            <Style>Solid</Style>
+                            <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -940,7 +941,7 @@
             <DataSetName>dsCuadreCaja</DataSetName>
             <Top>0.89183cm</Top>
             <Height>2.4cm</Height>
-            <Width>12.30312cm</Width>
+            <Width>15.92674cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -969,7 +970,7 @@
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>0.08981cm</Top>
             <Height>0.6cm</Height>
-            <Width>12.30312cm</Width>
+            <Width>15.92674cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -998,7 +999,7 @@
             <rd:DefaultName>Textbox27</rd:DefaultName>
             <Top>3.46359cm</Top>
             <Height>0.6cm</Height>
-            <Width>12.30313cm</Width>
+            <Width>15.92674cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -1110,7 +1111,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.04702cm</Width>
+                  <Width>3.95292cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1167,7 +1168,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>ImporteRow1</rd:DefaultName>
@@ -1245,7 +1248,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>0.59562cm</Size>
+                    <Size>1.50152cm</Size>
                     <CellContents>
                       <Textbox Name="numero2">
                         <CanGrow>true</CanGrow>
@@ -1258,7 +1261,9 @@
                                 <Style />
                               </TextRun>
                             </TextRuns>
-                            <Style />
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>numero</rd:DefaultName>
@@ -1278,7 +1283,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>6.93639cm</Size>
+                        <Size>7.84229cm</Size>
                         <CellContents>
                           <Textbox Name="Detallereporte2">
                             <CanGrow>true</CanGrow>
@@ -1291,7 +1296,9 @@
                                     <Style />
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Left</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
                             <rd:DefaultName>Detallereporte</rd:DefaultName>
@@ -1311,7 +1318,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>1.7241cm</Size>
+                            <Size>2.63cm</Size>
                             <CellContents>
                               <Textbox Name="Cantidad3">
                                 <CanGrow>true</CanGrow>
@@ -1324,7 +1331,9 @@
                                         <Style />
                                       </TextRun>
                                     </TextRuns>
-                                    <Style />
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
                                   </Paragraph>
                                 </Paragraphs>
                                 <rd:DefaultName>Cantidad</rd:DefaultName>
@@ -1348,7 +1357,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.59562cm</Size>
+                    <Size>1.50152cm</Size>
                     <CellContents>
                       <Textbox Name="Cantidad4">
                         <CanGrow>true</CanGrow>
@@ -1358,9 +1367,7 @@
                             <TextRuns>
                               <TextRun>
                                 <Value EvaluationMode="Constant" />
-                                <Style>
-                                  <Color>White</Color>
-                                </Style>
+                                <Style />
                               </TextRun>
                             </TextRuns>
                             <Style />
@@ -1370,9 +1377,8 @@
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
-                            <Style>Solid</Style>
+                            <Style>None</Style>
                           </Border>
-                          <BackgroundColor>Red</BackgroundColor>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -1384,7 +1390,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>6.93639cm</Size>
+                        <Size>7.84229cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox6">
                             <CanGrow>true</CanGrow>
@@ -1394,21 +1400,20 @@
                                 <TextRuns>
                                   <TextRun>
                                     <Value>Importe Total</Value>
-                                    <Style>
-                                      <Color>White</Color>
-                                    </Style>
+                                    <Style />
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Right</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
                             <rd:DefaultName>Textbox3</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
-                                <Style>Solid</Style>
+                                <Style>None</Style>
                               </Border>
-                              <BackgroundColor>Red</BackgroundColor>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
@@ -1420,7 +1425,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>1.7241cm</Size>
+                            <Size>2.63cm</Size>
                             <CellContents>
                               <Textbox Name="Cantidad5">
                                 <CanGrow>true</CanGrow>
@@ -1429,10 +1434,8 @@
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Sum(Fields!Cantidad.Value)</Value>
-                                        <Style>
-                                          <Color>White</Color>
-                                        </Style>
+                                        <Value />
+                                        <Style />
                                       </TextRun>
                                     </TextRuns>
                                     <Style />
@@ -1442,9 +1445,8 @@
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
-                                    <Style>Solid</Style>
+                                    <Style>None</Style>
                                   </Border>
-                                  <BackgroundColor>Red</BackgroundColor>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
                                   <PaddingTop>2pt</PaddingTop>
@@ -1464,7 +1466,7 @@
             <DataSetName>dsReporteEgresos</DataSetName>
             <Top>6.97628cm</Top>
             <Height>2.01166cm</Height>
-            <Width>12.30313cm</Width>
+            <Width>15.92673cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -1487,9 +1489,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox27</rd:DefaultName>
-            <Top>6.35788cm</Top>
+            <Top>6.37628cm</Top>
             <Height>0.6cm</Height>
-            <Width>12.30313cm</Width>
+            <Width>15.92674cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -1518,7 +1520,7 @@
             <rd:DefaultName>Textbox27</rd:DefaultName>
             <Top>9.21538cm</Top>
             <Height>0.6cm</Height>
-            <Width>12.30313cm</Width>
+            <Width>15.92674cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -1534,10 +1536,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>9.2241cm</Width>
+                  <Width>12.45774cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.04701cm</Width>
+                  <Width>3.43698cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1629,7 +1631,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1652,14 +1654,16 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>importeSaldo</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1667,7 +1671,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -1694,7 +1697,7 @@
             <Top>9.81538cm</Top>
             <Left>0.03201cm</Left>
             <Height>1.2cm</Height>
-            <Width>12.27111cm</Width>
+            <Width>15.89473cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -1703,10 +1706,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>5.29166in</Height>
+        <Height>4.54166in</Height>
         <Style />
       </Body>
-      <Width>4.84375in</Width>
+      <Width>6.27037in</Width>
       <Page>
         <PageHeader>
           <Height>1.52328cm</Height>

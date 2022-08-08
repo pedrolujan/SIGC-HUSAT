@@ -273,6 +273,66 @@ namespace CapaDato
 
             }
         }
+        public List<ReporteBloque> daDetalleParaCuadre(Busquedas clsBusq,List<ReporteBloque> lstRep)
+        {
+            SqlParameter[] pa = new SqlParameter[12];
+            List<ControlCaja> lstControl = new List<ControlCaja>();
+            DataSet dtMenu = new DataSet();
+            List<ReporteBloque> lsDasboard = new List<ReporteBloque>();
+            DataView dvEgresos = new DataView();
+            clsConexion objCnx = null;
+            String xmlDatos= clsUtil.Serialize(lstRep);
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@dtFechaIni", SqlDbType.Date) { Value = clsBusq.dtFechaIni };
+                pa[1] = new SqlParameter("@dtFechaFin", SqlDbType.Date) { Value = clsBusq.dtFechaFin };
+                pa[2] = new SqlParameter("@codTipoReporte", SqlDbType.VarChar) { Value = clsBusq.cod1 };
+                pa[3] = new SqlParameter("@codTipoOperacion", SqlDbType.VarChar) { Value = clsBusq.cod2 };
+                pa[4] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = clsBusq.cod3 };
+                pa[5] = new SqlParameter("@codSubConsulta", SqlDbType.VarChar) { Value = clsBusq.cod4 };
+                pa[6] = new SqlParameter("@idTipoTarifa", SqlDbType.Int) { Value = 0 };
+                pa[7] = new SqlParameter("@cBuscar", SqlDbType.VarChar) { Value = clsBusq.cBuscar }; 
+                pa[8] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = clsBusq.tipoCon }; 
+                pa[9] = new SqlParameter("@chkHabilitarFecha", SqlDbType.TinyInt) { Value = clsBusq.chkActivarFechas }; 
+                pa[10] = new SqlParameter("@chkDiaEspecifico", SqlDbType.TinyInt) { Value = clsBusq.chkActivarDia }; 
+                pa[11] = new SqlParameter("@xmlDatos", SqlDbType.Xml) { Value = xmlDatos }; 
+
+                 objCnx = new clsConexion("");
+
+                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarDetalleParaCuadreCaja", pa);
+
+               DataView dvDasboard = new DataView(dtMenu.Tables[0]);
+                
+                foreach (DataRowView dr in dvDasboard)
+                {
+                    lsDasboard.Add(new ReporteBloque
+                    {
+                        Codigoreporte = dr["id"].ToString(),
+                        Detallereporte = dr["descripcion"].ToString(),
+                        Cantidad = Convert.ToInt32(dr["cantidad"]),
+                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        SimboloMoneda = dr["cSimbolo"].ToString(),
+                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                    });
+                }
+                
+
+
+
+                return lsDasboard;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+
+            }
+        }
 
         public DataTable daDevolverSoloUsuario(Boolean chk, String dtI, String dtFin, Int32 tipCOn)
         {

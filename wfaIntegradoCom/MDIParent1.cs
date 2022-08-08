@@ -3200,11 +3200,33 @@ namespace wfaIntegradoCom
 
             //}
         }
+        private List<ReporteBloque> fnBuscarDetalleParaCuadre()
+        {
+            List<ReporteBloque> lst = new List<ReporteBloque>();
 
+            bl = new BLControlCaja();
+            DataTable dtRes = new DataTable();
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.chkActivarFechas = chkHabilitarFechasBusG.Checked;
+            clsBusq.chkActivarDia = chkDiaEspecificoG.Checked;
+            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
+            clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
+            clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
+            clsBusq.cod2 = codOperacion;
+            clsBusq.cod3 = cboOperacion.SelectedValue.ToString() == null ? "0" : cboOperacion.SelectedValue.ToString();
+            clsBusq.cod4 = "";
+            clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
+            clsBusq.tipoCon=-1;
+
+
+            return bl.blDetalleParaCuadre(clsBusq, lsReporteBloqueGen);
+        }
         private void tsMiCaja_Click(object sender, EventArgs e)
         {
+            List<ReporteBloque> lstRepDetalle = fnBuscarDetalleParaCuadre();
+
             frmMovimientoCaja frmMC = new frmMovimientoCaja();
-            frmMC.Inicio(lsReporteBloque,lsReporteBloqueEgresos, 0);
+            frmMC.Inicio(lsReporteBloque,lsReporteBloqueEgresos, lstRepDetalle, 0);
         }
 
         private void btnRegistrarEgresos_Click(object sender, EventArgs e)

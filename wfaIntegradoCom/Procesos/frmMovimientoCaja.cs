@@ -34,12 +34,14 @@ namespace wfaIntegradoCom.Procesos
         }
         static List<ReporteBloque> lstReporteIngresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstReporteEgresos = new List<ReporteBloque>();
+        static List<ReporteBloque> lstDetalleIngresos = new List<ReporteBloque>();
         CuadreCaja clsCuadreCaja = new CuadreCaja();
         static Int32 lnTipoCon = 0;
-        public void Inicio(List<ReporteBloque> lstIngresos, List<ReporteBloque> lstEgresos, Int32 tipoCon)
+        public void Inicio(List<ReporteBloque> lstIngresos, List<ReporteBloque> lstEgresos, List<ReporteBloque> lstDetIngresos, Int32 tipoCon)
         {
             lstReporteIngresos = lstIngresos;
             lstReporteEgresos = lstEgresos;
+            lstDetalleIngresos = lstDetIngresos;
             intTipoLlamada = tipoCon;
             this.ShowDialog();
         }
@@ -304,7 +306,7 @@ namespace wfaIntegradoCom.Procesos
             decimal lnMontoSaldo=0;
             decimal lnMontoArqueo=0;
             frmActaCierreCaja frmCierreC = new frmActaCierreCaja();
-            frmCierreC.Inicio(lstReporteIngresos,lstReporteEgresos,clsCuadreCaja, 1);
+            frmCierreC.Inicio(lstReporteIngresos, lstDetalleIngresos, lstReporteEgresos,clsCuadreCaja, 1);
             //if (FunGeneral.fnVerificarApertura())
             //{
             //    lnMontoSaldo=Convert.ToDecimal(textBox1.Text.Trim() == "" ? "0" : textBox1.Text.Trim());
