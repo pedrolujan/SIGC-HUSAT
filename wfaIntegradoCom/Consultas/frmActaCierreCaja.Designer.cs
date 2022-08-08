@@ -46,6 +46,7 @@
             this.ClientSize = new System.Drawing.Size(688, 486);
             this.Controls.Add(this.reportViewer1);
             this.Name = "frmActaCierreCaja";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmActaCierreCaja";
             this.Load += new System.EventHandler(this.frmActaCierreCaja_Load);
             this.ResumeLayout(false);

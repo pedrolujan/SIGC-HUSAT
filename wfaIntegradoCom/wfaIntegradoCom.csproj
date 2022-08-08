@@ -947,6 +947,7 @@
     <None Include="Properties\DataSources\CapaEntidad.Contrato.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.ControlPagos.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.Cronograma.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.CuadreCaja.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.DatosEnviarVehiculo.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.DetalleCronograma.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.DetalleEquipo.datasource" />

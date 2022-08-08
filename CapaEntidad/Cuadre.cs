@@ -65,6 +65,7 @@ namespace CapaEntidad
         public Int32 idMoneda { get; set; }
         public DateTime fechaRegistro { get; set; }
         public String turno { get; set; }
+        public String Detalle { get; set; }
         
     }
     

@@ -121,6 +121,8 @@ namespace wfaIntegradoCom.Procesos
                 fnLlenarTablas(lstReporteEgresos, dgvEgresos, txtTotalEgresos);
                 clsCuadreCaja.importeTotalIngresos = lstReporteIngresos.Sum(i => i.ImporteRow);
                 clsCuadreCaja.importeTotalEgresos = lstReporteEgresos.Sum(i => i.ImporteRow);
+
+                clsCuadreCaja.Detalle = "Cierre de caja de - " + Variables.gsCodUser;
                 clsCuadreCaja.importeSaldo = clsCuadreCaja.importeTotalIngresos + (clsCuadreCaja.importeTotalEgresos * -1);
                 txtTotalCerrarCaja.Text= FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0); 
             }
@@ -302,7 +304,7 @@ namespace wfaIntegradoCom.Procesos
             decimal lnMontoSaldo=0;
             decimal lnMontoArqueo=0;
             frmActaCierreCaja frmCierreC = new frmActaCierreCaja();
-            frmCierreC.Inicio(lstReporteIngresos, 1);
+            frmCierreC.Inicio(lstReporteIngresos,lstReporteEgresos,clsCuadreCaja, 1);
             //if (FunGeneral.fnVerificarApertura())
             //{
             //    lnMontoSaldo=Convert.ToDecimal(textBox1.Text.Trim() == "" ? "0" : textBox1.Text.Trim());
