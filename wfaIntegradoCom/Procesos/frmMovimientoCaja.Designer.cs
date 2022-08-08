@@ -650,6 +650,7 @@
             this.btnCerrar.BorderRadius = 5;
             this.btnCerrar.CheckedState.Parent = this.btnCerrar;
             this.btnCerrar.CustomImages.Parent = this.btnCerrar;
+            this.btnCerrar.Enabled = false;
             this.btnCerrar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnCerrar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 11F);

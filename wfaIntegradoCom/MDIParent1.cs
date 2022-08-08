@@ -1248,7 +1248,7 @@ namespace wfaIntegradoCom
 
             }
             lblBuscar.Location = new Point(txtBuscarRepGeneral.Location.X, (txtBuscarRepGeneral.Location.Y - lblBuscar.Height));
-            lblBuscar.ForeColor = Color.Black;
+            //lblBuscar.ForeColor = Color.Black;
             //pictureBox1.Location = new Point(pictureBox1.Location.X, 49 + (txtBuscarRepGeneral.Height / 4));
             pictureBox1.Location = new Point((txtBuscarRepGeneral.Location.X + txtBuscarRepGeneral.Width)-30, pictureBox1.Location.Y);
 
