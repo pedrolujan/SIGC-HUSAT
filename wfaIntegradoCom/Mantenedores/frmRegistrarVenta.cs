@@ -1003,7 +1003,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private Boolean fnBuscarCliente(SiticoneTextBox txt, Int32 Pagina, Int16 TipoConPagina, DataGridView dgv, Int32 tipcon,ComboBox cboTC,ComboBox cboTD)
+        public Boolean fnBuscarCliente(SiticoneTextBox txt, Int32 Pagina, Int16 TipoConPagina, DataGridView dgv, Int32 tipcon,ComboBox cboTC,ComboBox cboTD)
         {
             BLCliente objVehi = new BLCliente();
             DatosEnviarVehiculo objEnvio = new DatosEnviarVehiculo();
@@ -1021,11 +1021,13 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     String nroDocumento = txt.Text.Trim();
                     String nombreCliente = "";
+
+                    String Representante = "";
                     Int32 idTipoPersona = Convert.ToInt32(cboTC.SelectedValue ?? 0);
                     Int32 idTipoDocumento = Convert.ToInt32(cboTD.SelectedValue ?? 0);
                     String estCliente = "1"; 
 
-                    datCliente = objVehi.blBuscarCliente(nroDocumento, nombreCliente, idTipoPersona, idTipoDocumento, estCliente, Pagina,TipoConPagina);
+                    datCliente = objVehi.blBuscarCliente(nroDocumento, nombreCliente/*,Representante*/, idTipoPersona, idTipoDocumento, estCliente, Pagina,TipoConPagina);
                     totalResultados = datCliente.Rows.Count;
 
                     if (totalResultados > 0)

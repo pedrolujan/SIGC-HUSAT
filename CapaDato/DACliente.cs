@@ -30,6 +30,9 @@ namespace CapaDato
             {
                 pa[0] = new SqlParameter("@peNroDocumento", SqlDbType.NVarChar, 15) { Value = nroDocumento };
                 pa[1] = new SqlParameter("@peNombreCliente", SqlDbType.NVarChar, 45) { Value = nombreCliente };
+               //MOD//
+                //pa[2] = new SqlParameter("@peRepresentante", SqlDbType.VarChar) { Value = Representante };
+               
                 pa[2] = new SqlParameter("@peIdTipoPersona", SqlDbType.Int) { Value = idTipoPersona };
                 pa[3] = new SqlParameter("@peIdTipoDocumento", SqlDbType.Int) { Value = idTipoDocumento };
                 pa[4] = new SqlParameter("@peEstadoCliente", SqlDbType.NVarChar,1) { Value = estCliente };
@@ -119,7 +122,7 @@ namespace CapaDato
                 pa[1] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = pnTipoCon };
 
                 objCnx = new clsConexion("");
-                dtUsuario = objCnx.EjecutarProcedimientoDT("uspListarCliente", pa);
+                    dtUsuario = objCnx.EjecutarProcedimientoDT("uspListarCliente", pa);
 
                 lstCliente = new Cliente();
                 foreach (DataRow drMenu in dtUsuario.Rows)
@@ -146,6 +149,21 @@ namespace CapaDato
                     lstCliente.cEmpresa = Convert.ToString(drMenu["cEmpresa"]);
                     lstCliente.cCorreo = Convert.ToString(drMenu["cCorreo"]);
                     lstCliente.ubigeo = Convert.ToString(drMenu["cDireccion"]+" "+drMenu["cNomDist"]+" "+ drMenu["cNomProv"] +" "+ drMenu["cNomDep"]);
+                    //MOD REPRESENTANTE
+                    lstCliente.idRepreLegal = Convert.ToInt32(drMenu["idRepreLegal"]);
+                    if (lstCliente.idRepreLegal != 0)
+                    {
+                        lstCliente.idClienteRepre = Convert.ToInt32(drMenu["idCliente1"]);
+                    lstCliente.cTiDoRepre = Convert.ToInt32(drMenu["cTiDo1"]);
+                    lstCliente.cDocumentoRepre = Convert.ToString(drMenu["cDocumento1"]);
+                    lstCliente.NombreRepreLegal = Convert.ToString(drMenu["Representante"]);
+                    lstCliente.cCorreoRepre = Convert.ToString(drMenu["cCorreo1"]);
+                    lstCliente.cTelCelularRepre = Convert.ToString(drMenu["cTelCelular1"]);
+                    lstCliente.Cargo = Convert.ToString(drMenu["cargo"]);
+                    lstCliente.cDireccionRepre = Convert.ToString(drMenu["cDireccion1"]);
+
+                    }
+
                 }
 
                 return lstCliente;
@@ -210,7 +228,7 @@ namespace CapaDato
         }
         public String daGrabarCliente(Cliente objCliente, Int16 pnTipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[22];
+            SqlParameter[] pa = new SqlParameter[25];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
 
@@ -241,30 +259,44 @@ namespace CapaDato
                 pa[9].Value = objCliente.cTelFijo;
                 pa[10] = new SqlParameter("@pecTelCelular", SqlDbType.NVarChar, 20);
                 pa[10].Value = objCliente.cTelCelular;
-                pa[11] = new SqlParameter("@pebestado", SqlDbType.Bit);
+                pa[11] = new SqlParameter("@pebestado",SqlDbType.Bit);
                 pa[11].Value = objCliente.bEstado;
-                pa[12] = new SqlParameter("@pedFechaRegistro", SqlDbType.DateTime);
+                pa[12] = new SqlParameter("@pedFechaRegistro",SqlDbType.DateTime);
                 pa[12].Value = objCliente.dFechaRegistro;
-                pa[13] = new SqlParameter("@peidUsuario", SqlDbType.Int);
+                pa[13] = new SqlParameter("@peidUsuario",SqlDbType.Int);
                 pa[13].Value = objCliente.idUsuario;
-                pa[14] = new SqlParameter("@peidZona", SqlDbType.Int);
+                pa[14] = new SqlParameter("@peidZona",SqlDbType.Int);
                 pa[14].Value = objCliente.idZona;
-                pa[15] = new SqlParameter("@pecContactoNom1", SqlDbType.NVarChar,150);
+                pa[15] = new SqlParameter("@pecContactoNom1",SqlDbType.NVarChar,150);
                 pa[15].Value = objCliente.cContactoNom1;
                 pa[16] = new SqlParameter("@pecContactoNom2", SqlDbType.NVarChar, 150);
                 pa[16].Value = objCliente.cContactoNom2;
                 pa[17] = new SqlParameter("@pecContactoCel1", SqlDbType.NVarChar, 20);
                 pa[17].Value = objCliente.cContactoCel1;
-                pa[18] = new SqlParameter("@pecContactoCel2", SqlDbType.NVarChar, 20);
+                pa[18] = new SqlParameter("@pecContactoCel2",SqlDbType.NVarChar, 20);
                 pa[18].Value = objCliente.cContactoCel2;
-                pa[19] = new SqlParameter("@pecEmpresa", SqlDbType.NVarChar, 150);
+                pa[19] = new SqlParameter("@pecEmpresa",SqlDbType.NVarChar, 150);
                 pa[19].Value = objCliente.cEmpresa;
-                pa[20] = new SqlParameter("@pecCorreo", SqlDbType.NVarChar, 150);
+                pa[20] = new SqlParameter("@pecCorreo",SqlDbType.NVarChar, 150);
                 pa[20].Value = objCliente.cCorreo;
-
-                pa[21] = new SqlParameter("@peiTipoCon", SqlDbType.TinyInt);
+                pa[21] = new SqlParameter("@peiTipoCon",SqlDbType.TinyInt);
                 pa[21].Value = pnTipoCon;
 
+                //pa[22] = new SqlParameter("@idRepreLegal", SqlDbType.Int);
+                //pa[22].Value = objCliente.idRepreLegal;
+
+                //pa[23] = new SqlParameter("@idCliente", SqlDbType.Int);
+                //pa[23].Value = objCliente.idCliente;
+                pa[22] = new SqlParameter("@idRepreLegal", SqlDbType.Int);
+                pa[22].Value = objCliente.idRepreLegal;
+                pa[23] = new SqlParameter("@Cargo",SqlDbType.VarChar,50);
+                pa[23].Value = objCliente.Cargo;
+                pa[24] = new SqlParameter("@Estado",SqlDbType.Bit);
+                pa[24].Value = objCliente.Estado;
+                //pa[27] = new SqlParameter("@pedFechaRegistro", SqlDbType.DateTime);
+                //pa[27].Value = objCliente.fechaRegistro;
+
+                    
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspGuardarCliente", pa);
 
