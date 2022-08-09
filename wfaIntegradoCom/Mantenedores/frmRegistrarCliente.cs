@@ -737,7 +737,7 @@ namespace wfaIntegradoCom.Mantenedores
                             }
                             txtTelefonoFijoRepre.Text = Convert.ToString(lstCliente.cTelCelularRepre);
                             dgDocumentoRP.Visible = false;
-                            cboCargoRepre.Text = Convert.ToString(lstCliente.Cargo);
+                            cboCargoRepre.SelectedValue = Convert.ToString(lstCliente.Cargo);
                             txtDireccionRepre.Text = Convert.ToString(lstCliente.cDireccionRepre);
                         }
                     if (lstCliente.bEstado)
