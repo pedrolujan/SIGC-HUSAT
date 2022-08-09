@@ -255,7 +255,46 @@ namespace CapaDato
                 objCnx = null;
             }
         }
+        //MOD ADD//
+        //public DataTable daListarDocumentoventa(Int32 codVenta)
+        //{
+        //    SqlParameter[] pa = new SqlParameter[4];
+        //    DataTable dtDocVenta = new DataTable();
+        //    clsConexion objCnx = null;
 
+
+        //    objUtil = new clsUtil();
+          
+           
+        //    try
+        //    {
+
+        //        pa[0] = new SqlParameter("@codVenta", SqlDbType.NVarChar, 15);
+        //        pa[0].Value = "";
+        //        pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int);
+        //        pa[1].Value = 0;
+        //        pa[2] = new SqlParameter("@tipoTarifa", SqlDbType.Int);
+        //        pa[2].Value = 0;
+        //        pa[3] = new SqlParameter("@idContrato", SqlDbType.Int);
+        //        pa[3].Value = codVenta;
+
+
+        //        objCnx = new clsConexion("");
+        //        dtDocVenta = objCnx.EjecutarProcedimientoDT("uspBuscarDocumentoVentas", pa);
+
+             
+        //    }
+        //    catch (Exception ex)
+        //    {
+               
+        //    }
+        //    finally
+        //    {
+        //        if (objCnx != null)
+        //            objCnx.CierraConexion();
+        //        objCnx = null;
+        //    }
+        //}
         public xmlDocumentoVentaGeneral daBuscarDocumentoVenta(Int32 codVenta)
         {
             SqlParameter[] pa = new SqlParameter[4];

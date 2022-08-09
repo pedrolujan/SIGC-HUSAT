@@ -26,7 +26,12 @@ namespace wfaIntegradoCom
             //Application.Run(new frmRegistrarMarcaVehiculo());
             //Application.Run(new frmRegistrarEquipoGps());
             //Application.Run(new frmDocumentoVenta());
-            Application.Run(new MDIParent1());
+            // Application.Run(new MDIParent1());
+
+           //Application.Run(new frmAnularVenta());
+            //Application.Run(new frmBuscarVentas());
+            Application.Run(new frmRegistrarCliente());
+
             //Application.Run(new frmEmpleado());
             //Application.Run(new frmRegistrarVehiculo());
             //Application.Run(new frmLoad());

@@ -65,7 +65,21 @@ namespace CapaNegocio
 
             }
         }
+        //MOD ADD //
+        //public DataTable blListarDocumentoVenta(Int32 codVenta)
+        //{
+        //    DAOtrasVenta objCliente = new DAOtrasVenta();
+        //    try
+        //    {
+        //        return objCliente.daListarDocumentoventa(codVenta);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
 
+           
+        //}
         public xmlDocumentoVentaGeneral blBuscarDocumentoVenta(Int32 codVenta)
         {
             daObjTipoVenta = new DAOtrasVenta();

@@ -40,7 +40,7 @@ namespace CapaDato
                 pa[12] = new SqlParameter("@plan", SqlDbType.Int) { Value = estadoPlan };
                 pa[13] = new SqlParameter("@TipoPlan", SqlDbType.Int) { Value = estadoTipoPlan };
                 pa[14] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
-                pa[15]=new SqlParameter("@estadoTipoContratoVenta", SqlDbType.NVarChar, 8) { Value = estadoContrato };
+                pa[15]=  new SqlParameter("@estadoTipoContratoVenta", SqlDbType.NVarChar, 8) { Value = estadoContrato };
                 pa[16] = new SqlParameter("@estadoTipoDocVenta", SqlDbType.NVarChar, 8) { Value = Docventapago };
 
 

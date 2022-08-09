@@ -2331,7 +2331,7 @@ namespace wfaIntegradoCom.Procesos
             clsUtil objUtil = new clsUtil();
             DataTable datResultado = new DataTable();
             try
-            {
+            {   
                 string BuscaDato = Convert.ToString(txtBusca.Text.Trim());
                 datResultado = datCliente.BlBuscarTitularidad(cond, BuscaDato,  idCliente);
 
