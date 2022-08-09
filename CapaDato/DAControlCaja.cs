@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -145,7 +146,7 @@ namespace CapaDato
                         lsRepBloque.Add(new ReporteBloque
                         {
                             Codigoreporte = dr["id"].ToString(),
-                            Detallereporte = dr["descripcion"].ToString(),
+                            Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
                             Cantidad = Convert.ToInt32(dr["cantidad"]),
                             idMoneda = Convert.ToInt32(dr["idMoneda"]),
                             SimboloMoneda = dr["cSimbolo"].ToString(),
@@ -216,7 +217,7 @@ namespace CapaDato
                     lsDasboard.Add(new ReporteBloque
                     {
                         Codigoreporte = dr["id"].ToString(),
-                        Detallereporte = dr["descripcion"].ToString(),
+                        Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
@@ -234,7 +235,7 @@ namespace CapaDato
                         lsRepBloque.Add(new ReporteBloque
                         {
                             Codigoreporte = dr["id"].ToString(),
-                            Detallereporte = dr["descripcion"].ToString(),
+                            Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
                             Cantidad = Convert.ToInt32(dr["cantidad"]),
                             idMoneda = Convert.ToInt32(dr["idMoneda"]),
                             SimboloMoneda = dr["cSimbolo"].ToString(),
@@ -249,7 +250,7 @@ namespace CapaDato
                     lstEgresos.Add(new ReporteBloque
                     {
                         Codigoreporte = dr["id"].ToString(),
-                        Detallereporte = dr["descripcion"].ToString(),
+                        Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
@@ -303,19 +304,21 @@ namespace CapaDato
                 dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarDetalleParaCuadreCaja", pa);
 
                DataView dvDasboard = new DataView(dtMenu.Tables[0]);
-                
+                Int32 y = 0;
                 foreach (DataRowView dr in dvDasboard)
                 {
                     lsDasboard.Add(new ReporteBloque
                     {
+                        numero =y+1,
                         Codigoreporte = dr["id"].ToString(),
-                        Detallereporte = dr["descripcion"].ToString(),
+                        Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
                         ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
                         ImporteRow = Convert.ToDouble(dr["montoTotal"])
                     });
+                    y++;
                 }
                 
 
@@ -332,6 +335,11 @@ namespace CapaDato
             {
 
             }
+        }
+        public  string FormatearCadenaTitleCase(String str)
+        {
+            String dat = str.ToLower();
+            return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(dat); ;
         }
 
         public DataTable daDevolverSoloUsuario(Boolean chk, String dtI, String dtFin, Int32 tipCOn)

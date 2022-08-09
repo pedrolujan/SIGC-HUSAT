@@ -1144,7 +1144,7 @@ namespace wfaIntegradoCom.Procesos
             lstDetalleCronograma[row].estChk = true;
             lstDetalleCronograma[row].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
             lstDetalleCronograma[row].idOperacion = 3;
-            lstDetalleCronograma[row].fechaPago = Variables.gdFechaSis;
+            lstDetalleCronograma[row].fechaPago = dtFechaPago.Value;
             lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[row]);
         }
         private void dgvCronograma_CellClick(object sender, DataGridViewCellEventArgs e)

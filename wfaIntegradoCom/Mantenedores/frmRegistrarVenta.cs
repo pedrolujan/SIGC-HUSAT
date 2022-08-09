@@ -1566,7 +1566,7 @@ namespace wfaIntegradoCom.Mantenedores
                     item.Couta,
                     fnDevolverSrtDescuento(idTipodescuento,item.Descuento),
                     fnDevolverSrtDescuento(0,item.TotalTipoDescuento),
-                    fnDevolverSrtDescuento(0,item.Importe)
+                    FunGeneral.fnFormatearPrecio(clsMoneda.cSimbolo,item.Importe,1)
                 );
             }
             if (lstDV.Count>0)
@@ -2108,7 +2108,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                                     arrayDescuentoPrecio = new double[]
                                     {
-                                        calcularDesRA
+                                        calcularDesReactivacion
                                     };
                                     arrayGananciaPro = new double[]
                                     {

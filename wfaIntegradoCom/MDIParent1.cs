@@ -61,6 +61,7 @@ namespace wfaIntegradoCom
         static Int32 tabInicio = 0;
         List<ReporteBloque> lsReporteBloque = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueEgresos = new List<ReporteBloque>();
+        List<ReporteBloque> lstRepDetalleIngresos = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueGen = new List<ReporteBloque>();
         String codOperacion = "";
         String codTipoReporte = "";
@@ -431,7 +432,7 @@ namespace wfaIntegradoCom
 
             }
 
-            toolStripStatusLabel1.Text = "Usuario: " + Variables.gsCodUser;
+            toolStripStatusLabel1.Text = "Usuario: " + FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
             tsCerraSession.Text = " " + FunGeneral.FormatearCadenaTitleCase(Variables.clasePersonal.cPrimerNom);
 
             //ImgPerfil.Image = Image.FromStream(lstPers[0].strPerfil);
@@ -3221,12 +3222,61 @@ namespace wfaIntegradoCom
 
             return bl.blDetalleParaCuadre(clsBusq, lsReporteBloqueGen);
         }
+        private void fnValidarListasVecias()
+        {
+            if (lsReporteBloque.Count == 0)
+            {
+                lsReporteBloque.Add(new ReporteBloque
+                {
+                    numero = 1,
+                    Cantidad=0,
+                    Detallereporte = "No hubo Ingresos",
+                    ImporteRow = 0,
+                    MonImporteRow="S/."+ 0
+
+                });
+                lsReporteBloque[0].MonImporteSumado = "S/." + lsReporteBloque.Sum(i => i.ImporteRow);
+            }
+            if (lsReporteBloqueEgresos.Count == 0)
+            {
+                lsReporteBloqueEgresos.Add(new ReporteBloque
+                {
+                    numero = 1,
+                    Cantidad = 0,
+                    Detallereporte = "No hubo egresos",
+                    ImporteRow = 0,
+                    SimboloMoneda = "S/.",
+                    MonImporteRow = "S/." + 0
+
+                }) ;
+                lsReporteBloqueEgresos[0].MonImporteSumado = "S/." + lsReporteBloqueEgresos.Sum(i => i.ImporteRow);
+            }
+            if (lstRepDetalleIngresos.Count == 0)
+            {
+                lstRepDetalleIngresos.Add(new ReporteBloque
+                {
+                    numero = 1,
+                    Cantidad = 0,
+                    Detallereporte = "Sin detalle de ingresos",
+                    ImporteRow = 0,
+                    MonImporteRow = "S/." + 0
+
+                });
+                lstRepDetalleIngresos[0].MonImporteSumado = "S/." + lstRepDetalleIngresos.Sum(i => i.ImporteRow);
+            }
+        }
         private void tsMiCaja_Click(object sender, EventArgs e)
         {
-            List<ReporteBloque> lstRepDetalle = fnBuscarDetalleParaCuadre();
-
+             lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
+            fnValidarListasVecias();
             frmMovimientoCaja frmMC = new frmMovimientoCaja();
-            frmMC.Inicio(lsReporteBloque,lsReporteBloqueEgresos, lstRepDetalle, 0);
+            lsReporteBloque[0].MonImporteSumado =FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda,lsReporteBloque.Sum(i => i.ImporteRow),0);
+
+            lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow),0);
+
+            lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda , lstRepDetalleIngresos.Sum(i => i.ImporteRow),0);
+
+            frmMC.Inicio(lsReporteBloque,lsReporteBloqueEgresos, lstRepDetalleIngresos, 0);
         }
 
         private void btnRegistrarEgresos_Click(object sender, EventArgs e)

@@ -27,6 +27,7 @@ namespace wfaIntegradoCom.Consultas
         static Int32 lnTipoCon = 0;
         public void Inicio(List<ReporteBloque> lstR, List<ReporteBloque> lstDetIngr, List<ReporteBloque> lstEgresos,CuadreCaja clsCuandre, Int32 tipoCon)
         {
+            lstReporteCuandrecaja.Clear();
             lstReporteIngresos = lstR;
             lstDetalleIngresos = lstDetIngr;
             lstReporteEgresos = lstEgresos;
@@ -48,15 +49,15 @@ namespace wfaIntegradoCom.Consultas
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.ProcessingMode = ProcessingMode.Local;
             parameters[0] = new ReportParameter("prFecha", Convert.ToString(Variables.gdFechaSis));
-            parameters[1] = new ReportParameter("prSucursal", Variables.gsSucursal);
-            parameters[2] = new ReportParameter("prUsuario", clt.cPrimerNom+" "+ clt.cApePat+" "+ clt.cApeMat);
+            parameters[1] = new ReportParameter("prSucursal", FunGeneral.FormatearCadenaTitleCase(Variables.gsSucursal));
+            parameters[2] = new ReportParameter("prUsuario", FunGeneral.FormatearCadenaTitleCase(clt.cPrimerNom+" "+ clt.cApePat+" "+ clt.cApeMat));
             parameters[3] = new ReportParameter("RazonSocial", Convert.ToString(Variables.gsEmpresa));
             parameters[4] = new ReportParameter("prTurno", Variables.gdFechaSis.Hour < 15 ? " Mañana" : " Tarde");
 
             reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.prtActaCierreCaja.rdlc";
             reportViewer1.LocalReport.SetParameters(parameters);
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReporte", lstIngresos));
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsDetIngresos", lstDetIngresos));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsDetalleIngresos", lstDetIngresos));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReporteEgresos", lstEgresos));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCuadreCaja", lstCuandre));
             reportViewer1.ZoomMode = ZoomMode.PageWidth;

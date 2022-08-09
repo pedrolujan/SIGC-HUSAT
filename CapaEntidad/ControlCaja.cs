@@ -28,9 +28,11 @@ namespace CapaEntidad
         public Double ImporteTipoCambio { get; set; }
 
         public Double ImporteSumado { get; set; }
+        public String MonImporteSumado { get; set; }
         public Double ImporteTotal { get; set; }
         public Int32 idMoneda { get; set; }
         public String SimboloMoneda { get; set; }
+        public String MonImporteRow { get; set; }
         public Boolean estado { get; set; }
 
     }

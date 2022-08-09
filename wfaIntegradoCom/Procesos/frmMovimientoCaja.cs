@@ -126,6 +126,8 @@ namespace wfaIntegradoCom.Procesos
 
                 clsCuadreCaja.Detalle = "Cierre de caja de - " + Variables.gsCodUser;
                 clsCuadreCaja.importeSaldo = clsCuadreCaja.importeTotalIngresos + (clsCuadreCaja.importeTotalEgresos * -1);
+                clsCuadreCaja.SimbloMon = "S/.";
+                clsCuadreCaja.MonImporteSaldo= FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0);
                 txtTotalCerrarCaja.Text= FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0); 
             }
 
