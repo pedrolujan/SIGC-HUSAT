@@ -501,7 +501,7 @@ namespace CapaDato
                 pa[0].Value = pcFechaSist;
                 pa[1] = new SqlParameter("@peidSucursal", SqlDbType.SmallInt);
                 pa[1].Value = pidSucursal;
-                pa[2] = new SqlParameter("@peidUsuario", SqlDbType.SmallInt);
+                pa[2] = new SqlParameter("@peidUsuario", SqlDbType.Int);
                 pa[2].Value = idUsuario;
                 pa[3] = new SqlParameter("@psbVerifica", SqlDbType.Bit);
                 pa[3].Direction = ParameterDirection.Output; ;

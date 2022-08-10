@@ -103,14 +103,15 @@ namespace wfaIntegradoCom.Procesos
                         periodoInicio = Convert.ToDateTime(dtResult.Rows[i][2]),
                         periodoFinal= Convert.ToDateTime(dtResult.Rows[i][3]),
                         cDescripcion = "Periodo " + Convert.ToDateTime(dtResult.Rows[i][2]).ToString("dd/MMMM/yyyy") + " A " + Convert.ToDateTime(dtResult.Rows[i][3]).ToString("dd/MMMM/yyyy")+" - Contrato: "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(dtResult.Rows[i][4])),
-                        estado= Convert.ToString(dtResult.Rows[i][5])
+                        estadoCronograma= Convert.ToString(dtResult.Rows[i][5]),
+                        estado= Convert.ToString(dtResult.Rows[i][6])
                     }) ;
                 }
 
+                lstCronograma = lstCrngr;
                 cboCronograma.ValueMember = "idCronograma";
                 cboCronograma.DisplayMember = "cDescripcion";
                 cboCronograma.DataSource = lstCrngr;
-                lstCronograma = lstCrngr;
             }
             else
             {
@@ -316,6 +317,8 @@ namespace wfaIntegradoCom.Procesos
           tabControl1.TabPages[1].AutoScrollPosition=new Point(0,342);
             //tabControl1.TabPages[1].AutoScroll = false;
             //dgvCronograma.Rows[0].Visible = false;
+
+            //fnHabilitarDescuento(estadoDescuento);
         }
 
         private Tuple<Int32, Int32, Int32> DiferenciaFechas(DateTime newdt, DateTime olddt,String estado,Int32 ciclo)
@@ -1800,7 +1803,7 @@ namespace wfaIntegradoCom.Procesos
         {
             if (EstadoCarga==true && e.ColumnIndex>0)
             {
-                if (e.ColumnIndex == 8)
+                if (e.ColumnIndex == 9)
                 {
                     DialogResult dResult;
                     Double PrecioADescontar = 0;
@@ -1886,11 +1889,29 @@ namespace wfaIntegradoCom.Procesos
         }
         private void cboCronograma_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CronogramaSeleccionado = Convert.ToInt32(cboCronograma.SelectedValue);
+            
             fnObtenerCronogramaEspecifico(Convert.ToInt32(cboCronograma.SelectedValue), 0);
             fnHabilitarDescuento(false);
 
             //MessageBox.Show("idContrato "+ Convert.ToInt32(cboCronograma.SelectedValue));
+            CronogramaSeleccionado = Convert.ToInt32(cboCronograma.SelectedValue);
+            if (lstCronograma.Count>0)
+            {
+                Cronograma dcr = lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
+                if(dcr is Cronograma)
+                {
+                    if (dcr.estadoCronograma != "ESCR0004")
+                    {
+                        btnCambiarIncumplimiento.Text = "Pasar a Incumplimiento";
+                    }
+                    else if (dcr.estadoCronograma == "ESCR0004")
+                    {
+                        btnCambiarIncumplimiento.Text = "Activar Cronograma";
+                    }
+                }
+                
+            }
+           
         }
 
         private void dgvListaVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -2257,24 +2278,41 @@ namespace wfaIntegradoCom.Procesos
                     estadoActualizar = true;
                 }
             }
-            if (estadoActualizar)
+            Cronograma dcr = lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
+            if (dcr.estadoCronograma!= "ESCR0004")
             {
-                DialogResult EstadoDialog = MessageBox.Show("Esta seguro de realizar el cambio de estado!!!\n YA NO SE MOSTRARA EN LA BUSQUEDA DE CRONOGRAMA", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (estadoActualizar)
+                {
+                    DialogResult EstadoDialog = MessageBox.Show("Esta seguro de realizar el cambio de estado!!!\n YA NO SE MOSTRARA EN LA BUSQUEDA DE CRONOGRAMA", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (EstadoDialog == DialogResult.Yes)
+                    {
+                        res = frm.daCambiarEstadoCronograma(CronogramaSeleccionado,-1);
+                        if (res)
+                        {
+                            MessageBox.Show("El contrato se actualizo correctamente", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("No se puede realizar la actualizacion -- Comuniquese con el administrador", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+            }
+            else if (dcr.estadoCronograma == "ESCR0004")
+            {
+                DialogResult EstadoDialog = MessageBox.Show("Esta seguro de realizar el cambio de estado!!!\n EL CRONOGRAMA SE MOSTRARÁ NUEVAMENTE EN LA BUSQUEDA", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (EstadoDialog == DialogResult.Yes)
                 {
-                    res = frm.daCambiarEstadoCronograma(CronogramaSeleccionado);
+                    res = frm.daCambiarEstadoCronograma(CronogramaSeleccionado, -2);
                     if (res)
                     {
                         MessageBox.Show("El contrato se actualizo correctamente", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-             
             }
-            else
-            {
-                MessageBox.Show("No se puede realizar la actualizacion -- Comuniquese con el administrador", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            }
+            
 
         }
 

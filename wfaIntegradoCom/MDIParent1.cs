@@ -372,7 +372,8 @@ namespace wfaIntegradoCom
             {
                 fnValidarusuarioEnSession();
                 fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
-                pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008" ? false : true;
+                //pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008" ? false : true;
+                fnActivarDashBoard(FunGeneral.fnVerificarApertura(Variables.gnCodUser));
                 treeView1.Controls.Add(pnlParaDashboard);
                 //fnMostrarDashboard();
             }
@@ -1286,7 +1287,7 @@ namespace wfaIntegradoCom
             }
             finally
             {
-                pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008" ? false : true;
+                //pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008" ? false : true;
                 treeView1.Controls.Add(pnlParaDashboard);
                 pnlParaDashboard.Size = treeView1.Size;
                 var gbx = pnlParaDashboard.Controls.OfType<SiticoneGroupBox>();
@@ -1315,6 +1316,7 @@ namespace wfaIntegradoCom
                 {
                     cboOperacion.SelectedValue = 0;
                 }
+                fnValidarusuarioEnSession();
             }
 
         }
@@ -1767,7 +1769,7 @@ namespace wfaIntegradoCom
 
             fnMostrarDashboard();
         }
-        private void fnMostrarDashboard()
+        public void fnMostrarDashboard()
         {
             treeView1.Nodes.Clear();
             treeView1.Controls.Clear();
@@ -3155,7 +3157,37 @@ namespace wfaIntegradoCom
         {
             fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
         }
+        public void fnActivarDashBoard(Boolean estado)
+        {
+            if (Variables.gsCargoUsuario == "PETR0008")
+            {
+                pnlParaDashboard.Visible = false;
 
+            }
+            else if (Variables.gsCargoUsuario== "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
+            {
+                pnlParaDashboard.Visible = true;
+            }
+            else
+            {
+                pnlParaDashboard.Visible = estado;
+            }
+            panelEspaciado.Controls.Clear();
+            if (estado==false)
+            {
+                SiticoneLabel lbl = new SiticoneLabel();
+                lbl.AutoSize = false;
+                lbl.Size = panelEspaciado.Size;
+                lbl.TextAlignment = ContentAlignment.MiddleCenter;
+                lbl.Text = "POR FAVOR DEBES APERTURAR CAJA PARA PODER REGISTRAR EGRESOS E INGRESOS ❗";
+                lbl.BackColor = Color.Black;
+                lbl.ForeColor = Variables.ColorWarning;
+                lbl.Font = new Font("Roboto", 11);
+                panelEspaciado.Controls.Add(lbl);
+            }
+            treeView1.Controls.Add(pnlParaDashboard);
+
+        }
         private void pnlParaDashboard_MouseEnter_1(object sender, EventArgs e)
         {
             treeView1_MouseEnter(sender, e);

@@ -86,9 +86,9 @@ namespace CapaDato
             }
 
         }
-        public Boolean daCambiarEstadoCronograma(Int32 idCron)
+        public Boolean daCambiarEstadoCronograma(Int32 idCron,Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[1];
+            SqlParameter[] pa = new SqlParameter[2];
             DataTable dtResult = new DataTable();
             clsConexion objCnx = null;
             objUtil = new clsUtil();
@@ -96,6 +96,7 @@ namespace CapaDato
             try
             {
                 pa[0] = new SqlParameter("@idCronograma", SqlDbType.Int) { Value = idCron };
+                pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
                 objCnx = new clsConexion("");
                 dtResult = objCnx.EjecutarProcedimientoDT("uspcambiarEstadoCronograma", pa);
 

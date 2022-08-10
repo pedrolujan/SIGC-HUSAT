@@ -16,6 +16,7 @@ namespace CapaEntidad
         public DateTime periodoFinal { get; set; }
         public DateTime fechaRegsitro { get; set; }
         public String estado { get; set; }
+        public String estadoCronograma { get; set; }
         public String cDescripcion { get; set; }
 
 

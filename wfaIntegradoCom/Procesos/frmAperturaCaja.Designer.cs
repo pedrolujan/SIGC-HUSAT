@@ -35,9 +35,9 @@
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.btnAtras = new System.Windows.Forms.Button();
             this.epUsuario = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnRegistrar = new Siticone.UI.WinForms.SiticoneGradientButton();
+            this.btnAtras = new Siticone.UI.WinForms.SiticoneGradientButton();
             ((System.ComponentModel.ISupportInitialize)(this.epUsuario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,40 +113,60 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Monto";
             // 
+            // epUsuario
+            // 
+            this.epUsuario.ContainerControl = this;
+            // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.Location = new System.Drawing.Point(183, 246);
+            this.btnRegistrar.BorderRadius = 5;
+            this.btnRegistrar.CheckedState.Parent = this.btnRegistrar;
+            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrar.CustomImages.Parent = this.btnRegistrar;
+            this.btnRegistrar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.btnRegistrar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnRegistrar.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrar.HoveredState.Parent = this.btnRegistrar;
+            this.btnRegistrar.Image = global::wfaIntegradoCom.Properties.Resources.guardar_hover;
+            this.btnRegistrar.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnRegistrar.Location = new System.Drawing.Point(199, 249);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(124, 62);
-            this.btnRegistrar.TabIndex = 10;
-            this.btnRegistrar.Text = "Registrar";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.ShadowDecoration.Parent = this.btnRegistrar;
+            this.btnRegistrar.Size = new System.Drawing.Size(148, 55);
+            this.btnRegistrar.TabIndex = 283;
+            this.btnRegistrar.Text = "Aperturar";
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             this.btnRegistrar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnRegistrar_KeyDown);
             // 
             // btnAtras
             // 
-            this.btnAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtras.Location = new System.Drawing.Point(36, 246);
+            this.btnAtras.BorderRadius = 5;
+            this.btnAtras.CheckedState.Parent = this.btnAtras;
+            this.btnAtras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAtras.CustomImages.Parent = this.btnAtras;
+            this.btnAtras.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.btnAtras.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnAtras.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnAtras.ForeColor = System.Drawing.Color.White;
+            this.btnAtras.HoveredState.Parent = this.btnAtras;
+            this.btnAtras.Image = global::wfaIntegradoCom.Properties.Resources.salir_hover;
+            this.btnAtras.ImageSize = new System.Drawing.Size(22, 22);
+            this.btnAtras.Location = new System.Drawing.Point(16, 249);
             this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(124, 62);
-            this.btnAtras.TabIndex = 11;
-            this.btnAtras.Text = "Regresar";
-            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.ShadowDecoration.Parent = this.btnAtras;
+            this.btnAtras.Size = new System.Drawing.Size(148, 55);
+            this.btnAtras.TabIndex = 283;
+            this.btnAtras.Text = "    Cerrar";
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
-            // 
-            // epUsuario
-            // 
-            this.epUsuario.ContainerControl = this;
             // 
             // frmAperturaCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(365, 328);
-            this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.btnAtras);
+            this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.txtMonto);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtUsuario);
@@ -174,8 +194,8 @@
         private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnRegistrar;
-        private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.ErrorProvider epUsuario;
+        private Siticone.UI.WinForms.SiticoneGradientButton btnAtras;
+        private Siticone.UI.WinForms.SiticoneGradientButton btnRegistrar;
     }
 }

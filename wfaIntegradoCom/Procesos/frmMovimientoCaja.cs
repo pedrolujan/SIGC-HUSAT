@@ -35,6 +35,8 @@ namespace wfaIntegradoCom.Procesos
         static List<ReporteBloque> lstReporteIngresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstReporteEgresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstDetalleIngresos = new List<ReporteBloque>();
+
+        static Boolean estadoApertura = false;
         CuadreCaja clsCuadreCaja = new CuadreCaja();
         static Int32 lnTipoCon = 0;
         public void Inicio(List<ReporteBloque> lstIngresos, List<ReporteBloque> lstEgresos, List<ReporteBloque> lstDetIngresos, Int32 tipoCon)
@@ -111,14 +113,32 @@ namespace wfaIntegradoCom.Procesos
         }
 
         string pcFecha = "";
+        private void fnActivarSegunApertura()
+        {
+            if (estadoApertura==false)
+            {
+                btnAperturarCaja.Enabled = true;
+                btnCerrar.Enabled = false;
+                lstReporteIngresos.Clear();
+                lstReporteEgresos.Clear();
+            }
+            else
+            {
+                btnAperturarCaja.Enabled = false;
+                btnCerrar.Enabled = true;
+            }
+        }
         private void frmMovimientoCaja_Load(object sender, EventArgs e)
         {
             bool bResult = false;
             decimal nSaldo = 0;
             int intUsuario = 0;
+           
+            estadoApertura = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
 
             if (intTipoLlamada==0)
             {
+                fnActivarSegunApertura();
                 fnLlenarTablas(lstReporteIngresos, dgvIngresos, txtTotalIngresos);
                 fnLlenarTablas(lstReporteEgresos, dgvEgresos, txtTotalEgresos);
                 clsCuadreCaja.importeTotalIngresos = lstReporteIngresos.Sum(i => i.ImporteRow);
@@ -386,6 +406,13 @@ namespace wfaIntegradoCom.Procesos
                 frmAperturaCaja frmAp = new frmAperturaCaja();
                 frmAp.ShowDialog();
             }
+        }
+
+        private void siticoneControlBox1_Click(object sender, EventArgs e)
+        {
+            MDIParent1 frm = new MDIParent1();
+            frm.fnActivarDashBoard(FunGeneral.fnVerificarApertura(Variables.gnCodUser));
+            frm.fnMostrarDashboard();
         }
     }
 }
