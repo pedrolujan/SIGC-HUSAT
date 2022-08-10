@@ -2514,7 +2514,7 @@ namespace wfaIntegradoCom
             clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
             clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
             clsBusq.cod2 = tipoCon == -1 ? "" : codOperacion;
-            clsBusq.cod3 = cboOperacion.SelectedValue.ToString() == null?"0": cboOperacion.SelectedValue.ToString();
+            clsBusq.cod3 = cboOperacion.SelectedValue is null?""+Variables.gnCodUser: cboOperacion.SelectedValue.ToString();
             clsBusq.cod4 = "";
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
             clsBusq.numPagina = numPagina;
@@ -3182,7 +3182,7 @@ namespace wfaIntegradoCom
         }
         private void fnVerifApertura()
         {
-            estAperturaCaja= FunGeneral.fnVerificarApertura();
+            //estAperturaCaja= FunGeneral.fnVerificarApertura();
             fnTextoABotonCaja();
         }
         private void iconButton1_Click_1(object sender, EventArgs e)
@@ -3214,7 +3214,7 @@ namespace wfaIntegradoCom
             clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
             clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
             clsBusq.cod2 = codOperacion;
-            clsBusq.cod3 = cboOperacion.SelectedValue.ToString() == null ? "0" : cboOperacion.SelectedValue.ToString();
+            clsBusq.cod3 = cboOperacion.SelectedValue is null ? ""+Variables.gnCodUser : cboOperacion.SelectedValue.ToString();
             clsBusq.cod4 = "";
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
             clsBusq.tipoCon=-1;

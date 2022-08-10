@@ -282,14 +282,14 @@ namespace wfaIntegradoCom.Funciones
 
         }
 
-        public static Boolean fnVerificarApertura()
+        public static Boolean fnVerificarApertura(Int32 idUsuario)
         {
             bool bResul = false;
             clsUtil objUtil = new clsUtil();
             BLDocumentoVenta objApertura = new BLDocumentoVenta();
             try
             {
-                bResul = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal);
+                bResul = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario);
                 return bResul;
             }
             catch (Exception ex)

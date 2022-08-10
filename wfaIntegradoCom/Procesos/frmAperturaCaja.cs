@@ -115,7 +115,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void frmAperturaCaja_Load(object sender, EventArgs e)
         {
-            if (!FunGeneral.fnVerificarApertura())
+            if (!FunGeneral.fnVerificarApertura(Variables.gnCodUser))
             {
                 txtFecha.Text = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 6);
                 txtUsuario.Text = Variables.gsCodUser;

@@ -376,5 +376,16 @@ namespace wfaIntegradoCom.Procesos
             }
             textBox1.Text = nSaldo.ToString();
         }
+
+        private void btnAperturarCaja_Click(object sender, EventArgs e)
+        {
+            Boolean estAperturaCaja=false;
+            estAperturaCaja = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
+            if (estAperturaCaja == false)
+            {
+                frmAperturaCaja frmAp = new frmAperturaCaja();
+                frmAp.ShowDialog();
+            }
+        }
     }
 }

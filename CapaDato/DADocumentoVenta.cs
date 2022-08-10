@@ -488,9 +488,9 @@ namespace CapaDato
 
         }
 
-        public Boolean daVerificarApertura(String pcFechaSist, Int16 pidSucursal)
+        public Boolean daVerificarApertura(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
         {
-            SqlParameter[] pa = new SqlParameter[3];
+            SqlParameter[] pa = new SqlParameter[4];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             Boolean bVerificar = false;
@@ -501,12 +501,14 @@ namespace CapaDato
                 pa[0].Value = pcFechaSist;
                 pa[1] = new SqlParameter("@peidSucursal", SqlDbType.SmallInt);
                 pa[1].Value = pidSucursal;
-                pa[2] = new SqlParameter("@psbVerifica", SqlDbType.Bit);
-                pa[2].Direction = ParameterDirection.Output; ;
+                pa[2] = new SqlParameter("@peidUsuario", SqlDbType.SmallInt);
+                pa[2].Value = idUsuario;
+                pa[3] = new SqlParameter("@psbVerifica", SqlDbType.Bit);
+                pa[3].Direction = ParameterDirection.Output; ;
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspVerificarApertura", pa);
 
-                bVerificar = Convert.ToBoolean(pa[2].Value);
+                bVerificar = Convert.ToBoolean(pa[3].Value);
                 return bVerificar;
 
             }
