@@ -21,7 +21,10 @@ namespace wfaIntegradoCom.Procesos
         {
             InitializeComponent();
         }
+        public void Inicio()
+        {
 
+        }
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             NumberFormatInfo nfi = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
@@ -62,7 +65,10 @@ namespace wfaIntegradoCom.Procesos
             {
 
                 lcResultado = obj.blAperturarCaja(Variables.idSucursal, lnMonto, Variables.gnCodUser, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3),1);
-                if (lcResultado=="OK")
+                if (lcResultado == "OK")
+                {
+                    MessageBox.Show("Aperturó su caja exitosamente","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
                 this.Dispose();
                 return lcResultado;
 
@@ -115,7 +121,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void frmAperturaCaja_Load(object sender, EventArgs e)
         {
-            if (!FunGeneral.fnVerificarApertura(Variables.gnCodUser))
+            if (!(FunGeneral.fnVerificarApertura(Variables.gnCodUser)==1?true:false))
             {
                 txtFecha.Text = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 6);
                 txtUsuario.Text = Variables.gsCodUser;

@@ -154,13 +154,26 @@ namespace CapaNegocio
 
         }
 
-        public Boolean blVerificarApertura(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
+        public Int32 blVerificarApertura(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
         {
 
             DADocumentoVenta objDocVenta = new DADocumentoVenta();
             try
             {
                 return objDocVenta.daVerificarApertura(pcFechaSist,pidSucursal,idUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<ReporteBloque> blBuscarImporteCierreAnterior(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
+        {
+
+            DADocumentoVenta objDocVenta = new DADocumentoVenta();
+            try
+            {
+                return objDocVenta.daBuscarImporteCierreAnterior(pcFechaSist,pidSucursal,idUsuario);
             }
             catch (Exception ex)
             {

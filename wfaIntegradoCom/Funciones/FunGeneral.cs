@@ -282,21 +282,40 @@ namespace wfaIntegradoCom.Funciones
 
         }
 
-        public static Boolean fnVerificarApertura(Int32 idUsuario)
+        public static Int32 fnVerificarApertura(Int32 idUsuario)
+        {
+            bool bResul = false;
+            clsUtil objUtil = new clsUtil();
+            BLDocumentoVenta objApertura = new BLDocumentoVenta();
+            Int32 num = 0;
+            try
+            {
+                num = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario);
+                return num;
+            }
+            catch (Exception ex)
+            {
+                bResul = false;
+                objUtil.gsLogAplicativo("frmAperturaCaja", "fnVerificarApertura", ex.Message);
+                return num;
+            }
+
+        }
+        public static List<ReporteBloque> fnBuscarImporteCierreAnterior(Int32 idUsuario)
         {
             bool bResul = false;
             clsUtil objUtil = new clsUtil();
             BLDocumentoVenta objApertura = new BLDocumentoVenta();
             try
             {
-                bResul = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario);
-                return bResul;
+                return objApertura.blBuscarImporteCierreAnterior(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario);
+               
             }
             catch (Exception ex)
             {
                 bResul = false;
                 objUtil.gsLogAplicativo("frmAperturaCaja", "fnVerificarApertura", ex.Message);
-                return bResul;
+                throw new Exception(ex.Message);
             }
         }
 

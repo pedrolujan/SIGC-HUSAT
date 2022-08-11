@@ -75,6 +75,13 @@ namespace wfaIntegradoCom
 
 
         }
+        public void fnPruebaa()
+        {
+            if (LoadCarga==true)
+            {
+                //Frm_FormClosed();
+            }
+        }
         //Constructor
         public MDIParent1()
         {
@@ -340,11 +347,11 @@ namespace wfaIntegradoCom
                     fnCargarVariableImpresion();
                     if (dtMenu.Tables.Count > 0)
                     {
-                        if (AbrirFrmLoad(new frmLoad()))
+                        if (AbrirFrmLoad(new frmLoad()) && LoadCarga==true)
                         {
 
 
-
+                            //Frm_FormClosed();
                         }
 
                     }
@@ -373,8 +380,8 @@ namespace wfaIntegradoCom
                 fnValidarusuarioEnSession();
                 fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
                 //pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008" ? false : true;
-                fnActivarDashBoard(FunGeneral.fnVerificarApertura(Variables.gnCodUser));
-                treeView1.Controls.Add(pnlParaDashboard);
+                
+                //treeView1.Controls.Add(pnlParaDashboard);
                 //fnMostrarDashboard();
             }
             return bLoading;
@@ -391,6 +398,10 @@ namespace wfaIntegradoCom
             fnCargarMenuAccesoRapidoBtn();
             lcCodMenu = "8888100000";
             imgList = ListaImagenes;
+            //if (pnlParaDashboard.Visible==false)
+            //{
+                fnActivarDashBoard(FunGeneral.fnVerificarApertura(Variables.gnCodUser)==1?true:false);
+            //}
             //treeView1.Nodes.Clear();
 
         }
@@ -1258,7 +1269,7 @@ namespace wfaIntegradoCom
         private void MDIParent1_Load(object sender, EventArgs e)
         {
             pnlParaDashboard.Visible = false;
-            treeView1.Controls.Clear();
+            //treeView1.Controls.Clear();
             bl = new BLControlCaja();
             flowLayoutPanel1.Controls.Clear();
             ToggleBotonesAnchos.CheckState = CheckState.Unchecked;
@@ -1288,7 +1299,7 @@ namespace wfaIntegradoCom
             finally
             {
                 //pnlParaDashboard.Visible = Variables.gsCargoUsuario == "PETR0008" ? false : true;
-                treeView1.Controls.Add(pnlParaDashboard);
+                //treeView1.Controls.Add(pnlParaDashboard);
                 pnlParaDashboard.Size = treeView1.Size;
                 var gbx = pnlParaDashboard.Controls.OfType<SiticoneGroupBox>();
                 var pn = pnlParaDashboard.Controls.OfType<SiticonePanel>();
@@ -1304,7 +1315,7 @@ namespace wfaIntegradoCom
                     pnn.Width = pnlParaDashboard.Size.Width - 20;
                     pnn.Location = new Point(5, pnn.Location.Y);
                 }
-                fnVerifApertura();
+               
                 fnLocationElementos();
                 fnPosicionDeCajas();
 
@@ -1317,6 +1328,8 @@ namespace wfaIntegradoCom
                     cboOperacion.SelectedValue = 0;
                 }
                 fnValidarusuarioEnSession();
+               
+
             }
 
         }
@@ -1326,6 +1339,7 @@ namespace wfaIntegradoCom
             if (LoadCarga == true)
             {
                 Frm_FormClosed();
+                LoadCarga = false;
             }
             string strFechaIso = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
             string strFechaHourIso = strFechaIso + " " + (DateTime.Now.TimeOfDay.ToString()).Substring(0, 12);
@@ -1722,6 +1736,7 @@ namespace wfaIntegradoCom
             LoadCarga = false;
             fnOcultarObjetos();
             this.Loading();
+           
 
 
         }
@@ -1766,6 +1781,7 @@ namespace wfaIntegradoCom
             lblChilForm.Text = "Home";
             SubmenusOcultos();
             reset();
+            fnActivarDashBoard(FunGeneral.fnVerificarApertura(Variables.gnCodUser)==1?true:false);
 
         }
         
@@ -3195,25 +3211,8 @@ namespace wfaIntegradoCom
             treeView1_MouseEnter(sender, e);
         }
 
-        private void fnTextoABotonCaja()
-        {
-            if (estAperturaCaja==true)
-            {
-                btnMovimientosCaja.Text = "Cerrar Caja";
-                btnMovimientosCaja.Tag = "2";
-            }
-            else
-            {
-                btnMovimientosCaja.Text = "Aperturar Caja";
-                btnMovimientosCaja.Tag = "1";
-
-            }
-        }
-        private void fnVerifApertura()
-        {
-            //estAperturaCaja= FunGeneral.fnVerificarApertura();
-            fnTextoABotonCaja();
-        }
+       
+  
         private void iconButton1_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Opcion aun no disponible");

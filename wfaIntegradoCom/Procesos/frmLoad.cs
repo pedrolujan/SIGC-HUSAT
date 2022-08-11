@@ -43,6 +43,7 @@ namespace wfaIntegradoCom.Procesos
                     MDIParent1 frm = new MDIParent1();
 
                     frm.fnLoadCarga(true);
+                    frm.fnPruebaa();
                     this.Dispose();
 
                 }

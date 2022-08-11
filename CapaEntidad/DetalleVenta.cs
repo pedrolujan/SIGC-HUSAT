@@ -150,4 +150,23 @@ namespace CapaEntidad
         public List<DocumentoVenta> xmlDocumentoVenta{ get; set; }
         public List<DetalleVenta> xmlDetalleVentas { get; set; }
     }
+
+    public class xmlActaCierraCaja
+    {
+        public xmlActaCierraCaja() { }
+
+
+        public List<ReporteBloque> ListaReporteIngresos { get; set; }
+        public List<ReporteBloque> ListaReporteDetalleIngresos { get; set; }
+        public List<ReporteBloque> ListaReporteEgresos { get; set; }
+        public List<CuadreCaja> ListaCuadreCaja { get; set; }
+        public String cUsuario { get; set; }
+        public String nomPersonal { get; set; }
+        public Int32 idUsuario { get; set; }
+        public Int32 idSucursal { get; set; }
+        public String cNomSucursal { get; set; }
+        public String turno { get; set; }
+        public DateTime dtFechaRegistro { get; set; }
+
+    }
 }

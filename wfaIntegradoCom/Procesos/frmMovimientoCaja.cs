@@ -36,7 +36,7 @@ namespace wfaIntegradoCom.Procesos
         static List<ReporteBloque> lstReporteEgresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstDetalleIngresos = new List<ReporteBloque>();
 
-        static Boolean estadoApertura = false;
+        static Int32 estadoApertura = 0;
         CuadreCaja clsCuadreCaja = new CuadreCaja();
         static Int32 lnTipoCon = 0;
         public void Inicio(List<ReporteBloque> lstIngresos, List<ReporteBloque> lstEgresos, List<ReporteBloque> lstDetIngresos, Int32 tipoCon)
@@ -115,7 +115,7 @@ namespace wfaIntegradoCom.Procesos
         string pcFecha = "";
         private void fnActivarSegunApertura()
         {
-            if (estadoApertura==false)
+            if (estadoApertura==1)
             {
                 btnAperturarCaja.Enabled = true;
                 btnCerrar.Enabled = false;
@@ -144,7 +144,7 @@ namespace wfaIntegradoCom.Procesos
                 clsCuadreCaja.importeTotalIngresos = lstReporteIngresos.Sum(i => i.ImporteRow);
                 clsCuadreCaja.importeTotalEgresos = lstReporteEgresos.Sum(i => i.ImporteRow);
 
-                clsCuadreCaja.Detalle = "Cierre de caja de - " + Variables.gsCodUser;
+                clsCuadreCaja.Detalle = "Cierre de caja de - " + FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
                 clsCuadreCaja.importeSaldo = clsCuadreCaja.importeTotalIngresos + (clsCuadreCaja.importeTotalEgresos * -1);
                 clsCuadreCaja.SimbloMon = "S/.";
                 clsCuadreCaja.MonImporteSaldo= FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0);
@@ -327,8 +327,29 @@ namespace wfaIntegradoCom.Procesos
             String lcResultado = "";
             decimal lnMontoSaldo=0;
             decimal lnMontoArqueo=0;
+            List<CuadreCaja> lstCuadreCaja = new List<CuadreCaja>();
+            
+            lstCuadreCaja.Add(clsCuadreCaja);
+            List<xmlActaCierraCaja> xmlActaCierre = new List<xmlActaCierraCaja>();
             frmActaCierreCaja frmCierreC = new frmActaCierreCaja();
-            frmCierreC.Inicio(lstReporteIngresos, lstDetalleIngresos, lstReporteEgresos,clsCuadreCaja, 1);
+            Personal clt = Variables.clasePersonal;
+            xmlActaCierre.Add(new xmlActaCierraCaja
+            {
+                ListaReporteIngresos = lstReporteIngresos,
+                ListaReporteDetalleIngresos = lstDetalleIngresos,
+                ListaReporteEgresos = lstReporteEgresos,
+                ListaCuadreCaja = lstCuadreCaja,
+                dtFechaRegistro=Variables.gdFechaSis,
+                cNomSucursal=Variables.gsSucursal,
+                idSucursal=Variables.idSucursal,
+                idUsuario=Variables.gnCodUser,
+                cUsuario=Variables.gsCodUser,
+                nomPersonal= clt.cPrimerNom + " " + clt.cApePat + " " + clt.cApeMat,
+                turno= Variables.gdFechaSis.Hour < 15 ? " Mañana" : " Tarde",
+            });
+
+            frmCierreC.Inicio(xmlActaCierre, 1);
+            
             //if (FunGeneral.fnVerificarApertura())
             //{
             //    lnMontoSaldo=Convert.ToDecimal(textBox1.Text.Trim() == "" ? "0" : textBox1.Text.Trim());
@@ -400,9 +421,11 @@ namespace wfaIntegradoCom.Procesos
         private void btnAperturarCaja_Click(object sender, EventArgs e)
         {
             Boolean estAperturaCaja=false;
-            estAperturaCaja = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
+            Int32 num= FunGeneral.fnVerificarApertura(Variables.gnCodUser);
+            estAperturaCaja = num == 1 ? true : false;
             if (estAperturaCaja == false)
             {
+
                 frmAperturaCaja frmAp = new frmAperturaCaja();
                 frmAp.ShowDialog();
             }
@@ -411,8 +434,12 @@ namespace wfaIntegradoCom.Procesos
         private void siticoneControlBox1_Click(object sender, EventArgs e)
         {
             MDIParent1 frm = new MDIParent1();
-            frm.fnCambiarEstado(FunGeneral.fnVerificarApertura(Variables.gnCodUser));
+            Int32 num = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
+            frm.fnCambiarEstado(num==1?true:false);
             //frm.fnMostrarDashboard();
+        
         }
+
+     
     }
 }

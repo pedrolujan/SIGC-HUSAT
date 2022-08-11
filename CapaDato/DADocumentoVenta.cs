@@ -488,12 +488,14 @@ namespace CapaDato
 
         }
 
-        public Boolean daVerificarApertura(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
+        public Int32 daVerificarApertura(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
         {
             SqlParameter[] pa = new SqlParameter[4];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             Boolean bVerificar = false;
+            DataTable dt = new DataTable();
+            Int32 rows = 0;
 
             try
             {
@@ -505,11 +507,61 @@ namespace CapaDato
                 pa[2].Value = idUsuario;
                 pa[3] = new SqlParameter("@psbVerifica", SqlDbType.Bit);
                 pa[3].Direction = ParameterDirection.Output; ;
-                objCnx = new clsConexion("");
-                objCnx.EjecutarProcedimiento("uspVerificarApertura", pa);
 
-                bVerificar = Convert.ToBoolean(pa[3].Value);
-                return bVerificar;
+                objCnx = new clsConexion("");
+                rows = objCnx.EjecutarProcedimiento("uspVerificarApertura", pa);
+
+                
+                return rows;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DADocumentoVenta.cs", "daVerificarApertura", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                objUtil = null;
+
+            }
+
+        }
+        public List<ReporteBloque> daBuscarImporteCierreAnterior(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
+        {
+            SqlParameter[] pa = new SqlParameter[3];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            Boolean bVerificar = false;
+            DataTable dt = new DataTable();
+            List<ReporteBloque> lstImporteDeCierreAnt = new List<ReporteBloque>();
+            try
+            {
+                pa[0] = new SqlParameter("@pedFechaSist", SqlDbType.Date);
+                pa[0].Value = pcFechaSist;
+                pa[1] = new SqlParameter("@peidSucursal", SqlDbType.SmallInt);
+                pa[1].Value = pidSucursal;
+                pa[2] = new SqlParameter("@peidUsuario", SqlDbType.Int);
+                pa[2].Value = idUsuario;
+                objCnx = new clsConexion("");
+                dt=objCnx.EjecutarProcedimientoDT("uspBuscarImporteCierreAnterior", pa);
+
+                Int32 y = 0;
+                foreach (DataRow item in dt.Rows)
+                {
+                    lstImporteDeCierreAnt.Add(new ReporteBloque
+                    {
+                        numero=y+1,
+                        //Detallereporte=
+
+                    });
+                    y++;
+                }
+                
+                return lstImporteDeCierreAnt;
 
             }
             catch (Exception ex)

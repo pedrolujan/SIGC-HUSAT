@@ -65,5 +65,38 @@ namespace CapaDato
 
             }
         }
+        public Boolean daGuardarCierreCaja(List<xmlActaCierraCaja> xmlacta, Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[6];
+            List<ControlCaja> lstControl = new List<ControlCaja>();
+            DataTable dt = new DataTable();
+            List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
+            objUtil = new clsUtil();
+            clsConexion objCnx = null;
+            String xmlActaCierreCaja = clsUtil.Serialize(xmlacta);
+            try
+            {
+                pa[0] = new SqlParameter("@dtFechaRegistro", SqlDbType.Date) { Value = xmlacta[0].dtFechaRegistro };                
+                pa[1] = new SqlParameter("@xmlActaCierre", SqlDbType.Xml) { Value = xmlActaCierreCaja };
+                pa[2] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = xmlacta[0].idUsuario };
+                pa[3] = new SqlParameter("@idSucursal", SqlDbType.Int) { Value = xmlacta[0].idSucursal };
+                pa[4] = new SqlParameter("@ImporteCierre", SqlDbType.Money) { Value = xmlacta[0].ListaCuadreCaja[0].importeSaldo };
+                pa[5] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = tipoCon };
+
+                objCnx = new clsConexion("");
+                dt = objCnx.EjecutarProcedimientoDT("uspGuardarCierreCaja", pa);              
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+
+            }
+        }
     }
 }
