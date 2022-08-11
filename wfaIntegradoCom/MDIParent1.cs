@@ -391,7 +391,7 @@ namespace wfaIntegradoCom
             fnCargarMenuAccesoRapidoBtn();
             lcCodMenu = "8888100000";
             imgList = ListaImagenes;
-            treeView1.Nodes.Clear();
+            //treeView1.Nodes.Clear();
 
         }
 
@@ -1767,23 +1767,8 @@ namespace wfaIntegradoCom
             SubmenusOcultos();
             reset();
 
-            fnMostrarDashboard();
         }
-        public void fnMostrarDashboard()
-        {
-            treeView1.Nodes.Clear();
-            treeView1.Controls.Clear();
-            if (Variables.gsCargoUsuario == "PETR0008")
-            {
-                pnlParaDashboard.Visible = false;
-            }
-            else
-            {
-                pnlParaDashboard.Visible = true;
-                treeView1.Controls.Add(pnlParaDashboard);
-            }
-
-        }
+        
 
         private void fnBotonActivo(object senderBtn, Color color)
         {
@@ -3157,7 +3142,13 @@ namespace wfaIntegradoCom
         {
             fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
         }
-        public void fnActivarDashBoard(Boolean estado)
+        static Boolean estadoActivarDashBoard = false;
+        public void fnCambiarEstado(Boolean est)
+        {
+            estadoActivarDashBoard = est;
+            
+        }
+        public void fnActivarDashBoard(Boolean est)
         {
             if (Variables.gsCargoUsuario == "PETR0008")
             {
@@ -3170,21 +3161,27 @@ namespace wfaIntegradoCom
             }
             else
             {
-                pnlParaDashboard.Visible = estado;
+                pnlParaDashboard.Visible = est;
             }
+            //pnlParaDashboard.Visible = true;
             panelEspaciado.Controls.Clear();
-            if (estado==false)
+            SiticoneLabel lbl = new SiticoneLabel();
+            lbl.AutoSize = false;
+            lbl.Size = panelEspaciado.Size;
+            lbl.TextAlignment = ContentAlignment.MiddleCenter;
+            lbl.BackColor = Color.Black;
+            lbl.ForeColor = Variables.ColorWarning;
+            lbl.Font = new Font("Roboto", 11);
+            if (est == false)
             {
-                SiticoneLabel lbl = new SiticoneLabel();
-                lbl.AutoSize = false;
-                lbl.Size = panelEspaciado.Size;
-                lbl.TextAlignment = ContentAlignment.MiddleCenter;
-                lbl.Text = "POR FAVOR DEBES APERTURAR CAJA PARA PODER REGISTRAR EGRESOS E INGRESOS ❗";
-                lbl.BackColor = Color.Black;
-                lbl.ForeColor = Variables.ColorWarning;
-                lbl.Font = new Font("Roboto", 11);
-                panelEspaciado.Controls.Add(lbl);
+                lbl.Text = "¡POR FAVOR DEBES APERTURAR CAJA PARA PODER REGISTRAR EGRESOS E INGRESOS!";
             }
+            else
+            {
+                lbl.Text = "NO OLVIDES CERRAR TU CAJA ANTES DE TERMINAR TU TURNO";
+            }
+            panelEspaciado.Controls.Add(lbl);
+            treeView1.Controls.Clear();
             treeView1.Controls.Add(pnlParaDashboard);
 
         }
@@ -3309,6 +3306,7 @@ namespace wfaIntegradoCom
             lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda , lstRepDetalleIngresos.Sum(i => i.ImporteRow),0);
 
             frmMC.Inicio(lsReporteBloque,lsReporteBloqueEgresos, lstRepDetalleIngresos, 0);
+            fnActivarDashBoard(estadoActivarDashBoard);
         }
 
         private void btnRegistrarEgresos_Click(object sender, EventArgs e)

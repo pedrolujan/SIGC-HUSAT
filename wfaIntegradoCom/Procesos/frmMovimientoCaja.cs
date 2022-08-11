@@ -411,8 +411,8 @@ namespace wfaIntegradoCom.Procesos
         private void siticoneControlBox1_Click(object sender, EventArgs e)
         {
             MDIParent1 frm = new MDIParent1();
-            frm.fnActivarDashBoard(FunGeneral.fnVerificarApertura(Variables.gnCodUser));
-            frm.fnMostrarDashboard();
+            frm.fnCambiarEstado(FunGeneral.fnVerificarApertura(Variables.gnCodUser));
+            //frm.fnMostrarDashboard();
         }
     }
 }
