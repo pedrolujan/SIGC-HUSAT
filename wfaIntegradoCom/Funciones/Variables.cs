@@ -16,6 +16,7 @@ namespace wfaIntegradoCom.Funciones
         public static String gsVersion = string.Empty;
         public static Int32 gnCodUser = 0;
         public static Personal clasePersonal = new Personal();
+        public static List<CuadreCaja> lstCuardreCaja = new List<CuadreCaja>();
         public static String gsCodUser = string.Empty;
         public static String gsCodPers = string.Empty;
         public static String gsNomPers = string.Empty;

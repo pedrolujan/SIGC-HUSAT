@@ -2903,6 +2903,7 @@ namespace wfaIntegradoCom
                 panel.Controls.Add(pnFooter);
 
                 flowLayoutPanel1.Controls.Add(panelFondo);
+                flowLayoutPanel1.Padding = new Padding(0,10,0,0);
             }
         }
 
@@ -3190,7 +3191,15 @@ namespace wfaIntegradoCom
             lbl.Font = new Font("Roboto", 11);
             if (est == false)
             {
-                lbl.Text = "¡POR FAVOR DEBES APERTURAR CAJA PARA PODER REGISTRAR EGRESOS E INGRESOS!";
+                if (Variables.lstCuardreCaja.Count==0)
+                {
+                    lbl.Text = "¡POR FAVOR DEBES APERTURAR CAJA PARA PODER REGISTRAR EGRESOS E INGRESOS!";
+
+                }
+                else
+                {
+                    lbl.Text = "YA CERRASTE CAJA CON EL MONTO DE: "+FunGeneral.fnFormatearPrecio("S/.",Variables.lstCuardreCaja.Find(i=>i.idOperacion==2).importeSaldo,0);
+                }
             }
             else
             {

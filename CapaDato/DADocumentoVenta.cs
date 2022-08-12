@@ -488,13 +488,15 @@ namespace CapaDato
 
         }
 
-        public Int32 daVerificarApertura(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
+        public List<CuadreCaja> daVerificarApertura(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
         {
-            SqlParameter[] pa = new SqlParameter[4];
+            SqlParameter[] pa = new SqlParameter[3];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             Boolean bVerificar = false;
             DataTable dt = new DataTable();
+            List<CuadreCaja> lstCuadreCaja= new List<CuadreCaja>();
+            Trandiaria trn;
             Int32 rows = 0;
 
             try
@@ -505,14 +507,26 @@ namespace CapaDato
                 pa[1].Value = pidSucursal;
                 pa[2] = new SqlParameter("@peidUsuario", SqlDbType.Int);
                 pa[2].Value = idUsuario;
-                pa[3] = new SqlParameter("@psbVerifica", SqlDbType.Bit);
-                pa[3].Direction = ParameterDirection.Output; ;
 
                 objCnx = new clsConexion("");
-                rows = objCnx.EjecutarProcedimiento("uspVerificarApertura", pa);
+                dt = objCnx.EjecutarProcedimientoDT("uspVerificarApertura", pa);
 
+                foreach (DataRow item in dt.Rows)
+                {
+                    lstCuadreCaja.Add(new CuadreCaja
+                    {
+                        idTrandiaria = Convert.ToInt32(item["idTrandiaria"]),
+                        idOperacion = Convert.ToInt32(item["idOperacion"]),
+                        importeSaldo = Convert.ToDouble(item["TotalPago"]),
+                        idMoneda = Convert.ToInt32(item["idMoneda"]),
+                        SimbloMon = Convert.ToString(item["cSimbolo"])
+
+                    }) ;
+
+                }
                 
-                return rows;
+                
+                return lstCuadreCaja;
 
             }
             catch (Exception ex)

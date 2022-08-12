@@ -290,8 +290,9 @@ namespace wfaIntegradoCom.Funciones
             Int32 num = 0;
             try
             {
-                num = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario);
-                return num;
+                Variables.lstCuardreCaja = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario);
+                
+                return Variables.lstCuardreCaja.Count;
             }
             catch (Exception ex)
             {

@@ -154,13 +154,14 @@ namespace CapaNegocio
 
         }
 
-        public Int32 blVerificarApertura(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
+        public List<CuadreCaja> blVerificarApertura(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
         {
 
             DADocumentoVenta objDocVenta = new DADocumentoVenta();
             try
             {
                 return objDocVenta.daVerificarApertura(pcFechaSist,pidSucursal,idUsuario);
+                
             }
             catch (Exception ex)
             {

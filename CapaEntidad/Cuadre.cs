@@ -62,6 +62,8 @@ namespace CapaEntidad
         public Double importeTotalEgresos{ get; set; }
         public Double importeSaldo{ get; set; }
         public Int32 idUsuario { get; set; }
+        public Int32 idOperacion { get; set; }
+        public Int32 idTrandiaria { get; set; }
         public Int32 idMoneda { get; set; }
         public DateTime fechaRegistro { get; set; }
         public String turno { get; set; }
