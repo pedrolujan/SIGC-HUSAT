@@ -81,6 +81,7 @@ namespace wfaIntegradoCom.Consultas
             if (est==true)
             {
                 MessageBox.Show("Cierre de caja guardado exitosamnete","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                this.Dispose();
             }
         }
     }

@@ -447,11 +447,12 @@ namespace CapaDato
 
         }
 
-        public String daAperturarCaja(Int16 pidSucursal, decimal pnMontoApertura, int pidUsuario, string dFechaRegistro, int pidOperacion)
+        public String daAperturarCaja(Int16 pidSucursal, decimal pnMontoApertura, int pidUsuario, string dFechaRegistro, int pidOperacion, List<ReporteBloque> lstCierreAnterior)
         {
-            SqlParameter[] pa = new SqlParameter[5];
+            SqlParameter[] pa = new SqlParameter[6];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
+            String xmlCierreAnterior = clsUtil.Serialize(lstCierreAnterior);
 
             try
             {
@@ -465,7 +466,9 @@ namespace CapaDato
                 pa[3].Value = dFechaRegistro;
                 pa[4] = new SqlParameter("@peidOperacion", SqlDbType.Int);
                 pa[4].Value = pidOperacion;
-
+                pa[5] = new SqlParameter("@xmlCierreAnterior", SqlDbType.Xml);
+                pa[5].Value = xmlCierreAnterior;
+           
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspAperturarCaja", pa);
 
@@ -516,6 +519,7 @@ namespace CapaDato
                     lstCuadreCaja.Add(new CuadreCaja
                     {
                         idTrandiaria = Convert.ToInt32(item["idTrandiaria"]),
+                        Detalle=Convert.ToString(item["detalle"]),
                         idOperacion = Convert.ToInt32(item["idOperacion"]),
                         importeSaldo = Convert.ToDouble(item["TotalPago"]),
                         idMoneda = Convert.ToInt32(item["idMoneda"]),
@@ -569,7 +573,10 @@ namespace CapaDato
                     lstImporteDeCierreAnt.Add(new ReporteBloque
                     {
                         numero=y+1,
-                        //Detallereporte=
+                        idAuxiliar=Convert.ToInt32(item["idTrandiaria"]),
+                        ImporteTotal =Convert.ToDouble(item["SUM_ROW"]),
+                        SimboloMoneda=Convert.ToString(item["cSimbolo"]),
+                        Detallereporte= Convert.ToString(item["cFlag"])
 
                     });
                     y++;

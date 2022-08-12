@@ -35,7 +35,7 @@ namespace wfaIntegradoCom.Procesos
             try
             {
 
-                lcResultado = obj.blAperturarCaja(Variables.idSucursal, lnMonto, Variables.gnCodUser, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3), idOperacion);
+                //lcResultado = obj.blAperturarCaja(Variables.idSucursal, lnMonto, Variables.gnCodUser, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3), idOperacion);
                 if (lcResultado == "OK")
                     this.Dispose();
                 return lcResultado;

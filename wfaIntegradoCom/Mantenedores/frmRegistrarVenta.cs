@@ -3376,6 +3376,27 @@ namespace wfaIntegradoCom.Mantenedores
                
         }
 
+        private Boolean verifApertura()
+        {
+            Boolean est = false;
+            Int32 estadoApertura = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
+            if (estadoApertura == 1)
+            {
+                est = true;
+            }
+            else if (estadoApertura == 0)
+            {
+
+                MessageBox.Show("Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                est = false;
+            }
+            else
+            {
+                MessageBox.Show("Ya cerraste caja. Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                est = false;
+            }
+            return est;
+        }
         private void AbrirReporteVentas_Click(object sender, EventArgs e)
         {
             Boolean activarEnvio = false;
@@ -3385,34 +3406,71 @@ namespace wfaIntegradoCom.Mantenedores
             var resul = fnValidarTabla(lstVehiculo);
             lstVali = fnCombinarListaValidacion(lstVali, lstValidacionPlan);
             activarEnvio = fnValidarDatosAEnviar(lstVali);
-          
-            if (activarEnvio==true /*&& estaCboDirecInstal==true && estatxtDescDirecInsrtalacion==true*/)
+            if (lnTipoCon==-1)
             {
-                if (Convert.ToString(cboTipoVenta.SelectedValue) == "2" || lnTipoCon==-1)
+                if (activarEnvio == true /*&& estaCboDirecInstal==true && estatxtDescDirecInsrtalacion==true*/)
                 {
-                    System.Windows.Forms.DialogResult resultDialog = MessageBox.Show("¿La Fecha de Pago / Venta es la Correcta ? " + dtFechaPago.Value.ToString("dd/MM/yyyy") + "\n" +
-                                                                                    "\n \n ¿La Fecha de Inicio del contrato es la Correcta ? " + dtpFechaRegistro.Value.ToString("dd/MM/yyyy"), "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
-                    
-                    if (resultDialog == DialogResult.Yes)
+                    if (Convert.ToString(cboTipoVenta.SelectedValue) == "2" || lnTipoCon == -1)
                     {
-                        System.Windows.Forms.DialogResult resultDialogPlan = MessageBox.Show("¿El Tipo de Plan es el Correcto ? " + cboTipoPlanP.Text + "\n" +
-                                                    "¿El Plan es el Correcto ? " + cboPlanP.Text + " ", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
-                        if (resultDialogPlan == DialogResult.Yes)
+                        System.Windows.Forms.DialogResult resultDialog = MessageBox.Show("¿La Fecha de Pago / Venta es la Correcta ? " + dtFechaPago.Value.ToString("dd/MM/yyyy") + "\n" +
+                                                                                        "\n \n ¿La Fecha de Inicio del contrato es la Correcta ? " + dtpFechaRegistro.Value.ToString("dd/MM/yyyy"), "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
+
+                        if (resultDialog == DialogResult.Yes)
                         {
-                            fnMandarAVistaPrevia();
+                            System.Windows.Forms.DialogResult resultDialogPlan = MessageBox.Show("¿El Tipo de Plan es el Correcto ? " + cboTipoPlanP.Text + "\n" +
+                                                        "¿El Plan es el Correcto ? " + cboPlanP.Text + " ", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
+                            if (resultDialogPlan == DialogResult.Yes)
+                            {
+                                fnMandarAVistaPrevia();
+                            }
                         }
                     }
+                    else
+                    {
+                        fnMandarAVistaPrevia();
+                    }
+
                 }
                 else
                 {
-                   fnMandarAVistaPrevia();
+                    MessageBox.Show("Complete correctamente los Campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                
             }
             else
             {
-                MessageBox.Show("Complete correctamente los Campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (verifApertura() == true)
+                {
+                    if (activarEnvio == true /*&& estaCboDirecInstal==true && estatxtDescDirecInsrtalacion==true*/)
+                    {
+                        if (Convert.ToString(cboTipoVenta.SelectedValue) == "2" || lnTipoCon == -1)
+                        {
+                            System.Windows.Forms.DialogResult resultDialog = MessageBox.Show("¿La Fecha de Pago / Venta es la Correcta ? " + dtFechaPago.Value.ToString("dd/MM/yyyy") + "\n" +
+                                                                                            "\n \n ¿La Fecha de Inicio del contrato es la Correcta ? " + dtpFechaRegistro.Value.ToString("dd/MM/yyyy"), "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
+
+                            if (resultDialog == DialogResult.Yes)
+                            {
+                                System.Windows.Forms.DialogResult resultDialogPlan = MessageBox.Show("¿El Tipo de Plan es el Correcto ? " + cboTipoPlanP.Text + "\n" +
+                                                            "¿El Plan es el Correcto ? " + cboPlanP.Text + " ", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
+                                if (resultDialogPlan == DialogResult.Yes)
+                                {
+                                    fnMandarAVistaPrevia();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            fnMandarAVistaPrevia();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Complete correctamente los Campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
+            
+            
            
         }
         private List<validacion> fnCombinarListaValidacion(List<validacion> lstPrinci, List<validacion> lstUnion)

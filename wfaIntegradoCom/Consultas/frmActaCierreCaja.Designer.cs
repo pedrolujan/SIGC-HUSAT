@@ -53,7 +53,7 @@
             this.btnRegresar.ForeColor = System.Drawing.Color.White;
             this.btnRegresar.HoveredState.Parent = this.btnRegresar;
             this.btnRegresar.Image = global::wfaIntegradoCom.Properties.Resources.salir_hover;
-            this.btnRegresar.Location = new System.Drawing.Point(12, 450);
+            this.btnRegresar.Location = new System.Drawing.Point(107, 450);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.ShadowDecoration.Parent = this.btnRegresar;
             this.btnRegresar.Size = new System.Drawing.Size(213, 55);
@@ -74,7 +74,7 @@
             this.btnCerrarGuardarCierre.HoveredState.Parent = this.btnCerrarGuardarCierre;
             this.btnCerrarGuardarCierre.Image = global::wfaIntegradoCom.Properties.Resources.guardar_hover;
             this.btnCerrarGuardarCierre.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnCerrarGuardarCierre.Location = new System.Drawing.Point(453, 450);
+            this.btnCerrarGuardarCierre.Location = new System.Drawing.Point(353, 450);
             this.btnCerrarGuardarCierre.Name = "btnCerrarGuardarCierre";
             this.btnCerrarGuardarCierre.ShadowDecoration.Parent = this.btnCerrarGuardarCierre;
             this.btnCerrarGuardarCierre.Size = new System.Drawing.Size(213, 55);

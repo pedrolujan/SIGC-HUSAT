@@ -38,7 +38,10 @@
             this.epUsuario = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnRegistrar = new Siticone.UI.WinForms.SiticoneGradientButton();
             this.btnAtras = new Siticone.UI.WinForms.SiticoneGradientButton();
+            this.pnImporteEnCaja = new Siticone.UI.WinForms.SiticoneGradientPanel();
+            this.lblMostraCierreAnterior = new Siticone.UI.WinForms.SiticoneLabel();
             ((System.ComponentModel.ISupportInitialize)(this.epUsuario)).BeginInit();
+            this.pnImporteEnCaja.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtUsuario
@@ -46,7 +49,7 @@
             this.txtUsuario.AcceptsReturn = true;
             this.txtUsuario.Enabled = false;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(106, 63);
+            this.txtUsuario.Location = new System.Drawing.Point(106, 100);
             this.txtUsuario.MaxLength = 20;
             this.txtUsuario.MinimumSize = new System.Drawing.Size(124, 40);
             this.txtUsuario.Multiline = true;
@@ -58,7 +61,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 66);
+            this.label2.Location = new System.Drawing.Point(12, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 20);
             this.label2.TabIndex = 7;
@@ -68,7 +71,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 23);
+            this.label1.Location = new System.Drawing.Point(12, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 20);
             this.label1.TabIndex = 6;
@@ -80,7 +83,7 @@
             this.txtFecha.AcceptsReturn = true;
             this.txtFecha.Enabled = false;
             this.txtFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFecha.Location = new System.Drawing.Point(106, 12);
+            this.txtFecha.Location = new System.Drawing.Point(106, 49);
             this.txtFecha.MaxLength = 20;
             this.txtFecha.MinimumSize = new System.Drawing.Size(124, 40);
             this.txtFecha.Multiline = true;
@@ -160,11 +163,37 @@
             this.btnAtras.Text = "    Cerrar";
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
+            // pnImporteEnCaja
+            // 
+            this.pnImporteEnCaja.Controls.Add(this.lblMostraCierreAnterior);
+            this.pnImporteEnCaja.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.pnImporteEnCaja.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.pnImporteEnCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnImporteEnCaja.Location = new System.Drawing.Point(6, 0);
+            this.pnImporteEnCaja.Name = "pnImporteEnCaja";
+            this.pnImporteEnCaja.ShadowDecoration.Parent = this.pnImporteEnCaja;
+            this.pnImporteEnCaja.Size = new System.Drawing.Size(359, 34);
+            this.pnImporteEnCaja.TabIndex = 284;
+            // 
+            // lblMostraCierreAnterior
+            // 
+            this.lblMostraCierreAnterior.AutoSize = false;
+            this.lblMostraCierreAnterior.BackColor = System.Drawing.Color.Transparent;
+            this.lblMostraCierreAnterior.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMostraCierreAnterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMostraCierreAnterior.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblMostraCierreAnterior.Location = new System.Drawing.Point(0, 0);
+            this.lblMostraCierreAnterior.Name = "lblMostraCierreAnterior";
+            this.lblMostraCierreAnterior.Size = new System.Drawing.Size(359, 34);
+            this.lblMostraCierreAnterior.TabIndex = 0;
+            this.lblMostraCierreAnterior.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmAperturaCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(365, 328);
+            this.Controls.Add(this.pnImporteEnCaja);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.txtMonto);
@@ -181,6 +210,7 @@
             this.Text = "Registrar Apertura";
             this.Load += new System.EventHandler(this.frmAperturaCaja_Load);
             ((System.ComponentModel.ISupportInitialize)(this.epUsuario)).EndInit();
+            this.pnImporteEnCaja.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,5 +227,7 @@
         private System.Windows.Forms.ErrorProvider epUsuario;
         private Siticone.UI.WinForms.SiticoneGradientButton btnAtras;
         private Siticone.UI.WinForms.SiticoneGradientButton btnRegistrar;
+        private Siticone.UI.WinForms.SiticoneGradientPanel pnImporteEnCaja;
+        private Siticone.UI.WinForms.SiticoneLabel lblMostraCierreAnterior;
     }
 }

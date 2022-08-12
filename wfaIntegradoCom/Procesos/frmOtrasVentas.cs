@@ -2914,78 +2914,102 @@ namespace wfaIntegradoCom.Procesos
                 lstXmlActCambioVehicular = lstxmlCvh
             } ;
         }
+        private Boolean verifApertura()
+        {
+            Boolean est = false;
+            Int32 estadoApertura = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
+            if (estadoApertura == 1)
+            {
+                est = true;
+            }
+            else if (estadoApertura == 0)
+            {
+
+                MessageBox.Show("Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                est = false;
+            }
+            else
+            {
+                MessageBox.Show("Ya cerraste caja. Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                est = false;
+            }
+            return est;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             Boolean blnResultado = false;
             BLOtrasVenta objOtrasVentas = new BLOtrasVenta();
             fnValidarCamposCliente(sender,e);
-           
 
-            List<OtrasVentas> lstDetalleVenta = fnRecorrerGrilla();
-            if (estCliente == true &&  estPLACA==true && estMotivo==true && estDocumentoEmitir==true)
+            if (verifApertura() == true)
             {
-                if (estDocumentoEmitir == true)
+
+                List<OtrasVentas> lstDetalleVenta = fnRecorrerGrilla();
+                if (estCliente == true && estPLACA == true && estMotivo == true && estDocumentoEmitir == true)
                 {
-                    if (fnGenerarDetalleOtrasVentas().Count > 0)
+                    if (estDocumentoEmitir == true)
                     {
-                        if (fnValidarUnidadesDifCero())
+                        if (fnGenerarDetalleOtrasVentas().Count > 0)
                         {
-                            if (estadoTabla == true)
+                            if (fnValidarUnidadesDifCero())
                             {
-
-                                fnCargarClasePrincipal();
-                                if (fnMostrarVPDocumentoventa())
+                                if (estadoTabla == true)
                                 {
-                                    
-                                    fnCargarClasePrincipal();
-                                    blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral, lnTipoCon);
-                                    if (blnResultado)
-                                    {
-                                        //blnResultado = fnObtenerPreciosxProductoxUM(idEquipo);
-                                        //if (!blnResultado)
-                                        //    MessageBox.Show("No se ha cargado correctamente Listado de Precios por Producto y unidad de medida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                        MessageBox.Show("Venta Generada Correctamente. ✔✔", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-                                        fnLimpiarControles();
-                                        fnHabilitarControles(true);
-                                        //fnLimpiarControles();
 
+                                    fnCargarClasePrincipal();
+                                    if (fnMostrarVPDocumentoventa())
+                                    {
+
+                                        fnCargarClasePrincipal();
+                                        blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral, lnTipoCon);
+                                        if (blnResultado)
+                                        {
+                                            //blnResultado = fnObtenerPreciosxProductoxUM(idEquipo);
+                                            //if (!blnResultado)
+                                            //    MessageBox.Show("No se ha cargado correctamente Listado de Precios por Producto y unidad de medida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                            MessageBox.Show("Venta Generada Correctamente. ✔✔", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
+                                            fnLimpiarControles();
+                                            fnHabilitarControles(true);
+                                            //fnLimpiarControles();
+
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Error al registrar avise al administrador");
+                                        }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Error al registrar avise al administrador");
+                                        //fnMostrarMensaje(lblMsgForm, true, "Seguir Editando...");
+                                        fnHabilitarControles(true);
                                     }
                                 }
                                 else
                                 {
-                                    //fnMostrarMensaje(lblMsgForm, true, "Seguir Editando...");
-                                    fnHabilitarControles(true);
+                                    MessageBox.Show("Verifique el descuento de su tabla");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Verifique el descuento de su tabla");
+                                MessageBox.Show("La Columna Unidades no Pueden ser CERO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                             }
                         }
                         else
                         {
-                            MessageBox.Show("La Columna Unidades no Pueden ser CERO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                            MessageBox.Show("Ud. no Seleccionó Algun Item de Venta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Ud. no Seleccionó Algun Item de Venta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Porfavor elija Documento de Venta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Porfavor elija Documento de Venta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Porfavor Complete los Datos", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Porfavor Complete los Datos","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
             //fnHabilitarControles(false);
             //fnLimpiarControles();

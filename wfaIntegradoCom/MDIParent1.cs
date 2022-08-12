@@ -1277,7 +1277,7 @@ namespace wfaIntegradoCom
 
             try
             {
-                cboxSelecThema.SelectedIndex = 2;
+                //cboxSelecThema.SelectedIndex = 2;
                 fnCambiartemas();
                 fnOcultarObjetos();
                 SystemEvents.PowerModeChanged += OnPowerModeChange;
@@ -1289,6 +1289,7 @@ namespace wfaIntegradoCom
                 cboTipoReporte.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
                 cboOperacion.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
                 cboxSelecThema.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
+
                 dtFechaFinG.Value = Variables.gdFechaSis;
                 dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
             }
@@ -1322,6 +1323,8 @@ namespace wfaIntegradoCom
                 if (Variables.gsCargoUsuario == "PETR0006")
                 {
                     cboOperacion.SelectedValue = Variables.gnCodUser;
+                    dtFechaInicioG.Value = Variables.gdFechaSis;
+                    
                 }
                 else
                 {
@@ -3317,10 +3320,35 @@ namespace wfaIntegradoCom
             fnActivarDashBoard(estadoActivarDashBoard);
         }
 
+        private Boolean verifApertura()
+        {
+            Boolean est = false;
+            Int32 estadoApertura = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
+            if (estadoApertura == 1)
+            {
+                est = true;
+            }
+            else if (estadoApertura == 0)
+            {
+
+                MessageBox.Show("Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                est = false;
+            }
+            else
+            {
+                MessageBox.Show("Ya cerraste caja. Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                est = false;
+            }
+            return est;
+        }
         private void btnRegistrarEgresos_Click(object sender, EventArgs e)
         {
-            frmRegistrarEgresos frmRE = new frmRegistrarEgresos();
-            frmRE.Inicio(0);
+            if (verifApertura()==true)
+            {
+                frmRegistrarEgresos frmRE = new frmRegistrarEgresos();
+                frmRE.Inicio(0);
+            }
+            
 
         }       
       

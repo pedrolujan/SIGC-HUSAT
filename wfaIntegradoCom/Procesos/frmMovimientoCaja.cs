@@ -117,15 +117,16 @@ namespace wfaIntegradoCom.Procesos
         {
             if (estadoApertura==1)
             {
+                btnAperturarCaja.Enabled = false;
+                btnCerrar.Enabled = true;
+            }
+            else
+            {
+               
                 btnAperturarCaja.Enabled = true;
                 btnCerrar.Enabled = false;
                 lstReporteIngresos.Clear();
                 lstReporteEgresos.Clear();
-            }
-            else
-            {
-                btnAperturarCaja.Enabled = false;
-                btnCerrar.Enabled = true;
             }
         }
         private void frmMovimientoCaja_Load(object sender, EventArgs e)
@@ -141,12 +142,30 @@ namespace wfaIntegradoCom.Procesos
                 fnActivarSegunApertura();
                 fnLlenarTablas(lstReporteIngresos, dgvIngresos, txtTotalIngresos);
                 fnLlenarTablas(lstReporteEgresos, dgvEgresos, txtTotalEgresos);
+
+                CuadreCaja clcCaja = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
+                Double importe = 0;
+                if (clcCaja is CuadreCaja)
+                {
+                    importe = clcCaja.importeSaldo;
+                    lblMontoDeAperturaCaja.Text = "IMPORTE DE: "+ FunGeneral.FormatearCadenaTitleCase(clcCaja.Detalle)+" "+FunGeneral.fnFormatearPrecio(clcCaja.SimbloMon, clcCaja.importeSaldo,1);
+                }
+                else
+                {
+                    importe = 0;
+                    lblMontoDeAperturaCaja.Text = "";
+
+                }
+
                 clsCuadreCaja.importeTotalIngresos = lstReporteIngresos.Sum(i => i.ImporteRow);
                 clsCuadreCaja.importeTotalEgresos = lstReporteEgresos.Sum(i => i.ImporteRow);
 
                 clsCuadreCaja.Detalle = "Cierre de caja de - " + FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
-                clsCuadreCaja.importeSaldo = clsCuadreCaja.importeTotalIngresos + (clsCuadreCaja.importeTotalEgresos * -1);
+
+                clsCuadreCaja.importeSaldo = (clsCuadreCaja.importeTotalIngresos + (clsCuadreCaja.importeTotalEgresos * -1)+ importe);
+                
                 clsCuadreCaja.SimbloMon = "S/.";
+
                 clsCuadreCaja.MonImporteSaldo= FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0);
                 txtTotalCerrarCaja.Text= FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0); 
             }
@@ -307,7 +326,7 @@ namespace wfaIntegradoCom.Procesos
             try
             {
 
-                lcResultado = obj.blAperturarCaja(Variables.idSucursal, lnMonto, Variables.gnCodUser, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3), 11);
+                //lcResultado = obj.blAperturarCaja(Variables.idSucursal, lnMonto, Variables.gnCodUser, FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3), 11);
                 if (lcResultado == "OK")
                     this.Dispose();
                 return lcResultado;

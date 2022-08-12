@@ -140,12 +140,12 @@ namespace CapaNegocio
             }
         }
 
-        public String blAperturarCaja(Int16 pidSucursal, decimal pnMontoApertura, int pidUsuario, string dFechaRegistro, int pidOperacion)
+        public String blAperturarCaja(Int16 pidSucursal, decimal pnMontoApertura, int pidUsuario, string dFechaRegistro, int pidOperacion,List<ReporteBloque> lstCierreAnterior)
         {
             DADocumentoVenta objDocVenta = new DADocumentoVenta();
             try
             {
-                return objDocVenta.daAperturarCaja(pidSucursal, pnMontoApertura, pidUsuario, dFechaRegistro, pidOperacion);
+                return objDocVenta.daAperturarCaja(pidSucursal, pnMontoApertura, pidUsuario, dFechaRegistro, pidOperacion, lstCierreAnterior);
             }
             catch (Exception ex)
             {

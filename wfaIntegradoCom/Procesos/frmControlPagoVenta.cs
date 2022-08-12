@@ -2323,17 +2323,31 @@ namespace wfaIntegradoCom.Procesos
 
         private void btnAniadirADocumento_Click(object sender, EventArgs e)
         {
-
+           Int32 estadoApertura = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
             //MessageBox.Show("Aun en desarrollo espere la proxima version","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-            if (estadoComprabanteP == true && estadoFechaPago == true)
+            if (estadoApertura==1)
             {
-                fnAniadirADocumento(lstCronoGramasParaDocumentoVenta, Variables.gnCodUser, 0);
+                if (estadoComprabanteP == true && estadoFechaPago == true)
+                {
+                    fnAniadirADocumento(lstCronoGramasParaDocumentoVenta, Variables.gnCodUser, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Por favor complete todo los datos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
             }
-            else
+            else if(estadoApertura==0)
             {
-                MessageBox.Show("Por favor complete todo los datos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
+            else 
+            {
+                MessageBox.Show("Ya cerraste caja. Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
 
 
 
@@ -2470,7 +2484,20 @@ namespace wfaIntegradoCom.Procesos
 
             lstDetalleVenta.Clear();
             lstDocumentoVenta.Clear();
-            fnGenerarComprobantePago(filaSeleccionada, ColumnaSeleccionada);
+            Int32 estadoApertura = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
+            if (estadoApertura==1)
+            {
+                fnGenerarComprobantePago(filaSeleccionada, ColumnaSeleccionada);
+            }
+            else if(estadoApertura==0)
+            {
+                MessageBox.Show("Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }else
+            {
+                MessageBox.Show("Ya  cerraste caja. Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
 
 
 
