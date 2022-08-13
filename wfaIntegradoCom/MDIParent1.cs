@@ -3347,6 +3347,7 @@ namespace wfaIntegradoCom
             {
                 frmRegistrarEgresos frmRE = new frmRegistrarEgresos();
                 frmRE.Inicio(0);
+                fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
             }
             
 

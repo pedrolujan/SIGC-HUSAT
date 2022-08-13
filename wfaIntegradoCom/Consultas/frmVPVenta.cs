@@ -73,6 +73,11 @@ namespace wfaIntegradoCom.Consultas
                 this.reportViewer1.ShowExportButton = false;
 
             }
+            if (lnTipoCon==-3)
+            {
+                btnGenerarVenta.Text = "Guardar Movimiento";
+                btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
+            }
             this.reportViewer1.RefreshReport();
             fnCargarReporte(lstCDocumento, lstDVenta);
         }

@@ -17,7 +17,7 @@ namespace CapaDato
         clsUtil objUtil;
         public Boolean daGuardarEgresos(List<Pagos> lstTTrand, List<xmlDocumentoVentaGeneral> xmlDvg, Egresos clsEgresos)
         {
-            SqlParameter[] pa = new SqlParameter[9];
+            SqlParameter[] pa = new SqlParameter[10];
             List<ControlCaja> lstControl = new List<ControlCaja>();
             DataTable dt = new DataTable();
             clsConexion objCnx = null;
@@ -29,19 +29,20 @@ namespace CapaDato
             try
             {
                 pa[0] = new SqlParameter("@idEgreso", SqlDbType.Int) { Value = clsEgresos.idEgreso };
-                pa[1] = new SqlParameter("@dtFechaRegistro", SqlDbType.Date) { Value = lstTTrand[0].dFechaRegistro };
-                pa[2] = new SqlParameter("@idUsuarioReceptor", SqlDbType.Int) { Value = clsEgresos.UsuarioReceptor };
-                pa[3] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = lstTTrand[0] .idUsario};
-                pa[4] = new SqlParameter("@idMoneda", SqlDbType.Int) { Value = lstTTrand[0] .idMoneda};
-                pa[5] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmlDocumetoVenta };
-                pa[6] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml) { Value = xmlTrandiaria };
-                pa[7] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml) { Value = xmlDetalelVenta };
-                pa[8] = new SqlParameter("@lnTipoCon", SqlDbType.Int) { Value = clsEgresos.lnTipoCon };
+                pa[1] = new SqlParameter("@codCargoConcepto", SqlDbType.VarChar,12) { Value = clsEgresos.cargo };
+                pa[2] = new SqlParameter("@dtFechaRegistro", SqlDbType.Date) { Value = lstTTrand[0].dFechaRegistro };
+                pa[3] = new SqlParameter("@idUsuarioReceptor", SqlDbType.Int) { Value = clsEgresos.UsuarioReceptor };
+                pa[4] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = lstTTrand[0] .idUsario};
+                pa[5] = new SqlParameter("@idMoneda", SqlDbType.Int) { Value = lstTTrand[0] .idMoneda};
+                pa[6] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmlDocumetoVenta };
+                pa[7] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml) { Value = xmlTrandiaria };
+                pa[8] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml) { Value = xmlDetalelVenta };
+                pa[9] = new SqlParameter("@lnTipoCon", SqlDbType.Int) { Value = clsEgresos.lnTipoCon };
                
 
                 objCnx = new clsConexion("");
 
-                Int32 rows = objCnx.EjecutarProcedimiento("uspGuardarEgresos", pa);
+                Int32 rows = objCnx.EjecutarProcedimiento("uspGuardarEgresos_Ingresos", pa);
                 //Int32 rows = 0;
                 if (rows>0)
                 {

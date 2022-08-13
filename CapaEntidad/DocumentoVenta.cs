@@ -112,6 +112,9 @@ namespace CapaEntidad
         public String cUsuario { get; set; }
         public String cTipoVenta { get; set; }
 
+        public Boolean est0 { get; set; }
+        public Boolean est1 { get; set; }
+
         //public DocumentoVenta(Int32 pidVenta, Int32 pcTipoDoc, Int32 pcTiDo, String pcDocumento, String pcCliente, String pcDocVenta,
         //    DateTime pdFechaVenta,String pcEstado,String pcDireccion,String pcNroGuiaTrans, String pcNroGuiaRem
         //    , String pcTipoPago, Decimal pnNroIGV, DateTime pdCancelado)

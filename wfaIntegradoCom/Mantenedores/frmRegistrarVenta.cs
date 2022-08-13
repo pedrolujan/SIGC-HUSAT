@@ -3591,7 +3591,8 @@ namespace wfaIntegradoCom.Mantenedores
                 cVehiculos = fnObtenerVehiculos(),
                 cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
                 cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",
-                cTipoVenta= lstTipoVenta.Nombre
+                cTipoVenta= lstTipoVenta.Nombre,
+                est1=false
 
             }) ;
             return lsDocVenta;

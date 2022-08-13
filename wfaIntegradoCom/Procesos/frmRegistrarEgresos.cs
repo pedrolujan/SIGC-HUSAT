@@ -24,13 +24,14 @@ namespace wfaIntegradoCom.Procesos
         static List<Moneda> lstMoneda = new List<Moneda>();
         static List<Moneda> lstMoneda2 = new List<Moneda>();
         static Moneda clsMoneda = new Moneda();
-        Boolean estArea, estUsuario, estMoneda, estImporte, estDescripcion;
+        Boolean estArea, estUsuario, estMoneda, estImporte, estDescripcion, estFuente;
         Boolean estArea2, estUsuario2, estMoneda2, estImporte2, estDescripcion2, estConcepto;
         static Int32 lnTipoLlamada = 0;
         static List<Pagos> lstPagosTrandiaria = new List<Pagos>();
         static List<DocumentoVenta> lstDocumentoVenta = new List<DocumentoVenta>();
         static List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
         static Boolean estadoGuardarEgreso = false;
+        Int32 tabIndex = 0;
         public void Inicio(Int32 tipoLlam)
         {
             lnTipoLlamada = tipoLlam;
@@ -40,6 +41,8 @@ namespace wfaIntegradoCom.Procesos
         {
             try
             {
+                dtFechaInicioG.Value = Variables.gdFechaSis;
+
                 FunGeneral.fnLlenarTablaCodTipoCon(cboArea, "PETR",false);
                 lstMoneda=FunGeneral.fnLLenarMoneda(cboMoneda,0,false);
                 lstMoneda2 =FunGeneral.fnLLenarMoneda(cboMoneda2, 0,false);
@@ -57,6 +60,8 @@ namespace wfaIntegradoCom.Procesos
                 cboTipoDocEmitir.SelectedValue = "DOVE0003";
                 frmOtrasVentas.fnLlenarTablaCod(cboTipoDocEmitir2, "DOVE", 1, 0);
                 cboTipoDocEmitir2.SelectedValue = "DOVE0003";
+                cboMoneda.SelectedValue = 1;
+                cboMoneda2.SelectedValue = 1;
             }
             catch (Exception)
             {
@@ -133,12 +138,26 @@ namespace wfaIntegradoCom.Procesos
         {
             List<DetalleVenta> lstDetV = new List<DetalleVenta>();
             Int32 cantidad = 1;
-            Double precioUnitario = Convert.ToDouble(txtImporte.Text.ToString());
-            double importe = (precioUnitario * cantidad) - 0;
+            Double precioUnitario = 0;
+            double importe = 0;
+            String descripcion = "";
+            if (tabIndex==0)
+            {
+                precioUnitario = Convert.ToDouble(txtImporte.Text.ToString());
+                importe = (precioUnitario * cantidad) - 0;
+                descripcion = FunGeneral.FormatearCadenaTitleCase(txtDescripcion.Text.ToString());
+            }
+            else
+            {
+                precioUnitario = Convert.ToDouble(txtImporte2.Text.ToString());
+                importe = (precioUnitario * cantidad) - 0;
+                descripcion = FunGeneral.FormatearCadenaTitleCase(txtDescripcion2.Text.ToString());
+            }
+          
             lstDetV.Add(new DetalleVenta
             {
                 Numeracion = 1,
-                Descripcion = FunGeneral.FormatearCadenaTitleCase(txtDescripcion.Text.ToString()),
+                Descripcion = descripcion,
                 idTipoTarifa = 0,
                 PrecioUni = precioUnitario,
                 Descuento = 0,
@@ -179,7 +198,7 @@ namespace wfaIntegradoCom.Procesos
             lsDocVenta.Add(new DocumentoVenta
             {
                 idCliente = clsPers.idPersonal,
-                cCliente = FunGeneral.FormatearCadenaTitleCase(clsPers.cPrimerNom + " " + clsPers.cApePat + " " + clsPers.cApeMat),
+                cCliente = tabIndex == 0?FunGeneral.FormatearCadenaTitleCase(clsPers.cPrimerNom + " " + clsPers.cApePat + " " + clsPers.cApeMat): FunGeneral.FormatearCadenaTitleCase(cboTipoConcepto.Text.ToString()),
                 cTipoDoc = "DNI",
                 cDireccion = FunGeneral.FormatearCadenaTitleCase(cboArea.Text.ToString()),
                 cDocumento = clsPers.cDocumento,
@@ -193,10 +212,13 @@ namespace wfaIntegradoCom.Procesos
                 nIGV = dvc.IGV,
                 nMontoTotal = dvc.Total,
                 cUsuario = clsUsuario.cPrimerNom + " " + clsUsuario.cApePat + " " + clsUsuario.cApeMat,
-                cVehiculos = "Egreso",
+                cVehiculos = tabIndex==0?"Egreso":"Ingresos",
                 cDescripcionTipoPago = (lstPagosTrandiaria.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrandiaria[0].cDescripTipoPago) : "",
                 cDescripEstadoPP = (lstPagosTrandiaria.Count > 0) ? lstPagosTrandiaria[0].cEstadoPP : "",
-                cTipoVenta = "EGRESOS"
+                cTipoVenta = tabIndex == 0? "EGRESOS":"INGRESOS",
+                cEstado="MOVIMIENTOCAJA",
+                est0= tabIndex == 0?false:true,
+                est1=true
 
             });
             return lsDocVenta;
@@ -218,6 +240,19 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
+        private void fnLimpiarCampos()
+        {
+            cboMoneda.SelectedValue = 1;
+            cboMoneda2.SelectedValue = 1;
+            cboArea.SelectedValue = "0";
+            cboTipoConcepto.SelectedValue = 0;
+            cboUsuario.SelectedValue = 0;
+            txtImporte.Text = "";
+            txtImporte2.Text = "";
+            txtDescripcion.Text = "";
+            txtDescripcion2.Text = "";
+
+        }
         private void btnGuardarIngresos_Click(object sender, EventArgs e)
         {
             cboMoneda2_SelectedIndexChanged(sender, e);
@@ -226,7 +261,13 @@ namespace wfaIntegradoCom.Procesos
             siticoneTextBox2_TextChanged( sender,  e);
             if (estMoneda2 && estConcepto && estImporte2 && estDescripcion2)
             {
+                fnGenerarDocumento();
+                if (estadoGuardarEgreso)
+                {
+                    fnGuardarIngresos();
+                   
 
+                }
             }
             else
             {
@@ -234,9 +275,24 @@ namespace wfaIntegradoCom.Procesos
             }
         }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tabIndex = tabControl1.SelectedIndex;
+        }
+
         private void cboTipoConcepto_SelectedIndexChanged(object sender, EventArgs e)
         {
             estConcepto=FunValidaciones.fnValidarCombobox(cboTipoConcepto,lblConsepto,pbConcepto).Item1;
+        }
+
+        private void siticonePanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cboFuenteEgreso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            estFuente= FunValidaciones.fnValidarCombobox(cboFuenteEgreso, lblFuente, pbFuente).Item1;
         }
 
         private void fnGenerarDocumento()
@@ -246,6 +302,7 @@ namespace wfaIntegradoCom.Procesos
             lstDocumentoVenta = fnDocumentoVentaHeader(fnCalcularCabeceraDetalle(lstDetalleVenta));
             frm.Inicio(lstDocumentoVenta,lstDetalleVenta, -3);
         }
+       
         private void btnGuardarEgreso_Click(object sender, EventArgs e)
         {
             estArea = FunValidaciones.fnValidarCombobox(cboArea, lblArea, pbArea).Item1;
@@ -287,7 +344,7 @@ namespace wfaIntegradoCom.Procesos
             clsEgresos.UsuarioReceptor = Convert.ToInt32(cboUsuario.SelectedValue);
             clsEgresos.importe = Convert.ToDouble(txtImporte.Text.ToString());
             clsEgresos.DetalleEgreso = txtDescripcion.Text.ToString();
-            clsEgresos.lnTipoCon = 0;
+            clsEgresos.lnTipoCon = -1;
             lstPagosTrandiaria[0].idMoneda = clsMoneda.idMoneda;
             List<xmlDocumentoVentaGeneral> xmlDVG = new List<xmlDocumentoVentaGeneral>();
             xmlDVG.Add(new xmlDocumentoVentaGeneral
@@ -299,12 +356,45 @@ namespace wfaIntegradoCom.Procesos
             Boolean estado= blE.blGuardarEgresos(lstPagosTrandiaria,xmlDVG, clsEgresos);
             if (estado)
             {
-                MessageBox.Show("datos Guardados Correctamente");
+                MessageBox.Show("Egreso Guardado exitosamente","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                fnLimpiarCampos();
             }
             else
             {
 
-                MessageBox.Show("Error al guardar egresos");
+                MessageBox.Show("Error al guardar egreso --Comunique al administrador", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        private void fnGuardarIngresos()
+        {
+            BLEgresos blE = new BLEgresos();
+            Egresos clsEgresos = new Egresos();
+            clsEgresos.idEgreso = 0;
+            clsEgresos.cargo = cboTipoConcepto.SelectedValue.ToString();
+            clsEgresos.UsuarioReceptor = tabIndex==1?0:Convert.ToInt32(cboUsuario.SelectedValue);
+            clsEgresos.importe = Convert.ToDouble(txtImporte2.Text.ToString());
+            clsEgresos.DetalleEgreso = txtDescripcion2.Text.ToString();
+            clsEgresos.lnTipoCon = -2;
+            lstPagosTrandiaria[0].idMoneda = clsMoneda.idMoneda;
+            List<xmlDocumentoVentaGeneral> xmlDVG = new List<xmlDocumentoVentaGeneral>();
+            xmlDVG.Add(new xmlDocumentoVentaGeneral
+            {
+                xmlDocumentoVenta = lstDocumentoVenta,
+                xmlDetalleVentas = lstDetalleVenta
+            });
+
+            Boolean estado = blE.blGuardarEgresos(lstPagosTrandiaria, xmlDVG, clsEgresos);
+            if (estado)
+            {
+                MessageBox.Show("Ingreso Guardado exitosamente", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fnLimpiarCampos();
+            }
+            else
+            {
+
+                MessageBox.Show("Error al guardar ingreso --Comunique al administrador", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
 
         }
