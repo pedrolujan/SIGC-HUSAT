@@ -77,7 +77,7 @@ namespace wfaIntegradoCom.Consultas
         {
             BLCaja bl = new BLCaja();
             Boolean est = false;
-            est=bl.blGuardarCierreCaja(xmlActaCierreCaja,-1);
+            est=bl.blGuardarCierreCaja(xmlActaCierreCaja, Variables.lstCuardreCaja, - 1);
             if (est==true)
             {
                 MessageBox.Show("Cierre de caja guardado exitosamnete","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Information);

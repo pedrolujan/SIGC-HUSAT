@@ -65,15 +65,16 @@ namespace CapaDato
 
             }
         }
-        public Boolean daGuardarCierreCaja(List<xmlActaCierraCaja> xmlacta, Int32 tipoCon)
+        public Boolean daGuardarCierreCaja(List<xmlActaCierraCaja> xmlacta, List<CuadreCaja> lstApertura, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[6];
+            SqlParameter[] pa = new SqlParameter[7];
             List<ControlCaja> lstControl = new List<ControlCaja>();
             DataTable dt = new DataTable();
             List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
             objUtil = new clsUtil();
             clsConexion objCnx = null;
             String xmlActaCierreCaja = clsUtil.Serialize(xmlacta);
+            //String xmlApertura = clsUtil.Serialize(lstApertura);
             try
             {
                 pa[0] = new SqlParameter("@dtFechaRegistro", SqlDbType.Date) { Value = xmlacta[0].dtFechaRegistro };                
@@ -81,7 +82,9 @@ namespace CapaDato
                 pa[2] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = xmlacta[0].idUsuario };
                 pa[3] = new SqlParameter("@idSucursal", SqlDbType.Int) { Value = xmlacta[0].idSucursal };
                 pa[4] = new SqlParameter("@ImporteCierre", SqlDbType.Money) { Value = xmlacta[0].ListaCuadreCaja[0].importeSaldo };
-                pa[5] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = tipoCon };
+                pa[5] = new SqlParameter("@idTranApertura", SqlDbType.Int) { Value = lstApertura[0].idTrandiaria };
+
+                pa[6] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = tipoCon };
 
                 objCnx = new clsConexion("");
                 dt = objCnx.EjecutarProcedimientoDT("uspGuardarCierreCaja", pa);              

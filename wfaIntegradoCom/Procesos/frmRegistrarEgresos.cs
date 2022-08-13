@@ -22,8 +22,10 @@ namespace wfaIntegradoCom.Procesos
             InitializeComponent();
         }
         static List<Moneda> lstMoneda = new List<Moneda>();
+        static List<Moneda> lstMoneda2 = new List<Moneda>();
         static Moneda clsMoneda = new Moneda();
         Boolean estArea, estUsuario, estMoneda, estImporte, estDescripcion;
+        Boolean estArea2, estUsuario2, estMoneda2, estImporte2, estDescripcion2, estConcepto;
         static Int32 lnTipoLlamada = 0;
         static List<Pagos> lstPagosTrandiaria = new List<Pagos>();
         static List<DocumentoVenta> lstDocumentoVenta = new List<DocumentoVenta>();
@@ -40,12 +42,21 @@ namespace wfaIntegradoCom.Procesos
             {
                 FunGeneral.fnLlenarTablaCodTipoCon(cboArea, "PETR",false);
                 lstMoneda=FunGeneral.fnLLenarMoneda(cboMoneda,0,false);
+                lstMoneda2 =FunGeneral.fnLLenarMoneda(cboMoneda2, 0,false);
+
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboTipoConcepto, "idOperacion", "cNombreOperacion", "OperacionHusat", "cGrupoOpe", "GOPE0004", false);
 
                 cboArea.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
                 cboUsuario.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
                 cboMoneda.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+
+                cboMoneda2.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+                cboTipoConcepto.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+
                 frmOtrasVentas.fnLlenarTablaCod(cboTipoDocEmitir, "DOVE", 1, 0);
                 cboTipoDocEmitir.SelectedValue = "DOVE0003";
+                frmOtrasVentas.fnLlenarTablaCod(cboTipoDocEmitir2, "DOVE", 1, 0);
+                cboTipoDocEmitir2.SelectedValue = "DOVE0003";
             }
             catch (Exception)
             {
@@ -195,6 +206,39 @@ namespace wfaIntegradoCom.Procesos
             //DocumentoVenta.cVehiculos = lstvehiculo[0].vPlaca;
             //lstDocVenta.Add(DocumentoVenta);
         }
+
+        private void siticoneTextBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            estImporte2 = fnValidarTexbox(txtImporte2, lblImporte2, pbImporte2);
+        }
+
+        private void siticoneTextBox2_TextChanged(object sender, EventArgs e)
+        {
+            estDescripcion2 = FunValidaciones.fnValidarTexboxs(txtDescripcion2, lblDescripcion2, pbDescripcion2, true, true, true, 10, 1000, 1000, 1000, "Por favor describa correctamente la operación").Item1;
+
+        }
+
+        private void btnGuardarIngresos_Click(object sender, EventArgs e)
+        {
+            cboMoneda2_SelectedIndexChanged(sender, e);
+            cboTipoConcepto_SelectedIndexChanged(sender, e);
+            siticoneTextBox1_TextChanged_1( sender,  e);
+            siticoneTextBox2_TextChanged( sender,  e);
+            if (estMoneda2 && estConcepto && estImporte2 && estDescripcion2)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Complente Correctamente los campos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cboTipoConcepto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            estConcepto=FunValidaciones.fnValidarCombobox(cboTipoConcepto,lblConsepto,pbConcepto).Item1;
+        }
+
         private void fnGenerarDocumento()
         {
             Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
@@ -221,6 +265,17 @@ namespace wfaIntegradoCom.Procesos
             {
                 MessageBox.Show("Complente Correctamente los campos","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboMoneda2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            estMoneda2 = FunValidaciones.fnValidarCombobox(cboMoneda2, lblMoneda2, pbMoneda2).Item1;
+            clsMoneda = lstMoneda.Find(i => i.idMoneda == Convert.ToInt32(cboMoneda2.SelectedValue));
         }
 
         private void fnGuardarEgreso()

@@ -292,7 +292,7 @@ namespace wfaIntegradoCom.Funciones
             {
                 Variables.lstCuardreCaja = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario);
                 
-                return Variables.lstCuardreCaja.Count;
+                return Variables.lstCuardreCaja[0].idOperacion;
             }
             catch (Exception ex)
             {

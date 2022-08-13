@@ -28,12 +28,12 @@ namespace CapaNegocio
             }
 
         }
-        public Boolean blGuardarCierreCaja(List<xmlActaCierraCaja>xmlacta,Int32 tipoCon)
+        public Boolean blGuardarCierreCaja(List<xmlActaCierraCaja>xmlacta, List<CuadreCaja> lstApertura,Int32 tipoCon)
         {
             dcaja = new DACaja();
             try
             {
-                return dcaja.daGuardarCierreCaja( xmlacta,  tipoCon);
+                return dcaja.daGuardarCierreCaja( xmlacta,lstApertura , tipoCon);
             }
             catch (Exception ex)
             {

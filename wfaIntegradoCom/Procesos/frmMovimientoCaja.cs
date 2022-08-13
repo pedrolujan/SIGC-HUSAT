@@ -368,7 +368,9 @@ namespace wfaIntegradoCom.Procesos
             });
 
             frmCierreC.Inicio(xmlActaCierre, 1);
-            
+
+            siticoneControlBox1_Click( sender,  e);
+
             //if (FunGeneral.fnVerificarApertura())
             //{
             //    lnMontoSaldo=Convert.ToDecimal(textBox1.Text.Trim() == "" ? "0" : textBox1.Text.Trim());
@@ -442,12 +444,14 @@ namespace wfaIntegradoCom.Procesos
             Boolean estAperturaCaja=false;
             Int32 num= FunGeneral.fnVerificarApertura(Variables.gnCodUser);
             estAperturaCaja = num == 1 ? true : false;
+            //btnAperturarCaja.Enabled = false;
             if (estAperturaCaja == false)
             {
 
                 frmAperturaCaja frmAp = new frmAperturaCaja();
                 frmAp.ShowDialog();
             }
+            siticoneControlBox1_Click(sender, e);
         }
 
         private void siticoneControlBox1_Click(object sender, EventArgs e)
@@ -455,6 +459,8 @@ namespace wfaIntegradoCom.Procesos
             MDIParent1 frm = new MDIParent1();
             Int32 num = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
             frm.fnCambiarEstado(num==1?true:false);
+            this.Dispose();
+
             //frm.fnMostrarDashboard();
         
         }
