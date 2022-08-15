@@ -139,6 +139,7 @@
             this.siticoneControlBox1.ShadowDecoration.Parent = this.siticoneControlBox1;
             this.siticoneControlBox1.Size = new System.Drawing.Size(45, 29);
             this.siticoneControlBox1.TabIndex = 73;
+            this.siticoneControlBox1.Click += new System.EventHandler(this.siticoneControlBox1_Click);
             // 
             // gunaLabel10
             // 
@@ -207,7 +208,7 @@
             this.cboFuenteEgreso.Name = "cboFuenteEgreso";
             this.cboFuenteEgreso.ShadowDecoration.Parent = this.cboFuenteEgreso;
             this.cboFuenteEgreso.Size = new System.Drawing.Size(313, 36);
-            this.cboFuenteEgreso.TabIndex = 183;
+            this.cboFuenteEgreso.TabIndex = 1;
             this.cboFuenteEgreso.SelectedIndexChanged += new System.EventHandler(this.cboFuenteEgreso_SelectedIndexChanged);
             // 
             // pbFuente
@@ -270,7 +271,7 @@
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.ShadowDecoration.Parent = this.cboMoneda;
             this.cboMoneda.Size = new System.Drawing.Size(313, 36);
-            this.cboMoneda.TabIndex = 3;
+            this.cboMoneda.TabIndex = 111;
             this.cboMoneda.SelectedIndexChanged += new System.EventHandler(this.cboMoneda_SelectedIndexChanged);
             // 
             // cboArea
@@ -291,7 +292,7 @@
             this.cboArea.Name = "cboArea";
             this.cboArea.ShadowDecoration.Parent = this.cboArea;
             this.cboArea.Size = new System.Drawing.Size(313, 36);
-            this.cboArea.TabIndex = 1;
+            this.cboArea.TabIndex = 2;
             this.cboArea.SelectedIndexChanged += new System.EventHandler(this.cboArea_SelectedIndexChanged);
             // 
             // cboUsuario
@@ -312,7 +313,7 @@
             this.cboUsuario.Name = "cboUsuario";
             this.cboUsuario.ShadowDecoration.Parent = this.cboUsuario;
             this.cboUsuario.Size = new System.Drawing.Size(313, 36);
-            this.cboUsuario.TabIndex = 2;
+            this.cboUsuario.TabIndex = 3;
             this.cboUsuario.SelectedIndexChanged += new System.EventHandler(this.cboUsuario_SelectedIndexChanged);
             // 
             // txtImporte
@@ -658,8 +659,10 @@
             this.txtImporte2.SelectedText = "";
             this.txtImporte2.ShadowDecoration.Parent = this.txtImporte2;
             this.txtImporte2.Size = new System.Drawing.Size(272, 36);
-            this.txtImporte2.TabIndex = 175;
+            this.txtImporte2.TabIndex = 3;
             this.txtImporte2.TextChanged += new System.EventHandler(this.siticoneTextBox1_TextChanged_1);
+            this.txtImporte2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporte2_KeyPress);
+            this.txtImporte2.Leave += new System.EventHandler(this.txtImporte2_Leave);
             // 
             // cboTipoConcepto
             // 
@@ -679,7 +682,7 @@
             this.cboTipoConcepto.Name = "cboTipoConcepto";
             this.cboTipoConcepto.ShadowDecoration.Parent = this.cboTipoConcepto;
             this.cboTipoConcepto.Size = new System.Drawing.Size(313, 36);
-            this.cboTipoConcepto.TabIndex = 173;
+            this.cboTipoConcepto.TabIndex = 2;
             this.cboTipoConcepto.SelectedIndexChanged += new System.EventHandler(this.cboTipoConcepto_SelectedIndexChanged);
             // 
             // cboMoneda2
@@ -700,7 +703,7 @@
             this.cboMoneda2.Name = "cboMoneda2";
             this.cboMoneda2.ShadowDecoration.Parent = this.cboMoneda2;
             this.cboMoneda2.Size = new System.Drawing.Size(313, 36);
-            this.cboMoneda2.TabIndex = 180;
+            this.cboMoneda2.TabIndex = 1;
             this.cboMoneda2.SelectedIndexChanged += new System.EventHandler(this.cboMoneda2_SelectedIndexChanged);
             // 
             // btnGuardarIngresos
@@ -720,7 +723,7 @@
             this.btnGuardarIngresos.Name = "btnGuardarIngresos";
             this.btnGuardarIngresos.ShadowDecoration.Parent = this.btnGuardarIngresos;
             this.btnGuardarIngresos.Size = new System.Drawing.Size(236, 55);
-            this.btnGuardarIngresos.TabIndex = 284;
+            this.btnGuardarIngresos.TabIndex = 5;
             this.btnGuardarIngresos.Text = "Guandar Ingresos";
             this.btnGuardarIngresos.Click += new System.EventHandler(this.btnGuardarIngresos_Click);
             // 
@@ -795,7 +798,7 @@
             this.txtDescripcion2.SelectedText = "";
             this.txtDescripcion2.ShadowDecoration.Parent = this.txtDescripcion2;
             this.txtDescripcion2.Size = new System.Drawing.Size(679, 129);
-            this.txtDescripcion2.TabIndex = 233;
+            this.txtDescripcion2.TabIndex = 4;
             this.txtDescripcion2.TextChanged += new System.EventHandler(this.siticoneTextBox2_TextChanged);
             // 
             // label8

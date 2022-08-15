@@ -32,6 +32,7 @@ namespace wfaIntegradoCom.Procesos
             InitializeComponent();
             intTipoLlamada = pintTipoLllamada;
         }
+        static List<ReporteBloque> lstCajaChica = new List<ReporteBloque>();
         static List<ReporteBloque> lstReporteIngresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstReporteEgresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstDetalleIngresos = new List<ReporteBloque>();
@@ -39,11 +40,12 @@ namespace wfaIntegradoCom.Procesos
         static Int32 estadoApertura = 0;
         CuadreCaja clsCuadreCaja = new CuadreCaja();
         static Int32 lnTipoCon = 0;
-        public void Inicio(List<ReporteBloque> lstIngresos, List<ReporteBloque> lstEgresos, List<ReporteBloque> lstDetIngresos, Int32 tipoCon)
+        public void Inicio(List<ReporteBloque> lstIngresos, List<ReporteBloque> lstEgresos, List<ReporteBloque> lstDetIngresos, List<ReporteBloque> lstCajaCh, Int32 tipoCon)
         {
             lstReporteIngresos = lstIngresos;
             lstReporteEgresos = lstEgresos;
             lstDetalleIngresos = lstDetIngresos;
+            lstCajaChica = lstCajaCh;
             intTipoLlamada = tipoCon;
             this.ShowDialog();
         }
@@ -145,6 +147,7 @@ namespace wfaIntegradoCom.Procesos
 
                 CuadreCaja clcCaja = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
                 Double importe = 0;
+
                 if (clcCaja is CuadreCaja)
                 {
                     importe = clcCaja.importeSaldo;
@@ -358,6 +361,7 @@ namespace wfaIntegradoCom.Procesos
                 ListaReporteDetalleIngresos = lstDetalleIngresos,
                 ListaReporteEgresos = lstReporteEgresos,
                 ListaCuadreCaja = lstCuadreCaja,
+                ListaCajaChica=lstCajaChica,
                 dtFechaRegistro=Variables.gdFechaSis,
                 cNomSucursal=Variables.gsSucursal,
                 idSucursal=Variables.idSucursal,
@@ -365,7 +369,7 @@ namespace wfaIntegradoCom.Procesos
                 cUsuario=Variables.gsCodUser,
                 nomPersonal= clt.cPrimerNom + " " + clt.cApePat + " " + clt.cApeMat,
                 turno= Variables.gdFechaSis.Hour < 15 ? " Mañana" : " Tarde",
-            });
+            });;
 
             frmCierreC.Inicio(xmlActaCierre, 1);
 

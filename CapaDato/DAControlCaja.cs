@@ -170,7 +170,7 @@ namespace CapaDato
 
             }
         }
-        public Tuple<List<ReporteBloque>,List<ReporteBloque>, List<ReporteBloque>> daBuscarDashBoard(Busquedas clsBusq)
+        public Tuple<List<ReporteBloque>,List<ReporteBloque>, List<ReporteBloque>, List<ReporteBloque>> daBuscarDashBoard(Busquedas clsBusq)
         {
             SqlParameter[] pa = new SqlParameter[12];
             List<ControlCaja> lstControl = new List<ControlCaja>();
@@ -178,7 +178,9 @@ namespace CapaDato
             List<ReporteBloque> lsDasboard = new List<ReporteBloque>();
             List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
             List<ReporteBloque> lstEgresos= new List<ReporteBloque>();
+            List<ReporteBloque> lstCajaChica= new List<ReporteBloque>();
             DataView dvEgresos = new DataView();
+            DataView dvCajaChica = new DataView();
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             try
@@ -199,19 +201,46 @@ namespace CapaDato
                  objCnx = new clsConexion("");
 
                 dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarDashBoard", pa);
-
-                if (dtMenu.Tables.Count==3)
+                dvCajaChica = new DataView(dtMenu.Tables[0]);
+                if (dtMenu.Tables.Count==4)
                 {
-                    dvEgresos= new DataView(dtMenu.Tables[2]);
+                    dvEgresos= new DataView(dtMenu.Tables[3]);
 
                 }
                 else
                 {
-                    dvEgresos= new DataView(dtMenu.Tables[1]);
+                    dvEgresos= new DataView(dtMenu.Tables[2]);
 
                 }
-                    DataView dvDasboard = new DataView(dtMenu.Tables[0]);
+                    DataView dvDasboard = new DataView(dtMenu.Tables[1]);
                 
+                foreach (DataRowView dr in dvCajaChica)
+                {
+                    lstCajaChica.Add(new ReporteBloque
+                    {
+                        Codigoreporte = "0",
+                        Detallereporte = FormatearCadenaTitleCase(dr["nomCajaChica"].ToString()),
+                        Cantidad =1,
+                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        SimboloMoneda = Convert.ToInt32(dr["idMoneda"])==1?"S/.":"$/.",
+                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDouble(dr["montoTotal"]),
+
+                    });
+                }
+                if (lstCajaChica.Count==0)
+                {
+                    lstCajaChica.Add(new ReporteBloque
+                    {
+                        Codigoreporte = "0",
+                        Detallereporte = FormatearCadenaTitleCase("Caja chica"),
+                        Cantidad = 1,
+                        idMoneda = Convert.ToInt32(1),
+                        SimboloMoneda = "S/.",
+                        ImporteTipoCambio = Convert.ToDouble(0.20),
+                        ImporteRow = Convert.ToDouble(0)
+                    });
+                }
                 foreach (DataRowView dr in dvDasboard)
                 {
                     lsDasboard.Add(new ReporteBloque
@@ -227,7 +256,7 @@ namespace CapaDato
                 }
                 if (clsBusq.cod1.Length>5)
                 {
-                    DataView dvParatablas = new DataView(dtMenu.Tables[1]);
+                    DataView dvParatablas = new DataView(dtMenu.Tables[2]);
 
                     
                     foreach (DataRowView dr in dvParatablas)
@@ -262,7 +291,7 @@ namespace CapaDato
 
 
 
-                return Tuple.Create(lsDasboard, lsRepBloque, lstEgresos);
+                return Tuple.Create(lsDasboard, lsRepBloque, lstEgresos, lstCajaChica);
 
             }
             catch (Exception ex)

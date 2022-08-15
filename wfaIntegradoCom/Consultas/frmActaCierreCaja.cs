@@ -24,6 +24,7 @@ namespace wfaIntegradoCom.Consultas
         static List<ReporteBloque> lstReporteIngresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstDetalleIngresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstReporteEgresos = new List<ReporteBloque>();
+        static List<ReporteBloque> lstCajaChica = new List<ReporteBloque>();
         static List<CuadreCaja> lstReporteCuandrecaja = new List<CuadreCaja>();
         static List<xmlActaCierraCaja> xmlActaCierreCaja = new List<xmlActaCierraCaja>();
         static Int32 lnTipoCon = 0;
@@ -33,6 +34,7 @@ namespace wfaIntegradoCom.Consultas
             lstDetalleIngresos = xmlActacierre[0].ListaReporteDetalleIngresos;
             lstReporteEgresos = xmlActacierre[0].ListaReporteEgresos;
             lstReporteCuandrecaja= xmlActacierre[0].ListaCuadreCaja;
+            lstCajaChica = xmlActacierre[0].ListaCajaChica;
             xmlActaCierreCaja = xmlActacierre;
             lnTipoCon = tipoCon;
             this.ShowDialog();
@@ -41,9 +43,9 @@ namespace wfaIntegradoCom.Consultas
         {
 
             this.reportViewer1.RefreshReport();
-            fnCargarReporte(xmlActaCierreCaja,lstReporteIngresos, lstDetalleIngresos, lstReporteEgresos,lstReporteCuandrecaja);
+            fnCargarReporte(xmlActaCierreCaja,lstReporteIngresos, lstDetalleIngresos, lstReporteEgresos,lstReporteCuandrecaja, lstCajaChica);
         }
-        private void fnCargarReporte(List<xmlActaCierraCaja> xmlActa,List<ReporteBloque> lstIngresos, List<ReporteBloque> lstDetIngresos, List<ReporteBloque> lstEgresos, List<CuadreCaja> lstCuandre)
+        private void fnCargarReporte(List<xmlActaCierraCaja> xmlActa,List<ReporteBloque> lstIngresos, List<ReporteBloque> lstDetIngresos, List<ReporteBloque> lstEgresos, List<CuadreCaja> lstCuandre, List<ReporteBloque> lstCajChica)
         {
             
             ReportParameter[] parameters = new ReportParameter[5];
@@ -63,6 +65,7 @@ namespace wfaIntegradoCom.Consultas
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReporte", lstIngresos));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsDetalleIngresos", lstDetIngresos));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReporteEgresos", lstEgresos));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCajaChica", lstCajChica));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCuadreCaja", lstCuandre));
             reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.RefreshReport();
@@ -77,7 +80,7 @@ namespace wfaIntegradoCom.Consultas
         {
             BLCaja bl = new BLCaja();
             Boolean est = false;
-            est=bl.blGuardarCierreCaja(xmlActaCierreCaja, Variables.lstCuardreCaja, - 1);
+            est = bl.blGuardarCierreCaja(xmlActaCierreCaja, Variables.lstCuardreCaja, -1);
             if (est==true)
             {
                 MessageBox.Show("Cierre de caja guardado exitosamnete","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Information);

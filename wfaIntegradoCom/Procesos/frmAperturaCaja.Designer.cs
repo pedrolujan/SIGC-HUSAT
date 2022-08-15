@@ -55,7 +55,7 @@
             this.txtUsuario.Multiline = true;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(241, 40);
-            this.txtUsuario.TabIndex = 5;
+            this.txtUsuario.TabIndex = 2;
             // 
             // label2
             // 
@@ -89,7 +89,7 @@
             this.txtFecha.Multiline = true;
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.Size = new System.Drawing.Size(241, 40);
-            this.txtFecha.TabIndex = 4;
+            this.txtFecha.TabIndex = 1;
             // 
             // txtMonto
             // 
@@ -101,7 +101,7 @@
             this.txtMonto.Multiline = true;
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(241, 40);
-            this.txtMonto.TabIndex = 8;
+            this.txtMonto.TabIndex = 3;
             this.txtMonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMonto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -133,11 +133,11 @@
             this.btnRegistrar.HoveredState.Parent = this.btnRegistrar;
             this.btnRegistrar.Image = global::wfaIntegradoCom.Properties.Resources.guardar_hover;
             this.btnRegistrar.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnRegistrar.Location = new System.Drawing.Point(199, 249);
+            this.btnRegistrar.Location = new System.Drawing.Point(16, 254);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.ShadowDecoration.Parent = this.btnRegistrar;
-            this.btnRegistrar.Size = new System.Drawing.Size(148, 55);
-            this.btnRegistrar.TabIndex = 283;
+            this.btnRegistrar.Size = new System.Drawing.Size(143, 44);
+            this.btnRegistrar.TabIndex = 4;
             this.btnRegistrar.Text = "Aperturar";
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             this.btnRegistrar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnRegistrar_KeyDown);
@@ -155,10 +155,10 @@
             this.btnAtras.HoveredState.Parent = this.btnAtras;
             this.btnAtras.Image = global::wfaIntegradoCom.Properties.Resources.salir_hover;
             this.btnAtras.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnAtras.Location = new System.Drawing.Point(16, 249);
+            this.btnAtras.Location = new System.Drawing.Point(204, 254);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.ShadowDecoration.Parent = this.btnAtras;
-            this.btnAtras.Size = new System.Drawing.Size(148, 55);
+            this.btnAtras.Size = new System.Drawing.Size(143, 44);
             this.btnAtras.TabIndex = 283;
             this.btnAtras.Text = "    Cerrar";
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
@@ -186,6 +186,7 @@
             this.lblMostraCierreAnterior.Name = "lblMostraCierreAnterior";
             this.lblMostraCierreAnterior.Size = new System.Drawing.Size(359, 34);
             this.lblMostraCierreAnterior.TabIndex = 0;
+            this.lblMostraCierreAnterior.Text = null;
             this.lblMostraCierreAnterior.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmAperturaCaja

@@ -39,7 +39,7 @@ namespace CapaDato
                 pa[8] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml) { Value = xmlTrandiaria };
                 pa[9] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml) { Value = xmlDetalelVenta };
                 pa[10] = new SqlParameter("@lnTipoCon", SqlDbType.Int) { Value = clsEgresos.lnTipoCon };
-                pa[11] = new SqlParameter("@CodAuxiliar", SqlDbType.VarChar,10) { Value = clsEgresos.lnTipoCon };
+                pa[11] = new SqlParameter("@CodAuxiliar", SqlDbType.VarChar,10) { Value = clsEgresos.codAuxiliar };
                
 
                 objCnx = new clsConexion("");

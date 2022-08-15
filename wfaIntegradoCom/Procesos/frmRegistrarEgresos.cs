@@ -267,7 +267,8 @@ namespace wfaIntegradoCom.Procesos
                 if (estadoGuardarEgreso)
                 {
                     fnGuardarIngresos();
-                   
+                    siticoneControlBox1_Click(sender, e);
+
 
                 }
             }
@@ -290,6 +291,31 @@ namespace wfaIntegradoCom.Procesos
         private void siticonePanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void siticoneControlBox1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void txtImporte2_Leave(object sender, EventArgs e)
+        {
+            txtImporte2.Text = FunGeneral.fnFormatearPrecio("", txtImporte2.Text.ToString() == "" ? 0 : Convert.ToDouble(txtImporte2.Text.ToString()), -1);
+
+        }
+
+        private void txtImporte2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            NumberFormatInfo nfi = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
+
+            char decSeperator;
+
+            decSeperator = nfi.CurrencyDecimalSeparator[0];
+
+            if (!char.IsControl(e.KeyChar) && !(char.IsDigit(e.KeyChar) | e.KeyChar == decSeperator))
+            {
+                e.Handled = true;
+            }
         }
 
         private void cboFuenteEgreso_SelectedIndexChanged(object sender, EventArgs e)
@@ -318,6 +344,7 @@ namespace wfaIntegradoCom.Procesos
                 if (estadoGuardarEgreso)
                 {
                     fnGuardarEgreso();
+                    siticoneControlBox1_Click( sender,  e);
                 }
             }
             else
@@ -375,6 +402,7 @@ namespace wfaIntegradoCom.Procesos
             Egresos clsEgresos = new Egresos();
             clsEgresos.idEgreso = 0;
             clsEgresos.cargo = cboTipoConcepto.SelectedValue.ToString();
+            clsEgresos.codAuxiliar = cboFuenteEgreso.SelectedValue.ToString();
             clsEgresos.UsuarioReceptor = tabIndex==1?0:Convert.ToInt32(cboUsuario.SelectedValue);
             clsEgresos.importe = Convert.ToDouble(txtImporte2.Text.ToString());
             clsEgresos.DetalleEgreso = txtDescripcion2.Text.ToString();

@@ -59,6 +59,7 @@ namespace wfaIntegradoCom
         Padding PaddingbtnSubMenu = new Padding(10, 0, 0, 0);
 
         static Int32 tabInicio = 0;
+        List<ReporteBloque> lstCajaChica = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloque = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueEgresos = new List<ReporteBloque>();
         List<ReporteBloque> lstRepDetalleIngresos = new List<ReporteBloque>();
@@ -2507,6 +2508,10 @@ namespace wfaIntegradoCom
             flowLayoutPanel1_Click(sender, e);
         }
 
+        public void fnDatosCajaChica()
+        {
+
+        }
         public void fnBuscarReporteGeneralVentas(SiticoneDataGridView dgv, Int32 numPagina, Int32 tipoCon)
         {
            
@@ -2541,6 +2546,9 @@ namespace wfaIntegradoCom
             fnGenerarPaneles(result.Item1);
             lsReporteBloque = result.Item2;
             lsReporteBloqueEgresos = result.Item3;
+            lstCajaChica = result.Item4;
+            lstCajaChica[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstCajaChica[0].SimboloMoneda, lstCajaChica[0].ImporteRow,0);
+            fnDatosPNEspaciador();
 
             Int32 totalRows = lsReporteBloque.Count;
 
@@ -3168,6 +3176,57 @@ namespace wfaIntegradoCom
             estadoActivarDashBoard = est;
             
         }
+        private void fnDatosPNEspaciador()
+        {
+            panelEspaciado.Controls.Clear();
+            SiticonePanel pnl = new SiticonePanel();
+            pnl.Size = panelEspaciado.Size;
+            pnl.BackColor = Color.Black;
+
+            SiticoneLabel lbl = new SiticoneLabel();
+            lbl.AutoSize = false;
+            lbl.Size = panelEspaciado.Size;
+            lbl.TextAlignment = ContentAlignment.MiddleCenter;
+            lbl.BackColor = Color.Black;
+            lbl.ForeColor = Variables.ColorWarning;
+            lbl.Font = new Font("Roboto", 12);
+
+            SiticoneLabel lblCaja = new SiticoneLabel();
+            lblCaja.AutoSize = false;
+            lblCaja.Size = panelEspaciado.Size;
+            lblCaja.TextAlignment = ContentAlignment.MiddleCenter;
+            lblCaja.BackColor = Color.Black;
+            lblCaja.ForeColor = Variables.ColorWarning;
+            lblCaja.Font = new Font("Roboto", 12);
+            lblCaja.Text = "";
+            if (FunGeneral.fnVerificarApertura(Variables.gnCodUser) !=1)
+            {
+                pnl.Controls.Clear();
+                if (Variables.lstCuardreCaja.Count == 0)
+                {
+                    lbl.Text = "¡Por Favor debes APERTURAR CAJA Para poder registrar ingresos ó egresos!";
+
+                }
+                else
+                {
+                    lbl.Text = "YA CERRASTE CAJA CON EL MONTO DE: " + FunGeneral.fnFormatearPrecio("S/.", Variables.lstCuardreCaja.Find(i => i.idOperacion == 2).importeSaldo, 0);
+                }
+                pnl.Controls.Add(lbl);
+            }
+            else
+            {
+                pnl.Controls.Clear();
+                lbl.Width = panelEspaciado.Size.Width / 2;
+                lblCaja.Width = panelEspaciado.Size.Width / 2;
+
+                lblCaja.Text = "Importe en: " + lstCajaChica[0].Detallereporte + " " + FunGeneral.fnFormatearPrecio("S/.", lstCajaChica[0].ImporteRow, 0);
+                lbl.Text = "No olvides cerrar caja antes de terminar tu turno";
+                pnl.Controls.Add(lbl);
+                lblCaja.Location = new Point(lbl.Width + 2, 0);
+                pnl.Controls.Add(lblCaja);
+            }
+            panelEspaciado.Controls.Add(pnl);
+        }
         public void fnActivarDashBoard(Boolean est)
         {
             if (Variables.gsCargoUsuario == "PETR0008")
@@ -3184,31 +3243,7 @@ namespace wfaIntegradoCom
                 pnlParaDashboard.Visible = est;
             }
             //pnlParaDashboard.Visible = true;
-            panelEspaciado.Controls.Clear();
-            SiticoneLabel lbl = new SiticoneLabel();
-            lbl.AutoSize = false;
-            lbl.Size = panelEspaciado.Size;
-            lbl.TextAlignment = ContentAlignment.MiddleCenter;
-            lbl.BackColor = Color.Black;
-            lbl.ForeColor = Variables.ColorWarning;
-            lbl.Font = new Font("Roboto", 11);
-            if (est == false)
-            {
-                if (Variables.lstCuardreCaja.Count==0)
-                {
-                    lbl.Text = "¡POR FAVOR DEBES APERTURAR CAJA PARA PODER REGISTRAR EGRESOS E INGRESOS!";
-
-                }
-                else
-                {
-                    lbl.Text = "YA CERRASTE CAJA CON EL MONTO DE: "+FunGeneral.fnFormatearPrecio("S/.",Variables.lstCuardreCaja.Find(i=>i.idOperacion==2).importeSaldo,0);
-                }
-            }
-            else
-            {
-                lbl.Text = "NO OLVIDES CERRAR TU CAJA ANTES DE TERMINAR TU TURNO";
-            }
-            panelEspaciado.Controls.Add(lbl);
+            fnDatosPNEspaciador();
             treeView1.Controls.Clear();
             treeView1.Controls.Add(pnlParaDashboard);
 
@@ -3316,7 +3351,7 @@ namespace wfaIntegradoCom
 
             lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda , lstRepDetalleIngresos.Sum(i => i.ImporteRow),0);
 
-            frmMC.Inicio(lsReporteBloque,lsReporteBloqueEgresos, lstRepDetalleIngresos, 0);
+            frmMC.Inicio(lsReporteBloque,lsReporteBloqueEgresos, lstRepDetalleIngresos,lstCajaChica, 0);
             fnActivarDashBoard(estadoActivarDashBoard);
         }
 

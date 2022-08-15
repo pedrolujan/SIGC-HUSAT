@@ -144,6 +144,12 @@ namespace wfaIntegradoCom.Procesos
             lblMoneda.Text = SImboloMoneda;
             lblMoneda1.Text = SImboloMoneda;
             lblMoneda2.Text = SImboloMoneda;
+            if (lnTipoLLamada == -3)
+            {
+                btnAceptar.Text = "Guardar Movimiento";
+                btnAceptar.Width = btnAceptar.Width + 15;
+            }
+           
         }
 
         private void button1_Click(object sender, EventArgs e)

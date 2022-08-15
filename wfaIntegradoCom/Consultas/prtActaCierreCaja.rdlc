@@ -259,6 +259,75 @@
         <rd:ObjectDataSourceType>CapaEntidad.ReporteBloque, CapaEntidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
+    <DataSet Name="dsCajaChica">
+      <Query>
+        <DataSourceName>CapaEntidad</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Cantidad">
+          <DataField>Cantidad</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Codigoreporte">
+          <DataField>Codigoreporte</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Detallereporte">
+          <DataField>Detallereporte</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="estado">
+          <DataField>estado</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="idAuxiliar">
+          <DataField>idAuxiliar</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idMoneda">
+          <DataField>idMoneda</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ImporteRow">
+          <DataField>ImporteRow</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ImporteSumado">
+          <DataField>ImporteSumado</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ImporteTipoCambio">
+          <DataField>ImporteTipoCambio</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ImporteTotal">
+          <DataField>ImporteTotal</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="MonImporteRow">
+          <DataField>MonImporteRow</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MonImporteSumado">
+          <DataField>MonImporteSumado</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="numero">
+          <DataField>numero</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SimboloMoneda">
+          <DataField>SimboloMoneda</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>CapaEntidad</rd:DataSetName>
+        <rd:TableName>ReporteBloque</rd:TableName>
+        <rd:ObjectDataSourceType>CapaEntidad.ReporteBloque, CapaEntidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -1165,8 +1234,10 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>EN CAJA</Value>
-                    <Style />
+                    <Value>="Importe de: " +First(Fields!Detallereporte.Value, "dsCajaChica")+First(Fields!MonImporteSumado.Value, "dsCajaChica")</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -1210,7 +1281,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Detalle</Value>
+                                  <Value>Detalle cierre caja</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1358,7 +1429,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>dsCuadreCaja</DataSetName>
-            <Top>12.67288cm</Top>
+            <Top>12.99038cm</Top>
             <Left>0.03201cm</Left>
             <Height>1.2cm</Height>
             <Width>15.89472cm</Width>
@@ -2303,7 +2374,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>5.46176in</Height>
+        <Height>5.58676in</Height>
         <Style />
       </Body>
       <Width>6.27037in</Width>
