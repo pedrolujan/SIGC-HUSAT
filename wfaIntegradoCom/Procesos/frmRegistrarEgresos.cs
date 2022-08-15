@@ -44,6 +44,8 @@ namespace wfaIntegradoCom.Procesos
                 dtFechaInicioG.Value = Variables.gdFechaSis;
 
                 FunGeneral.fnLlenarTablaCodTipoCon(cboArea, "PETR",false);
+                FunGeneral.fnLlenarTablaCodTipoCon(cboFuenteEgreso, "TEGR",false);
+
                 lstMoneda=FunGeneral.fnLLenarMoneda(cboMoneda,0,false);
                 lstMoneda2 =FunGeneral.fnLLenarMoneda(cboMoneda2, 0,false);
 
@@ -340,6 +342,7 @@ namespace wfaIntegradoCom.Procesos
             BLEgresos blE = new BLEgresos();
             Egresos clsEgresos = new Egresos();
             clsEgresos.idEgreso = 0;
+            clsEgresos.codAuxiliar = cboFuenteEgreso.SelectedValue.ToString();
             clsEgresos.cargo = cboArea.SelectedValue.ToString();
             clsEgresos.UsuarioReceptor = Convert.ToInt32(cboUsuario.SelectedValue);
             clsEgresos.importe = Convert.ToDouble(txtImporte.Text.ToString());
