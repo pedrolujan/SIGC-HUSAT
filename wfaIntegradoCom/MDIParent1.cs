@@ -1269,6 +1269,9 @@ namespace wfaIntegradoCom
         }
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+            //lblIngresos.Padding = new Padding(15, 0, 0, 0);
+            //lblEgresos.Padding = lblIngresos.Padding;
+
             pnlParaDashboard.Visible = false;
             //treeView1.Controls.Clear();
             bl = new BLControlCaja();
@@ -1318,8 +1321,7 @@ namespace wfaIntegradoCom
                     pnn.Location = new Point(5, pnn.Location.Y);
                 }
                
-                fnLocationElementos();
-                fnPosicionDeCajas();
+                
 
                 if (Variables.gsCargoUsuario == "PETR0006")
                 {
@@ -1332,7 +1334,8 @@ namespace wfaIntegradoCom
                     cboOperacion.SelectedValue = 0;
                 }
                 fnValidarusuarioEnSession();
-               
+                fnLocationElementos();
+                fnPosicionDeCajas();
 
             }
 
@@ -2547,6 +2550,8 @@ namespace wfaIntegradoCom
             lsReporteBloque = result.Item2;
             lsReporteBloqueEgresos = result.Item3;
             lstCajaChica = result.Item4;
+            fnGenerarPanelsIndividuales(lstCajaChica, FWpnCajaChicaCopias, "pnCCh");
+            fnPosicionarAlCentrocajas(FWpnCajaChicaCopias, siticonePanel3);
             lstCajaChica[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstCajaChica[0].SimboloMoneda, lstCajaChica[0].ImporteRow,0);
             fnDatosPNEspaciador();
 
@@ -2676,9 +2681,9 @@ namespace wfaIntegradoCom
         {
             Int32 espacios = 15;
             Int32 espaciosPequenos = 5;
-            lblIngresos.Padding = new Padding(15, 0, 0, 0);
+            //lblIngresos.Padding = new Padding(15, 0, 0, 0);
             lblIngresos.Size = new Size(siticonePanel3.Width - 20, 40);
-            lblEgresos.Padding = lblIngresos.Padding;
+            //lblEgresos.Padding = lblIngresos.Padding;
             lblEgresos.Size = lblIngresos.Size;
             lblEgresos.TextAlignment =  ContentAlignment.MiddleLeft;
             lblIngresos.TextAlignment =  ContentAlignment.MiddleLeft;
@@ -2728,7 +2733,156 @@ namespace wfaIntegradoCom
         }
         private void fnPosicionDeCajas()
         {
-            flowLayoutPanel1.Location = new Point(((treeView1.Width / 2) - (flowLayoutPanel1.Width / 2)), 0 + (pnlParaDashboard.AutoScrollPosition.Y));
+            flowLayoutPanel1.Location = new Point(((treeView1.Width / 2) - (flowLayoutPanel1.Width / 2)), FWpnCajaChicaCopias.Height + (pnlParaDashboard.AutoScrollPosition.Y));
+        }
+        private void fnPosicionarAlCentrocajas(FlowLayoutPanel pn, SiticonePanel pnPadre)
+        {
+            pn.Location = new Point(((pnPadre.Width / 2) - (pn.Width / 2)), pn.Location.Y);
+        }
+        private void fnGenerarPanelsIndividuales(List<ReporteBloque> lstBusq, FlowLayoutPanel stPanel ,String nombPn)
+        {
+            Color colorFondo = new Color();
+            Color colorHeaderFooter = new Color();
+            Color colorLetraHF = new Color();
+            Color colorLetraBody = new Color();
+            Color colorLetraIcono = new Color();
+            FWpnCajaChicaCopias.Controls.Clear();
+            Int32 pnfW = 180;
+            Int32 pnfH = 100;
+            Int32 borderRadius = 2;
+            Int32 tamLetraHF = 12;
+            Double rextWFlow = 0.2;
+            colorLetraHF = Color.Gainsboro;
+            String tipoLetra = "Roboto";
+            colorLetraBody = Color.Gainsboro;
+            colorLetraIcono = fnDevolVerColorTransparente(35, Color.Black);
+            colorHeaderFooter = fnDevolVerColorTransparente(150, Color.Black);
+            for (int i = 0; i < lstBusq.Count; i++)
+            {
+                ReporteBloque rpt = lstBusq[i];
+                if (lstBusq[i].ImporteRow < 15)
+                {
+                    colorFondo = Color.FromArgb(161, 20, 1);
+                }
+                else if (lstBusq[i].ImporteRow >= 15)
+                {
+                    colorFondo = Color.FromArgb(0, 126, 63);
+                }
+
+                //Panel princilal
+                SiticonePanel panelFondo = new SiticonePanel();
+                panelFondo.Name = "panel" + i;
+                panelFondo.Size = new Size(pnfW, pnfH);
+                panelFondo.BorderRadius = borderRadius;
+                panelFondo.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+
+                panelFondo.BackColor = Color.Transparent;
+                panelFondo.FillColor = colorFondo;
+
+                SiticonePanel panel = new SiticonePanel();
+                panel.Name = "panel" + i;
+                //panel.Size = new Size(panelFondo.Width, panelFondo.Height);
+                panel.Size = new Size(pnfW + 1, pnfH);
+                panel.BorderRadius = borderRadius;
+                panel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+                panel.BackColor = Color.Transparent;
+                panel.FillColor = colorHeaderFooter;
+                panel.Location = new Point(0, 0);
+                panelFondo.Controls.Add(panel);
+
+                // panel Header
+                SiticonePanel pnHead = new SiticonePanel();
+                pnHead.Name = "pnHead" + i;
+                pnHead.Size = new Size(panel.Width-2, (panel.Height / 2) / 2);
+                pnHead.BackColor = Color.Transparent;
+                pnHead.FillColor = colorFondo;
+                pnHead.Location = new Point(0, 0);
+                //pnHead.Padding = new Padding(0, 0, 0, 0);
+                //pnHead.BorderRadius = borderRadius;
+
+
+                SiticoneLabel lblH = new SiticoneLabel();
+                lblH.Name = "lblHeader" + i;
+                lblH.AutoSize = false;
+                lblH.Size = new Size(pnHead.Width, pnHead.Height);
+                //lblH.BackColor = Color.Red;
+                lblH.Location = new Point(0, 1);
+                lblH.Text = FunGeneral.FormatearCadenaTitleCase(lstBusq[i].Detallereporte);
+                lblH.TextAlignment = ContentAlignment.MiddleCenter;
+                lblH.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
+                //lblH.Font = new Font(lblH.Font, FontStyle.Bold);
+
+                lblH.ForeColor = Color.Gainsboro;
+                pnHead.Controls.Add(lblH);
+                panel.Controls.Add(pnHead);
+
+                //Panel Izquierdo
+                SiticonePanel pnIzquierdo = new SiticonePanel();
+                pnIzquierdo.Name = "pnIzquierdo" + i;
+                pnIzquierdo.Size = new Size(panel.Width / 2, panel.Height - (pnHead.Height * 2));
+                pnIzquierdo.Location = new Point(0, pnHead.Height);
+                pnIzquierdo.FillColor = colorFondo;
+
+                SiticoneLabel lblIzq = new SiticoneLabel();
+                lblIzq.Name = "lblIzquierdo" + i;
+                lblIzq.AutoSize = false;
+                lblIzq.Size = pnIzquierdo.Size;
+                lblIzq.Location = new Point(0, 0);
+                lblIzq.Text = "" + lstBusq[i].Cantidad;
+                lblIzq.TextAlignment = ContentAlignment.MiddleCenter;
+                lblIzq.Font = new Font(tipoLetra, 18F);
+                lblIzq.ForeColor = colorLetraBody;
+                lblIzq.Font = new Font(lblIzq.Font, FontStyle.Bold);
+                pnIzquierdo.Controls.Add(lblIzq);
+
+                panel.Controls.Add(pnIzquierdo);
+                //Panel Derecho
+                SiticonePanel pnDerecho = new SiticonePanel();
+                pnDerecho.Name = "pnDerecho" + i;
+                pnDerecho.BackColor = colorFondo;
+                pnDerecho.Size = pnIzquierdo.Size;
+                pnDerecho.Location = new Point(panel.Width / 2, pnHead.Height);
+
+                IconPictureBox icon = fngenerarIconos(rpt);
+                icon.Size = new Size(pnDerecho.Width - 8, pnDerecho.Height - 8);
+                icon.Location = new Point((pnDerecho.Width / 3), 1);
+                icon.ForeColor = colorLetraIcono;
+                icon.Dock = DockStyle.Fill;
+                //icon.SizeMode = PictureBoxSizeMode.AutoSize;
+                icon.Padding = new Padding(icon.Width / 3, 0, 0, 0);
+                pnDerecho.Controls.Add(icon);
+
+                panel.Controls.Add(pnDerecho);
+
+                //Panel Footer
+                SiticonePanel pnFooter = new SiticonePanel();
+                pnFooter.Name = "pnFooter" + i;
+                //pnFooter.BackColor = Color.Green;
+                pnFooter.Size = new Size(panel.Width, (panel.Height / 2) / 2);
+                pnFooter.Location = new Point(0, pnDerecho.Height + pnHead.Height);
+
+                SiticoneLabel lblF = new SiticoneLabel();
+                lblF.Name = "lblFooter" + i;
+                lblF.AutoSize = false;
+                lblF.Size = pnFooter.Size;
+                lblF.Location = new Point(0, 0);
+                lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecio("S/.", lstBusq[i].ImporteRow, 0);
+                //lblF.BackColor = "Dark"+ color;
+                lblF.TextAlignment = ContentAlignment.MiddleCenter;
+                lblF.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
+
+                lblF.ForeColor = colorLetraHF;
+                pnFooter.Controls.Add(lblF);
+
+
+                panel.Controls.Add(pnFooter);
+
+                stPanel.Controls.Add(panel);
+            }
+
+            stPanel.Size =new Size((pnfW+15) * lstBusq.Count,pnfH+8);
+
+
         }
         private void fnGenerarPaneles(List<ReporteBloque> lstBusq)
         {

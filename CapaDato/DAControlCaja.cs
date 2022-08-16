@@ -234,7 +234,7 @@ namespace CapaDato
                     {
                         Codigoreporte = "0",
                         Detallereporte = FormatearCadenaTitleCase("Caja chica"),
-                        Cantidad = 1,
+                        Cantidad = 0,
                         idMoneda = Convert.ToInt32(1),
                         SimboloMoneda = "S/.",
                         ImporteTipoCambio = Convert.ToDouble(0.20),

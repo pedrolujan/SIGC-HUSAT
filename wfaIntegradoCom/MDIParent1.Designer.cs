@@ -120,6 +120,7 @@ namespace wfaIntegradoCom
             this.panelColorMenuPrincipal = new System.Windows.Forms.Panel();
             this.panelColorPanelCentral = new System.Windows.Forms.Panel();
             this.pnlParaDashboard = new Siticone.UI.WinForms.SiticonePanel();
+            this.FWpnCajaChicaCopias = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.siticonePanel3 = new Siticone.UI.WinForms.SiticonePanel();
             this.btnRegistrarEgresos = new Siticone.UI.WinForms.SiticoneGradientButton();
@@ -1265,6 +1266,7 @@ namespace wfaIntegradoCom
             // 
             this.pnlParaDashboard.AutoScroll = true;
             this.pnlParaDashboard.BackColor = System.Drawing.Color.Transparent;
+            this.pnlParaDashboard.Controls.Add(this.FWpnCajaChicaCopias);
             this.pnlParaDashboard.Controls.Add(this.flowLayoutPanel1);
             this.pnlParaDashboard.Controls.Add(this.siticonePanel3);
             this.pnlParaDashboard.Controls.Add(this.siticoneGroupBox1);
@@ -1276,10 +1278,18 @@ namespace wfaIntegradoCom
             this.pnlParaDashboard.TabIndex = 37;
             this.pnlParaDashboard.MouseEnter += new System.EventHandler(this.pnlParaDashboard_MouseEnter_1);
             // 
+            // FWpnCajaChicaCopias
+            // 
+            this.FWpnCajaChicaCopias.AutoScroll = true;
+            this.FWpnCajaChicaCopias.Location = new System.Drawing.Point(3, 1);
+            this.FWpnCajaChicaCopias.Name = "FWpnCajaChicaCopias";
+            this.FWpnCajaChicaCopias.Size = new System.Drawing.Size(37, 98);
+            this.FWpnCajaChicaCopias.TabIndex = 274;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 6);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 111);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(37, 150);
             this.flowLayoutPanel1.TabIndex = 274;
@@ -1296,10 +1306,10 @@ namespace wfaIntegradoCom
             this.siticonePanel3.Controls.Add(this.dgvEgresos);
             this.siticonePanel3.Controls.Add(this.dgvListaPorBloque);
             this.siticonePanel3.Controls.Add(this.siticoneDataGridView1);
-            this.siticonePanel3.Location = new System.Drawing.Point(8, 270);
+            this.siticonePanel3.Location = new System.Drawing.Point(8, 377);
             this.siticonePanel3.Name = "siticonePanel3";
             this.siticonePanel3.ShadowDecoration.Parent = this.siticonePanel3;
-            this.siticonePanel3.Size = new System.Drawing.Size(1049, 521);
+            this.siticonePanel3.Size = new System.Drawing.Size(1049, 627);
             this.siticonePanel3.TabIndex = 273;
             this.siticonePanel3.MouseEnter += new System.EventHandler(this.siticonePanel3_MouseEnter);
             // 
@@ -1315,7 +1325,7 @@ namespace wfaIntegradoCom
             this.btnRegistrarEgresos.HoveredState.Parent = this.btnRegistrarEgresos;
             this.btnRegistrarEgresos.Image = global::wfaIntegradoCom.Properties.Resources.porPagar_hover;
             this.btnRegistrarEgresos.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnRegistrarEgresos.Location = new System.Drawing.Point(473, 460);
+            this.btnRegistrarEgresos.Location = new System.Drawing.Point(473, 459);
             this.btnRegistrarEgresos.Name = "btnRegistrarEgresos";
             this.btnRegistrarEgresos.ShadowDecoration.Parent = this.btnRegistrarEgresos;
             this.btnRegistrarEgresos.Size = new System.Drawing.Size(213, 55);
@@ -1329,11 +1339,12 @@ namespace wfaIntegradoCom
             this.lblEgresos.BackColor = System.Drawing.Color.Transparent;
             this.lblEgresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEgresos.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblEgresos.Location = new System.Drawing.Point(8, 278);
+            this.lblEgresos.Location = new System.Drawing.Point(8, 277);
             this.lblEgresos.Name = "lblEgresos";
+            this.lblEgresos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.lblEgresos.Size = new System.Drawing.Size(778, 19);
             this.lblEgresos.TabIndex = 279;
-            this.lblEgresos.Text = "EGRESOS";
+            this.lblEgresos.Text = "■   EGRESOS";
             // 
             // lblIngresos
             // 
@@ -1341,11 +1352,12 @@ namespace wfaIntegradoCom
             this.lblIngresos.BackColor = System.Drawing.Color.Transparent;
             this.lblIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIngresos.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblIngresos.Location = new System.Drawing.Point(5, 5);
+            this.lblIngresos.Location = new System.Drawing.Point(5, 4);
             this.lblIngresos.Name = "lblIngresos";
+            this.lblIngresos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.lblIngresos.Size = new System.Drawing.Size(778, 19);
             this.lblIngresos.TabIndex = 279;
-            this.lblIngresos.Text = "INGRESOS";
+            this.lblIngresos.Text = "■   INGRESOS";
             // 
             // dgvEmergente
             // 
@@ -1388,7 +1400,7 @@ namespace wfaIntegradoCom
             this.dgvEmergente.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvEmergente.EnableHeadersVisualStyles = false;
             this.dgvEmergente.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvEmergente.Location = new System.Drawing.Point(603, 166);
+            this.dgvEmergente.Location = new System.Drawing.Point(603, 165);
             this.dgvEmergente.Name = "dgvEmergente";
             this.dgvEmergente.ReadOnly = true;
             this.dgvEmergente.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -1483,7 +1495,7 @@ namespace wfaIntegradoCom
             this.lblHeaderDetalle.BackColor = System.Drawing.Color.DimGray;
             this.lblHeaderDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeaderDetalle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblHeaderDetalle.Location = new System.Drawing.Point(536, 33);
+            this.lblHeaderDetalle.Location = new System.Drawing.Point(536, 32);
             this.lblHeaderDetalle.Name = "lblHeaderDetalle";
             this.lblHeaderDetalle.Size = new System.Drawing.Size(510, 30);
             this.lblHeaderDetalle.TabIndex = 277;
@@ -1493,7 +1505,7 @@ namespace wfaIntegradoCom
             // pbIndica
             // 
             this.pbIndica.Image = global::wfaIntegradoCom.Properties.Resources.salir_base;
-            this.pbIndica.Location = new System.Drawing.Point(504, 110);
+            this.pbIndica.Location = new System.Drawing.Point(504, 109);
             this.pbIndica.Name = "pbIndica";
             this.pbIndica.Size = new System.Drawing.Size(20, 20);
             this.pbIndica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1539,7 +1551,7 @@ namespace wfaIntegradoCom
             this.dgvEgresos.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvEgresos.EnableHeadersVisualStyles = false;
             this.dgvEgresos.GridColor = System.Drawing.Color.Silver;
-            this.dgvEgresos.Location = new System.Drawing.Point(8, 248);
+            this.dgvEgresos.Location = new System.Drawing.Point(8, 247);
             this.dgvEgresos.Name = "dgvEgresos";
             this.dgvEgresos.ReadOnly = true;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1666,7 +1678,7 @@ namespace wfaIntegradoCom
             this.dgvListaPorBloque.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvListaPorBloque.EnableHeadersVisualStyles = false;
             this.dgvListaPorBloque.GridColor = System.Drawing.Color.Silver;
-            this.dgvListaPorBloque.Location = new System.Drawing.Point(3, 33);
+            this.dgvListaPorBloque.Location = new System.Drawing.Point(3, 32);
             this.dgvListaPorBloque.Name = "dgvListaPorBloque";
             this.dgvListaPorBloque.ReadOnly = true;
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1796,7 +1808,7 @@ namespace wfaIntegradoCom
             this.siticoneDataGridView1.DefaultCellStyle = dataGridViewCellStyle26;
             this.siticoneDataGridView1.EnableHeadersVisualStyles = false;
             this.siticoneDataGridView1.GridColor = System.Drawing.Color.Silver;
-            this.siticoneDataGridView1.Location = new System.Drawing.Point(536, 66);
+            this.siticoneDataGridView1.Location = new System.Drawing.Point(536, 65);
             this.siticoneDataGridView1.Name = "siticoneDataGridView1";
             this.siticoneDataGridView1.ReadOnly = true;
             this.siticoneDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -1904,7 +1916,7 @@ namespace wfaIntegradoCom
             this.siticoneGroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.siticoneGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneGroupBox1.ForeColor = System.Drawing.Color.White;
-            this.siticoneGroupBox1.Location = new System.Drawing.Point(8, 160);
+            this.siticoneGroupBox1.Location = new System.Drawing.Point(8, 267);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
             this.siticoneGroupBox1.Size = new System.Drawing.Size(1038, 104);
@@ -2429,6 +2441,7 @@ namespace wfaIntegradoCom
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private Siticone.UI.WinForms.SiticoneGradientButton btnRegistrarEgresos;
+        private System.Windows.Forms.FlowLayoutPanel FWpnCajaChicaCopias;
     }
 }
 
