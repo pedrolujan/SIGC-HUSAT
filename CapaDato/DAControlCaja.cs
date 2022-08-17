@@ -218,9 +218,9 @@ namespace CapaDato
                 {
                     lstCajaChica.Add(new ReporteBloque
                     {
-                        Codigoreporte = "0",
+                        Codigoreporte = Convert.ToString(dr["id"]),
                         Detallereporte = FormatearCadenaTitleCase(dr["nomCajaChica"].ToString()),
-                        Cantidad =1,
+                        Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = Convert.ToInt32(dr["idMoneda"])==1?"S/.":"$/.",
                         ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
@@ -232,7 +232,7 @@ namespace CapaDato
                 {
                     lstCajaChica.Add(new ReporteBloque
                     {
-                        Codigoreporte = "0",
+                        Codigoreporte = "TEGR0003",
                         Detallereporte = FormatearCadenaTitleCase("Caja chica"),
                         Cantidad = 0,
                         idMoneda = Convert.ToInt32(1),
@@ -240,6 +240,44 @@ namespace CapaDato
                         ImporteTipoCambio = Convert.ToDouble(0.20),
                         ImporteRow = Convert.ToDouble(0)
                     });
+                    lstCajaChica.Add(new ReporteBloque
+                    {
+                        Codigoreporte = "TEGR0002",
+                        Detallereporte = FormatearCadenaTitleCase("Copias"),
+                        Cantidad = 0,
+                        idMoneda = Convert.ToInt32(1),
+                        SimboloMoneda = "S/.",
+                        ImporteTipoCambio = Convert.ToDouble(0.20),
+                        ImporteRow = Convert.ToDouble(0)
+                    });
+                }else if(lstCajaChica.Count == 1)
+                {
+                    if (lstCajaChica[0].Codigoreporte== "TEGR0002")
+                    {
+                        lstCajaChica.Add(new ReporteBloque
+                        {
+                            Codigoreporte = "TEGR0003",
+                            Detallereporte = FormatearCadenaTitleCase("Caja chica"),
+                            Cantidad = 0,
+                            idMoneda = Convert.ToInt32(1),
+                            SimboloMoneda = "S/.",
+                            ImporteTipoCambio = Convert.ToDouble(0.20),
+                            ImporteRow = Convert.ToDouble(0)
+                        });
+                    }else if (lstCajaChica[0].Codigoreporte == "TEGR0003")
+                    {
+                        lstCajaChica.Add(new ReporteBloque
+                        {
+                            Codigoreporte = "TEGR0002",
+                            Detallereporte = FormatearCadenaTitleCase("Copias"),
+                            Cantidad = 0,
+                            idMoneda = Convert.ToInt32(1),
+                            SimboloMoneda = "S/.",
+                            ImporteTipoCambio = Convert.ToDouble(0.20),
+                            ImporteRow = Convert.ToDouble(0)
+                        });
+
+                    }
                 }
                 foreach (DataRowView dr in dvDasboard)
                 {
@@ -282,6 +320,7 @@ namespace CapaDato
                         Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        codAuxiliar = FormatearCadenaTitleCase(Convert.ToString(dr["fuente"])),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
                         ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
                         ImporteRow = Convert.ToDouble(dr["montoTotal"])
@@ -303,6 +342,7 @@ namespace CapaDato
 
             }
         }
+
         public List<ReporteBloque> daDetalleParaCuadre(Busquedas clsBusq,List<ReporteBloque> lstRep)
         {
             SqlParameter[] pa = new SqlParameter[12];

@@ -49,6 +49,13 @@ namespace wfaIntegradoCom.Consultas
         {
             
             ReportParameter[] parameters = new ReportParameter[5];
+            List<ReporteBloque> lstCH = new List<ReporteBloque>();
+            lstCH.Add(lstCajChica.Find(i => i.Codigoreporte == "TEGR0003"));
+            lstCH[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstCH[0].SimboloMoneda, lstCH[0].ImporteRow, 0);
+
+            List<ReporteBloque> lstCP = new List<ReporteBloque>();
+            lstCP.Add(lstCajChica.Find(i => i.Codigoreporte == "TEGR0002"));
+            lstCP[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstCP[0].SimboloMoneda, lstCP[0].ImporteRow, 0);
             reportViewer1.Reset();
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.ProcessingMode = ProcessingMode.Local;
@@ -65,7 +72,8 @@ namespace wfaIntegradoCom.Consultas
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReporte", lstIngresos));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsDetalleIngresos", lstDetIngresos));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReporteEgresos", lstEgresos));
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCajaChica", lstCajChica));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCajaChica", lstCH));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCopias", lstCP));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCuadreCaja", lstCuandre));
             reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.RefreshReport();

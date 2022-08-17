@@ -724,7 +724,7 @@
             this.btnGuardarIngresos.ShadowDecoration.Parent = this.btnGuardarIngresos;
             this.btnGuardarIngresos.Size = new System.Drawing.Size(236, 55);
             this.btnGuardarIngresos.TabIndex = 5;
-            this.btnGuardarIngresos.Text = "Guandar Ingresos";
+            this.btnGuardarIngresos.Text = "Guardar Ingresos";
             this.btnGuardarIngresos.Click += new System.EventHandler(this.btnGuardarIngresos_Click);
             // 
             // cboTipoDocEmitir2

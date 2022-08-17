@@ -1296,6 +1296,8 @@ namespace wfaIntegradoCom
 
                 dtFechaFinG.Value = Variables.gdFechaSis;
                 dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
+                flowLayoutPanel1.Location = new Point(flowLayoutPanel1.Location.X, FWpnCajaChicaCopias.Height + (pnlParaDashboard.AutoScrollPosition.Y));
+                siticoneGroupBox1.Location = new Point(siticoneGroupBox1.Location.X, flowLayoutPanel1.Location.Y + flowLayoutPanel1.Height);
             }
             catch (Exception ex)
             {
@@ -1309,7 +1311,7 @@ namespace wfaIntegradoCom
                 var gbx = pnlParaDashboard.Controls.OfType<SiticoneGroupBox>();
                 var pn = pnlParaDashboard.Controls.OfType<SiticonePanel>();
                 //flowLayoutPanel1.Width = pnlParaDashboard.Size.Width - 20;
-                flowLayoutPanel1.Location = new Point(10, flowLayoutPanel1.Location.Y);
+                //flowLayoutPanel1.Location = new Point(10, flowLayoutPanel1.Location.Y);
                 foreach (SiticoneGroupBox gb in gbx)
                 {
                     gb.Width = pnlParaDashboard.Size.Width - 20;
@@ -2552,7 +2554,6 @@ namespace wfaIntegradoCom
             lstCajaChica = result.Item4;
             fnGenerarPanelsIndividuales(lstCajaChica, FWpnCajaChicaCopias, "pnCCh");
             fnPosicionarAlCentrocajas(FWpnCajaChicaCopias, siticonePanel3);
-            lstCajaChica[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstCajaChica[0].SimboloMoneda, lstCajaChica[0].ImporteRow,0);
             fnDatosPNEspaciador();
 
             Int32 totalRows = lsReporteBloque.Count;
@@ -2807,7 +2808,7 @@ namespace wfaIntegradoCom
                 lblH.Size = new Size(pnHead.Width, pnHead.Height);
                 //lblH.BackColor = Color.Red;
                 lblH.Location = new Point(0, 1);
-                lblH.Text = FunGeneral.FormatearCadenaTitleCase(lstBusq[i].Detallereporte);
+                lblH.Text ="Tipo Concepto";
                 lblH.TextAlignment = ContentAlignment.MiddleCenter;
                 lblH.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
                 //lblH.Font = new Font(lblH.Font, FontStyle.Bold);
@@ -2828,9 +2829,9 @@ namespace wfaIntegradoCom
                 lblIzq.AutoSize = false;
                 lblIzq.Size = pnIzquierdo.Size;
                 lblIzq.Location = new Point(0, 0);
-                lblIzq.Text = "" + lstBusq[i].Cantidad;
+                lblIzq.Text =FunGeneral.FormatearCadenaTitleCase(lstBusq[i].Detallereporte);
                 lblIzq.TextAlignment = ContentAlignment.MiddleCenter;
-                lblIzq.Font = new Font(tipoLetra, 18F);
+                lblIzq.Font = new Font(tipoLetra, 10);
                 lblIzq.ForeColor = colorLetraBody;
                 lblIzq.Font = new Font(lblIzq.Font, FontStyle.Bold);
                 pnIzquierdo.Controls.Add(lblIzq);
@@ -2880,7 +2881,7 @@ namespace wfaIntegradoCom
                 stPanel.Controls.Add(panel);
             }
 
-            stPanel.Size =new Size((pnfW+15) * lstBusq.Count,pnfH+8);
+            stPanel.Size =new Size((pnfW+20) * lstBusq.Count,pnfH+8);
 
 
         }
@@ -3345,17 +3346,8 @@ namespace wfaIntegradoCom
             lbl.ForeColor = Variables.ColorWarning;
             lbl.Font = new Font("Roboto", 12);
 
-            SiticoneLabel lblCaja = new SiticoneLabel();
-            lblCaja.AutoSize = false;
-            lblCaja.Size = panelEspaciado.Size;
-            lblCaja.TextAlignment = ContentAlignment.MiddleCenter;
-            lblCaja.BackColor = Color.Black;
-            lblCaja.ForeColor = Variables.ColorWarning;
-            lblCaja.Font = new Font("Roboto", 12);
-            lblCaja.Text = "";
             if (FunGeneral.fnVerificarApertura(Variables.gnCodUser) !=1)
             {
-                pnl.Controls.Clear();
                 if (Variables.lstCuardreCaja.Count == 0)
                 {
                     lbl.Text = "¡Por Favor debes APERTURAR CAJA Para poder registrar ingresos ó egresos!";
@@ -3369,15 +3361,8 @@ namespace wfaIntegradoCom
             }
             else
             {
-                pnl.Controls.Clear();
-                lbl.Width = panelEspaciado.Size.Width / 2;
-                lblCaja.Width = panelEspaciado.Size.Width / 2;
-
-                lblCaja.Text = "Importe en: " + lstCajaChica[0].Detallereporte + " " + FunGeneral.fnFormatearPrecio("S/.", lstCajaChica[0].ImporteRow, 0);
                 lbl.Text = "No olvides cerrar caja antes de terminar tu turno";
                 pnl.Controls.Add(lbl);
-                lblCaja.Location = new Point(lbl.Width + 2, 0);
-                pnl.Controls.Add(lblCaja);
             }
             panelEspaciado.Controls.Add(pnl);
         }
@@ -3496,17 +3481,25 @@ namespace wfaIntegradoCom
         }
         private void tsMiCaja_Click(object sender, EventArgs e)
         {
-             lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
-            fnValidarListasVecias();
-            frmMovimientoCaja frmMC = new frmMovimientoCaja();
-            lsReporteBloque[0].MonImporteSumado =FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda,lsReporteBloque.Sum(i => i.ImporteRow),0);
+            if (dtFechaInicioG.Value.ToString("yyyy-MM-dd")==Variables.gdFechaSis.ToString("yyyy-MM-dd"))
+            {
+                lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
+                fnValidarListasVecias();
+                frmMovimientoCaja frmMC = new frmMovimientoCaja();
+                lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
 
-            lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow),0);
+                lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
 
-            lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda , lstRepDetalleIngresos.Sum(i => i.ImporteRow),0);
+                lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
-            frmMC.Inicio(lsReporteBloque,lsReporteBloqueEgresos, lstRepDetalleIngresos,lstCajaChica, 0);
-            fnActivarDashBoard(estadoActivarDashBoard);
+                frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0);
+                fnActivarDashBoard(estadoActivarDashBoard);
+            }
+            else
+            {
+                MessageBox.Show("La fecha de busqueda debe ser igual a la fecha actual","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+             
         }
 
         private Boolean verifApertura()
