@@ -36,7 +36,7 @@ namespace wfaIntegradoCom.Procesos
         static List<ReporteBloque> lstReporteIngresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstReporteEgresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstDetalleIngresos = new List<ReporteBloque>();
-
+        static CuadreCaja clcCaja = new CuadreCaja();
         static Int32 estadoApertura = 0;
         CuadreCaja clsCuadreCaja = new CuadreCaja();
         static Int32 lnTipoCon = 0;
@@ -142,16 +142,17 @@ namespace wfaIntegradoCom.Procesos
             if (intTipoLlamada==0)
             {
                 fnActivarSegunApertura();
-                fnLlenarTablas(lstReporteIngresos, dgvIngresos, txtTotalIngresos);
+                clcCaja = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
+                fnLlenarTablas(lstDetalleIngresos/*lstReporteIngresos*/, dgvIngresos, txtTotalIngresos);
                 fnLlenarTablas(lstReporteEgresos, dgvEgresos, txtTotalEgresos);
 
-                CuadreCaja clcCaja = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
                 Double importe = 0;
 
                 if (clcCaja is CuadreCaja)
                 {
                     importe = clcCaja.importeSaldo;
                     lblMontoDeAperturaCaja.Text = "IMPORTE DE: "+ FunGeneral.FormatearCadenaTitleCase(clcCaja.Detalle)+" "+FunGeneral.fnFormatearPrecio(clcCaja.SimbloMon, clcCaja.importeSaldo,1);
+                    siticoneTextBox1.Text= FunGeneral.fnFormatearPrecio(clcCaja.SimbloMon, clcCaja.importeSaldo, 1);
                 }
                 else
                 {
@@ -160,7 +161,7 @@ namespace wfaIntegradoCom.Procesos
 
                 }
 
-                clsCuadreCaja.importeTotalIngresos = lstReporteIngresos.Sum(i => i.ImporteRow);
+                clsCuadreCaja.importeTotalIngresos = lstDetalleIngresos.Sum(i => i.ImporteRow);
                 clsCuadreCaja.importeTotalEgresos = lstReporteEgresos.Sum(i => i.ImporteRow);
 
                 clsCuadreCaja.Detalle = "Cierre de caja de - " + FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
@@ -210,10 +211,11 @@ namespace wfaIntegradoCom.Procesos
 
                 TotImporte += rp.ImporteRow;
                 TotCantidad += rp.Cantidad;
-                dgv.Rows.Add(rp.Codigoreporte, rp.numero, FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecio("S/.", rp.ImporteRow, 0));
+                dgv.Rows.Add(rp.Codigoreporte, rp.numero, FunGeneral.FormatearCadenaTitleCase(rp.codAuxiliar),FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecio("S/.", rp.ImporteRow, 0));
                 y++;
             }
-            txt.Text = FunGeneral.fnFormatearPrecio("S/.", TotImporte, 0);
+            
+                txt.Text = FunGeneral.fnFormatearPrecio("S/.", TotImporte, 0);
            
             //dgv.Rows.Add("", "", "", "", "");
             //dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL INGRESOS", TotCantidad, FunGeneral.fnFormatearPrecio("S/.", TotImporte, 0));
@@ -469,6 +471,19 @@ namespace wfaIntegradoCom.Procesos
         
         }
 
-     
+        private void siticonePanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void siticoneLabel6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

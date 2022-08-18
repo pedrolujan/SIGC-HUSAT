@@ -381,6 +381,7 @@ namespace CapaDato
                         numero =y+1,
                         Codigoreporte = dr["id"].ToString(),
                         Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
+                        codAuxiliar = FormatearCadenaTitleCase(dr["nomTipoPago"].ToString()),
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),

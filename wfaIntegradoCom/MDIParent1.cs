@@ -3458,6 +3458,7 @@ namespace wfaIntegradoCom
                     numero = 1,
                     Cantidad = 0,
                     Detallereporte = "No hubo egresos",
+                    codAuxiliar = "",
                     ImporteRow = 0,
                     SimboloMoneda = "S/.",
                     MonImporteRow = "S/." + 0
@@ -3481,7 +3482,7 @@ namespace wfaIntegradoCom
         }
         private void tsMiCaja_Click(object sender, EventArgs e)
         {
-            if (dtFechaInicioG.Value.ToString("yyyy-MM-dd")==Variables.gdFechaSis.ToString("yyyy-MM-dd"))
+            if (dtFechaInicioG.Value.ToString("yyyy-MM-dd") == Variables.gdFechaSis.ToString("yyyy-MM-dd"))
             {
                 lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
                 fnValidarListasVecias();
@@ -3497,9 +3498,9 @@ namespace wfaIntegradoCom
             }
             else
             {
-                MessageBox.Show("La fecha de busqueda debe ser igual a la fecha actual","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("La fecha de busqueda debe ser igual a la fecha actual", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-             
+
         }
 
         private Boolean verifApertura()

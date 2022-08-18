@@ -2380,6 +2380,9 @@ namespace wfaIntegradoCom.Mantenedores
                         y += 1;
                         String ultimoSeg = "";
                         String EstadoVisita = datAcces.Rows[i][7].ToString().Trim();
+                        Boolean estFecha = false;
+                        Int32 intHoras = 0;
+                        Int32 intMinutos = 0;
                         if(EstadoVisita == "POTENCIAL")
                         {
                            
@@ -2459,7 +2462,20 @@ namespace wfaIntegradoCom.Mantenedores
                                 }
                                 else
                                 {
-                                    TimeSpan timDias = DateFechActual-DateUltimaSeg;
+
+                                    estFecha = DateFechActual > DateUltimaSeg ? true : false;
+                                    TimeSpan timDias = DateFechActual - DateUltimaSeg;
+                                    if (estFecha==true)
+                                    {
+                                        intHoras = timDias.Hours * -1;
+                                        intMinutos = timDias.Minutes * -1;
+                                    }
+                                    else
+                                    {
+                                        intHoras = timDias.Hours;
+                                        intMinutos = timDias.Minutes ;
+
+                                    }
                                     TimeSpan timDiasHora = DateFechActual-DateUltimaSeg;
                                     if (DateUltimaSeg.Hour == 0)
                                     {
@@ -2468,7 +2484,7 @@ namespace wfaIntegradoCom.Mantenedores
                                     }
                                     else
                                     {
-                                        fechaAMostrar = DateFechActual.AddHours(Math.Abs(timDias.Hours)).AddMinutes(Math.Abs(timDias.Minutes));
+                                        fechaAMostrar = DateFechActual.AddHours(intHoras).AddMinutes(intMinutos);
 
                                     }
                                     Int32 numDias = timDias.Days;
