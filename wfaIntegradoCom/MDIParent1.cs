@@ -3444,8 +3444,9 @@ namespace wfaIntegradoCom
                 {
                     numero = 1,
                     Cantidad=0,
-                    Detallereporte = "No hubo Ingresos",
+                    Detallereporte = "No hubo Ingresos al contado",
                     ImporteRow = 0,
+                    codAuxiliar="",
                     MonImporteRow="S/."+ 0
 
                 });
@@ -3472,7 +3473,8 @@ namespace wfaIntegradoCom
                 {
                     numero = 1,
                     Cantidad = 0,
-                    Detallereporte = "Sin detalle de ingresos",
+                    Detallereporte = "No hubo Ingresos al contado",
+                    codAuxiliar = "",
                     ImporteRow = 0,
                     MonImporteRow = "S/." + 0
 
