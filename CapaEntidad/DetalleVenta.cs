@@ -161,6 +161,7 @@ namespace CapaEntidad
         public List<ReporteBloque> ListaReporteEgresos { get; set; }
         public List<ReporteBloque> ListaCajaChica { get; set; }
         public List<CuadreCaja> ListaCuadreCaja { get; set; }
+        public List<CuadreCaja> ListaAperturaCaja { get; set; }
         public String cUsuario { get; set; }
         public String nomPersonal { get; set; }
         public Int32 idUsuario { get; set; }

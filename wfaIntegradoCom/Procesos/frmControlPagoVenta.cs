@@ -302,8 +302,8 @@ namespace wfaIntegradoCom.Procesos
                       estadoCuota
                    );
                     dgvCronograma.Rows[i].DefaultCellStyle.BackColor = colorBg;
-                    dgvCronograma.Rows[i].ReadOnly = estBloquear;
-                    
+                    //dgvCronograma.Rows[i].ReadOnly = estBloquear;
+
                     dgvCronograma.Rows[i].Cells[12].ReadOnly = true;
                     dgvCronograma.Rows[i].Cells[12].Style.BackColor = Color.White;
                     dgvCronograma.Rows[i].Cells[13].ReadOnly = true;

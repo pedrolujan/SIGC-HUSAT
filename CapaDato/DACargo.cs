@@ -215,7 +215,7 @@ namespace CapaDato
                 pa[0].Value = nomCampoId;
                 pa[1] = new SqlParameter("@nombre", SqlDbType.NVarChar, 80);
                 pa[1].Value = nomCampoNombre;
-                pa[2] = new SqlParameter("@tabla", SqlDbType.NVarChar, 80);
+                pa[2] = new SqlParameter("@tabla", SqlDbType.NVarChar, 1000);
                 pa[2].Value = nomTabla;
                 pa[3] = new SqlParameter("@estado", SqlDbType.NVarChar, 80);
                 pa[3].Value = nomEstado;
@@ -231,14 +231,27 @@ namespace CapaDato
                         Convert.ToString("0"),
                         Convert.ToString(buscar ? "TODOS" : "Selecc. opcion"),
                         Convert.ToString("1")));
-
-                foreach (DataRow drMenu in dtUsuario.Rows)
+                if (nomCampoId== "CONSULTA")
                 {
-                    lstCargo.Add(new Cargo(
-                        Convert.ToString(drMenu[""+nomCampoId+""]),
-                        Convert.ToString(drMenu[""+ nomCampoNombre + ""]),
-                        Convert.ToString(drMenu[""+ nomEstado + ""])));
+                    foreach (DataRow drMenu in dtUsuario.Rows)
+                    {
+                        lstCargo.Add(new Cargo(
+                            Convert.ToString(drMenu["id"]),
+                            Convert.ToString(drMenu["nombre"]),
+                            Convert.ToString(drMenu["estado"])));
+                    }
                 }
+                else
+                {
+                    foreach (DataRow drMenu in dtUsuario.Rows)
+                    {
+                        lstCargo.Add(new Cargo(
+                            Convert.ToString(drMenu["" + nomCampoId + ""]),
+                            Convert.ToString(drMenu["" + nomCampoNombre + ""]),
+                            Convert.ToString(drMenu["" + nomEstado + ""])));
+                    }
+                }
+                
 
                 return lstCargo;
 

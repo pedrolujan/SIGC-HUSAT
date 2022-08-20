@@ -36,6 +36,8 @@ namespace wfaIntegradoCom.Procesos
         static List<ReporteBloque> lstReporteIngresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstReporteEgresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstDetalleIngresos = new List<ReporteBloque>();
+        static List<CuadreCaja> lstAperturaCaja = new List<CuadreCaja>();
+        static List<xmlActaCierraCaja> ListaxmlActaCierre = new List<xmlActaCierraCaja>();
         static CuadreCaja clcCaja = new CuadreCaja();
         static Int32 estadoApertura = 0;
         CuadreCaja clsCuadreCaja = new CuadreCaja();
@@ -131,6 +133,37 @@ namespace wfaIntegradoCom.Procesos
                 lstReporteEgresos.Clear();
             }
         }
+
+        private void fnValidarCuadreCaja()
+        {
+            Double importe = 0;
+
+            if (clcCaja is CuadreCaja)
+            {
+                importe = clcCaja.importeSaldo;
+                lblMontoDeAperturaCaja.Text = "IMPORTE DE: " + FunGeneral.FormatearCadenaTitleCase(clcCaja.Detalle) + " " + FunGeneral.fnFormatearPrecio(clcCaja.SimbloMon, clcCaja.importeSaldo, 1);
+                siticoneTextBox1.Text = FunGeneral.fnFormatearPrecio(clcCaja.SimbloMon, clcCaja.importeSaldo, 1);
+            }
+            else
+            {
+                importe = 0;
+                lblMontoDeAperturaCaja.Text = "";
+
+            }
+
+            clsCuadreCaja.importeTotalIngresos = lstDetalleIngresos.Sum(i => i.ImporteRow);
+            clsCuadreCaja.importeTotalEgresos = lstReporteEgresos.Sum(i => i.ImporteRow);
+
+            clsCuadreCaja.Detalle = "Cierre de caja de - " + FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
+
+            clsCuadreCaja.importeSaldo = (clsCuadreCaja.importeTotalIngresos + (clsCuadreCaja.importeTotalEgresos * -1) + importe);
+
+            clsCuadreCaja.SimbloMon = "S/.";
+            clsCuadreCaja.idOperacion = 2;
+
+            clsCuadreCaja.MonImporteSaldo = FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0);
+            txtTotalCerrarCaja.Text = FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0);
+        }
         private void frmMovimientoCaja_Load(object sender, EventArgs e)
         {
             bool bResult = false;
@@ -138,6 +171,7 @@ namespace wfaIntegradoCom.Procesos
             int intUsuario = 0;
            
             estadoApertura = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
+            FunGeneral.fnLlenarCboSegunTablaTipoCon(cboOperacion, "CONSULTA", "", "SELECT us.idUsuario id,us.cUser nombre,us.bEstado estado FROM Usuario us inner Join Personal p ON p.idPersonal = us.idPersonal WHERE us.bEstado = 1 AND p.bEstado = 1 AND p.cTipoCargo = 'PETR0006'", "us.estValida", "1",true);
 
             if (intTipoLlamada==0)
             {
@@ -145,59 +179,43 @@ namespace wfaIntegradoCom.Procesos
                 clcCaja = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
                 fnLlenarTablas(lstDetalleIngresos/*lstReporteIngresos*/, dgvIngresos, txtTotalIngresos);
                 fnLlenarTablas(lstReporteEgresos, dgvEgresos, txtTotalEgresos);
+                fnValidarCuadreCaja();
 
-                Double importe = 0;
 
-                if (clcCaja is CuadreCaja)
-                {
-                    importe = clcCaja.importeSaldo;
-                    lblMontoDeAperturaCaja.Text = "IMPORTE DE: "+ FunGeneral.FormatearCadenaTitleCase(clcCaja.Detalle)+" "+FunGeneral.fnFormatearPrecio(clcCaja.SimbloMon, clcCaja.importeSaldo,1);
-                    siticoneTextBox1.Text= FunGeneral.fnFormatearPrecio(clcCaja.SimbloMon, clcCaja.importeSaldo, 1);
-                }
-                else
-                {
-                    importe = 0;
-                    lblMontoDeAperturaCaja.Text = "";
-
-                }
-
-                clsCuadreCaja.importeTotalIngresos = lstDetalleIngresos.Sum(i => i.ImporteRow);
-                clsCuadreCaja.importeTotalEgresos = lstReporteEgresos.Sum(i => i.ImporteRow);
-
-                clsCuadreCaja.Detalle = "Cierre de caja de - " + FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
-
-                clsCuadreCaja.importeSaldo = (clsCuadreCaja.importeTotalIngresos + (clsCuadreCaja.importeTotalEgresos * -1)+ importe);
-                
-                clsCuadreCaja.SimbloMon = "S/.";
-
-                clsCuadreCaja.MonImporteSaldo= FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0);
-                txtTotalCerrarCaja.Text= FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0); 
             }
 
-            //if (intTipoLlamada == 0)
-            //{
-            //    paBusqueda.Visible = true;
-            //    bResult = fnCargarUsuario();
-            //    pcFecha = FunGeneral.GetFechaHoraFormato(dateTimePicker1.Value, 5);
-            //    intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
-            //    //paBusqueda.Visible = false;
-            //    //pcFecha = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
-            //    //intUsuario = Variables.gnCodUser;
+            if (Variables.gsCargoUsuario != "PETR0006")
+            {
+                paBusqueda.Visible = true;
+                bResult = fnCargarUsuario();
+                pcFecha = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
+                intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
+                siticonePanel2.Visible = true;
+                btnAperturarCaja.Enabled = false;
+                btnCerrar.Enabled = false;
+                //paBusqueda.Visible = false;
+                //pcFecha = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
+                //intUsuario = Variables.gnCodUser;
 
-            //}
-            //else
-            //{
-            //    paBusqueda.Visible = true;
-            //    bResult = fnCargarUsuario();
-            //    pcFecha = FunGeneral.GetFechaHoraFormato(dateTimePicker1.Value, 5);
-            //    intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
-            //}
+            }
+            else
+            {
+                paBusqueda.Visible = true;
+                bResult = fnCargarUsuario();
+                pcFecha = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
+                intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
+                siticonePanel2.Visible = false;
+                //btnAperturarCaja.Enabled = true;
+                //btnCerrar.Enabled = true;
+            }
             //bResult = fnListarCajaDia(pcFecha, intUsuario, out nSaldo);
             //if (!bResult)
             //{
             //    MessageBox.Show("Error al Cargar Movimientos en Caja", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             //    this.Close();
             //}
+            dtFechaFin.Value = Variables.gdFechaSis;
+            dtFechaInicio.Value = dtFechaFin.Value.AddDays(-(dtFechaFin.Value.Day - 1));
             textBox1.Text = nSaldo.ToString();
         }
 
@@ -205,13 +223,14 @@ namespace wfaIntegradoCom.Procesos
         {
             Int32 TotCantidad = 0;
             Double TotImporte = 0;
+            dgv.Rows.Clear();
             Int32 y = 0;
             foreach (ReporteBloque rp in lst)
             {
 
                 TotImporte += rp.ImporteRow;
                 TotCantidad += rp.Cantidad;
-                dgv.Rows.Add(rp.Codigoreporte, rp.numero, FunGeneral.FormatearCadenaTitleCase(rp.codAuxiliar),FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecio("S/.", rp.ImporteRow, 0));
+                dgv.Rows.Add(rp.Codigoreporte, rp.numero, FunGeneral.FormatearCadenaTitleCase(rp.codAuxiliar is null?"": rp.codAuxiliar),FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecio("S/.", rp.ImporteRow, 0));
                 y++;
             }
             
@@ -363,6 +382,7 @@ namespace wfaIntegradoCom.Procesos
                 ListaReporteDetalleIngresos = lstDetalleIngresos,
                 ListaReporteEgresos = lstReporteEgresos,
                 ListaCuadreCaja = lstCuadreCaja,
+                ListaAperturaCaja=Variables.lstCuardreCaja,
                 ListaCajaChica=lstCajaChica,
                 dtFechaRegistro=Variables.gdFechaSis,
                 cNomSucursal=Variables.gsSucursal,
@@ -429,22 +449,83 @@ namespace wfaIntegradoCom.Procesos
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            lstDetalleIngresos = new List<ReporteBloque>();
             bool bResult = false;
             decimal nSaldo = 0;
             int intUsuario = 0;
 
-            pcFecha = FunGeneral.GetFechaHoraFormato(dateTimePicker1.Value, 5);
+            pcFecha = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
             intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
-        
-            bResult = fnListarCajaDia(pcFecha, intUsuario, out nSaldo);
-            if (!bResult)
+            //lstDetalleIngresos = fnBuscarDetalleParaCuadre();
+
+            //fnLlenarTablas(lstDetalleIngresos/*lstReporteIngresos*/, dgvIngresos, txtTotalIngresos);
+            fnBuscarMovimientocaja();
+            //bResult = fnListarCajaDia(pcFecha, intUsuario, out nSaldo);
+            //if (!bResult)
+            //{
+            //    MessageBox.Show("Error al Cargar Movimientos en Caja", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    this.Close();
+            //}
+            //textBox1.Text = nSaldo.ToString();
+        }
+        private void fnBuscarMovimientocaja()
+        {
+            List<ReporteBloque> lstCierresCaja = new List<ReporteBloque>();
+            BLControlCaja bl = new BLControlCaja();
+
+            DataTable dtRes = new DataTable();
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.chkActivarFechas = chkHabilitarFechasBusG.Checked;
+            clsBusq.chkActivarDia = chkDiaEspecificoG.Checked;
+            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
+            clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFin.Value, 5);
+            clsBusq.cod1 = "0";
+            clsBusq.cod2 = "TIPA0001";
+            clsBusq.cod3 = cboOperacion.SelectedValue.ToString();
+            clsBusq.cod4 = "";
+            clsBusq.cBuscar = "";
+            clsBusq.tipoCon = 0;
+
+
+            lstCierresCaja = bl.blBuscarMovimientocaja(clsBusq, 0);
+            dgvListaMovimiento.Rows.Clear();
+            foreach (ReporteBloque rp in lstCierresCaja)
             {
-                MessageBox.Show("Error al Cargar Movimientos en Caja", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.Close();
+
+
+                dgvListaMovimiento.Rows.Add(
+                    rp.Codigoreporte, 
+                    rp.numero, 
+                    rp.codAuxiliar,
+                    FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), 
+                    FunGeneral.fnFormatearPrecio("S/.", rp.ImporteRow, 0),
+                    rp.cUsuario
+                    );
             }
-            textBox1.Text = nSaldo.ToString();
+            siticonePanel2.Visible = true;
         }
 
+        private List<ReporteBloque> fnBuscarDetalleParaCuadre()
+        {
+            List<ReporteBloque> lst = new List<ReporteBloque>();
+
+            BLControlCaja bl = new BLControlCaja();
+            DataTable dtRes = new DataTable();
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.chkActivarFechas = true;
+            clsBusq.chkActivarDia = true;
+            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
+            clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
+            clsBusq.cod1 = "0";
+            clsBusq.cod2 = "TIPA0001";
+            clsBusq.cod3 = cboUsuario.SelectedValue.ToString() ;
+            clsBusq.cod4 = "";
+            clsBusq.cBuscar = "";
+            clsBusq.tipoCon = 0;
+
+
+            return bl.blDetalleParaCuadre(clsBusq, lst);
+        }
         private void btnAperturarCaja_Click(object sender, EventArgs e)
         {
             Boolean estAperturaCaja=false;
@@ -483,6 +564,133 @@ namespace wfaIntegradoCom.Procesos
 
         private void siticoneLabel6_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void siticoneDataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && this.dgvListaMovimiento.Columns[e.ColumnIndex].Name == "btnActa" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                DataGridViewButtonCell celBoton = this.dgvListaMovimiento.Rows[e.RowIndex].Cells["btnActa"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Application.StartupPath + @"\impresora.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
+
+                this.dgvListaMovimiento.Rows[e.RowIndex].Height = 35;
+                this.dgvListaMovimiento.Columns[e.ColumnIndex].Width = 45;
+
+
+                e.Handled = true;
+
+            }
+        }
+
+        private void dgvListaMovimiento_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvListaMovimiento_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow dgv=dgvListaMovimiento.Rows[e.RowIndex];
+
+            Int32 idDocumento = Convert.ToInt32(dgv.Cells[0].Value);
+            if (Convert.ToInt32(e.ColumnIndex)==5)
+            {
+                fnObetenerActaCierre(idDocumento, 0);
+            }
+            
+        }
+        private void fnObetenerActaCierre(Int32 id,Int32 tipoCon)
+        {
+
+            List<xmlActaCierraCaja> lstCierresCaja = new List<xmlActaCierraCaja>();
+            BLControlCaja bl = new BLControlCaja();
+
+
+
+            lstCierresCaja = bl.blBuscarActaCierreCaja(id, tipoCon);
+            frmActaCierreCaja frmCierreC = new frmActaCierreCaja();
+            frmCierreC.Inicio(lstCierresCaja, -1);
+
+        }
+        private void fnMostrarDetalleCierre(Int32 id,Int32 tipoCon)
+        {
+            siticonePanel2.Visible = false;
+            List<xmlActaCierraCaja> lstCierresCaja = new List<xmlActaCierraCaja>();
+            BLControlCaja bl = new BLControlCaja();
+
+
+
+            lstCierresCaja = bl.blBuscarActaCierreCaja(id, tipoCon);
+            lstDetalleIngresos = lstCierresCaja[0].ListaReporteDetalleIngresos;
+            lstReporteEgresos = lstCierresCaja[0].ListaReporteEgresos;
+            clsCuadreCaja= lstCierresCaja[0].ListaCuadreCaja[0];
+            lstAperturaCaja = lstCierresCaja[0].ListaAperturaCaja;
+            clcCaja = lstAperturaCaja.Find(i => i.idOperacion == 1);
+            fnLlenarTablas(lstDetalleIngresos/*lstReporteIngresos*/, dgvIngresos, txtTotalIngresos);
+            fnLlenarTablas(lstReporteEgresos, dgvEgresos, txtTotalEgresos);
+            fnValidarCuadreCaja();
+
+
+        }
+
+        private void splitContainer2_Panel1_MouseEnter(object sender, EventArgs e)
+        {
+            siticonePanel2.Visible = false;
+        }
+
+        private void dgvIngresos_MouseEnter(object sender, EventArgs e)
+        {
+            siticonePanel2.Visible = false;
+        }
+
+        private void chkHabilitarFechasBusG_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkHabilitarFechasBusG.Checked == true)
+            {
+                gbHabilitarBusqFechas.Enabled = true;
+                chkDiaEspecificoG.Visible = true;
+            }
+            else
+            {
+                gbHabilitarBusqFechas.Enabled = false;
+                chkDiaEspecificoG.Visible = false;
+                chkDiaEspecificoG.Checked = false;
+            }
+        }
+
+        private void chkDiaEspecificoG_CheckedChanged(object sender, EventArgs e)
+        {
+            fnValidarBusquedaDia();
+        }
+        private void fnValidarBusquedaDia()
+        {
+            if (chkDiaEspecificoG.Checked == true)
+            {
+                lblFechaFinal.Visible = false;
+                dtFechaFin.Visible = false;
+                lblFechaInicial.Text = "Elija el dia para buscar:";
+                
+                dtFechaInicio.Value = Variables.gdFechaSis;
+            }
+            else
+            {
+                lblFechaFinal.Visible = true;
+                dtFechaFin.Visible = true;
+                lblFechaInicial.Text = "Fecha Inicio:";
+                dtFechaFin.Value = Variables.gdFechaSis;
+                dtFechaInicio.Value = dtFechaFin.Value.AddDays(-(dtFechaFin.Value.Day - 1));
+            }
+        }
+
+        private void verDetalleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow dgv = dgvListaMovimiento.CurrentRow;
+
+            Int32 idDocumento = Convert.ToInt32(dgv.Cells[0].Value);
+            fnMostrarDetalleCierre(idDocumento, 0);
 
         }
     }

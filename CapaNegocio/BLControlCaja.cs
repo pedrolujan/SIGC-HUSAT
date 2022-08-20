@@ -88,5 +88,35 @@ namespace CapaNegocio
             }
            
         }
+        public List<ReporteBloque> blBuscarMovimientocaja(Busquedas clsBusq,  Int32 tipoCon)
+        {
+            dc = new DAControlCaja();
+            try
+            {
+                return dc.daBuscarMovimientocaja( clsBusq,  tipoCon);
+
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+           
+        }
+        public List<xmlActaCierraCaja> blBuscarActaCierreCaja(Int32 id, Int32 tipoCon)
+        {
+            dc = new DAControlCaja();
+            try
+            {
+                return dc.daBuscarActaCierreCaja(id, tipoCon);
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
     }
 }

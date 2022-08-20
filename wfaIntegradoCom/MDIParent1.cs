@@ -1298,6 +1298,15 @@ namespace wfaIntegradoCom
                 dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
                 flowLayoutPanel1.Location = new Point(flowLayoutPanel1.Location.X, FWpnCajaChicaCopias.Height + (pnlParaDashboard.AutoScrollPosition.Y));
                 siticoneGroupBox1.Location = new Point(siticoneGroupBox1.Location.X, flowLayoutPanel1.Location.Y + flowLayoutPanel1.Height);
+
+                if (Variables.gsCargoUsuario == "PETR0006")
+                {
+                    tsMiCaja.Text = "Mi Caja";
+                }
+                else
+                {
+                    tsMiCaja.Text = "Consultas Caja";
+                }
             }
             catch (Exception ex)
             {
@@ -3484,7 +3493,29 @@ namespace wfaIntegradoCom
         }
         private void tsMiCaja_Click(object sender, EventArgs e)
         {
-            if (dtFechaInicioG.Value.ToString("yyyy-MM-dd") == Variables.gdFechaSis.ToString("yyyy-MM-dd"))
+            if (Variables.gsCargoUsuario=="PETR0006")
+            {
+                if (dtFechaInicioG.Value.ToString("yyyy-MM-dd") == Variables.gdFechaSis.ToString("yyyy-MM-dd"))
+                {
+                    lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
+                    fnValidarListasVecias();
+                    frmMovimientoCaja frmMC = new frmMovimientoCaja();
+                    lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
+
+                    lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
+
+                    lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
+
+                    frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0);
+                    fnActivarDashBoard(estadoActivarDashBoard);
+                }
+                else
+                {
+                    MessageBox.Show("La fecha de busqueda debe ser igual a la fecha actual", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+            else
             {
                 lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
                 fnValidarListasVecias();
@@ -3495,13 +3526,10 @@ namespace wfaIntegradoCom
 
                 lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
-                frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0);
+                frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, -1);
                 fnActivarDashBoard(estadoActivarDashBoard);
             }
-            else
-            {
-                MessageBox.Show("La fecha de busqueda debe ser igual a la fecha actual", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
 
         }
 

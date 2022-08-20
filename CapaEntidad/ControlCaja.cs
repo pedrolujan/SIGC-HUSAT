@@ -22,6 +22,7 @@ namespace CapaEntidad
 
         public Int32 numero { get; set; }
         public String Codigoreporte { get; set; }
+        public String cUsuario { get; set; }
         public String Detallereporte { get; set; }
         public Int32 Cantidad { get; set; }
         public Double ImporteRow { get; set; }

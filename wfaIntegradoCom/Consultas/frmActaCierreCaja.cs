@@ -41,7 +41,13 @@ namespace wfaIntegradoCom.Consultas
         }
         private void frmActaCierreCaja_Load(object sender, EventArgs e)
         {
-
+            if (lnTipoCon == -1)
+            {
+                btnCerrarGuardarCierre.Enabled = false;
+            }else if (lnTipoCon == 1)
+            {
+                btnCerrarGuardarCierre.Enabled = true;
+            }
             this.reportViewer1.RefreshReport();
             fnCargarReporte(xmlActaCierreCaja,lstReporteIngresos, lstDetalleIngresos, lstReporteEgresos,lstReporteCuandrecaja, lstCajaChica);
         }

@@ -77,7 +77,7 @@ namespace CapaDato
             //String xmlApertura = clsUtil.Serialize(lstApertura);
             try
             {
-                pa[0] = new SqlParameter("@dtFechaRegistro", SqlDbType.Date) { Value = xmlacta[0].dtFechaRegistro };                
+                pa[0] = new SqlParameter("@dtFechaRegistro", SqlDbType.DateTime) { Value = xmlacta[0].dtFechaRegistro };                
                 pa[1] = new SqlParameter("@xmlActaCierre", SqlDbType.Xml) { Value = xmlActaCierreCaja };
                 pa[2] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = xmlacta[0].idUsuario };
                 pa[3] = new SqlParameter("@idSucursal", SqlDbType.Int) { Value = xmlacta[0].idSucursal };

@@ -128,7 +128,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADu
-        EQAAAk1TRnQBSQFMAgEBBgEAAawBEAGsAhABAAEQAQAE/wEZAQAI/wFCAU0BNgcAATYDAAEoAwABQAMA
+        EQAAAk1TRnQBSQFMAgEBBgEAAcQBEAHEAhABAAEQAQAE/wEZAQAI/wFCAU0BNgcAATYDAAEoAwABQAMA
         ASADAAEBAQABGAYAARj/AKsAA/0B0QHZAbEB7gHxAeUnAAP9AcMBzAHgAekB7AHyhwAB2wHhAcQBhgGi
         ARUBnwG8ATEB7AHvAeAkAAHRAdgB5QFTAXQBuAFiAYUBzgHlAekB8W8AA/8SAAHbAeEBwwGGAaIBFQGa
         AbkBJgGcAbkBKgHpAe0B2gwAA/8SAAHRAdcB5QFTAXQBuAFaAYABzgFeAYMBzgHhAeYB72kAAdQB2wG3
@@ -209,6 +209,9 @@
   </data>
   <metadata name="miniToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>787, 4</value>
+  </metadata>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
   </metadata>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 95</value>
