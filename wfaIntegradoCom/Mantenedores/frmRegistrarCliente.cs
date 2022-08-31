@@ -659,17 +659,7 @@ namespace wfaIntegradoCom.Mantenedores
                     {
                         lblInfoCorreo.Text = "";
                     }
-                    //MOD//
-                    //txtTelFijo.Text = Convert.ToString(lstCliente.cTelFijo);
-                    //dtpFechaNac.Value = lstCliente.dFecNac;
-                    //cboDepartamento.SelectedValue = Convert.ToInt32(lstCliente.idDep);
-                    //cboProvincia.SelectedValue = Convert.ToInt32(lstCliente.idProv);
-                    //cboDistrito.SelectedValue = Convert.ToInt32(lstCliente.idDist);
-                    //txtNombreContacto1.Text = Convert.ToString(lstCliente.cContactoNom1.Trim());
-                    //txtNombreContacto2.Text = Convert.ToString(lstCliente.cContactoNom2.Trim());
-                    //txtCelularContacto1.Text = Convert.ToString(lstCliente.cContactoCel1.Trim());
-                    //txtCelularContacto2.Text = Convert.ToString(lstCliente.cContactoCel2.Trim());
-                    //txtEmpresa.Text = Convert.ToString(lstCliente.cEmpresa.Trim());
+
 
                     gboDatosRepres.Visible = true;
                 }

@@ -289,5 +289,33 @@ namespace CapaNegocio
             }
         }
 
+        public DataTable BLListarVentas(DateTime fechainicial, DateTime fechafinal, string pcbuscar)
+        {
+            DADocumentoVenta objdocVenta = new DADocumentoVenta();
+
+            try
+            {
+                return objdocVenta.daAnularVenta(fechainicial, fechafinal, pcbuscar);
+
+            }
+            catch( Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public Boolean BLDAnularDocumentoVenta(String codDocVenta)
+        {
+            DADocumentoVenta objdocVenta = new DADocumentoVenta();
+            try
+            {
+                return objdocVenta.daAnularDocumentoVeta(codDocVenta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
     }
 }
