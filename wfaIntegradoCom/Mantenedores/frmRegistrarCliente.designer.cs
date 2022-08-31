@@ -200,6 +200,10 @@
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
             this.barraMovimiento = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.siticoneDragControl1 = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
+            this.erCargoRP = new System.Windows.Forms.Label();
+            this.imgCargoRP = new System.Windows.Forms.PictureBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.txtAddCargo = new Siticone.UI.WinForms.SiticoneTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDistrito)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProvincia)).BeginInit();
@@ -241,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCliente)).BeginInit();
             this.cmsMenu.SuspendLayout();
             this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCargoRP)).BeginInit();
             this.SuspendLayout();
             // 
             // imgEmpresa
@@ -1947,6 +1952,9 @@
             // 
             this.gboDatosRepres.BorderColor = System.Drawing.Color.Gainsboro;
             this.gboDatosRepres.BorderRadius = 5;
+            this.gboDatosRepres.Controls.Add(this.label39);
+            this.gboDatosRepres.Controls.Add(this.txtAddCargo);
+            this.gboDatosRepres.Controls.Add(this.erCargoRP);
             this.gboDatosRepres.Controls.Add(this.lblInfoCorreo);
             this.gboDatosRepres.Controls.Add(this.txtDocRepre);
             this.gboDatosRepres.Controls.Add(this.dgDocumentoRP);
@@ -1974,6 +1982,7 @@
             this.gboDatosRepres.Controls.Add(this.label34);
             this.gboDatosRepres.Controls.Add(this.label35);
             this.gboDatosRepres.Controls.Add(this.erDocumentoRP);
+            this.gboDatosRepres.Controls.Add(this.imgCargoRP);
             this.gboDatosRepres.CustomBorderColor = System.Drawing.Color.DimGray;
             this.gboDatosRepres.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gboDatosRepres.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2056,7 +2065,7 @@
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.AliceBlue;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -2074,7 +2083,7 @@
             this.dgDocumentoRP.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgDocumentoRP.RowTemplate.Height = 40;
             this.dgDocumentoRP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgDocumentoRP.Size = new System.Drawing.Size(182, 89);
+            this.dgDocumentoRP.Size = new System.Drawing.Size(182, 69);
             this.dgDocumentoRP.TabIndex = 238;
             this.dgDocumentoRP.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -2094,7 +2103,7 @@
             this.dgDocumentoRP.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgDocumentoRP.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgDocumentoRP.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgDocumentoRP.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgDocumentoRP.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White;
             this.dgDocumentoRP.ThemeStyle.RowsStyle.Height = 40;
             this.dgDocumentoRP.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.AliceBlue;
             this.dgDocumentoRP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.CornflowerBlue;
@@ -2132,6 +2141,7 @@
             this.cboCargoRepre.ShadowDecoration.Parent = this.cboCargoRepre;
             this.cboCargoRepre.Size = new System.Drawing.Size(165, 36);
             this.cboCargoRepre.TabIndex = 236;
+            this.cboCargoRepre.SelectedIndexChanged += new System.EventHandler(this.cboCargoRepre_SelectedIndexChanged);
             // 
             // erTipoDocRepre
             // 
@@ -2190,7 +2200,7 @@
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label28.Location = new System.Drawing.Point(591, 107);
+            this.label28.Location = new System.Drawing.Point(766, 107);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(62, 17);
             this.label28.TabIndex = 158;
@@ -2214,7 +2224,7 @@
             this.txtDireccionRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDireccionRepre.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDireccionRepre.HoveredState.Parent = this.txtDireccionRepre;
-            this.txtDireccionRepre.Location = new System.Drawing.Point(594, 129);
+            this.txtDireccionRepre.Location = new System.Drawing.Point(769, 129);
             this.txtDireccionRepre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDireccionRepre.Name = "txtDireccionRepre";
             this.txtDireccionRepre.PasswordChar = '\0';
@@ -2367,7 +2377,7 @@
             this.txtNombreRepre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNombreRepre.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombreRepre.HoveredState.Parent = this.txtNombreRepre;
-            this.txtNombreRepre.Location = new System.Drawing.Point(658, 54);
+            this.txtNombreRepre.Location = new System.Drawing.Point(595, 54);
             this.txtNombreRepre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombreRepre.Name = "txtNombreRepre";
             this.txtNombreRepre.PasswordChar = '\0';
@@ -2375,7 +2385,7 @@
             this.txtNombreRepre.PlaceholderText = "";
             this.txtNombreRepre.SelectedText = "";
             this.txtNombreRepre.ShadowDecoration.Parent = this.txtNombreRepre;
-            this.txtNombreRepre.Size = new System.Drawing.Size(457, 36);
+            this.txtNombreRepre.Size = new System.Drawing.Size(423, 36);
             this.txtNombreRepre.TabIndex = 147;
             // 
             // label32
@@ -2440,7 +2450,7 @@
             this.btnLimpiarRepre.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
             this.btnLimpiarRepre.HoveredState.Parent = this.btnLimpiarRepre;
             this.btnLimpiarRepre.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_32;
-            this.btnLimpiarRepre.Location = new System.Drawing.Point(1033, 129);
+            this.btnLimpiarRepre.Location = new System.Drawing.Point(1058, 54);
             this.btnLimpiarRepre.Name = "btnLimpiarRepre";
             this.btnLimpiarRepre.ShadowDecoration.Parent = this.btnLimpiarRepre;
             this.btnLimpiarRepre.Size = new System.Drawing.Size(118, 36);
@@ -2478,7 +2488,7 @@
             this.label34.BackColor = System.Drawing.Color.Transparent;
             this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label34.Location = new System.Drawing.Point(655, 34);
+            this.label34.Location = new System.Drawing.Point(592, 34);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(215, 17);
             this.label34.TabIndex = 133;
@@ -3007,6 +3017,68 @@
             // 
             this.siticoneDragControl1.TargetControl = null;
             // 
+            // erCargoRP
+            // 
+            this.erCargoRP.AutoSize = true;
+            this.erCargoRP.BackColor = System.Drawing.Color.Transparent;
+            this.erCargoRP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erCargoRP.ForeColor = System.Drawing.Color.Red;
+            this.erCargoRP.Location = new System.Drawing.Point(401, 168);
+            this.erCargoRP.Name = "erCargoRP";
+            this.erCargoRP.Size = new System.Drawing.Size(32, 13);
+            this.erCargoRP.TabIndex = 240;
+            this.erCargoRP.Text = "Error";
+            // 
+            // imgCargoRP
+            // 
+            this.imgCargoRP.BackColor = System.Drawing.Color.White;
+            this.imgCargoRP.Location = new System.Drawing.Point(530, 108);
+            this.imgCargoRP.Name = "imgCargoRP";
+            this.imgCargoRP.Size = new System.Drawing.Size(20, 20);
+            this.imgCargoRP.TabIndex = 241;
+            this.imgCargoRP.TabStop = false;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.BackColor = System.Drawing.Color.Transparent;
+            this.label39.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label39.Location = new System.Drawing.Point(584, 105);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(94, 17);
+            this.label39.TabIndex = 243;
+            this.label39.Text = "Agregar cargo";
+            // 
+            // txtAddCargo
+            // 
+            this.txtAddCargo.Animated = false;
+            this.txtAddCargo.BorderColor = System.Drawing.Color.Silver;
+            this.txtAddCargo.BorderRadius = 5;
+            this.txtAddCargo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAddCargo.DefaultText = "";
+            this.txtAddCargo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtAddCargo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtAddCargo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAddCargo.DisabledState.Parent = this.txtAddCargo;
+            this.txtAddCargo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAddCargo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtAddCargo.FocusedState.Parent = this.txtAddCargo;
+            this.txtAddCargo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddCargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtAddCargo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtAddCargo.HoveredState.Parent = this.txtAddCargo;
+            this.txtAddCargo.Location = new System.Drawing.Point(585, 129);
+            this.txtAddCargo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtAddCargo.Name = "txtAddCargo";
+            this.txtAddCargo.PasswordChar = '\0';
+            this.txtAddCargo.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtAddCargo.PlaceholderText = "";
+            this.txtAddCargo.SelectedText = "";
+            this.txtAddCargo.ShadowDecoration.Parent = this.txtAddCargo;
+            this.txtAddCargo.Size = new System.Drawing.Size(176, 36);
+            this.txtAddCargo.TabIndex = 242;
+            // 
             // frmRegistrarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3075,6 +3147,7 @@
             this.cmsMenu.ResumeLayout(false);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCargoRP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3241,5 +3314,9 @@
         private System.Windows.Forms.Label label37;
         private Siticone.UI.WinForms.SiticoneTextBox txtidRepreLegal;
         private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label erCargoRP;
+        private System.Windows.Forms.PictureBox imgCargoRP;
+        private System.Windows.Forms.Label label39;
+        private Siticone.UI.WinForms.SiticoneTextBox txtAddCargo;
     }
 }

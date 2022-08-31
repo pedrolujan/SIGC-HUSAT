@@ -175,7 +175,8 @@ namespace wfaIntegradoCom.Procesos
         private void dtpFechaInicialBus_ValueChanged(object sender, EventArgs e)
         {
         }
-        private void txtBuscarVentas_TextChanged(object sender, EventArgs e)
+        private void txtBuscarVentas_
+            (object sender, EventArgs e)
         {
         }
         public Boolean fnListarDatosVenta(DataGridView dgv, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon)      

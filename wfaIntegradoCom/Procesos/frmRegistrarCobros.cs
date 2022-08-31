@@ -101,7 +101,7 @@ namespace wfaIntegradoCom
                 dtOrden = null;
             }
         }
-
+        
         private Boolean fnListarPagoCobroVenta(Int32 pidDocumento)
         {
             BLDocumentoVenta objOrden = new BLDocumentoVenta();

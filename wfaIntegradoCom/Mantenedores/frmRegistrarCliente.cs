@@ -47,13 +47,15 @@ namespace wfaIntegradoCom.Mantenedores
             estApellidoMaterno, estNroDocumento,
             estTelefonoCelular, estDireccion, estTelefonoFijo,
             estCorreo, estFechaNacimiento, estNombreContacto1,estNombreContacto2,
-            estCelularContacto1,estCelularContacto2,estEmpresa,estEstado;
+            estCelularContacto1,estCelularContacto2,estEmpresa,estEstado,
+            estCargo;
         ////VARAIBLES PARA LOS MENSAJES DE ERROR
         String msjTipoCliente,msjNombre,msjApellidoMaterno,
             msjApellidoPaterno,msjTipoDocumento,msjNroDocumento,
             msjTelefonoFijo,msjTelefonoCelular,msjCorreo,msjFechaNaciemiento,
             msjDepartamento,msjProvincia,msjDistrito,msjDireccion,msjNombreContacto1,
-            msjNombreContacto2,msjCelularContacto1,msjCelularContacto2,msjEmpresa,msjEstado;
+            msjNombreContacto2,msjCelularContacto1,msjCelularContacto2,msjEmpresa,msjEstado,
+            msjCargo;
 
         static Int32 tabInicio = 0;
         private Tuple<Boolean, String> fnValidarTexbox(SiticoneTextBox txt,Label lbl, PictureBox img, Boolean maximo, Int32 num)
@@ -314,7 +316,7 @@ namespace wfaIntegradoCom.Mantenedores
                     Int32 idTipoDocumento = Convert.ToInt32(cboTD.SelectedValue ?? 0);
                     String estCliente = "1";
 
-                   datCliente = objVehi.blBuscarCliente(nroDocumento, nombreCliente /*, Representante*/ , idTipoPersona, idTipoDocumento, estCliente, Pagina, TipoConPagina);
+                   datCliente = objVehi.blBuscarCliente(nroDocumento, nombreCliente  , idTipoPersona, idTipoDocumento, estCliente, Pagina, TipoConPagina);
                     totalResultados = datCliente.Rows.Count;
 
                     if (totalResultados > 0)
@@ -407,9 +409,6 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 filas = 15;
             String nroDocumento;
             String nombreCliente;
-
-            //Mod//
-            String Representante = "";
 
             Int32 idTipoPersona;
             Int32 idTipoDocumento;
@@ -660,17 +659,7 @@ namespace wfaIntegradoCom.Mantenedores
                     {
                         lblInfoCorreo.Text = "";
                     }
-                    //MOD//
-                    //txtTelFijo.Text = Convert.ToString(lstCliente.cTelFijo);
-                    //dtpFechaNac.Value = lstCliente.dFecNac;
-                    //cboDepartamento.SelectedValue = Convert.ToInt32(lstCliente.idDep);
-                    //cboProvincia.SelectedValue = Convert.ToInt32(lstCliente.idProv);
-                    //cboDistrito.SelectedValue = Convert.ToInt32(lstCliente.idDist);
-                    //txtNombreContacto1.Text = Convert.ToString(lstCliente.cContactoNom1.Trim());
-                    //txtNombreContacto2.Text = Convert.ToString(lstCliente.cContactoNom2.Trim());
-                    //txtCelularContacto1.Text = Convert.ToString(lstCliente.cContactoCel1.Trim());
-                    //txtCelularContacto2.Text = Convert.ToString(lstCliente.cContactoCel2.Trim());
-                    //txtEmpresa.Text = Convert.ToString(lstCliente.cEmpresa.Trim());
+
 
                     gboDatosRepres.Visible = true;
                 }
@@ -738,7 +727,7 @@ namespace wfaIntegradoCom.Mantenedores
                             }
                             txtTelefonoFijoRepre.Text = Convert.ToString(lstCliente.cTelCelularRepre);
                             dgDocumentoRP.Visible = false;
-                            cboCargoRepre.Text = Convert.ToString(lstCliente.Cargo);
+                            cboCargoRepre.SelectedValue = Convert.ToString(lstCliente.Cargo);
                             txtDireccionRepre.Text = Convert.ToString(lstCliente.cDireccionRepre);
                         }
                     if (lstCliente.bEstado)
@@ -1099,15 +1088,17 @@ namespace wfaIntegradoCom.Mantenedores
                 objCliente.cContactoNom2 = Convert.ToString(txtNombreContacto2.Text.Trim());
                 objCliente.cContactoCel2 = Convert.ToString(txtCelularContacto2.Text.Trim());
 
-                //objCliente.idRepreLegal = Convert.ToInt32(txtidRepresentante.Text.Trim());
-                //MOF REPRESENTANTE//
+              
+                //MOD REPRESENTANTE//
                // objCliente.idCliente = Convert.ToInt32(txtidCliente.Text.Trim());
                 objCliente.idRepreLegal = Convert.ToInt32(txtidRepreLegal.Text.Trim());
                 objCliente.Cargo = Convert.ToString(cboCargoRepre.SelectedValue);
                 objCliente.Estado = Convert.ToBoolean(cboEstado.SelectedIndex == 1 ? 1 : 0);
+                //objCliente.cCodTab = Convert.ToString("CCRE000");
+                objCliente.NomCargo = Convert.ToString(txtAddCargo.Text.Trim());
 
                 objCliente.dFechaRegistro = dFechaSis;
-               // objCliente.fechaRegistro = dFechaSis;
+            
 
                 objCliente.idUsuario = Variables.gnCodUser;
 
@@ -1574,6 +1565,20 @@ namespace wfaIntegradoCom.Mantenedores
             estTipoDocumento = result2.Item1;
             msjTipoDocumento = result2.Item2;
 
+            //cboCargoRepre_SelectedIndexChanged(sender, e);
+            if (Convert.ToInt32(cboTipoCliente.SelectedValue)!=1)
+            {
+                var result = fnValidarCombobox(cboCargoRepre, erCargoRP, imgCargoRP);
+
+                estCargo = result.Item1;
+                msjCargo = result.Item2;
+            }
+            else
+            {
+                estCargo = true;
+            }
+           
+
             txtdni_TextChanged(sender, e);
             txtPrimerNom_TextChanged(sender, e);
             txtApePat_TextChanged(sender, e);
@@ -1618,7 +1623,8 @@ namespace wfaIntegradoCom.Mantenedores
                 && (estProvincia == true) && (estDistrito == true)
                 && (estDireccion == true) && (estNombreContacto1 == true)
                 && (estCelularContacto1 == true) && (estNombreContacto2 == true)
-                && (estCelularContacto2 == true) && (estEmpresa == true))
+                && (estCelularContacto2 == true) && (estEmpresa == true)
+                && (estCargo == true))
                 {
 
                     lcResultado = fnGuardarCliente(lnTipoCon);
@@ -1653,7 +1659,8 @@ namespace wfaIntegradoCom.Mantenedores
                 && (estDistrito == true)
                 && (estDireccion == true) && (estNombreContacto1 == true)
                 && (estCelularContacto1 == true) && (estNombreContacto2 == true)
-                && (estCelularContacto2 == true) && (estEmpresa == true))
+                && (estCelularContacto2 == true) && (estEmpresa == true)
+                && (estCargo == true))
                 {
 
                     lcResultado = fnGuardarCliente(lnTipoCon);
@@ -1929,7 +1936,27 @@ namespace wfaIntegradoCom.Mantenedores
             btnEditar.Enabled = true;
         }
 
-    
+        private void cboCargoRepre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           // Int32 idTD = Convert.ToInt32(cboCargoRepre.SelectedValue == null ? "0" : cboCargoRepre.SelectedValue.ToString());
+           
+            if (cboCargoRepre.Text.ToString() == "OTROS")
+            {
+                txtAddCargo.Enabled = true;
+                //txtAddCargo.Text = "";
+            }
+            else
+            {
+
+                txtAddCargo.Enabled = false;
+                txtAddCargo.Text = "";
+            }
+
+            var result = fnValidarCombobox(cboCargoRepre, erCargoRP, imgCargoRP);
+
+            estCargo = result.Item1;
+            msjCargo = result.Item2;
+        }
 
         private void cboEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2079,6 +2106,8 @@ namespace wfaIntegradoCom.Mantenedores
             fnLLenarDocumentoDeTipoPersona(cboTipoDoc, idTipoCliente, "1",false);
             fnLLenarDocumentoDeTipoPersona(cboTipoDocRepre, 1, "1", false);
             FunGeneral.fnLlenarTablaCodTipoCon(cboCargoRepre , "CCRE" , false);
+         
+
 
             if (idTipoCliente == 0)
             {

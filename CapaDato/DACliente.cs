@@ -153,7 +153,7 @@ namespace CapaDato
                     lstCliente.idRepreLegal = Convert.ToInt32(drMenu["idRepreLegal"]);
                     if (lstCliente.idRepreLegal != 0)
                     {
-                        lstCliente.idClienteRepre = Convert.ToInt32(drMenu["idCliente1"]);
+                    lstCliente.idClienteRepre = Convert.ToInt32(drMenu["idCliente1"]);
                     lstCliente.cTiDoRepre = Convert.ToInt32(drMenu["cTiDo1"]);
                     lstCliente.cDocumentoRepre = Convert.ToString(drMenu["cDocumento1"]);
                     lstCliente.NombreRepreLegal = Convert.ToString(drMenu["Representante"]);
@@ -228,7 +228,7 @@ namespace CapaDato
         }
         public String daGrabarCliente(Cliente objCliente, Int16 pnTipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[25];
+            SqlParameter[] pa = new SqlParameter[26];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
 
@@ -282,19 +282,18 @@ namespace CapaDato
                 pa[21] = new SqlParameter("@peiTipoCon",SqlDbType.TinyInt);
                 pa[21].Value = pnTipoCon;
 
-                //pa[22] = new SqlParameter("@idRepreLegal", SqlDbType.Int);
-                //pa[22].Value = objCliente.idRepreLegal;
-
-                //pa[23] = new SqlParameter("@idCliente", SqlDbType.Int);
-                //pa[23].Value = objCliente.idCliente;
                 pa[22] = new SqlParameter("@idRepreLegal", SqlDbType.Int);
                 pa[22].Value = objCliente.idRepreLegal;
                 pa[23] = new SqlParameter("@Cargo",SqlDbType.VarChar,50);
                 pa[23].Value = objCliente.Cargo;
                 pa[24] = new SqlParameter("@Estado",SqlDbType.Bit);
                 pa[24].Value = objCliente.Estado;
-                //pa[27] = new SqlParameter("@pedFechaRegistro", SqlDbType.DateTime);
-                //pa[27].Value = objCliente.fechaRegistro;
+                pa[25] = new SqlParameter("@NomCargo", SqlDbType.NVarChar, 100);
+                pa[25].Value = objCliente.NomCargo;  
+                //pa[26] = new SqlParameter("@cCodTab", SqlDbType.NVarChar, 10);
+                //pa[26].Value = objCliente.cCodTab;
+
+               
 
                     
                 objCnx = new clsConexion("");

@@ -59,6 +59,9 @@ namespace CapaEntidad
         public String cCorreoRepre { get; set; }
         public String cTelCelularRepre { get; set; }
         public String Cargo { get; set; }
+        public String cCodTab { get; set; }
+        
+        public String NomCargo { get; set; }
         public String cDireccionRepre { get; set; }
 
 

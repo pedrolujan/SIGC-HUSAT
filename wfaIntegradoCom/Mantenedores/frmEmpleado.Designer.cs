@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tsBotonera = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -47,6 +47,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtDireccion = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblIdUsuario = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblClave = new System.Windows.Forms.Label();
@@ -55,7 +57,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -78,7 +79,6 @@
             this.dateTimePicker1 = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.cboCargo = new Siticone.UI.WinForms.SiticoneComboBox();
             this.txtIdPersonal = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.txtDireccion = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtTelefono = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtdni = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtPrimerNom = new Siticone.UI.WinForms.SiticoneTextBox();
@@ -89,6 +89,7 @@
             this.epControlOk = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtBuscarEmpleado = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.picBuscarPersonal = new Siticone.UI.WinForms.SiticonePictureBox();
             this.gbPaginacion = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -106,7 +107,6 @@
             this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.lvempleado = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.Código = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -129,12 +129,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.epUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epControlOk)).BeginInit();
             this.siticonePanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBuscarPersonal)).BeginInit();
             this.gbPaginacion.SuspendLayout();
             this.SiticoneEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.siticonePictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lvempleado)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tsBotonera
@@ -307,6 +307,41 @@
             this.label8.Text = "Elegir Departamento:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Animated = false;
+            this.txtDireccion.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDireccion.DefaultText = "";
+            this.txtDireccion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDireccion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDireccion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDireccion.DisabledState.Parent = this.txtDireccion;
+            this.txtDireccion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDireccion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDireccion.FocusedState.Parent = this.txtDireccion;
+            this.txtDireccion.ForeColor = System.Drawing.Color.Black;
+            this.txtDireccion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDireccion.HoveredState.Parent = this.txtDireccion;
+            this.txtDireccion.Location = new System.Drawing.Point(587, 44);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.PasswordChar = '\0';
+            this.txtDireccion.PlaceholderText = "";
+            this.txtDireccion.SelectedText = "";
+            this.txtDireccion.ShadowDecoration.Parent = this.txtDireccion;
+            this.txtDireccion.Size = new System.Drawing.Size(211, 36);
+            this.txtDireccion.TabIndex = 26;
+            this.txtDireccion.TextChanged += new System.EventHandler(this.siticoneTextBox8_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(587, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Dirección:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // lblIdUsuario
             // 
             this.lblIdUsuario.AutoSize = true;
@@ -389,16 +424,6 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "DNI:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(587, 23);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Dirección:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label3
             // 
@@ -631,6 +656,7 @@
             // 
             // picBoxImgPerfil
             // 
+            this.picBoxImgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("picBoxImgPerfil.Image")));
             this.picBoxImgPerfil.Location = new System.Drawing.Point(607, 33);
             this.picBoxImgPerfil.Name = "picBoxImgPerfil";
             this.picBoxImgPerfil.Size = new System.Drawing.Size(130, 130);
@@ -701,31 +727,6 @@
             this.txtIdPersonal.Size = new System.Drawing.Size(84, 36);
             this.txtIdPersonal.TabIndex = 26;
             // 
-            // txtDireccion
-            // 
-            this.txtDireccion.Animated = false;
-            this.txtDireccion.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDireccion.DefaultText = "";
-            this.txtDireccion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtDireccion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtDireccion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDireccion.DisabledState.Parent = this.txtDireccion;
-            this.txtDireccion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDireccion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDireccion.FocusedState.Parent = this.txtDireccion;
-            this.txtDireccion.ForeColor = System.Drawing.Color.Black;
-            this.txtDireccion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDireccion.HoveredState.Parent = this.txtDireccion;
-            this.txtDireccion.Location = new System.Drawing.Point(587, 44);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.PasswordChar = '\0';
-            this.txtDireccion.PlaceholderText = "";
-            this.txtDireccion.SelectedText = "";
-            this.txtDireccion.ShadowDecoration.Parent = this.txtDireccion;
-            this.txtDireccion.Size = new System.Drawing.Size(211, 36);
-            this.txtDireccion.TabIndex = 26;
-            this.txtDireccion.TextChanged += new System.EventHandler(this.siticoneTextBox8_TextChanged);
-            // 
             // txtTelefono
             // 
             this.txtTelefono.Animated = false;
@@ -742,7 +743,6 @@
             this.txtTelefono.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelefono.HoveredState.Parent = this.txtTelefono;
             this.txtTelefono.Location = new System.Drawing.Point(112, 170);
-            this.txtTelefono.MaxLength = 9;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.PasswordChar = '\0';
             this.txtTelefono.PlaceholderText = "";
@@ -922,6 +922,16 @@
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
             this.siticonePanel1.Size = new System.Drawing.Size(838, 661);
             this.siticonePanel1.TabIndex = 24;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.panel1.Controls.Add(this.txtBuscarEmpleado);
+            this.panel1.Controls.Add(this.picBuscarPersonal);
+            this.panel1.Location = new System.Drawing.Point(347, 52);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(472, 40);
+            this.panel1.TabIndex = 235;
             // 
             // picBuscarPersonal
             // 
@@ -1133,52 +1143,52 @@
             // 
             // lvempleado
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
-            this.lvempleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
+            this.lvempleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.lvempleado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lvempleado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.lvempleado.BackgroundColor = System.Drawing.Color.Azure;
             this.lvempleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvempleado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.lvempleado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightCoral;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lvempleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightCoral;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvempleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.lvempleado.ColumnHeadersHeight = 40;
             this.lvempleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Código,
             this.NombreEmpleado,
             this.DNI});
             this.lvempleado.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(217)))), ((int)(((byte)(215)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(129)))), ((int)(((byte)(121)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lvempleado.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(217)))), ((int)(((byte)(215)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(129)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lvempleado.DefaultCellStyle = dataGridViewCellStyle7;
             this.lvempleado.EnableHeadersVisualStyles = false;
             this.lvempleado.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(189)))), ((int)(((byte)(184)))));
-            this.lvempleado.Location = new System.Drawing.Point(346, 90);
+            this.lvempleado.Location = new System.Drawing.Point(347, 90);
             this.lvempleado.Name = "lvempleado";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lvempleado.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvempleado.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.lvempleado.RowHeadersVisible = false;
             this.lvempleado.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.lvempleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.lvempleado.Size = new System.Drawing.Size(474, 293);
+            this.lvempleado.Size = new System.Drawing.Size(473, 298);
             this.lvempleado.TabIndex = 35;
             this.lvempleado.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Red;
             this.lvempleado.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
@@ -1205,16 +1215,6 @@
             this.lvempleado.Visible = false;
             this.lvempleado.DoubleClick += new System.EventHandler(this.lvempleado_DoubleClick);
             this.lvempleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarEmpleado_KeyPress);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.panel1.Controls.Add(this.txtBuscarEmpleado);
-            this.panel1.Controls.Add(this.picBuscarPersonal);
-            this.panel1.Location = new System.Drawing.Point(347, 52);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(472, 40);
-            this.panel1.TabIndex = 235;
             // 
             // Código
             // 
@@ -1275,6 +1275,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.epControlOk)).EndInit();
             this.siticonePanel1.ResumeLayout(false);
             this.siticonePanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBuscarPersonal)).EndInit();
             this.gbPaginacion.ResumeLayout(false);
             this.gbPaginacion.PerformLayout();
@@ -1282,7 +1283,6 @@
             this.SiticoneEncabezado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.siticonePictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lvempleado)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

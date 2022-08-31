@@ -117,6 +117,7 @@ namespace CapaDato
 
         }
 
+
         public String daBuscarVentaAImprimir(VentaGeneral clsVentaGeneral, Int16 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[12];

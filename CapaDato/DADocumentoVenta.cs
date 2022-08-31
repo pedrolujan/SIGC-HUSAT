@@ -406,6 +406,76 @@ namespace CapaDato
 
         }
 
+        public DataTable daAnularVenta(DateTime fechaInicial, DateTime fechafinal, string cBuscar)
+        {
+            SqlParameter[] pa = new SqlParameter[3];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            DataTable dtcodventa;
+
+
+            try
+            {
+                pa[0] = new SqlParameter("@CodDocCorrelativo", SqlDbType.NVarChar, 14);
+                pa[0].Value = cBuscar;
+                pa[1] = new SqlParameter("@FechaInicial", SqlDbType.DateTime);
+                pa[1].Value = fechaInicial;
+                pa[2] = new SqlParameter("@FechaFinal", SqlDbType.DateTime);
+                pa[2].Value = fechafinal;
+
+                objCnx = new clsConexion("");
+                dtcodventa = objCnx.EjecutarProcedimientoDT("uspBuscarDocVentasAnulacion", pa);
+
+
+                return dtcodventa;
+            }
+
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DADocumentoVenta.cs", "daAnularVenta", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                objUtil = null;
+
+            }
+
+        }
+        public Boolean daAnularDocumentoVeta(String codDocVenta)
+        {
+            SqlParameter[] pa = new SqlParameter[1];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            String cCodVenta = "";
+            DataTable dtresp = new DataTable(); 
+
+            try
+            {
+                pa[0] = new SqlParameter("@codDocVenta", SqlDbType.NVarChar, 14) { Value = codDocVenta };
+
+                objCnx = new clsConexion("");
+                dtresp = objCnx.EjecutarProcedimientoDT("", pa);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DAAccesorios.cs", "daDevolverAccesorio", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+
+
         public String daAnularPagoCobro(int pidTrandiaria, int pidVenta, int pidUsuario, string pcFechaSis, int iTipoOpe)
         {
             SqlParameter[] pa = new SqlParameter[5];
