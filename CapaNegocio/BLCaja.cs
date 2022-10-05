@@ -28,6 +28,40 @@ namespace CapaNegocio
             }
 
         }
+        public List<ReporteBloque> blBuscarAccionCaja(String dt, Int32 idUsuario, Int32 TipoOpe)
+        {
+            dcaja = new DACaja();
+            try
+            {
+                return dcaja.daBuscarAccionCaja(  dt,  idUsuario,  TipoOpe);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+
+            }
+
+        }
+        public List<Cargo> blBuscarTipoOpciones(String cod,Int32 tipoCon)
+        {
+            dcaja = new DACaja();
+            try
+            {
+                return dcaja.daBuscarTipoOpciones( cod, tipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+
+            }
+
+        }
         public Boolean blGuardarCierreCaja(List<xmlActaCierraCaja>xmlacta, List<CuadreCaja> lstApertura,Int32 tipoCon)
         {
             dcaja = new DACaja();

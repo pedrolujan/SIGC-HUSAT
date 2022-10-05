@@ -112,7 +112,7 @@ namespace wfaIntegradoCom.Procesos
                 Mantenedores.frmRegistrarVenta.fnRespuestaValidacion(habilitarDescuento);
                 frmControlPagoVenta.fnRespuestaValidacion(habilitarDescuento);
                 frmOtrasVentas.fnRespuestaValidacion(habilitarDescuento);
-                frmCambioTitularidad.fnRespuestaValidacion(habilitarDescuento);
+                //frmEditarCaja.fnRespuestaValidacion(habilitarDescuento);
 
 
                 return true;

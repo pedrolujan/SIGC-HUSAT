@@ -73,6 +73,21 @@ namespace CapaNegocio
             }
            
         }
+        public List<ReporteBloque> blBuscarEgresos(Busquedas clsBusq)
+        {
+            dc = new DAControlCaja();
+            try
+            {
+                return dc.daBuscarEgresos(clsBusq);
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
         public List<ReporteBloque> blDetalleParaCuadre(Busquedas clsBusq, List<ReporteBloque> lstRep)
         {
             dc = new DAControlCaja();

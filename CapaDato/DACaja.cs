@@ -1,5 +1,6 @@
 ﻿using CapaConexion;
 using CapaEntidad;
+using CapaNegocio;
 using CapaUtil;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,94 @@ namespace CapaDato
                 }
 
                 return lsRepBloque;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+
+            }
+        }
+        public List<ReporteBloque> daBuscarAccionCaja(String  dtt, Int32 idUsuario, Int32 TipoOpe)
+        {
+            SqlParameter[] pa = new SqlParameter[3];
+            List<ControlCaja> lstControl = new List<ControlCaja>();
+            DataTable dt = new DataTable();
+            List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = idUsuario };
+                pa[1] = new SqlParameter("@dtFecha", SqlDbType.Date) { Value = dtt };
+                pa[2] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = TipoOpe };
+                
+                objCnx = new clsConexion("");
+
+                dt = objCnx.EjecutarProcedimientoDT("uspAccioncajaActualizacion", pa);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    lsRepBloque.Add(new ReporteBloque
+                    {
+                        Codigoreporte = dr["id"].ToString(),
+                        Detallereporte = dr["descripcion"].ToString(),
+                        idAuxiliar =Convert.ToInt32(dr["IdUsuario"]),
+                        cUsuario = dr["cUser"].ToString(),
+                        Cantidad = Convert.ToInt32(dr["cantidad"]),
+                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        SimboloMoneda = dr["cSimbolo"].ToString(),
+                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                    });
+                }
+
+                return lsRepBloque;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+
+            }
+        }
+        public List<Cargo> daBuscarTipoOpciones(String cod, Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[2];
+            List<ControlCaja> lstControl = new List<ControlCaja>();
+            DataTable dt = new DataTable();
+            List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            try
+            {
+                
+                pa[0] = new SqlParameter("@codTipoOperacion", SqlDbType.VarChar) { Value = cod };                
+                pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
+
+                objCnx = new clsConexion("");
+
+                dt = objCnx.EjecutarProcedimientoDT("uspBuscarTipoOperacionCaja", pa);
+                List<Cargo> lstCargo = new List<Cargo>();
+
+                foreach (DataRow drMenu in dt.Rows)
+                {
+                    lstCargo.Add(new Cargo(
+                        Convert.ToString(drMenu["cCodTab"]),
+                        Convert.ToString(drMenu["cNomTab"]),
+                        Convert.ToString(drMenu["cValor"]),
+                        Convert.ToString(drMenu["nValor1"])
+                        
+                        )
+                        );
+                }
+
+                return lstCargo;
 
             }
             catch (Exception ex)

@@ -96,11 +96,20 @@ namespace wfaIntegradoCom.Mantenedores
         static Int32 staticTipoTarifa = 0;
         Int32 lnTipoLlamada = 0;
         Boolean cargoFrom = false;
+
+        static DateTime dttFechaRecibida = Variables.gdFechaSis;
+        static Int32 inTipoApertura = 0;
         public void Inicio(Int16 pnTipoLlamada)
         {
             lnTipoLlamada = pnTipoLlamada;
             ShowDialog();
 
+        }
+        public void tipoApertura(DateTime dtt,Int32 tipoApertura)
+        {
+            dttFechaRecibida = dtt;
+            inTipoApertura = tipoApertura;
+            ShowDialog();
         }
         public static void fnRespuestaValidacion(Boolean estado)
         {
@@ -531,6 +540,23 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     tabControl1.SelectedIndex = 1;
                     tabControl1.Controls.RemoveAt(0);                    
+                }
+
+                if (inTipoApertura==0)
+                {
+                    dtFechaPago.Enabled = true;
+                    dtpFechaInicialBus.Enabled = true;
+                    dtpFechaFinalBus.Enabled = true;
+                }
+                else if (inTipoApertura==-1)
+                {
+                    dtFechaPago.Value = dttFechaRecibida;
+                    dtpFechaInicialBus.Value = dttFechaRecibida;
+                    dtpFechaFinalBus.Value = dttFechaRecibida;
+                    dtFechaPago.Enabled = false;
+                    dtpFechaInicialBus.Enabled = false;
+                    dtpFechaFinalBus.Enabled = false;
+
                 }
 
                 cboCicloP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
@@ -2256,7 +2282,7 @@ namespace wfaIntegradoCom.Mantenedores
                     }
                 }
 
-
+                lstDetV[0].idTipoTarifa = clsTarifa.IdTarifa;
             }
             else
             {

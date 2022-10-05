@@ -534,11 +534,11 @@
     <Compile Include="Procesos\frmBuscarVentas.Designer.cs">
       <DependentUpon>frmBuscarVentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Procesos\frmCambioTitularidad.cs">
+    <Compile Include="Procesos\frmEditarCaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Procesos\frmCambioTitularidad.Designer.cs">
-      <DependentUpon>frmCambioTitularidad.cs</DependentUpon>
+    <Compile Include="Procesos\frmEditarCaja.Designer.cs">
+      <DependentUpon>frmEditarCaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Procesos\frmConceptoCaja.cs">
       <SubType>Form</SubType>
@@ -897,8 +897,8 @@
     <EmbeddedResource Include="Procesos\frmBuscarVentas.resx">
       <DependentUpon>frmBuscarVentas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Procesos\frmCambioTitularidad.resx">
-      <DependentUpon>frmCambioTitularidad.cs</DependentUpon>
+    <EmbeddedResource Include="Procesos\frmEditarCaja.resx">
+      <DependentUpon>frmEditarCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmControlCaja.resx">
       <DependentUpon>frmControlCaja.cs</DependentUpon>

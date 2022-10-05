@@ -23,6 +23,23 @@ namespace wfaIntegradoCom.Procesos
         }
         List<ReporteBloque> lstCierreCajaAnterior = new List<ReporteBloque>();
         ReporteBloque clsrb = new ReporteBloque();
+
+        static Int32 idUsuarioST = 0;
+        static String Nomusuario = "";
+        static Int32 idApertura = 0;
+        static Int32 intTipoApertura = 0;
+        static DateTime dtFechaApertura = Variables.gdFechaSis;
+        
+        public void tipoApertura(DateTime dt,  Int32 idUsuario,String cUsuario, Int32 tipoCon, Int32 idApe)
+        {
+            idUsuarioST = idUsuario;
+            Nomusuario = cUsuario;
+            idApertura = idApe;
+            intTipoApertura = tipoCon;
+            dtFechaApertura = dt;
+            this.ShowDialog();
+
+        }
         public void Inicio()
         {
 
@@ -161,42 +178,54 @@ namespace wfaIntegradoCom.Procesos
 
         private void frmAperturaCaja_Load(object sender, EventArgs e)
         {
-            if (!(FunGeneral.fnVerificarApertura(Variables.gnCodUser)==1?true:false))
+
+            if (intTipoApertura != -1)
             {
-                lstCierreCajaAnterior = FunGeneral.fnBuscarImporteCierreAnterior(Variables.gnCodUser);
+                idUsuarioST = Variables.gnCodUser;
+                dtFechaApertura = Variables.gdFechaSis;
 
-                clsrb = lstCierreCajaAnterior.Count>0?lstCierreCajaAnterior[0]:new ReporteBloque();
-                if (clsrb is ReporteBloque)
+                if (!(FunGeneral.fnVerificarApertura(idUsuarioST) == 1 ? true : false))
                 {
-                    lblMostraCierreAnterior.Text = "En tu caja debes tener: "+FunGeneral.fnFormatearPrecio(clsrb.SimboloMoneda, clsrb.ImporteTotal,1);
+                    lstCierreCajaAnterior = FunGeneral.fnBuscarImporteCierreAnterior(idUsuarioST);
 
+                    clsrb = lstCierreCajaAnterior.Count > 0 ? lstCierreCajaAnterior[0] : new ReporteBloque();
+                    if (clsrb is ReporteBloque)
+                    {
+                        lblMostraCierreAnterior.Text = "En tu caja debes tener: " + FunGeneral.fnFormatearPrecio(clsrb.SimboloMoneda, clsrb.ImporteTotal, 1);
+
+                    }
+                    else
+                    {
+                        clsrb.ImporteTotal = 0;
+                        clsrb.SimboloMoneda = "S/."; ;
+                        lblMostraCierreAnterior.Text = "En tu caja debes tener: " + FunGeneral.fnFormatearPrecio(clsrb.SimboloMoneda, clsrb.ImporteTotal, 1);
+                    }
+                    txtFecha.Text = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 6);
+                    txtUsuario.Text = Variables.gsCodUser;
+                    txtMonto.Focus();
                 }
                 else
                 {
-                    clsrb.ImporteTotal = 0;
-                    clsrb.SimboloMoneda = "S/."; ;
-                    lblMostraCierreAnterior.Text = "En tu caja debes tener: "+FunGeneral.fnFormatearPrecio(clsrb.SimboloMoneda, clsrb.ImporteTotal,1);
+                    Double ImporteDeApertura = 0;
+                    foreach (CuadreCaja item in Variables.lstCuardreCaja)
+                    {
+                        if (item.idOperacion == 1)
+                        {
+                            ImporteDeApertura = item.importeSaldo;
+                        }
+                    }
+                    lblMostraCierreAnterior.Text = "Ya as aperturado Caja Con el Monto de: " + FunGeneral.fnFormatearPrecio(Variables.lstCuardreCaja[0].SimbloMon, ImporteDeApertura, 1);
+                    this.Text = "Aperturar Caja - Ya se ha aperturado caja en el día";
+                    txtFecha.Text = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 6);
+                    txtUsuario.Text = Variables.gsCodUser;
+                    txtMonto.Enabled = false;
+                    btnRegistrar.Enabled = false;
                 }
-                txtFecha.Text = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 6);
-                txtUsuario.Text = Variables.gsCodUser;
-                txtMonto.Focus();
             }
             else
             {
-                Double ImporteDeApertura = 0;
-                foreach (CuadreCaja item in Variables.lstCuardreCaja)
-                {
-                    if (item.idOperacion==1)
-                    {
-                        ImporteDeApertura = item.importeSaldo;
-                    }
-                }
-                lblMostraCierreAnterior.Text = "Ya as aperturado Caja Con el Monto de: "+ FunGeneral.fnFormatearPrecio(Variables.lstCuardreCaja[0].SimbloMon, ImporteDeApertura, 1);
-                this.Text = "Aperturar Caja - Ya se ha aperturado caja en el día";
-                txtFecha.Text = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 6);
-                txtUsuario.Text = Variables.gsCodUser;
-                txtMonto.Enabled = false;
-                btnRegistrar.Enabled = false;
+                txtFecha.Text = FunGeneral.GetFechaHoraFormato(dtFechaApertura, 6);
+                txtUsuario.Text = Nomusuario;
             }
         }
 

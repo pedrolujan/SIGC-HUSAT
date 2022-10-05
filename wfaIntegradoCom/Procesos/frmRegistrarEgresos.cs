@@ -32,16 +32,26 @@ namespace wfaIntegradoCom.Procesos
         static List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
         static Boolean estadoGuardarEgreso = false;
         Int32 tabIndex = 0;
+
+        static DateTime dttFechaRecibida = Variables.gdFechaSis;
+        static Int32 inTipoApertura = 0;
         public void Inicio(Int32 tipoLlam)
         {
             lnTipoLlamada = tipoLlam;
             this.ShowDialog();
         }
+
+        public void tipoApertura(DateTime dtt, Int32 tipoApertura)
+        {
+            dttFechaRecibida = dtt;
+            inTipoApertura = tipoApertura;
+            ShowDialog();
+        }
         private void frmRegistrarEgresos_Load(object sender, EventArgs e)
         {
             try
             {
-                dtFechaInicioG.Value = Variables.gdFechaSis;
+                dtFechaRegIngresos.Value = Variables.gdFechaSis;
 
                 FunGeneral.fnLlenarTablaCodTipoCon(cboArea, "PETR",false);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboFuenteEgreso, "TEGR",false);
@@ -64,6 +74,31 @@ namespace wfaIntegradoCom.Procesos
                 cboTipoDocEmitir2.SelectedValue = "DOVE0003";
                 cboMoneda.SelectedValue = 1;
                 cboMoneda2.SelectedValue = 1;
+                dtFechaRegEgresos.Enabled = false;
+
+                if (inTipoApertura==0)
+                {
+                    dtFechaRegEgresos.Value = Variables.gdFechaSis;
+                    dtFechaRegIngresos.Value = Variables.gdFechaSis;
+                }
+                else if (inTipoApertura == -1)
+                {
+                    dtFechaRegEgresos.Value = dttFechaRecibida;
+                    dtFechaRegIngresos.Value = dttFechaRecibida;
+                    dtFechaRegEgresos.Enabled = false;
+                    dtFechaRegIngresos.Enabled = false;
+                    tabControl1.SelectedIndex = 1;
+                    tabControl1.TabPages.Remove(tabPage1);
+                }
+                else if (inTipoApertura == -2)
+                {
+                    dtFechaRegEgresos.Value = dttFechaRecibida;
+                    dtFechaRegIngresos.Value = dttFechaRecibida;
+                    dtFechaRegEgresos.Enabled = false;
+                    dtFechaRegIngresos.Enabled = false;
+                    tabControl1.SelectedIndex = 0;
+                    tabControl1.TabPages.Remove(tabPage2);
+                }
             }
             catch (Exception)
             {
@@ -207,7 +242,7 @@ namespace wfaIntegradoCom.Procesos
                 SimboloMoneda = clsMoneda.cSimbolo,
                 cCodDocumentoVenta = Convert.ToString(cboTipoDocEmitir.SelectedValue),
                 NombreDocumento = Convert.ToString(cboTipoDocEmitir.Text),
-                dFechaVenta = Convert.ToDateTime(Variables.gdFechaSis),
+                dFechaVenta = Convert.ToDateTime(dtFechaRegEgresos.Value),
                 idMoneda = clsMoneda.idMoneda,
                 nSubtotal = dvc.SubTotal,
                 nNroIGV = 18,
@@ -376,6 +411,7 @@ namespace wfaIntegradoCom.Procesos
             clsEgresos.DetalleEgreso = txtDescripcion.Text.ToString();
             clsEgresos.lnTipoCon = -1;
             lstPagosTrandiaria[0].idMoneda = clsMoneda.idMoneda;
+            lstPagosTrandiaria[0].dFechaRegistro = dtFechaRegEgresos.Value;
             List<xmlDocumentoVentaGeneral> xmlDVG = new List<xmlDocumentoVentaGeneral>();
             xmlDVG.Add(new xmlDocumentoVentaGeneral
             {
@@ -408,6 +444,7 @@ namespace wfaIntegradoCom.Procesos
             clsEgresos.DetalleEgreso = txtDescripcion2.Text.ToString();
             clsEgresos.lnTipoCon = -2;
             lstPagosTrandiaria[0].idMoneda = clsMoneda.idMoneda;
+            lstPagosTrandiaria[0].dFechaRegistro = dtFechaRegIngresos.Value;
             List<xmlDocumentoVentaGeneral> xmlDVG = new List<xmlDocumentoVentaGeneral>();
             xmlDVG.Add(new xmlDocumentoVentaGeneral
             {

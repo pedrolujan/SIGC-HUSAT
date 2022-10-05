@@ -372,7 +372,7 @@ namespace CapaDato
 
                 objCnx = new clsConexion("");
                
-                    dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarInstalaciones", pa);
+                dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarInstalaciones", pa);
                 
 
                 return dtVentaG;

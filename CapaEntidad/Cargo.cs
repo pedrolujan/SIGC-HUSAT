@@ -20,6 +20,8 @@ namespace CapaEntidad
 
         String _cValor = "";
         public String cValor { get { return _cValor; } set { _cValor = value; } }
+        String _nValor1 = "";
+        public String nValor1 { get { return _nValor1; } set { _nValor1 = value; } }
 
         Boolean _bEstado = false    ;
         public Boolean bEstado { get { return _bEstado; } set { _bEstado = value; } }
@@ -43,6 +45,13 @@ namespace CapaEntidad
             cCodTab = pcCodTab;
             cNomTab = pcNomTab;
             cValor = pcValor;
+        }
+        public Cargo(String pcCodTab, String pcNomTab, String pcValor,String nv1)
+        {
+            cCodTab = pcCodTab;
+            cNomTab = pcNomTab;
+            cValor = pcValor;
+            nValor1 = nv1;
         }
         public static Cargo fnObtenerEstadoSeleccionado(String cCodTab, List<Cargo> lstTablaCod)
         {

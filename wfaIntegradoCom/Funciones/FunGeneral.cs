@@ -78,6 +78,32 @@ namespace wfaIntegradoCom.Funciones
             }
 
         }
+        public static List<Cargo> fnLlenarTablaCodTipoConDT(String cCodTab,Boolean buscar)
+        {
+            BLCargo objTablaCod = new BLCargo();
+            clsUtil objUtil = new clsUtil();
+            List<Cargo> lstTablaCod = new List<Cargo>();
+
+            try
+            {
+                lstTablaCod = objTablaCod.blDevolverTablaCodTipoConDT(cCodTab,buscar);
+         
+
+                return lstTablaCod;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FunGeneral", "fnLlenarTablaCod", ex.Message);
+                return lstTablaCod;
+            }
+            finally
+            {
+                objUtil = null;
+                objTablaCod = null;
+                lstTablaCod = null;
+            }
+
+        }
         public static Boolean fnLlenarCboSegunTablaTipoCon(ComboBox cboCombo, String nomCampoId,String nomCampoNombre,String nomTabla,String nomEstado,String condicionDeEstado, Boolean buscar)
         {
             BLCargo objTablaCod = new BLCargo();
@@ -90,6 +116,18 @@ namespace wfaIntegradoCom.Funciones
                 cboCombo.DataSource = null;
                 cboCombo.ValueMember = "cCodTab";
                 cboCombo.DisplayMember = "cNomTab";
+                if (cboCombo.Name== "cboFiltraIngresos")
+                {
+                    Int32 i = 0;
+                    foreach (Cargo it in lstTablaCod)
+                    {
+                        if (it.cCodTab== "16")
+                        {
+                            lstTablaCod[i].cNomTab = "GPS";
+                        }
+                        i++;
+                    }
+                }
                 cboCombo.DataSource = lstTablaCod;
 
                 return true;
@@ -291,8 +329,55 @@ namespace wfaIntegradoCom.Funciones
             try
             {
                 Variables.lstCuardreCaja = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario);
-                
-                return Variables.lstCuardreCaja[0].idOperacion;
+
+                if (Variables.lstCuardreCaja.Count != 0)
+                {
+                    num = Variables.lstCuardreCaja[0].idOperacion;
+                }
+                else
+                {
+                    Variables.lstCuardreCaja.Add(new CuadreCaja
+                    {
+                        idOperacion = 0,
+                        Detalle = "",
+                        importeSaldo = 0
+
+                    });
+                }
+                return num;
+            }
+            catch (Exception ex)
+            {
+                bResul = false;
+                objUtil.gsLogAplicativo("frmAperturaCaja", "fnVerificarApertura", ex.Message);
+                return num;
+            }
+
+        }
+        public static Int32 fnVerificarAperturaAnterior(DateTime dt,Int32 idUsuario)
+        {
+            bool bResul = false;
+            clsUtil objUtil = new clsUtil();
+            BLDocumentoVenta objApertura = new BLDocumentoVenta();
+            Int32 num = 0;
+            try
+            {
+                Variables.lstCuardreCaja = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(dt, 5), Variables.idSucursal, idUsuario);
+                if (Variables.lstCuardreCaja.Count!=0)
+                {
+                    num= Variables.lstCuardreCaja[0].idOperacion;
+                }
+                else
+                {
+                    Variables.lstCuardreCaja.Add(new CuadreCaja
+                    {
+                        idOperacion=0,
+                        Detalle="",
+                        importeSaldo=0
+
+                    });
+                }
+                return num;
             }
             catch (Exception ex)
             {

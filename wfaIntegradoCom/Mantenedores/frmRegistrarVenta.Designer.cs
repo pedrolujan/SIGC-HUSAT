@@ -3703,7 +3703,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmRegistrarVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "   ";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.frmRegistrarVenta_Load);
             this.siticonePanel1.ResumeLayout(false);
             this.siticonePanel1.PerformLayout();

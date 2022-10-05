@@ -70,6 +70,20 @@ namespace CapaNegocio
             }
 
         }
+        public List<Cargo> blDevolverTablaCodTipoConDT(String cCodTab,Boolean buscar)
+        {
+
+            DACargo daobjUsuario = new DACargo();
+            try
+            {
+                return daobjUsuario.daDevolverTablaCodTipoConDT(cCodTab,buscar);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
         public List<Cargo> blLlenarCboSegunTablaTipoCon(String nomCampoId, String nomCampoNombre, String nomTabla, String nomEstado, String condicionDeEstado, Boolean buscar)
         {
 

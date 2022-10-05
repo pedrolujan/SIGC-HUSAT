@@ -200,7 +200,7 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
-                paBusqueda.Visible = true;
+                paBusqueda.Visible = false;
                 bResult = fnCargarUsuario();
                 pcFecha = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
                 intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
@@ -596,7 +596,7 @@ namespace wfaIntegradoCom.Procesos
             DataGridViewRow dgv=dgvListaMovimiento.Rows[e.RowIndex];
 
             Int32 idDocumento = Convert.ToInt32(dgv.Cells[0].Value);
-            if (Convert.ToInt32(e.ColumnIndex)==5)
+            if (Convert.ToInt32(e.ColumnIndex)==6)
             {
                 fnObetenerActaCierre(idDocumento, 0);
             }

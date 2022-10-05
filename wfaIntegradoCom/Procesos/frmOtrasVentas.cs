@@ -94,6 +94,16 @@ namespace wfaIntegradoCom.Procesos
         static String phlBusqGbCliente = "";
         Boolean estadoTabla, estMoneda, estTipPersona, estTipDocumento, estTipoDescuento, estPLACA, estadoFechaPago, estCliente, estDocumentoEmitir, estImporte;
         String lblMoneda, lblTipPersona, lblTipDocumento, lblTipoDescuento,lblCliente, lblDocumentoEmitir,msgMotivo;
+
+        static DateTime dttFechaRecibida = Variables.gdFechaSis;
+        static Int32 inTipoApertura = 0;
+
+        public void tipoApertura(DateTime dtt, Int32 tipoApertura)
+        {
+            dttFechaRecibida = dtt;
+            inTipoApertura = tipoApertura;
+            ShowDialog();
+        }
         public  void fnObtenerObjVentas(OtrasVentas clsOtrasVentas)
         {
 
@@ -470,6 +480,16 @@ namespace wfaIntegradoCom.Procesos
                 lstOtrasVentas = new List<OtrasVentas>();
                 estadoTabla=false;
                 dgConsulta.Visible = false;
+
+                if (inTipoApertura==0)
+                {
+                    dtFechaTitu.Enabled = true;
+
+                }else if (inTipoApertura==-1)
+                {
+                    dtFechaTitu.Value = dttFechaRecibida;
+                    dtFechaTitu.Enabled = false;
+                }
 
                 cboMoneda.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);
                 //cboTipoPersona.MouseWheel +=  new MouseEventHandler(FunGeneral.cbo_MouseWheel);

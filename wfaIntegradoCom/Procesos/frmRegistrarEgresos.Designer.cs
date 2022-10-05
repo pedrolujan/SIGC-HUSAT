@@ -71,7 +71,7 @@
             this.pbDescripcion2 = new System.Windows.Forms.PictureBox();
             this.txtDescripcion2 = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.dtFechaInicioG = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.dtFechaRegIngresos = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.pbConcepto = new System.Windows.Forms.PictureBox();
             this.pbMoneda2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -82,6 +82,10 @@
             this.lblImporte2 = new System.Windows.Forms.Label();
             this.lblConsepto = new System.Windows.Forms.Label();
             this.lblMoneda2 = new System.Windows.Forms.Label();
+            this.dtFechaRegEgresos = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFuente)).BeginInit();
@@ -98,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMoneda2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImporte2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -156,6 +161,8 @@
             // siticonePanel1
             // 
             this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticonePanel1.Controls.Add(this.dtFechaRegEgresos);
+            this.siticonePanel1.Controls.Add(this.pictureBox2);
             this.siticonePanel1.Controls.Add(this.cboFuenteEgreso);
             this.siticonePanel1.Controls.Add(this.pbFuente);
             this.siticonePanel1.Controls.Add(this.label9);
@@ -172,6 +179,7 @@
             this.siticonePanel1.Controls.Add(this.btnGuardarEgreso);
             this.siticonePanel1.Controls.Add(this.txtDescripcion);
             this.siticonePanel1.Controls.Add(this.label2);
+            this.siticonePanel1.Controls.Add(this.label11);
             this.siticonePanel1.Controls.Add(this.label1);
             this.siticonePanel1.Controls.Add(this.label4);
             this.siticonePanel1.Controls.Add(this.label3);
@@ -609,9 +617,10 @@
             this.tabPage2.Controls.Add(this.pbDescripcion2);
             this.tabPage2.Controls.Add(this.txtDescripcion2);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.dtFechaInicioG);
+            this.tabPage2.Controls.Add(this.dtFechaRegIngresos);
             this.tabPage2.Controls.Add(this.pbConcepto);
             this.tabPage2.Controls.Add(this.pbMoneda2);
+            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.pbImporte2);
@@ -813,26 +822,26 @@
             this.label8.TabIndex = 234;
             this.label8.Text = "Descripcion";
             // 
-            // dtFechaInicioG
+            // dtFechaRegIngresos
             // 
-            this.dtFechaInicioG.BorderColor = System.Drawing.Color.Gainsboro;
-            this.dtFechaInicioG.BorderRadius = 3;
-            this.dtFechaInicioG.BorderThickness = 1;
-            this.dtFechaInicioG.CheckedState.Parent = this.dtFechaInicioG;
-            this.dtFechaInicioG.Enabled = false;
-            this.dtFechaInicioG.FillColor = System.Drawing.Color.White;
-            this.dtFechaInicioG.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.dtFechaInicioG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtFechaInicioG.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaInicioG.HoveredState.Parent = this.dtFechaInicioG;
-            this.dtFechaInicioG.Location = new System.Drawing.Point(394, 37);
-            this.dtFechaInicioG.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtFechaInicioG.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtFechaInicioG.Name = "dtFechaInicioG";
-            this.dtFechaInicioG.ShadowDecoration.Parent = this.dtFechaInicioG;
-            this.dtFechaInicioG.Size = new System.Drawing.Size(273, 36);
-            this.dtFechaInicioG.TabIndex = 232;
-            this.dtFechaInicioG.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            this.dtFechaRegIngresos.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaRegIngresos.BorderRadius = 3;
+            this.dtFechaRegIngresos.BorderThickness = 1;
+            this.dtFechaRegIngresos.CheckedState.Parent = this.dtFechaRegIngresos;
+            this.dtFechaRegIngresos.Enabled = false;
+            this.dtFechaRegIngresos.FillColor = System.Drawing.Color.White;
+            this.dtFechaRegIngresos.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.dtFechaRegIngresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaRegIngresos.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaRegIngresos.HoveredState.Parent = this.dtFechaRegIngresos;
+            this.dtFechaRegIngresos.Location = new System.Drawing.Point(394, 37);
+            this.dtFechaRegIngresos.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaRegIngresos.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaRegIngresos.Name = "dtFechaRegIngresos";
+            this.dtFechaRegIngresos.ShadowDecoration.Parent = this.dtFechaRegIngresos;
+            this.dtFechaRegIngresos.Size = new System.Drawing.Size(273, 36);
+            this.dtFechaRegIngresos.TabIndex = 232;
+            this.dtFechaRegIngresos.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
             // 
             // pbConcepto
             // 
@@ -936,6 +945,59 @@
             this.lblMoneda2.Size = new System.Drawing.Size(0, 15);
             this.lblMoneda2.TabIndex = 237;
             // 
+            // dtFechaRegEgresos
+            // 
+            this.dtFechaRegEgresos.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaRegEgresos.BorderRadius = 3;
+            this.dtFechaRegEgresos.BorderThickness = 1;
+            this.dtFechaRegEgresos.CheckedState.Parent = this.dtFechaRegEgresos;
+            this.dtFechaRegEgresos.Enabled = false;
+            this.dtFechaRegEgresos.FillColor = System.Drawing.Color.White;
+            this.dtFechaRegEgresos.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.dtFechaRegEgresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaRegEgresos.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaRegEgresos.HoveredState.Parent = this.dtFechaRegEgresos;
+            this.dtFechaRegEgresos.Location = new System.Drawing.Point(366, 156);
+            this.dtFechaRegEgresos.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaRegEgresos.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaRegEgresos.Name = "dtFechaRegEgresos";
+            this.dtFechaRegEgresos.ShadowDecoration.Parent = this.dtFechaRegEgresos;
+            this.dtFechaRegEgresos.Size = new System.Drawing.Size(273, 36);
+            this.dtFechaRegEgresos.TabIndex = 234;
+            this.dtFechaRegEgresos.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(645, 159);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.TabIndex = 233;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label10.Location = new System.Drawing.Point(394, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(110, 17);
+            this.label10.TabIndex = 181;
+            this.label10.Text = "Fecha de registro";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label11.Location = new System.Drawing.Point(366, 136);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(110, 17);
+            this.label11.TabIndex = 157;
+            this.label11.Text = "Fecha de registro";
+            // 
             // frmRegistrarEgresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -967,6 +1029,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMoneda2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImporte2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1015,7 +1078,7 @@
         private System.Windows.Forms.PictureBox pbDescripcion2;
         private Siticone.UI.WinForms.SiticoneTextBox txtDescripcion2;
         private System.Windows.Forms.Label label8;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaInicioG;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaRegIngresos;
         private System.Windows.Forms.Label lblImporte2;
         private System.Windows.Forms.Label lblConsepto;
         private System.Windows.Forms.Label lblMoneda2;
@@ -1027,5 +1090,9 @@
         private System.Windows.Forms.PictureBox pbFuente;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblFuente;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaRegEgresos;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

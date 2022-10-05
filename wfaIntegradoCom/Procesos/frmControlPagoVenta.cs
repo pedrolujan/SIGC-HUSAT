@@ -71,6 +71,14 @@ namespace wfaIntegradoCom.Procesos
         String msgComprabanteP, msgMoneda, msgDescuento;
 
         Boolean estadoDeBoton = false;
+        static DateTime dttFechaRecibida = Variables.gdFechaSis;
+        static Int32 inTipoApertura = 0;
+        public void tipoApertura(DateTime dtt, Int32 tipoApertura)
+        {
+            dttFechaRecibida = dtt;
+            inTipoApertura = tipoApertura;
+            ShowDialog();
+        }
         private void pbBuscar_Click(object sender, EventArgs e)
         {
             if (EstadoCarga==true)
@@ -682,6 +690,16 @@ namespace wfaIntegradoCom.Procesos
                 else
                 {
                     btnValidarEstados.Visible = false;
+                }
+                if (inTipoApertura==0)
+                {
+                    dtFechaPago.Enabled = true;
+
+                }
+                else if (inTipoApertura==-1)
+                {
+                    dtFechaPago.Value = dttFechaRecibida;
+                    dtFechaPago.Enabled = false;
                 }
 
             }

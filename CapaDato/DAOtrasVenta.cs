@@ -76,7 +76,7 @@ namespace CapaDato
                 pa[0].Value = idDocumento;
                 pa[1] = new SqlParameter("@pcBusqueda", SqlDbType.VarChar,40);
                 pa[1].Value = pcBusqueda;
-                pa[2] = new SqlParameter("@activaFecha", SqlDbType.Int);
+                pa[2] = new SqlParameter("@activaFecha", SqlDbType.Bit);
                 pa[2].Value = activarFechas;
                 pa[3] = new SqlParameter("@dFechaIn", SqlDbType.DateTime);
                 pa[3].Value = fechaInicio;

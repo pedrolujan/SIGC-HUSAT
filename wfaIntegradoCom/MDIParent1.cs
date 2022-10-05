@@ -63,6 +63,7 @@ namespace wfaIntegradoCom
         List<ReporteBloque> lsReporteBloque = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueEgresos = new List<ReporteBloque>();
         List<ReporteBloque> lstRepDetalleIngresos = new List<ReporteBloque>();
+        List<ReporteBloque> lstRepDetalleIngresosDAshboard = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueGen = new List<ReporteBloque>();
         String codOperacion = "";
         String codTipoReporte = "";
@@ -328,52 +329,60 @@ namespace wfaIntegradoCom
             }
         }
 
-        public Boolean Loading()
+        public void login()
         {
 
-            frmUsuario login = new frmUsuario();
             Boolean bLoading = false;
+            frmUsuario login = new frmUsuario();
+
             BLMenu objMenu = new BLMenu();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                bLoading = true;
+                frmLoad frm = new frmLoad();
+                dtMenu = objMenu.BLCargarMenu(Variables.gnCodUser, 1);
+
+
+                fnCargarVariableGlobal();
+                fnCargarVariableImpresion();
+                if (dtMenu.Tables.Count > 0)
+                {
+                    if (AbrirFrmLoad(new frmLoad()) && LoadCarga == true)
+                    {
+
+
+                        //Frm_FormClosed();
+                    }
+
+                }
+
+
+
+                //frm.Inicio();
+
+            }
+            else
+            {
+                bLoading = false;
+
+                this.Close();
+
+
+            }
+            fnValidarusuarioEnSession();
+        }
+        public void Loading()
+        {
+
+            
 
             try
             {
-                if (login.ShowDialog() == DialogResult.OK)
-                {
-                    bLoading = true;
-                    frmLoad frm = new frmLoad();
-                    dtMenu = objMenu.BLCargarMenu(Variables.gnCodUser, 1);
-
-
-                    fnCargarVariableGlobal();
-                    fnCargarVariableImpresion();
-                    if (dtMenu.Tables.Count > 0)
-                    {
-                        if (AbrirFrmLoad(new frmLoad()) && LoadCarga==true)
-                        {
-
-
-                            //Frm_FormClosed();
-                        }
-
-                    }
-
-
-
-                    //frm.Inicio();
-
-                }
-                else
-                {
-                    bLoading = false;
-
-                    this.Close();
-
-
-                }
-
+                login();
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltraIngresos, "idOperacion", "cNombreOperacion", "OperacionHusat", "cGrupoOpe", "GOPE0004", true);
+                FunGeneral.fnLlenarTablaCodTipoCon(cboTipoPago, "TIPA", true);
             }
             catch (Exception ex) {
-                bLoading = false;
                 MessageBox.Show(ex.Message, "Avisar a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             finally
@@ -385,7 +394,6 @@ namespace wfaIntegradoCom
                 //treeView1.Controls.Add(pnlParaDashboard);
                 //fnMostrarDashboard();
             }
-            return bLoading;
         }
         void cbos_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -1288,11 +1296,14 @@ namespace wfaIntegradoCom
                 InitializeTimer();
 
                 SafelySubscribeToControllerEvents();
+                
                 FunGeneral.fnLlenarTablaCodTipoCon(cboTipoReporte, "TRPT", false);
                 Loading();
                 cboTipoReporte.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
                 cboOperacion.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
                 cboxSelecThema.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
+                cboFiltraIngresos.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
+                cboTipoPago.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
 
                 dtFechaFinG.Value = Variables.gdFechaSis;
                 dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
@@ -1753,8 +1764,8 @@ namespace wfaIntegradoCom
             panelCerrarSession.Visible = false;
             LoadCarga = false;
             fnOcultarObjetos();
-            this.Loading();
-           
+            login();
+
 
 
         }
@@ -2526,6 +2537,33 @@ namespace wfaIntegradoCom
         {
 
         }
+
+        public List<ReporteBloque> fnBuscarEgresos(Int32 tipoCon,Int32 numPagina)
+        {
+
+            bl = new BLControlCaja();
+            DataTable dtRes = new DataTable();
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.chkActivarFechas = chkHabilitarFechasBusG.Checked;
+            clsBusq.chkActivarDia = chkDiaEspecificoG.Checked;
+            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
+            clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
+            clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
+            clsBusq.cod2 = tipoCon == -1 ? "0" : codOperacion;
+            clsBusq.cod3 = cboOperacion.SelectedValue is null ? "" + Variables.gnCodUser : cboOperacion.SelectedValue.ToString();
+            clsBusq.cod4 = Convert.ToString(cboTipoPago.SelectedValue);
+            clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
+            clsBusq.numPagina = numPagina;
+            clsBusq.tipoCon = tipoCon;
+
+
+            String cBuscar = txtBuscarRepGeneral.Text.ToString();
+            Boolean chkHabilitarFechas = chkHabilitarFechasBusG.Checked;
+            Boolean chkDiaEsp = chkDiaEspecificoG.Checked;
+
+            Int32 filas = 10;
+            return bl.blBuscarEgresos(clsBusq);
+        }
         public void fnBuscarReporteGeneralVentas(SiticoneDataGridView dgv, Int32 numPagina, Int32 tipoCon)
         {
            
@@ -2538,7 +2576,7 @@ namespace wfaIntegradoCom
             clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
             clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
             clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
-            clsBusq.cod2 = tipoCon == -1 ? "" : codOperacion;
+            clsBusq.cod2 = tipoCon == -1 ? cboFiltraIngresos.SelectedValue.ToString() : codOperacion;
             clsBusq.cod3 = cboOperacion.SelectedValue is null?""+Variables.gnCodUser: cboOperacion.SelectedValue.ToString();
             clsBusq.cod4 = "";
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
@@ -2559,7 +2597,7 @@ namespace wfaIntegradoCom
             var result = bl.blBuscarDashBoard(clsBusq);
             fnGenerarPaneles(result.Item1);
             lsReporteBloque = result.Item2;
-            lsReporteBloqueEgresos = result.Item3;
+            lsReporteBloqueEgresos = fnBuscarEgresos(0,0);
             lstCajaChica = result.Item4;
             fnGenerarPanelsIndividuales(lstCajaChica, FWpnCajaChicaCopias, "pnCCh");
             fnPosicionarAlCentrocajas(FWpnCajaChicaCopias, siticonePanel3);
@@ -2695,8 +2733,8 @@ namespace wfaIntegradoCom
             lblIngresos.Size = new Size(siticonePanel3.Width - 20, 40);
             //lblEgresos.Padding = lblIngresos.Padding;
             lblEgresos.Size = lblIngresos.Size;
-            lblEgresos.TextAlignment =  ContentAlignment.MiddleLeft;
-            lblIngresos.TextAlignment =  ContentAlignment.MiddleLeft;
+            //lblEgresos.TextAlignment =  ContentAlignment.MiddleLeft;
+            //lblIngresos.TextAlignment =  ContentAlignment.MiddleLeft;
 
             dgvListaPorBloque.Location = new Point(lblIngresos.Location.X, (lblIngresos.Location.Y+lblIngresos.Height )+ espacios);
             lblHeaderDetalle.Location = new Point(lblHeaderDetalle.Location.X, (lblIngresos.Location.Y+lblIngresos.Height) + espacios);
@@ -2705,8 +2743,10 @@ namespace wfaIntegradoCom
             dgvEgresos.Location = new Point(lblIngresos.Location.X, (lblEgresos.Location.Y+ lblEgresos.Height)+ espacios);
             btnRegistrarEgresos.Location = new Point(lblIngresos.Location.X, (dgvEgresos.Location.Y+ dgvEgresos.Height)+espacios);
             siticonePanel3.Height = (dgvListaPorBloque.Height + dgvEmergente.Height+ lblEgresos.Height+ lblIngresos.Height+ dgvEgresos.Height+ btnRegistrarEgresos.Height);
-
+            btnMontoEnCaja.Location = new Point(btnMontoEnCaja.Location.X, btnRegistrarEgresos.Location.Y);
             
+
+
         }
         private IconPictureBox fngenerarIconos(ReporteBloque rpt)
         {
@@ -3231,12 +3271,14 @@ namespace wfaIntegradoCom
                 lblFechaFinal.Visible = false;
                 dtFechaFinG.Visible = false;
                 lblFechaInicial.Text = "Elija el dia para buscar:";
+                btnMontoEnCaja.Visible = true;
             }
             else
             {
                 lblFechaFinal.Visible = true;
                 dtFechaFinG.Visible = true;
                 lblFechaInicial.Text = "Fecha Inicio:";
+                btnMontoEnCaja.Visible = false;
             }
         }
 
@@ -3299,7 +3341,14 @@ namespace wfaIntegradoCom
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                lstRepDetalleIngresosDAshboard.Clear();
                 fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
+
+                FunGeneral.fnVerificarAperturaAnterior(Convert.ToDateTime(dtFechaInicioG.Value), Convert.ToInt32(cboOperacion.SelectedValue));
+                lstRepDetalleIngresosDAshboard = fnBuscarDetalleParaCuadreDashboard();
+                Double MontoIngresos = lstRepDetalleIngresosDAshboard.Sum(i => i.ImporteRow);
+                Double MontoEgresos = lsReporteBloqueEgresos.Sum(i => i.ImporteRow);
+                btnMontoEnCaja.Text ="Importe en Caja: "+ FunGeneral.fnFormatearPrecio("S/", (MontoIngresos - MontoEgresos) + Variables.lstCuardreCaja[0].importeSaldo,0);
             }
         }
 
@@ -3357,7 +3406,7 @@ namespace wfaIntegradoCom
 
             if (FunGeneral.fnVerificarApertura(Variables.gnCodUser) !=1)
             {
-                if (Variables.lstCuardreCaja.Count == 0)
+                if (Variables.lstCuardreCaja.Count == 0 || Variables.lstCuardreCaja[0].idOperacion==0)
                 {
                     lbl.Text = "¡Por Favor debes APERTURAR CAJA Para poder registrar ingresos ó egresos!";
 
@@ -3441,6 +3490,27 @@ namespace wfaIntegradoCom
             clsBusq.cod4 = "";
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
             clsBusq.tipoCon=-1;
+
+
+            return bl.blDetalleParaCuadre(clsBusq, lsReporteBloqueGen);
+        }
+        private List<ReporteBloque> fnBuscarDetalleParaCuadreDashboard()
+        {
+            List<ReporteBloque> lst = new List<ReporteBloque>();
+
+            bl = new BLControlCaja();
+            DataTable dtRes = new DataTable();
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.chkActivarFechas = chkHabilitarFechasBusG.Checked;
+            clsBusq.chkActivarDia = chkDiaEspecificoG.Checked;
+            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
+            clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
+            clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
+            clsBusq.cod2 = codOperacion;
+            clsBusq.cod3 = cboOperacion.SelectedValue is null ? ""+Variables.gnCodUser : cboOperacion.SelectedValue.ToString();
+            clsBusq.cod4 = "";
+            clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
+            clsBusq.tipoCon=0;
 
 
             return bl.blDetalleParaCuadre(clsBusq, lsReporteBloqueGen);
@@ -3564,8 +3634,18 @@ namespace wfaIntegradoCom
             }
             
 
-        }       
-      
+        }
+
+        private void cboFiltraIngresos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboTipoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lsReporteBloqueEgresos = fnBuscarEgresos(0, 0);
+            fnGenerarTabla(dgvEgresos, lsReporteBloqueEgresos.Count, lsReporteBloqueEgresos);
+        }
     }
 
 }

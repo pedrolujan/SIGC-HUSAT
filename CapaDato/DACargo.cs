@@ -199,6 +199,51 @@ namespace CapaDato
             }
 
         }
+        public List<Cargo> daDevolverTablaCodTipoConDT(String cCodTab,Boolean buscar)
+        {
+
+
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtUsuario = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@pecCodTab", SqlDbType.NVarChar, 8);
+                pa[0].Value = cCodTab;
+
+
+                objCnx = new clsConexion("");
+                dtUsuario = objCnx.EjecutarProcedimientoDT("uspListarTablaCod", pa);
+
+                List<Cargo> lstCargo = new List<Cargo>();
+                
+                foreach (DataRow drMenu in dtUsuario.Rows)
+                {
+                    lstCargo.Add(new Cargo(
+                        Convert.ToString(drMenu["cCodTab"]),
+                        Convert.ToString(drMenu["cNomTab"]),
+                        Convert.ToString(drMenu["cValor"])));
+                }
+
+                return lstCargo;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACargo.cs", "daDevolverTablaCod", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
         public List<Cargo> daLlenarCboSegunTablaTipoCon(String nomCampoId, String nomCampoNombre, String nomTabla, String nomEstado, String condicionDeEstado, Boolean buscar)
         {
 

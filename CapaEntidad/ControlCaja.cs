@@ -36,9 +36,8 @@ namespace CapaEntidad
         public String codAuxiliar { get; set; }
         public String SimboloMoneda { get; set; }
         public String MonImporteRow { get; set; }
-        public Boolean estado { get; set; }
-        
-
+        public Boolean estado { get; set; }        
+        public DateTime dFecha { get; set; }
     }
 
     public class Busquedas
