@@ -40,12 +40,22 @@ namespace wfaIntegradoCom.Procesos
         static List<xmlActaCierraCaja> ListaxmlActaCierre = new List<xmlActaCierraCaja>();
         static CuadreCaja clcCaja = new CuadreCaja();
         static Int32 estadoApertura = 0;
+        static Int32 sIdUsuario = 0;
         CuadreCaja clsCuadreCaja = new CuadreCaja();
         static Int32 lnTipoCon = 0;
         public void Inicio(List<ReporteBloque> lstIngresos, List<ReporteBloque> lstEgresos, List<ReporteBloque> lstDetIngresos, List<ReporteBloque> lstCajaCh, Int32 tipoCon)
         {
             lstReporteIngresos = lstIngresos;
             lstReporteEgresos = lstEgresos;
+            lstDetalleIngresos = lstDetIngresos;
+            lstCajaChica = lstCajaCh;
+            intTipoLlamada = tipoCon;
+            this.ShowDialog();
+        }
+        public void tipoApertura(List<ReporteBloque> lstEgresos, List<ReporteBloque> lstDetIngresos, List<ReporteBloque> lstCajaCh,Int32 idUs, Int32 tipoCon)
+        {
+            lstReporteEgresos = lstEgresos;
+            sIdUsuario = idUs;
             lstDetalleIngresos = lstDetIngresos;
             lstCajaChica = lstCajaCh;
             intTipoLlamada = tipoCon;

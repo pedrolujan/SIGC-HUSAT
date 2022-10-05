@@ -32,6 +32,7 @@ namespace wfaIntegradoCom.Procesos
         List<Cargo> lstOpciones = new List<Cargo>();
         static Int32 intApeCierre = 0;
         static List<ReporteBloque> lstAperCierre = new List<ReporteBloque>();
+        BLControlCaja bl;
         private void fnLlenarProcesos(DataGridView dgv, List<Cargo> lst)
         {
             dgv.Rows.Clear();
@@ -166,6 +167,9 @@ namespace wfaIntegradoCom.Procesos
             {
                 ReporteBloque clsReporte = lstAperCierre.Find(i => i.Codigoreporte == codigo);
                 frmMovimientoCaja frm = new frmMovimientoCaja();
+                List<ReporteBloque> lstRepDetalleIngresos = new List<ReporteBloque>();
+                //lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
+                //frm.tipoApertura();
                 frm.ShowDialog() ;
             }
 
@@ -178,6 +182,27 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
+        //private List<ReporteBloque> fnBuscarDetalleParaCuadreDashboard()
+        //{
+        //    List<ReporteBloque> lst = new List<ReporteBloque>();
+
+        //    bl = new BLControlCaja();
+        //    DataTable dtRes = new DataTable();
+        //    Busquedas clsBusq = new Busquedas();
+        //    clsBusq.chkActivarFechas = true;
+        //    clsBusq.chkActivarDia = true;
+        //    clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaAccion.Value, 5);
+        //    clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaAccion.Value, 5);
+        //    clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
+        //    clsBusq.cod2 = codOperacion;
+        //    clsBusq.cod3 = cboOperacion.SelectedValue is null ? "" + Variables.gnCodUser : cboOperacion.SelectedValue.ToString();
+        //    clsBusq.cod4 = "";
+        //    clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
+        //    clsBusq.tipoCon = 0;
+
+
+        //    return bl.blDetalleParaCuadre(clsBusq, lsReporteBloqueGen);
+        //}
         private Form fnDevolverForm(String pcNomForm)
         {
             Object obj = null;
