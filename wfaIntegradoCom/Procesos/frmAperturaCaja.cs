@@ -186,7 +186,7 @@ namespace wfaIntegradoCom.Procesos
 
                 if (!(FunGeneral.fnVerificarApertura(idUsuarioST) == 1 ? true : false))
                 {
-                    lstCierreCajaAnterior = FunGeneral.fnBuscarImporteCierreAnterior(idUsuarioST);
+                    lstCierreCajaAnterior = FunGeneral.fnBuscarImporteCierreAnterior(idUsuarioST,-1);
 
                     clsrb = lstCierreCajaAnterior.Count > 0 ? lstCierreCajaAnterior[0] : new ReporteBloque();
                     if (clsrb is ReporteBloque)
@@ -224,6 +224,20 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
+                Int32 numHora = 0;
+                if (idUsuarioST==4)
+                {
+                    numHora = 11;
+                    String dt = dtFechaApertura.ToString("yyyy/MM/dd");
+                    //dtFechaApertura=Convert.ToDateTime(dt).AddHours
+                    dtFechaApertura.AddHours(10);
+                    dtFechaApertura.AddHours(10);
+                }
+                else
+                {
+
+                }
+                lstCierreCajaAnterior = FunGeneral.fnBuscarImporteCierreAnterior(idUsuarioST,-2);
                 txtFecha.Text = FunGeneral.GetFechaHoraFormato(dtFechaApertura, 6);
                 txtUsuario.Text = Nomusuario;
             }

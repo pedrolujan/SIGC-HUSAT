@@ -618,9 +618,9 @@ namespace CapaDato
             }
 
         }
-        public List<ReporteBloque> daBuscarImporteCierreAnterior(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
+        public List<ReporteBloque> daBuscarImporteCierreAnterior(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[3];
+            SqlParameter[] pa = new SqlParameter[4];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             Boolean bVerificar = false;
@@ -628,12 +628,14 @@ namespace CapaDato
             List<ReporteBloque> lstImporteDeCierreAnt = new List<ReporteBloque>();
             try
             {
-                pa[0] = new SqlParameter("@pedFechaSist", SqlDbType.Date);
+                pa[0] = new SqlParameter("@pedFechaSist", SqlDbType.DateTime);
                 pa[0].Value = pcFechaSist;
                 pa[1] = new SqlParameter("@peidSucursal", SqlDbType.SmallInt);
                 pa[1].Value = pidSucursal;
                 pa[2] = new SqlParameter("@peidUsuario", SqlDbType.Int);
                 pa[2].Value = idUsuario;
+                pa[3] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[3].Value = tipoCon;
                 objCnx = new clsConexion("");
                 dt=objCnx.EjecutarProcedimientoDT("uspBuscarImporteCierreAnterior", pa);
 

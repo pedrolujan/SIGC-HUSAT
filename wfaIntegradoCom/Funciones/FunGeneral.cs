@@ -387,14 +387,14 @@ namespace wfaIntegradoCom.Funciones
             }
 
         }
-        public static List<ReporteBloque> fnBuscarImporteCierreAnterior(Int32 idUsuario)
+        public static List<ReporteBloque> fnBuscarImporteCierreAnterior(Int32 idUsuario,Int32 tipoCon)
         {
             bool bResul = false;
             clsUtil objUtil = new clsUtil();
             BLDocumentoVenta objApertura = new BLDocumentoVenta();
             try
             {
-                return objApertura.blBuscarImporteCierreAnterior(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario);
+                return objApertura.blBuscarImporteCierreAnterior(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario,  tipoCon);
                
             }
             catch (Exception ex)

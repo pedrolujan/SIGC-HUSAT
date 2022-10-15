@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 using CapaNegocio;
 using wfaIntegradoCom.Funciones;
@@ -32,6 +32,9 @@ using CapaDato;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using wfaIntegradoCom.Consultas;
 using System.Drawing.Drawing2D;
+using Xceed.Wpf.Toolkit;
+using IconButton = FontAwesome.Sharp.IconButton;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace wfaIntegradoCom
 
@@ -1632,72 +1635,7 @@ namespace wfaIntegradoCom
         }
 
         //int contador = 0;
-        private async Task StateChangedFirebase(object sender, GenericResponse<dynamic> e)
-        {
-            await Task.Run(() =>
-            {
-                try
-                {
-
-                    OrderEspecificResponse<dynamic> orderEspecific = null;
-                    if (e != null && e.key.Trim() != "")
-                    {
-                        bool blnIsExistsObject = e.obj.ToString().Length > 6 ? true : false;
-                        int intResul = 0;
-                        if (!blnIsExistsObject && e.evenType == 0)
-                        {
-                            orderEspecific = hubClient.fnGetOrderId(e.key).Result;
-                            intResul = Convert.ToInt32(orderEspecific.Status);
-                        }
-                        else intResul = 200;
-
-                        if (intResul == 200)
-                        {
-
-                            OrderWeb order = JsonConvert.DeserializeObject<OrderWeb>((blnIsExistsObject ? e.obj.ToString() : orderEspecific.obj));
-                            int intEstado = order.intEstado;
-
-                            if (intEstado == 0 || intEstado == 1)
-                            {
-                                WPF.CTRL.Colocaciones.DCPedido pedido = new WPF.CTRL.Colocaciones.DCPedido();
-                                pedido.Codigo = e.key;
-                                pedido.EventType = e.evenType;
-                                ucOpcion1.fnCargarAlertRealTime(1, pedido);
-                            }
-
-                            OrderResponse orderResponse = FunGeneral.fnGetOrderxCodigo(e.key);
-                            if (orderResponse.Status == 201 && e.evenType == 0 && intEstado == 0)
-                            {
-                                Funciones.Models.OrderRequest orderRequest = new Funciones.Models.OrderRequest();
-                                orderRequest.order.Codigo = e.key;
-                                orderRequest.order.intEstado = 1;
-                                orderRequest.order.idUser = Variables.gnCodUser;
-                                orderRequest.order.dFechaRegistro = Variables.gdFechaSis;
-                                orderRequest.order.idUserAct = Variables.gnCodUser;
-                                orderRequest.order.dFechaAct = Variables.gdFechaSis;
-                                orderRequest.order.xmlObject = (blnIsExistsObject ? e.obj.ToString() : orderEspecific.obj);
-                                saveOrder(orderRequest);
-                            }
-                            else if (orderResponse.Status == 200 && e.evenType == 1)
-                            {
-                                Funciones.Models.OrderRequest orderRequest = new Funciones.Models.OrderRequest();
-                                orderRequest.order.Codigo = e.key;
-                                orderRequest.order.intEstado = 2;
-                                orderRequest.order.idUser = Variables.gnCodUser;
-                                orderRequest.order.dFechaRegistro = Variables.gdFechaSis;
-                                orderRequest.order.idUserAct = Variables.gnCodUser;
-                                orderRequest.order.dFechaAct = Variables.gdFechaSis;
-                                orderRequest.order.xmlObject = "";
-                                saveOrder(orderRequest, 1);
-                            }
-
-                        }
-                    }
-                }
-                catch (Exception ex) { }
-            });
-        }
-
+        
 
 
         private void saveOrder(Funciones.Models.OrderRequest objOrder, int lnTipoLlamada = 0)

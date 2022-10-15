@@ -168,13 +168,13 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public List<ReporteBloque> blBuscarImporteCierreAnterior(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
+        public List<ReporteBloque> blBuscarImporteCierreAnterior(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario, Int32 tipoCon)
         {
 
             DADocumentoVenta objDocVenta = new DADocumentoVenta();
             try
             {
-                return objDocVenta.daBuscarImporteCierreAnterior(pcFechaSist,pidSucursal,idUsuario);
+                return objDocVenta.daBuscarImporteCierreAnterior(pcFechaSist,pidSucursal,idUsuario,  tipoCon);
             }
             catch (Exception ex)
             {
