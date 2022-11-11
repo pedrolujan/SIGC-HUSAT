@@ -37,6 +37,9 @@ namespace CapaEntidad
 
         String _cDocumento = "";
         public String cDocumento { get { return _cDocumento; } set { _cDocumento = value; } }
+        
+        String _codTema = "";
+        public String codTema { get { return _codTema; } set { _codTema = value; } }
 
         String _cDireccion = "";
         public String cDireccion { get { return _cDireccion; } set { _cDireccion = value; } }

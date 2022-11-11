@@ -75,9 +75,9 @@ namespace wfaIntegradoCom.Consultas
             // 
             this.label1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(128, 577);
+            this.label1.Location = new System.Drawing.Point(0, 577);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(325, 37);
+            this.label1.Size = new System.Drawing.Size(587, 37);
             this.label1.TabIndex = 97;
             this.label1.Text = "¿ Desea Generar la Venta ?";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

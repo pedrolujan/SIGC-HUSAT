@@ -3,6 +3,7 @@ using CapaEntidad;
 using CapaUtil;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -201,6 +202,14 @@ namespace CapaDato
             String cCodVenta = "";
             DataTable dtresp = new DataTable();
             xmlInstalacion xmlInstal = new xmlInstalacion();
+            List<AccesoriosEquipo> lstaAcc = new List<AccesoriosEquipo>();
+            List<ServicioEquipo> lstaServ= new List<ServicioEquipo>();
+            List<AccesoriosEquipo> lstaAccesorioActual = new List<AccesoriosEquipo>();
+            List<ServicioEquipo> lstaServicioActual= new List<ServicioEquipo>();
+            DataSet dtMenu = new DataSet();
+            DataView dvaccesorio = new DataView();
+            DataView dvservicio = new DataView();
+            DataView dvgen = new DataView();
             String xmlActaInstalacion = "";
             String CodigoActaInstalacion = "";
             String usuario = "";
@@ -213,19 +222,73 @@ namespace CapaDato
                 pa[2] = new SqlParameter("@idTipoVenta", SqlDbType.Int) { Value =  idTipoVenta };
 
                 objCnx = new clsConexion("");
-                dtresp = objCnx.EjecutarProcedimientoDT("uspBuscarActaInstalacion", pa);
+                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarActaInstalacion", pa);
+                dvgen = new DataView(dtMenu.Tables[0]);
+                dvaccesorio = new DataView(dtMenu.Tables[1]);
+                dvservicio = new DataView(dtMenu.Tables[2]);
 
-                foreach (DataRow dr in dtresp.Rows)
+                foreach (DataRowView dr in dvgen)
                 {
                     xmlActaInstalacion = Convert.ToString(dr["XmlInstalacion"]);
                     CodigoActaInstalacion = Convert.ToString(dr["CodigoInstalacion"]);
                     usuario = Convert.ToString(dr["cUsuario"]);
                     TipoVenta = Convert.ToString(dr["TipoVenta"]);
                 }
+
+                foreach (DataRowView dr in dvaccesorio)
+                {
+                    lstaAcc.Add(new AccesoriosEquipo
+                    {
+                        checkAccesorio=true,
+                        idAccesorios= Convert.ToInt32(dr["idAccesorio"]),
+                        NombreAccesorio= Convert.ToString(dr["cAccesorioGps"])
+                    });
+                }
+                foreach (DataRowView dr in dvservicio)
+                {
+                    lstaServ.Add(new ServicioEquipo
+                    {
+                        checkServicio = true,
+                        idServicios = Convert.ToInt32(dr["idServicio"]),
+                        NombreServicio = Convert.ToString(dr["cServicioGps"])
+                    });
+                }
+
+                
                 if (xmlActaInstalacion!="")
                 {
                     xmlInstal= clsUtil.Deserialize<xmlInstalacion>(xmlActaInstalacion);
+                    lstaAccesorioActual = xmlInstal.ListaAccesorio;
+                    lstaServicioActual = xmlInstal.ListaServicio;
+
+                    for (int i = 0; i < lstaAccesorioActual.Count; i++)
+                    {
+                        for (int j = 0; j < lstaAcc.Count; j++)
+                        {
+                            if (lstaAccesorioActual[i].idAccesorios == lstaAcc[j].idAccesorios)
+                            {
+                                lstaAccesorioActual[i].checkAccesorio = true;
+                            }
+                        }
+                        
+
+                    }
+
+                    for (int i = 0; i < lstaServicioActual.Count; i++)
+                    {
+                        for (int j = 0; j < lstaServ.Count; j++)
+                        {
+                            if (lstaServicioActual[i].idServicios == lstaServ[j].idServicios)
+                            {
+                                lstaServicioActual[i].checkServicio = true;
+                            }
+                        }
+                        
+
+                    }
                     xmlInstal.clsInstalacion.codigoInstalacion = CodigoActaInstalacion;
+                    xmlInstal.ListaAccesorio= lstaAccesorioActual;
+                    xmlInstal.ListaServicio = lstaServicioActual;
                     xmlInstal.clsInstalacion.cUsuario = usuario;
                     xmlInstal.ListaPlan[0].tarifas= TipoVenta;
                 }
@@ -273,7 +336,36 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones,String valorRadio)
+        public Boolean daActualizarTemaUsuario(Int32 idUsuario,String codTema)
+        {
+            SqlParameter[] pa = new SqlParameter[2];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            String cCodVenta = "";
+            DataTable dtresp = new DataTable();
+
+            try
+            {
+                pa[0] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = idUsuario };
+                pa[1] = new SqlParameter("@codTema", SqlDbType.NVarChar,8) { Value = codTema };
+                
+                objCnx = new clsConexion("");
+                dtresp = objCnx.EjecutarProcedimientoDT("uspActualizarTemaUsuario", pa);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DAAccesorios.cs", "daDevolverAccesorio", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, String fechaInical, String fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones,String valorRadio)
         {
             SqlParameter[] pa = new SqlParameter[12];
             DataTable dtVentaG;
@@ -302,7 +394,7 @@ namespace CapaDato
                 }
                 else
                 {
-                    dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarVentasGenerales", pa);
+                    dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarVentaGeneral", pa);
                 }
 
                 return dtVentaG;
@@ -348,6 +440,7 @@ namespace CapaDato
                         cUsuario.cApeMat = Convert.ToString(drMenu["cApeMat"]);
                         cUsuario.cDireccion= Convert.ToString(drMenu["cDireccion"]);
                         cUsuario.cDocumento= Convert.ToString(drMenu["cDocumento"]);
+                        cUsuario.codTema= Convert.ToString(drMenu["codTema"]);
                     }
                     else
                     {
@@ -365,6 +458,7 @@ namespace CapaDato
                         cUsuario.cApeMat = Convert.ToString(drMenu["cApeMat"]);
                         cUsuario.cDireccion = Convert.ToString(drMenu["cDireccion"]);
                         cUsuario.cDocumento = Convert.ToString(drMenu["cDocumento"]);
+                        cUsuario.codTema = Convert.ToString(drMenu["codTema"]);
                         cUsuario.strPerfil = ms;
                     }
                 }

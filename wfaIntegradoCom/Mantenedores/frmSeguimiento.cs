@@ -43,13 +43,19 @@ namespace wfaIntegradoCom.Mantenedores
         static Int32 stMesesTipoPlan;
         static Int32 stIdTarifa;
         String letraColor = "";
+        Boolean estadoBusqueda = false;
 
         String msjNombre, msjApellido, msjEstadoProspecto,
           msjCelular1, msjCelular2, msjCorreo, msjClase,
           msjModoUso, msjTipoPlan, msjPlan, msjCodProspecto,
           msjTipoContacto, msjObservaciones, msjFechaVenida, 
             msjCodProsSegui ,msjObservacionSeguimiento, msjfechaSeguimiento,msjEstadoSeguimiento,msjTarifa;
-
+        Int32 lnTipoLLamada = 0;
+        public void Inicio(Int32 tpLLamada)
+        {
+            lnTipoLLamada = tpLLamada;
+            this.Show();    
+        }
         private void fnLimpiarControlesVisita()
         {
             /////TEXBOXS
@@ -489,12 +495,19 @@ namespace wfaIntegradoCom.Mantenedores
             String msj;
             DateTime solofechaProxSeguimiento =fnCalcularSoloFecha(Convert.ToDateTime(dtpFechaProximoSeguimiento.Value.ToString()));
             Int32 soloHoraFechSeg = Convert.ToInt32(txtHoraSigSeguimiento.Value.ToString());
-
+            if (soloHoraFechSeg==0 || soloHoraFechSeg>19)
+            {
+                txtHoraSigSeguimiento.Value = 19;
+            }
+            soloHoraFechSeg = Convert.ToInt32(txtHoraSigSeguimiento.Value.ToString());
             DateTime fechaProxSeguimiento = solofechaProxSeguimiento.AddHours(soloHoraFechSeg);
             DateTime fechaSistema = Variables.gdFechaSis;
-            DateTime fecha1mes = fechaSistema.AddDays(15);
+            DateTime fecha1mes = fechaSistema.AddDays(2);
+            DateTime fechaMenosHoras = fecha1mes.AddHours(-fechaSistema.Hour);
 
-            if (fechaProxSeguimiento > fechaSistema && fechaProxSeguimiento < fecha1mes)
+            DateTime fechaMasHoras = fechaMenosHoras.AddHours(soloHoraFechSeg);
+
+            if (fechaProxSeguimiento > fechaSistema && fechaProxSeguimiento < fechaMasHoras)
             {
                 img.Image = Properties.Resources.ok;
                 msj = "Fecha Correcta";
@@ -506,7 +519,7 @@ namespace wfaIntegradoCom.Mantenedores
             else
             {
                 img.Image = Properties.Resources.error;
-                msj = "La Próxima fecha = " + fechaProxSeguimiento.ToString() +"\nNo puede ser menor a la Fecha y Hora Actual y Mayor a 1 Mes";
+                msj = "La Próxima fecha = " + fechaProxSeguimiento.ToString() +"\nNo puede ser menor a la Fecha y Hora Actual y Mayor a 2 Dias";
                 lbl.ForeColor = Variables.ColorError;
                 lbl.Text = msj;
 
@@ -819,8 +832,10 @@ namespace wfaIntegradoCom.Mantenedores
         {
             String busqueda = txtBuscarNombreCliente.Text.Trim().ToString();
             Int32 pagina = Convert.ToInt32(cboPaginaProsPlan.Text.ToString());
-
-            fnBuscarTablaProspectosPlan(busqueda, pagina, -2, letraColor) ;
+            if (estadoBusqueda == false)
+            {
+                fnBuscarTablaProspectosPlan(busqueda, pagina, -1, letraColor) ;
+            }
         }
 
         
@@ -912,6 +927,7 @@ namespace wfaIntegradoCom.Mantenedores
         private void opcEditar_Click(object sender, EventArgs e)
         {
             Boolean bResul = false;
+            btnEditar.Enabled = true;  
              
             bResul = fnListarProspectoPlanEspecifico(dgProspecto,1);
             if (!bResul)
@@ -919,6 +935,7 @@ namespace wfaIntegradoCom.Mantenedores
                 MessageBox.Show("Error al Cargar accesorio Especifico", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
+            FunValidaciones.fnHabilitarBoton(btnEditar, true);
 
         }
 
@@ -938,6 +955,8 @@ namespace wfaIntegradoCom.Mantenedores
             FunValidaciones.fnHabilitarBoton(btnGuardar, false);
             Int32 idProspectoPlan = Convert.ToInt32(txtIdVisita.Text.ToString());
             tabRegistroVisitas.AutoScroll = true;
+            
+            btnNuevo.Enabled = false;
             fnLimpiarSeguimiento();
             fnBuscarTablaSeguimiento(idProspectoPlan, 1, -1);
             String idEstadoCliente = cboEstado.SelectedValue.ToString();
@@ -953,7 +972,7 @@ namespace wfaIntegradoCom.Mantenedores
                 FunValidaciones.fnHabilitarBoton(btnNuevoSeguimiento, false);
                 FunValidaciones.fnHabilitarBoton(btnGuardarSeguimiento, false);
             }
-            
+            tabRegistroVisitas.AutoScrollPosition = new Point(0, 842);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -1314,8 +1333,8 @@ namespace wfaIntegradoCom.Mantenedores
                     dtpFechaFinalBusqueda.Enabled = true;
 
                  
-                    String busqueda = txtBuscarNombreCliente.Text.ToString().Trim();
-                    fnBuscarTablaProspectosPlan(busqueda, 0, -1,"");
+                    //String busqueda = txtBuscarNombreCliente.Text.ToString().Trim();
+                    //fnBuscarTablaProspectosPlan(busqueda, 0, -1,"");
                     
                 }
                 else
@@ -1323,8 +1342,8 @@ namespace wfaIntegradoCom.Mantenedores
                     dtpFechaInicialBusqueda.Enabled = false;
                     dtpFechaFinalBusqueda.Enabled = false;
                   
-                    String busqueda = txtBuscarNombreCliente.Text.ToString().Trim();
-                    fnBuscarTablaProspectosPlan(busqueda, 0, -1,"");
+                    //String busqueda = txtBuscarNombreCliente.Text.ToString().Trim();
+                    //fnBuscarTablaProspectosPlan(busqueda, 0, -1,"");
                     
                 }
                 
@@ -1348,9 +1367,13 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void txtHoraSigSeguimiento_ValueChanged(object sender, EventArgs e)
         {
-            var result = fnValidarFechaProxima(txtHoraSigSeguimiento, erFechaSigSeguimiento, imgFechaSigSeguimiento);
-            estfechaSeguimiento = result.Item1;
-            msjfechaSeguimiento = result.Item2;
+            //var result = fnValidarFechaProxima(txtHoraSigSeguimiento, erFechaSigSeguimiento, imgFechaSigSeguimiento);
+            //estfechaSeguimiento = result.Item1;
+            //msjfechaSeguimiento = result.Item2;
+            var res = fnValidarFechaProxSeguimiento(dtpFechaProximoSeguimiento, imgFechaSigSeguimiento, erFechaSigSeguimiento, 1, 3);
+            estfechaSeguimiento = res.Item1;
+            msjfechaSeguimiento = res.Item2;
+
         }
 
         private void cboEstadoSeguimiento_SelectedIndexChanged(object sender, EventArgs e)
@@ -1373,7 +1396,7 @@ namespace wfaIntegradoCom.Mantenedores
                 imgFechaRegSeguimiento.Image = Properties.Resources.ok;
                 DateTime fechaRegistro = Convert.ToDateTime(dtpFechaRegSeguimiento.Value.ToString());
                 DateTime fechaMas6dias = fechaRegistro.AddDays(6);
-                dtpFechaProximoSeguimiento.Value = fechaMas6dias;
+                //dtpFechaProximoSeguimiento.Value = fechaMas6dias;
             }
             else
             {
@@ -1409,6 +1432,9 @@ namespace wfaIntegradoCom.Mantenedores
         private void btnNuevaVisita_Click(object sender, EventArgs e)
         {
             btnNuevo_Click(sender, e);
+            tabRegistroVisitas.AutoScroll = false;
+            tabRegistroVisitas.AutoScrollPosition = new Point(0, 0);
+            btnNuevo.Enabled = true;
         }
 
         private void rdbFechaVisita_CheckedChanged_1(object sender, EventArgs e)
@@ -1416,7 +1442,7 @@ namespace wfaIntegradoCom.Mantenedores
             if (estPasoLoad)
             {
                 String busqueda = txtBuscarNombreCliente.Text.ToString().Trim();
-                fnBuscarTablaProspectosPlan(busqueda, 0, -1,"");
+                //fnBuscarTablaProspectosPlan(busqueda, 0, -1,"");
             }
         }
 
@@ -1425,7 +1451,7 @@ namespace wfaIntegradoCom.Mantenedores
             if (estPasoLoad)
             {
                 String busqueda = txtBuscarNombreCliente.Text.ToString().Trim();
-                fnBuscarTablaProspectosPlan(busqueda, 0, -1,"");
+                //fnBuscarTablaProspectosPlan(busqueda, 0, -1,"");
             }
         }
 
@@ -1434,7 +1460,7 @@ namespace wfaIntegradoCom.Mantenedores
             if (estPasoLoad)
             {
                 String busqueda = txtBuscarNombreCliente.Text.ToString().Trim();
-                fnBuscarTablaProspectosPlan(busqueda, 0, -1 ,"");
+                //fnBuscarTablaProspectosPlan(busqueda, 0, -1 ,"");
             }
         }
 
@@ -1625,12 +1651,69 @@ namespace wfaIntegradoCom.Mantenedores
 
             }
         }
+        public  Tuple<Boolean, String> fnValidarFechaProxSeguimiento(SiticoneDateTimePicker dt, PictureBox pb,Label lbl, Int32 tipoCon, Int32 numDias)
+        {
+            Boolean estado = false;
+            String msg = "";
+            DateTime fechaProxSeguimiento = Variables.gdFechaSis;
+            DateTime ddt = Variables.gdFechaSis.AddDays(numDias).AddHours((23 - Variables.gdFechaSis.Hour));
+            if (tipoCon == 0)
+            {
+                dt.MinDate = Variables.gdFechaSis;
+                dt.MaxDate = ddt;
+            }
+            else
+            {
+                DateTime solofechaProxSeguimiento = fnCalcularSoloFecha(Convert.ToDateTime(dt.Value.ToString()));
+                Int32 soloHoraFechSeg = Convert.ToInt32(txtHoraSigSeguimiento.Value.ToString());
+                if (soloHoraFechSeg == 0 || soloHoraFechSeg > 19)
+                {
+                    txtHoraSigSeguimiento.Value = 19;
+                }
+                soloHoraFechSeg = Convert.ToInt32(txtHoraSigSeguimiento.Value.ToString());
+                fechaProxSeguimiento = solofechaProxSeguimiento.AddHours(soloHoraFechSeg);
+                if (fechaProxSeguimiento.Day > Variables.gdFechaSis.AddDays(2).Day)
+                {                    
+                    estado = true;
+                    msg = "la proxima fecha de seguimiento será: " + fechaProxSeguimiento.ToString("dd-MM-yyyy hh tt");
+                    lbl.ForeColor = Variables.ColorSuccess;
+                    pb.Image = Properties.Resources.ok;
+                }
+                else if (fechaProxSeguimiento < Variables.gdFechaSis)
+                {
 
+                    estado = false;
+                    msg = "la fecha del próximo seguimiento no puede ser menor a la hora actual: " + Variables.gdFechaSis.Hour + ":" + Variables.gdFechaSis.Minute;
+                    pb.Image = Properties.Resources.error;
+                    lbl.ForeColor = Variables.ColorError;
+
+                }
+                else
+                {
+                    estado = true;
+                    msg = "la proxima fecha de seguimiento será: " + fechaProxSeguimiento.ToString("dd-MM-yyyy hh tt");
+                    lbl.ForeColor = Variables.ColorSuccess;
+                    pb.Image = Properties.Resources.ok;
+                }
+
+               
+            }
+
+            
+            lbl.Text=msg;   
+            
+            return Tuple.Create(estado, msg);
+        }
         private void dtpFechaProximoSeguimiento_ValueChanged(object sender, EventArgs e)
         {
-            var result = fnValidarFechaProxima(txtHoraSigSeguimiento, erFechaSigSeguimiento, imgFechaSigSeguimiento);
-            estfechaSeguimiento = result.Item1;
-            msjfechaSeguimiento = result.Item2;
+           var res= fnValidarFechaProxSeguimiento(dtpFechaProximoSeguimiento, imgFechaSigSeguimiento, erFechaSigSeguimiento, 1, 3);
+            estfechaSeguimiento = res.Item1;
+            msjfechaSeguimiento = res.Item2;
+           
+            //MessageBox.Show("el dia de la semana es: "+ dia1);
+            //var result = fnValidarFechaProxima(txtHoraSigSeguimiento, erFechaSigSeguimiento, imgFechaSigSeguimiento);
+            //estfechaSeguimiento = result.Item1;
+            //msjfechaSeguimiento = result.Item2;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -1747,7 +1830,7 @@ namespace wfaIntegradoCom.Mantenedores
                         {
                             btnEstadoCliente.Visible = true;
                             lblEstadoVisita.Visible = true;
-                            FunValidaciones.fnHabilitarBoton(btnEditar, false);
+                            FunValidaciones.fnHabilitarBoton(btnEditar, true);
                             btnEstadoCliente.FillColor = Color.FromArgb(214, 166, 54);
                             lblEstadoVisita.Text = "⭐ ESTADO DE VISITA: COMPRADOR ⭐";
                             lblEstadoVisita.ForeColor = Color.FromArgb(214, 166, 54);
@@ -1799,6 +1882,7 @@ namespace wfaIntegradoCom.Mantenedores
             estPasoLoad = false;
             tabRegistroVisitas.AutoScroll = false;
             Boolean bResult = false;
+           
             FunValidaciones.fnColorTresBotones(btnNuevo, btnEditar, btnGuardar);
            
             FunValidaciones.fnColorBoton2(btnNuevoSeguimiento, btnGuardarSeguimiento);
@@ -1846,10 +1930,25 @@ namespace wfaIntegradoCom.Mantenedores
                 MessageBox.Show("Error al Cargar - Usuario", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
-            rdbFechaSigSeg.Checked = true;
-            dtpFechaInicialBusqueda.Value = Variables.gdFechaSis.AddDays(-30);
+            rdbFechaVisita.Checked = true;
+
             dtpFechaFinalBusqueda.Value = Variables.gdFechaSis;
+            dtpFechaInicialBusqueda.Value = dtpFechaFinalBusqueda.Value.AddDays(-(dtpFechaFinalBusqueda.Value.Day - 1));
+
             dtpFechaProximoSeguimiento.Value = Variables.gdFechaSis;
+            byte dia = (byte)Variables.gdFechaSis.DayOfWeek;
+            if(dia==5 || dia == 6)
+            {
+                fnValidarFechaProxSeguimiento(dtpFechaProximoSeguimiento, imgFechaSigSeguimiento, erFechaSigSeguimiento, 0, 3);
+
+            }
+            else
+            {
+                fnValidarFechaProxSeguimiento(dtpFechaProximoSeguimiento, imgFechaSigSeguimiento, erFechaSigSeguimiento, 0, 2);
+            }
+
+
+
             cboBuscarEstadoCliente.SelectedValue = "ESPR0001";
             gbPaginacionProsPlan.Visible = false;
             gbPaginacionSeg.Visible = false;
@@ -1869,6 +1968,22 @@ namespace wfaIntegradoCom.Mantenedores
             dtpFechaInicialBusqueda.Enabled = false;
             dtpFechaFinalBusqueda.Enabled = false;
             estPasoLoad = true;
+            if (lnTipoLLamada == 1)
+            {
+                tabControl.SelectedIndex = 1;
+                letraColor = "R";
+                String busqueda = txtBuscarNombreCliente.Text.ToString().Trim();
+                fnBuscarTablaProspectosPlan(busqueda, 0, -1, letraColor);
+            }
+
+            cboEstadoSeguimiento.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+            cboClase.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+            cboModUso.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+            cboEstado.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+            cboTipoContacto.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+            cboTipoPlan.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+            cboPlan.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+            cboPaginaSeg.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
         }
 
         private DateTime fnCalcularSoloFecha(DateTime fecha)
@@ -2292,13 +2407,15 @@ namespace wfaIntegradoCom.Mantenedores
         }
         private Boolean fnBuscarTablaProspectosPlan(String pcBuscar, Int32 numPagina, Int32 tipoCon, String lColor )
         {
+            estadoBusqueda = true;
             BLProspecto objAcc = new BLProspecto();
             clsUtil objUtil = new clsUtil();
             DataTable datAcces = new DataTable();
             totalRanking lstTotRan = new totalRanking();
             String estado, tipoContacto, celular;
             Int32 filas = 13;
-            DateTime fechaInicial, fechaFinal, fechaActual;
+            DateTime dFechaActual;
+            String fechaInicial, fechaFinal, fechaActual;
             Boolean HabilitarFechas, estFechaVisita, estFechaRegSeg, estFechaProxSeg;
             Int32 idUsuario, idTipoPlan, idPlan, idTipoTarifa;
             try
@@ -2306,21 +2423,22 @@ namespace wfaIntegradoCom.Mantenedores
                 estado = cboBuscarEstadoCliente.SelectedValue.ToString();
                 tipoContacto = cboBuscarTipoContacto.SelectedValue.ToString();
                 celular = txtBuscarCelular.Text.ToString();
-                fechaInicial = fnCalcularSoloFecha(dtpFechaInicialBusqueda.Value);
-                fechaFinal = fnCalcularSoloFecha(dtpFechaFinalBusqueda.Value);
+                fechaInicial = FunGeneral.GetFechaHoraFormato(dtpFechaInicialBusqueda.Value,5);
+                fechaFinal = FunGeneral.GetFechaHoraFormato(dtpFechaFinalBusqueda.Value,5);
                 HabilitarFechas = Convert.ToBoolean(chkHabilitarFechas.Checked);
                 estFechaVisita = Convert.ToBoolean(rdbFechaVisita.Checked);
                 estFechaRegSeg = Convert.ToBoolean(rdbFechaRegSeg.Checked);
                 estFechaProxSeg = Convert.ToBoolean(rdbFechaSigSeg.Checked);
                 idUsuario = Convert.ToInt32(cboUsuarioBuscar.SelectedValue.ToString());
-                fechaActual = Variables.gdFechaSis;
+                fechaActual = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
+                dFechaActual = Variables.gdFechaSis;
                 idTipoPlan = Convert.ToInt32(cboBuscarTipoPlan.SelectedValue);
                 idPlan = Convert.ToInt32(cboBuscarPlan.SelectedValue);
                 idTipoTarifa = Convert.ToInt32(cboBuscarTipoTarifa.SelectedValue);
 
-                DateTime DateFechActual = Convert.ToDateTime(fechaActual.ToString("dd/MM/yyyy HH:mm"));
+                String DateFechActual = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3);
 
-                if (estado == "ESPR0001")
+                if (estado == "ESPR0001" && lColor=="" || lnTipoLLamada==1)
                 {
                     lstTotRan = objAcc.blTotalesRankingSeguimiento(pcBuscar, celular, tipoContacto, fechaInicial, fechaFinal, HabilitarFechas, estFechaVisita, estFechaRegSeg, estFechaProxSeg, idUsuario, fechaActual, idTipoPlan, idPlan, idTipoTarifa);
                     btnVerde.Text = Convert.ToString(lstTotRan.totalVerdes);
@@ -2329,10 +2447,10 @@ namespace wfaIntegradoCom.Mantenedores
                     lblUsuarioRanking.Text = Convert.ToString(cboUsuarioBuscar.Text) + " : ";
                     gbRanking.Visible = true;
                 }
-                else
-                {
-                    gbRanking.Visible = false;
-                }
+                //else
+                //{
+                //    gbRanking.Visible = false;
+                //}
 
                 datAcces = objAcc.blBuscarProspectoPlanDataTable(pcBuscar, celular, estado, numPagina, tipoCon, tipoContacto, fechaInicial, fechaFinal, HabilitarFechas, estFechaVisita, estFechaRegSeg, estFechaProxSeg, idUsuario, idTipoPlan, idPlan, idTipoTarifa, lColor, fechaActual);
 
@@ -2353,11 +2471,11 @@ namespace wfaIntegradoCom.Mantenedores
                     dt.Columns.Add("EST. CLIENTE");
                     dt.Columns.Add("CELULAR 1");
                     
-                    if(rdbFechaVisita.Checked == true || rdbFechaRegSeg.Checked == true)
+                    if( rdbFechaRegSeg.Checked == true)
                     {
                         dt.Columns.Add("FECH. REGISTRO SEGUIMIENTO");
                     }
-                    else
+                    else if(rdbFechaVisita.Checked == true || rdbFechaSigSeg.Checked==true)
                     {
                         dt.Columns.Add("FECH. PRÓXIMO SEGUIMIENTO");
                     }
@@ -2365,7 +2483,7 @@ namespace wfaIntegradoCom.Mantenedores
                     dt.Columns.Add("USUARIO");
                     Int32 y;
 
-                    if (tipoCon == -1)
+                    if (numPagina == 0)
                     {
                         y = 0;
                     }
@@ -2373,6 +2491,7 @@ namespace wfaIntegradoCom.Mantenedores
                     {
                         tabInicio = (numPagina - 1) * filas;
                         y = tabInicio;
+                        estadoBusqueda = false;
                     }
 
                     for (int i = 0; i <= totalResultados - 1; i++)
@@ -2386,13 +2505,13 @@ namespace wfaIntegradoCom.Mantenedores
                         if(EstadoVisita == "POTENCIAL")
                         {
                            
-                            if (rdbFechaVisita.Checked == true || rdbFechaRegSeg.Checked == true)
+                            if (rdbFechaRegSeg.Checked == true)
                             {
                                
                                 DateTime fechaultimaReg = Convert.ToDateTime(datAcces.Rows[i][9].ToString());
-                                if (fechaultimaReg <= fechaActual)
+                                if (fechaultimaReg <= dFechaActual)
                                 {
-                                    TimeSpan timDias = fechaActual - fechaultimaReg;
+                                    TimeSpan timDias = dFechaActual - fechaultimaReg;
                                     Int32 numDias = timDias.Days;
                                     if (numDias >= 0 & numDias <= 2)
                                     {
@@ -2416,25 +2535,26 @@ namespace wfaIntegradoCom.Mantenedores
                             }
                             else
                             {
-                                DateTime fechaAMostrar = DateFechActual;
+                                DateTime fechaAMostrar = Convert.ToDateTime(dFechaActual.ToString("dd/MM/yyyy"));
                                 DateTime fechaultimaSeg = Convert.ToDateTime(datAcces.Rows[i][9]);
                                 DateTime DateUltimaSeg = Convert.ToDateTime(fechaultimaSeg.ToString("dd/MM/yyyy HH:mm"));
-                                if (DateUltimaSeg >= DateFechActual)
+
+                                if (DateUltimaSeg >= dFechaActual)
                                 {
                                     DateTime dtEdit = DateUltimaSeg.Hour==0? DateUltimaSeg.AddHours(-24): DateUltimaSeg;
-                                    TimeSpan timDias = DateUltimaSeg - DateFechActual;
-                                    TimeSpan timDiasHora =dtEdit - DateFechActual;
-                                    if (DateUltimaSeg.Hour == 0 && dtEdit.Day == DateFechActual.Day)
+                                    TimeSpan timDias = Convert.ToDateTime(DateUltimaSeg.ToString("dd/MM/yyyy")) - Convert.ToDateTime(dFechaActual.ToString("dd/MM/yyyy"));
+                                    TimeSpan timDiasHora =dtEdit - dFechaActual;
+                                    if (DateUltimaSeg.Hour == 0 && dtEdit.Day == dFechaActual.Day)
                                     {
 
-                                         fechaAMostrar = Convert.ToDateTime(DateFechActual.ToString("dd/MM/yyyy")).AddHours(Math.Abs(timDiasHora.Hours)).AddMinutes(Math.Abs(timDiasHora.Minutes));
+                                         fechaAMostrar = Convert.ToDateTime(dFechaActual.ToString("dd/MM/yyyy")).AddHours(Math.Abs(timDiasHora.Hours)).AddMinutes(Math.Abs(timDiasHora.Minutes));
                                     }
                                     else
                                     {
-                                         fechaAMostrar = DateFechActual.AddHours(Math.Abs(timDiasHora.Hours)).AddMinutes(Math.Abs(timDiasHora.Minutes));
-                                         
-
+                                         fechaAMostrar = Convert.ToDateTime(dFechaActual.ToString("dd/MM/yyyy")).AddHours(Math.Abs(timDiasHora.Hours)).AddMinutes(Math.Abs(timDiasHora.Minutes));
+ 
                                     }
+
                                     if (i==8)
                                     {
 
@@ -2442,16 +2562,17 @@ namespace wfaIntegradoCom.Mantenedores
                                     Int32 numDias = timDias.Days;
                                     String cDias = numDias==1?" dia ":" dias ";
                                     
-                                    if (numDias == 0 && DateUltimaSeg.Day== DateFechActual.Day)
+                                    if (numDias == 0 && DateUltimaSeg.Day== dFechaActual.Day)
                                     {
-                                        ultimoSeg = "❗ Llamar hoy  a las(" + fechaAMostrar.ToString("hh:mm tt")+")";
+                                        String strhoras = timDias.Hours != 0 ? timDias.Hours + "hr y " + timDias.Minutes + "min" : timDias.Minutes + "min";
+                                        ultimoSeg = "❗ Llamar hoy a las(" + DateUltimaSeg.ToString("hh:mm tt")+") falta:"+ strhoras;
                                     }
-                                    else if (numDias >= 1 && numDias <= 3)
+                                    else if (numDias >= 1 && numDias <2)
                                     {
-                                        ultimoSeg = "🕑 Llamar en " + (DateUltimaSeg.Day - DateFechActual.Day) + " Dias (" + DateUltimaSeg.ToString("dd, MMMM, yyyy hh:mm tt")+ ")";
-                                    }else if ((DateUltimaSeg.Day - DateFechActual.Day)==1)
+                                        ultimoSeg = "🕑 Llamar en " + (numDias) + " Dias (" + DateUltimaSeg.ToString("dd, MMMM, yyyy hh:mm tt")+ ")";
+                                    }else if ((DateUltimaSeg.Day - dFechaActual.Day)==1)
                                     {
-                                        ultimoSeg = "🕑 Llamar en " + (DateUltimaSeg.Day - DateFechActual.Day) + " Dia "+ "(" + DateUltimaSeg.ToString("dd, MMMM, yyyy")+ ")";
+                                        ultimoSeg = "🕑 Llamar en " + (DateUltimaSeg.Day - dFechaActual.Day) + " Dia "+ "(" + DateUltimaSeg.ToString("dd, MMMM, yyyy")+ ")";
 
                                     }
                                     else
@@ -2463,8 +2584,8 @@ namespace wfaIntegradoCom.Mantenedores
                                 else
                                 {
 
-                                    estFecha = DateFechActual > DateUltimaSeg ? true : false;
-                                    TimeSpan timDias = DateFechActual - DateUltimaSeg;
+                                    estFecha = dFechaActual > DateUltimaSeg ? true : false;
+                                    TimeSpan timDias = dFechaActual - DateUltimaSeg;
                                     if (estFecha==true)
                                     {
                                         intHoras = timDias.Hours * -1;
@@ -2476,15 +2597,15 @@ namespace wfaIntegradoCom.Mantenedores
                                         intMinutos = timDias.Minutes ;
 
                                     }
-                                    TimeSpan timDiasHora = DateFechActual-DateUltimaSeg;
+                                    TimeSpan timDiasHora = dFechaActual - DateUltimaSeg;
                                     if (DateUltimaSeg.Hour == 0)
                                     {
 
-                                        fechaAMostrar = Convert.ToDateTime(DateFechActual.ToString("dd/MM/yyyy")).AddHours(Math.Abs(timDias.Hours)).AddMinutes(Math.Abs(timDias.Minutes));
+                                        fechaAMostrar = Convert.ToDateTime(dFechaActual.ToString("dd/MM/yyyy")).AddHours(Math.Abs(timDias.Hours)).AddMinutes(Math.Abs(timDias.Minutes));
                                     }
                                     else
                                     {
-                                        fechaAMostrar = DateFechActual.AddHours(intHoras).AddMinutes(intMinutos);
+                                        fechaAMostrar = dFechaActual.AddHours(intHoras).AddMinutes(intMinutos);
 
                                     }
                                     Int32 numDias = timDias.Days;
@@ -2557,11 +2678,12 @@ namespace wfaIntegradoCom.Mantenedores
                     dgProspecto.Columns[11].Width = 65;
                     dgProspecto.Visible = true;
 
-                    if (tipoCon == -1)
+                    if (numPagina == 0)
                     {
                         gbPaginacionProsPlan.Visible = true;
                         Int32 totalRegistros = Convert.ToInt32(datAcces.Rows[0][11]);
                         fnCalcularPaginacion(totalRegistros, filas, totalResultados,cboPaginaProsPlan,btnTotalPagProsPlan,btnNumFilasProsPlan,btnTotalRegProsPlan);
+                        estadoBusqueda = false;
                     }
                     else
                     {

@@ -196,6 +196,8 @@
             this.txtBusq = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.drCOtrasVentas = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
+            this.lblClienteAux = new Guna.UI.WinForms.GunaLabel();
+            this.txtClienteAux = new Siticone.UI.WinForms.SiticoneTextBox();
             this.gunaPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -954,8 +956,10 @@
             this.gbDatosCliente.Controls.Add(this.dgDocumento);
             this.gbDatosCliente.Controls.Add(this.pbNombres_razonS);
             this.gbDatosCliente.Controls.Add(this.gunaLabel4);
+            this.gbDatosCliente.Controls.Add(this.txtClienteAux);
             this.gbDatosCliente.Controls.Add(this.txtDireccion);
             this.gbDatosCliente.Controls.Add(this.lbltxtClientesN_A);
+            this.gbDatosCliente.Controls.Add(this.lblClienteAux);
             this.gbDatosCliente.Controls.Add(this.txtClientesN_A);
             this.gbDatosCliente.Controls.Add(this.lbltxtDireccion);
             this.gbDatosCliente.Controls.Add(this.lbltxtTelefono);
@@ -2772,6 +2776,50 @@
             // 
             this.drCOtrasVentas.TargetControl = this.gunaPanel1;
             // 
+            // lblClienteAux
+            // 
+            this.lblClienteAux.AutoSize = true;
+            this.lblClienteAux.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClienteAux.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lblClienteAux.Location = new System.Drawing.Point(348, 29);
+            this.lblClienteAux.Name = "lblClienteAux";
+            this.lblClienteAux.Size = new System.Drawing.Size(68, 19);
+            this.lblClienteAux.TabIndex = 90;
+            this.lblClienteAux.Text = "Direccion:";
+            this.lblClienteAux.Visible = false;
+            // 
+            // txtClienteAux
+            // 
+            this.txtClienteAux.Animated = false;
+            this.txtClienteAux.BorderColor = System.Drawing.Color.LightGray;
+            this.txtClienteAux.BorderRadius = 3;
+            this.txtClienteAux.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtClienteAux.DefaultText = "";
+            this.txtClienteAux.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtClienteAux.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtClienteAux.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtClienteAux.DisabledState.Parent = this.txtClienteAux;
+            this.txtClienteAux.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtClienteAux.FillColor = System.Drawing.Color.Gainsboro;
+            this.txtClienteAux.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtClienteAux.FocusedState.Parent = this.txtClienteAux;
+            this.txtClienteAux.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtClienteAux.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtClienteAux.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtClienteAux.HoveredState.Parent = this.txtClienteAux;
+            this.txtClienteAux.Location = new System.Drawing.Point(345, 52);
+            this.txtClienteAux.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtClienteAux.Name = "txtClienteAux";
+            this.txtClienteAux.PasswordChar = '\0';
+            this.txtClienteAux.PlaceholderText = "Cliente";
+            this.txtClienteAux.ReadOnly = true;
+            this.txtClienteAux.SelectedText = "";
+            this.txtClienteAux.ShadowDecoration.Parent = this.txtClienteAux;
+            this.txtClienteAux.Size = new System.Drawing.Size(707, 36);
+            this.txtClienteAux.TabIndex = 88;
+            this.txtClienteAux.Visible = false;
+            this.txtClienteAux.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
+            // 
             // frmOtrasVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2980,5 +3028,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ImporteTotal;
         private System.Windows.Forms.DataGridViewButtonColumn lvBtnImprimir;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTipoTransaccion;
+        private Siticone.UI.WinForms.SiticoneTextBox txtClienteAux;
+        private Guna.UI.WinForms.GunaLabel lblClienteAux;
     }
 }

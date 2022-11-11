@@ -177,12 +177,12 @@ namespace CapaNegocio
             }
 
         }
-        public DataTable blListarClienteOtrasVentas(Int32 idPersonal, Int32 pnTipoCon)
+        public DataTable blListarClienteOtrasVentas(Int32 idPersonal,Int32 id2, Int32 pnTipoCon)
         {
             DAOtrasVenta objCliente = new DAOtrasVenta();
             try
             {
-                return objCliente.daListarClienteOtrasVentas(idPersonal, pnTipoCon);
+                return objCliente.daListarClienteOtrasVentas(idPersonal, id2, pnTipoCon);
             }
             catch (Exception ex)
             {

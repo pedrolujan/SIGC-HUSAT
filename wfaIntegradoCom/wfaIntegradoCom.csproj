@@ -64,6 +64,9 @@
     <Reference Include="Guna.UI">
       <HintPath>bin\Debug\Guna.UI.dll</HintPath>
     </Reference>
+    <Reference Include="InputKey">
+      <HintPath>\\VENTAS\Users\Public\SISTEMA HUSAT\TUTORIALES DEL SISTEMA\InputKey\InputKey\InputKey.dll</HintPath>
+    </Reference>
     <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
       <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
     </Reference>
@@ -585,6 +588,12 @@
     <Compile Include="Procesos\frmExtornarVenta.Designer.cs">
       <DependentUpon>frmExtornarVenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmInput.Designer.cs">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\frmListarTipoVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -614,6 +623,12 @@
     </Compile>
     <Compile Include="Procesos\frmOtrasVentas.Designer.cs">
       <DependentUpon>frmOtrasVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmPagosPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmPagosPendientes.Designer.cs">
+      <DependentUpon>frmPagosPendientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Procesos\frmProcesarPedido.cs">
       <SubType>Form</SubType>
@@ -924,6 +939,9 @@
     <EmbeddedResource Include="Procesos\frmCronograma.resx">
       <DependentUpon>frmCronograma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmInput.resx">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmListarTipoVentas.resx">
       <DependentUpon>frmListarTipoVentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -935,6 +953,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmOtrasVentas.resx">
       <DependentUpon>frmOtrasVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmPagosPendientes.resx">
+      <DependentUpon>frmPagosPendientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmReactivaciones.resx">
       <DependentUpon>frmReactivaciones.cs</DependentUpon>

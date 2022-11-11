@@ -120,10 +120,10 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActa = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
-            this.siticoneLabel10 = new Siticone.UI.WinForms.SiticoneLabel();
             this.cmOpCierre = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.verDetalleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticoneLabel10 = new Siticone.UI.WinForms.SiticoneLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -144,8 +144,8 @@
             this.splitContainer1.SuspendLayout();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaMovimiento)).BeginInit();
-            this.siticonePanel2.SuspendLayout();
             this.cmOpCierre.SuspendLayout();
+            this.siticonePanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1295,6 +1295,20 @@
             this.btnActa.Name = "btnActa";
             this.btnActa.ReadOnly = true;
             // 
+            // cmOpCierre
+            // 
+            this.cmOpCierre.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verDetalleToolStripMenuItem});
+            this.cmOpCierre.Name = "cmOpCierre";
+            this.cmOpCierre.Size = new System.Drawing.Size(130, 26);
+            // 
+            // verDetalleToolStripMenuItem
+            // 
+            this.verDetalleToolStripMenuItem.Name = "verDetalleToolStripMenuItem";
+            this.verDetalleToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.verDetalleToolStripMenuItem.Text = "Ver Detalle";
+            this.verDetalleToolStripMenuItem.Click += new System.EventHandler(this.verDetalleToolStripMenuItem_Click);
+            // 
             // siticonePanel2
             // 
             this.siticonePanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -1317,20 +1331,6 @@
             this.siticoneLabel10.Size = new System.Drawing.Size(202, 27);
             this.siticoneLabel10.TabIndex = 273;
             this.siticoneLabel10.Text = "Lista de cierres de caja";
-            // 
-            // cmOpCierre
-            // 
-            this.cmOpCierre.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verDetalleToolStripMenuItem});
-            this.cmOpCierre.Name = "cmOpCierre";
-            this.cmOpCierre.Size = new System.Drawing.Size(130, 26);
-            // 
-            // verDetalleToolStripMenuItem
-            // 
-            this.verDetalleToolStripMenuItem.Name = "verDetalleToolStripMenuItem";
-            this.verDetalleToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.verDetalleToolStripMenuItem.Text = "Ver Detalle";
-            this.verDetalleToolStripMenuItem.Click += new System.EventHandler(this.verDetalleToolStripMenuItem_Click);
             // 
             // frmMovimientoCaja
             // 
@@ -1373,9 +1373,9 @@
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaMovimiento)).EndInit();
+            this.cmOpCierre.ResumeLayout(false);
             this.siticonePanel2.ResumeLayout(false);
             this.siticonePanel2.PerformLayout();
-            this.cmOpCierre.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

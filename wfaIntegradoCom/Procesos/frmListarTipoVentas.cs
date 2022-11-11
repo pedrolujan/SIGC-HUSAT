@@ -288,6 +288,7 @@ namespace wfaIntegradoCom.Procesos
                         clsOtrasVentas.idMoneda= Convert.ToInt32(dr["idMoneda"]);
                         clsOtrasVentas.idTipoTransaccion= Convert.ToInt32(dr["idTipoTransaccion"]);
                         clsOtrasVentas.idValida = Convert.ToInt32(dr["idValida"]);
+                        clsOtrasVentas.idOperacion = Convert.ToInt32(dr["idOperacion"]);
                     }
 
                 }

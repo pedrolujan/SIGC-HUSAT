@@ -24,6 +24,7 @@ namespace CapaEntidad
         public String Codigoreporte { get; set; }
         public String cUsuario { get; set; }
         public String Detallereporte { get; set; }
+        public String MasDetallereporte { get; set; }
         public Int32 Cantidad { get; set; }
         public Double ImporteRow { get; set; }
         public Double ImporteTipoCambio { get; set; }
@@ -34,6 +35,7 @@ namespace CapaEntidad
         public Int32 idMoneda { get; set; }
         public Int32 idAuxiliar { get; set; }
         public String codAuxiliar { get; set; }
+        public String codAuxiliar1 { get; set; }
         public String SimboloMoneda { get; set; }
         public String MonImporteRow { get; set; }
         public Boolean estado { get; set; }        

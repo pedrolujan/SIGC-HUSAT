@@ -400,7 +400,7 @@ namespace wfaIntegradoCom.Procesos
                 idUsuario=Variables.gnCodUser,
                 cUsuario=Variables.gsCodUser,
                 nomPersonal= clt.cPrimerNom + " " + clt.cApePat + " " + clt.cApeMat,
-                turno= Variables.gdFechaSis.Hour < 15 ? " Mañana" : " Tarde",
+                turno= Variables.gdFechaSis.Hour < 17 ? " Mañana" : " Tarde",
             });;
 
             frmCierreC.Inicio(xmlActaCierre, 1);

@@ -11,7 +11,7 @@ namespace CapaNegocio
     public class BLClienteVenta
     {
         private object clienteV;
-        public DataTable BlBuscarClienteV(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta, String estadoTipoContrato, Boolean habilitarRenovaciones, String valorRadio, Int32 estadoTipoPlan,
+        public DataTable BlBuscarClienteV(Boolean habilitarfechas, String fechaInical, String fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta, String estadoTipoContrato, Boolean habilitarRenovaciones, String valorRadio, Int32 estadoTipoPlan,
             Int32 estadoPlan, Int32 estadoUsuario, String estadoContrato, String Docventapago)
         {
             DAClienteVenta objVentaGeneral = new DAClienteVenta();

@@ -107,11 +107,11 @@ namespace wfaIntegradoCom.Procesos
         public  void fnObtenerObjVentas(OtrasVentas clsOtrasVentas)
         {
 
-            if ((lstOtrasVentas.Count==0 && clsOtrasVentas.idTipoTransaccion==4) || (lstOtrasVentas.Count == 1 && lstOtrasVentas[0].idTipoTransaccion==4 && clsOtrasVentas.idTipoTransaccion == 4))
+            if ((lstOtrasVentas.Count==0 && clsOtrasVentas.idTipoTransaccion==4 && (clsOtrasVentas.idObjVenta==1 || clsOtrasVentas.idObjVenta==2)) /*|| (lstOtrasVentas.Count == 1 && lstOtrasVentas[0].idTipoTransaccion==4 && clsOtrasVentas.idTipoTransaccion == 4)*/)
             {
                 estOcultarFila = false;
             }
-            else if((lstOtrasVentas.Count == 1 && clsOtrasVentas.idTipoTransaccion == 4))
+            else if((lstOtrasVentas.Count == 1 && clsOtrasVentas.idTipoTransaccion == 4) && (clsOtrasVentas.idObjVenta == 1 || clsOtrasVentas.idObjVenta == 2))
             {
                 estOcultarFila = false;
             }
@@ -128,7 +128,8 @@ namespace wfaIntegradoCom.Procesos
 
                 if (IdObjetoExistente == 0)
                 {
-                    if (ifServicio != null)
+                    if(ifServicio != null && (ifServicio.idTipoTransaccion==4 && (ifServicio.idObjVenta==1 || ifServicio.idObjVenta==2)))
+                    //if (ifServicio != null)
                     {
                         MessageBox.Show("Opcion restringida-> no puedes seleccionar varios items", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -137,15 +138,15 @@ namespace wfaIntegradoCom.Procesos
                     {
                         if (clsOtrasVentas.idTipoTransaccion == 4 && (clsObjetoEsxistente.idTipoTransaccion!=4 || lstOtrasVentas.Count>0))
                         {
-                            if (lstOtrasVentas.Count==0)
-                            {
+                            //if (lstOtrasVentas.Count==0)
+                            //{
                                 lstOtrasVentas.Add(clsOtrasVentas);
                                 estMostrarGb = fnActivarEstados(lstOtrasVentas[0].idTipoTransaccion, lstOtrasVentas[0].idValida, 0);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Opcion restringida-> no puedes mesclar productos con servicios", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
+                            //}
+                            //else
+                            //{
+                            //    MessageBox.Show("Opcion restringida-> no puedes mesclar productos con servicios", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            //}
 
                         }
                         else
@@ -183,56 +184,93 @@ namespace wfaIntegradoCom.Procesos
             Boolean estad = false;
             if (tipoOpcion == 0)
             {
-                
-                if (idTransac == 4)
+                if (lstOtrasVentas.Count>1)
                 {
-                    
-                    estad = true;
-                    lnTipoConCambio = idValida;
-                    if (idValida == -1)
+                    lnTipoConCambio = 0;
+                    tituloGbCliente = "Ingrese datos del Cliente";
+                    phlBusqGbCliente = "Ingrese documento.";
+                    estMostEquipos1 = true;
+                    estMotivo = true;
+                    estad = false;
+                }
+                else
+                {
+                    if (idTransac == 4)
                     {
-                        estMotivo = false;
-                        estMostEquipos1 = false;
-                        tituloGbCliente = "Ingrese datos del nuevo titular";
-                        tituloGbVehiculo = "Ingrese datos del vehiculo que desea cambiar de titular";
+
+                        estad = true;
+                        lnTipoConCambio = idValida;
+                        if (idValida == -1)
+                        {
+                            estMotivo = false;
+                            estMostEquipos1 = false;
+                            tituloGbCliente = "Ingrese datos del nuevo titular";
+                            tituloGbVehiculo = "Ingrese datos del vehiculo que desea cambiar de titular";
+                            phlBusqVehiculo = "Ingrese Placa:";
+                            phlBusqGbCliente = "Ingrese DNI.";
+                        }
+                        else if (idValida == -2)
+                        {
+                            tituloGbVehiculo = "Ingrese los datos del Equipo que desea hacer " + lstOtrasVentas[0].DetalleVentas;
+                            tituloGbCliente = "Ingrese datos del nuevo vehiculo";
+
+                            phlBusqVehiculo = "Ingrese imei del equipo";
+                            phlBusqGbCliente = "Ingrese Placa.";
+                            estMostEquipos1 = true;
+                            estMotivo = true;
+                        }
+                        else if (idValida == -3)
+                        {
+                            tituloGbVehiculo = "Ingrese los datos del Vehiculo que desea hacer " + lstOtrasVentas[0].DetalleVentas;
+                            tituloGbCliente = "";
+
+                            phlBusqVehiculo = "Ingrese Palaca";
+                            phlBusqGbCliente = "";
+                            estMostEquipos1 = true;
+                            estMotivo = true;
+                        }
+                        else if (idValida == -4)
+                        {
+                            estMostEquipos1 = true;
+                            estMotivo = true;
+                        }
+                        else if (idValida == -7)
+                        {
+                            tituloGbCliente = "Ingrese datos del cliente";
+                            phlBusqGbCliente = "Ingrese datos.";
+                            estMostEquipos1 = false;
+                            estMotivo = true;
+                            estad = false;
+                        }
+                        else if (idValida == -8)
+                        {
+                            tituloGbCliente = "Ingrese datos del vehiculo al cual se dio mantenimiento o datos del cliente";
+                            phlBusqGbCliente = "Ingrese Placa ó documento";
+                            estMostEquipos1 = true;
+                            estMotivo = true;
+                            estad = false;
+                        }
+
+                    }
+                    else if (idTransac == 3)
+                    {
+                        lnTipoConCambio = idValida;
+                        estad = true;
+                        tituloGbVehiculo = "Ingrese datos del vehiculo al cual se adicionará el accesorio";
                         phlBusqVehiculo = "Ingrese Placa:";
+                        estMostEquipos1 = true;
+                        estMotivo = true;
+                    }
+                    else
+                    {
+                        estad = false;
+                        estMotivo = true;
+                        tituloGbCliente = "Ingrese datos del cliente";
+
                         phlBusqGbCliente = "Ingrese DNI.";
                     }
-                    else if(idValida==-2)
-                    {
-                        tituloGbVehiculo = "Ingrese los datos del Equipo que desea hacer "+lstOtrasVentas[0].DetalleVentas;
-                        tituloGbCliente = "Ingrese datos del nuevo vehiculo";
-
-                        phlBusqVehiculo = "Ingrese imei del equipo";
-                        phlBusqGbCliente = "Ingrese Placa.";
-                        estMostEquipos1 = true;
-                        estMotivo = true;
-                    }
-                    else if (idValida==-3)
-                    {
-                        tituloGbVehiculo = "Ingrese los datos del Vehiculo que desea hacer " + lstOtrasVentas[0].DetalleVentas;
-                        tituloGbCliente = "";
-
-                        phlBusqVehiculo = "Ingrese Palaca";
-                        phlBusqGbCliente = "";
-                        estMostEquipos1 = true;
-                        estMotivo = true;
-                    }
-                    else if (idValida==-4)
-                    {
-                        estMostEquipos1 = true;
-                        estMotivo = true;
-                    }
-
                 }
-                else 
-                {
-                    estad = false;
-                    estMotivo = true;
-                    tituloGbCliente = "Ingrese datos del cliente";
-
-                    phlBusqGbCliente = "Ingrese DNI.";
-                }
+                
             }
             
             return estad;
@@ -467,6 +505,8 @@ namespace wfaIntegradoCom.Procesos
             try
             {
                 dtFechaTitu.Value = Variables.gdFechaSis;
+                FunGeneral.fnValidarFechaPago(dtFechaTitu, pbFechaT,0);
+                
                 FunGeneral.fnLlenarCboSegunTablaTipoCon(cboTipoVenta, "idTipoTransaccion", "nombre", "TipoTransaccion", "estado","1",true);
                 
                 frm.fnLLnenarMarcaxCategoria(1, 0, true, cboMarca);
@@ -592,7 +632,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void fnLimpiarGrilla()
         {
-            //dgOtrasVentas.Rows.Clear();
+            dgOtrasVentas.Rows.Clear();
         }
         private  void fnLimpiarControles()
         {
@@ -600,6 +640,7 @@ namespace wfaIntegradoCom.Procesos
             txtClientesN_A.Text="";
             txtDireccion.Text="";
             txtTelefono.Text = "";
+            txtClienteAux.Text = "";
             //-------------------------
             txtCliente.Text = "";
             txtPlacaT.Text = "";
@@ -623,6 +664,7 @@ namespace wfaIntegradoCom.Procesos
             //lstOtrasVentas.Clear();
             lstPagosTrand.Clear();
             lstvehiculo.Clear();
+            lstOtrasVentas.Clear();
             fnActivarComboDescuento(estDescuento);
             fnHabilitarDescuento(false);
             fnLimpiarGrilla();
@@ -805,18 +847,20 @@ namespace wfaIntegradoCom.Procesos
                     dgv.Columns.Clear();
                     dgv.Rows.Clear();
                     dgv.Columns.Add("ID", "ID");
+                    dgv.Columns.Add("ID2", "ID2");
                     dgv.Columns.Add("DETALLE", "DETALLE");
 
                     
 
                     foreach (DataRow dr in datCliente.Rows)
                     {
-                        dgv.Rows.Add(dr["id"], dr["nombre"]);
+                        dgv.Rows.Add(dr["id"], dr["id2"]==""?0: dr["id2"], dr["nombre"]);
                     }
 
                     //dt.Rows.Add(new Object[] { "0", "NUEVO IMEI" });
                     dgv.Columns[0].Visible = false;
-                    dgv.Columns[1].Width = 100;
+                    dgv.Columns[1].Visible = false;
+                    dgv.Columns[2].Width = 100;
 
                     dgv.Visible = true;
 
@@ -867,10 +911,12 @@ namespace wfaIntegradoCom.Procesos
             DataTable dtResult = new DataTable();
             clsUtil objUtil = new clsUtil();
             Int32 idCliente;
+            Int32 id2;
             try
             {
 
                 idCliente = Convert.ToInt32(dgv.Rows[dgv.CurrentRow.Index].Cells[0].Value.ToString());
+                id2 =Convert.ToInt32(dgv.Rows[dgv.CurrentRow.Index].Cells[1].Value.ToString());
 
                 if (idCliente == 0)
                 {
@@ -880,7 +926,7 @@ namespace wfaIntegradoCom.Procesos
                 else
                 {
                     clsVehiculoServicios = new Vehiculo();
-                    dtResult = objAcc.blListarClienteOtrasVentas(idCliente, lnTipoConCambio);
+                    dtResult = objAcc.blListarClienteOtrasVentas(idCliente, id2, lnTipoConCambio);
                     //tabRegistroVisitas.AutoScroll = false;
                     foreach (DataRow drMenu in dtResult.Rows)
                     {
@@ -916,7 +962,7 @@ namespace wfaIntegradoCom.Procesos
 
                     }
 
-                    if (lnTipoConCambio==-1 || lnTipoConCambio==0)
+                    if (lnTipoConCambio==-1  || lnTipoConCambio == -7)
                     {
                         //foreach (DataRow drMenu in dtResult.Rows)
                         //{
@@ -957,7 +1003,7 @@ namespace wfaIntegradoCom.Procesos
                         txtTelefono.Text = clsClienteDocumentoV.cTelCelular;
                         dgv.Visible = false;
                     }
-                    else if (lnTipoConCambio==-2)
+                    else if (lnTipoConCambio==-2 || lnTipoConCambio == -8 || lnTipoConCambio == 0)
                     {
                        
                         foreach (DataRow drMenu in dtResult.Rows)
@@ -979,6 +1025,15 @@ namespace wfaIntegradoCom.Procesos
                         lbltxtClientesN_A.Text = "Placa";
                         lbltxtDireccion.Text = "Marca / Modelo";
                         lbltxtTelefono.Text = "Serie";
+
+                        if (lstOtrasVentas.Count> 1 || lnTipoConCambio == -8 || lnTipoConCambio == -7)
+                        {
+                            lblClienteAux.Visible=true;
+                            txtClienteAux.Visible = true;
+                            lblClienteAux.Text = "Cliente";
+                            txtClienteAux.Text = clsClienteDocumentoV.cNombre + " " + clsClienteDocumentoV.cApePat + " " + clsClienteDocumentoV.cApeMat;
+
+                        }
 
                         dgv.Visible = false;
 
@@ -1020,7 +1075,7 @@ namespace wfaIntegradoCom.Procesos
             if (!bResul)
             {
                 MessageBox.Show("Error al Cargar Cliente Especifico", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.Close();
+                //this.Close();
             }
         }
 
@@ -1390,8 +1445,8 @@ namespace wfaIntegradoCom.Procesos
             gbDatosVehiculo.Visible = estMostrarGb;
             dgOtrasVentas.AllowUserToAddRows = lstOtrasVentas.Count>0? estOcultarFila:true;
             fncambiarPosicionGB(estMostrarGb);
-       
             bgEquipos1.Visible = estMostEquipos1;
+            if (lnTipoConCambio == 3) { gbDatosCliente.Visible = false; } else if (lnTipoConCambio == 0) { gbDatosCliente.Visible = true; }
             txtBusca.PlaceholderText = phlBusqVehiculo;
             txtDocumento.PlaceholderText = phlBusqGbCliente;
             gbDatosCliente.Text = tituloGbCliente;
@@ -1808,17 +1863,17 @@ namespace wfaIntegradoCom.Procesos
             {
                 if (lstOtrasVentas[i].idTipoTransaccion==2)
                 {
-                    lstOtrasVentas[i].idValida = -5;
+                    lstOtrasVentas[i].idValida = -7;
                 }else if (lstOtrasVentas[i].idTipoTransaccion == 3)
                 {
-                    lstOtrasVentas[i].idValida = -6;
+                    lstOtrasVentas[i].idValida = -8;
                 }
                 DataGridViewRow rowss = dgOtrasVentas.Rows[i];
                 lstDC.Add(
                 new DetalleVenta
                 {
 
-
+                    IdDetalleVenta= lstOtrasVentas[i].idObjVenta,
                     Numeracion = i + 1,
                     Descripcion = FunGeneral.FormatearCadenaTitleCase(lstOtrasVentas[i].DetalleVentas),
                     idTipoTarifa = 0,
@@ -1832,7 +1887,8 @@ namespace wfaIntegradoCom.Procesos
                     Importe = lstOtrasVentas[i].precioNeto,
                     cSimbolo = Mon.cSimbolo,
                     idObjetoVenta= lstOtrasVentas[i].idObjVenta,
-                    idTipoTransaccion=lstOtrasVentas[i].idTipoTransaccion
+                    idTipoTransaccion=lstOtrasVentas[i].idTipoTransaccion,
+                    idOperacion= lstOtrasVentas[i].idOperacion
 
                 }) ;
 
@@ -1875,7 +1931,10 @@ namespace wfaIntegradoCom.Procesos
                 cVehiculos = clsVehiculoServicios is Vehiculo && clsVehiculoServicios.vPlaca.ToString()!=""? clsVehiculoServicios.vPlaca: fnObtenerVehiculos(),
                 cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
                 cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",
-                cTipoVenta = lstTipoVenta.Nombre
+                cTipoVenta = lstTipoVenta.Nombre,
+                est0= clsClienteDocumentoV.idCliente == 477 ? true:false,
+                est1=false
+
 
             });
             return lsDocVenta;
@@ -2279,9 +2338,20 @@ namespace wfaIntegradoCom.Procesos
                     fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo);
                 }
             }
-           
-            
-            
+            else if (stCondicionprocesos == 3 || stCondicionprocesos == 5)
+            {
+                clsVehiculoServicios.dFechaReg = Convert.ToDateTime(dtFechaTitu.Value);
+                //frmCT.Inicio2(clsOtrasVentaGeneral.lstXmlActCambioVehicular[0].lstVehiculo, clsOtrasVentaGeneral.lstXmlActCambioVehicular[0].clsVehiculoServicios, clsOtrasVentaGeneral.lstXmlActCambioVehicular[0].clsEquipoImeis, clsOtrasVentaGeneral.lstXmlActCambioVehicular[0].clsClienteDov, -2);
+                //if (stCondicionprocesos == 3)
+                //{
+                    Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                    Double sumaPrimerPago = lstLdv.Sum(i => i.Importe);
+                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo);
+                //}
+            }
+
+
+
 
             return EstadoGenVenta;
         }
@@ -2476,7 +2546,7 @@ namespace wfaIntegradoCom.Procesos
                         //txtdni.Text = Convert.ToString(drMenu["cDocumento"]);
                         //txtTelefono.Text = Convert.ToString(drMenu["cTelCelular"]);
                         //txtCorreo.Text = Convert.ToString(drMenu["cCorreo"]) != "" ? Convert.ToString(drMenu["cCorreo"]) : "SIN CORREO";
-                        if (lnTipoConCambio==-3)
+                        if (lnTipoConCambio==-3 || lnTipoConCambio == 3)
                         {
                             fnLlenarTablaCod(cboTipoDocEmitir, "DOVE", clsClienteAntecesor.cTiDo, 0);
                         }
@@ -2525,6 +2595,11 @@ namespace wfaIntegradoCom.Procesos
 
                         txtImei1.Text = clsEquipo1.imei;
                         txtSimcard1.Text = clsEquipo1.SimCardEquipo;
+
+                        if (lnTipoConCambio == 3)
+                        {
+                            clsClienteDocumentoV = clsClienteAntecesor;
+                        }
 
                     }
 
@@ -2724,8 +2799,10 @@ namespace wfaIntegradoCom.Procesos
         private void dtFechaTitu_ValueChanged(object sender, EventArgs e)
         {
 
-            estadoFechaPago = fnValidaFecha(lblFechaT, pbFechaT);
-
+            //estadoFechaPago = fnValidaFecha(lblFechaT, pbFechaT);
+            var res =FunGeneral.fnValidarFechaPago(dtFechaTitu, pbFechaT, 1);
+            lblFechaT.Text = res.Item2;
+            estadoFechaPago=res.Item1;
             dtFechaTitularidad = Convert.ToDateTime(dtFechaTitu.Value);
         }
 
@@ -2854,6 +2931,7 @@ namespace wfaIntegradoCom.Procesos
         {
 
             estCliente = Convert.ToInt32(txtIdCliente.Text) == 0 ? false:true ;
+            estCliente = txtClienteAux.Text.ToString() ==""  ? false:true ;
         }
 
         private void fnValidarCamposCliente(object sender, EventArgs e)
@@ -2872,9 +2950,13 @@ namespace wfaIntegradoCom.Procesos
             txtClientesN_A_TextChanged(sender, e);
             txtIdCliente_TextChanged(sender, e);
             txtPlacaT_TextChanged(sender, e);
-            if (lnTipoConCambio == -3)
+            if (lnTipoConCambio == -3 || lnTipoConCambio==3 ||  lnTipoConCambio==3)
             {
                 estCliente = true;
+            }
+            if (lnTipoConCambio==-7 || lnTipoConCambio==-8)
+            {
+                estPLACA = true;
             }
         }
         
@@ -3028,7 +3110,7 @@ namespace wfaIntegradoCom.Procesos
                 }
                 else
                 {
-                    MessageBox.Show("Porfavor Complete los Datos", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor Complete los Datos", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             //fnHabilitarControles(false);

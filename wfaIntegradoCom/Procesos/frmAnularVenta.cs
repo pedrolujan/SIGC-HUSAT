@@ -10,10 +10,8 @@ using System.Windows.Forms;
 using CapaNegocio;
 using CapaUtil;
 using CapaDato;
-
-
-
-
+using wfaIntegradoCom.Funciones;
+using CapaEntidad;
 namespace wfaIntegradoCom.Procesos
 {
     public partial class frmAnularVenta : Form
@@ -23,7 +21,12 @@ namespace wfaIntegradoCom.Procesos
             InitializeComponent();
         }
         //MOD//
-        private void  fnBuscarVentas( DateTime fechainicial, DateTime fechafinal , String cbuscar  )
+        static Int32 tabInicio;
+        static Boolean EstadoAnulacion=false;
+        Boolean estBusqueda=false;
+        static String cDescripcion = "";
+        static List<xmlDocumentoVentaGeneral> stXmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
+        private void  fnBuscarVentas(Int32 numPagina, Int32 tipoCon  )
         {
             BLDocumentoVenta objdocVenta = new BLDocumentoVenta();
            
@@ -31,34 +34,115 @@ namespace wfaIntegradoCom.Procesos
             DataTable dtcodventa = new DataTable();
 
             DataGridView dg = dgVentas;
-
-
             Int32 totalresult;
-
-            
-
+            Int32 filas = 10;
             try
             {
-                // String BuscaVenta = Convert.ToString(txtBuscar.Text.Trim());
-
-
-                dtcodventa = objdocVenta.BLListarVentas(fechainicial , fechafinal , cbuscar);
-                totalresult = dtcodventa.Rows.Count;
-                foreach (DataRow dr in dtcodventa.Rows)
+                Boolean chkHabFecha= cbFechas.Checked;
+                String cbuscar = txtBuscar.Text.Trim();
+                DateTime fechainicial = dtpFechaInicialBus.Value;
+                DateTime fechafinal = dtpFechaFinalBus.Value;
+                if (chkHabFecha == true)
                 {
-                    dgVentas.Rows.Add( dr["codDocumentoCorrelativo"], dr["cNombre"], dr["vPlaca"], dr["dfecharegistro"], dr["cUser"]);
+                    dtcodventa = objdocVenta.BLListarVentas(chkHabFecha,FunGeneral.GetFechaHoraFormato(fechainicial,3) , FunGeneral.GetFechaHoraFormato(fechafinal,3) , cbuscar, numPagina, tipoCon);
+
+                }else if (cbuscar.Length>10)
+                {
+                    dtcodventa = objdocVenta.BLListarVentas(chkHabFecha,FunGeneral.GetFechaHoraFormato(fechainicial,3) , FunGeneral.GetFechaHoraFormato(fechafinal,3) , cbuscar, numPagina, tipoCon);
                 }
-                //dg.Columns[0].Visible = false;
-                //dg.Columns[1].Width = 50;
-                //dg.Columns[2].Visible = false;
-                //dg.Columns[3].Width = 50;
-                //dg.Columns[4].Visible = false;
-                //dg.Columns[5].Width = 45;
-                //dg.Columns[6].Width = 75;
-                //dg.Columns[7].Visible = false;
-                //dg.Columns[8].Width = 45;
-                //dg.Columns[9].Width = 45;
-                //dg.Columns[10].Width = 45;
+                else
+                {
+                    MessageBox.Show("Ingrese mas dijitos del codigo de documento","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                }
+           
+
+                Int32 totalResultados = dtcodventa.Rows.Count;
+
+                if (totalResultados > 0)
+                {
+                    dg.Columns.Clear();
+                    dg.Rows.Clear();
+                    dg.Columns.Add("id", "id");
+                    dg.Columns.Add("id2", "id2");
+                    dg.Columns.Add("N", "N°");
+                    dg.Columns.Add("codigo", "Codigo Documento");
+                    dg.Columns.Add("Fecha", "Fecha");
+                    dg.Columns.Add("Cliente", "Cliente");
+                    dg.Columns.Add("Vehiculo", "Vehiculo");
+                    dg.Columns.Add("TipoOperacion", "Tipo Operación");
+                    dg.Columns.Add("usuario", "Usuario");
+
+                    Int32  y=0;
+                    if (numPagina == 0)
+                    {
+                        y = 0;
+                        estBusqueda = true;
+                    }
+                    else
+                    {
+                        tabInicio = (numPagina - 1) * filas;
+                        y = tabInicio;
+                        estBusqueda =false;
+                    }
+                    foreach (DataRow dr in dtcodventa.Rows)
+                    {
+                        y += 1;
+                        dg.Rows.Add(
+                            dr["codDocumentoCorrelativo"], 
+                            dr["idOperacion"],
+                            y, 
+                            dr["codDocumentoCorrelativo"],
+                            Convert.ToDateTime(dr["dfecharegistro"]).ToString("dd MMM yyyy hh:mm tt"), 
+                            dr["cliente"], 
+                            dr["vehiculo"], 
+                            dr["cNombreOperacion"],
+                            dr["cUser"]
+                                          );
+                          
+                    }
+
+                    if (numPagina == 0)
+                    {
+                        gbPaginacion.Visible = true;
+                        Int32 totalRegistros = Convert.ToInt32(dtcodventa.Rows[0][0]);
+                        FunValidaciones.fnCalcularPaginacion(
+                            totalRegistros,
+                            totalResultados,
+                            totalResultados,
+                            cboPagina,
+                            btnTotalPag,
+                            btnNumFilas,
+                            btnTotalReg
+                        );
+                        estBusqueda = false;
+                        //dEstadoBusquedaPaginacion = false;
+                    }
+                    //else
+                    //{
+                    //    btnNumFilas.Text = Convert.ToString(totalResultados);
+                    //}
+
+                    dg.Columns[0].Visible = false;
+                    dg.Columns[1].Visible = false;
+                    dg.Columns[2].Width = 15;
+                    dg.Columns[3].Width = 45;
+                    dg.Columns[4].Width = 58;
+                    dg.Columns[5].Width = 100;
+                    dg.Columns[6].Width = 50;
+                    dg.Columns[7].Width = 50;
+                    dg.Columns[8].Width = 65;
+                }
+                else
+                {
+                    dgVentas.Columns.Clear();
+                    dgVentas.Rows.Clear();
+                    dgVentas.Columns.Add("id", "No se encontró resultados");
+                    dg.Columns[0].Width = 100;
+                }
+
+
+
+               
 
 
                 dgVentas.Visible = true;
@@ -66,7 +150,7 @@ namespace wfaIntegradoCom.Procesos
             }
             catch (Exception ex)
             {
-                objUtil.gsLogAplicativo("frmRegistrarAccesorios", "fnBuscarEquipo", ex.Message);
+                objUtil.gsLogAplicativo("frmAnularVentas", "fnBuscarVentas", ex.Message);
               
 
                 
@@ -78,137 +162,137 @@ namespace wfaIntegradoCom.Procesos
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
 
-            Int32 numCaracNroDocumento = txtBuscar.TextLength;
-            if (numCaracNroDocumento > 10)
-            {
-                dgVentas.Rows.Clear();
-                String cbuscar = txtBuscar.Text.Trim();
-
-                DateTime fechainicial = dtpFechaInicialBus.Value;
-                DateTime fechafinal = dtpFechaFinalBus.Value;
-
-
-                if (cbFechas.Checked == false)
-                {
-
-                    string strFechaActual = "2018-01-31 16:56:00";
-                    DateTime fechainicio = DateTime.Parse(strFechaActual);
-
-                    DateTime fechaactual = DateTime.Now;
-                    fnBuscarVentas(fechainicio, fechaactual, cbuscar);
-                }
-                else if (cbFechas.Checked == true)
-                {
-
-
-                    fnBuscarVentas(fechainicial, fechafinal, cbuscar);
-                }
-            }
+           
 
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            //IMGbuscar (Lupa)//
-            dgVentas.Rows.Clear();
-            String cbuscar = txtBuscar.Text.Trim();
-
-            DateTime fechainicial = dtpFechaInicialBus.Value;
-            DateTime fechafinal = dtpFechaFinalBus.Value;
-
-
-            if (cbFechas.Checked == false)
-            {
-
-                string strFechaActual = "2018-01-31 16:56:00";
-                DateTime fechainicio = DateTime.Parse(strFechaActual);
-
-                DateTime fechaactual = DateTime.Now;
-                fnBuscarVentas(fechainicio, fechaactual, cbuscar);
-            }
-            else if (cbFechas.Checked == true)
-            {
-
-                
-            fnBuscarVentas(fechainicial, fechafinal, cbuscar);
-            }
-
-
-
-
-
-            // String idDocVenta = Convert.ToString(txtBuscar.Text);
-           // Int32 idDocVenta = Convert.ToInt32(dg.CurrentRow.Cells[0].Value);
+                fnBuscarVentas(0,-1);
+           
         }
 
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            dgVentas.Rows.Clear();
-            String cbuscar = txtBuscar.Text.Trim();
-
-            DateTime fechainicial = dtpFechaInicialBus.Value;
-            DateTime fechafinal = dtpFechaFinalBus.Value;
 
             if (e.KeyChar == (Char)Keys.Enter)
             {
-                fnBuscarVentas(fechainicial, fechafinal, cbuscar);
+                fnBuscarVentas(0,-1);
+            }
+        }
+        private void fnActivarFechas( Boolean est)
+        {
+            if (est == true)
+            {
+                gbBuscarListaVentas.Enabled = true;
+            }
+            else
+            {
+                gbBuscarListaVentas.Enabled = false;
+
             }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbFechas.Checked == true)
-            {
-                gbBuscarListaVentas.Enabled = true;
-            }
-            else
-                gbBuscarListaVentas.Enabled = false;
+            fnActivarFechas(cbFechas.Checked);
         }
-
-        private void eliminarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
+        public void fnRecibirDescripcion( String str)
         {
-
-            BLDocumentoVenta objdocVenta = new BLDocumentoVenta();
-            Boolean estadoOpe = false;
-
-            String codDocVenta = Convert.ToString(dgVentas.CurrentRow.Cells[2].Value);
-            DialogResult resultDialog = MessageBox.Show("¿En realidad desea anular esta Documento?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
-
-            if (resultDialog == DialogResult.Yes)
-            {
-                estadoOpe = objdocVenta.BLDAnularDocumentoVenta(codDocVenta);
-                
-                if (estadoOpe == true)
-                {
-                    MessageBox.Show("Documento anulada correctamente", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
-                }
-                else
-                {
-                    MessageBox.Show("Ocurrio un error al anular el Documento de Venta", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-            }
-
-            clsUtil clsUtil = new clsUtil();
-           DialogResult dr =  MessageBox.Show("Acabas de presionar el boton -Eliminar Registro- ", "Avisito xd", MessageBoxButtons.OK, MessageBoxIcon.Question);
-
-            if (dr  == DialogResult.OK)
-            {
-
-                MessageBox.Show("Acabas de Aceptar el Mensaje anterior", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-               
-            }
+            cDescripcion = str;
+        }
+        public void fnEstadoAnulacion(Boolean est)
+        {
+            EstadoAnulacion = est;
+        }
+        public void fnBuscarDocumentoVenta(String cCodVenta, Int32 tipCon, Int32 idTipoTarifa, Int32 idContrato)
+        {
+            BLOtrasVenta objTipoVenta = new BLOtrasVenta();
+            clsUtil objUtil = new clsUtil();
+            DataTable dtResp = new DataTable();
+            List<TipoVenta> lsTipoVenta = new List<TipoVenta>();
+            Int32 filas = 20;
+            List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
+            xmlDocumentoVentaGeneral xmlDocVenta = new xmlDocumentoVentaGeneral();
 
             try
             {
+                xmlDocVenta = objTipoVenta.blBuscarDocumentoVentaGeneral(cCodVenta, tipCon, idTipoTarifa, idContrato);
+                xmlDocVenta.xmlDocumentoVenta[0].cDireccion = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDireccion);
+                xmlDocVenta.xmlDocumentoVenta[0].cEstado = "ANULACIONES";
+                xmlDocVenta.xmlDocumentoVenta[0].NombreDocumento = "NOTA DE CREDITO";
+                xmlDocVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = "NC001-000000000";
+                xmlDocVenta.xmlDocumentoVenta[0].cDocumento = xmlDocVenta.xmlDocumentoVenta[0].cDocumento.ToString()==""? "00000000": xmlDocVenta.xmlDocumentoVenta[0].cDocumento;
+                xmlDocVenta.xmlDocumentoVenta[0].est0 = false;
+                xmlDocVenta.xmlDocumentoVenta[0].cVehiculos = FunGeneral.FormatearCadenaTitleCase(cDescripcion);
+                xmlDocVenta.xmlDocumentoVenta[0].idUsuario = Variables.gnCodUser;
+                xmlDocVenta.xmlDocumentoVenta[0].dFechaVenta =Convert.ToDateTime(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis,3));
+                //xmlDocVenta.xmlDocumentoVenta[0].cCliente = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cCliente);
+                xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago);
+                xmlDocumentoVenta.Add(xmlDocVenta);
+                stXmlDocumentoVenta = xmlDocumentoVenta;
+                Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
+
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, tipCon);
 
             }
-            catch (Exception )
+            catch (Exception ex)
             {
+                objUtil.gsLogAplicativo("frmAnularVenta", "fnBuscarDocumentoVenta", ex.Message);
 
-                throw;
             }
+            finally
+            {
+                objUtil = null;
+                objTipoVenta = null;
+                lsTipoVenta = null;
+            }
+        }
+
+        private void fnAnularDocumentoVenta(String codDocumento,Int32 idOperacion, Int32 tipoCon)
+        {
+            BLDocumentoVenta objdocVenta = new BLDocumentoVenta();
+            Boolean estadoOpe = false;
+            frmInput frm = new frmInput();
+            frm.Inicio(-1,"Describa la anulacion","Continuar","Cancelar");
+            if (cDescripcion != "")
+            {
+                DialogResult resultDialog = MessageBox.Show("¿En realidad desea anular este Documento?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
+                if (resultDialog == DialogResult.Yes)
+                {
+                    fnBuscarDocumentoVenta(codDocumento, -4, 0, 0);
+                    if (EstadoAnulacion == true)
+                    {
+                        estadoOpe = objdocVenta.BLDAnularDocumentoVenta(codDocumento, idOperacion, stXmlDocumentoVenta, tipoCon);
+
+                        if (estadoOpe == true)
+                        {
+                            MessageBox.Show("Documento anulado correctamente", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrio un error al anular el Documento de Venta", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+                    }
+
+                }
+            }
+
+            
+           
+        }
+        private void eliminarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            String codDocVenta = Convert.ToString(dgVentas.CurrentRow.Cells[0].Value);
+            Int32 idOperacion = Convert.ToInt32(dgVentas.CurrentRow.Cells[1].Value);
+            fnAnularDocumentoVenta(codDocVenta, idOperacion, -1);
+        
+
+            
 
 
         }
@@ -217,6 +301,9 @@ namespace wfaIntegradoCom.Procesos
         {
             DateTime fechaactual = DateTime.Now;
             dtpFechaFinalBus.Value = fechaactual;
+            dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-dtpFechaFinalBus.Value.AddDays(-1).Day);
+            cbFechas.Checked=true;
+            fnActivarFechas(true);
         }
 
         private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
@@ -226,17 +313,19 @@ namespace wfaIntegradoCom.Procesos
                 txtBuscar.Text = cbR0.Text;
 
                 cbF0.Checked = false;
+                checkBox1.Checked = false;  
             }
           
         }
 
         private void cbF0_CheckedChanged(object sender, EventArgs e)
         {
-        if (cbF0.Checked == true)
+            if (cbF0.Checked == true)
             {
                 txtBuscar.Text = cbF0.Text;
 
                 cbR0.Checked = false;
+                checkBox1.Checked = false;
             }
         }
 
@@ -244,5 +333,34 @@ namespace wfaIntegradoCom.Procesos
         {
 
         }
+
+        private void eliminarContratoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String codDocVenta = Convert.ToString(dgVentas.CurrentRow.Cells[0].Value);
+            Int32 idOperacion = Convert.ToInt32(dgVentas.CurrentRow.Cells[0].Value);
+            fnAnularDocumentoVenta(codDocVenta, idOperacion, -2);
+        }
+
+        private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Int32 numpagina = Convert.ToInt32(cboPagina.Text);
+            if(estBusqueda == false)
+            {
+                fnBuscarVentas(numpagina, -1);
+
+            }
+        }
+
+        private void checkBox1_CheckedChanged_2(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                txtBuscar.Text = checkBox1.Text;
+
+                cbR0.Checked = false;
+                cbF0.Checked = false;
+            }
+        }
     }
 }
+ 

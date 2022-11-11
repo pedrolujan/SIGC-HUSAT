@@ -26,6 +26,7 @@ namespace wfaIntegradoCom.Consultas
         static List<ReporteBloque> lstReporteEgresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstCajaChica = new List<ReporteBloque>();
         static List<CuadreCaja> lstReporteCuandrecaja = new List<CuadreCaja>();
+        static List<CuadreCaja> lstAperturaCaja = new List<CuadreCaja>();
         static List<xmlActaCierraCaja> xmlActaCierreCaja = new List<xmlActaCierraCaja>();
         static Int32 lnTipoCon = 0;
         public void Inicio(List<xmlActaCierraCaja> xmlActacierre, Int32 tipoCon)
@@ -35,6 +36,7 @@ namespace wfaIntegradoCom.Consultas
             lstReporteEgresos = xmlActacierre[0].ListaReporteEgresos;
             lstReporteCuandrecaja= xmlActacierre[0].ListaCuadreCaja;
             lstCajaChica = xmlActacierre[0].ListaCajaChica;
+            lstAperturaCaja= xmlActacierre[0].ListaAperturaCaja;    
             xmlActaCierreCaja = xmlActacierre;
             lnTipoCon = tipoCon;
             this.ShowDialog();
@@ -49,15 +51,17 @@ namespace wfaIntegradoCom.Consultas
                 btnCerrarGuardarCierre.Enabled = true;
             }
             this.reportViewer1.RefreshReport();
-            fnCargarReporte(xmlActaCierreCaja,lstReporteIngresos, lstDetalleIngresos, lstReporteEgresos,lstReporteCuandrecaja, lstCajaChica);
+            fnCargarReporte(xmlActaCierreCaja, lstAperturaCaja,lstReporteIngresos, lstDetalleIngresos, lstReporteEgresos,lstReporteCuandrecaja, lstCajaChica);
         }
-        private void fnCargarReporte(List<xmlActaCierraCaja> xmlActa,List<ReporteBloque> lstIngresos, List<ReporteBloque> lstDetIngresos, List<ReporteBloque> lstEgresos, List<CuadreCaja> lstCuandre, List<ReporteBloque> lstCajChica)
+        private void fnCargarReporte(List<xmlActaCierraCaja> xmlActa, List<CuadreCaja> lstApe, List<ReporteBloque> lstIngresos, List<ReporteBloque> lstDetIngresos, List<ReporteBloque> lstEgresos, List<CuadreCaja> lstCuandre, List<ReporteBloque> lstCajChica)
         {
             
             ReportParameter[] parameters = new ReportParameter[5];
             List<ReporteBloque> lstCH = new List<ReporteBloque>();
             lstCH.Add(lstCajChica.Find(i => i.Codigoreporte == "TEGR0003"));
             lstCH[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstCH[0].SimboloMoneda, lstCH[0].ImporteRow, 0);
+            lstApe[0].Detalle = FunGeneral.FormatearCadenaTitleCase(lstApe[0].Detalle);
+            lstApe[0].MonImporteSaldo = FunGeneral.fnFormatearPrecio("S/.", lstApe.Sum(i => i.importeSaldo), 1); ;
 
             List<ReporteBloque> lstCP = new List<ReporteBloque>();
             lstCP.Add(lstCajChica.Find(i => i.Codigoreporte == "TEGR0002"));
@@ -76,6 +80,7 @@ namespace wfaIntegradoCom.Consultas
             reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.prtActaCierreCaja.rdlc";
             reportViewer1.LocalReport.SetParameters(parameters);
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReporte", lstIngresos));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsApertura", lstApe));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsDetalleIngresos", lstDetIngresos));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReporteEgresos", lstEgresos));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCajaChica", lstCH));

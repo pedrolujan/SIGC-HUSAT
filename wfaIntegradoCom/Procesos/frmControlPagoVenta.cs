@@ -246,7 +246,7 @@ namespace wfaIntegradoCom.Procesos
                     lstDetalleCronograma[i].periodoInicio = resulFechas.Item1;
                     lstDetalleCronograma[i].periodoFinal = resulFechas.Item2;
                     lstDetalleCronograma[i].fechaEmision = lstDetalleCronograma[i].periodoFinal.AddDays(1);
-                    DateTime fechaVencimiento = lstDetalleCronograma[i].periodoFinal.AddDays(7);
+                    DateTime fechaVencimiento = lstDetalleCronograma[i].periodoFinal.AddDays(5);
                     lstDetalleCronograma[i].fechaVencimiento = fechaVencimiento;
                     
 
@@ -587,7 +587,7 @@ namespace wfaIntegradoCom.Procesos
                             if (Convert.ToString(drMenu["cNomTab"]) == "VENCIDO")
                             {
                                 //dtFechaPagoCronograma = Convert.ToDateTime(drMenu["dtFechaCorte"]);
-                                tiempoTranscurrido = "\n🚫 Desde ( " + dtFechaPagoCronograma.AddDays(7).ToString("dd/MMM/yyyy") + " )";
+                                tiempoTranscurrido = "\n🚫 Desde ( " + resulFechas.Item2.AddDays(5).ToString("dd/MMM/yyyy") + " )";
                             }
                             else
                             {
@@ -661,8 +661,10 @@ namespace wfaIntegradoCom.Procesos
                 Boolean bResult = false;
                 lstC.Clear();
                 dtFechaPago.Value = Variables.gdFechaSis;
+                FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
+               
                 //gbBuscarListaVentas.Enabled = false;
                 CronogramaSeleccionado = 0;
                 frmRegistrarVenta frmRV = new frmRegistrarVenta();
@@ -686,10 +688,12 @@ namespace wfaIntegradoCom.Procesos
                 if (Variables.gsCargoUsuario == "PETR0001" || Variables.gsCargoUsuario == "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
                 {
                     btnValidarEstados.Visible = true;
+                    cmsPagoCuotas.Items[1].Visible = true;
                 }
                 else
                 {
                     btnValidarEstados.Visible = false;
+                    cmsPagoCuotas.Items[1].Visible = false;
                 }
                 if (inTipoApertura==0)
                 {
@@ -769,7 +773,7 @@ namespace wfaIntegradoCom.Procesos
                         clsDetCro[j].periodoInicio = resulFechas.Item1;
                         clsDetCro[j].periodoFinal = resulFechas.Item2;
                         clsDetCro[j].fechaEmision = clsDetCro[j].periodoFinal.AddDays(1);
-                        clsDetCro[j].fechaVencimiento = clsDetCro[j].periodoFinal.AddDays(7);
+                        clsDetCro[j].fechaVencimiento = clsDetCro[j].periodoFinal.AddDays(5);
 
                             if (clsDetCro[j].fechaVencimiento < Variables.gdFechaSis)
                             {
@@ -784,12 +788,12 @@ namespace wfaIntegradoCom.Procesos
 
                                         if (clsDetCro[j].estado == "ESPV0001" && clsDetCro[j - 1].estado == "ESPV0003")
                                         {
-                                            dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0003", 1);
+                                            dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
                                         }
                                         else if (clsDetCro[j].estado == "ESPV0003" && clsDetCro[j - 1].estado == "ESPV0003")
                                         {
-                                            //dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
-                                        }
+                                        dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
+                                    }
                                         else if (clsDetCro[j].estado == "ESPV0001" && clsDetCro[j - 1].estado == "ESPV0004")
                                         {
                                             dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
@@ -1013,7 +1017,7 @@ namespace wfaIntegradoCom.Procesos
                         ClaseCliente = clsCli,
                         ClaseTarifa= trf
 
-                    }); ; ;
+                    });
 
 
                 }
@@ -1230,11 +1234,11 @@ namespace wfaIntegradoCom.Procesos
                 if (dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex-1].Value.ToString().Contains("✅"))
                 {
                     cmsPagoCuotas.Items[0].Visible = false;
-                    cmsPagoCuotas.Items[1].Visible = true;
+                    //cmsPagoCuotas.Items[1].Visible = true;
                 }                
                 else
                 {
-                    cmsPagoCuotas.Items[1].Visible = false;
+                    //cmsPagoCuotas.Items[1].Visible = false;
                     cmsPagoCuotas.Items[0].Visible = true;
                 }
 
@@ -2067,6 +2071,9 @@ namespace wfaIntegradoCom.Procesos
         private void dtFechaPago_ValueChanged(object sender, EventArgs e)
         {
             estadoFechaPago=fnValidarFecha(erFechaPago,pbFechaPago);
+            var res=FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 1);
+            estadoFechaPago = res.Item1;
+            erFechaPago.Text = res.Item2;
             dtFechaPagoCuota = Convert.ToDateTime(dtFechaPago.Value);
             
             

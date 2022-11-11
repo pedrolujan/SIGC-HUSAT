@@ -122,11 +122,11 @@ namespace CapaDato
 
                  objCnx = new clsConexion("");
 
-                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarReporteGeneralVentas", pa);
+                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarDashBoard", pa);
                 if (clsBusq.cod1.Length>5)
                 {
                     //DataView dvDasboard = new DataView(dtMenu.Tables[0]);
-                    DataView dvParatablas = new DataView(dtMenu.Tables[0]);
+                    DataView dvParatablas = new DataView(dtMenu.Tables[2]);
 
                     //foreach (DataRowView dr in dvDasboard)
                     //{
@@ -228,7 +228,10 @@ namespace CapaDato
 
                     });
                 }
-                if (lstCajaChica.Count==0)
+
+                List<ReporteBloque> lstCH = new List<ReporteBloque>();
+                lstCH.Add(lstCajaChica.Find(i => i.Codigoreporte == "TEGR0003"));
+                if (lstCH[0] is null)
                 {
                     lstCajaChica.Add(new ReporteBloque
                     {
@@ -240,45 +243,58 @@ namespace CapaDato
                         ImporteTipoCambio = Convert.ToDouble(0.20),
                         ImporteRow = Convert.ToDouble(0)
                     });
-                    lstCajaChica.Add(new ReporteBloque
-                    {
-                        Codigoreporte = "TEGR0002",
-                        Detallereporte = FormatearCadenaTitleCase("Copias"),
-                        Cantidad = 0,
-                        idMoneda = Convert.ToInt32(1),
-                        SimboloMoneda = "S/.",
-                        ImporteTipoCambio = Convert.ToDouble(0.20),
-                        ImporteRow = Convert.ToDouble(0)
-                    });
-                }else if(lstCajaChica.Count == 1)
-                {
-                    if (lstCajaChica[0].Codigoreporte== "TEGR0002")
-                    {
-                        lstCajaChica.Add(new ReporteBloque
-                        {
-                            Codigoreporte = "TEGR0003",
-                            Detallereporte = FormatearCadenaTitleCase("Caja chica"),
-                            Cantidad = 0,
-                            idMoneda = Convert.ToInt32(1),
-                            SimboloMoneda = "S/.",
-                            ImporteTipoCambio = Convert.ToDouble(0.20),
-                            ImporteRow = Convert.ToDouble(0)
-                        });
-                    }else if (lstCajaChica[0].Codigoreporte == "TEGR0003")
-                    {
-                        lstCajaChica.Add(new ReporteBloque
-                        {
-                            Codigoreporte = "TEGR0002",
-                            Detallereporte = FormatearCadenaTitleCase("Copias"),
-                            Cantidad = 0,
-                            idMoneda = Convert.ToInt32(1),
-                            SimboloMoneda = "S/.",
-                            ImporteTipoCambio = Convert.ToDouble(0.20),
-                            ImporteRow = Convert.ToDouble(0)
-                        });
-
-                    }
                 }
+                //if (lstCajaChica.Count==0)
+                //{
+                //    lstCajaChica.Add(new ReporteBloque
+                //    {
+                //        Codigoreporte = "TEGR0003",
+                //        Detallereporte = FormatearCadenaTitleCase("Caja chica"),
+                //        Cantidad = 0,
+                //        idMoneda = Convert.ToInt32(1),
+                //        SimboloMoneda = "S/.",
+                //        ImporteTipoCambio = Convert.ToDouble(0.20),
+                //        ImporteRow = Convert.ToDouble(0)
+                //    });
+                //    lstCajaChica.Add(new ReporteBloque
+                //    {
+                //        Codigoreporte = "TEGR0002",
+                //        Detallereporte = FormatearCadenaTitleCase("Copias"),
+                //        Cantidad = 0,
+                //        idMoneda = Convert.ToInt32(1),
+                //        SimboloMoneda = "S/.",
+                //        ImporteTipoCambio = Convert.ToDouble(0.20),
+                //        ImporteRow = Convert.ToDouble(0)
+                //    });
+                //}else if(lstCajaChica.Count == 1)
+                //{
+                //    if (lstCajaChica[0].Codigoreporte== "TEGR0002")
+                //    {
+                //        lstCajaChica.Add(new ReporteBloque
+                //        {
+                //            Codigoreporte = "TEGR0003",
+                //            Detallereporte = FormatearCadenaTitleCase("Caja chica"),
+                //            Cantidad = 0,
+                //            idMoneda = Convert.ToInt32(1),
+                //            SimboloMoneda = "S/.",
+                //            ImporteTipoCambio = Convert.ToDouble(0.20),
+                //            ImporteRow = Convert.ToDouble(0)
+                //        });
+                //    }else if (lstCajaChica[0].Codigoreporte == "TEGR0003")
+                //    {
+                //        lstCajaChica.Add(new ReporteBloque
+                //        {
+                //            Codigoreporte = "TEGR0002",
+                //            Detallereporte = FormatearCadenaTitleCase("Copias"),
+                //            Cantidad = 0,
+                //            idMoneda = Convert.ToInt32(1),
+                //            SimboloMoneda = "S/.",
+                //            ImporteTipoCambio = Convert.ToDouble(0.20),
+                //            ImporteRow = Convert.ToDouble(0)
+                //        });
+
+                //    }
+                //}
                 foreach (DataRowView dr in dvDasboard)
                 {
                     lsDasboard.Add(new ReporteBloque
@@ -384,9 +400,11 @@ namespace CapaDato
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         codAuxiliar = FormatearCadenaTitleCase(Convert.ToString(dr["fuente"])),
+                        codAuxiliar1 = Convert.ToString(dr["codAuxiliar"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
                         ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                        ImporteRow = Convert.ToDouble(dr["montoTotal"]),
+                        MasDetallereporte= Convert.ToString(dr["masDetalle"]),
                     });
 
                 }

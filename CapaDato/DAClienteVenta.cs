@@ -15,7 +15,7 @@ namespace CapaDato
         private clsUtil objUtil;
         private object pcBuscar;
        
-        public DataTable DAbuscarClienteV(Boolean habilitarfechas, DateTime fechaInical, DateTime fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta, String estadoTipoContrato, 
+        public DataTable DAbuscarClienteV(Boolean habilitarfechas, String fechaInical, String fechaFinal, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta, String estadoTipoContrato, 
             Boolean habilitarRenovaciones, String valorRadio, Int32 estadoTipoPlan, Int32 estadoPlan, Int32 estadoUsuario, String estadoContrato,String Docventapago)
        {
             SqlParameter[] pa = new SqlParameter[17];

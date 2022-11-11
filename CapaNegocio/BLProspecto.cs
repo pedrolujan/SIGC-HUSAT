@@ -38,7 +38,7 @@ namespace CapaNegocio
             }
         }
 
-        public DataTable blBuscarProspectoPlanDataTable(String pcBuscar,String celular, String estado, Int32 numPagina, Int32 tipoCon, String tipoContacto,DateTime fechaInicial,DateTime fechaFinal,Boolean habilitarFecha, Boolean fechaVisita, Boolean fechaRegistroSeg, Boolean fechaSigSeg,Int32 idUsuario,Int32 idTipoPlan, Int32 idPlan, Int32 idTarifa,String lColor,DateTime fechaActual)
+        public DataTable blBuscarProspectoPlanDataTable(String pcBuscar,String celular, String estado, Int32 numPagina, Int32 tipoCon, String tipoContacto, String fechaInicial, String fechaFinal,Boolean habilitarFecha, Boolean fechaVisita, Boolean fechaRegistroSeg, Boolean fechaSigSeg,Int32 idUsuario,Int32 idTipoPlan, Int32 idPlan, Int32 idTarifa,String lColor, String fechaActual)
         {
             DAProspecto objEquipo = new DAProspecto();
             try
@@ -180,7 +180,7 @@ namespace CapaNegocio
 
         }
 
-        public totalRanking blTotalesRankingSeguimiento(String pcBuscar, String celular, String tipoContacto, DateTime fechaInicial, DateTime fechaFinal, Boolean habilitarFecha, Boolean fechaVisita, Boolean fechaRegistroSeg, Boolean fechaSigSeg, Int32 idUsuario,DateTime fechaActual,Int32 idTipoPlan, Int32 idPlan, Int32 idTarifa)
+        public totalRanking blTotalesRankingSeguimiento(String pcBuscar, String celular, String tipoContacto, String fechaInicial, String fechaFinal, Boolean habilitarFecha, Boolean fechaVisita, Boolean fechaRegistroSeg, Boolean fechaSigSeg, Int32 idUsuario, String fechaActual,Int32 idTipoPlan, Int32 idPlan, Int32 idTarifa)
         {
             DAProspecto objEquipo = new DAProspecto();
             try

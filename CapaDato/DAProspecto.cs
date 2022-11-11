@@ -63,7 +63,7 @@ namespace CapaDato
             }
         }
 
-        public DataTable daBuscarProspectoPlanDataTable(String pcBuscar,String celular, String estado, Int32 numPagina, Int32 tipoCon,String tipoContacto,DateTime fechaInicial,DateTime fechaFinal, Boolean habilitarFecha, Boolean fechaVisita, Boolean fechaRegistroSeg, Boolean fechaSigSeg,Int32 idUsuario,Int32 idTipoPlan,Int32 idPlan, Int32 idTarifa,String lColor , DateTime fechaActual)
+        public DataTable daBuscarProspectoPlanDataTable(String pcBuscar,String celular, String estado, Int32 numPagina, Int32 tipoCon,String tipoContacto, String fechaInicial, String fechaFinal, Boolean habilitarFecha, Boolean fechaVisita, Boolean fechaRegistroSeg, Boolean fechaSigSeg,Int32 idUsuario,Int32 idTipoPlan,Int32 idPlan, Int32 idTarifa,String lColor , String fechaActual)
         {
             SqlParameter[] pa = new SqlParameter[18];
             DataTable dtAccesorio = new DataTable();
@@ -78,8 +78,8 @@ namespace CapaDato
                 pa[3] = new SqlParameter("@numPagina", SqlDbType.Int) { Value = numPagina };
                 pa[4] = new SqlParameter("@tipoCon", SqlDbType.Real) { Value = tipoCon };
                 pa[5] = new SqlParameter("@numCelular", SqlDbType.VarChar, 15) { Value = celular };
-                pa[6] = new SqlParameter("@fechaInicial", SqlDbType.DateTime) { Value = fechaInicial };
-                pa[7] = new SqlParameter("@fechaFinal", SqlDbType.DateTime) { Value = fechaFinal };
+                pa[6] = new SqlParameter("@fechaInicial", SqlDbType.Date) { Value = fechaInicial };
+                pa[7] = new SqlParameter("@fechaFinal", SqlDbType.Date) { Value = fechaFinal };
                 pa[8] = new SqlParameter("@habilitarFecha", SqlDbType.TinyInt) { Value = habilitarFecha };
                 pa[9] = new SqlParameter("@fechaVisita", SqlDbType.TinyInt) { Value = fechaVisita };
                 pa[10] = new SqlParameter("@fechaRegSeg", SqlDbType.TinyInt) { Value = fechaRegistroSeg };
@@ -511,7 +511,7 @@ namespace CapaDato
         }
 
 
-        public totalRanking daTotalesRankingSeguimiento(String pcBuscar, String celular, String tipoContacto, DateTime fechaInicial, DateTime fechaFinal, Boolean habilitarFecha, Boolean fechaVisita, Boolean fechaRegistroSeg, Boolean fechaSigSeg, Int32 idUsuario,DateTime fechaActual,Int32 idTipoPlan, Int32 idPlan,Int32 idTipoTarifa)
+        public totalRanking daTotalesRankingSeguimiento(String pcBuscar, String celular, String tipoContacto, String fechaInicial, String fechaFinal, Boolean habilitarFecha, Boolean fechaVisita, Boolean fechaRegistroSeg, Boolean fechaSigSeg, Int32 idUsuario, String fechaActual,Int32 idTipoPlan, Int32 idPlan,Int32 idTipoTarifa)
         {
             SqlParameter[] pa = new SqlParameter[14];
             DataTable dtUsuario = new DataTable();
@@ -524,14 +524,14 @@ namespace CapaDato
                 pa[0] = new SqlParameter("@peBuscar", SqlDbType.VarChar, 45) { Value = pcBuscar };
                 pa[1] = new SqlParameter("@cTipoContacto", SqlDbType.NVarChar, 15) { Value = tipoContacto };
                 pa[2] = new SqlParameter("@numCelular", SqlDbType.VarChar, 15) { Value = celular };
-                pa[3] = new SqlParameter("@fechaInicial", SqlDbType.DateTime) { Value = fechaInicial };
-                pa[4] = new SqlParameter("@fechaFinal", SqlDbType.DateTime) { Value = fechaFinal };
+                pa[3] = new SqlParameter("@fechaInicial", SqlDbType.Date) { Value = fechaInicial };
+                pa[4] = new SqlParameter("@fechaFinal", SqlDbType.Date) { Value = fechaFinal };
                 pa[5] = new SqlParameter("@habilitarFecha", SqlDbType.TinyInt) { Value = habilitarFecha };
                 pa[6] = new SqlParameter("@fechaVisita", SqlDbType.TinyInt) { Value = fechaVisita };
                 pa[7] = new SqlParameter("@fechaRegistro", SqlDbType.TinyInt) { Value = fechaRegistroSeg };
                 pa[8] = new SqlParameter("@fechaProxSeg", SqlDbType.TinyInt) { Value = fechaSigSeg };
                 pa[9] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = idUsuario };
-                pa[10] = new SqlParameter("@fechaActual", SqlDbType.DateTime) { Value = fechaActual };
+                pa[10] = new SqlParameter("@fechaActual", SqlDbType.Date) { Value = fechaActual };
                 pa[11] = new SqlParameter("@idTipoPlan", SqlDbType.Int) { Value = idTipoPlan };
                 pa[12] = new SqlParameter("@idPlan", SqlDbType.Int) { Value = idPlan };
                 pa[13] = new SqlParameter("@idTipoTarifa", SqlDbType.Int) { Value = idTipoTarifa };

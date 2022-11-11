@@ -837,6 +837,7 @@
             this.dtpFechaRegSeguimiento.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtpFechaRegSeguimiento.BorderThickness = 1;
             this.dtpFechaRegSeguimiento.CheckedState.Parent = this.dtpFechaRegSeguimiento;
+            this.dtpFechaRegSeguimiento.Enabled = false;
             this.dtpFechaRegSeguimiento.FillColor = System.Drawing.Color.White;
             this.dtpFechaRegSeguimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaRegSeguimiento.Format = System.Windows.Forms.DateTimePickerFormat.Long;
@@ -2574,6 +2575,7 @@
             // 
             // cboPaginaProsPlan
             // 
+            this.cboPaginaProsPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPaginaProsPlan.FormattingEnabled = true;
             this.cboPaginaProsPlan.Location = new System.Drawing.Point(52, 13);
             this.cboPaginaProsPlan.Name = "cboPaginaProsPlan";
@@ -2702,7 +2704,7 @@
             this.dgProspecto.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgProspecto.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgProspecto.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgProspecto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgProspecto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgProspecto.Size = new System.Drawing.Size(1196, 322);
             this.dgProspecto.TabIndex = 206;
             this.dgProspecto.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
@@ -2946,7 +2948,7 @@
             this.rdbFechaSigSeg.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.rdbFechaSigSeg.FillColor = System.Drawing.Color.White;
             this.rdbFechaSigSeg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rdbFechaSigSeg.Location = new System.Drawing.Point(17, 85);
+            this.rdbFechaSigSeg.Location = new System.Drawing.Point(16, 58);
             this.rdbFechaSigSeg.Name = "rdbFechaSigSeg";
             this.rdbFechaSigSeg.Size = new System.Drawing.Size(172, 20);
             this.rdbFechaSigSeg.TabIndex = 220;
@@ -2960,7 +2962,7 @@
             this.rdbFechaRegSeg.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.rdbFechaRegSeg.FillColor = System.Drawing.Color.White;
             this.rdbFechaRegSeg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rdbFechaRegSeg.Location = new System.Drawing.Point(17, 58);
+            this.rdbFechaRegSeg.Location = new System.Drawing.Point(16, 82);
             this.rdbFechaRegSeg.Name = "rdbFechaRegSeg";
             this.rdbFechaRegSeg.Size = new System.Drawing.Size(173, 20);
             this.rdbFechaRegSeg.TabIndex = 219;

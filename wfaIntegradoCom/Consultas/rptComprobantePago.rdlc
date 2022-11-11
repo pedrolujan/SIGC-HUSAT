@@ -465,7 +465,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=": "+CDate(First(Fields!dFechaVenta.Value, "DocumentoVenta")).ToString("dd/MM/yyyy hh:mm tt")</Value>
+                    <Value>=": "+CDate(First(Fields!dFechaVenta.Value, "DocumentoVenta")).ToString("dd/MM/yyyy hh:mm tt",new System.Globalization.CultureInfo ("es-PE"))</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -536,7 +536,7 @@
                   <TextRun>
                     <Value>=IIf(First(Fields!cTipoVenta.Value, "DocumentoVenta") = "EGRESOS", "Receptor",IIf(First(Fields!cTipoVenta.Value, "DocumentoVenta") = "INGRESOS", "Concepto", "Cliente"))</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8.5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -570,8 +570,7 @@
                   <TextRun>
                     <Value>=First(Fields!cTipoDoc.Value, "DocumentoVenta")</Value>
                     <Style>
-                      <FontStyle>Italic</FontStyle>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8.5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -1538,7 +1537,7 @@
                   <TextRun>
                     <Value>Fecha</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8.5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -1725,6 +1724,9 @@
             <Height>0.6cm</Height>
             <Width>6.75979cm</Width>
             <ZIndex>29</ZIndex>
+            <Visibility>
+              <Hidden>=First(Fields!est0.Value, "DocumentoVenta")</Hidden>
+            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1743,9 +1745,9 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIf(First(Fields!cEstado.Value, "DocumentoVenta") = "MOVIMIENTOCAJA", "Tipo", "Vehiculo")</Value>
+                    <Value>=IIF(First(Fields!cEstado.Value, "DocumentoVenta") = "MOVIMIENTOCAJA","Tipo",IIF(First(Fields!cEstado.Value, "DocumentoVenta") = "ANULACIONES","Descripcion","Vehiculo"))</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8.5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -1760,6 +1762,9 @@
             <Height>0.6cm</Height>
             <Width>1.83383cm</Width>
             <ZIndex>30</ZIndex>
+            <Visibility>
+              <Hidden>=First(Fields!est0.Value, "DocumentoVenta")</Hidden>
+            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1779,7 +1784,7 @@
                   <TextRun>
                     <Value>=IIf(First(Fields!cTipoVenta.Value, "DocumentoVenta") = "EGRESOS", "Cargo", "Direccion")</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8.5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>

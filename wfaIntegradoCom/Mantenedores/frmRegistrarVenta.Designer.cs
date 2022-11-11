@@ -95,8 +95,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.colBuscar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.gbPlan = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.lblIndPagoAnual = new System.Windows.Forms.Label();
-            this.pbIndPagoAnual = new System.Windows.Forms.PictureBox();
             this.erComprobanteP = new System.Windows.Forms.Label();
             this.imgComprobanteP = new System.Windows.Forms.PictureBox();
             this.erCilcloP = new System.Windows.Forms.Label();
@@ -154,6 +152,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dtFechaPago = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.pbFechaPago = new System.Windows.Forms.PictureBox();
             this.dtpFechaRegistro = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.gbResponsablePago = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.erTipoDocumentoRP = new System.Windows.Forms.Label();
@@ -289,13 +288,13 @@ namespace wfaIntegradoCom.Mantenedores
             ((System.ComponentModel.ISupportInitialize)(this.imgTabla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculos)).BeginInit();
             this.gbPlan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbIndPagoAnual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgComprobanteP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCicloP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlanP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoPlanP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrimerPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagoPlan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).BeginInit();
             this.gbResponsablePago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoDocumentoRP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoClienteRP)).BeginInit();
@@ -401,6 +400,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.dtFechaPago);
+            this.tabPage1.Controls.Add(this.pbFechaPago);
             this.tabPage1.Controls.Add(this.dtpFechaRegistro);
             this.tabPage1.Controls.Add(this.gbResponsablePago);
             this.tabPage1.Controls.Add(this.label20);
@@ -681,8 +681,6 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.gbPlan.BorderColor = System.Drawing.Color.Gainsboro;
             this.gbPlan.BorderRadius = 5;
-            this.gbPlan.Controls.Add(this.lblIndPagoAnual);
-            this.gbPlan.Controls.Add(this.pbIndPagoAnual);
             this.gbPlan.Controls.Add(this.erComprobanteP);
             this.gbPlan.Controls.Add(this.imgComprobanteP);
             this.gbPlan.Controls.Add(this.erCilcloP);
@@ -729,28 +727,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbPlan.TabIndex = 135;
             this.gbPlan.Text = "Elegir Plan  - Tarifa: Nuevo";
             this.gbPlan.TextOffset = new System.Drawing.Point(0, -7);
-            // 
-            // lblIndPagoAnual
-            // 
-            this.lblIndPagoAnual.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblIndPagoAnual.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndPagoAnual.ForeColor = System.Drawing.Color.White;
-            this.lblIndPagoAnual.Location = new System.Drawing.Point(1103, 260);
-            this.lblIndPagoAnual.Name = "lblIndPagoAnual";
-            this.lblIndPagoAnual.Size = new System.Drawing.Size(65, 35);
-            this.lblIndPagoAnual.TabIndex = 266;
-            this.lblIndPagoAnual.Text = "PAGO ANUAL";
-            this.lblIndPagoAnual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pbIndPagoAnual
-            // 
-            this.pbIndPagoAnual.BackColor = System.Drawing.Color.Transparent;
-            this.pbIndPagoAnual.Image = global::wfaIntegradoCom.Properties.Resources.redo;
-            this.pbIndPagoAnual.Location = new System.Drawing.Point(1078, 240);
-            this.pbIndPagoAnual.Name = "pbIndPagoAnual";
-            this.pbIndPagoAnual.Size = new System.Drawing.Size(28, 28);
-            this.pbIndPagoAnual.TabIndex = 275;
-            this.pbIndPagoAnual.TabStop = false;
             // 
             // erComprobanteP
             // 
@@ -1564,7 +1540,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(294, 6);
+            this.label11.Location = new System.Drawing.Point(308, 6);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(128, 17);
             this.label11.TabIndex = 236;
@@ -1589,6 +1565,16 @@ namespace wfaIntegradoCom.Mantenedores
             this.dtFechaPago.Size = new System.Drawing.Size(256, 36);
             this.dtFechaPago.TabIndex = 230;
             this.dtFechaPago.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            this.dtFechaPago.ValueChanged += new System.EventHandler(this.dtFechaPago_ValueChanged);
+            // 
+            // pbFechaPago
+            // 
+            this.pbFechaPago.BackColor = System.Drawing.Color.White;
+            this.pbFechaPago.Location = new System.Drawing.Point(280, 34);
+            this.pbFechaPago.Name = "pbFechaPago";
+            this.pbFechaPago.Size = new System.Drawing.Size(20, 20);
+            this.pbFechaPago.TabIndex = 231;
+            this.pbFechaPago.TabStop = false;
             // 
             // dtpFechaRegistro
             // 
@@ -1601,7 +1587,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dtpFechaRegistro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaRegistro.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpFechaRegistro.HoveredState.Parent = this.dtpFechaRegistro;
-            this.dtpFechaRegistro.Location = new System.Drawing.Point(297, 26);
+            this.dtpFechaRegistro.Location = new System.Drawing.Point(311, 26);
             this.dtpFechaRegistro.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaRegistro.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaRegistro.Name = "dtpFechaRegistro";
@@ -3717,13 +3703,13 @@ namespace wfaIntegradoCom.Mantenedores
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculos)).EndInit();
             this.gbPlan.ResumeLayout(false);
             this.gbPlan.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbIndPagoAnual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgComprobanteP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCicloP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlanP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoPlanP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrimerPago)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagoPlan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).EndInit();
             this.gbResponsablePago.ResumeLayout(false);
             this.gbResponsablePago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoDocumentoRP)).EndInit();
@@ -3900,8 +3886,6 @@ namespace wfaIntegradoCom.Mantenedores
         private Siticone.UI.WinForms.SiticoneGroupBox gbDinamico;
         private Siticone.UI.WinForms.SiticoneCircleButton btnStockEquipos;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.PictureBox pbIndPagoAnual;
-        private System.Windows.Forms.Label lblIndPagoAnual;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -3971,5 +3955,6 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.DataGridViewTextBoxColumn DCTOIMPORTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private Siticone.UI.WinForms.SiticoneButton btnExportarBusqueda;
+        private System.Windows.Forms.PictureBox pbFechaPago;
     }
 }

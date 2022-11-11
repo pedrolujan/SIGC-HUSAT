@@ -43,6 +43,7 @@ namespace wfaIntegradoCom.Procesos
         Boolean estadoFecha;
         static Int32 tabInicio;
         Boolean cargoFrom = false;
+        Boolean dEstadoBusquedaPaginacion = false;
         private void frmBuscarVentas_Load(object sender, EventArgs e)
         {
             try
@@ -219,7 +220,7 @@ namespace wfaIntegradoCom.Procesos
             
             try
             {
-                datVenta = objVentaGeneral.BlBuscarClienteV(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina,
+                datVenta = objVentaGeneral.BlBuscarClienteV(habilitarFechas, FunGeneral.GetFechaHoraFormato(fechaInicial,3), FunGeneral.GetFechaHoraFormato(fechaFinal,3), placaVehiculo, cEstadoInstal, numPagina,
                     tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro, estadoTipoPlan, 
                     estadoPlan, estadoUsuario, estadoContrato , Docventapago);
 
@@ -258,7 +259,7 @@ namespace wfaIntegradoCom.Procesos
                         Int32 contador = 0;
 
 
-                        if (tipoCon == -1)
+                        if (numPagina == 0)
                         {
                             y = 0;
                         }
@@ -358,11 +359,13 @@ namespace wfaIntegradoCom.Procesos
 
                         dgv.Visible = true;
 
-                        if (tipoCon == -1)
+                        if (numPagina == 0)
                         {
                             gbPaginacion.Visible = true;
                             Int32 totalRegistros = Convert.ToInt32(datVenta.Rows[0][0]);
                             FunValidaciones.fnCalcularPaginacion(totalRegistros, filas, totalResultados, cboPaginaV, btnTotalP, btnNumF, btnTotalR);
+
+                            dEstadoBusquedaPaginacion = false;
                         }
                         else
                         {
@@ -398,6 +401,7 @@ namespace wfaIntegradoCom.Procesos
             lnTipoCon = 0;
             if (e.KeyChar == (Char)Keys.Enter)
             {
+                dEstadoBusquedaPaginacion = true;
                 fnListarDatosVenta(dgvLVentas, 0, 0, -1);
             }
         }
@@ -407,8 +411,11 @@ namespace wfaIntegradoCom.Procesos
         private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
         {
             int fila = Convert.ToInt32(cboPaginaV.Text);
+            if (dEstadoBusquedaPaginacion==false)
+            {
+                fnListarDatosVenta(dgvLVentas, fila, 0, -1);
 
-            fnListarDatosVenta(dgvLVentas, fila, 0, -2);
+            }
 
 
 
@@ -427,14 +434,7 @@ namespace wfaIntegradoCom.Procesos
             }
         }
        
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            
-
-               fnListarDatosVenta(dgvLVentas, 0, 0, -1);
-                
-            
-        }
+      
         private void pictureBox1_Click(object sender, EventArgs e)
         {  
                 

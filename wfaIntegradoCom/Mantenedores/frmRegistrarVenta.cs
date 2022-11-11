@@ -99,6 +99,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         static DateTime dttFechaRecibida = Variables.gdFechaSis;
         static Int32 inTipoApertura = 0;
+        Boolean dEstadoBusquedaPaginacion = false;
         public void Inicio(Int16 pnTipoLlamada)
         {
             lnTipoLlamada = pnTipoLlamada;
@@ -292,7 +293,7 @@ namespace wfaIntegradoCom.Mantenedores
                 lstValidacionPlan[2].mensaje = "";
                 fnOcultarCiclo(false);
 
-                //fnOcultarParaRenovacion(dgvPagoPlan, lblPagoPlan, idTipoventa==2?false:true);
+                fnOcultarParaRenovacion(dgvPrimerPago, lblPanelPrimerPago, true);
 
             }
             else
@@ -333,7 +334,7 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 //lblPanelPrimerPago.Size = new Size(151, 49);
                 lblPanelPrimerPago.Text = "PAGO RENOVACIÓN";
-
+                lblPagoPlan.Text = "";
                 lblPanelPrimerPago.Font = new Font("Calibri", 10, System.Drawing.FontStyle.Bold);
             }
             else
@@ -344,20 +345,18 @@ namespace wfaIntegradoCom.Mantenedores
             }
 
         }
+        private void fnActivarDgvAnual(Boolean est)
+        {
+            dgvPagoPlan.Visible = est;
+            lblPagoPlan.Visible = est;
+
+        }
         private void fnOcultarCiclo(bool estado)
         {
             lblCicloP.Visible = estado;
             cboCicloP.Visible = estado;
-            if (Convert.ToInt32(cboTipoVenta.SelectedValue)!=2)
-            {
-                lblIndPagoAnual.Visible = estado;
-                pbIndPagoAnual.Visible = estado;
-            }
-            else
-            {
-                lblIndPagoAnual.Visible = false;
-                pbIndPagoAnual.Visible = false;
-            }
+            
+            
             imgCicloP.Image = null;
             erCilcloP.Text = "";
         }
@@ -410,7 +409,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cboTipoVetaBusq.SelectedValue = 1;
                 dtpFechaRegistro.Value = Variables.gdFechaSis;
                 dtFechaPago.Value = Variables.gdFechaSis;
-               
+                FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
                 if (Variables.gsCargoUsuario == "PETR0001" || Variables.gsCargoUsuario == "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
@@ -424,7 +423,6 @@ namespace wfaIntegradoCom.Mantenedores
 
                 if (lnTipoLlamada == 0)
                 {
-                    lblIndPagoAnual.BackColor = Variables.ColorEmpresa;
                     btnStockEquipos.Text = Convert.ToString(fnObtenerStockEquipos());
                     Boolean bResult;
 
@@ -1712,7 +1710,7 @@ namespace wfaIntegradoCom.Mantenedores
                     Int32 sumarMeses = numMeses;
                     DateTime PeriodoFinal = (PeriodoInicial.AddMonths(sumarMeses).AddDays((resDias - 1)));
                     DateTime fechaEmision = PeriodoFinal.AddDays(1);
-                    DateTime fechaVencimiento = PeriodoFinal.AddDays(7);
+                    DateTime fechaVencimiento = PeriodoFinal.AddDays(5);
 
                     //DateTime PeriodoEstimadoInicial = fechaSistema.AddMonths(i);
 
@@ -1789,7 +1787,7 @@ namespace wfaIntegradoCom.Mantenedores
                     Int32 sumarMeses= numMeses;
                     DateTime PeriodoFinal = (PeriodoInicial.AddMonths(sumarMeses).AddDays((resDias-1)));
                     DateTime fechaEmision = PeriodoFinal.AddDays(1);
-                    DateTime fechaVencimiento = PeriodoFinal.AddDays(7);
+                    DateTime fechaVencimiento = PeriodoFinal.AddDays(5);
 
                     double precioUnitario = Convert.ToDouble(lstDV[0].PrecioUni);
                     double preciodescuento = Convert.ToDouble(lstDV[0].Descuento);
@@ -1851,9 +1849,14 @@ namespace wfaIntegradoCom.Mantenedores
 
         private Tuple<String[],Double[], Double[], Double[], Double[],Int32> fnDevolverArraysPagos()
         {
+            fnActivarDgvAnual(true);
             double pagoEquipo = clsTarifa.PrecioEquipo;
             double pagoPlan = clsTarifa.PrecioPlan;
             Int32 idTipoPlan = Convert.ToInt32(cboTipoPlanP.SelectedValue ?? 0);
+            if (idTipoPlan==2)
+            {
+                fnActivarDgvAnual(false);
+            }
             Int32 idTipoVenta = Convert.ToInt32(cboTipoVenta.SelectedValue);
 
             Int32 idCiclo = Convert.ToInt32(cboCicloP.SelectedValue ?? 0);
@@ -2013,44 +2016,44 @@ namespace wfaIntegradoCom.Mantenedores
                     {
                         if (lnTipoCon == -2)
                         {
-                            //if (ClsVentaGeneral.clsCronograma is Cronograma && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
-                            //{
-                            //    arrayPrecio = new double[]
-                            //    {
-                            //            clsTarifa.PrecioReactivacion,
-                            //            rentaAdelantada,
-                            //            ProrrateoRedondeado
-                            //    };
+                            if (ClsVentaGeneral.clsCronograma is Cronograma && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
+                            {
+                                arrayPrecio = new double[]
+                                {
+                                        clsTarifa.PrecioReactivacion,
+                                        rentaAdelantada,
+                                        ProrrateoRedondeado
+                                };
 
-                            //    arrayDescuentoCantidad = new double[]
-                            //    {
-                            //                clsTarifa.DescuentoReactivacion,
-                            //                clsTarifa.DescuentoRentaAdelantada,
-                                            
-                            //                clsTarifa.DescuentoProrrateo
-                            //    };
+                                arrayDescuentoCantidad = new double[]
+                                {
+                                            clsTarifa.DescuentoReactivacion,
+                                            clsTarifa.DescuentoRentaAdelantada,
 
-                            //    arrayDescuentoPrecio = new double[]
-                            //    {
-                            //                calcularDesReactivacion,
-                            //                calcularDesRA,
-                            //                calcularDesPR
-                            //    };
-                            //    arrayGananciaPro = new double[]
-                            //    {
-                            //                0,
-                            //                0,
-                            //                ganProrrateo
-                            //    };
-                            //    arrayPrimerPago = new string[]
-                            //    {
+                                            clsTarifa.DescuentoProrrateo
+                                };
 
-                            //                "Reactivacion plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString())),
-                            //                "Renta Adelantada Reactivacion",
-                            //                "Prorrateo"
-                            //    };
-                            //}
-                            //else 
+                                arrayDescuentoPrecio = new double[]
+                                {
+                                            calcularDesReactivacion,
+                                            calcularDesRA,
+                                            calcularDesPR
+                                };
+                                arrayGananciaPro = new double[]
+                                {
+                                            0,
+                                            0,
+                                            ganProrrateo
+                                };
+                                arrayPrimerPago = new string[]
+                                {
+
+                                            "Reactivacion plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString())),
+                                            "Renta Adelantada Reactivacion",
+                                            "Prorrateo"
+                                };
+                            }
+                            else
                             if (clsPlanActual.idTipoPlan != clsPlan.idTipoPlan && clsPlan.idTipoPlan != 0)
                             {
                                 //if (clsTarifa.PrecioPlan < 30)
@@ -2358,7 +2361,7 @@ namespace wfaIntegradoCom.Mantenedores
             Boolean estadoReturn = false;
             try
             {
-                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas, fechaInicial, fechaFinal, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro);
+                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas,FunGeneral.GetFechaHoraFormato(fechaInicial,3) , FunGeneral.GetFechaHoraFormato(fechaFinal,3), placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro);
 
                 Int32 totalResultados = datVentaG.Rows.Count;
 
@@ -2457,7 +2460,7 @@ namespace wfaIntegradoCom.Mantenedores
                         Int32 contador = 0;
 
 
-                        if (tipoCon == -1)
+                        if (numPagina == 0)
                         {
                             y = 0;
                         }
@@ -2592,7 +2595,7 @@ namespace wfaIntegradoCom.Mantenedores
                         //dgv.RowTemplate.Height = 100;
                         dgv.Visible = true;
 
-                        if (tipoCon == -1)
+                        if (numPagina == 0)
                         {
                             gbPaginacion.Visible = true;
                             Int32 totalRegistros = Convert.ToInt32(datVentaG.Rows[0][0]);
@@ -2605,6 +2608,7 @@ namespace wfaIntegradoCom.Mantenedores
                                 btnNumFilas,
                                 btnTotalReg
                             );
+                            dEstadoBusquedaPaginacion = false;
                         }
                         else
                         {
@@ -3595,7 +3599,8 @@ namespace wfaIntegradoCom.Mantenedores
             List<DocumentoVenta> lsDocVenta = new List<DocumentoVenta>();
             TipoTarifa lstTipoVenta = new TipoTarifa();
             lstTipoVenta = lstTipoTarifa.First(s => s.IdTipoTarifa == Convert.ToInt32(cboTipoVenta.SelectedValue));
-
+            String SolofechaV = dtFechaPago.Value.ToString("yyyy/MM/dd");
+            DateTime fechaConHora = Convert.ToDateTime(SolofechaV).AddHours(Variables.gdFechaSis.Hour).AddMinutes(Variables.gdFechaSis.Minute);
             Personal clsPersonal = FunGeneral.fnObtenerUsuarioActual();
             lsDocVenta.Add(new DocumentoVenta
             {
@@ -3607,7 +3612,7 @@ namespace wfaIntegradoCom.Mantenedores
                 SimboloMoneda = clsMoneda.cSimbolo,
                 cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),
                 NombreDocumento = Convert.ToString(cboComprobanteP.Text),
-                dFechaVenta = Convert.ToDateTime(dtFechaPago.Value),
+                dFechaVenta = fechaConHora,
                 idMoneda = clsMoneda.idMoneda,
                 nSubtotal = lstdvc[0].SubTotal,
                 nNroIGV = 18,
@@ -3968,6 +3973,8 @@ namespace wfaIntegradoCom.Mantenedores
         {
             if (e.KeyChar == (Char)Keys.Enter)
             {
+
+                dEstadoBusquedaPaginacion = true;
                 fnBuscarListaVentas(dgvListaVentas, 0, 0, -1);
                 if (btnBuscarMonto.Checked==true)
                 {
@@ -3986,11 +3993,7 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            fnBuscarListaVentas(dgvListaVentas, 0,0, -1);
-        }
-
+       
         private void chkHabilitarFechasBus_CheckedChanged(object sender, EventArgs e)
         {
             if (chkHabilitarFechasBus.Checked==true)
@@ -4013,9 +4016,9 @@ namespace wfaIntegradoCom.Mantenedores
         private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
         {
             int fila = Convert.ToInt32(cboPagina.Text);
-            if (cargoFrom == true)
+            if (cargoFrom == true && dEstadoBusquedaPaginacion==false)
             {
-                fnBuscarListaVentas(dgvListaVentas, fila,0, -2);
+                fnBuscarListaVentas(dgvListaVentas, fila,0, -1);
 
             }
         }
@@ -4062,7 +4065,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cmsImpresiones.Show(dgvListaVentas, 940 ,mousePosition.Y);
             }
         }
-        private void fnBuscarDocumentoVenta(String cCodVenta,Int32 tipCon,Int32 idTipoTarifa,Int32 idContrato)
+        public void fnBuscarDocumentoVenta(String cCodVenta,Int32 tipCon,Int32 idTipoTarifa,Int32 idContrato)
         {
             BLOtrasVenta objTipoVenta = new BLOtrasVenta();
             clsUtil objUtil = new clsUtil();
@@ -4235,7 +4238,8 @@ namespace wfaIntegradoCom.Mantenedores
                 //cboTipoVenta.SelectedValue = ClsVentaGeneral.ClsTarifa.IdTipoTarifa;
                 
                 dtpFechaRegistro.Value = bTipoTab == true ? ClsVentaGeneral.FechaVenta.AddMonths(12) : ClsVentaGeneral.FechaVenta;
-                dtFechaPago.Value = bTipoTab == true ? ClsVentaGeneral.FechaPago.AddMonths(12) : ClsVentaGeneral.FechaPago;
+                //dtFechaPago.Value = bTipoTab == true ? ClsVentaGeneral.FechaPago.AddMonths(12) : ClsVentaGeneral.FechaPago;
+                dtFechaPago.Value = Variables.gdFechaSis;
                 fnCargarTablaVehiculo();
 
                 var resul = fnValidarTabla(lstVehiculo);
@@ -4751,6 +4755,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             String nombreCabecera = dgview.Columns[e.ColumnIndex].Name;
 
+
             if (nombreCabecera == "txtEstado")
             {
 
@@ -4822,6 +4827,11 @@ namespace wfaIntegradoCom.Mantenedores
             fnBuscarListaVentas(dgvListaVentas, 0, 0, -5);
             frmExportConsultasCronograma frmExport = new frmExportConsultasCronograma();
             frmExport.Inicio(lstClientesBusq,"Lista de vehiculos para renovación. ", 1);
+        }
+
+        private void dtFechaPago_ValueChanged(object sender, EventArgs e)
+        {
+            FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 1);
         }
     }
 }

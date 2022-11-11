@@ -16,6 +16,7 @@ namespace CapaEntidad
         public Int32 Cantidad { get; set; }
         public Int32 idTipoTarifa { get; set; }
         public Int32 IdTipoDescuento { get; set; }
+        public Int32 idOperacion { get; set; }
         public Double Descuento { get; set; }
         public Double gananciaRedondeo { get; set; }
         public Double TotalTipoDescuento { get; set; }

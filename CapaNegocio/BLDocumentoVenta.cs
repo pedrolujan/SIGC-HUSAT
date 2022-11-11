@@ -303,13 +303,13 @@ namespace CapaNegocio
             }
         }
 
-        public DataTable BLListarVentas(DateTime fechainicial, DateTime fechafinal, string pcbuscar)
+        public DataTable BLListarVentas(Boolean chk, String fechainicial, String fechafinal, string pcbuscar,Int32 numPagina, Int32 tipoCon)
         {
             DADocumentoVenta objdocVenta = new DADocumentoVenta();
 
             try
             {
-                return objdocVenta.daAnularVenta(fechainicial, fechafinal, pcbuscar);
+                return objdocVenta.daAnularVenta(chk,fechainicial, fechafinal, pcbuscar, numPagina, tipoCon);
 
             }
             catch( Exception ex)
@@ -317,12 +317,12 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public Boolean BLDAnularDocumentoVenta(String codDocVenta)
+        public Boolean BLDAnularDocumentoVenta(String codDocVenta,Int32 idOperacion, List<xmlDocumentoVentaGeneral> xml, Int32 tipoCon)
         {
             DADocumentoVenta objdocVenta = new DADocumentoVenta();
             try
             {
-                return objdocVenta.daAnularDocumentoVeta(codDocVenta);
+                return objdocVenta.daAnularDocumentoVeta(codDocVenta, idOperacion,xml,  tipoCon);
             }
             catch (Exception ex)
             {

@@ -441,7 +441,7 @@ namespace CapaDato
             try
             {
 
-                pa[0] = new SqlParameter("@codVenta", SqlDbType.VarChar, 8);
+                pa[0] = new SqlParameter("@codVenta", SqlDbType.VarChar, 20);
                 pa[0].Value = codVenta;
                 pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int);
                 pa[1].Value = idTipoCon;
@@ -621,9 +621,9 @@ namespace CapaDato
             }
 
         }
-        public DataTable daListarClienteOtrasVentas(Int32 idCliente, Int32 pnTipoCon)
+        public DataTable daListarClienteOtrasVentas(Int32 idCliente, Int32 id2, Int32 pnTipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[2];
+            SqlParameter[] pa = new SqlParameter[3];
             DataTable dtUsuario;
             clsConexion objCnx = null;
             Cliente lstCliente;
@@ -632,7 +632,8 @@ namespace CapaDato
             try
             {
                 pa[0] = new SqlParameter("@peidCliente", SqlDbType.Int) { Value = idCliente };
-                pa[1] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = pnTipoCon };
+                pa[1] = new SqlParameter("@id2", SqlDbType.Int) { Value = id2 };
+                pa[2] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = pnTipoCon };
 
                 objCnx = new clsConexion("");
                 dtUsuario = objCnx.EjecutarProcedimientoDT("uspListarClienteOtrasVentas", pa);

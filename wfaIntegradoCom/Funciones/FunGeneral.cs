@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using wfaIntegradoCom.Funciones.Enum;
 using Siticone.UI.WinForms;
 using System.Globalization;
+using System.Drawing;
 
 namespace wfaIntegradoCom.Funciones
 {
@@ -48,7 +49,36 @@ namespace wfaIntegradoCom.Funciones
             }
 
         }
+        public static Tuple<Boolean, String> fnValidarFechaPago(SiticoneDateTimePicker dt, PictureBox pb, Int32 tipoCon)
+        {
+            Boolean estado = false;
+            String msg = "";
+            DateTime ddt= Variables.gdFechaSis.AddDays(-2).AddDays(2).AddHours((23 - Variables.gdFechaSis.Hour));
+            if (tipoCon==0)
+            {
+                dt.MinDate = Variables.gdFechaSis.AddDays(-2);
+                dt.MaxDate = ddt;
+            }
+            else
+            {
+                if (dt.Value.Day<Variables.gdFechaSis.Day)
+                {
+                    DialogResult dialg = MessageBox.Show("La seleccion en menor a la fecha actual, deseas fijarla?","Avisoo!!!",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
 
+                    if (dialg!=DialogResult.Yes)
+                    {
+                        dt.Value = Variables.gdFechaSis;
+                    }
+                }
+            }
+            estado = true;
+            msg = "";
+            
+            pb.Image = Properties.Resources.ok;
+            return Tuple.Create(estado, msg);
+        }
+
+        
         public static Boolean fnLlenarTablaCodTipoCon(ComboBox cboCombo, String cCodTab,Boolean buscar)
         {
             BLCargo objTablaCod = new BLCargo();
@@ -328,7 +358,7 @@ namespace wfaIntegradoCom.Funciones
             Int32 num = 0;
             try
             {
-                Variables.lstCuardreCaja = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Variables.idSucursal, idUsuario);
+                Variables.lstCuardreCaja = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 3), Variables.idSucursal, idUsuario);
 
                 if (Variables.lstCuardreCaja.Count != 0)
                 {
@@ -422,7 +452,10 @@ namespace wfaIntegradoCom.Funciones
                 }
             }
         }
-
+        public static void cbos_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
         public static IList<PrintingTemplate> GetPrintingTemplates(IList<string> templatesList)
         {
             try
@@ -674,7 +707,10 @@ namespace wfaIntegradoCom.Funciones
                 lstTablaCod = null;
             }
         }
-
+        public static Color fnDevolVerColorTransparente(Int32 alfa, Color colr)
+        {
+            return Color.FromArgb(alfa, colr);
+        }
         public static Int32 fnBuscarAccionDiaria(Int32 idOpera, string fechaOperacion)
         {
             BLCargo objTablaCod = new BLCargo();
@@ -722,6 +758,7 @@ namespace wfaIntegradoCom.Funciones
 
         public static string FormatearCadenaTitleCase(String str)
         {
+            str = str is null ? "" : str;
             String dat = str.ToLower();
             return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(dat); ;
         }

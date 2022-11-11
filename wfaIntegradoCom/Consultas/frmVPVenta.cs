@@ -78,6 +78,12 @@ namespace wfaIntegradoCom.Consultas
                 btnGenerarVenta.Text = "Guardar Movimiento";
                 btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
             }
+            if (lnTipoCon == -4)
+            {
+                label1.Text = "¿Desea Anular este Documento?";
+                btnGenerarVenta.Text = "Anular Documento";
+                btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
+            }
             this.reportViewer1.RefreshReport();
             fnCargarReporte(lstCDocumento, lstDVenta);
         }
@@ -130,6 +136,10 @@ namespace wfaIntegradoCom.Consultas
             {
                 frmRegistrarEgresos frm = new frmRegistrarEgresos();
                 frm.fnRecuperarEstadoGenVenta(false);
+            }else if (lnTipoCon == -4)
+            {
+                frmAnularVenta frm = new frmAnularVenta();
+                frm.fnEstadoAnulacion(false);
             }
 
 
@@ -178,16 +188,31 @@ namespace wfaIntegradoCom.Consultas
                 {
                     frmOtrasVentas fr = new frmOtrasVentas();
                     fr.fnCondicionProcesos(-2);
+                }else if (lnEstadosProcesos == 3)
+                {
+                    frmOtrasVentas fr = new frmOtrasVentas();
+                    fr.fnCondicionProcesos(3);
                 }
-               
+                if (lnEstadosProcesos == -7 || lnEstadosProcesos == -8)
+                {
+                    frmOtrasVentas fr = new frmOtrasVentas();
+                    fr.fnCondicionProcesos(5);
+                }
 
 
 
-            }else if (lnTipoCon == -3)
+
+            }
+            else if (lnTipoCon == -3)
             {
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
                 fmr.Inicio(-3, sumaPrimerPago, lstDVenta[0].cSimbolo);
+            }
+            else if (lnTipoCon == -4)
+            {
+                frmAnularVenta frm = new frmAnularVenta();
+                frm.fnEstadoAnulacion(true);
             }
 
             this.Close();
@@ -218,6 +243,11 @@ namespace wfaIntegradoCom.Consultas
                 frmOtrasVentas fr = new frmOtrasVentas();
                 fr.fnRecuperarEstadoGenVenta(false);
                 fr.fnCondicionProcesos(0);
+            }
+            else if (lnTipoCon == -3)
+            {
+                frmRegistrarEgresos frm = new frmRegistrarEgresos();
+                frm.fnRecuperarEstadoGenVenta(false);
             }
         }
     }

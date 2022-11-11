@@ -406,23 +406,26 @@ namespace CapaDato
 
         }
 
-        public DataTable daAnularVenta(DateTime fechaInicial, DateTime fechafinal, string cBuscar)
+        public DataTable daAnularVenta(Boolean chk, String fechaInicial, String fechafinal, string cBuscar,Int32 numPagina, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[3];
+            SqlParameter[] pa = new SqlParameter[6];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
-
             DataTable dtcodventa;
-
-
             try
             {
-                pa[0] = new SqlParameter("@CodDocCorrelativo", SqlDbType.NVarChar, 14);
-                pa[0].Value = cBuscar;
+                pa[0] = new SqlParameter("@chkHabFecha", SqlDbType.Bit);
+                pa[0].Value = chk;
                 pa[1] = new SqlParameter("@FechaInicial", SqlDbType.DateTime);
                 pa[1].Value = fechaInicial;
                 pa[2] = new SqlParameter("@FechaFinal", SqlDbType.DateTime);
                 pa[2].Value = fechafinal;
+                pa[3] = new SqlParameter("@CodDocCorrelativo", SqlDbType.NVarChar, 20);
+                pa[3].Value = cBuscar;
+                pa[4] = new SqlParameter("@numPagina", SqlDbType.Int);
+                pa[4].Value = numPagina;
+                pa[5] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[5].Value = tipoCon;
 
                 objCnx = new clsConexion("");
                 dtcodventa = objCnx.EjecutarProcedimientoDT("uspBuscarDocVentasAnulacion", pa);
@@ -446,20 +449,28 @@ namespace CapaDato
             }
 
         }
-        public Boolean daAnularDocumentoVeta(String codDocVenta)
+        public Boolean daAnularDocumentoVeta(String codDocVenta,Int32 idOperacion, List<xmlDocumentoVentaGeneral> xml, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[1];
+            SqlParameter[] pa = new SqlParameter[7];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             String cCodVenta = "";
-            DataTable dtresp = new DataTable(); 
+            DataTable dtresp = new DataTable();
+            String xmlNotaCredito = clsUtil.Serialize(xml);
+
 
             try
             {
-                pa[0] = new SqlParameter("@codDocVenta", SqlDbType.NVarChar, 14) { Value = codDocVenta };
+                pa[0] = new SqlParameter("@codDocVenta", SqlDbType.NVarChar, 20) { Value = codDocVenta };
+                pa[1] = new SqlParameter("@idOperacion", SqlDbType.Int) { Value = idOperacion };
+                pa[2] = new SqlParameter("@descripcion", SqlDbType.NVarChar, 500) { Value = xml[0].xmlDocumentoVenta[0].cVehiculos };
+                pa[3] = new SqlParameter("@fechaRegistro", SqlDbType.DateTime) { Value = xml[0].xmlDocumentoVenta[0].dFechaVenta };
+                pa[4] = new SqlParameter("@xmlDocumento", SqlDbType.Xml) { Value = xmlNotaCredito };
+                pa[5] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = xml[0].xmlDocumentoVenta[0].idUsuario };
+                pa[6] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value =  tipoCon };
 
                 objCnx = new clsConexion("");
-                dtresp = objCnx.EjecutarProcedimientoDT("", pa);
+                dtresp = objCnx.EjecutarProcedimientoDT("uspAnularDocumentoVenta", pa);
                 return true;
             }
             catch (Exception ex)

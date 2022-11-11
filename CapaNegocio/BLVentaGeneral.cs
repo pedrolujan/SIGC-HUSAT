@@ -40,7 +40,7 @@ namespace CapaNegocio
 
         }
 
-        public DataTable blBuscarVentaGeneral(Boolean habilitarfechas,DateTime fechaInical,DateTime fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon,Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones, String valorRadio)
+        public DataTable blBuscarVentaGeneral(Boolean habilitarfechas,String fechaInical, String fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon,Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones, String valorRadio)
         {
             DAVentaGeneral objVentaG = new DAVentaGeneral();
             try
