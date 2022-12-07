@@ -75,14 +75,8 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnStockEquipos = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.gbDinamico = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.gbDinamico = new Siticone.UI.WinForms.SiticonePanel();
             this.lblSWNo = new System.Windows.Forms.Label();
-            this.lblSWSi = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.swEstadoImprimirDocumento = new Siticone.UI.WinForms.SiticoneToggleSwitch();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnImprimir = new Siticone.UI.WinForms.SiticoneButton();
-            this.AbrirReporteVentas = new Siticone.UI.WinForms.SiticoneButton();
             this.gbVehiculo = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.erTabla = new System.Windows.Forms.Label();
             this.imgTabla = new System.Windows.Forms.PictureBox();
@@ -94,6 +88,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.colUso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBuscar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblSWSi = new System.Windows.Forms.Label();
             this.gbPlan = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.erComprobanteP = new System.Windows.Forms.Label();
             this.imgComprobanteP = new System.Windows.Forms.PictureBox();
@@ -148,17 +143,18 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneCheckBox1 = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.chkHabilitarDescuentoP = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.lblPrecioCambioMoneda = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.AbrirReporteVentas = new Siticone.UI.WinForms.SiticoneButton();
+            this.swEstadoImprimirDocumento = new Siticone.UI.WinForms.SiticoneToggleSwitch();
             this.siticoneSeparator2 = new Siticone.UI.WinForms.SiticoneSeparator();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnImprimir = new Siticone.UI.WinForms.SiticoneButton();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dtFechaPago = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.pbFechaPago = new System.Windows.Forms.PictureBox();
             this.dtpFechaRegistro = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.gbResponsablePago = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.erTipoDocumentoRP = new System.Windows.Forms.Label();
-            this.imgTipoDocumentoRP = new System.Windows.Forms.PictureBox();
-            this.erTipoClienteRP = new System.Windows.Forms.Label();
-            this.imgTipoClienteRP = new System.Windows.Forms.PictureBox();
             this.imgDocumentoRP = new System.Windows.Forms.PictureBox();
             this.txtDocumentoRP = new Siticone.UI.WinForms.SiticoneTextBox();
             this.dgDocumentoRP = new Siticone.UI.WinForms.SiticoneDataGridView();
@@ -172,21 +168,12 @@ namespace wfaIntegradoCom.Mantenedores
             this.label28 = new System.Windows.Forms.Label();
             this.txtCorreoRP = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtNombreRP = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.cboTipoDocumentoRP = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.label31 = new System.Windows.Forms.Label();
             this.btnLimpiarRP = new Siticone.UI.WinForms.SiticoneButton();
-            this.cboTipoClienteRP = new Siticone.UI.WinForms.SiticoneComboBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.erDocumentoRP = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.gbCliente = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.btnIrACliente = new Siticone.UI.WinForms.SiticoneButton();
-            this.erTipoDocumentoC = new System.Windows.Forms.Label();
-            this.imgTipoDocumentoC = new System.Windows.Forms.PictureBox();
-            this.erTipoClienteC = new System.Windows.Forms.Label();
-            this.imgTipoClienteC = new System.Windows.Forms.PictureBox();
             this.imgDocumentoC = new System.Windows.Forms.PictureBox();
             this.txtDocumentoC = new Siticone.UI.WinForms.SiticoneTextBox();
             this.dgDocumentoC = new Siticone.UI.WinForms.SiticoneDataGridView();
@@ -204,11 +191,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label13 = new System.Windows.Forms.Label();
             this.txtCorreoC = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtNombreC = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cboTipoDocumentoC = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnLimpiarC = new Siticone.UI.WinForms.SiticoneButton();
-            this.cboTipoClienteC = new Siticone.UI.WinForms.SiticoneComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.erDocumentoC = new System.Windows.Forms.Label();
@@ -276,6 +259,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnTotalReg = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.btnTotalPag = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label41 = new System.Windows.Forms.Label();
+            this.siticoneDragControl1 = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.pnlTop = new Siticone.UI.WinForms.SiticonePanel();
             this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
@@ -296,13 +280,9 @@ namespace wfaIntegradoCom.Mantenedores
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagoPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).BeginInit();
             this.gbResponsablePago.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgTipoDocumentoRP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgTipoClienteRP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDocumentoRP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDocumentoRP)).BeginInit();
             this.gbCliente.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgTipoDocumentoC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgTipoClienteC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDocumentoC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDocumentoC)).BeginInit();
             this.gbRespuestaPago.SuspendLayout();
@@ -328,7 +308,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticonePanel1.Controls.Add(this.label43);
             this.siticonePanel1.Controls.Add(this.btnStockEquipos);
             this.siticonePanel1.Controls.Add(this.tabControl1);
-            this.siticonePanel1.Controls.Add(this.pnlTop);
             this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
@@ -403,7 +382,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.tabPage1.Controls.Add(this.pbFechaPago);
             this.tabPage1.Controls.Add(this.dtpFechaRegistro);
             this.tabPage1.Controls.Add(this.gbResponsablePago);
-            this.tabPage1.Controls.Add(this.label20);
             this.tabPage1.Controls.Add(this.gbCliente);
             this.tabPage1.Controls.Add(this.label21);
             this.tabPage1.Controls.Add(this.cboMonedaP);
@@ -420,26 +398,21 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             // gbDinamico
             // 
-            this.gbDinamico.BorderThickness = 0;
             this.gbDinamico.Controls.Add(this.lblSWNo);
+            this.gbDinamico.Controls.Add(this.gbVehiculo);
             this.gbDinamico.Controls.Add(this.lblSWSi);
+            this.gbDinamico.Controls.Add(this.gbPlan);
             this.gbDinamico.Controls.Add(this.label4);
+            this.gbDinamico.Controls.Add(this.AbrirReporteVentas);
             this.gbDinamico.Controls.Add(this.swEstadoImprimirDocumento);
+            this.gbDinamico.Controls.Add(this.siticoneSeparator2);
             this.gbDinamico.Controls.Add(this.button1);
             this.gbDinamico.Controls.Add(this.btnImprimir);
-            this.gbDinamico.Controls.Add(this.AbrirReporteVentas);
-            this.gbDinamico.Controls.Add(this.gbVehiculo);
-            this.gbDinamico.Controls.Add(this.gbPlan);
-            this.gbDinamico.Controls.Add(this.siticoneSeparator2);
-            this.gbDinamico.CustomBorderThickness = new System.Windows.Forms.Padding(0);
-            this.gbDinamico.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbDinamico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.gbDinamico.Location = new System.Drawing.Point(8, 510);
+            this.gbDinamico.Location = new System.Drawing.Point(19, 454);
             this.gbDinamico.Name = "gbDinamico";
             this.gbDinamico.ShadowDecoration.Parent = this.gbDinamico;
-            this.gbDinamico.Size = new System.Drawing.Size(1201, 675);
-            this.gbDinamico.TabIndex = 237;
-            this.gbDinamico.Text = "siticoneGroupBox2";
+            this.gbDinamico.Size = new System.Drawing.Size(1173, 629);
+            this.gbDinamico.TabIndex = 238;
             // 
             // lblSWNo
             // 
@@ -447,105 +420,11 @@ namespace wfaIntegradoCom.Mantenedores
             this.lblSWNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.lblSWNo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSWNo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblSWNo.Location = new System.Drawing.Point(174, 629);
+            this.lblSWNo.Location = new System.Drawing.Point(183, 578);
             this.lblSWNo.Name = "lblSWNo";
             this.lblSWNo.Size = new System.Drawing.Size(31, 19);
             this.lblSWNo.TabIndex = 272;
             this.lblSWNo.Text = "NO";
-            // 
-            // lblSWSi
-            // 
-            this.lblSWSi.AutoSize = true;
-            this.lblSWSi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.lblSWSi.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSWSi.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblSWSi.Location = new System.Drawing.Point(153, 629);
-            this.lblSWSi.Name = "lblSWSi";
-            this.lblSWSi.Size = new System.Drawing.Size(21, 19);
-            this.lblSWSi.TabIndex = 272;
-            this.lblSWSi.Text = "SI";
-            this.lblSWSi.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.label4.Location = new System.Drawing.Point(10, 595);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(334, 22);
-            this.label4.TabIndex = 274;
-            this.label4.Text = "¿Desea Imprimir el Documento de venta ?";
-            // 
-            // swEstadoImprimirDocumento
-            // 
-            this.swEstadoImprimirDocumento.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.swEstadoImprimirDocumento.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.swEstadoImprimirDocumento.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.swEstadoImprimirDocumento.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.swEstadoImprimirDocumento.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.swEstadoImprimirDocumento.CheckedState.Parent = this.swEstadoImprimirDocumento;
-            this.swEstadoImprimirDocumento.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.swEstadoImprimirDocumento.Location = new System.Drawing.Point(145, 626);
-            this.swEstadoImprimirDocumento.Name = "swEstadoImprimirDocumento";
-            this.swEstadoImprimirDocumento.ShadowDecoration.Parent = this.swEstadoImprimirDocumento;
-            this.swEstadoImprimirDocumento.Size = new System.Drawing.Size(65, 25);
-            this.swEstadoImprimirDocumento.TabIndex = 234;
-            this.swEstadoImprimirDocumento.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.swEstadoImprimirDocumento.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.swEstadoImprimirDocumento.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.swEstadoImprimirDocumento.UncheckedState.InnerColor = System.Drawing.Color.White;
-            this.swEstadoImprimirDocumento.UncheckedState.Parent = this.swEstadoImprimirDocumento;
-            this.swEstadoImprimirDocumento.CheckedChanged += new System.EventHandler(this.swEstadoImprimirDocumento_CheckedChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(793, 618);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 233;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.CheckedState.Parent = this.btnImprimir;
-            this.btnImprimir.CustomImages.Parent = this.btnImprimir;
-            this.btnImprimir.FillColor = System.Drawing.Color.SlateBlue;
-            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnImprimir.ForeColor = System.Drawing.Color.White;
-            this.btnImprimir.HoveredState.Parent = this.btnImprimir;
-            this.btnImprimir.Location = new System.Drawing.Point(874, 618);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.ShadowDecoration.Parent = this.btnImprimir;
-            this.btnImprimir.Size = new System.Drawing.Size(180, 45);
-            this.btnImprimir.TabIndex = 232;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.Visible = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // AbrirReporteVentas
-            // 
-            this.AbrirReporteVentas.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.AbrirReporteVentas.BorderRadius = 3;
-            this.AbrirReporteVentas.BorderThickness = 1;
-            this.AbrirReporteVentas.CheckedState.Parent = this.AbrirReporteVentas;
-            this.AbrirReporteVentas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AbrirReporteVentas.CustomImages.Parent = this.AbrirReporteVentas;
-            this.AbrirReporteVentas.FillColor = System.Drawing.Color.White;
-            this.AbrirReporteVentas.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.AbrirReporteVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.AbrirReporteVentas.HoveredState.Parent = this.AbrirReporteVentas;
-            this.AbrirReporteVentas.Image = global::wfaIntegradoCom.Properties.Resources.guardar_base;
-            this.AbrirReporteVentas.Location = new System.Drawing.Point(525, 615);
-            this.AbrirReporteVentas.Name = "AbrirReporteVentas";
-            this.AbrirReporteVentas.ShadowDecoration.Parent = this.AbrirReporteVentas;
-            this.AbrirReporteVentas.Size = new System.Drawing.Size(243, 45);
-            this.AbrirReporteVentas.TabIndex = 231;
-            this.AbrirReporteVentas.Text = "Generar Venta";
-            this.AbrirReporteVentas.Click += new System.EventHandler(this.AbrirReporteVentas_Click);
             // 
             // gbVehiculo
             // 
@@ -558,10 +437,10 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbVehiculo.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbVehiculo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbVehiculo.ForeColor = System.Drawing.Color.White;
-            this.gbVehiculo.Location = new System.Drawing.Point(10, 6);
+            this.gbVehiculo.Location = new System.Drawing.Point(1, 8);
             this.gbVehiculo.Name = "gbVehiculo";
             this.gbVehiculo.ShadowDecoration.Parent = this.gbVehiculo;
-            this.gbVehiculo.Size = new System.Drawing.Size(1171, 198);
+            this.gbVehiculo.Size = new System.Drawing.Size(1171, 148);
             this.gbVehiculo.TabIndex = 84;
             this.gbVehiculo.Text = "Elegir un Vehículo";
             this.gbVehiculo.TextOffset = new System.Drawing.Point(0, -7);
@@ -608,13 +487,13 @@ namespace wfaIntegradoCom.Mantenedores
             this.colBuscar,
             this.colEliminar});
             this.dgvVehiculos.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvVehiculos.Location = new System.Drawing.Point(0, 23);
+            this.dgvVehiculos.Location = new System.Drawing.Point(0, 25);
             this.dgvVehiculos.Name = "dgvVehiculos";
             this.dgvVehiculos.RowHeadersWidth = 50;
             this.dgvVehiculos.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvVehiculos.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvVehiculos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvVehiculos.Size = new System.Drawing.Size(1171, 175);
+            this.dgvVehiculos.Size = new System.Drawing.Size(1171, 123);
             this.dgvVehiculos.TabIndex = 231;
             this.dgvVehiculos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgVehiculos_CellContentClick);
             this.dgvVehiculos.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvVehiculos_CellPainting);
@@ -677,6 +556,19 @@ namespace wfaIntegradoCom.Mantenedores
             this.colEliminar.ReadOnly = true;
             this.colEliminar.Width = 30;
             // 
+            // lblSWSi
+            // 
+            this.lblSWSi.AutoSize = true;
+            this.lblSWSi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.lblSWSi.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSWSi.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblSWSi.Location = new System.Drawing.Point(162, 578);
+            this.lblSWSi.Name = "lblSWSi";
+            this.lblSWSi.Size = new System.Drawing.Size(21, 19);
+            this.lblSWSi.TabIndex = 272;
+            this.lblSWSi.Text = "SI";
+            this.lblSWSi.Visible = false;
+            // 
             // gbPlan
             // 
             this.gbPlan.BorderColor = System.Drawing.Color.Gainsboro;
@@ -720,7 +612,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbPlan.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbPlan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbPlan.ForeColor = System.Drawing.Color.White;
-            this.gbPlan.Location = new System.Drawing.Point(10, 210);
+            this.gbPlan.Location = new System.Drawing.Point(1, 168);
             this.gbPlan.Name = "gbPlan";
             this.gbPlan.ShadowDecoration.Parent = this.gbPlan;
             this.gbPlan.Size = new System.Drawing.Size(1171, 365);
@@ -821,6 +713,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.lblPagoPlan.Name = "lblPagoPlan";
             this.lblPagoPlan.Size = new System.Drawing.Size(151, 31);
             this.lblPagoPlan.TabIndex = 266;
+            this.lblPagoPlan.Tag = "lblPanel";
             this.lblPagoPlan.Text = "PAGO PLAN";
             this.lblPagoPlan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -833,6 +726,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.lblPanelPrimerPago.Name = "lblPanelPrimerPago";
             this.lblPanelPrimerPago.Size = new System.Drawing.Size(151, 92);
             this.lblPanelPrimerPago.TabIndex = 265;
+            this.lblPanelPrimerPago.Tag = "lblPanel";
             this.lblPanelPrimerPago.Text = "PAGO INICAL";
             this.lblPanelPrimerPago.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -856,7 +750,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvPrimerPago.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvPrimerPago.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ButtonShadow;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -1515,12 +1409,93 @@ namespace wfaIntegradoCom.Mantenedores
             this.lblPrecioCambioMoneda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblPrecioCambioMoneda.Visible = false;
             // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.label4.Location = new System.Drawing.Point(19, 544);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(334, 22);
+            this.label4.TabIndex = 274;
+            this.label4.Text = "¿Desea Imprimir el Documento de venta ?";
+            // 
+            // AbrirReporteVentas
+            // 
+            this.AbrirReporteVentas.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.AbrirReporteVentas.BorderRadius = 3;
+            this.AbrirReporteVentas.BorderThickness = 1;
+            this.AbrirReporteVentas.CheckedState.Parent = this.AbrirReporteVentas;
+            this.AbrirReporteVentas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AbrirReporteVentas.CustomImages.Parent = this.AbrirReporteVentas;
+            this.AbrirReporteVentas.FillColor = System.Drawing.Color.White;
+            this.AbrirReporteVentas.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.AbrirReporteVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.AbrirReporteVentas.HoveredState.Parent = this.AbrirReporteVentas;
+            this.AbrirReporteVentas.Image = global::wfaIntegradoCom.Properties.Resources.guardar_base;
+            this.AbrirReporteVentas.Location = new System.Drawing.Point(496, 564);
+            this.AbrirReporteVentas.Name = "AbrirReporteVentas";
+            this.AbrirReporteVentas.ShadowDecoration.Parent = this.AbrirReporteVentas;
+            this.AbrirReporteVentas.Size = new System.Drawing.Size(243, 45);
+            this.AbrirReporteVentas.TabIndex = 231;
+            this.AbrirReporteVentas.Text = "Generar Venta";
+            this.AbrirReporteVentas.Click += new System.EventHandler(this.AbrirReporteVentas_Click);
+            // 
+            // swEstadoImprimirDocumento
+            // 
+            this.swEstadoImprimirDocumento.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.swEstadoImprimirDocumento.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.swEstadoImprimirDocumento.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.swEstadoImprimirDocumento.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.swEstadoImprimirDocumento.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.swEstadoImprimirDocumento.CheckedState.Parent = this.swEstadoImprimirDocumento;
+            this.swEstadoImprimirDocumento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.swEstadoImprimirDocumento.Location = new System.Drawing.Point(154, 575);
+            this.swEstadoImprimirDocumento.Name = "swEstadoImprimirDocumento";
+            this.swEstadoImprimirDocumento.ShadowDecoration.Parent = this.swEstadoImprimirDocumento;
+            this.swEstadoImprimirDocumento.Size = new System.Drawing.Size(65, 25);
+            this.swEstadoImprimirDocumento.TabIndex = 234;
+            this.swEstadoImprimirDocumento.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.swEstadoImprimirDocumento.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.swEstadoImprimirDocumento.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.swEstadoImprimirDocumento.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.swEstadoImprimirDocumento.UncheckedState.Parent = this.swEstadoImprimirDocumento;
+            this.swEstadoImprimirDocumento.CheckedChanged += new System.EventHandler(this.swEstadoImprimirDocumento_CheckedChanged);
+            // 
             // siticoneSeparator2
             // 
-            this.siticoneSeparator2.Location = new System.Drawing.Point(55, 613);
+            this.siticoneSeparator2.Location = new System.Drawing.Point(64, 562);
             this.siticoneSeparator2.Name = "siticoneSeparator2";
             this.siticoneSeparator2.Size = new System.Drawing.Size(255, 10);
             this.siticoneSeparator2.TabIndex = 275;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(802, 567);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 233;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.CheckedState.Parent = this.btnImprimir;
+            this.btnImprimir.CustomImages.Parent = this.btnImprimir;
+            this.btnImprimir.FillColor = System.Drawing.Color.SlateBlue;
+            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnImprimir.ForeColor = System.Drawing.Color.White;
+            this.btnImprimir.HoveredState.Parent = this.btnImprimir;
+            this.btnImprimir.Location = new System.Drawing.Point(883, 567);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.ShadowDecoration.Parent = this.btnImprimir;
+            this.btnImprimir.Size = new System.Drawing.Size(180, 45);
+            this.btnImprimir.TabIndex = 232;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.Visible = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // label10
             // 
@@ -1600,10 +1575,6 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.gbResponsablePago.BorderColor = System.Drawing.Color.Gainsboro;
             this.gbResponsablePago.BorderRadius = 5;
-            this.gbResponsablePago.Controls.Add(this.erTipoDocumentoRP);
-            this.gbResponsablePago.Controls.Add(this.imgTipoDocumentoRP);
-            this.gbResponsablePago.Controls.Add(this.erTipoClienteRP);
-            this.gbResponsablePago.Controls.Add(this.imgTipoClienteRP);
             this.gbResponsablePago.Controls.Add(this.imgDocumentoRP);
             this.gbResponsablePago.Controls.Add(this.txtDocumentoRP);
             this.gbResponsablePago.Controls.Add(this.dgDocumentoRP);
@@ -1617,11 +1588,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbResponsablePago.Controls.Add(this.label28);
             this.gbResponsablePago.Controls.Add(this.txtCorreoRP);
             this.gbResponsablePago.Controls.Add(this.txtNombreRP);
-            this.gbResponsablePago.Controls.Add(this.label30);
-            this.gbResponsablePago.Controls.Add(this.cboTipoDocumentoRP);
-            this.gbResponsablePago.Controls.Add(this.label31);
             this.gbResponsablePago.Controls.Add(this.btnLimpiarRP);
-            this.gbResponsablePago.Controls.Add(this.cboTipoClienteRP);
             this.gbResponsablePago.Controls.Add(this.label32);
             this.gbResponsablePago.Controls.Add(this.label33);
             this.gbResponsablePago.Controls.Add(this.erDocumentoRP);
@@ -1629,60 +1596,18 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbResponsablePago.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbResponsablePago.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbResponsablePago.ForeColor = System.Drawing.Color.White;
-            this.gbResponsablePago.Location = new System.Drawing.Point(18, 326);
+            this.gbResponsablePago.Location = new System.Drawing.Point(18, 286);
             this.gbResponsablePago.Name = "gbResponsablePago";
             this.gbResponsablePago.ShadowDecoration.Parent = this.gbResponsablePago;
-            this.gbResponsablePago.Size = new System.Drawing.Size(1173, 187);
+            this.gbResponsablePago.Size = new System.Drawing.Size(1173, 162);
             this.gbResponsablePago.TabIndex = 159;
             this.gbResponsablePago.Text = "Datos de Responsable de Pago";
             this.gbResponsablePago.TextOffset = new System.Drawing.Point(0, -7);
             // 
-            // erTipoDocumentoRP
-            // 
-            this.erTipoDocumentoRP.AutoSize = true;
-            this.erTipoDocumentoRP.BackColor = System.Drawing.Color.Transparent;
-            this.erTipoDocumentoRP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.erTipoDocumentoRP.ForeColor = System.Drawing.Color.Red;
-            this.erTipoDocumentoRP.Location = new System.Drawing.Point(200, 94);
-            this.erTipoDocumentoRP.Name = "erTipoDocumentoRP";
-            this.erTipoDocumentoRP.Size = new System.Drawing.Size(32, 13);
-            this.erTipoDocumentoRP.TabIndex = 235;
-            this.erTipoDocumentoRP.Text = "Error";
-            // 
-            // imgTipoDocumentoRP
-            // 
-            this.imgTipoDocumentoRP.BackColor = System.Drawing.Color.White;
-            this.imgTipoDocumentoRP.Location = new System.Drawing.Point(347, 32);
-            this.imgTipoDocumentoRP.Name = "imgTipoDocumentoRP";
-            this.imgTipoDocumentoRP.Size = new System.Drawing.Size(20, 20);
-            this.imgTipoDocumentoRP.TabIndex = 234;
-            this.imgTipoDocumentoRP.TabStop = false;
-            // 
-            // erTipoClienteRP
-            // 
-            this.erTipoClienteRP.AutoSize = true;
-            this.erTipoClienteRP.BackColor = System.Drawing.Color.Transparent;
-            this.erTipoClienteRP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.erTipoClienteRP.ForeColor = System.Drawing.Color.Red;
-            this.erTipoClienteRP.Location = new System.Drawing.Point(16, 94);
-            this.erTipoClienteRP.Name = "erTipoClienteRP";
-            this.erTipoClienteRP.Size = new System.Drawing.Size(32, 13);
-            this.erTipoClienteRP.TabIndex = 233;
-            this.erTipoClienteRP.Text = "Error";
-            // 
-            // imgTipoClienteRP
-            // 
-            this.imgTipoClienteRP.BackColor = System.Drawing.Color.White;
-            this.imgTipoClienteRP.Location = new System.Drawing.Point(163, 32);
-            this.imgTipoClienteRP.Name = "imgTipoClienteRP";
-            this.imgTipoClienteRP.Size = new System.Drawing.Size(20, 20);
-            this.imgTipoClienteRP.TabIndex = 232;
-            this.imgTipoClienteRP.TabStop = false;
-            // 
             // imgDocumentoRP
             // 
             this.imgDocumentoRP.BackColor = System.Drawing.Color.White;
-            this.imgDocumentoRP.Location = new System.Drawing.Point(532, 31);
+            this.imgDocumentoRP.Location = new System.Drawing.Point(175, 26);
             this.imgDocumentoRP.Name = "imgDocumentoRP";
             this.imgDocumentoRP.Size = new System.Drawing.Size(20, 20);
             this.imgDocumentoRP.TabIndex = 227;
@@ -1706,7 +1631,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtDocumentoRP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDocumentoRP.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDocumentoRP.HoveredState.Parent = this.txtDocumentoRP;
-            this.txtDocumentoRP.Location = new System.Drawing.Point(386, 54);
+            this.txtDocumentoRP.Location = new System.Drawing.Point(16, 47);
             this.txtDocumentoRP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDocumentoRP.Name = "txtDocumentoRP";
             this.txtDocumentoRP.PasswordChar = '\0';
@@ -1714,7 +1639,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtDocumentoRP.PlaceholderText = "";
             this.txtDocumentoRP.SelectedText = "";
             this.txtDocumentoRP.ShadowDecoration.Parent = this.txtDocumentoRP;
-            this.txtDocumentoRP.Size = new System.Drawing.Size(166, 36);
+            this.txtDocumentoRP.Size = new System.Drawing.Size(179, 36);
             this.txtDocumentoRP.TabIndex = 130;
             this.txtDocumentoRP.TextChanged += new System.EventHandler(this.txtDocumentoRP_TextChanged);
             this.txtDocumentoRP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumentoRP_KeyPress);
@@ -1749,13 +1674,13 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgDocumentoRP.DefaultCellStyle = dataGridViewCellStyle28;
             this.dgDocumentoRP.EnableHeadersVisualStyles = false;
             this.dgDocumentoRP.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgDocumentoRP.Location = new System.Drawing.Point(386, 68);
+            this.dgDocumentoRP.Location = new System.Drawing.Point(16, 64);
             this.dgDocumentoRP.Name = "dgDocumentoRP";
             this.dgDocumentoRP.ReadOnly = true;
             this.dgDocumentoRP.RowHeadersVisible = false;
             this.dgDocumentoRP.RowTemplate.Height = 20;
             this.dgDocumentoRP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgDocumentoRP.Size = new System.Drawing.Size(166, 97);
+            this.dgDocumentoRP.Size = new System.Drawing.Size(179, 97);
             this.dgDocumentoRP.TabIndex = 225;
             this.dgDocumentoRP.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -1779,6 +1704,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgDocumentoRP.ThemeStyle.RowsStyle.Height = 20;
             this.dgDocumentoRP.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.AliceBlue;
             this.dgDocumentoRP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.CornflowerBlue;
+            this.dgDocumentoRP.Visible = false;
             this.dgDocumentoRP.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDocumentoRP_CellDoubleClick);
             // 
             // btnNuevoRP
@@ -1799,10 +1725,10 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnNuevoRP.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
             this.btnNuevoRP.HoveredState.Parent = this.btnNuevoRP;
             this.btnNuevoRP.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_32;
-            this.btnNuevoRP.Location = new System.Drawing.Point(562, 54);
+            this.btnNuevoRP.Location = new System.Drawing.Point(202, 47);
             this.btnNuevoRP.Name = "btnNuevoRP";
             this.btnNuevoRP.ShadowDecoration.Parent = this.btnNuevoRP;
-            this.btnNuevoRP.Size = new System.Drawing.Size(119, 37);
+            this.btnNuevoRP.Size = new System.Drawing.Size(151, 37);
             this.btnNuevoRP.TabIndex = 147;
             this.btnNuevoRP.Text = "Nuevo";
             this.btnNuevoRP.Click += new System.EventHandler(this.btnNuevoRP_Click);
@@ -1813,7 +1739,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label25.Location = new System.Drawing.Point(566, 107);
+            this.label25.Location = new System.Drawing.Point(367, 97);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(62, 17);
             this.label25.TabIndex = 158;
@@ -1837,7 +1763,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtDireccionRP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDireccionRP.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDireccionRP.HoveredState.Parent = this.txtDireccionRP;
-            this.txtDireccionRP.Location = new System.Drawing.Point(569, 129);
+            this.txtDireccionRP.Location = new System.Drawing.Point(367, 115);
             this.txtDireccionRP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDireccionRP.Name = "txtDireccionRP";
             this.txtDireccionRP.PasswordChar = '\0';
@@ -1845,7 +1771,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtDireccionRP.PlaceholderText = "";
             this.txtDireccionRP.SelectedText = "";
             this.txtDireccionRP.ShadowDecoration.Parent = this.txtDireccionRP;
-            this.txtDireccionRP.Size = new System.Drawing.Size(439, 36);
+            this.txtDireccionRP.Size = new System.Drawing.Size(671, 36);
             this.txtDireccionRP.TabIndex = 157;
             // 
             // label26
@@ -1854,7 +1780,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label26.Location = new System.Drawing.Point(398, 107);
+            this.label26.Location = new System.Drawing.Point(202, 97);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(51, 17);
             this.label26.TabIndex = 156;
@@ -1878,7 +1804,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtCelularRP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCelularRP.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCelularRP.HoveredState.Parent = this.txtCelularRP;
-            this.txtCelularRP.Location = new System.Drawing.Point(401, 129);
+            this.txtCelularRP.Location = new System.Drawing.Point(202, 115);
             this.txtCelularRP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCelularRP.Name = "txtCelularRP";
             this.txtCelularRP.PasswordChar = '\0';
@@ -1895,7 +1821,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label27.BackColor = System.Drawing.Color.Transparent;
             this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label27.Location = new System.Drawing.Point(234, 108);
+            this.label27.Location = new System.Drawing.Point(15, 97);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(82, 17);
             this.label27.TabIndex = 154;
@@ -1919,7 +1845,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtTelefonoFijoRP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTelefonoFijoRP.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelefonoFijoRP.HoveredState.Parent = this.txtTelefonoFijoRP;
-            this.txtTelefonoFijoRP.Location = new System.Drawing.Point(237, 129);
+            this.txtTelefonoFijoRP.Location = new System.Drawing.Point(15, 115);
             this.txtTelefonoFijoRP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTelefonoFijoRP.Name = "txtTelefonoFijoRP";
             this.txtTelefonoFijoRP.PasswordChar = '\0';
@@ -1927,7 +1853,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtTelefonoFijoRP.PlaceholderText = "";
             this.txtTelefonoFijoRP.SelectedText = "";
             this.txtTelefonoFijoRP.ShadowDecoration.Parent = this.txtTelefonoFijoRP;
-            this.txtTelefonoFijoRP.Size = new System.Drawing.Size(146, 36);
+            this.txtTelefonoFijoRP.Size = new System.Drawing.Size(179, 36);
             this.txtTelefonoFijoRP.TabIndex = 153;
             // 
             // label28
@@ -1936,7 +1862,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label28.Location = new System.Drawing.Point(15, 108);
+            this.label28.Location = new System.Drawing.Point(833, 26);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(49, 17);
             this.label28.TabIndex = 152;
@@ -1960,7 +1886,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtCorreoRP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCorreoRP.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCorreoRP.HoveredState.Parent = this.txtCorreoRP;
-            this.txtCorreoRP.Location = new System.Drawing.Point(18, 129);
+            this.txtCorreoRP.Location = new System.Drawing.Point(833, 47);
             this.txtCorreoRP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCorreoRP.Name = "txtCorreoRP";
             this.txtCorreoRP.PasswordChar = '\0';
@@ -1990,7 +1916,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtNombreRP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNombreRP.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombreRP.HoveredState.Parent = this.txtNombreRP;
-            this.txtNombreRP.Location = new System.Drawing.Point(693, 54);
+            this.txtNombreRP.Location = new System.Drawing.Point(367, 47);
             this.txtNombreRP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombreRP.Name = "txtNombreRP";
             this.txtNombreRP.PasswordChar = '\0';
@@ -2000,50 +1926,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtNombreRP.ShadowDecoration.Parent = this.txtNombreRP;
             this.txtNombreRP.Size = new System.Drawing.Size(458, 36);
             this.txtNombreRP.TabIndex = 147;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label30.Location = new System.Drawing.Point(200, 35);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(114, 17);
-            this.label30.TabIndex = 150;
-            this.label30.Text = "Tipo Documento *";
-            // 
-            // cboTipoDocumentoRP
-            // 
-            this.cboTipoDocumentoRP.BackColor = System.Drawing.Color.Transparent;
-            this.cboTipoDocumentoRP.BorderColor = System.Drawing.Color.Silver;
-            this.cboTipoDocumentoRP.BorderRadius = 5;
-            this.cboTipoDocumentoRP.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboTipoDocumentoRP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoDocumentoRP.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.cboTipoDocumentoRP.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboTipoDocumentoRP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoDocumentoRP.HoveredState.Parent = this.cboTipoDocumentoRP;
-            this.cboTipoDocumentoRP.ItemHeight = 30;
-            this.cboTipoDocumentoRP.ItemsAppearance.Parent = this.cboTipoDocumentoRP;
-            this.cboTipoDocumentoRP.Location = new System.Drawing.Point(203, 55);
-            this.cboTipoDocumentoRP.Name = "cboTipoDocumentoRP";
-            this.cboTipoDocumentoRP.ShadowDecoration.Parent = this.cboTipoDocumentoRP;
-            this.cboTipoDocumentoRP.Size = new System.Drawing.Size(164, 36);
-            this.cboTipoDocumentoRP.TabIndex = 149;
-            this.cboTipoDocumentoRP.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumentoRP_SelectedIndexChanged);
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.Transparent;
-            this.label31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label31.Location = new System.Drawing.Point(15, 35);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(94, 17);
-            this.label31.TabIndex = 148;
-            this.label31.Text = "Tipo Persona *";
             // 
             // btnLimpiarRP
             // 
@@ -2063,7 +1945,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnLimpiarRP.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
             this.btnLimpiarRP.HoveredState.Parent = this.btnLimpiarRP;
             this.btnLimpiarRP.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_32;
-            this.btnLimpiarRP.Location = new System.Drawing.Point(1033, 129);
+            this.btnLimpiarRP.Location = new System.Drawing.Point(1045, 115);
             this.btnLimpiarRP.Name = "btnLimpiarRP";
             this.btnLimpiarRP.ShadowDecoration.Parent = this.btnLimpiarRP;
             this.btnLimpiarRP.Size = new System.Drawing.Size(118, 36);
@@ -2071,33 +1953,13 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnLimpiarRP.Text = "Limpiar";
             this.btnLimpiarRP.Click += new System.EventHandler(this.btnLimpiarRP_Click);
             // 
-            // cboTipoClienteRP
-            // 
-            this.cboTipoClienteRP.BackColor = System.Drawing.Color.Transparent;
-            this.cboTipoClienteRP.BorderColor = System.Drawing.Color.Silver;
-            this.cboTipoClienteRP.BorderRadius = 5;
-            this.cboTipoClienteRP.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboTipoClienteRP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoClienteRP.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.cboTipoClienteRP.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboTipoClienteRP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoClienteRP.HoveredState.Parent = this.cboTipoClienteRP;
-            this.cboTipoClienteRP.ItemHeight = 30;
-            this.cboTipoClienteRP.ItemsAppearance.Parent = this.cboTipoClienteRP;
-            this.cboTipoClienteRP.Location = new System.Drawing.Point(18, 55);
-            this.cboTipoClienteRP.Name = "cboTipoClienteRP";
-            this.cboTipoClienteRP.ShadowDecoration.Parent = this.cboTipoClienteRP;
-            this.cboTipoClienteRP.Size = new System.Drawing.Size(165, 36);
-            this.cboTipoClienteRP.TabIndex = 147;
-            this.cboTipoClienteRP.SelectedIndexChanged += new System.EventHandler(this.cboTipoClienteRP_SelectedIndexChanged);
-            // 
             // label32
             // 
             this.label32.AutoSize = true;
             this.label32.BackColor = System.Drawing.Color.Transparent;
             this.label32.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label32.Location = new System.Drawing.Point(690, 34);
+            this.label32.Location = new System.Drawing.Point(367, 26);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(215, 17);
             this.label32.TabIndex = 133;
@@ -2109,7 +1971,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label33.BackColor = System.Drawing.Color.Transparent;
             this.label33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label33.Location = new System.Drawing.Point(383, 33);
+            this.label33.Location = new System.Drawing.Point(16, 26);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(107, 17);
             this.label33.TabIndex = 131;
@@ -2121,33 +1983,17 @@ namespace wfaIntegradoCom.Mantenedores
             this.erDocumentoRP.BackColor = System.Drawing.Color.Transparent;
             this.erDocumentoRP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.erDocumentoRP.ForeColor = System.Drawing.Color.Red;
-            this.erDocumentoRP.Location = new System.Drawing.Point(383, 94);
+            this.erDocumentoRP.Location = new System.Drawing.Point(16, 81);
             this.erDocumentoRP.Name = "erDocumentoRP";
             this.erDocumentoRP.Size = new System.Drawing.Size(32, 13);
             this.erDocumentoRP.TabIndex = 226;
             this.erDocumentoRP.Text = "Error";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label20.Location = new System.Drawing.Point(467, 1096);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(103, 37);
-            this.label20.TabIndex = 146;
-            this.label20.Text = "VENTA";
             // 
             // gbCliente
             // 
             this.gbCliente.BorderColor = System.Drawing.Color.Gainsboro;
             this.gbCliente.BorderRadius = 5;
             this.gbCliente.Controls.Add(this.btnIrACliente);
-            this.gbCliente.Controls.Add(this.erTipoDocumentoC);
-            this.gbCliente.Controls.Add(this.imgTipoDocumentoC);
-            this.gbCliente.Controls.Add(this.erTipoClienteC);
-            this.gbCliente.Controls.Add(this.imgTipoClienteC);
             this.gbCliente.Controls.Add(this.imgDocumentoC);
             this.gbCliente.Controls.Add(this.txtDocumentoC);
             this.gbCliente.Controls.Add(this.dgDocumentoC);
@@ -2163,11 +2009,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbCliente.Controls.Add(this.label13);
             this.gbCliente.Controls.Add(this.txtCorreoC);
             this.gbCliente.Controls.Add(this.txtNombreC);
-            this.gbCliente.Controls.Add(this.label6);
-            this.gbCliente.Controls.Add(this.cboTipoDocumentoC);
-            this.gbCliente.Controls.Add(this.label3);
             this.gbCliente.Controls.Add(this.btnLimpiarC);
-            this.gbCliente.Controls.Add(this.cboTipoClienteC);
             this.gbCliente.Controls.Add(this.label22);
             this.gbCliente.Controls.Add(this.label29);
             this.gbCliente.Controls.Add(this.erDocumentoC);
@@ -2178,7 +2020,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbCliente.Location = new System.Drawing.Point(18, 74);
             this.gbCliente.Name = "gbCliente";
             this.gbCliente.ShadowDecoration.Parent = this.gbCliente;
-            this.gbCliente.Size = new System.Drawing.Size(1173, 246);
+            this.gbCliente.Size = new System.Drawing.Size(1173, 207);
             this.gbCliente.TabIndex = 144;
             this.gbCliente.Text = "Datos de Cliente";
             this.gbCliente.TextOffset = new System.Drawing.Point(0, -7);
@@ -2202,60 +2044,18 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnIrACliente.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
             this.btnIrACliente.HoveredState.Parent = this.btnIrACliente;
             this.btnIrACliente.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_32;
-            this.btnIrACliente.Location = new System.Drawing.Point(562, 54);
+            this.btnIrACliente.Location = new System.Drawing.Point(237, 45);
             this.btnIrACliente.Name = "btnIrACliente";
             this.btnIrACliente.ShadowDecoration.Parent = this.btnIrACliente;
-            this.btnIrACliente.Size = new System.Drawing.Size(119, 37);
+            this.btnIrACliente.Size = new System.Drawing.Size(151, 37);
             this.btnIrACliente.TabIndex = 147;
             this.btnIrACliente.Text = "Nuevo";
             this.btnIrACliente.Click += new System.EventHandler(this.btnIrACliente_Click);
             // 
-            // erTipoDocumentoC
-            // 
-            this.erTipoDocumentoC.AutoSize = true;
-            this.erTipoDocumentoC.BackColor = System.Drawing.Color.Transparent;
-            this.erTipoDocumentoC.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.erTipoDocumentoC.ForeColor = System.Drawing.Color.Red;
-            this.erTipoDocumentoC.Location = new System.Drawing.Point(200, 95);
-            this.erTipoDocumentoC.Name = "erTipoDocumentoC";
-            this.erTipoDocumentoC.Size = new System.Drawing.Size(32, 13);
-            this.erTipoDocumentoC.TabIndex = 235;
-            this.erTipoDocumentoC.Text = "Error";
-            // 
-            // imgTipoDocumentoC
-            // 
-            this.imgTipoDocumentoC.BackColor = System.Drawing.Color.White;
-            this.imgTipoDocumentoC.Location = new System.Drawing.Point(347, 34);
-            this.imgTipoDocumentoC.Name = "imgTipoDocumentoC";
-            this.imgTipoDocumentoC.Size = new System.Drawing.Size(20, 20);
-            this.imgTipoDocumentoC.TabIndex = 234;
-            this.imgTipoDocumentoC.TabStop = false;
-            // 
-            // erTipoClienteC
-            // 
-            this.erTipoClienteC.AutoSize = true;
-            this.erTipoClienteC.BackColor = System.Drawing.Color.Transparent;
-            this.erTipoClienteC.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.erTipoClienteC.ForeColor = System.Drawing.Color.Red;
-            this.erTipoClienteC.Location = new System.Drawing.Point(16, 94);
-            this.erTipoClienteC.Name = "erTipoClienteC";
-            this.erTipoClienteC.Size = new System.Drawing.Size(32, 13);
-            this.erTipoClienteC.TabIndex = 232;
-            this.erTipoClienteC.Text = "Error";
-            // 
-            // imgTipoClienteC
-            // 
-            this.imgTipoClienteC.BackColor = System.Drawing.Color.White;
-            this.imgTipoClienteC.Location = new System.Drawing.Point(163, 35);
-            this.imgTipoClienteC.Name = "imgTipoClienteC";
-            this.imgTipoClienteC.Size = new System.Drawing.Size(20, 20);
-            this.imgTipoClienteC.TabIndex = 231;
-            this.imgTipoClienteC.TabStop = false;
-            // 
             // imgDocumentoC
             // 
             this.imgDocumentoC.BackColor = System.Drawing.Color.White;
-            this.imgDocumentoC.Location = new System.Drawing.Point(532, 34);
+            this.imgDocumentoC.Location = new System.Drawing.Point(206, 25);
             this.imgDocumentoC.Name = "imgDocumentoC";
             this.imgDocumentoC.Size = new System.Drawing.Size(20, 20);
             this.imgDocumentoC.TabIndex = 226;
@@ -2279,7 +2079,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtDocumentoC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDocumentoC.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDocumentoC.HoveredState.Parent = this.txtDocumentoC;
-            this.txtDocumentoC.Location = new System.Drawing.Point(373, 55);
+            this.txtDocumentoC.Location = new System.Drawing.Point(13, 45);
             this.txtDocumentoC.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDocumentoC.Name = "txtDocumentoC";
             this.txtDocumentoC.PasswordChar = '\0';
@@ -2287,7 +2087,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtDocumentoC.PlaceholderText = "";
             this.txtDocumentoC.SelectedText = "";
             this.txtDocumentoC.ShadowDecoration.Parent = this.txtDocumentoC;
-            this.txtDocumentoC.Size = new System.Drawing.Size(182, 36);
+            this.txtDocumentoC.Size = new System.Drawing.Size(213, 36);
             this.txtDocumentoC.TabIndex = 130;
             this.txtDocumentoC.TextChanged += new System.EventHandler(this.txtDocumentoC_TextChanged);
             this.txtDocumentoC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumentoC_KeyPress);
@@ -2319,7 +2119,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgDocumentoC.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.AliceBlue;
             dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.CornflowerBlue;
@@ -2327,7 +2127,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgDocumentoC.DefaultCellStyle = dataGridViewCellStyle31;
             this.dgDocumentoC.EnableHeadersVisualStyles = false;
             this.dgDocumentoC.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgDocumentoC.Location = new System.Drawing.Point(373, 91);
+            this.dgDocumentoC.Location = new System.Drawing.Point(13, 81);
             this.dgDocumentoC.Name = "dgDocumentoC";
             this.dgDocumentoC.ReadOnly = true;
             this.dgDocumentoC.RowHeadersVisible = false;
@@ -2338,7 +2138,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgDocumentoC.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgDocumentoC.RowTemplate.Height = 40;
             this.dgDocumentoC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgDocumentoC.Size = new System.Drawing.Size(182, 74);
+            this.dgDocumentoC.Size = new System.Drawing.Size(213, 74);
             this.dgDocumentoC.TabIndex = 224;
             this.dgDocumentoC.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgDocumentoC.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -2357,11 +2157,12 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgDocumentoC.ThemeStyle.ReadOnly = true;
             this.dgDocumentoC.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgDocumentoC.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgDocumentoC.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgDocumentoC.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgDocumentoC.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgDocumentoC.ThemeStyle.RowsStyle.Height = 40;
             this.dgDocumentoC.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.AliceBlue;
             this.dgDocumentoC.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.CornflowerBlue;
+            this.dgDocumentoC.Visible = false;
             this.dgDocumentoC.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDocumentoC_CellDoubleClick);
             // 
             // label34
@@ -2370,7 +2171,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label34.BackColor = System.Drawing.Color.Transparent;
             this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label34.Location = new System.Drawing.Point(15, 207);
+            this.label34.Location = new System.Drawing.Point(15, 169);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(277, 17);
             this.label34.TabIndex = 161;
@@ -2380,7 +2181,7 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.siticoneSeparator1.BackColor = System.Drawing.Color.White;
             this.siticoneSeparator1.FillColor = System.Drawing.Color.Gainsboro;
-            this.siticoneSeparator1.Location = new System.Drawing.Point(18, 178);
+            this.siticoneSeparator1.Location = new System.Drawing.Point(18, 153);
             this.siticoneSeparator1.Name = "siticoneSeparator1";
             this.siticoneSeparator1.Size = new System.Drawing.Size(1133, 10);
             this.siticoneSeparator1.TabIndex = 160;
@@ -2391,7 +2192,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbRespuestaPago.Controls.Add(this.rdbNo);
             this.gbRespuestaPago.Controls.Add(this.rdbSi);
             this.gbRespuestaPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.gbRespuestaPago.Location = new System.Drawing.Point(324, 189);
+            this.gbRespuestaPago.Location = new System.Drawing.Point(324, 154);
             this.gbRespuestaPago.Name = "gbRespuestaPago";
             this.gbRespuestaPago.Size = new System.Drawing.Size(194, 46);
             this.gbRespuestaPago.TabIndex = 159;
@@ -2427,7 +2228,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(566, 107);
+            this.label19.Location = new System.Drawing.Point(395, 93);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(62, 17);
             this.label19.TabIndex = 158;
@@ -2451,7 +2252,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtDireccionC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDireccionC.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDireccionC.HoveredState.Parent = this.txtDireccionC;
-            this.txtDireccionC.Location = new System.Drawing.Point(569, 129);
+            this.txtDireccionC.Location = new System.Drawing.Point(395, 111);
             this.txtDireccionC.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDireccionC.Name = "txtDireccionC";
             this.txtDireccionC.PasswordChar = '\0';
@@ -2459,7 +2260,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtDireccionC.PlaceholderText = "";
             this.txtDireccionC.SelectedText = "";
             this.txtDireccionC.ShadowDecoration.Parent = this.txtDireccionC;
-            this.txtDireccionC.Size = new System.Drawing.Size(446, 36);
+            this.txtDireccionC.Size = new System.Drawing.Size(633, 36);
             this.txtDireccionC.TabIndex = 157;
             // 
             // label18
@@ -2468,7 +2269,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label18.Location = new System.Drawing.Point(398, 107);
+            this.label18.Location = new System.Drawing.Point(231, 93);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(51, 17);
             this.label18.TabIndex = 156;
@@ -2492,7 +2293,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtCelularC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCelularC.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCelularC.HoveredState.Parent = this.txtCelularC;
-            this.txtCelularC.Location = new System.Drawing.Point(401, 129);
+            this.txtCelularC.Location = new System.Drawing.Point(237, 111);
             this.txtCelularC.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCelularC.Name = "txtCelularC";
             this.txtCelularC.PasswordChar = '\0';
@@ -2509,7 +2310,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label17.Location = new System.Drawing.Point(234, 108);
+            this.label17.Location = new System.Drawing.Point(12, 93);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(82, 17);
             this.label17.TabIndex = 154;
@@ -2533,7 +2334,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtTelefonoFijoC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTelefonoFijoC.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelefonoFijoC.HoveredState.Parent = this.txtTelefonoFijoC;
-            this.txtTelefonoFijoC.Location = new System.Drawing.Point(237, 129);
+            this.txtTelefonoFijoC.Location = new System.Drawing.Point(15, 111);
             this.txtTelefonoFijoC.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTelefonoFijoC.Name = "txtTelefonoFijoC";
             this.txtTelefonoFijoC.PasswordChar = '\0';
@@ -2541,7 +2342,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtTelefonoFijoC.PlaceholderText = "";
             this.txtTelefonoFijoC.SelectedText = "";
             this.txtTelefonoFijoC.ShadowDecoration.Parent = this.txtTelefonoFijoC;
-            this.txtTelefonoFijoC.Size = new System.Drawing.Size(146, 36);
+            this.txtTelefonoFijoC.Size = new System.Drawing.Size(213, 36);
             this.txtTelefonoFijoC.TabIndex = 153;
             // 
             // label13
@@ -2550,7 +2351,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(15, 108);
+            this.label13.Location = new System.Drawing.Point(823, 24);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(49, 17);
             this.label13.TabIndex = 152;
@@ -2574,7 +2375,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtCorreoC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCorreoC.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCorreoC.HoveredState.Parent = this.txtCorreoC;
-            this.txtCorreoC.Location = new System.Drawing.Point(18, 129);
+            this.txtCorreoC.Location = new System.Drawing.Point(823, 45);
             this.txtCorreoC.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCorreoC.Name = "txtCorreoC";
             this.txtCorreoC.PasswordChar = '\0';
@@ -2604,7 +2405,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtNombreC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNombreC.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombreC.HoveredState.Parent = this.txtNombreC;
-            this.txtNombreC.Location = new System.Drawing.Point(693, 54);
+            this.txtNombreC.Location = new System.Drawing.Point(395, 45);
             this.txtNombreC.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombreC.Name = "txtNombreC";
             this.txtNombreC.PasswordChar = '\0';
@@ -2612,52 +2413,8 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtNombreC.PlaceholderText = "";
             this.txtNombreC.SelectedText = "";
             this.txtNombreC.ShadowDecoration.Parent = this.txtNombreC;
-            this.txtNombreC.Size = new System.Drawing.Size(458, 36);
+            this.txtNombreC.Size = new System.Drawing.Size(420, 36);
             this.txtNombreC.TabIndex = 147;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(200, 35);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 17);
-            this.label6.TabIndex = 150;
-            this.label6.Text = "Tipo Documento *";
-            // 
-            // cboTipoDocumentoC
-            // 
-            this.cboTipoDocumentoC.BackColor = System.Drawing.Color.Transparent;
-            this.cboTipoDocumentoC.BorderColor = System.Drawing.Color.Silver;
-            this.cboTipoDocumentoC.BorderRadius = 5;
-            this.cboTipoDocumentoC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboTipoDocumentoC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoDocumentoC.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.cboTipoDocumentoC.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboTipoDocumentoC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoDocumentoC.HoveredState.Parent = this.cboTipoDocumentoC;
-            this.cboTipoDocumentoC.ItemHeight = 30;
-            this.cboTipoDocumentoC.ItemsAppearance.Parent = this.cboTipoDocumentoC;
-            this.cboTipoDocumentoC.Location = new System.Drawing.Point(203, 55);
-            this.cboTipoDocumentoC.Name = "cboTipoDocumentoC";
-            this.cboTipoDocumentoC.ShadowDecoration.Parent = this.cboTipoDocumentoC;
-            this.cboTipoDocumentoC.Size = new System.Drawing.Size(164, 36);
-            this.cboTipoDocumentoC.TabIndex = 149;
-            this.cboTipoDocumentoC.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumentoC_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(15, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 17);
-            this.label3.TabIndex = 148;
-            this.label3.Text = "Tipo Persona *";
             // 
             // btnLimpiarC
             // 
@@ -2677,7 +2434,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnLimpiarC.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
             this.btnLimpiarC.HoveredState.Parent = this.btnLimpiarC;
             this.btnLimpiarC.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_32;
-            this.btnLimpiarC.Location = new System.Drawing.Point(1033, 129);
+            this.btnLimpiarC.Location = new System.Drawing.Point(1044, 111);
             this.btnLimpiarC.Name = "btnLimpiarC";
             this.btnLimpiarC.ShadowDecoration.Parent = this.btnLimpiarC;
             this.btnLimpiarC.Size = new System.Drawing.Size(118, 36);
@@ -2685,33 +2442,13 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnLimpiarC.Text = "Limpiar";
             this.btnLimpiarC.Click += new System.EventHandler(this.btnLimpiarC_Click);
             // 
-            // cboTipoClienteC
-            // 
-            this.cboTipoClienteC.BackColor = System.Drawing.Color.Transparent;
-            this.cboTipoClienteC.BorderColor = System.Drawing.Color.Silver;
-            this.cboTipoClienteC.BorderRadius = 5;
-            this.cboTipoClienteC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboTipoClienteC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoClienteC.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.cboTipoClienteC.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboTipoClienteC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoClienteC.HoveredState.Parent = this.cboTipoClienteC;
-            this.cboTipoClienteC.ItemHeight = 30;
-            this.cboTipoClienteC.ItemsAppearance.Parent = this.cboTipoClienteC;
-            this.cboTipoClienteC.Location = new System.Drawing.Point(18, 55);
-            this.cboTipoClienteC.Name = "cboTipoClienteC";
-            this.cboTipoClienteC.ShadowDecoration.Parent = this.cboTipoClienteC;
-            this.cboTipoClienteC.Size = new System.Drawing.Size(165, 36);
-            this.cboTipoClienteC.TabIndex = 147;
-            this.cboTipoClienteC.SelectedIndexChanged += new System.EventHandler(this.cboTipoClienteC_SelectedIndexChanged);
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label22.Location = new System.Drawing.Point(690, 34);
+            this.label22.Location = new System.Drawing.Point(395, 26);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(215, 17);
             this.label22.TabIndex = 133;
@@ -2723,7 +2460,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label29.Location = new System.Drawing.Point(383, 34);
+            this.label29.Location = new System.Drawing.Point(13, 26);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(103, 17);
             this.label29.TabIndex = 131;
@@ -2735,7 +2472,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.erDocumentoC.BackColor = System.Drawing.Color.Transparent;
             this.erDocumentoC.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.erDocumentoC.ForeColor = System.Drawing.Color.Red;
-            this.erDocumentoC.Location = new System.Drawing.Point(383, 93);
+            this.erDocumentoC.Location = new System.Drawing.Point(13, 79);
             this.erDocumentoC.Name = "erDocumentoC";
             this.erDocumentoC.Size = new System.Drawing.Size(32, 13);
             this.erDocumentoC.TabIndex = 225;
@@ -3394,12 +3131,13 @@ namespace wfaIntegradoCom.Mantenedores
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1136, 82);
+            this.pictureBox4.Location = new System.Drawing.Point(1141, 78);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(26, 27);
+            this.pictureBox4.Size = new System.Drawing.Size(26, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 226;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Tag = "pbBuscar";
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // gbBuscarListaVentas
@@ -3628,6 +3366,10 @@ namespace wfaIntegradoCom.Mantenedores
             this.label41.TabIndex = 170;
             this.label41.Text = "de";
             // 
+            // siticoneDragControl1
+            // 
+            this.siticoneDragControl1.TargetControl = null;
+            // 
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
@@ -3639,7 +3381,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.ShadowDecoration.Parent = this.pnlTop;
             this.pnlTop.Size = new System.Drawing.Size(1240, 29);
-            this.pnlTop.TabIndex = 74;
+            this.pnlTop.TabIndex = 116;
             // 
             // siticoneControlBox2
             // 
@@ -3685,6 +3427,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1240, 694);
+            this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.siticonePanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmRegistrarVenta";
@@ -3712,14 +3455,10 @@ namespace wfaIntegradoCom.Mantenedores
             ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).EndInit();
             this.gbResponsablePago.ResumeLayout(false);
             this.gbResponsablePago.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgTipoDocumentoRP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgTipoClienteRP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDocumentoRP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDocumentoRP)).EndInit();
             this.gbCliente.ResumeLayout(false);
             this.gbCliente.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgTipoDocumentoC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgTipoClienteC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDocumentoC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDocumentoC)).EndInit();
             this.gbRespuestaPago.ResumeLayout(false);
@@ -3746,10 +3485,6 @@ namespace wfaIntegradoCom.Mantenedores
         #endregion
 
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
-        private Siticone.UI.WinForms.SiticonePanel pnlTop;
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox2;
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
-        private Guna.UI.WinForms.GunaLabel gunaLabel10;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
@@ -3769,15 +3504,9 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.Label label28;
         private Siticone.UI.WinForms.SiticoneTextBox txtCorreoRP;
         private Siticone.UI.WinForms.SiticoneTextBox txtNombreRP;
-        private System.Windows.Forms.Label label30;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocumentoRP;
-        private System.Windows.Forms.Label label31;
         private Siticone.UI.WinForms.SiticoneButton btnLimpiarRP;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoClienteRP;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label erDocumentoRP;
-        private System.Windows.Forms.Label label20;
         private Siticone.UI.WinForms.SiticoneGroupBox gbCliente;
         private System.Windows.Forms.PictureBox imgDocumentoC;
         private Siticone.UI.WinForms.SiticoneTextBox txtDocumentoC;
@@ -3797,11 +3526,7 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.Label label13;
         private Siticone.UI.WinForms.SiticoneTextBox txtCorreoC;
         private Siticone.UI.WinForms.SiticoneTextBox txtNombreC;
-        private System.Windows.Forms.Label label6;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocumentoC;
-        private System.Windows.Forms.Label label3;
         private Siticone.UI.WinForms.SiticoneButton btnLimpiarC;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoClienteC;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label erDocumentoC;
@@ -3842,7 +3567,6 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView dgvVehiculos;
         private System.Windows.Forms.DataGridView dgvPagoPlan;
-        private Siticone.UI.WinForms.SiticoneButton AbrirReporteVentas;
         private Siticone.UI.WinForms.SiticoneTextBox txtIGV;
         private System.Windows.Forms.Label label1;
         private Siticone.UI.WinForms.SiticoneDataGridView dgvListaVentas;
@@ -3854,14 +3578,6 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.Label lblTipoDescuento;
         private System.Windows.Forms.Label lblPagoPlan;
         private System.Windows.Forms.Label lblPanelPrimerPago;
-        private System.Windows.Forms.Label erTipoClienteC;
-        private System.Windows.Forms.PictureBox imgTipoClienteC;
-        private System.Windows.Forms.Label erTipoDocumentoC;
-        private System.Windows.Forms.PictureBox imgTipoDocumentoC;
-        private System.Windows.Forms.Label erTipoDocumentoRP;
-        private System.Windows.Forms.PictureBox imgTipoDocumentoRP;
-        private System.Windows.Forms.Label erTipoClienteRP;
-        private System.Windows.Forms.PictureBox imgTipoClienteRP;
         private System.Windows.Forms.Label erComprobanteP;
         private System.Windows.Forms.PictureBox imgComprobanteP;
         private System.Windows.Forms.Label erCilcloP;
@@ -3883,7 +3599,6 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.ContextMenuStrip cmListaVentas;
         private System.Windows.Forms.ToolStripMenuItem irActualizar;
         private System.Windows.Forms.ToolStripMenuItem irAInstalacion;
-        private Siticone.UI.WinForms.SiticoneGroupBox gbDinamico;
         private Siticone.UI.WinForms.SiticoneCircleButton btnStockEquipos;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -3898,13 +3613,6 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.Label label8;
         private Siticone.UI.WinForms.SiticoneComboBox cboTipoVenta;
         private System.Windows.Forms.Label lbl;
-        private Siticone.UI.WinForms.SiticoneButton btnImprimir;
-        private System.Windows.Forms.Button button1;
-        private Siticone.UI.WinForms.SiticoneToggleSwitch swEstadoImprimirDocumento;
-        private System.Windows.Forms.Label lblSWNo;
-        private System.Windows.Forms.Label lblSWSi;
-        private System.Windows.Forms.Label label4;
-        private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator2;
         private System.Windows.Forms.ContextMenuStrip cmsImpresiones;
         private System.Windows.Forms.ToolStripMenuItem tlsDocumentoVenta;
         private System.Windows.Forms.ToolStripMenuItem Contrato;
@@ -3956,5 +3664,20 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private Siticone.UI.WinForms.SiticoneButton btnExportarBusqueda;
         private System.Windows.Forms.PictureBox pbFechaPago;
+        private System.Windows.Forms.Label erDocumentoRP;
+        private Siticone.UI.WinForms.SiticoneDragControl siticoneDragControl1;
+        private Siticone.UI.WinForms.SiticonePanel pnlTop;
+        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox2;
+        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
+        private Guna.UI.WinForms.GunaLabel gunaLabel10;
+        private Siticone.UI.WinForms.SiticonePanel gbDinamico;
+        private System.Windows.Forms.Label lblSWNo;
+        private System.Windows.Forms.Label lblSWSi;
+        private System.Windows.Forms.Label label4;
+        private Siticone.UI.WinForms.SiticoneButton AbrirReporteVentas;
+        private Siticone.UI.WinForms.SiticoneToggleSwitch swEstadoImprimirDocumento;
+        private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator2;
+        private System.Windows.Forms.Button button1;
+        private Siticone.UI.WinForms.SiticoneButton btnImprimir;
     }
 }

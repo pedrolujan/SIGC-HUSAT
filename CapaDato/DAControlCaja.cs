@@ -360,7 +360,7 @@ namespace CapaDato
         }
         public List<ReporteBloque> daBuscarEgresos(Busquedas clsBusq)
         {
-            SqlParameter[] pa = new SqlParameter[12];
+            SqlParameter[] pa = new SqlParameter[13];
             List<ControlCaja> lstControl = new List<ControlCaja>();
             DataSet dtMenu = new DataSet();
             List<ReporteBloque> lsDasboard = new List<ReporteBloque>();
@@ -385,6 +385,7 @@ namespace CapaDato
                 pa[9] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = clsBusq.tipoCon }; 
                 pa[10] = new SqlParameter("@chkHabilitarFecha", SqlDbType.TinyInt) { Value = clsBusq.chkActivarFechas }; 
                 pa[11] = new SqlParameter("@chkDiaEspecifico", SqlDbType.TinyInt) { Value = clsBusq.chkActivarDia }; 
+                pa[12] = new SqlParameter("@dFechaActual", SqlDbType.DateTime) { Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm") }; 
 
                  objCnx = new clsConexion("");
 
@@ -426,7 +427,7 @@ namespace CapaDato
 
         public List<ReporteBloque> daDetalleParaCuadre(Busquedas clsBusq,List<ReporteBloque> lstRep)
         {
-            SqlParameter[] pa = new SqlParameter[12];
+            SqlParameter[] pa = new SqlParameter[13];
             List<ControlCaja> lstControl = new List<ControlCaja>();
             DataSet dtMenu = new DataSet();
             List<ReporteBloque> lsDasboard = new List<ReporteBloque>();
@@ -436,7 +437,7 @@ namespace CapaDato
             objUtil = new clsUtil();
             try
             {
-                pa[0] = new SqlParameter("@dtFechaIni", SqlDbType.Date) { Value = clsBusq.dtFechaIni };
+                pa[0] = new SqlParameter("@dtFechaIni", SqlDbType.DateTime) { Value = clsBusq.dtFechaIni };
                 pa[1] = new SqlParameter("@dtFechaFin", SqlDbType.Date) { Value = clsBusq.dtFechaFin };
                 pa[2] = new SqlParameter("@codTipoReporte", SqlDbType.VarChar) { Value = clsBusq.cod1 };
                 pa[3] = new SqlParameter("@codTipoOperacion", SqlDbType.VarChar) { Value = clsBusq.cod2 };
@@ -447,9 +448,9 @@ namespace CapaDato
                 pa[8] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = clsBusq.tipoCon }; 
                 pa[9] = new SqlParameter("@chkHabilitarFecha", SqlDbType.TinyInt) { Value = clsBusq.chkActivarFechas }; 
                 pa[10] = new SqlParameter("@chkDiaEspecifico", SqlDbType.TinyInt) { Value = clsBusq.chkActivarDia }; 
-                pa[11] = new SqlParameter("@xmlDatos", SqlDbType.Xml) { Value = xmlDatos }; 
-
-                 objCnx = new clsConexion("");
+                pa[11] = new SqlParameter("@xmlDatos", SqlDbType.Xml) { Value = xmlDatos };
+                pa[12] = new SqlParameter("@dFechaActual", SqlDbType.DateTime) { Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm") };
+                objCnx = new clsConexion("");
 
                 dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarDetalleParaCuadreCaja", pa);
 

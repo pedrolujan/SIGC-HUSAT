@@ -117,69 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="colIdTarifa.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="codigo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="colIdTipoTarifa.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="numero.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="colTipo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Detalle.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="colPrecioEquipo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Cantidad1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="colEquipo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="importeRow.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="colPrecioPlan.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colPlan.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colPrecioReactivacion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colReactivacion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colTotal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colSeleccionar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAUhJREFUOE/V
-        lD9Lw1AUxaN2UERQ6Ci4uTjoop9FHLuI4OJWcHB2cNFNwUWKmooFt6D50yREF9FvFH8XDoXQJj60CB44
-        NPfkvPPey7uv3p8gDMO1OI67SZIM4DO8HQ6H+2jLsriBAS0GnzI453kXtrMsW+F3FR7y7oN3HdmbUZbl
-        LOYHeMzzjOQKiqJYIPgOdiXVg9kP4JnKWhBmuwjhtqRx2OowvAdBsCipEVEUbeAfqBxHmqY7GC5VOgH/
-        K6udV1kF320Pw5FKJ+DvcWDrKquYeqC2fKXSCSzizU5dZRU6lM88z5ckNYJvt4X/UeVkMGMHk1Pb4H3h
-        pDclTYY1M4H3mL9r7D6+J9/35yTXQ007unp27aSPrh7swRLeOIUamv4ctJNzaKF9tJaG/RwWygQX/yLU
-        2u3aQgk/kfw7WKiFscK2pGnC874ARNkoN+sTIIYAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="pictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAUhJREFUOE/V
-        lD9Lw1AUxaN2UERQ6Ci4uTjoop9FHLuI4OJWcHB2cNFNwUWKmooFt6D50yREF9FvFH8XDoXQJj60CB44
-        NPfkvPPey7uv3p8gDMO1OI67SZIM4DO8HQ6H+2jLsriBAS0GnzI453kXtrMsW+F3FR7y7oN3HdmbUZbl
-        LOYHeMzzjOQKiqJYIPgOdiXVg9kP4JnKWhBmuwjhtqRx2OowvAdBsCipEVEUbeAfqBxHmqY7GC5VOgH/
-        K6udV1kF320Pw5FKJ+DvcWDrKquYeqC2fKXSCSzizU5dZRU6lM88z5ckNYJvt4X/UeVkMGMHk1Pb4H3h
-        pDclTYY1M4H3mL9r7D6+J9/35yTXQ007unp27aSPrh7swRLeOIUamv4ctJNzaKF9tJaG/RwWygQX/yLU
-        2u3aQgk/kfw7WKiFscK2pGnC874ARNkoN+sTIIYAAAAASUVORK5CYII=
-</value>
-  </data>
-  <metadata name="cmsMenuTablaProspectos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="ControlDeMovimiento.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>211, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>104</value>
   </metadata>
 </root>

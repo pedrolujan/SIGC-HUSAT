@@ -365,9 +365,9 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, String fechaInical, String fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones,String valorRadio)
+        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, String fechaInical, String fechaFinal,String fechaAct, String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones,String valorRadio)
         {
-            SqlParameter[] pa = new SqlParameter[12];
+            SqlParameter[] pa = new SqlParameter[13];
             DataTable dtVentaG;
             clsConexion objCnx = null;           
 
@@ -377,15 +377,16 @@ namespace CapaDato
                 pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.TinyInt) { Value = habilitarfechas };
                 pa[1] = new SqlParameter("@peFechaInical", SqlDbType.DateTime) { Value = fechaInical };
                 pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.DateTime) { Value = fechaFinal };
-                pa[3] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = placaVehiculo };
-                pa[4] = new SqlParameter("@pcEstadoInstal", SqlDbType.VarChar, 15) { Value = cEstadoInstal };
-                pa[5] = new SqlParameter("@numPagina", SqlDbType.Int) { Value = numPagina };
-                pa[6] = new SqlParameter("@tipoLLamada", SqlDbType.Int) { Value = tipoLLamada };
-                pa[7] = new SqlParameter("@tipoCon", SqlDbType.Real) { Value = tipoCon };
-                pa[8] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
-                pa[9] = new SqlParameter("@estadoTipoContrato", SqlDbType.NVarChar,8) { Value = estadoTipoContrato };
-                pa[10] = new SqlParameter("@pehabilitarRenovaciones", SqlDbType.TinyInt) { Value = habilitarRenovaciones };
-                pa[11] = new SqlParameter("@valorRadio", SqlDbType.NVarChar,8) { Value = valorRadio };
+                pa[3] = new SqlParameter("@peFechaActual", SqlDbType.DateTime) { Value = fechaAct };
+                pa[4] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = placaVehiculo };
+                pa[5] = new SqlParameter("@pcEstadoInstal", SqlDbType.VarChar, 15) { Value = cEstadoInstal };
+                pa[6] = new SqlParameter("@numPagina", SqlDbType.Int) { Value = numPagina };
+                pa[7] = new SqlParameter("@tipoLLamada", SqlDbType.Int) { Value = tipoLLamada };
+                pa[8] = new SqlParameter("@tipoCon", SqlDbType.Real) { Value = tipoCon };
+                pa[9] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
+                pa[10] = new SqlParameter("@estadoTipoContrato", SqlDbType.NVarChar,8) { Value = estadoTipoContrato };
+                pa[11] = new SqlParameter("@pehabilitarRenovaciones", SqlDbType.TinyInt) { Value = habilitarRenovaciones };
+                pa[12] = new SqlParameter("@valorRadio", SqlDbType.NVarChar,8) { Value = valorRadio };
 
                 objCnx = new clsConexion("");
                 if (habilitarRenovaciones == false)
@@ -398,6 +399,67 @@ namespace CapaDato
                 }
 
                 return dtVentaG;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+        public DataTable daBuscarVentaPagoPendiente(Boolean chk, String busq, String dfechaIni, String dfechaFin, Int32 numPagina, Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[6];
+            DataTable dtVentaG;
+            clsConexion objCnx = null;           
+
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.Bit) { Value = chk };
+                pa[1] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = busq };
+                pa[2] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dfechaIni };
+                pa[3] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dfechaFin };
+                pa[4] = new SqlParameter("@numPagina", SqlDbType.VarChar, 15) { Value = numPagina };
+                pa[5] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
+
+                objCnx = new clsConexion("");                
+                dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarPagoPendiente", pa);
+                return dtVentaG;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+        public Boolean daGuardarpagosPendientes(Int32 idTrandiaria, List<Pagos> lstTrand, Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[3];
+            DataTable dtVentaG;
+            clsConexion objCnx = null;
+            String xmlTrandiaria = clsUtil.Serialize(lstTrand);
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@idTrandiaria", SqlDbType.Int) { Value = idTrandiaria };
+                pa[1] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml) { Value = xmlTrandiaria };
+                pa[2] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+
+                objCnx = new clsConexion("");
+                objCnx.EjecutarProcedimientoDT("uspGuardarPagosPendientes", pa);
+                return true;
             }
             catch (Exception ex)
             {

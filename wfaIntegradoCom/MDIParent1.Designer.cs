@@ -76,7 +76,7 @@ namespace wfaIntegradoCom
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
             this.miniToolStrip = new System.Windows.Forms.ToolStrip();
-            this.PanelEncavezadoFondo = new Siticone.UI.WinForms.SiticonePanel();
+            this.PanelEncavezadoFondo1 = new Siticone.UI.WinForms.SiticonePanel();
             this.LayoutPanelAccesoRapido = new System.Windows.Forms.FlowLayoutPanel();
             this.tsConfiguracion = new FontAwesome.Sharp.IconButton();
             this.pntsSeguimiento = new Siticone.UI.WinForms.SiticonePanel();
@@ -212,7 +212,7 @@ namespace wfaIntegradoCom
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelPerfil = new System.Windows.Forms.Panel();
-            this.PanelEncavezadoFondo.SuspendLayout();
+            this.PanelEncavezadoFondo1.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.pntsSeguimiento.SuspendLayout();
             this.siticonePanel2.SuspendLayout();
@@ -274,17 +274,17 @@ namespace wfaIntegradoCom
             this.miniToolStrip.Stretch = true;
             this.miniToolStrip.TabIndex = 4;
             // 
-            // PanelEncavezadoFondo
+            // PanelEncavezadoFondo1
             // 
-            this.PanelEncavezadoFondo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
-            this.PanelEncavezadoFondo.Controls.Add(this.LayoutPanelAccesoRapido);
-            this.PanelEncavezadoFondo.Controls.Add(this.siticonePanel2);
-            this.PanelEncavezadoFondo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelEncavezadoFondo.Location = new System.Drawing.Point(230, 0);
-            this.PanelEncavezadoFondo.Name = "PanelEncavezadoFondo";
-            this.PanelEncavezadoFondo.ShadowDecoration.Parent = this.PanelEncavezadoFondo;
-            this.PanelEncavezadoFondo.Size = new System.Drawing.Size(1054, 72);
-            this.PanelEncavezadoFondo.TabIndex = 16;
+            this.PanelEncavezadoFondo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
+            this.PanelEncavezadoFondo1.Controls.Add(this.LayoutPanelAccesoRapido);
+            this.PanelEncavezadoFondo1.Controls.Add(this.siticonePanel2);
+            this.PanelEncavezadoFondo1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelEncavezadoFondo1.Location = new System.Drawing.Point(230, 0);
+            this.PanelEncavezadoFondo1.Name = "PanelEncavezadoFondo1";
+            this.PanelEncavezadoFondo1.ShadowDecoration.Parent = this.PanelEncavezadoFondo1;
+            this.PanelEncavezadoFondo1.Size = new System.Drawing.Size(1054, 72);
+            this.PanelEncavezadoFondo1.TabIndex = 16;
             // 
             // LayoutPanelAccesoRapido
             // 
@@ -1462,7 +1462,7 @@ namespace wfaIntegradoCom
             this.dgvEgresos3.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvEgresos3.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvEgresos3.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEgresos3.RowTemplate.Height = 25;
+            this.dgvEgresos3.RowTemplate.Height = 35;
             this.dgvEgresos3.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEgresos3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEgresos3.Size = new System.Drawing.Size(215, 91);
@@ -1486,7 +1486,7 @@ namespace wfaIntegradoCom
             this.dgvEgresos3.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvEgresos3.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvEgresos3.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvEgresos3.ThemeStyle.RowsStyle.Height = 25;
+            this.dgvEgresos3.ThemeStyle.RowsStyle.Height = 35;
             this.dgvEgresos3.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Gainsboro;
             this.dgvEgresos3.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
             this.dgvEgresos3.Visible = false;
@@ -2571,6 +2571,7 @@ namespace wfaIntegradoCom
             this.txtBuscarRepGeneral.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarRepGeneral.HoveredState.Parent = this.txtBuscarRepGeneral;
             this.txtBuscarRepGeneral.Location = new System.Drawing.Point(969, 55);
+            this.txtBuscarRepGeneral.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuscarRepGeneral.Name = "txtBuscarRepGeneral";
             this.txtBuscarRepGeneral.PasswordChar = '\0';
             this.txtBuscarRepGeneral.PlaceholderText = "";
@@ -2739,7 +2740,7 @@ namespace wfaIntegradoCom
             this.ClientSize = new System.Drawing.Size(1284, 671);
             this.Controls.Add(this.panelPerfil);
             this.Controls.Add(this.panelCentral);
-            this.Controls.Add(this.PanelEncavezadoFondo);
+            this.Controls.Add(this.PanelEncavezadoFondo1);
             this.Controls.Add(this.panelIzquierdo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2749,7 +2750,7 @@ namespace wfaIntegradoCom
             this.Text = "SISTEMA DE GESTION COMERCIAL";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MDIParent1_Load);
-            this.PanelEncavezadoFondo.ResumeLayout(false);
+            this.PanelEncavezadoFondo1.ResumeLayout(false);
             this.LayoutPanelAccesoRapido.ResumeLayout(false);
             this.pntsSeguimiento.ResumeLayout(false);
             this.siticonePanel2.ResumeLayout(false);
@@ -2802,7 +2803,7 @@ namespace wfaIntegradoCom
         internal System.Windows.Forms.ImageList ListaImagenes;
         private System.Windows.Forms.ToolStrip miniToolStrip;
         private Siticone.UI.WinForms.SiticonePanel panelMenuPrincipal;
-        private Siticone.UI.WinForms.SiticonePanel PanelEncavezadoFondo;
+        private Siticone.UI.WinForms.SiticonePanel PanelEncavezadoFondo1;
         private System.Windows.Forms.PictureBox Img_Husat_Blanco;
         private WPF.CTRL.Colocaciones.ucOpcion ucOpcion1;
         private Siticone.UI.WinForms.SiticonePanel panelIzquierdo;

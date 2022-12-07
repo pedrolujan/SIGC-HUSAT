@@ -2377,7 +2377,7 @@ namespace wfaIntegradoCom.Procesos
                 xmlDocumentoVenta.Add(xmlDocVenta);
 
                 Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
-                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta,xmlDocumentoVenta[0].xmlDetalleVentas,-2);
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta,xmlDocumentoVenta[0].xmlDetalleVentas,1);
 
             }
             catch (Exception ex)
@@ -2790,6 +2790,11 @@ namespace wfaIntegradoCom.Procesos
             Int32 idContrato = Convert.ToInt32(dg.CurrentRow.Cells[0].Value);
 
             fnBuscarDocumentoVenta(idContrato);
+        }
+
+        private void siticoneButton1_Click(object sender, EventArgs e)
+        {
+            fnBuscarDocumentoVenta(6429);
         }
 
         private void siticoneGroupBox2_Click(object sender, EventArgs e)

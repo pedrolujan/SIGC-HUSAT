@@ -27,91 +27,22 @@ namespace wfaIntegradoCom.Procesos
         String SImboloMoneda = "";
         Boolean estTipoVenta, estEntidadVenta, estTotalAPagar, estPagaCon, estVuelto, estObservaciones,estNroOperacion;
         String lblTipoVentaa, lblEntidadVenta, lblTotalAPagar, lblPagaConn, lblVueltoo, lblObservacioneso, lblNroOperacion;
-
+        static Pagos clsPagosGeneral = new Pagos();
+        static List<Pagos> lstEntidades = new List<Pagos>();
         public void Inicio(int pnTipo, double pnMontoPagar,String sMoneda)
         {
             lnTipoLLamada = pnTipo;
             lnMontoPagar = pnMontoPagar;
             SImboloMoneda = sMoneda;
+            clsPagosGeneral.cantAPagar = pnMontoPagar;
+            clsPagosGeneral.SimboloMoneda = sMoneda;
             this.ShowDialog();
         }
 
-        private void cboEntidadesPago_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            String valorTipoPago = Convert.ToString(cboTipoPago.SelectedValue);
-
-            if (valorTipoPago == "TIPA0001" || valorTipoPago== "TIPA0005" || valorTipoPago== "TIPA0006")
-            {
-               
-            }
-            else
-            {
-                var res = FunValidaciones.fnValidarCombobox(cboEntidadesPago, lblEntidadPagos, pbEntidad);
-                estEntidadVenta = res.Item1;
-                lblEntidadVenta = res.Item2;
-            }
-        }
-
-        private void txtCanPagar_TextChanged(object sender, EventArgs e)
-        {
-            var Resp = FunValidaciones.fnValidarTexboxs(txtCanPagar,lblMontoAPagar,pbMontoAPagar,true,false,false,0,1000,5,10,"Regrese a la Venta para Calcular total a pagar");
-            estTotalAPagar = Resp.Item1;
-            lblTotalAPagar = Resp.Item2;
-        }
-
-        private void txtPagaCon_TextChanged(object sender, EventArgs e)
-        {
-            String valorTipoPago = Convert.ToString(cboTipoPago.SelectedValue);
-            if (valorTipoPago== "TIPA0001")
-            {
-                var Resp = FunValidaciones.fnValidarTexboxs(txtPagaCon, lblPagaCon, pbPagaCon, true, false, false, 0, 1000, 5, 10, "Ingrese monto a pagar");
-                estPagaCon = Resp.Item1;
-                lblPagaConn = Resp.Item2;
-            }
-            else
-            {
-                estPagaCon = true;
-                lblPagaConn = "";
-            }
-            
-        }
-
-        private void txtNumeroOperacion_TextChanged(object sender, EventArgs e)
-        {
-            String valorTipoPago = Convert.ToString(cboTipoPago.SelectedValue);
-            if (valorTipoPago == "TIPA0001" || valorTipoPago == "TIPA0005")
-            {
-
-            }
-            else
-            {
-                var Resp = FunValidaciones.fnValidarTexboxs(txtNumeroOperacion, lblTipoVenta, pbTipoVenta, true, true, true,4, 25, 25, 25, "Ingrese Número de óperacion");
-                estNroOperacion = Resp.Item1;
-                lblNroOperacion = Resp.Item2;
-            }
-        }
-
+       
         private void gunaControlBox1_Click(object sender, EventArgs e)
         {
             fnVolver();
-        }
-
-        private void txtVuelto_TextChanged(object sender, EventArgs e)
-        {
-            String valorTipoPago = Convert.ToString(cboTipoPago.SelectedValue);
-            if (valorTipoPago == "TIPA0001")
-            {
-                var Resp = FunValidaciones.fnValidarTexboxs(txtVuelto, lblVuelto, pbVuelto, true, false, false, 0, 1000, 5, 10, "Ingrese a monto a pago");
-                estVuelto = Resp.Item1;
-                lblVueltoo = Resp.Item2;
-            }
-            else
-            {
-                estVuelto = true;
-                lblVueltoo = "";
-
-            }
-
         }
 
         private void txtObsevacion_TextChanged(object sender, EventArgs e)
@@ -121,6 +52,138 @@ namespace wfaIntegradoCom.Procesos
             lblObservacioneso = Resp.Item2;
         }
 
+        private void lbEntidades_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Int32 index = lbEntidades.SelectedIndices[0];
+        }
+
+        private void dgvEntidades_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvEntidades_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvEntidades_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+
+        }
+
+        private void dgvEntidades_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void elimiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Int32 index= dgvEntidades.CurrentRow.Index;
+            Pagos clsTemporal = new Pagos();
+            for (int i = 0; i < lstEntidades.Count; i++)
+            {
+                if (i == index)
+                {
+                    clsTemporal = lstEntidades[i];
+                    break;
+                }
+            }
+            lstEntidades.Remove(clsTemporal);
+            fnLlenarListBox();
+        }
+
+        private void siticonePanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        public void fnRecibirEntidades(Pagos cls ,Int32 tipoCon)
+        {
+            lstEntidades.Add(new Pagos
+            {
+                codTipoPago = cls.codTipoPago,
+                cDescripTipoPago = cls.cDescripTipoPago,
+                idEntidadPago = cls.idEntidadPago,
+                cNumeroOperacion = cls.cNumeroOperacion,
+                cDescripcionEstadoPP=cls.cDescripcionEstadoPP,
+                cantAPagar = clsPagosGeneral.cantAPagar,
+                PagaCon = cls.PagaCon,
+                vuelto = cls.vuelto,
+                cTipoVenta = Convert.ToString(cboTipoVenta.SelectedValue),
+                Observaciones = Convert.ToString(txtObsevacion.Text),
+                dFechaRegistro = Variables.gdFechaSis,
+                dFechaPago = Variables.gdFechaSis,
+                idUsario = Variables.gnCodUser,
+                cEstadoPP = rdbSi.Checked==true? "ESPP0001" : "ESPP0004",
+                idMoneda = clsPagosGeneral.idMoneda
+            });
+
+            fnLlenarListBox();
+        }
+
+        private void fnLlenarListBox()
+        {
+            dgvEntidades.Rows.Clear();
+            txtImporteRestante.Text= FunGeneral.fnFormatearPrecio(clsPagosGeneral.SimboloMoneda, (clsPagosGeneral.cantAPagar- lstEntidades.Sum(i=>i.PagaCon)), 1);
+            Int32 y = 0;
+            String entidadpagos = "";
+            foreach (Pagos pg in lstEntidades)
+            {
+                entidadpagos = pg.cDescripcionEstadoPP == pg.cDescripTipoPago ? "":" - "+ pg.cDescripcionEstadoPP;
+                dgvEntidades.Rows.Add(pg.cDescripTipoPago + entidadpagos+ " - " + FunGeneral.fnFormatearPrecio(clsPagosGeneral.SimboloMoneda,pg.PagaCon,0));
+            }
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (clsPagosGeneral.cantAPagar > lstEntidades.Sum(i => i.PagaCon) || txtTotalAPagar.Text.ToString()==txtImporteRestante.Text.ToString())
+            {
+                frmEntidadPagos frm = new frmEntidadPagos();
+                clsPagosGeneral.PagaCon = (clsPagosGeneral.cantAPagar - lstEntidades.Sum(i => i.PagaCon));
+                frm.Inicio(clsPagosGeneral, 0);
+                fnLlenarListBox();
+            }
+            else
+            {
+                MessageBox.Show("inporte insuficiente para agregar entidades de págo","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+        }
+
+        private void rdbNo_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        public static Boolean fnLlenarCombobox(ComboBox cboCombo, String cCodTab, Int32 lnTipoCon, Boolean estBusq)
+        {
+            BLTipoPagos objTablaCod = new BLTipoPagos();
+            clsUtil objUtil = new clsUtil();
+            List<EntidadesPago> lstTablaCod = new List<EntidadesPago>();
+
+            try
+            {
+                lstTablaCod = objTablaCod.blDevolverEntidadPago(cCodTab, lnTipoCon, estBusq);
+                cboCombo.DataSource = null;
+                cboCombo.ValueMember = "cCodEntidad";
+                cboCombo.DisplayMember = "nomEntidadPago";
+                cboCombo.DataSource = lstTablaCod;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FunGeneral", "fnLlenarTablaCod", ex.Message);
+                return false;
+            }
+            finally
+            {
+                objUtil = null;
+                objTablaCod = null;
+                lstTablaCod = null;
+            }
+
+        }
+      
         private void cboTipoVenta_SelectedIndexChanged(object sender, EventArgs e)
         {
             //pbTipoVenta.Image = Properties.Resources.ok;
@@ -130,121 +193,141 @@ namespace wfaIntegradoCom.Procesos
 
         private void frmTipoPago_Load(object sender, EventArgs e)
         {
-            bool bResult = false;
-            FunValidaciones.fnColorAceptarCancelar(btnAceptar, btnCancelar);
-            bResult = FunGeneral.fnLlenarTablaCod(cboTipoPago, "TIPA");
-            if (!bResult)
+            try
             {
-                MessageBox.Show("Error al Cargar TablaCod - Tipo de Pago", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.Close();
+                lstEntidades.Clear();
+                FunValidaciones.fnColorAceptarCancelar(btnAceptar, btnCancelar);
+                txtTotalAPagar.Text = FunGeneral.fnFormatearPrecio(clsPagosGeneral.SimboloMoneda,clsPagosGeneral.cantAPagar,1);
+                txtImporteRestante.Text = FunGeneral.fnFormatearPrecio(clsPagosGeneral.SimboloMoneda,clsPagosGeneral.cantAPagar,1);
+
+                fnLlenarCombobox(cboTipoVenta, "TIVTR00" + lnTipoLLamada, 2, false);
+                btnAdd.Focus();
+                if (lnTipoLLamada == -3)
+                {
+                    btnAceptar.Text = "Guardar Movimiento";
+                    btnAceptar.Width = btnAceptar.Width + 15;
+                }
             }
-           
-            fnLlenarCombobox(cboTipoVenta, "TIVTR00"+ lnTipoLLamada,2,false);
-            txtCanPagar.Text = string.Format("{0:0.00}", lnMontoPagar);
-            lblMoneda.Text = SImboloMoneda;
-            lblMoneda1.Text = SImboloMoneda;
-            lblMoneda2.Text = SImboloMoneda;
-            if (lnTipoLLamada == -3)
+            catch (Exception ex)
             {
-                btnAceptar.Text = "Guardar Movimiento";
-                btnAceptar.Width = btnAceptar.Width + 15;
+
+                throw;
             }
+            
            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var res = FunValidaciones.fnValidarCombobox(cboTipoPago, lblTipoPago, pbTipoPago);
-            estTipoVenta = res.Item1;
-            lblTipoVentaa = res.Item2;
-            cboEntidadesPago_SelectedIndexChanged(sender, e);
-            txtNumeroOperacion_TextChanged(sender, e);
-            txtCanPagar_TextChanged(sender, e);
-            txtPagaCon_TextChanged(sender, e);
-            txtVuelto_TextChanged(sender, e);
 
-            if (estTipoVenta == true && estEntidadVenta == true && estTotalAPagar == true && estPagaCon == true && estVuelto == true && estNroOperacion == true)
+            if (rdbSi.Checked==true)
             {
-                String TipoPago = Convert.ToString(cboTipoPago.SelectedValue);
-                List<Pagos> lstEntidades = new List<Pagos>();
-                Double pagaCon = TipoPago == "TIPA0001" ? Convert.ToDouble(txtPagaCon.Text) : Convert.ToDouble(txtCanPagar.Text);
-                String estadoPrimerPago = "";
-                if (TipoPago == "TIPA0001")
+                if (clsPagosGeneral.cantAPagar==lstEntidades.Sum(i => i.PagaCon))
                 {
-                    if (Convert.ToDouble(txtCanPagar.Text) <= (txtPagaCon.Text == "" ? 0 : Convert.ToDouble(txtPagaCon.Text)))
+                    //opcion para venta general
+                    if (lnTipoLLamada == 0)
                     {
-                        estadoPrimerPago = "ESPP0001";
+                        Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
+                        //MessageBox.Show("Todo Correcto");
+                        Mantenedores.frmRegistrarVenta.fnRecuperarTipoPago(lstEntidades);
+                        frm.fnCambiarEstado(true);
+                        this.Close();
+                    }
+                    // opcion para pagos mensuales
+                    else if (lnTipoLLamada == -1)
+                    {
+                        Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
+                        frmControlPagoVenta frm = new frmControlPagoVenta();
+                        frm.fnCambiarEstadoVenta(true);
+                        this.Close();
+                    }
+                    // opcion para otrasVentas
+                    else if (lnTipoLLamada == -2)
+                    {
+                        frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
+                        frmOtrasVentas frm2 = new frmOtrasVentas();
+                        frm2.fnRecuperarEstadoGenVenta(true);
+                        this.Close();
+
+                    }
+                    else if (lnTipoLLamada == -3)
+                    {
+                        frmRegistrarEgresos frm = new frmRegistrarEgresos();
+                        frm.fnRecuperarEstadoGenVenta(true);
+                        frm.fnRecuperarTipoPago(lstEntidades);
+                        this.Close();
+                    }
+                    else if (lnTipoLLamada == -4)
+                    {
+                        frmPagosPendientes frm = new frmPagosPendientes();
+                        frm.fnRecuperarEstadoGenVenta(true);
+                        frm.fnRecuperarTipoPago(lstEntidades);
+                        this.Close();
                     }
                     else
                     {
-                        estadoPrimerPago = "ESPP0002";
+                        //frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
+                        this.Close();
                     }
-                }
-                else
+                }else
                 {
-                    estadoPrimerPago = "ESPP0001";
-                }
+                    MessageBox.Show("Por favor Ingrese el monto correcto. Agregue entidades de págo ","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }             
+                
+            }else if (rdbNo.Checked == true)
+            {
+                DialogResult resp = new DialogResult();
+                resp= MessageBox.Show("En realidad deseá guardar el pago como págo pendiente?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (resp==DialogResult.Yes)
+                {
+                    //opcion para venta general
+                    if (lnTipoLLamada == 0)
+                    {
+                        Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
+                        //MessageBox.Show("Todo Correcto");
+                        Mantenedores.frmRegistrarVenta.fnRecuperarTipoPago(lstEntidades);
+                        frm.fnCambiarEstado(true);
+                        this.Close();
+                    }
+                    // opcion para pagos mensuales
+                    else if (lnTipoLLamada == -1)
+                    {
+                        Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
+                        frmControlPagoVenta frm = new frmControlPagoVenta();
+                        frm.fnCambiarEstadoVenta(true);
+                        this.Close();
+                    }
+                    // opcion para otrasVentas
+                    else if (lnTipoLLamada == -2)
+                    {
+                        frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
+                        frmOtrasVentas frm2 = new frmOtrasVentas();
+                        frm2.fnRecuperarEstadoGenVenta(true);
+                        this.Close();
 
-                lstEntidades.Add(new Pagos
-                {
-                    codTipoPago = Convert.ToString(cboTipoPago.SelectedValue),
-                    cDescripTipoPago = Convert.ToString(cboTipoPago.Text),
-                    idEntidadPago = Convert.ToInt32(cboEntidadesPago.SelectedValue),
-                    cNumeroOperacion = Convert.ToString(txtNumeroOperacion.Text),
-                    cantAPagar = Convert.ToDouble(txtCanPagar.Text),
-                    PagaCon = pagaCon,
-                    vuelto = Convert.ToDouble(txtVuelto.Text == "" ? "0" : txtVuelto.Text),
-                    cTipoVenta = Convert.ToString(cboTipoVenta.SelectedValue),
-                    Observaciones = Convert.ToString(txtObsevacion.Text),
-                    dFechaRegistro = Variables.gdFechaSis,
-                    dFechaPago = Variables.gdFechaSis,
-                    idUsario = Variables.gnCodUser,
-                    cEstadoPP = estadoPrimerPago
-                });
-                //opcion para venta general
-                if (lnTipoLLamada == 0)
-                {
-                    Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
-                    //MessageBox.Show("Todo Correcto");
-                    Mantenedores.frmRegistrarVenta.fnRecuperarTipoPago(lstEntidades);
-                    frm.fnCambiarEstado(true);
-                    this.Close();
-                }
-                // opcion para pagos mensuales
-                else if (lnTipoLLamada == -1)
-                {
-                    Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
-                    frmControlPagoVenta frm = new frmControlPagoVenta();
-                    frm.fnCambiarEstadoVenta(true);
-                    this.Close();
-                } 
-                // opcion para otrasVentas
-                else if (lnTipoLLamada == -2)
-                {
-                    frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
-                    frmOtrasVentas frm2 = new frmOtrasVentas();
-                    frm2.fnRecuperarEstadoGenVenta(true);
-                    this.Close();
-
-                }
-                else if (lnTipoLLamada == -3)
-                {
-                    frmRegistrarEgresos frm = new frmRegistrarEgresos();
-                    frm.fnRecuperarEstadoGenVenta(true);
-                    frm.fnRecuperarTipoPago(lstEntidades);
-                    this.Close();
-                }
-                else
-                {
-                    frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
-                    this.Close();
+                    }
+                    else if (lnTipoLLamada == -3)
+                    {
+                        frmRegistrarEgresos frm = new frmRegistrarEgresos();
+                        frm.fnRecuperarEstadoGenVenta(true);
+                        frm.fnRecuperarTipoPago(lstEntidades);
+                        this.Close();
+                    }
+                    else if (lnTipoLLamada == -4)
+                    {
+                        frmPagosPendientes frm = new frmPagosPendientes();
+                        frm.fnRecuperarEstadoGenVenta(true);
+                        frm.fnRecuperarTipoPago(lstEntidades);
+                        this.Close();
+                    }
+                    else
+                    {
+                        //frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
+                        this.Close();
+                    }
                 }
             }
             
-            else
-            {
-                MessageBox.Show("Porfavor Complete todod los datos"," Aviso !!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-            }
             
         }
 
@@ -271,139 +354,11 @@ namespace wfaIntegradoCom.Procesos
 
             if (e.KeyChar == (Char)Keys.Enter)
             {
-                txtPagaCon.Focus();
+                txtTotalAPagar.Focus();
             }
         }
 
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            NumberFormatInfo nfi = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
-
-            char decSeperator;
-
-            decSeperator = nfi.CurrencyDecimalSeparator[0];
-
-            if (!char.IsControl(e.KeyChar) && !(char.IsDigit(e.KeyChar) | e.KeyChar == decSeperator))
-            {
-                e.Handled = true;
-            }
-            // only allow one decimal point
-            //if (e.KeyChar == decSeperator
-            //    && (sender as TextBox).Text.IndexOf(decSeperator) > -1)
-            //{
-            //    e.Handled = true;
-            //}
-            if (e.KeyChar == (Char)Keys.Enter)
-            {
-                Decimal pagaCon = Convert.ToDecimal(txtPagaCon.Text.Trim() == "" ? "0" : txtPagaCon.Text.Trim());
-                if (pagaCon< Convert.ToDecimal(txtCanPagar.Text.Trim()))
-                {
-                    estPagaCon = false;
-                    MessageBox.Show("Porfavor Ingrese Monto a pagar Correctamnete", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    pbPagaCon.Image = Properties.Resources.error;
-                    lblPagaCon.Text = "Ingrese monto Correcto";
-                }
-                else
-                {
-                    lblPagaCon.Text = "";
-                    estPagaCon = false;
-                    pbPagaCon.Image = Properties.Resources.ok;
-                    Decimal CalcularVuelto = Math.Round(pagaCon - Convert.ToDecimal(txtCanPagar.Text.Trim() == "" ? "0" : txtCanPagar.Text.Trim()), 2);
-                    txtVuelto.Text = Convert.ToString(CalcularVuelto);
-                }
-                
-            }
-        }
-
-        private void fnMostrarCombo(Boolean estado)
-        {
-            cboEntidadesPago.Enabled = estado;
-            cboEntidadesPago.Visible = estado;
-            lblEntidad.Enabled = estado;
-            lblEntidad.Visible = estado;
-            pbEntidad.Visible = estado;
-            lblEntidadPagos.Visible = estado;
-            
-            if (cboTipoPago.SelectedValue.ToString()== "TIPA0006" && estado==false)
-            {
-                lblNOperacion.Visible = !estado;
-                txtNumeroOperacion.Visible = !estado;
-                pbTipoVenta.Visible = !estado;
-                lblTipoVenta.Visible = !estado;
-
-            }
-            else
-            {
-                lblNOperacion.Visible = estado;
-                txtNumeroOperacion.Visible = estado;
-                pbTipoVenta.Visible = estado;
-                lblTipoVenta.Visible = estado;
-
-            }
-            
-
-            
-
-
-        }
-
-        private void fnActivarpagaConYVuelto(Boolean estado)
-        {
-            pbPagaCon.Visible = estado;
-            txtPagaCon.Visible = estado;
-            txtVuelto.Visible = estado;
-            label6.Visible = estado;
-            pbVuelto.Visible = estado;
-            lblMoneda1.Visible = estado;
-            lblMoneda2.Visible = estado;
-            lblPagaCon.Visible = estado;
-            label4.Visible = estado;
-        }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var res = FunValidaciones.fnValidarCombobox(cboTipoPago, lblTipoPago, pbTipoPago);
-            estTipoVenta = res.Item1;
-            lblTipoVentaa = res.Item2;
-            String ValorCombo = cboTipoPago.SelectedValue.ToString().Trim();
-
-            txtNumeroOperacion_TextChanged(sender, e);
-
-            if (ValorCombo== "TIPA0001" || ValorCombo=="0")
-            {
-                estEntidadVenta = true;
-                fnMostrarCombo(false);
-                fnActivarpagaConYVuelto(true);
-                estNroOperacion = true;
-            }
-            else
-            {
-                    fnLlenarCombobox(cboEntidadesPago, Convert.ToString(cboTipoPago.SelectedValue), 0,false);
-                if (ValorCombo == "TIPA0005" || ValorCombo == "TIPA0006")
-                {
-                    fnActivarpagaConYVuelto(false);
-                    fnMostrarCombo(false);
-                    estEntidadVenta = true;
-                    estNroOperacion = ValorCombo == "TIPA0005"? true: estNroOperacion;
-                    cboEntidadesPago.SelectedIndex = 1;
-                }
-                else
-                {
-                    fnMostrarCombo(true);
-                    fnActivarpagaConYVuelto(false);
-                    estEntidadVenta = false;
-                    estNroOperacion = false;
-                }
-               
-                //txtNumeroOperacion.Text = "000";
-            }
-            //else
-            //{
-            //    estEntidadVenta = true;
-            //    fnMostrarCombo(false);
-            //}
-        }
-
+        
         private void fnVolver()
         {
             if (lnTipoLLamada == 0)
@@ -430,6 +385,12 @@ namespace wfaIntegradoCom.Procesos
                 frm.fnRecuperarEstadoGenVenta(false);
 
             }
+            else if (lnTipoLLamada == -4)
+            {
+                frmPagosPendientes frm = new frmPagosPendientes();
+                frm.fnRecuperarEstadoGenVenta(false);
+
+            }
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -438,39 +399,6 @@ namespace wfaIntegradoCom.Procesos
             this.Dispose();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-        public static Boolean fnLlenarCombobox(ComboBox cboCombo, String cCodTab,Int32 lnTipoCon, Boolean estBusq)
-        {
-            BLTipoPagos objTablaCod = new BLTipoPagos();
-            clsUtil objUtil = new clsUtil();
-            List<EntidadesPago> lstTablaCod = new List<EntidadesPago>();
-
-            try
-            {
-                lstTablaCod = objTablaCod.blDevolverEntidadPago(cCodTab,  lnTipoCon,  estBusq);
-                cboCombo.DataSource = null;
-                cboCombo.ValueMember = "cCodEntidad";
-                cboCombo.DisplayMember = "nomEntidadPago";
-                cboCombo.DataSource = lstTablaCod;
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                objUtil.gsLogAplicativo("FunGeneral", "fnLlenarTablaCod", ex.Message);
-                return false;
-            }
-            finally
-            {
-                objUtil = null;
-                objTablaCod = null;
-                lstTablaCod = null;
-            }
-
-        }
 
        
     }

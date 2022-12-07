@@ -38,6 +38,7 @@
             this.reportViewer1.Location = new System.Drawing.Point(2, 3);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.ShowToolBar = false;
             this.reportViewer1.Size = new System.Drawing.Size(683, 430);
             this.reportViewer1.TabIndex = 0;
             // 

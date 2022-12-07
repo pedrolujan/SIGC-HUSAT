@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using wfaIntegradoCom.Mantenedores;
 using wfaIntegradoCom.Procesos;
+using wfaIntegradoCom.Reportes;
 
 namespace wfaIntegradoCom
 {
@@ -28,7 +29,7 @@ namespace wfaIntegradoCom
             //Application.Run(new frmDocumentoVenta());
             Application.Run(new MDIParent1());
 
-            //Application.Run(new frmAnularVenta());
+            //Application.Run(new frmReportes());
             //Application.Run(new frmBuscarVentas());
             //Application.Run(new frmRegistrarCliente());
 

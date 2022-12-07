@@ -18,7 +18,7 @@ namespace CapaDato
 
         private clsUtil objUtil = null;
 
-        public DataTable daBuscarCliente(String nroDocumento, String nombreCliente, Int32 idTipoPersona, Int32 idTipoDocumento, String estCliente, Int32 numPagina, Int32 tipoCon)
+        public DataTable daBuscarCliente(String nroDocumento, String nombreCliente,String estCliente, Int32 numPagina, Int32 tipoCon)
         {
 
             SqlParameter[] pa = new SqlParameter[7];
@@ -30,11 +30,8 @@ namespace CapaDato
             {
                 pa[0] = new SqlParameter("@peNroDocumento", SqlDbType.NVarChar, 15) { Value = nroDocumento };
                 pa[1] = new SqlParameter("@peNombreCliente", SqlDbType.NVarChar, 45) { Value = nombreCliente };
-               //MOD//
-                //pa[2] = new SqlParameter("@peRepresentante", SqlDbType.VarChar) { Value = Representante };
-               
-                pa[2] = new SqlParameter("@peIdTipoPersona", SqlDbType.Int) { Value = idTipoPersona };
-                pa[3] = new SqlParameter("@peIdTipoDocumento", SqlDbType.Int) { Value = idTipoDocumento };
+                pa[2] = new SqlParameter("@peIdTipoPersona", SqlDbType.Int) { Value = 0 };
+                pa[3] = new SqlParameter("@peIdTipoDocumento", SqlDbType.Int) { Value = 0 };
                 pa[4] = new SqlParameter("@peEstadoCliente", SqlDbType.NVarChar,1) { Value = estCliente };
                 pa[5] = new SqlParameter("@peNumPagina", SqlDbType.Int) { Value = numPagina };
                 pa[6] = new SqlParameter("@peTipoCon", SqlDbType.Real) { Value = tipoCon };

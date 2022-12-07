@@ -13,13 +13,13 @@ namespace CapaNegocio
     {
         public BLCliente() { }
 
-        public DataTable blBuscarCliente(String nroDocumento,String nombreCliente, Int32 idTipoPersona,Int32 idTipoDocumento,String estCliente,Int32 numPagina,Int32 tipoCon)
+        public DataTable blBuscarCliente(String nroDocumento,String nombreCliente, String estCliente,Int32 numPagina,Int32 tipoCon)
         {
 
             DACliente objCliente = new DACliente();
             try
             {
-                return objCliente.daBuscarCliente(nroDocumento, nombreCliente , idTipoPersona, idTipoDocumento, estCliente, numPagina, tipoCon);
+                return objCliente.daBuscarCliente(nroDocumento, nombreCliente , estCliente, numPagina, tipoCon);
             }
             catch (Exception ex)
             {

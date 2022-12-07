@@ -1193,7 +1193,7 @@ namespace wfaIntegradoCom
             btnRrhh.BackColor = ColorThemas.PanelBotones;
             btnConfiguracion.BackColor = ColorThemas.PanelBotones;
             btnSoporte.BackColor = ColorThemas.PanelBotones;
-            PanelEncavezadoFondo.BackColor = ColorThemas.BarraAccesoDirectos;
+            PanelEncavezadoFondo1.BackColor = ColorThemas.BarraAccesoDirectos;
             btnOpciones.BackColor = ColorThemas.PanelPadre;
             btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
             panelEspaciado.BackColor = ColorThemas.PanelPadre;
@@ -1241,14 +1241,14 @@ namespace wfaIntegradoCom
             tsCerraSession.ForeColor = ColorThemas.FuenteBotones;
             tsCerraSession.IconColor = ColorThemas.IconoBotones;
 
-            if (codTema == "CTHT0004")
-            {
-                treeView1.ForeColor = Color.Black;
-                btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
-                btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
-                btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
-                btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
-            }
+            //if (codTema == "CTHT0004")
+            //{
+            //    treeView1.ForeColor = Color.Black;
+            //    btnOpciones.ForeColor = Color.FromArgb(71, 71, 71);
+            //    btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
+            //    btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
+            //    btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
+            //}
 
         }
         private void fnValidarusuarioEnSession()
@@ -1303,6 +1303,8 @@ namespace wfaIntegradoCom
         {
             //lblIngresos.Padding = new Padding(15, 0, 0, 0);
             //lblEgresos.Padding = lblIngresos.Padding;
+            dtFechaFinG.Value = Variables.gdFechaSis;
+            dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
             fnCambiartemas("CTHT0001");
             pnlParaDashboard.Visible = false;
             //treeView1.Controls.Clear();
@@ -1333,8 +1335,7 @@ namespace wfaIntegradoCom
                 cboFiltraIngresos.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
                 cboTipoPago.MouseWheel += new MouseEventHandler(cbos_MouseWheel);
 
-                dtFechaFinG.Value = Variables.gdFechaSis;
-                dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
+                
                 flowLayoutPanel1.Location = new Point(flowLayoutPanel1.Location.X, FWpnCajaChicaCopias.Height + (pnlParaDashboard.AutoScrollPosition.Y));
                 siticoneGroupBox1.Location = new Point(siticoneGroupBox1.Location.X, flowLayoutPanel1.Location.Y + flowLayoutPanel1.Height);
 
@@ -2360,8 +2361,8 @@ namespace wfaIntegradoCom
             if (MyDialog.ShowDialog() == DialogResult.OK)
             {
                 panelColorAccesoDirecto.BackColor = MyDialog.Color;
-                PanelEncavezadoFondo.BackColor = MyDialog.Color;
-                PanelEncavezadoFondo.BackColor = MyDialog.Color;
+                PanelEncavezadoFondo1.BackColor = MyDialog.Color;
+                PanelEncavezadoFondo1.BackColor = MyDialog.Color;
                 fnColoresHecader(MyDialog.Color,Color.White,Color.WhiteSmoke);
 
 
@@ -2563,7 +2564,7 @@ namespace wfaIntegradoCom
             clsBusq.cod4 = Convert.ToString(cboTipoPago.SelectedValue);
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
             clsBusq.numPagina = numPagina;
-            clsBusq.tipoCon =Variables.gsCargoUsuario== "PETR0007" ?-1: 0;
+            clsBusq.tipoCon = tipoCon;
 
 
             String cBuscar = txtBuscarRepGeneral.Text.ToString();
@@ -2687,14 +2688,13 @@ namespace wfaIntegradoCom
                 dgv.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
                 dgv.Rows[y + 1].DefaultCellStyle.BackColor = Color.FromArgb(192, 64, 0);
                 dgv.Rows[y + 1].DefaultCellStyle.Font = new Font("Arial", 15F, GraphicsUnit.Pixel);
+                //dgv.ThemeStyle.RowsStyle.Height = 40;
             }
             
             dgv.Visible = true;
         }
         public void fnBuscarReporteGeneralVentas(SiticoneDataGridView dgv, Int32 numPagina, Int32 tipoCon)
         {
-
-            
             bl = new BLControlCaja();
             DataTable dtRes = new DataTable();
             Busquedas clsBusq = new Busquedas();
@@ -2725,7 +2725,7 @@ namespace wfaIntegradoCom
             fnGenerarPaneles(result.Item1);
             lsReporteBloque = result.Item2;
             lsReporteBloqueEgresos = fnBuscarEgresos(0,0);
-            lsReporteBloqueEgresosMontoEnCaja=fnBuscarEgresos(-1, 0);
+            
             lstCajaChica = result.Item4;
             fnGenerarPanelsIndividuales(lstCajaChica, FWpnCajaChicaCopias, "pnCCh");
             fnPosicionarAlCentrocajas(FWpnCajaChicaCopias, siticonePanel3);
@@ -2748,12 +2748,18 @@ namespace wfaIntegradoCom
                 dgvEgresos2.Visible = false;
                 fnGenerarTabla(dgvEgresos, lsReporteBloqueEgresos.Count, lsReporteBloqueEgresos);
 
-                lstRepDetalleIngresosDAshboard.Clear();
-                //lsReporteBloqueEgresosMontoEnCaja.Clear();
-                lstRepDetalleIngresosDAshboard = fnBuscarDetalleParaCuadreDashboard();
-                Double MontoIngresos = lstRepDetalleIngresosDAshboard.Sum(i => i.ImporteRow);
-                Double MontoEgresos = lsReporteBloqueEgresosMontoEnCaja.Sum(i => i.ImporteRow);
-                btnMontoEnCaja.Text = "Importe en Caja: " + FunGeneral.fnFormatearPrecio("S/", (MontoIngresos - MontoEgresos) + Variables.lstCuardreCaja[0].importeSaldo, 0);
+                if (chkDiaEsp == true)
+                {
+                    lstRepDetalleIngresosDAshboard.Clear();
+                    lsReporteBloqueEgresosMontoEnCaja = fnBuscarEgresos(-1, 0);
+                    //lsReporteBloqueEgresosMontoEnCaja.Clear();
+                    lstRepDetalleIngresosDAshboard = fnBuscarDetalleParaCuadreDashboard();
+                    Double MontoIngresos = lstRepDetalleIngresosDAshboard.Sum(i => i.ImporteRow);
+                    Double MontoEgresos = lsReporteBloqueEgresosMontoEnCaja.Sum(i => i.ImporteRow);
+                    CuadreCaja lstApertura = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1) is null ? new CuadreCaja() : Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
+                    btnMontoEnCaja.Text = "Importe en Caja: " + FunGeneral.fnFormatearPrecio("S/", (MontoIngresos - MontoEgresos) + lstApertura.importeSaldo, 0);
+                }
+                
 
                 //lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0);
 
@@ -3476,7 +3482,7 @@ namespace wfaIntegradoCom
             //fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
         }
 
-        private void fnLlenarUsuariosConAccion(SiticoneComboBox cbo, SiticoneDateTimePicker dtIni, SiticoneDateTimePicker dtFin, Boolean estado)
+        public void fnLlenarUsuariosConAccion(SiticoneComboBox cbo, SiticoneDateTimePicker dtIni, SiticoneDateTimePicker dtFin, Boolean estado)
         {
             DAControlCaja dc = new DAControlCaja();
             List<Usuario> lstUsuario = new List<Usuario>();
@@ -3687,7 +3693,7 @@ namespace wfaIntegradoCom
             Busquedas clsBusq = new Busquedas();
             clsBusq.chkActivarFechas = chkHabilitarFechasBusG.Checked;
             clsBusq.chkActivarDia = chkDiaEspecificoG.Checked;
-            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
+            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 3);
             clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
             clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
             clsBusq.cod2 = codOperacion;

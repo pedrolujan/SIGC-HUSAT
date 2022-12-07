@@ -337,7 +337,7 @@ namespace wfaIntegradoCom.Procesos
         private void eliminarContratoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String codDocVenta = Convert.ToString(dgVentas.CurrentRow.Cells[0].Value);
-            Int32 idOperacion = Convert.ToInt32(dgVentas.CurrentRow.Cells[0].Value);
+            Int32 idOperacion = Convert.ToInt32(dgVentas.CurrentRow.Cells[1].Value);
             fnAnularDocumentoVenta(codDocVenta, idOperacion, -2);
         }
 

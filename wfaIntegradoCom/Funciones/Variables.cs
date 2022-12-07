@@ -47,6 +47,8 @@ namespace wfaIntegradoCom.Funciones
         public static Color ColorError = Color.FromArgb(242, 68, 43);
         public static Color ColorSuccess = Color.FromArgb(39, 168, 68);
         public static Color ColorWarning = Color.FromArgb(250, 211, 23);
+        public static Color ColorAmbarIndicador = Color.FromArgb(255, 128, 0);
+        public static Color ColorRedIndicador = Color.FromArgb(192, 0, 0);
         public static Color Colororangeclaro = Color.FromArgb(235, 142, 54);
 
         #region thema principal

@@ -582,6 +582,12 @@
     <Compile Include="Procesos\frmCronograma.Designer.cs">
       <DependentUpon>frmCronograma.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmEntidadPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmEntidadPagos.Designer.cs">
+      <DependentUpon>frmEntidadPagos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\frmExtornarVenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -789,6 +795,12 @@
     <Compile Include="Procesos\frmRegistroAlmacen.Designer.cs">
       <DependentUpon>frmRegistroAlmacen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmReporteSeguimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmReporteSeguimiento.Designer.cs">
+      <DependentUpon>frmReporteSeguimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\frmTipoPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -826,6 +838,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\frmReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmReportes.Designer.cs">
+      <DependentUpon>frmReportes.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Content Include="DLLS\Newtonsoft.Json.dll" />
@@ -866,6 +884,9 @@
     <EmbeddedResource Include="Consultas\rptComprobantePago.rdlc" />
     <EmbeddedResource Include="Consultas\rptContrato.rdlc" />
     <EmbeddedResource Include="Consultas\rptGraficos.rdlc" />
+    <EmbeddedResource Include="Consultas\rptReporteRecaudacion.rdlc" />
+    <EmbeddedResource Include="Consultas\rptReporteSeguimiento.rdlc" />
+    <EmbeddedResource Include="Consultas\rptReporteSeguimientoTipoVisita.rdlc" />
     <EmbeddedResource Include="Consultas\rptVPOtrasVentas.rdlc" />
     <EmbeddedResource Include="Consultas\rptCronograma.rdlc" />
     <EmbeddedResource Include="Consultas\rptReporteVenta2.rdlc" />
@@ -939,6 +960,9 @@
     <EmbeddedResource Include="Procesos\frmCronograma.resx">
       <DependentUpon>frmCronograma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmEntidadPagos.resx">
+      <DependentUpon>frmEntidadPagos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmInput.resx">
       <DependentUpon>frmInput.cs</DependentUpon>
     </EmbeddedResource>
@@ -966,6 +990,9 @@
     <EmbeddedResource Include="Procesos\frmRegistrarEgresos.resx">
       <DependentUpon>frmRegistrarEgresos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmReporteSeguimiento.resx">
+      <DependentUpon>frmReporteSeguimiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmVentaEspecifica.resx">
       <DependentUpon>frmVentaEspecifica.cs</DependentUpon>
     </EmbeddedResource>
@@ -976,6 +1003,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmReportes.resx">
+      <DependentUpon>frmReportes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\CapaEntidad.Accesorios.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.AccesoriosEquipo.datasource" />
@@ -1035,7 +1065,9 @@
     <None Include="Properties\DataSources\CapaEntidad.RealizarPago.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.ReciboChips.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.RegistrarEquipo.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.Reporte.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.ReporteBloque.datasource" />
+    <None Include="Properties\DataSources\CapaEntidad.ReporteSeguimiento.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.Seguimiento.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.ServicioEquipo.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.SimCard.datasource" />

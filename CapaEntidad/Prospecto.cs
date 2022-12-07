@@ -64,6 +64,68 @@ namespace CapaEntidad
        
     }
 
+    public class Reporte
+    {
+        public Reporte() { }
+
+
+        public Int32 idUsuario { get; set; }
+        public Int32 numero { get; set; }
+        public Int32 SumColumns { get; set; }
+        public String coddAux1 { get; set; }
+        public String nombreAux1 { get; set; }
+        public String coddAux2 { get; set; }
+        public Int32 SumRowsAux2 { get; set; }
+        public String nombreAux2 { get; set; }
+        public String coddAux3 { get; set; }
+        public String nombreAux3 { get; set; }
+        public Int32 SumRowsAux3 { get; set; }
+        public String coddAux4 { get; set; }
+        public String nombreAux4 { get; set; }
+        public Int32 SumRowsAux4 { get; set; }
+        public String coddAux5 { get; set; }
+        public String nombreAux5 { get; set; }
+        public Int32 SumRowsAux5 { get; set; }
+        public String coddAux6 { get; set; }
+        public String nombreAux6 { get; set; }
+        public Int32 SumRowsAux6 { get; set; }
+        public String coddAux7 { get; set; }
+        public String nombreAux7 { get; set; }
+        public Int32 SumRowsAux7 { get; set; }
+        public String coddAux8 { get; set; }
+        public String nombreAux8 { get; set; }
+        public Int32 SumRowsAux8 { get; set; }
+        public String coddAux9 { get; set; }
+        public String nombreAux9 { get; set; }
+        public Int32 SumRowsAux9 { get; set; }
+        public String coddAux10 { get; set; }
+        public String nombreAux10 { get; set; }
+        public Int32 SumRowsAux10 { get; set; }
+        public String coddAux11 { get; set; }
+        public String nombreAux11 { get; set; }
+        public Int32 SumRowsAux11 { get; set; }
+        public String coddAux12 { get; set; }
+        public String nombreAux12 { get; set; }
+        public Int32 SumRowsAux12 { get; set; }
+        public Int32 IdDetalleVenta { get; set; }
+        public double indicador { get; set; }
+        public Decimal indicadorDes { get; set; }
+        public String strIndicador { get; set; }
+        public String nombreIndicador { get; set; }
+        public Int32 TotalFilas { get; set; }
+        public String nombreTotalFilas { get; set; }
+        public Int32 SumRowsTotalFilas { get; set; }
+
+        public double indicadorTotalFilas { get; set; }
+        public String strIndicadorTotalFilas { get; set; }
+        public String nombreIndicadorTotalFilas { get; set; }
+
+        public Decimal numPorcentaje { get; set; }
+        public String nombrePorcentaje { get; set; }
+        public Decimal numPorcentajeTotales { get; set; }
+
+
+    }
     public class ProspectosPlan
     {
         public ProspectosPlan() { }

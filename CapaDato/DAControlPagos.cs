@@ -54,6 +54,136 @@ namespace CapaDato
             }
 
         }
+        public List<Reporte> daBuscarReporte(Busquedas cls)
+        {
+            SqlParameter[] pa = new SqlParameter[8];
+            DataTable dtResult = new DataTable();
+            clsConexion objCnx = null;
+            List<Reporte> lst = new List<Reporte>();
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.TinyInt) { Value = cls.chkActivarFechas };
+                pa[1] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = cls.dtFechaIni };
+                pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = cls.dtFechaFin };
+                pa[3] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = cls.cBuscar };
+                pa[4] = new SqlParameter("@idCiclo", SqlDbType.Int) { Value = cls.cod1 };
+                pa[5] = new SqlParameter("@estadoDetCronograma", SqlDbType.VarChar, 8) { Value = cls.cod2 };
+                pa[6] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = cls.tipoCon };
+                pa[7] = new SqlParameter("@chkIncumplimiento", SqlDbType.Int) { Value = cls.cod3 };
+                objCnx = new clsConexion("");
+                //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
+                dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarReporteRecaudacion", pa);
+                Int32 y = 0;
+                Int32 SumRowPago = 0;
+                foreach (DataRow dt in dtResult.Rows)
+                {
+                    SumRowPago += Convert.ToInt32(dt["CUOTA_PAGADA"]);
+                    lst.Add(new Reporte
+                    {
+                        numero=y+1,
+                        coddAux1= dt["cDia"].ToString(),
+                        coddAux2= dt["PAGO_PENDIENTE"].ToString(),
+                        coddAux3= dt["VENCIDO"].ToString(),
+                        coddAux4= dt["CORTE"].ToString(),
+                        coddAux5= dt["ANULADO"].ToString(),
+                        coddAux6= dt["CUOTA_PAGADA"].ToString(),
+                        indicadorDes=0
+                    });
+                        y++;
+                }
+                lst[0].SumRowsAux6 = SumRowPago;
+
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    double indica = (double)Convert.ToInt32(lst[i].coddAux6) * 100;
+                    indica = Double.IsInfinity(indica) ? 0 : indica;
+
+                    lst[i].indicadorDes = decimal.Round(SumRowPago !=0?Convert.ToDecimal(indica) / lst[0].SumRowsAux6:0,2);
+                    lst[i].nombreIndicador = decimal.Round(lst[i].indicadorDes,2) + "%";
+                }
+                return lst;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
+        public List<Reporte> daBuscarReporteRenovaciones(Busquedas cls)
+        {
+            SqlParameter[] pa = new SqlParameter[8];
+            DataTable dtResult = new DataTable();
+            clsConexion objCnx = null;
+            List<Reporte> lst = new List<Reporte>();
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.TinyInt) { Value = cls.chkActivarFechas };
+                pa[1] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = cls.dtFechaIni };
+                pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = cls.dtFechaFin };
+                pa[3] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = cls.cBuscar };
+                pa[4] = new SqlParameter("@idCiclo", SqlDbType.Int) { Value = cls.cod1 };
+                pa[5] = new SqlParameter("@estadoDetCronograma", SqlDbType.VarChar, 8) { Value = cls.cod2 };
+                pa[6] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = cls.tipoCon };
+                pa[7] = new SqlParameter("@chkIncumplimiento", SqlDbType.Int) { Value = cls.cod3 };
+                objCnx = new clsConexion("");
+                //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
+                dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarReporteRecaudacion", pa);
+                Int32 y = 0;
+                Int32 SumRowPago = 0;
+                foreach (DataRow dt in dtResult.Rows)
+                {
+                    SumRowPago += Convert.ToInt32(dt["CUOTA_PAGADA"]);
+                    lst.Add(new Reporte
+                    {
+                        numero=y+1,
+                        coddAux1= dt["cDia"].ToString(),
+                        coddAux2= dt["PAGO_PENDIENTE"].ToString(),
+                        coddAux3= dt["VENCIDO"].ToString(),
+                        coddAux4= dt["CORTE"].ToString(),
+                        coddAux5= dt["ANULADO"].ToString(),
+                        coddAux6= dt["CUOTA_PAGADA"].ToString(),
+                        indicadorDes=0
+                    });
+                        y++;
+                }
+                lst[0].SumRowsAux6 = SumRowPago;
+
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    double indica = (double)Convert.ToInt32(lst[i].coddAux6) * 100;
+                    indica = Double.IsInfinity(indica) ? 0 : indica;
+
+                    lst[i].indicadorDes = decimal.Round(SumRowPago !=0?Convert.ToDecimal(indica) / lst[0].SumRowsAux6:0,2);
+                    lst[i].nombreIndicador = decimal.Round(lst[i].indicadorDes,2) + "%";
+                }
+                return lst;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
         public DataTable daBuscarCronogramaEspecifico(Int32 idCron, Int32 idCont, Int32 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[3];

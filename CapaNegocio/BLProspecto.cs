@@ -64,6 +64,19 @@ namespace CapaNegocio
             }
         }
 
+        public List<Reporte> blBuscarReporte(Busquedas rpt)
+        {
+            DAProspecto objPlan = new DAProspecto();
+            try
+            {
+                return objPlan.daBuscarReporte(rpt);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public Prospecto blListarProspectoDataGrid(Int32 idPlan, Int32 pnTipoCon)
         {
             DAProspecto objPlan = new DAProspecto();

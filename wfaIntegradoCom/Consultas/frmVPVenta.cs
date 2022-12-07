@@ -50,6 +50,7 @@ namespace wfaIntegradoCom.Consultas
         }
         private void fmrVPVenta_Load(object sender, EventArgs e)
         {
+            this.reportViewer1.ShowPrintButton = true;
             FunValidaciones.fnColorAceptarCancelar(btnGenerarVenta, btnVolver);
             if (lnTipoCon == 1)
             {

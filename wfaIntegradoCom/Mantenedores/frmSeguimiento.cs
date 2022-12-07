@@ -120,7 +120,7 @@ namespace wfaIntegradoCom.Mantenedores
             btnEstadoCliente.Visible = false;
             
             lblEstadoVisita.Visible = false;
-            cboEstado.Enabled = false;
+            cboEstado.Enabled = true;
         }
 
         private void cboPlan_SelectedIndexChanged(object sender, EventArgs e)
@@ -1946,7 +1946,7 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 fnValidarFechaProxSeguimiento(dtpFechaProximoSeguimiento, imgFechaSigSeguimiento, erFechaSigSeguimiento, 0, 2);
             }
-
+            FunGeneral.fnThemaAFormularios(siticonePanel1);
 
 
             cboBuscarEstadoCliente.SelectedValue = "ESPR0001";
@@ -1975,6 +1975,8 @@ namespace wfaIntegradoCom.Mantenedores
                 String busqueda = txtBuscarNombreCliente.Text.ToString().Trim();
                 fnBuscarTablaProspectosPlan(busqueda, 0, -1, letraColor);
             }
+
+
 
             cboEstadoSeguimiento.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
             cboClase.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);

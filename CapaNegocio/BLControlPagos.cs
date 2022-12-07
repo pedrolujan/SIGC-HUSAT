@@ -25,6 +25,30 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public List<Reporte> blBuscarReporte(Busquedas cls)
+        {
+            objControlPagos = new DAControlPagos();
+            try
+            {
+                return objControlPagos.daBuscarReporte(cls);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<Reporte> blBuscarReporteRenovaciones(Busquedas cls)
+        {
+            objControlPagos = new DAControlPagos();
+            try
+            {
+                return objControlPagos.daBuscarReporteRenovaciones(cls);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public DataTable blBuscarCronogramaEspecifico(Int32 idCron, Int32 idCont, Int32 tipoCon)
         {
             objControlPagos = new DAControlPagos();

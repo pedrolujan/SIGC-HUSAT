@@ -162,6 +162,7 @@ namespace CapaDato
             List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
             objUtil = new clsUtil();
             clsConexion objCnx = null;
+            //xmlacta[0].dtFechaRegistro = Convert.ToDateTime("18/11/2022 19:51:33");
             String xmlActaCierreCaja = clsUtil.Serialize(xmlacta);
             //String xmlApertura = clsUtil.Serialize(lstApertura);
             try
@@ -176,7 +177,7 @@ namespace CapaDato
                 pa[6] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = tipoCon };
 
                 objCnx = new clsConexion("");
-                dt = objCnx.EjecutarProcedimientoDT("uspGuardarCierreCaja", pa);              
+                dt = objCnx.EjecutarProcedimientoDT("uspGuardarCierreCaja", pa);
 
                 return true;
 

@@ -202,6 +202,147 @@ namespace CapaDato
                 lstProsp = null;
             }
         }
+        public List<Reporte> daBuscarReporte(Busquedas clsBusq)
+        {
+
+            SqlParameter[] pa = new SqlParameter[8];
+            DataTable dtUsuario = new DataTable();
+            clsConexion objCnx = null;
+            List<Reporte> lstReporte = new List<Reporte>();
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@dtFechaIni", SqlDbType.Date);
+                pa[0].Value = clsBusq.dtFechaIni;
+                pa[1] = new SqlParameter("@dtFechaFin", SqlDbType.Date);
+                pa[1].Value = clsBusq.dtFechaFin;
+                pa[2] = new SqlParameter("@codTipoReporte", SqlDbType.VarChar,8);
+                pa[2].Value = clsBusq.cod1;
+                pa[3] = new SqlParameter("@codEstadoCliente", SqlDbType.VarChar,8);
+                pa[3].Value = clsBusq.cod2;
+                pa[4] = new SqlParameter("@cBuscar", SqlDbType.VarChar,50);
+                pa[4].Value = clsBusq.cBuscar;
+                pa[5] = new SqlParameter("@idUsuario", SqlDbType.Int);
+                pa[5].Value = clsBusq.idUsuario;
+                pa[6] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[6].Value = clsBusq.tipoCon;
+                pa[7] = new SqlParameter("@chkHabilitarFecha", SqlDbType.Bit);
+                pa[7].Value = clsBusq.chkActivarFechas;
+
+                objCnx = new clsConexion("");
+                dtUsuario = objCnx.EjecutarProcedimientoDT("uspBuscarReporteSeguimiento", pa);
+
+                Int32 y = 0;
+                if (clsBusq.cod1== "TRSG0001")
+                {
+                    Int32 countPotencial = 0;
+                    Int32 countRetirado = 0;
+                    Int32 countAnulado = 0;
+                    Int32 countComprador = 0;
+                    Int32 countTorales = 0;
+
+
+                    foreach (DataRow dr in dtUsuario.Rows)
+                    {
+                        Int32 totalFil = Convert.ToInt32(dr["POTENCIAL"]) + Convert.ToInt32(dr["RETIRADO"]) + Convert.ToInt32(dr["ANULADO"]) + Convert.ToInt32(dr["COMPRADOR"]);
+                        double indica = (double)totalFil / Convert.ToInt32(dr["COMPRADOR"]);
+                        indica = Double.IsInfinity(indica) ? 0 : indica;
+                        countPotencial += Convert.ToInt32(dr["POTENCIAL"]);
+                        countRetirado += Convert.ToInt32(dr["RETIRADO"]);
+                        countAnulado += Convert.ToInt32(dr["ANULADO"]);
+                        countComprador += Convert.ToInt32(dr["COMPRADOR"]);
+                        countTorales += totalFil;
+
+                        lstReporte.Add(new Reporte
+                        {
+                            numero = y + 1,
+                            idUsuario = Convert.ToInt32(dr["idUsuario"]),
+                            coddAux1 = dr["cUser"].ToString(),
+                            coddAux2 = dr["POTENCIAL"].ToString(),
+                            nombreAux2 = "POTENCIAL",
+                            coddAux3 = dr["RETIRADO"].ToString(),
+                            nombreAux3 = "RETIRADO",
+                            coddAux4 = dr["ANULADO"].ToString(),
+                            nombreAux4 = "ANULADO",
+                            coddAux5 = dr["COMPRADOR"].ToString(),
+                            nombreAux5 = "COMPRADOR",
+                            SumColumns = totalFil,
+                            indicador = indica,
+                            strIndicador= String.Format("{0:#,##0.0}", indica)
+
+                        }) ;
+                        lstReporte[0].SumRowsAux2 = countPotencial;
+                        lstReporte[0].SumRowsAux3 = countRetirado;
+                        lstReporte[0].SumRowsAux4 = countAnulado;
+                        lstReporte[0].SumRowsAux5= countComprador;
+                        lstReporte[0].SumRowsTotalFilas= countTorales;
+                        lstReporte[0].indicadorTotalFilas= (double)countTorales / countComprador;
+                        lstReporte[0].strIndicadorTotalFilas = String.Format("{0:#,##0.0}", (double)countTorales / countComprador);
+                        y++;
+                    }
+                    
+                }
+                else if (clsBusq.cod1 == "TRSG0002")
+                {
+                    Int32 counOficina = 0;
+                    Int32 counReferencia = 0;
+                    Int32 counFacebook = 0;
+                    Int32 counWhatsApp = 0;
+                    Int32 counLlamada = 0;
+                    Int32 counCliente = 0;
+                    Int32 counTotales = 0;
+
+                    foreach (DataRow dr in dtUsuario.Rows)
+                    {
+                        Int32 totalFil = Convert.ToInt32(dr["OFICINA"]) + Convert.ToInt32(dr["REFERENCIA"]) + Convert.ToInt32(dr["FACEBOOK"]) + Convert.ToInt32(dr["WHATSAPP"])+ Convert.ToInt32(dr["LLAMADA"])+ Convert.ToInt32(dr["VOLANTE"])+ Convert.ToInt32(dr["CAMPO"])+ Convert.ToInt32(dr["CLIENTE"]);
+                        counOficina += Convert.ToInt32(dr["OFICINA"]);
+                        counReferencia += Convert.ToInt32(dr["REFERENCIA"]);
+                        counFacebook += Convert.ToInt32(dr["FACEBOOK"]);
+                        counWhatsApp += Convert.ToInt32(dr["WHATSAPP"]);
+                        counLlamada += Convert.ToInt32(dr["LLAMADA"]);
+                        counCliente += Convert.ToInt32(dr["CLIENTE"]);
+                        counTotales += totalFil;
+
+                        lstReporte.Add(new Reporte
+                        {
+                            idUsuario = Convert.ToInt32(dr["idUsuario"]),
+                            coddAux1 = dr["cUser"].ToString(),
+                            coddAux2 = dr["OFICINA"].ToString(),
+                            coddAux3 = dr["REFERENCIA"].ToString(),
+                            coddAux4 = dr["FACEBOOK"].ToString(),
+                            coddAux5 = dr["WHATSAPP"].ToString(),
+                            coddAux6 = dr["LLAMADA"].ToString(),
+                            coddAux7 = dr["VOLANTE"].ToString(),
+                            coddAux8 = dr["CAMPO"].ToString(),
+                            coddAux9 = dr["CLIENTE"].ToString(),
+                            SumColumns= totalFil
+                        });
+                        lstReporte[0].SumRowsAux2 = counOficina;
+                        lstReporte[0].SumRowsAux3 = counReferencia;
+                        lstReporte[0].SumRowsAux4 = counFacebook;
+                        lstReporte[0].SumRowsAux5 = counWhatsApp;
+                        lstReporte[0].SumRowsAux6 = counLlamada;
+                        lstReporte[0].SumRowsAux7 = counCliente;
+                        lstReporte[0].SumRowsTotalFilas = counTotales;
+
+                    }
+                }
+                
+
+                return lstReporte;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daListarEquipo", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
         public Prospecto daListarProspectoDatatable(Int32 idCliente, Int32 pnTipoCon)
         {
             SqlParameter[] pa = new SqlParameter[2];

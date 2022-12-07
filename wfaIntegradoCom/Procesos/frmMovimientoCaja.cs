@@ -194,6 +194,10 @@ namespace wfaIntegradoCom.Procesos
 
             }
 
+            dtFechaFin.Value = Variables.gdFechaSis;
+            dtFechaInicio.Value = dtFechaFin.Value.AddDays(-(dtFechaFin.Value.Day - 1));
+            textBox1.Text = nSaldo.ToString();
+
             if (Variables.gsCargoUsuario != "PETR0006")
             {
                 paBusqueda.Visible = true;
@@ -203,6 +207,10 @@ namespace wfaIntegradoCom.Procesos
                 siticonePanel2.Visible = true;
                 btnAperturarCaja.Enabled = false;
                 btnCerrar.Enabled = false;
+                chkDiaEspecificoG.Enabled = true;
+                chkHabilitarFechasBusG.Enabled = true;
+                cboOperacion.Enabled = true;
+                dtFechaInicio.Enabled = true;
                 //paBusqueda.Visible = false;
                 //pcFecha = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
                 //intUsuario = Variables.gnCodUser;
@@ -210,11 +218,26 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
-                paBusqueda.Visible = false;
-                bResult = fnCargarUsuario();
-                pcFecha = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
-                intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
-                siticonePanel2.Visible = false;
+                if (estadoApertura==2)
+                {
+                    paBusqueda.Visible = true;
+                    siticonePanel2.Visible = true;
+                    cboOperacion.SelectedValue = ""+Variables.gnCodUser+"";
+                    chkDiaEspecificoG.Checked=true;
+                    cboOperacion.Enabled = false;
+                    chkDiaEspecificoG.Enabled = false;  
+                    chkHabilitarFechasBusG.Enabled=false;
+                    dtFechaInicio.Enabled = false;
+                }
+                else
+                {
+                    paBusqueda.Visible = false;
+                    //pcFecha = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
+                    //intUsuario = Convert.ToInt32(cboUsuario.SelectedValue);
+                    siticonePanel2.Visible = false;
+
+                }
+                
                 //btnAperturarCaja.Enabled = true;
                 //btnCerrar.Enabled = true;
             }
@@ -224,9 +247,7 @@ namespace wfaIntegradoCom.Procesos
             //    MessageBox.Show("Error al Cargar Movimientos en Caja", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             //    this.Close();
             //}
-            dtFechaFin.Value = Variables.gdFechaSis;
-            dtFechaInicio.Value = dtFechaFin.Value.AddDays(-(dtFechaFin.Value.Day - 1));
-            textBox1.Text = nSaldo.ToString();
+           
         }
 
         private void fnLlenarTablas(List<ReporteBloque> lst,DataGridView dgv,SiticoneTextBox txt)

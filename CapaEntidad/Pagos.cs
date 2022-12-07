@@ -9,6 +9,7 @@ namespace CapaEntidad
     public class Pagos
     {
         public Pagos() { }
+        public Int32 index { get; set; }
         public String codTipoPago { get; set; }
 
         public String cDescripTipoPago { get; set; }
@@ -24,6 +25,7 @@ namespace CapaEntidad
         public String Observaciones { get; set; }
         public Int32 idUsario { get; set; }
         public Int32 idMoneda { get; set; }
+        public String SimboloMoneda { get; set; }
         public String cEstadoPP { get; set; }
         public String cDescripcionEstadoPP { get; set; }
 

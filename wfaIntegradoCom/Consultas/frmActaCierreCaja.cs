@@ -46,8 +46,11 @@ namespace wfaIntegradoCom.Consultas
             if (lnTipoCon == -1)
             {
                 btnCerrarGuardarCierre.Enabled = false;
-            }else if (lnTipoCon == 1)
+                reportViewer1.ShowToolBar=true;
+            }
+            else if (lnTipoCon == 1)
             {
+                reportViewer1.ShowToolBar = false;
                 btnCerrarGuardarCierre.Enabled = true;
             }
             this.reportViewer1.RefreshReport();

@@ -120,15 +120,15 @@ namespace wfaIntegradoCom.Mantenedores
         {
             lstValidacionCliente = new List<validacion>();
 
-            lstValidacionCliente.Add(new validacion { estado = false, mensaje = "", combobox = cboTipoClienteC });
-            lstValidacionCliente.Add(new validacion { estado = false, mensaje = "", combobox = cboTipoDocumentoC });
+            //lstValidacionCliente.Add(new validacion { estado = false, mensaje = "", combobox = cboTipoClienteC });
+            //lstValidacionCliente.Add(new validacion { estado = false, mensaje = "", combobox = cboTipoDocumentoC });
             lstValidacionCliente.Add(new validacion { estado = false, mensaje = "", textbox = txtDocumentoC });
         }
         private void fnValidarRespPago()
         {
             lstValidacionRespPago = new List<validacion>();
-            lstValidacionRespPago.Add(new validacion { estado = false, mensaje = "", combobox = cboTipoClienteRP });
-            lstValidacionRespPago.Add(new validacion { estado = false, mensaje = "", combobox = cboTipoDocumentoRP });
+            //lstValidacionRespPago.Add(new validacion { estado = false, mensaje = "", combobox = cboTipoClienteRP });
+            //lstValidacionRespPago.Add(new validacion { estado = false, mensaje = "", combobox = cboTipoDocumentoRP });
             lstValidacionRespPago.Add(new validacion { estado = false, mensaje = "", textbox = txtDocumentoRP });
         }
         private void fnValidarVehiculo()
@@ -490,18 +490,18 @@ namespace wfaIntegradoCom.Mantenedores
                         this.Close();
                     }
 
-                    bResult = fnLLenarTipoPersona(cboTipoClienteC, 0, "", false);
-                    if (!bResult)
-                    {
-                        MessageBox.Show("Error al Cargar Cliente", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        this.Close();
-                    }
-                    bResult = fnLLenarTipoPersona(cboTipoClienteRP, 0, "", false);
-                    if (!bResult)
-                    {
-                        MessageBox.Show("Error al Cargar Responsable de Pago ", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        this.Close();
-                    }
+                    //bResult = fnLLenarTipoPersona(cboTipoClienteC, 0, "", false);
+                    //if (!bResult)
+                    //{
+                    //    MessageBox.Show("Error al Cargar Cliente", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //    this.Close();
+                    //}
+                    //bResult = fnLLenarTipoPersona(cboTipoClienteRP, 0, "", false);
+                    //if (!bResult)
+                    //{
+                    //    MessageBox.Show("Error al Cargar Responsable de Pago ", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //    this.Close();
+                    //}
                     bResult = fnLLenarMoneda(cboMonedaP, 0, false);
                     if (!bResult)
                     {
@@ -525,6 +525,9 @@ namespace wfaIntegradoCom.Mantenedores
                         cmListaVentas.Items[0].Visible = false;
                         cmListaVentas.Items[2].Visible = false;
                     }
+                    //ColorThemas.ElegirThema(Variables.clasePersonal.codTema);
+                    FunGeneral.fnThemaAFormularios(siticonePanel1);
+                    FunGeneral.fnThemaAFormularios(gbDinamico);
                 }
                 else if (lnTipoLlamada == 1)
                 {
@@ -558,12 +561,12 @@ namespace wfaIntegradoCom.Mantenedores
                 }
 
                 cboCicloP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
-                cboTipoClienteC.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                //cboTipoClienteC.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboMonedaP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
-                cboTipoClienteRP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                //cboTipoClienteRP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboTipoDescuentoPrecios.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
-                cboTipoDocumentoRP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
-                cboTipoDocumentoC.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                //cboTipoDocumentoRP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
+                //cboTipoDocumentoC.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboTipoVenta.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboTipoFiltro.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboTipoVetaBusq.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
@@ -901,16 +904,16 @@ namespace wfaIntegradoCom.Mantenedores
         }
         private void fnHabilitarBotonesC(Boolean estTipoCli,Boolean estTipoDoc, Boolean estDocumento, Boolean estNombre)
         {
-            cboTipoClienteC.Enabled = estTipoCli;
-            cboTipoDocumentoC.Enabled = estTipoDoc;
+            //cboTipoClienteC.Enabled = estTipoCli;
+            //cboTipoDocumentoC.Enabled = estTipoDoc;
             txtDocumentoC.ReadOnly = !estDocumento;
             txtNombreC.ReadOnly = !estNombre;
             
         }
         private void fnHabilitarBotonesRP(Boolean estTipoCli, Boolean estTipoDoc, Boolean estDocumento, Boolean estNombre)
         {
-            cboTipoClienteRP.Enabled = estTipoCli;
-            cboTipoDocumentoRP.Enabled = estTipoDoc;
+            //cboTipoClienteRP.Enabled = estTipoCli;
+            //cboTipoDocumentoRP.Enabled = estTipoDoc;
             txtDocumentoRP.ReadOnly = !estDocumento;
             txtNombreRP.ReadOnly = !estNombre;
         }
@@ -959,6 +962,7 @@ namespace wfaIntegradoCom.Mantenedores
                             txtTelefonoFijoRP.Text = lstPros.cTelFijo.Trim();
                             txtCelularRP.Text = lstPros.cTelCelular.Trim();
                             txtDireccionRP.Text = lstPros.cDireccion.Trim();
+                            fnLlenarComprobante(cboComprobanteP, "DOVE", clsRespPago.cTiDo, 0);
                         }
                         dgDocumentoC.Visible = false;
                     }
@@ -974,32 +978,32 @@ namespace wfaIntegradoCom.Mantenedores
         }
 
         
-        private void cboTipoClienteC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Int32 idTipoCliente = Convert.ToInt32(cboTipoClienteC.SelectedValue ?? 0);
-            fnLLenarDocumentoDeTipoPersona(cboTipoDocumentoC, idTipoCliente, "", false);
-            var result = FunValidaciones.fnValidarCombobox(lstValidacionCliente[0].combobox, erTipoClienteC, imgTipoClienteC);
-            lstValidacionCliente[0].estado = result.Item1;
-            lstValidacionCliente[0].mensaje = result.Item2;
+        //private void cboTipoClienteC_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    Int32 idTipoCliente = Convert.ToInt32(cboTipoClienteC.SelectedValue ?? 0);
+        //    fnLLenarDocumentoDeTipoPersona(cboTipoDocumentoC, idTipoCliente, "", false);
+        //    var result = FunValidaciones.fnValidarCombobox(lstValidacionCliente[0].combobox, erTipoClienteC, imgTipoClienteC);
+        //    lstValidacionCliente[0].estado = result.Item1;
+        //    lstValidacionCliente[0].mensaje = result.Item2;
 
-            if(idTipoCliente == 0)
-            {
-                cboTipoDocumentoC.Enabled = false;
-            }
-            else
-            {
-                cboTipoDocumentoC.Enabled = true;
-            }
-        }
+        //    if(idTipoCliente == 0)
+        //    {
+        //        cboTipoDocumentoC.Enabled = false;
+        //    }
+        //    else
+        //    {
+        //        cboTipoDocumentoC.Enabled = true;
+        //    }
+        //}
 
         private void txtDocumentoC_TextChanged(object sender, EventArgs e)
         {
-            Int32 idTipDocumento = Convert.ToInt32(cboTipoDocumentoC.SelectedValue ?? 0);         
-            Int32 maxCaracteres = TipoDocumento.fnObtenerTipoDocumentoSeleccionado(idTipDocumento, lstTD).TDmaxCaracteres;
-            var result = FunValidaciones.fnValidarTexboxs(lstValidacionCliente[2].textbox, erDocumentoC, imgDocumentoC, true, true, true, maxCaracteres,maxCaracteres , maxCaracteres, maxCaracteres, "Ingrese correctamente");
-            lstValidacionCliente[2].estado = true;
+            //Int32 idTipDocumento = Convert.ToInt32(cboTipoDocumentoC.SelectedValue ?? 0);         
+            //Int32 maxCaracteres = TipoDocumento.fnObtenerTipoDocumentoSeleccionado(idTipDocumento, lstTD).TDmaxCaracteres;
+            var result = FunValidaciones.fnValidarTexboxs(lstValidacionCliente[0].textbox, erDocumentoC, imgDocumentoC, true, true, true, 3,20 , 20, 20, "Ingrese correctamente");
+            lstValidacionCliente[0].estado = true;
                 //result.Item1;
-            lstValidacionCliente[2].mensaje = result.Item2; 
+            lstValidacionCliente[0].mensaje = result.Item2; 
 
             Int32 numCaracNroDocumento = txtDocumentoC.TextLength;
 
@@ -1008,11 +1012,11 @@ namespace wfaIntegradoCom.Mantenedores
                 Boolean bResul;
                 if (Convert.ToInt32(cboTipoVenta.SelectedValue) == 2)
                 {
-                    bResul = fnBuscarCliente(txtDocumentoC, 0, -4, dgDocumentoC, tipoCon.lnTipoConC,cboTipoClienteC,cboTipoDocumentoC);
+                    bResul = fnBuscarCliente(txtDocumentoC, 0, -4, dgDocumentoC, tipoCon.lnTipoConC);
                 }
                 else
                 {
-                    bResul = fnBuscarCliente(txtDocumentoC, 0, -3, dgDocumentoC, tipoCon.lnTipoConC,cboTipoClienteC,cboTipoDocumentoC);
+                    bResul = fnBuscarCliente(txtDocumentoC, 0, -3, dgDocumentoC, tipoCon.lnTipoConC);
                 }
                 if (!bResul)
                 {
@@ -1027,7 +1031,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        public Boolean fnBuscarCliente(SiticoneTextBox txt, Int32 Pagina, Int16 TipoConPagina, DataGridView dgv, Int32 tipcon,ComboBox cboTC,ComboBox cboTD)
+        public Boolean fnBuscarCliente(SiticoneTextBox txt, Int32 Pagina, Int16 TipoConPagina, DataGridView dgv, Int32 tipcon)
         {
             BLCliente objVehi = new BLCliente();
             DatosEnviarVehiculo objEnvio = new DatosEnviarVehiculo();
@@ -1047,11 +1051,10 @@ namespace wfaIntegradoCom.Mantenedores
                     String nombreCliente = "";
 
                     String Representante = "";
-                    Int32 idTipoPersona = Convert.ToInt32(cboTC.SelectedValue ?? 0);
-                    Int32 idTipoDocumento = Convert.ToInt32(cboTD.SelectedValue ?? 0);
+                  
                     String estCliente = "1"; 
 
-                    datCliente = objVehi.blBuscarCliente(nroDocumento, nombreCliente/*,Representante*/, idTipoPersona, idTipoDocumento, estCliente, Pagina,TipoConPagina);
+                    datCliente = objVehi.blBuscarCliente(nroDocumento, nombreCliente/*,Representante*/, estCliente, Pagina,TipoConPagina);
                     totalResultados = datCliente.Rows.Count;
 
                     if (totalResultados > 0)
@@ -1093,13 +1096,13 @@ namespace wfaIntegradoCom.Mantenedores
 
                             for (int i = 0; i <= totalResultados - 1; i++)
                             {
-                                Boolean estadoVehiculo = Convert.ToBoolean(datCliente.Rows[i][6]);
+                                Boolean estadoVehiculo = TipoConPagina==-1? Convert.ToBoolean(datCliente.Rows[i][7]) : Convert.ToBoolean(datCliente.Rows[i][6]);
                                 if (estadoVehiculo)
                                 {
                                     object[] row =
                                     {
                                         datCliente.Rows[i][0],
-                                        datCliente.Rows[i][5]
+                                        TipoConPagina==-1?datCliente.Rows[i][6]+" - "+ datCliente.Rows[i][1]:datCliente.Rows[i][5]+" - "+ datCliente.Rows[i][1]
                                     };
                                     dt.Rows.Add(row);
                                 }
@@ -1169,24 +1172,24 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private void cboTipoDocumentoC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Int32 idTD = Convert.ToInt32(cboTipoDocumentoC.SelectedValue ?? 0);
-            txtDocumentoC.Text = "";
-            if (idTD == 0)
-            {
-                txtDocumentoC.Enabled = false;
-            }
-            else
-            {
-                txtDocumentoC.Enabled = true;
-            }
+        //private void cboTipoDocumentoC_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    Int32 idTD = Convert.ToInt32(cboTipoDocumentoC.SelectedValue ?? 0);
+        //    txtDocumentoC.Text = "";
+        //    if (idTD == 0)
+        //    {
+        //        txtDocumentoC.Enabled = false;
+        //    }
+        //    else
+        //    {
+        //        txtDocumentoC.Enabled = true;
+        //    }
 
-            var result = FunValidaciones.fnValidarCombobox(lstValidacionCliente[1].combobox, erTipoDocumentoC, imgTipoDocumentoC);
-            lstValidacionCliente[1].estado = result.Item1;
-            lstValidacionCliente[1].mensaje = result.Item2;
-            fnLlenarComprobante(cboComprobanteP, "DOVE", idTD, 0);
-        }
+        //    var result = FunValidaciones.fnValidarCombobox(lstValidacionCliente[1].combobox, erTipoDocumentoC, imgTipoDocumentoC);
+        //    lstValidacionCliente[1].estado = result.Item1;
+        //    lstValidacionCliente[1].mensaje = result.Item2;
+        //    fnLlenarComprobante(cboComprobanteP, "DOVE", idTD, 0);
+        //}
 
         private void txtDocumentoC_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1226,8 +1229,8 @@ namespace wfaIntegradoCom.Mantenedores
         {
             //Grupo Cliente
             clsCliente = new Cliente();
-            cboTipoClienteC.SelectedValue = 0;
-            cboTipoClienteC.Enabled = true;
+            //cboTipoClienteC.SelectedValue = 0;
+            //cboTipoClienteC.Enabled = true;
             txtNombreC.Text = "";
             txtCorreoC.Text = "";
             txtTelefonoFijoC.Text = "";
@@ -1236,11 +1239,11 @@ namespace wfaIntegradoCom.Mantenedores
             txtDocumentoC.ReadOnly = false;
             tipoCon.lnTipoConC = 0;
 
-            imgTipoClienteC.Image = null;
-            imgTipoDocumentoC.Image = null;
+            //imgTipoClienteC.Image = null;
+            //imgTipoDocumentoC.Image = null;
             imgDocumentoC.Image = null;
-            erTipoClienteC.Text = "";
-            erTipoDocumentoC.Text = "";
+            //erTipoClienteC.Text = "";
+            //erTipoDocumentoC.Text = "";
             erDocumentoC.Text = "";
         }
 
@@ -1249,8 +1252,8 @@ namespace wfaIntegradoCom.Mantenedores
             
             //Grupo Cliente
             clsCliente = new Cliente();
-            cboTipoClienteC.SelectedValue = 0;
-            cboTipoClienteC.Enabled = true;
+            //cboTipoClienteC.SelectedValue = 0;
+            //cboTipoClienteC.Enabled = true;
             txtNombreC.Text = "";
             txtCorreoC.Text = "";
             txtTelefonoFijoC.Text = "";
@@ -1259,16 +1262,16 @@ namespace wfaIntegradoCom.Mantenedores
             txtDocumentoC.ReadOnly = false;
             tipoCon.lnTipoConC = 0;
 
-            imgTipoClienteC.Image = null;
-            imgTipoDocumentoC.Image = null;
+            //imgTipoClienteC.Image = null;
+            //imgTipoDocumentoC.Image = null;
             imgDocumentoC.Image = null;
-            erTipoClienteC.Text = "";
-            erTipoDocumentoC.Text = "";
-            erDocumentoC.Text = "";
+            //erTipoClienteC.Text = "";
+            //erTipoDocumentoC.Text = "";
+            //erDocumentoC.Text = "";
 
             //Grupo Responsable Pago
-            cboTipoClienteRP.Enabled = true;
-            cboTipoDocumentoRP.SelectedValue = 0;
+            //cboTipoClienteRP.Enabled = true;
+            //cboTipoDocumentoRP.SelectedValue = 0;
             txtDocumentoRP.ReadOnly = false;
             txtDocumentoRP.Text = "";
             txtNombreRP.Text = "";
@@ -1280,11 +1283,11 @@ namespace wfaIntegradoCom.Mantenedores
             clsRespPago = new Cliente();
             rdbNo.Checked = true;
 
-            imgTipoClienteRP.Image = null;
-            imgTipoDocumentoRP.Image = null;
+            //imgTipoClienteRP.Image = null;
+            //imgTipoDocumentoRP.Image = null;
             imgDocumentoRP.Image = null;
-            erTipoClienteRP.Text = "";
-            erTipoDocumentoRP.Text = "";
+            //erTipoClienteRP.Text = "";
+            //erTipoDocumentoRP.Text = "";
             erDocumentoRP.Text = "";
 
             //GrupoVehiculo
@@ -1323,8 +1326,8 @@ namespace wfaIntegradoCom.Mantenedores
         private void btnLimpiarRP_Click(object sender, EventArgs e)
         {
             //Grupo Responsable Pago
-            cboTipoClienteRP.Enabled = true;
-            cboTipoDocumentoRP.SelectedValue = 0;
+            //cboTipoClienteRP.Enabled = true;
+            //cboTipoDocumentoRP.SelectedValue = 0;
             txtDocumentoRP.ReadOnly = false;
             txtDocumentoRP.Text = "";
             txtNombreRP.Text = "";
@@ -1335,64 +1338,64 @@ namespace wfaIntegradoCom.Mantenedores
             tipoCon.lnTipoConRP = 0;
             clsRespPago = new Cliente();
 
-            imgTipoClienteRP.Image = null;
-            imgTipoDocumentoRP.Image = null;
+            //imgTipoClienteRP.Image = null;
+            //imgTipoDocumentoRP.Image = null;
             imgDocumentoRP.Image = null;
-            erTipoClienteRP.Text = "";
-            erTipoDocumentoRP.Text = "";
+            //erTipoClienteRP.Text = "";
+            //erTipoDocumentoRP.Text = "";
             erDocumentoRP.Text = "";
         }
 
-        private void cboTipoClienteRP_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Int32 idTipoRP = Convert.ToInt32(cboTipoClienteRP.SelectedValue ?? 0);
-            fnLLenarDocumentoDeTipoPersona(cboTipoDocumentoRP, idTipoRP, "", false);
-            var result = FunValidaciones.fnValidarCombobox(lstValidacionRespPago[0].combobox, erTipoClienteRP, imgTipoClienteRP);
-            lstValidacionRespPago[0].estado = result.Item1;
-            lstValidacionRespPago[0].mensaje = result.Item2;
+        //private void cboTipoClienteRP_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    Int32 idTipoRP = Convert.ToInt32(cboTipoClienteRP.SelectedValue ?? 0);
+        //    fnLLenarDocumentoDeTipoPersona(cboTipoDocumentoRP, idTipoRP, "", false);
+        //    var result = FunValidaciones.fnValidarCombobox(lstValidacionRespPago[0].combobox, erTipoClienteRP, imgTipoClienteRP);
+        //    lstValidacionRespPago[0].estado = result.Item1;
+        //    lstValidacionRespPago[0].mensaje = result.Item2;
 
-            if (idTipoRP == 0)
-            {
-                cboTipoDocumentoRP.Enabled = false;
-            }
-            else
-            {
-                cboTipoDocumentoRP.Enabled = true;
-            }
-        }
+        //    if (idTipoRP == 0)
+        //    {
+        //        cboTipoDocumentoRP.Enabled = false;
+        //    }
+        //    else
+        //    {
+        //        cboTipoDocumentoRP.Enabled = true;
+        //    }
+        //}
 
-        private void cboTipoDocumentoRP_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Int32 idTDRP = Convert.ToInt32(cboTipoDocumentoRP.SelectedValue ?? 0);
-            txtDocumentoRP.Text = "";
-            var result = FunValidaciones.fnValidarCombobox(lstValidacionRespPago[1].combobox, erTipoDocumentoRP, imgTipoDocumentoRP);
-            lstValidacionRespPago[1].estado = result.Item1;
-            lstValidacionRespPago[1].mensaje = result.Item2;
+        //private void cboTipoDocumentoRP_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    Int32 idTDRP = Convert.ToInt32(cboTipoDocumentoRP.SelectedValue ?? 0);
+        //    txtDocumentoRP.Text = "";
+        //    var result = FunValidaciones.fnValidarCombobox(lstValidacionRespPago[1].combobox, erTipoDocumentoRP, imgTipoDocumentoRP);
+        //    lstValidacionRespPago[1].estado = result.Item1;
+        //    lstValidacionRespPago[1].mensaje = result.Item2;
 
-            if (idTDRP == 0)
-            {
-                txtDocumentoRP.Enabled = false;
-            }
-            else
-            {
-                txtDocumentoRP.Enabled = true;
-            }
-            fnLlenarComprobante(cboComprobanteP, "DOVE", idTDRP, 0);
-        }
+        //    if (idTDRP == 0)
+        //    {
+        //        txtDocumentoRP.Enabled = false;
+        //    }
+        //    else
+        //    {
+        //        txtDocumentoRP.Enabled = true;
+        //    }
+        //    fnLlenarComprobante(cboComprobanteP, "DOVE", idTDRP, 0);
+        //}
 
         private void txtDocumentoRP_TextChanged(object sender, EventArgs e)
         {
-            Int32 idTipDocumentoRP = Convert.ToInt32(cboTipoDocumentoRP.SelectedValue ?? 0);
-            Int32 maxCaracteres = TipoDocumento.fnObtenerTipoDocumentoSeleccionado(idTipDocumentoRP, lstTD).TDmaxCaracteres;
-            var result = FunValidaciones.fnValidarTexboxs(lstValidacionRespPago[2].textbox, erDocumentoRP, imgDocumentoRP, true, true, true, maxCaracteres, maxCaracteres, maxCaracteres, maxCaracteres, "Ingrese correctamente");
-            lstValidacionRespPago[2].estado = result.Item1;
-            lstValidacionRespPago[2].mensaje = result.Item2;
+            //Int32 idTipDocumentoRP = Convert.ToInt32(cboTipoDocumentoRP.SelectedValue ?? 0);
+            //Int32 maxCaracteres = TipoDocumento.fnObtenerTipoDocumentoSeleccionado(idTipDocumentoRP, lstTD).TDmaxCaracteres;
+            var result = FunValidaciones.fnValidarTexboxs(lstValidacionRespPago[0].textbox, erDocumentoRP, imgDocumentoRP, true, true, true, 3, 20, 20, 20, "Ingrese correctamente");
+            lstValidacionRespPago[0].estado = result.Item1;
+            lstValidacionRespPago[0].mensaje = result.Item2;
             Int32 numCaracNroDocumento = txtDocumentoRP.TextLength;
             if (numCaracNroDocumento >= 3)
             {
                 Boolean bResul;
 
-                bResul = fnBuscarCliente(txtDocumentoRP, 0, -1, dgDocumentoRP, tipoCon.lnTipoConRP, cboTipoClienteRP, cboTipoDocumentoRP);
+                bResul = fnBuscarCliente(txtDocumentoRP, 0, -1, dgDocumentoRP, tipoCon.lnTipoConRP);
                 if (!bResul)
                 {
                     MessageBox.Show("Error al Buscar Vehiculo. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1422,10 +1425,10 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
-            
-            int idCliente = Convert.ToInt32(cboTipoDocumentoC.SelectedValue ?? 0);
+
             fnPreguntaQuienPaga(sender,e);
             clsRespPago = clsCliente;
+            int idCliente = Convert.ToInt32(clsRespPago.cTiDo);
             fnLlenarComprobante(cboComprobanteP, "DOVE", idCliente, 0);
             foreach(validacion item in lstValidacionRespPago)
             {
@@ -1440,15 +1443,15 @@ namespace wfaIntegradoCom.Mantenedores
             if (rdbSi.Checked == true)
             {
                 gbResponsablePago.Enabled = false;
-                //gbResponsablePago.Visible = false;
-                //gbDinamico.Location = new Point(18, 320);
+                gbResponsablePago.Visible = false;
+                gbDinamico.Location = gbResponsablePago.Location;
                 //tabControl1.Height = 722 - 87;
             }
             else
             {
                 gbResponsablePago.Enabled = true;
-                //gbResponsablePago.Visible = true;
-                //gbDinamico.Location = new Point(8, 513);
+                gbResponsablePago.Visible = true;
+                gbDinamico.Location = new Point(gbDinamico.Location.X, (gbResponsablePago.Location.Y+ gbResponsablePago.Height)+5);
                 //tabControl1.Height = 722 + 87;
             }
             return true;
@@ -2337,6 +2340,7 @@ namespace wfaIntegradoCom.Mantenedores
             Boolean habilitarRenovaciones = chkRenovaciones.Checked ? true : false;
             DateTime fechaInicial = dtpFechaInicialBus.Value;
             DateTime fechaFinal = dtpFechaFinalBus.Value;
+            String fechaAct=FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis,3);
             String estadoTipoContrato = cboEstadoContrato.SelectedValue.ToString();
             Int32 HorasIni = 0;
             Int32 HorasFin = 0;
@@ -2361,7 +2365,7 @@ namespace wfaIntegradoCom.Mantenedores
             Boolean estadoReturn = false;
             try
             {
-                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas,FunGeneral.GetFechaHoraFormato(fechaInicial,3) , FunGeneral.GetFechaHoraFormato(fechaFinal,3), placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro);
+                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas,FunGeneral.GetFechaHoraFormato(fechaInicial,3) , FunGeneral.GetFechaHoraFormato(fechaFinal,3), fechaAct, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro);
 
                 Int32 totalResultados = datVentaG.Rows.Count;
 
@@ -2481,22 +2485,16 @@ namespace wfaIntegradoCom.Mantenedores
                             DateTime fecha = Convert.ToDateTime(Convert.ToDateTime(dr["FechaRegistro"]).ToString("dd/MM/yyyy"));
                             DateTime fechaPago = Convert.ToDateTime(Convert.ToDateTime(dr["fechaPago"]).ToString("dd/MM/yyyy"));
                             DateTime fechaFinalContrato = Convert.ToDateTime(Convert.ToDateTime(dr["periodoFinal"]).ToString("dd/MM/yyyy"));
+                            var resf=fnRestasAnioMesDia(fechaActual, fechaFinalContrato);
 
-                            TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
+                             //TimeSpan tiket = Variables.gdFechaSis - Variables.gdFechaSis.AddDays(-1);
 
                             //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
-                            if (fechaActual > fechaFinalContrato)
-                            {
-                                tiket = fechaActual - fechaFinalContrato;
-                            }
-                            else
-                            {
-                                tiket = fechaFinalContrato - fechaActual;
-                            }
-                            DateTime totalTime = new DateTime(tiket.Ticks);
-                            restaAnio = totalTime.Year - 1;
-                            restaMeses = totalTime.Month - 1;
-                            faltaDias = Convert.ToInt32(totalTime.Day);
+                            
+                            //DateTime totalTime = new DateTime(tiket.Ticks);
+                            restaAnio = resf.Item1;
+                            restaMeses = resf.Item2;
+                            faltaDias = resf.Item3;
                             if (Convert.ToString(dr["EstadoVenta"]) == "EXPIRADO" || Convert.ToString(dr["EstadoVenta"]) == "ANULADA")
                             {
                                 strEstado = "❌ ANULADA";
@@ -2638,6 +2636,34 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
 
+        private Tuple<Int32,Int32,Int32> fnRestasAnioMesDia(DateTime fecHaActual,DateTime fechaFinal)
+        {
+            Int32 restAnio = 0;
+            Int32 restMes = 0;
+            Int32 restDias = 0;
+
+            TimeSpan tiket = new TimeSpan();
+
+            //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
+            if (fecHaActual > fechaFinal)
+            {
+                tiket = fecHaActual - fechaFinal;
+            }
+            else if(fecHaActual < fechaFinal)
+            {
+                tiket = fechaFinal - fecHaActual;
+            }
+            DateTime totalTime = new DateTime(tiket.Ticks);
+            restAnio = totalTime.Year - 1;
+            restMes = totalTime.Month - 1;
+            restDias = totalTime.Day-1;
+            //if (fecHaActual == fechaFinal)
+            //{
+            //    restDias = totalTime.Day - 1;
+            //}
+            
+            return Tuple.Create(restAnio,restMes,restDias);
+        }
         private String fnMostrarEstadoRenovacion(DateTime dtActual, DateTime dtFinal, Int32 restaAnio, Int32 restaMeses, Int32 faltaDias)
         {
             String strEstado = "";
@@ -2941,7 +2967,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
             Int32 idTipoVenta = Convert.ToInt32(cboTipoVenta.SelectedValue);
             frmControlPagoVenta frm = new frmControlPagoVenta();
-            Double PrecioADescontar = frm.fnLimpiarDescuentos(Convert.ToString(filaData.Cells[6].Value));
+            Double PrecioADescontar = FunGeneral.fnLimpiarDescuentos(Convert.ToString(filaData.Cells[6].Value));
             if (Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue) == 0)
             {
                 fnHabilitarDescuento(false);
@@ -3605,9 +3631,9 @@ namespace wfaIntegradoCom.Mantenedores
             lsDocVenta.Add(new DocumentoVenta
             {
                 idCliente = clsRespPago.idCliente,
-                cCliente = FormatearCadenaTitleCase(clsRespPago.cNombre + " " + clsRespPago.cApePat + " " + clsRespPago.cApeMat),
+                cCliente = FunGeneral.FormatearCadenaTitleCase(clsRespPago.cNombre + " " + clsRespPago.cApePat + " " + clsRespPago.cApeMat),
                 cTipoDoc = fnDevolverTipoDocPersona(clsRespPago.cTiDo),
-                cDireccion = FormatearCadenaTitleCase(clsRespPago.cDireccion),
+                cDireccion = FunGeneral.FormatearCadenaTitleCase(clsRespPago.cDireccion),
                 cDocumento = clsRespPago.cDocumento,
                 SimboloMoneda = clsMoneda.cSimbolo,
                 cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),
@@ -4252,8 +4278,8 @@ namespace wfaIntegradoCom.Mantenedores
                 clsPlanActual.idPlan = lstvgeneral[0].ClsPlan.idPlan;
                 clsPlanActual.CicloPlan = lstvgeneral[0].ClsCiclo.IdCiclo;
 
-                cboTipoClienteC.SelectedValue = lstvgeneral[0].ClsCliente.cTipPers;
-                cboTipoDocumentoC.SelectedValue = lstvgeneral[0].ClsCliente.cTiDo;
+                //cboTipoClienteC.SelectedValue = lstvgeneral[0].ClsCliente.cTipPers;
+                //cboTipoDocumentoC.SelectedValue = lstvgeneral[0].ClsCliente.cTiDo;
                 txtDocumentoC.Text = lstvgeneral[0].ClsCliente.cDocumento.Trim();
                 txtNombreC.Text = $"{ lstvgeneral[0].ClsCliente.cNombre.Trim()} {lstvgeneral[0].ClsCliente.cApePat.Trim()} {lstvgeneral[0].ClsCliente.cApeMat.Trim()}";
                 txtCorreoC.Text = lstvgeneral[0].ClsCliente.cCorreo.Trim();

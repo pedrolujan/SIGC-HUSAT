@@ -52,7 +52,7 @@ namespace wfaIntegradoCom.Procesos
             try
             {
                 dtFechaRegIngresos.Value = Variables.gdFechaSis;
-
+                
                 FunGeneral.fnLlenarTablaCodTipoCon(cboArea, "PETR",false);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboFuenteEgreso, "TEGR",false);
 
@@ -74,7 +74,7 @@ namespace wfaIntegradoCom.Procesos
                 cboTipoDocEmitir2.SelectedValue = "DOVE0003";
                 cboMoneda.SelectedValue = 1;
                 cboMoneda2.SelectedValue = 1;
-                dtFechaRegEgresos.Enabled = false;
+                dtFechaRegEgresos.Enabled = true;
 
                 if (inTipoApertura==0)
                 {
@@ -99,6 +99,17 @@ namespace wfaIntegradoCom.Procesos
                     tabControl1.SelectedIndex = 0;
                     tabControl1.TabPages.Remove(tabPage2);
                 }
+                byte dia = (byte)Variables.gdFechaSis.DayOfWeek;
+                if (dia==1)
+                {
+                    FunGeneral.fnValidarFechaPasandoDia(dtFechaRegIngresos, pictureBox1, label12, 0, -2);
+                    FunGeneral.fnValidarFechaPasandoDia(dtFechaRegEgresos, pictureBox2, label13, 0, -2);
+                }
+                else
+                {
+                    FunGeneral.fnValidarFechaPasandoDia(dtFechaRegIngresos, pictureBox1, label12, 0, -1);
+                    FunGeneral.fnValidarFechaPasandoDia(dtFechaRegEgresos, pictureBox2, label13, 0, -1);
+                }
             }
             catch (Exception)
             {
@@ -106,6 +117,7 @@ namespace wfaIntegradoCom.Procesos
                 throw;
             }
         }
+
         public  void fnRecuperarTipoPago(List<Pagos> lstEntidades)
         {
             lstPagosTrandiaria = lstEntidades;
@@ -351,6 +363,16 @@ namespace wfaIntegradoCom.Procesos
             {
                 e.Handled = true;
             }
+        }
+
+        private void dtFechaRegEgresos_ValueChanged(object sender, EventArgs e)
+        {
+            FunGeneral.fnValidarFechaPasandoDia(dtFechaRegEgresos, pictureBox2, label13, 1, -2);
+        }
+
+        private void dtFechaRegIngresos_ValueChanged(object sender, EventArgs e)
+        {
+            FunGeneral.fnValidarFechaPasandoDia(dtFechaRegIngresos, pictureBox1, label12, 1, -2);
         }
 
         private void cboFuenteEgreso_SelectedIndexChanged(object sender, EventArgs e)

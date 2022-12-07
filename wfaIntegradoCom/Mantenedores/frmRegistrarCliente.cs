@@ -316,7 +316,7 @@ namespace wfaIntegradoCom.Mantenedores
                     Int32 idTipoDocumento = Convert.ToInt32(cboTD.SelectedValue ?? 0);
                     String estCliente = "1";
 
-                   datCliente = objVehi.blBuscarCliente(nroDocumento, nombreCliente  , idTipoPersona, idTipoDocumento, estCliente, Pagina, TipoConPagina);
+                   datCliente = objVehi.blBuscarCliente(nroDocumento, nombreCliente  ,  estCliente, Pagina, TipoConPagina);
                     totalResultados = datCliente.Rows.Count;
 
                     if (totalResultados > 0)
@@ -433,7 +433,7 @@ namespace wfaIntegradoCom.Mantenedores
                 idTipoPersona = Convert.ToInt32(cboTipoClienteBuscar.SelectedValue.ToString());
                 idTipoDocumento = Convert.ToInt32(cboTipoDocumentoBuscar.SelectedValue.ToString());
 
-                dtCliente = objCli.blBuscarCliente(nroDocumento, nombreCliente, idTipoPersona, idTipoDocumento, estCliente, numPagina, tipoCon);
+                dtCliente = objCli.blBuscarCliente(nroDocumento, nombreCliente, estCliente, numPagina, tipoCon);
 
                 Int32 totalResultados = dtCliente.Rows.Count;
                 

@@ -164,11 +164,11 @@ namespace wfaIntegradoCom.Procesos
                 DetalleCronograma dtc = lstCronoGramasParaDocumentoVenta.Find(j => j.idDetalleCronograma == lstDetalleCronograma[fila].idDetalleCronograma);
                 if (dtc is DetalleCronograma)
                 {
-                    colorBg = Color.Gainsboro;
+                    colorBg =  Color.DarkGreen;
                 }
                 else
                 {
-                    colorBg = Color.White;
+                    colorBg =ColorThemas.BarraAccesoDirectos;
                 }
                 Double DescuentoPrecio = fnConvertirATipoDescuento(lstDetalleCronograma[fila].precioUnitario, lstDetalleCronograma[fila].strTipoDescuento, lstDetalleCronograma[fila].descuento);
                 lstDetalleCronograma[fila].descuentoPrecio = DescuentoPrecio;
@@ -193,7 +193,7 @@ namespace wfaIntegradoCom.Procesos
                 dgvCronograma.Rows[fila].DefaultCellStyle.BackColor = colorBg;
 
                 //dgvCronograma.Rows[fila].Cells[12].ReadOnly = true;
-                dgvCronograma.Rows[fila].Cells[12].Style.BackColor = Color.White;
+                //dgvCronograma.Rows[fila].Cells[12].Style.BackColor = Color.White;
                 //dgvCronograma.Rows[fila].Cells[13].ReadOnly = true;
                 dgvCronograma.Rows[fila].Cells[13].Style.BackColor = Color.White;
                 //dgvCronograma.Rows[fila].Cells[14].ReadOnly = true;
@@ -253,7 +253,7 @@ namespace wfaIntegradoCom.Procesos
                     String strDescuento = "";
                     Int32 chk = 0;
                     Boolean estBloquear = false;
-                    Color colorBg = Color.White;
+                    Color colorBg = ColorThemas.BarraAccesoDirectos;
                     if (lstDetalleCronograma[i].strTipoDescuento == "PORCENTUAL" && lstDetalleCronograma[i].descuento != 0)
                     {
                         strDescuento = lstDetalleCronograma[i].descuento + " % ";
@@ -269,7 +269,7 @@ namespace wfaIntegradoCom.Procesos
                         estadoCuota = "✅ " + lstDetalleCronograma[i].estado;
                         lstDetalleCronograma[i].estChk = true;
                         estBloquear = true;
-                        colorBg = Color.Silver;
+                        colorBg = ColorThemas.PanelPadre;
                     }
                     else if (lstDetalleCronograma[i].estado == "PAGO PENDIENTE")
                     {
@@ -288,7 +288,7 @@ namespace wfaIntegradoCom.Procesos
                     if (dtc is DetalleCronograma)
                     {
                         lstDetalleCronograma[i].estChk = true;
-                        colorBg = Color.Gainsboro;
+                        colorBg = Color.DarkGreen;
                     }
                     Double DescuentoPrecio = fnConvertirATipoDescuento(lstDetalleCronograma[i].precioUnitario, lstDetalleCronograma[i].strTipoDescuento, lstDetalleCronograma[i].descuento);
                     lstDetalleCronograma[i].descuentoPrecio = DescuentoPrecio;
@@ -313,7 +313,7 @@ namespace wfaIntegradoCom.Procesos
                     //dgvCronograma.Rows[i].ReadOnly = estBloquear;
 
                     dgvCronograma.Rows[i].Cells[12].ReadOnly = true;
-                    dgvCronograma.Rows[i].Cells[12].Style.BackColor = Color.White;
+                    //dgvCronograma.Rows[i].Cells[12].Style.BackColor = Color.White;
                     dgvCronograma.Rows[i].Cells[13].ReadOnly = true;
                     dgvCronograma.Rows[i].Cells[13].Style.BackColor = Color.White;
                     dgvCronograma.Rows[i].Cells[14].ReadOnly = true;
@@ -655,6 +655,7 @@ namespace wfaIntegradoCom.Procesos
         {
             try
             {
+
                 lstCronoGramasParaDocumentoVenta.Clear();
                 btnValidarEstados.Visible = false;
                 EstadoCarga = false;
@@ -684,7 +685,7 @@ namespace wfaIntegradoCom.Procesos
                 cboCronograma.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboComprobanteP.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
                 cboMoneda.MouseWheel += new MouseEventHandler(cboCronograma_MouseWheel);
-
+                FunGeneral.fnThemaAFormularios(siticonePanel1);
                 if (Variables.gsCargoUsuario == "PETR0001" || Variables.gsCargoUsuario == "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
                 {
                     btnValidarEstados.Visible = true;
@@ -705,6 +706,7 @@ namespace wfaIntegradoCom.Procesos
                     dtFechaPago.Value = dttFechaRecibida;
                     dtFechaPago.Enabled = false;
                 }
+
 
             }
             catch (Exception ex)
@@ -1121,7 +1123,6 @@ namespace wfaIntegradoCom.Procesos
             lstCronoGramasParaDocumentoVenta.Clear();
             dgvDatosDocumentosVenta.Rows.Clear();
             cboCronograma.SelectedValue = CronogramaSeleccionado;
-
         }
         private void obtenerNumeroDeItems()
         {
@@ -1238,8 +1239,18 @@ namespace wfaIntegradoCom.Procesos
                 }                
                 else
                 {
+                    if (lstCronoGramasParaDocumentoVenta.Count<=1)
+                    {
+                        cmsPagoCuotas.Items[0].Visible = true;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Realise al pago por la modalidad págo multiple", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        fnOcultarDatosParaDocumentoVenta();
+                        cmsPagoCuotas.Items[0].Visible = false;
+                    }
                     //cmsPagoCuotas.Items[1].Visible = false;
-                    cmsPagoCuotas.Items[0].Visible = true;
                 }
 
                 var mousePosition = dgvCronograma.PointToClient(Cursor.Position);
@@ -1610,20 +1621,21 @@ namespace wfaIntegradoCom.Procesos
         private void fnGuardarPagoCuotaPorDocumento(ControlPagos ctp,List<xmlDocumentoVentaGeneral> lstDV, Int32 tipoCon)
         {
             obControPagos = new BLControlPagos();
-            Boolean bResult = false;
-            bResult=obControPagos.blGuardarPagoCuotasPorDocumento(ctp, lstDV, tipoCon);
+            Boolean bResult = true;
+            bResult = obControPagos.blGuardarPagoCuotasPorDocumento(ctp, lstDV, tipoCon);
             String strTipo = tipoCon == 0 ? "Guardado" : "Actualizado";
             if (bResult)
             {
                 MessageBox.Show("Págo "+ strTipo + " Correctamente ✅", "Informacion ",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 chkHabilitarDescuentoP.Checked = false;
-                fnLimpiarSeleccion();
+               
             }
             else
             {
                 MessageBox.Show("Error al "+ strTipo + " Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+           
 
         }
         public static void fnRecuperarTipoPago(List<Pagos> lstEntidades)
@@ -1808,19 +1820,7 @@ namespace wfaIntegradoCom.Procesos
                 cboTipoDescuentoPrecios.Enabled = estDescuento;
             }
         }
-        public Double fnLimpiarDescuentos(String PrecioADescontarStr)
-        {
-            Double PrecioADescontar = 0;
-            //Double PrecioADescontar = Convert.ToDouble(dgvCronograma.Rows[e.RowIndex+1].Cells[e.ColumnIndex].Value);
-            string patron = @"(?:- *)?\d+(?:\.\d+)?";
-            Regex regex = new Regex(patron);
-
-            foreach (Match m in regex.Matches(PrecioADescontarStr))
-            {
-                PrecioADescontar = Convert.ToDouble(m.Value);
-            }
-            return PrecioADescontar;
-        }
+       
         private void dgvCronograma_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (EstadoCarga==true && e.ColumnIndex>0)
@@ -1829,7 +1829,7 @@ namespace wfaIntegradoCom.Procesos
                 {
                     DialogResult dResult;
                     Double PrecioADescontar = 0;
-                    PrecioADescontar=fnLimpiarDescuentos(Convert.ToString(dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex].Value));
+                    PrecioADescontar=FunGeneral.fnLimpiarDescuentos(Convert.ToString(dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex].Value));
                     //Double PrecioADescontar = Convert.ToDouble(dgvCronograma.Rows[e.RowIndex+1].Cells[e.ColumnIndex].Value);
                  
                     Int32 idDescuento = Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue);
@@ -2355,6 +2355,7 @@ namespace wfaIntegradoCom.Procesos
                 if (estadoComprabanteP == true && estadoFechaPago == true)
                 {
                     fnAniadirADocumento(lstCronoGramasParaDocumentoVenta, Variables.gnCodUser, 0);
+                    
                 }
                 else
                 {
@@ -2365,6 +2366,7 @@ namespace wfaIntegradoCom.Procesos
             else if(estadoApertura==0)
             {
                 MessageBox.Show("Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                fnLimpiarSeleccion();
 
             }
             else 
@@ -2398,7 +2400,10 @@ namespace wfaIntegradoCom.Procesos
 
             Boolean resp = false;
             resp= BL.blAniadirADocumentoVenta(dcr, idusuario, tipoCon);
-
+            fnLimpiarSeleccion();
+            cboCronograma.SelectedIndex = 0;
+            cboCronograma.SelectedValue = CronogramaSeleccionado;
+            obtenerNumeroDeItems();
             if (resp)
             {
 

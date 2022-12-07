@@ -40,12 +40,37 @@ namespace CapaNegocio
 
         }
 
-        public DataTable blBuscarVentaGeneral(Boolean habilitarfechas,String fechaInical, String fechaFinal,String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon,Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones, String valorRadio)
+        public DataTable blBuscarVentaGeneral(Boolean habilitarfechas,String fechaInical, String fechaFinal,String fechaAct, String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon,Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones, String valorRadio)
         {
             DAVentaGeneral objVentaG = new DAVentaGeneral();
             try
             {
-                return objVentaG.daBuscarVentaGeneral(habilitarfechas, fechaInical, fechaFinal, placaVehiculo, cEstadoInstal,numPagina, tipoLLamada, tipoCon, codTipoVenta, estadoTipoContrato, habilitarRenovaciones, valorRadio);
+                return objVentaG.daBuscarVentaGeneral(habilitarfechas, fechaInical, fechaFinal, fechaAct, placaVehiculo, cEstadoInstal,numPagina, tipoLLamada, tipoCon, codTipoVenta, estadoTipoContrato, habilitarRenovaciones, valorRadio);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable blBuscarVentaPagoPendientes(Boolean chk,String busq,String dfechaIni,String dfecha,Int32 numPagina,Int32 tipoCon)
+        {
+            DAVentaGeneral objVentaG = new DAVentaGeneral();
+            try
+            {
+                return objVentaG.daBuscarVentaPagoPendiente( chk,  busq,  dfechaIni,  dfecha,  numPagina,  tipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public Boolean blGuardarpagosPendientes(Int32 idTrandiaria, List<Pagos> lstTrand,Int32 tipoCon)
+        {
+            DAVentaGeneral objVentaG = new DAVentaGeneral();
+            try
+            {
+                return objVentaG.daGuardarpagosPendientes( idTrandiaria,lstTrand,  tipoCon);
             }
             catch (Exception ex)
             {

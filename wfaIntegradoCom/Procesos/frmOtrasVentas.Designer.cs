@@ -96,8 +96,10 @@
             this.dgDocumento = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.pbNombres_razonS = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.gunaLabel4 = new Guna.UI.WinForms.GunaLabel();
+            this.txtClienteAux = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtDireccion = new Siticone.UI.WinForms.SiticoneTextBox();
             this.lbltxtClientesN_A = new Guna.UI.WinForms.GunaLabel();
+            this.lblClienteAux = new Guna.UI.WinForms.GunaLabel();
             this.txtClientesN_A = new Siticone.UI.WinForms.SiticoneTextBox();
             this.lbltxtDireccion = new Guna.UI.WinForms.GunaLabel();
             this.lbltxtTelefono = new Guna.UI.WinForms.GunaLabel();
@@ -196,8 +198,7 @@
             this.txtBusq = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.drCOtrasVentas = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
-            this.lblClienteAux = new Guna.UI.WinForms.GunaLabel();
-            this.txtClienteAux = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.siticoneButton1 = new Siticone.UI.WinForms.SiticoneButton();
             this.gunaPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1117,6 +1118,38 @@
             this.gunaLabel4.TabIndex = 90;
             this.gunaLabel4.Text = "Buscar:";
             // 
+            // txtClienteAux
+            // 
+            this.txtClienteAux.Animated = false;
+            this.txtClienteAux.BorderColor = System.Drawing.Color.LightGray;
+            this.txtClienteAux.BorderRadius = 3;
+            this.txtClienteAux.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtClienteAux.DefaultText = "";
+            this.txtClienteAux.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtClienteAux.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtClienteAux.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtClienteAux.DisabledState.Parent = this.txtClienteAux;
+            this.txtClienteAux.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtClienteAux.FillColor = System.Drawing.Color.Gainsboro;
+            this.txtClienteAux.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtClienteAux.FocusedState.Parent = this.txtClienteAux;
+            this.txtClienteAux.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtClienteAux.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtClienteAux.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtClienteAux.HoveredState.Parent = this.txtClienteAux;
+            this.txtClienteAux.Location = new System.Drawing.Point(345, 52);
+            this.txtClienteAux.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtClienteAux.Name = "txtClienteAux";
+            this.txtClienteAux.PasswordChar = '\0';
+            this.txtClienteAux.PlaceholderText = "Cliente";
+            this.txtClienteAux.ReadOnly = true;
+            this.txtClienteAux.SelectedText = "";
+            this.txtClienteAux.ShadowDecoration.Parent = this.txtClienteAux;
+            this.txtClienteAux.Size = new System.Drawing.Size(707, 36);
+            this.txtClienteAux.TabIndex = 88;
+            this.txtClienteAux.Visible = false;
+            this.txtClienteAux.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
+            // 
             // txtDireccion
             // 
             this.txtDireccion.Animated = false;
@@ -1158,6 +1191,18 @@
             this.lbltxtClientesN_A.Size = new System.Drawing.Size(196, 19);
             this.lbltxtClientesN_A.TabIndex = 90;
             this.lbltxtClientesN_A.Text = "Nombres - Apellidos / R. Social";
+            // 
+            // lblClienteAux
+            // 
+            this.lblClienteAux.AutoSize = true;
+            this.lblClienteAux.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClienteAux.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lblClienteAux.Location = new System.Drawing.Point(348, 29);
+            this.lblClienteAux.Name = "lblClienteAux";
+            this.lblClienteAux.Size = new System.Drawing.Size(68, 19);
+            this.lblClienteAux.TabIndex = 90;
+            this.lblClienteAux.Text = "Direccion:";
+            this.lblClienteAux.Visible = false;
             // 
             // txtClientesN_A
             // 
@@ -2435,6 +2480,7 @@
             // 
             this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
             this.siticoneGroupBox1.BorderRadius = 2;
+            this.siticoneGroupBox1.Controls.Add(this.siticoneButton1);
             this.siticoneGroupBox1.Controls.Add(this.pbBuscar);
             this.siticoneGroupBox1.Controls.Add(this.gbBusqMarcaModelo);
             this.siticoneGroupBox1.Controls.Add(this.chkHabilitarFechas);
@@ -2776,49 +2822,20 @@
             // 
             this.drCOtrasVentas.TargetControl = this.gunaPanel1;
             // 
-            // lblClienteAux
+            // siticoneButton1
             // 
-            this.lblClienteAux.AutoSize = true;
-            this.lblClienteAux.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClienteAux.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.lblClienteAux.Location = new System.Drawing.Point(348, 29);
-            this.lblClienteAux.Name = "lblClienteAux";
-            this.lblClienteAux.Size = new System.Drawing.Size(68, 19);
-            this.lblClienteAux.TabIndex = 90;
-            this.lblClienteAux.Text = "Direccion:";
-            this.lblClienteAux.Visible = false;
-            // 
-            // txtClienteAux
-            // 
-            this.txtClienteAux.Animated = false;
-            this.txtClienteAux.BorderColor = System.Drawing.Color.LightGray;
-            this.txtClienteAux.BorderRadius = 3;
-            this.txtClienteAux.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtClienteAux.DefaultText = "";
-            this.txtClienteAux.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtClienteAux.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtClienteAux.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtClienteAux.DisabledState.Parent = this.txtClienteAux;
-            this.txtClienteAux.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtClienteAux.FillColor = System.Drawing.Color.Gainsboro;
-            this.txtClienteAux.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.txtClienteAux.FocusedState.Parent = this.txtClienteAux;
-            this.txtClienteAux.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtClienteAux.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtClienteAux.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtClienteAux.HoveredState.Parent = this.txtClienteAux;
-            this.txtClienteAux.Location = new System.Drawing.Point(345, 52);
-            this.txtClienteAux.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtClienteAux.Name = "txtClienteAux";
-            this.txtClienteAux.PasswordChar = '\0';
-            this.txtClienteAux.PlaceholderText = "Cliente";
-            this.txtClienteAux.ReadOnly = true;
-            this.txtClienteAux.SelectedText = "";
-            this.txtClienteAux.ShadowDecoration.Parent = this.txtClienteAux;
-            this.txtClienteAux.Size = new System.Drawing.Size(707, 36);
-            this.txtClienteAux.TabIndex = 88;
-            this.txtClienteAux.Visible = false;
-            this.txtClienteAux.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
+            this.siticoneButton1.CheckedState.Parent = this.siticoneButton1;
+            this.siticoneButton1.CustomImages.Parent = this.siticoneButton1;
+            this.siticoneButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.siticoneButton1.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton1.HoveredState.Parent = this.siticoneButton1;
+            this.siticoneButton1.Location = new System.Drawing.Point(823, 22);
+            this.siticoneButton1.Name = "siticoneButton1";
+            this.siticoneButton1.ShadowDecoration.Parent = this.siticoneButton1;
+            this.siticoneButton1.Size = new System.Drawing.Size(180, 45);
+            this.siticoneButton1.TabIndex = 233;
+            this.siticoneButton1.Text = "siticoneButton1";
+            this.siticoneButton1.Click += new System.EventHandler(this.siticoneButton1_Click);
             // 
             // frmOtrasVentas
             // 
@@ -3030,5 +3047,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idTipoTransaccion;
         private Siticone.UI.WinForms.SiticoneTextBox txtClienteAux;
         private Guna.UI.WinForms.GunaLabel lblClienteAux;
+        private Siticone.UI.WinForms.SiticoneButton siticoneButton1;
     }
 }
