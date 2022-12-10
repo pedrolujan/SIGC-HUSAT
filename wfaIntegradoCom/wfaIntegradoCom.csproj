@@ -885,6 +885,7 @@
     <EmbeddedResource Include="Consultas\rptContrato.rdlc" />
     <EmbeddedResource Include="Consultas\rptGraficos.rdlc" />
     <EmbeddedResource Include="Consultas\rptReporteRecaudacion.rdlc" />
+    <EmbeddedResource Include="Consultas\rptReporteRenovacion.rdlc" />
     <EmbeddedResource Include="Consultas\rptReporteSeguimiento.rdlc" />
     <EmbeddedResource Include="Consultas\rptReporteSeguimientoTipoVisita.rdlc" />
     <EmbeddedResource Include="Consultas\rptVPOtrasVentas.rdlc" />

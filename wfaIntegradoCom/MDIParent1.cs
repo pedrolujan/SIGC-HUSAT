@@ -37,6 +37,7 @@ using IconButton = FontAwesome.Sharp.IconButton;
 using MessageBox = System.Windows.Forms.MessageBox;
 using System.Windows.Documents;
 using System.Reactive.Joins;
+using wfaIntegradoCom.Reportes;
 
 namespace wfaIntegradoCom
 
@@ -1478,9 +1479,11 @@ namespace wfaIntegradoCom
 
             if (String.IsNullOrEmpty(pcNombreFormulario) == false)
             {
-                frmFormulario = fnMenuDinamico(pcNombreFormulario, pintidTipoLlamada);
+                frmFormulario = fnMenuDinamico(pcNombreFormulario, 0);
                 if (frmFormulario != null)
                 {
+                   
+
                     if (frmFormulario.Name == "frmRegistrarVenta" && pintidTipoLlamada == 1)
                     {
                         frmRegistrarVenta frmRegVenta = new frmRegistrarVenta();
@@ -1488,7 +1491,15 @@ namespace wfaIntegradoCom
                     }
                     else
                     {
-                        frmFormulario.Show();
+                        if (frmFormulario.Name == "frmReportes")
+                        {
+                            frmReportes frm = new frmReportes();
+                            frm.Inicio(pintidTipoLlamada);
+                        }
+                        else
+                        {
+                            frmFormulario.Show();
+                        }
                     }
                 }
                 else

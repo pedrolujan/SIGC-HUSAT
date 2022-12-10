@@ -46,7 +46,7 @@ namespace CapaNegocio
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                return new List<Reporte> { };
             }
         }
         public DataTable blBuscarCronogramaEspecifico(Int32 idCron, Int32 idCont, Int32 tipoCon)

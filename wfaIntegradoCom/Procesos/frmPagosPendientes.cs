@@ -26,6 +26,7 @@ namespace wfaIntegradoCom.Procesos
         static List<ReporteBloque> lstDVenta=new List<ReporteBloque>();
         static List<Pagos> lstPagosTrand = new List<Pagos>();
         static Boolean estadoGuardarPago = false;
+        static DateTime stDtFechaDePago=DateTime.Now;
         Boolean estFecha=false, estMoneda=false;
         static List<Moneda> lstMon = new List<Moneda>();
 
@@ -34,9 +35,12 @@ namespace wfaIntegradoCom.Procesos
 
         public  void fnRecuperarTipoPago(List<Pagos> lstEntidades)
         {
-            lstEntidades[0].dFechaPago = dtFechaPago.Value;
-            lstEntidades[0].idMoneda = Convert.ToInt32(cboMoneda.SelectedValue);
             lstPagosTrand = lstEntidades;
+            for (int i = 0; i < lstPagosTrand.Count; i++)
+            {
+                lstPagosTrand[i].dFechaPago = stDtFechaDePago;
+                lstEntidades[i].idMoneda = Convert.ToInt32(cboMoneda.SelectedValue);
+            }
 
         }
         public void fnRecuperarEstadoGenVenta(Boolean estado)
@@ -351,6 +355,7 @@ namespace wfaIntegradoCom.Procesos
             var res= FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 1);
             estFecha = res.Item1;
             erFechaPago.Text = res.Item2;
+            stDtFechaDePago = dtFechaPago.Value;
         }
     }
 }
