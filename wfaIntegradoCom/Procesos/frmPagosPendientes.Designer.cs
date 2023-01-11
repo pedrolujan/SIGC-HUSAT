@@ -52,10 +52,14 @@
             this.btnTotalPag = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label41 = new System.Windows.Forms.Label();
             this.pnDatosPago = new Siticone.UI.WinForms.SiticonePanel();
+            this.cboTipoDocEmitir = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboMoneda = new Siticone.UI.WinForms.SiticoneComboBox();
             this.erFechaPago = new System.Windows.Forms.Label();
+            this.lblDocVenta = new System.Windows.Forms.Label();
             this.pbFechaPago = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.erMoneda = new System.Windows.Forms.Label();
+            this.pbDocVenta = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.imgMoneda = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -76,6 +80,7 @@
             this.gbPaginacion.SuspendLayout();
             this.pnDatosPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDocVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMoneda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).BeginInit();
             this.siticoneGroupBox1.SuspendLayout();
@@ -312,20 +317,44 @@
             // 
             // pnDatosPago
             // 
+            this.pnDatosPago.Controls.Add(this.cboTipoDocEmitir);
             this.pnDatosPago.Controls.Add(this.cboMoneda);
             this.pnDatosPago.Controls.Add(this.erFechaPago);
+            this.pnDatosPago.Controls.Add(this.lblDocVenta);
             this.pnDatosPago.Controls.Add(this.pbFechaPago);
+            this.pnDatosPago.Controls.Add(this.label2);
             this.pnDatosPago.Controls.Add(this.erMoneda);
+            this.pnDatosPago.Controls.Add(this.pbDocVenta);
             this.pnDatosPago.Controls.Add(this.label8);
             this.pnDatosPago.Controls.Add(this.imgMoneda);
             this.pnDatosPago.Controls.Add(this.label9);
             this.pnDatosPago.Controls.Add(this.dtFechaPago);
-            this.pnDatosPago.Location = new System.Drawing.Point(475, 89);
+            this.pnDatosPago.Location = new System.Drawing.Point(278, 89);
             this.pnDatosPago.Name = "pnDatosPago";
             this.pnDatosPago.ShadowDecoration.Parent = this.pnDatosPago;
-            this.pnDatosPago.Size = new System.Drawing.Size(517, 79);
+            this.pnDatosPago.Size = new System.Drawing.Size(714, 79);
             this.pnDatosPago.TabIndex = 287;
             this.pnDatosPago.Visible = false;
+            // 
+            // cboTipoDocEmitir
+            // 
+            this.cboTipoDocEmitir.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoDocEmitir.BorderColor = System.Drawing.Color.Silver;
+            this.cboTipoDocEmitir.BorderRadius = 5;
+            this.cboTipoDocEmitir.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoDocEmitir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoDocEmitir.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboTipoDocEmitir.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoDocEmitir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboTipoDocEmitir.HoveredState.Parent = this.cboTipoDocEmitir;
+            this.cboTipoDocEmitir.ItemHeight = 30;
+            this.cboTipoDocEmitir.ItemsAppearance.Parent = this.cboTipoDocEmitir;
+            this.cboTipoDocEmitir.Location = new System.Drawing.Point(511, 22);
+            this.cboTipoDocEmitir.Name = "cboTipoDocEmitir";
+            this.cboTipoDocEmitir.ShadowDecoration.Parent = this.cboTipoDocEmitir;
+            this.cboTipoDocEmitir.Size = new System.Drawing.Size(173, 36);
+            this.cboTipoDocEmitir.TabIndex = 279;
+            this.cboTipoDocEmitir.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocEmitir_SelectedIndexChanged);
             // 
             // cboMoneda
             // 
@@ -359,6 +388,18 @@
             this.erFechaPago.TabIndex = 284;
             this.erFechaPago.Text = "Error";
             // 
+            // lblDocVenta
+            // 
+            this.lblDocVenta.AutoSize = true;
+            this.lblDocVenta.BackColor = System.Drawing.Color.Transparent;
+            this.lblDocVenta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDocVenta.ForeColor = System.Drawing.Color.Red;
+            this.lblDocVenta.Location = new System.Drawing.Point(511, 59);
+            this.lblDocVenta.Name = "lblDocVenta";
+            this.lblDocVenta.Size = new System.Drawing.Size(32, 13);
+            this.lblDocVenta.TabIndex = 283;
+            this.lblDocVenta.Text = "Error";
+            // 
             // pbFechaPago
             // 
             this.pbFechaPago.BackColor = System.Drawing.Color.White;
@@ -367,6 +408,17 @@
             this.pbFechaPago.Size = new System.Drawing.Size(20, 20);
             this.pbFechaPago.TabIndex = 285;
             this.pbFechaPago.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(511, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(173, 18);
+            this.label2.TabIndex = 281;
+            this.label2.Text = "Documento de venta";
             // 
             // erMoneda
             // 
@@ -379,6 +431,15 @@
             this.erMoneda.Size = new System.Drawing.Size(32, 13);
             this.erMoneda.TabIndex = 283;
             this.erMoneda.Text = "Error";
+            // 
+            // pbDocVenta
+            // 
+            this.pbDocVenta.BackColor = System.Drawing.Color.White;
+            this.pbDocVenta.Location = new System.Drawing.Point(691, 30);
+            this.pbDocVenta.Name = "pbDocVenta";
+            this.pbDocVenta.Size = new System.Drawing.Size(20, 20);
+            this.pbDocVenta.TabIndex = 286;
+            this.pbDocVenta.TabStop = false;
             // 
             // label8
             // 
@@ -677,6 +738,7 @@
             this.pnDatosPago.ResumeLayout(false);
             this.pnDatosPago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDocVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMoneda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).EndInit();
             this.siticoneGroupBox1.ResumeLayout(false);
@@ -725,5 +787,9 @@
         private Siticone.UI.WinForms.SiticoneCircleButton btnTotalPag;
         private System.Windows.Forms.Label label41;
         private Siticone.UI.WinForms.SiticoneDragControl siticoneDragControl1;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocEmitir;
+        private System.Windows.Forms.Label lblDocVenta;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pbDocVenta;
     }
 }

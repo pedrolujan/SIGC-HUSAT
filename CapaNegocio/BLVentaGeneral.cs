@@ -65,12 +65,12 @@ namespace CapaNegocio
             }
         }
 
-        public Boolean blGuardarpagosPendientes(Int32 idTrandiaria, List<Pagos> lstTrand,Int32 tipoCon)
+        public Boolean blGuardarpagosPendientes(Int32 idTrandiaria, List<Pagos> lstTrand, List<xmlDocumentoVentaGeneral> lstXml, Int32 tipoCon)
         {
             DAVentaGeneral objVentaG = new DAVentaGeneral();
             try
             {
-                return objVentaG.daGuardarpagosPendientes( idTrandiaria,lstTrand,  tipoCon);
+                return objVentaG.daGuardarpagosPendientes( idTrandiaria,lstTrand, lstXml,  tipoCon);
             }
             catch (Exception ex)
             {

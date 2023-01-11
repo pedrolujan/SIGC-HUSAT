@@ -1616,7 +1616,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>11.9217cm</Top>
+            <Top>12.14395cm</Top>
             <Height>0.6cm</Height>
             <Width>3.30317cm</Width>
             <ZIndex>26</ZIndex>
@@ -1624,41 +1624,6 @@
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox33">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=": "+First(Fields!cDescripcionTipoPago.Value, "DocumentoVenta")</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>11.38195cm</Top>
-            <Left>3.33845cm</Left>
-            <Height>0.6cm</Height>
-            <Width>6.75979cm</Width>
-            <ZIndex>27</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -1674,7 +1639,7 @@
                   <TextRun>
                     <Value>=": "+First(Fields!cDescripEstadoPP.Value, "DocumentoVenta")</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1684,11 +1649,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>11.9217cm</Top>
+            <Top>12.14395cm</Top>
             <Left>3.33845cm</Left>
             <Height>0.6cm</Height>
             <Width>6.75979cm</Width>
-            <ZIndex>28</ZIndex>
+            <ZIndex>27</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1723,7 +1688,7 @@
             <Left>1.83383cm</Left>
             <Height>0.6cm</Height>
             <Width>6.75979cm</Width>
-            <ZIndex>29</ZIndex>
+            <ZIndex>28</ZIndex>
             <Visibility>
               <Hidden>=First(Fields!est0.Value, "DocumentoVenta")</Hidden>
             </Visibility>
@@ -1761,7 +1726,7 @@
             <Top>7.05887cm</Top>
             <Height>0.6cm</Height>
             <Width>1.83383cm</Width>
-            <ZIndex>30</ZIndex>
+            <ZIndex>29</ZIndex>
             <Visibility>
               <Hidden>=First(Fields!est0.Value, "DocumentoVenta")</Hidden>
             </Visibility>
@@ -1798,7 +1763,7 @@
             <Top>6.42387cm</Top>
             <Height>0.6cm</Height>
             <Width>1.83383cm</Width>
-            <ZIndex>31</ZIndex>
+            <ZIndex>30</ZIndex>
             <Visibility>
               <Hidden>=First(Fields!est0.Value, "DocumentoVenta")</Hidden>
             </Visibility>
@@ -1835,7 +1800,7 @@
             <Left>1.83383cm</Left>
             <Height>0.6cm</Height>
             <Width>11.13941cm</Width>
-            <ZIndex>32</ZIndex>
+            <ZIndex>31</ZIndex>
             <Visibility>
               <Hidden>=First(Fields!est0.Value, "DocumentoVenta")</Hidden>
             </Visibility>
@@ -1850,8 +1815,40 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!cDescripcionTipoPago.Value, "DocumentoVenta")</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>11.38195cm</Top>
+            <Left>3.33845cm</Left>
+            <Height>0.6cm</Height>
+            <Width>6.75979cm</Width>
+            <ZIndex>32</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>12.5217cm</Height>
+        <Height>12.8392cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1900,7 +1897,7 @@
                     <TextRun>
                       <Value>=First(Fields!cUsuario.Value, "DocumentoVenta")</Value>
                       <Style>
-                        <FontSize>9pt</FontSize>
+                        <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>

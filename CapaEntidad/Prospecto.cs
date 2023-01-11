@@ -143,10 +143,15 @@ namespace CapaEntidad
         public Double SumImporteAux12 { get; set; }
 
         public Int32 IdDetalleVenta { get; set; }
+
         public double indicador { get; set; }
         public Decimal indicadorDes { get; set; }
         public String strIndicador { get; set; }
         public String nombreIndicador { get; set; }
+
+        public double indiceCrecimientoImporte { get; set; }
+        public double indiceCrecimientoRow { get; set; }
+        public double indiceCrecimientoRowGraficos { get; set; }
 
         public Int32 TotalFilas { get; set; }
         public double ImporteTotalFilas { get; set; }

@@ -290,17 +290,19 @@ namespace CapaDato
                     Int32 counWhatsApp = 0;
                     Int32 counLlamada = 0;
                     Int32 counCliente = 0;
+                    Int32 counSoat = 0;
                     Int32 counTotales = 0;
 
                     foreach (DataRow dr in dtUsuario.Rows)
                     {
-                        Int32 totalFil = Convert.ToInt32(dr["OFICINA"]) + Convert.ToInt32(dr["REFERENCIA"]) + Convert.ToInt32(dr["FACEBOOK"]) + Convert.ToInt32(dr["WHATSAPP"])+ Convert.ToInt32(dr["LLAMADA"])+ Convert.ToInt32(dr["VOLANTE"])+ Convert.ToInt32(dr["CAMPO"])+ Convert.ToInt32(dr["CLIENTE"]);
+                        Int32 totalFil = Convert.ToInt32(dr["OFICINA"]) + Convert.ToInt32(dr["REFERENCIA"]) + Convert.ToInt32(dr["FACEBOOK"]) + Convert.ToInt32(dr["WHATSAPP"])+ Convert.ToInt32(dr["LLAMADA"])+ Convert.ToInt32(dr["CLIENTE"])+ Convert.ToInt32(dr["SOAT"]);
                         counOficina += Convert.ToInt32(dr["OFICINA"]);
                         counReferencia += Convert.ToInt32(dr["REFERENCIA"]);
                         counFacebook += Convert.ToInt32(dr["FACEBOOK"]);
                         counWhatsApp += Convert.ToInt32(dr["WHATSAPP"]);
                         counLlamada += Convert.ToInt32(dr["LLAMADA"]);
                         counCliente += Convert.ToInt32(dr["CLIENTE"]);
+                        counSoat += Convert.ToInt32(dr["SOAT"]);
                         counTotales += totalFil;
 
                         lstReporte.Add(new Reporte
@@ -312,10 +314,9 @@ namespace CapaDato
                             coddAux4 = dr["FACEBOOK"].ToString(),
                             coddAux5 = dr["WHATSAPP"].ToString(),
                             coddAux6 = dr["LLAMADA"].ToString(),
-                            coddAux7 = dr["VOLANTE"].ToString(),
-                            coddAux8 = dr["CAMPO"].ToString(),
-                            coddAux9 = dr["CLIENTE"].ToString(),
-                            SumColumns= totalFil
+                            coddAux7 = dr["CLIENTE"].ToString(),
+                            coddAux8 = dr["SOAT"].ToString(),
+                            SumColumns = totalFil
                         });
                         lstReporte[0].SumRowsAux2 = counOficina;
                         lstReporte[0].SumRowsAux3 = counReferencia;
@@ -323,9 +324,11 @@ namespace CapaDato
                         lstReporte[0].SumRowsAux5 = counWhatsApp;
                         lstReporte[0].SumRowsAux6 = counLlamada;
                         lstReporte[0].SumRowsAux7 = counCliente;
-                        lstReporte[0].SumRowsTotalFilas = counTotales;
+                        lstReporte[0].SumRowsAux8 = counSoat;
+
 
                     }
+                        lstReporte[0].SumRowsTotalFilas = counTotales;
                 }
                 
 

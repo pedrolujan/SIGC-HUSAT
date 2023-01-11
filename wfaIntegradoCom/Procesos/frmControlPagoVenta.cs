@@ -241,13 +241,13 @@ namespace wfaIntegradoCom.Procesos
                     //    restarFinal = 0;
                     //}
                     //DateTime fechaFinal = fechaInicio.AddDays((diasASumar- restarFinal));
-                    var resulFechas = fnConvertirFechas(lstDetalleCronograma[i].periodoInicio);
+                    //var resulFechas = fnConvertirFechas(lstDetalleCronograma[i].periodoInicio);
 
-                    lstDetalleCronograma[i].periodoInicio = resulFechas.Item1;
-                    lstDetalleCronograma[i].periodoFinal = resulFechas.Item2;
-                    lstDetalleCronograma[i].fechaEmision = lstDetalleCronograma[i].periodoFinal.AddDays(1);
-                    DateTime fechaVencimiento = lstDetalleCronograma[i].periodoFinal.AddDays(5);
-                    lstDetalleCronograma[i].fechaVencimiento = fechaVencimiento;
+                    //lstDetalleCronograma[i].periodoInicio = resulFechas.Item1;
+                    //lstDetalleCronograma[i].periodoFinal = resulFechas.Item2;
+                    //lstDetalleCronograma[i].fechaEmision = lstDetalleCronograma[i].periodoFinal.AddDays(1);
+                    //DateTime fechaVencimiento = lstDetalleCronograma[i].periodoFinal.AddDays(5);
+                    //lstDetalleCronograma[i].fechaVencimiento = fechaVencimiento;
                     
 
                     String strDescuento = "";
@@ -484,7 +484,7 @@ namespace wfaIntegradoCom.Procesos
                         }
                         else if (numDiasMespago <= 29 && dtFechaInicio.Month == 2)
                         {
-                            diasASumar = numDiasMesAdd > 30 ? (30 - 1) : numDiasMesAdd - 1;
+                            diasASumar = numDiasMesAdd > 30 ? (numDiasMesAdd - 1) : numDiasMesAdd - 1;
 
                         }
                         else
@@ -506,7 +506,8 @@ namespace wfaIntegradoCom.Procesos
                             restarFinal = 0;
                         }
 
-                        DateTime dtFechaPagoCronograma = fechaInicio.AddDays((diasASumar - restarFinal));
+                        //DateTime dtFechaPagoCronograma = fechaInicio.AddDays((diasASumar - restarFinal));
+                        DateTime dtFechaPagoCronograma = Convert.ToDateTime(drMenu["FechaPago"].ToString());
                         var resulFechas = fnConvertirFechas(dtFechaInicio);
 
                         //Int32 cantDiasMesPago = DateTime.DaysInMonth(dtFechaDePago.Year, dtFechaDePago.Month);
@@ -662,7 +663,7 @@ namespace wfaIntegradoCom.Procesos
                 Boolean bResult = false;
                 lstC.Clear();
                 dtFechaPago.Value = Variables.gdFechaSis;
-                FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
+                //FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
                
@@ -772,10 +773,10 @@ namespace wfaIntegradoCom.Procesos
                         //{
                         diaCicloPago = Convert.ToInt32(clsDetCro[j].cDiaCiclo);
                         var resulFechas = fnConvertirFechas(clsDetCro[j].periodoInicio);
-                        clsDetCro[j].periodoInicio = resulFechas.Item1;
-                        clsDetCro[j].periodoFinal = resulFechas.Item2;
-                        clsDetCro[j].fechaEmision = clsDetCro[j].periodoFinal.AddDays(1);
-                        clsDetCro[j].fechaVencimiento = clsDetCro[j].periodoFinal.AddDays(5);
+                        //clsDetCro[j].periodoInicio = resulFechas.Item1;
+                        //clsDetCro[j].periodoFinal = resulFechas.Item2;
+                        //clsDetCro[j].fechaEmision = clsDetCro[j].periodoFinal.AddDays(1);
+                        //clsDetCro[j].fechaVencimiento = clsDetCro[j].periodoFinal.AddDays(5);
 
                             if (clsDetCro[j].fechaVencimiento < Variables.gdFechaSis)
                             {
@@ -795,7 +796,7 @@ namespace wfaIntegradoCom.Procesos
                                         else if (clsDetCro[j].estado == "ESPV0003" && clsDetCro[j - 1].estado == "ESPV0003")
                                         {
                                         dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
-                                    }
+                                        }
                                         else if (clsDetCro[j].estado == "ESPV0001" && clsDetCro[j - 1].estado == "ESPV0004")
                                         {
                                             dtCP.daActualizarEstados(clsDetCro[j].idDetalleCronograma, "ESPV0004", 1);
@@ -1137,7 +1138,7 @@ namespace wfaIntegradoCom.Procesos
                 (
                     dc.idDetalleCronograma,
                     y + 1,
-                    "Cuota " + dc.fechaEmision.ToString("MMMM  yyyy") + " - Placa " + dc.ClaseVehiculo.vPlaca,
+                    "Cuota " + dc.periodoFinal.ToString("MMMM  yyyy") + " - Placa " + dc.ClaseVehiculo.vPlaca,
                     FunGeneral.fnFormatearPrecio("S/.",dc.total,0)
 
                 ); 
@@ -1361,7 +1362,7 @@ namespace wfaIntegradoCom.Procesos
             //};
             arrayPrimerPago = new string[]
             {
-                "Cuota "+lstDetalleCronograma[fila].fechaEmision.ToString("MMMM  yyyy")+" - Plan "+FunGeneral.FormatearCadenaTitleCase(txtPlan.Text)
+                "Cuota "+lstDetalleCronograma[fila].periodoFinal.ToString("MMMM  yyyy")+" - Plan "+FunGeneral.FormatearCadenaTitleCase(txtPlan.Text)
             };
 
 
@@ -1433,7 +1434,7 @@ namespace wfaIntegradoCom.Procesos
                 {
                     IdDetalleVenta = dcr.idDetalleCronograma,
                     Numeracion = 1 + y,
-                    Descripcion = "Cuota " + dcr.fechaEmision.ToString("MMMM  yyyy") + dato,
+                    Descripcion = "Cuota " + dcr.periodoFinal.ToString("MMMM  yyyy") + dato,
                     idTipoTarifa = dcr.ClaseTarifa.IdTarifa,
                     PrecioUni = dcr.precioUnitario,
                     Descuento = dcr.descuento,
@@ -1473,8 +1474,8 @@ namespace wfaIntegradoCom.Procesos
             DetalleVenta dvMensual = new DetalleVenta();
 
             clsDVC.Total = lstDV.Sum(item => item.Importe);
-            clsDVC.IGV = (clsDVC.Total * 0.18);
-            clsDVC.SubTotal = clsDVC.Total - clsDVC.IGV;
+            clsDVC.SubTotal = (clsDVC.Total / 1.18);
+            clsDVC.IGV = (clsDVC.Total - clsDVC.SubTotal);
             clsDVC.SimboloMoneda = clsMoneda.cSimbolo;
             clsDVC.NombreDocumento = Convert.ToString(cboComprobanteP.Text);
             clsDVC.CodDocumento = Convert.ToString(cboComprobanteP.SelectedValue);
@@ -1520,7 +1521,7 @@ namespace wfaIntegradoCom.Procesos
                     claseControlPagos = new ControlPagos
                     {
                         fechaRegistro = Variables.gdFechaSis,
-                        fechaPago = dtFechaPagoCuota,
+                        fechaPago = FunGeneral.fnUpdateFechas(dtFechaPagoCuota),
                         fechaVenta = clsDetCronogramaEspecifico.fechaRegistro,
                         claseCliente = clsCliente,
                         claseCronograma = clsCronograma,
@@ -1567,7 +1568,7 @@ namespace wfaIntegradoCom.Procesos
                     {
                         cCodVenta= cCodigoVenta,
                         fechaRegistro = Variables.gdFechaSis,
-                        fechaPago = dtFechaPagoCuota,
+                        fechaPago = FunGeneral.fnUpdateFechas(dtFechaPagoCuota),
                         fechaVenta = clsDetCronogramaEspecifico.fechaRegistro,
                         claseCliente = clsCliente,
                         claseCronograma = clsCronograma,
@@ -2296,11 +2297,22 @@ namespace wfaIntegradoCom.Procesos
             DAControlPagos frm = new DAControlPagos();
             Boolean res = false;
             Boolean estadoActualizar = false;
+            List<DetalleCronograma> lstDetCron=new List<DetalleCronograma>();
+
             for (Int32 i=0;i< lstDetalleCronograma.Count;i++)
             {
-                if (lstDetalleCronograma[i].estado== "PAGO PENDIENTE" && lstDetalleCronograma[i-1].estado== "CORTE")
+                if (lstDetalleCronograma[i].estado!= "CUOTA PAGADA")
+                {
+                    lstDetCron.Add(lstDetalleCronograma[i]);
+                }
+                
+            }
+            for (int i = 0; i < lstDetCron.Count; i++)
+            {
+                if ((lstDetCron[i].estado == "PAGO PENDIENTE" && lstDetCron[i - 1].estado == "CORTE") || (lstDetCron[i].estado == "CORTE" && lstDetCron[i - 1].estado == "CORTE") || (lstDetCron[i].estado == "CORTE" && lstDetCron[i - 1].estado == "VENCIDO"))
                 {
                     estadoActualizar = true;
+                    break;
                 }
             }
             Cronograma dcr = lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
@@ -2350,6 +2362,7 @@ namespace wfaIntegradoCom.Procesos
         {
            Int32 estadoApertura = FunGeneral.fnVerificarApertura(Variables.gnCodUser);
             //MessageBox.Show("Aun en desarrollo espere la proxima version","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            DateTime dtt = FunGeneral.fnUpdateFechas(dtFechaPagoCuota);
             if (estadoApertura==1)
             {
                 if (estadoComprabanteP == true && estadoFechaPago == true)
@@ -2564,8 +2577,8 @@ namespace wfaIntegradoCom.Procesos
                 {
                     if (filaSeleccionada.Index==0)
                     {
-                        if (lstCronograma[index + 1].estado == "ESPV0002")
-                        {
+                        //if (lstCronograma[index + 1].estado == "ESPV0002")
+                        //{
                             DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n" + dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                             if (EstadoDialog == DialogResult.Yes)
                             {
@@ -2577,11 +2590,11 @@ namespace wfaIntegradoCom.Procesos
                                 frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
                                 fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Aun no puede generar este pago ! \n porque falta Completar los pagos del contrato anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        //}
+                        //else
+                        //{
+                        //    MessageBox.Show("Aun no puede generar este pago ! \n porque falta Completar los pagos del contrato anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //}
 
                     }
                     else

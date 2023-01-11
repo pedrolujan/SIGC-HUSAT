@@ -444,18 +444,22 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public Boolean daGuardarpagosPendientes(Int32 idTrandiaria, List<Pagos> lstTrand, Int32 tipoCon)
+        public Boolean daGuardarpagosPendientes(Int32 idTrandiaria, List<Pagos> lstTrand, List<xmlDocumentoVentaGeneral> lstXml, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[3];
+            SqlParameter[] pa = new SqlParameter[6];
             DataTable dtVentaG;
             clsConexion objCnx = null;
             String xmlTrandiaria = clsUtil.Serialize(lstTrand);
+            String xmDocumentoVenta = clsUtil.Serialize(lstXml);
             objUtil = new clsUtil();
             try
             {
                 pa[0] = new SqlParameter("@idTrandiaria", SqlDbType.Int) { Value = idTrandiaria };
                 pa[1] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml) { Value = xmlTrandiaria };
-                pa[2] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[2] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmDocumentoVenta };
+                pa[3] = new SqlParameter("@dtFechaRegistro", SqlDbType.DateTime) { Value = lstTrand[0].dFechaPago };
+                pa[4] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = lstTrand[0].idUsario };
+                pa[5] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
 
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimientoDT("uspGuardarPagosPendientes", pa);

@@ -1530,6 +1530,7 @@ namespace wfaIntegradoCom.Mantenedores
                         dt.Clear();
                         dt.Columns.Add("ID");
                         dt.Columns.Add("SIMCARD");
+                        dt.Columns.Add("SERIE");
                         dt.Columns.Add("OPERADOR");
                         dt.Columns.Add("N° DE CUENTA");
                         dt.Columns.Add("FECHA DE REACTIVACIÓN");
@@ -1606,6 +1607,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                             object[] row = { datOperador.Rows[i][0],
                                             datOperador.Rows[i][1],
+                                            datOperador.Rows[i][8],
                                             datOperador.Rows[i][2],
                                             Cuenta,
                                             date+diferenciaDias ,
@@ -1620,9 +1622,10 @@ namespace wfaIntegradoCom.Mantenedores
                         dgChip.Columns[0].Width = 12;
                         dgChip.Columns[1].Width = 30;
                         dgChip.Columns[2].Width = 30;
-                        dgChip.Columns[3].Width = 35;
+                        dgChip.Columns[3].Width = 30;
                         dgChip.Columns[4].Width = 35;
-                        dgChip.Columns[5].Width = 100;
+                        dgChip.Columns[5].Width = 35;
+                        dgChip.Columns[6].Width = 100;
 
                         Int32 totalRegistros = Convert.ToInt32(datOperador.Rows[0][7]);
                         if (tipoConPagina == -1) {

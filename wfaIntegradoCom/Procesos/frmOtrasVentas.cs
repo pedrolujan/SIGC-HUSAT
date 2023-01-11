@@ -382,7 +382,9 @@ namespace wfaIntegradoCom.Procesos
                     DocumentoVenta.nMontoTotal = TotalGeneral;
 
                     txtTotal.Text = Mon.cSimbolo + " " + string.Format("{0:0.00}", DocumentoVenta.nMontoTotal);
-                    CalcIgv = (TotVenta.Total * fnDebolverIgv()) / 100;
+                    SubTotal = (TotalGeneral /1.18);
+                    TotVenta.Subtotal = SubTotal;
+                    CalcIgv = (TotVenta.Total - TotVenta.Subtotal);
 
                     TotVenta.Igv = CalcIgv;
                     DocumentoVenta.nIGV = CalcIgv;
@@ -391,8 +393,6 @@ namespace wfaIntegradoCom.Procesos
                     lstOtrasVentas[0].IgvPrecio = CalcIgv;
                     txtShowCalcIgv.Text = Mon.cSimbolo + " " + string.Format("{0:0.00}", DocumentoVenta.nIGV);
 
-                    SubTotal = TotalGeneral - CalcIgv;
-                    TotVenta.Subtotal = SubTotal;
                     DocumentoVenta.nSubtotal = SubTotal;
 
                     txtSubTotal.Text = Mon.cSimbolo + " " + string.Format("{0:0.00}", DocumentoVenta.nSubtotal);
@@ -1999,7 +1999,7 @@ namespace wfaIntegradoCom.Procesos
                         y++;
                         dgListaVentas.Rows.Add(
                             dr["idContrato"],
-                            dr["idVentaGeneral"],
+                            dr["idDocumentoVenta"],
                             y,
                             FunGeneral.GetFechaHoraFormato(Convert.ToDateTime(dr["dFechaOperacion"]),1),
                             dr["vPlaca"],
@@ -2787,14 +2787,14 @@ namespace wfaIntegradoCom.Procesos
         {
             DataGridView dg = dgListaVentas;
             
-            Int32 idContrato = Convert.ToInt32(dg.CurrentRow.Cells[0].Value);
+            Int32 idContrato = Convert.ToInt32(dg.CurrentRow.Cells[1].Value);
 
             fnBuscarDocumentoVenta(idContrato);
         }
 
         private void siticoneButton1_Click(object sender, EventArgs e)
         {
-            fnBuscarDocumentoVenta(6429);
+            fnBuscarDocumentoVenta(6974);
         }
 
         private void siticoneGroupBox2_Click(object sender, EventArgs e)
@@ -3052,7 +3052,7 @@ namespace wfaIntegradoCom.Procesos
             {
 
                 List<OtrasVentas> lstDetalleVenta = fnRecorrerGrilla();
-                if (estCliente == true && estPLACA == true && estMotivo == true && estDocumentoEmitir == true)
+                if (estPLACA == true && estMotivo == true && estDocumentoEmitir == true)
                 {
                     if (estDocumentoEmitir == true)
                     {

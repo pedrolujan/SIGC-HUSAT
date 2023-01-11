@@ -66,12 +66,13 @@ namespace wfaIntegradoCom
         Padding PaddingbtnSubMenu = new Padding(10, 0, 0, 0);
 
         static Int32 tabInicio = 0;
-        List<ReporteBloque> lstCajaChica = new List<ReporteBloque>();
+        static List<ReporteBloque> lstCajaChica = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloque = new List<ReporteBloque>();
+        List<ReporteBloque> lsReporteBloqueDetalleEgresos = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueEgresos = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueEgresosMontoEnCaja = new List<ReporteBloque>();
         List<ReporteBloque> lstRepDetalleIngresos = new List<ReporteBloque>();
-        List<ReporteBloque> lstRepDetalleIngresosDAshboard = new List<ReporteBloque>();
+        static List<ReporteBloque> lstRepDetalleIngresosDAshboard = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueGen = new List<ReporteBloque>();
 
         List<ReporteBloque> lstMasDetalleReporte = new List<ReporteBloque>();
@@ -463,7 +464,7 @@ namespace wfaIntegradoCom
             
 
             try
-            {
+                {
                 login();
                 FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltraIngresos, "idOperacion", "cNombreOperacion", "OperacionHusat", "cTipoConcepto", "TICO0004", true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboTipoPago, "TIPA", true);
@@ -963,6 +964,55 @@ namespace wfaIntegradoCom
 
             }
         }
+        private void fnCargarSubMenuReportes(String pcCodMenu)
+        {
+            DataView dvMenu = new DataView(dtMenu.Tables[0]);
+            dvMenu.RowFilter = "cMenuPadre = " + pcCodMenu.ToString().Trim();
+
+            y = 0;
+            int posX, posY;
+            int alto, ancho;
+            ancho = (subMenuReportes.Width / 4);
+            alto = (subMenuReportes.Height / 3);
+            posX = 0;
+            posY = 0;
+            title = new System.Windows.Forms.Label();
+            this.subMenuReportes.Controls.Clear();
+
+            foreach (DataRowView drv in dvMenu)
+            {
+                //TreeNode nuevoNodo = new TreeNode();
+
+                System.Windows.Forms.Button temp = new System.Windows.Forms.Button();
+
+                temp.Height = 35;
+                temp.Width = 200;
+
+                temp.Name = drv["cMenuCod"].ToString().Trim();
+                temp.Text = drv["cMenuNombre"].ToString().Trim();
+                temp.Tag = Convert.ToInt32(drv["intIdTipoLlamada"]);
+
+                temp.Dock = DockStyle.Top;
+                temp.ForeColor = Variables.ColorForeColorSubMenus;
+                temp.BackColor = Variables.ColorBackColorSubMenus;
+                temp.FlatAppearance.BorderSize = 0;
+                temp.Cursor = System.Windows.Forms.Cursors.Hand;
+                temp.FlatStyle = FlatStyle.Flat;
+                temp.TextAlign = ContentAlignment.MiddleLeft;
+                temp.Padding = new Padding(10, 0, 0, 0);
+
+                temp.Click += subMenuReportes_Click;
+                temp.Location = new Point(10, (y + 5));
+                y += temp.Height;
+
+                if (subMenuReportes.Controls.Count > 0)
+                {
+                    posX = posX + ancho;
+                }
+                this.subMenuReportes.Controls.Add(temp);
+
+            }
+        }
 
         private void fnCargarSubMenuConfiguracion(String pcCodMenu)
         {
@@ -1129,22 +1179,14 @@ namespace wfaIntegradoCom
                 btnOpciones.IconColor = Color.FromArgb(71, 71, 71);
                 btnPersonalizacion.ForeColor = Color.FromArgb(71, 71, 71);
                 btnPersonalizacion.IconColor = Color.FromArgb(71, 71, 71);
-                btnVenta.ForeColor = ColorThemas.FuenteBotones;
-                btnVenta.IconColor = ColorThemas.IconoBotones;
-                btnRecaudacion.ForeColor = ColorThemas.FuenteBotones;
-                btnRecaudacion.IconColor = ColorThemas.IconoBotones;
-                btnComercial.ForeColor = ColorThemas.FuenteBotones;
-                btnComercial.IconColor = ColorThemas.IconoBotones;
-                btnLogistica.ForeColor = ColorThemas.FuenteBotones;
-                btnLogistica.IconColor = ColorThemas.IconoBotones;
-                btnSistemas.IconColor = ColorThemas.IconoBotones;
-                btnSistemas.ForeColor = ColorThemas.FuenteBotones;
-                btnRrhh.IconColor = ColorThemas.IconoBotones;
-                btnRrhh.ForeColor = ColorThemas.FuenteBotones;
-                btnConfiguracion.IconColor = ColorThemas.IconoBotones;
-                btnConfiguracion.ForeColor = ColorThemas.FuenteBotones;
-                btnSoporte.IconColor = ColorThemas.IconoBotones;
-                btnSoporte.ForeColor = ColorThemas.FuenteBotones;
+                var pnMenuBtn0 = panelMenuPrincipal.Controls.OfType<IconButton>();
+
+                foreach (IconButton bt in pnMenuBtn0)
+                {
+                    bt.ForeColor= ColorThemas.FuenteBotones;
+                    bt.IconColor = ColorThemas.IconoBotones;
+                }
+                
 
                 btnOpciones.IconColor = ColorThemas.IconoBotones;
                 btnOpciones.ForeColor = ColorThemas.FuenteBotones;
@@ -1166,34 +1208,18 @@ namespace wfaIntegradoCom
 
 
             //Color a las letra he iconos de los botones
-            btnVenta.ForeColor = ColorThemas.FuenteBotones;
-            btnVenta.IconColor = ColorThemas.IconoBotones;
-            btnRecaudacion.ForeColor = ColorThemas.FuenteBotones;
-            btnRecaudacion.IconColor = ColorThemas.IconoBotones;
-            btnComercial.ForeColor = ColorThemas.FuenteBotones;
-            btnComercial.IconColor = ColorThemas.IconoBotones;
-            btnLogistica.ForeColor = ColorThemas.FuenteBotones;
-            btnLogistica.IconColor = ColorThemas.IconoBotones;
-            btnSistemas.IconColor = ColorThemas.IconoBotones;
-            btnSistemas.ForeColor = ColorThemas.FuenteBotones;
-            btnRrhh.IconColor = ColorThemas.IconoBotones;
-            btnRrhh.ForeColor = ColorThemas.FuenteBotones;
-            btnConfiguracion.IconColor = ColorThemas.IconoBotones;
-            btnConfiguracion.ForeColor = ColorThemas.FuenteBotones;
-            btnSoporte.IconColor = ColorThemas.IconoBotones;
-            btnSoporte.ForeColor = ColorThemas.FuenteBotones;
+            var pnMenuBtn = panelMenuPrincipal.Controls.OfType<IconButton>();
+
+            foreach (IconButton bt in pnMenuBtn)
+            {
+                bt.BackColor = ColorThemas.PanelBotones;
+                bt.ForeColor = ColorThemas.FuenteBotones;
+                bt.IconColor = ColorThemas.IconoBotones;
+            }
+
             treeView1.BackColor = ColorThemas.PanelPadre;
             panelIzquierdo.BackColor = ColorThemas.PanelBotones;
 
-            //Botones del Menu Principal
-            btnVenta.BackColor = ColorThemas.PanelBotones;
-            btnRecaudacion.BackColor = ColorThemas.PanelBotones;
-            btnComercial.BackColor = ColorThemas.PanelBotones;
-            btnLogistica.BackColor = ColorThemas.PanelBotones;
-            btnSistemas.BackColor = ColorThemas.PanelBotones;
-            btnRrhh.BackColor = ColorThemas.PanelBotones;
-            btnConfiguracion.BackColor = ColorThemas.PanelBotones;
-            btnSoporte.BackColor = ColorThemas.PanelBotones;
             PanelEncavezadoFondo1.BackColor = ColorThemas.BarraAccesoDirectos;
             btnOpciones.BackColor = ColorThemas.PanelPadre;
             btnPersonalizacion.BackColor = ColorThemas.PanelPadre;
@@ -1930,6 +1956,7 @@ namespace wfaIntegradoCom
             subMenuRrhh.Visible = false;
             subMenuConfiguracion.Visible = false;
             subMenuSoporte.Visible = false;
+            subMenuReportes.Visible = false;
 
         }
         private void OcultarSubMenu()
@@ -1950,6 +1977,8 @@ namespace wfaIntegradoCom
                 subMenuConfiguracion.Visible = false;
             if (subMenuSoporte.Visible == true)
                 subMenuSoporte.Visible = false;
+            if (subMenuReportes.Visible == true)
+                subMenuReportes.Visible = false;
 
         }
         private void MostrarSubMenu(System.Windows.Forms.Panel subMenu)
@@ -2449,42 +2478,25 @@ namespace wfaIntegradoCom
             if (ToggleBotonesAnchos.Checked == false)
             {
                 int sizebtn = 25;
-                btnVenta.Size= new Size(222, 35);
-                btnVenta.IconSize = sizebtn;
-                btnComercial.Size= new Size(222, 35);
-                btnComercial.IconSize = sizebtn;
-                btnConfiguracion.Size= new Size(222, 35);
-                btnConfiguracion.IconSize = sizebtn;
-                btnLogistica.Size= new Size(222, 35);
-                btnLogistica.IconSize = sizebtn;
-                btnSistemas.Size= new Size(222, 35);
-                btnSistemas.IconSize = sizebtn;
-                btnRrhh.Size= new Size(222, 35);
-                btnRrhh.IconSize = sizebtn;
-                btnRecaudacion.Size= new Size(222, 35);
-                btnRecaudacion.IconSize = sizebtn;
-                btnSoporte.Size = new Size(222, 35);
-                btnSoporte.IconSize = sizebtn;
+               
+                var pnMenuBtn = panelMenuPrincipal.Controls.OfType<IconButton>();
+
+                foreach (IconButton bt in pnMenuBtn)
+                {
+                    bt.Size = new Size(222, 35);
+                    bt.IconSize = sizebtn;
+                }
             }
             else
             {
                int sizebtn = 32;
-                btnVenta.Size = new Size(222, 55);
-                btnVenta.IconSize = sizebtn;
-                btnComercial.Size = new Size(222, 55);
-                btnComercial.IconSize = sizebtn;
-                btnConfiguracion.Size = new Size(222, 55);
-                btnConfiguracion.IconSize = sizebtn;
-                btnLogistica.Size = new Size(222, 55);
-                btnLogistica.IconSize = sizebtn;
-                btnSistemas.Size = new Size(222, 55);
-                btnSistemas.IconSize = sizebtn;
-                btnRrhh.Size = new Size(222, 55);
-                btnRrhh.IconSize = sizebtn;
-                btnRecaudacion.Size = new Size(222, 55);
-                btnRecaudacion.IconSize = sizebtn;
-                btnSoporte.Size = new Size(222, 35);
-                btnSoporte.IconSize = sizebtn;
+                var pnMenuBtn = panelMenuPrincipal.Controls.OfType<IconButton>();
+
+                foreach (IconButton bt in pnMenuBtn)
+                {
+                    bt.Size = new Size(222, 35);
+                    bt.IconSize = sizebtn;
+                }
             }
 
         }
@@ -2570,13 +2582,16 @@ namespace wfaIntegradoCom
             clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
             clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
             clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
-            clsBusq.cod2 = tipoCon == -1 ? "0" : codOperacion;
+            clsBusq.cod2 =  "0";
             clsBusq.cod3 = cboUsuario.SelectedValue is null ? "" + Variables.gnCodUser : cboUsuario.SelectedValue.ToString();
             clsBusq.cod4 = Convert.ToString(cboTipoPago.SelectedValue);
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
             clsBusq.numPagina = numPagina;
             clsBusq.tipoCon = tipoCon;
-
+            if (Variables.gsCargoUsuario != "PETR0006" && verifApertura())
+            {
+                clsBusq.cod3 = "" + Variables.gnCodUser;
+            }
 
             String cBuscar = txtBuscarRepGeneral.Text.ToString();
             Boolean chkHabilitarFechas = chkHabilitarFechasBusG.Checked;
@@ -2752,7 +2767,6 @@ namespace wfaIntegradoCom
 
             if (tipoCon == -1)
             {
-                FunGeneral.fnVerificarAperturaAnterior(Convert.ToDateTime(dtFechaInicioG.Value), Convert.ToInt32(cboUsuario.SelectedValue));
                 lsReporteBloqueGen = lsReporteBloque;
                 fnGenerarTabla(dgv, lsReporteBloque.Count, lsReporteBloque);
                 dgvEgresos3.Visible = false;
@@ -2765,6 +2779,8 @@ namespace wfaIntegradoCom
                     lsReporteBloqueEgresosMontoEnCaja = fnBuscarEgresos(-1, 0);
                     //lsReporteBloqueEgresosMontoEnCaja.Clear();
                     lstRepDetalleIngresosDAshboard = fnBuscarDetalleParaCuadreDashboard();
+
+                    Variables.lstCuardreCaja=FunGeneral.fnVerificarAperturaAnterior(Convert.ToDateTime(dtFechaInicioG.Value), Convert.ToInt32(cboUsuario.SelectedValue));
                     Double MontoIngresos = lstRepDetalleIngresosDAshboard.Sum(i => i.ImporteRow);
                     Double MontoEgresos = lsReporteBloqueEgresosMontoEnCaja.Sum(i => i.ImporteRow);
                     CuadreCaja lstApertura = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1) is null ? new CuadreCaja() : Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
@@ -3475,6 +3491,7 @@ namespace wfaIntegradoCom
                 dtFechaFinG.Visible = false;
                 lblFechaInicial.Text = "Elija el dia para buscar:";
                 btnMontoEnCaja.Visible = true;
+                dtFechaInicioG.Value = Variables.gdFechaSis;
             }
             else
             {
@@ -3482,6 +3499,7 @@ namespace wfaIntegradoCom
                 dtFechaFinG.Visible = true;
                 lblFechaInicial.Text = "Fecha Inicio:";
                 btnMontoEnCaja.Visible = false;
+                dtFechaInicioG.Value = dtFechaFinG.Value.AddDays(-(dtFechaFinG.Value.Day - 1));
             }
         }
 
@@ -3691,6 +3709,10 @@ namespace wfaIntegradoCom
             clsBusq.cod4 = "";
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
             clsBusq.tipoCon=-1;
+            if (verifApertura())
+            {
+                clsBusq.cod3 = ""+Variables.gnCodUser;
+            }
 
 
             return bl.blDetalleParaCuadre(clsBusq, lsReporteBloqueGen);
@@ -3713,7 +3735,11 @@ namespace wfaIntegradoCom
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
             clsBusq.tipoCon=Variables.gsCargoUsuario== "PETR0006"? -1:0;
 
-
+            //if (Variables.gsCargoUsuario != "PETR0006")
+            //{
+            //    clsBusq.cod3 = "" + Variables.gnCodUser;
+            //    clsBusq.tipoCon =  -1 ;
+            //}
             return bl.blDetalleParaCuadre(clsBusq, lsReporteBloqueGen);
         }
         private void fnValidarListasVecias()
@@ -3769,15 +3795,23 @@ namespace wfaIntegradoCom
                 if (dtFechaInicioG.Value.ToString("yyyy-MM-dd") == Variables.gdFechaSis.ToString("yyyy-MM-dd"))
                 {
                     lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
+                    lsReporteBloqueDetalleEgresos = fnBuscarEgresos(-2,0);
+                    for (int i = 0; i < lsReporteBloqueDetalleEgresos.Count; i++)
+                    {
+                        lsReporteBloqueDetalleEgresos[i].numero = i + 1;
+                    }
+
                     fnValidarListasVecias();
                     frmMovimientoCaja frmMC = new frmMovimientoCaja();
                     lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
-
-                    lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
+                    if (lsReporteBloqueDetalleEgresos.Count>0)
+                    {
+                        lsReporteBloqueDetalleEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueDetalleEgresos[0].SimboloMoneda, lsReporteBloqueDetalleEgresos.Sum(i => i.ImporteRow), 0);
+                    }
 
                     lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
-                    frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0);
+                    frmMC.Inicio(lsReporteBloque, lsReporteBloqueDetalleEgresos, lstRepDetalleIngresos, lstCajaChica, 0,1);
                     fnActivarDashBoard(estadoActivarDashBoard);
                 }
                 else
@@ -3788,19 +3822,73 @@ namespace wfaIntegradoCom
             }
             else
             {
-                lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
-                fnValidarListasVecias();
-                frmMovimientoCaja frmMC = new frmMovimientoCaja();
-                lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
+                if (verifApertura() != true)
+                {
+                    DialogResult resul = MessageBox.Show("¿DESEA APERTURAR CAJA?", "Importente!!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resul == DialogResult.Yes)
+                    {
+                        if (dtFechaInicioG.Value.ToString("yyyy-MM-dd") == Variables.gdFechaSis.ToString("yyyy-MM-dd"))
+                        {
+                            lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
+                            fnValidarListasVecias();
+                            frmMovimientoCaja frmMC = new frmMovimientoCaja();
+                            lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
 
-                lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
+                            lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
 
-                lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
+                            lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
-                frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, -1);
-                fnActivarDashBoard(estadoActivarDashBoard);
+                            frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0, 1);
+                            fnActivarDashBoard(estadoActivarDashBoard);
+                        }
+                        else
+                        {
+                            MessageBox.Show("La fecha de busqueda debe ser igual a la fecha actual", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
+                        fnValidarListasVecias();
+                        frmMovimientoCaja frmMC = new frmMovimientoCaja();
+                        lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
+
+                        lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
+
+                        lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
+
+                        frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, -1, 0);
+                        fnActivarDashBoard(estadoActivarDashBoard);
+                    }
+                }
+
+                else if(verifApertura() == true)
+                {
+                    if (dtFechaInicioG.Value.ToString("yyyy-MM-dd") == Variables.gdFechaSis.ToString("yyyy-MM-dd"))
+                    {
+                        lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
+                        fnValidarListasVecias();
+                        frmMovimientoCaja frmMC = new frmMovimientoCaja();
+                        lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
+
+                        lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
+
+                        lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
+
+                        frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0, 1);
+                        fnActivarDashBoard(estadoActivarDashBoard);
+                    }
+                    else
+                    {
+                        MessageBox.Show("La fecha de busqueda debe ser igual a la fecha actual", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
-            
+            if (Variables.gsCargoUsuario != "PETR0006" && verifApertura()==true)
+            {
+                fnLlenarUsuariosConAccion(cboUsuario, dtFechaInicioG, dtFechaFinG, true);
+                cboUsuario.SelectedValue = Variables.gnCodUser;
+            }
 
         }
 
@@ -3815,22 +3903,23 @@ namespace wfaIntegradoCom
             else if (estadoApertura == 0)
             {
 
-                MessageBox.Show("Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show("Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 est = false;
             }
             else
             {
-                MessageBox.Show("Ya cerraste caja. Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show("Ya cerraste caja. Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 est = false;
             }
             return est;
         }
         private void btnRegistrarEgresos_Click(object sender, EventArgs e)
         {
-            if (verifApertura()==true)
+            if (verifApertura()==true || Variables.gsCargoUsuario== "PETR0007")
             {
                 frmRegistrarEgresos frmRE = new frmRegistrarEgresos();
-                frmRE.Inicio(0);
+                lsReporteBloqueDetalleEgresos = fnBuscarEgresos(-2, 0);
+                frmRE.Inicio(0,lstCajaChica, lstRepDetalleIngresosDAshboard, lsReporteBloqueDetalleEgresos);
                 fnBuscarReporteGeneralVentas(dgvListaPorBloque, 0, -1);
             }
             
@@ -3887,6 +3976,36 @@ namespace wfaIntegradoCom
         private void btnAlertaSeguimiento_Click(object sender, EventArgs e)
         {
             fnMostrarAlertaSeguimiento();
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            LoadCarga = false;
+
+            fnBotonActivo(sender, Variables.ColorEmpresa);
+
+            MostrarSubMenu(subMenuReportes);
+
+
+            treeView1.Nodes.Clear();
+            lcCodMenu = "8881100000";
+            fnCargarSubMenuReportes(lcCodMenu);
+        }
+
+        private void subMenuReportes_Click(object sender, EventArgs e)
+        {
+            String lcCodMenu = "";
+
+            lcCodMenu = fnObtenerBotonEsp(sender, subMenuReportes).Name;
+
+            fnObtenerBotonEsp(sender, subMenuReportes).BackColor = Variables.ColorSelectSubMenus;
+
+            fnllenaTreeView(dtMenu.Tables[0], lcCodMenu);
+        }
+
+        private void txtBuscarRepGeneral_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

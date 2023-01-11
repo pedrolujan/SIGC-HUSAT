@@ -30,14 +30,26 @@ namespace wfaIntegradoCom.Procesos
         static List<Pagos> lstPagosTrandiaria = new List<Pagos>();
         static List<DocumentoVenta> lstDocumentoVenta = new List<DocumentoVenta>();
         static List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
+        static List<ReporteBloque> lstCajaChica=new List<ReporteBloque>();
+        static List<ReporteBloque> lstDetalleIngresos=new List<ReporteBloque>();
+        static List<ReporteBloque> lstDetalleIngresosLimpio=new List<ReporteBloque>();
+        static List<ReporteBloque> lstDetalleEgresos=new List<ReporteBloque>();
+
         static Boolean estadoGuardarEgreso = false;
         Int32 tabIndex = 0;
 
         static DateTime dttFechaRecibida = Variables.gdFechaSis;
         static Int32 inTipoApertura = 0;
-        public void Inicio(Int32 tipoLlam)
+        public void Inicio(Int32 tipoLlam, List<ReporteBloque> lstCajaChic, List<ReporteBloque> lstIngresos, List<ReporteBloque> lstDetalleEgre)
         {
+            lstCajaChica.Clear();
+            lstDetalleIngresos.Clear();
+            lstDetalleEgresos.Clear();   
+
             lnTipoLlamada = tipoLlam;
+            lstCajaChica = lstCajaChic;
+            lstDetalleIngresos = lstIngresos;
+            lstDetalleEgresos= lstDetalleEgre;
             this.ShowDialog();
         }
 
@@ -61,6 +73,7 @@ namespace wfaIntegradoCom.Procesos
 
                 FunGeneral.fnLlenarCboSegunTablaTipoCon(cboTipoConcepto, "idOperacion", "cNombreOperacion", "OperacionHusat", "cGrupoOpe", "GOPE0004", false);
 
+                cboFuenteEgreso.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
                 cboArea.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
                 cboUsuario.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
                 cboMoneda.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
@@ -155,10 +168,22 @@ namespace wfaIntegradoCom.Procesos
             }
             else 
             {
-                lbl.Text = "";
-                pb.Image = Properties.Resources.ok;
-                txt.BorderColor = Variables.ColorSuccess;
-                estado = true;
+
+                if (Convert.ToDouble(str)>lstDetalleIngresosLimpio.Sum(i=>i.ImporteRow) && txt.Name!= "txtImporte2")
+                {
+                    lbl.Text = "El Egreso no puede ser mayor al importe disponible de la Fuente";
+                    pb.Image = Properties.Resources.enojo;
+                    txt.BorderColor = Variables.ColorError;
+                    estado = false;
+                }
+                else
+                {
+                    lbl.Text = "";
+                    pb.Image = Properties.Resources.ok;
+                    txt.BorderColor = Variables.ColorSuccess;
+                    estado = true;
+                }
+                
             }
             return estado;
         }
@@ -221,14 +246,14 @@ namespace wfaIntegradoCom.Procesos
 
             return lstDetV;
         }
-        private DetalleVentaCabecera fnCalcularCabeceraDetalle(List<DetalleVenta> lstDV)
+        public DetalleVentaCabecera fnCalcularCabeceraDetalle(List<DetalleVenta> lstDV)
         {
             DetalleVentaCabecera clsDVC = new DetalleVentaCabecera();
             DetalleVenta dvMensual = new DetalleVenta();
             clsDVC.IGV = 0;
             clsDVC.Total = lstDV.Sum(item => item.Importe);
-            clsDVC.IGV = clsDVC.IGV;
-            clsDVC.SubTotal = clsDVC.Total - clsDVC.IGV;
+            clsDVC.SubTotal = (clsDVC.Total / 1.18);
+            clsDVC.IGV = (clsDVC.Total - clsDVC.SubTotal);
             clsDVC.SimboloMoneda = clsMoneda.cSimbolo;
             clsDVC.NombreDocumento = Convert.ToString(cboTipoDocEmitir.Text);
             clsDVC.CodDocumento = Convert.ToString(cboTipoDocEmitir.SelectedValue);
@@ -347,7 +372,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void txtImporte2_Leave(object sender, EventArgs e)
         {
-            txtImporte2.Text = FunGeneral.fnFormatearPrecio("", txtImporte2.Text.ToString() == "" ? 0 : Convert.ToDouble(txtImporte2.Text.ToString()), -1);
+            //txtImporte2.Text = FunGeneral.fnFormatearPrecio("", txtImporte2.Text.ToString() == "" ? 0 : Convert.ToDouble(txtImporte2.Text.ToString()), -1);
 
         }
 
@@ -362,6 +387,10 @@ namespace wfaIntegradoCom.Procesos
             if (!char.IsControl(e.KeyChar) && !(char.IsDigit(e.KeyChar) | e.KeyChar == decSeperator))
             {
                 e.Handled = true;
+            }
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                txtImporte2.Text = FunGeneral.fnFormatearPrecio("", txtImporte2.Text.ToString() == "" ? 0 : Convert.ToDouble(txtImporte2.Text.ToString()), -1);
             }
         }
 
@@ -378,8 +407,119 @@ namespace wfaIntegradoCom.Procesos
         private void cboFuenteEgreso_SelectedIndexChanged(object sender, EventArgs e)
         {
             estFuente= FunValidaciones.fnValidarCombobox(cboFuenteEgreso, lblFuente, pbFuente).Item1;
+            fnValidarImportesEgreso();
+            estImporte = fnValidarTexbox(txtImporte, lblImporte, pbImporte);
         }
 
+        private void fnValidarImportesEgreso()
+        {
+            lstDetalleIngresosLimpio.Clear();
+            String srCodFunete = cboFuenteEgreso.SelectedValue.ToString();
+            String strImporte = "";
+            switch (srCodFunete)
+            {
+                case "TEGR0001":
+                    for (int i = 0; i < lstDetalleIngresos.Count; i++)
+                    {
+                        //if (lstDetalleIngresos[i].idOperacion==14 || lstDetalleIngresos[i].idOperacion == 16)
+                        //{
+
+                        //}
+                        //else
+                        //{
+                            lstDetalleIngresosLimpio.Add(lstDetalleIngresos[i]);
+                        //}
+                        
+                    }
+                    for (int i = 0; i < Variables.lstCuardreCaja.Count; i++)
+                    {
+                        lstDetalleIngresosLimpio.Add(new ReporteBloque
+                        {
+                            ImporteRow= Variables.lstCuardreCaja[i].importeSaldo
+                        });
+                    }
+                    for (int i = 0; i < lstCajaChica.Count; i++)
+                    {
+                        lstDetalleIngresosLimpio.Add(new ReporteBloque
+                        {
+                            ImporteRow = (lstCajaChica[i].ImporteRow*-1)
+                        });
+                    }
+                    for (int i = 0; i < lstDetalleEgresos.Count; i++)
+                    {
+                        if (lstDetalleEgresos[i].Codigoreporte== "TEGR0001")
+                        {
+                            lstDetalleIngresosLimpio.Add(new ReporteBloque
+                            {
+                                ImporteRow = (lstDetalleEgresos[i].ImporteRow * -1)
+                            });
+
+                        }
+
+                    }
+
+                    //lstDetalleIngresosLimpio
+                    strImporte = lstDetalleIngresosLimpio.Count>0?FunGeneral.fnFormatearPrecio(lstDetalleIngresosLimpio[0].idMoneda==1?"S/.":"$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
+
+                    break;
+                case "TEGR0002":
+
+                    for (int i = 0; i < lstCajaChica.Count; i++)
+                    {
+                        if (lstCajaChica[i].codAuxiliar == "TEGR0002")
+                        {
+                            lstDetalleIngresosLimpio.Add(lstCajaChica[i]);
+                        }
+                        
+
+                    }
+                    for (int i = 0; i < lstDetalleEgresos.Count; i++)
+                    {
+                        if (lstDetalleEgresos[i].Codigoreporte == "TEGR0002")
+                        {
+                            lstDetalleIngresosLimpio.Add(new ReporteBloque
+                            {
+                                ImporteRow = (lstDetalleEgresos[i].ImporteRow * -1)
+                            });
+
+                        }
+
+                    }
+                    strImporte =lstDetalleIngresosLimpio.Count>0? FunGeneral.fnFormatearPrecio(lstDetalleIngresosLimpio[0].idMoneda == 1 ? "S/." : "$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
+
+                    break;
+                case "TEGR0003":
+                    for (int i = 0; i < lstCajaChica.Count; i++)
+                    {
+                        if (lstCajaChica[i].codAuxiliar == "TEGR0003")
+                        {
+                            lstDetalleIngresosLimpio.Add(lstCajaChica[i]);
+                        }
+
+                    }
+
+                    for (int i = 0; i < lstDetalleEgresos.Count; i++)
+                    {
+                        if (lstDetalleEgresos[i].Codigoreporte == "TEGR0003")
+                        {
+                            lstDetalleIngresosLimpio.Add(new ReporteBloque
+                            {
+                                ImporteRow = (lstDetalleEgresos[i].ImporteRow * -1)
+                            });
+
+                        }
+
+                    }
+                    strImporte =lstDetalleIngresosLimpio.Count>0? FunGeneral.fnFormatearPrecio(lstDetalleIngresosLimpio[0].idMoneda == 1 ? "S/." : "$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
+
+                    break;
+                default:
+                    strImporte = FunGeneral.fnFormatearPrecio( "S/." , 0, 0);
+                    break;
+
+            }
+            lblImporteDisponible.Text = strImporte;
+        }
         private void fnGenerarDocumento()
         {
             Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
@@ -406,7 +546,7 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
-                MessageBox.Show("Complente Correctamente los campos","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Complete Correctamente los campos","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -433,7 +573,8 @@ namespace wfaIntegradoCom.Procesos
             clsEgresos.DetalleEgreso = txtDescripcion.Text.ToString();
             clsEgresos.lnTipoCon = -1;
             lstPagosTrandiaria[0].idMoneda = clsMoneda.idMoneda;
-            lstPagosTrandiaria[0].dFechaRegistro = dtFechaRegEgresos.Value;
+            lstPagosTrandiaria[0].dFechaRegistro = FunGeneral.fnUpdateFechas(dtFechaRegEgresos.Value);
+            lstPagosTrandiaria[0].Unidades = 1;
             List<xmlDocumentoVentaGeneral> xmlDVG = new List<xmlDocumentoVentaGeneral>();
             xmlDVG.Add(new xmlDocumentoVentaGeneral
             {
@@ -466,7 +607,10 @@ namespace wfaIntegradoCom.Procesos
             clsEgresos.DetalleEgreso = txtDescripcion2.Text.ToString();
             clsEgresos.lnTipoCon = -2;
             lstPagosTrandiaria[0].idMoneda = clsMoneda.idMoneda;
-            lstPagosTrandiaria[0].dFechaRegistro = dtFechaRegIngresos.Value;
+            lstPagosTrandiaria[0].dFechaRegistro = FunGeneral.fnUpdateFechas(dtFechaRegIngresos.Value);
+            lstPagosTrandiaria[0].Unidades =Convert.ToInt32(txtUnidades.Text.ToString());
+
+
             List<xmlDocumentoVentaGeneral> xmlDVG = new List<xmlDocumentoVentaGeneral>();
             xmlDVG.Add(new xmlDocumentoVentaGeneral
             {

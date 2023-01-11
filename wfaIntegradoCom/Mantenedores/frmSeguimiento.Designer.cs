@@ -632,7 +632,6 @@
             this.dtpFechaRegSeguimiento.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtpFechaRegSeguimiento.BorderThickness = 1;
             this.dtpFechaRegSeguimiento.CheckedState.Parent = this.dtpFechaRegSeguimiento;
-            this.dtpFechaRegSeguimiento.Enabled = false;
             this.dtpFechaRegSeguimiento.FillColor = System.Drawing.Color.White;
             this.dtpFechaRegSeguimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaRegSeguimiento.Format = System.Windows.Forms.DateTimePickerFormat.Long;
@@ -3219,19 +3218,19 @@
             this.opcVerSeguimiento});
             this.cmsMenuTablaProspectos.Name = "contextMenuStrip1";
             this.cmsMenuTablaProspectos.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.cmsMenuTablaProspectos.Size = new System.Drawing.Size(181, 70);
+            this.cmsMenuTablaProspectos.Size = new System.Drawing.Size(178, 48);
             // 
             // opcEditar
             // 
             this.opcEditar.Name = "opcEditar";
-            this.opcEditar.Size = new System.Drawing.Size(180, 22);
+            this.opcEditar.Size = new System.Drawing.Size(177, 22);
             this.opcEditar.Text = "Editar Seleccionado";
             this.opcEditar.Click += new System.EventHandler(this.opcEditar_Click);
             // 
             // opcVerSeguimiento
             // 
             this.opcVerSeguimiento.Name = "opcVerSeguimiento";
-            this.opcVerSeguimiento.Size = new System.Drawing.Size(180, 22);
+            this.opcVerSeguimiento.Size = new System.Drawing.Size(177, 22);
             this.opcVerSeguimiento.Text = "Ir a Seguimiento";
             this.opcVerSeguimiento.Click += new System.EventHandler(this.opcCrearPlan_Click);
             // 

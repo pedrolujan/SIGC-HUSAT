@@ -13,6 +13,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using wfaIntegradoCom.Funciones;
+using wfaIntegradoCom.Mantenedores;
+using static wfaIntegradoCom.Mantenedores.ControlMover;
 using Icon = System.Drawing.Icon;
 
 namespace wfaIntegradoCom.Procesos
@@ -27,8 +29,13 @@ namespace wfaIntegradoCom.Procesos
         static List<Pagos> lstPagosTrand = new List<Pagos>();
         static Boolean estadoGuardarPago = false;
         static DateTime stDtFechaDePago=DateTime.Now;
-        Boolean estFecha=false, estMoneda=false;
+        Boolean estFecha=false, estMoneda=false,estDocumento=false;
         static List<Moneda> lstMon = new List<Moneda>();
+        static Moneda clsMoneda = new Moneda();
+        static List<Cliente> lstCliente=new List<Cliente>();
+        static Cliente clsCliente=new Cliente();
+        static List<DocumentoVenta> lstDocumentoVenta = new List<DocumentoVenta>();
+        static List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
 
         static int tabInicio = 0;
         static bool dEstadoBusquedaPaginacion = false;
@@ -38,8 +45,10 @@ namespace wfaIntegradoCom.Procesos
             lstPagosTrand = lstEntidades;
             for (int i = 0; i < lstPagosTrand.Count; i++)
             {
-                lstPagosTrand[i].dFechaPago = stDtFechaDePago;
-                lstEntidades[i].idMoneda = Convert.ToInt32(cboMoneda.SelectedValue);
+                lstPagosTrand[i].dFechaPago = FunGeneral.fnUpdateFechas(stDtFechaDePago);
+                lstPagosTrand[i].idMoneda = Convert.ToInt32(cboMoneda.SelectedValue);
+                lstPagosTrand[i].idUsario = Variables.gnCodUser;
+
             }
 
         }
@@ -137,6 +146,7 @@ namespace wfaIntegradoCom.Procesos
             DataGridView dgv = dgvVentas;
             try
             {
+                lstCliente.Clear();
                 if (numRows > 0)
                 {
                     pnDatosPago.Visible = true;
@@ -178,16 +188,31 @@ namespace wfaIntegradoCom.Procesos
                         lstDVenta.Add(new ReporteBloque
                         {
                             idAuxiliar = Convert.ToInt32(dr["idTrandiaria"]),
-                            ImporteRow= importeRestante,
-                            MasDetallereporte= dr["cNombreOperacion"].ToString(),
-                            idMoneda=Convert.ToInt32(cboMoneda.SelectedValue)
+                            ImporteRow = importeRestante,
+                            MasDetallereporte = dr["cNombreOperacion"].ToString(),
+                            idMoneda = Convert.ToInt32(cboMoneda.SelectedValue),
+                            Codigoreporte= dr["vehiculo"].ToString()
 
-                        });
+                        }) ;
+
+                        lstCliente.Add(new Cliente
+                        {
+                            idCliente = Convert.ToInt32(dr["idTrandiaria"]),
+                            cNombre = dr["cNombre"].ToString(),
+                            cApePat = dr["cApePat"].ToString(),
+                            cApeMat = dr["cApeMat"].ToString(),
+                            cTiDo = Convert.ToInt32(dr["cTiDo"]),
+                            cTipoDoc = dr["tipoDocumento"].ToString(),
+                            cDocumento = dr["cDocumento"].ToString(),
+                            cDireccion = dr["cDireccion"].ToString()
+
+                        }) ;
+
                         dgv.Rows.Add(
                                         dr["idTrandiaria"],
                                         y + 1,
                                        Convert.ToDateTime(dr["dFechaPago"]).ToString("dd MMM yyyy hh:mm tt"),
-                                        dr["cliente"],
+                                        dr["cNombre"]+" "+ dr["cApePat"],
                                         dr["vehiculo"],
                                         dr["cNombreOperacion"],
                                         FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(dr["TotalPago"]), 1),
@@ -253,6 +278,33 @@ namespace wfaIntegradoCom.Procesos
             
 
         }
+
+        private List<DetalleVenta> fnDetalleventa()
+        {
+            List<DetalleVenta> lstDetV = new List<DetalleVenta>();
+            Int32 cantidad = 1;
+            Double precioUnitario = lstPagosTrand[0].PagaCon;
+            double importe = lstPagosTrand[0].PagaCon;
+            String descripcion = lstDVenta[0].MasDetallereporte;
+            
+            lstDetV.Add(new DetalleVenta
+            {
+                Numeracion = 1,
+                Descripcion = "CUOTA "+descripcion,
+                idTipoTarifa = 0,
+                PrecioUni = precioUnitario,
+                Descuento = 0,
+                gananciaRedondeo = 0,
+                TotalTipoDescuento = 0,
+                IdTipoDescuento = 0,
+                Cantidad = 1,
+                Couta = 0,
+                Importe = importe,
+                cSimbolo = clsMoneda.cSimbolo,
+            });
+            return lstDetV;
+
+        }
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (Char)Keys.Enter)
@@ -290,22 +342,99 @@ namespace wfaIntegradoCom.Procesos
         private void dgvVentas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dgvR = dgvVentas.Rows[e.RowIndex];
+            Int32 idTrandiaria = Convert.ToInt32(dgvR.Cells[0].Value);
             DataGridView dgv = dgvVentas;
             if (dgv.Columns[e.ColumnIndex].Name== "Icono")
             {
-                Int32 idTrandiaria = Convert.ToInt32(dgvR.Cells[0].Value);
-                Double montoRestante = Convert.ToDouble(dgvR.Cells[0].Value);
-                Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                ReporteBloque repBloque = lstDVenta.Find(i => i.idAuxiliar == idTrandiaria);
-                fmr.Inicio(-4, repBloque.ImporteRow, lstDVenta[0].idMoneda == 1 ? "S/" : "$");
-                if (estadoGuardarPago == true)
+                if (estDocumento && estMoneda && estFecha)
                 {
-                    fnCompletarPago(idTrandiaria, 0);
+                    Double montoRestante = Convert.ToDouble(dgvR.Cells[0].Value);
+                    Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                    ReporteBloque repBloque = lstDVenta.Find(i => i.idAuxiliar == idTrandiaria);
+                    fmr.Inicio(-4, repBloque.ImporteRow, lstDVenta[0].idMoneda == 1 ? "S/" : "$");
+                    clsCliente = lstCliente.Find(i => i.idCliente == idTrandiaria);
 
+                    if (estadoGuardarPago == true)
+                    {
+                        frmRegistrarEgresos f = new frmRegistrarEgresos();
+
+                        lstDetalleVenta = fnDetalleventa();
+                        lstDocumentoVenta = fnDocumentoVentaHeader(f.fnCalcularCabeceraDetalle(lstDetalleVenta));
+
+                        //estadoGuardarPago = false;
+                        //fnGenerarDocumento();
+                        //if (estadoGuardarPago==true)
+                        //{
+                        fnCompletarPago(idTrandiaria, 0);
+                        //}
+
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Por favor complete todo los datos","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                }
+                
+            }
+            else
+            {
+                clsCliente = lstCliente.Find(i => i.idCliente == idTrandiaria);
+                frmRegistrarVenta.fnLlenarComprobante(cboTipoDocEmitir, "DOVE", clsCliente.cTiDo, 0); ;
             }
             
             
+        }
+        private void fnGenerarDocumento()
+        {
+            Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
+            frmRegistrarEgresos f = new frmRegistrarEgresos();
+            
+            lstDetalleVenta = fnDetalleventa();
+            lstDocumentoVenta = fnDocumentoVentaHeader(f.fnCalcularCabeceraDetalle(lstDetalleVenta));
+            frm.Inicio(lstDocumentoVenta, lstDetalleVenta, -5);
+        }
+        private List<DocumentoVenta> fnDocumentoVentaHeader(DetalleVentaCabecera dvc)
+        {
+
+            List<DocumentoVenta> lsDocVenta = new List<DocumentoVenta>();
+            TipoTarifa lstTipoVenta = new TipoTarifa();
+            BLVentaGeneral blVG = new BLVentaGeneral();
+            //lstTipoVenta = lstTipoTarifa.First(s => s.IdTipoTarifa == Convert.ToInt32(cboTipoVenta.SelectedValue));
+            Personal clsUsuario = Variables.clasePersonal;
+            
+            Personal clsPers = blVG.blObtenerUsuarioActual(0);
+            lsDocVenta.Add(new DocumentoVenta
+            {
+                idCliente = clsPers.idPersonal,
+                cCliente = FunGeneral.FormatearCadenaTitleCase(clsCliente.cNombre+" "+ clsCliente.cApePat+" "+ clsCliente.cApeMat),
+                cTipoDoc = clsCliente.cTipoDoc,
+                cDireccion = FunGeneral.FormatearCadenaTitleCase(clsCliente.cDireccion),
+                cDocumento = clsCliente.cDocumento,
+                SimboloMoneda = clsMoneda.cSimbolo,
+                cCodDocumentoVenta = Convert.ToString(cboTipoDocEmitir.SelectedValue),
+                NombreDocumento = Convert.ToString(cboTipoDocEmitir.Text),
+                dFechaVenta = FunGeneral.fnUpdateFechas(stDtFechaDePago),
+                idMoneda = clsMoneda.idMoneda,
+                nSubtotal = dvc.SubTotal,
+                nNroIGV = 18,
+                nIGV = dvc.IGV,
+                nMontoTotal = dvc.Total,
+                cUsuario = clsUsuario.cPrimerNom + " " + clsUsuario.cApePat + " " + clsUsuario.cApeMat,
+                cVehiculos = lstDVenta[0].Codigoreporte,
+                cDescripcionTipoPago = lstPagosTrand[0].cDescripTipoPago,
+                cDescripEstadoPP = lstPagosTrand[0].cEstadoPP=="ESPP0001"?"PAGADO":"PAGO INCONPLETO",
+                cTipoVenta = "PAGOS PENDIENTES",
+                cEstado = "PAGOSPENDIENTES",
+                //est0 = tabIndex == 0 ? false : true,
+                est1 = false
+
+            });
+            return lsDocVenta;
+
+
+            //DocumentoVenta.cTipoDoc = Convert.ToString(cboTipoDocumento.Text);
+            //DocumentoVenta.cVehiculos = lstvehiculo[0].vPlaca;
+            //lstDocVenta.Add(DocumentoVenta);
         }
 
         private void fnCompletarPago(Int32 idTrandiaria, Int32 tipoCon)
@@ -313,7 +442,14 @@ namespace wfaIntegradoCom.Procesos
             BLVentaGeneral blV = new BLVentaGeneral();
             Boolean est = false;
 
-            est = blV.blGuardarpagosPendientes(idTrandiaria, lstPagosTrand, tipoCon);
+            List<xmlDocumentoVentaGeneral> lstXmlDocVenta = new List<xmlDocumentoVentaGeneral>();
+            lstXmlDocVenta.Add(new xmlDocumentoVentaGeneral
+            {
+                xmlDocumentoVenta=lstDocumentoVenta,
+                xmlDetalleVentas=lstDetalleVenta
+            });
+
+            est = blV.blGuardarpagosPendientes(idTrandiaria, lstPagosTrand, lstXmlDocVenta, tipoCon);
             if (est==true)
             {
                 MessageBox.Show("Importe guardado Exitosamente","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -340,6 +476,13 @@ namespace wfaIntegradoCom.Procesos
         {
            var est= FunValidaciones.fnValidarCombobox(cboMoneda,erMoneda,imgMoneda);
             estMoneda = est.Item1;
+            clsMoneda = lstMon.Find(i => i.idMoneda == Convert.ToInt32(cboMoneda.SelectedValue));
+        }
+
+        private void cboTipoDocEmitir_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var est = FunValidaciones.fnValidarCombobox(cboTipoDocEmitir, lblDocVenta, pbDocVenta);
+            estDocumento = est.Item1;
         }
 
         private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
@@ -355,7 +498,7 @@ namespace wfaIntegradoCom.Procesos
             var res= FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 1);
             estFecha = res.Item1;
             erFechaPago.Text = res.Item2;
-            stDtFechaDePago = dtFechaPago.Value;
+            stDtFechaDePago = FunGeneral.fnUpdateFechas(dtFechaPago.Value);
         }
     }
 }

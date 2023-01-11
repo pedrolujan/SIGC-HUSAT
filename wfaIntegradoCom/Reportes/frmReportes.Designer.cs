@@ -38,8 +38,10 @@
             this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel3 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel5 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel11 = new Siticone.UI.WinForms.SiticoneLabel();
             this.cboEstado = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboTipoReporte = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboCiclo = new Siticone.UI.WinForms.SiticoneComboBox();
             this.gbBuscar = new System.Windows.Forms.GroupBox();
             this.dtpFechaFinalBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
@@ -53,20 +55,38 @@
             this.pbBuscar1 = new FontAwesome.Sharp.IconPictureBox();
             this.siticoneTextBox1 = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticoneLabel2 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel7 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel6 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel4 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.cboTiporeport = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboTipoPlan = new Siticone.UI.WinForms.SiticoneComboBox();
             this.siticoneComboBox1 = new Siticone.UI.WinForms.SiticoneComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.siticoneDateTimePicker1 = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.dtFechaFinRenova = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.siticoneDateTimePicker2 = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.dtFechaIniRenova = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.siticoneGroupBox3 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.siticoneTextBox2 = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.siticoneLabel8 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel9 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.Mes = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel10 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel12 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.cboRepVentaAnio = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboMes = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboTipoFiltroVentas = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboTipoReporteVentas = new Siticone.UI.WinForms.SiticoneComboBox();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.gunaControlBox3 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
-            this.cboTipoReporte = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.siticoneLabel5 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.cboFiltraIngresos = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.siticoneLabel13 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticonePanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -77,6 +97,9 @@
             this.siticoneGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.siticoneGroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.gunaPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +113,7 @@
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(788, 521);
+            this.siticonePanel1.Size = new System.Drawing.Size(1023, 559);
             this.siticonePanel1.TabIndex = 0;
             this.siticonePanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.siticonePanel1_Paint);
             // 
@@ -101,10 +124,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(3, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(781, 491);
+            this.tabControl1.Size = new System.Drawing.Size(1016, 529);
             this.tabControl1.TabIndex = 165;
             // 
             // tabPage1
@@ -115,7 +139,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(773, 465);
+            this.tabPage1.Size = new System.Drawing.Size(1008, 503);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Recaudación";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -126,7 +150,7 @@
             this.reportViewer1.Location = new System.Drawing.Point(3, 160);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(767, 302);
+            this.reportViewer1.Size = new System.Drawing.Size(1002, 340);
             this.reportViewer1.TabIndex = 270;
             // 
             // siticoneGroupBox1
@@ -151,7 +175,7 @@
             this.siticoneGroupBox1.Location = new System.Drawing.Point(3, 3);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(767, 157);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(1002, 157);
             this.siticoneGroupBox1.TabIndex = 269;
             this.siticoneGroupBox1.Text = "Buscar fechas";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -10);
@@ -243,6 +267,16 @@
             this.siticoneLabel3.TabIndex = 236;
             this.siticoneLabel3.Text = "Estado:";
             // 
+            // siticoneLabel5
+            // 
+            this.siticoneLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel5.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel5.Location = new System.Drawing.Point(284, 30);
+            this.siticoneLabel5.Name = "siticoneLabel5";
+            this.siticoneLabel5.Size = new System.Drawing.Size(65, 15);
+            this.siticoneLabel5.TabIndex = 236;
+            this.siticoneLabel5.Text = "Tipo Reporte";
+            // 
             // siticoneLabel11
             // 
             this.siticoneLabel11.BackColor = System.Drawing.Color.Transparent;
@@ -270,6 +304,25 @@
             this.cboEstado.ShadowDecoration.Parent = this.cboEstado;
             this.cboEstado.Size = new System.Drawing.Size(206, 36);
             this.cboEstado.TabIndex = 237;
+            // 
+            // cboTipoReporte
+            // 
+            this.cboTipoReporte.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoReporte.BorderRadius = 5;
+            this.cboTipoReporte.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoReporte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoReporte.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboTipoReporte.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboTipoReporte.HoveredState.Parent = this.cboTipoReporte;
+            this.cboTipoReporte.ItemHeight = 30;
+            this.cboTipoReporte.ItemsAppearance.Parent = this.cboTipoReporte;
+            this.cboTipoReporte.Location = new System.Drawing.Point(284, 47);
+            this.cboTipoReporte.Name = "cboTipoReporte";
+            this.cboTipoReporte.ShadowDecoration.Parent = this.cboTipoReporte;
+            this.cboTipoReporte.Size = new System.Drawing.Size(206, 36);
+            this.cboTipoReporte.TabIndex = 237;
+            this.cboTipoReporte.SelectedIndexChanged += new System.EventHandler(this.cboTipoReporte_SelectedIndexChanged);
             // 
             // cboCiclo
             // 
@@ -372,7 +425,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(773, 465);
+            this.tabPage2.Size = new System.Drawing.Size(1008, 503);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Renovaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -384,7 +437,7 @@
             this.reportViewer2.Location = new System.Drawing.Point(3, 160);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.Size = new System.Drawing.Size(767, 302);
+            this.reportViewer2.Size = new System.Drawing.Size(1002, 340);
             this.reportViewer2.TabIndex = 271;
             // 
             // siticoneGroupBox2
@@ -394,7 +447,11 @@
             this.siticoneGroupBox2.Controls.Add(this.pbBuscar1);
             this.siticoneGroupBox2.Controls.Add(this.siticoneTextBox1);
             this.siticoneGroupBox2.Controls.Add(this.siticoneLabel2);
+            this.siticoneGroupBox2.Controls.Add(this.siticoneLabel7);
+            this.siticoneGroupBox2.Controls.Add(this.siticoneLabel6);
             this.siticoneGroupBox2.Controls.Add(this.siticoneLabel4);
+            this.siticoneGroupBox2.Controls.Add(this.cboTiporeport);
+            this.siticoneGroupBox2.Controls.Add(this.cboTipoPlan);
             this.siticoneGroupBox2.Controls.Add(this.siticoneComboBox1);
             this.siticoneGroupBox2.Controls.Add(this.groupBox1);
             this.siticoneGroupBox2.CustomBorderColor = System.Drawing.Color.Gray;
@@ -405,7 +462,7 @@
             this.siticoneGroupBox2.Location = new System.Drawing.Point(3, 3);
             this.siticoneGroupBox2.Name = "siticoneGroupBox2";
             this.siticoneGroupBox2.ShadowDecoration.Parent = this.siticoneGroupBox2;
-            this.siticoneGroupBox2.Size = new System.Drawing.Size(767, 157);
+            this.siticoneGroupBox2.Size = new System.Drawing.Size(1002, 157);
             this.siticoneGroupBox2.TabIndex = 270;
             this.siticoneGroupBox2.Text = "Buscar fechas";
             this.siticoneGroupBox2.TextOffset = new System.Drawing.Point(0, -10);
@@ -487,6 +544,26 @@
             this.siticoneLabel2.TabIndex = 236;
             this.siticoneLabel2.Text = "Tipo Reporte:";
             // 
+            // siticoneLabel7
+            // 
+            this.siticoneLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel7.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel7.Location = new System.Drawing.Point(284, 37);
+            this.siticoneLabel7.Name = "siticoneLabel7";
+            this.siticoneLabel7.Size = new System.Drawing.Size(68, 15);
+            this.siticoneLabel7.TabIndex = 236;
+            this.siticoneLabel7.Text = "Tipo Reporte:";
+            // 
+            // siticoneLabel6
+            // 
+            this.siticoneLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel6.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel6.Location = new System.Drawing.Point(539, 37);
+            this.siticoneLabel6.Name = "siticoneLabel6";
+            this.siticoneLabel6.Size = new System.Drawing.Size(51, 15);
+            this.siticoneLabel6.TabIndex = 236;
+            this.siticoneLabel6.Text = "Tipo Plan:";
+            // 
             // siticoneLabel4
             // 
             this.siticoneLabel4.BackColor = System.Drawing.Color.Transparent;
@@ -496,6 +573,43 @@
             this.siticoneLabel4.Size = new System.Drawing.Size(39, 15);
             this.siticoneLabel4.TabIndex = 236;
             this.siticoneLabel4.Text = "Estado:";
+            // 
+            // cboTiporeport
+            // 
+            this.cboTiporeport.BackColor = System.Drawing.Color.Transparent;
+            this.cboTiporeport.BorderRadius = 5;
+            this.cboTiporeport.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTiporeport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTiporeport.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboTiporeport.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTiporeport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboTiporeport.HoveredState.Parent = this.cboTiporeport;
+            this.cboTiporeport.ItemHeight = 30;
+            this.cboTiporeport.ItemsAppearance.Parent = this.cboTiporeport;
+            this.cboTiporeport.Location = new System.Drawing.Point(284, 54);
+            this.cboTiporeport.Name = "cboTiporeport";
+            this.cboTiporeport.ShadowDecoration.Parent = this.cboTiporeport;
+            this.cboTiporeport.Size = new System.Drawing.Size(206, 36);
+            this.cboTiporeport.TabIndex = 237;
+            this.cboTiporeport.SelectedIndexChanged += new System.EventHandler(this.cboTiporeport_SelectedIndexChanged);
+            // 
+            // cboTipoPlan
+            // 
+            this.cboTipoPlan.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoPlan.BorderRadius = 5;
+            this.cboTipoPlan.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoPlan.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboTipoPlan.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoPlan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboTipoPlan.HoveredState.Parent = this.cboTipoPlan;
+            this.cboTipoPlan.ItemHeight = 30;
+            this.cboTipoPlan.ItemsAppearance.Parent = this.cboTipoPlan;
+            this.cboTipoPlan.Location = new System.Drawing.Point(539, 54);
+            this.cboTipoPlan.Name = "cboTipoPlan";
+            this.cboTipoPlan.ShadowDecoration.Parent = this.cboTipoPlan;
+            this.cboTipoPlan.Size = new System.Drawing.Size(206, 36);
+            this.cboTipoPlan.TabIndex = 237;
             // 
             // siticoneComboBox1
             // 
@@ -518,9 +632,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.siticoneDateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtFechaFinRenova);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.siticoneDateTimePicker2);
+            this.groupBox1.Controls.Add(this.dtFechaIniRenova);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBox1.Location = new System.Drawing.Point(4, 29);
@@ -529,24 +643,24 @@
             this.groupBox1.TabIndex = 269;
             this.groupBox1.TabStop = false;
             // 
-            // siticoneDateTimePicker1
+            // dtFechaFinRenova
             // 
-            this.siticoneDateTimePicker1.BorderColor = System.Drawing.Color.Gainsboro;
-            this.siticoneDateTimePicker1.BorderRadius = 3;
-            this.siticoneDateTimePicker1.BorderThickness = 1;
-            this.siticoneDateTimePicker1.CheckedState.Parent = this.siticoneDateTimePicker1;
-            this.siticoneDateTimePicker1.FillColor = System.Drawing.Color.White;
-            this.siticoneDateTimePicker1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.siticoneDateTimePicker1.HoveredState.Parent = this.siticoneDateTimePicker1;
-            this.siticoneDateTimePicker1.Location = new System.Drawing.Point(17, 78);
-            this.siticoneDateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.siticoneDateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.siticoneDateTimePicker1.Name = "siticoneDateTimePicker1";
-            this.siticoneDateTimePicker1.ShadowDecoration.Parent = this.siticoneDateTimePicker1;
-            this.siticoneDateTimePicker1.Size = new System.Drawing.Size(235, 36);
-            this.siticoneDateTimePicker1.TabIndex = 233;
-            this.siticoneDateTimePicker1.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            this.dtFechaFinRenova.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaFinRenova.BorderRadius = 3;
+            this.dtFechaFinRenova.BorderThickness = 1;
+            this.dtFechaFinRenova.CheckedState.Parent = this.dtFechaFinRenova;
+            this.dtFechaFinRenova.FillColor = System.Drawing.Color.White;
+            this.dtFechaFinRenova.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaFinRenova.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaFinRenova.HoveredState.Parent = this.dtFechaFinRenova;
+            this.dtFechaFinRenova.Location = new System.Drawing.Point(17, 78);
+            this.dtFechaFinRenova.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaFinRenova.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaFinRenova.Name = "dtFechaFinRenova";
+            this.dtFechaFinRenova.ShadowDecoration.Parent = this.dtFechaFinRenova;
+            this.dtFechaFinRenova.Size = new System.Drawing.Size(235, 36);
+            this.dtFechaFinRenova.TabIndex = 233;
+            this.dtFechaFinRenova.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
             // 
             // label2
             // 
@@ -560,24 +674,24 @@
             this.label2.TabIndex = 227;
             this.label2.Text = "Fecha Inicial:";
             // 
-            // siticoneDateTimePicker2
+            // dtFechaIniRenova
             // 
-            this.siticoneDateTimePicker2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.siticoneDateTimePicker2.BorderRadius = 3;
-            this.siticoneDateTimePicker2.BorderThickness = 1;
-            this.siticoneDateTimePicker2.CheckedState.Parent = this.siticoneDateTimePicker2;
-            this.siticoneDateTimePicker2.FillColor = System.Drawing.Color.White;
-            this.siticoneDateTimePicker2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.siticoneDateTimePicker2.HoveredState.Parent = this.siticoneDateTimePicker2;
-            this.siticoneDateTimePicker2.Location = new System.Drawing.Point(17, 25);
-            this.siticoneDateTimePicker2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.siticoneDateTimePicker2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.siticoneDateTimePicker2.Name = "siticoneDateTimePicker2";
-            this.siticoneDateTimePicker2.ShadowDecoration.Parent = this.siticoneDateTimePicker2;
-            this.siticoneDateTimePicker2.Size = new System.Drawing.Size(235, 36);
-            this.siticoneDateTimePicker2.TabIndex = 231;
-            this.siticoneDateTimePicker2.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            this.dtFechaIniRenova.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaIniRenova.BorderRadius = 3;
+            this.dtFechaIniRenova.BorderThickness = 1;
+            this.dtFechaIniRenova.CheckedState.Parent = this.dtFechaIniRenova;
+            this.dtFechaIniRenova.FillColor = System.Drawing.Color.White;
+            this.dtFechaIniRenova.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaIniRenova.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaIniRenova.HoveredState.Parent = this.dtFechaIniRenova;
+            this.dtFechaIniRenova.Location = new System.Drawing.Point(17, 25);
+            this.dtFechaIniRenova.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaIniRenova.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaIniRenova.Name = "dtFechaIniRenova";
+            this.dtFechaIniRenova.ShadowDecoration.Parent = this.dtFechaIniRenova;
+            this.dtFechaIniRenova.Size = new System.Drawing.Size(235, 36);
+            this.dtFechaIniRenova.TabIndex = 231;
+            this.dtFechaIniRenova.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
             // 
             // label4
             // 
@@ -591,6 +705,225 @@
             this.label4.TabIndex = 232;
             this.label4.Text = "Fecha Final:";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.reportViewer3);
+            this.tabPage3.Controls.Add(this.siticoneGroupBox3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1008, 503);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Reporte de Ventas";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // reportViewer3
+            // 
+            this.reportViewer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer3.Location = new System.Drawing.Point(3, 160);
+            this.reportViewer3.Name = "reportViewer3";
+            this.reportViewer3.ServerReport.BearerToken = null;
+            this.reportViewer3.Size = new System.Drawing.Size(1002, 340);
+            this.reportViewer3.TabIndex = 272;
+            // 
+            // siticoneGroupBox3
+            // 
+            this.siticoneGroupBox3.BorderRadius = 5;
+            this.siticoneGroupBox3.Controls.Add(this.cboFiltraIngresos);
+            this.siticoneGroupBox3.Controls.Add(this.iconPictureBox1);
+            this.siticoneGroupBox3.Controls.Add(this.siticoneTextBox2);
+            this.siticoneGroupBox3.Controls.Add(this.siticoneLabel8);
+            this.siticoneGroupBox3.Controls.Add(this.siticoneLabel9);
+            this.siticoneGroupBox3.Controls.Add(this.Mes);
+            this.siticoneGroupBox3.Controls.Add(this.siticoneLabel13);
+            this.siticoneGroupBox3.Controls.Add(this.siticoneLabel10);
+            this.siticoneGroupBox3.Controls.Add(this.siticoneLabel12);
+            this.siticoneGroupBox3.Controls.Add(this.cboRepVentaAnio);
+            this.siticoneGroupBox3.Controls.Add(this.cboMes);
+            this.siticoneGroupBox3.Controls.Add(this.cboTipoFiltroVentas);
+            this.siticoneGroupBox3.Controls.Add(this.cboTipoReporteVentas);
+            this.siticoneGroupBox3.CustomBorderColor = System.Drawing.Color.Gray;
+            this.siticoneGroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.siticoneGroupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.siticoneGroupBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.siticoneGroupBox3.ForeColor = System.Drawing.Color.White;
+            this.siticoneGroupBox3.Location = new System.Drawing.Point(3, 3);
+            this.siticoneGroupBox3.Name = "siticoneGroupBox3";
+            this.siticoneGroupBox3.ShadowDecoration.Parent = this.siticoneGroupBox3;
+            this.siticoneGroupBox3.Size = new System.Drawing.Size(1002, 157);
+            this.siticoneGroupBox3.TabIndex = 271;
+            this.siticoneGroupBox3.Text = "Buscar fechas";
+            this.siticoneGroupBox3.TextOffset = new System.Drawing.Point(0, -10);
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.Gray;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.Gray;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 27;
+            this.iconPictureBox1.Location = new System.Drawing.Point(740, 102);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(27, 34);
+            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.iconPictureBox1.TabIndex = 239;
+            this.iconPictureBox1.TabStop = false;
+            this.iconPictureBox1.Tag = "pbBuscar";
+            this.iconPictureBox1.Click += new System.EventHandler(this.iconPictureBox1_Click);
+            // 
+            // siticoneTextBox2
+            // 
+            this.siticoneTextBox2.Animated = false;
+            this.siticoneTextBox2.BorderRadius = 5;
+            this.siticoneTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.siticoneTextBox2.DefaultText = "";
+            this.siticoneTextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.siticoneTextBox2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.siticoneTextBox2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.siticoneTextBox2.DisabledState.Parent = this.siticoneTextBox2;
+            this.siticoneTextBox2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.siticoneTextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.siticoneTextBox2.FocusedState.Parent = this.siticoneTextBox2;
+            this.siticoneTextBox2.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.siticoneTextBox2.HoveredState.Parent = this.siticoneTextBox2;
+            this.siticoneTextBox2.Location = new System.Drawing.Point(563, 101);
+            this.siticoneTextBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.siticoneTextBox2.Name = "siticoneTextBox2";
+            this.siticoneTextBox2.PasswordChar = '\0';
+            this.siticoneTextBox2.PlaceholderText = "";
+            this.siticoneTextBox2.SelectedText = "";
+            this.siticoneTextBox2.ShadowDecoration.Parent = this.siticoneTextBox2;
+            this.siticoneTextBox2.Size = new System.Drawing.Size(206, 36);
+            this.siticoneTextBox2.TabIndex = 238;
+            // 
+            // siticoneLabel8
+            // 
+            this.siticoneLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel8.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel8.Location = new System.Drawing.Point(563, 84);
+            this.siticoneLabel8.Name = "siticoneLabel8";
+            this.siticoneLabel8.Size = new System.Drawing.Size(39, 15);
+            this.siticoneLabel8.TabIndex = 236;
+            this.siticoneLabel8.Text = "Buscar:";
+            // 
+            // siticoneLabel9
+            // 
+            this.siticoneLabel9.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel9.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel9.Location = new System.Drawing.Point(14, 84);
+            this.siticoneLabel9.Name = "siticoneLabel9";
+            this.siticoneLabel9.Size = new System.Drawing.Size(25, 15);
+            this.siticoneLabel9.TabIndex = 236;
+            this.siticoneLabel9.Text = "Año:";
+            // 
+            // Mes
+            // 
+            this.Mes.BackColor = System.Drawing.Color.Transparent;
+            this.Mes.ForeColor = System.Drawing.Color.Black;
+            this.Mes.Location = new System.Drawing.Point(283, 84);
+            this.Mes.Name = "Mes";
+            this.Mes.Size = new System.Drawing.Size(26, 15);
+            this.Mes.TabIndex = 236;
+            this.Mes.Text = "Mes:";
+            // 
+            // siticoneLabel10
+            // 
+            this.siticoneLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel10.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel10.Location = new System.Drawing.Point(283, 21);
+            this.siticoneLabel10.Name = "siticoneLabel10";
+            this.siticoneLabel10.Size = new System.Drawing.Size(122, 17);
+            this.siticoneLabel10.TabIndex = 236;
+            this.siticoneLabel10.Text = "Tipo de Agrupamiento";
+            // 
+            // siticoneLabel12
+            // 
+            this.siticoneLabel12.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel12.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel12.Location = new System.Drawing.Point(14, 21);
+            this.siticoneLabel12.Name = "siticoneLabel12";
+            this.siticoneLabel12.Size = new System.Drawing.Size(65, 15);
+            this.siticoneLabel12.TabIndex = 236;
+            this.siticoneLabel12.Text = "Tipo Reporte";
+            // 
+            // cboRepVentaAnio
+            // 
+            this.cboRepVentaAnio.BackColor = System.Drawing.Color.Transparent;
+            this.cboRepVentaAnio.BorderRadius = 5;
+            this.cboRepVentaAnio.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboRepVentaAnio.DropDownHeight = 200;
+            this.cboRepVentaAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRepVentaAnio.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboRepVentaAnio.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboRepVentaAnio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboRepVentaAnio.HoveredState.Parent = this.cboRepVentaAnio;
+            this.cboRepVentaAnio.IntegralHeight = false;
+            this.cboRepVentaAnio.ItemHeight = 30;
+            this.cboRepVentaAnio.ItemsAppearance.Parent = this.cboRepVentaAnio;
+            this.cboRepVentaAnio.Location = new System.Drawing.Point(14, 101);
+            this.cboRepVentaAnio.Name = "cboRepVentaAnio";
+            this.cboRepVentaAnio.ShadowDecoration.Parent = this.cboRepVentaAnio;
+            this.cboRepVentaAnio.Size = new System.Drawing.Size(206, 36);
+            this.cboRepVentaAnio.TabIndex = 237;
+            // 
+            // cboMes
+            // 
+            this.cboMes.BackColor = System.Drawing.Color.Transparent;
+            this.cboMes.BorderRadius = 5;
+            this.cboMes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboMes.DropDownHeight = 400;
+            this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMes.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboMes.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboMes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboMes.HoveredState.Parent = this.cboMes;
+            this.cboMes.IntegralHeight = false;
+            this.cboMes.ItemHeight = 30;
+            this.cboMes.ItemsAppearance.Parent = this.cboMes;
+            this.cboMes.Location = new System.Drawing.Point(283, 101);
+            this.cboMes.Name = "cboMes";
+            this.cboMes.ShadowDecoration.Parent = this.cboMes;
+            this.cboMes.Size = new System.Drawing.Size(206, 36);
+            this.cboMes.TabIndex = 237;
+            // 
+            // cboTipoFiltroVentas
+            // 
+            this.cboTipoFiltroVentas.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoFiltroVentas.BorderRadius = 5;
+            this.cboTipoFiltroVentas.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoFiltroVentas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoFiltroVentas.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboTipoFiltroVentas.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoFiltroVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboTipoFiltroVentas.HoveredState.Parent = this.cboTipoFiltroVentas;
+            this.cboTipoFiltroVentas.ItemHeight = 30;
+            this.cboTipoFiltroVentas.ItemsAppearance.Parent = this.cboTipoFiltroVentas;
+            this.cboTipoFiltroVentas.Location = new System.Drawing.Point(283, 38);
+            this.cboTipoFiltroVentas.Name = "cboTipoFiltroVentas";
+            this.cboTipoFiltroVentas.ShadowDecoration.Parent = this.cboTipoFiltroVentas;
+            this.cboTipoFiltroVentas.Size = new System.Drawing.Size(206, 36);
+            this.cboTipoFiltroVentas.TabIndex = 237;
+            // 
+            // cboTipoReporteVentas
+            // 
+            this.cboTipoReporteVentas.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoReporteVentas.BorderRadius = 5;
+            this.cboTipoReporteVentas.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoReporteVentas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoReporteVentas.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboTipoReporteVentas.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoReporteVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboTipoReporteVentas.HoveredState.Parent = this.cboTipoReporteVentas;
+            this.cboTipoReporteVentas.ItemHeight = 30;
+            this.cboTipoReporteVentas.ItemsAppearance.Parent = this.cboTipoReporteVentas;
+            this.cboTipoReporteVentas.Location = new System.Drawing.Point(14, 38);
+            this.cboTipoReporteVentas.Name = "cboTipoReporteVentas";
+            this.cboTipoReporteVentas.ShadowDecoration.Parent = this.cboTipoReporteVentas;
+            this.cboTipoReporteVentas.Size = new System.Drawing.Size(206, 36);
+            this.cboTipoReporteVentas.TabIndex = 237;
+            // 
             // gunaPanel1
             // 
             this.gunaPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
@@ -601,7 +934,7 @@
             this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.gunaPanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaPanel1.Name = "gunaPanel1";
-            this.gunaPanel1.Size = new System.Drawing.Size(788, 29);
+            this.gunaPanel1.Size = new System.Drawing.Size(1023, 29);
             this.gunaPanel1.TabIndex = 164;
             // 
             // label3
@@ -623,7 +956,7 @@
             this.gunaControlBox3.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MaximizeBox;
             this.gunaControlBox3.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox3.IconSize = 15F;
-            this.gunaControlBox3.Location = new System.Drawing.Point(696, 0);
+            this.gunaControlBox3.Location = new System.Drawing.Point(931, 0);
             this.gunaControlBox3.Name = "gunaControlBox3";
             this.gunaControlBox3.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox3.OnHoverIconColor = System.Drawing.Color.White;
@@ -640,7 +973,7 @@
             this.gunaControlBox2.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MinimizeBox;
             this.gunaControlBox2.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox2.IconSize = 15F;
-            this.gunaControlBox2.Location = new System.Drawing.Point(651, 0);
+            this.gunaControlBox2.Location = new System.Drawing.Point(886, 0);
             this.gunaControlBox2.Name = "gunaControlBox2";
             this.gunaControlBox2.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox2.OnHoverIconColor = System.Drawing.Color.White;
@@ -656,7 +989,7 @@
             this.gunaControlBox1.BackColor = System.Drawing.Color.Transparent;
             this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(739, 0);
+            this.gunaControlBox1.Location = new System.Drawing.Point(974, 0);
             this.gunaControlBox1.Name = "gunaControlBox1";
             this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
@@ -664,40 +997,44 @@
             this.gunaControlBox1.Size = new System.Drawing.Size(45, 29);
             this.gunaControlBox1.TabIndex = 74;
             // 
-            // cboTipoReporte
+            // cboFiltraIngresos
             // 
-            this.cboTipoReporte.BackColor = System.Drawing.Color.Transparent;
-            this.cboTipoReporte.BorderRadius = 5;
-            this.cboTipoReporte.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboTipoReporte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoReporte.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboTipoReporte.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboTipoReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboTipoReporte.HoveredState.Parent = this.cboTipoReporte;
-            this.cboTipoReporte.ItemHeight = 30;
-            this.cboTipoReporte.ItemsAppearance.Parent = this.cboTipoReporte;
-            this.cboTipoReporte.Location = new System.Drawing.Point(284, 47);
-            this.cboTipoReporte.Name = "cboTipoReporte";
-            this.cboTipoReporte.ShadowDecoration.Parent = this.cboTipoReporte;
-            this.cboTipoReporte.Size = new System.Drawing.Size(206, 36);
-            this.cboTipoReporte.TabIndex = 237;
-            this.cboTipoReporte.SelectedIndexChanged += new System.EventHandler(this.cboTipoReporte_SelectedIndexChanged);
+            this.cboFiltraIngresos.BackColor = System.Drawing.Color.Transparent;
+            this.cboFiltraIngresos.BorderRadius = 5;
+            this.cboFiltraIngresos.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboFiltraIngresos.DropDownHeight = 120;
+            this.cboFiltraIngresos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFiltraIngresos.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboFiltraIngresos.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboFiltraIngresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboFiltraIngresos.HoveredState.Parent = this.cboFiltraIngresos;
+            this.cboFiltraIngresos.IntegralHeight = false;
+            this.cboFiltraIngresos.ItemHeight = 30;
+            this.cboFiltraIngresos.Items.AddRange(new object[] {
+            "unos",
+            "dos"});
+            this.cboFiltraIngresos.ItemsAppearance.Parent = this.cboFiltraIngresos;
+            this.cboFiltraIngresos.Location = new System.Drawing.Point(563, 38);
+            this.cboFiltraIngresos.Name = "cboFiltraIngresos";
+            this.cboFiltraIngresos.ShadowDecoration.Parent = this.cboFiltraIngresos;
+            this.cboFiltraIngresos.Size = new System.Drawing.Size(207, 36);
+            this.cboFiltraIngresos.TabIndex = 280;
             // 
-            // siticoneLabel5
+            // siticoneLabel13
             // 
-            this.siticoneLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel5.ForeColor = System.Drawing.Color.Black;
-            this.siticoneLabel5.Location = new System.Drawing.Point(284, 30);
-            this.siticoneLabel5.Name = "siticoneLabel5";
-            this.siticoneLabel5.Size = new System.Drawing.Size(70, 17);
-            this.siticoneLabel5.TabIndex = 236;
-            this.siticoneLabel5.Text = "Tipo Reporte";
+            this.siticoneLabel13.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel13.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel13.Location = new System.Drawing.Point(563, 21);
+            this.siticoneLabel13.Name = "siticoneLabel13";
+            this.siticoneLabel13.Size = new System.Drawing.Size(64, 15);
+            this.siticoneLabel13.TabIndex = 236;
+            this.siticoneLabel13.Text = "Tipo de Filtro";
             // 
             // frmReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 521);
+            this.ClientSize = new System.Drawing.Size(1023, 559);
             this.Controls.Add(this.siticonePanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmReportes";
@@ -718,6 +1055,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.siticoneGroupBox3.ResumeLayout(false);
+            this.siticoneGroupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -758,12 +1099,32 @@
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel4;
         private Siticone.UI.WinForms.SiticoneComboBox siticoneComboBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker siticoneDateTimePicker1;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaFinRenova;
         private System.Windows.Forms.Label label2;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker siticoneDateTimePicker2;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaIniRenova;
         private System.Windows.Forms.Label label4;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel5;
         private Siticone.UI.WinForms.SiticoneComboBox cboTipoReporte;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel6;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoPlan;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel7;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTiporeport;
+        private System.Windows.Forms.TabPage tabPage3;
+        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox3;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private Siticone.UI.WinForms.SiticoneTextBox siticoneTextBox2;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel8;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel9;
+        private Siticone.UI.WinForms.SiticoneLabel Mes;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel12;
+        private Siticone.UI.WinForms.SiticoneComboBox cboRepVentaAnio;
+        private Siticone.UI.WinForms.SiticoneComboBox cboMes;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoReporteVentas;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel10;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoFiltroVentas;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer3;
+        private Siticone.UI.WinForms.SiticoneComboBox cboFiltraIngresos;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel13;
     }
 }

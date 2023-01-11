@@ -191,6 +191,7 @@ namespace wfaIntegradoCom.Procesos
                     Int32 counWhatsApp = 0;
                     Int32 counLlamada = 0;
                     Int32 counCliente = 0;
+                    Int32 counSoat = 0;
                     Int32 counTotales = 0;
 
                     dgv.Columns.Add("id", "id");
@@ -202,17 +203,19 @@ namespace wfaIntegradoCom.Procesos
                     dgv.Columns.Add("WHATSAPP", "WHATSAPP");
                     dgv.Columns.Add("LLAMADA", "LLAMADA");
                     dgv.Columns.Add("CLIENTE", "CLIENTE");
+                    dgv.Columns.Add("SOAT", "SOAT");
                     dgv.Columns.Add("TOTALES", "TOTALES");
 
                     foreach (Reporte it in lstReporte)
                     {
-                        Int32 sumColumns= Convert.ToInt32(it.coddAux2)+Convert.ToInt32(it.coddAux3)+Convert.ToInt32(it.coddAux4)+ Convert.ToInt32(it.coddAux5)+ Convert.ToInt32(it.coddAux6)+ Convert.ToInt32(it.coddAux9);
+                        Int32 sumColumns= Convert.ToInt32(it.coddAux2)+Convert.ToInt32(it.coddAux3)+Convert.ToInt32(it.coddAux4)+ Convert.ToInt32(it.coddAux5)+ Convert.ToInt32(it.coddAux6)+ Convert.ToInt32(it.coddAux7)+ Convert.ToInt32(it.coddAux8);
                         counOficina += Convert.ToInt32(it.coddAux2);
                         counReferencia+=Convert.ToInt32(it.coddAux3);
                         counFacebook+=Convert .ToInt32(it.coddAux4);
                         counWhatsApp+=Convert .ToInt32(it.coddAux5);
                         counLlamada+=Convert .ToInt32(it.coddAux6);
-                        counCliente+=Convert .ToInt32(it.coddAux9);
+                        counCliente+=Convert .ToInt32(it.coddAux7);
+                        counSoat += Convert .ToInt32(it.coddAux8);
                         counTotales += sumColumns;
                         lstReporte[y].SumColumns = sumColumns;
                         dgv.Rows.Add(
@@ -224,18 +227,19 @@ namespace wfaIntegradoCom.Procesos
                                     it.coddAux4,
                                     it.coddAux5,
                                     it.coddAux6,
-                                    it.coddAux9,
+                                    it.coddAux7,
+                                    it.coddAux8,
                                     sumColumns
 
                                     );
                        
-                        dgv.Rows[y].Cells[9].Style.BackColor = Variables.ColorGroupBox;
-                        dgv.Rows[y].Cells[9].Style.ForeColor = Color.White;
+                        dgv.Rows[y].Cells[10].Style.BackColor = Variables.ColorGroupBox;
+                        dgv.Rows[y].Cells[10].Style.ForeColor = Color.White;
                         y++;
                     }
                     dgv.Columns[9].HeaderCell.Style.BackColor= Variables.ColorGroupBox;
                     dgv.Rows.Add("", "", "", "", "", "", "","","","");
-                    dgv.Rows.Add("", "", "TOTALES", counOficina, counReferencia, counFacebook, counWhatsApp,counLlamada,counCliente,counTotales);
+                    dgv.Rows.Add("", "", "TOTALES", counOficina, counReferencia, counFacebook, counWhatsApp,counLlamada,counCliente, counSoat, counTotales);
                     dgv.Rows[y + 1].DefaultCellStyle.ForeColor = Color.White;
                     dgv.Rows[y + 1].DefaultCellStyle.BackColor = Variables.ColorGroupBox;
 
@@ -248,7 +252,8 @@ namespace wfaIntegradoCom.Procesos
                     dgv.Columns[6].Width = 50;
                     dgv.Columns[7].Width = 50;
                     dgv.Columns[8].Width = 50;
-                    dgv.Columns[9].Width = 100;
+                    dgv.Columns[9].Width = 50;
+                    dgv.Columns[10].Width = 100;
 
                     fnGraficos(lstReporte, counTotales);
 

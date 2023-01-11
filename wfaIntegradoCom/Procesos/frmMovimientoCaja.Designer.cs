@@ -1318,7 +1318,7 @@
             this.siticonePanel2.Location = new System.Drawing.Point(5, 103);
             this.siticonePanel2.Name = "siticonePanel2";
             this.siticonePanel2.ShadowDecoration.Parent = this.siticonePanel2;
-            this.siticonePanel2.Size = new System.Drawing.Size(1021, 556);
+            this.siticonePanel2.Size = new System.Drawing.Size(1021, 538);
             this.siticonePanel2.TabIndex = 279;
             // 
             // siticoneLabel10

@@ -219,6 +219,7 @@ namespace CapaDato
                     lstCajaChica.Add(new ReporteBloque
                     {
                         Codigoreporte = Convert.ToString(dr["id"]),
+                        codAuxiliar = Convert.ToString(dr["codigoValida"]),
                         Detallereporte = FormatearCadenaTitleCase(dr["nomCajaChica"].ToString()),
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
@@ -236,6 +237,7 @@ namespace CapaDato
                     lstCajaChica.Add(new ReporteBloque
                     {
                         Codigoreporte = "TEGR0003",
+                        codAuxiliar = "",
                         Detallereporte = FormatearCadenaTitleCase("Caja chica"),
                         Cantidad = 0,
                         idMoneda = Convert.ToInt32(1),
@@ -464,6 +466,7 @@ namespace CapaDato
                         Codigoreporte = dr["id"].ToString(),
                         Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
                         codAuxiliar = FormatearCadenaTitleCase(dr["nomTipoPago"].ToString()),
+                        idOperacion = Convert.ToInt32(dr["idOperacion"]),
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),

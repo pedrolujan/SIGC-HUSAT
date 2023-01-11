@@ -61,6 +61,8 @@ namespace CapaDato
             DataSet dtMenu = new DataSet();
             DataView dvCantidad = new DataView();
             DataView dvImporte = new DataView();
+            DataView dvCorteCantidad = new DataView();
+            DataView dvCorteImporte = new DataView();
             clsConexion objCnx = null;
             List<Reporte> lst = new List<Reporte>();
             objUtil = new clsUtil();
@@ -81,11 +83,13 @@ namespace CapaDato
                 dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarReporteRecaudacion", pa);
                 dvCantidad = new DataView(dtMenu.Tables[0]);
                 dvImporte = new DataView(dtMenu.Tables[1]);
+                dvCorteCantidad = new DataView(dtMenu.Tables[2]);
+                dvCorteImporte = new DataView(dtMenu.Tables[3]);
                 Int32 y = 0;
                 Int32 sumColumn = 0;
                 foreach (DataRowView dt in dvCantidad)
                 {
-                    sumColumn = Convert.ToInt32(dt["PAGO_PENDIENTE"]) + Convert.ToInt32(dt["VENCIDO"]) + Convert.ToInt32(dt["CORTE"]) + Convert.ToInt32(dt["CUOTA_PAGADA"]);
+                    
                     lst.Add(new Reporte
                     {
                         numero = y + 1,
@@ -99,36 +103,94 @@ namespace CapaDato
                         ImporteAux4=0,
                         coddAux5 = dt["CUOTA_PAGADA"].ToString(),
                         ImporteAux5=0,
+                        coddAux6="0",
+                        ImporteAux6=0,
                         indicadorDes = 0,
                         nombreIndicador="",
                         ImporteTotalFilas = 0,
-                        TotalFilas = sumColumn
+                        TotalFilas = 0,
+                        indiceCrecimientoImporte=0,
+                        indiceCrecimientoRow=0 
 
 
                     }) ;
 
-                    lst[0].SumRowsTotalFilas+=sumColumn;
+                  
                         y++;
                 }
+
+                ///////
+                Int32 j = 0;
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    foreach (DataRowView dt in dvCorteCantidad)
+                    {
+                        String mesAct = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dt["cDia"].ToString()));
+                        if (lst[i].coddAux1 == mesAct)
+                        {
+                            lst[i].coddAux6 = Convert.ToString(dt["CORTE"]).ToString();
+                        }
+
+                        j++;
+                    }
+                    ///////
+                    Int32 jj = 0;
+                    foreach (DataRowView dt in dvCorteImporte)
+                    {
+                        String mesAct = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dt["mes"].ToString()));
+                        if (lst[i].coddAux1 == mesAct)
+                        {
+                            lst[i].ImporteAux6 = Convert.ToDouble(dt["CORTE"]);
+
+                        }
+
+                        jj++;
+                    }
+                }
+                
+
                 Int32 yy = 0;
                 double imporTotal=0;
                 foreach (DataRowView dt in dvImporte)
                 {
-                    imporTotal = Convert.ToDouble(dt["PAGO_PENDIENTE"])+ Convert.ToDouble(dt["VENCIDO"])+ Convert.ToDouble(dt["CORTE"])+ Convert.ToDouble(dt["CUOTA_PAGADA"]);
+
+                    sumColumn = Convert.ToInt32(lst[yy].coddAux2) + Convert.ToInt32(lst[yy].coddAux3) + Convert.ToInt32(lst[yy].coddAux5) + Convert.ToInt32(lst[yy].coddAux6);
 
                     lst[yy].ImporteAux2 = Convert.ToDouble(dt["PAGO_PENDIENTE"]);
                     lst[yy].ImporteAux3 = Convert.ToDouble(dt["VENCIDO"]);
                     lst[yy].ImporteAux4 = Convert.ToDouble(dt["CORTE"]);
                     lst[yy].ImporteAux5 = Convert.ToDouble(dt["CUOTA_PAGADA"]);
-                    lst[yy].ImporteTotalFilas = imporTotal;
 
+                    imporTotal = lst[yy].ImporteAux2 + lst[yy].ImporteAux3 + lst[yy].ImporteAux5 + lst[yy].ImporteAux6;
+
+                    lst[yy].ImporteTotalFilas = imporTotal;
+                    lst[yy].TotalFilas = sumColumn;
+
+                    if (yy==0)
+                    {
+                        lst[yy].indiceCrecimientoImporte = cls.cod1 == "TRRC0001"?0:((lst[yy].ImporteAux5 / lst[yy].ImporteAux5) - 0) * 100;
+                        lst[yy].indiceCrecimientoRow = cls.cod1 == "TRRC0001"?0:((Convert.ToDouble(lst[yy].coddAux5) / Convert.ToDouble(lst[yy].coddAux5)) - 0) * 100;
+                        
+                    }
+                    else
+                    {
+                        lst[yy].indiceCrecimientoImporte = cls.cod1 == "TRRC0001"?0:((lst[yy].ImporteAux5 / lst[yy-1].ImporteAux5) - 1) * 100;
+                        lst[yy].indiceCrecimientoRow = cls.cod1 == "TRRC0001"?0:((Convert.ToDouble(lst[yy].coddAux5) / Convert.ToDouble(lst[yy-1].coddAux5)) - 1) * 100;
+
+                    }
+                    lst[yy].indiceCrecimientoRowGraficos = (lst[yy].ImporteAux5 * 100) / lst[yy].ImporteTotalFilas;
                     lst[0].SumImporteAux2 += lst[yy].ImporteAux2;
                     lst[0].SumImporteAux3 += lst[yy].ImporteAux3;
                     lst[0].SumImporteAux4 += lst[yy].ImporteAux4;
                     lst[0].SumImporteAux5 += lst[yy].ImporteAux5;
+                    lst[0].SumImporteAux6 += lst[yy].ImporteAux6;
+                   
+
+                    lst[yy].indiceCrecimientoRowGraficos =(Double) decimal.Round(Convert.ToDecimal(lst[yy].indiceCrecimientoRowGraficos), 2);
 
                     yy++;
                     lst[0].SumRowsImporteTotalFilas += imporTotal;
+                    lst[0].SumRowsTotalFilas += sumColumn;
                 }
                 //lst[0].SumRowsAux6 = SumRowPago;
 
@@ -156,10 +218,15 @@ namespace CapaDato
             }
 
         }
-        public List<Reporte> daBuscarReporteRenovaciones(Busquedas cls)
+        public List<Reporte> daBuscarReporteRenovaciones(Busquedas cls)        
         {
-            SqlParameter[] pa = new SqlParameter[8];
-            DataTable dtResult = new DataTable();
+            SqlParameter[] pa = new SqlParameter[9];
+            DataSet dtMenu = new DataSet();
+            DataView dvCantidad = new DataView();
+            DataView dvImporte = new DataView();
+            DataView dvCantidadRenovado = new DataView();
+            DataView dvImporteRenovado = new DataView();
+
             clsConexion objCnx = null;
             List<Reporte> lst = new List<Reporte>();
             objUtil = new clsUtil();
@@ -170,40 +237,124 @@ namespace CapaDato
                 pa[1] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = cls.dtFechaIni };
                 pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = cls.dtFechaFin };
                 pa[3] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = cls.cBuscar };
-                pa[4] = new SqlParameter("@idCiclo", SqlDbType.Int) { Value = 0 };
-                pa[5] = new SqlParameter("@estadoDetCronograma", SqlDbType.VarChar, 8) { Value = cls.cod2 };
-                pa[6] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = cls.tipoCon };
-                pa[7] = new SqlParameter("@chkIncumplimiento", SqlDbType.Int) { Value = cls.cod3 };
+                pa[4] = new SqlParameter("@tipoReporte", SqlDbType.VarChar, 15) { Value = cls.cod1 };
+                pa[5] = new SqlParameter("@idTipoPlan", SqlDbType.Int) { Value = cls.cod2 };
+                pa[6] = new SqlParameter("@estadoDetCronograma", SqlDbType.VarChar, 8) { Value = cls.cod3 };
+                pa[7] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = cls.tipoCon };
+                pa[8] = new SqlParameter("@chkIncumplimiento", SqlDbType.Int) { Value = cls.cod3 };
                 objCnx = new clsConexion("");
                 //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
-                dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarReporteRecaudacion", pa);
+                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarReporteRenovacion", pa);
+                dvCantidad = new DataView(dtMenu.Tables[0]);
+                dvImporte = new DataView(dtMenu.Tables[1]);
+                dvCantidadRenovado = new DataView(dtMenu.Tables[2]);
+                dvImporteRenovado = new DataView(dtMenu.Tables[3]);
                 Int32 y = 0;
                 Int32 SumRowPago = 0;
-                foreach (DataRow dt in dtResult.Rows)
+                Int32 totalRows = 0;
+                foreach (DataRowView dt in dvCantidad)
                 {
                     SumRowPago += Convert.ToInt32(dt["FINALIZADO"]);
+                    
                     lst.Add(new Reporte
                     {
-                        numero=y+1,
-                        coddAux1 = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dt["mes"].ToString())) ,
-                        coddAux2= dt["VIGENTE"].ToString(),
-                        coddAux3= dt["ANULADO"].ToString(),
-                        coddAux4= dt["FINALIZADO"].ToString(),
-                        strIndicador=dt["mes"].ToString(),
-                        indicadorDes=0
-                    });
-                        y++;
-                }
-                lst[0].SumRowsAux4 = SumRowPago;
 
-                for (int i = 0; i < lst.Count; i++)
+                        numero = y + 1,
+                        coddAux1 = cls.cod1 == "TRRN0001" ? CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dt["mes"].ToString())) : dt["mes"].ToString(),
+                        nombreAux1 = cls.cod1 == "TRRN0001" ? "Mes" : "Tipo de Plan",
+                        coddAux2 = dt["VIGENTE"].ToString(),
+                        coddAux3 = dt["RENOVADO"].ToString(),
+                        coddAux4 = dt["FINALIZADO"].ToString(),
+                        strIndicador = dt["mes"].ToString(),
+                        TotalFilas = totalRows,
+                        indicadorDes = 0
+                    }) ;
+                    
+                    y++;
+                }
+
+                ///////
+                ///
+                
+
+                Int32 j = 0;
+               
+                for (int ii = 0; ii < lst.Count; ii++)
                 {
-                    double indica = (double)Convert.ToInt32(lst[i].coddAux4) * 100;
-                    indica = Double.IsInfinity(indica) ? 0 : indica;
+                    
+                    foreach (DataRowView dt in dvCantidadRenovado)
+                    {
+                        String mesAct = cls.cod1 == "TRRN0001" ? CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dt["mes"].ToString())) : dt["mes"].ToString();
+                        if (lst[ii].coddAux1 == mesAct)
+                        {
+                            lst[ii].coddAux3 = Convert.ToString(dt["RENOVADO"]).ToString();
+                        }
 
-                    lst[i].indicadorDes = decimal.Round(SumRowPago !=0?Convert.ToDecimal(indica) / lst[0].SumRowsAux4:0,2);
-                    lst[i].nombreIndicador = decimal.Round(lst[i].indicadorDes,2) + "%";
+                        j++;
+                    }
+                    ///////
+                    Int32 jj = 0;
+                    foreach (DataRowView dt in dvImporteRenovado)
+                    {
+                        String mesAct = cls.cod1 == "TRRN0001" ? CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dt["mes"].ToString())) : dt["mes"].ToString();
+                        if (lst[ii].coddAux1 == mesAct)
+                        {
+                            lst[ii].ImporteAux3 = Convert.ToDouble(dt["RENOVADO"]);
+
+                        }
+
+                        jj++;
+                    }
+
+                    
+                 
+
                 }
+                int i = 0;
+                Double imporTotal = 0;
+                foreach (DataRowView dt in dvImporte)
+                {
+                    imporTotal = Convert.ToDouble(dt["VIGENTE"]) + lst[i].ImporteAux3 + Convert.ToDouble(dt["FINALIZADO"]);
+
+                    lst[i].ImporteAux2 = Convert.ToDouble(dt["VIGENTE"]);
+                    lst[i].ImporteAux4 = Convert.ToDouble(dt["FINALIZADO"]);
+
+                    lst[i].ImporteTotalFilas = imporTotal;
+
+                    if (i == 0)
+                    {
+                        lst[i].indiceCrecimientoImporte = cls.cod1 == "TRRN0002" ? 0 : ((lst[i].ImporteAux2 / lst[i].ImporteAux2) - 0) * 100;
+                        lst[i].indiceCrecimientoRow = cls.cod1 == "TRRN0002" ? 0 : ((Convert.ToDouble(lst[i].ImporteAux2) / Convert.ToDouble(lst[i].ImporteAux2)) - 0) * 100;
+
+                    }
+                    else
+                    {
+                        lst[i].indiceCrecimientoImporte = cls.cod1 == "TRRN0002" ? 0 : ((lst[i].ImporteAux2 / lst[i - 1].ImporteAux2) - 1) * 100;
+                        lst[i].indiceCrecimientoRow = cls.cod1 == "TRRN0002" ? 0 : ((Convert.ToDouble(lst[i].ImporteAux2) / Convert.ToDouble(lst[i - 1].ImporteAux2)) - 1) * 100;
+
+                    }
+                    lst[i].indiceCrecimientoImporte = Double.IsNaN(lst[i].indiceCrecimientoImporte) == true ? 0 : lst[i].indiceCrecimientoImporte;
+                    lst[i].indiceCrecimientoRow = Double.IsNaN(lst[i].indiceCrecimientoRow) == true ? 0 : lst[i].indiceCrecimientoRow;
+
+                    lst[i].indiceCrecimientoRowGraficos = (lst[i].ImporteAux3 * 100) / (lst[i].ImporteAux2+ lst[i].ImporteAux4);
+                    lst[i].indiceCrecimientoImporte = Double.IsNaN(lst[i].indiceCrecimientoRowGraficos) == true ? 0 : lst[i].indiceCrecimientoImporte;
+                    lst[0].SumImporteAux2 += lst[i].ImporteAux2;
+                    lst[0].SumImporteAux3 += lst[i].ImporteAux3;
+                    lst[0].SumImporteAux4 += lst[i].ImporteAux4;
+
+                    lst[i].indiceCrecimientoRowGraficos = lst[i].indiceCrecimientoImporte == 0 ? 0 : (Double)decimal.Round(Convert.ToDecimal(lst[i].indiceCrecimientoRowGraficos), 2);
+
+
+                    lst[0].SumRowsImporteTotalFilas += imporTotal;
+
+                    totalRows = Convert.ToInt32(lst[i].coddAux2) + Convert.ToInt32(lst[i].coddAux3) + Convert.ToInt32(lst[i].coddAux4);
+                    lst[i].TotalFilas = totalRows;
+                    lst[0].SumRowsTotalFilas += totalRows;
+
+                    i++;
+                }
+
+
                 return lst;
 
             }
@@ -219,6 +370,86 @@ namespace CapaDato
                 objCnx = null;
             }
 
+        }
+        public List<Reporte> daBuscarReporteVentas(Busquedas cls)
+        {
+            SqlParameter[] pa = new SqlParameter[10];
+            DataSet dtMenu = new DataSet();
+            DataView dvCantidad = new DataView();
+            DataView dvImporte = new DataView();
+
+            clsConexion objCnx = null;
+            List<Reporte> lst = new List<Reporte>();
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.TinyInt) { Value = cls.chkActivarFechas };
+                pa[1] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = cls.dtFechaIni };
+                pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = cls.dtFechaFin };
+                pa[3] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = cls.cBuscar };
+                pa[4] = new SqlParameter("@tipoReporte", SqlDbType.VarChar, 15) { Value = cls.cod1 };
+                pa[5] = new SqlParameter("@tipoFiltro", SqlDbType.VarChar, 15) { Value = cls.cod2 };
+                pa[6] = new SqlParameter("@anio", SqlDbType.Int) { Value = cls.cod3 };
+                pa[7] = new SqlParameter("@mes", SqlDbType.Int) { Value = cls.cod4 };
+                pa[8] = new SqlParameter("@FiltroIngreso", SqlDbType.Int) { Value = cls.cod5 };
+                pa[9] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = cls.tipoCon };
+                objCnx = new clsConexion("");
+                //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
+                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarReporteVentas", pa);
+                dvCantidad = new DataView(dtMenu.Tables[0]);
+                dvImporte = new DataView(dtMenu.Tables[1]);
+                DataTable dt =GenerateTransposedTable(dtMenu.Tables[0]);
+
+
+                return lst;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
+
+        private DataTable GenerateTransposedTable(DataTable inputTable)
+        {
+            DataTable outputTable = new DataTable();
+
+            // Se agregan las columnas haciendo un ciclo para cada fila
+
+            // El encabezado de la primera columna es el mismo. 
+            outputTable.Columns.Add(inputTable.Columns[0].ColumnName.ToString());
+
+            // El encabezado para las demas columnas
+            foreach (DataRow inRow in inputTable.Rows)
+            {
+                string newColName = inRow[0].ToString();
+                outputTable.Columns.Add(newColName);
+            }
+
+            // Se agregan las columnas por cada renglón        
+            for (int rCount = 1; rCount <= inputTable.Columns.Count - 1; rCount++)
+            {
+                DataRow newRow = outputTable.NewRow();
+
+                newRow[0] = inputTable.Columns[rCount].ColumnName.ToString();
+                for (int cCount = 0; cCount <= inputTable.Rows.Count - 1; cCount++)
+                {
+                    string colValue = inputTable.Rows[cCount][rCount].ToString();
+                    newRow[cCount + 1] = colValue;
+                }
+                outputTable.Rows.Add(newRow);
+            }
+
+            return outputTable;
         }
         public DataTable daBuscarCronogramaEspecifico(Int32 idCron, Int32 idCont, Int32 tipoCon)
         {

@@ -94,6 +94,8 @@ namespace wfaIntegradoCom
             this.tsCerraSession = new FontAwesome.Sharp.IconButton();
             this.Img_Husat_Blanco = new System.Windows.Forms.PictureBox();
             this.panelMenuPrincipal = new Siticone.UI.WinForms.SiticonePanel();
+            this.subMenuReportes = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnReportes = new FontAwesome.Sharp.IconButton();
             this.subMenuSoporte = new Siticone.UI.WinForms.SiticonePanel();
             this.btnSoporte = new FontAwesome.Sharp.IconButton();
             this.subMenuConfiguracion = new Siticone.UI.WinForms.SiticonePanel();
@@ -624,6 +626,8 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.AutoScroll = true;
             this.panelMenuPrincipal.AutoSize = true;
             this.panelMenuPrincipal.BackColor = System.Drawing.Color.Transparent;
+            this.panelMenuPrincipal.Controls.Add(this.subMenuReportes);
+            this.panelMenuPrincipal.Controls.Add(this.btnReportes);
             this.panelMenuPrincipal.Controls.Add(this.subMenuSoporte);
             this.panelMenuPrincipal.Controls.Add(this.btnSoporte);
             this.panelMenuPrincipal.Controls.Add(this.subMenuConfiguracion);
@@ -647,6 +651,46 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.ShadowDecoration.Parent = this.panelMenuPrincipal;
             this.panelMenuPrincipal.Size = new System.Drawing.Size(230, 531);
             this.panelMenuPrincipal.TabIndex = 1;
+            // 
+            // subMenuReportes
+            // 
+            this.subMenuReportes.AutoSize = true;
+            this.subMenuReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.subMenuReportes.Cursor = System.Windows.Forms.Cursors.Default;
+            this.subMenuReportes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subMenuReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subMenuReportes.Location = new System.Drawing.Point(0, 655);
+            this.subMenuReportes.MinimumSize = new System.Drawing.Size(250, 20);
+            this.subMenuReportes.Name = "subMenuReportes";
+            this.subMenuReportes.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.subMenuReportes.ShadowDecoration.Parent = this.subMenuReportes;
+            this.subMenuReportes.Size = new System.Drawing.Size(250, 20);
+            this.subMenuReportes.TabIndex = 29;
+            this.subMenuReportes.Click += new System.EventHandler(this.subMenuReportes_Click);
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnReportes.IconChar = FontAwesome.Sharp.IconChar.FileClipboard;
+            this.btnReportes.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnReportes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReportes.IconSize = 32;
+            this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportes.Location = new System.Drawing.Point(0, 600);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnReportes.Size = new System.Drawing.Size(213, 55);
+            this.btnReportes.TabIndex = 30;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // subMenuSoporte
             // 
@@ -2579,6 +2623,7 @@ namespace wfaIntegradoCom
             this.txtBuscarRepGeneral.ShadowDecoration.Parent = this.txtBuscarRepGeneral;
             this.txtBuscarRepGeneral.Size = new System.Drawing.Size(134, 37);
             this.txtBuscarRepGeneral.TabIndex = 3;
+            this.txtBuscarRepGeneral.TextChanged += new System.EventHandler(this.txtBuscarRepGeneral_TextChanged);
             this.txtBuscarRepGeneral.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarRepGeneral_KeyPress);
             // 
             // cboTipoReporte
@@ -2939,6 +2984,8 @@ namespace wfaIntegradoCom
         private Siticone.UI.WinForms.SiticonePanel pntsSeguimiento;
         private Siticone.UI.WinForms.SiticoneButton btnAlertaSeguimiento;
         private System.Windows.Forms.Panel panelPerfil;
+        private Siticone.UI.WinForms.SiticonePanel subMenuReportes;
+        private FontAwesome.Sharp.IconButton btnReportes;
     }
 }
 

@@ -85,6 +85,12 @@ namespace wfaIntegradoCom.Consultas
                 btnGenerarVenta.Text = "Anular Documento";
                 btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
             }
+            if (lnTipoCon == -5)
+            {
+                label1.Text = "¿Desea finalizar el pago de la cuota?";
+                btnGenerarVenta.Text = "Finalizar pago";
+                btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
+            }
             this.reportViewer1.RefreshReport();
             fnCargarReporte(lstCDocumento, lstDVenta);
         }
@@ -141,6 +147,11 @@ namespace wfaIntegradoCom.Consultas
             {
                 frmAnularVenta frm = new frmAnularVenta();
                 frm.fnEstadoAnulacion(false);
+            }
+            else if (lnTipoCon == -5)
+            {
+                frmPagosPendientes frm = new frmPagosPendientes();
+                frm.fnRecuperarEstadoGenVenta(false);
             }
 
 
@@ -214,6 +225,10 @@ namespace wfaIntegradoCom.Consultas
             {
                 frmAnularVenta frm = new frmAnularVenta();
                 frm.fnEstadoAnulacion(true);
+            }else if (lnTipoCon == -5)
+            {
+                frmPagosPendientes frm = new frmPagosPendientes();
+                frm.fnRecuperarEstadoGenVenta(true);
             }
 
             this.Close();

@@ -1571,6 +1571,10 @@ namespace wfaIntegradoCom.Mantenedores
                 
                 srtDescuento = clsMoneda.cSimbolo + " " + string.Format("{0:0.00}", Descuento);
             }
+            else
+            {
+                srtDescuento = clsMoneda.cSimbolo + " " + string.Format("{0:0.00}", Descuento);
+            }
             return srtDescuento;
         }
         private void fnCargaTablaDetalle(List<DetalleVenta> lstDV, DataGridView dgv)
@@ -1787,8 +1791,17 @@ namespace wfaIntegradoCom.Mantenedores
                     }
 
                     DateTime PeriodoInicial = Convert.ToDateTime(diaNuevaFecha + "/" + (PeriodoEstimadoInicial.Month) + "/" + PeriodoEstimadoInicial.Year);
+                    if (diaCicloPago==30)
+                    {
+                        PeriodoInicial = PeriodoEstimadoInicial.AddDays(((numDiasMesInicial- fechaActual.Day)+1));
+                    }
+                    else
+                    {
+                        PeriodoInicial=PeriodoInicial.AddDays(1);
+                    }
+                    
                     Int32 sumarMeses= numMeses;
-                    DateTime PeriodoFinal = (PeriodoInicial.AddMonths(sumarMeses).AddDays((resDias-1)));
+                    DateTime PeriodoFinal = (PeriodoInicial.AddMonths(sumarMeses).AddDays(-1));
                     DateTime fechaEmision = PeriodoFinal.AddDays(1);
                     DateTime fechaVencimiento = PeriodoFinal.AddDays(5);
 
@@ -1882,6 +1895,7 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     rentaAdelantada =clsTarifa.PrecioPlan;
                 }
+                rentaAdelantada = clsTarifa.PrecioPlan;
             }
             else
             {
@@ -2155,30 +2169,72 @@ namespace wfaIntegradoCom.Mantenedores
                                 }
                                 else
                                 {
-                                    arrayPrecio = new double[]
-                                    {
-                                        clsTarifa.PrecioPlan,
-                                    };
+                                        arrayPrecio = new double[]
+                                        {
+                                            clsTarifa.PrecioPlan,
+                                        };
+
+                                        arrayDescuentoCantidad = new double[]
+                                        {
+                                        clsTarifa.DescuentoRentaAdelantada,
+                                        };
+
+                                        arrayDescuentoPrecio = new double[]
+                                        {
+                                        calcularDesRA
+                                        };
+                                        arrayGananciaPro = new double[]
+                                        {
+                                        0
+                                        };
+                                        arrayPrimerPago = new string[]
+                                        {
+
+                                        "Plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString()))+" - "+ FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboTipoVenta.Text))
+                                        };
+                                    
+                                }
+                            }
+                        }
+                        else if (lnTipoCon==-1)
+                        {
+                            if (lstPP.Count > 0 && clsPlanActual.idPlan==clsPlan.idPlan)
+                            {
+                                List<string> list = new List<string>();
+                                List<double> listPrecio = new List<double>();
+
+
+                                for (int i = 0; i < lstPP.Count; i++)
+                                {
+                                    list.Add(lstPP[i].Descripcion);
+                                    listPrecio.Add(lstPP[i].Descripcion == "Prorrateo" ? ProrrateoRedondeado : lstPP[i].Importe);
+
+
 
                                     arrayDescuentoCantidad = new double[]
                                     {
-                                        clsTarifa.DescuentoRentaAdelantada,
+                                                clsTarifa.DescuentoReactivacion,
+                                                clsTarifa.DescuentoRentaAdelantada,
+                                                clsTarifa.DescuentoProrrateo
                                     };
 
                                     arrayDescuentoPrecio = new double[]
                                     {
-                                        calcularDesRA
+                                                calcularDesReactivacion,
+                                                calcularDesRA,
+                                                calcularDesPR
                                     };
                                     arrayGananciaPro = new double[]
                                     {
-                                        0
+                                                0,
+                                                0,
+                                                0
                                     };
-                                    arrayPrimerPago = new string[]
-                                    {
 
-                                        "Plan "+FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboPlanP.Text.ToString()))+" - "+ FunGeneral.FormatearCadenaTitleCase(Convert.ToString(cboTipoVenta.Text))
-                                    };
                                 }
+
+                                arrayPrimerPago = list.ToArray();
+                                arrayPrecio = listPrecio.ToArray();
                             }
                         }
                     }
@@ -3914,8 +3970,8 @@ namespace wfaIntegradoCom.Mantenedores
             Double totalMensual = lstPP.Sum(item => item.Importe);
 
             clsDVC.Total = Convert.ToInt32(cboTipoPlanP.SelectedValue) == 1 ? lstDV.Sum(item => item.Importe) : totalMensual;
-            clsDVC.IGV = (clsDVC.Total * 0.18);
-            clsDVC.SubTotal = clsDVC.Total - clsDVC.IGV;
+            clsDVC.SubTotal = (clsDVC.Total / 1.18);
+            clsDVC.IGV = (clsDVC.Total - clsDVC.SubTotal);
             clsDVC.SimboloMoneda = clsMoneda.cSimbolo;
             clsDVC.NombreDocumento = Convert.ToString(cboComprobanteP.Text);
             clsDVC.CodDocumento = Convert.ToString(cboComprobanteP.SelectedValue);
@@ -4633,6 +4689,8 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void irAInstalacion_Click(object sender, EventArgs e)
         {
+            dtFechaPago.Value = Variables.gdFechaSis;
+            FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
 
             bTipoTab = true;
             bActivarChecks = true;
@@ -4674,6 +4732,10 @@ namespace wfaIntegradoCom.Mantenedores
         }
         private void irActualizar_Click(object sender, EventArgs e)
         {
+            Int32 anioActual = Variables.gdFechaSis.Year;
+            dtFechaPago.MinDate = Variables.gdFechaSis.AddYears(-(anioActual-2018));
+            dtFechaPago.MaxDate = Variables.gdFechaSis.AddMinutes(5);
+
             bTipoTab = false;
             bActivarChecks = true;
             fnLimpiarControles();

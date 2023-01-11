@@ -28,7 +28,7 @@ namespace CapaDato
             String xmlDetalelVenta = clsUtil.Serialize(xmlDvg[0].xmlDetalleVentas);
             try
             {
-                pa[0] = new SqlParameter("@idEgreso", SqlDbType.Int) { Value = clsEgresos.idEgreso };
+                pa[0] = new SqlParameter("@idEgreso", SqlDbType. Int) { Value = clsEgresos.idEgreso };
                 pa[1] = new SqlParameter("@codCargoConcepto", SqlDbType.VarChar,12) { Value = clsEgresos.cargo };
                 pa[2] = new SqlParameter("@dtFechaRegistro", SqlDbType.Date) { Value = lstTTrand[0].dFechaRegistro };
                 pa[3] = new SqlParameter("@idUsuarioReceptor", SqlDbType.Int) { Value = clsEgresos.UsuarioReceptor };

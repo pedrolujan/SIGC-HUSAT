@@ -49,6 +49,18 @@ namespace CapaNegocio
                 return new List<Reporte> { };
             }
         }
+        public List<Reporte> blBuscarReporteVentas(Busquedas cls)
+        {
+            objControlPagos = new DAControlPagos();
+            try
+            {
+                return objControlPagos.daBuscarReporteVentas(cls);
+            }
+            catch (Exception ex)
+            {
+                return new List<Reporte> { };
+            }
+        }
         public DataTable blBuscarCronogramaEspecifico(Int32 idCron, Int32 idCont, Int32 tipoCon)
         {
             objControlPagos = new DAControlPagos();

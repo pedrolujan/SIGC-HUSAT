@@ -563,14 +563,21 @@ namespace wfaIntegradoCom.Funciones
                 if (cboCombo.Name== "cboFiltraIngresos")
                 {
                     Int32 i = 0;
+                   
                     foreach (Cargo it in lstTablaCod)
                     {
                         if (it.cCodTab== "16")
                         {
+                            lstTablaCod[i].cCodTab = "-16";
                             lstTablaCod[i].cNomTab = "GPS";
                         }
                         i++;
                     }
+                    lstTablaCod.Add(new Cargo
+                    {
+                        cCodTab = "16",
+                        cNomTab = "CAJA CHICA"
+                    });
                 }
                 cboCombo.DataSource = lstTablaCod;
 
@@ -798,7 +805,7 @@ namespace wfaIntegradoCom.Funciones
             }
 
         }
-        public static Int32 fnVerificarAperturaAnterior(DateTime dt,Int32 idUsuario)
+        public static List<CuadreCaja> fnVerificarAperturaAnterior(DateTime dt,Int32 idUsuario)
         {
             bool bResul = false;
             clsUtil objUtil = new clsUtil();
@@ -806,7 +813,7 @@ namespace wfaIntegradoCom.Funciones
             Int32 num = 0;
             try
             {
-                Variables.lstCuardreCaja = objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(dt, 5), Variables.idSucursal, idUsuario);
+                Variables.lstCuardreCaja= objApertura.blVerificarApertura(FunGeneral.GetFechaHoraFormato(dt, 5), Variables.idSucursal, idUsuario);
                 if (Variables.lstCuardreCaja.Count!=0)
                 {
                     num= Variables.lstCuardreCaja[0].idOperacion;
@@ -821,13 +828,13 @@ namespace wfaIntegradoCom.Funciones
 
                     });
                 }
-                return num;
+                return Variables.lstCuardreCaja;
             }
             catch (Exception ex)
             {
                 bResul = false;
                 objUtil.gsLogAplicativo("frmAperturaCaja", "fnVerificarApertura", ex.Message);
-                return num;
+                return new List<CuadreCaja>();
             }
 
         }
@@ -1147,6 +1154,11 @@ namespace wfaIntegradoCom.Funciones
                 return lstCiclo;
             }
         }
+
+        public static DateTime fnUpdateFechas(DateTime dt)
+        {
+            return  dt.AddHours(-dt.Hour).AddMinutes(-dt.Minute).AddSeconds(-dt.Second).AddHours(Variables.gdFechaSis.Hour).AddMinutes(Variables.gdFechaSis.Minute).AddSeconds(Variables.gdFechaSis.Second);
+        }
         public static Int32 fnBuscarAccionDiaria(Int32 idOpera, string fechaOperacion)
         {
             BLCargo objTablaCod = new BLCargo();
@@ -1201,14 +1213,25 @@ namespace wfaIntegradoCom.Funciones
         public static Double fnLimpiarDescuentos(String PrecioADescontarStr)
         {
             Double PrecioADescontar = 0;
+            String str = "";
             //Double PrecioADescontar = Convert.ToDouble(dgvCronograma.Rows[e.RowIndex+1].Cells[e.ColumnIndex].Value);
-            string patron = @"(?:- *)?\d+(?:\.\d+)?";
+            string patron = @"(?:- *)?\d+(?:\/\d+)?";
+            //string patron = @"(?:\.\d+)?,\d+(?:\.\d+)?";
             Regex regex = new Regex(patron);
+            Int32 i = 0;
+            Int32 countt = regex.Matches(PrecioADescontarStr).Count;
 
             foreach (Match m in regex.Matches(PrecioADescontarStr))
             {
-                PrecioADescontar = Convert.ToDouble(m.Value);
+                if (countt > 1 && i== countt-1 && Convert.ToInt32(m.Value)==0)
+                {
+                    break;
+                }
+                str += Convert.ToDouble(m.Value);
+                
+                i++;
             }
+            PrecioADescontar = Convert.ToDouble(str);
             return PrecioADescontar;
         }
         public static void cbo_MouseWheel(object sender, MouseEventArgs e)
@@ -1254,7 +1277,7 @@ namespace wfaIntegradoCom.Funciones
             }
             else if (lnTipoCon==0)
             {
-                srt = $"{simbolo} {String.Format("{0:#,##0.00}", Precio)}";
+                srt = simbolo+String.Format("{0:#,##0.00}", Precio);
 
             }else if (lnTipoCon==1)
             {

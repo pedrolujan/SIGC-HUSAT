@@ -879,6 +879,7 @@
       <DependentUpon>frmVPOtrasVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Consultas\prtActaCierreCaja.rdlc" />
+    <EmbeddedResource Include="Consultas\rptVentas.rdlc" />
     <EmbeddedResource Include="Consultas\rptActaCambioTitularidad.rdlc" />
     <EmbeddedResource Include="Consultas\rptActaInstalacion.rdlc" />
     <EmbeddedResource Include="Consultas\rptComprobantePago.rdlc" />
@@ -1212,6 +1213,7 @@
     <None Include="Resources\HUSAT_LOGO %28Blanco sombra color%29.png" />
     <None Include="Resources\soporte_blanco_1.png" />
     <None Include="Resources\HUSAT_LOGO %28Letras Naranjas%29 .png" />
+    <None Include="Resources\enojo.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

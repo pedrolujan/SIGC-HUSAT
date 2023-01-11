@@ -413,6 +413,16 @@ namespace wfaIntegradoCom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap enojo {
+            get {
+                object obj = ResourceManager.GetObject("enojo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap equivale {
             get {
                 object obj = ResourceManager.GetObject("equivale", resourceCulture);

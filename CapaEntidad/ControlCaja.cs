@@ -26,6 +26,7 @@ namespace CapaEntidad
         public String Detallereporte { get; set; }
         public String MasDetallereporte { get; set; }
         public Int32 Cantidad { get; set; }
+        public Int32 idOperacion { get; set; }
         public Double ImporteRow { get; set; }
         public Double ImporteTipoCambio { get; set; }
 

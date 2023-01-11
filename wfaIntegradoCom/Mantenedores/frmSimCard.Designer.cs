@@ -842,7 +842,7 @@
             this.txtObservacion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtObservacion.HoveredState.Parent = this.txtObservacion;
             this.txtObservacion.Location = new System.Drawing.Point(8, 480);
-            this.txtObservacion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtObservacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.PasswordChar = '\0';
@@ -1053,7 +1053,7 @@
             this.txtSimCard.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSimCard.HoveredState.Parent = this.txtSimCard;
             this.txtSimCard.Location = new System.Drawing.Point(18, 67);
-            this.txtSimCard.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSimCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSimCard.Name = "txtSimCard";
             this.txtSimCard.PasswordChar = '\0';
             this.txtSimCard.PlaceholderText = "Ej:991235839";
@@ -1122,7 +1122,7 @@
             this.pbSearch.BaseColor = System.Drawing.Color.Transparent;
             this.pbSearch.Image = global::wfaIntegradoCom.Properties.Resources.buscar_base;
             this.pbSearch.InitialImage = null;
-            this.pbSearch.Location = new System.Drawing.Point(336, 7);
+            this.pbSearch.Location = new System.Drawing.Point(1204, 7);
             this.pbSearch.Name = "pbSearch";
             this.pbSearch.Size = new System.Drawing.Size(28, 24);
             this.pbSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1234,7 +1234,7 @@
             this.txtCantDias.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCantDias.HoveredState.Parent = this.txtCantDias;
             this.txtCantDias.Location = new System.Drawing.Point(739, 70);
-            this.txtCantDias.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCantDias.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCantDias.Name = "txtCantDias";
             this.txtCantDias.PasswordChar = '\0';
             this.txtCantDias.PlaceholderText = "Ej:30";
@@ -1914,6 +1914,7 @@
             this.txtBuscarXSimCard.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarXSimCard.HoveredState.Parent = this.txtBuscarXSimCard;
             this.txtBuscarXSimCard.Location = new System.Drawing.Point(19, 47);
+            this.txtBuscarXSimCard.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscarXSimCard.Name = "txtBuscarXSimCard";
             this.txtBuscarXSimCard.PasswordChar = '\0';
             this.txtBuscarXSimCard.PlaceholderForeColor = System.Drawing.Color.DimGray;

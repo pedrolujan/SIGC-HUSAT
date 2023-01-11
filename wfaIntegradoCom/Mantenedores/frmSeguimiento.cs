@@ -1290,6 +1290,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                 erFechaRegSeguimiento.Text = "";
             }
+            FunGeneral.fnValidarFechaPago(dtpFechaRegSeguimiento, imgFechaRegSeguimiento, 1);
         }
 
         private void tabRegistroVisitas_Click(object sender, EventArgs e)
@@ -1882,7 +1883,9 @@ namespace wfaIntegradoCom.Mantenedores
             estPasoLoad = false;
             tabRegistroVisitas.AutoScroll = false;
             Boolean bResult = false;
-           
+            dtpFechaRegSeguimiento.Value = Variables.gdFechaSis;
+
+
             FunValidaciones.fnColorTresBotones(btnNuevo, btnEditar, btnGuardar);
            
             FunValidaciones.fnColorBoton2(btnNuevoSeguimiento, btnGuardarSeguimiento);
@@ -1986,6 +1989,7 @@ namespace wfaIntegradoCom.Mantenedores
             cboTipoPlan.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
             cboPlan.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
             cboPaginaSeg.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
+            FunGeneral.fnValidarFechaPago(dtpFechaRegSeguimiento, imgFechaRegSeguimiento, 0);
         }
 
         private DateTime fnCalcularSoloFecha(DateTime fecha)

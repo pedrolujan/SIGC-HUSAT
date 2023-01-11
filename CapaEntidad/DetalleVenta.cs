@@ -76,15 +76,45 @@ namespace CapaEntidad
             Int32 mesFechaActual = fechaActual.Month;
             Int32 anoFechaActual = fechaActual.Year;
             Double diasDeProrrateo = 0;
+
+            Int32 numDiasMes = DateTime.DaysInMonth(fechaActual.Year, fechaActual.Month);
             ciclo = ciclo == 0 ? 1 : ciclo;
+
+            DateTime dtActual= Convert.ToDateTime(fechaActual.ToShortDateString());
             if(ciclo > diaFechaActual)
             {
-                diasDeProrrateo = ciclo - diaFechaActual;
-            }else if (ciclo < diaFechaActual)
+                //diasDeProrrateo = numDiasMes - diaFechaActual;
+                int diaTemp = ciclo == 15 ? ciclo : numDiasMes;
+                DateTime fechaCiclo = DateTime.Parse($"{diaTemp}/{mesFechaActual}/{anoFechaActual}");
+                diasDeProrrateo = (fechaCiclo - dtActual).Days;
+            }
+            else if (ciclo < diaFechaActual)
             {
+                DateTime fechaCiclo=DateTime.Now;
+                if (ciclo==30 && numDiasMes> ciclo)
+                {
+                    fechaCiclo = DateTime.Parse($"{numDiasMes}/{mesFechaActual}/{anoFechaActual}");
+                }
+                else
+                {
+                    fechaCiclo = DateTime.Parse($"{ciclo}/{mesFechaActual}/{anoFechaActual}").AddMonths(1);
+                }
 
-                DateTime fechaCiclo = DateTime.Parse($"{ciclo}/{mesFechaActual}/{anoFechaActual}").AddMonths(1);
-                diasDeProrrateo = (fechaCiclo - fechaActual).Days;
+                diasDeProrrateo = (fechaCiclo - dtActual).Days;
+            }
+            else
+            {
+                DateTime fechaCiclo = DateTime.Now;
+                if (ciclo == 30 && numDiasMes > ciclo)
+                {
+                    fechaCiclo = DateTime.Parse($"{numDiasMes}/{mesFechaActual}/{anoFechaActual}");
+                }
+                else
+                {
+                    fechaCiclo = DateTime.Parse($"{ciclo}/{mesFechaActual}/{anoFechaActual}").AddMonths(1);
+                }
+
+                diasDeProrrateo = (fechaCiclo - dtActual).Days;
             }
             Double devolverOtro = Convert.ToDouble(string.Format("{0:0.00}", montoDia * diasDeProrrateo));
             Decimal devolver =Convert.ToDecimal(montoDia * diasDeProrrateo);

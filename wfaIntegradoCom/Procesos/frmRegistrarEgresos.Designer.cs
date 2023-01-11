@@ -33,6 +33,7 @@
             this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.lblImporteDisponible = new System.Windows.Forms.Label();
             this.dtFechaRegEgresos = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cboFuenteEgreso = new Siticone.UI.WinForms.SiticoneComboBox();
@@ -53,10 +54,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.lblImporte = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblFuente = new System.Windows.Forms.Label();
             this.lblArea = new System.Windows.Forms.Label();
@@ -65,6 +68,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtUnidades = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtImporte2 = new Siticone.UI.WinForms.SiticoneTextBox();
             this.cboTipoConcepto = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboMoneda2 = new Siticone.UI.WinForms.SiticoneComboBox();
@@ -79,15 +83,16 @@
             this.pbMoneda2 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.pbImporte2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblImporte2 = new System.Windows.Forms.Label();
             this.lblConsepto = new System.Windows.Forms.Label();
-            this.lblMoneda2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblMoneda2 = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -103,6 +108,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDescripcion2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbConcepto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMoneda2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImporte2)).BeginInit();
             this.SuspendLayout();
@@ -163,6 +169,7 @@
             // siticonePanel1
             // 
             this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticonePanel1.Controls.Add(this.lblImporteDisponible);
             this.siticonePanel1.Controls.Add(this.dtFechaRegEgresos);
             this.siticonePanel1.Controls.Add(this.pictureBox2);
             this.siticonePanel1.Controls.Add(this.cboFuenteEgreso);
@@ -183,6 +190,7 @@
             this.siticonePanel1.Controls.Add(this.label2);
             this.siticonePanel1.Controls.Add(this.label11);
             this.siticonePanel1.Controls.Add(this.label1);
+            this.siticonePanel1.Controls.Add(this.label16);
             this.siticonePanel1.Controls.Add(this.label4);
             this.siticonePanel1.Controls.Add(this.label3);
             this.siticonePanel1.Controls.Add(this.label31);
@@ -200,6 +208,18 @@
             this.siticonePanel1.Size = new System.Drawing.Size(719, 383);
             this.siticonePanel1.TabIndex = 165;
             this.siticonePanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.siticonePanel1_Paint);
+            // 
+            // lblImporteDisponible
+            // 
+            this.lblImporteDisponible.BackColor = System.Drawing.Color.DimGray;
+            this.lblImporteDisponible.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporteDisponible.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblImporteDisponible.Location = new System.Drawing.Point(248, 35);
+            this.lblImporteDisponible.Name = "lblImporteDisponible";
+            this.lblImporteDisponible.Size = new System.Drawing.Size(175, 23);
+            this.lblImporteDisponible.TabIndex = 235;
+            this.lblImporteDisponible.Text = "S/. 0.00";
+            this.lblImporteDisponible.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dtFechaRegEgresos
             // 
@@ -247,13 +267,13 @@
             this.cboFuenteEgreso.Location = new System.Drawing.Point(9, 23);
             this.cboFuenteEgreso.Name = "cboFuenteEgreso";
             this.cboFuenteEgreso.ShadowDecoration.Parent = this.cboFuenteEgreso;
-            this.cboFuenteEgreso.Size = new System.Drawing.Size(313, 36);
+            this.cboFuenteEgreso.Size = new System.Drawing.Size(202, 36);
             this.cboFuenteEgreso.TabIndex = 1;
             this.cboFuenteEgreso.SelectedIndexChanged += new System.EventHandler(this.cboFuenteEgreso_SelectedIndexChanged);
             // 
             // pbFuente
             // 
-            this.pbFuente.Location = new System.Drawing.Point(330, 26);
+            this.pbFuente.Location = new System.Drawing.Point(213, 29);
             this.pbFuente.Name = "pbFuente";
             this.pbFuente.Size = new System.Drawing.Size(30, 30);
             this.pbFuente.TabIndex = 185;
@@ -307,10 +327,10 @@
             this.cboMoneda.HoveredState.Parent = this.cboMoneda;
             this.cboMoneda.ItemHeight = 30;
             this.cboMoneda.ItemsAppearance.Parent = this.cboMoneda;
-            this.cboMoneda.Location = new System.Drawing.Point(366, 23);
+            this.cboMoneda.Location = new System.Drawing.Point(431, 23);
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.ShadowDecoration.Parent = this.cboMoneda;
-            this.cboMoneda.Size = new System.Drawing.Size(313, 36);
+            this.cboMoneda.Size = new System.Drawing.Size(248, 36);
             this.cboMoneda.TabIndex = 111;
             this.cboMoneda.SelectedIndexChanged += new System.EventHandler(this.cboMoneda_SelectedIndexChanged);
             // 
@@ -402,7 +422,7 @@
             // 
             // pbDescripcion
             // 
-            this.pbDescripcion.Location = new System.Drawing.Point(658, 225);
+            this.pbDescripcion.Location = new System.Drawing.Point(658, 232);
             this.pbDescripcion.Name = "pbDescripcion";
             this.pbDescripcion.Size = new System.Drawing.Size(30, 30);
             this.pbDescripcion.TabIndex = 172;
@@ -410,9 +430,11 @@
             // 
             // pbImporte
             // 
-            this.pbImporte.Location = new System.Drawing.Point(181, 159);
+            this.pbImporte.Image = global::wfaIntegradoCom.Properties.Resources.enojo;
+            this.pbImporte.Location = new System.Drawing.Point(180, 158);
             this.pbImporte.Name = "pbImporte";
-            this.pbImporte.Size = new System.Drawing.Size(30, 30);
+            this.pbImporte.Size = new System.Drawing.Size(32, 32);
+            this.pbImporte.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbImporte.TabIndex = 172;
             this.pbImporte.TabStop = false;
             // 
@@ -477,7 +499,7 @@
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDescripcion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescripcion.HoveredState.Parent = this.txtDescripcion;
-            this.txtDescripcion.Location = new System.Drawing.Point(9, 225);
+            this.txtDescripcion.Location = new System.Drawing.Point(9, 232);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
@@ -496,7 +518,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(9, 205);
+            this.label2.Location = new System.Drawing.Point(9, 212);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 17);
             this.label2.TabIndex = 157;
@@ -526,13 +548,25 @@
             this.label1.TabIndex = 157;
             this.label1.Text = "Importe";
             // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.DimGray;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.Control;
+            this.label16.Location = new System.Drawing.Point(248, 18);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(175, 17);
+            this.label16.TabIndex = 157;
+            this.label16.Text = "Importe Disponible:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(366, 3);
+            this.label4.Location = new System.Drawing.Point(428, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 17);
             this.label4.TabIndex = 157;
@@ -566,18 +600,29 @@
             // 
             this.lblImporte.AutoSize = true;
             this.lblImporte.BackColor = System.Drawing.Color.Transparent;
-            this.lblImporte.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporte.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImporte.ForeColor = System.Drawing.Color.Red;
-            this.lblImporte.Location = new System.Drawing.Point(15, 190);
+            this.lblImporte.Location = new System.Drawing.Point(9, 192);
             this.lblImporte.Name = "lblImporte";
             this.lblImporte.Size = new System.Drawing.Size(0, 15);
             this.lblImporte.TabIndex = 171;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(369, 190);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(0, 15);
+            this.label13.TabIndex = 171;
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.Red;
             this.lblUsuario.Location = new System.Drawing.Point(369, 123);
             this.lblUsuario.Name = "lblUsuario";
@@ -588,7 +633,7 @@
             // 
             this.lblFuente.AutoSize = true;
             this.lblFuente.BackColor = System.Drawing.Color.Transparent;
-            this.lblFuente.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFuente.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFuente.ForeColor = System.Drawing.Color.Red;
             this.lblFuente.Location = new System.Drawing.Point(12, 56);
             this.lblFuente.Name = "lblFuente";
@@ -599,7 +644,7 @@
             // 
             this.lblArea.AutoSize = true;
             this.lblArea.BackColor = System.Drawing.Color.Transparent;
-            this.lblArea.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArea.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArea.ForeColor = System.Drawing.Color.Red;
             this.lblArea.Location = new System.Drawing.Point(9, 123);
             this.lblArea.Name = "lblArea";
@@ -610,9 +655,9 @@
             // 
             this.lblMoneda.AutoSize = true;
             this.lblMoneda.BackColor = System.Drawing.Color.Transparent;
-            this.lblMoneda.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMoneda.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMoneda.ForeColor = System.Drawing.Color.Red;
-            this.lblMoneda.Location = new System.Drawing.Point(369, 57);
+            this.lblMoneda.Location = new System.Drawing.Point(433, 57);
             this.lblMoneda.Name = "lblMoneda";
             this.lblMoneda.Size = new System.Drawing.Size(0, 15);
             this.lblMoneda.TabIndex = 171;
@@ -621,9 +666,9 @@
             // 
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.BackColor = System.Drawing.Color.Transparent;
-            this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcion.ForeColor = System.Drawing.Color.Red;
-            this.lblDescripcion.Location = new System.Drawing.Point(12, 305);
+            this.lblDescripcion.Location = new System.Drawing.Point(12, 312);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(0, 15);
             this.lblDescripcion.TabIndex = 171;
@@ -652,6 +697,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtUnidades);
             this.tabPage2.Controls.Add(this.txtImporte2);
             this.tabPage2.Controls.Add(this.cboTipoConcepto);
             this.tabPage2.Controls.Add(this.cboMoneda2);
@@ -666,7 +712,9 @@
             this.tabPage2.Controls.Add(this.pbMoneda2);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.pictureBox3);
             this.tabPage2.Controls.Add(this.pictureBox1);
+            this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.pbImporte2);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label6);
@@ -681,6 +729,43 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ingresos";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txtUnidades
+            // 
+            this.txtUnidades.Animated = false;
+            this.txtUnidades.BackColor = System.Drawing.Color.Transparent;
+            this.txtUnidades.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtUnidades.BorderRadius = 5;
+            this.txtUnidades.BorderThickness = 2;
+            this.txtUnidades.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtUnidades.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUnidades.DefaultText = "1";
+            this.txtUnidades.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtUnidades.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtUnidades.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtUnidades.DisabledState.Parent = this.txtUnidades;
+            this.txtUnidades.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtUnidades.FillColor = System.Drawing.SystemColors.Control;
+            this.txtUnidades.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtUnidades.FocusedState.Parent = this.txtUnidades;
+            this.txtUnidades.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnidades.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUnidades.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtUnidades.HoveredState.Parent = this.txtUnidades;
+            this.txtUnidades.Location = new System.Drawing.Point(412, 112);
+            this.txtUnidades.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtUnidades.Name = "txtUnidades";
+            this.txtUnidades.PasswordChar = '\0';
+            this.txtUnidades.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtUnidades.PlaceholderText = "";
+            this.txtUnidades.SelectedText = "";
+            this.txtUnidades.SelectionStart = 1;
+            this.txtUnidades.ShadowDecoration.Parent = this.txtUnidades;
+            this.txtUnidades.Size = new System.Drawing.Size(63, 36);
+            this.txtUnidades.TabIndex = 3;
+            this.txtUnidades.TextChanged += new System.EventHandler(this.siticoneTextBox1_TextChanged_1);
+            this.txtUnidades.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporte2_KeyPress);
+            this.txtUnidades.Leave += new System.EventHandler(this.txtImporte2_Leave);
             // 
             // txtImporte2
             // 
@@ -704,7 +789,7 @@
             this.txtImporte2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtImporte2.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtImporte2.HoveredState.Parent = this.txtImporte2;
-            this.txtImporte2.Location = new System.Drawing.Point(394, 112);
+            this.txtImporte2.Location = new System.Drawing.Point(530, 112);
             this.txtImporte2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtImporte2.Name = "txtImporte2";
             this.txtImporte2.PasswordChar = '\0';
@@ -712,7 +797,7 @@
             this.txtImporte2.PlaceholderText = "";
             this.txtImporte2.SelectedText = "";
             this.txtImporte2.ShadowDecoration.Parent = this.txtImporte2;
-            this.txtImporte2.Size = new System.Drawing.Size(272, 36);
+            this.txtImporte2.Size = new System.Drawing.Size(136, 36);
             this.txtImporte2.TabIndex = 3;
             this.txtImporte2.TextChanged += new System.EventHandler(this.siticoneTextBox1_TextChanged_1);
             this.txtImporte2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporte2_KeyPress);
@@ -928,6 +1013,14 @@
             this.label7.TabIndex = 181;
             this.label7.Text = "Moneda";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(477, 115);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox3.TabIndex = 179;
+            this.pictureBox3.TabStop = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(673, 40);
@@ -936,6 +1029,18 @@
             this.pictureBox1.TabIndex = 178;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label14.Location = new System.Drawing.Point(412, 92);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 17);
+            this.label14.TabIndex = 176;
+            this.label14.Text = "Unidades";
             // 
             // pbImporte2
             // 
@@ -951,7 +1056,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(394, 92);
+            this.label5.Location = new System.Drawing.Point(530, 92);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 17);
             this.label5.TabIndex = 176;
@@ -975,7 +1080,7 @@
             this.lblImporte2.BackColor = System.Drawing.Color.Transparent;
             this.lblImporte2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImporte2.ForeColor = System.Drawing.Color.Red;
-            this.lblImporte2.Location = new System.Drawing.Point(398, 147);
+            this.lblImporte2.Location = new System.Drawing.Point(531, 148);
             this.lblImporte2.Name = "lblImporte2";
             this.lblImporte2.Size = new System.Drawing.Size(0, 15);
             this.lblImporte2.TabIndex = 239;
@@ -991,17 +1096,6 @@
             this.lblConsepto.Size = new System.Drawing.Size(0, 15);
             this.lblConsepto.TabIndex = 238;
             // 
-            // lblMoneda2
-            // 
-            this.lblMoneda2.AutoSize = true;
-            this.lblMoneda2.BackColor = System.Drawing.Color.Transparent;
-            this.lblMoneda2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMoneda2.ForeColor = System.Drawing.Color.Red;
-            this.lblMoneda2.Location = new System.Drawing.Point(26, 72);
-            this.lblMoneda2.Name = "lblMoneda2";
-            this.lblMoneda2.Size = new System.Drawing.Size(0, 15);
-            this.lblMoneda2.TabIndex = 237;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -1013,16 +1107,16 @@
             this.label12.Size = new System.Drawing.Size(0, 15);
             this.label12.TabIndex = 237;
             // 
-            // label13
+            // lblMoneda2
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(369, 190);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(0, 15);
-            this.label13.TabIndex = 171;
+            this.lblMoneda2.AutoSize = true;
+            this.lblMoneda2.BackColor = System.Drawing.Color.Transparent;
+            this.lblMoneda2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMoneda2.ForeColor = System.Drawing.Color.Red;
+            this.lblMoneda2.Location = new System.Drawing.Point(26, 72);
+            this.lblMoneda2.Name = "lblMoneda2";
+            this.lblMoneda2.Size = new System.Drawing.Size(0, 15);
+            this.lblMoneda2.TabIndex = 237;
             // 
             // frmRegistrarEgresos
             // 
@@ -1054,6 +1148,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDescripcion2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbConcepto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMoneda2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImporte2)).EndInit();
             this.ResumeLayout(false);
@@ -1122,5 +1217,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private Siticone.UI.WinForms.SiticoneTextBox txtUnidades;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblImporteDisponible;
+        private System.Windows.Forms.Label label16;
     }
 }

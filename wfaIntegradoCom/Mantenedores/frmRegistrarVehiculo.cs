@@ -1229,6 +1229,7 @@ namespace wfaIntegradoCom.Mantenedores
             try
             {
                 DataGridViewRow posicion = dgVehiculo.Rows[e.RowIndex];
+
                 clsVehiculo.idVehiculo = Convert.ToInt32($"{(posicion.Cells[0].Value)}");
                 clsVehiculo.vPlaca = $"{(posicion.Cells[2].Value).ToString().Trim()}";
                 clsVehiculo.vClase = $"{(posicion.Cells[4].Value).ToString().Trim()}";

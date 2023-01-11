@@ -94,7 +94,7 @@ namespace wfaIntegradoCom.Procesos
                 clsEnviar.codTipoPago = Convert.ToString(cboTipoPago.SelectedValue);
                 clsEnviar.cDescripTipoPago = Convert.ToString(cboTipoPago.Text);
                 clsEnviar.idEntidadPago = Convert.ToInt32(cboEntidadesPago.SelectedValue);
-                clsEnviar.PagaCon = txtCanPagar.Text == "" ? 0 : FunGeneral.fnLimpiarDescuentos(txtCanPagar.Text);
+                clsEnviar.PagaCon = txtCanPagar.Text == "" ? 0 : Convert.ToDouble(txtCanPagar.Text.ToString());
                 clsEnviar.cNumeroOperacion = Convert.ToString(txtNumeroOperacion.Text);
                 clsEnviar.cDescripcionEstadoPP = cboEntidadesPago.Text.ToString();
                 frmTipoPago frm = new frmTipoPago();
@@ -118,10 +118,11 @@ namespace wfaIntegradoCom.Procesos
 
         private void fnValidarpagaCon()
         {
-            Double PrecioADescontar = FunGeneral.fnLimpiarDescuentos(txtCanPagar.Text.ToString());
+            //String str = txtCanPagar.Text.Length>4?txtCanPagar.Text.ToString().Substring(2): txtCanPagar.Text.ToString();
+            Double PrecioADescontar = Convert.ToDouble(txtCanPagar.Text); ;
             if (PrecioADescontar <= clsPagos.PagaCon)
             {
-                txtCanPagar.Text = FunGeneral.fnFormatearPrecio(clsPagos.SimboloMoneda, PrecioADescontar, 0);
+                txtCanPagar.Text = FunGeneral.fnFormatearPrecio(clsPagos.SimboloMoneda, PrecioADescontar, -1);
                 lblCanpagar.Text = "";
                 pbMontoAPagar.Image = Properties.Resources.ok;
                 estCantPago = true;
@@ -152,8 +153,8 @@ namespace wfaIntegradoCom.Procesos
 
         private void txtCanPagar_Leave(object sender, EventArgs e)
         {
-            Double PrecioADescontar = FunGeneral.fnLimpiarDescuentos(txtCanPagar.Text.ToString());
-            txtCanPagar.Text = FunGeneral.fnFormatearPrecio(clsPagos.SimboloMoneda, PrecioADescontar, 0);
+            //Double PrecioADescontar = FunGeneral.fnLimpiarDescuentos(txtCanPagar.Text.ToString());
+            //txtCanPagar.Text = FunGeneral.fnFormatearPrecio(clsPagos.SimboloMoneda, PrecioADescontar, 0);
             fnValidarpagaCon();
         }
 

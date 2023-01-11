@@ -319,6 +319,7 @@
             this.txtBuscarCategoria.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarCategoria.HoveredState.Parent = this.txtBuscarCategoria;
             this.txtBuscarCategoria.Location = new System.Drawing.Point(305, 35);
+            this.txtBuscarCategoria.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscarCategoria.Name = "txtBuscarCategoria";
             this.txtBuscarCategoria.PasswordChar = '\0';
             this.txtBuscarCategoria.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -421,6 +422,7 @@
             this.txtActualizarCategoria.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtActualizarCategoria.HoveredState.Parent = this.txtActualizarCategoria;
             this.txtActualizarCategoria.Location = new System.Drawing.Point(16, 470);
+            this.txtActualizarCategoria.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtActualizarCategoria.Name = "txtActualizarCategoria";
             this.txtActualizarCategoria.PasswordChar = '\0';
             this.txtActualizarCategoria.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -486,6 +488,7 @@
             this.txtObservacionCategoria.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtObservacionCategoria.HoveredState.Parent = this.txtObservacionCategoria;
             this.txtObservacionCategoria.Location = new System.Drawing.Point(20, 134);
+            this.txtObservacionCategoria.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtObservacionCategoria.Multiline = true;
             this.txtObservacionCategoria.Name = "txtObservacionCategoria";
             this.txtObservacionCategoria.PasswordChar = '\0';
@@ -573,6 +576,7 @@
             this.txtCategoria.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCategoria.HoveredState.Parent = this.txtCategoria;
             this.txtCategoria.Location = new System.Drawing.Point(519, 66);
+            this.txtCategoria.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.PasswordChar = '\0';
             this.txtCategoria.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -627,6 +631,7 @@
             this.txtCodCategoria.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCodCategoria.HoveredState.Parent = this.txtCodCategoria;
             this.txtCodCategoria.Location = new System.Drawing.Point(20, 66);
+            this.txtCodCategoria.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCodCategoria.Name = "txtCodCategoria";
             this.txtCodCategoria.PasswordChar = '\0';
             this.txtCodCategoria.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -826,6 +831,7 @@
             this.txtBuscarMarca.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarMarca.HoveredState.Parent = this.txtBuscarMarca;
             this.txtBuscarMarca.Location = new System.Drawing.Point(313, 32);
+            this.txtBuscarMarca.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscarMarca.Name = "txtBuscarMarca";
             this.txtBuscarMarca.PasswordChar = '\0';
             this.txtBuscarMarca.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -856,6 +862,7 @@
             this.txtActualizarMarca.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtActualizarMarca.HoveredState.Parent = this.txtActualizarMarca;
             this.txtActualizarMarca.Location = new System.Drawing.Point(16, 479);
+            this.txtActualizarMarca.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtActualizarMarca.Name = "txtActualizarMarca";
             this.txtActualizarMarca.PasswordChar = '\0';
             this.txtActualizarMarca.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -998,6 +1005,7 @@
             this.txtObservacionMarca.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtObservacionMarca.HoveredState.Parent = this.txtObservacionMarca;
             this.txtObservacionMarca.Location = new System.Drawing.Point(18, 140);
+            this.txtObservacionMarca.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtObservacionMarca.Multiline = true;
             this.txtObservacionMarca.Name = "txtObservacionMarca";
             this.txtObservacionMarca.PasswordChar = '\0';
@@ -1085,6 +1093,7 @@
             this.txtMarca.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMarca.HoveredState.Parent = this.txtMarca;
             this.txtMarca.Location = new System.Drawing.Point(587, 71);
+            this.txtMarca.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.PasswordChar = '\0';
             this.txtMarca.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1191,6 +1200,7 @@
             this.txtCodMarca.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCodMarca.HoveredState.Parent = this.txtCodMarca;
             this.txtCodMarca.Location = new System.Drawing.Point(18, 71);
+            this.txtCodMarca.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCodMarca.Name = "txtCodMarca";
             this.txtCodMarca.PasswordChar = '\0';
             this.txtCodMarca.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1336,6 +1346,7 @@
             this.txtActualizarModelo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtActualizarModelo.HoveredState.Parent = this.txtActualizarModelo;
             this.txtActualizarModelo.Location = new System.Drawing.Point(17, 484);
+            this.txtActualizarModelo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtActualizarModelo.Name = "txtActualizarModelo";
             this.txtActualizarModelo.PasswordChar = '\0';
             this.txtActualizarModelo.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1524,6 +1535,7 @@
             this.txtBuscarModelo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarModelo.HoveredState.Parent = this.txtBuscarModelo;
             this.txtBuscarModelo.Location = new System.Drawing.Point(365, 21);
+            this.txtBuscarModelo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscarModelo.Name = "txtBuscarModelo";
             this.txtBuscarModelo.PasswordChar = '\0';
             this.txtBuscarModelo.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -1650,6 +1662,7 @@
             this.txtObservacionModelo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtObservacionModelo.HoveredState.Parent = this.txtObservacionModelo;
             this.txtObservacionModelo.Location = new System.Drawing.Point(18, 158);
+            this.txtObservacionModelo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtObservacionModelo.Multiline = true;
             this.txtObservacionModelo.Name = "txtObservacionModelo";
             this.txtObservacionModelo.PasswordChar = '\0';
@@ -1738,6 +1751,7 @@
             this.txtModelo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtModelo.HoveredState.Parent = this.txtModelo;
             this.txtModelo.Location = new System.Drawing.Point(650, 80);
+            this.txtModelo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.PasswordChar = '\0';
             this.txtModelo.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1846,6 +1860,7 @@
             this.txtCodModelo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCodModelo.HoveredState.Parent = this.txtCodModelo;
             this.txtCodModelo.Location = new System.Drawing.Point(19, 80);
+            this.txtCodModelo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCodModelo.Name = "txtCodModelo";
             this.txtCodModelo.PasswordChar = '\0';
             this.txtCodModelo.PlaceholderForeColor = System.Drawing.Color.Silver;
