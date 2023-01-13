@@ -52,12 +52,26 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable blBuscarVentaPagoPendientes(Boolean chk,String busq,String dfechaIni,String dfecha,Int32 numPagina,Int32 tipoCon)
+        public DataTable blBuscarVentaPagoPendientes(Boolean chk, String busq, String dfechaIni, String dfecha, Int32 numPagina, Int32 tipoCon)
         {
             DAVentaGeneral objVentaG = new DAVentaGeneral();
             try
             {
-                return objVentaG.daBuscarVentaPagoPendiente( chk,  busq,  dfechaIni,  dfecha,  numPagina,  tipoCon);
+                return objVentaG.daBuscarVentaPagoPendiente(chk, busq, dfechaIni, dfecha, numPagina, tipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        public Boolean blActualizarPagos(List<xmlDocumentoVentaGeneral> xmlDocVenta, Int32 idConcepto, DateTime FechaRegistro, Int32 Usuario)
+        {
+            DAVentaGeneral objVentaG = new DAVentaGeneral();
+            try
+            {
+                return objVentaG.daGuardarActualizacionCuotas(xmlDocVenta,idConcepto,FechaRegistro,Usuario);
             }
             catch (Exception ex)
             {
@@ -65,6 +79,18 @@ namespace CapaNegocio
             }
         }
 
+        public DataTable blBuscarPagosPendientes(Boolean chk, String busq, String dfechaIni, String dfecha, Int32 numPagina, Int32 tipoCon)
+        {
+            DAVentaGeneral objVentaG = new DAVentaGeneral();
+            try
+            {
+                return objVentaG.daBuscarPagosPendiente(chk, busq, dfechaIni, dfecha, numPagina, tipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public Boolean blGuardarpagosPendientes(Int32 idTrandiaria, List<Pagos> lstTrand, List<xmlDocumentoVentaGeneral> lstXml, Int32 tipoCon)
         {
             DAVentaGeneral objVentaG = new DAVentaGeneral();

@@ -29,19 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPagosPendientes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPagosPendientes));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTop = new Siticone.UI.WinForms.SiticonePanel();
             this.label13 = new System.Windows.Forms.Label();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.dtpFechaInicialBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.pnFondo = new Siticone.UI.WinForms.SiticonePanel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.gbPaginacion = new System.Windows.Forms.GroupBox();
             this.btnNumFilas = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label37 = new System.Windows.Forms.Label();
@@ -51,6 +56,12 @@
             this.btnTotalReg = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.btnTotalPag = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label41 = new System.Windows.Forms.Label();
+            this.chkHabilitarFechasBus = new Siticone.UI.WinForms.SiticoneCheckBox();
+            this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.dtpFechaFinalBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.label35 = new System.Windows.Forms.Label();
+            this.dtpFechaInicialBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.label22 = new System.Windows.Forms.Label();
             this.pnDatosPago = new Siticone.UI.WinForms.SiticonePanel();
             this.cboTipoDocEmitir = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboMoneda = new Siticone.UI.WinForms.SiticoneComboBox();
@@ -64,27 +75,55 @@
             this.imgMoneda = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dtFechaPago = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.chkHabilitarFechasBus = new Siticone.UI.WinForms.SiticoneCheckBox();
-            this.pbBuscar = new System.Windows.Forms.PictureBox();
-            this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.dtpFechaFinalBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.label35 = new System.Windows.Forms.Label();
             this.dgvVentas = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.pbBuscar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cboDVenta = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.lblComboVenta = new System.Windows.Forms.Label();
+            this.chkFecha = new Siticone.UI.WinForms.SiticoneCheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnNumeroPaginasCuotas = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.siticoneVSeparator2 = new Siticone.UI.WinForms.SiticoneVSeparator();
+            this.cboPaginaCuotas = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnTotalRegCuotas = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnTotalPaginaCuotas = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dgvCuotas = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.actualizarPágoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBuscar = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtBuscarFecha = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.gbFecha = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.dtFechafinal = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtFechaInicio = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.iRACONTROLDEPAGOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ctmPagar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.siticoneDragControl1 = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.PanelTop.SuspendLayout();
             this.pnFondo.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.gbPaginacion.SuspendLayout();
+            this.siticoneGroupBox1.SuspendLayout();
             this.pnDatosPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDocVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMoneda)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).BeginInit();
-            this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCuotas)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
+            this.gbFecha.SuspendLayout();
             this.ctmPagar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,55 +185,45 @@
             this.gunaControlBox1.Size = new System.Drawing.Size(45, 25);
             this.gunaControlBox1.TabIndex = 76;
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label22.Location = new System.Drawing.Point(7, 20);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(80, 17);
-            this.label22.TabIndex = 227;
-            this.label22.Text = "Fecha Inicial:";
-            // 
-            // dtpFechaInicialBus
-            // 
-            this.dtpFechaInicialBus.BorderColor = System.Drawing.Color.Gainsboro;
-            this.dtpFechaInicialBus.BorderRadius = 3;
-            this.dtpFechaInicialBus.BorderThickness = 1;
-            this.dtpFechaInicialBus.CheckedState.Parent = this.dtpFechaInicialBus;
-            this.dtpFechaInicialBus.FillColor = System.Drawing.Color.White;
-            this.dtpFechaInicialBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpFechaInicialBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpFechaInicialBus.HoveredState.Parent = this.dtpFechaInicialBus;
-            this.dtpFechaInicialBus.Location = new System.Drawing.Point(7, 40);
-            this.dtpFechaInicialBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpFechaInicialBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpFechaInicialBus.Name = "dtpFechaInicialBus";
-            this.dtpFechaInicialBus.ShadowDecoration.Parent = this.dtpFechaInicialBus;
-            this.dtpFechaInicialBus.Size = new System.Drawing.Size(235, 36);
-            this.dtpFechaInicialBus.TabIndex = 231;
-            this.dtpFechaInicialBus.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
-            // 
             // pnFondo
             // 
             this.pnFondo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.pnFondo.BorderThickness = 2;
-            this.pnFondo.Controls.Add(this.gbPaginacion);
-            this.pnFondo.Controls.Add(this.pnDatosPago);
-            this.pnFondo.Controls.Add(this.chkHabilitarFechasBus);
-            this.pnFondo.Controls.Add(this.pbBuscar);
-            this.pnFondo.Controls.Add(this.siticoneGroupBox1);
-            this.pnFondo.Controls.Add(this.dgvVentas);
-            this.pnFondo.Controls.Add(this.txtBuscar);
-            this.pnFondo.Controls.Add(this.label1);
+            this.pnFondo.Controls.Add(this.tabControl1);
             this.pnFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnFondo.Location = new System.Drawing.Point(0, 0);
             this.pnFondo.Name = "pnFondo";
             this.pnFondo.ShadowDecoration.Parent = this.pnFondo;
             this.pnFondo.Size = new System.Drawing.Size(1009, 536);
             this.pnFondo.TabIndex = 226;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(3, 27);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1006, 508);
+            this.tabControl1.TabIndex = 236;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.gbPaginacion);
+            this.tabPage1.Controls.Add(this.chkHabilitarFechasBus);
+            this.tabPage1.Controls.Add(this.siticoneGroupBox1);
+            this.tabPage1.Controls.Add(this.pnDatosPago);
+            this.tabPage1.Controls.Add(this.dgvVentas);
+            this.tabPage1.Controls.Add(this.pbBuscar);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.txtBuscar);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(998, 482);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Registrar Pago";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // gbPaginacion
             // 
@@ -207,10 +236,10 @@
             this.gbPaginacion.Controls.Add(this.btnTotalPag);
             this.gbPaginacion.Controls.Add(this.label41);
             this.gbPaginacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPaginacion.Location = new System.Drawing.Point(662, 482);
+            this.gbPaginacion.Location = new System.Drawing.Point(652, 436);
             this.gbPaginacion.Name = "gbPaginacion";
             this.gbPaginacion.Size = new System.Drawing.Size(340, 40);
-            this.gbPaginacion.TabIndex = 288;
+            this.gbPaginacion.TabIndex = 289;
             this.gbPaginacion.TabStop = false;
             // 
             // btnNumFilas
@@ -259,7 +288,6 @@
             this.cboPagina.Name = "cboPagina";
             this.cboPagina.Size = new System.Drawing.Size(63, 23);
             this.cboPagina.TabIndex = 167;
-            this.cboPagina.SelectedIndexChanged += new System.EventHandler(this.cboPagina_SelectedIndexChanged);
             // 
             // label40
             // 
@@ -315,6 +343,110 @@
             this.label41.TabIndex = 170;
             this.label41.Text = "de";
             // 
+            // chkHabilitarFechasBus
+            // 
+            this.chkHabilitarFechasBus.AutoSize = true;
+            this.chkHabilitarFechasBus.BackColor = System.Drawing.Color.Transparent;
+            this.chkHabilitarFechasBus.Checked = true;
+            this.chkHabilitarFechasBus.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkHabilitarFechasBus.CheckedState.BorderRadius = 0;
+            this.chkHabilitarFechasBus.CheckedState.BorderThickness = 0;
+            this.chkHabilitarFechasBus.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkHabilitarFechasBus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkHabilitarFechasBus.ForeColor = System.Drawing.Color.DimGray;
+            this.chkHabilitarFechasBus.Location = new System.Drawing.Point(276, 6);
+            this.chkHabilitarFechasBus.Name = "chkHabilitarFechasBus";
+            this.chkHabilitarFechasBus.Size = new System.Drawing.Size(102, 17);
+            this.chkHabilitarFechasBus.TabIndex = 270;
+            this.chkHabilitarFechasBus.Text = "Habilitar Fechas";
+            this.chkHabilitarFechasBus.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkHabilitarFechasBus.UncheckedState.BorderRadius = 0;
+            this.chkHabilitarFechasBus.UncheckedState.BorderThickness = 0;
+            this.chkHabilitarFechasBus.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkHabilitarFechasBus.UseVisualStyleBackColor = false;
+            // 
+            // siticoneGroupBox1
+            // 
+            this.siticoneGroupBox1.BorderRadius = 5;
+            this.siticoneGroupBox1.Controls.Add(this.dtpFechaFinalBus);
+            this.siticoneGroupBox1.Controls.Add(this.label35);
+            this.siticoneGroupBox1.Controls.Add(this.dtpFechaInicialBus);
+            this.siticoneGroupBox1.Controls.Add(this.label22);
+            this.siticoneGroupBox1.CustomBorderColor = System.Drawing.Color.Gray;
+            this.siticoneGroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.siticoneGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.siticoneGroupBox1.ForeColor = System.Drawing.Color.White;
+            this.siticoneGroupBox1.Location = new System.Drawing.Point(0, 6);
+            this.siticoneGroupBox1.Name = "siticoneGroupBox1";
+            this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(264, 160);
+            this.siticoneGroupBox1.TabIndex = 267;
+            this.siticoneGroupBox1.Text = "Buscar fechas";
+            this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -10);
+            // 
+            // dtpFechaFinalBus
+            // 
+            this.dtpFechaFinalBus.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtpFechaFinalBus.BorderRadius = 3;
+            this.dtpFechaFinalBus.BorderThickness = 1;
+            this.dtpFechaFinalBus.CheckedState.Parent = this.dtpFechaFinalBus;
+            this.dtpFechaFinalBus.CustomFormat = "MMMM";
+            this.dtpFechaFinalBus.FillColor = System.Drawing.Color.White;
+            this.dtpFechaFinalBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtpFechaFinalBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpFechaFinalBus.HoveredState.Parent = this.dtpFechaFinalBus;
+            this.dtpFechaFinalBus.Location = new System.Drawing.Point(7, 104);
+            this.dtpFechaFinalBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaFinalBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaFinalBus.Name = "dtpFechaFinalBus";
+            this.dtpFechaFinalBus.ShadowDecoration.Parent = this.dtpFechaFinalBus;
+            this.dtpFechaFinalBus.Size = new System.Drawing.Size(235, 36);
+            this.dtpFechaFinalBus.TabIndex = 235;
+            this.dtpFechaFinalBus.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label35.Location = new System.Drawing.Point(7, 84);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(74, 17);
+            this.label35.TabIndex = 234;
+            this.label35.Text = "Fecha Final:";
+            // 
+            // dtpFechaInicialBus
+            // 
+            this.dtpFechaInicialBus.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtpFechaInicialBus.BorderRadius = 3;
+            this.dtpFechaInicialBus.BorderThickness = 1;
+            this.dtpFechaInicialBus.CheckedState.Parent = this.dtpFechaInicialBus;
+            this.dtpFechaInicialBus.FillColor = System.Drawing.Color.White;
+            this.dtpFechaInicialBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtpFechaInicialBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpFechaInicialBus.HoveredState.Parent = this.dtpFechaInicialBus;
+            this.dtpFechaInicialBus.Location = new System.Drawing.Point(7, 45);
+            this.dtpFechaInicialBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaInicialBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaInicialBus.Name = "dtpFechaInicialBus";
+            this.dtpFechaInicialBus.ShadowDecoration.Parent = this.dtpFechaInicialBus;
+            this.dtpFechaInicialBus.Size = new System.Drawing.Size(235, 36);
+            this.dtpFechaInicialBus.TabIndex = 231;
+            this.dtpFechaInicialBus.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label22.Location = new System.Drawing.Point(7, 25);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(80, 17);
+            this.label22.TabIndex = 227;
+            this.label22.Text = "Fecha Inicial:";
+            // 
             // pnDatosPago
             // 
             this.pnDatosPago.Controls.Add(this.cboTipoDocEmitir);
@@ -329,10 +461,10 @@
             this.pnDatosPago.Controls.Add(this.imgMoneda);
             this.pnDatosPago.Controls.Add(this.label9);
             this.pnDatosPago.Controls.Add(this.dtFechaPago);
-            this.pnDatosPago.Location = new System.Drawing.Point(278, 89);
+            this.pnDatosPago.Location = new System.Drawing.Point(270, 87);
             this.pnDatosPago.Name = "pnDatosPago";
             this.pnDatosPago.ShadowDecoration.Parent = this.pnDatosPago;
-            this.pnDatosPago.Size = new System.Drawing.Size(714, 79);
+            this.pnDatosPago.Size = new System.Drawing.Size(722, 79);
             this.pnDatosPago.TabIndex = 287;
             this.pnDatosPago.Visible = false;
             // 
@@ -493,94 +625,6 @@
             this.dtFechaPago.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
             this.dtFechaPago.ValueChanged += new System.EventHandler(this.dtFechaPago_ValueChanged);
             // 
-            // chkHabilitarFechasBus
-            // 
-            this.chkHabilitarFechasBus.AutoSize = true;
-            this.chkHabilitarFechasBus.BackColor = System.Drawing.Color.Transparent;
-            this.chkHabilitarFechasBus.Checked = true;
-            this.chkHabilitarFechasBus.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.chkHabilitarFechasBus.CheckedState.BorderRadius = 0;
-            this.chkHabilitarFechasBus.CheckedState.BorderThickness = 0;
-            this.chkHabilitarFechasBus.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.chkHabilitarFechasBus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkHabilitarFechasBus.ForeColor = System.Drawing.Color.DimGray;
-            this.chkHabilitarFechasBus.Location = new System.Drawing.Point(278, 31);
-            this.chkHabilitarFechasBus.Name = "chkHabilitarFechasBus";
-            this.chkHabilitarFechasBus.Size = new System.Drawing.Size(102, 17);
-            this.chkHabilitarFechasBus.TabIndex = 269;
-            this.chkHabilitarFechasBus.Text = "Habilitar Fechas";
-            this.chkHabilitarFechasBus.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.chkHabilitarFechasBus.UncheckedState.BorderRadius = 0;
-            this.chkHabilitarFechasBus.UncheckedState.BorderThickness = 0;
-            this.chkHabilitarFechasBus.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.chkHabilitarFechasBus.UseVisualStyleBackColor = false;
-            this.chkHabilitarFechasBus.CheckedChanged += new System.EventHandler(this.chkHabilitarFechasBus_CheckedChanged);
-            // 
-            // pbBuscar
-            // 
-            this.pbBuscar.BackColor = System.Drawing.Color.White;
-            this.pbBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbBuscar.Image = ((System.Drawing.Image)(resources.GetObject("pbBuscar.Image")));
-            this.pbBuscar.Location = new System.Drawing.Point(958, 52);
-            this.pbBuscar.Name = "pbBuscar";
-            this.pbBuscar.Size = new System.Drawing.Size(26, 27);
-            this.pbBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbBuscar.TabIndex = 267;
-            this.pbBuscar.TabStop = false;
-            this.pbBuscar.Tag = "pbBuscar";
-            this.pbBuscar.Click += new System.EventHandler(this.pbBuscar_Click);
-            // 
-            // siticoneGroupBox1
-            // 
-            this.siticoneGroupBox1.BorderRadius = 5;
-            this.siticoneGroupBox1.Controls.Add(this.dtpFechaFinalBus);
-            this.siticoneGroupBox1.Controls.Add(this.label35);
-            this.siticoneGroupBox1.Controls.Add(this.dtpFechaInicialBus);
-            this.siticoneGroupBox1.Controls.Add(this.label22);
-            this.siticoneGroupBox1.CustomBorderColor = System.Drawing.Color.Gray;
-            this.siticoneGroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.siticoneGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.siticoneGroupBox1.ForeColor = System.Drawing.Color.White;
-            this.siticoneGroupBox1.Location = new System.Drawing.Point(8, 28);
-            this.siticoneGroupBox1.Name = "siticoneGroupBox1";
-            this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(264, 140);
-            this.siticoneGroupBox1.TabIndex = 266;
-            this.siticoneGroupBox1.Text = "Buscar fechas";
-            this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -10);
-            // 
-            // dtpFechaFinalBus
-            // 
-            this.dtpFechaFinalBus.BorderColor = System.Drawing.Color.Gainsboro;
-            this.dtpFechaFinalBus.BorderRadius = 3;
-            this.dtpFechaFinalBus.BorderThickness = 1;
-            this.dtpFechaFinalBus.CheckedState.Parent = this.dtpFechaFinalBus;
-            this.dtpFechaFinalBus.CustomFormat = "MMMM";
-            this.dtpFechaFinalBus.FillColor = System.Drawing.Color.White;
-            this.dtpFechaFinalBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpFechaFinalBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpFechaFinalBus.HoveredState.Parent = this.dtpFechaFinalBus;
-            this.dtpFechaFinalBus.Location = new System.Drawing.Point(7, 96);
-            this.dtpFechaFinalBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpFechaFinalBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpFechaFinalBus.Name = "dtpFechaFinalBus";
-            this.dtpFechaFinalBus.ShadowDecoration.Parent = this.dtpFechaFinalBus;
-            this.dtpFechaFinalBus.Size = new System.Drawing.Size(235, 36);
-            this.dtpFechaFinalBus.TabIndex = 235;
-            this.dtpFechaFinalBus.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.Transparent;
-            this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label35.Location = new System.Drawing.Point(7, 76);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(74, 17);
-            this.label35.TabIndex = 234;
-            this.label35.Text = "Fecha Final:";
-            // 
             // dgvVentas
             // 
             this.dgvVentas.AllowUserToAddRows = false;
@@ -612,7 +656,7 @@
             this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVentas.EnableHeadersVisualStyles = false;
             this.dgvVentas.GridColor = System.Drawing.Color.Silver;
-            this.dgvVentas.Location = new System.Drawing.Point(8, 174);
+            this.dgvVentas.Location = new System.Drawing.Point(0, 172);
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -633,7 +677,7 @@
             this.dgvVentas.RowTemplate.Height = 60;
             this.dgvVentas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvVentas.Size = new System.Drawing.Size(994, 302);
+            this.dgvVentas.Size = new System.Drawing.Size(994, 262);
             this.dgvVentas.TabIndex = 265;
             this.dgvVentas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -662,6 +706,32 @@
             this.dgvVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentClick);
             this.dgvVentas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvVentas_CellPainting);
             // 
+            // pbBuscar
+            // 
+            this.pbBuscar.BackColor = System.Drawing.Color.White;
+            this.pbBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbBuscar.Image = ((System.Drawing.Image)(resources.GetObject("pbBuscar.Image")));
+            this.pbBuscar.Location = new System.Drawing.Point(961, 52);
+            this.pbBuscar.Name = "pbBuscar";
+            this.pbBuscar.Size = new System.Drawing.Size(26, 27);
+            this.pbBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbBuscar.TabIndex = 267;
+            this.pbBuscar.TabStop = false;
+            this.pbBuscar.Tag = "pbBuscar";
+            this.pbBuscar.Click += new System.EventHandler(this.pbBuscar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(273, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.TabIndex = 227;
+            this.label1.Text = "Buscar:";
+            // 
             // txtBuscar
             // 
             this.txtBuscar.Animated = false;
@@ -677,27 +747,430 @@
             this.txtBuscar.FocusedState.Parent = this.txtBuscar;
             this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscar.HoveredState.Parent = this.txtBuscar;
-            this.txtBuscar.Location = new System.Drawing.Point(475, 47);
+            this.txtBuscar.Location = new System.Drawing.Point(273, 45);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderText = "";
             this.txtBuscar.SelectedText = "";
             this.txtBuscar.ShadowDecoration.Parent = this.txtBuscar;
-            this.txtBuscar.Size = new System.Drawing.Size(517, 36);
+            this.txtBuscar.Size = new System.Drawing.Size(719, 36);
             this.txtBuscar.TabIndex = 0;
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
-            // label1
+            // tabPage2
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(475, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 17);
-            this.label1.TabIndex = 227;
-            this.label1.Text = "Buscar:";
+            this.tabPage2.Controls.Add(this.cboDVenta);
+            this.tabPage2.Controls.Add(this.lblComboVenta);
+            this.tabPage2.Controls.Add(this.chkFecha);
+            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.dgvCuotas);
+            this.tabPage2.Controls.Add(this.btnBuscar);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.txtBuscarFecha);
+            this.tabPage2.Controls.Add(this.gbFecha);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(998, 482);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Buscar Cuota";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cboDVenta
+            // 
+            this.cboDVenta.BackColor = System.Drawing.Color.Transparent;
+            this.cboDVenta.BorderColor = System.Drawing.Color.Silver;
+            this.cboDVenta.BorderRadius = 5;
+            this.cboDVenta.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboDVenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDVenta.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboDVenta.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboDVenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboDVenta.HoveredState.Parent = this.cboDVenta;
+            this.cboDVenta.ItemHeight = 30;
+            this.cboDVenta.ItemsAppearance.Parent = this.cboDVenta;
+            this.cboDVenta.Location = new System.Drawing.Point(817, 55);
+            this.cboDVenta.Name = "cboDVenta";
+            this.cboDVenta.ShadowDecoration.Parent = this.cboDVenta;
+            this.cboDVenta.Size = new System.Drawing.Size(173, 36);
+            this.cboDVenta.TabIndex = 292;
+            // 
+            // lblComboVenta
+            // 
+            this.lblComboVenta.BackColor = System.Drawing.Color.Transparent;
+            this.lblComboVenta.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComboVenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblComboVenta.Location = new System.Drawing.Point(817, 37);
+            this.lblComboVenta.Name = "lblComboVenta";
+            this.lblComboVenta.Size = new System.Drawing.Size(173, 18);
+            this.lblComboVenta.TabIndex = 293;
+            this.lblComboVenta.Text = "Documento de venta";
+            // 
+            // chkFecha
+            // 
+            this.chkFecha.AutoSize = true;
+            this.chkFecha.Checked = true;
+            this.chkFecha.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkFecha.CheckedState.BorderRadius = 0;
+            this.chkFecha.CheckedState.BorderThickness = 0;
+            this.chkFecha.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkFecha.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkFecha.Location = new System.Drawing.Point(557, 11);
+            this.chkFecha.Name = "chkFecha";
+            this.chkFecha.Size = new System.Drawing.Size(95, 17);
+            this.chkFecha.TabIndex = 291;
+            this.chkFecha.Text = "Hablitar Fecha";
+            this.chkFecha.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkFecha.UncheckedState.BorderRadius = 0;
+            this.chkFecha.UncheckedState.BorderThickness = 0;
+            this.chkFecha.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkFecha.CheckedChanged += new System.EventHandler(this.chkFecha_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnNumeroPaginasCuotas);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.siticoneVSeparator2);
+            this.groupBox1.Controls.Add(this.cboPaginaCuotas);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.btnTotalRegCuotas);
+            this.groupBox1.Controls.Add(this.btnTotalPaginaCuotas);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(650, 434);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(340, 40);
+            this.groupBox1.TabIndex = 290;
+            this.groupBox1.TabStop = false;
+            // 
+            // btnNumeroPaginasCuotas
+            // 
+            this.btnNumeroPaginasCuotas.BackColor = System.Drawing.Color.Transparent;
+            this.btnNumeroPaginasCuotas.CheckedState.Parent = this.btnNumeroPaginasCuotas;
+            this.btnNumeroPaginasCuotas.CustomImages.Parent = this.btnNumeroPaginasCuotas;
+            this.btnNumeroPaginasCuotas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumeroPaginasCuotas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNumeroPaginasCuotas.ForeColor = System.Drawing.Color.White;
+            this.btnNumeroPaginasCuotas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumeroPaginasCuotas.HoveredState.Parent = this.btnNumeroPaginasCuotas;
+            this.btnNumeroPaginasCuotas.Location = new System.Drawing.Point(209, 12);
+            this.btnNumeroPaginasCuotas.Name = "btnNumeroPaginasCuotas";
+            this.btnNumeroPaginasCuotas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnNumeroPaginasCuotas.ShadowDecoration.Parent = this.btnNumeroPaginasCuotas;
+            this.btnNumeroPaginasCuotas.Size = new System.Drawing.Size(25, 25);
+            this.btnNumeroPaginasCuotas.TabIndex = 171;
+            this.btnNumeroPaginasCuotas.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(240, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 15);
+            this.label6.TabIndex = 173;
+            this.label6.Text = "registros de";
+            // 
+            // siticoneVSeparator2
+            // 
+            this.siticoneVSeparator2.FillColor = System.Drawing.Color.Gray;
+            this.siticoneVSeparator2.Location = new System.Drawing.Point(186, 8);
+            this.siticoneVSeparator2.Name = "siticoneVSeparator2";
+            this.siticoneVSeparator2.Size = new System.Drawing.Size(13, 27);
+            this.siticoneVSeparator2.TabIndex = 174;
+            // 
+            // cboPaginaCuotas
+            // 
+            this.cboPaginaCuotas.DropDownHeight = 90;
+            this.cboPaginaCuotas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPaginaCuotas.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboPaginaCuotas.FormattingEnabled = true;
+            this.cboPaginaCuotas.IntegralHeight = false;
+            this.cboPaginaCuotas.Location = new System.Drawing.Point(52, 13);
+            this.cboPaginaCuotas.Name = "cboPaginaCuotas";
+            this.cboPaginaCuotas.Size = new System.Drawing.Size(63, 23);
+            this.cboPaginaCuotas.TabIndex = 167;
+            this.cboPaginaCuotas.SelectedIndexChanged += new System.EventHandler(this.cboPaginaCuotas_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 15);
+            this.label7.TabIndex = 168;
+            this.label7.Text = "Página";
+            // 
+            // btnTotalRegCuotas
+            // 
+            this.btnTotalRegCuotas.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalRegCuotas.CheckedState.Parent = this.btnTotalRegCuotas;
+            this.btnTotalRegCuotas.CustomImages.Parent = this.btnTotalRegCuotas;
+            this.btnTotalRegCuotas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalRegCuotas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalRegCuotas.ForeColor = System.Drawing.Color.White;
+            this.btnTotalRegCuotas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalRegCuotas.HoveredState.Parent = this.btnTotalRegCuotas;
+            this.btnTotalRegCuotas.Location = new System.Drawing.Point(307, 12);
+            this.btnTotalRegCuotas.Name = "btnTotalRegCuotas";
+            this.btnTotalRegCuotas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalRegCuotas.ShadowDecoration.Parent = this.btnTotalRegCuotas;
+            this.btnTotalRegCuotas.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalRegCuotas.TabIndex = 172;
+            this.btnTotalRegCuotas.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // btnTotalPaginaCuotas
+            // 
+            this.btnTotalPaginaCuotas.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalPaginaCuotas.CheckedState.Parent = this.btnTotalPaginaCuotas;
+            this.btnTotalPaginaCuotas.CustomImages.Parent = this.btnTotalPaginaCuotas;
+            this.btnTotalPaginaCuotas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalPaginaCuotas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalPaginaCuotas.ForeColor = System.Drawing.Color.White;
+            this.btnTotalPaginaCuotas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalPaginaCuotas.HoveredState.Parent = this.btnTotalPaginaCuotas;
+            this.btnTotalPaginaCuotas.Location = new System.Drawing.Point(149, 12);
+            this.btnTotalPaginaCuotas.Name = "btnTotalPaginaCuotas";
+            this.btnTotalPaginaCuotas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalPaginaCuotas.ShadowDecoration.Parent = this.btnTotalPaginaCuotas;
+            this.btnTotalPaginaCuotas.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalPaginaCuotas.TabIndex = 169;
+            this.btnTotalPaginaCuotas.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(124, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(20, 15);
+            this.label10.TabIndex = 170;
+            this.label10.Text = "de";
+            // 
+            // dgvCuotas
+            // 
+            this.dgvCuotas.AllowUserToAddRows = false;
+            this.dgvCuotas.AllowUserToDeleteRows = false;
+            this.dgvCuotas.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            this.dgvCuotas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvCuotas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCuotas.BackgroundColor = System.Drawing.Color.White;
+            this.dgvCuotas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCuotas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvCuotas.ColumnHeadersHeight = 42;
+            this.dgvCuotas.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvCuotas.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCuotas.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvCuotas.EnableHeadersVisualStyles = false;
+            this.dgvCuotas.GridColor = System.Drawing.Color.Silver;
+            this.dgvCuotas.Location = new System.Drawing.Point(2, 110);
+            this.dgvCuotas.Name = "dgvCuotas";
+            this.dgvCuotas.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvCuotas.RowHeadersVisible = false;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuotas.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvCuotas.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvCuotas.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvCuotas.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuotas.RowTemplate.Height = 60;
+            this.dgvCuotas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuotas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvCuotas.Size = new System.Drawing.Size(994, 318);
+            this.dgvCuotas.TabIndex = 272;
+            this.dgvCuotas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvCuotas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvCuotas.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvCuotas.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvCuotas.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvCuotas.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvCuotas.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvCuotas.ThemeStyle.GridColor = System.Drawing.Color.Silver;
+            this.dgvCuotas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.DimGray;
+            this.dgvCuotas.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvCuotas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvCuotas.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvCuotas.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvCuotas.ThemeStyle.HeaderStyle.Height = 42;
+            this.dgvCuotas.ThemeStyle.ReadOnly = true;
+            this.dgvCuotas.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvCuotas.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
+            this.dgvCuotas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvCuotas.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvCuotas.ThemeStyle.RowsStyle.Height = 60;
+            this.dgvCuotas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Azure;
+            this.dgvCuotas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            this.dgvCuotas.Visible = false;
+            this.dgvCuotas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCuotas_CellClick);
+            this.dgvCuotas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvCuotas_CellPainting);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.actualizarPágoToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(157, 26);
+            // 
+            // actualizarPágoToolStripMenuItem
+            // 
+            this.actualizarPágoToolStripMenuItem.Name = "actualizarPágoToolStripMenuItem";
+            this.actualizarPágoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.actualizarPágoToolStripMenuItem.Text = "Actualizar Págo";
+            this.actualizarPágoToolStripMenuItem.Click += new System.EventHandler(this.actualizarPágoToolStripMenuItem_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.White;
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.Location = new System.Drawing.Point(777, 62);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(28, 27);
+            this.btnBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnBuscar.TabIndex = 271;
+            this.btnBuscar.TabStop = false;
+            this.btnBuscar.Tag = "pbBuscar";
+            this.btnBuscar.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(554, 38);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 17);
+            this.label5.TabIndex = 270;
+            this.label5.Text = "Buscar:";
+            // 
+            // txtBuscarFecha
+            // 
+            this.txtBuscarFecha.Animated = false;
+            this.txtBuscarFecha.BorderRadius = 5;
+            this.txtBuscarFecha.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarFecha.DefaultText = "";
+            this.txtBuscarFecha.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarFecha.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarFecha.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarFecha.DisabledState.Parent = this.txtBuscarFecha;
+            this.txtBuscarFecha.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarFecha.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarFecha.FocusedState.Parent = this.txtBuscarFecha;
+            this.txtBuscarFecha.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarFecha.HoveredState.Parent = this.txtBuscarFecha;
+            this.txtBuscarFecha.Location = new System.Drawing.Point(554, 58);
+            this.txtBuscarFecha.Name = "txtBuscarFecha";
+            this.txtBuscarFecha.PasswordChar = '\0';
+            this.txtBuscarFecha.PlaceholderText = "";
+            this.txtBuscarFecha.SelectedText = "";
+            this.txtBuscarFecha.ShadowDecoration.Parent = this.txtBuscarFecha;
+            this.txtBuscarFecha.Size = new System.Drawing.Size(257, 36);
+            this.txtBuscarFecha.TabIndex = 269;
+            // 
+            // gbFecha
+            // 
+            this.gbFecha.BorderRadius = 5;
+            this.gbFecha.Controls.Add(this.dtFechafinal);
+            this.gbFecha.Controls.Add(this.label3);
+            this.gbFecha.Controls.Add(this.dtFechaInicio);
+            this.gbFecha.Controls.Add(this.label4);
+            this.gbFecha.CustomBorderColor = System.Drawing.Color.Gray;
+            this.gbFecha.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
+            this.gbFecha.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbFecha.ForeColor = System.Drawing.Color.White;
+            this.gbFecha.Location = new System.Drawing.Point(6, 6);
+            this.gbFecha.Name = "gbFecha";
+            this.gbFecha.ShadowDecoration.Parent = this.gbFecha;
+            this.gbFecha.Size = new System.Drawing.Size(542, 99);
+            this.gbFecha.TabIndex = 268;
+            this.gbFecha.Text = "Buscar por";
+            this.gbFecha.TextOffset = new System.Drawing.Point(0, -10);
+            // 
+            // dtFechafinal
+            // 
+            this.dtFechafinal.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechafinal.BorderRadius = 3;
+            this.dtFechafinal.BorderThickness = 1;
+            this.dtFechafinal.CheckedState.Parent = this.dtFechafinal;
+            this.dtFechafinal.CustomFormat = "MMMM";
+            this.dtFechafinal.FillColor = System.Drawing.Color.White;
+            this.dtFechafinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechafinal.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechafinal.HoveredState.Parent = this.dtFechafinal;
+            this.dtFechafinal.Location = new System.Drawing.Point(279, 52);
+            this.dtFechafinal.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechafinal.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechafinal.Name = "dtFechafinal";
+            this.dtFechafinal.ShadowDecoration.Parent = this.dtFechafinal;
+            this.dtFechafinal.Size = new System.Drawing.Size(253, 36);
+            this.dtFechafinal.TabIndex = 235;
+            this.dtFechafinal.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(279, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 17);
+            this.label3.TabIndex = 234;
+            this.label3.Text = "Fecha Final:";
+            // 
+            // dtFechaInicio
+            // 
+            this.dtFechaInicio.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaInicio.BorderRadius = 3;
+            this.dtFechaInicio.BorderThickness = 1;
+            this.dtFechaInicio.CheckedState.Parent = this.dtFechaInicio;
+            this.dtFechaInicio.FillColor = System.Drawing.Color.White;
+            this.dtFechaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaInicio.HoveredState.Parent = this.dtFechaInicio;
+            this.dtFechaInicio.Location = new System.Drawing.Point(7, 52);
+            this.dtFechaInicio.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaInicio.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaInicio.Name = "dtFechaInicio";
+            this.dtFechaInicio.ShadowDecoration.Parent = this.dtFechaInicio;
+            this.dtFechaInicio.Size = new System.Drawing.Size(250, 36);
+            this.dtFechaInicio.TabIndex = 231;
+            this.dtFechaInicio.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(7, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 17);
+            this.label4.TabIndex = 227;
+            this.label4.Text = "Fecha Inicial:";
             // 
             // iRACONTROLDEPAGOSToolStripMenuItem
             // 
@@ -732,18 +1205,29 @@
             this.PanelTop.ResumeLayout(false);
             this.PanelTop.PerformLayout();
             this.pnFondo.ResumeLayout(false);
-            this.pnFondo.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.gbPaginacion.ResumeLayout(false);
             this.gbPaginacion.PerformLayout();
+            this.siticoneGroupBox1.ResumeLayout(false);
+            this.siticoneGroupBox1.PerformLayout();
             this.pnDatosPago.ResumeLayout(false);
             this.pnDatosPago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDocVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMoneda)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).EndInit();
-            this.siticoneGroupBox1.ResumeLayout(false);
-            this.siticoneGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCuotas)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
+            this.gbFecha.ResumeLayout(false);
+            this.gbFecha.PerformLayout();
             this.ctmPagar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -755,15 +1239,11 @@
         private System.Windows.Forms.Label label13;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
-        private System.Windows.Forms.Label label22;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dtpFechaInicialBus;
         private Siticone.UI.WinForms.SiticonePanel pnFondo;
         private Siticone.UI.WinForms.SiticoneTextBox txtBuscar;
         private System.Windows.Forms.Label label1;
         private Siticone.UI.WinForms.SiticoneDataGridView dgvVentas;
-        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
         private System.Windows.Forms.PictureBox pbBuscar;
-        private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBus;
         private System.Windows.Forms.ToolStripMenuItem iRACONTROLDEPAGOSToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip ctmPagar;
         private System.Windows.Forms.PictureBox pbFechaPago;
@@ -775,8 +1255,20 @@
         private System.Windows.Forms.Label erMoneda;
         private System.Windows.Forms.Label erFechaPago;
         private Siticone.UI.WinForms.SiticonePanel pnDatosPago;
+        private Siticone.UI.WinForms.SiticoneDragControl siticoneDragControl1;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocEmitir;
+        private System.Windows.Forms.Label lblDocVenta;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pbDocVenta;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBus;
+        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
         private Siticone.UI.WinForms.SiticoneDateTimePicker dtpFechaFinalBus;
         private System.Windows.Forms.Label label35;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtpFechaInicialBus;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox gbPaginacion;
         private Siticone.UI.WinForms.SiticoneCircleButton btnNumFilas;
         private System.Windows.Forms.Label label37;
@@ -786,10 +1278,28 @@
         private Siticone.UI.WinForms.SiticoneCircleButton btnTotalReg;
         private Siticone.UI.WinForms.SiticoneCircleButton btnTotalPag;
         private System.Windows.Forms.Label label41;
-        private Siticone.UI.WinForms.SiticoneDragControl siticoneDragControl1;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocEmitir;
-        private System.Windows.Forms.Label lblDocVenta;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pbDocVenta;
+        private Siticone.UI.WinForms.SiticoneDataGridView dgvCuotas;
+        private System.Windows.Forms.PictureBox btnBuscar;
+        private System.Windows.Forms.Label label5;
+        private Siticone.UI.WinForms.SiticoneTextBox txtBuscarFecha;
+        private Siticone.UI.WinForms.SiticoneGroupBox gbFecha;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechafinal;
+        private System.Windows.Forms.Label label3;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaInicio;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnNumeroPaginasCuotas;
+        private System.Windows.Forms.Label label6;
+        private Siticone.UI.WinForms.SiticoneVSeparator siticoneVSeparator2;
+        private System.Windows.Forms.ComboBox cboPaginaCuotas;
+        private System.Windows.Forms.Label label7;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalRegCuotas;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalPaginaCuotas;
+        private System.Windows.Forms.Label label10;
+        private Siticone.UI.WinForms.SiticoneCheckBox chkFecha;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem actualizarPágoToolStripMenuItem;
+        private Siticone.UI.WinForms.SiticoneComboBox cboDVenta;
+        private System.Windows.Forms.Label lblComboVenta;
     }
 }

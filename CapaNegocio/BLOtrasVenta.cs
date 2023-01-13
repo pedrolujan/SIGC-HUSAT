@@ -133,6 +133,19 @@ namespace CapaNegocio
 
             }
         }
+        public xmlDocumentoVentaGeneral blBuscarDocumentoPagoPendientes(Int32 idContrato,Int32 idTipoCon)
+        {
+            daObjTipoVenta = new DAOtrasVenta();
+            try
+            {
+                return daObjTipoVenta.daBuscarDocumentoPagoPendientes( idContrato, idTipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+        }
 
 
         public List<Cargo> blDevolverTablaCod(String cCodTab, Int32 idTipoDocPers, Int32 Busqueda)

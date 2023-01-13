@@ -1390,6 +1390,10 @@ namespace wfaIntegradoCom.Mantenedores
             fnHabilitarBotones(false);
             this.Text = "Buscar SimCard";
             this.Width = 1000;
+            this.gunaPanel1.Width = 900;
+            gunaControlBox1.Location = new Point(936, 2);
+            gunaControlBox2.Location = new Point(888, 2);
+
             pnRegistrarChip.Width = 980;
             this.StartPosition = FormStartPosition.CenterScreen;
             rbRecibo.Visible = false;
@@ -1442,15 +1446,18 @@ namespace wfaIntegradoCom.Mantenedores
                 dt.Clear();
                 dt.Columns.Add("ID");
                 dt.Columns.Add("SIMCARD");
+                dt.Columns.Add("SERIE");
                 dt.Columns.Add("OPERADOR");
                 dt.Columns.Add("ESTADO");
+
 
                 for (int i = 0; i <= dTtable.Rows.Count - 1; i++)
                 {
                     object[] row = { dTtable.Rows[i][0],
                                      dTtable.Rows[i][1],
+                                     dTtable.Rows[i][8],
                                      dTtable.Rows[i][2],
-                                     dTtable.Rows[i][4] };
+                                     dTtable.Rows[i][5] };
                     dt.Rows.Add(row);
 
                 }
@@ -1467,7 +1474,8 @@ namespace wfaIntegradoCom.Mantenedores
                 dgChip.Columns[0].Width = 12;
                 dgChip.Columns[1].Width = 100;
                 dgChip.Columns[2].Width = 100;
-                dgChip.Columns[3].Width = 200;
+                dgChip.Columns[3].Width = 100;
+                dgChip.Columns[4].Width = 200;
                 dgChip.Visible = true;
                 lblCantRegistros.Visible = true;
 
