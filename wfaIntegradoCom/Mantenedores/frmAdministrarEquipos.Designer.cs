@@ -327,7 +327,7 @@
             this.dgEquipoAdmin.RowHeadersVisible = false;
             this.dgEquipoAdmin.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgEquipoAdmin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgEquipoAdmin.Size = new System.Drawing.Size(811, 329);
+            this.dgEquipoAdmin.Size = new System.Drawing.Size(811, 244);
             this.dgEquipoAdmin.TabIndex = 190;
             this.dgEquipoAdmin.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgEquipoAdmin.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -1065,7 +1065,7 @@
             this.txtSerie.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSerie.HoveredState.Parent = this.txtSerie;
             this.txtSerie.Location = new System.Drawing.Point(812, 66);
-            this.txtSerie.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSerie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.PasswordChar = '\0';
             this.txtSerie.PlaceholderText = "";
@@ -1095,7 +1095,7 @@
             this.txtImei.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtImei.HoveredState.Parent = this.txtImei;
             this.txtImei.Location = new System.Drawing.Point(432, 65);
-            this.txtImei.Margin = new System.Windows.Forms.Padding(4);
+            this.txtImei.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtImei.Name = "txtImei";
             this.txtImei.PasswordChar = '\0';
             this.txtImei.PlaceholderText = "";
@@ -1147,7 +1147,7 @@
             this.txtSimcard.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSimcard.HoveredState.Parent = this.txtSimcard;
             this.txtSimcard.Location = new System.Drawing.Point(19, 143);
-            this.txtSimcard.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSimcard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSimcard.Name = "txtSimcard";
             this.txtSimcard.PasswordChar = '\0';
             this.txtSimcard.PlaceholderText = "";
@@ -1178,7 +1178,7 @@
             this.txtEquipoUnico.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtEquipoUnico.HoveredState.Parent = this.txtEquipoUnico;
             this.txtEquipoUnico.Location = new System.Drawing.Point(19, 66);
-            this.txtEquipoUnico.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEquipoUnico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEquipoUnico.Name = "txtEquipoUnico";
             this.txtEquipoUnico.PasswordChar = '\0';
             this.txtEquipoUnico.PlaceholderText = "";
@@ -1467,6 +1467,7 @@
             this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscar.HoveredState.Parent = this.txtBuscar;
             this.txtBuscar.Location = new System.Drawing.Point(371, 11);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -1508,7 +1509,7 @@
             this.txtObservacion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtObservacion.HoveredState.Parent = this.txtObservacion;
             this.txtObservacion.Location = new System.Drawing.Point(20, 538);
-            this.txtObservacion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtObservacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.PasswordChar = '\0';
@@ -1527,7 +1528,7 @@
             this.historial.Controls.Add(this.siticoneGroupBox1);
             this.historial.Location = new System.Drawing.Point(4, 22);
             this.historial.Name = "historial";
-            this.historial.Size = new System.Drawing.Size(1204, 661);
+            this.historial.Size = new System.Drawing.Size(1201, 655);
             this.historial.TabIndex = 1;
             this.historial.Text = "MOVIMIENTO";
             this.historial.UseVisualStyleBackColor = true;
@@ -1788,6 +1789,7 @@
             this.txtBuscarXSimCard.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarXSimCard.HoveredState.Parent = this.txtBuscarXSimCard;
             this.txtBuscarXSimCard.Location = new System.Drawing.Point(257, 47);
+            this.txtBuscarXSimCard.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscarXSimCard.Name = "txtBuscarXSimCard";
             this.txtBuscarXSimCard.PasswordChar = '\0';
             this.txtBuscarXSimCard.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -1898,6 +1900,7 @@
             this.txtBuscarXImei.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarXImei.HoveredState.Parent = this.txtBuscarXImei;
             this.txtBuscarXImei.Location = new System.Drawing.Point(14, 47);
+            this.txtBuscarXImei.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscarXImei.Name = "txtBuscarXImei";
             this.txtBuscarXImei.PasswordChar = '\0';
             this.txtBuscarXImei.PlaceholderForeColor = System.Drawing.Color.DimGray;

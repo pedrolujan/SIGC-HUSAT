@@ -16,7 +16,7 @@ namespace CapaDato
     public class DAVentaGeneral
     {
         private clsUtil objUtil = null;
-        public Boolean daGenerarVentaGeneral (VentaGeneral clsVentaGeneral, List<xmlDocumentoVentaGeneral> xmlDocVenta, Int16 tipoCon)
+        public Boolean daGenerarVentaGeneral(VentaGeneral clsVentaGeneral, List<xmlDocumentoVentaGeneral> xmlDocVenta, Int16 tipoCon)
         {
 
             SqlParameter[] pa = new SqlParameter[31];
@@ -27,7 +27,7 @@ namespace CapaDato
             lstCliente.Add(clsVentaGeneral.ClsCliente);
             String xmlDetalleCronograma = clsUtil.Serialize(clsVentaGeneral.lstDetalleCronograma);
             String xmlDetalleVenta = clsUtil.Serialize(clsVentaGeneral.clsDetalleVentaCabecera.lstDetalleVenta);
-             String xmlVehiculo = clsUtil.Serialize(clsVentaGeneral.lstVehiculo);
+            String xmlVehiculo = clsUtil.Serialize(clsVentaGeneral.lstVehiculo);
             String xmlTrandiaria = clsUtil.Serialize(clsVentaGeneral.lstPagos);
             lstVentaGeneral.Add(clsVentaGeneral);
             String xmlVentaGeneral = clsUtil.Serialize(lstVentaGeneral);
@@ -39,13 +39,13 @@ namespace CapaDato
             {
                 pa[0] = new SqlParameter("@idVentaGeneral", SqlDbType.Int) { Value = clsVentaGeneral.IdVentaGeneral };
                 pa[1] = new SqlParameter("@idCliente", SqlDbType.Int) { Value = clsVentaGeneral.ClsCliente.idCliente };
-                pa[2] = new SqlParameter("@idRespPago", SqlDbType.Int) { Value = tipoCon==0?clsVentaGeneral.ClsResponsablePago.idCliente: clsVentaGeneral.clsContrato.idContrato };
+                pa[2] = new SqlParameter("@idRespPago", SqlDbType.Int) { Value = tipoCon == 0 ? clsVentaGeneral.ClsResponsablePago.idCliente : clsVentaGeneral.clsContrato.idContrato };
                 pa[3] = new SqlParameter("@idPlan", SqlDbType.Int) { Value = clsVentaGeneral.ClsPlan.idPlan };
                 pa[4] = new SqlParameter("@idCiclo", SqlDbType.Int) { Value = clsVentaGeneral.ClsCiclo.IdCiclo };
                 pa[5] = new SqlParameter("@idMoneda", SqlDbType.Int) { Value = clsVentaGeneral.ClsMoneda.idMoneda };
                 pa[6] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = clsVentaGeneral.IdUsuario };
                 pa[7] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaRegistro };
-                pa[8] = new SqlParameter("@estado", SqlDbType.NVarChar,8) { Value = clsVentaGeneral.Estado };
+                pa[8] = new SqlParameter("@estado", SqlDbType.NVarChar, 8) { Value = clsVentaGeneral.Estado };
                 pa[9] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
                 pa[10] = new SqlParameter("@xmlData", SqlDbType.Xml) { Value = xmlDetalleCronograma };
                 pa[11] = new SqlParameter("@xmlData2", SqlDbType.Xml) { Value = xmlDetalleVenta };
@@ -56,15 +56,15 @@ namespace CapaDato
                 pa[16] = new SqlParameter("@periodoFinal", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta.AddYears(1).AddDays(-1) /*clsVentaGeneral.lstDetalleCronograma.Last().periodoFinal*/ };
                 pa[17] = new SqlParameter("@igvValor", SqlDbType.Money) { Value = clsVentaGeneral.clsDetalleVentaCabecera.IGV };
                 pa[18] = new SqlParameter("@totalVenta", SqlDbType.Money) { Value = clsVentaGeneral.clsDetalleVentaCabecera.Total };
-                pa[19] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmlDocumentoVenta }; 
-                pa[20] = new SqlParameter("@codDireccionInstalacion", SqlDbType.NVarChar,8) { Value = clsVentaGeneral.codDireccionInstalacion };
-                pa[21] = new SqlParameter("@DescripDireccionInstalacion", SqlDbType.NVarChar,1000) { Value = clsVentaGeneral.DescripDireccionInstalacion };
+                pa[19] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmlDocumentoVenta };
+                pa[20] = new SqlParameter("@codDireccionInstalacion", SqlDbType.NVarChar, 8) { Value = clsVentaGeneral.codDireccionInstalacion };
+                pa[21] = new SqlParameter("@DescripDireccionInstalacion", SqlDbType.NVarChar, 1000) { Value = clsVentaGeneral.DescripDireccionInstalacion };
                 pa[22] = new SqlParameter("@dFechaDeInstalacion", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaDeInstalacion };
                 pa[23] = new SqlParameter("@cCodEstadoPP", SqlDbType.NVarChar, 8) { Value = clsVentaGeneral.cCodEstadoPP };
-                pa[24] = new SqlParameter("@xmlCliente", SqlDbType.Xml) { Value = xmlCliente }; 
-                pa[25] = new SqlParameter("@idTipoTarifa", SqlDbType.Int) { Value = clsVentaGeneral.ClsTarifa.IdTipoTarifa};
+                pa[24] = new SqlParameter("@xmlCliente", SqlDbType.Xml) { Value = xmlCliente };
+                pa[25] = new SqlParameter("@idTipoTarifa", SqlDbType.Int) { Value = clsVentaGeneral.ClsTarifa.IdTipoTarifa };
                 pa[26] = new SqlParameter("@CodigoVentaGeneral", SqlDbType.NVarChar, 20) { Value = clsVentaGeneral.codigoVenta };
-                pa[27] = new SqlParameter("@xmlDataVNR", SqlDbType.Xml) { Value = xmlDataVNR }; 
+                pa[27] = new SqlParameter("@xmlDataVNR", SqlDbType.Xml) { Value = xmlDataVNR };
                 pa[28] = new SqlParameter("@FinalizacionContrato", SqlDbType.Int) { Value = clsVentaGeneral.estFinalizacionContrato };
                 pa[29] = new SqlParameter("@dFechaPago", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaPago };
                 pa[30] = new SqlParameter("@dFechaVenta", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta };
@@ -136,18 +136,18 @@ namespace CapaDato
                 pa[4] = new SqlParameter("@idMoneda", SqlDbType.Int) { Value = clsVentaGeneral.ClsMoneda.idMoneda };
                 pa[5] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = clsVentaGeneral.IdUsuario };
                 pa[6] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaRegistro };
-                pa[7] = new SqlParameter("@estado", SqlDbType.NVarChar,8) { Value = clsVentaGeneral.Estado };
+                pa[7] = new SqlParameter("@estado", SqlDbType.NVarChar, 8) { Value = clsVentaGeneral.Estado };
                 pa[8] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
                 pa[9] = new SqlParameter("@totalVenta", SqlDbType.Money) { Value = clsVentaGeneral.clsDetalleVentaCabecera.Total };
-                pa[10] = new SqlParameter("@codDireccionInstalacion", SqlDbType.NVarChar,8) { Value = clsVentaGeneral.codDireccionInstalacion };
+                pa[10] = new SqlParameter("@codDireccionInstalacion", SqlDbType.NVarChar, 8) { Value = clsVentaGeneral.codDireccionInstalacion };
                 pa[11] = new SqlParameter("@cCodEstadoPP", SqlDbType.NVarChar, 8) { Value = clsVentaGeneral.cCodEstadoPP };
                 objCnx = new clsConexion("");
-                dtresp=objCnx.EjecutarProcedimientoDT("uspBuscarCodVenta", pa);
+                dtresp = objCnx.EjecutarProcedimientoDT("uspBuscarCodVenta", pa);
                 foreach (DataRow drMenu in dtresp.Rows)
                 {
                     cCodVenta = Convert.ToString(drMenu["CodigoVenta"]);
                 }
-                return cCodVenta; 
+                return cCodVenta;
             }
             catch (Exception ex)
             {
@@ -163,7 +163,7 @@ namespace CapaDato
 
         }
 
-        public DataTable daBuscarContrato(String codventa, String Placa,Int32 idContrato)
+        public DataTable daBuscarContrato(String codventa, String Placa, Int32 idContrato)
         {
             SqlParameter[] pa = new SqlParameter[3];
             clsConexion objCnx = null;
@@ -176,7 +176,7 @@ namespace CapaDato
                 pa[0] = new SqlParameter("@codVenta", SqlDbType.NVarChar) { Value = codventa };
                 pa[1] = new SqlParameter("@plcaVehiculo", SqlDbType.NVarChar) { Value = Placa };
                 pa[2] = new SqlParameter("@idContrato", SqlDbType.Int) { Value = idContrato };
-                
+
                 objCnx = new clsConexion("");
                 dtresp = objCnx.EjecutarProcedimientoDT("uspBuscarContrato", pa);
                 return dtresp;
@@ -194,7 +194,7 @@ namespace CapaDato
             }
 
         }
-        public xmlInstalacion daBuscarActaInstalacion(String codventa, String Placa,Int32 idTipoVenta)
+        public xmlInstalacion daBuscarActaInstalacion(String codventa, String Placa, Int32 idTipoVenta)
         {
             SqlParameter[] pa = new SqlParameter[3];
             clsConexion objCnx = null;
@@ -203,9 +203,9 @@ namespace CapaDato
             DataTable dtresp = new DataTable();
             xmlInstalacion xmlInstal = new xmlInstalacion();
             List<AccesoriosEquipo> lstaAcc = new List<AccesoriosEquipo>();
-            List<ServicioEquipo> lstaServ= new List<ServicioEquipo>();
+            List<ServicioEquipo> lstaServ = new List<ServicioEquipo>();
             List<AccesoriosEquipo> lstaAccesorioActual = new List<AccesoriosEquipo>();
-            List<ServicioEquipo> lstaServicioActual= new List<ServicioEquipo>();
+            List<ServicioEquipo> lstaServicioActual = new List<ServicioEquipo>();
             DataSet dtMenu = new DataSet();
             DataView dvaccesorio = new DataView();
             DataView dvservicio = new DataView();
@@ -217,9 +217,9 @@ namespace CapaDato
 
             try
             {
-                pa[0] = new SqlParameter("@CodigoVenta", SqlDbType.NVarChar,20) { Value = codventa };
-                pa[1] = new SqlParameter("@PlacaVehiculo", SqlDbType.NVarChar,20) { Value = Placa };
-                pa[2] = new SqlParameter("@idTipoVenta", SqlDbType.Int) { Value =  idTipoVenta };
+                pa[0] = new SqlParameter("@CodigoVenta", SqlDbType.NVarChar, 20) { Value = codventa };
+                pa[1] = new SqlParameter("@PlacaVehiculo", SqlDbType.NVarChar, 20) { Value = Placa };
+                pa[2] = new SqlParameter("@idTipoVenta", SqlDbType.Int) { Value = idTipoVenta };
 
                 objCnx = new clsConexion("");
                 dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarActaInstalacion", pa);
@@ -239,9 +239,9 @@ namespace CapaDato
                 {
                     lstaAcc.Add(new AccesoriosEquipo
                     {
-                        checkAccesorio=true,
-                        idAccesorios= Convert.ToInt32(dr["idAccesorio"]),
-                        NombreAccesorio= Convert.ToString(dr["cAccesorioGps"])
+                        checkAccesorio = true,
+                        idAccesorios = Convert.ToInt32(dr["idAccesorio"]),
+                        NombreAccesorio = Convert.ToString(dr["cAccesorioGps"])
                     });
                 }
                 foreach (DataRowView dr in dvservicio)
@@ -254,10 +254,10 @@ namespace CapaDato
                     });
                 }
 
-                
-                if (xmlActaInstalacion!="")
+
+                if (xmlActaInstalacion != "")
                 {
-                    xmlInstal= clsUtil.Deserialize<xmlInstalacion>(xmlActaInstalacion);
+                    xmlInstal = clsUtil.Deserialize<xmlInstalacion>(xmlActaInstalacion);
                     lstaAccesorioActual = xmlInstal.ListaAccesorio;
                     lstaServicioActual = xmlInstal.ListaServicio;
 
@@ -270,7 +270,7 @@ namespace CapaDato
                                 lstaAccesorioActual[i].checkAccesorio = true;
                             }
                         }
-                        
+
 
                     }
 
@@ -283,16 +283,16 @@ namespace CapaDato
                                 lstaServicioActual[i].checkServicio = true;
                             }
                         }
-                        
+
 
                     }
                     xmlInstal.clsInstalacion.codigoInstalacion = CodigoActaInstalacion;
-                    xmlInstal.ListaAccesorio= lstaAccesorioActual;
+                    xmlInstal.ListaAccesorio = lstaAccesorioActual;
                     xmlInstal.ListaServicio = lstaServicioActual;
                     xmlInstal.clsInstalacion.cUsuario = usuario;
-                    xmlInstal.ListaPlan[0].tarifas= TipoVenta;
+                    xmlInstal.ListaPlan[0].tarifas = TipoVenta;
                 }
-                
+
                 return xmlInstal;
             }
             catch (Exception ex)
@@ -318,8 +318,8 @@ namespace CapaDato
 
             try
             {
-                pa[0] = new SqlParameter("@codVenta", SqlDbType.NVarChar,20) { Value = codventa };
-                
+                pa[0] = new SqlParameter("@codVenta", SqlDbType.NVarChar, 20) { Value = codventa };
+
                 objCnx = new clsConexion("");
                 dtresp = objCnx.EjecutarProcedimientoDT("uspAnularVenta", pa);
                 return true;
@@ -336,7 +336,7 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public Boolean daActualizarTemaUsuario(Int32 idUsuario,String codTema)
+        public Boolean daActualizarTemaUsuario(Int32 idUsuario, String codTema)
         {
             SqlParameter[] pa = new SqlParameter[2];
             clsConexion objCnx = null;
@@ -347,8 +347,8 @@ namespace CapaDato
             try
             {
                 pa[0] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = idUsuario };
-                pa[1] = new SqlParameter("@codTema", SqlDbType.NVarChar,8) { Value = codTema };
-                
+                pa[1] = new SqlParameter("@codTema", SqlDbType.NVarChar, 8) { Value = codTema };
+
                 objCnx = new clsConexion("");
                 dtresp = objCnx.EjecutarProcedimientoDT("uspActualizarTemaUsuario", pa);
                 return true;
@@ -365,11 +365,11 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, String fechaInical, String fechaFinal,String fechaAct, String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones,String valorRadio)
+        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, String fechaInical, String fechaFinal, String fechaAct, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta, String estadoTipoContrato, Boolean habilitarRenovaciones, String valorRadio)
         {
             SqlParameter[] pa = new SqlParameter[13];
             DataTable dtVentaG;
-            clsConexion objCnx = null;           
+            clsConexion objCnx = null;
 
             objUtil = new clsUtil();
             try
@@ -384,9 +384,9 @@ namespace CapaDato
                 pa[7] = new SqlParameter("@tipoLLamada", SqlDbType.Int) { Value = tipoLLamada };
                 pa[8] = new SqlParameter("@tipoCon", SqlDbType.Real) { Value = tipoCon };
                 pa[9] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
-                pa[10] = new SqlParameter("@estadoTipoContrato", SqlDbType.NVarChar,8) { Value = estadoTipoContrato };
+                pa[10] = new SqlParameter("@estadoTipoContrato", SqlDbType.NVarChar, 8) { Value = estadoTipoContrato };
                 pa[11] = new SqlParameter("@pehabilitarRenovaciones", SqlDbType.TinyInt) { Value = habilitarRenovaciones };
-                pa[12] = new SqlParameter("@valorRadio", SqlDbType.NVarChar,8) { Value = valorRadio };
+                pa[12] = new SqlParameter("@valorRadio", SqlDbType.NVarChar, 8) { Value = valorRadio };
 
                 objCnx = new clsConexion("");
                 if (habilitarRenovaciones == false)
@@ -416,7 +416,7 @@ namespace CapaDato
         {
             SqlParameter[] pa = new SqlParameter[6];
             DataTable dtVentaG;
-            clsConexion objCnx = null;           
+            clsConexion objCnx = null;
 
             objUtil = new clsUtil();
             try
@@ -428,9 +428,75 @@ namespace CapaDato
                 pa[4] = new SqlParameter("@numPagina", SqlDbType.VarChar, 15) { Value = numPagina };
                 pa[5] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
 
-                objCnx = new clsConexion("");                
+                objCnx = new clsConexion("");
                 dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarPagoPendiente", pa);
                 return dtVentaG;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+
+
+        public DataTable daBuscarPagosPendiente(Boolean chk, String busq, String dfechaIni, String dfechaFin, Int32 numPagina, Int32 tipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[6];
+            DataTable dtVentaG;
+            clsConexion objCnx = null;
+
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.Bit) { Value = chk };
+                pa[1] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = busq };
+                pa[2] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dfechaIni };
+                pa[3] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dfechaFin };
+                pa[4] = new SqlParameter("@numPagina", SqlDbType.VarChar, 15) { Value = numPagina };
+                pa[5] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
+
+                objCnx = new clsConexion("");
+                dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarCuotasPagadasPagoPendiente", pa);
+                return dtVentaG;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+
+        public Boolean daGuardarActualizacionCuotas(List<xmlDocumentoVentaGeneral> xmlDocVenta, Int32 idConcepto, DateTime FechaRegistro, Int32 Usuario)
+        {
+            SqlParameter[] pa = new SqlParameter[4];
+            DataTable dtVentaG;
+            clsConexion objCnx = null;
+
+            String xmDocumentoVenta = clsUtil.Serialize(xmlDocVenta);
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@idConcepto", SqlDbType.Int) { Value = idConcepto };
+                pa[1] = new SqlParameter("@IdUsuario", SqlDbType.Int) { Value = Usuario };
+                pa[2] = new SqlParameter("@dtFechaRegistro", SqlDbType.DateTime) { Value = FechaRegistro };
+                pa[3] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmDocumentoVenta };
+
+                objCnx = new clsConexion("");
+                objCnx.EjecutarProcedimientoDT("uspGuardarActualizacion", pa);
+                return true;
             }
             catch (Exception ex)
             {
@@ -481,7 +547,7 @@ namespace CapaDato
         public Personal daDevolverUsuarioActual(Int32 Usuario)
         {
             SqlParameter[] pa = new SqlParameter[1];
-            DataTable dtVentaG=new DataTable();
+            DataTable dtVentaG = new DataTable();
             clsConexion objCnx = null;
             Personal cUsuario = new Personal();
             objUtil = new clsUtil();
@@ -490,13 +556,13 @@ namespace CapaDato
             try
             {
                 pa[0] = new SqlParameter("@idUsuario", SqlDbType.TinyInt) { Value = Usuario };
-                
+
 
                 objCnx = new clsConexion("");
                 dtVentaG = objCnx.EjecutarProcedimientoDT("uspObtenerUsuarioActual", pa);
                 foreach (DataRow drMenu in dtVentaG.Rows)
                 {
-                    if ( drMenu["Perfil"].ToString() =="")
+                    if (drMenu["Perfil"].ToString() == "")
                     {
                         cUsuario.idUsuario = Convert.ToInt32(drMenu["idUsuario"]);
                         cUsuario.idPersonal = Convert.ToInt32(drMenu["idPersonal"]);
@@ -504,14 +570,14 @@ namespace CapaDato
                         cUsuario.cPrimerNom = Convert.ToString(drMenu["cPrimerNom"]);
                         cUsuario.cApePat = Convert.ToString(drMenu["cApePat"]);
                         cUsuario.cApeMat = Convert.ToString(drMenu["cApeMat"]);
-                        cUsuario.cDireccion= Convert.ToString(drMenu["cDireccion"]);
-                        cUsuario.cDocumento= Convert.ToString(drMenu["cDocumento"]);
-                        cUsuario.codTema= Convert.ToString(drMenu["codTema"]);
+                        cUsuario.cDireccion = Convert.ToString(drMenu["cDireccion"]);
+                        cUsuario.cDocumento = Convert.ToString(drMenu["cDocumento"]);
+                        cUsuario.codTema = Convert.ToString(drMenu["codTema"]);
                     }
                     else
                     {
 
-                       
+
 
                         byte[] b = (Byte[])drMenu["Perfil"];
                         MemoryStream ms = new MemoryStream(b);
@@ -545,14 +611,14 @@ namespace CapaDato
         public Int32 daValidarContratoReciente(Int32 idContrato)
         {
             SqlParameter[] pa = new SqlParameter[1];
-            DataTable dtVentaG=new DataTable();
+            DataTable dtVentaG = new DataTable();
             clsConexion objCnx = null;
             Int32 idCOntratoValido = 0;
             objUtil = new clsUtil();
             try
             {
                 pa[0] = new SqlParameter("@idContrato", SqlDbType.Int) { Value = idContrato };
-                
+
 
                 objCnx = new clsConexion("");
                 dtVentaG = objCnx.EjecutarProcedimientoDT("uspBusacrContratoReciente", pa);
@@ -575,7 +641,7 @@ namespace CapaDato
             }
         }
 
-        public List<VentaGeneral> daDevolverVehiculoRenovacion(String cBuscar,String codVenta, Int32 idVehiculo,Int32 idContrato, List<Vehiculo> lstCT)
+        public List<VentaGeneral> daDevolverVehiculoRenovacion(String cBuscar, String codVenta, Int32 idVehiculo, Int32 idContrato, List<Vehiculo> lstCT)
         {
             SqlParameter[] pa = new SqlParameter[4];
             DataTable dtVentaG = new DataTable();
@@ -594,19 +660,19 @@ namespace CapaDato
             Tarifa clsTarifa = new Tarifa();
             Moneda clsMoneda = new Moneda();
             String cUsuario = "";
-            String xmlIsdContrato= clsUtil.Serialize(lstCT);
+            String xmlIsdContrato = clsUtil.Serialize(lstCT);
             objUtil = new clsUtil();
             try
             {
-                pa[0] = new SqlParameter("@CodVenta", SqlDbType.NVarChar,20) { Value = codVenta };
+                pa[0] = new SqlParameter("@CodVenta", SqlDbType.NVarChar, 20) { Value = codVenta };
                 pa[1] = new SqlParameter("@idCliente", SqlDbType.Int) { Value = idVehiculo };
-                pa[2] = new SqlParameter("@cBuscar", SqlDbType.NVarChar,8) { Value = cBuscar };
+                pa[2] = new SqlParameter("@cBuscar", SqlDbType.NVarChar, 8) { Value = cBuscar };
                 pa[3] = new SqlParameter("@idContrato", SqlDbType.Int) { Value = idContrato };
                 //pa[4] = new SqlParameter("@xmlidsContrato", SqlDbType.Xml) { Value = xmlIsdContrato };
 
                 objCnx = new clsConexion("");
                 dtVentaG = objCnx.EjecutarProcedimientoDT("uspObtenerVehiculoRenovacion_prueba", pa);
-                if (idVehiculo==0 && codVenta=="")
+                if (idVehiculo == 0 && codVenta == "")
                 {
                     foreach (DataRow drMenu in dtVentaG.Rows)
                     {
@@ -615,7 +681,7 @@ namespace CapaDato
                             idVehiculo = Convert.ToInt32(drMenu["idVehiculo"]),
                             vPlaca = Convert.ToString(drMenu["vPlaca"])
                         });
-                        
+
                         objVenta.Add(new VentaGeneral
                         {
                             codigoVenta = Convert.ToString(drMenu["codigoVenta"]),
@@ -627,7 +693,7 @@ namespace CapaDato
                 }
                 else
                 {
-                    if (cBuscar=="")
+                    if (cBuscar == "")
                     {
                         clsCliente.cTipPers = Convert.ToInt32(dtVentaG.Rows[0][3]);
                         clsCliente.cTiDo = Convert.ToInt32(dtVentaG.Rows[0][5]);
@@ -664,16 +730,16 @@ namespace CapaDato
                         {
                             lstDetVenta.Add(new DetalleVenta
                             {
-                                IdDetalleVenta=Convert.ToInt32(drMenu["idDetalleVenta"]),
-                                Numeracion=i+1,
-                                idTipoTarifa=Convert.ToInt32(drMenu["idTarifa"]),
-                                Cantidad=Convert.ToInt32(drMenu["ROOW"]),
-                                Descripcion= Convert.ToString(drMenu["Descripcion"]),
-                                PrecioUni=Convert.ToDouble(drMenu["costo"]),
-                                Descuento=Convert.ToDouble(drMenu["descuentoCantidad"]),
-                                TotalTipoDescuento=Convert.ToDouble(drMenu["descuentoPrecio"]),
-                                IdTipoDescuento=Convert.ToInt32(drMenu["idTipoDescuento"]),
-                                Importe=(Convert.ToDouble(drMenu["costo"]) - Convert.ToDouble(drMenu["descuentoPrecio"]))
+                                IdDetalleVenta = Convert.ToInt32(drMenu["idDetalleVenta"]),
+                                Numeracion = i + 1,
+                                idTipoTarifa = Convert.ToInt32(drMenu["idTarifa"]),
+                                Cantidad = Convert.ToInt32(drMenu["ROOW"]),
+                                Descripcion = Convert.ToString(drMenu["Descripcion"]),
+                                PrecioUni = Convert.ToDouble(drMenu["costo"]),
+                                Descuento = Convert.ToDouble(drMenu["descuentoCantidad"]),
+                                TotalTipoDescuento = Convert.ToDouble(drMenu["descuentoPrecio"]),
+                                IdTipoDescuento = Convert.ToInt32(drMenu["idTipoDescuento"]),
+                                Importe = (Convert.ToDouble(drMenu["costo"]) - Convert.ToDouble(drMenu["descuentoPrecio"]))
                             });
                             i++;
                         }
@@ -682,21 +748,21 @@ namespace CapaDato
                         {
                             FechaRegistro = Convert.ToDateTime(dtVentaG.Rows[0][23]),
                             codigoVenta = Convert.ToString(dtVentaG.Rows[0][0]),
-                            FechaPago= Convert.ToDateTime(dtVentaG.Rows[0][26]),
-                            FechaVenta= Convert.ToDateTime(dtVentaG.Rows[0][27]),
+                            FechaPago = Convert.ToDateTime(dtVentaG.Rows[0][26]),
+                            FechaVenta = Convert.ToDateTime(dtVentaG.Rows[0][27]),
                             lstVehiculo = lstVehiculo,
                             ClsCliente = clsCliente,
                             ClsPlan = ClsPlan,
                             ClsTarifa = clsTarifa,
-                            clsDetalleVentaCabecera= clsDetVentaCabecera,
+                            clsDetalleVentaCabecera = clsDetVentaCabecera,
                             ClsCiclo = clsCiclo,
                             ClsMoneda = clsMoneda,
                             clsContrato = clsContrato,
-                            clsCronograma= clsCronograma
+                            clsCronograma = clsCronograma
 
-                        }) ;
+                        });
                     }
-                    else if (cBuscar!="")
+                    else if (cBuscar != "")
                     {
                         foreach (DataRow drMenu in dtVentaG.Rows)
                         {
@@ -725,7 +791,7 @@ namespace CapaDato
                             lstDetalleCronograma = lstDetCronograma
 
                         });
-                    }                   
+                    }
 
                 }
                 return objVenta;
