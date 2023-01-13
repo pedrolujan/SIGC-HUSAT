@@ -448,6 +448,7 @@ namespace CapaDato
 
         public DataTable daBuscarPagosPendiente(Boolean chk, String busq, String dfechaIni, String dfechaFin, Int32 numPagina, Int32 tipoCon)
         {
+
             SqlParameter[] pa = new SqlParameter[6];
             DataTable dtVentaG;
             clsConexion objCnx = null;
