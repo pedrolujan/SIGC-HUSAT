@@ -49,7 +49,7 @@ namespace CapaNegocio
                 return new List<Reporte> { };
             }
         }
-        public List<Reporte> blBuscarReporteVentas(Busquedas cls)
+        public Tuple<List<Reporte>, List<Reporte>> blBuscarReporteVentas(Busquedas cls)
         {
             objControlPagos = new DAControlPagos();
             try
@@ -58,7 +58,7 @@ namespace CapaNegocio
             }
             catch (Exception ex)
             {
-                return new List<Reporte> { };
+                return Tuple.Create(new List<Reporte> { }, new List<Reporte> { }) ;
             }
         }
         public DataTable blBuscarCronogramaEspecifico(Int32 idCron, Int32 idCont, Int32 tipoCon)

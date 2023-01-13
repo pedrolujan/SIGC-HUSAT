@@ -182,6 +182,28 @@ namespace wfaIntegradoCom.Reportes
             rptv.RefreshReport();
         }
 
+        private void fnCargarReporteVenta(ReportViewer rptv,List<Reporte> lstReport1, List<Reporte> lstReport2)
+        {
+            //String codTipoReporte = cboTipoReporte.SelectedValue.ToString();
+            String strRuta = "wfaIntegradoCom.Consultas.rptVentas.rdlc";
+            //List<PagoPrincipal> lstPagoPrinci = lstPP;
+            ReportParameter[] parameters = new ReportParameter[3];
+            ///Mostrar datos en el reporte
+            rptv.Reset();
+            rptv.LocalReport.DataSources.Clear();
+            rptv.ProcessingMode = ProcessingMode.Local;
+            //parameters[0] = new ReportParameter("rpEmpresa", Variables.gsEmpresa);
+            parameters[0] = new ReportParameter("rpSucursal", Variables.gsSucursal);
+            parameters[1] = new ReportParameter("rpEmpresaDir", Variables.gsEmpresaDir);
+            parameters[2] = new ReportParameter("rpRuc", Variables.gsRuc);
+            rptv.LocalReport.ReportEmbeddedResource = strRuta;
+            //reportViewer1.LocalReport.SetParameters(parameters);
+            rptv.LocalReport.DataSources.Add(new ReportDataSource("dtReporte", lstReport1));
+            rptv.LocalReport.DataSources.Add(new ReportDataSource("dtReporte2", lstReport2));
+            rptv.ZoomMode = ZoomMode.PageWidth;
+            rptv.RefreshReport();
+        }
+
         private void fnTamanioReporte(ReportViewer rptv)
         {
             Int32 wd = this.Size.Width;
@@ -247,8 +269,18 @@ namespace wfaIntegradoCom.Reportes
             clsBusq.cod5 = cboFiltraIngresos.SelectedValue.ToString();   
             clsBusq.tipoCon = 0;
 
-            lstReporteVentas = obRecaudacion.blBuscarReporteVentas(clsBusq);
-            fnCargarReporte(reportViewer3);
+            /*lstReporteVentas*/ 
+            var resul = obRecaudacion.blBuscarReporteVentas(clsBusq);
+            for (int i = 0; i < resul.Item1.Count; i++)
+            {
+                resul.Item1[i].coddAux1 = FunGeneral.FormatearCadenaTitleCase(resul.Item1[i].coddAux1);
+            }
+
+            for (int i = 0; i < resul.Item2.Count; i++)
+            {
+                resul.Item2[i].coddAux1 = FunGeneral.FormatearCadenaTitleCase(resul.Item2[i].coddAux1);
+            }
+            fnCargarReporteVenta(reportViewer3, resul.Item1, resul.Item2);
             fnTamanioReporte(reportViewer3);
         }
 

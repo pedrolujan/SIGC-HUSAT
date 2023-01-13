@@ -125,7 +125,7 @@ namespace CapaDato
                 {
                     foreach (DataRowView dt in dvCorteCantidad)
                     {
-                        String mesAct = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dt["cDia"].ToString()));
+                        String mesAct = cls.cod1 == "TRRC0001" ? dt["cDia"].ToString() : CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dt["cDia"].ToString()));
                         if (lst[i].coddAux1 == mesAct)
                         {
                             lst[i].coddAux6 = Convert.ToString(dt["CORTE"]).ToString();
@@ -137,7 +137,7 @@ namespace CapaDato
                     Int32 jj = 0;
                     foreach (DataRowView dt in dvCorteImporte)
                     {
-                        String mesAct = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dt["mes"].ToString()));
+                        String mesAct = cls.cod1 == "TRRC0001" ? dt["cDia"].ToString() : CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dt["cDia"].ToString()));
                         if (lst[i].coddAux1 == mesAct)
                         {
                             lst[i].ImporteAux6 = Convert.ToDouble(dt["CORTE"]);
@@ -371,15 +371,14 @@ namespace CapaDato
             }
 
         }
-        public List<Reporte> daBuscarReporteVentas(Busquedas cls)
+        public Tuple<List<Reporte>, List<Reporte>> daBuscarReporteVentas(Busquedas cls)
         {
             SqlParameter[] pa = new SqlParameter[10];
             DataSet dtMenu = new DataSet();
-            DataView dvCantidad = new DataView();
-            DataView dvImporte = new DataView();
+            
 
             clsConexion objCnx = null;
-            List<Reporte> lst = new List<Reporte>();
+            
             objUtil = new clsUtil();
 
             try
@@ -397,12 +396,12 @@ namespace CapaDato
                 objCnx = new clsConexion("");
                 //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
                 dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarReporteVentas", pa);
-                dvCantidad = new DataView(dtMenu.Tables[0]);
-                dvImporte = new DataView(dtMenu.Tables[1]);
-                DataTable dt =GenerateTransposedTable(dtMenu.Tables[0]);
+
+                var res = fnValidarReporteVentas(cls.cod2,cls.cod3,dtMenu);
 
 
-                return lst;
+
+                return Tuple.Create(res.Item1, res.Item2);
 
             }
             catch (Exception ex)
@@ -419,6 +418,211 @@ namespace CapaDato
 
         }
 
+        private Tuple<List<Reporte>, List<Reporte>> fnValidarReporteVentas(String codigoFiltro,String cod3,DataSet dtMenu)
+        {
+            DataView dvActual = new DataView();
+            DataView dvAnterior = new DataView();
+            List<Reporte> lstActual = new List<Reporte>();
+            List<Reporte> lstAnterior = new List<Reporte>();
+
+            dvActual = new DataView(dtMenu.Tables[0]);
+            dvAnterior = new DataView(dtMenu.Tables[1]);
+            DataTable dt = GenerateTransposedTable(dtMenu.Tables[0]);
+            if(codigoFiltro== "TRFV0001")
+            {
+                for (int i = 1; i <=12; i++)
+                {
+                    lstActual.Add(new Reporte
+                    {
+                        coddAux1 = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i),
+                        nombreAux1 = "Mes",
+                        coddAux2 = "0",
+                        nombreAux2 = "AÑO: " + (Convert.ToInt32(cod3)),
+                        ImporteAux2 = Convert.ToDouble("0")
+
+                    });
+
+                    lstAnterior.Add(new Reporte
+                    {
+                        coddAux1 = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i),
+                        nombreAux1 = "Mes",
+                        coddAux2 = "0",
+                        nombreAux2 = "AÑO: " + (Convert.ToInt32(cod3) - 1),
+                        ImporteAux2 = Convert.ToDouble("0")
+
+                    });
+
+                }
+
+                foreach (DataRowView dr in dvActual)
+                {
+                    for (int i = 0; i < lstActual.Count; i++)
+                    {
+                        String codigo2 = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dr["mes"].ToString()));
+                        if (lstActual[i].coddAux1 == codigo2)
+                        {
+                            //lstActual[i].nombreAux1 = codigo2;
+                            lstActual[i].coddAux2 = dr["unidades"].ToString();
+                            lstActual[i].nombreAux2 = "AÑO: " + (Convert.ToInt32(cod3));
+                            lstActual[i].ImporteAux2 = Convert.ToDouble(dr["importe"]);
+                            break;
+                        }
+
+
+                    }
+                }
+                foreach (DataRowView dr in dvAnterior)
+                {
+                    String codigo2 = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Convert.ToInt32(dr["mes"].ToString()));
+                    for (int i = 0; i < lstActual.Count; i++)
+                    {
+                        if (lstActual[i].coddAux1 == codigo2)
+                        {
+                            //lstAnterior[i].nombreAux1 = codigo2;
+                            lstAnterior[i].coddAux2 = dr["unidades"].ToString();
+                            lstAnterior[i].nombreAux2 = "AÑO: " + (Convert.ToInt32(cod3) - 1);
+                            lstAnterior[i].ImporteAux2 = Convert.ToDouble(dr["importe"]);
+                            break;
+                        }
+
+
+                    }
+                }
+            }
+            else if (codigoFiltro== "TRFV0002")
+            {
+                if (dvActual.Count > dvAnterior.Count)
+                {
+                    foreach (DataRowView dr in dvActual)
+                    {
+                        lstActual.Add(new Reporte
+                        {
+                            coddAux1 = dr["mes"].ToString(),
+                            nombreAux1 =  "Operacion",
+                            coddAux2 = dr["unidades"].ToString(),
+                            nombreAux2 = "AÑO: " + Convert.ToInt32(cod3),
+                            ImporteAux2 = Convert.ToDouble(dr["importe"])
+
+                        });
+
+                        lstAnterior.Add(new Reporte
+                        {
+                            coddAux1 = dr["mes"].ToString(),
+                            nombreAux1 =  "Operacion",
+                            coddAux2 = "0",
+                            nombreAux2 = "AÑO: " + (Convert.ToInt32(cod3) - 1),
+                            ImporteAux2 = Convert.ToDouble("0")
+
+                        });
+                    }
+                }
+                else if (dvActual.Count < dvAnterior.Count)
+                {
+                    foreach (DataRowView dr in dvAnterior)
+                    {
+                        lstAnterior.Add(new Reporte
+                        {
+                            coddAux1 =  dr["mes"].ToString(),
+                            nombreAux1 = "Operacion",
+                            coddAux2 = dr["unidades"].ToString(),
+                            nombreAux2 = "AÑO: " + (Convert.ToInt32(cod3) - 1),
+                            ImporteAux2 = Convert.ToDouble(dr["importe"])
+
+                        });
+
+                        lstActual.Add(new Reporte
+                        {
+                            coddAux1 = dr["mes"].ToString(),
+                            nombreAux1 =  "Operacion",
+                            coddAux2 = "0",
+                            nombreAux2 = "AÑO: " + Convert.ToInt32(cod3),
+                            ImporteAux2 = Convert.ToDouble("0")
+
+                        });
+                    }
+
+                }
+                else
+                {
+                    foreach (DataRowView dr in dvActual)
+                    {
+                        lstActual.Add(new Reporte
+                        {
+                            coddAux1 = dr["mes"].ToString(),
+                            nombreAux1 = "Operacion",
+                            coddAux2 = dr["unidades"].ToString(),
+                            nombreAux2 = "AÑO: " + Convert.ToInt32(cod3),
+                            ImporteAux2 = Convert.ToDouble(dr["importe"])
+
+                        });
+
+                    }
+                    foreach (DataRowView dr in dvAnterior)
+                    {
+                        lstAnterior.Add(new Reporte
+                        {
+                            coddAux1 = dr["mes"].ToString(),
+                            nombreAux1 = "Operacion",
+                            coddAux2 = dr["unidades"].ToString(),
+                            nombreAux2 = "AÑO: " + (Convert.ToInt32(cod3) - 1),
+                            ImporteAux2 = Convert.ToDouble(dr["importe"])
+
+                        });
+                    }
+                }
+
+                if (dvActual.Count > dvAnterior.Count)
+                {
+
+                    foreach (DataRowView dr in dvAnterior)
+                    {
+                        String codigo2 = dr["mes"].ToString();
+                        for (int i = 0; i < lstActual.Count; i++)
+                        {
+                            if (lstActual[i].coddAux1 == codigo2)
+                            {
+                                //lstAnterior[i].nombreAux1 = codigo2;
+                                lstAnterior[i].coddAux2 = dr["unidades"].ToString();
+                                lstAnterior[i].nombreAux2 = "AÑO: " + (Convert.ToInt32(cod3) - 1);
+                                lstAnterior[i].ImporteAux2 = Convert.ToDouble(dr["importe"]);
+                                break;
+                            }
+
+
+                        }
+                    }
+
+                }
+                else if (dvAnterior.Count > dvActual.Count)
+                {
+
+                    foreach (DataRowView dr in dvActual)
+                    {
+                        for (int i = 0; i < lstActual.Count; i++)
+                        {
+                            String codigo2 = dr["mes"].ToString();
+                            if (lstActual[i].coddAux1 == codigo2)
+                            {
+                                //lstActual[i].nombreAux1 = codigo2;
+                                lstActual[i].coddAux2 = dr["unidades"].ToString();
+                                lstActual[i].nombreAux2 = "AÑO: " + (Convert.ToInt32(cod3));
+                                lstActual[i].ImporteAux2 = Convert.ToDouble(dr["importe"]);
+                                break;
+                            }
+
+
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < lstAnterior.Count; i++)
+            {
+                lstAnterior[i].indiceCrecimientoRow = ((Convert.ToDouble(lstActual[i].coddAux2) / Convert.ToDouble(lstAnterior[i].coddAux2)) - 1) * 100;
+                lstAnterior[i].indiceCrecimientoImporte = ((Convert.ToDouble(lstActual[i].ImporteAux2)/ Convert.ToDouble(lstAnterior[i].ImporteAux2))-1) * 100;
+            }
+           return Tuple.Create(lstActual,lstAnterior);
+        }
         private DataTable GenerateTransposedTable(DataTable inputTable)
         {
             DataTable outputTable = new DataTable();
