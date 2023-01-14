@@ -158,7 +158,7 @@ namespace wfaIntegradoCom.Procesos
             String cBuscar = txtBuscarFecha.Text.ToString();
             String fechaInicio = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
             String fechaFin = FunGeneral.GetFechaHoraFormato(dtFechafinal.Value, 5);
-            Boolean chkHabilita = chkHabilitarFechasBus.Checked;
+            Boolean chkHabilita = chkFecha.Checked;
             dtResultados = new DataTable();
             dt = blV.blBuscarPagosPendientes(chkHabilita, cBuscar, fechaInicio, fechaFin, numPagina, TipoCon);
             dtResultados = dt;
@@ -878,6 +878,14 @@ namespace wfaIntegradoCom.Procesos
         private void cboPaginaCuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
             fnBuscarPagosPendientes(Convert.ToInt32(cboPaginaCuotas.Text) , 0);
+        }
+
+        private void txtBuscarFecha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                fnBuscarPagosPendientes(0, 0);
+            }
         }
 
         private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)

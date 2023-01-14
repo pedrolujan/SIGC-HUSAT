@@ -1089,6 +1089,7 @@
             this.txtBuscarFecha.ShadowDecoration.Parent = this.txtBuscarFecha;
             this.txtBuscarFecha.Size = new System.Drawing.Size(257, 36);
             this.txtBuscarFecha.TabIndex = 269;
+            this.txtBuscarFecha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarFecha_KeyPress);
             // 
             // gbFecha
             // 
