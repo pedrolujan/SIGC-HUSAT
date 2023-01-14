@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using wfaIntegradoCom.Funciones;
 using wfaIntegradoCom.Mantenedores;
 
@@ -48,11 +49,18 @@ namespace wfaIntegradoCom.Reportes
                     if (lnTipioLlamada == 0)
                     {
                         tabControl1.SelectedIndex = 0;
+                        tabControl1.Controls.RemoveAt(2);
                         tabControl1.Controls.RemoveAt(1);
                     }
                     else if (lnTipioLlamada == 1)
                     {
                         tabControl1.SelectedIndex = 1;
+                        tabControl1.Controls.RemoveAt(0);
+                        tabControl1.Controls.RemoveAt(1);
+                    }else if (lnTipioLlamada == 2)
+                    {
+                        tabControl1.SelectedIndex =2;
+                        tabControl1.Controls.RemoveAt(1);
                         tabControl1.Controls.RemoveAt(0);
                     }
                 }
@@ -86,7 +94,7 @@ namespace wfaIntegradoCom.Reportes
             catch (Exception ex)
             {
 
-                throw;
+                
             }
         }
 
@@ -344,6 +352,14 @@ namespace wfaIntegradoCom.Reportes
                 dtFechaIniRenova.Value = Variables.gdFechaSis.AddDays(-(Variables.gdFechaSis.Day - 1));
 
                 dtFechaFinRenova.Value = Variables.gdFechaSis.AddDays(DateTime.DaysInMonth(Variables.gdFechaSis.Year, Variables.gdFechaSis.Month) - Variables.gdFechaSis.Day);
+            }
+        }
+
+        private void siticoneTextBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==(char)Keys.Enter)
+            {
+                fnBuscarReporteVenta();
             }
         }
     }

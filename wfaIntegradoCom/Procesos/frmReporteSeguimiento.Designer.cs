@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.gunaControlBox3 = new Guna.UI.WinForms.GunaControlBox();
@@ -55,13 +55,19 @@
             this.Cantidad1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importeRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siticonePanel3 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticoneLabel12 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel6 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel5 = new Siticone.UI.WinForms.SiticoneLabel();
             this.lblEstadoDeCoeficiente = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticonePanel7 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticoneLabel10 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel4 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticonePanel6 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticoneLabel9 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticonePanel5 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticoneLabel8 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticonePanel4 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticoneLabel7 = new Siticone.UI.WinForms.SiticoneLabel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -82,12 +88,6 @@
             this.dtpFechaInicialBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.siticoneSeparator1 = new Siticone.UI.WinForms.SiticoneSeparator();
-            this.siticoneLabel7 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneLabel8 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneLabel9 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticonePanel7 = new Siticone.UI.WinForms.SiticonePanel();
-            this.siticoneLabel10 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneLabel12 = new Siticone.UI.WinForms.SiticoneLabel();
             this.gunaPanel1.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
             this.siticonePanel2.SuspendLayout();
@@ -95,6 +95,7 @@
             this.DatosActuales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPorBloque)).BeginInit();
             this.siticonePanel3.SuspendLayout();
+            this.siticonePanel7.SuspendLayout();
             this.siticonePanel6.SuspendLayout();
             this.siticonePanel5.SuspendLayout();
             this.siticonePanel4.SuspendLayout();
@@ -103,7 +104,6 @@
             this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).BeginInit();
             this.gbBuscar.SuspendLayout();
-            this.siticonePanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // gunaPanel1
@@ -239,22 +239,22 @@
             this.dgvListaPorBloque.AllowUserToAddRows = false;
             this.dgvListaPorBloque.AllowUserToDeleteRows = false;
             this.dgvListaPorBloque.AllowUserToResizeRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            this.dgvListaPorBloque.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            this.dgvListaPorBloque.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvListaPorBloque.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvListaPorBloque.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListaPorBloque.BackgroundColor = System.Drawing.Color.White;
             this.dgvListaPorBloque.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvListaPorBloque.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaPorBloque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaPorBloque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvListaPorBloque.ColumnHeadersHeight = 30;
             this.dgvListaPorBloque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvListaPorBloque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -264,39 +264,39 @@
             this.Cantidad1,
             this.importeRow});
             this.dgvListaPorBloque.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaPorBloque.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaPorBloque.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvListaPorBloque.EnableHeadersVisualStyles = false;
             this.dgvListaPorBloque.GridColor = System.Drawing.Color.Silver;
             this.dgvListaPorBloque.Location = new System.Drawing.Point(6, 6);
             this.dgvListaPorBloque.Name = "dgvListaPorBloque";
             this.dgvListaPorBloque.ReadOnly = true;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaPorBloque.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaPorBloque.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvListaPorBloque.RowHeadersVisible = false;
             this.dgvListaPorBloque.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaPorBloque.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaPorBloque.RowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvListaPorBloque.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvListaPorBloque.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaPorBloque.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaPorBloque.RowTemplate.Height = 25;
             this.dgvListaPorBloque.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaPorBloque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvListaPorBloque.Size = new System.Drawing.Size(917, 89);
+            this.dgvListaPorBloque.Size = new System.Drawing.Size(900, 89);
             this.dgvListaPorBloque.TabIndex = 271;
             this.dgvListaPorBloque.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvListaPorBloque.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -337,8 +337,8 @@
             // 
             // Detalle
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Detalle.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Detalle.DefaultCellStyle = dataGridViewCellStyle17;
             this.Detalle.FillWeight = 218.6924F;
             this.Detalle.HeaderText = "Detalle";
             this.Detalle.Name = "Detalle";
@@ -353,9 +353,9 @@
             // 
             // importeRow
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.importeRow.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.importeRow.DefaultCellStyle = dataGridViewCellStyle18;
             this.importeRow.FillWeight = 86.28063F;
             this.importeRow.HeaderText = "Importe";
             this.importeRow.Name = "importeRow";
@@ -375,11 +375,23 @@
             this.siticonePanel3.Controls.Add(this.siticonePanel6);
             this.siticonePanel3.Controls.Add(this.siticonePanel5);
             this.siticonePanel3.Controls.Add(this.siticonePanel4);
-            this.siticonePanel3.Location = new System.Drawing.Point(663, 101);
+            this.siticonePanel3.Location = new System.Drawing.Point(646, 101);
             this.siticonePanel3.Name = "siticonePanel3";
             this.siticonePanel3.ShadowDecoration.Parent = this.siticonePanel3;
             this.siticonePanel3.Size = new System.Drawing.Size(260, 185);
             this.siticonePanel3.TabIndex = 276;
+            // 
+            // siticoneLabel12
+            // 
+            this.siticoneLabel12.AutoSize = false;
+            this.siticoneLabel12.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneLabel12.Location = new System.Drawing.Point(14, 147);
+            this.siticoneLabel12.Name = "siticoneLabel12";
+            this.siticoneLabel12.Size = new System.Drawing.Size(99, 32);
+            this.siticoneLabel12.TabIndex = 1;
+            this.siticoneLabel12.Text = "Malisimo:";
+            this.siticoneLabel12.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // siticoneLabel6
             // 
@@ -418,6 +430,29 @@
             this.lblEstadoDeCoeficiente.Text = "Estado de Coeficiente";
             this.lblEstadoDeCoeficiente.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // siticonePanel7
+            // 
+            this.siticonePanel7.BackColor = System.Drawing.Color.Black;
+            this.siticonePanel7.Controls.Add(this.siticoneLabel10);
+            this.siticonePanel7.Location = new System.Drawing.Point(119, 147);
+            this.siticonePanel7.Name = "siticonePanel7";
+            this.siticonePanel7.ShadowDecoration.Parent = this.siticonePanel7;
+            this.siticonePanel7.Size = new System.Drawing.Size(138, 32);
+            this.siticonePanel7.TabIndex = 0;
+            // 
+            // siticoneLabel10
+            // 
+            this.siticoneLabel10.AutoSize = false;
+            this.siticoneLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.siticoneLabel10.ForeColor = System.Drawing.Color.White;
+            this.siticoneLabel10.Location = new System.Drawing.Point(0, 0);
+            this.siticoneLabel10.Name = "siticoneLabel10";
+            this.siticoneLabel10.Size = new System.Drawing.Size(138, 32);
+            this.siticoneLabel10.TabIndex = 1;
+            this.siticoneLabel10.Text = "Menor a 1";
+            this.siticoneLabel10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // siticoneLabel4
             // 
             this.siticoneLabel4.AutoSize = false;
@@ -440,15 +475,41 @@
             this.siticonePanel6.Size = new System.Drawing.Size(138, 32);
             this.siticonePanel6.TabIndex = 0;
             // 
+            // siticoneLabel9
+            // 
+            this.siticoneLabel9.AutoSize = false;
+            this.siticoneLabel9.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.siticoneLabel9.ForeColor = System.Drawing.Color.White;
+            this.siticoneLabel9.Location = new System.Drawing.Point(0, 0);
+            this.siticoneLabel9.Name = "siticoneLabel9";
+            this.siticoneLabel9.Size = new System.Drawing.Size(138, 32);
+            this.siticoneLabel9.TabIndex = 1;
+            this.siticoneLabel9.Text = "De 3.00 a Más";
+            this.siticoneLabel9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // siticonePanel5
             // 
-            this.siticonePanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.siticonePanel5.BackColor = System.Drawing.Color.Orange;
             this.siticonePanel5.Controls.Add(this.siticoneLabel8);
             this.siticonePanel5.Location = new System.Drawing.Point(119, 75);
             this.siticonePanel5.Name = "siticonePanel5";
             this.siticonePanel5.ShadowDecoration.Parent = this.siticonePanel5;
             this.siticonePanel5.Size = new System.Drawing.Size(138, 32);
             this.siticonePanel5.TabIndex = 0;
+            // 
+            // siticoneLabel8
+            // 
+            this.siticoneLabel8.AutoSize = false;
+            this.siticoneLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.siticoneLabel8.ForeColor = System.Drawing.Color.White;
+            this.siticoneLabel8.Location = new System.Drawing.Point(0, 0);
+            this.siticoneLabel8.Name = "siticoneLabel8";
+            this.siticoneLabel8.Size = new System.Drawing.Size(138, 32);
+            this.siticoneLabel8.TabIndex = 1;
+            this.siticoneLabel8.Text = "De 2.00 a 2.99";
+            this.siticoneLabel8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // siticonePanel4
             // 
@@ -460,56 +521,69 @@
             this.siticonePanel4.Size = new System.Drawing.Size(138, 32);
             this.siticonePanel4.TabIndex = 0;
             // 
+            // siticoneLabel7
+            // 
+            this.siticoneLabel7.AutoSize = false;
+            this.siticoneLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.siticoneLabel7.ForeColor = System.Drawing.Color.White;
+            this.siticoneLabel7.Location = new System.Drawing.Point(0, 0);
+            this.siticoneLabel7.Name = "siticoneLabel7";
+            this.siticoneLabel7.Size = new System.Drawing.Size(138, 32);
+            this.siticoneLabel7.TabIndex = 0;
+            this.siticoneLabel7.Text = "De 1.00 a 1.99";
+            this.siticoneLabel7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // chart1
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Area3DStyle.Inclination = 0;
-            chartArea2.AxisX.IsLabelAutoFit = false;
-            chartArea2.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
-            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisX.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            chartArea2.AxisX.MinorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.None;
-            chartArea2.AxisX.ScaleBreakStyle.BreakLineStyle = System.Windows.Forms.DataVisualization.Charting.BreakLineStyle.Wave;
-            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisY.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea3.Area3DStyle.Inclination = 0;
+            chartArea3.AxisX.IsLabelAutoFit = false;
+            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
+            chartArea3.AxisX.LabelStyle.ForeColor = System.Drawing.Color.DimGray;
+            chartArea3.AxisX.LineColor = System.Drawing.Color.DimGray;
+            chartArea3.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea3.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            chartArea3.AxisX.MinorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.None;
+            chartArea3.AxisX.ScaleBreakStyle.BreakLineStyle = System.Windows.Forms.DataVisualization.Charting.BreakLineStyle.Wave;
+            chartArea3.AxisY.LabelStyle.ForeColor = System.Drawing.Color.DimGray;
+            chartArea3.AxisY.LineColor = System.Drawing.Color.DimGray;
+            chartArea3.AxisY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Enabled = false;
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(6, 101);
             this.chart1.Name = "chart1";
             this.chart1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            series2.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            series2.CustomProperties = "DrawingStyle=Cylinder, BarLabelStyle=Right";
-            series2.IsValueShownAsLabel = true;
-            series2.IsVisibleInLegend = false;
-            series2.Label = "#PERCENT{P}";
-            series2.LabelBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            series2.LabelBorderColor = System.Drawing.Color.DimGray;
-            series2.LabelForeColor = System.Drawing.Color.WhiteSmoke;
-            series2.LabelToolTip = "#VALX";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.BrightPastel;
-            series2.ShadowColor = System.Drawing.Color.White;
-            series2.SmartLabelStyle.CalloutStyle = System.Windows.Forms.DataVisualization.Charting.LabelCalloutStyle.None;
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(621, 388);
+            series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            series3.CustomProperties = "DrawingStyle=Cylinder, BarLabelStyle=Right";
+            series3.IsValueShownAsLabel = true;
+            series3.IsVisibleInLegend = false;
+            series3.Label = "#PERCENT{P}";
+            series3.LabelBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            series3.LabelBorderColor = System.Drawing.Color.DimGray;
+            series3.LabelForeColor = System.Drawing.Color.WhiteSmoke;
+            series3.LabelToolTip = "#VALX";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.BrightPastel;
+            series3.ShadowColor = System.Drawing.Color.White;
+            series3.SmartLabelStyle.CalloutStyle = System.Windows.Forms.DataVisualization.Charting.LabelCalloutStyle.None;
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(604, 388);
             this.chart1.TabIndex = 275;
             this.chart1.Text = "chart1";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            title2.ForeColor = System.Drawing.Color.DimGray;
-            title2.Name = "Title1";
-            this.chart1.Titles.Add(title2);
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            title3.ForeColor = System.Drawing.Color.DimGray;
+            title3.Name = "Title1";
+            this.chart1.Titles.Add(title3);
             // 
             // tabPage1
             // 
@@ -808,80 +882,6 @@
             this.siticoneSeparator1.Size = new System.Drawing.Size(200, 10);
             this.siticoneSeparator1.TabIndex = 274;
             // 
-            // siticoneLabel7
-            // 
-            this.siticoneLabel7.AutoSize = false;
-            this.siticoneLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.siticoneLabel7.ForeColor = System.Drawing.Color.White;
-            this.siticoneLabel7.Location = new System.Drawing.Point(0, 0);
-            this.siticoneLabel7.Name = "siticoneLabel7";
-            this.siticoneLabel7.Size = new System.Drawing.Size(138, 32);
-            this.siticoneLabel7.TabIndex = 0;
-            this.siticoneLabel7.Text = "De 1.00 a 1.99";
-            this.siticoneLabel7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // siticoneLabel8
-            // 
-            this.siticoneLabel8.AutoSize = false;
-            this.siticoneLabel8.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.siticoneLabel8.ForeColor = System.Drawing.Color.White;
-            this.siticoneLabel8.Location = new System.Drawing.Point(0, 0);
-            this.siticoneLabel8.Name = "siticoneLabel8";
-            this.siticoneLabel8.Size = new System.Drawing.Size(138, 32);
-            this.siticoneLabel8.TabIndex = 1;
-            this.siticoneLabel8.Text = "De 2.00 a 2.99";
-            this.siticoneLabel8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // siticoneLabel9
-            // 
-            this.siticoneLabel9.AutoSize = false;
-            this.siticoneLabel9.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.siticoneLabel9.ForeColor = System.Drawing.Color.White;
-            this.siticoneLabel9.Location = new System.Drawing.Point(0, 0);
-            this.siticoneLabel9.Name = "siticoneLabel9";
-            this.siticoneLabel9.Size = new System.Drawing.Size(138, 32);
-            this.siticoneLabel9.TabIndex = 1;
-            this.siticoneLabel9.Text = "De 3.00 a Más";
-            this.siticoneLabel9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // siticonePanel7
-            // 
-            this.siticonePanel7.BackColor = System.Drawing.Color.Black;
-            this.siticonePanel7.Controls.Add(this.siticoneLabel10);
-            this.siticonePanel7.Location = new System.Drawing.Point(119, 147);
-            this.siticonePanel7.Name = "siticonePanel7";
-            this.siticonePanel7.ShadowDecoration.Parent = this.siticonePanel7;
-            this.siticonePanel7.Size = new System.Drawing.Size(138, 32);
-            this.siticonePanel7.TabIndex = 0;
-            // 
-            // siticoneLabel10
-            // 
-            this.siticoneLabel10.AutoSize = false;
-            this.siticoneLabel10.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.siticoneLabel10.ForeColor = System.Drawing.Color.White;
-            this.siticoneLabel10.Location = new System.Drawing.Point(0, 0);
-            this.siticoneLabel10.Name = "siticoneLabel10";
-            this.siticoneLabel10.Size = new System.Drawing.Size(138, 32);
-            this.siticoneLabel10.TabIndex = 1;
-            this.siticoneLabel10.Text = "Menor a 1";
-            this.siticoneLabel10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // siticoneLabel12
-            // 
-            this.siticoneLabel12.AutoSize = false;
-            this.siticoneLabel12.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneLabel12.Location = new System.Drawing.Point(14, 147);
-            this.siticoneLabel12.Name = "siticoneLabel12";
-            this.siticoneLabel12.Size = new System.Drawing.Size(99, 32);
-            this.siticoneLabel12.TabIndex = 1;
-            this.siticoneLabel12.Text = "Malisimo:";
-            this.siticoneLabel12.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // frmReporteSeguimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -902,6 +902,7 @@
             this.DatosActuales.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPorBloque)).EndInit();
             this.siticonePanel3.ResumeLayout(false);
+            this.siticonePanel7.ResumeLayout(false);
             this.siticonePanel6.ResumeLayout(false);
             this.siticonePanel5.ResumeLayout(false);
             this.siticonePanel4.ResumeLayout(false);
@@ -912,7 +913,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).EndInit();
             this.gbBuscar.ResumeLayout(false);
             this.gbBuscar.PerformLayout();
-            this.siticonePanel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
