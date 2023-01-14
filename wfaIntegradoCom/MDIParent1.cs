@@ -1507,8 +1507,7 @@ namespace wfaIntegradoCom
             {
                 frmFormulario = fnMenuDinamico(pcNombreFormulario, 0);
                 if (frmFormulario != null)
-                {
-                   
+                {                   
 
                     if (frmFormulario.Name == "frmRegistrarVenta" && pintidTipoLlamada == 1)
                     {
