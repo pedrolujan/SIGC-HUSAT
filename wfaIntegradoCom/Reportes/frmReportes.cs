@@ -127,7 +127,6 @@ namespace wfaIntegradoCom.Reportes
                     cboCombo.DisplayMember = "cNomTab";
                     cboCombo.DataSource = lstTablaCod;
                 }
-                
 
                 return true;
             }
