@@ -45,8 +45,10 @@
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.pnFondo = new Siticone.UI.WinForms.SiticonePanel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabCuotas = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cboEstado = new Siticone.UI.WinForms.SiticoneComboBox();
             this.gbPaginacion = new System.Windows.Forms.GroupBox();
             this.btnNumFilas = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label37 = new System.Windows.Forms.Label();
@@ -76,10 +78,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dtFechaPago = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.dgvVentas = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.verHistorialDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pbBuscar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tapP2 = new System.Windows.Forms.TabPage();
             this.cboDVenta = new Siticone.UI.WinForms.SiticoneComboBox();
             this.lblComboVenta = new System.Windows.Forms.Label();
             this.chkFecha = new Siticone.UI.WinForms.SiticoneCheckBox();
@@ -108,7 +112,7 @@
             this.siticoneDragControl1 = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.PanelTop.SuspendLayout();
             this.pnFondo.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabCuotas.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbPaginacion.SuspendLayout();
             this.siticoneGroupBox1.SuspendLayout();
@@ -117,8 +121,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDocVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMoneda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tapP2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuotas)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -189,7 +194,7 @@
             // 
             this.pnFondo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.pnFondo.BorderThickness = 2;
-            this.pnFondo.Controls.Add(this.tabControl1);
+            this.pnFondo.Controls.Add(this.tabCuotas);
             this.pnFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnFondo.Location = new System.Drawing.Point(0, 0);
             this.pnFondo.Name = "pnFondo";
@@ -197,18 +202,20 @@
             this.pnFondo.Size = new System.Drawing.Size(1009, 536);
             this.pnFondo.TabIndex = 226;
             // 
-            // tabControl1
+            // tabCuotas
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 27);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1006, 508);
-            this.tabControl1.TabIndex = 236;
+            this.tabCuotas.Controls.Add(this.tabPage1);
+            this.tabCuotas.Controls.Add(this.tapP2);
+            this.tabCuotas.Location = new System.Drawing.Point(3, 27);
+            this.tabCuotas.Name = "tabCuotas";
+            this.tabCuotas.SelectedIndex = 0;
+            this.tabCuotas.Size = new System.Drawing.Size(1006, 508);
+            this.tabCuotas.TabIndex = 236;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.cboEstado);
             this.tabPage1.Controls.Add(this.gbPaginacion);
             this.tabPage1.Controls.Add(this.chkHabilitarFechasBus);
             this.tabPage1.Controls.Add(this.siticoneGroupBox1);
@@ -224,6 +231,36 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Registrar Pago";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label11.Location = new System.Drawing.Point(273, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(128, 18);
+            this.label11.TabIndex = 287;
+            this.label11.Text = "Estado:";
+            // 
+            // cboEstado
+            // 
+            this.cboEstado.BackColor = System.Drawing.Color.Transparent;
+            this.cboEstado.BorderColor = System.Drawing.Color.Silver;
+            this.cboEstado.BorderRadius = 5;
+            this.cboEstado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboEstado.HoveredState.Parent = this.cboEstado;
+            this.cboEstado.ItemHeight = 30;
+            this.cboEstado.ItemsAppearance.Parent = this.cboEstado;
+            this.cboEstado.Location = new System.Drawing.Point(273, 45);
+            this.cboEstado.Name = "cboEstado";
+            this.cboEstado.ShadowDecoration.Parent = this.cboEstado;
+            this.cboEstado.Size = new System.Drawing.Size(173, 36);
+            this.cboEstado.TabIndex = 290;
             // 
             // gbPaginacion
             // 
@@ -288,6 +325,7 @@
             this.cboPagina.Name = "cboPagina";
             this.cboPagina.Size = new System.Drawing.Size(63, 23);
             this.cboPagina.TabIndex = 167;
+            this.cboPagina.SelectedIndexChanged += new System.EventHandler(this.cboPagina_SelectedIndexChanged);
             // 
             // label40
             // 
@@ -645,6 +683,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVentas.ColumnHeadersHeight = 42;
+            this.dgvVentas.ContextMenuStrip = this.contextMenuStrip2;
             this.dgvVentas.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -706,14 +745,28 @@
             this.dgvVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentClick);
             this.dgvVentas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvVentas_CellPainting);
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verHistorialDePagosToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(189, 26);
+            // 
+            // verHistorialDePagosToolStripMenuItem
+            // 
+            this.verHistorialDePagosToolStripMenuItem.Name = "verHistorialDePagosToolStripMenuItem";
+            this.verHistorialDePagosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.verHistorialDePagosToolStripMenuItem.Text = "Ver Historial de Pagos";
+            this.verHistorialDePagosToolStripMenuItem.Click += new System.EventHandler(this.verHistorialDePagosToolStripMenuItem_Click);
+            // 
             // pbBuscar
             // 
             this.pbBuscar.BackColor = System.Drawing.Color.White;
             this.pbBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbBuscar.Image = ((System.Drawing.Image)(resources.GetObject("pbBuscar.Image")));
-            this.pbBuscar.Location = new System.Drawing.Point(961, 52);
+            this.pbBuscar.Location = new System.Drawing.Point(957, 48);
             this.pbBuscar.Name = "pbBuscar";
-            this.pbBuscar.Size = new System.Drawing.Size(26, 27);
+            this.pbBuscar.Size = new System.Drawing.Size(31, 27);
             this.pbBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbBuscar.TabIndex = 267;
             this.pbBuscar.TabStop = false;
@@ -726,7 +779,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(273, 26);
+            this.label1.Location = new System.Drawing.Point(781, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 17);
             this.label1.TabIndex = 227;
@@ -747,34 +800,34 @@
             this.txtBuscar.FocusedState.Parent = this.txtBuscar;
             this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscar.HoveredState.Parent = this.txtBuscar;
-            this.txtBuscar.Location = new System.Drawing.Point(273, 45);
+            this.txtBuscar.Location = new System.Drawing.Point(784, 45);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderText = "";
             this.txtBuscar.SelectedText = "";
             this.txtBuscar.ShadowDecoration.Parent = this.txtBuscar;
-            this.txtBuscar.Size = new System.Drawing.Size(719, 36);
+            this.txtBuscar.Size = new System.Drawing.Size(208, 36);
             this.txtBuscar.TabIndex = 0;
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
-            // tabPage2
+            // tapP2
             // 
-            this.tabPage2.Controls.Add(this.cboDVenta);
-            this.tabPage2.Controls.Add(this.lblComboVenta);
-            this.tabPage2.Controls.Add(this.chkFecha);
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Controls.Add(this.dgvCuotas);
-            this.tabPage2.Controls.Add(this.btnBuscar);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.txtBuscarFecha);
-            this.tabPage2.Controls.Add(this.gbFecha);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(998, 482);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Buscar Cuota";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tapP2.Controls.Add(this.cboDVenta);
+            this.tapP2.Controls.Add(this.lblComboVenta);
+            this.tapP2.Controls.Add(this.chkFecha);
+            this.tapP2.Controls.Add(this.groupBox1);
+            this.tapP2.Controls.Add(this.dgvCuotas);
+            this.tapP2.Controls.Add(this.btnBuscar);
+            this.tapP2.Controls.Add(this.label5);
+            this.tapP2.Controls.Add(this.txtBuscarFecha);
+            this.tapP2.Controls.Add(this.gbFecha);
+            this.tapP2.Location = new System.Drawing.Point(4, 22);
+            this.tapP2.Name = "tapP2";
+            this.tapP2.Padding = new System.Windows.Forms.Padding(3);
+            this.tapP2.Size = new System.Drawing.Size(998, 482);
+            this.tapP2.TabIndex = 1;
+            this.tapP2.Text = "Buscar Cuota";
+            this.tapP2.UseVisualStyleBackColor = true;
             // 
             // cboDVenta
             // 
@@ -1206,7 +1259,7 @@
             this.PanelTop.ResumeLayout(false);
             this.PanelTop.PerformLayout();
             this.pnFondo.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabCuotas.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.gbPaginacion.ResumeLayout(false);
@@ -1219,9 +1272,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDocVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMoneda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tapP2.ResumeLayout(false);
+            this.tapP2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuotas)).EndInit();
@@ -1261,7 +1315,7 @@
         private System.Windows.Forms.Label lblDocVenta;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pbDocVenta;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabCuotas;
         private System.Windows.Forms.TabPage tabPage1;
         private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBus;
         private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
@@ -1269,7 +1323,7 @@
         private System.Windows.Forms.Label label35;
         private Siticone.UI.WinForms.SiticoneDateTimePicker dtpFechaInicialBus;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tapP2;
         private System.Windows.Forms.GroupBox gbPaginacion;
         private Siticone.UI.WinForms.SiticoneCircleButton btnNumFilas;
         private System.Windows.Forms.Label label37;
@@ -1302,5 +1356,9 @@
         private System.Windows.Forms.ToolStripMenuItem actualizarPágoToolStripMenuItem;
         private Siticone.UI.WinForms.SiticoneComboBox cboDVenta;
         private System.Windows.Forms.Label lblComboVenta;
+        private System.Windows.Forms.Label label11;
+        private Siticone.UI.WinForms.SiticoneComboBox cboEstado;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem verHistorialDePagosToolStripMenuItem;
     }
 }

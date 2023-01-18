@@ -973,6 +973,16 @@ namespace wfaIntegradoCom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap UserPorDefecto {
+            get {
+                object obj = ResourceManager.GetObject("UserPorDefecto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap usser {
             get {
                 object obj = ResourceManager.GetObject("usser", resourceCulture);

@@ -133,6 +133,7 @@ namespace wfaIntegradoCom.Mantenedores
         private void frmEmpleado_Load(object sender, EventArgs e)
         {
             Boolean bResult = false;
+            CargarCodigoEmpleado();
 
             bResult = fnLlenarDepartamento();
             if (!bResult)
@@ -183,6 +184,13 @@ namespace wfaIntegradoCom.Mantenedores
             txtBuscarEmpleado.Focus();
 
 
+        }
+
+        private void CargarCodigoEmpleado()
+        {
+            fnHabilitarControles(true);
+
+            fnLimpiarControles();
         }
 
         private void newToolStripButton_Click(object sender, EventArgs e)
@@ -395,6 +403,12 @@ namespace wfaIntegradoCom.Mantenedores
         private Byte[] ConvertirImg()
         {
             MemoryStream ms = new MemoryStream();
+
+            if (ms.Length == 0)
+            {
+                picBoxImgPerfil.Image = Properties.Resources.UserPorDefecto;
+            }
+            ms = new MemoryStream();
             picBoxImgPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
             return ms.GetBuffer();
         }
@@ -667,6 +681,11 @@ namespace wfaIntegradoCom.Mantenedores
         private void btnClosepanelImagenes_Click(object sender, EventArgs e)
         {
             panelImagenes.Visible = false;
+        }
+
+        private void picBuscarPersonal_Click(object sender, EventArgs e)
+        {
+            fnBuscarEmpleado(0, 0);
         }
     }
 }
