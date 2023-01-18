@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tsBotonera = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -495,10 +495,10 @@
             this.panelImagenes.Controls.Add(this.btnClosepanelImagenes);
             this.panelImagenes.Controls.Add(this.flowLayoutPanel2);
             this.panelImagenes.Controls.Add(this.flowLayoutPanel1);
-            this.panelImagenes.Location = new System.Drawing.Point(315, 19);
+            this.panelImagenes.Location = new System.Drawing.Point(337, 22);
             this.panelImagenes.Name = "panelImagenes";
-            this.panelImagenes.Size = new System.Drawing.Size(472, 284);
-            this.panelImagenes.TabIndex = 235;
+            this.panelImagenes.Size = new System.Drawing.Size(472, 260);
+            this.panelImagenes.TabIndex = 236;
             this.panelImagenes.Visible = false;
             // 
             // btnClosepanelImagenes
@@ -517,7 +517,6 @@
             this.btnClosepanelImagenes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnClosepanelImagenes.TabIndex = 2;
             this.btnClosepanelImagenes.TabStop = false;
-            this.btnClosepanelImagenes.Click += new System.EventHandler(this.btnClosepanelImagenes_Click);
             // 
             // flowLayoutPanel2
             // 
@@ -540,7 +539,6 @@
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 1;
             this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // pictureBox6
             // 
@@ -551,7 +549,6 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 2;
             this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // pictureBox7
             // 
@@ -562,7 +559,6 @@
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 3;
             this.pictureBox7.TabStop = false;
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // picAddImagen
             // 
@@ -573,7 +569,6 @@
             this.picAddImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picAddImagen.TabIndex = 4;
             this.picAddImagen.TabStop = false;
-            this.picAddImagen.Click += new System.EventHandler(this.pictureBox8_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -596,7 +591,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
             // 
@@ -607,7 +601,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox3
             // 
@@ -618,7 +611,6 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox4
             // 
@@ -629,7 +621,6 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 3;
             this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // lblNameImagen
             // 
@@ -947,6 +938,7 @@
             this.picBuscarPersonal.TabIndex = 234;
             this.picBuscarPersonal.TabStop = false;
             this.picBuscarPersonal.UseTransparentBackground = true;
+            this.picBuscarPersonal.Click += new System.EventHandler(this.picBuscarPersonal_Click);
             // 
             // gbPaginacion
             // 
@@ -1143,75 +1135,78 @@
             // 
             // lvempleado
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
-            this.lvempleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.lvempleado.AllowUserToAddRows = false;
+            this.lvempleado.AllowUserToDeleteRows = false;
+            this.lvempleado.AllowUserToResizeColumns = false;
+            this.lvempleado.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.lvempleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.lvempleado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.lvempleado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.lvempleado.BackgroundColor = System.Drawing.Color.Azure;
+            this.lvempleado.BackgroundColor = System.Drawing.Color.White;
             this.lvempleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lvempleado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.lvempleado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightCoral;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lvempleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvempleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.lvempleado.ColumnHeadersHeight = 40;
             this.lvempleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Código,
             this.NombreEmpleado,
             this.DNI});
             this.lvempleado.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(217)))), ((int)(((byte)(215)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(129)))), ((int)(((byte)(121)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lvempleado.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lvempleado.DefaultCellStyle = dataGridViewCellStyle3;
             this.lvempleado.EnableHeadersVisualStyles = false;
-            this.lvempleado.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(189)))), ((int)(((byte)(184)))));
+            this.lvempleado.GridColor = System.Drawing.Color.Silver;
             this.lvempleado.Location = new System.Drawing.Point(347, 90);
             this.lvempleado.Name = "lvempleado";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lvempleado.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.lvempleado.ReadOnly = true;
+            this.lvempleado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvempleado.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.lvempleado.RowHeadersVisible = false;
-            this.lvempleado.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.lvempleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.lvempleado.Size = new System.Drawing.Size(473, 298);
+            this.lvempleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.lvempleado.Size = new System.Drawing.Size(473, 310);
             this.lvempleado.TabIndex = 35;
-            this.lvempleado.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Red;
-            this.lvempleado.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(199)))), ((int)(((byte)(195)))));
+            this.lvempleado.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.lvempleado.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.lvempleado.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.lvempleado.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.lvempleado.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.lvempleado.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.lvempleado.ThemeStyle.BackColor = System.Drawing.Color.Azure;
-            this.lvempleado.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(189)))), ((int)(((byte)(184)))));
-            this.lvempleado.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.lvempleado.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.lvempleado.ThemeStyle.GridColor = System.Drawing.Color.Silver;
+            this.lvempleado.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.DimGray;
             this.lvempleado.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.lvempleado.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.lvempleado.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.lvempleado.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.lvempleado.ThemeStyle.HeaderStyle.Height = 40;
-            this.lvempleado.ThemeStyle.ReadOnly = false;
-            this.lvempleado.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(217)))), ((int)(((byte)(215)))));
-            this.lvempleado.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.lvempleado.ThemeStyle.ReadOnly = true;
+            this.lvempleado.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.lvempleado.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.lvempleado.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.lvempleado.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.lvempleado.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.lvempleado.ThemeStyle.RowsStyle.Height = 22;
-            this.lvempleado.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(129)))), ((int)(((byte)(121)))));
-            this.lvempleado.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.lvempleado.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lvempleado.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.lvempleado.Visible = false;
             this.lvempleado.DoubleClick += new System.EventHandler(this.lvempleado_DoubleClick);
             this.lvempleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarEmpleado_KeyPress);
@@ -1221,18 +1216,21 @@
             this.Código.FillWeight = 76.14212F;
             this.Código.HeaderText = "Código";
             this.Código.Name = "Código";
+            this.Código.ReadOnly = true;
             // 
             // NombreEmpleado
             // 
             this.NombreEmpleado.FillWeight = 135.3255F;
             this.NombreEmpleado.HeaderText = "Nombre Empleado";
             this.NombreEmpleado.Name = "NombreEmpleado";
+            this.NombreEmpleado.ReadOnly = true;
             // 
             // DNI
             // 
             this.DNI.FillWeight = 88.53233F;
             this.DNI.HeaderText = "DNI";
             this.DNI.Name = "DNI";
+            this.DNI.ReadOnly = true;
             // 
             // frmEmpleado
             // 
@@ -1347,7 +1345,14 @@
         private Siticone.UI.WinForms.SiticonePictureBox siticonePictureBox1;
         private Siticone.UI.WinForms.SiticonePictureBox picBuscarPersonal;
         private System.Windows.Forms.Label lblImgPerfil;
+        private System.Windows.Forms.Label lblNameImagen;
+        private System.Windows.Forms.PictureBox picBoxImgPerfil;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Código;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreEmpleado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DNI;
         private System.Windows.Forms.Panel panelImagenes;
+        private FontAwesome.Sharp.IconPictureBox btnClosepanelImagenes;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
@@ -1358,12 +1363,5 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label lblNameImagen;
-        private FontAwesome.Sharp.IconPictureBox btnClosepanelImagenes;
-        private System.Windows.Forms.PictureBox picBoxImgPerfil;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Código;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreEmpleado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DNI;
     }
 }

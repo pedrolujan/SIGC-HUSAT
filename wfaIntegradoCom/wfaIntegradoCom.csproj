@@ -1214,6 +1214,7 @@
     <None Include="Resources\soporte_blanco_1.png" />
     <None Include="Resources\HUSAT_LOGO %28Letras Naranjas%29 .png" />
     <None Include="Resources\enojo.png" />
+    <None Include="Resources\UserPorDefecto.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

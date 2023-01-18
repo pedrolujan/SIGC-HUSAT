@@ -412,9 +412,9 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public DataTable daBuscarVentaPagoPendiente(Boolean chk, String busq, String dfechaIni, String dfechaFin, Int32 numPagina, Int32 tipoCon)
+        public DataTable daBuscarVentaPagoPendiente(Boolean chk, String  CodEstadoPago, String busq, String dfechaIni, String dfechaFin, Int32 numPagina, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[6];
+            SqlParameter[] pa = new SqlParameter[7];
             DataTable dtVentaG;
             clsConexion objCnx = null;
 
@@ -422,11 +422,12 @@ namespace CapaDato
             try
             {
                 pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.Bit) { Value = chk };
-                pa[1] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = busq };
-                pa[2] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dfechaIni };
-                pa[3] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dfechaFin };
-                pa[4] = new SqlParameter("@numPagina", SqlDbType.VarChar, 15) { Value = numPagina };
-                pa[5] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[1] = new SqlParameter("@CodEstadoPago", SqlDbType.VarChar,15) { Value = CodEstadoPago };
+                pa[2] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = busq };
+                pa[3] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dfechaIni };
+                pa[4] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dfechaFin };
+                pa[5] = new SqlParameter("@numPagina", SqlDbType.VarChar, 15) { Value = numPagina };
+                pa[6] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
 
                 objCnx = new clsConexion("");
                 dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarPagoPendiente", pa);
@@ -446,22 +447,23 @@ namespace CapaDato
         }
 
 
-        public DataTable daBuscarPagosPendiente(Boolean chk, String busq, String dfechaIni, String dfechaFin, Int32 numPagina, Int32 tipoCon)
+        public DataTable daBuscarPagosPendiente( Int32 idTrandiaria, Boolean chk, String busq, String dfechaIni, String dfechaFin, Int32 numPagina, Int32 tipoCon)
         {
 
-            SqlParameter[] pa = new SqlParameter[6];
+            SqlParameter[] pa = new SqlParameter[7];
             DataTable dtVentaG;
             clsConexion objCnx = null;
 
             objUtil = new clsUtil();
             try
             {
-                pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.Bit) { Value = chk };
-                pa[1] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = busq };
-                pa[2] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dfechaIni };
-                pa[3] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dfechaFin };
-                pa[4] = new SqlParameter("@numPagina", SqlDbType.VarChar, 15) { Value = numPagina };
-                pa[5] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[0] = new SqlParameter("@idTrandiaria", SqlDbType.Int) { Value = idTrandiaria };
+                pa[1] = new SqlParameter("@peHabilitarFechas", SqlDbType.Bit) { Value = chk };
+                pa[2] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = busq };
+                pa[3] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dfechaIni };
+                pa[4] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dfechaFin };
+                pa[5] = new SqlParameter("@numPagina", SqlDbType.VarChar, 15) { Value = numPagina };
+                pa[6] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
 
                 objCnx = new clsConexion("");
                 dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarCuotasPagadasPagoPendiente", pa);

@@ -39,10 +39,12 @@ namespace wfaIntegradoCom.Procesos
         static DataTable dtResultados = new DataTable();
         static int tabInicio = 0;
         static bool dEstadoBusquedaPaginacion = false;
-        string UsuarioDocumentoVenta="";
+        static bool dEstadoPagina = false;
+        string UsuarioDocumentoVenta = "";
         string TipoPago = "";
         string PlacaVehiculo = "";
-        Int32 IdUsuarioRegistro =0 ;
+        Int32 IdUsuarioRegistro = 0;
+        static int IdTra = 0;
         public void fnRecuperarTipoPago(List<Pagos> lstEntidades)
         {
             lstPagosTrand = lstEntidades;
@@ -112,9 +114,15 @@ namespace wfaIntegradoCom.Procesos
                 dtFechaInicio.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
                 fnLLenarMoneda(cboMoneda, 0, false);
                 cboMoneda.SelectedValue = 1;
-                if (Variables.gsCargoUsuario== "PETR0007")
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboEstado, "cCodTab", "cNomTab", "TablaCod", "nValor1",
+                    "estPagos", false);
+                cboEstado.SelectedValue = "ESPP0002";
+
+
+
+                if (Variables.gsCargoUsuario == "PETR0007")
                 {
-                    contextMenuStrip1.Enabled=true;
+                    contextMenuStrip1.Enabled = true;
                     contextMenuStrip1.Visible = true;
                     cboDVenta.Visible = true;
                 }
@@ -153,14 +161,18 @@ namespace wfaIntegradoCom.Procesos
         {
             BLVentaGeneral blV = new BLVentaGeneral();
             DataTable dt = new DataTable();
+            Int32 idTrandiaria = IdTra;
             Int32 numRows = 0;
             Int32 filas = 6;
             String cBuscar = txtBuscarFecha.Text.ToString();
             String fechaInicio = FunGeneral.GetFechaHoraFormato(dtFechaInicio.Value, 5);
             String fechaFin = FunGeneral.GetFechaHoraFormato(dtFechafinal.Value, 5);
             Boolean chkHabilita = chkFecha.Checked;
+
+            dEstadoPagina = true;
+
             dtResultados = new DataTable();
-            dt = blV.blBuscarPagosPendientes(chkHabilita, cBuscar, fechaInicio, fechaFin, numPagina, TipoCon);
+            dt = blV.blBuscarPagosPendientes(idTrandiaria, chkHabilita, cBuscar, fechaInicio, fechaFin, numPagina, TipoCon);
             dtResultados = dt;
             numRows = dt.Rows.Count;
             DataGridView dgv = dgvCuotas;
@@ -193,7 +205,8 @@ namespace wfaIntegradoCom.Procesos
                     {
                         tabInicio = (numPagina - 1) * filas;
                         y = tabInicio;
-                        dEstadoBusquedaPaginacion = false;
+                        
+                        dEstadoPagina = false;
                     }
 
                     foreach (DataRow dr in dt.Rows)
@@ -207,7 +220,7 @@ namespace wfaIntegradoCom.Procesos
                             cTiDo = Convert.ToInt32(dr["cTiDo"]),
                             cTipoDoc = dr["TipoDocumento"].ToString(),
                             cDocumento = dr["cDocumento"].ToString(),
-                            cDireccion = dr["cDireccion"].ToString()+" " + dr["cNomdist"]+" "+ dr["cNomProv"]+" "+ dr["cNomDep"]
+                            cDireccion = dr["cDireccion"].ToString() + " " + dr["cNomdist"] + " " + dr["cNomProv"] + " " + dr["cNomDep"]
 
                         });
 
@@ -251,7 +264,8 @@ namespace wfaIntegradoCom.Procesos
                             btnNumeroPaginasCuotas,
                             btnTotalRegCuotas
                         );
-                        dEstadoBusquedaPaginacion = false;
+                        
+                        dEstadoPagina = false;
                     }
                     else
                     {
@@ -290,9 +304,13 @@ namespace wfaIntegradoCom.Procesos
             String fechaInicio = FunGeneral.GetFechaHoraFormato(dtpFechaInicialBus.Value, 5);
             String fechaFin = FunGeneral.GetFechaHoraFormato(dtpFechaFinalBus.Value, 5);
             Boolean chkHabilita = chkHabilitarFechasBus.Checked;
-            dEstadoBusquedaPaginacion = true;
+            String CodEstadoPago = cboEstado.SelectedValue.ToString();
 
-            dt = blV.blBuscarVentaPagoPendientes(chkHabilita, cBuscar, fechaInicio, fechaFin, numPagina, tipoCon);
+
+            dEstadoBusquedaPaginacion = true;
+            
+
+            dt = blV.blBuscarVentaPagoPendientes(chkHabilita, CodEstadoPago, cBuscar, fechaInicio, fechaFin, numPagina, tipoCon);
 
             numRows = dt.Rows.Count;
             DataGridView dgv = dgvVentas;
@@ -332,6 +350,7 @@ namespace wfaIntegradoCom.Procesos
                         tabInicio = (numPagina - 1) * filas;
                         y = tabInicio;
                         dEstadoBusquedaPaginacion = false;
+                       
                     }
 
                     foreach (DataRow dr in dt.Rows)
@@ -374,6 +393,13 @@ namespace wfaIntegradoCom.Procesos
                                         dr["cUser"],
                                         dr["cNomTab"]
                                     );
+                        if (cboEstado.SelectedValue.ToString() == "ESPP0001")
+                        {
+                            dgv.Rows[y].Cells[10].Style.BackColor = Color.Green;
+                            dgv.Rows[y].Cells[10].Style.ForeColor = Color.White;
+                            dgv.Columns[11].Visible = false;
+                        }
+
                         y++;
                     }
                     dgv.Columns[0].Visible = false;
@@ -386,7 +412,7 @@ namespace wfaIntegradoCom.Procesos
                     dgv.Columns[7].Width = 30;
                     dgv.Columns[8].Width = 30;
                     dgv.Columns[9].Width = 30;
-                    dgv.Columns[10].Width = 30;
+                    dgv.Columns[10].Width = cboEstado.SelectedValue.ToString() == "ESPP0001" ? 90 : 30;
                     dgv.Visible = true;
 
                     if (numPagina == 0)
@@ -403,6 +429,7 @@ namespace wfaIntegradoCom.Procesos
                             btnTotalReg
                         );
                         dEstadoBusquedaPaginacion = false;
+                        
                     }
                     else
                     {
@@ -509,6 +536,11 @@ namespace wfaIntegradoCom.Procesos
 
 
                 e.Handled = true;
+
+            }
+            if (e.RowIndex >= 0)
+            {
+                this.dgvVentas.Rows[e.RowIndex].Height = 35;
 
             }
         }
@@ -644,7 +676,7 @@ namespace wfaIntegradoCom.Procesos
                 cUsuario = UsuarioDocumentoVenta,
                 cVehiculos = PlacaVehiculo,
                 cDescripcionTipoPago = TipoPago,
-                cDescripEstadoPP = "PAGADO" ,
+                cDescripEstadoPP = "PAGADO",
                 cTipoVenta = "PAGOS PENDIENTES",
                 cEstado = "PAGOSPENDIENTES",
                 //est0 = tabIndex == 0 ? false : true,
@@ -757,7 +789,7 @@ namespace wfaIntegradoCom.Procesos
 
             try
             {
-                xmlDocVenta = objTipoVenta.blBuscarDocumentoPagoPendientes(cCodVenta,-1);
+                xmlDocVenta = objTipoVenta.blBuscarDocumentoPagoPendientes(cCodVenta, -1);
                 xmlDocumentoVenta.Add(xmlDocVenta);
 
                 Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
@@ -785,12 +817,13 @@ namespace wfaIntegradoCom.Procesos
                 fnBuscarDocumentoVenta(idTipoVenta);
                 var mousePosition = dgvCuotas.PointToClient(Cursor.Position);
             }
-            else {
+            else
+            {
                 Int32 idCliente = Convert.ToInt32(dgvCuotas.CurrentRow.Cells[0].Value);
                 clsCliente = lstCliente.Find(i => i.idCliente == idCliente);
                 frmRegistrarVenta.fnLlenarComprobante(cboDVenta, "DOVE", clsCliente.cTiDo, 0); ;
             }
-                
+
         }
 
         private void actualizarPágoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -833,12 +866,12 @@ namespace wfaIntegradoCom.Procesos
                 xmlDocumentoVenta = lstDocumentoVenta,
                 xmlDetalleVentas = lstDetalleVenta
             });
-             DialogResult res= MessageBox.Show("Desea Actualizar Los Datos", "Aletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            DialogResult res = MessageBox.Show("Desea Actualizar Los Datos", "Aletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (res == DialogResult.OK)
             {
                 fnAcutualizarFacura(lstXmlDocVenta, IdConcepto, stDtFechaDePago, IdUsuarioRegistro);
             }
-           
+
             //Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
             //abrirFrmVPOtrasVentas.Inicio(lstDocumentoVenta, lstDetalleVenta, 1);
         }
@@ -848,17 +881,18 @@ namespace wfaIntegradoCom.Procesos
 
             BLVentaGeneral blV = new BLVentaGeneral();
             Boolean dt = false;
-            dt = blV.blActualizarPagos(xmlDocVenta,idConcepto,FechaRegistro,Usuario);
+            dt = blV.blActualizarPagos(xmlDocVenta, idConcepto, FechaRegistro, Usuario);
 
             if (dt == true)
             {
-                MessageBox.Show("Los Datos se Han Actualizado","Alerta",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            }else
+                MessageBox.Show("Los Datos se Han Actualizado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
             {
-                MessageBox.Show("Error Al actualizar","Alerta",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Error Al actualizar", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
 
         public DetalleVentaCabecera fnCalcularCabeceraDetalle(List<DetalleVenta> lstDV)
         {
@@ -877,7 +911,12 @@ namespace wfaIntegradoCom.Procesos
 
         private void cboPaginaCuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fnBuscarPagosPendientes(Convert.ToInt32(cboPaginaCuotas.Text) , 0);
+
+            if (dEstadoPagina == false)
+            {
+                fnBuscarPagosPendientes(Convert.ToInt32(cboPaginaCuotas.Text), 0);
+            }
+            
         }
 
         private void txtBuscarFecha_KeyPress(object sender, KeyPressEventArgs e)
@@ -886,6 +925,28 @@ namespace wfaIntegradoCom.Procesos
             {
                 fnBuscarPagosPendientes(0, 0);
             }
+        }
+
+        private void cboEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void verHistorialDePagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            IdTra = Convert.ToInt32(dgvVentas.CurrentRow.Cells[0].Value);
+            chkFecha.Checked = false;
+            fnBuscarPagosPendientes(0, 0);
+
+            
+            tabCuotas.SelectedIndex = 1;
+        }
+
+        private void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
+        {
+
         }
 
         private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
