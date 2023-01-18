@@ -53,7 +53,6 @@ namespace wfaIntegradoCom.Procesos
                 lstPagosTrand[i].dFechaPago = FunGeneral.fnUpdateFechas(stDtFechaDePago);
                 lstPagosTrand[i].idMoneda = Convert.ToInt32(cboMoneda.SelectedValue);
                 lstPagosTrand[i].idUsario = Variables.gnCodUser;
-
             }
 
         }
