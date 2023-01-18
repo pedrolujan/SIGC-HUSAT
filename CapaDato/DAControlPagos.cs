@@ -373,7 +373,7 @@ namespace CapaDato
         }
         public Tuple<List<Reporte>, List<Reporte>> daBuscarReporteVentas(Busquedas cls)
         {
-            SqlParameter[] pa = new SqlParameter[10];
+            SqlParameter[] pa = new SqlParameter[11];
             DataSet dtMenu = new DataSet();
             
 
@@ -392,12 +392,13 @@ namespace CapaDato
                 pa[6] = new SqlParameter("@anio", SqlDbType.Int) { Value = cls.cod3 };
                 pa[7] = new SqlParameter("@mes", SqlDbType.Int) { Value = cls.cod4 };
                 pa[8] = new SqlParameter("@FiltroIngreso", SqlDbType.Int) { Value = cls.cod5 };
-                pa[9] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = cls.tipoCon };
+                pa[9] = new SqlParameter("@rbIGV", SqlDbType.Bit) { Value = cls.chkActivarDia };
+                pa[10] = new SqlParameter("@TipoCon", SqlDbType.Int) { Value = cls.tipoCon };
                 objCnx = new clsConexion("");
                 //dtResult = objCnx.EjecutarProcedimientoDT("uspBuscarCronogramaPagosMensuales", pa);
                 dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarReporteVentas", pa);
 
-                var res = fnValidarReporteVentas(cls.cod2,cls.cod3,dtMenu);
+                var res = fnValidarReporteVentas(cls.cod1, cls.cod2,cls.cod3,dtMenu);
 
 
 
@@ -418,7 +419,7 @@ namespace CapaDato
 
         }
 
-        private Tuple<List<Reporte>, List<Reporte>> fnValidarReporteVentas(String codigoFiltro,String cod3,DataSet dtMenu)
+        private Tuple<List<Reporte>, List<Reporte>> fnValidarReporteVentas(String tipoReporte,String codigoFiltro,String cod3,DataSet dtMenu)
         {
             DataView dvActual = new DataView();
             DataView dvAnterior = new DataView();
@@ -616,11 +617,24 @@ namespace CapaDato
                 }
             }
 
-            for (int i = 0; i < lstAnterior.Count; i++)
+            if (tipoReporte== "TRRV0002")
             {
-                lstAnterior[i].indiceCrecimientoRow = ((Convert.ToDouble(lstActual[i].coddAux2) / Convert.ToDouble(lstAnterior[i].coddAux2)) - 1) * 100;
-                lstAnterior[i].indiceCrecimientoImporte = ((Convert.ToDouble(lstActual[i].ImporteAux2)/ Convert.ToDouble(lstAnterior[i].ImporteAux2))-1) * 100;
+                for (int i = 0; i < lstAnterior.Count; i++)
+                {
+                    lstAnterior[i].indiceCrecimientoRow = ((Convert.ToDouble(lstAnterior[i].coddAux2) / Convert.ToDouble(lstActual[i].coddAux2)) - 1) * 100;
+                    lstAnterior[i].indiceCrecimientoImporte = ((Convert.ToDouble(lstAnterior[i].ImporteAux2) / Convert.ToDouble(lstActual[i].ImporteAux2)) - 1) * 100;
+                }
             }
+            else
+            {
+                for (int i = 0; i < lstAnterior.Count; i++)
+                {
+                    lstAnterior[i].indiceCrecimientoRow = ((Convert.ToDouble(lstActual[i].coddAux2) / Convert.ToDouble(lstAnterior[i].coddAux2)) - 1) * 100;
+                    lstAnterior[i].indiceCrecimientoImporte = ((Convert.ToDouble(lstActual[i].ImporteAux2) / Convert.ToDouble(lstAnterior[i].ImporteAux2)) - 1) * 100;
+                }
+            }
+
+           
            return Tuple.Create(lstActual,lstAnterior);
         }
         private DataTable GenerateTransposedTable(DataTable inputTable)

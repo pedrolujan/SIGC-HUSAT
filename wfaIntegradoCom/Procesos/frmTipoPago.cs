@@ -202,10 +202,15 @@ namespace wfaIntegradoCom.Procesos
 
                 fnLlenarCombobox(cboTipoVenta, "TIVTR00" + lnTipoLLamada, 2, false);
                 btnAdd.Focus();
-                if (lnTipoLLamada == -3)
+                if (lnTipoLLamada == -3 || lnTipoLLamada == 3)
                 {
                     btnAceptar.Text = "Guardar Movimiento";
                     btnAceptar.Width = btnAceptar.Width + 15;
+                }
+                if (lnTipoLLamada == -3)
+                {
+                    rdbNo.Enabled = false;
+                    rdbNo.Visible=false;
                 }
             }
             catch (Exception ex)
@@ -250,7 +255,7 @@ namespace wfaIntegradoCom.Procesos
                         this.Close();
 
                     }
-                    else if (lnTipoLLamada == -3)
+                    else if (lnTipoLLamada == -3 || lnTipoLLamada == 3)
                     {
                         frmRegistrarEgresos frm = new frmRegistrarEgresos();
                         frm.fnRecuperarEstadoGenVenta(true);
@@ -306,7 +311,7 @@ namespace wfaIntegradoCom.Procesos
                         this.Close();
 
                     }
-                    else if (lnTipoLLamada == -3)
+                    else if (lnTipoLLamada == -3 || lnTipoLLamada == 3)
                     {
                         frmRegistrarEgresos frm = new frmRegistrarEgresos();
                         frm.fnRecuperarEstadoGenVenta(true);
@@ -379,7 +384,7 @@ namespace wfaIntegradoCom.Procesos
                 fr.fnCondicionProcesos(0);
 
             }
-            else if (lnTipoLLamada == -3)
+            else if (lnTipoLLamada == -3 || lnTipoLLamada == 3)
             {
                 frmRegistrarEgresos frm = new frmRegistrarEgresos();
                 frm.fnRecuperarEstadoGenVenta(false);

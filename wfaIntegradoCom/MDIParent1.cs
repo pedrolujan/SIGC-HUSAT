@@ -3704,7 +3704,8 @@ namespace wfaIntegradoCom
             clsBusq.dtFechaFin = FunGeneral.GetFechaHoraFormato(dtFechaFinG.Value, 5);
             clsBusq.cod1 = cboTipoReporte.Items.Count == 0 ? "0" : cboTipoReporte.SelectedValue.ToString();
             clsBusq.cod2 = codOperacion;
-            clsBusq.cod3 = cboUsuario.SelectedValue is null ? ""+Variables.gnCodUser : cboUsuario.SelectedValue.ToString();
+            clsBusq.cod3 = ""+Variables.gnCodUser;
+            //clsBusq.cod3 = cboUsuario.SelectedValue is null ? ""+Variables.gnCodUser : cboUsuario.SelectedValue.ToString();
             clsBusq.cod4 = "";
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
             clsBusq.tipoCon=-1;

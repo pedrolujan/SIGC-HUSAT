@@ -74,7 +74,7 @@ namespace wfaIntegradoCom.Consultas
                 this.reportViewer1.ShowExportButton = false;
 
             }
-            if (lnTipoCon==-3)
+            if (lnTipoCon==-3 || lnTipoCon == 3)
             {
                 btnGenerarVenta.Text = "Guardar Movimiento";
                 btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
@@ -139,7 +139,7 @@ namespace wfaIntegradoCom.Consultas
                 frmOtrasVentas fr = new frmOtrasVentas();
                 fr.fnRecuperarEstadoGenVenta(false);
                 fr.fnCondicionProcesos(0);
-            }else if (lnTipoCon == -3)
+            }else if (lnTipoCon == -3 || lnTipoCon==3)
             {
                 frmRegistrarEgresos frm = new frmRegistrarEgresos();
                 frm.fnRecuperarEstadoGenVenta(false);
@@ -215,11 +215,11 @@ namespace wfaIntegradoCom.Consultas
 
 
             }
-            else if (lnTipoCon == -3)
+            else if (lnTipoCon == -3 || lnTipoCon==3)
             {
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(-3, sumaPrimerPago, lstDVenta[0].cSimbolo);
+                fmr.Inicio(lnTipoCon, sumaPrimerPago, lstDVenta[0].cSimbolo);
             }
             else if (lnTipoCon == -4)
             {
@@ -260,7 +260,7 @@ namespace wfaIntegradoCom.Consultas
                 fr.fnRecuperarEstadoGenVenta(false);
                 fr.fnCondicionProcesos(0);
             }
-            else if (lnTipoCon == -3)
+            else if (lnTipoCon == -3 || lnTipoCon==3)
             {
                 frmRegistrarEgresos frm = new frmRegistrarEgresos();
                 frm.fnRecuperarEstadoGenVenta(false);

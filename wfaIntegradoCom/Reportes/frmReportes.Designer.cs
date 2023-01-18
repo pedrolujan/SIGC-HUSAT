@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportes));
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -69,6 +70,9 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.siticoneGroupBox3 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.siticoneGroupBox4 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.siticoneRadioButton1 = new Siticone.UI.WinForms.SiticoneRadioButton();
+            this.rbConIgv = new Siticone.UI.WinForms.SiticoneRadioButton();
             this.cboFiltraIngresos = new Siticone.UI.WinForms.SiticoneComboBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.siticoneTextBox2 = new Siticone.UI.WinForms.SiticoneTextBox();
@@ -82,11 +86,24 @@
             this.cboMes = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboTipoFiltroVentas = new Siticone.UI.WinForms.SiticoneComboBox();
             this.cboTipoReporteVentas = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.gunaControlBox3 = new Guna.UI.WinForms.GunaControlBox();
-            this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
-            this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.siticoneGroupBox5 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.siticoneGroupBox6 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.siticoneRadioButton2 = new Siticone.UI.WinForms.SiticoneRadioButton();
+            this.siticoneRadioButton3 = new Siticone.UI.WinForms.SiticoneRadioButton();
+            this.siticoneComboBox2 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            this.siticoneTextBox3 = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.siticoneLabel14 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel15 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel16 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel17 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel18 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel19 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneComboBox3 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.siticoneComboBox4 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.siticoneComboBox5 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboTipoReporteDescuento = new Siticone.UI.WinForms.SiticoneComboBox();
             this.siticonePanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -99,16 +116,19 @@
             this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.siticoneGroupBox3.SuspendLayout();
+            this.siticoneGroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
-            this.gunaPanel1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.siticoneGroupBox5.SuspendLayout();
+            this.siticoneGroupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // siticonePanel1
             // 
+            this.siticonePanel1.BackColor = System.Drawing.SystemColors.Control;
             this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticonePanel1.BorderThickness = 2;
             this.siticonePanel1.Controls.Add(this.tabControl1);
-            this.siticonePanel1.Controls.Add(this.gunaPanel1);
             this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
@@ -119,38 +139,39 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(3, 27);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1016, 529);
+            this.tabControl1.Size = new System.Drawing.Size(1023, 559);
             this.tabControl1.TabIndex = 165;
             // 
             // tabPage1
             // 
             this.tabPage1.AutoScroll = true;
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage1.Controls.Add(this.reportViewer1);
             this.tabPage1.Controls.Add(this.siticoneGroupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1008, 503);
+            this.tabPage1.Size = new System.Drawing.Size(1015, 533);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Recaudación";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // reportViewer1
             // 
+            this.reportViewer1.BackColor = System.Drawing.SystemColors.Control;
+            this.reportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer1.Location = new System.Drawing.Point(3, 160);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1002, 340);
+            this.reportViewer1.Size = new System.Drawing.Size(1009, 370);
             this.reportViewer1.TabIndex = 270;
             // 
             // siticoneGroupBox1
@@ -175,7 +196,7 @@
             this.siticoneGroupBox1.Location = new System.Drawing.Point(3, 3);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(1002, 157);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(1009, 157);
             this.siticoneGroupBox1.TabIndex = 269;
             this.siticoneGroupBox1.Text = "Buscar fechas";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -10);
@@ -420,24 +441,26 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.reportViewer2);
             this.tabPage2.Controls.Add(this.siticoneGroupBox2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1008, 503);
+            this.tabPage2.Size = new System.Drawing.Size(1015, 533);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Renovaciones";
-            this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // reportViewer2
             // 
+            this.reportViewer2.BackColor = System.Drawing.SystemColors.Control;
+            this.reportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer2.Location = new System.Drawing.Point(3, 160);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.Size = new System.Drawing.Size(1002, 340);
+            this.reportViewer2.Size = new System.Drawing.Size(1009, 370);
             this.reportViewer2.TabIndex = 271;
             // 
             // siticoneGroupBox2
@@ -458,11 +481,11 @@
             this.siticoneGroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.siticoneGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.siticoneGroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.siticoneGroupBox2.ForeColor = System.Drawing.Color.White;
+            this.siticoneGroupBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.siticoneGroupBox2.Location = new System.Drawing.Point(3, 3);
             this.siticoneGroupBox2.Name = "siticoneGroupBox2";
             this.siticoneGroupBox2.ShadowDecoration.Parent = this.siticoneGroupBox2;
-            this.siticoneGroupBox2.Size = new System.Drawing.Size(1002, 157);
+            this.siticoneGroupBox2.Size = new System.Drawing.Size(1009, 157);
             this.siticoneGroupBox2.TabIndex = 270;
             this.siticoneGroupBox2.Text = "Buscar fechas";
             this.siticoneGroupBox2.TextOffset = new System.Drawing.Point(0, -10);
@@ -707,28 +730,31 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage3.Controls.Add(this.reportViewer3);
             this.tabPage3.Controls.Add(this.siticoneGroupBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1008, 503);
+            this.tabPage3.Size = new System.Drawing.Size(1015, 533);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reporte de Ventas";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // reportViewer3
             // 
+            this.reportViewer3.BackColor = System.Drawing.SystemColors.Control;
+            this.reportViewer3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.reportViewer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer3.Location = new System.Drawing.Point(3, 160);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(1002, 340);
+            this.reportViewer3.Size = new System.Drawing.Size(1009, 370);
             this.reportViewer3.TabIndex = 272;
             // 
             // siticoneGroupBox3
             // 
             this.siticoneGroupBox3.BorderRadius = 5;
+            this.siticoneGroupBox3.Controls.Add(this.siticoneGroupBox4);
             this.siticoneGroupBox3.Controls.Add(this.cboFiltraIngresos);
             this.siticoneGroupBox3.Controls.Add(this.iconPictureBox1);
             this.siticoneGroupBox3.Controls.Add(this.siticoneTextBox2);
@@ -750,10 +776,64 @@
             this.siticoneGroupBox3.Location = new System.Drawing.Point(3, 3);
             this.siticoneGroupBox3.Name = "siticoneGroupBox3";
             this.siticoneGroupBox3.ShadowDecoration.Parent = this.siticoneGroupBox3;
-            this.siticoneGroupBox3.Size = new System.Drawing.Size(1002, 157);
+            this.siticoneGroupBox3.Size = new System.Drawing.Size(1009, 157);
             this.siticoneGroupBox3.TabIndex = 271;
             this.siticoneGroupBox3.Text = "Buscar fechas";
             this.siticoneGroupBox3.TextOffset = new System.Drawing.Point(0, -10);
+            // 
+            // siticoneGroupBox4
+            // 
+            this.siticoneGroupBox4.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            this.siticoneGroupBox4.Controls.Add(this.siticoneRadioButton1);
+            this.siticoneGroupBox4.Controls.Add(this.rbConIgv);
+            this.siticoneGroupBox4.CustomBorderThickness = new System.Windows.Forms.Padding(0);
+            this.siticoneGroupBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.siticoneGroupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.siticoneGroupBox4.Location = new System.Drawing.Point(776, 107);
+            this.siticoneGroupBox4.Name = "siticoneGroupBox4";
+            this.siticoneGroupBox4.ShadowDecoration.Parent = this.siticoneGroupBox4;
+            this.siticoneGroupBox4.Size = new System.Drawing.Size(169, 29);
+            this.siticoneGroupBox4.TabIndex = 281;
+            // 
+            // siticoneRadioButton1
+            // 
+            this.siticoneRadioButton1.AutoSize = true;
+            this.siticoneRadioButton1.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneRadioButton1.CheckedState.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.siticoneRadioButton1.CheckedState.BorderThickness = 0;
+            this.siticoneRadioButton1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneRadioButton1.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.siticoneRadioButton1.Location = new System.Drawing.Point(96, 3);
+            this.siticoneRadioButton1.Name = "siticoneRadioButton1";
+            this.siticoneRadioButton1.Size = new System.Drawing.Size(62, 19);
+            this.siticoneRadioButton1.TabIndex = 0;
+            this.siticoneRadioButton1.Text = "Sin IGV";
+            this.siticoneRadioButton1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.siticoneRadioButton1.UncheckedState.BorderThickness = 0;
+            this.siticoneRadioButton1.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.siticoneRadioButton1.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.siticoneRadioButton1.UseVisualStyleBackColor = false;
+            // 
+            // rbConIgv
+            // 
+            this.rbConIgv.AutoSize = true;
+            this.rbConIgv.BackColor = System.Drawing.Color.Transparent;
+            this.rbConIgv.Checked = true;
+            this.rbConIgv.CheckedState.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.rbConIgv.CheckedState.BorderThickness = 0;
+            this.rbConIgv.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.rbConIgv.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rbConIgv.Location = new System.Drawing.Point(22, 3);
+            this.rbConIgv.Name = "rbConIgv";
+            this.rbConIgv.Size = new System.Drawing.Size(68, 19);
+            this.rbConIgv.TabIndex = 0;
+            this.rbConIgv.TabStop = true;
+            this.rbConIgv.Text = "Con IGV";
+            this.rbConIgv.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rbConIgv.UncheckedState.BorderThickness = 0;
+            this.rbConIgv.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rbConIgv.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.rbConIgv.UseVisualStyleBackColor = false;
             // 
             // cboFiltraIngresos
             // 
@@ -958,78 +1038,301 @@
             this.cboTipoReporteVentas.Size = new System.Drawing.Size(206, 36);
             this.cboTipoReporteVentas.TabIndex = 237;
             // 
-            // gunaPanel1
+            // tabPage4
             // 
-            this.gunaPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.gunaPanel1.Controls.Add(this.label3);
-            this.gunaPanel1.Controls.Add(this.gunaControlBox3);
-            this.gunaPanel1.Controls.Add(this.gunaControlBox2);
-            this.gunaPanel1.Controls.Add(this.gunaControlBox1);
-            this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gunaPanel1.Location = new System.Drawing.Point(0, 0);
-            this.gunaPanel1.Name = "gunaPanel1";
-            this.gunaPanel1.Size = new System.Drawing.Size(1023, 29);
-            this.gunaPanel1.TabIndex = 164;
+            this.tabPage4.Controls.Add(this.siticoneGroupBox5);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1015, 533);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Reporte de descuentos";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // siticoneGroupBox5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(8, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 21);
-            this.label3.TabIndex = 76;
-            this.label3.Text = "Reportes";
+            this.siticoneGroupBox5.BorderRadius = 5;
+            this.siticoneGroupBox5.Controls.Add(this.siticoneGroupBox6);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneComboBox2);
+            this.siticoneGroupBox5.Controls.Add(this.iconPictureBox2);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneTextBox3);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneLabel14);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneLabel15);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneLabel16);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneLabel17);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneLabel18);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneLabel19);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneComboBox3);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneComboBox4);
+            this.siticoneGroupBox5.Controls.Add(this.siticoneComboBox5);
+            this.siticoneGroupBox5.Controls.Add(this.cboTipoReporteDescuento);
+            this.siticoneGroupBox5.CustomBorderColor = System.Drawing.Color.Gray;
+            this.siticoneGroupBox5.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.siticoneGroupBox5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.siticoneGroupBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.siticoneGroupBox5.ForeColor = System.Drawing.Color.White;
+            this.siticoneGroupBox5.Location = new System.Drawing.Point(3, 3);
+            this.siticoneGroupBox5.Name = "siticoneGroupBox5";
+            this.siticoneGroupBox5.ShadowDecoration.Parent = this.siticoneGroupBox5;
+            this.siticoneGroupBox5.Size = new System.Drawing.Size(1009, 157);
+            this.siticoneGroupBox5.TabIndex = 272;
+            this.siticoneGroupBox5.Text = "Buscar fechas";
+            this.siticoneGroupBox5.TextOffset = new System.Drawing.Point(0, -10);
             // 
-            // gunaControlBox3
+            // siticoneGroupBox6
             // 
-            this.gunaControlBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaControlBox3.AnimationHoverSpeed = 0.07F;
-            this.gunaControlBox3.AnimationSpeed = 0.03F;
-            this.gunaControlBox3.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MaximizeBox;
-            this.gunaControlBox3.IconColor = System.Drawing.Color.Black;
-            this.gunaControlBox3.IconSize = 15F;
-            this.gunaControlBox3.Location = new System.Drawing.Point(931, 0);
-            this.gunaControlBox3.Name = "gunaControlBox3";
-            this.gunaControlBox3.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.gunaControlBox3.OnHoverIconColor = System.Drawing.Color.White;
-            this.gunaControlBox3.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaControlBox3.Size = new System.Drawing.Size(45, 29);
-            this.gunaControlBox3.TabIndex = 75;
-            this.gunaControlBox3.Click += new System.EventHandler(this.gunaControlBox3_Click);
+            this.siticoneGroupBox6.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            this.siticoneGroupBox6.Controls.Add(this.siticoneRadioButton2);
+            this.siticoneGroupBox6.Controls.Add(this.siticoneRadioButton3);
+            this.siticoneGroupBox6.CustomBorderThickness = new System.Windows.Forms.Padding(0);
+            this.siticoneGroupBox6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.siticoneGroupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.siticoneGroupBox6.Location = new System.Drawing.Point(776, 107);
+            this.siticoneGroupBox6.Name = "siticoneGroupBox6";
+            this.siticoneGroupBox6.ShadowDecoration.Parent = this.siticoneGroupBox6;
+            this.siticoneGroupBox6.Size = new System.Drawing.Size(169, 29);
+            this.siticoneGroupBox6.TabIndex = 281;
             // 
-            // gunaControlBox2
+            // siticoneRadioButton2
             // 
-            this.gunaControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaControlBox2.AnimationHoverSpeed = 0.07F;
-            this.gunaControlBox2.AnimationSpeed = 0.03F;
-            this.gunaControlBox2.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MinimizeBox;
-            this.gunaControlBox2.IconColor = System.Drawing.Color.Black;
-            this.gunaControlBox2.IconSize = 15F;
-            this.gunaControlBox2.Location = new System.Drawing.Point(886, 0);
-            this.gunaControlBox2.Name = "gunaControlBox2";
-            this.gunaControlBox2.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.gunaControlBox2.OnHoverIconColor = System.Drawing.Color.White;
-            this.gunaControlBox2.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaControlBox2.Size = new System.Drawing.Size(45, 29);
-            this.gunaControlBox2.TabIndex = 75;
+            this.siticoneRadioButton2.AutoSize = true;
+            this.siticoneRadioButton2.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneRadioButton2.CheckedState.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.siticoneRadioButton2.CheckedState.BorderThickness = 0;
+            this.siticoneRadioButton2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneRadioButton2.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.siticoneRadioButton2.Location = new System.Drawing.Point(96, 3);
+            this.siticoneRadioButton2.Name = "siticoneRadioButton2";
+            this.siticoneRadioButton2.Size = new System.Drawing.Size(62, 19);
+            this.siticoneRadioButton2.TabIndex = 0;
+            this.siticoneRadioButton2.Text = "Sin IGV";
+            this.siticoneRadioButton2.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.siticoneRadioButton2.UncheckedState.BorderThickness = 0;
+            this.siticoneRadioButton2.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.siticoneRadioButton2.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.siticoneRadioButton2.UseVisualStyleBackColor = false;
             // 
-            // gunaControlBox1
+            // siticoneRadioButton3
             // 
-            this.gunaControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaControlBox1.AnimationHoverSpeed = 0.07F;
-            this.gunaControlBox1.AnimationSpeed = 0.03F;
-            this.gunaControlBox1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(974, 0);
-            this.gunaControlBox1.Name = "gunaControlBox1";
-            this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
-            this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.Size = new System.Drawing.Size(45, 29);
-            this.gunaControlBox1.TabIndex = 74;
+            this.siticoneRadioButton3.AutoSize = true;
+            this.siticoneRadioButton3.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneRadioButton3.Checked = true;
+            this.siticoneRadioButton3.CheckedState.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.siticoneRadioButton3.CheckedState.BorderThickness = 0;
+            this.siticoneRadioButton3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneRadioButton3.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.siticoneRadioButton3.Location = new System.Drawing.Point(22, 3);
+            this.siticoneRadioButton3.Name = "siticoneRadioButton3";
+            this.siticoneRadioButton3.Size = new System.Drawing.Size(68, 19);
+            this.siticoneRadioButton3.TabIndex = 0;
+            this.siticoneRadioButton3.TabStop = true;
+            this.siticoneRadioButton3.Text = "Con IGV";
+            this.siticoneRadioButton3.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.siticoneRadioButton3.UncheckedState.BorderThickness = 0;
+            this.siticoneRadioButton3.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.siticoneRadioButton3.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.siticoneRadioButton3.UseVisualStyleBackColor = false;
+            // 
+            // siticoneComboBox2
+            // 
+            this.siticoneComboBox2.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneComboBox2.BorderRadius = 5;
+            this.siticoneComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.siticoneComboBox2.DropDownHeight = 120;
+            this.siticoneComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.siticoneComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.siticoneComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.siticoneComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.siticoneComboBox2.HoveredState.Parent = this.siticoneComboBox2;
+            this.siticoneComboBox2.IntegralHeight = false;
+            this.siticoneComboBox2.ItemHeight = 30;
+            this.siticoneComboBox2.Items.AddRange(new object[] {
+            "unos",
+            "dos"});
+            this.siticoneComboBox2.ItemsAppearance.Parent = this.siticoneComboBox2;
+            this.siticoneComboBox2.Location = new System.Drawing.Point(563, 38);
+            this.siticoneComboBox2.Name = "siticoneComboBox2";
+            this.siticoneComboBox2.ShadowDecoration.Parent = this.siticoneComboBox2;
+            this.siticoneComboBox2.Size = new System.Drawing.Size(207, 36);
+            this.siticoneComboBox2.TabIndex = 280;
+            // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconPictureBox2.ForeColor = System.Drawing.Color.Gray;
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconPictureBox2.IconColor = System.Drawing.Color.Gray;
+            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox2.IconSize = 27;
+            this.iconPictureBox2.Location = new System.Drawing.Point(740, 102);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Size = new System.Drawing.Size(27, 34);
+            this.iconPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.iconPictureBox2.TabIndex = 239;
+            this.iconPictureBox2.TabStop = false;
+            this.iconPictureBox2.Tag = "pbBuscar";
+            // 
+            // siticoneTextBox3
+            // 
+            this.siticoneTextBox3.Animated = false;
+            this.siticoneTextBox3.BorderRadius = 5;
+            this.siticoneTextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.siticoneTextBox3.DefaultText = "";
+            this.siticoneTextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.siticoneTextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.siticoneTextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.siticoneTextBox3.DisabledState.Parent = this.siticoneTextBox3;
+            this.siticoneTextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.siticoneTextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.siticoneTextBox3.FocusedState.Parent = this.siticoneTextBox3;
+            this.siticoneTextBox3.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.siticoneTextBox3.HoveredState.Parent = this.siticoneTextBox3;
+            this.siticoneTextBox3.Location = new System.Drawing.Point(563, 101);
+            this.siticoneTextBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.siticoneTextBox3.Name = "siticoneTextBox3";
+            this.siticoneTextBox3.PasswordChar = '\0';
+            this.siticoneTextBox3.PlaceholderText = "";
+            this.siticoneTextBox3.SelectedText = "";
+            this.siticoneTextBox3.ShadowDecoration.Parent = this.siticoneTextBox3;
+            this.siticoneTextBox3.Size = new System.Drawing.Size(206, 36);
+            this.siticoneTextBox3.TabIndex = 238;
+            // 
+            // siticoneLabel14
+            // 
+            this.siticoneLabel14.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel14.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel14.Location = new System.Drawing.Point(563, 84);
+            this.siticoneLabel14.Name = "siticoneLabel14";
+            this.siticoneLabel14.Size = new System.Drawing.Size(39, 15);
+            this.siticoneLabel14.TabIndex = 236;
+            this.siticoneLabel14.Text = "Buscar:";
+            // 
+            // siticoneLabel15
+            // 
+            this.siticoneLabel15.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel15.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel15.Location = new System.Drawing.Point(14, 84);
+            this.siticoneLabel15.Name = "siticoneLabel15";
+            this.siticoneLabel15.Size = new System.Drawing.Size(25, 15);
+            this.siticoneLabel15.TabIndex = 236;
+            this.siticoneLabel15.Text = "Año:";
+            // 
+            // siticoneLabel16
+            // 
+            this.siticoneLabel16.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel16.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel16.Location = new System.Drawing.Point(283, 84);
+            this.siticoneLabel16.Name = "siticoneLabel16";
+            this.siticoneLabel16.Size = new System.Drawing.Size(26, 15);
+            this.siticoneLabel16.TabIndex = 236;
+            this.siticoneLabel16.Text = "Mes:";
+            // 
+            // siticoneLabel17
+            // 
+            this.siticoneLabel17.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel17.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel17.Location = new System.Drawing.Point(563, 21);
+            this.siticoneLabel17.Name = "siticoneLabel17";
+            this.siticoneLabel17.Size = new System.Drawing.Size(64, 15);
+            this.siticoneLabel17.TabIndex = 236;
+            this.siticoneLabel17.Text = "Tipo de Filtro";
+            // 
+            // siticoneLabel18
+            // 
+            this.siticoneLabel18.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel18.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel18.Location = new System.Drawing.Point(283, 21);
+            this.siticoneLabel18.Name = "siticoneLabel18";
+            this.siticoneLabel18.Size = new System.Drawing.Size(107, 15);
+            this.siticoneLabel18.TabIndex = 236;
+            this.siticoneLabel18.Text = "Tipo de Agrupamiento";
+            // 
+            // siticoneLabel19
+            // 
+            this.siticoneLabel19.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel19.ForeColor = System.Drawing.Color.Black;
+            this.siticoneLabel19.Location = new System.Drawing.Point(14, 21);
+            this.siticoneLabel19.Name = "siticoneLabel19";
+            this.siticoneLabel19.Size = new System.Drawing.Size(65, 15);
+            this.siticoneLabel19.TabIndex = 236;
+            this.siticoneLabel19.Text = "Tipo Reporte";
+            // 
+            // siticoneComboBox3
+            // 
+            this.siticoneComboBox3.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneComboBox3.BorderRadius = 5;
+            this.siticoneComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.siticoneComboBox3.DropDownHeight = 200;
+            this.siticoneComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.siticoneComboBox3.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.siticoneComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.siticoneComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.siticoneComboBox3.HoveredState.Parent = this.siticoneComboBox3;
+            this.siticoneComboBox3.IntegralHeight = false;
+            this.siticoneComboBox3.ItemHeight = 30;
+            this.siticoneComboBox3.ItemsAppearance.Parent = this.siticoneComboBox3;
+            this.siticoneComboBox3.Location = new System.Drawing.Point(14, 101);
+            this.siticoneComboBox3.Name = "siticoneComboBox3";
+            this.siticoneComboBox3.ShadowDecoration.Parent = this.siticoneComboBox3;
+            this.siticoneComboBox3.Size = new System.Drawing.Size(206, 36);
+            this.siticoneComboBox3.TabIndex = 237;
+            // 
+            // siticoneComboBox4
+            // 
+            this.siticoneComboBox4.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneComboBox4.BorderRadius = 5;
+            this.siticoneComboBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.siticoneComboBox4.DropDownHeight = 400;
+            this.siticoneComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.siticoneComboBox4.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.siticoneComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.siticoneComboBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.siticoneComboBox4.HoveredState.Parent = this.siticoneComboBox4;
+            this.siticoneComboBox4.IntegralHeight = false;
+            this.siticoneComboBox4.ItemHeight = 30;
+            this.siticoneComboBox4.ItemsAppearance.Parent = this.siticoneComboBox4;
+            this.siticoneComboBox4.Location = new System.Drawing.Point(283, 101);
+            this.siticoneComboBox4.Name = "siticoneComboBox4";
+            this.siticoneComboBox4.ShadowDecoration.Parent = this.siticoneComboBox4;
+            this.siticoneComboBox4.Size = new System.Drawing.Size(206, 36);
+            this.siticoneComboBox4.TabIndex = 237;
+            // 
+            // siticoneComboBox5
+            // 
+            this.siticoneComboBox5.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneComboBox5.BorderRadius = 5;
+            this.siticoneComboBox5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.siticoneComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.siticoneComboBox5.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.siticoneComboBox5.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.siticoneComboBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.siticoneComboBox5.HoveredState.Parent = this.siticoneComboBox5;
+            this.siticoneComboBox5.ItemHeight = 30;
+            this.siticoneComboBox5.ItemsAppearance.Parent = this.siticoneComboBox5;
+            this.siticoneComboBox5.Location = new System.Drawing.Point(283, 38);
+            this.siticoneComboBox5.Name = "siticoneComboBox5";
+            this.siticoneComboBox5.ShadowDecoration.Parent = this.siticoneComboBox5;
+            this.siticoneComboBox5.Size = new System.Drawing.Size(206, 36);
+            this.siticoneComboBox5.TabIndex = 237;
+            // 
+            // cboTipoReporteDescuento
+            // 
+            this.cboTipoReporteDescuento.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoReporteDescuento.BorderRadius = 5;
+            this.cboTipoReporteDescuento.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoReporteDescuento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoReporteDescuento.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboTipoReporteDescuento.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoReporteDescuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboTipoReporteDescuento.HoveredState.Parent = this.cboTipoReporteDescuento;
+            this.cboTipoReporteDescuento.ItemHeight = 30;
+            this.cboTipoReporteDescuento.ItemsAppearance.Parent = this.cboTipoReporteDescuento;
+            this.cboTipoReporteDescuento.Location = new System.Drawing.Point(14, 38);
+            this.cboTipoReporteDescuento.Name = "cboTipoReporteDescuento";
+            this.cboTipoReporteDescuento.ShadowDecoration.Parent = this.cboTipoReporteDescuento;
+            this.cboTipoReporteDescuento.Size = new System.Drawing.Size(206, 36);
+            this.cboTipoReporteDescuento.TabIndex = 237;
             // 
             // frmReportes
             // 
@@ -1037,10 +1340,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1023, 559);
             this.Controls.Add(this.siticonePanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmReportes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
+            this.Text = " Reportes";
             this.Load += new System.EventHandler(this.frmReportes_Load);
             this.siticonePanel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
@@ -1059,9 +1363,15 @@
             this.tabPage3.ResumeLayout(false);
             this.siticoneGroupBox3.ResumeLayout(false);
             this.siticoneGroupBox3.PerformLayout();
+            this.siticoneGroupBox4.ResumeLayout(false);
+            this.siticoneGroupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
-            this.gunaPanel1.ResumeLayout(false);
-            this.gunaPanel1.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.siticoneGroupBox5.ResumeLayout(false);
+            this.siticoneGroupBox5.PerformLayout();
+            this.siticoneGroupBox6.ResumeLayout(false);
+            this.siticoneGroupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1069,11 +1379,6 @@
         #endregion
 
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
-        private Guna.UI.WinForms.GunaPanel gunaPanel1;
-        private System.Windows.Forms.Label label3;
-        private Guna.UI.WinForms.GunaControlBox gunaControlBox3;
-        private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
-        private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -1127,5 +1432,26 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer3;
         private Siticone.UI.WinForms.SiticoneComboBox cboFiltraIngresos;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel13;
+        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox4;
+        private Siticone.UI.WinForms.SiticoneRadioButton rbConIgv;
+        private Siticone.UI.WinForms.SiticoneRadioButton siticoneRadioButton1;
+        private System.Windows.Forms.TabPage tabPage4;
+        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox5;
+        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox6;
+        private Siticone.UI.WinForms.SiticoneRadioButton siticoneRadioButton2;
+        private Siticone.UI.WinForms.SiticoneRadioButton siticoneRadioButton3;
+        private Siticone.UI.WinForms.SiticoneComboBox siticoneComboBox2;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private Siticone.UI.WinForms.SiticoneTextBox siticoneTextBox3;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel14;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel15;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel16;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel17;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel18;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel19;
+        private Siticone.UI.WinForms.SiticoneComboBox siticoneComboBox3;
+        private Siticone.UI.WinForms.SiticoneComboBox siticoneComboBox4;
+        private Siticone.UI.WinForms.SiticoneComboBox siticoneComboBox5;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoReporteDescuento;
     }
 }

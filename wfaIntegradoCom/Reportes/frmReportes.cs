@@ -44,6 +44,8 @@ namespace wfaIntegradoCom.Reportes
         {
             try
             {
+                //ColorThemas.ElegirThema(Variables.clasePersonal.codTema);
+                //FunGeneral.fnThemaAFormularios(siticonePanel1);
                 if (Application.OpenForms[this.Name] != null)
                 {
                     if (lnTipioLlamada == 0)
@@ -189,26 +191,34 @@ namespace wfaIntegradoCom.Reportes
             rptv.RefreshReport();
         }
 
-        private void fnCargarReporteVenta(ReportViewer rptv,List<Reporte> lstReport1, List<Reporte> lstReport2)
+        private void fnCargarReporteVenta(ReportViewer rptv,String codTipoReporte,List<Reporte> lstReport1, List<Reporte> lstReport2)
         {
             //String codTipoReporte = cboTipoReporte.SelectedValue.ToString();
-            String strRuta = "wfaIntegradoCom.Consultas.rptVentas.rdlc";
-            //List<PagoPrincipal> lstPagoPrinci = lstPP;
-            ReportParameter[] parameters = new ReportParameter[3];
-            ///Mostrar datos en el reporte
+            //String strRuta = "wfaIntegradoCom.Consultas.rptVentas.rdlc";
+            //ReportParameter[] parameters = new ReportParameter[1];
+            //reportViewer3.Reset();
+            //reportViewer3.LocalReport.DataSources.Clear();
+            //reportViewer3.ProcessingMode = ProcessingMode.Local;
+            //parameters[0] = new ReportParameter("rpCodReporte", codTipoReporte);
+            //reportViewer3.LocalReport.ReportEmbeddedResource = strRuta;
+            //reportViewer1.LocalReport.SetParameters(parameters);
+            //reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dtReporte", lstReport1));
+            //reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dtReporte2", lstReport2));
+            //reportViewer3.ZoomMode = ZoomMode.PageWidth;
+            //reportViewer3.RefreshReport();
+
+            ReportParameter[] parameters = new ReportParameter[1];
             rptv.Reset();
             rptv.LocalReport.DataSources.Clear();
             rptv.ProcessingMode = ProcessingMode.Local;
-            //parameters[0] = new ReportParameter("rpEmpresa", Variables.gsEmpresa);
-            parameters[0] = new ReportParameter("rpSucursal", Variables.gsSucursal);
-            parameters[1] = new ReportParameter("rpEmpresaDir", Variables.gsEmpresaDir);
-            parameters[2] = new ReportParameter("rpRuc", Variables.gsRuc);
-            rptv.LocalReport.ReportEmbeddedResource = strRuta;
-            //reportViewer1.LocalReport.SetParameters(parameters);
+            parameters[0] = new ReportParameter("rpCodReporte", codTipoReporte);
+            rptv.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.rptVentas.rdlc";
+            rptv.LocalReport.SetParameters(parameters);
             rptv.LocalReport.DataSources.Add(new ReportDataSource("dtReporte", lstReport1));
             rptv.LocalReport.DataSources.Add(new ReportDataSource("dtReporte2", lstReport2));
             rptv.ZoomMode = ZoomMode.PageWidth;
             rptv.RefreshReport();
+
         }
 
         private void fnTamanioReporte(ReportViewer rptv)
@@ -273,11 +283,13 @@ namespace wfaIntegradoCom.Reportes
             clsBusq.cod2 = cboTipoFiltroVentas.SelectedValue.ToString();
             clsBusq.cod3 = cboRepVentaAnio.SelectedValue.ToString();
             clsBusq.cod4 = cboMes.SelectedValue.ToString();
-            clsBusq.cod5 = cboFiltraIngresos.SelectedValue.ToString();   
+            clsBusq.cod5 = cboFiltraIngresos.SelectedValue.ToString();
+            clsBusq.chkActivarDia =rbConIgv.Checked;
             clsBusq.tipoCon = 0;
 
             /*lstReporteVentas*/ 
             var resul = obRecaudacion.blBuscarReporteVentas(clsBusq);
+
             for (int i = 0; i < resul.Item1.Count; i++)
             {
                 resul.Item1[i].coddAux1 = FunGeneral.FormatearCadenaTitleCase(resul.Item1[i].coddAux1);
@@ -287,7 +299,8 @@ namespace wfaIntegradoCom.Reportes
             {
                 resul.Item2[i].coddAux1 = FunGeneral.FormatearCadenaTitleCase(resul.Item2[i].coddAux1);
             }
-            fnCargarReporteVenta(reportViewer3, resul.Item1, resul.Item2);
+            this.reportViewer3.RefreshReport();
+            fnCargarReporteVenta(reportViewer3, clsBusq.cod1, resul.Item1, resul.Item2);
             fnTamanioReporte(reportViewer3);
         }
 
@@ -360,6 +373,41 @@ namespace wfaIntegradoCom.Reportes
             {
                 fnBuscarReporteVenta();
             }
+        }
+
+        private void siticoneRoundedButton1_Click(object sender, EventArgs e)
+        {
+            //WindowState = FormWindowState.Maximized;
+            //ShowInTaskBarEx();
+            //this.WindowState =(this.WindowState == FormWindowState.Maximized ?
+            //FormWindowState.Normal :
+            //FormWindowState.Maximized);
+            var bounds = Screen.FromControl(this).Bounds;
+            this.Width = bounds.Width;
+            this.Height = bounds.Height -40;
+            this.Location = new Point(0, 0);
+            //this.StartPosition=FormStartPosition.WindowsDefaultBounds;
+
+            //Screen screen = Screen.PrimaryScreen;
+
+            //int Height = screen.Bounds.Height;
+
+            //int Width = screen.Bounds.Width;
+            //this.Width = Width;
+            //this.Height = Height;
+
+        }
+        private void ShowInTaskBarEx()
+        {
+            //Form myForm = new Form();
+            //myForm.Text = "My Form";
+            //myForm.SetBounds(100, 10, 200, 200);
+            //myForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+            //myForm.MinimizeBox = false;
+            this.MaximizeBox = true;
+            // Do not allow form to be displayed in taskbar.
+            //myForm.ShowInTaskbar = false;
+            //myForm.ShowDialog();
         }
     }
 }

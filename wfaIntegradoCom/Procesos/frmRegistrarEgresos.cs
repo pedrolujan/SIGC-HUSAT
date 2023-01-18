@@ -335,7 +335,7 @@ namespace wfaIntegradoCom.Procesos
             siticoneTextBox2_TextChanged( sender,  e);
             if (estMoneda2 && estConcepto && estImporte2 && estDescripcion2)
             {
-                fnGenerarDocumento();
+                fnGenerarDocumento(3);
                 if (estadoGuardarEgreso)
                 {
                     fnGuardarIngresos();
@@ -520,12 +520,12 @@ namespace wfaIntegradoCom.Procesos
             }
             lblImporteDisponible.Text = strImporte;
         }
-        private void fnGenerarDocumento()
+        private void fnGenerarDocumento(int tip)
         {
             Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
             lstDetalleVenta = fnDetalleVenta();
             lstDocumentoVenta = fnDocumentoVentaHeader(fnCalcularCabeceraDetalle(lstDetalleVenta));
-            frm.Inicio(lstDocumentoVenta,lstDetalleVenta, -3);
+            frm.Inicio(lstDocumentoVenta,lstDetalleVenta, tip);
         }
        
         private void btnGuardarEgreso_Click(object sender, EventArgs e)
@@ -537,7 +537,7 @@ namespace wfaIntegradoCom.Procesos
             siticoneTextBox1_TextChanged( sender,  e);
             if (estArea && estUsuario && estMoneda && estImporte && estDescripcion)
             {
-                fnGenerarDocumento();
+                fnGenerarDocumento(-3);
                 if (estadoGuardarEgreso)
                 {
                     fnGuardarEgreso();

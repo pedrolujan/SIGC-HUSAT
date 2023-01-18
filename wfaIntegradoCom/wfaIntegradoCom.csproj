@@ -1120,6 +1120,12 @@
     <None Include="Properties\DataSources\CapaEntidad.xmlTiposPlan+Items.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.xmlTiposPlan.datasource" />
     <None Include="Properties\DataSources\CapaNegocio.BLInstalacion.datasource" />
+    <None Include="Properties\DataSources\wfaIntegradoCom.Funciones.ColorThemas.datasource" />
+    <None Include="Properties\DataSources\wfaIntegradoCom.Funciones.Format.datasource" />
+    <None Include="Properties\DataSources\wfaIntegradoCom.Funciones.FunGeneral.datasource" />
+    <None Include="Properties\DataSources\wfaIntegradoCom.Funciones.FunValidaciones.datasource" />
+    <None Include="Properties\DataSources\wfaIntegradoCom.Funciones.HubFirebaseClient.datasource" />
+    <None Include="Properties\DataSources\wfaIntegradoCom.Funciones.Variables.datasource" />
     <None Include="Resources\search_por.png" />
     <None Include="Resources\search_inicio.png" />
     <None Include="Resources\buscar.png" />

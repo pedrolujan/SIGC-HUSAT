@@ -16,6 +16,7 @@ using System.Globalization;
 using System.Drawing;
 using Guna.UI.WinForms;
 using System.Text.RegularExpressions;
+using Microsoft.Reporting.WinForms;
 
 namespace wfaIntegradoCom.Funciones
 {
@@ -59,6 +60,8 @@ namespace wfaIntegradoCom.Funciones
             var pTabControl = sPanel.Controls.OfType<TabControl>();
             foreach (TabControl tb in pTabControl)
             {
+                tb.BackColor = ColorThemas.PanelPadre;
+                
                 var tbPage = tb.Controls.OfType<TabPage>();
                 foreach (TabPage tp in tbPage)
                 {
@@ -227,7 +230,15 @@ namespace wfaIntegradoCom.Funciones
                             lbl.ForeColor = ColorThemas.FuenteControles;
                         }
                     }
+                    var rpViwer = tp.Controls.OfType<ReportViewer>();
+                    foreach (ReportViewer rv in rpViwer)
+                    {
+                        rv.BackColor = ColorThemas.FondoControles;
+                        rv.ForeColor = ColorThemas.FuenteControles;
+                    }
                 }
+
+                
             }
 
             var pimage = sPanel.Controls.OfType<PictureBox>();
