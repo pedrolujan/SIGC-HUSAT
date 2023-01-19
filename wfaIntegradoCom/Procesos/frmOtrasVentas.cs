@@ -1968,7 +1968,7 @@ namespace wfaIntegradoCom.Procesos
             clsUtil objUtil = new clsUtil();
             DataTable dtResp = new DataTable();
             List<TipoVenta> lsTipoVenta = new List<TipoVenta>();
-            Int32 filas = 10;
+            Int32 filas = 7;
 
             try
             {
@@ -2098,8 +2098,8 @@ namespace wfaIntegradoCom.Procesos
                 Icon icoAtomico = new Icon(Application.StartupPath + @"\Impresora.ico");
                 e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
 
-                this.dgListaVentas.Rows[e.RowIndex].Height = 40;
-                this.dgListaVentas.Columns[e.ColumnIndex].Width = 40;
+                this.dgListaVentas.Rows[e.RowIndex].Height = 50;
+                this.dgListaVentas.Columns[e.ColumnIndex].Width = 55;
 
 
                 e.Handled = true;
