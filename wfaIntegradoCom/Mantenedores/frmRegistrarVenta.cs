@@ -409,7 +409,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cboTipoVetaBusq.SelectedValue = 1;
                 dtpFechaRegistro.Value = Variables.gdFechaSis;
                 dtFechaPago.Value = Variables.gdFechaSis;
-                FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
+                //FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
                 if (Variables.gsCargoUsuario == "PETR0001" || Variables.gsCargoUsuario == "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
@@ -1052,9 +1052,9 @@ namespace wfaIntegradoCom.Mantenedores
 
                     String Representante = "";
                   
-                    String estCliente = "1"; 
+                    Int32 estCliente = 1; 
 
-                    datCliente = objVehi.blBuscarCliente(nroDocumento, nombreCliente/*,Representante*/, estCliente, Pagina,TipoConPagina);
+                    datCliente = objVehi.blBuscarCliente(nroDocumento, estCliente, Pagina,TipoConPagina);
                     totalResultados = datCliente.Rows.Count;
 
                     if (totalResultados > 0)
@@ -4919,7 +4919,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void dtFechaPago_ValueChanged(object sender, EventArgs e)
         {
-            FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 1);
+            //FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 1);
         }
     }
 }

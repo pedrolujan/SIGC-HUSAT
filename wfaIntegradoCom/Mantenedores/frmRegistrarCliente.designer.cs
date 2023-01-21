@@ -114,13 +114,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtNombreBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtNroDocumentoBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.cboTipoDocumentoBuscar = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.cboTipoClienteBuscar = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.siticoneButton2 = new Siticone.UI.WinForms.SiticoneButton();
             this.gboSecun = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.dtpFechaNac = new Siticone.UI.WinForms.SiticoneDateTimePicker();
@@ -142,6 +135,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gboDatosRepres = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.txtAddCargo = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.erCargoRP = new System.Windows.Forms.Label();
             this.lblInfoCorreo = new System.Windows.Forms.Label();
             this.txtDocRepre = new Siticone.UI.WinForms.SiticoneTextBox();
             this.dgDocumentoRP = new Siticone.UI.WinForms.SiticoneDataGridView();
@@ -169,6 +165,7 @@
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.erDocumentoRP = new System.Windows.Forms.Label();
+            this.imgCargoRP = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtidRepreLegal = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtIdCliente = new Siticone.UI.WinForms.SiticoneTextBox();
@@ -200,10 +197,6 @@
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
             this.barraMovimiento = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.siticoneDragControl1 = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
-            this.erCargoRP = new System.Windows.Forms.Label();
-            this.imgCargoRP = new System.Windows.Forms.PictureBox();
-            this.label39 = new System.Windows.Forms.Label();
-            this.txtAddCargo = new Siticone.UI.WinForms.SiticoneTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDistrito)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProvincia)).BeginInit();
@@ -227,7 +220,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgEstado)).BeginInit();
             this.gbBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.gboSecun.SuspendLayout();
             this.gbUbicacion.SuspendLayout();
             this.gboContacto.SuspendLayout();
@@ -239,13 +231,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoDocRepre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoClienteRepre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDocumentoRP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCargoRP)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.gbPaginacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCliente)).BeginInit();
             this.cmsMenu.SuspendLayout();
             this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCargoRP)).BeginInit();
             this.SuspendLayout();
             // 
             // imgEmpresa
@@ -1183,13 +1175,6 @@
             this.gbBuscar.Controls.Add(this.pictureBox1);
             this.gbBuscar.Controls.Add(this.label23);
             this.gbBuscar.Controls.Add(this.txtNombreBuscar);
-            this.gbBuscar.Controls.Add(this.pictureBox4);
-            this.gbBuscar.Controls.Add(this.label22);
-            this.gbBuscar.Controls.Add(this.txtNroDocumentoBuscar);
-            this.gbBuscar.Controls.Add(this.cboTipoDocumentoBuscar);
-            this.gbBuscar.Controls.Add(this.cboTipoClienteBuscar);
-            this.gbBuscar.Controls.Add(this.label20);
-            this.gbBuscar.Controls.Add(this.label21);
             this.gbBuscar.Controls.Add(this.siticoneButton2);
             this.gbBuscar.CustomBorderColor = System.Drawing.Color.DimGray;
             this.gbBuscar.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
@@ -1223,7 +1208,7 @@
             this.cboEstadoBuscar.Location = new System.Drawing.Point(22, 61);
             this.cboEstadoBuscar.Name = "cboEstadoBuscar";
             this.cboEstadoBuscar.ShadowDecoration.Parent = this.cboEstadoBuscar;
-            this.cboEstadoBuscar.Size = new System.Drawing.Size(181, 36);
+            this.cboEstadoBuscar.Size = new System.Drawing.Size(230, 36);
             this.cboEstadoBuscar.TabIndex = 246;
             this.cboEstadoBuscar.SelectedIndexChanged += new System.EventHandler(this.cboEstadoBuscar_SelectedIndexChanged);
             // 
@@ -1243,7 +1228,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1158, 64);
+            this.pictureBox1.Location = new System.Drawing.Point(651, 64);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(30, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1256,7 +1241,7 @@
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.White;
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label23.Location = new System.Drawing.Point(877, 41);
+            this.label23.Location = new System.Drawing.Point(301, 41);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(119, 17);
             this.label23.TabIndex = 243;
@@ -1282,7 +1267,7 @@
             this.txtNombreBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNombreBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombreBuscar.HoveredState.Parent = this.txtNombreBuscar;
-            this.txtNombreBuscar.Location = new System.Drawing.Point(880, 61);
+            this.txtNombreBuscar.Location = new System.Drawing.Point(304, 61);
             this.txtNombreBuscar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombreBuscar.Name = "txtNombreBuscar";
             this.txtNombreBuscar.PasswordChar = '\0';
@@ -1290,127 +1275,9 @@
             this.txtNombreBuscar.PlaceholderText = "";
             this.txtNombreBuscar.SelectedText = "";
             this.txtNombreBuscar.ShadowDecoration.Parent = this.txtNombreBuscar;
-            this.txtNombreBuscar.Size = new System.Drawing.Size(313, 36);
+            this.txtNombreBuscar.Size = new System.Drawing.Size(382, 36);
             this.txtNombreBuscar.TabIndex = 242;
             this.txtNombreBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarCliente_KeyPress);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.White;
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(840, 64);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox4.TabIndex = 230;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.White;
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label22.Location = new System.Drawing.Point(671, 41);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(94, 17);
-            this.label22.TabIndex = 241;
-            this.label22.Text = "N° Documento";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // txtNroDocumentoBuscar
-            // 
-            this.txtNroDocumentoBuscar.Animated = false;
-            this.txtNroDocumentoBuscar.BorderColor = System.Drawing.Color.Gainsboro;
-            this.txtNroDocumentoBuscar.BorderRadius = 5;
-            this.txtNroDocumentoBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNroDocumentoBuscar.DefaultText = "";
-            this.txtNroDocumentoBuscar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtNroDocumentoBuscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtNroDocumentoBuscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNroDocumentoBuscar.DisabledState.Parent = this.txtNroDocumentoBuscar;
-            this.txtNroDocumentoBuscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNroDocumentoBuscar.FocusedState.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.txtNroDocumentoBuscar.FocusedState.Parent = this.txtNroDocumentoBuscar;
-            this.txtNroDocumentoBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroDocumentoBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNroDocumentoBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNroDocumentoBuscar.HoveredState.Parent = this.txtNroDocumentoBuscar;
-            this.txtNroDocumentoBuscar.Location = new System.Drawing.Point(674, 61);
-            this.txtNroDocumentoBuscar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtNroDocumentoBuscar.Name = "txtNroDocumentoBuscar";
-            this.txtNroDocumentoBuscar.PasswordChar = '\0';
-            this.txtNroDocumentoBuscar.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtNroDocumentoBuscar.PlaceholderText = "";
-            this.txtNroDocumentoBuscar.SelectedText = "";
-            this.txtNroDocumentoBuscar.ShadowDecoration.Parent = this.txtNroDocumentoBuscar;
-            this.txtNroDocumentoBuscar.Size = new System.Drawing.Size(200, 36);
-            this.txtNroDocumentoBuscar.TabIndex = 240;
-            this.txtNroDocumentoBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNroDocumentoBuscar_KeyPress);
-            // 
-            // cboTipoDocumentoBuscar
-            // 
-            this.cboTipoDocumentoBuscar.BackColor = System.Drawing.Color.Transparent;
-            this.cboTipoDocumentoBuscar.BorderColor = System.Drawing.Color.Gainsboro;
-            this.cboTipoDocumentoBuscar.BorderRadius = 5;
-            this.cboTipoDocumentoBuscar.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboTipoDocumentoBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoDocumentoBuscar.FocusedColor = System.Drawing.Color.DodgerBlue;
-            this.cboTipoDocumentoBuscar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboTipoDocumentoBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoDocumentoBuscar.HoveredState.Parent = this.cboTipoDocumentoBuscar;
-            this.cboTipoDocumentoBuscar.ItemHeight = 30;
-            this.cboTipoDocumentoBuscar.ItemsAppearance.Parent = this.cboTipoDocumentoBuscar;
-            this.cboTipoDocumentoBuscar.Location = new System.Drawing.Point(453, 61);
-            this.cboTipoDocumentoBuscar.Name = "cboTipoDocumentoBuscar";
-            this.cboTipoDocumentoBuscar.ShadowDecoration.Parent = this.cboTipoDocumentoBuscar;
-            this.cboTipoDocumentoBuscar.Size = new System.Drawing.Size(206, 36);
-            this.cboTipoDocumentoBuscar.TabIndex = 239;
-            this.cboTipoDocumentoBuscar.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumentoBuscar_SelectedIndexChanged);
-            // 
-            // cboTipoClienteBuscar
-            // 
-            this.cboTipoClienteBuscar.BackColor = System.Drawing.Color.Transparent;
-            this.cboTipoClienteBuscar.BorderColor = System.Drawing.Color.Gainsboro;
-            this.cboTipoClienteBuscar.BorderRadius = 5;
-            this.cboTipoClienteBuscar.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboTipoClienteBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoClienteBuscar.FocusedColor = System.Drawing.Color.DodgerBlue;
-            this.cboTipoClienteBuscar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboTipoClienteBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoClienteBuscar.HoveredState.Parent = this.cboTipoClienteBuscar;
-            this.cboTipoClienteBuscar.ItemHeight = 30;
-            this.cboTipoClienteBuscar.ItemsAppearance.Parent = this.cboTipoClienteBuscar;
-            this.cboTipoClienteBuscar.Location = new System.Drawing.Point(216, 61);
-            this.cboTipoClienteBuscar.Name = "cboTipoClienteBuscar";
-            this.cboTipoClienteBuscar.ShadowDecoration.Parent = this.cboTipoClienteBuscar;
-            this.cboTipoClienteBuscar.Size = new System.Drawing.Size(225, 36);
-            this.cboTipoClienteBuscar.TabIndex = 238;
-            this.cboTipoClienteBuscar.SelectedIndexChanged += new System.EventHandler(this.cboTipoClienteBuscar_SelectedIndexChanged);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.White;
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(213, 42);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(77, 17);
-            this.label20.TabIndex = 237;
-            this.label20.Text = "Tipo Cliente";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.White;
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label21.Location = new System.Drawing.Point(450, 42);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(105, 17);
-            this.label21.TabIndex = 236;
-            this.label21.Text = "Tipo Documento";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // siticoneButton2
             // 
@@ -1995,6 +1862,59 @@
             this.gboDatosRepres.Text = "Datos de Respresentante";
             this.gboDatosRepres.TextOffset = new System.Drawing.Point(0, -7);
             // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.BackColor = System.Drawing.Color.Transparent;
+            this.label39.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label39.Location = new System.Drawing.Point(584, 105);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(94, 17);
+            this.label39.TabIndex = 243;
+            this.label39.Text = "Agregar cargo";
+            // 
+            // txtAddCargo
+            // 
+            this.txtAddCargo.Animated = false;
+            this.txtAddCargo.BorderColor = System.Drawing.Color.Silver;
+            this.txtAddCargo.BorderRadius = 5;
+            this.txtAddCargo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAddCargo.DefaultText = "";
+            this.txtAddCargo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtAddCargo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtAddCargo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAddCargo.DisabledState.Parent = this.txtAddCargo;
+            this.txtAddCargo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAddCargo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtAddCargo.FocusedState.Parent = this.txtAddCargo;
+            this.txtAddCargo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddCargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtAddCargo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtAddCargo.HoveredState.Parent = this.txtAddCargo;
+            this.txtAddCargo.Location = new System.Drawing.Point(585, 129);
+            this.txtAddCargo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtAddCargo.Name = "txtAddCargo";
+            this.txtAddCargo.PasswordChar = '\0';
+            this.txtAddCargo.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtAddCargo.PlaceholderText = "";
+            this.txtAddCargo.SelectedText = "";
+            this.txtAddCargo.ShadowDecoration.Parent = this.txtAddCargo;
+            this.txtAddCargo.Size = new System.Drawing.Size(176, 36);
+            this.txtAddCargo.TabIndex = 242;
+            // 
+            // erCargoRP
+            // 
+            this.erCargoRP.AutoSize = true;
+            this.erCargoRP.BackColor = System.Drawing.Color.Transparent;
+            this.erCargoRP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erCargoRP.ForeColor = System.Drawing.Color.Red;
+            this.erCargoRP.Location = new System.Drawing.Point(401, 168);
+            this.erCargoRP.Name = "erCargoRP";
+            this.erCargoRP.Size = new System.Drawing.Size(32, 13);
+            this.erCargoRP.TabIndex = 240;
+            this.erCargoRP.Text = "Error";
+            // 
             // lblInfoCorreo
             // 
             this.lblInfoCorreo.AutoSize = true;
@@ -2518,6 +2438,15 @@
             this.erDocumentoRP.TabIndex = 226;
             this.erDocumentoRP.Text = "Error";
             // 
+            // imgCargoRP
+            // 
+            this.imgCargoRP.BackColor = System.Drawing.Color.White;
+            this.imgCargoRP.Location = new System.Drawing.Point(530, 108);
+            this.imgCargoRP.Name = "imgCargoRP";
+            this.imgCargoRP.Size = new System.Drawing.Size(20, 20);
+            this.imgCargoRP.TabIndex = 241;
+            this.imgCargoRP.TabStop = false;
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -3017,68 +2946,6 @@
             // 
             this.siticoneDragControl1.TargetControl = null;
             // 
-            // erCargoRP
-            // 
-            this.erCargoRP.AutoSize = true;
-            this.erCargoRP.BackColor = System.Drawing.Color.Transparent;
-            this.erCargoRP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.erCargoRP.ForeColor = System.Drawing.Color.Red;
-            this.erCargoRP.Location = new System.Drawing.Point(401, 168);
-            this.erCargoRP.Name = "erCargoRP";
-            this.erCargoRP.Size = new System.Drawing.Size(32, 13);
-            this.erCargoRP.TabIndex = 240;
-            this.erCargoRP.Text = "Error";
-            // 
-            // imgCargoRP
-            // 
-            this.imgCargoRP.BackColor = System.Drawing.Color.White;
-            this.imgCargoRP.Location = new System.Drawing.Point(530, 108);
-            this.imgCargoRP.Name = "imgCargoRP";
-            this.imgCargoRP.Size = new System.Drawing.Size(20, 20);
-            this.imgCargoRP.TabIndex = 241;
-            this.imgCargoRP.TabStop = false;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.BackColor = System.Drawing.Color.Transparent;
-            this.label39.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label39.Location = new System.Drawing.Point(584, 105);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(94, 17);
-            this.label39.TabIndex = 243;
-            this.label39.Text = "Agregar cargo";
-            // 
-            // txtAddCargo
-            // 
-            this.txtAddCargo.Animated = false;
-            this.txtAddCargo.BorderColor = System.Drawing.Color.Silver;
-            this.txtAddCargo.BorderRadius = 5;
-            this.txtAddCargo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAddCargo.DefaultText = "";
-            this.txtAddCargo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtAddCargo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtAddCargo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtAddCargo.DisabledState.Parent = this.txtAddCargo;
-            this.txtAddCargo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtAddCargo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.txtAddCargo.FocusedState.Parent = this.txtAddCargo;
-            this.txtAddCargo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddCargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtAddCargo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddCargo.HoveredState.Parent = this.txtAddCargo;
-            this.txtAddCargo.Location = new System.Drawing.Point(585, 129);
-            this.txtAddCargo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtAddCargo.Name = "txtAddCargo";
-            this.txtAddCargo.PasswordChar = '\0';
-            this.txtAddCargo.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtAddCargo.PlaceholderText = "";
-            this.txtAddCargo.SelectedText = "";
-            this.txtAddCargo.ShadowDecoration.Parent = this.txtAddCargo;
-            this.txtAddCargo.Size = new System.Drawing.Size(176, 36);
-            this.txtAddCargo.TabIndex = 242;
-            // 
             // frmRegistrarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3121,7 +2988,6 @@
             this.gbBuscar.ResumeLayout(false);
             this.gbBuscar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.gboSecun.ResumeLayout(false);
             this.gboSecun.PerformLayout();
             this.gbUbicacion.ResumeLayout(false);
@@ -3138,6 +3004,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoDocRepre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTipoClienteRepre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDocumentoRP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCargoRP)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -3147,7 +3014,6 @@
             this.cmsMenu.ResumeLayout(false);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCargoRP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3255,13 +3121,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label23;
         private Siticone.UI.WinForms.SiticoneTextBox txtNombreBuscar;
-        private System.Windows.Forms.Label label22;
-        private Siticone.UI.WinForms.SiticoneTextBox txtNroDocumentoBuscar;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocumentoBuscar;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoClienteBuscar;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private Siticone.UI.WinForms.SiticoneDataGridView dgCliente;
         private System.Windows.Forms.GroupBox gbPaginacion;
         private System.Windows.Forms.Label label24;

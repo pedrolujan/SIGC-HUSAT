@@ -18,7 +18,7 @@ namespace CapaDato
 
         private clsUtil objUtil = null;
 
-        public DataTable daBuscarCliente(String nroDocumento, String nombreCliente,String estCliente, Int32 numPagina, Int32 tipoCon)
+        public DataTable daBuscarServicios(String bnombreCliente, Int32 estCliente, Int32 numPagina, Int32 tipoCon)
         {
 
             SqlParameter[] pa = new SqlParameter[7];
@@ -28,11 +28,50 @@ namespace CapaDato
 
             try
             {
-                pa[0] = new SqlParameter("@peNroDocumento", SqlDbType.NVarChar, 15) { Value = nroDocumento };
-                pa[1] = new SqlParameter("@peNombreCliente", SqlDbType.NVarChar, 45) { Value = nombreCliente };
+                pa[0] = new SqlParameter("@peNroDocumento", SqlDbType.NVarChar, 15) { Value = "" };
+                pa[1] = new SqlParameter("@peNombreCliente", SqlDbType.NVarChar, 45) { Value = bnombreCliente };
                 pa[2] = new SqlParameter("@peIdTipoPersona", SqlDbType.Int) { Value = 0 };
                 pa[3] = new SqlParameter("@peIdTipoDocumento", SqlDbType.Int) { Value = 0 };
-                pa[4] = new SqlParameter("@peEstadoCliente", SqlDbType.NVarChar,1) { Value = estCliente };
+                pa[4] = new SqlParameter("@peEstadoCliente", SqlDbType.Int) { Value = estCliente };
+                pa[5] = new SqlParameter("@peNumPagina", SqlDbType.Int) { Value = numPagina };
+                pa[6] = new SqlParameter("@peTipoCon", SqlDbType.Real) { Value = tipoCon };
+
+                objCnx = new clsConexion("");
+                dtCliente = objCnx.EjecutarProcedimientoDT("uspBuscarCliente", pa);
+
+                return dtCliente;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                dtCliente = null;
+            }
+
+        }
+
+        public DataTable daBuscarCliente(String bnombreCliente, Int32 estCliente, Int32 numPagina, Int32 tipoCon)
+        {
+
+            SqlParameter[] pa = new SqlParameter[7];
+            DataTable dtCliente;
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@peNroDocumento", SqlDbType.NVarChar, 15) { Value = "" };
+                pa[1] = new SqlParameter("@peNombreCliente", SqlDbType.NVarChar, 45) { Value = bnombreCliente };
+                pa[2] = new SqlParameter("@peIdTipoPersona", SqlDbType.Int) { Value = 0 };
+                pa[3] = new SqlParameter("@peIdTipoDocumento", SqlDbType.Int) { Value = 0 };
+                pa[4] = new SqlParameter("@peEstadoCliente", SqlDbType.Int) { Value = estCliente };
                 pa[5] = new SqlParameter("@peNumPagina", SqlDbType.Int) { Value = numPagina };
                 pa[6] = new SqlParameter("@peTipoCon", SqlDbType.Real) { Value = tipoCon };
 
