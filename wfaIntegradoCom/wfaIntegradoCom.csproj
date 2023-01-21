@@ -384,6 +384,12 @@
     <Compile Include="Mantenedores\frmInstalacionEquipo.Designer.cs">
       <DependentUpon>frmInstalacionEquipo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mantenedores\frmServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\frmServicios.Designer.cs">
+      <DependentUpon>frmServicios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mantenedores\frmSimCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -934,6 +940,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmSeguimiento.resx">
       <DependentUpon>frmSeguimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\frmServicios.resx">
+      <DependentUpon>frmServicios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmTipoImpresion.resx">
       <DependentUpon>frmTipoImpresion.cs</DependentUpon>

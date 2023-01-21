@@ -303,6 +303,7 @@ namespace CapaDato
             DataTable dtDocumento = new DataTable();
             xmlDocumentoVentaGeneral lstDocumentoVenta = new xmlDocumentoVentaGeneral();
             String xmlDocventa = "";
+            String codigoDocumento = "";
             //string xmlData = clsUtil.Serialize(lstOtrasVentas);
             try
             {
@@ -323,9 +324,11 @@ namespace CapaDato
                 foreach (DataRow drMenu in dtDocumento.Rows)
                 {
                     xmlDocventa = Convert.ToString(drMenu["Documentoventa"]);
+                    codigoDocumento = Convert.ToString(drMenu["DocumentoCorrelativo"]);
 
                 }
                 lstDocumentoVenta = clsUtil.Deserialize<xmlDocumentoVentaGeneral>(xmlDocventa);
+                lstDocumentoVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = codigoDocumento;
                 return lstDocumentoVenta;
             }
             catch (Exception ex)
@@ -423,7 +426,7 @@ namespace CapaDato
 
             }
         }
-        public xmlDocumentoVentaGeneral daBuscarDocumentoPagoPendientes(Int32 IdContrato, Int32 idTipoCon )
+        public xmlDocumentoVentaGeneral daBuscarDocumentoPagoPendientes(Int32 IdContrato, Int32 idTipoCon)
         {
             SqlParameter[] pa = new SqlParameter[4];
             clsConexion objCnx = null;
