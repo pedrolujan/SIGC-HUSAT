@@ -393,7 +393,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
             <Top>3.88001cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>1.83383cm</Width>
             <ZIndex>3</ZIndex>
@@ -428,7 +427,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>4.57521cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>1.83383cm</Width>
             <ZIndex>4</ZIndex>
@@ -1305,7 +1303,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
             <Top>3.18481cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>1.83383cm</Width>
             <ZIndex>16</ZIndex>
@@ -1483,7 +1480,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>5.99207cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>1.83383cm</Width>
             <ZIndex>21</ZIndex>
@@ -1521,7 +1517,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>5.27041cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>1.83383cm</Width>
             <ZIndex>22</ZIndex>
@@ -1732,7 +1727,6 @@
             <Value>HUSAT_LOGOLetrasNaranjas</Value>
             <Sizing>FitProportional</Sizing>
             <Top>0.30657cm</Top>
-            <Left>0cm</Left>
             <Height>2.04958cm</Height>
             <Width>5.03061cm</Width>
             <ZIndex>26</ZIndex>
@@ -1776,7 +1770,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1.70562cm</Height>
+          <Height>2.4701cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1799,7 +1793,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox25</rd:DefaultName>
-              <Top>0.55281cm</Top>
+              <Top>1.10562cm</Top>
               <Left>3.96824cm</Left>
               <Height>0.6cm</Height>
               <Width>14.64126cm</Width>
@@ -1817,7 +1811,7 @@
               <Source>Embedded</Source>
               <Value>Recurso6</Value>
               <Sizing>FitProportional</Sizing>
-              <Left>0.03175cm</Left>
+              <Left>0.34925cm</Left>
               <Height>1.70562cm</Height>
               <Width>3.30317cm</Width>
               <ZIndex>1</ZIndex>
