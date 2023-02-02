@@ -12,7 +12,11 @@ namespace CapaEntidad
         public Int32 IdDetalleVenta { get; set; }
         public Int32 Numeracion { get; set; }
         public Double PrecioUni { get; set; }
+        public Decimal Total_a_pagar { get; set; }
+        public Decimal mtoValorVentaItem { get; set; }
+        public Decimal preciounitario { get; set; }
         public String Descripcion { get; set; }
+        public String Unidad_de_medida { get; set; }
         public Int32 Cantidad { get; set; }
         public Int32 idTipoTarifa { get; set; }
         public Int32 IdTipoDescuento { get; set; }

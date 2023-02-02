@@ -541,6 +541,41 @@ namespace wfaIntegradoCom
 
             }
 
+            dt = objMenu.daCargarVariableSistema("PGEM");
+            Empresa clsEmpresa = new Empresa();
+            foreach (DataRow dr in dt.Rows)
+            {
+                lcCodTab = dr["cCodTab"].ToString().Trim();
+                
+                switch (lcCodTab)
+                {
+                    case "PGEM0001":
+                        clsEmpresa.Ruc= dr["cValor"].ToString();
+                        break;
+                    case "PGEM0002":
+                        clsEmpresa.RazonSocial= dr["cValor"].ToString();
+                        break;
+                    case "PGEM0003":
+                        clsEmpresa.Direccion= dr["cValor"].ToString();
+                        break;
+                    case "PGEM0004":
+                        clsEmpresa.NomDepartamento = dr["cNomTab"].ToString();
+                        clsEmpresa.CodDepartamento = dr["cValor"].ToString();
+                        break;
+                    case "PGEM0005":
+                        clsEmpresa.NomProvincia = dr["cNomTab"].ToString();
+                        clsEmpresa.CodProvincia = dr["cValor"].ToString();
+                        break;
+                    case "PGEM0006":
+                        clsEmpresa.NomDistrito = dr["cNomTab"].ToString();
+                        clsEmpresa.CodDistrito = dr["cValor"].ToString();
+                        break;
+
+                }
+
+            }
+
+            Variables.claseEmpresa = clsEmpresa;
             toolStripStatusLabel1.Text = "Usuario: " + FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
             tsCerraSession.Text = " " + FunGeneral.FormatearCadenaTitleCase(Variables.clasePersonal.cPrimerNom);
 

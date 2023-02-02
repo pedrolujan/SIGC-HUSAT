@@ -12,5 +12,13 @@ namespace CapaEntidad
         public string Ruc { get; set; }
         public string Direccion { get; set; }
 
+        public String NomDistrito { get; set; }
+        public String NomProvincia { get; set; }
+        public String NomDepartamento { get; set; }
+        public String CodDistrito { get; set; }
+        public String CodProvincia { get; set; }
+        public String CodDepartamento { get; set; }
+
+
     }
 }
