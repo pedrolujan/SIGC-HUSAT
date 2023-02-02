@@ -169,14 +169,14 @@ namespace wfaIntegradoCom.Procesos
             else 
             {
 
-                if (Convert.ToDouble(str)>lstDetalleIngresosLimpio.Sum(i=>i.ImporteRow) && txt.Name!= "txtImporte2")
-                {
-                    lbl.Text = "El Egreso no puede ser mayor al importe disponible de la Fuente";
-                    pb.Image = Properties.Resources.enojo;
-                    txt.BorderColor = Variables.ColorError;
-                    estado = false;
-                }
-                else
+                //if (Convert.ToDouble(str)>lstDetalleIngresosLimpio.Sum(i=>i.ImporteRow) && txt.Name!= "txtImporte2")
+                //{
+                //    lbl.Text = "El Egreso no puede ser mayor al importe disponible de la Fuente";
+                //    pb.Image = Properties.Resources.enojo;
+                //    txt.BorderColor = Variables.ColorError;
+                //    estado = false;
+                //}
+                //else
                 {
                     lbl.Text = "";
                     pb.Image = Properties.Resources.ok;

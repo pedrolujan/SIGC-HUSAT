@@ -40,12 +40,12 @@ namespace CapaNegocio
 
         }
 
-        public DataTable blBuscarVentaGeneral(Boolean habilitarfechas,String fechaInical, String fechaFinal,String fechaAct, String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon,Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones, String valorRadio)
+        public DataTable blBuscarVentaGeneral(Boolean habilitarfechas,String fechaInical, String fechaFinal,String fechaAct, String placaVehiculo,String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon,Int32 codTipoVenta,String estadoTipoContrato,Boolean habilitarRenovaciones, Int32 IdTipoPlan, String valorRadio)
         {
             DAVentaGeneral objVentaG = new DAVentaGeneral();
             try
             {
-                return objVentaG.daBuscarVentaGeneral(habilitarfechas, fechaInical, fechaFinal, fechaAct, placaVehiculo, cEstadoInstal,numPagina, tipoLLamada, tipoCon, codTipoVenta, estadoTipoContrato, habilitarRenovaciones, valorRadio);
+                return objVentaG.daBuscarVentaGeneral(habilitarfechas, fechaInical, fechaFinal, fechaAct, placaVehiculo, cEstadoInstal,numPagina, tipoLLamada, tipoCon, codTipoVenta, estadoTipoContrato, habilitarRenovaciones, IdTipoPlan, valorRadio);
             }
             catch (Exception ex)
             {

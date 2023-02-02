@@ -395,7 +395,8 @@ namespace wfaIntegradoCom.Mantenedores
             ((HandledMouseEventArgs)e).Handled = true;
         }
         private void frmRegistrarVenta_Load(object sender, EventArgs e)
-        {
+        { 
+           
             try
             {
                 lnTipoCon = 0;
@@ -405,8 +406,9 @@ namespace wfaIntegradoCom.Mantenedores
                 fnLlenarTipoTarifa(0, cboTipoVetaBusq, true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadoContrato, "TICN", true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboTipoFiltro, "TFRV", true);
-                cboTipoFiltro.SelectedValue = "TFRV0005";
-                cboTipoVetaBusq.SelectedValue = 1;
+                cboTipoFiltro.SelectedValue = "TFRV0001";
+                //cbPlanVentas.SelectedValue=
+                cboTipoVetaBusq.SelectedValue = 0;
                 dtpFechaRegistro.Value = Variables.gdFechaSis;
                 dtFechaPago.Value = Variables.gdFechaSis;
                 //FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
@@ -468,7 +470,7 @@ namespace wfaIntegradoCom.Mantenedores
                     estDescuento = false;
                     //Cargar Combos
                     fnLlenarTipoTarifa(0, cboTipoVenta, false);
-                    
+                    fnLlenarTipoPlan(0, cbPlanVentas, 0);
                     cboTipoVenta.SelectedValue = 1;
                     fnLlenarTipoPlan(0, cboTipoPlanP, 0);
                     bResult = fnLlenarCiclo(0, cboCicloP, false);
@@ -2402,6 +2404,7 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 HorasFin = 0;
             Int32 HorasRestarIni = 0;
             Int32 HorasRestarFin = 0;
+            Int32 IdTipoPlan=Convert.ToInt32(cbPlanVentas.SelectedValue);
             String TipoFiltro = "";
             DateTime fechaActual = Convert.ToDateTime(Variables.gdFechaSis.ToString("dd/MM/yyyy"));
             //if (fechaInicial== fechaFinal)
@@ -2421,7 +2424,9 @@ namespace wfaIntegradoCom.Mantenedores
             Boolean estadoReturn = false;
             try
             {
-                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas,FunGeneral.GetFechaHoraFormato(fechaInicial,3) , FunGeneral.GetFechaHoraFormato(fechaFinal,3), fechaAct, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro);
+                
+
+                datVentaG = objVentaGeneral.blBuscarVentaGeneral(habilitarFechas,FunGeneral.GetFechaHoraFormato(fechaInicial,3) , FunGeneral.GetFechaHoraFormato(fechaFinal,3), fechaAct, placaVehiculo, cEstadoInstal, numPagina, tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, IdTipoPlan, TipoFiltro);
 
                 Int32 totalResultados = datVentaG.Rows.Count;
 
@@ -4068,6 +4073,8 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
+
+           
             fnBuscarListaVentas(dgvListaVentas, 0, 0, -1);
             if (btnBuscarMonto.Checked == true)
             {

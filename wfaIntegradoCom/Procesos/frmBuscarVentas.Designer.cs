@@ -103,6 +103,8 @@
             this.btnTotalP = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label41 = new System.Windows.Forms.Label();
             this.drcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
+            this.rdbFInicioContrato = new Siticone.UI.WinForms.SiticoneRadioButton();
+            this.rdbFVenta = new Siticone.UI.WinForms.SiticoneRadioButton();
             this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buscar)).BeginInit();
             this.pnMontoGanania.SuspendLayout();
@@ -146,7 +148,7 @@
             this.siticoneGroupBox1.Location = new System.Drawing.Point(5, 29);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
             this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(1248, 145);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(1248, 179);
             this.siticoneGroupBox1.TabIndex = 86;
             this.siticoneGroupBox1.Text = "Buscar por:";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -5);
@@ -259,7 +261,6 @@
             this.txtBuscarVentas.ShadowDecoration.Parent = this.txtBuscarVentas;
             this.txtBuscarVentas.Size = new System.Drawing.Size(147, 36);
             this.txtBuscarVentas.TabIndex = 230;
-           // this.txtBuscarVentas.TextChanged += new System.EventHandler(this.txtBuscarVentas_TextChanged);
             this.txtBuscarVentas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarVentas_KeyPress);
             // 
             // chkHabilitarFechasBus
@@ -516,6 +517,8 @@
             // gbBuscarListaVentas
             // 
             this.gbBuscarListaVentas.BackColor = System.Drawing.Color.Transparent;
+            this.gbBuscarListaVentas.Controls.Add(this.rdbFInicioContrato);
+            this.gbBuscarListaVentas.Controls.Add(this.rdbFVenta);
             this.gbBuscarListaVentas.Controls.Add(this.dtpFechaFinalBus);
             this.gbBuscarListaVentas.Controls.Add(this.dtpFechaInicialBus);
             this.gbBuscarListaVentas.Controls.Add(this.label35);
@@ -523,7 +526,7 @@
             this.gbBuscarListaVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gbBuscarListaVentas.Location = new System.Drawing.Point(4, 25);
             this.gbBuscarListaVentas.Name = "gbBuscarListaVentas";
-            this.gbBuscarListaVentas.Size = new System.Drawing.Size(268, 117);
+            this.gbBuscarListaVentas.Size = new System.Drawing.Size(268, 151);
             this.gbBuscarListaVentas.TabIndex = 224;
             this.gbBuscarListaVentas.TabStop = false;
             this.gbBuscarListaVentas.Enter += new System.EventHandler(this.gbBuscarListaVentas_Enter);
@@ -538,7 +541,7 @@
             this.dtpFechaFinalBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaFinalBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpFechaFinalBus.HoveredState.Parent = this.dtpFechaFinalBus;
-            this.dtpFechaFinalBus.Location = new System.Drawing.Point(8, 77);
+            this.dtpFechaFinalBus.Location = new System.Drawing.Point(8, 76);
             this.dtpFechaFinalBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaFinalBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaFinalBus.Name = "dtpFechaFinalBus";
@@ -557,7 +560,7 @@
             this.dtpFechaInicialBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaInicialBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpFechaInicialBus.HoveredState.Parent = this.dtpFechaInicialBus;
-            this.dtpFechaInicialBus.Location = new System.Drawing.Point(8, 25);
+            this.dtpFechaInicialBus.Location = new System.Drawing.Point(8, 24);
             this.dtpFechaInicialBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaInicialBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaInicialBus.Name = "dtpFechaInicialBus";
@@ -573,7 +576,7 @@
             this.label35.BackColor = System.Drawing.Color.Transparent;
             this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label35.Location = new System.Drawing.Point(8, 60);
+            this.label35.Location = new System.Drawing.Point(8, 59);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(74, 17);
             this.label35.TabIndex = 232;
@@ -585,7 +588,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(8, 9);
+            this.label14.Location = new System.Drawing.Point(8, 8);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(80, 17);
             this.label14.TabIndex = 227;
@@ -710,7 +713,7 @@
             this.dgvLVentas.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvLVentas.EnableHeadersVisualStyles = false;
             this.dgvLVentas.GridColor = System.Drawing.Color.Silver;
-            this.dgvLVentas.Location = new System.Drawing.Point(7, 180);
+            this.dgvLVentas.Location = new System.Drawing.Point(7, 214);
             this.dgvLVentas.Name = "dgvLVentas";
             this.dgvLVentas.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -731,7 +734,7 @@
             this.dgvLVentas.RowTemplate.Height = 80;
             this.dgvLVentas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvLVentas.Size = new System.Drawing.Size(1247, 503);
+            this.dgvLVentas.Size = new System.Drawing.Size(1247, 471);
             this.dgvLVentas.TabIndex = 211;
             this.dgvLVentas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvLVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -1057,6 +1060,42 @@
             // 
             this.drcMover.TargetControl = this.gunaLabel10;
             // 
+            // rdbFInicioContrato
+            // 
+            this.rdbFInicioContrato.AutoSize = true;
+            this.rdbFInicioContrato.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.rdbFInicioContrato.CheckedState.BorderThickness = 0;
+            this.rdbFInicioContrato.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.rdbFInicioContrato.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdbFInicioContrato.Location = new System.Drawing.Point(111, 118);
+            this.rdbFInicioContrato.Name = "rdbFInicioContrato";
+            this.rdbFInicioContrato.Size = new System.Drawing.Size(133, 21);
+            this.rdbFInicioContrato.TabIndex = 237;
+            this.rdbFInicioContrato.Text = "Fch.Inicio Contrato";
+            this.rdbFInicioContrato.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdbFInicioContrato.UncheckedState.BorderThickness = 0;
+            this.rdbFInicioContrato.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdbFInicioContrato.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            // 
+            // rdbFVenta
+            // 
+            this.rdbFVenta.AutoSize = true;
+            this.rdbFVenta.Checked = true;
+            this.rdbFVenta.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.rdbFVenta.CheckedState.BorderThickness = 0;
+            this.rdbFVenta.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.rdbFVenta.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdbFVenta.Location = new System.Drawing.Point(11, 118);
+            this.rdbFVenta.Name = "rdbFVenta";
+            this.rdbFVenta.Size = new System.Drawing.Size(80, 21);
+            this.rdbFVenta.TabIndex = 236;
+            this.rdbFVenta.TabStop = true;
+            this.rdbFVenta.Text = "Fch.Venta";
+            this.rdbFVenta.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdbFVenta.UncheckedState.BorderThickness = 0;
+            this.rdbFVenta.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdbFVenta.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            // 
             // frmBuscarVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1157,5 +1196,7 @@
         private Siticone.UI.WinForms.SiticoneComboBox cboEstado;
         private System.Windows.Forms.Label label4;
         private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocumento;
+        private Siticone.UI.WinForms.SiticoneRadioButton rdbFInicioContrato;
+        private Siticone.UI.WinForms.SiticoneRadioButton rdbFVenta;
     }
 }

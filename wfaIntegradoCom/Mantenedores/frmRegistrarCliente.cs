@@ -405,7 +405,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         
 
-        private Boolean fnBuscarCliente(DataGridView dgv, Int32 numPagina, Int16 tipoCon)
+        private Boolean fnBuscarCliente(DataGridView dgv, Int32 numPagina, Int32 tipoCon)
         {
             BLCliente objCli = new BLCliente();
             clsUtil objUtil = new clsUtil();
@@ -1862,6 +1862,11 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
 
+        private void txtNombreBuscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnLimpiarRepre_Click(object sender, EventArgs e)
         {
 
@@ -1890,6 +1895,8 @@ namespace wfaIntegradoCom.Mantenedores
             lblInfoCorreo.Text = "";
 
         }
+
+      
 
         private void opcEditar_Click(object sender, EventArgs e)
         {
@@ -1944,12 +1951,6 @@ namespace wfaIntegradoCom.Mantenedores
             estEmpresa = result.Item1;
             msjEmpresa = result.Item2;
         }
-
-        private void txtEmpresa_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
 
         private void lvCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -2052,10 +2053,10 @@ namespace wfaIntegradoCom.Mantenedores
 
                 gboDatosRepres.Enabled = true;
                 gboDatosRepres.Visible = true;
-                gboDatosRepres.Location = new Point(15, gboPrinci.Location.Y + gboPrinci.Size.Height + 20);
-                gboSecun.Location = new Point(15, gboDatosRepres.Location.Y + gboDatosRepres.Size.Height + 20);
+                gboDatosRepres.Location = new Point(15, gbUbicacion.Location.Y + gbUbicacion.Size.Height + 20);
+                gboSecun.Location = new Point(15, gboPrinci.Location.Y + gboPrinci.Size.Height + 20);
                 gbUbicacion.Location = new Point(15, gboSecun.Location.Y + gboSecun.Size.Height + 20);
-                gboContacto.Location = new Point(15, gbUbicacion.Location.Y + gbUbicacion.Size.Height + 20);
+                gboContacto.Location = new Point(15, gboDatosRepres.Location.Y + gboDatosRepres.Size.Height + 20);
             }
             else
             {
