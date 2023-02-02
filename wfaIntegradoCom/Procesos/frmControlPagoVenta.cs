@@ -2309,11 +2309,15 @@ namespace wfaIntegradoCom.Procesos
             }
             for (int i = 0; i < lstDetCron.Count; i++)
             {
-                if ((lstDetCron[i].estado == "PAGO PENDIENTE" && lstDetCron[i - 1].estado == "CORTE") || (lstDetCron[i].estado == "CORTE" && lstDetCron[i - 1].estado == "CORTE") || (lstDetCron[i].estado == "CORTE" && lstDetCron[i - 1].estado == "VENCIDO"))
+                if (i>0)
                 {
-                    estadoActualizar = true;
-                    break;
+                    if ((lstDetCron[i].estado == "PAGO PENDIENTE" && lstDetCron[i - 1].estado == "CORTE") || (lstDetCron[i].estado == "CORTE" && lstDetCron[i - 1].estado == "CORTE") || (lstDetCron[i].estado == "CORTE" && lstDetCron[i - 1].estado == "VENCIDO"))
+                    {
+                        estadoActualizar = true;
+                        break;
+                    }
                 }
+                
             }
             Cronograma dcr = lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
             if (dcr.estadoCronograma!= "ESCR0004")
@@ -2323,7 +2327,7 @@ namespace wfaIntegradoCom.Procesos
                     DialogResult EstadoDialog = MessageBox.Show("Esta seguro de realizar el cambio de estado!!!\n YA NO SE MOSTRARA EN LA BUSQUEDA DE CRONOGRAMA", "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (EstadoDialog == DialogResult.Yes)
                     {
-                        res = frm.daCambiarEstadoCronograma(CronogramaSeleccionado,-1);
+                        res = frm.daCambiarEstadoCronograma(CronogramaSeleccionado, -1);
                         if (res)
                         {
                             MessageBox.Show("El contrato se actualizo correctamente", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);

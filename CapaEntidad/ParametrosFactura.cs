@@ -17,7 +17,6 @@ namespace CapaEntidad
         public Decimal TotSubtotal { get; set; }   
         public Decimal Monto_total { get; set; }   
         public Decimal TotalIgv { get; set; }   
-        public Decimal Porcentaje_IGV { get; set; }   
-
+        public Decimal Porcentaje_IGV { get; set; }
     }
 }

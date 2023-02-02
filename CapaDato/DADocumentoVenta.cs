@@ -574,7 +574,7 @@ namespace CapaDato
 
         public List<CuadreCaja> daVerificarApertura(String pcFechaSist, Int16 pidSucursal, Int32 idUsuario)
         {
-            SqlParameter[] pa = new SqlParameter[3];
+            SqlParameter[] pa = new SqlParameter[4];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             Boolean bVerificar = false;
@@ -591,6 +591,8 @@ namespace CapaDato
                 pa[1].Value = pidSucursal;
                 pa[2] = new SqlParameter("@peidUsuario", SqlDbType.Int);
                 pa[2].Value = idUsuario;
+                pa[3] = new SqlParameter("@fechaActual", SqlDbType.DateTime);
+                pa[3].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 objCnx = new clsConexion("");
                 dt = objCnx.EjecutarProcedimientoDT("uspVerificarApertura", pa);
