@@ -947,7 +947,7 @@
             this.gboPrinci.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gboPrinci.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gboPrinci.ForeColor = System.Drawing.Color.White;
-            this.gboPrinci.Location = new System.Drawing.Point(17, 58);
+            this.gboPrinci.Location = new System.Drawing.Point(17, 66);
             this.gboPrinci.Name = "gboPrinci";
             this.gboPrinci.ShadowDecoration.Parent = this.gboPrinci;
             this.gboPrinci.Size = new System.Drawing.Size(1201, 188);
@@ -1277,6 +1277,7 @@
             this.txtNombreBuscar.ShadowDecoration.Parent = this.txtNombreBuscar;
             this.txtNombreBuscar.Size = new System.Drawing.Size(382, 36);
             this.txtNombreBuscar.TabIndex = 242;
+            this.txtNombreBuscar.TextChanged += new System.EventHandler(this.txtNombreBuscar_TextChanged);
             this.txtNombreBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarCliente_KeyPress);
             // 
             // siticoneButton2
@@ -1328,7 +1329,7 @@
             this.gboSecun.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gboSecun.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gboSecun.ForeColor = System.Drawing.Color.White;
-            this.gboSecun.Location = new System.Drawing.Point(17, 473);
+            this.gboSecun.Location = new System.Drawing.Point(17, 275);
             this.gboSecun.Name = "gboSecun";
             this.gboSecun.ShadowDecoration.Parent = this.gboSecun;
             this.gboSecun.Size = new System.Drawing.Size(1201, 122);
@@ -1477,7 +1478,7 @@
             this.gbUbicacion.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbUbicacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbUbicacion.ForeColor = System.Drawing.Color.White;
-            this.gbUbicacion.Location = new System.Drawing.Point(13, 621);
+            this.gbUbicacion.Location = new System.Drawing.Point(17, 414);
             this.gbUbicacion.Name = "gbUbicacion";
             this.gbUbicacion.ShadowDecoration.Parent = this.gbUbicacion;
             this.gbUbicacion.Size = new System.Drawing.Size(1201, 193);
@@ -1612,7 +1613,6 @@
             this.txtEmpresa.Size = new System.Drawing.Size(619, 36);
             this.txtEmpresa.TabIndex = 245;
             this.txtEmpresa.TextChanged += new System.EventHandler(this.txtEmpresa_TextChanged);
-            this.txtEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmpresa_KeyPress);
             // 
             // gboContacto
             // 
@@ -1854,7 +1854,7 @@
             this.gboDatosRepres.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gboDatosRepres.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gboDatosRepres.ForeColor = System.Drawing.Color.White;
-            this.gboDatosRepres.Location = new System.Drawing.Point(17, 265);
+            this.gboDatosRepres.Location = new System.Drawing.Point(17, 622);
             this.gboDatosRepres.Name = "gboDatosRepres";
             this.gboDatosRepres.ShadowDecoration.Parent = this.gboDatosRepres;
             this.gboDatosRepres.Size = new System.Drawing.Size(1201, 187);

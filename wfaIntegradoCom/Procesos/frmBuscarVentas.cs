@@ -206,6 +206,7 @@ namespace wfaIntegradoCom.Procesos
             Int32 HorasRestarIni = 0;
             Int32 HorasRestarFin = 0;
             String TipoFiltro = "";
+            Int32 TipoBusquedaFecha=rdbFVenta.Checked==true? 1:rdbFInicioContrato.Checked==true?2:0 ;
             HorasIni = Convert.ToInt32(fechaInicial.ToString("HH"));
             HorasRestarIni = 24 - HorasIni;
             fechaInicial = fechaInicial.AddHours(-HorasIni);
@@ -222,7 +223,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 datVenta = objVentaGeneral.BlBuscarClienteV(habilitarFechas, FunGeneral.GetFechaHoraFormato(fechaInicial,3), FunGeneral.GetFechaHoraFormato(fechaFinal,3), placaVehiculo, cEstadoInstal, numPagina,
                     tipoLLamada, tipoCon, cEstadoTipoVenta, estadoTipoContrato, habilitarRenovaciones, TipoFiltro, estadoTipoPlan, 
-                    estadoPlan, estadoUsuario, estadoContrato , Docventapago);
+                    estadoPlan, estadoUsuario, estadoContrato , TipoBusquedaFecha, Docventapago);
 
                 totalResultados = datVenta.Rows.Count;
                 if (tipoCon == -4)

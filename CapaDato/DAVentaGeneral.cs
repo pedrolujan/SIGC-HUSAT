@@ -365,9 +365,9 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, String fechaInical, String fechaFinal, String fechaAct, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta, String estadoTipoContrato, Boolean habilitarRenovaciones, String valorRadio)
+        public DataTable daBuscarVentaGeneral(Boolean habilitarfechas, String fechaInical, String fechaFinal, String fechaAct, String placaVehiculo, String cEstadoInstal, Int32 numPagina, Int32 tipoLLamada, Int32 tipoCon, Int32 codTipoVenta, String estadoTipoContrato, Boolean habilitarRenovaciones, Int32 IdTipoPlan, String valorRadio)
         {
-            SqlParameter[] pa = new SqlParameter[13];
+            SqlParameter[] pa = new SqlParameter[14];
             DataTable dtVentaG;
             clsConexion objCnx = null;
 
@@ -386,7 +386,8 @@ namespace CapaDato
                 pa[9] = new SqlParameter("@codTipoVenta", SqlDbType.Int) { Value = codTipoVenta };
                 pa[10] = new SqlParameter("@estadoTipoContrato", SqlDbType.NVarChar, 8) { Value = estadoTipoContrato };
                 pa[11] = new SqlParameter("@pehabilitarRenovaciones", SqlDbType.TinyInt) { Value = habilitarRenovaciones };
-                pa[12] = new SqlParameter("@valorRadio", SqlDbType.NVarChar, 8) { Value = valorRadio };
+                pa[12] = new SqlParameter("@IdTipoPlan", SqlDbType.Int) { Value = IdTipoPlan };
+                pa[13] = new SqlParameter("@valorRadio", SqlDbType.NVarChar, 8) { Value = valorRadio };
 
                 objCnx = new clsConexion("");
                 if (habilitarRenovaciones == false)
