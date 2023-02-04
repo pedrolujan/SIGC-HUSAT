@@ -22,7 +22,7 @@ namespace CapaDato
             DataTable dt = new DataTable();
             clsConexion objCnx = null;
             objUtil = new clsUtil();
-
+            
             String xmlTrandiaria = clsUtil.Serialize(lstTTrand);
             String xmlDocumetoVenta = clsUtil.Serialize(xmlDvg);
             String xmlDetalelVenta = clsUtil.Serialize(xmlDvg[0].xmlDetalleVentas);

@@ -2375,10 +2375,6 @@ namespace wfaIntegradoCom.Mantenedores
                 }
             }
 
-            
-            
-            
-
             return lstDetV;
         }
         private void txtNombreBus_KeyPress(object sender, KeyPressEventArgs e)
