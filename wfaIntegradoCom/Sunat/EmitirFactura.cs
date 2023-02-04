@@ -16,11 +16,11 @@ namespace wfaIntegradoCom.Sunat
     {
         public int EmitirFacturasContado(Cliente clsCliente,List<DetalleVenta> detalleventa)
         {
-            //ParametrosFactura parametros = new ParametrosFactura();
-            //parametros.TotalIgv = decimal.Round(parametrosPasar.TotalIgv, 2);
-            //parametros.TotSubtotal = parametrosPasar.TotSubtotal;
-            //parametros.Monto_total = parametrosPasar.Monto_total;
-            //parametros.Porcentaje_IGV = 18;
+            ParametrosFactura parametros = new ParametrosFactura();
+            parametros.Monto_total = detalleventa.Sum(i=>i.ImporteRow);
+            parametros.TotSubtotal = detalleventa.Sum(i => i.ImporteRow) / 1.18m;
+            parametros.TotalIgv = (parametros.Monto_total- parametros.TotSubtotal);
+            parametros.Porcentaje_IGV = 18;
             //Agregamos el detalle de la venta
             //List<LdetalleVenta> detalles = new List<LdetalleVenta>();
             //foreach (var item in detalleventa)
@@ -40,7 +40,6 @@ namespace wfaIntegradoCom.Sunat
 
 
 
-
             var envios = new Envios();
             envios.Rutaxml = Path.GetDirectoryName(Application.ExecutablePath) + @"\XML\";
             envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\LLAMA-PE-CERTIFICADO-DEMO-20606879904.pfx";
@@ -50,7 +49,7 @@ namespace wfaIntegradoCom.Sunat
             try
             {
 
-                //envios.GenerarFacturaXML(parametros);
+                envios.GenerarFacturaXML(parametros, clsCliente,detalleventa);
                 return 1;
             }
             catch (Exception ex)
