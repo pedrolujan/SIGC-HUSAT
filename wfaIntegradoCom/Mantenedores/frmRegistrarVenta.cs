@@ -1688,7 +1688,30 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     j += 1;
                     Int32 resDias = 0;
+                    //DateTime PeriodoInicial = fechaSistema.AddMonths(i);
+
                     DateTime PeriodoEstimadoInicial = fechaSistema.AddMonths(i);
+                    numDiasMesInicial = DateTime.DaysInMonth(PeriodoEstimadoInicial.Year, PeriodoEstimadoInicial.Month);
+                    DateTime fechaInicioCiclo = PeriodoEstimadoInicial.AddDays(numDiasMesInicial- PeriodoEstimadoInicial.Day);
+
+                    if (diaCicloPago == 30)
+                    {
+                        fechaInicioCiclo = PeriodoEstimadoInicial.AddDays(numDiasMesInicial - PeriodoEstimadoInicial.Day);
+                    }
+                    else if (diaCicloPago == 15)
+                    {
+                        if (diaCicloPago > PeriodoEstimadoInicial.Day)
+                        {
+                            DateTime dFechaTemp = PeriodoEstimadoInicial.AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
+                            fechaInicioCiclo = dFechaTemp;
+                        }
+                        else
+                        {
+                            DateTime dFechaTemp = PeriodoEstimadoInicial.AddMonths(1).AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
+                            fechaInicioCiclo = dFechaTemp;
+                        }
+
+                    }
                     if (PeriodoEstimadoInicial.Day > diaCicloPago && Convert.ToInt32(cboTipoPlanP.SelectedValue) == 2)
                     {
                         PeriodoEstimadoInicial = PeriodoEstimadoInicial.AddMonths(1);
@@ -1716,8 +1739,18 @@ namespace wfaIntegradoCom.Mantenedores
                     }
 
                     DateTime PeriodoInicial = Convert.ToDateTime(diaNuevaFecha + "/" + (PeriodoEstimadoInicial.Month) + "/" + PeriodoEstimadoInicial.Year);
+                    if (diaCicloPago == 30)
+                    {
+                        PeriodoInicial = PeriodoEstimadoInicial.AddDays(((numDiasMesInicial - fechaActual.Day) + 1));
+                    }
+                    else
+                    {
+                        PeriodoInicial = PeriodoInicial.AddDays(1);
+                    }
+
                     Int32 sumarMeses = numMeses;
-                    DateTime PeriodoFinal = (PeriodoInicial.AddMonths(sumarMeses).AddDays((resDias - 1)));
+                    PeriodoInicial = fechaInicioCiclo.AddDays(1);
+                    DateTime PeriodoFinal = (PeriodoInicial.AddMonths(sumarMeses).AddDays(-1));
                     DateTime fechaEmision = PeriodoFinal.AddDays(1);
                     DateTime fechaVencimiento = PeriodoFinal.AddDays(5);
 
@@ -1764,15 +1797,34 @@ namespace wfaIntegradoCom.Mantenedores
                     Int32 resDias = 0;
 
                     //DateTime PeriodoInicial = fechaSistema.AddMonths(i);
-                    
-                    DateTime PeriodoEstimadoInicial = fechaSistema.AddMonths(i);
+                    DateTime periodoInicialCiclo = DateTime.Now;
+                   DateTime PeriodoEstimadoInicial = fechaSistema.AddMonths(i);
+                    numDiasMesInicial = DateTime.DaysInMonth(PeriodoEstimadoInicial.Year, PeriodoEstimadoInicial.Month);
+                    if (diaCicloPago==30)
+                    {
+                        periodoInicialCiclo = PeriodoEstimadoInicial.AddDays(numDiasMesInicial- PeriodoEstimadoInicial.Day);
+                    }
+                    else if(diaCicloPago==15)
+                    {
+                        if (diaCicloPago> PeriodoEstimadoInicial.Day)
+                        {
+                            DateTime dFechaTemp = PeriodoEstimadoInicial.AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
+                            periodoInicialCiclo = dFechaTemp;
+                        }
+                        else
+                        {
+                            DateTime dFechaTemp = PeriodoEstimadoInicial.AddMonths(1).AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
+                            periodoInicialCiclo = dFechaTemp;
+                        }
+                        
+                    }
                     if (PeriodoEstimadoInicial.Day>diaCicloPago && Convert.ToInt32(cboTipoPlanP.SelectedValue)==2)
                     {
                         PeriodoEstimadoInicial = PeriodoEstimadoInicial.AddMonths(1);
                     }
                     DateTime dtFechaTemp = PeriodoEstimadoInicial.AddMonths(1);
 
-                    numDiasMesInicial = DateTime.DaysInMonth(PeriodoEstimadoInicial.Year, PeriodoEstimadoInicial.Month);
+                   
                     numDiasMesTemp = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
                     if (diaCicloPago==30 && PeriodoEstimadoInicial.Month==2)
                     {
@@ -1803,6 +1855,7 @@ namespace wfaIntegradoCom.Mantenedores
                     }
                     
                     Int32 sumarMeses= numMeses;
+                    PeriodoInicial = periodoInicialCiclo.AddDays(1);
                     DateTime PeriodoFinal = (PeriodoInicial.AddMonths(sumarMeses).AddDays(-1));
                     DateTime fechaEmision = PeriodoFinal.AddDays(1);
                     DateTime fechaVencimiento = PeriodoFinal.AddDays(5);

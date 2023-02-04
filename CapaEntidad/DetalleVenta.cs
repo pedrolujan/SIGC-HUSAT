@@ -28,6 +28,7 @@ namespace CapaEntidad
         public Double TotalPUCant { get; set; }
         public Double Couta { get; set; }
         public Double Importe { get; set; }
+        public Decimal ImporteRow { get; set; }
         public String cSimbolo { get; set; }
 
         public Int32 idObjetoVenta { get; set; }
