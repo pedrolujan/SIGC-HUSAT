@@ -21,6 +21,7 @@ namespace wfaIntegradoCom.Procesos
         {
             InitializeComponent();
         }
+        public static Boolean EstadoTipoPago=false;
 
         Int32 lnTipoLLamada = 0;
         Double lnMontoPagar = 0;
@@ -101,6 +102,19 @@ namespace wfaIntegradoCom.Procesos
         }
         public void fnRecibirEntidades(Pagos cls ,Int32 tipoCon)
         {
+
+            // Boolean St =this.rdbSi.Checked;
+
+            String EstadoText;
+            if (EstadoTipoPago==true)
+            {
+                EstadoText = "Uno";
+            }
+            else
+            
+            {
+                EstadoText = "Dos";
+            }
             lstEntidades.Add(new Pagos
             {
                 codTipoPago = cls.codTipoPago,
@@ -116,7 +130,8 @@ namespace wfaIntegradoCom.Procesos
                 dFechaRegistro = Variables.gdFechaSis,
                 dFechaPago = Variables.gdFechaSis,
                 idUsario = Variables.gnCodUser,
-                cEstadoPP = rdbSi.Checked==true? "ESPP0001" : "ESPP0004",
+                
+                cEstadoPP = EstadoTipoPago? "ESPP0001" : "ESPP0002",
                 idMoneda = clsPagosGeneral.idMoneda
             });
 
@@ -137,6 +152,10 @@ namespace wfaIntegradoCom.Procesos
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            String Estado;
+
+            EstadoTipoPago = rdbSi.Checked;
+            
             if (clsPagosGeneral.cantAPagar > lstEntidades.Sum(i => i.PagaCon) || txtTotalAPagar.Text.ToString()==txtImporteRestante.Text.ToString())
             {
                 frmEntidadPagos frm = new frmEntidadPagos();
