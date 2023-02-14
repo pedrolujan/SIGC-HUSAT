@@ -64,6 +64,44 @@ namespace CapaDato
             }
 
         }
+        public DataTable daBuscarDocumentoPorEmitir(String pcBuscar, Int32 pnTipoCon)
+        {
+
+            SqlParameter[] pa = new SqlParameter[2];
+            DataTable dtVenta = new DataTable();
+            clsConexion objCnx = null;
+            List<DocumentoVenta> lstVenta = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@Buscar", SqlDbType.VarChar, 50);
+                pa[0].Value = pcBuscar;
+                pa[1] = new SqlParameter("@TipoCon", SqlDbType.TinyInt);
+                pa[1].Value = pnTipoCon;
+
+
+                objCnx = new clsConexion("");
+                dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarDocVentaPorDocumento", pa);
+
+                return dtVenta;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DADocumentoVenta.cs", "daBuscarDocVenta", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                lstVenta = null;
+            }
+
+        }
 
         public List<DocumentoVenta> daListarDocVenta(Int32 pidVenta)
         {
@@ -278,6 +316,43 @@ namespace CapaDato
                 objCnx = null;
                 objUtil = null;
                 objDocVenta = null;
+
+            }
+
+        }
+        public String daGuardarConfiguraCionDocumento(String codDoc,String serie,String numero)
+        {
+            SqlParameter[] pa = new SqlParameter[3];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@codDocumento", SqlDbType.VarChar,8);
+                pa[0].Value = codDoc;
+                pa[1] = new SqlParameter("@serie", SqlDbType.NVarChar, 5);
+                pa[1].Value = serie;
+                pa[2] = new SqlParameter("@numero", SqlDbType.Int);
+                pa[2].Value = numero;
+               
+
+                objCnx = new clsConexion("");
+                objCnx.EjecutarProcedimiento("uspGuardarConfiguracionDocventa", pa);
+
+                return "OK";
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DADocumentoVenta.cs", "daGrabarVenta", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                objUtil = null;
 
             }
 

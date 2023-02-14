@@ -474,6 +474,28 @@ namespace wfaIntegradoCom.Mantenedores
         {
             fnvalidarEstadoServicio();
         }
+
+        private void dgServicios_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex != -1 && e.ColumnIndex != -1)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    DataGridViewRow clickedRow = (sender as DataGridView).Rows[e.RowIndex];
+                    if (!clickedRow.Selected)
+                    {
+                        dgServicios.CurrentCell = clickedRow.Cells[e.ColumnIndex];
+
+                    }
+                    else
+                    {
+                        var mousePosition = dgServicios.PointToClient(Cursor.Position);
+                        
+                    }
+
+                }
+            }
+        }
     }
 
 }

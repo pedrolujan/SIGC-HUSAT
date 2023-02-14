@@ -20,6 +20,14 @@ namespace wfaIntegradoCom.Mantenedores
 {
     public partial class frmRegistrarCliente : Form
     {
+        ConsultaClienteAPI ConsultasApi = new ConsultaClienteAPI();
+        static List<Departamento> lstDepartCliente = new List<Departamento>();
+        static List<Departamento> lstDepartEmpresa = new List<Departamento>();
+        static List<Provincia> lstProvCliente = new List<Provincia>();
+        static List<Provincia> lstProvEmpresa = new List<Provincia>();
+        static List<Distrito> lstDistCliente = new List<Distrito>();
+        static List<Distrito> lstDistEmpresa = new List<Distrito>();
+
         public frmRegistrarCliente()
         {
             InitializeComponent();
@@ -401,9 +409,9 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-       
 
-        
+
+
 
         private Boolean fnBuscarCliente(DataGridView dgv, Int32 numPagina, Int32 tipoCon)
         {
@@ -504,7 +512,7 @@ namespace wfaIntegradoCom.Mantenedores
                     dgv.Columns[2].Width = 340;
                     //MOD
                     dgv.Columns[3].Visible = false;
-                    
+
 
                     dgv.Visible = true;
 
@@ -1077,8 +1085,16 @@ namespace wfaIntegradoCom.Mantenedores
 
                 //MOD REPRESENTANTE//
                 // objCliente.idCliente = Convert.ToInt32(txtidCliente.Text.Trim());
+
+                //Representante
                 objCliente.idRepreLegal = Convert.ToInt32(txtidRepreLegal.Text.Trim());
+                objCliente.cTiDoRepre = Convert.ToInt32(cboTipoDocRepre.SelectedValue);
+                objCliente.cDocumentoRepre = Convert.ToString(txtDocRepre.Text.Trim());
+                objCliente.NombreRepreLegal = Convert.ToString(txtNombreRepre.Text);
+                objCliente.cCorreoRepre= Convert.ToString(txtCorreoRepre.Text.Trim());
+                objCliente.cTelCelularRepre = Convert.ToString(txtTelefonoFijoRepre.Text.Trim());
                 objCliente.Cargo = Convert.ToString(cboCargoRepre.SelectedValue);
+                objCliente.cDireccionRepre = Convert.ToString(txtDireccionRepre.Text.Trim());
                 objCliente.Estado = Convert.ToBoolean(cboEstado.SelectedIndex == 1 ? 1 : 0);
                 //objCliente.cCodTab = Convert.ToString("CCRE000");
                 objCliente.NomCargo = Convert.ToString(txtAddCargo.Text.Trim());
@@ -1126,6 +1142,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cboProvincia.ValueMember = "idProv";
                 cboProvincia.DisplayMember = "cNomProv";
                 cboProvincia.DataSource = lstProv;
+                lstProvCliente = lstProv;
 
                 return true;
             }
@@ -1152,6 +1169,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cboDistrito.ValueMember = "idDist";
                 cboDistrito.DisplayMember = "cNomDist";
                 cboDistrito.DataSource = lstDist;
+                lstDistCliente = lstDist;
 
                 return true;
             }
@@ -1177,6 +1195,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cboDepartamento.DisplayMember = "cNomDep";
                 cboDepartamento.DataSource = lstDepart;
 
+                lstDepartCliente = lstDepart;
                 return true;
             }
             catch (Exception ex)
@@ -1299,6 +1318,12 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void frmRegistrarCliente_Load(object sender, EventArgs e)
         {
+            pbTraerClientes.Value = 0;
+            pbTraerClientes.Maximum = 100;
+            pbTraerClientes.Minimum = 0;
+            pbTraerClientes.Visible = false;
+            pbRepresentante.Visible = false;
+
             pasoLoad = false;
             Boolean bResult;
             fnHabilitarControles(false);
@@ -1867,6 +1892,241 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
+        
+
+
+    private void fnconsultarCliente()
+     {
+
+            string token = "?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImdwdGZyYW5jaXNjbzJvMjNAZ21haWwuY29tIn0.cJJq3oGT5gzFvfFlV3e5gHJCYZrLlKGjumQlsJZfwD8";
+
+
+            try
+            {
+                //Compara la cantidad de caracteres, si tiene 11 entonces busca el ruc
+                if (Convert.ToInt32(cboTipoDoc.SelectedValue) == 1)
+                {
+                    //token
+                    dynamic respuesta = ConsultasApi.Get("https://dniruc.apisperu.com/api/v1/dni/" + txtNrDocumento.Text + token);
+                    txtNombre.Text = respuesta.nombres.ToString();
+                    txtApePat.Text = respuesta.apellidoPaterno.ToString();
+                    txtApeMat.Text = respuesta.apellidoMaterno.ToString();
+                    pbTraerClientes.Visible = false;
+                }
+
+                //sino busca el ruc
+                else if (Convert.ToInt32(cboTipoDoc.SelectedValue) == 2 || Convert.ToInt32(cboTipoDoc.SelectedValue) == 4)
+                {
+                    //cambia el numero por defecto por el textbox
+                    dynamic respuesta = ConsultasApi.Get("https://dniruc.apisperu.com/api/v1/ruc/" + txtNrDocumento.Text + token);
+                    // recibe la respuesta de la consulta en los respectivos textbox
+                    txtNombre.Text = respuesta.razonSocial.ToString();
+                    txtDireccion.Text = respuesta.direccion.ToString();
+                    string[] str = respuesta.razonSocial.ToString().Split(' ');
+
+                    if (Convert.ToInt32(cboTipoDoc.SelectedValue) == 2)
+                    {
+                        txtNombre.Text = str[2] + " " + str[3];
+                        txtApePat.Text = str[0];
+                        txtApeMat.Text = str[1];
+                    }
+                    
+
+
+                    Departamento Depa = lstDepartCliente.Find(i => i.cNomDep.ToLower() == respuesta.departamento.ToString().ToLower());
+                    cboDepartamento.SelectedValue = Depa is Departamento? Depa.idDepa:0;
+
+                    Provincia Prov = lstProvCliente.Find(i => i.cNomProv.Trim().ToUpper() == respuesta.provincia.ToString().ToUpper());
+                    cboProvincia.SelectedValue = Prov is Provincia ? Prov.idProv : 0;
+
+                    Distrito Dist = lstDistCliente.Find(i => i.cNomDist.ToLower() == respuesta.distrito.ToString().ToLower());
+                    cboDistrito.SelectedValue =Dist is Distrito? Dist.idDist:0;
+
+                    pbTraerClientes.Visible = false;
+
+                }
+                else
+                {
+                    //si ingresa mas caracteres. me saldraun error.
+                    MessageBox.Show("Ingrese un número de documento válido.", "Documento inválido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(" catch Ingrese un número de documento válido." + ex, "Documento inválido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            pbTraerClientes.Refresh();
+
+            
+        }
+      
+
+        private void tmLlamasDatosCliente_Tick(object sender, EventArgs e)
+        {
+            //tmLlamasDatosCliente.Start();
+            //if (pbLlamasDatosCliente.Value == 50)
+            //{
+            //    fnconsultarCliente();
+            //}
+
+            if (pbTraerClientes.Value < 90)
+            {
+                pbTraerClientes.Value += 10;
+            }
+            else if (pbTraerClientes.Value == 90)
+            {
+                pbTraerClientes.Value += 1;
+                fnconsultarCliente();
+            }
+            else if (pbTraerClientes.Value > 90 && pbTraerClientes.Value < 100)
+            {
+
+                pbTraerClientes.Value += 1;
+                pbTraerClientes.Value = 100;
+
+                
+            }
+            else
+            {
+                if (pbTraerClientes.Value >= 100)
+                {
+                    tmLlamasDatosCliente.Stop();
+
+                }
+
+            }
+        }
+        private void resetProgressBar()
+        {
+            pbTraerClientes.Value = 0;
+            pbRepresentante.Value = 0;
+        }
+
+        private void updateProgressBar()
+        {
+            if (pbTraerClientes.Value < 100)
+            {
+                pbTraerClientes.Value++;
+            }
+            else
+            {
+                resetProgressBar();
+            }
+        }
+
+        
+
+        private void btnTraerNombreCliente_Click(object sender, EventArgs e)
+        {
+            
+            pbTraerClientes.Visible = true;
+            pbTraerClientes.Value = 0;
+            if (pbTraerClientes.Value == 0)
+            {
+                tmLlamasDatosCliente.Start();
+            }
+            else
+            {
+                resetProgressBar();
+            }
+
+            
+            //
+
+        }
+
+        public void fnTrarDatosRepresentante()
+        {
+           
+            string token = "?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImdwdGZyYW5jaXNjbzJvMjNAZ21haWwuY29tIn0.cJJq3oGT5gzFvfFlV3e5gHJCYZrLlKGjumQlsJZfwD8";
+
+
+            try
+            {
+                //Compara la cantidad de caracteres, si tiene 11 entonces busca el ruc
+                if (Convert.ToInt32(cboTipoDocRepre.SelectedValue) == 1)
+                {
+                    //token
+                    dynamic respuesta = ConsultasApi.Get("https://dniruc.apisperu.com/api/v1/dni/" + txtDocRepre.Text + token);
+                    txtNombreRepre.Text = respuesta.nombres.ToString() + " " + respuesta.apellidoPaterno.ToString() + " " + respuesta.apellidoMaterno.ToString();
+                    pbRepresentante.Visible = false;
+                }
+
+
+                //sino busca el ruc
+                else if (Convert.ToInt32(cboTipoDocRepre.SelectedValue) == 2 )
+                {
+                    //cambia el numero por defecto por el textbox
+                    dynamic respuesta = ConsultasApi.Get("https://dniruc.apisperu.com/api/v1/ruc/" + txtDocRepre.Text + token);
+                    // recibe la respuesta de la consulta en los respectivos textbox
+                    txtNombreRepre.Text = respuesta.razonSocial.ToString();
+                    //txtDireccionRepre.Text = respuesta.direccion.ToString();
+                    pbRepresentante.Visible = false;
+
+                }
+                else
+                {
+                    //si ingresa mas caracteres. me saldraun error.
+                    MessageBox.Show("Ingrese un número de documento válido.", "Documento inválido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(" catch Ingrese un número de documento válido." + ex, "Documento inválido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            pbTraerClientes.Refresh();
+        }
+
+        private void btnTrarDatosRepresentante_Click(object sender, EventArgs e)
+        {
+            dgDocumentoRP.Visible = false;
+            pbRepresentante.Visible = true;
+            pbRepresentante.Value = 0;
+            if (pbRepresentante.Value == 0)
+            {
+                tmLlamarDatosRepresentante.Start();
+            }
+            else
+            {
+                resetProgressBar();
+            }
+            
+               
+        }
+
+        private void tmLlamarDatosRepresentante_Tick(object sender, EventArgs e)
+        {
+            if (pbRepresentante.Value < 90)
+            {
+                pbRepresentante.Value += 10;
+            }
+            else if (pbRepresentante.Value == 90)
+            {
+                pbRepresentante.Value += 1;
+                fnTrarDatosRepresentante();
+                
+            }
+            else if (pbRepresentante.Value > 90 && pbRepresentante.Value < 100)
+            {
+
+                pbRepresentante.Value += 1;
+                pbRepresentante.Value = 100;
+            }
+            else
+            {
+                if (pbRepresentante.Value >= 100)
+                {
+                    tmLlamarDatosRepresentante.Stop();
+
+                }
+
+            }
+        }
+
         private void btnLimpiarRepre_Click(object sender, EventArgs e)
         {
 
@@ -1896,7 +2156,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-      
+
 
         private void opcEditar_Click(object sender, EventArgs e)
         {
@@ -2071,6 +2331,11 @@ namespace wfaIntegradoCom.Mantenedores
         }
         private void cboTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cboTipoCliente.SelectedValue != "0")
+            {
+                gboPrinci.Enabled = true;
+            }
+
             Boolean bResult;
             Int32 idTipoCliente = Convert.ToInt32(cboTipoCliente.SelectedValue == null ? "0" : cboTipoCliente.SelectedValue.ToString());
 

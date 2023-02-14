@@ -38,6 +38,7 @@ using MessageBox = System.Windows.Forms.MessageBox;
 using System.Windows.Documents;
 using System.Reactive.Joins;
 using wfaIntegradoCom.Reportes;
+using wfaIntegradoCom.Sunat;
 
 namespace wfaIntegradoCom
 
@@ -409,6 +410,16 @@ namespace wfaIntegradoCom
                             ts.Visible = true;
                         }
                     }
+
+                    //foreach (SiticonePanel ts in controlBtn)
+                    //{
+                    //    if (ts.Tag.ToString() == lcItemMenu)
+                    //    {
+                    //        ts.Name = drFila["cNomFormulario"].ToString();
+                    //        //ts.Tag = Convert.ToInt32(drFila["intIdTipoLlamada"]);
+                    //        ts.Visible = true;
+                    //    }
+                    //}
                 }
 
             }
@@ -1285,9 +1296,9 @@ namespace wfaIntegradoCom
             tsCaja.ForeColor = ColorThemas.FuenteBotones;
             tsCaja.IconColor = ColorThemas.IconoBotones;
 
-            tsCompra.BackColor = ColorThemas.BarraAccesoDirectos;
-            tsCompra.ForeColor = ColorThemas.FuenteBotones;
-            tsCompra.IconColor = ColorThemas.IconoBotones;
+            //tsCompra.BackColor = ColorThemas.BarraAccesoDirectos;
+            //tsCompra.ForeColor = ColorThemas.FuenteBotones;
+            //tsCompra.IconColor = ColorThemas.IconoBotones;
 
             tsConsulta.BackColor = ColorThemas.BarraAccesoDirectos;
             tsConsulta.ForeColor = ColorThemas.FuenteBotones;
@@ -2553,7 +2564,7 @@ namespace wfaIntegradoCom
                 tsUsuarios.Font = new Font(tsUsuarios.Font, FontStyle.Regular);
                 tsVenta.Font = new Font(tsVenta.Font, FontStyle.Regular);
                 tsCaja.Font = new Font(tsCaja.Font, FontStyle.Regular);
-                tsCompra.Font = new Font(tsCompra.Font, FontStyle.Regular);
+                //tsCompra.Font = new Font(tsCompra.Font, FontStyle.Regular);
                 tsConsulta.Font = new Font(tsConsulta.Font, FontStyle.Regular);
                 tsMiCaja.Font = new Font(tsMiCaja.Font, FontStyle.Regular);
 
@@ -2576,7 +2587,7 @@ namespace wfaIntegradoCom
                 tsUsuarios.Font = new Font(tsUsuarios.Font, FontStyle.Bold);
                 tsVenta.Font = new Font(tsVenta.Font, FontStyle.Bold);
                 tsCaja.Font = new Font(tsCaja.Font, FontStyle.Bold);
-                tsCompra.Font = new Font(tsCompra.Font, FontStyle.Bold);
+                //tsCompra.Font = new Font(tsCompra.Font, FontStyle.Bold);
                 tsConsulta.Font = new Font(tsConsulta.Font, FontStyle.Bold);
                 tsMiCaja.Font = new Font(tsMiCaja.Font, FontStyle.Bold);
 
@@ -4043,6 +4054,24 @@ namespace wfaIntegradoCom
         private void txtBuscarRepGeneral_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void tsCompra_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tsCompra_Click_1(object sender, EventArgs e)
+        {
+            //flowLayoutPanel1_Click(sender, e);
+            MovimientoSunat frm = new MovimientoSunat();
+            frm.ShowDialog();
+        }
+
+        private void siticonePictureBox1_Click(object sender, EventArgs e)
+        {
+            MovimientoSunat frm = new MovimientoSunat();
+            frm.ShowDialog();
         }
     }
 

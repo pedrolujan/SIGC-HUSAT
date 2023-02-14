@@ -687,6 +687,8 @@ namespace wfaIntegradoCom.Mantenedores
         {
             fnBuscarEmpleado(0, 0);
         }
+
+       
     }
 }
 

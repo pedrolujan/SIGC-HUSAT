@@ -2657,7 +2657,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaVentas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
             this.dgvListaVentas.Visible = false;
             this.dgvListaVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellClick);
-            this.dgvListaVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellContentClick);
+            this.dgvListaVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDocumentoC_CellDoubleClick);
             this.dgvListaVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellDoubleClick);
             this.dgvListaVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaVentas_CellFormatting);
             this.dgvListaVentas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListaVentas_CellMouseDown);

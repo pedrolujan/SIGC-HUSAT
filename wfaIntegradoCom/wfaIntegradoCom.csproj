@@ -55,7 +55,8 @@
     <StartupObject>wfaIntegradoCom.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icono.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
@@ -77,6 +78,9 @@
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <HintPath>..\packages\Ionic.Zip-1.9.1.8.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
       <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
@@ -262,8 +266,19 @@
     <Reference Include="Xceed.Wpf.Toolkit, Version=4.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.4.4.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="zxing, Version=0.16.8.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.8\lib\net48\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.8.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.8\lib\net48\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ServicioFacturacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\frmActaCierreCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -383,6 +398,12 @@
     </Compile>
     <Compile Include="Mantenedores\frmComparacionPlanes.Designer.cs">
       <DependentUpon>frmComparacionPlanes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\frmConfiguracionDocumentoVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\frmConfiguracionDocumentoVenta.Designer.cs">
+      <DependentUpon>frmConfiguracionDocumentoVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\frmConsultarInformacion.cs">
       <SubType>Form</SubType>
@@ -875,11 +896,28 @@
     <Compile Include="Reportes\frmReportes.Designer.cs">
       <DependentUpon>frmReportes.cs</DependentUpon>
     </Compile>
-    <Compile Include="SevicioFacturacion.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Sunat\EmitirFactura.cs" />
     <Compile Include="Sunat\Envios.cs" />
     <Compile Include="Sunat\Formatos.cs" />
+    <Compile Include="Sunat\MovimientoSunat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\MovimientoSunat.Designer.cs">
+      <DependentUpon>MovimientoSunat.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Mantenedores\frmConfiguracionDocumentoVenta.resx">
+      <DependentUpon>frmConfiguracionDocumentoVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\MovimientoSunat.resx">
+      <DependentUpon>MovimientoSunat.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Connected Services\ServicioFacturacion\configuration91.svcinfo" />
+    <None Include="Connected Services\ServicioFacturacion\configuration.svcinfo" />
+    <None Include="Connected Services\ServicioFacturacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="DLLS\Newtonsoft.Json.dll" />
     <Content Include="icono.ico" />
     <Content Include="Imagenes\carrito_opt.png" />
@@ -1049,6 +1087,15 @@
     <EmbeddedResource Include="Reportes\frmReportes.resx">
       <DependentUpon>frmReportes.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Connected Services\ServicioFacturacion\billService.wsdl" />
+    <None Include="Connected Services\ServicioFacturacion\billService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioFacturacion\billService1.wsdl" />
+    <None Include="Connected Services\ServicioFacturacion\billService2.wsdl" />
+    <None Include="Connected Services\ServicioFacturacion\wfaIntegradoCom.ServicioFacturacion.statusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\CapaEntidad.Accesorios.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.AccesoriosEquipo.datasource" />
     <None Include="Properties\DataSources\CapaEntidad.AdministrarEquipos.datasource" />
@@ -1529,7 +1576,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferences Include="Web References\" />
+    <WCFMetadataStorage Include="Connected Services\ServicioFacturacion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

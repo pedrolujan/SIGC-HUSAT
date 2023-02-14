@@ -4187,21 +4187,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void dgvListaVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvListaVentas.Columns["lvBtnImprimir"].Index && e.RowIndex >= 0)
-            {
-                Int32 idTipoVenta = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[16].Value);
-                if (idTipoVenta==2)
-                {
-                    cmsImpresiones.Items[2].Visible = false;
 
-                }
-                else
-                {
-                    cmsImpresiones.Items[2].Visible = true;
-                }
-                var mousePosition = dgvListaVentas.PointToClient(Cursor.Position);
-                cmsImpresiones.Show(dgvListaVentas, 940 ,mousePosition.Y);
-            }
         }
         public void fnBuscarDocumentoVenta(String cCodVenta,Int32 tipCon,Int32 idTipoTarifa,Int32 idContrato)
         {

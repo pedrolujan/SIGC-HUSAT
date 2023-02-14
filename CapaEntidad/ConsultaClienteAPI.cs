@@ -15,6 +15,7 @@ namespace CapaEntidad
     {
         public dynamic Get(string url)
         {
+
             HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(url);
             myWebRequest.UserAgent = "Brave/1.47.171 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0";
             //myWebRequest.CookieContainer = myCookie;

@@ -203,6 +203,7 @@
             this.dgServicios.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
             this.dgServicios.Visible = false;
             this.dgServicios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgServicios_CellDoubleClick);
+            this.dgServicios.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgServicios_CellMouseDown);
             // 
             // btnBuscarServicios
             // 
@@ -401,10 +402,10 @@
             this.gbActualizarServicios.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbActualizarServicios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbActualizarServicios.ForeColor = System.Drawing.Color.White;
-            this.gbActualizarServicios.Location = new System.Drawing.Point(13, 103);
+            this.gbActualizarServicios.Location = new System.Drawing.Point(18, 103);
             this.gbActualizarServicios.Name = "gbActualizarServicios";
             this.gbActualizarServicios.ShadowDecoration.Parent = this.gbActualizarServicios;
-            this.gbActualizarServicios.Size = new System.Drawing.Size(624, 361);
+            this.gbActualizarServicios.Size = new System.Drawing.Size(619, 361);
             this.gbActualizarServicios.TabIndex = 246;
             this.gbActualizarServicios.Text = "Actualizar Servicios";
             this.gbActualizarServicios.TextOffset = new System.Drawing.Point(0, -7);

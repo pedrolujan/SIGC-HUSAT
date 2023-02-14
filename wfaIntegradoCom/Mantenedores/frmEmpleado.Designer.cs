@@ -1080,6 +1080,7 @@
             this.SiticoneEncabezado.ShadowDecoration.Parent = this.SiticoneEncabezado;
             this.SiticoneEncabezado.Size = new System.Drawing.Size(838, 33);
             this.SiticoneEncabezado.TabIndex = 0;
+            
             // 
             // siticonePictureBox1
             // 

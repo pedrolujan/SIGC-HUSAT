@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<DiscoveryClientResultsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService.xsd2.xsd" filename="billService.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService?ns2.wsdl" filename="billService.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService?ns1.wsdl" filename="billService0.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService?wsdl" filename="billService1.wsdl" />
-  </Results>
-</DiscoveryClientResultsFile>
