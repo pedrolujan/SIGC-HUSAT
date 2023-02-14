@@ -944,9 +944,31 @@ namespace wfaIntegradoCom.Procesos
             tabCuotas.SelectedIndex = 1;
         }
 
-        private void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
+        private void dgvVentas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
 
+        private void dgvVentas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex != -1 && e.ColumnIndex != -1)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    DataGridViewRow clickedRow = (sender as DataGridView).Rows[e.RowIndex];
+                    if (!clickedRow.Selected)
+                    {
+                        dgvVentas.CurrentCell = clickedRow.Cells[e.ColumnIndex];
+
+                    }
+                    else
+                    {
+                        var mousePosition = dgvVentas.PointToClient(Cursor.Position);
+                       
+                    }
+
+                }
+            }
         }
 
         private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)

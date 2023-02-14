@@ -13,6 +13,22 @@ namespace CapaNegocio
     {
         public BLCliente() { }
 
+
+        public DataTable blBuscarBajaServicios(Int32 numPagina, String nplaca, Int32 estadoServ, Int32 tipoCon)
+        {
+
+            DACliente objCliente = new DACliente();
+            try
+            {
+                return objCliente.daBuscarBajaServicios(numPagina, nplaca, estadoServ, tipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
         public Boolean blGuardarServicios( Int32 idServ,String nomServ, DateTime FechaServ,Double precioServ,String descServ,Boolean estadoServ,Int32 idusuario,Int32 monedaServ, Int32 tipoCon)
         {
 

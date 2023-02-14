@@ -2852,6 +2852,8 @@ namespace wfaIntegradoCom
                 }
                 dgv.Visible = true;
 
+
+               
                 dgv.Rows.Add("", "", "", "");
                 dgv.Rows.Add("TOTAL", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
                 dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -3049,7 +3051,7 @@ namespace wfaIntegradoCom
             Color colorLetraHF = new Color();
             Color colorLetraBody = new Color();
             Color colorLetraIcono = new Color();
-            FWpnCajaChicaCopias.Controls.Clear();
+            FWpnCajaChicaCopias.Controls.Clear(); //Formulario 
             Int32 pnfW = 180;
             Int32 pnfH = 100;
             Int32 borderRadius = 2;
@@ -3104,6 +3106,7 @@ namespace wfaIntegradoCom
                 //pnHead.BorderRadius = borderRadius;
 
 
+                 
                 SiticoneLabel lblH = new SiticoneLabel();
                 lblH.Name = "lblHeader" + i;
                 lblH.AutoSize = false;
@@ -3176,7 +3179,6 @@ namespace wfaIntegradoCom
 
                 lblF.ForeColor = colorLetraHF;
                 pnFooter.Controls.Add(lblF);
-
 
                 panel.Controls.Add(pnFooter);
 

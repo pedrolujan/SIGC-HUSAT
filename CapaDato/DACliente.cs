@@ -59,6 +59,43 @@ namespace CapaDato
 
             }
         }
+        public DataTable daBuscarBajaServicios(Int32 numPagina, String nplaca, Int32 estadoServ, Int32 tipoCon)
+        {
+
+            SqlParameter[] pa = new SqlParameter[4];
+            DataTable dtCliente;
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@peNumPagina", SqlDbType.Int) { Value = numPagina };
+
+                pa[1] = new SqlParameter("@peNombreServicios", SqlDbType.VarChar, 50) { Value = nplaca };
+                pa[2] = new SqlParameter("@peTipoCon", SqlDbType.Real) { Value = tipoCon };
+                pa[3] = new SqlParameter("@peEstado", SqlDbType.Int) { Value = estadoServ };
+
+                objCnx = new clsConexion("");
+                dtCliente = objCnx.EjecutarProcedimientoDT("uspBuscarServicios", pa);
+
+                return dtCliente;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarServicios", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                dtCliente = null;
+            }
+
+        }
 
         public DataTable daBuscarServicios(Int32 numPagina, String snombre, Int32 estadoServ, Int32 tipoCon)
         {
@@ -305,9 +342,14 @@ namespace CapaDato
         }
         public String daGrabarCliente(Cliente objCliente, Int16 pnTipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[26];
+            SqlParameter[] pa = new SqlParameter[34];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
+            string[] NombreRepre = objCliente.NombreRepreLegal.ToString().Split(' ');
+            objCliente.NombreRepreLegal=NombreRepre[0] + " " + NombreRepre[1];
+            objCliente.NombreRepreLegal = NombreRepre[2];
+            objCliente.NombreRepreLegal = NombreRepre[3];
+
 
             try
             {
@@ -358,20 +400,40 @@ namespace CapaDato
                 pa[20].Value = objCliente.cCorreo;
                 pa[21] = new SqlParameter("@peiTipoCon", SqlDbType.TinyInt);
                 pa[21].Value = pnTipoCon;
-
                 pa[22] = new SqlParameter("@idRepreLegal", SqlDbType.Int);
                 pa[22].Value = objCliente.idRepreLegal;
-                pa[23] = new SqlParameter("@Cargo", SqlDbType.VarChar, 50);
-                pa[23].Value = objCliente.Cargo;
-                pa[24] = new SqlParameter("@Estado", SqlDbType.Bit);
-                pa[24].Value = objCliente.Estado;
-                pa[25] = new SqlParameter("@NomCargo", SqlDbType.NVarChar, 100);
-                pa[25].Value = objCliente.NomCargo;
+                pa[23] = new SqlParameter("@tipoDocRepre", SqlDbType.Int);
+                pa[23].Value = objCliente.cTiDoRepre;
+                pa[24] = new SqlParameter("@DocRepre", SqlDbType.VarChar, 12);
+                pa[24].Value = objCliente.cDocumentoRepre;
+
+                pa[25] = new SqlParameter("@ApeMatRepre", SqlDbType.VarChar, 150);
+                pa[25].Value = NombreRepre[2];
+                pa[26] = new SqlParameter("@NomRepre", SqlDbType.VarChar, 150);
+                pa[26].Value = NombreRepre[0] + " " + NombreRepre[1];
+                
+                pa[27] = new SqlParameter("@ApePatRepre", SqlDbType.VarChar, 150);
+                pa[27].Value = NombreRepre[3];
+                
+
+
+                pa[28] = new SqlParameter("@CorreoRepre", SqlDbType.VarChar, 150);
+                pa[28].Value = objCliente.cCorreoRepre;
+                pa[29] = new SqlParameter("@telRepre", SqlDbType.VarChar, 20);
+                pa[29].Value = objCliente.cTelCelularRepre;
+                pa[30] = new SqlParameter("@Cargo", SqlDbType.VarChar, 50);
+                pa[30].Value = objCliente.Cargo;
+                pa[31] = new SqlParameter("@DireccionRepre", SqlDbType.VarChar, 150);
+                pa[31].Value = objCliente.cDireccionRepre;
+                pa[32] = new SqlParameter("@Estado", SqlDbType.Bit);
+                pa[32].Value = objCliente.Estado;
+                pa[33] = new SqlParameter("@NomCargo", SqlDbType.NVarChar, 100);
+                pa[33].Value = objCliente.NomCargo;
                 //pa[26] = new SqlParameter("@cCodTab", SqlDbType.NVarChar, 10);
                 //pa[26].Value = objCliente.cCodTab;
 
 
-
+                
 
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspGuardarCliente", pa);
