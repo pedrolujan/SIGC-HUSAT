@@ -17,6 +17,7 @@ using System.Drawing;
 using Guna.UI.WinForms;
 using System.Text.RegularExpressions;
 using Microsoft.Reporting.WinForms;
+using RJCodeAdvance.RJControls;
 
 namespace wfaIntegradoCom.Funciones
 {
@@ -531,6 +532,40 @@ namespace wfaIntegradoCom.Funciones
                 objTablaCod = null;
                 lstTablaCod = null;
             }
+
+        }
+        public static List<Cargo> fnLlenarTablaCodTipoConReturnLista(ComboBox cboCombo, String cCodTab,Boolean buscar)
+        {
+            BLCargo objTablaCod = new BLCargo();
+            clsUtil objUtil = new clsUtil();
+            List<Cargo> lstTablaCod = new List<Cargo>();
+
+            try
+            {
+                lstTablaCod = objTablaCod.blDevolverTablaCodTipoConReturnLista(cCodTab,buscar);
+                cboCombo.DataSource = null;
+                cboCombo.ValueMember = "cCodTab";
+                cboCombo.DisplayMember = "cNomTab";
+                cboCombo.DataSource = lstTablaCod;
+
+                return lstTablaCod;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FunGeneral", "fnLlenarTablaCod", ex.Message);
+                return lstTablaCod;
+            }
+            finally
+            {
+                objUtil = null;
+                objTablaCod = null;
+                lstTablaCod = null;
+            }
+
+        }
+        public static String generarCorrelativoDocumento(Int32 numero)
+        {
+            return numero.ToString().PadLeft(8, '0');
 
         }
         public static List<Cargo> fnLlenarTablaCodTipoConDT(String cCodTab,Boolean buscar)

@@ -16,6 +16,7 @@ using System.Text.RegularExpressions;
 using Siticone.UI.WinForms;
 using CapaDato;
 using wfaIntegradoCom.Consultas;
+using wfaIntegradoCom.Sunat;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -1380,7 +1381,16 @@ namespace wfaIntegradoCom.Procesos
                 Cantidad = 1,
                 Couta = cuota,
                 Importe = lstDetalleCronograma[fila].total,
-                cSimbolo = clsMoneda.cSimbolo
+                cSimbolo = clsMoneda.cSimbolo,
+
+                preciounitario = Convert.ToDecimal(lstDetalleCronograma[fila].precioUnitario),
+                ImporteRow = (Convert.ToDecimal(lstDetalleCronograma[fila].precioUnitario) * 1),
+                mtoValorVentaItem= (Convert.ToDecimal(lstDetalleCronograma[fila].precioUnitario) * 1),
+                Unidad_de_medida = "ZZ"
+
+
+
+
             }) ;
 
 
@@ -2470,6 +2480,12 @@ namespace wfaIntegradoCom.Procesos
             fnOcultarDatosParaDocumentoVenta();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Envios env = new Envios();
+            env.ObtenerQr();
+        }
+
         private void btnVerDatos_Click(object sender, EventArgs e)
         {
             
@@ -2539,8 +2555,13 @@ namespace wfaIntegradoCom.Procesos
             else if(estadoApertura==0)
             {
                 MessageBox.Show("Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+                lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
+                EmitirFactura emf = new EmitirFactura();
+                emf.EmitirFacturasContado(clsCliente, lstDetalleVenta);
 
-            }else
+            }
+            else
             {
                 MessageBox.Show("Ya  cerraste caja. Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -2647,6 +2668,9 @@ namespace wfaIntegradoCom.Procesos
             {
                 MessageBox.Show("Por favor complete todo los datos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
+            EmitirFactura emf=new EmitirFactura();
+            emf.EmitirFacturasContado(clsCliente, lstDetalleVenta);
         }
 
         private void cboComprobanteP_SelectedIndexChanged(object sender, EventArgs e)

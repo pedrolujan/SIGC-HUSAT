@@ -83,6 +83,7 @@ namespace wfaIntegradoCom.Procesos
             this.ctmPagar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.iRACONTROLDEPAGOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siticoneGroupBox4 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnValidarEstados = new Siticone.UI.WinForms.SiticoneButton();
             this.btnExportarBusqueda = new Siticone.UI.WinForms.SiticoneButton();
             this.chkIncumplimiento = new Siticone.UI.WinForms.SiticoneCheckBox();
@@ -615,6 +616,7 @@ namespace wfaIntegradoCom.Procesos
             // 
             this.siticoneGroupBox4.BorderColor = System.Drawing.Color.Gainsboro;
             this.siticoneGroupBox4.BorderRadius = 5;
+            this.siticoneGroupBox4.Controls.Add(this.button1);
             this.siticoneGroupBox4.Controls.Add(this.btnValidarEstados);
             this.siticoneGroupBox4.Controls.Add(this.btnExportarBusqueda);
             this.siticoneGroupBox4.Controls.Add(this.chkIncumplimiento);
@@ -640,6 +642,16 @@ namespace wfaIntegradoCom.Procesos
             this.siticoneGroupBox4.Text = "Buscar por";
             this.siticoneGroupBox4.TextOffset = new System.Drawing.Point(0, -7);
             this.siticoneGroupBox4.Click += new System.EventHandler(this.siticoneGroupBox4_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(595, 40);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 265;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnValidarEstados
             // 
@@ -2378,5 +2390,6 @@ namespace wfaIntegradoCom.Procesos
         private System.Windows.Forms.DataGridViewTextBoxColumn btnImprimir;
         private Siticone.UI.WinForms.SiticoneDragControl siticoneDragControl1;
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private System.Windows.Forms.Button button1;
     }
 }

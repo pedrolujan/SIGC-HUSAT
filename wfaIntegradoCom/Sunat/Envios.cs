@@ -1,9 +1,17 @@
 ﻿using CapaEntidad;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using selferviceSIGC.Model.Business;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing.Printing;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.ServiceModel;
@@ -11,17 +19,25 @@ using System.ServiceModel.Channels;
 //using System.ServiceModel;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using wfaIntegradoCom.Funciones;
-using static wfaIntegradoCom.SevicioFacturacion;
+using wfaIntegradoCom.ServicioFacturacion;
+using Document = iTextSharp.text.Document;
+using iTextSharp.text.pdf.qrcode;
+using System.Drawing.Imaging;
+using System.Drawing;
+using ZXing;
+using ZXing.Common;
+using System.Text;
 //using Xceed.Wpf.Toolkit;
 
 namespace wfaIntegradoCom.Sunat
 {
     public class Envios
     {
-        string versionUbl;
-        string versionEstruc;
+        string versionUbl="2.1";
+        string versionEstruc="2.0";
         public string Ruta_Certificado { get; set; }
         public string Password_Certificado { get; set; }
         public string Rutaxml { get; set; }
@@ -116,14 +132,14 @@ namespace wfaIntegradoCom.Sunat
             ////Agregar notas
             NoteType Nota = new NoteType();
             NoteType[] Notas = new NoteType[2];
-            Nota.Value = "Elaborado por codigo 369 pro";
+            Nota.Value = "Elaborado por HUSAT GPS";
             Notas[0] = Nota;
             Firma.Note = Notas;
             ////Ingresar la razon social de la empresa emisora
             PartyNameType partyName = new PartyNameType();
             PartyNameType[] partyNames = new PartyNameType[2];
             NameType1 RazonSocialFirma = new NameType1();
-            RazonSocialFirma.Value = Variables.gsRuc;
+            RazonSocialFirma.Value = Variables.claseEmpresa.RazonSocial;
             partyName.Name = RazonSocialFirma;
             partyNames[0] = partyName;
             partySign.PartyName = partyNames;
@@ -330,6 +346,39 @@ namespace wfaIntegradoCom.Sunat
             subtotal.TaxCategory = taxcategoryTotal;
             ////</cac:TaxSubtotal>
             subtotales.Add(subtotal);
+            #region Impuesto por bolsa
+            //foreach (DetalleVenta det in lstDetalleVentas)
+            //{
+            //    //if (det.Codigo.Contains("BBBB"))
+            //    //{
+            //        TaxSubtotalType TotalICBPER = new TaxSubtotalType();
+            //        TaxAmountType taxICBPER = new TaxAmountType();
+            //        taxICBPER.currencyID = "PEN";
+            //        taxICBPER.Value = Math.Round((det.Cantidad * det.preciounitario), 2);
+            //        TotalICBPER.TaxAmount = taxICBPER;
+            //        TaxCategoryType taxCategoria = new TaxCategoryType();
+            //        TaxSchemeType taxSchemaicb = new TaxSchemeType();
+            //        IDType idTaschema = new IDType();
+            //        idTaschema.Value = "7152";
+            //        NameType1 nombreICB = new NameType1();
+            //        nombreICB.Value = "ICBPER";
+            //        TaxTypeCodeType taxtypecodeICPER = new TaxTypeCodeType();
+            //        taxtypecodeICPER.Value = "OTH";
+
+            //        taxSchemaicb.ID = idTaschema;
+            //        taxSchemaicb.Name = nombreICB;
+            //        taxSchemaicb.TaxTypeCode = taxtypecodeICPER;
+
+            //        taxCategoria.TaxScheme = taxSchemaicb;
+
+            //        TotalICBPER.TaxCategory = taxCategoria;
+            //        subtotales.Add(TotalICBPER);
+            //        break;
+            //    //}
+
+            //}
+            #endregion
+
             TotalImptos.TaxSubtotal = subtotales.ToArray();
             TotalImptosLista.Add(TotalImptos);
             Factura.TaxTotal = TotalImptosLista.ToArray();
@@ -390,7 +439,7 @@ namespace wfaIntegradoCom.Sunat
 
                 LineExtensionAmountType ValorVenta = new LineExtensionAmountType();
                 ValorVenta.currencyID = "PEN";
-                ValorVenta.Value = Convert.ToDecimal(string.Format("{0:0.00}", detalle.Total_a_pagar / (1 + 0.18m)));
+                ValorVenta.Value = Convert.ToDecimal(string.Format("{0:0.00}", lstDetalleVentas.Sum(i=>i.preciounitario)  / (1 + 0.18m)));
                 item.LineExtensionAmount = ValorVenta;
 
                 PricingReferenceType ValorReferenUnitario = new PricingReferenceType();
@@ -414,23 +463,25 @@ namespace wfaIntegradoCom.Sunat
                 ValorReferenUnitario.AlternativeConditionPrice = TipoPrecios.ToArray();
                 item.PricingReference = ValorReferenUnitario;
 
+                Decimal dcSubtotal = detalle.mtoValorVentaItem / (1.18m);
+
                 List<TaxTotalType> Totales_Items = new List<TaxTotalType>();
                 TaxTotalType Totales_Item = new TaxTotalType();
                 TaxAmountType Total_Item = new TaxAmountType();
                 Total_Item.currencyID = "PEN";
-                Total_Item.Value = Convert.ToDecimal(string.Format("{0:0.00}", detalle.mtoValorVentaItem - (detalle.mtoValorVentaItem / (1.18m))));
+                Total_Item.Value = Convert.ToDecimal(string.Format("{0:0.00}", dcSubtotal * (0.18m)));
                 Totales_Item.TaxAmount = Total_Item;
 
                 List<TaxSubtotalType> subtotal_Items = new List<TaxSubtotalType>();
                 TaxSubtotalType subtotal_Item = new TaxSubtotalType();
                 TaxableAmountType taxsubtotal_IGVItem = new TaxableAmountType();
                 taxsubtotal_IGVItem.currencyID = "PEN";
-                taxsubtotal_IGVItem.Value = Convert.ToDecimal(string.Format("{0:0.00}", detalle.mtoValorVentaItem / 1.18m));
+                taxsubtotal_IGVItem.Value = Convert.ToDecimal(string.Format("{0:0.00}", dcSubtotal));
                 subtotal_Item.TaxableAmount = taxsubtotal_IGVItem;
 
                 TaxAmountType TotalTaxAmount_IGVItem = new TaxAmountType();
                 TotalTaxAmount_IGVItem.currencyID = "PEN";
-                TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(string.Format("{0:0.00}", detalle.mtoValorVentaItem - detalle.mtoValorVentaItem / 1.18m));
+                TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(string.Format("{0:0.00}", dcSubtotal * (0.18m)));
                 subtotal_Item.TaxAmount = TotalTaxAmount_IGVItem;
                 subtotal_Items.Add(subtotal_Item);
 
@@ -464,6 +515,51 @@ namespace wfaIntegradoCom.Sunat
                 taxscheme_IGVItem.TaxTypeCode = nombreImpto_IGVItemInter;
 
                 taxcategory_IGVItem.TaxScheme = taxscheme_IGVItem;
+
+                ////Si encuentra bolsa
+                //if (detalle.Codigo.Contains("BBBB"))
+                //{
+                //    TaxSubtotalType TotalIcb = new TaxSubtotalType();
+                //    TaxAmountType taxAmounticb = new TaxAmountType();
+                //    taxAmounticb.currencyID = "PEN";
+                //    taxAmounticb.Value = Math.Round((detalle.cantidad * detalle.preciounitario), 2);
+                //    BaseUnitMeasureType baseicb = new BaseUnitMeasureType();
+                //    baseicb.unitCode = detalle.Unidad_de_medida;
+                //    baseicb.Value = Convert.ToInt32(detalle.cantidad);
+                //    PerUnitAmountType perunicb = new PerUnitAmountType();
+                //    perunicb.currencyID = "PEN";
+                //    perunicb.Value = detalle.preciounitario;
+
+                //    TotalIcb.TaxAmount = taxAmounticb;
+                //    TotalIcb.BaseUnitMeasure = baseicb;
+
+                //    TaxCategoryType categoryicb = new TaxCategoryType();
+                //    TaxSchemeType taxicb = new TaxSchemeType();
+                //    IDType idtaxcat = new IDType();
+                //    idtaxcat.schemeID = "UN/ECE 5305";
+                //    idtaxcat.schemeName = "Codigo de tributos";
+                //    idtaxcat.schemeAgencyName = "PE:SUNAT";
+                //    idtaxcat.Value = "S";
+                //    categoryicb.ID = idtaxcat;
+                //    categoryicb.PerUnitAmount = perunicb;
+
+
+                //    IDType idicp = new IDType();
+                //    idicp.Value = "7152";
+                //    NameType1 nombreicb = new NameType1();
+                //    nombreicb.Value = "ICBPER";
+                //    TaxTypeCodeType codicb = new TaxTypeCodeType();
+                //    codicb.Value = "OTH";
+
+                //    taxicb.ID = idicp;
+                //    taxicb.Name = nombreicb;
+                //    taxicb.TaxTypeCode = codicb;
+                //    categoryicb.TaxScheme = taxicb;
+                //    TotalIcb.TaxCategory = categoryicb;
+                //    subtotal_Items.Add(TotalIcb);
+
+                //}
+
 
                 Totales_Item.TaxSubtotal = subtotal_Items.ToArray();
                 Totales_Items.Add(Totales_Item);
@@ -515,8 +611,45 @@ namespace wfaIntegradoCom.Sunat
             string rutaxml = CrearArchivoxml(Factura, Variables.claseEmpresa.Ruc, paramFactura.CodigoComprobante, paramFactura.Serie, paramFactura.Correlativo);
             FirmarXML(rutaxml, Ruta_Certificado, Password_Certificado);
             string rutaenvio = RutaEnvios + Path.GetFileName(rutaxml).Replace(".xml", ".zip");
+            //fnConvertiraPdf(rutaxml);
             ComprimirZip(rutaxml, rutaenvio);
             Enviardocumento(rutaenvio);
+        }
+
+        private void fnConvertiraPdf(String rutaxml)
+        {
+            // Path to the XML file
+            string xmlPath = rutaxml;
+
+            // Path to the output PDF file
+            string pdfPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\factura.pdf";
+
+            // Read the XML file
+            string xmlContent = File.ReadAllText(xmlPath);
+
+            // Create a new PDF document
+            Document pdfDocument = new Document(PageSize.A4);
+
+            // Set the margins
+            pdfDocument.SetMargins(36, 36, 36, 36);
+
+            // Create a new PDF writer
+            PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDocument, new FileStream(pdfPath, FileMode.Create));
+
+            // Open the PDF document
+            pdfDocument.Open();
+
+            // Parse the XML content to HTML
+            var parsedHtmlElements = HTMLWorker.ParseToList(new StringReader(xmlContent), null);
+
+            // Add the parsed HTML elements to the PDF document
+            foreach (var htmlElement in parsedHtmlElements)
+            {
+                pdfDocument.Add(htmlElement);
+            }
+
+            // Close the PDF document
+            pdfDocument.Close();
         }
         private string CrearArchivoxml(InvoiceType Factura, string RUCEmisor, string CodigoTipoComprobante, string serie, string correlativo)
         {
@@ -533,6 +666,33 @@ namespace wfaIntegradoCom.Sunat
                 crearxml.Serialize(escribir, Factura);
                 return rutaxml;
             }
+        }
+
+        private void fnFirmar(string cRutaArchivo, string cCertificado, string cClave)
+        {
+            //X509Certificate2 cert = new X509Certificate2("certificado.pfx", "password");
+            //SignedXml signedXml = new SignedXml(xmlDocument);
+            //Reference reference = new Reference();
+            //reference.Uri = "";
+            //XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
+            //reference.AddTransform(env);
+            //signedXml.AddReference(reference);
+            //RSACryptoServiceProvider rsaKey = (RSACryptoServiceProvider)cert.PrivateKey;
+            //signedXml.SigningKey = rsaKey;
+            //KeyInfo keyInfo = new KeyInfo();
+            //keyInfo.AddClause(new KeyInfoX509Data(cert));
+            //signedXml.KeyInfo = keyInfo;
+
+            //signedXml.ComputeSignature();
+
+            //XmlElement xmlDigitalSignature = signedXml.GetXml();
+            //xmlDocument.DocumentElement.AppendChild(xmlDocument.ImportNode(xmlDigitalSignature, true));
+
+
+
+
+
+
         }
         public string FirmarXML(string cRutaArchivo, string cCertificado, string cClave)
         {
@@ -553,94 +713,124 @@ namespace wfaIntegradoCom.Sunat
             string f_pwd = cClave;
             string xmlFile = cRutaArchivo;
 
-            X509Certificate2 MonCertificat = new X509Certificate2(f_certificat, f_pwd);
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.PreserveWhitespace = true;
-            xmlDoc.Load(xmlFile);
-            SignedXml signedXml = new SignedXml(xmlDoc);
-            signedXml.SigningKey = MonCertificat.PrivateKey;
-            KeyInfo KeyInfo = new KeyInfo();
-            Reference Reference = new Reference();
-            Reference.Uri = "";
-            Reference.AddTransform(new XmlDsigEnvelopedSignatureTransform());
-            signedXml.AddReference(Reference);
-            X509Chain X509Chain = new X509Chain();
-            X509Chain.Build(MonCertificat);
-            X509ChainElement local_element = X509Chain.ChainElements[0];
-            KeyInfoX509Data x509Data = new KeyInfoX509Data(local_element.Certificate);
-            string subjectName = local_element.Certificate.Subject;
-            x509Data.AddSubjectName(subjectName);
-            KeyInfo.AddClause(x509Data);
-            signedXml.KeyInfo = KeyInfo;
-            signedXml.ComputeSignature();
-            XmlElement signature = signedXml.GetXml();
-            signature.Prefix = "ds";
-            signedXml.ComputeSignature();
-            foreach (XmlNode node in signature.SelectNodes("descendant-or-self::*[namespace-uri()='http://www.w3.org/2000/09/xmldsig#']"))
+            try
             {
+                X509Certificate2 MonCertificat = new X509Certificate2(f_certificat, f_pwd);
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.PreserveWhitespace = true;
+                xmlDoc.Load(xmlFile);
 
-                if (node.LocalName == "Signature")
+                SignedXml signedXml = new SignedXml(xmlDoc);
+                signedXml.SigningKey = MonCertificat.PrivateKey;
+                signedXml.SignedInfo.SignatureMethod = "http://www.w3.org/2000/09/xmldsig#rsa-sha1";
+
+                KeyInfo KeyInfo = new KeyInfo();
+                Reference Reference = new Reference();
+                Reference.Uri = "";
+                Reference.AddTransform(new XmlDsigEnvelopedSignatureTransform());
+                signedXml.AddReference(Reference);
+                X509Chain X509Chain = new X509Chain();
+                X509Chain.Build(MonCertificat);
+                X509ChainElement local_element = X509Chain.ChainElements[0];
+                KeyInfoX509Data x509Data = new KeyInfoX509Data(local_element.Certificate);
+                string subjectName = local_element.Certificate.Subject;
+                x509Data.AddSubjectName(subjectName);
+                KeyInfo.AddClause(x509Data);
+                signedXml.KeyInfo = KeyInfo;
+
+                signedXml.ComputeSignature();
+
+                XmlElement signature = signedXml.GetXml();
+                signature.Prefix = "ds";
+
+                signedXml.ComputeSignature();
+                foreach (XmlNode node in signature.SelectNodes("descendant-or-self::*[namespace-uri()='http://www.w3.org/2000/09/xmldsig#']"))
                 {
-                    XmlAttribute newAttribute = xmlDoc.CreateAttribute("Id");
-                    newAttribute.Value = "SignSUNAT";
-                    node.Attributes.Append(newAttribute);
+
+                    if (node.LocalName == "Signature")
+                    {
+                        XmlAttribute newAttribute = xmlDoc.CreateAttribute("Id");
+                        newAttribute.Value = "SignSUNAT";
+                        node.Attributes.Append(newAttribute);
+                    }
                 }
-            }
-            XmlNamespaceManager nsMgr;
-            nsMgr = new XmlNamespaceManager(xmlDoc.NameTable);
-            nsMgr.AddNamespace("sac", "urn:sunat:names:specification:ubl:peru:schema:xsd:SunatAggregateComponents-1");
-            nsMgr.AddNamespace("ccts", "urn:un:unece:uncefact:documentation:2");
-            nsMgr.AddNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+                XmlNamespaceManager nsMgr;
+                nsMgr = new XmlNamespaceManager(xmlDoc.NameTable);
+                nsMgr.AddNamespace("sac", "urn:sunat:names:specification:ubl:peru:schema:xsd:SunatAggregateComponents-1");
+                nsMgr.AddNamespace("ccts", "urn:un:unece:uncefact:documentation:2");
+                nsMgr.AddNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
 
-            switch (local_typoDocumento)
-            {
-                case "01":
-                case "03" // factura y boleta
-               :
-                    {
-                        nsMgr.AddNamespace("tns", "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2");
-                        l_xpath = "/tns:Invoice/ext:UBLExtensions/ext:UBLExtension[1]/ext:ExtensionContent";
-                        break;
-                    }
+                switch (local_typoDocumento)
+                {
+                    case "01":
+                    case "03" // factura y boleta
+                   :
+                        {
+                            nsMgr.AddNamespace("tns", "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2");
+                            l_xpath = "/tns:Invoice/ext:UBLExtensions/ext:UBLExtension[1]/ext:ExtensionContent";
+                            break;
+                        }
 
-                case "07" // nota de credito
-         :
-                    {
-                        nsMgr.AddNamespace("tns", "urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2");
-                        l_xpath = "/tns:CreditNote/ext:UBLExtensions/ext:UBLExtension[1]/ext:ExtensionContent";
-                        break;
-                    }
+                    case "07" // nota de credito
+             :
+                        {
+                            nsMgr.AddNamespace("tns", "urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2");
+                            l_xpath = "/tns:CreditNote/ext:UBLExtensions/ext:UBLExtension[1]/ext:ExtensionContent";
+                            break;
+                        }
 
-                case "08" // nota de debito
+                    case "08" // nota de debito
+                        :
+                        {
+                            nsMgr.AddNamespace("tns", "urn:oasis:names:specification:ubl:schema:xsd:DebitNote-2");
+                            l_xpath = "/tns:DebitNote/ext:UBLExtensions/ext:UBLExtension[1]/ext:ExtensionContent";
+                            break;
+                        }
+                    case "RA" // Comunicacion de baja
+                   :
+                        {
+                            nsMgr.AddNamespace("tns", "urn:sunat:names:specification:ubl:peru:schema:xsd:VoidedDocuments-1");
+                            l_xpath = "/tns:VoidedDocuments/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent";
+                            break;
+                        }
+                    case "RC" // Resumen diario
                     :
-                    {
-                        nsMgr.AddNamespace("tns", "urn:oasis:names:specification:ubl:schema:xsd:DebitNote-2");
-                        l_xpath = "/tns:DebitNote/ext:UBLExtensions/ext:UBLExtension[1]/ext:ExtensionContent";
-                        break;
-                    }
+                        {
+                            nsMgr.AddNamespace("tns", "urn:sunat:names:specification:ubl:peru:schema:xsd:SummaryDocuments-1");
+                            l_xpath = "/tns:SummaryDocuments/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent";
 
+                            break;
+                        }
 
+                }
+                nsMgr.AddNamespace("cac", "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2");
+                nsMgr.AddNamespace("udt", "urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2");
+                nsMgr.AddNamespace("ext", "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2");
+                nsMgr.AddNamespace("qdt", "urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2");
+                nsMgr.AddNamespace("cbc", "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2");
+                nsMgr.AddNamespace("ds", "http://www.w3.org/2000/09/xmldsig#");
+                xmlDoc.SelectSingleNode(l_xpath, nsMgr).AppendChild(xmlDoc.ImportNode(signature, true));
+                xmlDoc.Save(xmlFile);
+                XmlNodeList nodeList = xmlDoc.GetElementsByTagName("ds:Signature");
+                if (nodeList.Count != 1)
+                {
+                    MessageBox.Show("Problemas con la firma");
+                    cRpta = "Problemas con la firma";
+                }
+                signedXml.LoadXml((XmlElement)nodeList[0]);
+                if (signedXml.CheckSignature() == false)
+                    cRpta = "No se logro firmar el comprobante";
+                else
+                    cRpta = "OK";
+                return cRpta;
             }
-            nsMgr.AddNamespace("cac", "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2");
-            nsMgr.AddNamespace("udt", "urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2");
-            nsMgr.AddNamespace("ext", "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2");
-            nsMgr.AddNamespace("qdt", "urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2");
-            nsMgr.AddNamespace("cbc", "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2");
-            nsMgr.AddNamespace("ds", "http://www.w3.org/2000/09/xmldsig#");
-            xmlDoc.SelectSingleNode(l_xpath, nsMgr).AppendChild(xmlDoc.ImportNode(signature, true));
-            xmlDoc.Save(xmlFile);
-            XmlNodeList nodeList = xmlDoc.GetElementsByTagName("ds:Signature");
-            if (nodeList.Count != 1)
+            catch (Exception ex)
             {
-                MessageBox.Show("Problemas con la firma");
-                cRpta = "Problemas con la firma";
+
+                throw;
             }
-            signedXml.LoadXml((XmlElement)nodeList[0]);
-            if (signedXml.CheckSignature() == false)
-                cRpta = "No se logro firmar el comprobante";
-            else
-                cRpta = "OK";
-            return cRpta;
+
+            
         }
         public string ComprimirZip(string nombrearchivo, string rutadestino)
         {
@@ -673,7 +863,9 @@ namespace wfaIntegradoCom.Sunat
                 ServicePointManager.UseNagleAlgorithm = true;
                 ServicePointManager.Expect100Continue = false;
                 ServicePointManager.CheckCertificateRevocationList = true;
-                servicio.ClientCredentials.UserName.UserName = "20606879904MODDATOS";
+                servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
+                //servicio.ClientCredentials.UserName.UserName = "20602404863facturas";
+                //servicio.ClientCredentials.UserName.Password = "Mihusat1";
                 servicio.ClientCredentials.UserName.Password = "MODDATOS";
 
                 var elements = servicio.Endpoint.Binding.CreateBindingElements();
@@ -682,6 +874,7 @@ namespace wfaIntegradoCom.Sunat
                 servicio.Open();
                 filezip = Path.GetFileName(filezip);
                 byte[] returByte = servicio.sendBill(filezip, bitArray, "0");
+
                 servicio.Close();
                 filezip = Path.GetFileName(filezip);
                 FileStream fs = new FileStream(RutaCDR + "R-" + filezip, FileMode.Create);
@@ -694,9 +887,49 @@ namespace wfaIntegradoCom.Sunat
             }
             catch (FaultException ex)
             {
-                //MessageBox.Show(ex.Code.Name);
+                MessageBox.Show(ex.Code.Name);
             }
 
+        }
+
+        public void  ObtenerQr()
+        {
+            String Ruc = "20602404863";
+            String TipoFactura = "01";
+            String Serie = "E001";
+            String Correlativo = "517";
+            String igv = "57.97";
+            String importTotal = "380.00";
+            String fecha = "2023-02-09";
+            String codTipoDocResceptor = "6";
+            String RucReceptor = "20600039491";
+            String firmaDigital = "8YTJ4EeWCLkgfsNqD4eS+QRZoOM=";
+
+            string digestValue = Ruc+"|"+TipoFactura + "|"+Serie + "|"+Correlativo + "|"+igv + "|"+importTotal + "|"+fecha+"|"+ codTipoDocResceptor + "|"+RucReceptor + "|"+ firmaDigital+"|";
+            //20508565934 | 01 | F959 | 00004735 | 5.32 | 34.90 | 2019 - 07 - 06 | 6 | 20602404863 | VTdFMperZARjUGmcsne5Tlmx0NI =|
+            Bitmap bitmap = GenerarQR(digestValue);
+            bitmap.Save("QRCode2ok_Hoy.png");
+        }
+        private static string GetPrivateKey()
+        {
+            using (var rsa = new RSACryptoServiceProvider(2048))
+            {
+                rsa.FromXmlString(@"<RSAKeyValue><Modulus>y0...</Modulus><Exponent>AQAB</Exponent><P>/...</P><Q>z...</Q><DP>x...</DP><DQ>w...</DQ><InverseQ>v...</InverseQ><D>u...</D></RSAKeyValue>");
+                return rsa.ToXmlString(true);
+            }
+        }
+        static Bitmap GenerarQR(string texto)
+        {
+            var writer = new BarcodeWriter
+            {
+                Format = BarcodeFormat.QR_CODE,
+                Options = new EncodingOptions
+                {
+                    Height = 300,
+                    Width = 300
+                }
+            };
+            return writer.Write(texto);
         }
     }
 }

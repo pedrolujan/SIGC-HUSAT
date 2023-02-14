@@ -22,6 +22,10 @@ namespace CapaEntidad
         public String cValor { get { return _cValor; } set { _cValor = value; } }
         String _nValor1 = "";
         public String nValor1 { get { return _nValor1; } set { _nValor1 = value; } }
+        String _nValor2 = "";
+        public String nValor2 { get { return _nValor2; } set { _nValor2 = value; } }
+        String _SerieDoc = "";
+        public String SerieDoc { get { return _SerieDoc; } set { _SerieDoc = value; } }
 
         Boolean _bEstado = false    ;
         public Boolean bEstado { get { return _bEstado; } set { _bEstado = value; } }
@@ -45,6 +49,15 @@ namespace CapaEntidad
             cCodTab = pcCodTab;
             cNomTab = pcNomTab;
             cValor = pcValor;
+        }
+        public Cargo(String pcCodTab, String pcNomTab, String pcValor,String pnv1,String pnv2,String serie)
+        {
+            cCodTab = pcCodTab;
+            cNomTab = pcNomTab;
+            cValor = pcValor;
+            nValor1 = pnv1;
+            nValor2 = pnv2;
+            SerieDoc = serie;
         }
         public Cargo(String pcCodTab, String pcNomTab, String pcValor,String nv1)
         {

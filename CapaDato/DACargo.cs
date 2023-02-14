@@ -199,6 +199,65 @@ namespace CapaDato
             }
 
         }
+        public List<Cargo> daDevolverTablaCodTipoConReturnLista(String cCodTab,Boolean buscar)
+        {
+
+
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtUsuario = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@pecCodTab", SqlDbType.NVarChar, 8);
+                pa[0].Value = cCodTab;
+
+
+                objCnx = new clsConexion("");
+                dtUsuario = objCnx.EjecutarProcedimientoDT("uspListarTablaCod", pa);
+
+                List<Cargo> lstCargo = new List<Cargo>();
+                lstCargo.Add(new Cargo(
+                        Convert.ToString("0"),
+                        Convert.ToString(buscar ? "TODOS" : "Selecc. opcion"),
+                        Convert.ToString("0"),
+                        Convert.ToString("0"),
+                        Convert.ToString("0"),
+                        Convert.ToString("0")
+                        
+                        ));
+
+                foreach (DataRow drMenu in dtUsuario.Rows)
+                {
+                    lstCargo.Add(new Cargo(
+                        Convert.ToString(drMenu["cCodTab"]),
+                        Convert.ToString(drMenu["cNomTab"]),
+                        Convert.ToString(drMenu["cValor"]),
+                        Convert.ToString(drMenu["nValor1"]),
+                        Convert.ToString(drMenu["nValor2"]),
+                        Convert.ToString(drMenu["SerieDoc"])
+                        
+                        ));
+                }
+
+                return lstCargo;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACargo.cs", "daDevolverTablaCod", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
         public List<Cargo> daDevolverTablaCodTipoConDT(String cCodTab,Boolean buscar)
         {
 

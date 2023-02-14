@@ -26,6 +26,19 @@ namespace CapaNegocio
             }
 
         }
+        public DataTable blBuscarDocumentoPorEmitir(String pcBuscar, Int32 pnTipoCon)
+        {
+            DADocumentoVenta objDocVenta = new DADocumentoVenta();
+            try
+            {
+                return objDocVenta.daBuscarDocumentoPorEmitir(pcBuscar, pnTipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
 
         public List<DocumentoVenta> blListarDocVenta(Int32 pidVenta)
         {

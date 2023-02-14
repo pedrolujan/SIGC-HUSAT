@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Windows.Forms;
+using wfaIntegradoCom.Funciones;
 
 namespace wfaIntegradoCom.Sunat
 {
@@ -16,11 +17,17 @@ namespace wfaIntegradoCom.Sunat
     {
         public int EmitirFacturasContado(Cliente clsCliente,List<DetalleVenta> detalleventa)
         {
+            clsCliente.cCliente = clsCliente.cNombre + " " + clsCliente.cApePat + " " + clsCliente.cApePat;
             ParametrosFactura parametros = new ParametrosFactura();
             parametros.Monto_total = detalleventa.Sum(i=>i.ImporteRow);
             parametros.TotSubtotal = detalleventa.Sum(i => i.ImporteRow) / 1.18m;
             parametros.TotalIgv = (parametros.Monto_total- parametros.TotSubtotal);
             parametros.Porcentaje_IGV = 18;
+            parametros.Serie = "FA01";
+            parametros.Correlativo = "00000132";
+            parametros.fecha_venta = Variables.gdFechaSis;
+            parametros.Fecha_de_pago = Variables.gdFechaSis;
+            parametros.CodigoComprobante = "01";
             //Agregamos el detalle de la venta
             //List<LdetalleVenta> detalles = new List<LdetalleVenta>();
             //foreach (var item in detalleventa)
@@ -42,8 +49,11 @@ namespace wfaIntegradoCom.Sunat
 
             var envios = new Envios();
             envios.Rutaxml = Path.GetDirectoryName(Application.ExecutablePath) + @"\XML\";
-            envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\LLAMA-PE-CERTIFICADO-DEMO-20606879904.pfx";
-            envios.Password_Certificado = "123456";
+            //envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\LLAMA-PE-CERTIFICADO-DEMO-20602404863.pfx";
+            //envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\LLAMA-PE-CERTIFICADO-DEMO-20606879904.pfx";
+            envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\certificado.pfx";
+            //envios.Password_Certificado = "123456";
+            envios.Password_Certificado = "Husatsunat1";
             envios.RutaEnvios = Path.GetDirectoryName(Application.ExecutablePath) + @"\ENVIOS\";
             envios.RutaCDR = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
             try
