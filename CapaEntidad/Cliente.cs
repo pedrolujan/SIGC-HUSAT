@@ -54,6 +54,8 @@ namespace CapaEntidad
         public Int32 idClienteRepre { get; set; }
         
         public String NombreRepreLegal { get; set; }
+        public String apePatRepreLegal { get; set; }
+        public String apeMatRepreLegal { get; set; }
         public Int32 cTiDoRepre { get; set; }
         public String cDocumentoRepre { get; set; }
         public String cCorreoRepre { get; set; }

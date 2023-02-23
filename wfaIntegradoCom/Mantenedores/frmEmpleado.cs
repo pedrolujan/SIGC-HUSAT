@@ -688,7 +688,10 @@ namespace wfaIntegradoCom.Mantenedores
             fnBuscarEmpleado(0, 0);
         }
 
-       
+        private void siticonePanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 
