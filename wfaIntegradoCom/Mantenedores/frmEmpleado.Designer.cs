@@ -913,6 +913,7 @@
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
             this.siticonePanel1.Size = new System.Drawing.Size(838, 661);
             this.siticonePanel1.TabIndex = 24;
+            this.siticonePanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.siticonePanel1_Paint);
             // 
             // panel1
             // 
@@ -1080,7 +1081,6 @@
             this.SiticoneEncabezado.ShadowDecoration.Parent = this.SiticoneEncabezado;
             this.SiticoneEncabezado.Size = new System.Drawing.Size(838, 33);
             this.SiticoneEncabezado.TabIndex = 0;
-            
             // 
             // siticonePictureBox1
             // 
