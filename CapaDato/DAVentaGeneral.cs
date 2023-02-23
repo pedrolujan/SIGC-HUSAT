@@ -16,10 +16,10 @@ namespace CapaDato
     public class DAVentaGeneral
     {
         private clsUtil objUtil = null;
-        public Boolean daGenerarVentaGeneral(VentaGeneral clsVentaGeneral, List<xmlDocumentoVentaGeneral> xmlDocVenta, Int16 tipoCon)
+        public Boolean daGenerarVentaGeneral(VentaGeneral clsVentaGeneral, List<xmlDocumentoVentaGeneral> xmlDocVenta, byte[] btImage, Int16 tipoCon)
         {
 
-            SqlParameter[] pa = new SqlParameter[31];
+            SqlParameter[] pa = new SqlParameter[33];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             List<VentaGeneral> lstVentaGeneral = new List<VentaGeneral>();
@@ -68,6 +68,8 @@ namespace CapaDato
                 pa[28] = new SqlParameter("@FinalizacionContrato", SqlDbType.Int) { Value = clsVentaGeneral.estFinalizacionContrato };
                 pa[29] = new SqlParameter("@dFechaPago", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaPago };
                 pa[30] = new SqlParameter("@dFechaVenta", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta };
+                pa[31] = new SqlParameter("@ImgQR", SqlDbType.Image) { Value =  btImage };
+                pa[32] = new SqlParameter("@CorrelativoDocumento", SqlDbType.VarChar,9) { Value = clsVentaGeneral.codigoCorrelativo };
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
 

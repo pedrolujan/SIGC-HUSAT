@@ -178,6 +178,7 @@ namespace wfaIntegradoCom.Procesos
             this.msActializarPago = new System.Windows.Forms.ToolStripMenuItem();
             this.siticoneDragControl1 = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.button2 = new System.Windows.Forms.Button();
             this.PanelTop.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -951,6 +952,7 @@ namespace wfaIntegradoCom.Procesos
             // tbCronogramas
             // 
             this.tbCronogramas.AutoScroll = true;
+            this.tbCronogramas.Controls.Add(this.button2);
             this.tbCronogramas.Controls.Add(this.siticoneLabel1);
             this.tbCronogramas.Controls.Add(this.pnDocumentos);
             this.tbCronogramas.Controls.Add(this.siticoneButton4);
@@ -2215,6 +2217,16 @@ namespace wfaIntegradoCom.Procesos
             this.siticonePanel1.Size = new System.Drawing.Size(1099, 715);
             this.siticonePanel1.TabIndex = 261;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(201, 396);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 289;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmControlPagoVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2391,5 +2403,6 @@ namespace wfaIntegradoCom.Procesos
         private Siticone.UI.WinForms.SiticoneDragControl siticoneDragControl1;
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

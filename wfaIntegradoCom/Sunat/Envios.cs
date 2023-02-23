@@ -30,6 +30,7 @@ using System.Drawing;
 using ZXing;
 using ZXing.Common;
 using System.Text;
+using QRCoder;
 //using Xceed.Wpf.Toolkit;
 
 namespace wfaIntegradoCom.Sunat
@@ -439,7 +440,7 @@ namespace wfaIntegradoCom.Sunat
 
                 LineExtensionAmountType ValorVenta = new LineExtensionAmountType();
                 ValorVenta.currencyID = "PEN";
-                ValorVenta.Value = Convert.ToDecimal(string.Format("{0:0.00}", lstDetalleVentas.Sum(i=>i.preciounitario)  / (1 + 0.18m)));
+                ValorVenta.Value = Convert.ToDecimal(string.Format("{0:0.00}", (detalle.preciounitario - Convert.ToDecimal(detalle.TotalTipoDescuento)) /* paramFactura.Monto_total lstDetalleVentas.Sum(i=>i.preciounitario)*/  / (1 + 0.18m)));
                 item.LineExtensionAmount = ValorVenta;
 
                 PricingReferenceType ValorReferenUnitario = new PricingReferenceType();
@@ -448,7 +449,7 @@ namespace wfaIntegradoCom.Sunat
                 PriceType TipoPrecio = new PriceType();
                 PriceAmountType PrecioMonto = new PriceAmountType();
                 PrecioMonto.currencyID = "PEN";
-                PrecioMonto.Value = Convert.ToDecimal(string.Format("{0:0.00}", detalle.preciounitario));
+                PrecioMonto.Value = Convert.ToDecimal(string.Format("{0:0.00}", (detalle.preciounitario- Convert.ToDecimal(detalle.TotalTipoDescuento))));
                 TipoPrecio.PriceAmount = PrecioMonto;
 
                 PriceTypeCodeType TipoPrecioCode = new PriceTypeCodeType();
@@ -463,7 +464,7 @@ namespace wfaIntegradoCom.Sunat
                 ValorReferenUnitario.AlternativeConditionPrice = TipoPrecios.ToArray();
                 item.PricingReference = ValorReferenUnitario;
 
-                Decimal dcSubtotal = detalle.mtoValorVentaItem / (1.18m);
+                Decimal dcSubtotal = (detalle.mtoValorVentaItem - Convert.ToDecimal(detalle.TotalTipoDescuento)) / (1.18m);
 
                 List<TaxTotalType> Totales_Items = new List<TaxTotalType>();
                 TaxTotalType Totales_Item = new TaxTotalType();
@@ -596,7 +597,7 @@ namespace wfaIntegradoCom.Sunat
                 PrecioMontoTipo.currencyID = "PEN";
                 decimal porcentajeIgv = Convert.ToDecimal(paramFactura.Porcentaje_IGV / 100);
 
-                PrecioMontoTipo.Value = Convert.ToDecimal(string.Format("{0:0.00}", detalle.preciounitario / (1 + porcentajeIgv)));
+                PrecioMontoTipo.Value = Convert.ToDecimal(string.Format("{0:0.00}", (detalle.preciounitario- Convert.ToDecimal(detalle.TotalTipoDescuento)) / (1 + porcentajeIgv)));
                 PrecioProducto.PriceAmount = PrecioMontoTipo;
 
 
@@ -847,26 +848,22 @@ namespace wfaIntegradoCom.Sunat
             byte[] bitArray = File.ReadAllBytes(filepath);
             try
             {
-                //WSHttpBinding binding = new WSHttpBinding();
-                //ChannelFactory<ICalculator> factory = new
-                //                    ChannelFactory<ICalculator>(binding, address);
-                //ICalculator channel = factory.CreateChannel();
-
                 BasicHttpBinding binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
                 binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
                 binding.Security.Transport.ProxyCredentialType = HttpProxyCredentialType.None;
                 binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
                 binding.Security.Message.AlgorithmSuite = System.ServiceModel.Security.SecurityAlgorithmSuite.Default;
 
-                EndpointAddress remoteAddress = new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
+                //EndpointAddress remoteAddress = new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
+                EndpointAddress remoteAddress = new EndpointAddress("https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService");
                 billServiceClient servicio = new billServiceClient(binding, remoteAddress);
                 ServicePointManager.UseNagleAlgorithm = true;
                 ServicePointManager.Expect100Continue = false;
                 ServicePointManager.CheckCertificateRevocationList = true;
-                servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
-                //servicio.ClientCredentials.UserName.UserName = "20602404863facturas";
-                //servicio.ClientCredentials.UserName.Password = "Mihusat1";
-                servicio.ClientCredentials.UserName.Password = "MODDATOS";
+                //servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
+                servicio.ClientCredentials.UserName.UserName = "20602404863FACTURAS";
+                servicio.ClientCredentials.UserName.Password = "Mihusat1";
+                //servicio.ClientCredentials.UserName.Password = "MODDATOS";
 
                 var elements = servicio.Endpoint.Binding.CreateBindingElements();
                 elements.Find<SecurityBindingElement>().EnableUnsecuredResponse = true;
@@ -880,9 +877,9 @@ namespace wfaIntegradoCom.Sunat
                 FileStream fs = new FileStream(RutaCDR + "R-" + filezip, FileMode.Create);
                 fs.Write(returByte, 0, returByte.Length);
                 fs.Close();
-                MessageBox.Show("Archivo generado con exito");
+                //MessageBox.Show("Archivo generado con exito");
 
-                var respuesta = new EmitirFactura();
+                var respuesta = new EmitirFactura(); 
                 respuesta.ObtenerRespuestaZIPSunat(RutaCDR + "R-" + filezip);
             }
             catch (FaultException ex)
@@ -892,44 +889,713 @@ namespace wfaIntegradoCom.Sunat
 
         }
 
-        public void  ObtenerQr()
+        #region Nota de credito
+        public void GenerarNotaCredito(ParametrosFactura paramFactura, Cliente clsCliente, List<DetalleVenta> lstDetalleVentas)
         {
-            String Ruc = "20602404863";
-            String TipoFactura = "01";
-            String Serie = "E001";
-            String Correlativo = "517";
-            String igv = "57.97";
-            String importTotal = "380.00";
-            String fecha = "2023-02-09";
-            String codTipoDocResceptor = "6";
-            String RucReceptor = "20600039491";
-            String firmaDigital = "8YTJ4EeWCLkgfsNqD4eS+QRZoOM=";
 
-            string digestValue = Ruc+"|"+TipoFactura + "|"+Serie + "|"+Correlativo + "|"+igv + "|"+importTotal + "|"+fecha+"|"+ codTipoDocResceptor + "|"+RucReceptor + "|"+ firmaDigital+"|";
-            //20508565934 | 01 | F959 | 00004735 | 5.32 | 34.90 | 2019 - 07 - 06 | 6 | 20602404863 | VTdFMperZARjUGmcsne5Tlmx0NI =|
-            Bitmap bitmap = GenerarQR(digestValue);
-            bitmap.Save("QRCode2ok_Hoy.png");
-        }
-        private static string GetPrivateKey()
-        {
-            using (var rsa = new RSACryptoServiceProvider(2048))
+            //Cabecera del xml
+            CreditNoteType Factura = new CreditNoteType();
+            Factura.Cac = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2";
+            Factura.Cbc = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2";
+            Factura.Ccts = "urn:un:unece:uncefact:documentation:2";
+            Factura.Ds = "http://www.w3.org/2000/09/xmldsig#";
+            Factura.Ext = "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2";
+            Factura.Qdt = "urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2";
+            Factura.Udt = "urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2";
+            UBLExtensionType[] ublextensiones = new UBLExtensionType[11];
+            UBLExtensionType ublExtension = new UBLExtensionType();
+            ublextensiones[0] = ublExtension;
+            Factura.UBLExtensions = ublextensiones;
+
+            //Otorgamos la version UBL y la version del esquema del documento
+            Factura.UBLVersionID = new UBLVersionIDType();
+            Factura.UBLVersionID.Value = versionUbl;
+            Factura.CustomizationID = new CustomizationIDType();
+            Factura.CustomizationID.Value = versionEstruc;
+
+            //Ingresar serie y numero de comprobante
+            Factura.ID = new IDType();
+            Factura.ID.Value = paramFactura.Serie + "-" + paramFactura.Correlativo;
+            //Fecha de emision
+            Factura.IssueDate = new IssueDateType();
+            string fechaemision = Convert.ToDateTime(paramFactura.fecha_venta).ToString("yyyy-MM-dd");
+            Factura.IssueDate.Value = Convert.ToDateTime(fechaemision);
+            Factura.IssueTime = new IssueTimeType();
+            string hora = Convert.ToDateTime(paramFactura.fecha_venta).ToString("HH:mm:ss");
+            Factura.IssueTime.Value = Convert.ToDateTime(hora);
+
+
+            //Tipo de moneda
+            DocumentCurrencyCodeType moneda = new DocumentCurrencyCodeType();
+            moneda.listID = "ISO 4217 Alpha";
+            moneda.listName = "Currency";
+            moneda.listAgencyName = "United Nations Economic Commission for Europe";
+            moneda.Value = "PEN";
+            Factura.DocumentCurrencyCode = moneda;
+
+
+            #region Datos Exclusivos para nota de credito
+            ResponseType DocumentoRel = new ResponseType();
+            ResponseType[] DocumentoRels = new ResponseType[2];
+            ReferenceIDType NumeroDocRel = new ReferenceIDType();
+            NumeroDocRel.Value = paramFactura.Ref_Serie + "-" + paramFactura.Ref_Numero;
+            ResponseCodeType TipoDocRel = new ResponseCodeType();
+            TipoDocRel.Value = paramFactura.CodigoTipoNotacredito;
+            DescriptionType Motivo = new DescriptionType();
+            DescriptionType[] Motivos = new DescriptionType[2];
+            Motivos[0] = Motivo;
+            Motivo.Value = paramFactura.Ref_Motivo;
+            DocumentoRel.ReferenceID = NumeroDocRel;
+            DocumentoRel.ResponseCode = TipoDocRel;
+            DocumentoRel.Description = Motivos;
+            DocumentoRels[0] = DocumentoRel;
+            Factura.DiscrepancyResponse = DocumentoRels;
+
+            // comprobante a eliminar
+            BillingReferenceType[] referencias = new BillingReferenceType[2];
+            BillingReferenceType referencia = new BillingReferenceType();
+
+            DocumentReferenceType documento = new DocumentReferenceType();
+            IDType docRela = new IDType();
+            docRela.Value = paramFactura.Ref_Serie + "-" + paramFactura.Ref_Numero;
+            DocumentTypeCodeType TipoDocumentoRel = new DocumentTypeCodeType();
+            TipoDocumentoRel.Value = paramFactura.Ref_TipoComprobante;
+            documento.DocumentTypeCode = TipoDocumentoRel;
+            documento.ID = docRela;
+            referencia.InvoiceDocumentReference = documento;
+            referencias[0] = referencia;
+            Factura.BillingReference = referencias;
+
+            #endregion
+
+
+            ////Cantidad de productos en el detalle de venta
+            //LineCountNumericType numeroProductos = new LineCountNumericType();
+            //numeroProductos.Value = paramFactura.contadorProductos;
+
+            #region nuevo
+            //Ingresar datos de la empresa emisora
+            SignatureType Firma = new SignatureType();
+            SignatureType[] Firmas = new SignatureType[2];
+
+            PartyType partySign = new PartyType();
+            ////Agregar el ruc Empresa emisora
+            PartyIdentificationType partyIdentificacion = new PartyIdentificationType();
+            PartyIdentificationType[] partyIdentificacions = new PartyIdentificationType[2];
+            IDType idFirma = new IDType();
+            idFirma.Value = Variables.claseEmpresa.Ruc;
+            Firma.ID = idFirma;
+
+            partyIdentificacion.ID = idFirma;
+            partyIdentificacions[0] = partyIdentificacion;
+            partySign.PartyIdentification = partyIdentificacions;
+            Firma.SignatoryParty = partySign;
+            //////Agregar notas
+            //NoteType Nota = new NoteType();
+            //NoteType[] Notas = new NoteType[2];
+            //Nota.Value = "Elaborado por HUSAT GPS";
+            //Notas[0] = Nota;
+            //Firma.Note = Notas;
+            //////Ingresar la razon social de la empresa emisora
+            //PartyNameType partyName = new PartyNameType();
+            //PartyNameType[] partyNames = new PartyNameType[2];
+            //NameType1 RazonSocialFirma = new NameType1();
+            //RazonSocialFirma.Value = Variables.claseEmpresa.RazonSocial;
+            //partyName.Name = RazonSocialFirma;
+            //partyNames[0] = partyName;
+            //partySign.PartyName = partyNames;
+
+            //AttachmentType attachType = new AttachmentType();
+            //ExternalReferenceType externaReferencia = new ExternalReferenceType();
+            //URIType uri = new URIType();
+            //uri.Value = Variables.claseEmpresa.Ruc;
+            //externaReferencia.URI = uri;
+            //Firma.DigitalSignatureAttachment = attachType;
+
+            //attachType.ExternalReference = externaReferencia;
+            //Firma.DigitalSignatureAttachment = attachType;
+
+            //Firmas[0] = Firma;
+            //Factura.Signature = Firmas;
+            //Codigo del documento de identidad de la empresa emisora
+            SupplierPartyType empresa = new SupplierPartyType();
+            PartyType party = new PartyType();
+            PartyIdentificationType partyidentificacionN = new PartyIdentificationType();
+            PartyIdentificationType[] partyidentificacionsN = new PartyIdentificationType[2];
+            IDType idEmpresa = new IDType();
+
+            idEmpresa.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
+            idEmpresa.schemeName = "Documento de Identidad";
+            idEmpresa.schemeID = "6";
+            idEmpresa.schemeAgencyName = "PE:SUNAT";
+            idEmpresa.Value = Variables.claseEmpresa.Ruc;
+
+            partyidentificacionN.ID = idEmpresa;
+            partyidentificacionsN[0] = partyidentificacionN;
+            party.PartyIdentification = partyidentificacionsN;
+            ////Razon social empresa
+            PartyNameType partyname = new PartyNameType();
+            List<PartyNameType> partynames = new List<PartyNameType>();
+            NameType1 nameEmisor = new NameType1();
+            nameEmisor.Value = Variables.claseEmpresa.RazonSocial;
+            partyname.Name = nameEmisor;
+            partynames.Add(partyname);
+            party.PartyName = partynames.ToArray();
+
+            ////Establecimientos anexos y direccion de empresa emisora
+            //List<PartyLegalEntityType> partelegals = new List<PartyLegalEntityType>();
+            //PartyLegalEntityType partelegal = new PartyLegalEntityType();
+
+            RegistrationNameType registronombre = new RegistrationNameType();
+            registronombre.Value = Variables.claseEmpresa.Ruc;
+
+            //partelegal.RegistrationName = registronombre;
+            //Direccion emisor 
+            CompanyIDType compañia = new CompanyIDType();
+            compañia.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
+            compañia.schemeAgencyName = "PE:SUNAT";
+            compañia.schemeName = "SUNAT:Identificador de Documento de Identidad";
+            compañia.schemeID = "6";
+            compañia.Value = Variables.claseEmpresa.Ruc;
+
+            AddressType direccion = new AddressType();
+            AddressTypeCodeType addrestypecode = new AddressTypeCodeType();
+            addrestypecode.listName = "Establecimientos anexos";
+            addrestypecode.listAgencyName = "PE:SUNAT";
+            addrestypecode.Value = "0000";
+
+            TaxSchemeType taxSchema = new TaxSchemeType();
+            IDType idsupplier = new IDType();
+            idsupplier.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
+            idsupplier.schemeAgencyName = "PE:SUNAT";
+            idsupplier.schemeName = "SUNAT:Identificador de Documento de Identidad";
+            idsupplier.schemeID = "6";
+            idsupplier.Value = Variables.claseEmpresa.Ruc;
+            taxSchema.ID = idsupplier;
+
+
+            List<PartyLegalEntityType> partelegals = new List<PartyLegalEntityType>();
+            PartyLegalEntityType partelegal = new PartyLegalEntityType();
+            RegistrationNameType registerNamePL = new RegistrationNameType();
+            registerNamePL.Value = Variables.claseEmpresa.RazonSocial;
+            partelegal.RegistrationName = registerNamePL;
+
+            
+            AddressType direccionPL = new AddressType();
+            IDType iddireccionPL = new IDType();
+            iddireccionPL.schemeAgencyName = "PE:INEI";
+            iddireccionPL.schemeName = "Ubigeos";
+            iddireccionPL.Value = Variables.claseEmpresa.CodDepartamento + Variables.claseEmpresa.CodProvincia + Variables.claseEmpresa.CodDistrito;
+            direccionPL.ID = iddireccionPL;
+
+            AddressTypeCodeType address_TypeCodeType = new AddressTypeCodeType();
+            address_TypeCodeType.listName = "Establecimientos anexos";
+            address_TypeCodeType.listAgencyName = "PE:SUNAT";
+            address_TypeCodeType.Value = "0000";
+            direccionPL.AddressTypeCode = address_TypeCodeType;
+
+            ////Indicar direccion fiscal de la empresa emisora
+            CityNameType Departamento = new CityNameType();
+            Departamento.Value = Variables.claseEmpresa.NomDepartamento;
+            direccionPL.CityName = Departamento;
+
+            CountrySubentityType provincia = new CountrySubentityType();
+            provincia.Value = Variables.claseEmpresa.NomProvincia;
+            direccionPL.CountrySubentity = provincia;
+
+            DistrictType distrito = new DistrictType();
+            distrito.Value = Variables.claseEmpresa.NomDistrito;
+            direccionPL.District = distrito;
+            List<AddressLineType> direcciones = new List<AddressLineType>();
+            AddressLineType direccionEmisor = new AddressLineType();
+            LineType datalocal = new LineType();
+            datalocal.Value = Variables.claseEmpresa.Direccion;
+            direccionPL.AddressLine = direcciones.ToArray();
+            direccionEmisor.Line = datalocal;
+            direcciones.Add(direccionEmisor);
+            direccionPL.AddressLine = direcciones.ToArray();
+            ////Pais empresa emisora
+            CountryType pais = new CountryType();
+            IdentificationCodeType codigoPais = new IdentificationCodeType();
+
+            codigoPais.listName = "Country";
+            codigoPais.listAgencyName = "United Nations Economic Commission for Europe";
+            codigoPais.listID = "ISO 3166-1";
+            codigoPais.Value = "PE";
+            pais.IdentificationCode = codigoPais;
+
+            direccionPL.Country = pais;
+            partelegal.RegistrationAddress = direccionPL;
+
+            partelegals.Add(partelegal);
+            party.PartyLegalEntity = partelegals.ToArray();
+
+            ////Agregando sublistas
+            party.PartyName = partynames.ToArray();
+            party.PartyIdentification = partyidentificacionsN;
+            empresa.Party = party;
+            Factura.AccountingSupplierParty = empresa;
+            //xzczcz
+            ////Empresa receptora (Cliente)
+            //CustomerPartyType cliente = new CustomerPartyType();
+            //PartyType partyCliente = new PartyType();
+            //List<PartyIdentificationType> partyIdentificationClientes = new List<PartyIdentificationType>();
+            //PartyIdentificationType partyIdentificationCliente = new PartyIdentificationType();
+            //IDType idtipoCliente = new IDType();
+            //idtipoCliente.schemeID = "6";
+            //idtipoCliente.schemeName = "Documento de Identidad";
+            //idtipoCliente.schemeAgencyName = "PE:SUNAT";
+            //idtipoCliente.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
+            //idtipoCliente.Value = clsCliente.cDocumento;//EmpresaRUCcliente;
+            //partyIdentificationCliente.ID = idtipoCliente;
+            //partyIdentificationClientes.Add(partyIdentificationCliente);
+            //partyCliente.PartyIdentification = partyIdentificationClientes.ToArray();
+            //////Razon social cliente
+            //List<PartyLegalEntityType> partylegalClientes = new List<PartyLegalEntityType>();
+            //PartyLegalEntityType partylegalCliente = new PartyLegalEntityType();
+            //RegistrationNameType razonsocialcliente = new RegistrationNameType();
+            //razonsocialcliente.Value = clsCliente.cCliente;//EmpresaRazonsocialCliente;
+            //partylegalCliente.RegistrationName = razonsocialcliente;
+            //////Direccion del cliente (OPCIONAL)
+            //AddressType direccionclienteType = new AddressType();
+            //List<AddressLineType> direccionclientes = new List<AddressLineType>();
+            //AddressLineType direccioncliente = new AddressLineType();
+            //List<LineType> lineas = new List<LineType>();
+            //LineType linea = new LineType();
+            //linea.Value = clsCliente.cDireccion;//DireccionCliente;
+            //direccioncliente.Line = linea;
+            //direccionclientes.Add(direccioncliente);
+            //direccionclienteType.AddressLine = direccionclientes.ToArray();
+            //partylegalClientes.Add(partylegalCliente);
+            //partyCliente.PartyLegalEntity = partylegalClientes.ToArray();
+            //cliente.Party = partyCliente;
+            //Factura.AccountingCustomerParty = cliente;
+
+
+            TaxSchemeType taxschemeCliente = new TaxSchemeType();
+            CustomerPartyType CustomerPartyCliente = new CustomerPartyType();
+            PartyType partyCliente = new PartyType();
+            PartyIdentificationType partyIdentificion = new PartyIdentificationType();
+            List<PartyIdentificationType> partyIdentificions = new List<PartyIdentificationType>();
+            IDType idtipo = new IDType();
+            idtipo.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
+            idtipo.schemeName = "Documento de Identidad";
+            idtipo.schemeAgencyName = "PE:SUNAT";
+            idtipo.schemeID = "6";
+            idtipo.Value = clsCliente.cDocumento;
+            partyIdentificion.ID = idtipo;
+
+            partyIdentificions.Add(partyIdentificion);
+            partyCliente.PartyIdentification = partyIdentificions.ToArray();
+
+            List<PartyNameType> RazSocClientes = new List<PartyNameType>();
+            PartyNameType RazSocCliente = new PartyNameType();
+            NameType1 razSocial = new NameType1();
+            razSocial.Value = clsCliente.cCliente;
+            RazSocCliente.Name = razSocial;
+            RazSocClientes.Add(RazSocCliente);
+
+            List<PartyTaxSchemeType> partySchemas = new List<PartyTaxSchemeType>();
+            PartyTaxSchemeType partySchema = new PartyTaxSchemeType();
+            RegistrationNameType RegistroNombre = new RegistrationNameType();
+            RegistroNombre.Value = clsCliente.cCliente;
+            partySchema.RegistrationName = RegistroNombre;
+
+            CompanyIDType idcompañia = new CompanyIDType();
+            idcompañia.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
+            idcompañia.schemeAgencyName = "PE:SUNAT";
+            idcompañia.schemeName = "SUNAT:Identificador de Documento de Identidad";
+            idcompañia.schemeID = "6";
+            idcompañia.Value = clsCliente.cDocumento;
+
+            TaxSchemeType schemeType = new TaxSchemeType();
+            IDType idc = new IDType();
+            idc.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
+            idc.schemeAgencyName = "PE:SUNAT";
+            idc.schemeName = "SUNAT:Identificador de Documento de Identidad";
+            idc.schemeID = "6";
+            idc.Value = clsCliente.cDocumento;
+            schemeType.ID = idc;
+
+            idcompañia.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
+            idcompañia.schemeAgencyName = "PE:SUNAT";
+            idcompañia.schemeName = "SUNAT:Identificador de Documento de Identidad";
+            idcompañia.schemeID = "6";
+            idcompañia.Value = clsCliente.cDocumento;
+
+            List<PartyLegalEntityType> partyLegals = new List<PartyLegalEntityType>();
+            PartyLegalEntityType partyLegal = new PartyLegalEntityType();
+            RegistrationNameType Registro_Nombre = new RegistrationNameType();
+            Registro_Nombre.Value = clsCliente.cCliente;
+            partyLegal.RegistrationName = Registro_Nombre;
+
+            AddressType direccionCliente = new AddressType();
+            List<AddressLineType> dirs = new List<AddressLineType>();
+            AddressLineType dir = new AddressLineType();
+            List<LineType> lineas = new List<LineType>();
+
+            LineType linea = new LineType();
+            linea.Value = clsCliente.cDireccion;
+            dir.Line = linea;
+            dirs.Add(dir);
+            direccionCliente.AddressLine = dirs.ToArray();
+
+
+            CountryType paisC = new CountryType();
+            IdentificationCodeType codigoPaisC = new IdentificationCodeType();
+
+            codigoPaisC.Value = "PE";
+            paisC.IdentificationCode = codigoPaisC;
+
+            partyLegals.Add(partyLegal);
+
+            partySchema.CompanyID = idcompañia;
+            partySchema.TaxScheme = schemeType;
+
+            partySchemas.Add(partySchema);
+
+            partyCliente.PartyLegalEntity = partyLegals.ToArray();
+            CustomerPartyCliente.Party = partyCliente;
+
+            CustomerPartyType accoutingCustomerParty = new CustomerPartyType();
+            accoutingCustomerParty.Party = partyCliente;
+
+            Factura.AccountingCustomerParty = accoutingCustomerParty;
+
+            //Monto total de impuestos
+
+            TaxTotalType TotalImptos = new TaxTotalType();
+            TaxAmountType taxAmountImpto = new TaxAmountType();
+            taxAmountImpto.currencyID = "PEN";
+            taxAmountImpto.Value = Convert.ToDecimal(string.Format("{0:0.00}", paramFactura.TotalIgv));
+            TotalImptos.TaxAmount = taxAmountImpto;
+
+            TaxSubtotalType[] subtotales = new TaxSubtotalType[2];
+            TaxSubtotalType subtotal = new TaxSubtotalType();
+
+            TaxableAmountType taxsubtotal = new TaxableAmountType();
+            taxsubtotal.currencyID = "PEN";
+            taxsubtotal.Value = Convert.ToDecimal(string.Format("{0:0.00}", paramFactura.TotSubtotal));
+            subtotal.TaxableAmount = taxsubtotal;
+
+            TaxAmountType TotalTaxAmountTotal = new TaxAmountType();
+            TotalTaxAmountTotal.currencyID = "PEN";
+            TotalTaxAmountTotal.Value = Convert.ToDecimal(string.Format("{0:0.00}", paramFactura.TotalIgv));
+            subtotal.TaxAmount = TotalTaxAmountTotal;
+
+            TaxSubtotalType subTotalIGV = new TaxSubtotalType();
+            subTotalIGV.TaxableAmount = taxsubtotal;
+
+            subtotales[0] = subtotal;
+            TotalImptos.TaxSubtotal = subtotales;
+
+
+            //Pago de IGV
+            TaxCategoryType taxcategoryTotal = new TaxCategoryType();
+            TaxSchemeType taxScheme = new TaxSchemeType();
+            IDType idTotal = new IDType();
+            idTotal.schemeID = "UN/ECE 5305";
+            idTotal.schemeName = "Tax Category Identifier";
+            idTotal.schemeAgencyName = "United Nations Economic Commission for Europe";
+            idTotal.Value = "S";
+
+            NameType1 nametypeImpto = new NameType1();
+            nametypeImpto.Value = "IGV";
+            TaxTypeCodeType taxtypecodeImpto = new TaxTypeCodeType();
+            taxtypecodeImpto.Value = "VAT";
+
+            IDType idTot = new IDType();
+
+            idTot.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05";
+            idTot.schemeAgencyName = "PE:SUNAT";
+            idTot.schemeName = "Codigo de tributos";
+            idTot.Value = "1000";
+            taxScheme.ID = idTot;
+
+            NameType1 nametypeImptoIGV = new NameType1();
+            nametypeImptoIGV.Value = "IGV";
+            TaxTypeCodeType taxtypecodeImpuesto = new TaxTypeCodeType();
+            taxtypecodeImpuesto.Value = "VAT";
+
+            taxScheme.Name = nametypeImpto;
+            taxScheme.TaxTypeCode = taxtypecodeImpto;
+            taxcategoryTotal.TaxScheme = taxScheme;
+            subtotal.TaxCategory = taxcategoryTotal;
+
+            List<TaxSubtotalType> TaxSubtotals = new List<TaxSubtotalType>();
+            TaxSubtotals.Add(subtotal);
+            TotalImptos.TaxSubtotal = TaxSubtotals.ToArray();
+
+            List<TaxTotalType> taxTotals = new List<TaxTotalType>();
+
+            taxTotals.Add(TotalImptos);
+            Factura.TaxTotal = taxTotals.ToArray();
+
+
+
+            #endregion
+            #region <cac:LegalMonetaryTotal> TOTALES
+            MonetaryTotalType TotalValorVenta = new MonetaryTotalType();
+            LineExtensionAmountType lineExtensionAmount = new LineExtensionAmountType();
+
+            lineExtensionAmount.currencyID = "PEN";
+            lineExtensionAmount.Value = Convert.ToDecimal(string.Format("{0:0.00}", paramFactura.TotSubtotal));
+            TotalValorVenta.LineExtensionAmount = lineExtensionAmount;
+
+            TaxInclusiveAmountType taxInclusiveAmount = new TaxInclusiveAmountType();
+            taxInclusiveAmount.currencyID = "PEN";
+            taxInclusiveAmount.Value = Convert.ToDecimal(string.Format("{0:0.00}", paramFactura.Monto_total));
+            //TotalValorVenta.TaxInclusiveAmount = taxInclusiveAmount;
+
+            AllowanceTotalAmountType allowanceTotalAmount = new AllowanceTotalAmountType();
+            allowanceTotalAmount.currencyID = "PEN";
+            allowanceTotalAmount.Value = 0.00m;
+            //TotalValorVenta.AllowanceTotalAmount = allowanceTotalAmount;
+
+            ChargeTotalAmountType chargeTotalAmount = new ChargeTotalAmountType();
+            chargeTotalAmount.currencyID = "PEN";
+            chargeTotalAmount.Value = 0.00m;
+            TotalValorVenta.ChargeTotalAmount = chargeTotalAmount;
+
+            PrepaidAmountType prepaidAmount = new PrepaidAmountType();
+            prepaidAmount.currencyID = "PEN";
+            prepaidAmount.Value = 0.00m;
+            TotalValorVenta.PrepaidAmount = prepaidAmount;      
+
+            PayableAmountType payableAmount = new PayableAmountType();
+            payableAmount.currencyID = "PEN";
+            payableAmount.Value = Convert.ToDecimal(string.Format("{0:0.00}", paramFactura.Monto_total));
+
+            TotalValorVenta.LineExtensionAmount = lineExtensionAmount;
+            TotalValorVenta.TaxInclusiveAmount = taxInclusiveAmount;
+            TotalValorVenta.AllowanceTotalAmount = allowanceTotalAmount;
+            TotalValorVenta.ChargeTotalAmount = chargeTotalAmount;
+            TotalValorVenta.PrepaidAmount = prepaidAmount;
+            TotalValorVenta.PayableAmount = payableAmount;
+            Factura.LegalMonetaryTotal = TotalValorVenta;
+
+            #endregion
+            #region <cac:InvoiceLine> PRODUCTOS DE LA FACTURA
+            List<CreditNoteLineType> items = new List<CreditNoteLineType>();
+            int idtem = 1;
+            foreach (DetalleVenta detalle in lstDetalleVentas)
             {
-                rsa.FromXmlString(@"<RSAKeyValue><Modulus>y0...</Modulus><Exponent>AQAB</Exponent><P>/...</P><Q>z...</Q><DP>x...</DP><DQ>w...</DQ><InverseQ>v...</InverseQ><D>u...</D></RSAKeyValue>");
-                return rsa.ToXmlString(true);
+                CreditNoteLineType item = new CreditNoteLineType();
+                IDType numeroItem = new IDType();
+                numeroItem.Value = idtem.ToString();
+                item.ID = numeroItem;
+
+                CreditedQuantityType cantidad = new CreditedQuantityType();
+                cantidad.unitCodeListAgencyName = "United Nations Economic Commission for Europe";
+                cantidad.unitCodeListID = "UN/ECE rec 20";
+                cantidad.unitCode = detalle.Unidad_de_medida;
+                
+                cantidad.Value = detalle.Cantidad;
+                item.CreditedQuantity = cantidad;
+
+                LineExtensionAmountType ValorVenta = new LineExtensionAmountType();
+                ValorVenta.currencyID = "PEN";
+                ValorVenta.Value = Convert.ToDecimal(string.Format("{0:0.00}", lstDetalleVentas.Sum(i => i.preciounitario) / (1 + 0.18m)));
+                item.LineExtensionAmount = ValorVenta;
+
+                //Precio de venta unitario por item y código 
+                PricingReferenceType ValorReferenUnitario = new PricingReferenceType();
+
+                List<PriceType> TipoPrecios = new List<PriceType>();
+                PriceType TipoPrecio = new PriceType();
+                PriceAmountType PrecioMonto = new PriceAmountType();
+                PrecioMonto.currencyID = "PEN";
+                PrecioMonto.Value = Convert.ToDecimal(string.Format("{0:0.00}", detalle.preciounitario));
+                TipoPrecio.PriceAmount = PrecioMonto;
+
+                PriceTypeCodeType TipoPrecioCode = new PriceTypeCodeType();
+                TipoPrecioCode.listName = "Tipo de Precio";
+                TipoPrecioCode.listAgencyName = "PE:SUNAT";
+                TipoPrecioCode.listURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16";
+                TipoPrecioCode.Value = "01";
+                TipoPrecio.PriceTypeCode = TipoPrecioCode;
+
+                TipoPrecios.Add(TipoPrecio);
+
+                ValorReferenUnitario.AlternativeConditionPrice = TipoPrecios.ToArray();
+                item.PricingReference = ValorReferenUnitario;
+
+                Decimal dcSubtotal = detalle.mtoValorVentaItem / (1.18m);
+
+                List<TaxTotalType> Totales_Items = new List<TaxTotalType>();
+                TaxTotalType Totales_Item = new TaxTotalType();
+                TaxAmountType Total_Item = new TaxAmountType();
+                Total_Item.currencyID = "PEN";
+                Total_Item.Value = Convert.ToDecimal(string.Format("{0:0.00}", dcSubtotal * (0.18m)));
+                Totales_Item.TaxAmount = Total_Item;
+
+                List<TaxSubtotalType> subtotal_Items = new List<TaxSubtotalType>();
+                TaxSubtotalType subtotal_Item = new TaxSubtotalType();
+                TaxableAmountType taxsubtotal_IGVItem = new TaxableAmountType();
+                taxsubtotal_IGVItem.currencyID = "PEN";
+                taxsubtotal_IGVItem.Value = Convert.ToDecimal(string.Format("{0:0.00}", dcSubtotal));
+                subtotal_Item.TaxableAmount = taxsubtotal_IGVItem;
+
+                TaxAmountType TotalTaxAmount_IGVItem = new TaxAmountType();
+                TotalTaxAmount_IGVItem.currencyID = "PEN";
+                TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(string.Format("{0:0.00}", dcSubtotal * (0.18m)));
+                subtotal_Item.TaxAmount = TotalTaxAmount_IGVItem;
+                subtotal_Items.Add(subtotal_Item);
+
+                TaxCategoryType taxcategory_IGVItem = new TaxCategoryType();
+
+                IDType idTaxCategoria = new IDType();
+                idTaxCategoria.schemeAgencyName = "United Nations Economic Commission for Europe";
+                idTaxCategoria.schemeName = "Tax Category Identifier";
+                idTaxCategoria.schemeID = "UN/ECE 5305";
+                idTaxCategoria.Value = "S";
+
+                PercentType1 porcentaje = new PercentType1();
+                porcentaje.Value = Convert.ToDecimal(string.Format("{0:0.00}", 18));
+                taxcategory_IGVItem.Percent = porcentaje;
+                subtotal_Item.TaxCategory = taxcategory_IGVItem;
+
+                TaxExemptionReasonCodeType ReasonCode = new TaxExemptionReasonCodeType();
+                ReasonCode.listAgencyName = "PE:SUNAT";
+                ReasonCode.listName = "Afectacion del IGV";
+                ReasonCode.listURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07";
+                ReasonCode.Value = "10";
+                taxcategory_IGVItem.TaxExemptionReasonCode = ReasonCode;
+
+                TaxSchemeType taxscheme_IGVItem = new TaxSchemeType();
+                IDType id2_IGVItem = new IDType();
+                id2_IGVItem.schemeName = "Codigo de tributos";
+                id2_IGVItem.schemeAgencyName = "PE:SUNAT";
+                id2_IGVItem.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05";
+                id2_IGVItem.Value = "1000";
+                taxscheme_IGVItem.ID = id2_IGVItem;
+
+                NameType1 nombreImpto_IGVItem = new NameType1();
+                nombreImpto_IGVItem.Value = "IGV";
+                taxscheme_IGVItem.Name = nombreImpto_IGVItem;
+
+                TaxTypeCodeType nombreImpto_IGVItemInter = new TaxTypeCodeType();
+                nombreImpto_IGVItemInter.Value = "VAT";
+                taxscheme_IGVItem.TaxTypeCode = nombreImpto_IGVItemInter;
+
+                taxcategory_IGVItem.TaxScheme = taxscheme_IGVItem;
+
+                ////Si encuentra bolsa
+                //if (detalle.Codigo.Contains("BBBB"))
+                //{
+                //    TaxSubtotalType TotalIcb = new TaxSubtotalType();
+                //    TaxAmountType taxAmounticb = new TaxAmountType();
+                //    taxAmounticb.currencyID = "PEN";
+                //    taxAmounticb.Value = Math.Round((detalle.cantidad * detalle.preciounitario), 2);
+                //    BaseUnitMeasureType baseicb = new BaseUnitMeasureType();
+                //    baseicb.unitCode = detalle.Unidad_de_medida;
+                //    baseicb.Value = Convert.ToInt32(detalle.cantidad);
+                //    PerUnitAmountType perunicb = new PerUnitAmountType();
+                //    perunicb.currencyID = "PEN";
+                //    perunicb.Value = detalle.preciounitario;
+
+                //    TotalIcb.TaxAmount = taxAmounticb;
+                //    TotalIcb.BaseUnitMeasure = baseicb;
+
+                //    TaxCategoryType categoryicb = new TaxCategoryType();
+                //    TaxSchemeType taxicb = new TaxSchemeType();
+                //    IDType idtaxcat = new IDType();
+                //    idtaxcat.schemeID = "UN/ECE 5305";
+                //    idtaxcat.schemeName = "Codigo de tributos";
+                //    idtaxcat.schemeAgencyName = "PE:SUNAT";
+                //    idtaxcat.Value = "S";
+                //    categoryicb.ID = idtaxcat;
+                //    categoryicb.PerUnitAmount = perunicb;
+
+
+                //    IDType idicp = new IDType();
+                //    idicp.Value = "7152";
+                //    NameType1 nombreicb = new NameType1();
+                //    nombreicb.Value = "ICBPER";
+                //    TaxTypeCodeType codicb = new TaxTypeCodeType();
+                //    codicb.Value = "OTH";
+
+                //    taxicb.ID = idicp;
+                //    taxicb.Name = nombreicb;
+                //    taxicb.TaxTypeCode = codicb;
+                //    categoryicb.TaxScheme = taxicb;
+                //    TotalIcb.TaxCategory = categoryicb;
+                //    subtotal_Items.Add(TotalIcb);
+
+                //}
+
+
+                Totales_Item.TaxSubtotal = subtotal_Items.ToArray();
+                Totales_Items.Add(Totales_Item);
+                item.TaxTotal = Totales_Items.ToArray();
+
+
+                ItemType itemTipo = new ItemType();
+                DescriptionType description = new DescriptionType();
+                List<DescriptionType> descriptions = new List<DescriptionType>();
+                description.Value = detalle.Descripcion;
+                descriptions.Add(description);
+
+                ItemIdentificationType codigoProd = new ItemIdentificationType();
+                IDType id = new IDType();
+                id.Value = "HSTCOD";//detalle.Codigo;
+                codigoProd.ID = id;
+                itemTipo.Description = descriptions.ToArray();
+                itemTipo.SellersItemIdentification = codigoProd;
+
+                List<CommodityClassificationType> codSunats = new List<CommodityClassificationType>();
+                CommodityClassificationType codSunat = new CommodityClassificationType();
+                ItemClassificationCodeType codClas = new ItemClassificationCodeType();
+                codClas.listID = "UNSPSC";
+                codClas.listAgencyName = "GS1 US";
+                codClas.listName = "Item Classification";
+                codClas.Value = "25172405";
+                codSunat.ItemClassificationCode = codClas;
+                codSunats.Add(codSunat);
+                itemTipo.CommodityClassification = codSunats.ToArray();
+
+
+                PriceType PrecioProducto = new PriceType();
+                PriceAmountType PrecioMontoTipo = new PriceAmountType();
+                PrecioMontoTipo.currencyID = "PEN";
+                decimal porcentajeIgv = Convert.ToDecimal(paramFactura.Porcentaje_IGV / 100);
+
+                PrecioMontoTipo.Value = Convert.ToDecimal(string.Format("{0:0.00}", detalle.preciounitario / (1 + porcentajeIgv)));
+                PrecioProducto.PriceAmount = PrecioMontoTipo;
+
+
+                item.Item = itemTipo;
+                item.Price = PrecioProducto;
+                items.Add(item);
+                idtem += 1;
+            }
+            Factura.CreditNoteLine = items.ToArray();
+
+            #endregion
+            string rutaxml = CrearArchivoxmlNotaCredito(Factura, Variables.claseEmpresa.Ruc, /*paramFactura.CodigoComprobante,*/ paramFactura.Serie, paramFactura.Correlativo);
+            FirmarXML(rutaxml, Ruta_Certificado, Password_Certificado);
+            string rutaenvio = RutaEnvios + Path.GetFileName(rutaxml).Replace(".xml", ".zip");
+            //fnConvertiraPdf(rutaxml);
+            ComprimirZip(rutaxml, rutaenvio);
+            Enviardocumento(rutaenvio);
+        }
+        private string CrearArchivoxmlNotaCredito(CreditNoteType Nota, string RUCEmisor, string serie, string correlativo)
+        {
+            //Generar el archivo xml
+            XmlWriterSettings propiedades = new XmlWriterSettings();
+            propiedades.Indent = true;
+            propiedades.IndentChars = "\t";
+            string Nombrearchivoxml = RUCEmisor + "-07-" + serie + "-" + correlativo;
+            string rutaxml = string.Format(@"{0}{1}.xml", Rutaxml, Nombrearchivoxml);
+            using (XmlWriter escribir = XmlWriter.Create(rutaxml, propiedades))
+            {
+                Type serializacion = typeof(CreditNoteType);
+                XmlSerializer crearxml = new XmlSerializer(serializacion);
+                crearxml.Serialize(escribir, Nota);
+                return rutaxml;
             }
         }
-        static Bitmap GenerarQR(string texto)
-        {
-            var writer = new BarcodeWriter
-            {
-                Format = BarcodeFormat.QR_CODE,
-                Options = new EncodingOptions
-                {
-                    Height = 300,
-                    Width = 300
-                }
-            };
-            return writer.Write(texto);
-        }
+        #endregion
+
     }
 }

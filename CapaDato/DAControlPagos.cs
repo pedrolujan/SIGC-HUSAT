@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -734,7 +735,7 @@ namespace CapaDato
         }
         public Boolean daGuardarPagoCuotas(ControlPagos clsCPC, List<xmlDocumentoVentaGeneral> lstDV, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[20];
+            SqlParameter[] pa = new SqlParameter[22];
             DataTable dtResult = new DataTable();
             clsConexion objCnx = null;
             Int32 numRows = 0;
@@ -767,6 +768,8 @@ namespace CapaDato
                 pa[18] = new SqlParameter("@dFechaEmision", SqlDbType.DateTime) { Value = clsCPC.claseDetalleCronograma.fechaEmision };
 
                 pa[19] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[20] = new SqlParameter("@ImgQr", SqlDbType.Image) { Value = clsCPC.byteQr };
+                pa[21] = new SqlParameter("@CodCorrelativo", SqlDbType.VarChar, 13) { Value = clsCPC.CodCorrelativoFactura };
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspGuardarPagoCuotas", pa);
                 return true;
@@ -790,7 +793,7 @@ namespace CapaDato
 
         public Boolean daGuardarPagoCuotasPorDocumento(ControlPagos clsCPC, List<xmlDocumentoVentaGeneral> lstDV, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[18];
+            SqlParameter[] pa = new SqlParameter[20];
             DataTable dtResult = new DataTable();
             clsConexion objCnx = null;
             Int32 numRows = 0;
@@ -821,6 +824,8 @@ namespace CapaDato
                 pa[16] = new SqlParameter("@totalRow", SqlDbType.Int) { Value = clsCPC.listaDetalleCronograma.Count };
 
                 pa[17] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[18] = new SqlParameter("@ImgQr", SqlDbType.Image) { Value = clsCPC.byteQr };
+                pa[19] = new SqlParameter("@CodCorrelativo", SqlDbType.VarChar,13) { Value = clsCPC.CodCorrelativoFactura };
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspGuardarPagoCuotasPorDocumento", pa);
                 return true;

@@ -2309,8 +2309,10 @@ namespace wfaIntegradoCom.Procesos
             //{
             //    lstLdv[0].Descripcion = lstLdv[0].Descripcion + " del Equipo " + clsEquipo1.imei;
             //}
+            List<DocumentoVenta> lstDocVenta=new List<DocumentoVenta>();
             abrirFrmVPOtrasVentas.fnEstadoProcesos(lnTipoConCambio);
-            abrirFrmVPOtrasVentas.Inicio(fnlstDocumentoVenta(),/*lstOtrasVentas*/ lstLdv, -2);
+            lstDocVenta = fnlstDocumentoVenta();
+            abrirFrmVPOtrasVentas.Inicio(lstDocVenta,/*lstOtrasVentas*/ lstLdv, -2);
 
             
             Consultas.frmVPActaCambioTitularidad frmCT = new Consultas.frmVPActaCambioTitularidad();
@@ -2324,7 +2326,7 @@ namespace wfaIntegradoCom.Procesos
                 {
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                     Double sumaPrimerPago = lstLdv.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo);
+                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocVenta[0].cCodDocumentoVenta);
                 }
             }
             else if (stCondicionprocesos==-2)
@@ -2335,7 +2337,7 @@ namespace wfaIntegradoCom.Procesos
                 {
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                     Double sumaPrimerPago = lstLdv.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo);
+                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocVenta[0].cCodDocumentoVenta);
                 }
             }
             else if (stCondicionprocesos == 3 || stCondicionprocesos == 5)
@@ -2346,7 +2348,7 @@ namespace wfaIntegradoCom.Procesos
                 //{
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                     Double sumaPrimerPago = lstLdv.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo);
+                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocVenta[0].cCodDocumentoVenta);
                 //}
             }
 
@@ -2904,7 +2906,7 @@ namespace wfaIntegradoCom.Procesos
         private void fnMostrarVentanaTipoPago()
         {
             frmTipoPago frmTipo = new frmTipoPago();
-            frmTipo.Inicio(2, Convert.ToDouble(TotVenta.Total),Mon.cSimbolo);
+            //frmTipo.Inicio(2, Convert.ToDouble(TotVenta.Total),Mon.cSimbolo);
             //return EstadoGenVenta;
         }
 

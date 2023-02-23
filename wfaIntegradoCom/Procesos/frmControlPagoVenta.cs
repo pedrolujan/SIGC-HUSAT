@@ -17,6 +17,7 @@ using Siticone.UI.WinForms;
 using CapaDato;
 using wfaIntegradoCom.Consultas;
 using wfaIntegradoCom.Sunat;
+using System.IO;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -27,7 +28,8 @@ namespace wfaIntegradoCom.Procesos
             InitializeComponent();
         }
         Boolean EstadoCarga = false;
-
+        static List<Cargo> lstDocumentoVentaEmitir = new List<Cargo>();
+        static Cargo clsDocumentoVenta = new Cargo();
         ControlPagos claseControlPagos = new ControlPagos();
         static List<DetalleCronograma> lstDetalleCronograma = new List<DetalleCronograma>();
         static DetalleCronograma clsDetCronogramaEspecifico = new DetalleCronograma();
@@ -51,7 +53,7 @@ namespace wfaIntegradoCom.Procesos
         static DetalleVentaCabecera clsDetallecabecera = new DetalleVentaCabecera();
         static VentaGeneral clsVentaGeneral = new VentaGeneral();
 
-       static List<DetalleCronograma> lstCronoGramasParaDocumentoVenta = new List<DetalleCronograma>();
+        static List<DetalleCronograma> lstCronoGramasParaDocumentoVenta = new List<DetalleCronograma>();
         static Int32 CronogramaSeleccionado = 0;
         static Boolean estDescuento = false;
         static List<Ciclo> lstC = new List<Ciclo>();
@@ -66,11 +68,11 @@ namespace wfaIntegradoCom.Procesos
         static List<Plan> lstPlanBusq = new List<Plan>();
         static List<TipoPlan> lstTipoPlanBusq = new List<TipoPlan>();
         static List<Ciclo> lstCicloBusq = new List<Ciclo>();
-
+        static Int32 intRespuestaSunat = 0;
         static DateTime dtFechaPagoCuota = Variables.gdFechaSis;
         Boolean estadoComprabanteP, estadoFechaPago, estadoDescuento, estadoMoneda;
         String msgComprabanteP, msgMoneda, msgDescuento;
-
+        static String codDocumentoVemta = "";
         Boolean estadoDeBoton = false;
         static DateTime dttFechaRecibida = Variables.gdFechaSis;
         static Int32 inTipoApertura = 0;
@@ -977,7 +979,8 @@ namespace wfaIntegradoCom.Procesos
                 clsCliente.cTiDo = Convert.ToInt32(dtResult.Rows[0][11]);
                 clsCliente.cDocumento = Convert.ToString(dtResult.Rows[0][13]);
 
-                Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboComprobanteP, "DOVE", clsCliente.cTiDo, 0);
+                lstDocumentoVentaEmitir = Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboComprobanteP, "DOVE", clsCliente.cTiDo, 0);
+                
                 lstTD = objTipoCliente.blDevolverDocumentoDeTipoCliente(Convert.ToInt32(dtResult.Rows[0][12]), "1", false);
 
                 txtDatosCliente.Text = Convert.ToString(clsCliente.cNombre + ' ' + clsCliente.cApePat + ' ' + clsCliente.cApeMat);
@@ -1293,7 +1296,7 @@ namespace wfaIntegradoCom.Procesos
 
                 Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
 
-                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, 1);
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, xmlDocVenta.memoryStream, 1);
 
             }
             catch (Exception ex)
@@ -1453,7 +1456,12 @@ namespace wfaIntegradoCom.Procesos
                     Cantidad = 1,
                     Couta = 0,
                     Importe = dcr.total,
-                    cSimbolo = clsMoneda.cSimbolo
+                    cSimbolo = clsMoneda.cSimbolo,
+                    preciounitario = Convert.ToDecimal(dcr.precioUnitario),
+                    ImporteRow = (Convert.ToDecimal(dcr.precioUnitario) * 1),
+                    mtoValorVentaItem = (Convert.ToDecimal(dcr.precioUnitario) * 1),
+
+                    Unidad_de_medida = "ZZ"
                 });
                 y++;
 
@@ -1528,6 +1536,7 @@ namespace wfaIntegradoCom.Procesos
                     clsCronograma = lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
                     lstPagosTrand[0].idMoneda = clsMoneda.idMoneda;
                     lstPagosTrand[0].Unidades = 1;
+                    byte[] btImage = fnEnviarFacturaASunat();
                     claseControlPagos = new ControlPagos
                     {
                         fechaRegistro = Variables.gdFechaSis,
@@ -1543,15 +1552,17 @@ namespace wfaIntegradoCom.Procesos
                         listaDocumentoVenta = lstDocumentoVenta,
                         listaDetalleVenta = lstDetalleVenta,
                         idUsuario = Variables.gnCodUser,
-                        idCiclo = 1
-
+                        idCiclo = 1,
+                        byteQr = btImage,
+                        CodCorrelativoFactura = clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2))
 
                     };
                     xmlDocumentoVenta.Add(new xmlDocumentoVentaGeneral
                     {
                         xmlDocumentoVenta = lstDocumentoVenta,
-                        xmlDetalleVentas = lstDetalleVenta,
-                    });
+                        xmlDetalleVentas = lstDetalleVenta
+                        //memoryStream = new MemoryStream(btImage)
+                    }) ;
                     fnGuardarPagoCuota(claseControlPagos, xmlDocumentoVenta, lnTipoCon);
                 }
                 else
@@ -1571,12 +1582,13 @@ namespace wfaIntegradoCom.Procesos
                         }
                     }
 
+                    byte[] btImage = fnEnviarFacturaASunat();
                     clsCronograma = lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
                     lstPagosTrand[0].idMoneda = clsMoneda.idMoneda;
                     lstPagosTrand[0].Unidades = lstCronoGramasParaDocumentoVenta.Count;
                     claseControlPagos = new ControlPagos
                     {
-                        cCodVenta= cCodigoVenta,
+                        cCodVenta = cCodigoVenta,
                         fechaRegistro = Variables.gdFechaSis,
                         fechaPago = FunGeneral.fnUpdateFechas(dtFechaPagoCuota),
                         fechaVenta = clsDetCronogramaEspecifico.fechaRegistro,
@@ -1590,7 +1602,9 @@ namespace wfaIntegradoCom.Procesos
                         listaDocumentoVenta = lstDocumentoVenta,
                         listaDetalleVenta = lstDetalleVenta,
                         idUsuario = Variables.gnCodUser,
-                        idCiclo = 1
+                        idCiclo = 1,
+                        byteQr = btImage,
+                        CodCorrelativoFactura = clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2))
 
 
                     };
@@ -1598,7 +1612,8 @@ namespace wfaIntegradoCom.Procesos
                     {
                         xmlDocumentoVenta = lstDocumentoVenta,
                         xmlDetalleVentas = lstDetalleVenta,
-                    });
+                        //memoryStream = new MemoryStream(btImage)
+                    }) ;
 
                     fnGuardarPagoCuotaPorDocumento(claseControlPagos, xmlDocumentoVenta, lnTipoCon);
                 }
@@ -1610,6 +1625,34 @@ namespace wfaIntegradoCom.Procesos
             {
                 //MessageBox.Show("Todo anulado no se generará el pago");
             }
+        }
+
+        private byte[] fnEnviarFacturaASunat()
+        {
+            //Cargo clsCargo1 = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboComprobanteP.SelectedValue.ToString());
+            EmitirFactura emf = new EmitirFactura();
+            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+            if (clsDocumentoVenta.cCodTab== "DOVE0002")
+            {
+                intRespuestaSunat = 0;
+                int resp =emf.EmitirFacturasContado(clsCliente, lstDetalleVenta, clsDocumentoVenta);
+                intRespuestaSunat = resp;
+                if (resp == 1)
+                {
+                    
+                    String nombreQR = clsCliente.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
+                    //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");
+                    imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\" + nombreQR + ".png");
+                }
+            }
+            else
+            {
+                intRespuestaSunat = 1;
+            }
+            
+            
+            return imageBytes;
         }
         private void fnGuardarPagoCuota(ControlPagos ctp,List<xmlDocumentoVentaGeneral> lstDV, Int32 tipoCon)
         {
@@ -1633,19 +1676,27 @@ namespace wfaIntegradoCom.Procesos
         {
             obControPagos = new BLControlPagos();
             Boolean bResult = true;
-            bResult = obControPagos.blGuardarPagoCuotasPorDocumento(ctp, lstDV, tipoCon);
-            String strTipo = tipoCon == 0 ? "Guardado" : "Actualizado";
-            if (bResult)
+            if (intRespuestaSunat==1)
             {
-                MessageBox.Show("Págo "+ strTipo + " Correctamente ✅", "Informacion ",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                chkHabilitarDescuentoP.Checked = false;
-               
+                bResult = obControPagos.blGuardarPagoCuotasPorDocumento(ctp, lstDV, tipoCon);
+                String strTipo = tipoCon == 0 ? "Guardado" : "Actualizado";
+                if (bResult)
+                {
+                    MessageBox.Show("Págo " + strTipo + " Correctamente ✅", "Informacion ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    chkHabilitarDescuentoP.Checked = false;
+
+                }
+                else
+                {
+                    MessageBox.Show("Error al " + strTipo + " Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
             }
             else
             {
-                MessageBox.Show("Error al "+ strTipo + " Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("Error al emitir factura a la sunat Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
            
 
         }
@@ -1654,12 +1705,76 @@ namespace wfaIntegradoCom.Procesos
             lstPagosTrand = lstEntidades;
            
         }
+        public static string ConvertirPrecioEnLetras(decimal precio)
+        {
+            string[] unidades = { "", "UN ", "DOS ", "TRES ", "CUATRO ", "CINCO ", "SEIS ", "SIETE ", "OCHO ", "NUEVE " };
+            string[] decenas = { "DIEZ ", "ONCE ", "DOCE ", "TRECE ", "CATORCE ", "QUINCE ", "DIECISÉIS ", "DIECISIETE ", "DIECIOCHO ", "DIECINUEVE ", "VEINTE ", "TREINTA ", "CUARENTA ", "CINCUENTA ", "SESENTA ", "SETENTA ", "OCHENTA ", "NOVENTA " };
+            string[] centenas = { "", "CIENTO ", "DOSCIENTOS ", "TRESCIENTOS ", "CUATROCIENTOS ", "QUINIENTOS ", "SEISCIENTOS ", "SETECIENTOS ", "OCHOCIENTOS ", "NOVECIENTOS " };
+            string[] miles = { "", "MIL ", "DOS MIL ", "TRES MIL ", "CUATRO MIL ", "CINCO MIL ", "SEIS MIL ", "SIETE MIL ", "OCHO MIL ", "NUEVE MIL " };
+            string[] millones = { "", "UN MILLÓN ", "DOS MILLONES ", "TRES MILLONES ", "CUATRO MILLONES ", "CINCO MILLONES ", "SEIS MILLONES ", "SIETE MILLONES ", "OCHO MILLONES ", "NUEVE MILLONES " };
+
+            int entero = (int)Math.Floor(precio);
+            int decimales = (int)Math.Round((precio - entero) * 100);
+            int millon = entero / 1000000;
+            entero = entero % 1000000;
+            int miles1 = entero / 1000;
+            entero = entero % 1000;
+            int centenas1 = entero / 100;
+            entero = entero % 100;
+            int decenas1 = entero / 10;
+            int unidades1 = entero % 10;
+
+            string letras = "";
+            if (millon > 0)
+            {
+                letras += millones[millon];
+            }
+            if (miles1 > 0)
+            {
+                letras += miles[miles1];
+            }
+            if (centenas1 > 0)
+            {
+                if (centenas1 == 1 && decenas1 == 0 && unidades1 == 0)
+                {
+                    letras += "CIEN ";
+                }
+                else
+                {
+                    letras += centenas[centenas1];
+                }
+            }
+            if (decenas1 > 0 || unidades1 > 0)
+            {
+                if (decenas1 == 0)
+                {
+                    letras += unidades[unidades1];
+                }
+                else if (decenas1 == 1 && unidades1 > 0)
+                {
+                    letras += decenas[decenas1 + 9];
+                    letras += unidades[unidades1];
+                }
+                else
+                {
+                    letras += decenas[decenas1];
+                    letras += unidades[unidades1];
+                }
+            }
+            letras += "CON " + decimales.ToString("00") + "/100";
+
+            return letras.ToUpper();
+        }
         private List<DocumentoVenta> fnCargarDocumentoVenta(DetalleVentaCabecera lstdvc,Int32 tipCon)
         {
             List<DocumentoVenta> lsDocVenta = new List<DocumentoVenta>();
             TipoTarifa lstTipoVenta = new TipoTarifa();
             frmRegistrarVenta frmRV = new frmRegistrarVenta();
             Personal clsPersonal = FunGeneral.fnObtenerUsuarioActual();
+            PrecioALetras pal = new PrecioALetras();
+            string RecioALetras = ConvertirPrecioEnLetras(Convert.ToDecimal(lstdvc.Total));
+            string RecioALetras2 = pal.Convertir(lstdvc.Total.ToString(), true, " SOLES");
+
 
             if (tipCon==0)
             {
@@ -1672,6 +1787,7 @@ namespace wfaIntegradoCom.Procesos
                     cDocumento = clsCliente.cDocumento,
                     SimboloMoneda = clsMoneda.cSimbolo,
                     cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),
+                    CodigoCorrelativo = clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2)),
                     NombreDocumento = Convert.ToString(cboComprobanteP.Text),
                     dFechaVenta = Convert.ToDateTime(dtFechaPago.Value),
                     idMoneda = clsMoneda.idMoneda,
@@ -1679,7 +1795,8 @@ namespace wfaIntegradoCom.Procesos
                     nNroIGV = 18,
                     nIGV = lstdvc.IGV,
                     nMontoTotal = lstdvc.Total,
-                    cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat + " " + clsPersonal.cApeMat,
+                    PrecioEnLetras= RecioALetras2,
+                    cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat,
                     cVehiculos = clsVehiculo.vPlaca,
                     cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
                     cDescripEstadoPP = (lstPagosTrand.Count > 0) ? lstPagosTrand[0].cEstadoPP : "",
@@ -1715,6 +1832,7 @@ namespace wfaIntegradoCom.Procesos
                     cDocumento = lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cDocumento,
                     SimboloMoneda = clsMoneda.cSimbolo,
                     cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),
+                    CodigoCorrelativo = clsDocumentoVenta.SerieDoc+"-"+ FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2)),
                     NombreDocumento = Convert.ToString(cboComprobanteP.Text),
                     dFechaVenta = Convert.ToDateTime(dtFechaPago.Value),
                     idMoneda = clsMoneda.idMoneda,
@@ -1722,6 +1840,7 @@ namespace wfaIntegradoCom.Procesos
                     nNroIGV = 18,
                     nIGV = lstdvc.IGV,
                     nMontoTotal = lstdvc.Total,
+                    PrecioEnLetras = RecioALetras2,
                     cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat + " " + clsPersonal.cApeMat,
                     cVehiculos = vPlacas,
                     cDescripcionTipoPago = (lstPagosTrand.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrand[0].cDescripTipoPago) : "",
@@ -2081,13 +2200,14 @@ namespace wfaIntegradoCom.Procesos
         }
         private void dtFechaPago_ValueChanged(object sender, EventArgs e)
         {
+            dtFechaPagoCuota = Convert.ToDateTime(dtFechaPago.Value); 
             estadoFechaPago=fnValidarFecha(erFechaPago,pbFechaPago);
             var res=FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 1);
             estadoFechaPago = res.Item1;
             erFechaPago.Text = res.Item2;
-            dtFechaPagoCuota = Convert.ToDateTime(dtFechaPago.Value);
-            
-            
+            fnLlenadClaseDocumento();
+
+
         }
 
         private void msActializarPago_Click(object sender, EventArgs e)
@@ -2419,10 +2539,13 @@ namespace wfaIntegradoCom.Procesos
             dcv = fnCalcularCabeceraDetalle(lstDetalleVenta);
             lstDocumentoVenta = fnCargarDocumentoVenta(dcv,1);
 
-            
-                
+            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+
+            MemoryStream ms = new MemoryStream(imageBytes);
+
             Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
-            frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
+            frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, ms, -1);
 
 
             Boolean resp = false;
@@ -2482,8 +2605,14 @@ namespace wfaIntegradoCom.Procesos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Envios env = new Envios();
-            env.ObtenerQr();
+            EmitirFactura env = new EmitirFactura();
+            env.ObtenerQr("");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            EmitirFactura env = new EmitirFactura();
+            env.EmitirNotaCredito(clsCliente, lstDetalleVenta, clsDocumentoVenta);
         }
 
         private void btnVerDatos_Click(object sender, EventArgs e)
@@ -2540,7 +2669,6 @@ namespace wfaIntegradoCom.Procesos
             DataGridViewCell ColumnaSeleccionada = dgvCronograma.CurrentCell;
             
             Int32 idDetalleCronograma = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
-
             //lstVehiculoSinRenovar.Add(lstVehiculo.Find(i => i.idVehiculo == idVehiculo));
 
             clsDetCronogramaEspecifico = lstDetalleCronograma.Find(i => i.idDetalleCronograma == idDetalleCronograma);
@@ -2555,11 +2683,24 @@ namespace wfaIntegradoCom.Procesos
             else if(estadoApertura==0)
             {
                 MessageBox.Show("Por favor Aperture caja para poder registrar ingreos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
-                lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
-                EmitirFactura emf = new EmitirFactura();
-                emf.EmitirFacturasContado(clsCliente, lstDetalleVenta);
 
+
+                //lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
+
+                //Cargo clsCargo1 = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboComprobanteP.SelectedValue.ToString());
+                //EmitirFactura emf = new EmitirFactura();
+
+                //emf.EmitirFacturasContado(clsCliente, lstDetalleVenta, clsCargo1);
+                //String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR";
+                //String nombreQR = clsCliente.cDocumento + "-" + clsCargo1.nValor1 + "-" + clsCargo1.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsCargo1.nValor2));
+                //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");
+                //byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "\\QR\\" + nombreQR + ".png");
+
+                //MemoryStream ms = new MemoryStream(imageBytes);
+
+                //Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
+                //frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, ms, -1);
+                lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
             }
             else
             {
@@ -2610,9 +2751,15 @@ namespace wfaIntegradoCom.Procesos
                                 lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
                                 clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
                                 lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera,0);
-                                Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
 
-                                frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
+                                String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+                                byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+
+                                MemoryStream ms = new MemoryStream(imageBytes);
+
+                                Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
+                                frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, ms, -1);
+
                                 fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
                             }
                         //}
@@ -2636,9 +2783,15 @@ namespace wfaIntegradoCom.Procesos
                                 lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
                                 clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
                                 lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera,0);
-                                Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
 
-                                frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
+                                String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+                                byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+
+                                MemoryStream ms = new MemoryStream(imageBytes);
+
+                                Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
+                                frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, ms, -1);
+
                                 fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
                             }
 
@@ -2656,9 +2809,15 @@ namespace wfaIntegradoCom.Procesos
                         lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
                         clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
                         lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera,0);
-                        Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
 
-                        frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, -1);
+                        String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+                        byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+
+                        MemoryStream ms = new MemoryStream(imageBytes);
+
+                        Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
+                        frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, ms, -1);
+
                         fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
                     }
                 }
@@ -2668,9 +2827,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 MessageBox.Show("Por favor complete todo los datos", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
-            EmitirFactura emf=new EmitirFactura();
-            emf.EmitirFacturasContado(clsCliente, lstDetalleVenta);
+            
         }
 
         private void cboComprobanteP_SelectedIndexChanged(object sender, EventArgs e)
@@ -2678,6 +2835,24 @@ namespace wfaIntegradoCom.Procesos
             var result = FunValidaciones.fnValidarCombobox(cboComprobanteP, erComprobanteP, imgComprobanteP);
             estadoComprabanteP = result.Item1;
             msgComprabanteP = result.Item2;
+            if (estadoComprabanteP==true)
+            {
+                fnLlenadClaseDocumento();
+            }
+        }
+        private void fnLlenadClaseDocumento()
+        {
+            Int32 j = 0;
+            foreach (Cargo item in lstDocumentoVentaEmitir)
+            {
+                lstDocumentoVentaEmitir[j].dFechaPago = dtFechaPagoCuota;
+                lstDocumentoVentaEmitir[j].dFechaVenta = dtFechaPagoCuota;
+                j++;
+            }
+
+
+            clsDocumentoVenta = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboComprobanteP.SelectedValue.ToString());
+
         }
     }
 }

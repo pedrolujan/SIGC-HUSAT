@@ -104,6 +104,7 @@ namespace CapaEntidad
         public Int32 iTipoOpe { get { return _iTipoOpe; } set { _iTipoOpe = value; } }
 
         public String cCodDocumentoVenta { get; set; }
+        public String CodigoCorrelativo { get; set; }
         public String NombreDocumento { get; set; }
         public Int32 idMoneda { get; set; }
         public String SimboloMoneda { get; set; }
@@ -111,6 +112,7 @@ namespace CapaEntidad
 
         public String cUsuario { get; set; }
         public String cTipoVenta { get; set; }
+        public String PrecioEnLetras { get; set; }
 
         public Boolean est0 { get; set; }
         public Boolean est1 { get; set; }

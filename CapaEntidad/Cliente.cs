@@ -20,6 +20,7 @@ namespace CapaEntidad
         public DateTime dFecNac { get; set; }
         public Int32 cTipPers { get; set; }
         public Int32 cTiDo { get; set; }
+        public Int32 TiDocumentoSunat { get; set; }
 
         public String cTelFijo { get; set; }
         public String cTelCelular { get; set; }

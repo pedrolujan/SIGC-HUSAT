@@ -163,7 +163,8 @@ namespace CapaDato
                            Convert.ToString(drMenu["cTipoCargo"]), Convert.ToString(drMenu["cTelefono"]),
                            Convert.ToBoolean(drMenu["bestado"]), Convert.ToString(drMenu["cNomDep"]),
                            Convert.ToString(drMenu["cNomProv"]), Convert.ToString(drMenu["cNomDist"]),
-                          ms, Convert.ToString(drMenu["Name_ImgPerfil"])
+                          ms, 
+                          Convert.ToString(drMenu["Name_ImgPerfil"])
 
                            ));
 

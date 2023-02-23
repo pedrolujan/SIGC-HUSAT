@@ -243,6 +243,7 @@ namespace CapaDato
                 {
                     lstCliente.idCliente = Convert.ToInt32(drMenu["idCliente"]);
                     lstCliente.cApePat = Convert.ToString(drMenu["cApePat"]);
+                    lstCliente.cCliente = Convert.ToString(drMenu["cNombre"]) + " " + Convert.ToString(drMenu["cApePat"]) + "" + Convert.ToString(drMenu["cApeMat"]);
                     lstCliente.cApeMat = Convert.ToString(drMenu["cApeMat"]);
                     lstCliente.cNombre = Convert.ToString(drMenu["cNombre"]);
                     lstCliente.cDireccion = Convert.ToString(drMenu["cDireccion"]);

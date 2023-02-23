@@ -12,6 +12,11 @@ using System.Globalization;
 using CapaNegocio;
 using CapaUtil;
 using CapaEntidad;
+using System.IO;
+using Siticone.UI.WinForms.Suite;
+using Siticone.UI.WinForms;
+using TextBox = System.Windows.Forms.TextBox;
+using CircularProgressBar;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -26,17 +31,20 @@ namespace wfaIntegradoCom.Procesos
         Int32 lnTipoLLamada = 0;
         Double lnMontoPagar = 0;
         String SImboloMoneda = "";
+        String codigoDocVenta = "";
         Boolean estTipoVenta, estEntidadVenta, estTotalAPagar, estPagaCon, estVuelto, estObservaciones,estNroOperacion;
         String lblTipoVentaa, lblEntidadVenta, lblTotalAPagar, lblPagaConn, lblVueltoo, lblObservacioneso, lblNroOperacion;
         static Pagos clsPagosGeneral = new Pagos();
         static List<Pagos> lstEntidades = new List<Pagos>();
-        public void Inicio(int pnTipo, double pnMontoPagar,String sMoneda)
+      
+        public void Inicio(int pnTipo, double pnMontoPagar,String sMoneda,String codigoDocV)
         {
             lnTipoLLamada = pnTipo;
             lnMontoPagar = pnMontoPagar;
             SImboloMoneda = sMoneda;
             clsPagosGeneral.cantAPagar = pnMontoPagar;
             clsPagosGeneral.SimboloMoneda = sMoneda;
+            codigoDocVenta= codigoDocV;
             this.ShowDialog();
         }
 
@@ -74,6 +82,7 @@ namespace wfaIntegradoCom.Procesos
 
 
         }
+    
 
         private void dgvEntidades_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -94,6 +103,13 @@ namespace wfaIntegradoCom.Procesos
             }
             lstEntidades.Remove(clsTemporal);
             fnLlenarListBox();
+        }
+        int currentFrame = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           
+
+
         }
 
         private void siticonePanel1_Paint(object sender, PaintEventArgs e)
@@ -173,7 +189,7 @@ namespace wfaIntegradoCom.Procesos
         {
 
         }
-        public static Boolean fnLlenarCombobox(ComboBox cboCombo, String cCodTab, Int32 lnTipoCon, Boolean estBusq)
+        public static Boolean fnLlenarCombobox(SiticoneComboBox cboCombo, String cCodTab, Int32 lnTipoCon, Boolean estBusq)
         {
             BLTipoPagos objTablaCod = new BLTipoPagos();
             clsUtil objUtil = new clsUtil();
@@ -214,6 +230,7 @@ namespace wfaIntegradoCom.Procesos
         {
             try
             {
+                
                 lstEntidades.Clear();
                 FunValidaciones.fnColorAceptarCancelar(btnAceptar, btnCancelar);
                 txtTotalAPagar.Text = FunGeneral.fnFormatearPrecio(clsPagosGeneral.SimboloMoneda,clsPagosGeneral.cantAPagar,1);
@@ -231,6 +248,12 @@ namespace wfaIntegradoCom.Procesos
                     rdbNo.Enabled = false;
                     rdbNo.Visible=false;
                 }
+
+                
+                // Agrega cada cuadro a la lista
+               
+
+                timer1.Start();
             }
             catch (Exception ex)
             {
@@ -241,12 +264,39 @@ namespace wfaIntegradoCom.Procesos
            
         }
 
+        public void fnMostrarCargando(Boolean estado)
+        {
+            switch (codigoDocVenta)
+            {
+                case "DOVE0002":
+                case "DOVE0001":
+                    siticoneLabel1.Text = "Emitiendo documento a SUNAT";
+                    break;
+                case "DOVE0003":
+                case "DOVE0004":
+                    siticoneLabel1.Text = "Guardando datos";
+                    break;
+                default:
+                    break;
+            }
+            if (estado)
+            {
+                siticoneProgressIndicator1.Start();
+                
+            }
+            else
+            {
+                siticoneProgressIndicator1.Start();
+
+            }
+            pncargando.Visible = estado;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if (rdbSi.Checked==true)
+            fnMostrarCargando(true);
+            if (rdbSi.Checked == true)
             {
-                if (clsPagosGeneral.cantAPagar==lstEntidades.Sum(i => i.PagaCon))
+                if (clsPagosGeneral.cantAPagar == lstEntidades.Sum(i => i.PagaCon))
                 {
                     //opcion para venta general
                     if (lnTipoLLamada == 0)
@@ -293,16 +343,18 @@ namespace wfaIntegradoCom.Procesos
                         //frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
                         this.Close();
                     }
-                }else
+                }
+                else
                 {
-                    MessageBox.Show("Por favor Ingrese el monto correcto. Agregue entidades de págo ","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }             
-                
-            }else if (rdbNo.Checked == true)
+                    MessageBox.Show("Por favor Ingrese el monto correcto. Agregue entidades de págo ", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            else if (rdbNo.Checked == true)
             {
                 DialogResult resp = new DialogResult();
-                resp= MessageBox.Show("En realidad deseá guardar el pago como págo pendiente?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-                if (resp==DialogResult.Yes)
+                resp = MessageBox.Show("En realidad deseá guardar el pago como págo pendiente?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (resp == DialogResult.Yes)
                 {
                     //opcion para venta general
                     if (lnTipoLLamada == 0)
@@ -351,8 +403,8 @@ namespace wfaIntegradoCom.Procesos
                     }
                 }
             }
-            
-            
+
+            fnMostrarCargando(false);
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)

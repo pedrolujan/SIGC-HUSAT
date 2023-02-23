@@ -561,7 +561,7 @@ namespace wfaIntegradoCom.Procesos
                     Double montoRestante = Convert.ToDouble(dgvR.Cells[0].Value);
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                     ReporteBloque repBloque = lstDVenta.Find(i => i.idAuxiliar == idTrandiaria);
-                    fmr.Inicio(-4, repBloque.ImporteRow, lstDVenta[0].idMoneda == 1 ? "S/" : "$");
+                    fmr.Inicio(-4, repBloque.ImporteRow, lstDVenta[0].idMoneda == 1 ? "S/" : "$", cboTipoDocEmitir.SelectedValue.ToString());
                     clsCliente = lstCliente.Find(i => i.idCliente == idTrandiaria);
 
                     if (estadoGuardarPago == true)

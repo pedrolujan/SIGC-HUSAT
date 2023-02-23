@@ -769,7 +769,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 String tipoordencompra = "";
                 frmTipoPago frmTipo = new frmTipoPago();
-                frmTipo.Inicio(1, Convert.ToDouble(txtTotal.Text),"S/");
+                //frmTipo.Inicio(1, Convert.ToDouble(txtTotal.Text),"S/");
 
                //lcResultado = fnGuardarOrdenCompra(lnTipoCon, tipoordencompra, out lidOrden, out lcImprimirLote);
                 if (lcResultado == "OK")

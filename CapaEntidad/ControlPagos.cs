@@ -29,6 +29,8 @@ namespace CapaEntidad
         public Moneda claseMoneda = new Moneda();
         public List<DetalleVenta> listaDetalleVenta = new List<DetalleVenta>();
         public List<DocumentoVenta> listaDocumentoVenta = new List<DocumentoVenta>();
+        public byte[] byteQr { get; set; }  
+        public String CodCorrelativoFactura { get; set; }  
 
     }
 }

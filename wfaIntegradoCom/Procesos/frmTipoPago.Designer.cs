@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.pncargando = new Siticone.UI.WinForms.SiticonePanel();
             this.dgvEntidades = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cntMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -57,7 +58,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cboTipoVenta = new Siticone.UI.WinForms.SiticoneComboBox();
             this.lblObservaciones = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneProgressIndicator1 = new Siticone.UI.WinForms.SiticoneProgressIndicator();
             this.siticonePanel1.SuspendLayout();
+            this.pncargando.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntidades)).BeginInit();
             this.cntMenu.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
@@ -69,6 +74,7 @@
             // 
             this.siticonePanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticonePanel1.BorderThickness = 2;
+            this.siticonePanel1.Controls.Add(this.pncargando);
             this.siticonePanel1.Controls.Add(this.dgvEntidades);
             this.siticonePanel1.Controls.Add(this.btnAdd);
             this.siticonePanel1.Controls.Add(this.gunaPanel1);
@@ -93,36 +99,47 @@
             this.siticonePanel1.TabIndex = 12;
             this.siticonePanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.siticonePanel1_Paint);
             // 
+            // pncargando
+            // 
+            this.pncargando.Controls.Add(this.siticoneLabel1);
+            this.pncargando.Controls.Add(this.siticoneProgressIndicator1);
+            this.pncargando.Location = new System.Drawing.Point(3, 30);
+            this.pncargando.Name = "pncargando";
+            this.pncargando.ShadowDecoration.Parent = this.pncargando;
+            this.pncargando.Size = new System.Drawing.Size(607, 300);
+            this.pncargando.TabIndex = 179;
+            this.pncargando.Visible = false;
+            // 
             // dgvEntidades
             // 
             this.dgvEntidades.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgvEntidades.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvEntidades.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEntidades.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEntidades.BackgroundColor = System.Drawing.Color.White;
             this.dgvEntidades.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEntidades.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvEntidades.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEntidades.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEntidades.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEntidades.ColumnHeadersHeight = 21;
             this.dgvEntidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
             this.dgvEntidades.ContextMenuStrip = this.cntMenu;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEntidades.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEntidades.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEntidades.EnableHeadersVisualStyles = false;
             this.dgvEntidades.GridColor = System.Drawing.Color.White;
             this.dgvEntidades.Location = new System.Drawing.Point(8, 131);
@@ -512,6 +529,32 @@
             this.lblObservaciones.Size = new System.Drawing.Size(0, 15);
             this.lblObservaciones.TabIndex = 170;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // siticoneLabel1
+            // 
+            this.siticoneLabel1.AutoSize = false;
+            this.siticoneLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.siticoneLabel1.Location = new System.Drawing.Point(256, 118);
+            this.siticoneLabel1.Name = "siticoneLabel1";
+            this.siticoneLabel1.Size = new System.Drawing.Size(100, 68);
+            this.siticoneLabel1.TabIndex = 2;
+            this.siticoneLabel1.Text = "Emitiendo documento a SUNAT";
+            this.siticoneLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // siticoneProgressIndicator1
+            // 
+            this.siticoneProgressIndicator1.CircleSize = 1F;
+            this.siticoneProgressIndicator1.Location = new System.Drawing.Point(159, 5);
+            this.siticoneProgressIndicator1.Name = "siticoneProgressIndicator1";
+            this.siticoneProgressIndicator1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneProgressIndicator1.Size = new System.Drawing.Size(295, 295);
+            this.siticoneProgressIndicator1.TabIndex = 3;
+            // 
             // frmTipoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -527,6 +570,7 @@
             this.Load += new System.EventHandler(this.frmTipoPago_Load);
             this.siticonePanel1.ResumeLayout(false);
             this.siticonePanel1.PerformLayout();
+            this.pncargando.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntidades)).EndInit();
             this.cntMenu.ResumeLayout(false);
             this.gunaPanel1.ResumeLayout(false);
@@ -564,5 +608,9 @@
         private System.Windows.Forms.ContextMenuStrip cntMenu;
         private System.Windows.Forms.ToolStripMenuItem elimiToolStripMenuItem;
         private System.Windows.Forms.Label label2;
+        private Siticone.UI.WinForms.SiticonePanel pncargando;
+        private System.Windows.Forms.Timer timer1;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel1;
+        private Siticone.UI.WinForms.SiticoneProgressIndicator siticoneProgressIndicator1;
     }
 }

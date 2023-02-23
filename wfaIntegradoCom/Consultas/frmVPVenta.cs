@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace wfaIntegradoCom.Consultas
         List<DetalleVenta> lstDVenta;
         List<DocumentoVenta> lstCDocumento;
         VentaGeneral clsVentaGeneral;
+        MemoryStream msImage;
         static Boolean estVP=false;
         static Int32 lnTipoCon = 0;
         static Int32 lnEstadosProcesos = 0;
@@ -38,6 +40,19 @@ namespace wfaIntegradoCom.Consultas
             lstDVenta = lstDV;
             //clsVentaGeneral = clsVG;
             lnTipoCon = tipoCon;
+            ShowDialog();
+        }
+        public void Inicio(List<DocumentoVenta> lstDocV, List<DetalleVenta> lstDV, MemoryStream ms, Int32 tipoCon)
+        {
+            lstCDocumento = new List<DocumentoVenta>();
+            lstDVenta = new List<DetalleVenta>();
+            clsVentaGeneral = new VentaGeneral();
+            msImage = new MemoryStream();
+            lstCDocumento = lstDocV;
+            lstDVenta = lstDV;
+            //clsVentaGeneral = clsVG;
+            lnTipoCon = tipoCon;
+            msImage = ms;
             ShowDialog();
         }
         public void fnCambiarEstado(Boolean estado)
@@ -92,11 +107,12 @@ namespace wfaIntegradoCom.Consultas
                 btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
             }
             this.reportViewer1.RefreshReport();
-            fnCargarReporte(lstCDocumento, lstDVenta);
+            fnCargarReporte(lstCDocumento, lstDVenta,msImage);
         }
-        private void fnCargarReporte(List<DocumentoVenta> lstC, List<DetalleVenta> lstDV)
+
+        private void fnCargarReporte(List<DocumentoVenta> lstC, List<DetalleVenta> lstDV,MemoryStream ms)
         {
-            ReportParameter[] parameters = new ReportParameter[6];
+            ReportParameter[] parameters = new ReportParameter[7];
             reportViewer1.Reset();
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.ProcessingMode = ProcessingMode.Local;
@@ -106,6 +122,8 @@ namespace wfaIntegradoCom.Consultas
             parameters[3] = new ReportParameter("rpEmpresaDir", Variables.gsEmpresaDir);
             parameters[4] = new ReportParameter("rpEmpresaUbigeo", Variables.gsSucursalUbigeo);
             parameters[5] = new ReportParameter("rpUsuario", Variables.gsCodUser);
+            parameters[6] = new ReportParameter("rpQR", Convert.ToBase64String(ms.ToArray()));
+
             reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.rptComprobantePago.rdlc";
             reportViewer1.LocalReport.SetParameters(parameters);
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DocumentoVenta", lstC));
@@ -168,7 +186,7 @@ namespace wfaIntegradoCom.Consultas
                 List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(0, sumaPrimerPago, lstDVenta[0].cSimbolo);
+                fmr.Inicio(0, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
                 if (estVP)
                 {
                     Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
@@ -180,7 +198,7 @@ namespace wfaIntegradoCom.Consultas
             {
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(-1, sumaPrimerPago, lstDVenta[0].cSimbolo);              
+                fmr.Inicio(-1, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);              
                
 
             }
@@ -191,7 +209,7 @@ namespace wfaIntegradoCom.Consultas
                 {
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                     Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo);
+                    fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
                 }else if (lnEstadosProcesos==-1)
                 {
                     frmOtrasVentas fr = new frmOtrasVentas();
@@ -219,7 +237,7 @@ namespace wfaIntegradoCom.Consultas
             {
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(lnTipoCon, sumaPrimerPago, lstDVenta[0].cSimbolo);
+                fmr.Inicio(lnTipoCon, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
             }
             else if (lnTipoCon == -4)
             {
@@ -265,6 +283,15 @@ namespace wfaIntegradoCom.Consultas
                 frmRegistrarEgresos frm = new frmRegistrarEgresos();
                 frm.fnRecuperarEstadoGenVenta(false);
             }
+        }
+
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            string nombreArchivo = lstCDocumento[0].NombreDocumento+" "+ lstDVenta[0].Descripcion+" "+ lstCDocumento[0].cCliente; // Especificar el nombre deseado para el archivo
+
+            // Modificar el nombre del archivo en la descarga
+            ReportViewer viewer = (ReportViewer)sender;
+            viewer.LocalReport.DisplayName = nombreArchivo;
         }
     }
 }

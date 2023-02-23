@@ -8,9 +8,16 @@ namespace CapaEntidad
 {
     public class ParametrosFactura
     {
-        public String Serie { get; set; }   
+        public String Serie { get; set; }
         public String Correlativo { get; set; }
         public String CodigoComprobante { get; set; }
+
+        public String Ref_Serie {get;set;}
+        public String Ref_Numero {get;set;}
+        public String Ref_Motivo {get;set;}
+        public String Ref_TipoComprobante {get;set;}
+        public String CodigoTipoNotacredito {get;set;}
+
         public DateTime fecha_venta { get; set; }   
         public DateTime Fecha_de_pago { get; set; }   
         public Decimal contadorProductos { get; set; }   

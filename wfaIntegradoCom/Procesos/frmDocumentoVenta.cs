@@ -860,7 +860,7 @@ namespace wfaIntegradoCom.Procesos
                 string strIdClienteContado = FunGeneral.fnDevolverParametro("CLC0001") != null ? (FunGeneral.fnDevolverParametro("CLC0001")[0].cValor.Trim()) : "2";
 
                 frmTipoPago frmTipo = new frmTipoPago();
-                frmTipo.Inicio(2, Convert.ToDouble(txtTotal.Text),"S/");
+                //frmTipo.Inicio(2, Convert.ToDouble(txtTotal.Text),"S/");
 
                 if (strIdClienteContado == cboCliente.SelectedValue.ToString() && Math.Round(nMontoPagar, 2) < Math.Round(Convert.ToDecimal(txtTotal.Text), 2))
                 {

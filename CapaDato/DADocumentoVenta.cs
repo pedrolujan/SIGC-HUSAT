@@ -64,10 +64,10 @@ namespace CapaDato
             }
 
         }
-        public DataTable daBuscarDocumentoPorEmitir(String pcBuscar, Int32 pnTipoCon)
+        public DataTable daBuscarDocumentoPorEmitir(Boolean chkActivaFecha,String dtFechaIni, String dtFechaFin, String pcBuscar, Int32 numPagina,Int32 pnTipoCon)
         {
 
-            SqlParameter[] pa = new SqlParameter[2];
+            SqlParameter[] pa = new SqlParameter[6];
             DataTable dtVenta = new DataTable();
             clsConexion objCnx = null;
             List<DocumentoVenta> lstVenta = null;
@@ -76,14 +76,22 @@ namespace CapaDato
             try
             {
 
-                pa[0] = new SqlParameter("@Buscar", SqlDbType.VarChar, 50);
-                pa[0].Value = pcBuscar;
-                pa[1] = new SqlParameter("@TipoCon", SqlDbType.TinyInt);
-                pa[1].Value = pnTipoCon;
+                pa[0] = new SqlParameter("@chkHabFecha", SqlDbType.Bit);
+                pa[0].Value = chkActivaFecha;
+                pa[1] = new SqlParameter("@FechaInicial", SqlDbType.Date);
+                pa[1].Value = dtFechaIni;
+                pa[2] = new SqlParameter("@FechaFinal", SqlDbType.Date);
+                pa[2].Value = dtFechaFin;
+                pa[3] = new SqlParameter("@Buscar", SqlDbType.VarChar, 50);
+                pa[3].Value = pcBuscar;
+                pa[4] = new SqlParameter("@numPagina", SqlDbType.TinyInt);
+                pa[4].Value = numPagina;
+                pa[5] = new SqlParameter("@TipoCon", SqlDbType.TinyInt);
+                pa[5].Value = pnTipoCon;
 
 
                 objCnx = new clsConexion("");
-                dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarDocVentaPorDocumento", pa);
+                dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarDocumentosEmitidosEnSunat", pa);
 
                 return dtVenta;
 

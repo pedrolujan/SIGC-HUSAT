@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -185,6 +186,8 @@ namespace CapaEntidad
 
         public List<DocumentoVenta> xmlDocumentoVenta{ get; set; }
         public List<DetalleVenta> xmlDetalleVentas { get; set; }
+
+        public MemoryStream memoryStream { get; set; }
     }
 
     public class xmlActaCierraCaja

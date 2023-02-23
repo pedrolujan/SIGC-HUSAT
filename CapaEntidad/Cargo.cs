@@ -32,6 +32,12 @@ namespace CapaEntidad
 
         DateTime _dFechaReg ;
         public DateTime dFechaReg { get { return _dFechaReg; } set { _dFechaReg = value; } }
+        
+        //DateTime _dFechaVenta ;
+        public DateTime dFechaVenta { get; set; }
+
+        //DateTime _dFechaPago;
+        public DateTime dFechaPago { get; set; }
 
         Int32 _idUsuario=0;
         public Int32 idUsuario { get { return _idUsuario; } set { _idUsuario = value; } }

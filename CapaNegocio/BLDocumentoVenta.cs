@@ -26,12 +26,12 @@ namespace CapaNegocio
             }
 
         }
-        public DataTable blBuscarDocumentoPorEmitir(String pcBuscar, Int32 pnTipoCon)
+        public DataTable blBuscarDocumentoPorEmitir(Boolean chkActivaFecha, String dtFechaIni, String dtFechaFin, String pcBuscar, Int32 numPagina, Int32 pnTipoCon)
         {
             DADocumentoVenta objDocVenta = new DADocumentoVenta();
             try
             {
-                return objDocVenta.daBuscarDocumentoPorEmitir(pcBuscar, pnTipoCon);
+                return objDocVenta.daBuscarDocumentoPorEmitir( chkActivaFecha,  dtFechaIni,  dtFechaFin,  pcBuscar,  numPagina,  pnTipoCon);
             }
             catch (Exception ex)
             {

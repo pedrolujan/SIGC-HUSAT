@@ -36,6 +36,7 @@ namespace CapaEntidad
 
         public String codDireccionInstalacion { get; set; }
         public String DescripDireccionInstalacion { get; set; }
+        public String codigoCorrelativo { get; set; }
         public DateTime FechaDeInstalacion { get; set; }
 
         public Int32 estFinalizacionContrato { get; set; }

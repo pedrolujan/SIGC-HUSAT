@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -496,6 +497,7 @@ namespace CapaDato
             String Cliente = "";
             String TipoPago = "";
             String character = ",";
+            byte[] imgQr = new byte[] { };
             //string xmlData = clsUtil.Serialize(lstOtrasVentas);
             try
             {
@@ -522,8 +524,11 @@ namespace CapaDato
                     Cdirrecion = Convert.ToString(drMenu["direccionRespPago"]).ToString();
                     Cliente = Convert.ToString(drMenu["cCliente"]).ToString();
                     TipoPago = Convert.ToString(drMenu["tipoPago"]).ToString();
-
+                    imgQr= (Byte[])drMenu["CodigoQr"];
                 }
+               
+                MemoryStream ms = new MemoryStream(imgQr);
+
                 lstDocumentoVenta = clsUtil.Deserialize<xmlDocumentoVentaGeneral>(xmlDocventa);
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripEstadoPP = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(DescripEstadoPP);
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cVehiculos = PlacaVehiculos;
@@ -531,6 +536,7 @@ namespace CapaDato
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cCliente = Cliente;
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = TipoPago;
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Cdirrecion);
+                lstDocumentoVenta.memoryStream = ms;
 
                 return lstDocumentoVenta;
             }
@@ -572,7 +578,11 @@ namespace CapaDato
                 lstCargo.Add(new Cargo(
                         Convert.ToString("0"),
                         Convert.ToString(strTipo),
-                        Convert.ToString("1")));
+                        Convert.ToString("1"),
+                        Convert.ToString("0"),
+                        Convert.ToString("0"),
+                        Convert.ToString("0")
+                        ));
                 if (idTipoDocPers != 0)
                 {
                     foreach (DataRow drMenu in dtUsuario.Rows)
@@ -580,7 +590,11 @@ namespace CapaDato
                         lstCargo.Add(new Cargo(
                             Convert.ToString(drMenu["cCodTab"]),
                             Convert.ToString(drMenu["cNomTab"]),
-                            Convert.ToString(drMenu["cValor"])));
+                            Convert.ToString(drMenu["cValor"]),
+                            Convert.ToString(drMenu["nValor1"]),
+                            Convert.ToString(drMenu["nValor2"]),
+                            Convert.ToString(drMenu["SerieDoc"])
+                            ));
                     }
                 }
 

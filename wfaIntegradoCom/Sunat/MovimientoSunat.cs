@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using wfaIntegradoCom.Funciones;
 
 namespace wfaIntegradoCom.Sunat
 {
@@ -20,7 +21,7 @@ namespace wfaIntegradoCom.Sunat
 
         private void pbBuscar_Click(object sender, EventArgs e)
         {
-            fnBuscarDocumentos(0);
+            //fnBuscarDocumentos(0);
         }
 
         private void MovimientoSunat_Load(object sender, EventArgs e)
@@ -32,12 +33,18 @@ namespace wfaIntegradoCom.Sunat
             //}
         }
 
-        private void fnBuscarDocumentos(Int32 tipoCon)
+        private void fnBuscarDocumentos(Int32 pagina,Int32 tipoCon)
         {
             BLDocumentoVenta blDoc=new BLDocumentoVenta();
-            String  pBuscar=txtBuscar.Text.ToString();
-            DataTable dtResult = new DataTable();
-            dtResult= blDoc.blBuscarDocumentoPorEmitir(pBuscar, tipoCon);
+            Boolean chkActivaFecha = chkHabilitarFechasBus.Checked;
+            //String dtFechaIni=FunGeneral.GetFechaHoraFormato();
+            //String dtFechaFin=;
+            //String pcBuscar=;
+            //Int32 numPagina=;
+            //Int32 pnTipoCon=;        
+            //String  pBuscar=txtBuscar.Text.ToString();
+            //DataTable dtResult = new DataTable();
+            //dtResult= blDoc.blBuscarDocumentoPorEmitir(pBuscar, tipoCon);
         }
     }
 }
