@@ -19,7 +19,7 @@ namespace CapaDato
         public Boolean daGenerarVentaGeneral(VentaGeneral clsVentaGeneral, List<xmlDocumentoVentaGeneral> xmlDocVenta, byte[] btImage, Int16 tipoCon)
         {
 
-            SqlParameter[] pa = new SqlParameter[33];
+            SqlParameter[] pa = new SqlParameter[34];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             List<VentaGeneral> lstVentaGeneral = new List<VentaGeneral>();
@@ -39,7 +39,7 @@ namespace CapaDato
             {
                 pa[0] = new SqlParameter("@idVentaGeneral", SqlDbType.Int) { Value = clsVentaGeneral.IdVentaGeneral };
                 pa[1] = new SqlParameter("@idCliente", SqlDbType.Int) { Value = clsVentaGeneral.ClsCliente.idCliente };
-                pa[2] = new SqlParameter("@idRespPago", SqlDbType.Int) { Value = tipoCon == 0 ? clsVentaGeneral.ClsResponsablePago.idCliente : clsVentaGeneral.clsContrato.idContrato };
+                pa[2] = new SqlParameter("@idRespPago", SqlDbType.Int) { Value = clsVentaGeneral.ClsResponsablePago.idCliente};
                 pa[3] = new SqlParameter("@idPlan", SqlDbType.Int) { Value = clsVentaGeneral.ClsPlan.idPlan };
                 pa[4] = new SqlParameter("@idCiclo", SqlDbType.Int) { Value = clsVentaGeneral.ClsCiclo.IdCiclo };
                 pa[5] = new SqlParameter("@idMoneda", SqlDbType.Int) { Value = clsVentaGeneral.ClsMoneda.idMoneda };
@@ -69,7 +69,8 @@ namespace CapaDato
                 pa[29] = new SqlParameter("@dFechaPago", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaPago };
                 pa[30] = new SqlParameter("@dFechaVenta", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta };
                 pa[31] = new SqlParameter("@ImgQR", SqlDbType.Image) { Value =  btImage };
-                pa[32] = new SqlParameter("@CorrelativoDocumento", SqlDbType.VarChar,9) { Value = clsVentaGeneral.codigoCorrelativo };
+                pa[32] = new SqlParameter("@CorrelativoDocumento", SqlDbType.VarChar,13) { Value = clsVentaGeneral.codigoCorrelativo };
+                pa[33] = new SqlParameter("@idContrato", SqlDbType.Int) { Value = tipoCon==0?0: clsVentaGeneral.clsContrato.idContrato };
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
 
@@ -659,6 +660,7 @@ namespace CapaDato
             List<DetalleVenta> lstDetVenta = new List<DetalleVenta>();
             DetalleVentaCabecera clsDetVentaCabecera = new DetalleVentaCabecera();
             Cliente clsCliente = new Cliente();
+            Cliente clsRespPago = new Cliente();
             Plan ClsPlan = new Plan();
             Contrato clsContrato = new Contrato();
             Cronograma clsCronograma = new Cronograma();
@@ -702,6 +704,7 @@ namespace CapaDato
                     if (cBuscar == "")
                     {
                         clsCliente.cTipPers = Convert.ToInt32(dtVentaG.Rows[0][3]);
+                        clsCliente.idCliente = Convert.ToInt32(dtVentaG.Rows[0][38]);
                         clsCliente.cTiDo = Convert.ToInt32(dtVentaG.Rows[0][5]);
                         clsCliente.cDocumento = Convert.ToString(dtVentaG.Rows[0][7]);
                         clsCliente.cApePat = Convert.ToString(dtVentaG.Rows[0][8]);
@@ -712,6 +715,20 @@ namespace CapaDato
                         clsCliente.cTelCelular = Convert.ToString(dtVentaG.Rows[0][13]);
                         clsCliente.cDireccion = Convert.ToString(dtVentaG.Rows[0][14]);
                         clsTarifa.IdTipoTarifa = Convert.ToInt32(dtVentaG.Rows[0][25]);
+                        
+                        //responsable de pago
+
+                        clsRespPago.cTipPers = Convert.ToInt32(dtVentaG.Rows[0][40]);
+                        clsRespPago.idCliente = Convert.ToInt32(dtVentaG.Rows[0][39]);
+                        clsRespPago.cTiDo = Convert.ToInt32(dtVentaG.Rows[0][41]);
+                        clsRespPago.cDocumento = Convert.ToString(dtVentaG.Rows[0][42]);
+                        clsRespPago.cApePat = Convert.ToString(dtVentaG.Rows[0][43]);
+                        clsRespPago.cApeMat = Convert.ToString(dtVentaG.Rows[0][44]);
+                        clsRespPago.cNombre = Convert.ToString(dtVentaG.Rows[0][45]);
+                        clsRespPago.cCorreo = Convert.ToString(dtVentaG.Rows[0][46]);
+                        clsRespPago.cTelFijo = Convert.ToString(dtVentaG.Rows[0][47]);
+                        clsRespPago.cTelCelular = Convert.ToString(dtVentaG.Rows[0][48]);
+                        clsRespPago.cDireccion = Convert.ToString(dtVentaG.Rows[0][49]);
 
                         lstVehiculo.Add(new Vehiculo
                         {
@@ -758,6 +775,7 @@ namespace CapaDato
                             FechaVenta = Convert.ToDateTime(dtVentaG.Rows[0][27]),
                             lstVehiculo = lstVehiculo,
                             ClsCliente = clsCliente,
+                            ClsResponsablePago= clsRespPago,
                             ClsPlan = ClsPlan,
                             ClsTarifa = clsTarifa,
                             clsDetalleVentaCabecera = clsDetVentaCabecera,

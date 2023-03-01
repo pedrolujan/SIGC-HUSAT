@@ -286,7 +286,7 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
-                siticoneProgressIndicator1.Start();
+                siticoneProgressIndicator1.Stop();
 
             }
             pncargando.Visible = estado;

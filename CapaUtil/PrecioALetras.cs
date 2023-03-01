@@ -11,7 +11,7 @@ namespace CapaUtil
     {
         private static string[] UNIDADES = { "CERO", "UN", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE" };
         private static string[] DECENAS = { "DIEZ", "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISÉIS", "DIECISIETE", "DIECIOCHO", "DIECINUEVE", "VEINTE", "TREINTA", "CUARENTA", "CINCUENTA", "SESENTA", "SETENTA", "OCHENTA", "NOVENTA" };
-        private static string[] CENTENAS = { "CIENTO", "DOSCIENTOS", "TRESCIENTOS", "CUATROCIENTOS", "QUINIENTOS", "SEISCIENTOS", "SETECIENTOS", "OCHOCIENTOS", "NOVECIENTOS" };
+        private static string[] CENTENAS = { "","CIENTO", "DOSCIENTOS", "TRESCIENTOS", "CUATROCIENTOS", "QUINIENTOS", "SEISCIENTOS", "SETECIENTOS", "OCHOCIENTOS", "NOVECIENTOS" };
 
         private Regex r;
 
@@ -127,7 +127,8 @@ namespace CapaUtil
                 }
                 else
                 {
-                    return CENTENAS[int.Parse(num.Substring(0, 1))] + getDecenas(num.Substring(1));
+                    
+                    return CENTENAS[int.Parse(num.Substring(0, 1))] +" "+ getDecenas(num.Substring(1));
                 }
             }
             else
@@ -166,11 +167,11 @@ namespace CapaUtil
             String n = "";
             if (millon.Length > 1)
             {
-                n = getCentenas(millon) + "millones ";
+                n = getCentenas(millon) + " millones ";
             }
             else
             {
-                n = getUnidades(millon) + "millon ";
+                n = getUnidades(millon) + " millon ";
             }
             return n + getMiles(miles);
         }

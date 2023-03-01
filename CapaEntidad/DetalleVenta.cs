@@ -17,6 +17,7 @@ namespace CapaEntidad
         public Decimal mtoValorVentaItem { get; set; }
         public Decimal preciounitario { get; set; }
         public String Descripcion { get; set; }
+        public String CodigoProducto { get; set; }
         public String Unidad_de_medida { get; set; }
         public Int32 Cantidad { get; set; }
         public Int32 idTipoTarifa { get; set; }

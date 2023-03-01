@@ -17,7 +17,7 @@ namespace CapaDato
         clsUtil objUtil;
         public Boolean daGuardarEgresos(List<Pagos> lstTTrand, List<xmlDocumentoVentaGeneral> xmlDvg, Egresos clsEgresos)
         {
-            SqlParameter[] pa = new SqlParameter[12];
+            SqlParameter[] pa = new SqlParameter[13];
             List<ControlCaja> lstControl = new List<ControlCaja>();
             DataTable dt = new DataTable();
             clsConexion objCnx = null;
@@ -40,6 +40,7 @@ namespace CapaDato
                 pa[9] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml) { Value = xmlDetalelVenta };
                 pa[10] = new SqlParameter("@lnTipoCon", SqlDbType.Int) { Value = clsEgresos.lnTipoCon };
                 pa[11] = new SqlParameter("@CodAuxiliar", SqlDbType.VarChar,10) { Value = clsEgresos.codAuxiliar };
+                pa[12] = new SqlParameter("@ImgQR", SqlDbType.Image) { Value = clsEgresos.ImgQR };
                
 
                 objCnx = new clsConexion("");

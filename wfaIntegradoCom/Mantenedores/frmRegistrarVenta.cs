@@ -955,7 +955,9 @@ namespace wfaIntegradoCom.Mantenedores
                             txtTelefonoFijoC.Text = lstPros.cTelFijo.Trim();
                             txtCelularC.Text = lstPros.cTelCelular.Trim();
                             txtDireccionC.Text = lstPros.cDireccion.Trim();
-                            
+
+                            dgDocumentoC.Visible = false;
+
                         }
                         else
                         {
@@ -970,8 +972,9 @@ namespace wfaIntegradoCom.Mantenedores
                             txtCelularRP.Text = lstPros.cTelCelular.Trim();
                             txtDireccionRP.Text = lstPros.cDireccion.Trim();
                             lstDocumentoVentaEmitir=fnLlenarComprobante(cboComprobanteP, "DOVE", clsRespPago.cTiDo, 0);
+                            dgDocumentoRP.Visible = false;
                         }
-                        dgDocumentoC.Visible = false;
+                       
                     }
                 }
 
@@ -3163,7 +3166,7 @@ namespace wfaIntegradoCom.Mantenedores
                                         }
                                         else
                                         {
-                                            if (clsTarifa.PrecioPlan < 30)
+                                            if (clsTarifa.PrecioPlan < 45)
                                             {
                                                 clsTarifa.DescuentoReactivacion = PrecioADescontar;
                                             }
@@ -3748,25 +3751,29 @@ namespace wfaIntegradoCom.Mantenedores
             EmitirFactura emf = new EmitirFactura();
             String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
             byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
-            if (clsDocumentoVenta.cCodTab == "DOVE0002")
+            if (lnTipoCon != -1)
             {
-                intRespuestaSunat = 0;
-                int resp = emf.EmitirFacturasContado(clsCliente, lstDetalleVDocumento, clsDocumentoVenta);
-                intRespuestaSunat = resp;
-                if (resp == 1)
+                if (clsDocumentoVenta.cCodTab == "DOVE0002" || clsDocumentoVenta.cCodTab== "DOVE0001")
                 {
+                    intRespuestaSunat = 0;
+                    int resp = emf.EmitirFacturasContado(clsCliente, lstDetalleVDocumento, clsDocumentoVenta);
+                    intRespuestaSunat = resp;
+                    if (resp == 1)
+                    {
 
-                    String nombreQR = clsCliente.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
-                    //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");
-                    imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\" + nombreQR + ".png");
+                        String nombreQR = clsCliente.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
+                        //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");
+                        imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\" + nombreQR + ".png");
+                    }
                 }
-            }
-            else
-            {
-                intRespuestaSunat = 0;
+                else
+                {
+                    intRespuestaSunat = 1;
+                }
+
             }
 
-
+            //intRespuestaSunat = 1;
             return imageBytes;
         }
         private String fnObtenerVehiculos()
@@ -3799,7 +3806,7 @@ namespace wfaIntegradoCom.Mantenedores
             lsDocVenta.Add(new DocumentoVenta
             {
                 idCliente = clsRespPago.idCliente,
-                cCliente = FunGeneral.FormatearCadenaTitleCase(clsRespPago.cNombre + " " + clsRespPago.cApePat + " " + clsRespPago.cApeMat),
+                cCliente = FunGeneral.FormatearCadenaTitleCase(clsRespPago.cApePat + " " + clsRespPago.cApeMat + " " + clsRespPago.cNombre),
                 cTipoDoc = fnDevolverTipoDocPersona(clsRespPago.cTiDo),
                 cDireccion = FunGeneral.FormatearCadenaTitleCase(clsRespPago.cDireccion),
                 cDocumento = clsRespPago.cDocumento,
@@ -4461,6 +4468,7 @@ namespace wfaIntegradoCom.Mantenedores
                 lstValidacionVehiculo[0].mensaje = resul.Item2;
 
                 clsCliente = lstvgeneral[0].ClsCliente;
+                clsRespPago= lstvgeneral[0].ClsResponsablePago;
 
                 clsPlanActual.idTipoPlan = lstvgeneral[0].ClsPlan.idTipoPlan;
                 clsPlanActual.idPlan = lstvgeneral[0].ClsPlan.idPlan;
@@ -4478,7 +4486,23 @@ namespace wfaIntegradoCom.Mantenedores
                 //cboTipoPlanP.SelectedValue = clsPlanActual.idTipoPlan;
                 //cboPlanP.SelectedValue = clsPlanActual.idPlan;
                 //cboCicloP.SelectedValue = clsPlanActual.CicloPlan;
-                rdbSi.Checked = true;
+                if (clsRespPago.idCliente==clsCliente.idCliente)
+                {
+                    rdbSi.Checked = true;
+                }
+                else
+                {
+                    rdbNo.Checked = true;
+
+                    txtDocumentoRP.Text = lstvgeneral[0].ClsResponsablePago.cDocumento.Trim();
+                    txtNombreRP.Text = $"{lstvgeneral[0].ClsResponsablePago.cNombre.Trim()} {lstvgeneral[0].ClsResponsablePago.cApePat.Trim()} {lstvgeneral[0].ClsResponsablePago.cApeMat.Trim()}";
+                    txtCorreoRP.Text = lstvgeneral[0].ClsResponsablePago.cCorreo.Trim();
+                    txtTelefonoFijoRP.Text = lstvgeneral[0].ClsResponsablePago.cTelFijo.Trim();
+                    txtCelularRP.Text = lstvgeneral[0].ClsResponsablePago.cTelCelular.Trim();
+                    txtDireccionRP.Text = lstvgeneral[0].ClsResponsablePago.cDireccion.Trim();
+                    dgDocumentoRP.Visible=false;
+                }
+                
                 //cboPlanP.SelectedValue = clsPlanActual.idPlan;
                 dgDocumentoC.Visible = false;
                 //clsPlan = lstvgeneral[0].ClsPlan;
@@ -4822,7 +4846,7 @@ namespace wfaIntegradoCom.Mantenedores
         private void irAInstalacion_Click(object sender, EventArgs e)
         {
             dtFechaPago.Value = Variables.gdFechaSis;
-            FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
+            //FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
 
             bTipoTab = true;
             bActivarChecks = true;

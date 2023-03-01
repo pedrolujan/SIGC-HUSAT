@@ -18,6 +18,8 @@ using CapaDato;
 using wfaIntegradoCom.Consultas;
 using wfaIntegradoCom.Sunat;
 using System.IO;
+using System.Net.Sockets;
+using System.Net;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -978,6 +980,7 @@ namespace wfaIntegradoCom.Procesos
                 clsCliente.cContactoNom1 = dtResult.Rows[0][10].ToString();
                 clsCliente.cTiDo = Convert.ToInt32(dtResult.Rows[0][11]);
                 clsCliente.cDocumento = Convert.ToString(dtResult.Rows[0][13]);
+                clsCliente.TiDocumentoSunat=dtResult.Rows[0][35].ToString();
 
                 lstDocumentoVentaEmitir = Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboComprobanteP, "DOVE", clsCliente.cTiDo, 0);
                 
@@ -1633,7 +1636,7 @@ namespace wfaIntegradoCom.Procesos
             EmitirFactura emf = new EmitirFactura();
             String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
             byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
-            if (clsDocumentoVenta.cCodTab== "DOVE0002")
+            if (clsDocumentoVenta.cCodTab== "DOVE0002" || clsDocumentoVenta.cCodTab == "DOVE0001")
             {
                 intRespuestaSunat = 0;
                 int resp =emf.EmitirFacturasContado(clsCliente, lstDetalleVenta, clsDocumentoVenta);
@@ -1658,24 +1661,31 @@ namespace wfaIntegradoCom.Procesos
         {
             obControPagos = new BLControlPagos();
             Boolean bResult = false;
-            bResult=obControPagos.blGuardarPagoCuota(ctp, lstDV, tipoCon);
-            String strTipo = tipoCon == 0 ? "Guardado" : "Actualizado";
-            if (bResult)
+            if (intRespuestaSunat == 1)
             {
-                MessageBox.Show("Págo "+ strTipo + " Correctamente ✅", "Informacion ",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                chkHabilitarDescuentoP.Checked = false;
+                bResult = obControPagos.blGuardarPagoCuota(ctp, lstDV, tipoCon);
+                String strTipo = tipoCon == 0 ? "Guardado" : "Actualizado";
+                if (bResult)
+                {
+                    MessageBox.Show("Págo " + strTipo + " Correctamente ✅", "Informacion ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    chkHabilitarDescuentoP.Checked = false;
+                }
+                else
+                {
+                    MessageBox.Show("Error al " + strTipo + " Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
             }
             else
             {
-                MessageBox.Show("Error al "+ strTipo + " Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("Error al emitir factura a la sunat Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
         private void fnGuardarPagoCuotaPorDocumento(ControlPagos ctp,List<xmlDocumentoVentaGeneral> lstDV, Int32 tipoCon)
         {
             obControPagos = new BLControlPagos();
-            Boolean bResult = true;
+            Boolean bResult = false;
             if (intRespuestaSunat==1)
             {
                 bResult = obControPagos.blGuardarPagoCuotasPorDocumento(ctp, lstDV, tipoCon);
@@ -2605,8 +2615,8 @@ namespace wfaIntegradoCom.Procesos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EmitirFactura env = new EmitirFactura();
-            env.ObtenerQr("");
+           
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

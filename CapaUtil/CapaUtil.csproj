@@ -63,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsUtil.cs" />
+    <Compile Include="PaginableBindingSource.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PrecioALetras.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

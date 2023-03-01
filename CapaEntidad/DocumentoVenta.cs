@@ -109,6 +109,7 @@ namespace CapaEntidad
         public Int32 idMoneda { get; set; }
         public String SimboloMoneda { get; set; }
         public String cVehiculos { get; set; }
+        public Int32 numero { get; set; }
 
         public String cUsuario { get; set; }
         public String cTipoVenta { get; set; }

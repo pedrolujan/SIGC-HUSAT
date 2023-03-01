@@ -243,7 +243,7 @@ namespace CapaDato
                 {
                     lstCliente.idCliente = Convert.ToInt32(drMenu["idCliente"]);
                     lstCliente.cApePat = Convert.ToString(drMenu["cApePat"]);
-                    lstCliente.cCliente = Convert.ToString(drMenu["cNombre"]) + " " + Convert.ToString(drMenu["cApePat"]) + "" + Convert.ToString(drMenu["cApeMat"]);
+                    lstCliente.cCliente = Convert.ToString(drMenu["cApePat"]) + " " + Convert.ToString(drMenu["cApeMat"])+" " + Convert.ToString(drMenu["cNombre"]);
                     lstCliente.cApeMat = Convert.ToString(drMenu["cApeMat"]);
                     lstCliente.cNombre = Convert.ToString(drMenu["cNombre"]);
                     lstCliente.cDireccion = Convert.ToString(drMenu["cDireccion"]);
@@ -264,6 +264,7 @@ namespace CapaDato
                     lstCliente.cEmpresa = Convert.ToString(drMenu["cEmpresa"]);
                     lstCliente.cCorreo = Convert.ToString(drMenu["cCorreo"]);
                     lstCliente.ubigeo = Convert.ToString(drMenu["cDireccion"] + " " + drMenu["cNomDist"] + " " + drMenu["cNomProv"] + " " + drMenu["cNomDep"]);
+                    lstCliente.TiDocumentoSunat = drMenu["numTipoDocSunat"].ToString();
                     //MOD REPRESENTANTE
                     lstCliente.idRepreLegal = Convert.ToInt32(drMenu["idRepreLegal"]);
                     if (lstCliente.idRepreLegal != 0)
@@ -423,7 +424,7 @@ namespace CapaDato
                 pa[18] = new SqlParameter("@pecContactoCel2", SqlDbType.NVarChar, 20);
                 pa[18].Value = objCliente.cContactoCel2;
 
-                pa[19] = new SqlParameter("@pecEmpresa", SqlDbType.NVarChar, 150);
+                pa[19] = new SqlParameter("@pecEmpresa", SqlDbType.NVarChar, 500);
                 pa[19].Value = objCliente.cEmpresa;
 
                 pa[20] = new SqlParameter("@pecCorreo", SqlDbType.NVarChar, 150);

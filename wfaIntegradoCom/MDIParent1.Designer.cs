@@ -118,6 +118,13 @@ namespace wfaIntegradoCom
             this.panelImagenLogo = new Siticone.UI.WinForms.SiticonePanel();
             this.Img_Husat_Naranja = new System.Windows.Forms.PictureBox();
             this.panelCentral = new Siticone.UI.WinForms.SiticonePanel();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticoneLabel7 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneLabel6 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.cboUsuarioMessage = new System.Windows.Forms.ComboBox();
+            this.cboCargoMessage = new System.Windows.Forms.ComboBox();
+            this.txtMensaje = new System.Windows.Forms.TextBox();
             this.panelCerrarSession = new Siticone.UI.WinForms.SiticonePanel();
             this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
             this.btnPerfil = new FontAwesome.Sharp.IconButton();
@@ -129,7 +136,6 @@ namespace wfaIntegradoCom
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -216,6 +222,7 @@ namespace wfaIntegradoCom
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelPerfil = new System.Windows.Forms.Panel();
+            this.pnMostrarMensajes = new Siticone.UI.WinForms.SiticonePanel();
             this.PanelEncavezadoFondo1.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.pntsSeguimiento.SuspendLayout();
@@ -229,6 +236,8 @@ namespace wfaIntegradoCom
             this.panelImagenLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Naranja)).BeginInit();
             this.panelCentral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            this.siticonePanel1.SuspendLayout();
             this.panelCerrarSession.SuspendLayout();
             this.panelOpciones.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -1067,6 +1076,8 @@ namespace wfaIntegradoCom
             // 
             // panelCentral
             // 
+            this.panelCentral.Controls.Add(this.iconPictureBox1);
+            this.panelCentral.Controls.Add(this.siticonePanel1);
             this.panelCentral.Controls.Add(this.panelCerrarSession);
             this.panelCentral.Controls.Add(this.panelOpciones);
             this.panelCentral.Controls.Add(this.statusStrip1);
@@ -1084,6 +1095,92 @@ namespace wfaIntegradoCom
             this.panelCentral.ShadowDecoration.Parent = this.panelCentral;
             this.panelCentral.Size = new System.Drawing.Size(1054, 599);
             this.panelCentral.TabIndex = 22;
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconPictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.Red;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Message;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.Red;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.Location = new System.Drawing.Point(1020, 570);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.iconPictureBox1.TabIndex = 40;
+            this.iconPictureBox1.TabStop = false;
+            this.iconPictureBox1.Click += new System.EventHandler(this.iconPictureBox1_Click);
+            // 
+            // siticonePanel1
+            // 
+            this.siticonePanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.siticonePanel1.Controls.Add(this.pnMostrarMensajes);
+            this.siticonePanel1.Controls.Add(this.siticoneLabel7);
+            this.siticonePanel1.Controls.Add(this.siticoneLabel6);
+            this.siticonePanel1.Controls.Add(this.cboUsuarioMessage);
+            this.siticonePanel1.Controls.Add(this.cboCargoMessage);
+            this.siticonePanel1.Controls.Add(this.txtMensaje);
+            this.siticonePanel1.Location = new System.Drawing.Point(727, 350);
+            this.siticonePanel1.Name = "siticonePanel1";
+            this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
+            this.siticonePanel1.Size = new System.Drawing.Size(325, 247);
+            this.siticonePanel1.TabIndex = 39;
+            this.siticonePanel1.Visible = false;
+            // 
+            // siticoneLabel7
+            // 
+            this.siticoneLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel7.Location = new System.Drawing.Point(193, 190);
+            this.siticoneLabel7.Name = "siticoneLabel7";
+            this.siticoneLabel7.Size = new System.Drawing.Size(42, 15);
+            this.siticoneLabel7.TabIndex = 169;
+            this.siticoneLabel7.Text = "Usuario.";
+            // 
+            // siticoneLabel6
+            // 
+            this.siticoneLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel6.Location = new System.Drawing.Point(6, 190);
+            this.siticoneLabel6.Name = "siticoneLabel6";
+            this.siticoneLabel6.Size = new System.Drawing.Size(25, 15);
+            this.siticoneLabel6.TabIndex = 169;
+            this.siticoneLabel6.Text = "Area";
+            // 
+            // cboUsuarioMessage
+            // 
+            this.cboUsuarioMessage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboUsuarioMessage.DropDownHeight = 90;
+            this.cboUsuarioMessage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUsuarioMessage.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboUsuarioMessage.FormattingEnabled = true;
+            this.cboUsuarioMessage.IntegralHeight = false;
+            this.cboUsuarioMessage.Location = new System.Drawing.Point(193, 205);
+            this.cboUsuarioMessage.Name = "cboUsuarioMessage";
+            this.cboUsuarioMessage.Size = new System.Drawing.Size(93, 21);
+            this.cboUsuarioMessage.TabIndex = 168;
+            // 
+            // cboCargoMessage
+            // 
+            this.cboCargoMessage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboCargoMessage.DropDownHeight = 90;
+            this.cboCargoMessage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCargoMessage.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboCargoMessage.FormattingEnabled = true;
+            this.cboCargoMessage.IntegralHeight = false;
+            this.cboCargoMessage.Location = new System.Drawing.Point(6, 205);
+            this.cboCargoMessage.Name = "cboCargoMessage";
+            this.cboCargoMessage.Size = new System.Drawing.Size(140, 21);
+            this.cboCargoMessage.TabIndex = 168;
+            this.cboCargoMessage.SelectedIndexChanged += new System.EventHandler(this.cboPagina_SelectedIndexChanged);
+            // 
+            // txtMensaje
+            // 
+            this.txtMensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMensaje.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMensaje.Location = new System.Drawing.Point(4, 230);
+            this.txtMensaje.Name = "txtMensaje";
+            this.txtMensaje.Size = new System.Drawing.Size(284, 13);
+            this.txtMensaje.TabIndex = 39;
+            this.txtMensaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMensaje_KeyPress);
             // 
             // panelCerrarSession
             // 
@@ -1261,62 +1358,52 @@ namespace wfaIntegradoCom
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.AutoSize = false;
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 576);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 573);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(390, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(1054, 26);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "StatusStrip1";
             // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
-            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(74, 18);
-            this.toolStripStatusLabel1.Text = "Usuario: ";
-            // 
             // toolStripStatusLabel2
             // 
+            this.toolStripStatusLabel2.AutoSize = false;
             this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.toolStripStatusLabel2.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 18);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 21);
             this.toolStripStatusLabel2.Text = "Servidor: ";
             // 
             // toolStripStatusLabel3
             // 
+            this.toolStripStatusLabel3.AutoSize = false;
             this.toolStripStatusLabel3.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.toolStripStatusLabel3.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(144, 18);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(144, 21);
             this.toolStripStatusLabel3.Text = "Fecha del Sistema: ";
             // 
             // toolStripStatusLabel4
             // 
+            this.toolStripStatusLabel4.AutoSize = false;
             this.toolStripStatusLabel4.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.toolStripStatusLabel4.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(74, 18);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(74, 21);
             this.toolStripStatusLabel4.Text = "Versión: ";
             // 
             // btnOpciones
@@ -2794,6 +2881,14 @@ namespace wfaIntegradoCom
             this.panelPerfil.Size = new System.Drawing.Size(274, 72);
             this.panelPerfil.TabIndex = 24;
             // 
+            // pnMostrarMensajes
+            // 
+            this.pnMostrarMensajes.Location = new System.Drawing.Point(7, 9);
+            this.pnMostrarMensajes.Name = "pnMostrarMensajes";
+            this.pnMostrarMensajes.ShadowDecoration.Parent = this.pnMostrarMensajes;
+            this.pnMostrarMensajes.Size = new System.Drawing.Size(311, 175);
+            this.pnMostrarMensajes.TabIndex = 170;
+            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2829,6 +2924,9 @@ namespace wfaIntegradoCom
             ((System.ComponentModel.ISupportInitialize)(this.Img_Husat_Naranja)).EndInit();
             this.panelCentral.ResumeLayout(false);
             this.panelCentral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            this.siticonePanel1.ResumeLayout(false);
+            this.siticonePanel1.PerformLayout();
             this.panelCerrarSession.ResumeLayout(false);
             this.panelOpciones.ResumeLayout(false);
             this.panelOpciones.PerformLayout();
@@ -2874,7 +2972,6 @@ namespace wfaIntegradoCom
         private Siticone.UI.WinForms.SiticonePanel panelImagenLogo;
         private Siticone.UI.WinForms.SiticonePanel panelCentral;
         internal System.Windows.Forms.StatusStrip statusStrip1;
-        internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
@@ -3007,6 +3104,14 @@ namespace wfaIntegradoCom
         private Siticone.UI.WinForms.SiticonePanel tsCompra;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel5;
         private Siticone.UI.WinForms.SiticonePictureBox siticonePictureBox1;
+        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private System.Windows.Forms.TextBox txtMensaje;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private System.Windows.Forms.ComboBox cboCargoMessage;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel7;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel6;
+        private System.Windows.Forms.ComboBox cboUsuarioMessage;
+        private Siticone.UI.WinForms.SiticonePanel pnMostrarMensajes;
     }
 }
 

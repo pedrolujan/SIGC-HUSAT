@@ -45,7 +45,7 @@ namespace wfaIntegradoCom.Sunat
         public string RutaEnvios { get; set; }
         public string RutaCDR { get; set; }
 
-        public void GenerarFacturaXML(ParametrosFactura paramFactura,Cliente clsCliente,List<DetalleVenta> lstDetalleVentas)
+        public void GenerarFacturaBoletaXML(ParametrosFactura paramFactura,Cliente clsCliente,List<DetalleVenta> lstDetalleVentas)
         {
 
             //Cabecera del xml
@@ -241,7 +241,24 @@ namespace wfaIntegradoCom.Sunat
             List<PartyIdentificationType> partyIdentificationClientes = new List<PartyIdentificationType>();
             PartyIdentificationType partyIdentificationCliente = new PartyIdentificationType();
             IDType idtipoCliente = new IDType();
-            idtipoCliente.schemeID = "6";
+
+            if (clsCliente.cDocumento.Length == 11)
+            {
+                clsCliente.TiDocumentoSunat = "6";
+            }
+            else if (clsCliente.cDocumento.Length == 8)
+            {
+                clsCliente.TiDocumentoSunat = "1";
+                //clsCliente.cDireccion = "-";
+            }
+            else
+            {
+                clsCliente.TiDocumentoSunat = "-";
+                clsCliente.cDocumento = "-";
+                clsCliente.cCliente = "![CDATA[-]]";
+                clsCliente.cDireccion = "-";
+            }
+            idtipoCliente.schemeID = clsCliente.TiDocumentoSunat;
             idtipoCliente.schemeName = "Documento de Identidad";
             idtipoCliente.schemeAgencyName = "PE:SUNAT";
             idtipoCliente.schemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
@@ -575,7 +592,7 @@ namespace wfaIntegradoCom.Sunat
 
                 ItemIdentificationType codigoProd = new ItemIdentificationType();
                 IDType id = new IDType();
-                id.Value = "HSTCOD";//detalle.Codigo;
+                id.Value = detalle.CodigoProducto;//detalle.Codigo;
                 codigoProd.ID = id;
                 itemTipo.Description = descriptions.ToArray();
                 itemTipo.SellersItemIdentification = codigoProd;
@@ -617,41 +634,7 @@ namespace wfaIntegradoCom.Sunat
             Enviardocumento(rutaenvio);
         }
 
-        private void fnConvertiraPdf(String rutaxml)
-        {
-            // Path to the XML file
-            string xmlPath = rutaxml;
 
-            // Path to the output PDF file
-            string pdfPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\factura.pdf";
-
-            // Read the XML file
-            string xmlContent = File.ReadAllText(xmlPath);
-
-            // Create a new PDF document
-            Document pdfDocument = new Document(PageSize.A4);
-
-            // Set the margins
-            pdfDocument.SetMargins(36, 36, 36, 36);
-
-            // Create a new PDF writer
-            PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDocument, new FileStream(pdfPath, FileMode.Create));
-
-            // Open the PDF document
-            pdfDocument.Open();
-
-            // Parse the XML content to HTML
-            var parsedHtmlElements = HTMLWorker.ParseToList(new StringReader(xmlContent), null);
-
-            // Add the parsed HTML elements to the PDF document
-            foreach (var htmlElement in parsedHtmlElements)
-            {
-                pdfDocument.Add(htmlElement);
-            }
-
-            // Close the PDF document
-            pdfDocument.Close();
-        }
         private string CrearArchivoxml(InvoiceType Factura, string RUCEmisor, string CodigoTipoComprobante, string serie, string correlativo)
         {
             //Generar el archivo xml
@@ -669,32 +652,7 @@ namespace wfaIntegradoCom.Sunat
             }
         }
 
-        private void fnFirmar(string cRutaArchivo, string cCertificado, string cClave)
-        {
-            //X509Certificate2 cert = new X509Certificate2("certificado.pfx", "password");
-            //SignedXml signedXml = new SignedXml(xmlDocument);
-            //Reference reference = new Reference();
-            //reference.Uri = "";
-            //XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
-            //reference.AddTransform(env);
-            //signedXml.AddReference(reference);
-            //RSACryptoServiceProvider rsaKey = (RSACryptoServiceProvider)cert.PrivateKey;
-            //signedXml.SigningKey = rsaKey;
-            //KeyInfo keyInfo = new KeyInfo();
-            //keyInfo.AddClause(new KeyInfoX509Data(cert));
-            //signedXml.KeyInfo = keyInfo;
-
-            //signedXml.ComputeSignature();
-
-            //XmlElement xmlDigitalSignature = signedXml.GetXml();
-            //xmlDocument.DocumentElement.AppendChild(xmlDocument.ImportNode(xmlDigitalSignature, true));
-
-
-
-
-
-
-        }
+       
         public string FirmarXML(string cRutaArchivo, string cCertificado, string cClave)
         {
 
@@ -861,9 +819,9 @@ namespace wfaIntegradoCom.Sunat
                 ServicePointManager.Expect100Continue = false;
                 ServicePointManager.CheckCertificateRevocationList = true;
                 //servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
+                //servicio.ClientCredentials.UserName.Password = "MODDATOS";
                 servicio.ClientCredentials.UserName.UserName = "20602404863FACTURAS";
                 servicio.ClientCredentials.UserName.Password = "Mihusat1";
-                //servicio.ClientCredentials.UserName.Password = "MODDATOS";
 
                 var elements = servicio.Endpoint.Binding.CreateBindingElements();
                 elements.Find<SecurityBindingElement>().EnableUnsecuredResponse = true;

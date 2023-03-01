@@ -52,7 +52,7 @@ namespace wfaIntegradoCom.Sunat
             try
             {
 
-                envios.GenerarFacturaXML(parametros, clsCliente,detalleventa);
+                envios.GenerarFacturaBoletaXML(parametros, clsCliente,detalleventa);
                 return 1;
             }
             catch (Exception ex)
@@ -183,7 +183,7 @@ namespace wfaIntegradoCom.Sunat
             String igv = parametrosFactura.TotalIgv.ToString();
             String importTotal = parametrosFactura.Monto_total.ToString();
             String fecha = parametrosFactura.fecha_venta.ToString("yyyy-MM-dd");// "2023-02-09";
-            String codTipoDocResceptor = "6";// "6";
+            String codTipoDocResceptor = claseCliente.TiDocumentoSunat;// "6";
             String RucReceptor =claseCliente.cDocumento ;//"20600039491";
             String firmaDigital = firmaDigit;//"8YTJ4EeWCLkgfsNqD4eS+QRZoOM=";
 

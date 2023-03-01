@@ -29,5 +29,6 @@ namespace CapaEntidad
 
         public Double importe { get; set; }
         public String  DetalleEgreso { get; set; }
+        public Byte[] ImgQR { get; set; }
     }
 }

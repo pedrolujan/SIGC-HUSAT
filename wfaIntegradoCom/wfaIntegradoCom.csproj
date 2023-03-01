@@ -902,15 +902,15 @@
       <DependentUpon>frmReportes.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="Sunat\EmitirFactura.cs" />
-    <Compile Include="Sunat\Envios.cs" />
-    <Compile Include="Sunat\Formatos.cs" />
     <Compile Include="Sunat\MovimientoSunat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Sunat\MovimientoSunat.Designer.cs">
       <DependentUpon>MovimientoSunat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sunat\EmitirFactura.cs" />
+    <Compile Include="Sunat\Envios.cs" />
+    <Compile Include="Sunat\Formatos.cs" />
     <Compile Include="Sunat\NotaCredito.cs" />
     <EmbeddedResource Include="Mantenedores\frmConfiguracionDocumentoVenta.resx">
       <DependentUpon>frmConfiguracionDocumentoVenta.cs</DependentUpon>

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -525,7 +526,11 @@ namespace wfaIntegradoCom.Procesos
             Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
             lstDetalleVenta = fnDetalleVenta();
             lstDocumentoVenta = fnDocumentoVentaHeader(fnCalcularCabeceraDetalle(lstDetalleVenta));
-            frm.Inicio(lstDocumentoVenta,lstDetalleVenta, tip);
+            
+
+            MemoryStream ms = new MemoryStream(FunGeneral.fnObtenerQRDefecto());
+            
+            frm.Inicio(lstDocumentoVenta,lstDetalleVenta, ms, tip);
         }
        
         private void btnGuardarEgreso_Click(object sender, EventArgs e)
@@ -572,6 +577,8 @@ namespace wfaIntegradoCom.Procesos
             clsEgresos.importe = Convert.ToDouble(txtImporte.Text.ToString());
             clsEgresos.DetalleEgreso = txtDescripcion.Text.ToString();
             clsEgresos.lnTipoCon = -1;
+            clsEgresos.ImgQR = FunGeneral.fnObtenerQRDefecto();
+
             lstPagosTrandiaria[0].idMoneda = clsMoneda.idMoneda;
             lstPagosTrandiaria[0].dFechaRegistro = FunGeneral.fnUpdateFechas(dtFechaRegEgresos.Value);
             lstPagosTrandiaria[0].Unidades = 1;
@@ -606,6 +613,7 @@ namespace wfaIntegradoCom.Procesos
             clsEgresos.importe = Convert.ToDouble(txtImporte2.Text.ToString());
             clsEgresos.DetalleEgreso = txtDescripcion2.Text.ToString();
             clsEgresos.lnTipoCon = -2;
+            clsEgresos.ImgQR = FunGeneral.fnObtenerQRDefecto();
             lstPagosTrandiaria[0].idMoneda = clsMoneda.idMoneda;
             lstPagosTrandiaria[0].dFechaRegistro = FunGeneral.fnUpdateFechas(dtFechaRegIngresos.Value);
             lstPagosTrandiaria[0].Unidades =Convert.ToInt32(txtUnidades.Text.ToString());

@@ -64,13 +64,13 @@ namespace CapaDato
             }
 
         }
-        public DataTable daBuscarDocumentoPorEmitir(Boolean chkActivaFecha,String dtFechaIni, String dtFechaFin, String pcBuscar, Int32 numPagina,Int32 pnTipoCon)
+        public List<DocumentoVenta> daBuscarDocumentoPorEmitir(Boolean chkActivaFecha,String dtFechaIni, String dtFechaFin, String pcBuscar, Int32 numPagina,Int32 pnTipoCon)
         {
 
             SqlParameter[] pa = new SqlParameter[6];
             DataTable dtVenta = new DataTable();
             clsConexion objCnx = null;
-            List<DocumentoVenta> lstVenta = null;
+            List<DocumentoVenta> lstDocumentos = new List<DocumentoVenta>() ;
             objUtil = new clsUtil();
 
             try
@@ -84,16 +84,30 @@ namespace CapaDato
                 pa[2].Value = dtFechaFin;
                 pa[3] = new SqlParameter("@Buscar", SqlDbType.VarChar, 50);
                 pa[3].Value = pcBuscar;
-                pa[4] = new SqlParameter("@numPagina", SqlDbType.TinyInt);
+                pa[4] = new SqlParameter("@numPagina", SqlDbType.Int);
                 pa[4].Value = numPagina;
-                pa[5] = new SqlParameter("@TipoCon", SqlDbType.TinyInt);
+                pa[5] = new SqlParameter("@TipoCon", SqlDbType.Int);
                 pa[5].Value = pnTipoCon;
 
 
                 objCnx = new clsConexion("");
                 dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarDocumentosEmitidosEnSunat", pa);
-
-                return dtVenta;
+                Int32 i = 0;
+                foreach (DataRow d in dtVenta.Rows)
+                {
+                    lstDocumentos.Add(new DocumentoVenta
+                    {
+                        numero = i + 1,
+                        idVenta = Convert.ToInt32(d["idDocumentoVenta"]),
+                        CodigoCorrelativo = d["codDocumentoCorrelativo"].ToString(),
+                        cCliente = d["cliente"].ToString(),
+                        dFechaRegistro = Convert.ToDateTime(d["dtFecha"]),
+                        cDescripEstadoPP = d["cNombreOperacion"].ToString(),
+                        cVehiculos = d["vehiculo"].ToString()
+                    }) ;
+                    i++;
+                }
+                return lstDocumentos;
 
             }
             catch (Exception ex)
@@ -106,7 +120,7 @@ namespace CapaDato
                 if (objCnx != null)
                     objCnx.CierraConexion();
                 objCnx = null;
-                lstVenta = null;
+                lstDocumentos = null;
             }
 
         }

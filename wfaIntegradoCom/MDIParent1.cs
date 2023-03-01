@@ -39,6 +39,13 @@ using System.Windows.Documents;
 using System.Reactive.Joins;
 using wfaIntegradoCom.Reportes;
 using wfaIntegradoCom.Sunat;
+using System.Net.Sockets;
+using System.Net;
+using System.Threading;
+using Timer = System.Windows.Forms.Timer;
+using iTextSharp.text;
+using Font = System.Drawing.Font;
+using ListBox = System.Windows.Controls.ListBox;
 
 namespace wfaIntegradoCom
 
@@ -82,6 +89,8 @@ namespace wfaIntegradoCom
         static Boolean estAperturaCaja = false;
         totalRanking lstTotRan = new totalRanking();
         BLProspecto objAcc = new BLProspecto();
+
+        String[] datosMessage = new String[] { };
         public void fnLoadCarga(Boolean Load)
         {
             LoadCarga = Load;
@@ -587,7 +596,7 @@ namespace wfaIntegradoCom
             }
 
             Variables.claseEmpresa = clsEmpresa;
-            toolStripStatusLabel1.Text = "Usuario: " + FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
+            //toolStripStatusLabel1.Text = "Usuario: " + FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
             tsCerraSession.Text = " " + FunGeneral.FormatearCadenaTitleCase(Variables.clasePersonal.cPrimerNom);
 
             //ImgPerfil.Image = Image.FromStream(lstPers[0].strPerfil);
@@ -631,7 +640,7 @@ namespace wfaIntegradoCom
 
             }
 
-            toolStripStatusLabel1.Text = "Usuario: " + Variables.gsCodUser;
+            //toolStripStatusLabel1.Text = "Usuario: " + Variables.gsCodUser;
             //toolStripStatusLabel4.Text = toolStripStatusLabel4.Text + Variables.gsVersion;
 
         }
@@ -1424,7 +1433,7 @@ namespace wfaIntegradoCom
                 fnMostrarAlertaSeguimiento();
 
 
-
+                FunGeneral.fnLlenarTablaCodTipoCon(cboCargoMessage, "PETR", false);
 
             }
             catch (Exception ex)
@@ -1463,11 +1472,11 @@ namespace wfaIntegradoCom
                 {
                     cboUsuario.SelectedValue = 0;
                 }
-                fnValidarusuarioEnSession();
-                fnLocationElementos();
-                fnPosicionDeCajas();
-
-            }
+                    fnValidarusuarioEnSession();
+                    fnLocationElementos();
+                    fnPosicionDeCajas();
+                    fnEscucharMansages();
+                }
 
         }
 
@@ -1478,11 +1487,13 @@ namespace wfaIntegradoCom
                 Frm_FormClosed();
                 LoadCarga = false;
                 estadoTema = true;
+                
             }
             string strFechaIso = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5);
             string strFechaHourIso = strFechaIso + " " + (DateTime.Now.TimeOfDay.ToString()).Substring(0, 12);
             Variables.gdFechaSis = Convert.ToDateTime(strFechaHourIso);
             toolStripStatusLabel3.Text = "Fecha del Sistema: " + Variables.gdFechaSis.ToString("dd/MM/yyyy HH:mm:ss");
+            //fnEscucharMansages();
         }
 
         private void OnPowerModeChange(object s, PowerModeChangedEventArgs e)
@@ -3655,6 +3666,69 @@ namespace wfaIntegradoCom
             estadoActivarDashBoard = est;
             
         }
+        public void fnEscucharMansages()
+        {
+
+
+            UdpClient udpClient = new UdpClient(1234);
+
+            // Cree un objeto de extremo de red que represente la dirección de difusión de su red
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
+
+            // Inicie un subproceso separado para escuchar los mensajes
+            Thread receiveThread = new Thread(() =>
+            {
+                while (true)
+                {
+                    // Espere a recibir un mensaje
+                    byte[] data = udpClient.Receive(ref endPoint);
+                    
+                    // Convierta los datos en una cadena y muestre el mensaje
+                    string message = Encoding.ASCII.GetString(data);
+                    string[] datos = message.Split(':');
+                    bool enviadoPorMi = datos[0] == Variables.clasePersonal.cPrimerNom;
+                    datosMessage = datos;
+
+                    panelEspaciado.Invoke((MethodInvoker)delegate {
+                        if (datos[0] != Variables.clasePersonal.cPrimerNom)
+                        {
+                            MessageBox.Show("Mensaje de: "+ datos[0]+"\n ⇉ "+ datos[1]+"\n Puede ser de urgencia respondele.", "AVISO.😠",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        }
+
+                        SiticonePanel pn = new SiticonePanel();
+                        pn.Dock=DockStyle.Bottom;
+                        pn.BackColor = Color.Gray;
+                        SiticoneLabel stl = new SiticoneLabel();
+                        stl.Dock=DockStyle.Fill;
+                        stl.TextAlignment = datos[0] != Variables.clasePersonal.cPrimerNom ? ContentAlignment.MiddleLeft : ContentAlignment.MiddleRight;
+                        pn.Controls.Add(stl);
+                        // Agrega el mensaje al ListBox
+                        pnMostrarMensajes.Controls.Add(pn);
+                        //new Mensaje(datos[1], enviadoPorMi);
+                        //listBox1.Items.Add(datos[1]);
+
+                        //// Asegura que el ListBox muestre el último mensaje agregado
+                        //listBox1.TopIndex = listBox1.Items.Count - 1;
+
+                        //// Suscribe al evento DrawItem del ListBox
+                        //listBox1.DrawItem += new DrawItemEventHandler(listBox1_DrawItem);
+                    });
+                   
+                }
+            });
+
+            receiveThread.IsBackground = true;
+            receiveThread.Start();
+
+            //// Espere a recibir un mensaje
+            //byte[] data = udpClient.Receive(ref endPoint);
+
+            // Convierta los datos en una cadena y muestre el mensaje
+            //string message = Encoding.ASCII.GetString(data);
+
+
+
+        }
         private void fnDatosPNEspaciador()
         {
             panelEspaciado.Controls.Clear();
@@ -4072,6 +4146,84 @@ namespace wfaIntegradoCom
         {
             MovimientoSunat frm = new MovimientoSunat();
             frm.ShowDialog();
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMensaje_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                
+
+                
+                // Cree un objeto Socket UDP
+                UdpClient udpClient = new UdpClient();
+
+                // Cree un objeto de extremo de red que represente la dirección de difusión de su red
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 1234);
+
+                // Cree el mensaje que desea enviar
+                string message = Variables.clasePersonal.cPrimerNom + ":" + txtMensaje.Text.ToString();
+
+                // Convierta el mensaje en bytes
+                byte[] data = Encoding.ASCII.GetBytes(message);
+
+                // Envíe el mensaje a través del socket UDP
+                udpClient.Send(data, data.Length, endPoint);
+            }
+        }
+        class Mensaje
+        {
+            public string Texto { get; set; }
+            public bool EnviadoPorMi { get; set; }
+
+            public Mensaje(string texto, bool enviadoPorMi)
+            {
+                Texto = texto;
+                EnviadoPorMi = enviadoPorMi;
+            }
+        }
+        private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+
+            //e.DrawBackground();
+
+            //// Obtén el mensaje que se está dibujando
+            //Mensaje mensaje = (Mensaje)listBox1.Items[e.Index];
+
+            //// Define las coordenadas X y Y donde se dibujará el texto del mensaje
+            //int x = e.Bounds.X + 5;
+            //int y = e.Bounds.Y + 5;
+
+            //// Define la fuente y el color del texto del mensaje
+            //Font fuente = new Font("Arial", 10, FontStyle.Regular);
+            //Color color = mensaje.EnviadoPorMi ? Color.Blue : Color.Black;
+
+            //// Dibuja el texto del mensaje
+            //e.Graphics.DrawString(mensaje.Texto, fuente, new SolidBrush(color), new PointF(x, y));
+
+            //e.DrawFocusRectangle();
+        }
+
+        private void iconPictureBox1_Click(object sender, EventArgs e)
+        {
+            if (siticonePanel1.Visible==false)
+            {
+                siticonePanel1.Visible = true;
+            }
+            else if(siticonePanel1.Visible == true)
+            {
+                siticonePanel1.Visible = false;
+            }
+        }
+
+        private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FunGeneral.fnLlenarUsuarioPorCargo(cboUsuarioMessage, cboCargoMessage.SelectedValue.ToString(), false);
         }
     }
 

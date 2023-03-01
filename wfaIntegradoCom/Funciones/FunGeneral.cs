@@ -18,6 +18,7 @@ using Guna.UI.WinForms;
 using System.Text.RegularExpressions;
 using Microsoft.Reporting.WinForms;
 using RJCodeAdvance.RJControls;
+using System.IO;
 
 namespace wfaIntegradoCom.Funciones
 {
@@ -1204,6 +1205,14 @@ namespace wfaIntegradoCom.Funciones
         public static DateTime fnUpdateFechas(DateTime dt)
         {
             return  dt.AddHours(-dt.Hour).AddMinutes(-dt.Minute).AddSeconds(-dt.Second).AddHours(Variables.gdFechaSis.Hour).AddMinutes(Variables.gdFechaSis.Minute).AddSeconds(Variables.gdFechaSis.Second);
+        }
+        public static Byte[] fnObtenerQRDefecto()
+        {
+            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+
+            return imageBytes;
+            
         }
         public static Int32 fnBuscarAccionDiaria(Int32 idOpera, string fechaOperacion)
         {

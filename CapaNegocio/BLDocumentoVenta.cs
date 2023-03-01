@@ -26,7 +26,7 @@ namespace CapaNegocio
             }
 
         }
-        public DataTable blBuscarDocumentoPorEmitir(Boolean chkActivaFecha, String dtFechaIni, String dtFechaFin, String pcBuscar, Int32 numPagina, Int32 pnTipoCon)
+        public List<DocumentoVenta> blBuscarDocumentoPorEmitir(Boolean chkActivaFecha, String dtFechaIni, String dtFechaFin, String pcBuscar, Int32 numPagina, Int32 pnTipoCon)
         {
             DADocumentoVenta objDocVenta = new DADocumentoVenta();
             try

@@ -2171,13 +2171,13 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.label34.AutoSize = true;
             this.label34.BackColor = System.Drawing.Color.Transparent;
-            this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label34.Location = new System.Drawing.Point(15, 169);
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.label34.Location = new System.Drawing.Point(15, 172);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(277, 17);
+            this.label34.Size = new System.Drawing.Size(333, 17);
             this.label34.TabIndex = 161;
-            this.label34.Text = "¿Comprobante de Pago a nombre de Cliente?";
+            this.label34.Text = "¿COMPROBANTE DE PAGO A NOMBRE DEL CLIENTE?";
             // 
             // siticoneSeparator1
             // 
@@ -2194,7 +2194,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbRespuestaPago.Controls.Add(this.rdbNo);
             this.gbRespuestaPago.Controls.Add(this.rdbSi);
             this.gbRespuestaPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.gbRespuestaPago.Location = new System.Drawing.Point(324, 154);
+            this.gbRespuestaPago.Location = new System.Drawing.Point(356, 154);
             this.gbRespuestaPago.Name = "gbRespuestaPago";
             this.gbRespuestaPago.Size = new System.Drawing.Size(194, 46);
             this.gbRespuestaPago.TabIndex = 159;
@@ -2204,6 +2204,8 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.rdbNo.AutoSize = true;
             this.rdbNo.Checked = true;
+            this.rdbNo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.rdbNo.Location = new System.Drawing.Point(108, 15);
             this.rdbNo.Name = "rdbNo";
             this.rdbNo.Size = new System.Drawing.Size(46, 21);
@@ -2216,9 +2218,11 @@ namespace wfaIntegradoCom.Mantenedores
             // rdbSi
             // 
             this.rdbSi.AutoSize = true;
+            this.rdbSi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbSi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.rdbSi.Location = new System.Drawing.Point(23, 15);
             this.rdbSi.Name = "rdbSi";
-            this.rdbSi.Size = new System.Drawing.Size(36, 21);
+            this.rdbSi.Size = new System.Drawing.Size(37, 21);
             this.rdbSi.TabIndex = 0;
             this.rdbSi.Text = "SI";
             this.rdbSi.UseVisualStyleBackColor = true;
@@ -2657,7 +2661,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaVentas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
             this.dgvListaVentas.Visible = false;
             this.dgvListaVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellClick);
-            this.dgvListaVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDocumentoC_CellDoubleClick);
             this.dgvListaVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellDoubleClick);
             this.dgvListaVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaVentas_CellFormatting);
             this.dgvListaVentas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListaVentas_CellMouseDown);
@@ -2684,26 +2687,26 @@ namespace wfaIntegradoCom.Mantenedores
             this.irAInstalacion,
             this.anularVentaToolStripMenuItem});
             this.cmListaVentas.Name = "cmListaVentas";
-            this.cmListaVentas.Size = new System.Drawing.Size(167, 70);
+            this.cmListaVentas.Size = new System.Drawing.Size(181, 92);
             // 
             // irActualizar
             // 
             this.irActualizar.Name = "irActualizar";
-            this.irActualizar.Size = new System.Drawing.Size(166, 22);
+            this.irActualizar.Size = new System.Drawing.Size(180, 22);
             this.irActualizar.Text = "Actualizar Venta";
             this.irActualizar.Click += new System.EventHandler(this.irActualizar_Click);
             // 
             // irAInstalacion
             // 
             this.irAInstalacion.Name = "irAInstalacion";
-            this.irAInstalacion.Size = new System.Drawing.Size(166, 22);
+            this.irAInstalacion.Size = new System.Drawing.Size(180, 22);
             this.irAInstalacion.Text = "Ir a Renovaciones";
             this.irAInstalacion.Click += new System.EventHandler(this.irAInstalacion_Click);
             // 
             // anularVentaToolStripMenuItem
             // 
             this.anularVentaToolStripMenuItem.Name = "anularVentaToolStripMenuItem";
-            this.anularVentaToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.anularVentaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.anularVentaToolStripMenuItem.Text = "Anular Venta";
             this.anularVentaToolStripMenuItem.Click += new System.EventHandler(this.anularVentaToolStripMenuItem_Click);
             // 
