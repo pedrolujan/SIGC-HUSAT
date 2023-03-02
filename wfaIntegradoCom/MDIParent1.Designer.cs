@@ -120,6 +120,7 @@ namespace wfaIntegradoCom
             this.panelCentral = new Siticone.UI.WinForms.SiticonePanel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.pnMostrarMensajes = new Siticone.UI.WinForms.SiticonePanel();
             this.siticoneLabel7 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel6 = new Siticone.UI.WinForms.SiticoneLabel();
             this.cboUsuarioMessage = new System.Windows.Forms.ComboBox();
@@ -222,7 +223,6 @@ namespace wfaIntegradoCom
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelPerfil = new System.Windows.Forms.Panel();
-            this.pnMostrarMensajes = new Siticone.UI.WinForms.SiticonePanel();
             this.PanelEncavezadoFondo1.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.pntsSeguimiento.SuspendLayout();
@@ -1126,6 +1126,14 @@ namespace wfaIntegradoCom
             this.siticonePanel1.Size = new System.Drawing.Size(325, 247);
             this.siticonePanel1.TabIndex = 39;
             this.siticonePanel1.Visible = false;
+            // 
+            // pnMostrarMensajes
+            // 
+            this.pnMostrarMensajes.Location = new System.Drawing.Point(7, 9);
+            this.pnMostrarMensajes.Name = "pnMostrarMensajes";
+            this.pnMostrarMensajes.ShadowDecoration.Parent = this.pnMostrarMensajes;
+            this.pnMostrarMensajes.Size = new System.Drawing.Size(311, 175);
+            this.pnMostrarMensajes.TabIndex = 170;
             // 
             // siticoneLabel7
             // 
@@ -2880,14 +2888,6 @@ namespace wfaIntegradoCom
             this.panelPerfil.Name = "panelPerfil";
             this.panelPerfil.Size = new System.Drawing.Size(274, 72);
             this.panelPerfil.TabIndex = 24;
-            // 
-            // pnMostrarMensajes
-            // 
-            this.pnMostrarMensajes.Location = new System.Drawing.Point(7, 9);
-            this.pnMostrarMensajes.Name = "pnMostrarMensajes";
-            this.pnMostrarMensajes.ShadowDecoration.Parent = this.pnMostrarMensajes;
-            this.pnMostrarMensajes.Size = new System.Drawing.Size(311, 175);
-            this.pnMostrarMensajes.TabIndex = 170;
             // 
             // MDIParent1
             // 

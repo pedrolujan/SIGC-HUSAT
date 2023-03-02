@@ -160,11 +160,11 @@ namespace wfaIntegradoCom.Procesos
                 Color colorBg = new Color();
                 if (lstDetalleCronograma[fila].strTipoDescuento == "PORCENTUAL" && lstDetalleCronograma[fila].descuento != 0)
                 {
-                    strDescuento = lstDetalleCronograma[fila].descuento + " % ";
+                    strDescuento = "" + lstDetalleCronograma[fila].descuento;
                 }
                 else if (lstDetalleCronograma[fila].strTipoDescuento == "DECIMAL" && lstDetalleCronograma[fila].descuento != 0)
                 {
-                    strDescuento = clsMoneda.cSimbolo + " " + lstDetalleCronograma[fila].descuento;
+                    strDescuento = "" + lstDetalleCronograma[fila].descuento;
                 }
                 DetalleCronograma dtc = lstCronoGramasParaDocumentoVenta.Find(j => j.idDetalleCronograma == lstDetalleCronograma[fila].idDetalleCronograma);
                 if (dtc is DetalleCronograma)
@@ -1969,9 +1969,11 @@ namespace wfaIntegradoCom.Procesos
                 {
                     DialogResult dResult;
                     Double PrecioADescontar = 0;
-                    PrecioADescontar=FunGeneral.fnLimpiarDescuentos(Convert.ToString(dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex].Value));
+                    String texto = dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    //string textoSinDosPrimeros = texto.Substring(2, texto.Length - 2);
+                    PrecioADescontar = Convert.ToDouble(texto);
                     //Double PrecioADescontar = Convert.ToDouble(dgvCronograma.Rows[e.RowIndex+1].Cells[e.ColumnIndex].Value);
-                 
+
                     Int32 idDescuento = Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue);
                     lstDetalleCronograma[e.RowIndex].strTipoDescuento = Convert.ToString(cboTipoDescuentoPrecios.Text);
 

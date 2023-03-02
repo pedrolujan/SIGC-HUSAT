@@ -1653,7 +1653,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=First(Fields!NombreDocumento.Value, "DocumentoVenta")+"  ELECTRONICA"</Value>
+                        <Value>=First(Fields!NombreDocumento.Value, "DocumentoVenta")+iif(First(Fields!NombreDocumento.Value, "DocumentoVenta")="RECIBO"," ELECTRONICO","  ELECTRONICA")</Value>
                         <Style>
                           <FontSize>11pt</FontSize>
                           <FontWeight>Bold</FontWeight>
