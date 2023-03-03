@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CapaDato
 {
@@ -526,13 +527,18 @@ namespace CapaDato
                     TipoPago = Convert.ToString(drMenu["tipoPago"]).ToString();
                     imgQr= (Byte[])drMenu["CodigoQr"];
                 }
-               
-                MemoryStream ms = new MemoryStream(imgQr);
+                if (imgQr.Length<=0) 
+                {
+					String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+					imgQr = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+
+				}
+				MemoryStream ms = new MemoryStream(imgQr);
 
                 lstDocumentoVenta = clsUtil.Deserialize<xmlDocumentoVentaGeneral>(xmlDocventa);
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripEstadoPP = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(DescripEstadoPP);
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cVehiculos = PlacaVehiculos;
-                lstDocumentoVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = codigoDocumento;
+                lstDocumentoVenta.xmlDocumentoVenta[0].CodigoCorrelativo = codigoDocumento;
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cCliente = Cliente;
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = TipoPago;
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Cdirrecion);

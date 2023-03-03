@@ -233,7 +233,7 @@ namespace wfaIntegradoCom.Procesos
                 stXmlDocumentoVenta = xmlDocumentoVenta;
                 Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
 
-                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, tipCon);
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, xmlDocumentoVenta[0].memoryStream, tipCon);
 
             }
             catch (Exception ex)

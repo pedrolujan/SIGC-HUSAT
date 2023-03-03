@@ -3690,19 +3690,41 @@ namespace wfaIntegradoCom
                     datosMessage = datos;
 
                     panelEspaciado.Invoke((MethodInvoker)delegate {
-                        if (datos[0] != Variables.clasePersonal.cPrimerNom)
-                        {
-                            MessageBox.Show("Mensaje de: "+ datos[0]+"\n ⇉ "+ datos[1]+"\n Puede ser de urgencia respondele.", "AVISO.😠",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        }
+                        //if (datos[0] != Variables.clasePersonal.cPrimerNom)
+                        //{
+                        //    MessageBox.Show("Mensaje de: "+ datos[1]+"\n ⇉ "+ datos[2]+"\n Puede ser de urgencia respondele.", "AVISO.😠",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        //}
+                        siticonePanel1.Visible = true;
 
                         SiticonePanel pn = new SiticonePanel();
                         pn.Dock=DockStyle.Bottom;
-                        pn.BackColor = Color.Gray;
+                        pn.Height = 30;
+                        pn.BorderRadius = 3;
                         SiticoneLabel stl = new SiticoneLabel();
-                        stl.Dock=DockStyle.Fill;
-                        stl.TextAlignment = datos[0] != Variables.clasePersonal.cPrimerNom ? ContentAlignment.MiddleLeft : ContentAlignment.MiddleRight;
+                        
+                        stl.AutoSize = false;
+                        stl.Height=pn.Height;
+                        stl.Dock = DockStyle.Fill;
+                        stl.Text = datos[2].ToString();
+                        if (Convert.ToInt32(datos[0])== Variables.gnCodUser)
+                        {
+                            pn.BackColor = Variables.ColorEmpresa;
+                            stl.ForeColor = Color.White;
+                            stl.TextAlignment = ContentAlignment.MiddleRight;
+                        }
+                        else
+                        {
+                            pn.BackColor = Variables.Colororangeclaro;
+                            stl.ForeColor = Color.White;
+                            stl.TextAlignment = ContentAlignment.MiddleLeft;
+                        }
+                        
+                        
+                        
+                        
                         pn.Controls.Add(stl);
                         // Agrega el mensaje al ListBox
+                        pnMostrarMensajes.AutoScroll = true;
                         pnMostrarMensajes.Controls.Add(pn);
                         //new Mensaje(datos[1], enviadoPorMi);
                         //listBox1.Items.Add(datos[1]);
@@ -4167,7 +4189,7 @@ namespace wfaIntegradoCom
                 IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 1234);
 
                 // Cree el mensaje que desea enviar
-                string message = Variables.clasePersonal.cPrimerNom + ":" + txtMensaje.Text.ToString();
+                string message = Variables.gnCodUser+":"+Variables.clasePersonal.cPrimerNom + ":" + txtMensaje.Text.ToString();
 
                 // Convierta el mensaje en bytes
                 byte[] data = Encoding.ASCII.GetBytes(message);
