@@ -1368,6 +1368,28 @@ namespace wfaIntegradoCom.Funciones
                 objUtil = null;
             }
         }
+        public static List<Personal> fnObtenerUsuariosPersonal(Int32 idUsuario)
+        {
+            BLVentaGeneral blVG = new BLVentaGeneral();
+            clsUtil objUtil = new clsUtil();
+            Boolean bResult;
+            List<Personal> lst = new List<Personal>();
+            try
+            {
+                lst = blVG.blObtenerUsuariosPersonal(idUsuario);
+
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("frmRegistrarVehiculo", "fnBuscarVehiculo", ex.Message);
+                return lst;
+            }
+            finally
+            {
+                objUtil = null;
+            }
+        }
 
         public static List<Moneda> fnLLenarMoneda(ComboBox cbo, Int32 idMoneda, Boolean buscar)
         {

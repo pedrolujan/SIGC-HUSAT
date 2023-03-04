@@ -46,6 +46,7 @@ using Timer = System.Windows.Forms.Timer;
 using iTextSharp.text;
 using Font = System.Drawing.Font;
 using ListBox = System.Windows.Controls.ListBox;
+using Label = System.Windows.Forms.Label;
 
 namespace wfaIntegradoCom
 
@@ -1433,7 +1434,7 @@ namespace wfaIntegradoCom
                 fnMostrarAlertaSeguimiento();
 
 
-                FunGeneral.fnLlenarTablaCodTipoCon(cboCargoMessage, "PETR", false);
+                FunGeneral.fnLlenarTablaCodTipoCon(cboCargoMessage, "PETR", true);
 
             }
             catch (Exception ex)
@@ -3684,51 +3685,170 @@ namespace wfaIntegradoCom
                     byte[] data = udpClient.Receive(ref endPoint);
                     
                     // Convierta los datos en una cadena y muestre el mensaje
-                    string message = Encoding.ASCII.GetString(data);
+                    //string message = Encoding.ASCII.GetString(data);
+                    string message = Encoding.UTF8.GetString(data);
                     string[] datos = message.Split(':');
                     bool enviadoPorMi = datos[0] == Variables.clasePersonal.cPrimerNom;
                     datosMessage = datos;
 
                     panelEspaciado.Invoke((MethodInvoker)delegate {
-                        //if (datos[0] != Variables.clasePersonal.cPrimerNom)
-                        //{
-                        //    MessageBox.Show("Mensaje de: "+ datos[1]+"\n ⇉ "+ datos[2]+"\n Puede ser de urgencia respondele.", "AVISO.😠",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        //}
-                        siticonePanel1.Visible = true;
+                  
 
-                        SiticonePanel pn = new SiticonePanel();
-                        pn.Dock=DockStyle.Bottom;
-                        pn.Height = 30;
-                        pn.BorderRadius = 3;
+                        foreach (SiticonePanel control in pnMostrarMensajes.Controls)
+                        {
+                            if (control.Tag != null && control.Tag.ToString() == "espacio")
+                            {
+                                pnMostrarMensajes.Controls.Remove(control);
+                                //break;
+                            }
+                        }
+                        
+                        SiticonePanel pnS1 = new SiticonePanel();
+                        //pnS1.Dock = DockStyle.Bottom;
+                        pnS1.Height = 01;
+                        pnS1.Tag = "espacio";
+
+                        SiticoneCirclePictureBox pb = new SiticoneCirclePictureBox();
+
+                        pb.Width = 25;
+                        pb.Height = 25;
+
+                        SiticonePanel pnS = new SiticonePanel();
+                        pnS.Dock = DockStyle.Bottom;
+                        pnS.Height = 5;
+                        Font font = new Font("Segoe UI Emoji", 11);
+
                         SiticoneLabel stl = new SiticoneLabel();
                         
-                        stl.AutoSize = false;
-                        stl.Height=pn.Height;
-                        stl.Dock = DockStyle.Fill;
-                        stl.Text = datos[2].ToString();
+                        stl.Text = datos[3].ToString();
+                        stl.AutoSize = true;
+                        stl.MaximumSize = new Size((pnMostrarMensajes.Width/2)-(pb.Width+1), 1222);
+                        //stl.BackColor = Color.Black;
+                        stl.Font = font;
+
+                        Label lb = new Label();
+                        lb.UseCompatibleTextRendering = false;
+
+                        lb.Text = datos[3].ToString();
+                        lb.AutoSize = true;
+                        lb.MaximumSize = new Size((pnMostrarMensajes.Width / 2) - (pb.Width + 1), 1222);
+                        lb.Font = font;
+
+                        SiticonePanel png = new SiticonePanel();
+                        png.Width = pnMostrarMensajes.Width;
+                        png.Dock = DockStyle.Bottom;
+                        //png.FillColor = Color.Aquamarine;
+                        png.Height = (stl.Height > pb.Height ? stl.Height : pb.Height) + 1;
+                        png.Padding = new Padding(0,0,0,0);
+
+                       
+
+
+                        SiticonePanel pn = new SiticonePanel();
+                        //pn.Dock=DockStyle.Bottom;
+                        pn.Height = (stl.Height> pb.Height? stl.Height: pb.Height)+1;
+                        pn.Width = (pnMostrarMensajes.Width / 2);
+                        //pn.MinimumSize = new Size(50, 30);
+                        pn.BorderRadius = 5;
+                        //pn.Margin = new Padding(0, 0, 0, 0);
+
+
+                        pb.Image = Properties.Resources.enojo;
+                        pb.SizeMode = PictureBoxSizeMode.Zoom;
+
+                        Personal clsPer = Variables.listaPersonal.Find(i=>i.idUsuario== Convert.ToInt32(datos[0]));
+
+
                         if (Convert.ToInt32(datos[0])== Variables.gnCodUser)
                         {
-                            pn.BackColor = Variables.ColorEmpresa;
-                            stl.ForeColor = Color.White;
-                            stl.TextAlignment = ContentAlignment.MiddleRight;
+                            pb.Image = System.Drawing.Image.FromStream(Variables.clasePersonal.strPerfil);
+                            pn.FillColor = Variables.ColorEmpresa;
+                            lb.ForeColor = Color.White;
+                            stl.ForeColor = Variables.ColorEmpresa;
+                            //stl.TextAlignment = ContentAlignment.MiddleRight;
+                            //pn.Anchor = AnchorStyles.Right;
+                            fnPosicionarMensajes(png, pn);
                         }
                         else
                         {
-                            pn.BackColor = Variables.Colororangeclaro;
-                            stl.ForeColor = Color.White;
-                            stl.TextAlignment = ContentAlignment.MiddleLeft;
+                            pb.Image = System.Drawing.Image.FromStream(clsPer.strPerfil);
+                            pn.FillColor = Variables.Colororangeclaro;
+                            lb.ForeColor = Color.White;
+                            stl.ForeColor = Variables.Colororangeclaro;
+                            ////stl.TextAlignment = ContentAlignment.MiddleLeft;
+                            //stl.Anchor = AnchorStyles.Top;
+                            //stl.Anchor = AnchorStyles.Left;
                         }
                         
                         
                         
                         
+                        pn.Controls.Add(pb);
+                        stl.Location =new Point((pb.Location.X + pb.Width)+1 , stl.Location.Y);
+                        lb.Location =new Point((pb.Location.X + pb.Width)+1 , stl.Location.Y);
+                       
+                        pn.Controls.Add(lb);
                         pn.Controls.Add(stl);
-                        // Agrega el mensaje al ListBox
-                        pnMostrarMensajes.AutoScroll = true;
-                        pnMostrarMensajes.Controls.Add(pn);
-                        //new Mensaje(datos[1], enviadoPorMi);
-                        //listBox1.Items.Add(datos[1]);
 
+                        png.Controls.Add(pn);
+                        // Agrega el mensaje al ListBox
+
+                        if (datos[1].ToString()=="0")
+                        {
+                            pnMostrarMensajes.AutoScroll = true;
+                            pnMostrarMensajes.Controls.Add(pnS1);
+                            pnMostrarMensajes.Controls.Add(pnS);
+                            pnMostrarMensajes.Controls.Add(png);
+                            //pnMostrarMensajes.VerticalScroll.Value = pnMostrarMensajes.VerticalScroll.Maximum;
+                            if (siticonePanel1.Visible == false) { siticonePanel1.Visible = true; }
+                        }
+                        else
+                        {
+                            siticonePanel1.Visible = false;
+                            if (Convert.ToInt32(datos[0])==Variables.gnCodUser)
+                            {
+                                pnMostrarMensajes.AutoScroll = true;
+                                pnMostrarMensajes.Controls.Add(pnS1);
+                                pnMostrarMensajes.Controls.Add(pnS);
+                                pnMostrarMensajes.Controls.Add(png);
+                                //pnMostrarMensajes.VerticalScroll.Value = pnMostrarMensajes.VerticalScroll.Maximum;
+                                if (siticonePanel1.Visible == false) { siticonePanel1.Visible = true; }
+                            }
+                            else
+                            {
+                                if (datos[1].ToString() == Variables.gsCargoUsuario)
+                                {
+
+
+                                    if (Convert.ToInt32(datos[2]) == 0 || Convert.ToInt32(datos[2]) == Variables.gnCodUser)
+                                    {
+                                        pnMostrarMensajes.AutoScroll = true;
+                                        pnMostrarMensajes.Controls.Add(pnS1);
+                                        pnMostrarMensajes.Controls.Add(pnS);
+                                        pnMostrarMensajes.Controls.Add(png);
+                                        //pnMostrarMensajes.VerticalScroll.Value = pnMostrarMensajes.VerticalScroll.Maximum;
+                                        if (siticonePanel1.Visible == false) { siticonePanel1.Visible = true; }
+                                    }
+                                    else
+                                    {
+                                        siticonePanel1.Visible = false;
+                                    }
+                                }
+                            }
+
+                            if (Variables.gsCargoUsuario == "PETR0007")
+                            {
+                                pnMostrarMensajes.AutoScroll = true;
+                                pnMostrarMensajes.Controls.Add(pnS1);
+                                pnMostrarMensajes.Controls.Add(pnS);
+                                pnMostrarMensajes.Controls.Add(png);
+                                //pnMostrarMensajes.VerticalScroll.Value = pnMostrarMensajes.VerticalScroll.Maximum;
+                                if(siticonePanel1.Visible == false) { siticonePanel1.Visible = true; }
+                            }
+                        }
+
+                        pnMostrarMensajes.AutoScrollPosition = new Point(0, 9999); ;
+                        //pnMostrarMensajes.AutoScroll = false;
                         //// Asegura que el ListBox muestre el último mensaje agregado
                         //listBox1.TopIndex = listBox1.Items.Count - 1;
 
@@ -3750,6 +3870,29 @@ namespace wfaIntegradoCom
 
 
 
+        }
+        private void fnPosicionarMensajes(SiticonePanel pnPadre,SiticonePanel pnHijo)
+        {
+            // Obtener las dimensiones del panel contenedor
+            int containerWidth = pnPadre.Width;
+            int containerHeight = pnPadre.Height;
+
+            // Obtener las dimensiones del panel que se va a posicionar
+            int panelWidth = pnHijo.Width;
+            int panelHeight = pnHijo.Height;
+
+            // Calcular la posición en X y Y para centrar el panel en el panel contenedor
+            int xPos = (containerWidth) / 2;
+            int yPos = (containerHeight - panelHeight) / 2;
+
+            // Establecer la posición del panel
+            pnHijo.Location = new Point(xPos, yPos);
+
+            // Establecer el margen del panel para que se posicione a la derecha
+            pnHijo.Margin = new Padding(0, 0, -10, 0);
+
+            // Establecer la propiedad Anchor del panel para que se mantenga en su posición
+            pnHijo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         }
         private void fnDatosPNEspaciador()
         {
@@ -4178,9 +4321,7 @@ namespace wfaIntegradoCom
         private void txtMensaje_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (Char)Keys.Enter)
-            {
-                
-
+            {            
                 
                 // Cree un objeto Socket UDP
                 UdpClient udpClient = new UdpClient();
@@ -4189,12 +4330,13 @@ namespace wfaIntegradoCom
                 IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 1234);
 
                 // Cree el mensaje que desea enviar
-                string message = Variables.gnCodUser+":"+Variables.clasePersonal.cPrimerNom + ":" + txtMensaje.Text.ToString();
-
+                string message = Variables.gnCodUser + ":" + cboCargoMessage.SelectedValue.ToString()+":"+cboUsuarioMessage.SelectedValue.ToString() + ":" + txtMensaje.Text.ToString();
+                //
                 // Convierta el mensaje en bytes
-                byte[] data = Encoding.ASCII.GetBytes(message);
+                byte[] data = Encoding.UTF8.GetBytes(message);
 
                 // Envíe el mensaje a través del socket UDP
+                txtMensaje.Text = "";
                 udpClient.Send(data, data.Length, endPoint);
             }
         }
@@ -4245,7 +4387,12 @@ namespace wfaIntegradoCom
 
         private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FunGeneral.fnLlenarUsuarioPorCargo(cboUsuarioMessage, cboCargoMessage.SelectedValue.ToString(), false);
+            FunGeneral.fnLlenarUsuarioPorCargo(cboUsuarioMessage, cboCargoMessage.SelectedValue.ToString(), true);
+        }
+
+        private void siticoneLabel8_BackColorChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

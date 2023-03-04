@@ -615,6 +615,73 @@ namespace CapaDato
                 objCnx = null;
             }
         }
+        public List<Personal> daDevolverusuariosPersonal(Int32 Usuario)
+        {
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtVentaG = new DataTable();
+            clsConexion objCnx = null;
+            Personal cUsuario ;
+            List<Personal> lstUsuario = new List<Personal>();
+            objUtil = new clsUtil();
+
+            List<Personal> lstPersonal = new List<Personal>();
+            try
+            {
+                pa[0] = new SqlParameter("@idUsuario", SqlDbType.TinyInt) { Value = Usuario };
+
+
+                objCnx = new clsConexion("");
+                dtVentaG = objCnx.EjecutarProcedimientoDT("uspObtenerUsuarioActual", pa);
+                foreach (DataRow drMenu in dtVentaG.Rows)
+                {
+                    cUsuario = new Personal();
+                    if (drMenu["Perfil"].ToString() == "")
+                    {
+                        cUsuario.idUsuario = Convert.ToInt32(drMenu["idUsuario"]);
+                        cUsuario.idPersonal = Convert.ToInt32(drMenu["idPersonal"]);
+                        cUsuario.cUsuario = Convert.ToString(drMenu["cUser"]);
+                        cUsuario.cPrimerNom = Convert.ToString(drMenu["cPrimerNom"]);
+                        cUsuario.cApePat = Convert.ToString(drMenu["cApePat"]);
+                        cUsuario.cApeMat = Convert.ToString(drMenu["cApeMat"]);
+                        cUsuario.cDireccion = Convert.ToString(drMenu["cDireccion"]);
+                        cUsuario.cDocumento = Convert.ToString(drMenu["cDocumento"]);
+                        cUsuario.codTema = Convert.ToString(drMenu["codTema"]);
+                    }
+                    else
+                    {
+
+
+
+                        byte[] b = (Byte[])drMenu["Perfil"];
+                        MemoryStream ms = new MemoryStream(b);
+
+                        cUsuario.idUsuario = Convert.ToInt32(drMenu["idUsuario"]);
+                        cUsuario.idPersonal = Convert.ToInt32(drMenu["idPersonal"]);
+                        cUsuario.cUsuario = Convert.ToString(drMenu["cUser"]);
+                        cUsuario.cPrimerNom = Convert.ToString(drMenu["cPrimerNom"]);
+                        cUsuario.cApePat = Convert.ToString(drMenu["cApePat"]);
+                        cUsuario.cApeMat = Convert.ToString(drMenu["cApeMat"]);
+                        cUsuario.cDireccion = Convert.ToString(drMenu["cDireccion"]);
+                        cUsuario.cDocumento = Convert.ToString(drMenu["cDocumento"]);
+                        cUsuario.codTema = Convert.ToString(drMenu["codTema"]);
+                        cUsuario.strPerfil = ms;
+                    }
+                    lstUsuario.Add(cUsuario);
+                }
+                return lstUsuario;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
         public Int32 daValidarContratoReciente(Int32 idContrato)
         {
             SqlParameter[] pa = new SqlParameter[1];

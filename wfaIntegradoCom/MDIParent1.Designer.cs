@@ -74,6 +74,7 @@ namespace wfaIntegradoCom
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.txtMensaje = new System.Windows.Forms.TextBox();
             this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
             this.miniToolStrip = new System.Windows.Forms.ToolStrip();
             this.PanelEncavezadoFondo1 = new Siticone.UI.WinForms.SiticonePanel();
@@ -120,12 +121,12 @@ namespace wfaIntegradoCom
             this.panelCentral = new Siticone.UI.WinForms.SiticonePanel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticoneLabel8 = new Siticone.UI.WinForms.SiticoneLabel();
             this.pnMostrarMensajes = new Siticone.UI.WinForms.SiticonePanel();
             this.siticoneLabel7 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel6 = new Siticone.UI.WinForms.SiticoneLabel();
             this.cboUsuarioMessage = new System.Windows.Forms.ComboBox();
             this.cboCargoMessage = new System.Windows.Forms.ComboBox();
-            this.txtMensaje = new System.Windows.Forms.TextBox();
             this.panelCerrarSession = new Siticone.UI.WinForms.SiticonePanel();
             this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
             this.btnPerfil = new FontAwesome.Sharp.IconButton();
@@ -261,6 +262,16 @@ namespace wfaIntegradoCom
             ((System.ComponentModel.ISupportInitialize)(this.ImgPerfil)).BeginInit();
             this.panelPerfil.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // txtMensaje
+            // 
+            this.txtMensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMensaje.Location = new System.Drawing.Point(5, 272);
+            this.txtMensaje.Name = "txtMensaje";
+            this.txtMensaje.Size = new System.Drawing.Size(284, 20);
+            this.txtMensaje.TabIndex = 39;
+            this.toolTip.SetToolTip(this.txtMensaje, "Escriba su mensaje..");
+            this.txtMensaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMensaje_KeyPress);
             // 
             // ListaImagenes
             // 
@@ -1115,23 +1126,40 @@ namespace wfaIntegradoCom
             // siticonePanel1
             // 
             this.siticonePanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.siticonePanel1.BackColor = System.Drawing.Color.Transparent;
+            this.siticonePanel1.BorderColor = System.Drawing.Color.Gray;
+            this.siticonePanel1.BorderRadius = 5;
+            this.siticonePanel1.BorderThickness = 2;
+            this.siticonePanel1.Controls.Add(this.siticoneLabel8);
             this.siticonePanel1.Controls.Add(this.pnMostrarMensajes);
             this.siticonePanel1.Controls.Add(this.siticoneLabel7);
             this.siticonePanel1.Controls.Add(this.siticoneLabel6);
             this.siticonePanel1.Controls.Add(this.cboUsuarioMessage);
             this.siticonePanel1.Controls.Add(this.cboCargoMessage);
             this.siticonePanel1.Controls.Add(this.txtMensaje);
-            this.siticonePanel1.Location = new System.Drawing.Point(727, 350);
+            this.siticonePanel1.Location = new System.Drawing.Point(727, 298);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(325, 247);
+            this.siticonePanel1.Size = new System.Drawing.Size(325, 299);
             this.siticonePanel1.TabIndex = 39;
             this.siticonePanel1.Visible = false;
+            // 
+            // siticoneLabel8
+            // 
+            this.siticoneLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.siticoneLabel8.Location = new System.Drawing.Point(99, 14);
+            this.siticoneLabel8.Name = "siticoneLabel8";
+            this.siticoneLabel8.Size = new System.Drawing.Size(136, 26);
+            this.siticoneLabel8.TabIndex = 171;
+            this.siticoneLabel8.Text = "TEAM HUSAT";
+            this.siticoneLabel8.BackColorChanged += new System.EventHandler(this.siticoneLabel8_BackColorChanged);
             // 
             // pnMostrarMensajes
             // 
             this.pnMostrarMensajes.AutoScroll = true;
-            this.pnMostrarMensajes.Location = new System.Drawing.Point(7, 9);
+            this.pnMostrarMensajes.Location = new System.Drawing.Point(7, 48);
             this.pnMostrarMensajes.Name = "pnMostrarMensajes";
             this.pnMostrarMensajes.ShadowDecoration.Parent = this.pnMostrarMensajes;
             this.pnMostrarMensajes.Size = new System.Drawing.Size(311, 175);
@@ -1140,7 +1168,7 @@ namespace wfaIntegradoCom
             // siticoneLabel7
             // 
             this.siticoneLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel7.Location = new System.Drawing.Point(193, 190);
+            this.siticoneLabel7.Location = new System.Drawing.Point(220, 227);
             this.siticoneLabel7.Name = "siticoneLabel7";
             this.siticoneLabel7.Size = new System.Drawing.Size(42, 15);
             this.siticoneLabel7.TabIndex = 169;
@@ -1149,7 +1177,7 @@ namespace wfaIntegradoCom
             // siticoneLabel6
             // 
             this.siticoneLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel6.Location = new System.Drawing.Point(6, 190);
+            this.siticoneLabel6.Location = new System.Drawing.Point(6, 227);
             this.siticoneLabel6.Name = "siticoneLabel6";
             this.siticoneLabel6.Size = new System.Drawing.Size(25, 15);
             this.siticoneLabel6.TabIndex = 169;
@@ -1157,40 +1185,31 @@ namespace wfaIntegradoCom
             // 
             // cboUsuarioMessage
             // 
-            this.cboUsuarioMessage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboUsuarioMessage.BackColor = System.Drawing.SystemColors.Control;
             this.cboUsuarioMessage.DropDownHeight = 90;
             this.cboUsuarioMessage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUsuarioMessage.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cboUsuarioMessage.FormattingEnabled = true;
             this.cboUsuarioMessage.IntegralHeight = false;
-            this.cboUsuarioMessage.Location = new System.Drawing.Point(193, 205);
+            this.cboUsuarioMessage.Location = new System.Drawing.Point(220, 242);
             this.cboUsuarioMessage.Name = "cboUsuarioMessage";
             this.cboUsuarioMessage.Size = new System.Drawing.Size(93, 21);
             this.cboUsuarioMessage.TabIndex = 168;
             // 
             // cboCargoMessage
             // 
-            this.cboCargoMessage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboCargoMessage.BackColor = System.Drawing.SystemColors.Control;
             this.cboCargoMessage.DropDownHeight = 90;
             this.cboCargoMessage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCargoMessage.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboCargoMessage.ForeColor = System.Drawing.Color.Black;
             this.cboCargoMessage.FormattingEnabled = true;
             this.cboCargoMessage.IntegralHeight = false;
-            this.cboCargoMessage.Location = new System.Drawing.Point(6, 205);
+            this.cboCargoMessage.Location = new System.Drawing.Point(6, 242);
             this.cboCargoMessage.Name = "cboCargoMessage";
-            this.cboCargoMessage.Size = new System.Drawing.Size(140, 21);
+            this.cboCargoMessage.Size = new System.Drawing.Size(205, 21);
             this.cboCargoMessage.TabIndex = 168;
             this.cboCargoMessage.SelectedIndexChanged += new System.EventHandler(this.cboPagina_SelectedIndexChanged);
-            // 
-            // txtMensaje
-            // 
-            this.txtMensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMensaje.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMensaje.Location = new System.Drawing.Point(4, 230);
-            this.txtMensaje.Name = "txtMensaje";
-            this.txtMensaje.Size = new System.Drawing.Size(284, 13);
-            this.txtMensaje.TabIndex = 39;
-            this.txtMensaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMensaje_KeyPress);
             // 
             // panelCerrarSession
             // 
@@ -2060,6 +2079,7 @@ namespace wfaIntegradoCom
             // lblIngresos
             // 
             this.lblIngresos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblIngresos.BorderRadius = 5;
             this.lblIngresos.Controls.Add(this.cboFiltraIngresos);
             this.lblIngresos.Controls.Add(this.siticoneLabel4);
             this.lblIngresos.Controls.Add(this.siticoneLabel1);
@@ -3114,6 +3134,7 @@ namespace wfaIntegradoCom
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel6;
         private System.Windows.Forms.ComboBox cboUsuarioMessage;
         private Siticone.UI.WinForms.SiticonePanel pnMostrarMensajes;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel8;
     }
 }
 

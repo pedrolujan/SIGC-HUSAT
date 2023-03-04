@@ -129,6 +129,18 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public List<Personal> blObtenerUsuariosPersonal(Int32 tipoCon)
+        {
+            DAVentaGeneral objVentaG = new DAVentaGeneral();
+            try
+            {
+                return objVentaG.daDevolverusuariosPersonal(tipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public String blBuscarVentaAImprimir(VentaGeneral objVG, Int16 tipoCon)
         {

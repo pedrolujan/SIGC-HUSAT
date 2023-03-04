@@ -53,7 +53,7 @@ namespace wfaIntegradoCom
                 DataTable dtResp = new DataTable();
                 dtResp = objAccesso.BLBuscarCargoUsuario(Variables.gnCodUser);
                 Variables.clasePersonal=FunGeneral.fnObtenerUsuarioActual();
-
+                Variables.listaPersonal = FunGeneral.fnObtenerUsuariosPersonal(0);
 
                 //Loading();
 
