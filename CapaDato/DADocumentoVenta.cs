@@ -103,7 +103,8 @@ namespace CapaDato
                         cCliente = d["cliente"].ToString(),
                         dFechaRegistro = Convert.ToDateTime(d["dtFecha"]),
                         cDescripEstadoPP = d["cNombreOperacion"].ToString(),
-                        cVehiculos = d["vehiculo"].ToString()
+                        cVehiculos = d["vehiculo"].ToString(),
+                        cEstado = d["estadoEmision"].ToString()
                     }) ;
                     i++;
                 }

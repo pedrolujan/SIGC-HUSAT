@@ -23,8 +23,8 @@ namespace wfaIntegradoCom.Sunat
             InitializeComponent();
         }
         static List<DocumentoVenta> lstDocumentos = new List<DocumentoVenta>();
-        static Int32 numFilas = 3;
-        static Int32 numPaginas = 3;
+        static Int32 numFilas = 8;
+        static Int32 numPaginas = 0;
         static Int32 numRegistros = 0;
         static Int32 numInicial = 0;
         static Int32 NumFinal = 0;
@@ -58,7 +58,7 @@ namespace wfaIntegradoCom.Sunat
                     lstDocumentos[i].dFechaRegistro.ToString("dd-MM-yyyy"),
                     lstDocumentos[i].cVehiculos,
                     lstDocumentos[i].cCliente,
-                    "Emitido",
+                    lstDocumentos[i].cEstado,
                     ""
 
                     );
@@ -76,14 +76,15 @@ namespace wfaIntegradoCom.Sunat
             {
                 cboPagina.Items.Add(i+1);
             }
-            cboPagina.SelectedIndex = 0;
+            if (numPaginas>0)
+            {
+                cboPagina.SelectedIndex = 0;
+
+            }
 
             btnTotalPag.Text = numPaginas.ToString();
             btnNumFilas.Text = numFilas.ToString();
             btnTotalReg.Text = numRegistros.ToString();
-
-
-
         }
 
         private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,8 +98,9 @@ namespace wfaIntegradoCom.Sunat
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            DateTime dtt = DateTime.Now;
             // Crea un nuevo archivo de Excel
-            SpreadsheetDocument documento = SpreadsheetDocument.Create("mi_archiv122.xlsx", SpreadsheetDocumentType.Workbook);
+            SpreadsheetDocument documento = SpreadsheetDocument.Create("mi_archivo"+ dtt .ToString("dd-MM-yyyy HH:mm:ss")+ ".xlsx", SpreadsheetDocumentType.Workbook);
 
             // Crea una hoja de cálculo dentro del archivo
             WorkbookPart libroParte = documento.AddWorkbookPart();
@@ -166,5 +168,20 @@ namespace wfaIntegradoCom.Sunat
             return letraFinal;
         }
 
+        private void MovimientoSunat_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                dtpFechaFinalBus.Value = Variables.gdFechaSis;
+                dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
+
+                FunGeneral.fnLlenarTablaCodTipoCon(siticoneComboBox1, "EEST",true);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

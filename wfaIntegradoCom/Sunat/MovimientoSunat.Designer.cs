@@ -37,6 +37,7 @@
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.dotNetBarTabControl1 = new wfaIntegradoCom.Mantenedores.DotNetBarTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.gbPaginacion = new System.Windows.Forms.GroupBox();
             this.btnNumFilas = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label37 = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@
             this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.siticonePanel1.SuspendLayout();
             this.dotNetBarTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -127,6 +127,25 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "FACTURAS";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.iconButton1.BackColor = System.Drawing.SystemColors.Control;
+            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.Color.Green;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
+            this.iconButton1.IconColor = System.Drawing.Color.Green;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 32;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(39, 370);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(164, 40);
+            this.iconButton1.TabIndex = 275;
+            this.iconButton1.Text = "Exportar a excel";
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // gbPaginacion
             // 
@@ -554,6 +573,7 @@
             // 
             // txtBuscar
             // 
+            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuscar.Animated = false;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.DefaultText = "";
@@ -586,24 +606,6 @@
             this.tabPage2.Text = "NOTAS DE CREDITO";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.SystemColors.Control;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.Green;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
-            this.iconButton1.IconColor = System.Drawing.Color.Green;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 32;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(39, 365);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(177, 46);
-            this.iconButton1.TabIndex = 275;
-            this.iconButton1.Text = "Exportar a excel";
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
-            // 
             // MovimientoSunat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -613,6 +615,7 @@
             this.Name = "MovimientoSunat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movimiento Sunat";
+            this.Load += new System.EventHandler(this.MovimientoSunat_Load);
             this.siticonePanel1.ResumeLayout(false);
             this.dotNetBarTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
