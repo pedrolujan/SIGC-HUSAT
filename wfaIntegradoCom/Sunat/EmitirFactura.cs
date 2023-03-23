@@ -23,21 +23,25 @@ namespace wfaIntegradoCom.Sunat
         static Cliente claseCliente = new Cliente();
         static Cargo claseDocumentoVenta = new Cargo();
         static ParametrosFactura parametrosFactura = new ParametrosFactura();
-        public int EmitirFacturasContado(Cliente clsCliente,List<DetalleVenta> detalleventa,Cargo clsCargo)
+        public int EmitirFacturasContado(Cliente clsCliente,List<DetalleVenta> detalleventa, List<DocumentoVenta>  lstDocVenta, Cargo clsCargo)
         {
             claseCliente = clsCliente;
             claseDocumentoVenta = clsCargo;
             clsCliente.cCliente = clsCliente.cNombre + " " + clsCliente.cApePat + " " + clsCliente.cApePat;
             ParametrosFactura parametros = new ParametrosFactura();
-            parametros.Monto_total = (detalleventa.Sum(i=>i.ImporteRow)- Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento)));
-            parametros.TotSubtotal = (detalleventa.Sum(i => i.ImporteRow)-Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento))) / 1.18m;
+            parametros.Monto_total = (detalleventa.Sum(i=>i.ImporteRow) - Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento)));
+            parametros.TotSubtotal = Convert.ToDecimal(detalleventa.Sum(i => i.ImporteRow) - Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento))) / 1.18m;
             parametros.TotalIgv = (parametros.Monto_total- parametros.TotSubtotal);
             parametros.Porcentaje_IGV = 18;
+            parametros.TotalDescuento = Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento));
             parametros.Serie = clsCargo.SerieDoc;//"FA01";
             parametros.Correlativo =FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsCargo.nValor2));// "00000132";
             parametros.fecha_venta = clsCargo.dFechaVenta;
             parametros.Fecha_de_pago = clsCargo.dFechaPago;
+            parametros.FormaDePagoFactura = lstDocVenta[0].FormaPagoFactura;
             parametros.CodigoComprobante = clsCargo.nValor1;
+            parametros.PrecioALetras = lstDocVenta[0].PrecioEnLetras;
+
             
             var envios = new Envios();
             envios.Rutaxml = Path.GetDirectoryName(Application.ExecutablePath) + @"\XML\";
@@ -51,8 +55,11 @@ namespace wfaIntegradoCom.Sunat
             parametrosFactura = parametros;
             try
             {
+                string[] restDatos=envios.GenerarFacturaBoletaXML(parametros, clsCliente,detalleventa);
+                if (restDatos[0]=="")
+                {
 
-                envios.GenerarFacturaBoletaXML(parametros, clsCliente,detalleventa);
+                }
                 return 1;
             }
             catch (Exception ex)
@@ -163,7 +170,7 @@ namespace wfaIntegradoCom.Sunat
                     MessageBox.Show(r);
 
                 }
-                ObtenerQr(strSignatureValue);
+               
             }
             catch (Exception ex)
             {
@@ -171,6 +178,9 @@ namespace wfaIntegradoCom.Sunat
             datos[0] = r;
             datos[1] = file;
             datos[2] = nomfile;
+
+            ObtenerQr(strSignatureValue);
+
             return datos;
         }
 

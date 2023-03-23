@@ -1173,16 +1173,51 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
-        private void fnAgregardatosACarrito(Int32 row)
+        private Boolean fnAgregardatosACarrito(Int32 row)
         {
-            lstDetalleCronograma[row].estChk = true;
-            lstDetalleCronograma[row].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
-            lstDetalleCronograma[row].idOperacion = 3;
-            lstDetalleCronograma[row].fechaPago = dtFechaPago.Value;
-            lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[row]);
+            Boolean estado = false;
+            if (row==0)
+            {
+                Int32 indice = lstCronograma.IndexOf(lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado));
+                if (lstCronograma[indice + 1].estado == "ESPV0002")
+                {
+                    lstDetalleCronograma[row].estChk = true;
+                    lstDetalleCronograma[row].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
+                    lstDetalleCronograma[row].idOperacion = 3;
+                    lstDetalleCronograma[row].fechaPago = dtFechaPago.Value;
+                    lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[row]);
+                    estado = true;
+                }else
+                {
+
+                    estado = false;
+                    MessageBox.Show("Aun no puede generar este pago ! \n porque falta Completar los pagos del contrato anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            else
+            {
+                if (lstDetalleCronograma[row-1].estChk!=false)
+                {
+                    lstDetalleCronograma[row].estChk = true;
+                    lstDetalleCronograma[row].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
+                    lstDetalleCronograma[row].idOperacion = 3;
+                    lstDetalleCronograma[row].fechaPago = dtFechaPago.Value;
+                    lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[row]);
+                    estado = true;
+                }
+                else
+                {
+                    MessageBox.Show("Aun no puede generar este pago ! \n porque falta la cuota anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    estado = false;
+                }
+            }
+
+            return estado;
         }
         private void dgvCronograma_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            Boolean chkPasar = false;
 
             DataGridViewCell fila = dgvCronograma.Rows[e.RowIndex].Cells[e.ColumnIndex ];
             if (e.ColumnIndex==2 && lstDetalleCronograma[e.RowIndex].estado!="CUOTA PAGADA")
@@ -1211,7 +1246,7 @@ namespace wfaIntegradoCom.Procesos
 
                                 if (dtc1 is DetalleCronograma)
                                 {
-                                    fnAgregardatosACarrito(e.RowIndex);
+                                    chkPasar=fnAgregardatosACarrito(e.RowIndex);
                                 }
                                 else
                                 {
@@ -1220,19 +1255,20 @@ namespace wfaIntegradoCom.Procesos
                             }
                             else
                             {
-                                fnAgregardatosACarrito(e.RowIndex);
+                                chkPasar=fnAgregardatosACarrito(e.RowIndex);
                             }
                         }
                     }
                     else
                     {
-                        fnAgregardatosACarrito(e.RowIndex);
+                        chkPasar=fnAgregardatosACarrito(e.RowIndex);
                     }
                          
                 }
 
-                
-                fnCargarTablaLista(true, e.RowIndex, e.ColumnIndex);
+               
+                fnCargarTablaLista(chkPasar, e.RowIndex, e.ColumnIndex);
+              
                 obtenerNumeroDeItems();
 
 
@@ -1292,14 +1328,14 @@ namespace wfaIntegradoCom.Procesos
             try
             {
                 xmlDocVenta = objTipoVenta.blBuscarDocumentoVentaGeneral(cCodVenta, tipoCond, idTipoTarifa, idContrato);
-                xmlDocVenta.xmlDocumentoVenta[0].cDireccion = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDireccion);
+                //xmlDocVenta.xmlDocumentoVenta[0].cDireccion = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDireccion);
                 xmlDocVenta.xmlDocumentoVenta[0].cCliente = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cCliente);
                 xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago);
                 xmlDocumentoVenta.Add(xmlDocVenta);
 
 				Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
 
-                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, xmlDocVenta.memoryStream, 1);
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, xmlDocVenta.imgDocumento, 1);
 
             }
             catch (Exception ex)
@@ -1566,7 +1602,7 @@ namespace wfaIntegradoCom.Procesos
                         xmlDetalleVentas = lstDetalleVenta
                         //memoryStream = new MemoryStream(btImage)
                     }) ;
-                    fnGuardarPagoCuota(claseControlPagos, xmlDocumentoVenta, lnTipoCon);
+                    //fnGuardarPagoCuota(claseControlPagos, xmlDocumentoVenta, lnTipoCon);
                 }
                 else
                 {
@@ -1618,7 +1654,7 @@ namespace wfaIntegradoCom.Procesos
                         //memoryStream = new MemoryStream(btImage)
                     }) ;
 
-                    fnGuardarPagoCuotaPorDocumento(claseControlPagos, xmlDocumentoVenta, lnTipoCon);
+                    //fnGuardarPagoCuotaPorDocumento(claseControlPagos, xmlDocumentoVenta, lnTipoCon);
                 }
 
 
@@ -1639,7 +1675,7 @@ namespace wfaIntegradoCom.Procesos
             if (clsDocumentoVenta.cCodTab== "DOVE0002" || clsDocumentoVenta.cCodTab == "DOVE0001")
             {
                 intRespuestaSunat = 0;
-                int resp =emf.EmitirFacturasContado(clsCliente, lstDetalleVenta, clsDocumentoVenta);
+                int resp =emf.EmitirFacturasContado(clsCliente, lstDetalleVenta, lstDocumentoVenta,clsDocumentoVenta);
                 intRespuestaSunat = resp;
                 if (resp == 1)
                 {
@@ -1793,7 +1829,7 @@ namespace wfaIntegradoCom.Procesos
                     idCliente = clsCliente.idCliente,
                     cCliente = FunGeneral.FormatearCadenaTitleCase(clsCliente.cNombre + " " + clsCliente.cApePat + " " + clsCliente.cApeMat),
                     cTipoDoc = fnDevolverTipoDocPersona(clsCliente.cTiDo),
-                    cDireccion = FunGeneral.FormatearCadenaTitleCase(clsCliente.cDireccion + ' ' + clsCliente.cContactoNom1),
+                    cDireccion = cboComprobanteP.SelectedValue.ToString()!= "DOVE0002" ? FunGeneral.FormatearCadenaTitleCase(clsCliente.cDireccion + ' ' + clsCliente.cContactoNom1): FunGeneral.FormatearCadenaTitleCase(clsCliente.cDireccion),
                     cDocumento = clsCliente.cDocumento,
                     SimboloMoneda = clsMoneda.cSimbolo,
                     cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),
@@ -1838,7 +1874,7 @@ namespace wfaIntegradoCom.Procesos
                     idCliente = clsCliente.idCliente,
                     cCliente = FunGeneral.FormatearCadenaTitleCase(lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cNombre + " " + lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cApePat + " " + lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cApeMat),
                     cTipoDoc = fnDevolverTipoDocPersona(lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cTiDo),
-                    cDireccion = FunGeneral.FormatearCadenaTitleCase(lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cDireccion + ' ' + lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cContactoNom1),
+                    cDireccion = cboComprobanteP.SelectedValue.ToString() != "DOVE0002" ? FunGeneral.FormatearCadenaTitleCase(clsCliente.cDireccion + ' ' + clsCliente.cContactoNom1) : FunGeneral.FormatearCadenaTitleCase(clsCliente.cDireccion),
                     cDocumento = lstCronoGramasParaDocumentoVenta[0].ClaseCliente.cDocumento,
                     SimboloMoneda = clsMoneda.cSimbolo,
                     cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),
@@ -2554,10 +2590,10 @@ namespace wfaIntegradoCom.Procesos
             String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
             byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
-            MemoryStream ms = new MemoryStream(imageBytes);
+            //MemoryStream ms = new MemoryStream(imageBytes);
 
             Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
-            frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, ms, -1);
+            frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, imageBytes, -1);
 
 
             Boolean resp = false;
@@ -2617,8 +2653,10 @@ namespace wfaIntegradoCom.Procesos
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-            
+            clsUtil cls = new clsUtil();
+            cls.ObtenerQr("IHN001-000000587", "ACTA", "IHN001-000000587");
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -2730,33 +2768,16 @@ namespace wfaIntegradoCom.Procesos
             if (estadoComprabanteP==true && estadoFechaPago==true)
             {
                 Cronograma clsCronomaEspecifico = new Cronograma();
-                for (Int32 i=0;i< lstCronograma.Count;i++)
-                {
-                    if (i+1!= lstCronograma.Count)
-                    {
-                        if (lstCronograma[i].idCronograma == CronogramaSeleccionado)
-                        {
-                            clsCronomaEspecifico = lstCronograma[i + 1];
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        clsCronomaEspecifico.estado = "ESPV0002";
-                        break;
-                    }
-                    
-
-                }
-                clsCronomaEspecifico= lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado);
-
-                Int32 index = lstCronograma.FindIndex(i => i.idCronograma == CronogramaSeleccionado);
+                
+                Int32 indice= lstCronograma.IndexOf(lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado));
+               
+               
                 if (lstCronograma.Count > 1)
                 {
                     if (filaSeleccionada.Index==0)
                     {
-                        //if (lstCronograma[index + 1].estado == "ESPV0002")
-                        //{
+                        if (lstCronograma[indice+1].estado == "ESPV0002")
+                        {
                             DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n" + dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                             if (EstadoDialog == DialogResult.Yes)
                             {
@@ -2767,18 +2788,18 @@ namespace wfaIntegradoCom.Procesos
                                 String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
                                 byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
-                                MemoryStream ms = new MemoryStream(imageBytes);
+                                //MemoryStream ms = new MemoryStream(imageBytes);
 
                                 Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
-                                frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, ms, -1);
+                                frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, imageBytes, -1);
 
                                 fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
                             }
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("Aun no puede generar este pago ! \n porque falta Completar los pagos del contrato anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
+                        }
+                        else
+                        {
+                            MessageBox.Show("Aun no puede generar este pago ! \n porque falta Completar los pagos del contrato anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
                     }
                     else
@@ -2799,10 +2820,10 @@ namespace wfaIntegradoCom.Procesos
                                 String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
                                 byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
-                                MemoryStream ms = new MemoryStream(imageBytes);
+                                //MemoryStream ms = new MemoryStream(imageBytes);
 
                                 Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
-                                frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, ms, -1);
+                                frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, imageBytes, -1);
 
                                 fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
                             }
@@ -2825,10 +2846,10 @@ namespace wfaIntegradoCom.Procesos
                         String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
                         byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
-                        MemoryStream ms = new MemoryStream(imageBytes);
+                        //MemoryStream ms = new MemoryStream(imageBytes);
 
                         Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
-                        frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, ms, -1);
+                        frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, imageBytes, -1);
 
                         fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
                     }
@@ -2861,9 +2882,11 @@ namespace wfaIntegradoCom.Procesos
                 lstDocumentoVentaEmitir[j].dFechaVenta = dtFechaPagoCuota;
                 j++;
             }
+            if (cboComprobanteP.Items.Count > 0)
+            {
+                clsDocumentoVenta = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboComprobanteP.SelectedValue.ToString());
+            }
 
-
-            clsDocumentoVenta = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboComprobanteP.SelectedValue.ToString());
 
         }
     }

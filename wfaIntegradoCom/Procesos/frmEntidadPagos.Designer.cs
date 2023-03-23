@@ -241,9 +241,9 @@
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label31.Location = new System.Drawing.Point(12, 61);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(71, 17);
+            this.label31.Size = new System.Drawing.Size(102, 17);
             this.label31.TabIndex = 294;
-            this.label31.Text = "Tipo Pago:";
+            this.label31.Text = "Medio de Pago:";
             // 
             // lblImporte
             // 
@@ -409,9 +409,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(8, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 21);
+            this.label3.Size = new System.Drawing.Size(124, 21);
             this.label3.TabIndex = 76;
-            this.label3.Text = "Pagos";
+            this.label3.Text = "Medios de Pago.";
             // 
             // gunaControlBox2
             // 

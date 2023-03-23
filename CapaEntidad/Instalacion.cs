@@ -16,6 +16,7 @@ namespace CapaEntidad
 
         String _codigoInstalacion = "";
         public String codigoInstalacion { get { return _codigoInstalacion; } set { _codigoInstalacion = value; } }
+        public byte[] imgQr { get; set; }
 
         String _cUsuario = "";
         public String cUsuario { get { return _cUsuario; } set { _cUsuario = value; } }

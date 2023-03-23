@@ -701,7 +701,7 @@ namespace wfaIntegradoCom.Procesos
 
                 Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
 
-                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, xmlDocVenta.memoryStream, 1);
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, xmlDocVenta.imgDocumento, 1);
 
             }
             catch (Exception ex)
@@ -784,6 +784,7 @@ namespace wfaIntegradoCom.Procesos
                 lstVehiculo = fnDebolverDatVehiculo(RowVehiculos, ArrayVehiculos);
                 Mantenedores.frmRegistrarVenta FRMRegistrarV = new frmRegistrarVenta();
                 xmlInst = FRMRegistrarV.fnBuscarActaInstalacion(CodVenta, lstVehiculo[0].vPlaca, idTipoVenta);
+                xmlInst.ListaEquipo = xmlInst.ListaEquipo.Count==0 ? xmlInst.ListaEquipoActual : xmlInst.ListaEquipo;
                 if (xmlInst.clsInstalacion != null)
                 {
                     frmVPActa.Inicio(xmlInst.ListaCliente, xmlInst.ListaVehiculo, xmlInst.ListaEquipo, xmlInst.ListaPlan, xmlInst.ListaAccesorio, xmlInst.ListaServicio, xmlInst.observaciones, xmlInst.clsInstalacion, 1);

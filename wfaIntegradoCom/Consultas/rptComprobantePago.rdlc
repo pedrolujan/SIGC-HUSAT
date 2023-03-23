@@ -1297,7 +1297,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Fecha</Value>
+                    <Value>F. Emisión</Value>
                     <Style>
                       <FontSize>8.5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1331,7 +1331,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Tipo de Pago</Value>
+                    <Value>Madios de Pago</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1344,10 +1344,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>11.32212cm</Top>
-            <Left>0.03175cm</Left>
+            <Top>11.98308cm</Top>
+            <Left>0.03213cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.5447cm</Width>
+            <Width>3.30317cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -1366,7 +1366,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Estado de la Venta</Value>
+                    <Value>Forma de Pago</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1379,8 +1379,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>12.08412cm</Top>
-            <Left>0.03175cm</Left>
+            <Top>11.30625cm</Top>
             <Height>0.6cm</Height>
             <Width>3.30317cm</Width>
             <ZIndex>18</ZIndex>
@@ -1413,10 +1412,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>12.08412cm</Top>
-            <Left>3.3702cm</Left>
+            <Top>11.30625cm</Top>
+            <Left>3.33845cm</Left>
             <Height>0.6cm</Height>
-            <Width>6.75979cm</Width>
+            <Width>8.92937cm</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <Border>
@@ -1586,7 +1585,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!cDescripcionTipoPago.Value, "DocumentoVenta")</Value>
+                    <Value>=":"+First(Fields!cDescripcionTipoPago.Value, "DocumentoVenta")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -1596,10 +1595,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>11.32212cm</Top>
-            <Left>3.3702cm</Left>
+            <Top>11.98308cm</Top>
+            <Left>3.33845cm</Left>
             <Height>0.6cm</Height>
-            <Width>6.75979cm</Width>
+            <Width>8.92937cm</Width>
             <ZIndex>24</ZIndex>
             <Style>
               <Border>
@@ -1761,7 +1760,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="SON "+First(Fields!PrecioEnLetras.Value, "DocumentoVenta")</Value>
+                    <Value>="SON: "+First(Fields!PrecioEnLetras.Value, "DocumentoVenta")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>

@@ -1,10 +1,12 @@
 ﻿using CapaEntidad;
+using CapaUtil;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,10 +102,26 @@ namespace wfaIntegradoCom.Consultas
         private void fnCargarRptActa(List<Cliente> lstCli, List<Vehiculo> lstVh, List<Equipo_imeis> lstEq, List<Plan> lstPl, List<AccesoriosEquipo> lstAc, List<ServicioEquipo> lstSer, String observaciones,Instalacion clsInt)
         {
 
-            ReportParameter[] parameters = new ReportParameter[7];
+            ReportParameter[] parameters = new ReportParameter[8];
             reportViewer1.Reset();
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.ProcessingMode = ProcessingMode.Local;
+            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\QR\ACTA\"+ clsInt.codigoInstalacion+".png";
+
+            if (File.Exists(rutaArchivo))
+            {
+                clsInt.imgQr = File.ReadAllBytes(rutaArchivo);
+               
+            }
+            else
+            {
+                clsUtil cls = new clsUtil();
+                cls.ObtenerQr(clsInt.codigoInstalacion, "ACTA", clsInt.codigoInstalacion);
+
+                clsInt.imgQr = File.ReadAllBytes(rutaArchivo);
+            }
+            MemoryStream ms = new MemoryStream(clsInt.imgQr);
+
             parameters[0] = new ReportParameter("dFechaSistema", Convert.ToString(Variables.gdFechaSis));
             parameters[1] = new ReportParameter("dFechaRefIns", Convert.ToString(clsInt.dFechaIntal));
             parameters[2] = new ReportParameter("prObservacion", observaciones);
@@ -111,6 +129,7 @@ namespace wfaIntegradoCom.Consultas
             parameters[4] = new ReportParameter("RazonSocial", Convert.ToString(Variables.gsEmpresa));
             parameters[5] = new ReportParameter("prCodigoInstalacion", clsInt.codigoInstalacion);
             parameters[6] = new ReportParameter("prFechaHasta", Convert.ToString(clsInt.dFechaIntal.AddMonths(+12).AddDays(-1)));
+            parameters[7] = new ReportParameter("prQr", Convert.ToBase64String(ms.ToArray()));
 
             reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.rptActaInstalacion.rdlc";
             reportViewer1.LocalReport.SetParameters(parameters);
@@ -123,6 +142,15 @@ namespace wfaIntegradoCom.Consultas
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsServicios", lstSer));
             reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.RefreshReport();
+        }
+
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            string nombreArchivo = "ACTA DE INSTALACION - " + lstCliente[0].cNombre + " " + lstCliente[0].cApePat + " " + lstCliente[0].cApeMat; // Especificar el nombre deseado para el archivo
+
+            // Modificar el nombre del archivo en la descarga
+            ReportViewer viewer = (ReportViewer)sender;
+            viewer.LocalReport.DisplayName = nombreArchivo;
         }
     }
 }

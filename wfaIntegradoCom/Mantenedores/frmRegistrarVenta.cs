@@ -43,7 +43,7 @@ namespace wfaIntegradoCom.Mantenedores
 
 
         private static VentaGeneral ClsVentaGeneral = new VentaGeneral();
-        List<DetalleVenta> lstDetalleVDocumento = new List<DetalleVenta>();
+        public static List<DetalleVenta> lstDetalleVDocumento = new List<DetalleVenta>();
         private static Cliente clsCliente = new Cliente();
         private static Cliente clsRespPago = new Cliente();
         private static Moneda clsMoneda = new Moneda();
@@ -68,8 +68,8 @@ namespace wfaIntegradoCom.Mantenedores
         private static List<DetalleVenta> lstDetalleVentaAnual = new List<DetalleVenta>();
         private static List<TipoDescuento> lstTDes = new List<TipoDescuento>();
         private static List<Pagos> lstPagosTrand = new List<Pagos>();
-        private static List<DocumentoVenta> lsDocVenta = new List<DocumentoVenta>();
-
+        private static List<DocumentoVenta> lsDocumentoVenta = new List<DocumentoVenta>();
+        private static List<DocumentoVenta> lstDocumentoVentaFormato = new List<DocumentoVenta>();
         static Equipo_imeis clsEquipo_imeis = new Equipo_imeis();
         static List<Equipo_imeis> lstEquipo_imeis = new List<Equipo_imeis>();
         static Cargo clsDocumentoVenta = new Cargo();
@@ -94,8 +94,8 @@ namespace wfaIntegradoCom.Mantenedores
         Int32 idTipoPlanActual = 0;
         Int32 idPlanActual = 0;
         Int32 idCicloActual = 0;
-        static Plan clsPlanActual = new Plan(); 
-
+        static Plan clsPlanActual = new Plan();
+        static String strCodigoProducto = "0";
         static Boolean estGenrarVenta;
         static Boolean estActivarImprecion=false;
         static Int32 staticTipoTarifa = 0;
@@ -1162,7 +1162,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cboCombo.ValueMember = "cCodTab";
                 cboCombo.DisplayMember = "cNomTab";
                 cboCombo.DataSource = lstComprobante;
-                lsDocVenta.Add(new DocumentoVenta
+                lsDocumentoVenta.Add(new DocumentoVenta
                 {
                     cTipoDoc=lstComprobante[1].cCodTab,
                     cDocVenta=lstComprobante[1].cNomTab
@@ -2399,6 +2399,7 @@ namespace wfaIntegradoCom.Mantenedores
                             double importe = (precioUnitario * cantidad) - precioDescontado;
 
                             lstDetV[i].Numeracion = i + 1;
+                            lstDetV[i].CodigoProducto = strCodigoProducto;
                             lstDetV[i].Descripcion = result.Item1[i];
                             lstDetV[i].idTipoTarifa = clsTarifa.IdTarifa;
                             lstDetV[i].PrecioUni = precioUnitario;
@@ -2433,6 +2434,7 @@ namespace wfaIntegradoCom.Mantenedores
                     lstDetV.Add(new DetalleVenta
                     {
                         Numeracion = i + 1,
+                        CodigoProducto = strCodigoProducto,
                         Descripcion = result.Item1[i],
                         idTipoTarifa = clsTarifa.IdTarifa,
                         PrecioUni = precioUnitario,
@@ -3710,12 +3712,18 @@ namespace wfaIntegradoCom.Mantenedores
 
             //lstDetalleVDocumento = Convert.ToInt32(cboTipoPlanP.SelectedValue) == 1?lstTotalDetalle: lstPP;
             //fncalcularTotales(lstDetalleVDocumento, lstDVC);
-            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
-            byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
-            MemoryStream ms = new MemoryStream(imageBytes);
+            frmTipoPago fmr = new frmTipoPago();
+            Double sumaPrimerPago = lstDetalleVDocumento.Sum(i => i.Importe);
+            lstDocumentoVentaFormato = fnCargarDocumentoVenta(lstDVC);
+            fmr.Inicio(0, lstDocumentoVentaFormato, lstDetalleVDocumento,"S/.");       
+            
+            //Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
+            //fmr2.fnCambiarEstadoVenta(true);
 
-            frmVenta.Inicio(fnCargarDocumentoVenta(lstDVC), lstDetalleVDocumento, ms,0);
+            
+
+            //frmVenta.Inicio(fnCargarDocumentoVenta(lstDVC), lstDetalleVDocumento, ms,0);
             if (Convert.ToInt32(cboTipoVenta.SelectedValue)!=2)
             {
                 if (estGenrarVenta == true)
@@ -3723,7 +3731,6 @@ namespace wfaIntegradoCom.Mantenedores
                     estGenrarVenta = false;
                     frmReferenciaInstalacion frmRefInstal = new frmReferenciaInstalacion();
                     frmRefInstal.Inicio(1, Convert.ToDateTime(dtpFechaRegistro.Value));
-
                 }
             }
             byte[] btImage = new byte[] { };
@@ -3735,7 +3742,7 @@ namespace wfaIntegradoCom.Mantenedores
                  btImage = fnEnviarFacturaASunat();
                 xmlDocumentoVenta.Add(new xmlDocumentoVentaGeneral
                 {
-                    xmlDocumentoVenta = fnCargarDocumentoVenta(lstDVC),
+                    xmlDocumentoVenta = lstDocumentoVentaFormato,
                     xmlDetalleVentas = lstDetalleVDocumento,
                     //memoryStream = new MemoryStream(btImage)
                 });
@@ -3756,12 +3763,12 @@ namespace wfaIntegradoCom.Mantenedores
                 if (clsDocumentoVenta.cCodTab == "DOVE0002" || clsDocumentoVenta.cCodTab== "DOVE0001")
                 {
                     intRespuestaSunat = 0;
-                    int resp = emf.EmitirFacturasContado(clsCliente, lstDetalleVDocumento, clsDocumentoVenta);
+                    int resp =emf.EmitirFacturasContado(clsRespPago, lstDetalleVDocumento, lstDocumentoVentaFormato, clsDocumentoVenta);
                     intRespuestaSunat = resp;
                     if (resp == 1)
                     {
 
-                        String nombreQR = clsCliente.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
+                        String nombreQR = clsRespPago.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
                         //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");
                         imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\" + nombreQR + ".png");
                     }
@@ -4412,6 +4419,7 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 fnNoEditarColumna(true);
             }
+            strCodigoProducto = Convert.ToInt32(cboTipoVenta.SelectedValue)==1?"486303": Convert.ToInt32(cboTipoVenta.SelectedValue)==2? "486305": "486311";
             //cboPlan_SelectedIndexChanged(sender, e);
             
         }
@@ -4686,13 +4694,16 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 lstCliente.Add(new Cliente
                 {
-                    cContactoNom2= Convert.ToString(dr["tipoDocumento"]),
+                    cContactoNom2 = Convert.ToString(dr["tipoDocumento"]),
                     cNombre = Convert.ToString(dr["cNombre"]),
                     cApePat = Convert.ToString(dr["cApePat"]),
                     cApeMat = Convert.ToString(dr["cApeMat"]),
                     cDocumento = Convert.ToString(dr["cDocumento"]),
                     cDireccion = Convert.ToString(dr["cDireccion"]),
-                    dFecNac = Convert.ToDateTime(dr["dFechaRegistro"])
+                    dFecNac = Convert.ToDateTime(dr["dFechaRegistro"]),
+                    cCliente = dr["nombreRepresentante"].ToString()=="" ? Convert.ToString(dr["cNombre"])+" " + Convert.ToString(dr["cApePat"])+" " + Convert.ToString(dr["cApeMat"]): dr["nombreRepresentante"].ToString() + " " + dr["apePatRepresentante"].ToString() + " " + dr["apeMatRepresentante"].ToString(),
+                    cContactoCel1 = dr["cargoRepresentante"].ToString() is null || dr["cargoRepresentante"].ToString()==""?"CLIENTE": dr["cargoRepresentante"].ToString()
+
                 }) ;
 
                 lstVehiculo.Add(new Vehiculo

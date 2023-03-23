@@ -256,7 +256,7 @@ namespace CapaDato
                     lstCliente.idDep = Convert.ToInt32(drMenu["idDepa"]);
                     lstCliente.idProv = Convert.ToInt32(drMenu["idProv"]);
                     lstCliente.idDist = Convert.ToInt32(drMenu["idDist"]);
-                    lstCliente.cDocumento = Convert.ToString(drMenu["cDocumento"]);
+                    lstCliente.cDocumento = Convert.ToString(drMenu["cDocumento"]).Trim();
                     lstCliente.cContactoNom1 = Convert.ToString(drMenu["cContactoNom1"]);
                     lstCliente.cContactoNom2 = Convert.ToString(drMenu["cContactoNom2"]);
                     lstCliente.cContactoCel1 = Convert.ToString(drMenu["cContactoCel1"]);
@@ -354,7 +354,7 @@ namespace CapaDato
 
                 objCliente.NombreRepreLegal = NombreRepre[0] + " " + NombreRepre[1];
                 objCliente.apePatRepreLegal = NombreRepre[2];
-                objCliente.apeMatRepreLegal = NombreRepre[3];
+                objCliente.apeMatRepreLegal = NombreRepre[2];
             }
             else
             {

@@ -438,7 +438,7 @@ namespace CapaDato
             String xmlDocventa = "";
             String codigoDocumento = "";
             String TipoPago = "";
-
+            byte[] imgQr = new byte[] { };
             //string xmlData = clsUtil.Serialize(lstOtrasVentas);
             try
             {
@@ -461,12 +461,24 @@ namespace CapaDato
                     codigoDocumento = Convert.ToString(drMenu["DocumentoCorrelativo"]);
                     xmlDocventa = Convert.ToString(drMenu["Documentoventa"]);
                     TipoPago = Convert.ToString(drMenu["DescripcionEstadoVenta"]).ToString();
-
+                    imgQr = (Byte[])drMenu["CodigoQr"];
                 }
+
+                if (imgQr.Length <= 0)
+                {
+                    String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+                    imgQr = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+
+                } 
+                MemoryStream ms = new MemoryStream(imgQr);
                 lstDocumentoVenta = clsUtil.Deserialize<xmlDocumentoVentaGeneral>(xmlDocventa);
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripEstadoPP = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(TipoPago);
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cVehiculos = PlacaVehiculos;
-                lstDocumentoVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = codigoDocumento;
+                lstDocumentoVenta.xmlDocumentoVenta[0].CodigoCorrelativo = codigoDocumento;
+                PrecioALetras pl = new PrecioALetras();
+                lstDocumentoVenta.xmlDocumentoVenta[0].PrecioEnLetras = pl.Convertir(lstDocumentoVenta.xmlDocumentoVenta[0].nMontoTotal.ToString(),true,"SOLES");
+                //lstDocumentoVenta.memoryStream = ms;
+                lstDocumentoVenta.imgDocumento = ms.ToArray();
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cCliente = Cliente;
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = TipoPago;
 
@@ -541,9 +553,81 @@ namespace CapaDato
                 lstDocumentoVenta.xmlDocumentoVenta[0].CodigoCorrelativo = codigoDocumento;
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cCliente = Cliente;
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = TipoPago;
-                lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Cdirrecion);
-                lstDocumentoVenta.memoryStream = ms;
+                //lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Cdirrecion);
+                //lstDocumentoVenta.memoryStream = ms;
+                lstDocumentoVenta.imgDocumento = ms.ToArray();
 
+                return lstDocumentoVenta;
+            }
+            catch (Exception ex)
+            {
+                return lstDocumentoVenta;
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+        public xmlDocumentoVentaGeneral daBuscarDocumentoVentaGeneral(Int32 idDocumento,Int32 idTipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[2];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            DataTable dtDocumento = new DataTable();
+            xmlDocumentoVentaGeneral lstDocumentoVenta = new xmlDocumentoVentaGeneral();
+            String xmlDocventa = "";
+            String codigoDocumento = "";
+            String DescripEstadoPP = "";
+            String PlacaVehiculos = "";
+            String Cdirrecion = "";
+            String Cliente = "";
+            String TipoPago = "";
+            String character = ",";
+            byte[] imgQr = new byte[] { };
+            //string xmlData = clsUtil.Serialize(lstOtrasVentas);
+            try
+            {
+
+                pa[0] = new SqlParameter("@idDocumento", SqlDbType.Int);
+                pa[0].Value = idDocumento;
+                pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[1].Value = idTipoCon;
+               
+
+
+                objCnx = new clsConexion("");
+                dtDocumento = objCnx.EjecutarProcedimientoDT("uspBuscarDocumentoDeVenta", pa);
+
+                foreach (DataRow drMenu in dtDocumento.Rows)
+                {
+                    DescripEstadoPP = Convert.ToString(drMenu["descripcionEstadoVenta"]).ToLower();
+                    codigoDocumento = Convert.ToString(drMenu["codDocumentoCorrelativo"]);
+                    xmlDocventa = Convert.ToString(drMenu["Documentoventa"]);
+                    //PlacaVehiculos = Convert.ToString(drMenu["Vehiculos"]).ToString().Remove(Convert.ToString(drMenu["Vehiculos"]).ToString().ToString().LastIndexOf(character), character.Length);
+                    //Cdirrecion = Convert.ToString(drMenu["direccionRespPago"]).ToString();
+                    //Cliente = Convert.ToString(drMenu["cCliente"]).ToString();
+                    //TipoPago = Convert.ToString(drMenu["tipoPago"]).ToString();
+                    imgQr= (Byte[])drMenu["CodigoQr"];
+                }
+                if (imgQr.Length<=0) 
+                {
+					String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+					imgQr = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+
+				}
+				MemoryStream ms = new MemoryStream(imgQr);
+
+                lstDocumentoVenta = clsUtil.Deserialize<xmlDocumentoVentaGeneral>(xmlDocventa);
+                lstDocumentoVenta.xmlDocumentoVenta[0].cDescripEstadoPP = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(DescripEstadoPP);
+                //lstDocumentoVenta.xmlDocumentoVenta[0].cVehiculos = PlacaVehiculos;
+                lstDocumentoVenta.xmlDocumentoVenta[0].CodigoCorrelativo = codigoDocumento;
+                //lstDocumentoVenta.xmlDocumentoVenta[0].cCliente = Cliente;
+                lstDocumentoVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = TipoPago;
+                lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Cdirrecion);
+                //lstDocumentoVenta.memoryStream = ms;
+                lstDocumentoVenta.imgDocumento = ms.ToArray();
                 return lstDocumentoVenta;
             }
             catch (Exception ex)

@@ -187,7 +187,7 @@ namespace CapaEntidad
 
         public List<DocumentoVenta> xmlDocumentoVenta{ get; set; }
         public List<DetalleVenta> xmlDetalleVentas { get; set; }
-
+        public Byte[] imgDocumento { get; set; }
         public MemoryStream memoryStream { get; set; }
     }
 

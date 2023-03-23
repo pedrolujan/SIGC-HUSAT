@@ -17,6 +17,7 @@ namespace CapaEntidad
         public DateTime fechaRegistro { get; set; }
         public DateTime fechaPago { get; set; }
         public Int32 idUsuario { get; set; }
+        public byte[] imgQr  { get; set; }
     }
 
 

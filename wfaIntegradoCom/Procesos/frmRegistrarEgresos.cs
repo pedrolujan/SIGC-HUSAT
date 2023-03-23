@@ -528,9 +528,9 @@ namespace wfaIntegradoCom.Procesos
             lstDocumentoVenta = fnDocumentoVentaHeader(fnCalcularCabeceraDetalle(lstDetalleVenta));
             
 
-            MemoryStream ms = new MemoryStream(FunGeneral.fnObtenerQRDefecto());
+            //MemoryStream ms = new MemoryStream(FunGeneral.fnObtenerQRDefecto());
             
-            frm.Inicio(lstDocumentoVenta,lstDetalleVenta, ms, tip);
+            frm.Inicio(lstDocumentoVenta,lstDetalleVenta, FunGeneral.fnObtenerQRDefecto(), tip);
         }
        
         private void btnGuardarEgreso_Click(object sender, EventArgs e)

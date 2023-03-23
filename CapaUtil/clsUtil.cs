@@ -7,6 +7,10 @@ using System.Reflection;
 using System.IO;
 using System.Xml.Serialization;
 using System.Xml;
+using ZXing;
+using ZXing.Common;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace CapaUtil
 {
@@ -102,6 +106,28 @@ namespace CapaUtil
                 gsLogAplicativo("msUtil.svc", "GetFechaHoraFormato", ex.Message);
                 throw new Exception(ex.Message);
             }
+        }
+        public void ObtenerQr(String texto,String carpeta, String nombre)
+        {
+
+            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\QR\";
+            Bitmap bitmap = GenerarQR(texto);
+
+            bitmap.Save(rutaArchivo + carpeta+"\\" + nombre + ".png");
+            //byte[] imageBytes = File.ReadAllBytes("ruta/a/la/imagen.jpg");
+        }
+        public Bitmap GenerarQR(string texto)
+        {
+            var writer = new BarcodeWriter
+            {
+                Format = BarcodeFormat.QR_CODE,
+                Options = new EncodingOptions
+                {
+                    Height = 300,
+                    Width = 300
+                }
+            };
+            return writer.Write(texto);
         }
         public void gsLogAplicativo(String psServicio, String psFuncion, String psMensaje)
         {

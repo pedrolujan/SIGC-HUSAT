@@ -22,7 +22,7 @@ namespace wfaIntegradoCom.Consultas
         List<DetalleVenta> lstDVenta;
         List<DocumentoVenta> lstCDocumento;
         VentaGeneral clsVentaGeneral;
-        MemoryStream msImage;
+        Byte[] btImage;
         static Boolean estVP=false;
         static Int32 lnTipoCon = 0;
         static Int32 lnEstadosProcesos = 0;
@@ -42,17 +42,17 @@ namespace wfaIntegradoCom.Consultas
             lnTipoCon = tipoCon;
             ShowDialog();
         }
-        public void Inicio(List<DocumentoVenta> lstDocV, List<DetalleVenta> lstDV, MemoryStream ms, Int32 tipoCon)
+        public void Inicio(List<DocumentoVenta> lstDocV, List<DetalleVenta> lstDV, Byte[] bt, Int32 tipoCon)
         {
             lstCDocumento = new List<DocumentoVenta>();
             lstDVenta = new List<DetalleVenta>();
             clsVentaGeneral = new VentaGeneral();
-            msImage = new MemoryStream();
+            //msImage = new MemoryStream();
             lstCDocumento = lstDocV;
             lstDVenta = lstDV;
             //clsVentaGeneral = clsVG;
             lnTipoCon = tipoCon;
-            msImage = ms;
+            btImage = bt;
             ShowDialog();
         }
         public void fnCambiarEstado(Boolean estado)
@@ -107,11 +107,19 @@ namespace wfaIntegradoCom.Consultas
                 btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
             }
             this.reportViewer1.RefreshReport();
-            fnCargarReporte(lstCDocumento, lstDVenta,msImage);
+            fnCargarReporte(lstCDocumento, lstDVenta,btImage);
         }
 
-        private void fnCargarReporte(List<DocumentoVenta> lstC, List<DetalleVenta> lstDV,MemoryStream ms)
+        private void fnCargarReporte(List<DocumentoVenta> lstC, List<DetalleVenta> lstDV,Byte[] bt)
         {
+            if (bt is null || bt.Length<2 )
+            {
+                String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+                bt = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+
+                
+            }
+            MemoryStream ms = new MemoryStream(bt);
             ReportParameter[] parameters = new ReportParameter[7];
             reportViewer1.Reset();
             reportViewer1.LocalReport.DataSources.Clear();
@@ -183,16 +191,11 @@ namespace wfaIntegradoCom.Consultas
             //opcion para venta general
             if (lnTipoCon == 0)
             {
-                List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
-                Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(0, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
-                if (estVP)
-                {
-                    Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
-                    fmr2.fnCambiarEstadoVenta(true);
-                }
-            } 
+                //List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
+                frmTipoPago frm = new frmTipoPago();
+                frm.fnCambiarEstadoPago(true);
+                ///venta general
+            }
             //opcion para pagos mensuales
             else if (lnTipoCon==-1)
             {

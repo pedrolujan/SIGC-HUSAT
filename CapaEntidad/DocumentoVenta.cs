@@ -109,6 +109,7 @@ namespace CapaEntidad
         public Int32 idMoneda { get; set; }
         public String SimboloMoneda { get; set; }
         public String cVehiculos { get; set; }
+        public String FormaPagoFactura { get; set; }
         public Int32 numero { get; set; }
 
         public String cUsuario { get; set; }
@@ -117,6 +118,9 @@ namespace CapaEntidad
 
         public Boolean est0 { get; set; }
         public Boolean est1 { get; set; }
+
+        public xmlDocumentoVentaGeneral xmlDocumento { get; set; }
+        public Byte[] imageBytes { get; set; }
 
         //public DocumentoVenta(Int32 pidVenta, Int32 pcTipoDoc, Int32 pcTiDo, String pcDocumento, String pcCliente, String pcDocVenta,
         //    DateTime pdFechaVenta,String pcEstado,String pcDireccion,String pcNroGuiaTrans, String pcNroGuiaRem

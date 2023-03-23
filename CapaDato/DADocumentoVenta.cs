@@ -104,6 +104,7 @@ namespace CapaDato
                         dFechaRegistro = Convert.ToDateTime(d["dtFecha"]),
                         cDescripEstadoPP = d["cNombreOperacion"].ToString(),
                         cVehiculos = d["vehiculo"].ToString(),
+                        nMontoPagar = Convert.ToDouble(d["pagaCon"]),
                         cEstado = d["estadoEmision"].ToString()
                     }) ;
                     i++;

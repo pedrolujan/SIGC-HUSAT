@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.dotNetBarTabControl1 = new wfaIntegradoCom.Mantenedores.DotNetBarTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -61,14 +61,16 @@
             this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAPAGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vehiculos_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ciente_Rs_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vehiculos_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imgImprimir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imgImprimir = new System.Windows.Forms.DataGridViewImageColumn();
             this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
             this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cmAcciones = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.siticonePanel1.SuspendLayout();
             this.dotNetBarTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -86,7 +88,7 @@
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(903, 430);
+            this.siticonePanel1.Size = new System.Drawing.Size(1014, 495);
             this.siticonePanel1.TabIndex = 1;
             // 
             // dotNetBarTabControl1
@@ -104,7 +106,7 @@
             this.dotNetBarTabControl1.Multiline = true;
             this.dotNetBarTabControl1.Name = "dotNetBarTabControl1";
             this.dotNetBarTabControl1.SelectedIndex = 0;
-            this.dotNetBarTabControl1.Size = new System.Drawing.Size(897, 424);
+            this.dotNetBarTabControl1.Size = new System.Drawing.Size(1008, 489);
             this.dotNetBarTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.dotNetBarTabControl1.TabIndex = 0;
             // 
@@ -123,7 +125,7 @@
             this.tabPage1.Location = new System.Drawing.Point(140, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(753, 416);
+            this.tabPage1.Size = new System.Drawing.Size(864, 481);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "FACTURAS";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -132,6 +134,7 @@
             // 
             this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.iconButton1.BackColor = System.Drawing.SystemColors.Control;
+            this.iconButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconButton1.ForeColor = System.Drawing.Color.Green;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
@@ -139,7 +142,7 @@
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 32;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(39, 370);
+            this.iconButton1.Location = new System.Drawing.Point(39, 435);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(164, 40);
             this.iconButton1.TabIndex = 275;
@@ -159,7 +162,7 @@
             this.gbPaginacion.Controls.Add(this.btnTotalPag);
             this.gbPaginacion.Controls.Add(this.label41);
             this.gbPaginacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPaginacion.Location = new System.Drawing.Point(403, 370);
+            this.gbPaginacion.Location = new System.Drawing.Point(514, 435);
             this.gbPaginacion.Name = "gbPaginacion";
             this.gbPaginacion.Size = new System.Drawing.Size(340, 40);
             this.gbPaginacion.TabIndex = 274;
@@ -281,7 +284,7 @@
             this.siticoneComboBox1.Location = new System.Drawing.Point(453, 45);
             this.siticoneComboBox1.Name = "siticoneComboBox1";
             this.siticoneComboBox1.ShadowDecoration.Parent = this.siticoneComboBox1;
-            this.siticoneComboBox1.Size = new System.Drawing.Size(140, 36);
+            this.siticoneComboBox1.Size = new System.Drawing.Size(245, 36);
             this.siticoneComboBox1.TabIndex = 272;
             // 
             // chkHabilitarFechasBus
@@ -406,7 +409,7 @@
             this.pbBuscar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.pbBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.pbBuscar.IconSize = 26;
-            this.pbBuscar.Location = new System.Drawing.Point(717, 50);
+            this.pbBuscar.Location = new System.Drawing.Point(828, 50);
             this.pbBuscar.Name = "pbBuscar";
             this.pbBuscar.Size = new System.Drawing.Size(26, 26);
             this.pbBuscar.TabIndex = 266;
@@ -418,8 +421,8 @@
             this.dgvListaVentas.AllowUserToAddRows = false;
             this.dgvListaVentas.AllowUserToDeleteRows = false;
             this.dgvListaVentas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.dgvListaVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvListaVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListaVentas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -427,57 +430,58 @@
             this.dgvListaVentas.BackgroundColor = System.Drawing.Color.White;
             this.dgvListaVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvListaVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaVentas.ColumnHeadersHeight = 42;
             this.dgvListaVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDocumento,
             this.numero,
             this.codDocumento,
             this.FECHAPAGO,
-            this.Vehiculos_lv,
             this.Ciente_Rs_lv,
+            this.Importe,
+            this.Vehiculos_lv,
             this.Estado_lv,
             this.imgImprimir});
             this.dgvListaVentas.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaVentas.EnableHeadersVisualStyles = false;
             this.dgvListaVentas.GridColor = System.Drawing.Color.Silver;
             this.dgvListaVentas.Location = new System.Drawing.Point(7, 91);
             this.dgvListaVentas.Name = "dgvListaVentas";
             this.dgvListaVentas.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvListaVentas.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaVentas.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaVentas.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvListaVentas.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvListaVentas.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaVentas.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaVentas.RowTemplate.Height = 60;
             this.dgvListaVentas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvListaVentas.Size = new System.Drawing.Size(741, 277);
+            this.dgvListaVentas.Size = new System.Drawing.Size(852, 342);
             this.dgvListaVentas.TabIndex = 265;
             this.dgvListaVentas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvListaVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -502,6 +506,8 @@
             this.dgvListaVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Azure;
             this.dgvListaVentas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
             this.dgvListaVentas.Visible = false;
+            this.dgvListaVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellClick);
+            this.dgvListaVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaVentas_CellFormatting);
             // 
             // idDocumento
             // 
@@ -531,19 +537,25 @@
             this.FECHAPAGO.Name = "FECHAPAGO";
             this.FECHAPAGO.ReadOnly = true;
             // 
-            // Vehiculos_lv
-            // 
-            this.Vehiculos_lv.FillWeight = 79.41992F;
-            this.Vehiculos_lv.HeaderText = "Vehiculo";
-            this.Vehiculos_lv.Name = "Vehiculos_lv";
-            this.Vehiculos_lv.ReadOnly = true;
-            // 
             // Ciente_Rs_lv
             // 
             this.Ciente_Rs_lv.FillWeight = 175.2433F;
             this.Ciente_Rs_lv.HeaderText = "Cliente/Razon Social";
             this.Ciente_Rs_lv.Name = "Ciente_Rs_lv";
             this.Ciente_Rs_lv.ReadOnly = true;
+            // 
+            // Importe
+            // 
+            this.Importe.HeaderText = "Importe";
+            this.Importe.Name = "Importe";
+            this.Importe.ReadOnly = true;
+            // 
+            // Vehiculos_lv
+            // 
+            this.Vehiculos_lv.FillWeight = 79.41992F;
+            this.Vehiculos_lv.HeaderText = "Vehiculo";
+            this.Vehiculos_lv.Name = "Vehiculos_lv";
+            this.Vehiculos_lv.ReadOnly = true;
             // 
             // Estado_lv
             // 
@@ -557,15 +569,16 @@
             this.imgImprimir.HeaderText = "";
             this.imgImprimir.Name = "imgImprimir";
             this.imgImprimir.ReadOnly = true;
+            this.imgImprimir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.imgImprimir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // siticoneLabel1
             // 
-            this.siticoneLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.siticoneLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.siticoneLabel1.BackColor = System.Drawing.Color.Transparent;
             this.siticoneLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneLabel1.Location = new System.Drawing.Point(604, 25);
+            this.siticoneLabel1.Location = new System.Drawing.Point(715, 25);
             this.siticoneLabel1.Name = "siticoneLabel1";
             this.siticoneLabel1.Size = new System.Drawing.Size(107, 18);
             this.siticoneLabel1.TabIndex = 1;
@@ -586,7 +599,7 @@
             this.txtBuscar.FocusedState.Parent = this.txtBuscar;
             this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscar.HoveredState.Parent = this.txtBuscar;
-            this.txtBuscar.Location = new System.Drawing.Point(604, 45);
+            this.txtBuscar.Location = new System.Drawing.Point(715, 45);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderText = "";
@@ -594,6 +607,7 @@
             this.txtBuscar.ShadowDecoration.Parent = this.txtBuscar;
             this.txtBuscar.Size = new System.Drawing.Size(141, 36);
             this.txtBuscar.TabIndex = 273;
+            this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // tabPage2
             // 
@@ -601,16 +615,21 @@
             this.tabPage2.Location = new System.Drawing.Point(140, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(753, 416);
+            this.tabPage2.Size = new System.Drawing.Size(864, 481);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "NOTAS DE CREDITO";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cmAcciones
+            // 
+            this.cmAcciones.Name = "cmAcciones";
+            this.cmAcciones.Size = new System.Drawing.Size(61, 4);
             // 
             // MovimientoSunat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 430);
+            this.ClientSize = new System.Drawing.Size(1014, 495);
             this.Controls.Add(this.siticonePanel1);
             this.Name = "MovimientoSunat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -649,14 +668,6 @@
         private Siticone.UI.WinForms.SiticoneComboBox siticoneComboBox1;
         private Siticone.UI.WinForms.SiticoneTextBox txtBuscar;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDocumento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codDocumento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAPAGO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculos_lv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ciente_Rs_lv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado_lv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn imgImprimir;
         private System.Windows.Forms.GroupBox gbPaginacion;
         private Siticone.UI.WinForms.SiticoneCircleButton btnNumFilas;
         private System.Windows.Forms.Label label37;
@@ -667,6 +678,16 @@
         private Siticone.UI.WinForms.SiticoneCircleButton btnTotalPag;
         private System.Windows.Forms.Label label41;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAPAGO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ciente_Rs_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculos_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado_lv;
+        private System.Windows.Forms.DataGridViewImageColumn imgImprimir;
+        private System.Windows.Forms.ContextMenuStrip cmAcciones;
     }
 
 }

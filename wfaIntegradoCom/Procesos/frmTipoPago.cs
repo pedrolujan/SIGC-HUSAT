@@ -17,6 +17,7 @@ using Siticone.UI.WinForms.Suite;
 using Siticone.UI.WinForms;
 using TextBox = System.Windows.Forms.TextBox;
 using CircularProgressBar;
+using wfaIntegradoCom.Mantenedores;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -27,7 +28,7 @@ namespace wfaIntegradoCom.Procesos
             InitializeComponent();
         }
         public static Boolean EstadoTipoPago=false;
-
+        static Boolean bEstadoDocumento=false;
         Int32 lnTipoLLamada = 0;
         Double lnMontoPagar = 0;
         String SImboloMoneda = "";
@@ -36,7 +37,11 @@ namespace wfaIntegradoCom.Procesos
         String lblTipoVentaa, lblEntidadVenta, lblTotalAPagar, lblPagaConn, lblVueltoo, lblObservacioneso, lblNroOperacion;
         static Pagos clsPagosGeneral = new Pagos();
         static List<Pagos> lstEntidades = new List<Pagos>();
-      
+
+        static List<DocumentoVenta> lsDocumentoVenta = new List<DocumentoVenta>();
+        static List<DetalleVenta> lsDetalleVenta = new List<DetalleVenta>();
+        static List<DetalleVenta> lsDetalleVentaAnticipo = new List<DetalleVenta>();
+
         public void Inicio(int pnTipo, double pnMontoPagar,String sMoneda,String codigoDocV)
         {
             lnTipoLLamada = pnTipo;
@@ -45,6 +50,21 @@ namespace wfaIntegradoCom.Procesos
             clsPagosGeneral.cantAPagar = pnMontoPagar;
             clsPagosGeneral.SimboloMoneda = sMoneda;
             codigoDocVenta= codigoDocV;
+            this.ShowDialog();
+        }
+        public void Inicio(int pnTipo, List<DocumentoVenta> lsDocVenta, List<DetalleVenta> lsDetVenta, String sMoneda)
+        {
+            lsDocumentoVenta.Clear();
+            lsDetalleVenta.Clear();
+
+            lnTipoLLamada = pnTipo;
+            lsDocumentoVenta = lsDocVenta;
+            lsDetalleVenta = lsDetVenta;
+            lnMontoPagar = lsDetVenta.Sum(i => i.Importe);
+            SImboloMoneda = sMoneda;
+            clsPagosGeneral.cantAPagar = lsDetVenta.Sum(i => i.Importe);
+            clsPagosGeneral.SimboloMoneda = sMoneda;
+            codigoDocVenta= lsDocVenta[0].cCodDocumentoVenta;
             this.ShowDialog();
         }
 
@@ -116,6 +136,10 @@ namespace wfaIntegradoCom.Procesos
         {
 
         }
+        public void fnCambiarEstadoPago(Boolean est)
+        {
+            bEstadoDocumento = est;
+        }
         public void fnRecibirEntidades(Pagos cls ,Int32 tipoCon)
         {
 
@@ -154,6 +178,11 @@ namespace wfaIntegradoCom.Procesos
             fnLlenarListBox();
         }
 
+        private void rdbSi_CheckedChanged(object sender, EventArgs e)
+        {
+            lsDocumentoVenta[0].FormaPagoFactura = "CONT";
+        }
+
         private void fnLlenarListBox()
         {
             dgvEntidades.Rows.Clear();
@@ -187,7 +216,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void rdbNo_CheckedChanged(object sender, EventArgs e)
         {
-
+            lsDocumentoVenta[0].FormaPagoFactura = "CRED";
         }
         public static Boolean fnLlenarCombobox(SiticoneComboBox cboCombo, String cCodTab, Int32 lnTipoCon, Boolean estBusq)
         {
@@ -230,7 +259,7 @@ namespace wfaIntegradoCom.Procesos
         {
             try
             {
-                
+                bEstadoDocumento = false;
                 lstEntidades.Clear();
                 FunValidaciones.fnColorAceptarCancelar(btnAceptar, btnCancelar);
                 txtTotalAPagar.Text = FunGeneral.fnFormatearPrecio(clsPagosGeneral.SimboloMoneda,clsPagosGeneral.cantAPagar,1);
@@ -291,6 +320,106 @@ namespace wfaIntegradoCom.Procesos
             }
             pncargando.Visible = estado;
         }
+
+        private void fnEnviarDatosLuegoDeAceptar()
+        {
+            lsDocumentoVenta[0].cDescripcionTipoPago = "";
+            lsDocumentoVenta[0].cDescripEstadoPP= "CONTADO";
+            foreach (Pagos ep in lstEntidades )
+            {
+                lsDocumentoVenta[0].cDescripcionTipoPago +=" "+ ep.cDescripTipoPago+"="+ lsDetalleVenta[0].cSimbolo +"."+ep.PagaCon+ "\n";
+            }
+            //opcion para venta general
+            if (lnTipoLLamada == 0)
+            {
+                
+                Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
+                ////MessageBox.Show("Todo Correcto");
+                //frm.fnCambiarEstado(true);
+                //this.Close();
+                if (lsDocumentoVenta[0].FormaPagoFactura == "CRED")
+                {
+                    lsDetalleVentaAnticipo.Clear();
+                    lsDetalleVentaAnticipo.Add(new DetalleVenta
+                    {
+                         Numeracion = 1,
+                         Descripcion = "PAGO PGS "+ lsDocumentoVenta[0].cTipoVenta+ " ****Pago Anticipado***",
+                         idTipoTarifa = lsDetalleVenta[0].idTipoTarifa,
+                         PrecioUni = lstEntidades.Sum(i=>i.PagaCon),
+                         Descuento = 0,
+                         gananciaRedondeo = 0,
+                         TotalTipoDescuento = 0,
+                         IdTipoDescuento = 0,
+                         Cantidad = 1,
+                         Couta = 1,
+                         Importe = lstEntidades.Sum(i => i.PagaCon),
+                         cSimbolo = lsDetalleVenta[0].cSimbolo,
+
+                         preciounitario = Convert.ToDecimal(lstEntidades.Sum(i => i.PagaCon)),
+                         ImporteRow = (Convert.ToDecimal(lstEntidades.Sum(i => i.PagaCon)) * 1),
+                         mtoValorVentaItem = (Convert.ToDecimal(lstEntidades.Sum(i => i.PagaCon)) * 1),
+                         Unidad_de_medida = "ZZ"
+
+                    });
+                    PrecioALetras pal = new PrecioALetras();
+                    string RecioALetras2 = pal.Convertir((lsDetalleVentaAnticipo.Sum(i => i.ImporteRow) - Convert.ToDecimal(lsDetalleVentaAnticipo.Sum(i => i.TotalTipoDescuento))).ToString(), true, " SOLES");
+                    lsDocumentoVenta[0].PrecioEnLetras = RecioALetras2;
+
+                    lsDocumentoVenta[0].nMontoTotal = lstEntidades.Sum(i => i.PagaCon);
+                    lsDocumentoVenta[0].nSubtotal = (lstEntidades.Sum(i => i.PagaCon) / 1.18);
+                    lsDocumentoVenta[0].nIGV = (lsDocumentoVenta[0].nMontoTotal - lsDocumentoVenta[0].nSubtotal);
+                }
+                
+                frm.Inicio(lsDocumentoVenta, lsDetalleVentaAnticipo.Count>0? lsDetalleVentaAnticipo : lsDetalleVenta, 0);
+                frmRegistrarVenta fr = new frmRegistrarVenta();
+                if (bEstadoDocumento)
+                {
+                    frmRegistrarVenta.fnRecuperarTipoPago(lstEntidades);
+                    fr.fnCambiarEstadoVenta(true);
+                }
+                else
+                {
+                    fr.fnCambiarEstadoVenta(false);
+                }
+
+            }
+            // opcion para pagos mensuales
+            else if (lnTipoLLamada == -1)
+            {
+                Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
+                frmControlPagoVenta frm = new frmControlPagoVenta();
+                frm.fnCambiarEstadoVenta(true);
+                this.Close();
+            }
+            // opcion para otrasVentas
+            else if (lnTipoLLamada == -2)
+            {
+                frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
+                frmOtrasVentas frm2 = new frmOtrasVentas();
+                frm2.fnRecuperarEstadoGenVenta(true);
+                this.Close();
+
+            }
+            else if (lnTipoLLamada == -3 || lnTipoLLamada == 3)
+            {
+                frmRegistrarEgresos frm = new frmRegistrarEgresos();
+                frm.fnRecuperarEstadoGenVenta(true);
+                frm.fnRecuperarTipoPago(lstEntidades);
+                this.Close();
+            }
+            else if (lnTipoLLamada == -4)
+            {
+                frmPagosPendientes frm = new frmPagosPendientes();
+                frm.fnRecuperarEstadoGenVenta(true);
+                frm.fnRecuperarTipoPago(lstEntidades);
+                this.Close();
+            }
+            else
+            {
+                //frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
+                this.Close();
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             fnMostrarCargando(true);
@@ -298,51 +427,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 if (clsPagosGeneral.cantAPagar == lstEntidades.Sum(i => i.PagaCon))
                 {
-                    //opcion para venta general
-                    if (lnTipoLLamada == 0)
-                    {
-                        Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
-                        //MessageBox.Show("Todo Correcto");
-                        Mantenedores.frmRegistrarVenta.fnRecuperarTipoPago(lstEntidades);
-                        frm.fnCambiarEstado(true);
-                        this.Close();
-                    }
-                    // opcion para pagos mensuales
-                    else if (lnTipoLLamada == -1)
-                    {
-                        Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
-                        frmControlPagoVenta frm = new frmControlPagoVenta();
-                        frm.fnCambiarEstadoVenta(true);
-                        this.Close();
-                    }
-                    // opcion para otrasVentas
-                    else if (lnTipoLLamada == -2)
-                    {
-                        frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
-                        frmOtrasVentas frm2 = new frmOtrasVentas();
-                        frm2.fnRecuperarEstadoGenVenta(true);
-                        this.Close();
-
-                    }
-                    else if (lnTipoLLamada == -3 || lnTipoLLamada == 3)
-                    {
-                        frmRegistrarEgresos frm = new frmRegistrarEgresos();
-                        frm.fnRecuperarEstadoGenVenta(true);
-                        frm.fnRecuperarTipoPago(lstEntidades);
-                        this.Close();
-                    }
-                    else if (lnTipoLLamada == -4)
-                    {
-                        frmPagosPendientes frm = new frmPagosPendientes();
-                        frm.fnRecuperarEstadoGenVenta(true);
-                        frm.fnRecuperarTipoPago(lstEntidades);
-                        this.Close();
-                    }
-                    else
-                    {
-                        //frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
-                        this.Close();
-                    }
+                    fnEnviarDatosLuegoDeAceptar();
                 }
                 else
                 {
@@ -353,56 +438,59 @@ namespace wfaIntegradoCom.Procesos
             else if (rdbNo.Checked == true)
             {
                 DialogResult resp = new DialogResult();
-                resp = MessageBox.Show("En realidad deseá guardar el pago como págo pendiente?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                resp = MessageBox.Show("En realidad deseá guardar el págo como págo pendiente?", "Aviso!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (resp == DialogResult.Yes)
                 {
-                    //opcion para venta general
-                    if (lnTipoLLamada == 0)
-                    {
-                        Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
-                        //MessageBox.Show("Todo Correcto");
-                        Mantenedores.frmRegistrarVenta.fnRecuperarTipoPago(lstEntidades);
-                        frm.fnCambiarEstado(true);
-                        this.Close();
-                    }
-                    // opcion para pagos mensuales
-                    else if (lnTipoLLamada == -1)
-                    {
-                        Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
-                        frmControlPagoVenta frm = new frmControlPagoVenta();
-                        frm.fnCambiarEstadoVenta(true);
-                        this.Close();
-                    }
-                    // opcion para otrasVentas
-                    else if (lnTipoLLamada == -2)
-                    {
-                        frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
-                        frmOtrasVentas frm2 = new frmOtrasVentas();
-                        frm2.fnRecuperarEstadoGenVenta(true);
-                        this.Close();
+                    fnEnviarDatosLuegoDeAceptar();
+                    ////opcion para venta general
+                    //if (lnTipoLLamada == 0)
+                    //{
+                    //    Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
+                    //    //MessageBox.Show("Todo Correcto");
+                    //    Mantenedores.frmRegistrarVenta.fnRecuperarTipoPago(lstEntidades);
+                    //    frm.fnCambiarEstado(true);
+                    //    this.Close();
+                    //}
+                    //// opcion para pagos mensuales
+                    //else if (lnTipoLLamada == -1)
+                    //{
+                    //    Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
+                    //    frmControlPagoVenta frm = new frmControlPagoVenta();
+                    //    frm.fnCambiarEstadoVenta(true);
+                    //    this.Close();
+                    //}
+                    //// opcion para otrasVentas
+                    //else if (lnTipoLLamada == -2)
+                    //{
+                    //    frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
+                    //    frmOtrasVentas frm2 = new frmOtrasVentas();
+                    //    frm2.fnRecuperarEstadoGenVenta(true);
+                    //    this.Close();
 
-                    }
-                    else if (lnTipoLLamada == -3 || lnTipoLLamada == 3)
-                    {
-                        frmRegistrarEgresos frm = new frmRegistrarEgresos();
-                        frm.fnRecuperarEstadoGenVenta(true);
-                        frm.fnRecuperarTipoPago(lstEntidades);
-                        this.Close();
-                    }
-                    else if (lnTipoLLamada == -4)
-                    {
-                        frmPagosPendientes frm = new frmPagosPendientes();
-                        frm.fnRecuperarEstadoGenVenta(true);
-                        frm.fnRecuperarTipoPago(lstEntidades);
-                        this.Close();
-                    }
-                    else
-                    {
-                        //frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
-                        this.Close();
-                    }
+                    //}
+                    //else if (lnTipoLLamada == -3 || lnTipoLLamada == 3)
+                    //{
+                    //    frmRegistrarEgresos frm = new frmRegistrarEgresos();
+                    //    frm.fnRecuperarEstadoGenVenta(true);
+                    //    frm.fnRecuperarTipoPago(lstEntidades);
+                    //    this.Close();
+                    //}
+                    //else if (lnTipoLLamada == -4)
+                    //{
+                    //    frmPagosPendientes frm = new frmPagosPendientes();
+                    //    frm.fnRecuperarEstadoGenVenta(true);
+                    //    frm.fnRecuperarTipoPago(lstEntidades);
+                    //    this.Close();
+                    //}
+                    //else
+                    //{
+                    //    //frmDocumentoVenta.fnRecuperarTipoPago(cboTipoPago.SelectedValue.ToString(), Convert.ToDecimal(txtCanPagar.Text), cboTipoPago.Text);
+                    //    this.Close();
+                    //}
                 }
             }
+
+            this.Dispose();
 
             fnMostrarCargando(false);
         }

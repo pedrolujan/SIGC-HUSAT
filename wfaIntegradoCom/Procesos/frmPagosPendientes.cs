@@ -362,7 +362,8 @@ namespace wfaIntegradoCom.Procesos
                             ImporteRow = importeRestante,
                             MasDetallereporte = dr["cNombreOperacion"].ToString(),
                             idMoneda = Convert.ToInt32(cboMoneda.SelectedValue),
-                            Codigoreporte = dr["vehiculo"].ToString()
+                            Codigoreporte = dr["vehiculo"].ToString(),
+                            idOperacion=Convert.ToInt32(dr["idOperacion"])
 
                         });
 
@@ -464,7 +465,7 @@ namespace wfaIntegradoCom.Procesos
             Int32 cantidad = 1;
             Double precioUnitario = lstPagosTrand[0].PagaCon;
             double importe = lstPagosTrand[0].PagaCon;
-            String descripcion = lstDVenta[0].MasDetallereporte;
+            String descripcion = lstDVenta[0].idOperacion==4?"RENTA MENSUAL": lstDVenta[0].MasDetallereporte;
 
             lstDetV.Add(new DetalleVenta
             {
@@ -792,7 +793,7 @@ namespace wfaIntegradoCom.Procesos
                 xmlDocumentoVenta.Add(xmlDocVenta);
 
                 Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
-                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, 1);
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, xmlDocumentoVenta[0].imgDocumento, 1);
                 
 
             }

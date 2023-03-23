@@ -26,6 +26,8 @@ namespace CapaEntidad
         public String nValor2 { get { return _nValor2; } set { _nValor2 = value; } }
         String _SerieDoc = "";
         public String SerieDoc { get { return _SerieDoc; } set { _SerieDoc = value; } }
+        String _TipoFactura = "";
+        public String TipoFactura { get { return _TipoFactura; } set { _TipoFactura = value; } }
 
         Boolean _bEstado = false    ;
         public Boolean bEstado { get { return _bEstado; } set { _bEstado = value; } }

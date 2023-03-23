@@ -1,8 +1,10 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CapaUtil;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,8 +58,9 @@ namespace wfaIntegradoCom.Sunat
                     lstDocumentos[i].numero,
                     lstDocumentos[i].CodigoCorrelativo,
                     lstDocumentos[i].dFechaRegistro.ToString("dd-MM-yyyy"),
-                    lstDocumentos[i].cVehiculos,
                     lstDocumentos[i].cCliente,
+                    FunGeneral.fnFormatearPrecio("S/.",lstDocumentos[i].nMontoPagar,0),
+                    lstDocumentos[i].cVehiculos,
                     lstDocumentos[i].cEstado,
                     ""
 
@@ -99,57 +102,70 @@ namespace wfaIntegradoCom.Sunat
         private void iconButton1_Click(object sender, EventArgs e)
         {
             DateTime dtt = DateTime.Now;
-            // Crea un nuevo archivo de Excel
-            SpreadsheetDocument documento = SpreadsheetDocument.Create("mi_archivo"+ dtt .ToString("dd-MM-yyyy HH:mm:ss")+ ".xlsx", SpreadsheetDocumentType.Workbook);
 
-            // Crea una hoja de cálculo dentro del archivo
-            WorkbookPart libroParte = documento.AddWorkbookPart();
-            libroParte.Workbook = new Workbook();
-            WorksheetPart hojaParte = libroParte.AddNewPart<WorksheetPart>();
-            hojaParte.Worksheet = new Worksheet(new SheetData());
-            Sheets hojas = documento.WorkbookPart.Workbook.AppendChild(new Sheets());
-            Sheet hoja = new Sheet() { Id = documento.WorkbookPart.GetIdOfPart(hojaParte), SheetId = 1, Name = "Datos" };
-            hojas.Append(hoja);
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Excel Workbook (*.xlsx)|*.xlsx";
+            saveFileDialog1.Title = "Guardar archivo de Excel";
+            saveFileDialog1.FileName = "REPORTE FACTURAS - " + dtt.ToString("ddMMyyyyHHmmss") + ".xlsx";
+            saveFileDialog1.ShowDialog();
 
-            // Obtiene los datos del DataGridView
-            //DataGridViewColumn filaEncabezado = dgvListaVentas.Columns;
-            int numColumnas = dgvListaVentas.Columns.Count;
-            int numFilas = dgvListaVentas.Rows.Count;
-
-            // Agrega los datos a la hoja de cálculo
-            SheetData datosHoja = hojaParte.Worksheet.GetFirstChild<SheetData>();
-            datosHoja.AppendChild(new Row());
-
-            // Agrega los encabezados de columna
-            for (int i = 1; i < numColumnas; i++)
+            if (saveFileDialog1.FileName != "")
             {
-                Cell celda = CreaCelda(i + 1, 1, dgvListaVentas.Columns[i].HeaderText.ToString());
-                datosHoja.LastChild.AppendChild(celda);
-            }
-
-            // Agrega los datos de las filas
-            for (int i = 0; i < numFilas; i++)
-            {
-                DataGridViewRow filaDatos = dgvListaVentas.Rows[i];
-                datosHoja.AppendChild(new Row());
-                for (int j = 1; j < numColumnas; j++)
+                using (SpreadsheetDocument documento = SpreadsheetDocument.Create(saveFileDialog1.FileName, SpreadsheetDocumentType.Workbook))
                 {
-                    Cell celda = CreaCelda(j, i + 1, filaDatos.Cells[j].Value.ToString());
-                    datosHoja.LastChild.AppendChild(celda);
+                    // Crea una hoja de trabajo dentro del archivo
+                    WorkbookPart libroParte = documento.AddWorkbookPart();
+                    libroParte.Workbook = new Workbook();
+                    WorksheetPart hojaParte = libroParte.AddNewPart<WorksheetPart>();
+                    hojaParte.Worksheet = new Worksheet(new SheetData());
+                    Sheets hojas = documento.WorkbookPart.Workbook.AppendChild(new Sheets());
+                    Sheet hoja = new Sheet() { Id = documento.WorkbookPart.GetIdOfPart(hojaParte), SheetId = 1, Name = "FACTURAS" };
+                    hojas.Append(hoja);
+
+                    // Agrega los encabezados de columna
+                    SheetData datosHoja = hojaParte.Worksheet.GetFirstChild<SheetData>();
+                    Row filaEncabezados = new Row();
+                    filaEncabezados.Append(
+                        CreaCelda("Numero"),
+                        CreaCelda("Codigo"),
+                        CreaCelda("Fecha Emision"),
+                        CreaCelda("Cliente"),
+                        CreaCelda("Importe"),
+                        CreaCelda("Estado")
+                        );
+
+                  
+                    datosHoja.AppendChild(filaEncabezados);
+
+                    // Agrega los datos de la lista
+                    foreach (DocumentoVenta dv in lstDocumentos)
+                    {
+                        Row filaDatos = new Row();
+                        filaDatos.Append(
+                            CreaCelda(dv.numero.ToString()),
+                            CreaCelda(dv.CodigoCorrelativo),
+                            CreaCelda(dv.dFechaRegistro.ToString("dd-MM-yyyy")),
+                            CreaCelda(dv.cCliente),
+                            CreaCelda(dv.nMontoPagar.ToString()),
+                            CreaCelda(dv.cEstado)
+                            
+                            );
+                        datosHoja.AppendChild(filaDatos);
+                    }
+
+                    // Cierra el archivo de Excel
+                    documento.Close();
+
                 }
+                MessageBox.Show("El archivo de Excel ha sido creado exitosamente.");
             }
 
-            // Cierra el archivo de Excel
-            documento.Close();
-
-            MessageBox.Show("El archivo de Excel ha sido creado exitosamente.");
         }
 
-        private Cell CreaCelda(int columna, int fila, string valor)
+        private Cell CreaCelda(string valor)
         {
             Cell celda = new Cell();
             celda.DataType = CellValues.String;
-            celda.CellReference = GetColumnaLetra(columna) + fila.ToString();
             celda.CellValue = new CellValue(valor);
             return celda;
         }
@@ -181,6 +197,79 @@ namespace wfaIntegradoCom.Sunat
             {
 
                 throw;
+            }
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==(char)Keys.Enter)
+            {
+                fnBuscarDocumentos(0, -1);
+            }
+        }
+
+        private void dgvListaVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.dgvListaVentas.Columns[e.ColumnIndex].Name == "imgImprimir")
+            {
+                if (e.Value != null)
+                {
+                    IconPictureBox iconPictureBox = new IconPictureBox();
+                    iconPictureBox.IconChar = IconChar.FileArrowDown;
+                    iconPictureBox.IconColor = System.Drawing.Color.Tomato;
+                    iconPictureBox.Size = new Size(36, 36);
+
+                    Bitmap bmp = new Bitmap(iconPictureBox.Width, iconPictureBox.Height);
+                    iconPictureBox.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    e.Value = bmp;
+                    this.dgvListaVentas.Columns[e.ColumnIndex].Width = 40;
+                }
+            }
+        }
+        private void dgvListaVentas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dg = dgvListaVentas;
+            if (dg.Columns[e.ColumnIndex].Name== "imgImprimir")
+            {
+                Int32 idDocumento = Convert.ToInt32(dg.Rows[e.RowIndex].Cells[0].Value);
+                fnBuscarDocumentoVenta(idDocumento,0);
+            }
+
+        }
+
+        private void fnBuscarDocumentoVenta(Int32 idDocumentoVenta,Int32 tipCon)
+        {
+            BLOtrasVenta objTipoVenta = new BLOtrasVenta();
+            clsUtil objUtil = new clsUtil();
+            DataTable dtResp = new DataTable();
+            List<TipoVenta> lsTipoVenta = new List<TipoVenta>();
+            Int32 filas = 20;
+            List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
+            xmlDocumentoVentaGeneral xmlDocVenta = new xmlDocumentoVentaGeneral();
+
+            try
+            {
+                xmlDocVenta = objTipoVenta.blBuscarDocumentoVenta(idDocumentoVenta,tipCon);
+                //xmlDocVenta.xmlDocumentoVenta[0].cDireccion = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDireccion);
+                //xmlDocVenta.xmlDocumentoVenta[0].cCliente = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cCliente);
+                //xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago);
+                xmlDocumentoVenta.Add(xmlDocVenta);
+
+                Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
+
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, xmlDocVenta.imgDocumento, 1);
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("frmOrdenCompra", "fnListarProveedorActivo", ex.Message);
+
+            }
+            finally
+            {
+                objUtil = null;
+                objTipoVenta = null;
+                lsTipoVenta = null;
             }
         }
     }

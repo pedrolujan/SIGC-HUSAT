@@ -104,6 +104,7 @@
             this.reportViewer1.ShowBackButton = false;
             this.reportViewer1.Size = new System.Drawing.Size(582, 528);
             this.reportViewer1.TabIndex = 164;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
             // btnVolver
             // 

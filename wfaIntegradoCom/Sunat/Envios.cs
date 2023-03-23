@@ -45,7 +45,7 @@ namespace wfaIntegradoCom.Sunat
         public string RutaEnvios { get; set; }
         public string RutaCDR { get; set; }
 
-        public void GenerarFacturaBoletaXML(ParametrosFactura paramFactura,Cliente clsCliente,List<DetalleVenta> lstDetalleVentas)
+        public string[] GenerarFacturaBoletaXML(ParametrosFactura paramFactura,Cliente clsCliente,List<DetalleVenta> lstDetalleVentas)
         {
 
             //Cabecera del xml
@@ -92,13 +92,13 @@ namespace wfaIntegradoCom.Sunat
             TipoFactura.name = "Tipo de Operacion";
             TipoFactura.listURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo01";
             TipoFactura.listSchemeURI = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo51";
-            TipoFactura.Value = paramFactura.CodigoComprobante;
+            TipoFactura.Value = paramFactura.CodigoComprobante;// == "01" && paramFactura.FormaDePagoFactura == "CRED" ? "02" : paramFactura.CodigoComprobante;
             Factura.InvoiceTypeCode = TipoFactura;
 
             //Leyenda del comprobante
             NoteType Leyenda = new NoteType();
             Leyenda.languageLocaleID = "1000";
-            Leyenda.Value = "MONTO EN SOLES";
+            Leyenda.Value = paramFactura.PrecioALetras;
             List<NoteType> notas = new List<NoteType>();
             notas.Add(Leyenda);
             Factura.Note = notas.ToArray();
@@ -171,6 +171,7 @@ namespace wfaIntegradoCom.Sunat
             partyidentificacionN.ID = idEmpresa;
             partyidentificacionsN[0] = partyidentificacionN;
             party.PartyIdentification = partyidentificacionsN;
+
             ////Razon social empresa
             PartyNameType partyname = new PartyNameType();
             List<PartyNameType> partynames = new List<PartyNameType>();
@@ -184,7 +185,7 @@ namespace wfaIntegradoCom.Sunat
             List<PartyLegalEntityType> partelegals = new List<PartyLegalEntityType>();
             PartyLegalEntityType partelegal = new PartyLegalEntityType();
             RegistrationNameType registronombre = new RegistrationNameType();
-            registronombre.Value = Variables.claseEmpresa.Ruc;
+            registronombre.Value = Variables.claseEmpresa.RazonSocial;
             partelegal.RegistrationName = registronombre;
             ////Direccion de la empresa emisora
             AddressType direccionPL = new AddressType();
@@ -266,6 +267,7 @@ namespace wfaIntegradoCom.Sunat
             partyIdentificationCliente.ID = idtipoCliente;
             partyIdentificationClientes.Add(partyIdentificationCliente);
             partyCliente.PartyIdentification = partyIdentificationClientes.ToArray();
+
             ////Razon social cliente
             List<PartyLegalEntityType> partylegalClientes = new List<PartyLegalEntityType>();
             PartyLegalEntityType partylegalCliente = new PartyLegalEntityType();
@@ -400,6 +402,27 @@ namespace wfaIntegradoCom.Sunat
             TotalImptos.TaxSubtotal = subtotales.ToArray();
             TotalImptosLista.Add(TotalImptos);
             Factura.TaxTotal = TotalImptosLista.ToArray();
+
+            FreeOfChargeIndicatorType freeOfChargeIndicatorTypeS = new FreeOfChargeIndicatorType();
+            freeOfChargeIndicatorTypeS.Value = false;
+
+            AllowanceChargeType[] allowanceChargeTypeS = new AllowanceChargeType[1];
+            AllowanceChargeReasonCodeType allowanceChargeReasonCodeTypeS = new AllowanceChargeReasonCodeType();
+            ChargeIndicatorType chargeIndicatorTypeS = new ChargeIndicatorType();
+            AmountType2 amountTypeS = new AmountType2();
+            amountTypeS.currencyID = "PEN";
+            amountTypeS.Value = Convert.ToDecimal(string.Format("{0:0.00}", Convert.ToDecimal(paramFactura.TotalDescuento) / (1 + 0.18m)));
+
+            allowanceChargeTypeS[0] = new AllowanceChargeType();
+
+            allowanceChargeReasonCodeTypeS.Value = "00";
+            allowanceChargeTypeS[0].AllowanceChargeReasonCode = allowanceChargeReasonCodeTypeS;
+            chargeIndicatorTypeS.Value = false;
+
+            allowanceChargeTypeS[0].Amount = amountTypeS;
+            allowanceChargeTypeS[0].ChargeIndicator = chargeIndicatorTypeS;
+
+            Factura.AllowanceCharge = allowanceChargeTypeS;
             //</cac:TaxTotal>
             #endregion
             #region <cac:LegalMonetaryTotal> TOTALES
@@ -416,7 +439,7 @@ namespace wfaIntegradoCom.Sunat
 
             AllowanceTotalAmountType allowanceTotalAmount = new AllowanceTotalAmountType();
             allowanceTotalAmount.currencyID = "PEN";
-            allowanceTotalAmount.Value = 0.00m;
+            allowanceTotalAmount.Value = Convert.ToDecimal(string.Format("{0:0.00}", Convert.ToDecimal(lstDetalleVentas.Sum(i => i.TotalTipoDescuento)) / 1.18m));
             TotalValorVenta.AllowanceTotalAmount = allowanceTotalAmount;
 
             PrepaidAmountType prepaidAmount = new PrepaidAmountType();
@@ -443,6 +466,16 @@ namespace wfaIntegradoCom.Sunat
             int idtem = 1;
             foreach (DetalleVenta detalle in lstDetalleVentas)
             {
+
+                //Calcular el valor del descuento a aplicar al precio unitario del producto:
+                decimal descuento = Convert.ToDecimal(detalle.TotalTipoDescuento);
+
+                //Restar el valor del descuento al precio unitario del producto:
+                decimal precio_unitario_descuento = detalle.preciounitario - descuento;
+
+                //Calcular el valor del precio unitario sin el IGV:
+                decimal precio_unitario_sin_igv = precio_unitario_descuento / 1.18m;
+
                 InvoiceLineType item = new InvoiceLineType();
                 IDType numeroItem = new IDType();
                 numeroItem.Value = idtem.ToString();
@@ -457,8 +490,29 @@ namespace wfaIntegradoCom.Sunat
 
                 LineExtensionAmountType ValorVenta = new LineExtensionAmountType();
                 ValorVenta.currencyID = "PEN";
-                ValorVenta.Value = Convert.ToDecimal(string.Format("{0:0.00}", (detalle.preciounitario - Convert.ToDecimal(detalle.TotalTipoDescuento)) /* paramFactura.Monto_total lstDetalleVentas.Sum(i=>i.preciounitario)*/  / (1 + 0.18m)));
+                ValorVenta.Value = Convert.ToDecimal(string.Format("{0:0.00}", (precio_unitario_sin_igv)* detalle.Cantidad));
                 item.LineExtensionAmount = ValorVenta;
+
+                FreeOfChargeIndicatorType freeOfChargeIndicatorType = new FreeOfChargeIndicatorType();
+                freeOfChargeIndicatorType.Value = false;
+
+                AllowanceChargeType[] allowanceChargeType = new AllowanceChargeType[1];
+                AllowanceChargeReasonCodeType allowanceChargeReasonCodeType = new AllowanceChargeReasonCodeType();
+                ChargeIndicatorType chargeIndicatorType = new ChargeIndicatorType();
+                AmountType2 amountType = new AmountType2();
+                amountType.currencyID = "PEN";
+                amountType.Value= Convert.ToDecimal(string.Format("{0:0.00}", Convert.ToDecimal(detalle.TotalTipoDescuento) / (1 + 0.18m)));
+
+                allowanceChargeType[0] = new AllowanceChargeType();
+
+                allowanceChargeReasonCodeType.Value = "00";
+                allowanceChargeType[0].AllowanceChargeReasonCode = allowanceChargeReasonCodeType;
+                chargeIndicatorType.Value = false;
+
+                allowanceChargeType[0].Amount = amountType;
+                allowanceChargeType[0].ChargeIndicator=chargeIndicatorType;
+
+
 
                 PricingReferenceType ValorReferenUnitario = new PricingReferenceType();
 
@@ -466,7 +520,7 @@ namespace wfaIntegradoCom.Sunat
                 PriceType TipoPrecio = new PriceType();
                 PriceAmountType PrecioMonto = new PriceAmountType();
                 PrecioMonto.currencyID = "PEN";
-                PrecioMonto.Value = Convert.ToDecimal(string.Format("{0:0.00}", (detalle.preciounitario- Convert.ToDecimal(detalle.TotalTipoDescuento))));
+                PrecioMonto.Value = Convert.ToDecimal(string.Format("{0:0.00}", precio_unitario_descuento));
                 TipoPrecio.PriceAmount = PrecioMonto;
 
                 PriceTypeCodeType TipoPrecioCode = new PriceTypeCodeType();
@@ -481,13 +535,18 @@ namespace wfaIntegradoCom.Sunat
                 ValorReferenUnitario.AlternativeConditionPrice = TipoPrecios.ToArray();
                 item.PricingReference = ValorReferenUnitario;
 
-                Decimal dcSubtotal = (detalle.mtoValorVentaItem - Convert.ToDecimal(detalle.TotalTipoDescuento)) / (1.18m);
+                decimal dcSubtotal = precio_unitario_sin_igv;
+                //Decimal dcSubtotal = Convert.ToDecimal(detalle.preciounitario /*- Convert.ToDecimal(detalle.TotalTipoDescuento)*/) / (1.18m);
+                decimal total_igv = dcSubtotal * 0.18m;
+
+                decimal total = dcSubtotal + total_igv;
 
                 List<TaxTotalType> Totales_Items = new List<TaxTotalType>();
                 TaxTotalType Totales_Item = new TaxTotalType();
                 TaxAmountType Total_Item = new TaxAmountType();
                 Total_Item.currencyID = "PEN";
-                Total_Item.Value = Convert.ToDecimal(string.Format("{0:0.00}", dcSubtotal * (0.18m)));
+                //Total_Item.Value = Convert.ToDecimal(string.Format("{0:0.00}", total));
+                Total_Item.Value = Convert.ToDecimal(string.Format("{0:0.00}", precio_unitario_descuento - (precio_unitario_descuento / (1.18m))));
                 Totales_Item.TaxAmount = Total_Item;
 
                 List<TaxSubtotalType> subtotal_Items = new List<TaxSubtotalType>();
@@ -499,7 +558,7 @@ namespace wfaIntegradoCom.Sunat
 
                 TaxAmountType TotalTaxAmount_IGVItem = new TaxAmountType();
                 TotalTaxAmount_IGVItem.currencyID = "PEN";
-                TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(string.Format("{0:0.00}", dcSubtotal * (0.18m)));
+                TotalTaxAmount_IGVItem.Value = Convert.ToDecimal(string.Format("{0:0.00}", precio_unitario_descuento - precio_unitario_descuento / (1.18m)));
                 subtotal_Item.TaxAmount = TotalTaxAmount_IGVItem;
                 subtotal_Items.Add(subtotal_Item);
 
@@ -533,51 +592,6 @@ namespace wfaIntegradoCom.Sunat
                 taxscheme_IGVItem.TaxTypeCode = nombreImpto_IGVItemInter;
 
                 taxcategory_IGVItem.TaxScheme = taxscheme_IGVItem;
-
-                ////Si encuentra bolsa
-                //if (detalle.Codigo.Contains("BBBB"))
-                //{
-                //    TaxSubtotalType TotalIcb = new TaxSubtotalType();
-                //    TaxAmountType taxAmounticb = new TaxAmountType();
-                //    taxAmounticb.currencyID = "PEN";
-                //    taxAmounticb.Value = Math.Round((detalle.cantidad * detalle.preciounitario), 2);
-                //    BaseUnitMeasureType baseicb = new BaseUnitMeasureType();
-                //    baseicb.unitCode = detalle.Unidad_de_medida;
-                //    baseicb.Value = Convert.ToInt32(detalle.cantidad);
-                //    PerUnitAmountType perunicb = new PerUnitAmountType();
-                //    perunicb.currencyID = "PEN";
-                //    perunicb.Value = detalle.preciounitario;
-
-                //    TotalIcb.TaxAmount = taxAmounticb;
-                //    TotalIcb.BaseUnitMeasure = baseicb;
-
-                //    TaxCategoryType categoryicb = new TaxCategoryType();
-                //    TaxSchemeType taxicb = new TaxSchemeType();
-                //    IDType idtaxcat = new IDType();
-                //    idtaxcat.schemeID = "UN/ECE 5305";
-                //    idtaxcat.schemeName = "Codigo de tributos";
-                //    idtaxcat.schemeAgencyName = "PE:SUNAT";
-                //    idtaxcat.Value = "S";
-                //    categoryicb.ID = idtaxcat;
-                //    categoryicb.PerUnitAmount = perunicb;
-
-
-                //    IDType idicp = new IDType();
-                //    idicp.Value = "7152";
-                //    NameType1 nombreicb = new NameType1();
-                //    nombreicb.Value = "ICBPER";
-                //    TaxTypeCodeType codicb = new TaxTypeCodeType();
-                //    codicb.Value = "OTH";
-
-                //    taxicb.ID = idicp;
-                //    taxicb.Name = nombreicb;
-                //    taxicb.TaxTypeCode = codicb;
-                //    categoryicb.TaxScheme = taxicb;
-                //    TotalIcb.TaxCategory = categoryicb;
-                //    subtotal_Items.Add(TotalIcb);
-
-                //}
-
 
                 Totales_Item.TaxSubtotal = subtotal_Items.ToArray();
                 Totales_Items.Add(Totales_Item);
@@ -614,12 +628,13 @@ namespace wfaIntegradoCom.Sunat
                 PrecioMontoTipo.currencyID = "PEN";
                 decimal porcentajeIgv = Convert.ToDecimal(paramFactura.Porcentaje_IGV / 100);
 
-                PrecioMontoTipo.Value = Convert.ToDecimal(string.Format("{0:0.00}", (detalle.preciounitario- Convert.ToDecimal(detalle.TotalTipoDescuento)) / (1 + porcentajeIgv)));
+                PrecioMontoTipo.Value = Convert.ToDecimal(string.Format("{0:0.00}", Convert.ToDecimal(precio_unitario_descuento /*detalle.preciounitario *// (1 + porcentajeIgv))));
                 PrecioProducto.PriceAmount = PrecioMontoTipo;
 
 
                 item.Item = itemTipo;
                 item.Price = PrecioProducto;
+                item.AllowanceCharge = allowanceChargeType; 
                 items.Add(item);
                 idtem += 1;
             }
@@ -631,7 +646,7 @@ namespace wfaIntegradoCom.Sunat
             string rutaenvio = RutaEnvios + Path.GetFileName(rutaxml).Replace(".xml", ".zip");
             //fnConvertiraPdf(rutaxml);
             ComprimirZip(rutaxml, rutaenvio);
-            Enviardocumento(rutaenvio);
+            return Enviardocumento(rutaenvio);
         }
 
 
@@ -722,7 +737,8 @@ namespace wfaIntegradoCom.Sunat
                 switch (local_typoDocumento)
                 {
                     case "01":
-                    case "03" // factura y boleta
+                    case "02":
+                    case "03"// factura y boleta
                    :
                         {
                             nsMgr.AddNamespace("tns", "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2");
@@ -799,7 +815,7 @@ namespace wfaIntegradoCom.Sunat
             string respuesta = "Listo";
             return respuesta;
         }
-        public void Enviardocumento(string Archivo)
+        public string[] Enviardocumento(string Archivo)
         {
             string filezip = Archivo;
             string filepath = filezip;
@@ -812,16 +828,16 @@ namespace wfaIntegradoCom.Sunat
                 binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
                 binding.Security.Message.AlgorithmSuite = System.ServiceModel.Security.SecurityAlgorithmSuite.Default;
 
-                //EndpointAddress remoteAddress = new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
-                EndpointAddress remoteAddress = new EndpointAddress("https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService");
+                EndpointAddress remoteAddress = new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
+                //EndpointAddress remoteAddress = new EndpointAddress("https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService");
                 billServiceClient servicio = new billServiceClient(binding, remoteAddress);
                 ServicePointManager.UseNagleAlgorithm = true;
                 ServicePointManager.Expect100Continue = false;
                 ServicePointManager.CheckCertificateRevocationList = true;
-                //servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
-                //servicio.ClientCredentials.UserName.Password = "MODDATOS";
-                servicio.ClientCredentials.UserName.UserName = "20602404863FACTURAS";
-                servicio.ClientCredentials.UserName.Password = "Mihusat1";
+                servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
+                servicio.ClientCredentials.UserName.Password = "MODDATOS";
+                //servicio.ClientCredentials.UserName.UserName = "20602404863FACTURAS";
+                //servicio.ClientCredentials.UserName.Password = "Mihusat1";
 
                 var elements = servicio.Endpoint.Binding.CreateBindingElements();
                 elements.Find<SecurityBindingElement>().EnableUnsecuredResponse = true;
@@ -838,11 +854,12 @@ namespace wfaIntegradoCom.Sunat
                 //MessageBox.Show("Archivo generado con exito");
 
                 var respuesta = new EmitirFactura(); 
-                respuesta.ObtenerRespuestaZIPSunat(RutaCDR + "R-" + filezip);
+                return respuesta.ObtenerRespuestaZIPSunat(RutaCDR + "R-" + filezip);
             }
             catch (FaultException ex)
             {
                 MessageBox.Show(ex.Code.Name);
+                return null;
             }
 
         }
@@ -1322,7 +1339,7 @@ namespace wfaIntegradoCom.Sunat
 
             PayableAmountType payableAmount = new PayableAmountType();
             payableAmount.currencyID = "PEN";
-            payableAmount.Value = Convert.ToDecimal(string.Format("{0:0.00}", paramFactura.Monto_total));
+            payableAmount.Value = Convert.ToDecimal(string.Format("{0:0.00}", (paramFactura.Monto_total-paramFactura.TotalDescuento)));
 
             TotalValorVenta.LineExtensionAmount = lineExtensionAmount;
             TotalValorVenta.TaxInclusiveAmount = taxInclusiveAmount;
@@ -1496,7 +1513,7 @@ namespace wfaIntegradoCom.Sunat
 
                 ItemIdentificationType codigoProd = new ItemIdentificationType();
                 IDType id = new IDType();
-                id.Value = "HSTCOD";//detalle.Codigo;
+                id.Value = "NTCRD";//detalle.Codigo;
                 codigoProd.ID = id;
                 itemTipo.Description = descriptions.ToArray();
                 itemTipo.SellersItemIdentification = codigoProd;

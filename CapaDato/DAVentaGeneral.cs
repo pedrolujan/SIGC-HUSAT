@@ -72,7 +72,7 @@ namespace CapaDato
                 pa[32] = new SqlParameter("@CorrelativoDocumento", SqlDbType.VarChar,13) { Value = clsVentaGeneral.codigoCorrelativo };
                 pa[33] = new SqlParameter("@idContrato", SqlDbType.Int) { Value = tipoCon==0?0: clsVentaGeneral.clsContrato.idContrato };
                 objCnx = new clsConexion("");
-                objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
+                //objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
 
                 return true;
             }

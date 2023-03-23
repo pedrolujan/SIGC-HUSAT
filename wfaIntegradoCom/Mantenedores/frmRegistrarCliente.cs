@@ -1820,6 +1820,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
             Int32 idTD = Convert.ToInt32(cboTipoDoc.SelectedValue == null ? "0" : cboTipoDoc.SelectedValue.ToString());
             txtDocRepre.Text = "";
+            txtidRepreLegal.Visible = true;
             if (idTD == 0)
             {
                 txtNrDocumento.Enabled = false;
