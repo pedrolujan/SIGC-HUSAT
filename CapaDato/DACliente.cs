@@ -145,7 +145,7 @@ namespace CapaDato
 
             try
             {
-                pa[0] = new SqlParameter("@peNroDocumento", SqlDbType.NVarChar, 15) { Value = "" };
+                pa[0] = new SqlParameter("@peNroDocumento", SqlDbType.NVarChar, 15) { Value = bnombreCliente };
                 pa[1] = new SqlParameter("@peNombreCliente", SqlDbType.NVarChar, 45) { Value = bnombreCliente };
                 pa[2] = new SqlParameter("@peIdTipoPersona", SqlDbType.Int) { Value = 0 };
                 pa[3] = new SqlParameter("@peIdTipoDocumento", SqlDbType.Int) { Value = 0 };

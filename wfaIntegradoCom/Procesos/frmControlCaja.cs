@@ -150,7 +150,7 @@ namespace wfaIntegradoCom.Procesos
                        dr["nomDocumentoVenta"],
                        dr["tipotarifa"],
                        dr["cUser"],
-                       FunGeneral.fnFormatearPrecio(dr["cSimbolo"].ToString(), Convert.ToDouble(dr["TotalPago"]),1)
+                       FunGeneral.fnFormatearPrecioDC(dr["cSimbolo"].ToString(), Convert.ToDecimal(dr["TotalPago"]),1)
                         );
                     y += 1;
                 }
@@ -162,12 +162,12 @@ namespace wfaIntegradoCom.Procesos
                     FunValidaciones.fnCalcularPaginacion(totalRegistros, filas, totalRows, cboPagina, btnTotalPag, btnNumFilas, btnTotalReg);
                 }
 
-                siticoneLabel14.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(dtRes.Rows[0][1]), 0);
+                siticoneLabel14.Text = FunGeneral.fnFormatearPrecioDC("S/.", Convert.ToDecimal(dtRes.Rows[0][1]), 0);
                 dgvListaVentas.Visible = true;
             }
             else
             {
-                //btnMontoTotal.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(000), 0);
+                //btnMontoTotal.Text = FunGeneral.fnFormatearPrecioDC("S/.", Convert.ToDouble(000), 0);
             }
             
         }
@@ -241,14 +241,14 @@ namespace wfaIntegradoCom.Procesos
                             y + 1,
                             clsRep.Detallereporte,
                             clsRep.Cantidad,
-                            FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                            FunGeneral.fnFormatearPrecioDC(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
                             );
                         y += 1;
                         dgv.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                         dgv.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     }
                     dgv.Rows.Add("", "", "", "", "");
-                    dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                    dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecioDC("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
                     dgv.Rows[y + 1].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     dgv.Rows[y + 1].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
@@ -259,7 +259,7 @@ namespace wfaIntegradoCom.Procesos
                     dgv.Columns[4].Width = 100;
                     dgv.Height = ((totalRows+3) * (dgv.ThemeStyle.RowsStyle.Height+ 2));
                     dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-                    lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda==2?(i.ImporteTipoCambio*i.ImporteRow):i.ImporteRow), 0);
+                    lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecioDC("S/.", lsReporteBloque.Sum(i => i.idMoneda==2?(i.ImporteTipoCambio*i.ImporteRow):i.ImporteRow), 0);
 
                 }else if (tipoCon==-2)
                 {
@@ -280,7 +280,7 @@ namespace wfaIntegradoCom.Procesos
                             clsRep.Codigoreporte,
                             clsRep.Detallereporte,
                             clsRep.Cantidad,
-                            FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                            FunGeneral.fnFormatearPrecioDC(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
                             );
                         y += 1;
                         dgv.Rows[i].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -289,7 +289,7 @@ namespace wfaIntegradoCom.Procesos
                     dgv.Visible = true;
 
                     dgv.Rows.Add("","","","");
-                    dgv.Rows.Add("TOTAL","IMPORTE TOTAL","", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                    dgv.Rows.Add("TOTAL","IMPORTE TOTAL","", FunGeneral.fnFormatearPrecioDC("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
                     dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     dgv.Rows[y + 1].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     dgv.Columns[0].Visible = false;
@@ -324,7 +324,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 dgv.Columns.Clear();
                 dgvListaPorBloque.Columns.Add("id", "NO SE ENCONTRARON RESULTADOS PARA LA BUSQUEDA");
-                lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(000), 0);
+                lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecioDC("S/.", Convert.ToDecimal(000), 0);
             }
             
         }
@@ -444,7 +444,7 @@ namespace wfaIntegradoCom.Procesos
                 lblF.AutoSize = false;
                 lblF.Size = new Size(190, 25); ;
                 lblF.Location = new Point(0, 0);
-                lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecio("S/.", lstBusq[i].ImporteRow, 0);
+                lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecioDC("S/.", lstBusq[i].ImporteRow, 0);
                 //lblF.BackColor = "Dark"+ color;
                 lblF.TextAlignment = ContentAlignment.MiddleCenter;
                 lblF.Font = new Font("Arial", 13F, GraphicsUnit.Pixel);
@@ -745,7 +745,7 @@ namespace wfaIntegradoCom.Procesos
                 fnMostrarCombobox(codTipoReporte, codOperacion);
 
                 ReporteBloque clsReporte = lsReporteBloqueGen.Find(i => i.Codigoreporte == codOperacion);
-                lblDetalleInfo.Text = clsReporte.Detallereporte + " Cantidad. " + clsReporte.Cantidad + " Importe. " + FunGeneral.fnFormatearPrecio(clsReporte.SimboloMoneda, clsReporte.ImporteRow, 0);
+                lblDetalleInfo.Text = clsReporte.Detallereporte + " Cantidad. " + clsReporte.Cantidad + " Importe. " + FunGeneral.fnFormatearPrecioDC(clsReporte.SimboloMoneda, clsReporte.ImporteRow, 0);
                 fnBuscarVentasCaja(codOperacion, 0, -1);
 
                 fnActivarControles(true);
@@ -925,7 +925,7 @@ namespace wfaIntegradoCom.Procesos
                     clsRep.Codigoreporte,
                    clsRep.Detallereporte.Length<=10?  Convert.ToDateTime(clsRep.Detallereporte).ToString("dd MMM yyyy"): clsRep.Detallereporte,
                     clsRep.Cantidad,
-                    FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                    FunGeneral.fnFormatearPrecioDC(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
                     );
                 y += 1;
                 dgv.Rows[i].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -935,7 +935,7 @@ namespace wfaIntegradoCom.Procesos
             dgv.Visible = true;
 
             dgv.Rows.Add("", "", "", "");
-            dgv.Rows.Add("TOTAL", "IMPORTE TOTAL DE " + clsReporte.Detallereporte, "", FunGeneral.fnFormatearPrecio("S/.", lstRep.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+            dgv.Rows.Add("TOTAL", "IMPORTE TOTAL DE " + clsReporte.Detallereporte, "", FunGeneral.fnFormatearPrecioDC("S/.", lstRep.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
             dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgv.Rows[y + 1].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgv.Columns[0].Visible = false;

@@ -55,7 +55,7 @@ namespace CapaDato
                 pa[15] = new SqlParameter("@periodoInicio", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta /*clsVentaGeneral.lstDetalleCronograma.First().periodoInicio */};
                 pa[16] = new SqlParameter("@periodoFinal", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaVenta.AddYears(1).AddDays(-1) /*clsVentaGeneral.lstDetalleCronograma.Last().periodoFinal*/ };
                 pa[17] = new SqlParameter("@igvValor", SqlDbType.Money) { Value = clsVentaGeneral.clsDetalleVentaCabecera.IGV };
-                pa[18] = new SqlParameter("@totalVenta", SqlDbType.Money) { Value = clsVentaGeneral.clsDetalleVentaCabecera.Total };
+                pa[18] = new SqlParameter("@totalVenta", SqlDbType.Money) { Value = clsVentaGeneral.lstPagos.Sum(i=>i.PagaCon) };
                 pa[19] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmlDocumentoVenta };
                 pa[20] = new SqlParameter("@codDireccionInstalacion", SqlDbType.NVarChar, 8) { Value = clsVentaGeneral.codDireccionInstalacion };
                 pa[21] = new SqlParameter("@DescripDireccionInstalacion", SqlDbType.NVarChar, 1000) { Value = clsVentaGeneral.DescripDireccionInstalacion };
@@ -72,7 +72,7 @@ namespace CapaDato
                 pa[32] = new SqlParameter("@CorrelativoDocumento", SqlDbType.VarChar,13) { Value = clsVentaGeneral.codigoCorrelativo };
                 pa[33] = new SqlParameter("@idContrato", SqlDbType.Int) { Value = tipoCon==0?0: clsVentaGeneral.clsContrato.idContrato };
                 objCnx = new clsConexion("");
-                //objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
+                objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
 
                 return true;
             }
@@ -141,7 +141,7 @@ namespace CapaDato
                 pa[6] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime) { Value = clsVentaGeneral.FechaRegistro };
                 pa[7] = new SqlParameter("@estado", SqlDbType.NVarChar, 8) { Value = clsVentaGeneral.Estado };
                 pa[8] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
-                pa[9] = new SqlParameter("@totalVenta", SqlDbType.Money) { Value = clsVentaGeneral.clsDetalleVentaCabecera.Total };
+                pa[9] = new SqlParameter("@totalVenta", SqlDbType.Money) { Value = clsVentaGeneral.clsDetalleVentaCabecera.ImporteTotal };
                 pa[10] = new SqlParameter("@codDireccionInstalacion", SqlDbType.NVarChar, 8) { Value = clsVentaGeneral.codDireccionInstalacion };
                 pa[11] = new SqlParameter("@cCodEstadoPP", SqlDbType.NVarChar, 8) { Value = clsVentaGeneral.cCodEstadoPP };
                 objCnx = new clsConexion("");
@@ -825,11 +825,11 @@ namespace CapaDato
                                 idTipoTarifa = Convert.ToInt32(drMenu["idTarifa"]),
                                 Cantidad = Convert.ToInt32(drMenu["ROOW"]),
                                 Descripcion = Convert.ToString(drMenu["Descripcion"]),
-                                PrecioUni = Convert.ToDouble(drMenu["costo"]),
-                                Descuento = Convert.ToDouble(drMenu["descuentoCantidad"]),
-                                TotalTipoDescuento = Convert.ToDouble(drMenu["descuentoPrecio"]),
+                                PrecioUni = Convert.ToDecimal(drMenu["costo"]),
+                                Descuento = Convert.ToDecimal(drMenu["descuentoCantidad"]),
+                                TotalTipoDescuento = Convert.ToDecimal(drMenu["descuentoPrecio"]),
                                 IdTipoDescuento = Convert.ToInt32(drMenu["idTipoDescuento"]),
-                                Importe = (Convert.ToDouble(drMenu["costo"]) - Convert.ToDouble(drMenu["descuentoPrecio"]))
+                                Importe = (Convert.ToDecimal(drMenu["costo"]) - Convert.ToDecimal(drMenu["descuentoPrecio"]))
                             });
                             i++;
                         }

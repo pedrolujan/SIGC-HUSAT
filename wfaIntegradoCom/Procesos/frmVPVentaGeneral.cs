@@ -74,9 +74,9 @@ namespace wfaIntegradoCom.Procesos
             dgv.Rows.Clear();
             Int32 i = 0;
             txtIGV.Text = Convert.ToString(clsDVC.IGV);
-            txtSubTotal.Text = Convert.ToString(clsDVC.SubTotal);
-            txtTotal.Text = Convert.ToString(clsDVC.Total);
-            txtTotalFijo.Text = Convert.ToString(clsDVC.Total);
+            txtSubTotal.Text = Convert.ToString(clsDVC.ValorVenta);
+            txtTotal.Text = Convert.ToString(clsDVC.ImporteTotal);
+            txtTotalFijo.Text = Convert.ToString(clsDVC.ImporteTotal);
             foreach (DetalleVenta item in lstDV)
             {
                 dgv.Rows.Add(

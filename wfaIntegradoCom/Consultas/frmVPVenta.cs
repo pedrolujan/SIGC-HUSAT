@@ -122,6 +122,7 @@ namespace wfaIntegradoCom.Consultas
             MemoryStream ms = new MemoryStream(bt);
             ReportParameter[] parameters = new ReportParameter[7];
             reportViewer1.Reset();
+            lstC[0].cCliente= lstC[0].cCliente.Trim();
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.ProcessingMode = ProcessingMode.Local;
             parameters[0] = new ReportParameter("rpRazonSocial", Variables.gsEmpresa);
@@ -140,46 +141,59 @@ namespace wfaIntegradoCom.Consultas
             reportViewer1.RefreshReport();
         }
 
-        
-        private void btnVolver_Click(object sender, EventArgs e)
+        private void fnVolver()
         {
+            frmTipoPago frm = new frmTipoPago();
             if (lnTipoCon == 0)
             {
-                Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
-                fmr2.fnCambiarEstadoVenta(false);
-            
+                //Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
+                //fmr2.fnCambiarEstadoVenta(false);
+                frm.fnCambiarEstadoPago(false);
 
             }
-            else if(lnTipoCon==1)
+            else if (lnTipoCon == 1)
             {
-                Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
-                fmr2.fnActivarInprecion(false);
+                //Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
+                //fmr2.fnActivarInprecion(false);
+                frm.fnCambiarEstadoPago(false);
             }
-            else if (lnTipoCon ==-1)
+            else if (lnTipoCon == -1)
             {
-                frmControlPagoVenta frmCVent = new frmControlPagoVenta();
-                frmCVent.fnCambiarEstadoVenta(false);
+                //frmControlPagoVenta frmCVent = new frmControlPagoVenta();
+                //frmCVent.fnCambiarEstadoVenta(false);
+                frm.fnCambiarEstadoPago(false);
 
-            }else if (lnTipoCon == -2)
+            }
+            else if (lnTipoCon == -2)
             {
                 frmOtrasVentas fr = new frmOtrasVentas();
                 fr.fnRecuperarEstadoGenVenta(false);
                 fr.fnCondicionProcesos(0);
-            }else if (lnTipoCon == -3 || lnTipoCon==3)
+                frm.fnCambiarEstadoPago(false);
+            }
+            else if (lnTipoCon == -3 || lnTipoCon == 3)
             {
-                frmRegistrarEgresos frm = new frmRegistrarEgresos();
-                frm.fnRecuperarEstadoGenVenta(false);
-            }else if (lnTipoCon == -4)
+                //frmRegistrarEgresos frm = new frmRegistrarEgresos();
+                //frm.fnRecuperarEstadoGenVenta(false);
+                frm.fnCambiarEstadoPago(false);
+            }
+            else if (lnTipoCon == -4)
             {
-                frmAnularVenta frm = new frmAnularVenta();
-                frm.fnEstadoAnulacion(false);
+                //frmAnularVenta frm = new frmAnularVenta();
+                //frm.fnEstadoAnulacion(false);
+                frm.fnCambiarEstadoPago(false);
             }
             else if (lnTipoCon == -5)
             {
-                frmPagosPendientes frm = new frmPagosPendientes();
-                frm.fnRecuperarEstadoGenVenta(false);
+                //frmPagosPendientes frm = new frmPagosPendientes();
+                //frm.fnRecuperarEstadoGenVenta(false);
+                frm.fnCambiarEstadoPago(false);
             }
 
+        }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            fnVolver();
 
             this.Close();
         }
@@ -188,21 +202,23 @@ namespace wfaIntegradoCom.Consultas
 
         private void btnGenerarVenta_Click(object sender, EventArgs e)
         {
+            frmTipoPago frm = new frmTipoPago();
             //opcion para venta general
             if (lnTipoCon == 0)
             {
                 //List<DetalleVenta> lstDetalleVenta = new List<DetalleVenta>();
-                frmTipoPago frm = new frmTipoPago();
+               
                 frm.fnCambiarEstadoPago(true);
                 ///venta general
             }
             //opcion para pagos mensuales
             else if (lnTipoCon==-1)
             {
-                Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(-1, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);              
-               
+                //Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                //Decimal sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
+                //fmr.Inicio(-1, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);              
+                
+                frm.fnCambiarEstadoPago(true);
 
             }
             // opcion para otras ventas
@@ -210,26 +226,34 @@ namespace wfaIntegradoCom.Consultas
             {
                 if (lnEstadosProcesos==0)
                 {
-                    Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                    Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
-                }else if (lnEstadosProcesos==-1)
+                    //Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                    //Decimal sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
+                    //fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
+                    frm.fnCambiarEstadoPago(true);
+                }
+                else if (lnEstadosProcesos==-1)
                 {
                     frmOtrasVentas fr = new frmOtrasVentas();
                     fr.fnCondicionProcesos(-1);
-                }else if (lnEstadosProcesos == -2)
+                    frm.fnCambiarEstadoPago(true);
+                }
+                else if (lnEstadosProcesos == -2)
                 {
                     frmOtrasVentas fr = new frmOtrasVentas();
                     fr.fnCondicionProcesos(-2);
-                }else if (lnEstadosProcesos == 3)
+                    frm.fnCambiarEstadoPago(true);
+                }
+                else if (lnEstadosProcesos == 3)
                 {
                     frmOtrasVentas fr = new frmOtrasVentas();
                     fr.fnCondicionProcesos(3);
+                    frm.fnCambiarEstadoPago(true);
                 }
                 if (lnEstadosProcesos == -7 || lnEstadosProcesos == -8)
                 {
                     frmOtrasVentas fr = new frmOtrasVentas();
                     fr.fnCondicionProcesos(5);
+                    frm.fnCambiarEstadoPago(true);
                 }
 
 
@@ -238,18 +262,22 @@ namespace wfaIntegradoCom.Consultas
             }
             else if (lnTipoCon == -3 || lnTipoCon==3)
             {
-                Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                Double sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                fmr.Inicio(lnTipoCon, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
+                //Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                //Decimal sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
+                //fmr.Inicio(lnTipoCon, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
+                frm.fnCambiarEstadoPago(true);
             }
             else if (lnTipoCon == -4)
             {
-                frmAnularVenta frm = new frmAnularVenta();
-                frm.fnEstadoAnulacion(true);
-            }else if (lnTipoCon == -5)
+                //frmAnularVenta frm = new frmAnularVenta();
+                //frm.fnEstadoAnulacion(true);
+                frm.fnCambiarEstadoPago(true);
+            }
+            else if (lnTipoCon == -5)
             {
-                frmPagosPendientes frm = new frmPagosPendientes();
-                frm.fnRecuperarEstadoGenVenta(true);
+                //frmPagosPendientes frm = new frmPagosPendientes();
+                //frm.fnRecuperarEstadoGenVenta(true);
+                frm.fnCambiarEstadoPago(true);
             }
 
             this.Close();
@@ -257,35 +285,36 @@ namespace wfaIntegradoCom.Consultas
 
         private void gunaControlBox4_Click(object sender, EventArgs e)
         {
-            if (lnTipoCon == 0)
-            {
-                Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
-                fmr2.fnCambiarEstadoVenta(false);
+            fnVolver();
+            //if (lnTipoCon == 0)
+            //{
+            //    Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
+            //    fmr2.fnCambiarEstadoVenta(false);
 
 
-            }
-            else if (lnTipoCon == 1)
-            {
-                Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
-                fmr2.fnActivarInprecion(false);
-            }
-            else if (lnTipoCon == -1)
-            {
-                frmControlPagoVenta frmCVent = new frmControlPagoVenta();
-                frmCVent.fnCambiarEstadoVenta(false);
+            //}
+            //else if (lnTipoCon == 1)
+            //{
+            //    Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
+            //    fmr2.fnActivarInprecion(false);
+            //}
+            //else if (lnTipoCon == -1)
+            //{
+            //    frmControlPagoVenta frmCVent = new frmControlPagoVenta();
+            //    frmCVent.fnCambiarEstadoVenta(false);
 
-            }
-            else if (lnTipoCon==-2)
-            {
-                frmOtrasVentas fr = new frmOtrasVentas();
-                fr.fnRecuperarEstadoGenVenta(false);
-                fr.fnCondicionProcesos(0);
-            }
-            else if (lnTipoCon == -3 || lnTipoCon==3)
-            {
-                frmRegistrarEgresos frm = new frmRegistrarEgresos();
-                frm.fnRecuperarEstadoGenVenta(false);
-            }
+            //}
+            //else if (lnTipoCon==-2)
+            //{
+            //    frmOtrasVentas fr = new frmOtrasVentas();
+            //    fr.fnRecuperarEstadoGenVenta(false);
+            //    fr.fnCondicionProcesos(0);
+            //}
+            //else if (lnTipoCon == -3 || lnTipoCon==3)
+            //{
+            //    frmRegistrarEgresos frm = new frmRegistrarEgresos();
+            //    frm.fnRecuperarEstadoGenVenta(false);
+            //}
         }
 
         private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)

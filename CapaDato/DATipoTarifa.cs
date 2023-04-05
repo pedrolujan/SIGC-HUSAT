@@ -125,9 +125,9 @@ namespace CapaDato
                     clsTarifa.IdTarifa = Convert.ToInt32(drMenu["idTarifa"]);
                     clsTarifa.IdTipoTarifa = Convert.ToInt32(drMenu["idTipoTarifa"]);
                     clsTarifa.IdMoneda = Convert.ToInt32(drMenu["idMoneda"]);
-                    clsTarifa.PrecioEquipo = Convert.ToDouble(drMenu["precioEquipo"]);
-                    clsTarifa.PrecioPlan = Convert.ToDouble(drMenu["precioPlan"]);
-                    clsTarifa.PrecioReactivacion = Convert.ToDouble(drMenu["precioRenovaciones"]);
+                    clsTarifa.PrecioEquipo = Convert.ToDecimal(drMenu["precioEquipo"]);
+                    clsTarifa.PrecioPlan = Convert.ToDecimal(drMenu["precioPlan"]);
+                    clsTarifa.PrecioReactivacion = Convert.ToDecimal(drMenu["precioRenovaciones"]);
                 }
                 return clsTarifa;
 
@@ -166,9 +166,9 @@ namespace CapaDato
                     clsTarifa.IdTarifa = Convert.ToInt32(drMenu["idTarifa"]);
                     clsTarifa.IdTipoTarifa = Convert.ToInt32(drMenu["idTipoTarifa"]);
                     clsTarifa.IdMoneda = Convert.ToInt32(drMenu["idMoneda"]);
-                    clsTarifa.PrecioEquipo = Convert.ToDouble(drMenu["precioEquipo"]);
-                    clsTarifa.PrecioPlan = Convert.ToDouble(drMenu["precioPlan"]);
-                    clsTarifa.PrecioReactivacion = Convert.ToDouble(drMenu["precioRenovaciones"]);
+                    clsTarifa.PrecioEquipo = Convert.ToDecimal(drMenu["precioEquipo"]);
+                    clsTarifa.PrecioPlan = Convert.ToDecimal(drMenu["precioPlan"]);
+                    clsTarifa.PrecioReactivacion = Convert.ToDecimal(drMenu["precioRenovaciones"]);
                 }
                 return clsTarifa;
 

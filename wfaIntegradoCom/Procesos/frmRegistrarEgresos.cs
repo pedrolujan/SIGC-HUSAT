@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CapaUtil;
 using Siticone.UI.WinForms;
 using System;
 using System.Collections.Generic;
@@ -213,18 +214,18 @@ namespace wfaIntegradoCom.Procesos
         {
             List<DetalleVenta> lstDetV = new List<DetalleVenta>();
             Int32 cantidad = 1;
-            Double precioUnitario = 0;
-            double importe = 0;
+            Decimal precioUnitario = 0;
+            Decimal importe = 0;
             String descripcion = "";
             if (tabIndex==0)
             {
-                precioUnitario = Convert.ToDouble(txtImporte.Text.ToString());
+                precioUnitario = Convert.ToDecimal(txtImporte.Text.ToString());
                 importe = (precioUnitario * cantidad) - 0;
                 descripcion = FunGeneral.FormatearCadenaTitleCase(txtDescripcion.Text.ToString());
             }
             else
             {
-                precioUnitario = Convert.ToDouble(txtImporte2.Text.ToString());
+                precioUnitario = Convert.ToDecimal(txtImporte2.Text.ToString());
                 importe = (precioUnitario * cantidad) - 0;
                 descripcion = FunGeneral.FormatearCadenaTitleCase(txtDescripcion2.Text.ToString());
             }
@@ -252,9 +253,9 @@ namespace wfaIntegradoCom.Procesos
             DetalleVentaCabecera clsDVC = new DetalleVentaCabecera();
             DetalleVenta dvMensual = new DetalleVenta();
             clsDVC.IGV = 0;
-            clsDVC.Total = lstDV.Sum(item => item.Importe);
-            clsDVC.SubTotal = (clsDVC.Total / 1.18);
-            clsDVC.IGV = (clsDVC.Total - clsDVC.SubTotal);
+            clsDVC.ImporteTotal = lstDV.Sum(item => item.Importe);
+            clsDVC.ValorVenta = (clsDVC.ImporteTotal / 1.18m);
+            clsDVC.IGV = (clsDVC.ImporteTotal - clsDVC.ValorVenta);
             clsDVC.SimboloMoneda = clsMoneda.cSimbolo;
             clsDVC.NombreDocumento = Convert.ToString(cboTipoDocEmitir.Text);
             clsDVC.CodDocumento = Convert.ToString(cboTipoDocEmitir.SelectedValue);
@@ -270,6 +271,9 @@ namespace wfaIntegradoCom.Procesos
             //lstTipoVenta = lstTipoTarifa.First(s => s.IdTipoTarifa == Convert.ToInt32(cboTipoVenta.SelectedValue));
             Personal clsUsuario = Variables.clasePersonal;
             Personal clsPers = blVG.blObtenerUsuarioActual(Convert.ToInt32(cboUsuario.SelectedValue));
+            PrecioALetras pal = new PrecioALetras();
+            
+            string RecioALetras2 = pal.Convertir(dvc.ImporteTotal.ToString(), true, " SOLES");
             lsDocVenta.Add(new DocumentoVenta
             {
                 idCliente = clsPers.idPersonal,
@@ -278,15 +282,17 @@ namespace wfaIntegradoCom.Procesos
                 cDireccion = FunGeneral.FormatearCadenaTitleCase(cboArea.Text.ToString()),
                 cDocumento = clsPers.cDocumento,
                 SimboloMoneda = clsMoneda.cSimbolo,
+                CodigoCorrelativo = tabIndex == 0?"RE-" + "00000000": "RI-" + "00000000",                
                 cCodDocumentoVenta = Convert.ToString(cboTipoDocEmitir.SelectedValue),
                 NombreDocumento = Convert.ToString(cboTipoDocEmitir.Text),
                 dFechaVenta = Convert.ToDateTime(dtFechaRegEgresos.Value),
                 idMoneda = clsMoneda.idMoneda,
-                nSubtotal = dvc.SubTotal,
+                nSubtotal = dvc.ValorVenta,
                 nNroIGV = 18,
                 nIGV = dvc.IGV,
-                nMontoTotal = dvc.Total,
-                cUsuario = clsUsuario.cPrimerNom + " " + clsUsuario.cApePat + " " + clsUsuario.cApeMat,
+                nMontoTotal = dvc.ImporteTotal,
+                PrecioEnLetras = RecioALetras2,
+                cUsuario = clsUsuario.cPrimerNom + " " + clsUsuario.cApePat,
                 cVehiculos = tabIndex==0?"Egreso":"Ingresos",
                 cDescripcionTipoPago = (lstPagosTrandiaria.Count > 0) ? FunGeneral.FormatearCadenaTitleCase(lstPagosTrandiaria[0].cDescripTipoPago) : "",
                 cDescripEstadoPP = (lstPagosTrandiaria.Count > 0) ? lstPagosTrandiaria[0].cEstadoPP : "",
@@ -328,6 +334,7 @@ namespace wfaIntegradoCom.Procesos
             txtDescripcion2.Text = "";
 
         }
+
         private void btnGuardarIngresos_Click(object sender, EventArgs e)
         {
             cboMoneda2_SelectedIndexChanged(sender, e);
@@ -341,8 +348,6 @@ namespace wfaIntegradoCom.Procesos
                 {
                     fnGuardarIngresos();
                     siticoneControlBox1_Click(sender, e);
-
-
                 }
             }
             else
@@ -460,7 +465,7 @@ namespace wfaIntegradoCom.Procesos
                     }
 
                     //lstDetalleIngresosLimpio
-                    strImporte = lstDetalleIngresosLimpio.Count>0?FunGeneral.fnFormatearPrecio(lstDetalleIngresosLimpio[0].idMoneda==1?"S/.":"$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
+                    strImporte = lstDetalleIngresosLimpio.Count>0?FunGeneral.fnFormatearPrecioDC(lstDetalleIngresosLimpio[0].idMoneda==1?"S/.":"$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
 
                     break;
                 case "TEGR0002":
@@ -486,7 +491,7 @@ namespace wfaIntegradoCom.Procesos
                         }
 
                     }
-                    strImporte =lstDetalleIngresosLimpio.Count>0? FunGeneral.fnFormatearPrecio(lstDetalleIngresosLimpio[0].idMoneda == 1 ? "S/." : "$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
+                    strImporte =lstDetalleIngresosLimpio.Count>0? FunGeneral.fnFormatearPrecioDC(lstDetalleIngresosLimpio[0].idMoneda == 1 ? "S/." : "$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
 
                     break;
                 case "TEGR0003":
@@ -511,7 +516,7 @@ namespace wfaIntegradoCom.Procesos
                         }
 
                     }
-                    strImporte =lstDetalleIngresosLimpio.Count>0? FunGeneral.fnFormatearPrecio(lstDetalleIngresosLimpio[0].idMoneda == 1 ? "S/." : "$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
+                    strImporte =lstDetalleIngresosLimpio.Count>0? FunGeneral.fnFormatearPrecioDC(lstDetalleIngresosLimpio[0].idMoneda == 1 ? "S/." : "$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
 
                     break;
                 default:
@@ -523,14 +528,15 @@ namespace wfaIntegradoCom.Procesos
         }
         private void fnGenerarDocumento(int tip)
         {
-            Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
+            //Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
             lstDetalleVenta = fnDetalleVenta();
-            lstDocumentoVenta = fnDocumentoVentaHeader(fnCalcularCabeceraDetalle(lstDetalleVenta));
-            
+            lstDocumentoVenta = fnDocumentoVentaHeader(fnCalcularCabeceraDetalle(lstDetalleVenta));            
 
             //MemoryStream ms = new MemoryStream(FunGeneral.fnObtenerQRDefecto());
+            frmTipoPago frmTipoPago = new frmTipoPago();
+            frmTipoPago.Inicio(tip, lstDocumentoVenta, lstDetalleVenta, lstDetalleVenta[0].cSimbolo);
             
-            frm.Inicio(lstDocumentoVenta,lstDetalleVenta, FunGeneral.fnObtenerQRDefecto(), tip);
+            //frm.Inicio(lstDocumentoVenta,lstDetalleVenta, FunGeneral.fnObtenerQRDefecto(), tip);
         }
        
         private void btnGuardarEgreso_Click(object sender, EventArgs e)

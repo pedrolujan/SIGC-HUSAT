@@ -1076,9 +1076,9 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     IdTarifa = Convert.ToInt32(fila.Cells[0].Value ?? "0"),
                     IdTipoTarifa = Convert.ToInt32(fila.Cells[1].Value ?? "0" ),
-                    PrecioEquipo = Convert.ToDouble(fila.Cells[3].Value ?? "0" ),
-                    PrecioPlan = Convert.ToDouble(fila.Cells[4].Value ?? "0" ),
-                    PrecioReactivacion = Convert.ToDouble(fila.Cells[5].Value ?? "0")
+                    PrecioEquipo = Convert.ToDecimal(fila.Cells[3].Value ?? "0" ),
+                    PrecioPlan = Convert.ToDecimal(fila.Cells[4].Value ?? "0" ),
+                    PrecioReactivacion = Convert.ToDecimal(fila.Cells[5].Value ?? "0")
                 });
 
             }

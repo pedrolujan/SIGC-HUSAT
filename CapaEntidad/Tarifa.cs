@@ -11,21 +11,21 @@ namespace CapaEntidad
         public Tarifa() { }
         public Int32 IdTarifa { get; set; }
         public Int32 IdTipoTarifa { get; set; }
-        public Double PrecioEquipo { get; set; }
-        public Double PrecioPlan { get; set; }
-        public Double PrecioRentaAdelantada { get; set; }
-        public Double PrecioProrrateo { get; set; }
-        public Double PrecioReactivacion { get; set; }
+        public Decimal PrecioEquipo { get; set; }
+        public Decimal PrecioPlan { get; set; }
+        public Decimal PrecioRentaAdelantada { get; set; }
+        public Decimal PrecioProrrateo { get; set; }
+        public Decimal PrecioReactivacion { get; set; }
         public Double PrecioTotal { get; set; }
         public Int32 IdMoneda { get; set; }
 
         public Double RedondeoProrrateo { get; set; }
-        public Double DescuentoEquipo { get; set; }
-        public Double DescuentoProrrateo{ get; set; }
-        public Double DescuentoRentaAdelantada { get; set; }
-        public Double DescuentoReactivacion { get; set; }
+        public Decimal DescuentoEquipo { get; set; }
+        public Decimal DescuentoProrrateo{ get; set; }
+        public Decimal DescuentoRentaAdelantada { get; set; }
+        public Decimal DescuentoReactivacion { get; set; }
 
-        public Tarifa(Int32 paIdTarifa,Int32 paIdTipoTarifa,Double paPrecioEquipo, Double paPrecioPlan,Double paPrecioReact)
+        public Tarifa(Int32 paIdTarifa,Int32 paIdTipoTarifa,Decimal paPrecioEquipo, Decimal paPrecioPlan,Decimal paPrecioReact)
         {
             IdTarifa = paIdTarifa;
             IdTipoTarifa = paIdTipoTarifa;

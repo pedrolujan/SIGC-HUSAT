@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace CapaUtil
 
         public String Convertir(String numero, bool mayusculas, string moneda)
         {
-
+            numero = string.Format("{0:0.00}", Convert.ToDecimal(numero));
             String literal = "";
             String parte_decimal;
             //si el numero utiliza (.) en lugar de (,) -> se reemplaza

@@ -62,13 +62,13 @@ namespace wfaIntegradoCom.Consultas
             ReportParameter[] parameters = new ReportParameter[5];
             List<ReporteBloque> lstCH = new List<ReporteBloque>();
             lstCH.Add(lstCajChica.Find(i => i.Codigoreporte == "TEGR0003"));
-            lstCH[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstCH[0].SimboloMoneda, lstCH[0].ImporteRow, 0);
+            lstCH[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstCH[0].SimboloMoneda, lstCH[0].ImporteRow, 0);
             lstApe[0].Detalle = FunGeneral.FormatearCadenaTitleCase(lstApe[0].Detalle);
-            lstApe[0].MonImporteSaldo = FunGeneral.fnFormatearPrecio("S/.", lstApe.Sum(i => i.importeSaldo), 1); ;
+            lstApe[0].MonImporteSaldo = FunGeneral.fnFormatearPrecioDC("S/.", lstApe.Sum(i => i.importeSaldo), 1); ;
 
             List<ReporteBloque> lstCP = new List<ReporteBloque>();
             lstCP.Add(lstCajChica.Find(i => i.Codigoreporte == "TEGR0002"));
-            lstCP[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstCP[0].SimboloMoneda, lstCP[0].ImporteRow, 0);
+            lstCP[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstCP[0].SimboloMoneda, lstCP[0].ImporteRow, 0);
             reportViewer1.Reset();
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.ProcessingMode = ProcessingMode.Local;

@@ -152,7 +152,7 @@ namespace wfaIntegradoCom.Procesos
             }
         }
 
-        private String fnConvertirDoubleaStringPrecio(Double valor)
+        private String fnConvertirDoubleaStringPrecio(Decimal valor)
         {
             string cadena = String.Format("{0:0.00}", valor);
             return cadena;
@@ -163,9 +163,9 @@ namespace wfaIntegradoCom.Procesos
             List<DetalleVenta> lstPagoPrinci = lstPP;
             List<Moneda> lstMoneda = lstM;
             ReportParameter[] parametros = new ReportParameter[3];
-            double sumaPrimerPago = lstPP.Sum(item => item.Importe);
-            double sumaCronograma = lstDC.Sum(item => item.total);
-            double sumaPagoTotal = lstPP.Count>0?sumaPrimerPago + sumaCronograma: sumaCronograma;
+            Decimal sumaPrimerPago = lstPP.Sum(item => item.Importe);
+            Decimal sumaCronograma = lstDC.Sum(item => item.total);
+            Decimal sumaPagoTotal = lstPP.Count>0?sumaPrimerPago + sumaCronograma: sumaCronograma;
             string sSumaPagoTotal = $"{lstPP[0].cSimbolo} {fnConvertirDoubleaStringPrecio(sumaPagoTotal)}";
             reportViewer1.Reset();
             reportViewer1.LocalReport.DataSources.Clear();

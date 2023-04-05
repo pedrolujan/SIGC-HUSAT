@@ -150,8 +150,8 @@ namespace CapaDato
                             Cantidad = Convert.ToInt32(dr["cantidad"]),
                             idMoneda = Convert.ToInt32(dr["idMoneda"]),
                             SimboloMoneda = dr["cSimbolo"].ToString(),
-                            ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                            ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                            ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                            ImporteRow = Convert.ToDecimal(dr["montoTotal"])
                         });
 
                     }
@@ -224,8 +224,8 @@ namespace CapaDato
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = Convert.ToInt32(dr["idMoneda"])==1?"S/.":"$/.",
-                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                        ImporteRow = Convert.ToDouble(dr["montoTotal"]),
+                        ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["montoTotal"]),
 
                     });
                 }
@@ -242,8 +242,8 @@ namespace CapaDato
                         Cantidad = 0,
                         idMoneda = Convert.ToInt32(1),
                         SimboloMoneda = "S/.",
-                        ImporteTipoCambio = Convert.ToDouble(0.20),
-                        ImporteRow = Convert.ToDouble(0)
+                        ImporteTipoCambio = Convert.ToDecimal(0.20),
+                        ImporteRow = Convert.ToDecimal(0)
                     });
                 }
                 //if (lstCajaChica.Count==0)
@@ -306,8 +306,8 @@ namespace CapaDato
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
-                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                        ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["montoTotal"])
                     });
                 }
                 if (clsBusq.cod1.Length>5)
@@ -324,8 +324,8 @@ namespace CapaDato
                             Cantidad = Convert.ToInt32(dr["cantidad"]),
                             idMoneda = Convert.ToInt32(dr["idMoneda"]),
                             SimboloMoneda = dr["cSimbolo"].ToString(),
-                            ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                            ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                            ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                            ImporteRow = Convert.ToDecimal(dr["montoTotal"])
                         });
 
                     }
@@ -340,8 +340,8 @@ namespace CapaDato
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         codAuxiliar = FormatearCadenaTitleCase(Convert.ToString(dr["fuente"])),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
-                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                        ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["montoTotal"])
                     });
 
                 }
@@ -405,8 +405,8 @@ namespace CapaDato
                         codAuxiliar = FormatearCadenaTitleCase(Convert.ToString(dr["fuente"])),
                         codAuxiliar1 = Convert.ToString(dr["codAuxiliar"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
-                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                        ImporteRow = Convert.ToDouble(dr["montoTotal"]),
+                        ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["montoTotal"]),
                         MasDetallereporte= Convert.ToString(dr["masDetalle"]),
                     });
 
@@ -470,8 +470,8 @@ namespace CapaDato
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
-                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                        ImporteRow = Convert.ToDouble(dr["montoTotal"]),
+                        ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["montoTotal"]),
                         cUsuario = Convert.ToString(dr["IdUsuario"]),
                         dFecha = Convert.ToDateTime(dr["dFechaRegistro"])
                     }) ;
@@ -537,8 +537,8 @@ namespace CapaDato
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
-                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                        ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["montoTotal"])
                     });
                     y++;
                 }

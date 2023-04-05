@@ -58,9 +58,9 @@ namespace CapaEntidad
     {
         public CuadreCaja() { }
 
-        public Double importeTotalIngresos { get; set; }
-        public Double importeTotalEgresos{ get; set; }
-        public Double importeSaldo{ get; set; }
+        public Decimal importeTotalIngresos { get; set; }
+        public Decimal importeTotalEgresos{ get; set; }
+        public Decimal importeSaldo{ get; set; }
         public Int32 idUsuario { get; set; }
         public Int32 idOperacion { get; set; }
         public Int32 idTrandiaria { get; set; }

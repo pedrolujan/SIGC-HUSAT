@@ -49,9 +49,9 @@ namespace CapaEntidad
         public Int32 IdMonedaEntrada { get; set; }
         public Double PrecioEntrada { get; set; }
         public Double PrecioCambio { get; set; }
-        public Double PrecioSalida { get; set; }
+        public Decimal PrecioSalida { get; set; }
 
-        public CambioMonedaVenta( Double preciosalida, Double preciocambio)
+        public CambioMonedaVenta( Decimal preciosalida, Double preciocambio)
         {
             PrecioSalida = preciosalida;
             PrecioCambio = preciocambio;

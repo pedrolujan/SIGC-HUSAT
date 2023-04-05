@@ -30,7 +30,7 @@ namespace wfaIntegradoCom.Procesos
         public static Boolean EstadoTipoPago=false;
         static Boolean bEstadoDocumento=false;
         Int32 lnTipoLLamada = 0;
-        Double lnMontoPagar = 0;
+        Decimal lnMontoPagar = 0;
         String SImboloMoneda = "";
         String codigoDocVenta = "";
         Boolean estTipoVenta, estEntidadVenta, estTotalAPagar, estPagaCon, estVuelto, estObservaciones,estNroOperacion;
@@ -42,7 +42,7 @@ namespace wfaIntegradoCom.Procesos
         static List<DetalleVenta> lsDetalleVenta = new List<DetalleVenta>();
         static List<DetalleVenta> lsDetalleVentaAnticipo = new List<DetalleVenta>();
 
-        public void Inicio(int pnTipo, double pnMontoPagar,String sMoneda,String codigoDocV)
+        public void Inicio(int pnTipo, Decimal pnMontoPagar,String sMoneda,String codigoDocV)
         {
             lnTipoLLamada = pnTipo;
             lnMontoPagar = pnMontoPagar;
@@ -54,15 +54,15 @@ namespace wfaIntegradoCom.Procesos
         }
         public void Inicio(int pnTipo, List<DocumentoVenta> lsDocVenta, List<DetalleVenta> lsDetVenta, String sMoneda)
         {
-            lsDocumentoVenta.Clear();
-            lsDetalleVenta.Clear();
+            //lsDocumentoVenta.Clear();
+            //lsDetalleVenta.Clear();
 
             lnTipoLLamada = pnTipo;
             lsDocumentoVenta = lsDocVenta;
             lsDetalleVenta = lsDetVenta;
             lnMontoPagar = lsDetVenta.Sum(i => i.Importe);
             SImboloMoneda = sMoneda;
-            clsPagosGeneral.cantAPagar = lsDetVenta.Sum(i => i.Importe);
+            clsPagosGeneral.cantAPagar = lsDetVenta.Sum(i => i.Importe) + lsDocVenta[0].MontoRedondeo;
             clsPagosGeneral.SimboloMoneda = sMoneda;
             codigoDocVenta= lsDocVenta[0].cCodDocumentoVenta;
             this.ShowDialog();
@@ -186,13 +186,13 @@ namespace wfaIntegradoCom.Procesos
         private void fnLlenarListBox()
         {
             dgvEntidades.Rows.Clear();
-            txtImporteRestante.Text= FunGeneral.fnFormatearPrecio(clsPagosGeneral.SimboloMoneda, (clsPagosGeneral.cantAPagar- lstEntidades.Sum(i=>i.PagaCon)), 1);
+            txtImporteRestante.Text= FunGeneral.fnFormatearPrecioDC(clsPagosGeneral.SimboloMoneda, (clsPagosGeneral.cantAPagar- lstEntidades.Sum(i=>i.PagaCon)), 1);
             Int32 y = 0;
             String entidadpagos = "";
             foreach (Pagos pg in lstEntidades)
             {
                 entidadpagos = pg.cDescripcionEstadoPP == pg.cDescripTipoPago ? "":" - "+ pg.cDescripcionEstadoPP;
-                dgvEntidades.Rows.Add(pg.cDescripTipoPago + entidadpagos+ " - " + FunGeneral.fnFormatearPrecio(clsPagosGeneral.SimboloMoneda,pg.PagaCon,0));
+                dgvEntidades.Rows.Add(pg.cDescripTipoPago + entidadpagos+ " - " + FunGeneral.fnFormatearPrecioDC(clsPagosGeneral.SimboloMoneda,pg.PagaCon,0));
             }
         }
         private void btnAdd_Click(object sender, EventArgs e)
@@ -262,8 +262,8 @@ namespace wfaIntegradoCom.Procesos
                 bEstadoDocumento = false;
                 lstEntidades.Clear();
                 FunValidaciones.fnColorAceptarCancelar(btnAceptar, btnCancelar);
-                txtTotalAPagar.Text = FunGeneral.fnFormatearPrecio(clsPagosGeneral.SimboloMoneda,clsPagosGeneral.cantAPagar,1);
-                txtImporteRestante.Text = FunGeneral.fnFormatearPrecio(clsPagosGeneral.SimboloMoneda,clsPagosGeneral.cantAPagar,1);
+                txtTotalAPagar.Text = FunGeneral.fnFormatearPrecioDC(clsPagosGeneral.SimboloMoneda,clsPagosGeneral.cantAPagar,1);
+                txtImporteRestante.Text = FunGeneral.fnFormatearPrecioDC(clsPagosGeneral.SimboloMoneda,clsPagosGeneral.cantAPagar,1);
 
                 fnLlenarCombobox(cboTipoVenta, "TIVTR00" + lnTipoLLamada, 2, false);
                 btnAdd.Focus();
@@ -321,6 +321,41 @@ namespace wfaIntegradoCom.Procesos
             pncargando.Visible = estado;
         }
 
+        private void fnCrearItemAnticipos()
+        {
+            if (lsDocumentoVenta[0].FormaPagoFactura == "CRED")
+            {
+                lsDetalleVentaAnticipo.Clear();
+                lsDetalleVentaAnticipo.Add(new DetalleVenta
+                {
+                    Numeracion = 1,
+                    Descripcion = "PAGO GPS " + lsDocumentoVenta[0].cTipoVenta + " ****Pago Anticipado***",
+                    idTipoTarifa = lsDetalleVenta[0].idTipoTarifa,
+                    PrecioUni = lstEntidades.Sum(i => i.PagaCon),
+                    Descuento = 0,
+                    gananciaRedondeo = 0,
+                    TotalTipoDescuento = 0,
+                    IdTipoDescuento = 0,
+                    Cantidad = 1,
+                    Couta = 1,
+                    Importe = lstEntidades.Sum(i => i.PagaCon),
+                    cSimbolo = lsDetalleVenta[0].cSimbolo,
+
+                    preciounitario = Convert.ToDecimal(lstEntidades.Sum(i => i.PagaCon)),
+                    ImporteRow = (Convert.ToDecimal(lstEntidades.Sum(i => i.PagaCon)) * 1),
+                    mtoValorVentaItem = (Convert.ToDecimal(lstEntidades.Sum(i => i.PagaCon)) * 1),
+                    Unidad_de_medida = "ZZ"
+
+                });
+                PrecioALetras pal = new PrecioALetras();
+                string RecioALetras2 = pal.Convertir((lsDetalleVentaAnticipo.Sum(i => i.ImporteRow) - Convert.ToDecimal(lsDetalleVentaAnticipo.Sum(i => i.TotalTipoDescuento))).ToString(), true, " SOLES");
+                lsDocumentoVenta[0].PrecioEnLetras = RecioALetras2;
+
+                lsDocumentoVenta[0].nMontoTotal = lstEntidades.Sum(i => i.PagaCon);
+                lsDocumentoVenta[0].nSubtotal = (lstEntidades.Sum(i => i.PagaCon) / 1.18m);
+                lsDocumentoVenta[0].nIGV = (lsDocumentoVenta[0].nMontoTotal - lsDocumentoVenta[0].nSubtotal);
+            }
+        }
         private void fnEnviarDatosLuegoDeAceptar()
         {
             lsDocumentoVenta[0].cDescripcionTipoPago = "";
@@ -329,48 +364,17 @@ namespace wfaIntegradoCom.Procesos
             {
                 lsDocumentoVenta[0].cDescripcionTipoPago +=" "+ ep.cDescripTipoPago+"="+ lsDetalleVenta[0].cSimbolo +"."+ep.PagaCon+ "\n";
             }
+
+            fnCrearItemAnticipos();
+            Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
+            frm.Inicio(lsDocumentoVenta, lsDetalleVentaAnticipo.Count > 0 ? lsDetalleVentaAnticipo : lsDetalleVenta, lnTipoLLamada);
+
             //opcion para venta general
             if (lnTipoLLamada == 0)
             {
-                
-                Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
-                ////MessageBox.Show("Todo Correcto");
-                //frm.fnCambiarEstado(true);
-                //this.Close();
-                if (lsDocumentoVenta[0].FormaPagoFactura == "CRED")
-                {
-                    lsDetalleVentaAnticipo.Clear();
-                    lsDetalleVentaAnticipo.Add(new DetalleVenta
-                    {
-                         Numeracion = 1,
-                         Descripcion = "PAGO PGS "+ lsDocumentoVenta[0].cTipoVenta+ " ****Pago Anticipado***",
-                         idTipoTarifa = lsDetalleVenta[0].idTipoTarifa,
-                         PrecioUni = lstEntidades.Sum(i=>i.PagaCon),
-                         Descuento = 0,
-                         gananciaRedondeo = 0,
-                         TotalTipoDescuento = 0,
-                         IdTipoDescuento = 0,
-                         Cantidad = 1,
-                         Couta = 1,
-                         Importe = lstEntidades.Sum(i => i.PagaCon),
-                         cSimbolo = lsDetalleVenta[0].cSimbolo,
-
-                         preciounitario = Convert.ToDecimal(lstEntidades.Sum(i => i.PagaCon)),
-                         ImporteRow = (Convert.ToDecimal(lstEntidades.Sum(i => i.PagaCon)) * 1),
-                         mtoValorVentaItem = (Convert.ToDecimal(lstEntidades.Sum(i => i.PagaCon)) * 1),
-                         Unidad_de_medida = "ZZ"
-
-                    });
-                    PrecioALetras pal = new PrecioALetras();
-                    string RecioALetras2 = pal.Convertir((lsDetalleVentaAnticipo.Sum(i => i.ImporteRow) - Convert.ToDecimal(lsDetalleVentaAnticipo.Sum(i => i.TotalTipoDescuento))).ToString(), true, " SOLES");
-                    lsDocumentoVenta[0].PrecioEnLetras = RecioALetras2;
-
-                    lsDocumentoVenta[0].nMontoTotal = lstEntidades.Sum(i => i.PagaCon);
-                    lsDocumentoVenta[0].nSubtotal = (lstEntidades.Sum(i => i.PagaCon) / 1.18);
-                    lsDocumentoVenta[0].nIGV = (lsDocumentoVenta[0].nMontoTotal - lsDocumentoVenta[0].nSubtotal);
-                }
-                
-                frm.Inicio(lsDocumentoVenta, lsDetalleVentaAnticipo.Count>0? lsDetalleVentaAnticipo : lsDetalleVenta, 0);
+                //fnCrearItemAnticipos();
+                //Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
+                //frm.Inicio(lsDocumentoVenta, lsDetalleVentaAnticipo.Count>0? lsDetalleVentaAnticipo : lsDetalleVenta, 0);
                 frmRegistrarVenta fr = new frmRegistrarVenta();
                 if (bEstadoDocumento)
                 {
@@ -386,32 +390,70 @@ namespace wfaIntegradoCom.Procesos
             // opcion para pagos mensuales
             else if (lnTipoLLamada == -1)
             {
-                Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);
-                frmControlPagoVenta frm = new frmControlPagoVenta();
-                frm.fnCambiarEstadoVenta(true);
+                
+                frmControlPagoVenta fr = new frmControlPagoVenta();
+                if (bEstadoDocumento)
+                {
+                    Procesos.frmControlPagoVenta.fnRecuperarTipoPago(lstEntidades);                    
+                    fr.fnCambiarEstadoVenta(true);
+                }
+                else
+                {
+                    fr.fnCambiarEstadoVenta(false);
+                }
+                
                 this.Close();
             }
             // opcion para otrasVentas
             else if (lnTipoLLamada == -2)
             {
-                frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
                 frmOtrasVentas frm2 = new frmOtrasVentas();
-                frm2.fnRecuperarEstadoGenVenta(true);
+                if (bEstadoDocumento)
+                {
+                    frmOtrasVentas.fnRecuperarTipoPago(lstEntidades);
+                    frm2.fnRecuperarEstadoGenVenta(true);
+                }
+                else
+                {
+                    frm2.fnRecuperarEstadoGenVenta(false);
+                }
+                
+                
+                
                 this.Close();
 
             }
             else if (lnTipoLLamada == -3 || lnTipoLLamada == 3)
             {
-                frmRegistrarEgresos frm = new frmRegistrarEgresos();
-                frm.fnRecuperarEstadoGenVenta(true);
-                frm.fnRecuperarTipoPago(lstEntidades);
+                frmRegistrarEgresos fr = new frmRegistrarEgresos();
+                if (bEstadoDocumento)
+                {
+                    fr.fnRecuperarEstadoGenVenta(true);
+                    fr.fnRecuperarTipoPago(lstEntidades);
+                }
+                else
+                {
+                    fr.fnRecuperarEstadoGenVenta(false);
+
+                }
+                
+                
                 this.Close();
             }
             else if (lnTipoLLamada == -4)
             {
-                frmPagosPendientes frm = new frmPagosPendientes();
-                frm.fnRecuperarEstadoGenVenta(true);
-                frm.fnRecuperarTipoPago(lstEntidades);
+                frmPagosPendientes fr = new frmPagosPendientes();
+                if (bEstadoDocumento)
+                {
+                    fr.fnRecuperarEstadoGenVenta(true);
+                    fr.fnRecuperarTipoPago(lstEntidades);
+                }
+                else
+                {
+                    fr.fnRecuperarEstadoGenVenta(false);
+
+                }
+                
                 this.Close();
             }
             else
@@ -425,9 +467,12 @@ namespace wfaIntegradoCom.Procesos
             fnMostrarCargando(true);
             if (rdbSi.Checked == true)
             {
-                if (clsPagosGeneral.cantAPagar == lstEntidades.Sum(i => i.PagaCon))
+                Decimal cantPagar = Convert.ToDecimal(string.Format("{0:0.00}", clsPagosGeneral.cantAPagar));
+                Decimal PagaCOnEntidades = Convert.ToDecimal(string.Format("{0:0.00}", lstEntidades.Sum(i => i.PagaCon)));
+                if (lstEntidades.Count>0 && cantPagar == PagaCOnEntidades)
                 {
                     fnEnviarDatosLuegoDeAceptar();
+                    this.Dispose();
                 }
                 else
                 {
@@ -442,6 +487,7 @@ namespace wfaIntegradoCom.Procesos
                 if (resp == DialogResult.Yes)
                 {
                     fnEnviarDatosLuegoDeAceptar();
+                    this.Dispose();
                     ////opcion para venta general
                     //if (lnTipoLLamada == 0)
                     //{
@@ -490,7 +536,7 @@ namespace wfaIntegradoCom.Procesos
                 }
             }
 
-            this.Dispose();
+            
 
             fnMostrarCargando(false);
         }

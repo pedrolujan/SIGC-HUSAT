@@ -26,12 +26,12 @@ namespace CapaNegocio
             }
 
         }
-        public List<DocumentoVenta> blBuscarDocumentoPorEmitir(Boolean chkActivaFecha, String dtFechaIni, String dtFechaFin, String pcBuscar, Int32 numPagina, Int32 pnTipoCon)
+        public List<DocumentoVenta> blBuscarDocumentoPorEmitir(Boolean chkActivaFecha, String dtFechaIni, String dtFechaFin, String pcBuscar, String CodDoc, Int32 numPagina, Int32 pnTipoCon)
         {
             DADocumentoVenta objDocVenta = new DADocumentoVenta();
             try
             {
-                return objDocVenta.daBuscarDocumentoPorEmitir( chkActivaFecha,  dtFechaIni,  dtFechaFin,  pcBuscar,  numPagina,  pnTipoCon);
+                return objDocVenta.daBuscarDocumentoPorEmitir( chkActivaFecha,  dtFechaIni,  dtFechaFin,  pcBuscar,  CodDoc, numPagina,  pnTipoCon);
             }
             catch (Exception ex)
             {

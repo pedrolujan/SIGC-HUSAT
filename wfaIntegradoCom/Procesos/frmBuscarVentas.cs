@@ -1,4 +1,5 @@
-﻿using CapaEntidad;
+﻿using CapaDato;
+using CapaEntidad;
 using CapaNegocio;
 using CapaUtil;
 using Siticone.UI.WinForms;
@@ -14,6 +15,7 @@ using System.Windows.Forms;
 using wfaIntegradoCom.Consultas;
 using wfaIntegradoCom.Funciones;
 using wfaIntegradoCom.Mantenedores;
+using wfaIntegradoCom.Sunat;
 
 namespace wfaIntegradoCom.Procesos
 {
@@ -579,6 +581,13 @@ namespace wfaIntegradoCom.Procesos
                 var mousePosition = dgvLVentas.PointToClient(Cursor.Position);
                 cmsImpresion.Show(dgvLVentas, 10000, mousePosition.Y);
             }
+            else
+            {
+                //BLCliente objAcc = new BLCliente();
+                //clsCliente = objAcc.blListarCliente(532, 1);
+                //lstDocumentoVentaEmitir = Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboNotaCredit, "DOVE", 1, 1);
+            }
+            
         }
         private void dgvLVentas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -681,6 +690,9 @@ namespace wfaIntegradoCom.Procesos
             Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[18].Value);
             fnBuscarDocumentoVenta(cCodigoVenta, 1, idTipoTarifa, idContrato);
         }
+        List<Cargo> lstDocumentoVentaEmitir = new List<Cargo>();
+        Cargo clsDocumentoVentaEmitir = new Cargo();
+        Cliente clsCliente = new Cliente();
         private void fnBuscarDocumentoVenta(String cCodVenta, Int32 tipCon, Int32 idTipoTarifa, Int32 idContrato)
         {
             BLOtrasVenta objTipoVenta = new BLOtrasVenta();
@@ -690,7 +702,8 @@ namespace wfaIntegradoCom.Procesos
             Int32 filas = 20;
             List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
             xmlDocumentoVentaGeneral xmlDocVenta = new xmlDocumentoVentaGeneral();
-
+            
+            
             try
             {
                 xmlDocVenta = objTipoVenta.blBuscarDocumentoVentaGeneral(cCodVenta, tipCon, idTipoTarifa, idContrato);
@@ -698,6 +711,13 @@ namespace wfaIntegradoCom.Procesos
                 xmlDocVenta.xmlDocumentoVenta[0].cCliente = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cCliente);
                 xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago);
                 xmlDocumentoVenta.Add(xmlDocVenta);
+
+                //if (checkBox1.Checked==true)
+                //{         
+                //    EmitirFactura env = new EmitirFactura();
+                //    env.EmitirNotaCredito(clsCliente, xmlDocumentoVenta[0].xmlDetalleVentas, clsDocumentoVentaEmitir);
+
+                //}
 
                 Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
 
@@ -716,7 +736,7 @@ namespace wfaIntegradoCom.Procesos
                 lsTipoVenta = null;
             }
         }
-
+       
         private void Contrato_Click(object sender, EventArgs e)
         {
             String CodVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
@@ -858,6 +878,7 @@ namespace wfaIntegradoCom.Procesos
                 frmPrev.inicio(2, dato);
             }
         }
+
     }
 }
 

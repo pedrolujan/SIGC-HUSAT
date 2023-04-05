@@ -643,6 +643,36 @@ namespace wfaIntegradoCom.Funciones
             }
 
         }
+        public static List<Cargo> fnLlenarCboSegunTablaTipoConReturnLista(ComboBox cboCombo, String nomCampoId,String nomCampoNombre,String nomTabla,String nomEstado,String condicionDeEstado, Boolean buscar)
+        {
+            BLCargo objTablaCod = new BLCargo();
+            clsUtil objUtil = new clsUtil();
+            List<Cargo> lstTablaCod = new List<Cargo>();
+
+            try
+            {
+                lstTablaCod = objTablaCod.blLlenarCboSegunTablaTipoCon( nomCampoId,  nomCampoNombre,  nomTabla,  nomEstado,  condicionDeEstado,  buscar);
+                cboCombo.DataSource = null;
+                cboCombo.ValueMember = "cCodTab";
+                cboCombo.DisplayMember = "cNomTab";
+                
+                cboCombo.DataSource = lstTablaCod;
+
+                return lstTablaCod;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("FunGeneral", "fnLlenarTablaCod", ex.Message);
+                return lstTablaCod;
+            }
+            finally
+            {
+                objUtil = null;
+                objTablaCod = null;
+                lstTablaCod = null;
+            }
+
+        }
 
 
         //llenar combobox de la instalacion
@@ -1323,6 +1353,30 @@ namespace wfaIntegradoCom.Funciones
 
         }
         public static String fnFormatearPrecio(String simbolo,Double Precio,Int32 lnTipoCon)
+        {
+            String srt = "";
+            if (lnTipoCon == -1)
+            {
+                srt =String.Format("{0:#,##0.00}", Precio);
+
+            }
+            else if (lnTipoCon==0)
+            {
+                srt = simbolo+String.Format("{0:#,##0.00}", Precio);
+
+            }else if (lnTipoCon==1)
+            {
+
+                srt = $"{simbolo} {string.Format("{0:0.00}", Precio)}";
+            }
+            else if (lnTipoCon==2)
+            {
+                srt = $"{string.Format("{0:0.00}", Precio)}";
+
+            }
+            return srt;
+        }
+        public static String fnFormatearPrecioDC(String simbolo,Decimal Precio,Int32 lnTipoCon)
         {
             String srt = "";
             if (lnTipoCon == -1)

@@ -31,9 +31,10 @@ namespace wfaIntegradoCom.Sunat
             ParametrosFactura parametros = new ParametrosFactura();
             parametros.Monto_total = (detalleventa.Sum(i=>i.ImporteRow) - Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento)));
             parametros.TotSubtotal = Convert.ToDecimal(detalleventa.Sum(i => i.ImporteRow) - Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento))) / 1.18m;
-            parametros.TotalIgv = (parametros.Monto_total- parametros.TotSubtotal);
+            parametros.TotalIgv = parametros.TotSubtotal * 0.18m;//(parametros.Monto_total- parametros.TotSubtotal);
             parametros.Porcentaje_IGV = 18;
             parametros.TotalDescuento = Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento));
+            parametros.TotRedondeo = lstDocVenta[0].MontoRedondeo;
             parametros.Serie = clsCargo.SerieDoc;//"FA01";
             parametros.Correlativo =FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsCargo.nValor2));// "00000132";
             parametros.fecha_venta = clsCargo.dFechaVenta;
@@ -53,20 +54,25 @@ namespace wfaIntegradoCom.Sunat
             envios.RutaEnvios = Path.GetDirectoryName(Application.ExecutablePath) + @"\ENVIOS\";
             envios.RutaCDR = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
             parametrosFactura = parametros;
+            int Validar = 0;
             try
             {
                 string[] restDatos=envios.GenerarFacturaBoletaXML(parametros, clsCliente,detalleventa);
-                if (restDatos[0]=="")
+                if (restDatos.Count()>0)
                 {
-
+                    Validar = 1;
                 }
-                return 1;
+                else
+                {
+                    Validar = 0;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return 0;
+                Validar = 0;
             }
+            return Validar; 
         }
 
         public int EmitirNotaCredito(Cliente clsCliente, List<DetalleVenta> detalleventa, Cargo clsCargo)
@@ -78,16 +84,16 @@ namespace wfaIntegradoCom.Sunat
             claseDocumentoVenta = clsCargo;
             clsCliente.cCliente = clsCliente.cNombre + " " + clsCliente.cApePat + " " + clsCliente.cApePat;
             ParametrosFactura parametros = new ParametrosFactura();
-            parametros.Ref_Serie = "FA01";
-            parametros.Ref_Numero = "00000525";
-            parametros.Ref_Motivo = "DUPLICIDAD EN LA EMISION";
+            parametros.Ref_Serie = "FH01";
+            parametros.Ref_Numero = "00000031";
+            parametros.Ref_Motivo = "Anulación de la operación";
             parametros.Ref_TipoComprobante = "01";
             parametros.CodigoTipoNotacredito = "01";
 
 
 
-            parametros.Monto_total = detalleventa.Sum(i => i.ImporteRow);
-            parametros.TotSubtotal = detalleventa.Sum(i => i.ImporteRow) / 1.18m;
+            parametros.Monto_total = Convert.ToDecimal(detalleventa.Sum(i => i.Importe));
+            parametros.TotSubtotal = Convert.ToDecimal(detalleventa.Sum(i => i.Importe)) / 1.18m;
             parametros.TotalIgv = (parametros.Monto_total - parametros.TotSubtotal);
             parametros.Porcentaje_IGV = 18;
             parametros.Serie = clsCargo.SerieDoc;//"FA01";
@@ -170,18 +176,23 @@ namespace wfaIntegradoCom.Sunat
                     MessageBox.Show(r);
 
                 }
-               
+                datos[0] = r;
+                datos[1] = file;
+                datos[2] = nomfile;
+                ObtenerQr(strSignatureValue);
+                return datos;
+
             }
             catch (Exception ex)
             {
+                return null;
+
             }
-            datos[0] = r;
-            datos[1] = file;
-            datos[2] = nomfile;
+            
 
-            ObtenerQr(strSignatureValue);
+            
 
-            return datos;
+            
         }
 
         public void ObtenerQr(String firmaDigit)

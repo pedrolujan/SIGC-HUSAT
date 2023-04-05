@@ -64,7 +64,7 @@ namespace wfaIntegradoCom.Procesos
         static Int32 cellIdMoneda = 0;
         static Int32 cellIdTipoTraccion = 0;
         static Int32 tabInicio;
-        Double SubTotal = 0;
+        Decimal SubTotal = 0;
         Int32 lnTipoCon = 0;
         static Int32 lnTipoConCambio = 0;
         static Double nIgvAplicar = 0;
@@ -285,7 +285,7 @@ namespace wfaIntegradoCom.Procesos
                 OtrasVentas cls = lstOtrasVentas[i];
                 cls.unidades = cls.unidades == 0 ? 1 : cls.unidades;
                 cls.descuentoPrecio = fnConvertirATipoDescuento(cls.precioUnico,Convert.ToInt32(cboTipoDescuento.SelectedValue),cls.descuentoCantidad);
-                Double pNeto= (cls.precioUnico * cls.unidades) - cls.descuentoPrecio;
+                Decimal pNeto= (cls.precioUnico * cls.unidades) - cls.descuentoPrecio;
                 cls.precioNeto = fnCalcularPrecios(cls.idMoneda, pNeto, Mon);
                 if (Mon.idMoneda == 2)
                 {
@@ -374,9 +374,9 @@ namespace wfaIntegradoCom.Procesos
         {
             if (CargoForm == true)
             {
-                Double TotalGeneral = 0;
+                Decimal TotalGeneral = 0;
                 //Double TotalAPagar = 0;
-                Double CalcIgv = 0;
+                Decimal CalcIgv = 0;
                 if (lstOtrasVentas.Count>0)
                 {
                     TotalGeneral = lstOtrasVentas.Sum(i => i.precioNeto);
@@ -384,7 +384,7 @@ namespace wfaIntegradoCom.Procesos
                     DocumentoVenta.nMontoTotal = TotalGeneral;
 
                     txtTotal.Text = Mon.cSimbolo + " " + string.Format("{0:0.00}", DocumentoVenta.nMontoTotal);
-                    SubTotal = (TotalGeneral /1.18);
+                    SubTotal = (TotalGeneral /1.18m);
                     TotVenta.Subtotal = SubTotal;
                     CalcIgv = (TotVenta.Total - TotVenta.Subtotal);
 
@@ -785,9 +785,9 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
-        private Double fnConvertirATipoDescuento(Double precioOriginal, Int32 idTipoDescuento, Double descuento)
+        private Decimal fnConvertirATipoDescuento(Decimal precioOriginal, Int32 idTipoDescuento, Decimal descuento)
         {
-            Double precioDescuento;
+            Decimal precioDescuento;
             if (idTipoDescuento == 1)
             {
                 precioDescuento = (precioOriginal * descuento) / 100;
@@ -1168,13 +1168,13 @@ namespace wfaIntegradoCom.Procesos
             {
             }
         }
-        private Double fnCalcularPrecios(Int32 idMonedaEntrada, Double PrecioEntrada, Moneda m)
+        private Decimal fnCalcularPrecios(Int32 idMonedaEntrada, Decimal PrecioEntrada, Moneda m)
         {
             BLMoneda objMoneda = new BLMoneda();           
 
             CambioMonedaVenta clsCambioMoneda;            
 
-            clsCambioMoneda = objMoneda.blDevolverCambioMoneda(idMonedaEntrada, PrecioEntrada, m.idMoneda);
+            clsCambioMoneda = objMoneda.blDevolverCambioMoneda(idMonedaEntrada, Convert.ToDouble(PrecioEntrada), m.idMoneda);
             string precioEntradaFormatedo = string.Format("{0:0.00}", PrecioEntrada);
             string PrecioSalidaFormat = string.Format("{0:0.00}", clsCambioMoneda.PrecioSalida);
             string precioCambioMoneda = string.Format("{0:0.00}", clsCambioMoneda.PrecioCambio);
@@ -1606,7 +1606,7 @@ namespace wfaIntegradoCom.Procesos
                         Int32 idTipoDescuento = Convert.ToInt32(cboTipoDescuento.SelectedValue);
                         if (Convert.ToInt32(filaSeleccionada.Value)>0)
                         {
-                            Double presioNeto = lstOtrasVentas[filaIndice].unidades * lstOtrasVentas[filaIndice].precioUnico;
+                            Decimal presioNeto = lstOtrasVentas[filaIndice].unidades * lstOtrasVentas[filaIndice].precioUnico;
                             if (idTipoDescuento == 1)
                             {
                                 if (Convert.ToInt32(filaSeleccionada.Value) > 100)
@@ -1618,13 +1618,13 @@ namespace wfaIntegradoCom.Procesos
                                 }
                                 else
                                 {
-                                    lstOtrasVentas[filaIndice].descuentoCantidad = Convert.ToDouble(rowss.Cells[5].Value);
+                                    lstOtrasVentas[filaIndice].descuentoCantidad = Convert.ToDecimal(rowss.Cells[5].Value);
                                     estadoTabla = true;
                                 }
                             }
                             else if (idTipoDescuento == 2)
                             {
-                                if (presioNeto < Convert.ToDouble(filaSeleccionada.Value))
+                                if (presioNeto < Convert.ToDecimal(filaSeleccionada.Value))
                                 {
                                     rowss.Cells[5].Style.BackColor = Color.Red;
                                     fnAlertas("El Descuento no puede ser mayor al Precio Neto ", "Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
@@ -1634,7 +1634,7 @@ namespace wfaIntegradoCom.Procesos
                                 }
                                 else
                                 {
-                                    lstOtrasVentas[filaIndice].descuentoCantidad = Convert.ToDouble(rowss.Cells[5].Value);
+                                    lstOtrasVentas[filaIndice].descuentoCantidad = Convert.ToDecimal(rowss.Cells[5].Value);
                                     estadoTabla = true;
                                 }
                             }
@@ -2371,7 +2371,7 @@ namespace wfaIntegradoCom.Procesos
                 if (stCondicionprocesos == -3)
                 {
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                    Double sumaPrimerPago = lstLdv.Sum(i => i.Importe);
+                    Decimal sumaPrimerPago = lstLdv.Sum(i => i.Importe);
                     fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocVenta[0].cCodDocumentoVenta);
                 }
             }
@@ -2382,7 +2382,7 @@ namespace wfaIntegradoCom.Procesos
                 if (stCondicionprocesos == -3)
                 {
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                    Double sumaPrimerPago = lstLdv.Sum(i => i.Importe);
+                    Decimal sumaPrimerPago = lstLdv.Sum(i => i.Importe);
                     fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocVenta[0].cCodDocumentoVenta);
                 }
             }
@@ -2393,7 +2393,7 @@ namespace wfaIntegradoCom.Procesos
                 //if (stCondicionprocesos == 3)
                 //{
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                    Double sumaPrimerPago = lstLdv.Sum(i => i.Importe);
+                    Decimal sumaPrimerPago = lstLdv.Sum(i => i.Importe);
                     fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocVenta[0].cCodDocumentoVenta);
                 //}
             }

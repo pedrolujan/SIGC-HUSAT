@@ -21,9 +21,13 @@
           <DataField>Cantidad</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="CodigoProducto">
+          <DataField>CodigoProducto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Couta">
           <DataField>Couta</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="cSimbolo">
           <DataField>cSimbolo</DataField>
@@ -35,10 +39,22 @@
         </Field>
         <Field Name="Descuento">
           <DataField>Descuento</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="gananciaRedondeo">
+          <DataField>gananciaRedondeo</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="IdDetalleVenta">
           <DataField>IdDetalleVenta</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idObjetoVenta">
+          <DataField>idObjetoVenta</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idOperacion">
+          <DataField>idOperacion</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="IdTipoDescuento">
@@ -49,9 +65,21 @@
           <DataField>idTipoTarifa</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="idTipoTransaccion">
+          <DataField>idTipoTransaccion</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="Importe">
           <DataField>Importe</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ImporteRow">
+          <DataField>ImporteRow</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="mtoValorVentaItem">
+          <DataField>mtoValorVentaItem</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Numeracion">
           <DataField>Numeracion</DataField>
@@ -59,19 +87,35 @@
         </Field>
         <Field Name="PrecioUni">
           <DataField>PrecioUni</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="preciounitario">
+          <DataField>preciounitario</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Total_a_pagar">
+          <DataField>Total_a_pagar</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="TotalDescuento">
           <DataField>TotalDescuento</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="TotalPUCant">
           <DataField>TotalPUCant</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="TotalTipoDescuento">
           <DataField>TotalTipoDescuento</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Unidad_de_medida">
+          <DataField>Unidad_de_medida</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="valorRedondeo">
+          <DataField>valorRedondeo</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
@@ -202,6 +246,10 @@
           <DataField>est1</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
+        <Field Name="FormaPagoFactura">
+          <DataField>FormaPagoFactura</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="idCliente">
           <DataField>idCliente</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -226,13 +274,21 @@
           <DataField>idVenta</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="imageBytes">
+          <DataField>imageBytes</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
         <Field Name="iTipoOpe">
           <DataField>iTipoOpe</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="MontoRedondeo">
+          <DataField>MontoRedondeo</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="nIGV">
           <DataField>nIGV</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="nMontoPagar">
           <DataField>nMontoPagar</DataField>
@@ -240,7 +296,7 @@
         </Field>
         <Field Name="nMontoTotal">
           <DataField>nMontoTotal</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="nNroIGV">
           <DataField>nNroIGV</DataField>
@@ -252,7 +308,11 @@
         </Field>
         <Field Name="nSubtotal">
           <DataField>nSubtotal</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="numero">
+          <DataField>numero</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="PrecioEnLetras">
           <DataField>PrecioEnLetras</DataField>
@@ -265,6 +325,10 @@
         <Field Name="TipoPersona">
           <DataField>TipoPersona</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="xmlDocumento">
+          <DataField>xmlDocumento</DataField>
+          <rd:TypeName>CapaEntidad.xmlDocumentoVentaGeneral</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
@@ -285,7 +349,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>OP.GRAVADA:</Value>
+                    <Value>Valor Venta:</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -297,8 +361,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox31</rd:DefaultName>
-            <Top>8.30884cm</Top>
-            <Left>10.92613cm</Left>
+            <Top>10.35082cm</Top>
+            <Left>11.11134cm</Left>
             <Height>0.6cm</Height>
             <Width>5.48733cm</Width>
             <Style>
@@ -540,8 +604,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>8.98617cm</Top>
-            <Left>10.92613cm</Left>
+            <Top>11.04961cm</Top>
+            <Left>11.11134cm</Left>
             <Height>0.6cm</Height>
             <Width>5.48733cm</Width>
             <ZIndex>7</ZIndex>
@@ -566,7 +630,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>IMPORTE TOTAL:</Value>
+                    <Value>Importe Total:</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -578,8 +642,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>9.62145cm</Top>
-            <Left>10.92613cm</Left>
+            <Top>12.4472cm</Top>
+            <Left>11.11134cm</Left>
             <Height>0.6cm</Height>
             <Width>5.48733cm</Width>
             <ZIndex>8</ZIndex>
@@ -613,10 +677,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>8.98617cm</Top>
-            <Left>16.45215cm</Left>
+            <Top>11.04961cm</Top>
+            <Left>16.50695cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.03034cm</Width>
+            <Width>2.00729cm</Width>
             <ZIndex>9</ZIndex>
             <Visibility>
               <Hidden>=First(Fields!est1.Value, "DocumentoVenta")</Hidden>
@@ -651,10 +715,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox19</rd:DefaultName>
-            <Top>9.62145cm</Top>
-            <Left>16.45215cm</Left>
+            <Top>12.4472cm</Top>
+            <Left>16.50695cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.03034cm</Width>
+            <Width>2.00729cm</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -686,10 +750,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>8.30884cm</Top>
-            <Left>16.45215cm</Left>
+            <Top>10.35082cm</Top>
+            <Left>16.50695cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.03034cm</Width>
+            <Width>2.00729cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -786,9 +850,24 @@
                           <rd:DefaultName>Textbox21</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
+                              <Width>0.7pt</Width>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </RightBorder>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -822,9 +901,24 @@
                           <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
+                              <Width>0.7pt</Width>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </RightBorder>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -858,9 +952,24 @@
                           <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
+                              <Width>0.7pt</Width>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </RightBorder>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -894,9 +1003,24 @@
                           <rd:DefaultName>Textbox5</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
+                              <Width>0.7pt</Width>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </RightBorder>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -930,9 +1054,24 @@
                           <rd:DefaultName>Textbox28</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
+                              <Width>0.7pt</Width>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </RightBorder>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -966,9 +1105,24 @@
                           <rd:DefaultName>Textbox23</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
+                              <Width>0.7pt</Width>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                            </RightBorder>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1006,8 +1160,8 @@
                           <rd:DefaultName>Numeracion</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
+                              <Width>0.7pt</Width>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1038,8 +1192,8 @@
                           <rd:DefaultName>Descripcion</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
+                              <Width>0.7pt</Width>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1072,8 +1226,8 @@
                           <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
+                              <Width>0.7pt</Width>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1107,8 +1261,8 @@
                           <rd:DefaultName>PrecioUni</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
+                              <Width>0.7pt</Width>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1127,7 +1281,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!TotalTipoDescuento.Value</Value>
+                                  <Value>=Format(Fields!TotalTipoDescuento.Value,"#0.00")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
@@ -1141,8 +1295,8 @@
                           <rd:DefaultName>TotalTipoDescuento</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
+                              <Width>0.7pt</Width>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1175,8 +1329,8 @@
                           <rd:DefaultName>Importe</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
+                              <Width>0.7pt</Width>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1218,7 +1372,8 @@
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
-                <Style>None</Style>
+                <Style>Solid</Style>
+                <Width>0.7pt</Width>
               </Border>
             </Style>
           </Tablix>
@@ -1331,7 +1486,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Madios de Pago</Value>
+                    <Value>Medios de Pago</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1344,7 +1499,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>11.98308cm</Top>
+            <Top>14.84058cm</Top>
             <Left>0.03213cm</Left>
             <Height>0.6cm</Height>
             <Width>3.30317cm</Width>
@@ -1379,7 +1534,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>11.30625cm</Top>
+            <Top>14.16375cm</Top>
             <Height>0.6cm</Height>
             <Width>3.30317cm</Width>
             <ZIndex>18</ZIndex>
@@ -1412,7 +1567,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>11.30625cm</Top>
+            <Top>14.16375cm</Top>
             <Left>3.33845cm</Left>
             <Height>0.6cm</Height>
             <Width>8.92937cm</Width>
@@ -1595,7 +1750,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>11.98308cm</Top>
+            <Top>14.84058cm</Top>
             <Left>3.33845cm</Left>
             <Height>0.6cm</Height>
             <Width>8.92937cm</Width>
@@ -1741,15 +1896,15 @@
             </Style>
           </Image>
           <Line Name="Line1">
-            <Top>10.57106cm</Top>
+            <Top>13.42856cm</Top>
             <Left>0.03175cm</Left>
             <Height>0cm</Height>
             <Width>18.45074cm</Width>
             <ZIndex>27</ZIndex>
             <Style>
               <Border>
-                <Color>Silver</Color>
                 <Style>Solid</Style>
+                <Width>0.7pt</Width>
               </Border>
             </Style>
           </Line>
@@ -1768,7 +1923,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Top>10.60811cm</Top>
+            <Top>13.46561cm</Top>
             <Left>0.03175cm</Left>
             <Height>0.6cm</Height>
             <Width>18.45074cm</Width>
@@ -1783,8 +1938,272 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox33">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Sub Total Ventas:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox33</rd:DefaultName>
+            <Top>8.25444cm</Top>
+            <Left>11.11134cm</Left>
+            <Height>0.6cm</Height>
+            <Width>5.48733cm</Width>
+            <ZIndex>29</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox39">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Anticipos:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox39</rd:DefaultName>
+            <Top>8.95323cm</Top>
+            <Left>11.11134cm</Left>
+            <Height>0.6cm</Height>
+            <Width>5.48733cm</Width>
+            <ZIndex>30</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox40">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Descuentos:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox40</rd:DefaultName>
+            <Top>9.65203cm</Top>
+            <Left>11.11134cm</Left>
+            <Height>0.6cm</Height>
+            <Width>5.48733cm</Width>
+            <ZIndex>31</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox41">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Monto de Redondeo:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox41</rd:DefaultName>
+            <Top>11.74841cm</Top>
+            <Left>11.11134cm</Left>
+            <Height>0.6cm</Height>
+            <Width>5.48733cm</Width>
+            <ZIndex>32</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox42">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!SimboloMoneda.Value, "DocumentoVenta") &amp; " " &amp; Format(Sum(Fields!PrecioUni.Value, "dsDetalleVenta"),"#0.00")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox42</rd:DefaultName>
+            <Top>8.25444cm</Top>
+            <Left>16.50695cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.00729cm</Width>
+            <ZIndex>33</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox43">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!SimboloMoneda.Value, "DocumentoVenta") &amp; " " &amp; Format(0,"#0.00")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox43</rd:DefaultName>
+            <Top>8.95323cm</Top>
+            <Left>16.50695cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.00729cm</Width>
+            <ZIndex>34</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox44">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!SimboloMoneda.Value, "DocumentoVenta") &amp; " " &amp;Format(First(Fields!MontoRedondeo.Value, "DocumentoVenta"),"#0.00")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox44</rd:DefaultName>
+            <Top>11.74841cm</Top>
+            <Left>16.50695cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.00729cm</Width>
+            <ZIndex>35</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox45">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!SimboloMoneda.Value, "DocumentoVenta") &amp; " " &amp; Format(Sum(Fields!TotalTipoDescuento.Value, "dsDetalleVenta"),"#0.00")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox45</rd:DefaultName>
+            <Top>9.65203cm</Top>
+            <Left>16.50695cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.00729cm</Width>
+            <ZIndex>36</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>12.75947cm</Height>
+        <Height>15.44058cm</Height>
         <Style>
           <Border>
             <Style>None</Style>

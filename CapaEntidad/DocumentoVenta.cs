@@ -91,14 +91,15 @@ namespace CapaEntidad
         Double _nMontoPagar = 0;
         public Double nMontoPagar { get { return _nMontoPagar; } set { _nMontoPagar = value; } }
 
-        Double _nSubTotal = 0;
-        public Double nSubtotal { get { return _nSubTotal; } set { _nSubTotal = value; } }
+        Decimal _nSubTotal = 0;
+        public Decimal nSubtotal { get { return _nSubTotal; } set { _nSubTotal = value; } }
 
-        Double _nIGV = 0;
-        public Double nIGV { get { return _nIGV; } set { _nIGV = value; } }
+        Decimal _nIGV = 0;
+        public Decimal nIGV { get { return _nIGV; } set { _nIGV = value; } }
 
-        Double _nMontoTotal = 0;
-        public Double nMontoTotal { get { return _nMontoTotal; } set { _nMontoTotal = value; } }
+        Decimal _nMontoTotal = 0;
+        public Decimal nMontoTotal { get { return _nMontoTotal; } set { _nMontoTotal = value; } }
+        public Decimal MontoRedondeo { get; set; }
 
         Int32 _iTipoOpe = 0;
         public Int32 iTipoOpe { get { return _iTipoOpe; } set { _iTipoOpe = value; } }

@@ -206,7 +206,7 @@ namespace wfaIntegradoCom.Procesos
                 }
                 else
                 {
-                    Double ImporteDeApertura = 0;
+                    Decimal ImporteDeApertura = 0;
                     foreach (CuadreCaja item in Variables.lstCuardreCaja)
                     {
                         if (item.idOperacion == 1)
@@ -214,7 +214,7 @@ namespace wfaIntegradoCom.Procesos
                             ImporteDeApertura = item.importeSaldo;
                         }
                     }
-                    lblMostraCierreAnterior.Text = "Ya as aperturado Caja Con el Monto de: " + FunGeneral.fnFormatearPrecio(Variables.lstCuardreCaja[0].SimbloMon, ImporteDeApertura, 1);
+                    lblMostraCierreAnterior.Text = "Ya as aperturado Caja Con el Monto de: " + FunGeneral.fnFormatearPrecioDC(Variables.lstCuardreCaja[0].SimbloMon, ImporteDeApertura, 1);
                     this.Text = "Aperturar Caja - Ya se ha aperturado caja en el día";
                     txtFecha.Text = FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 6);
                     txtUsuario.Text = Variables.gsCodUser;

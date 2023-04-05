@@ -64,10 +64,10 @@ namespace CapaDato
             }
 
         }
-        public List<DocumentoVenta> daBuscarDocumentoPorEmitir(Boolean chkActivaFecha,String dtFechaIni, String dtFechaFin, String pcBuscar, Int32 numPagina,Int32 pnTipoCon)
+        public List<DocumentoVenta> daBuscarDocumentoPorEmitir(Boolean chkActivaFecha,String dtFechaIni, String dtFechaFin, String pcBuscar, String CodDoc, Int32 numPagina,Int32 pnTipoCon)
         {
 
-            SqlParameter[] pa = new SqlParameter[6];
+            SqlParameter[] pa = new SqlParameter[7];
             DataTable dtVenta = new DataTable();
             clsConexion objCnx = null;
             List<DocumentoVenta> lstDocumentos = new List<DocumentoVenta>() ;
@@ -84,10 +84,12 @@ namespace CapaDato
                 pa[2].Value = dtFechaFin;
                 pa[3] = new SqlParameter("@Buscar", SqlDbType.VarChar, 50);
                 pa[3].Value = pcBuscar;
-                pa[4] = new SqlParameter("@numPagina", SqlDbType.Int);
-                pa[4].Value = numPagina;
-                pa[5] = new SqlParameter("@TipoCon", SqlDbType.Int);
-                pa[5].Value = pnTipoCon;
+                pa[4] = new SqlParameter("@CodDocumento", SqlDbType.VarChar, 8);
+                pa[4].Value =  CodDoc;
+                pa[5] = new SqlParameter("@numPagina", SqlDbType.Int);
+                pa[5].Value = numPagina;
+                pa[6] = new SqlParameter("@TipoCon", SqlDbType.Int);
+                pa[6].Value = pnTipoCon;
 
 
                 objCnx = new clsConexion("");
@@ -201,7 +203,7 @@ namespace CapaDato
                 {
                     dv.IdDetalleVenta = Convert.ToInt32(drMenu["idDetalleVenta"]);
                     dv.Descripcion = Convert.ToString(drMenu["cProducto"]);
-                    dv.PrecioUni = Convert.ToDouble(drMenu["PrecioCompra"]);
+                    dv.PrecioUni = Convert.ToDecimal(drMenu["PrecioCompra"]);
                     //lstVenta.Add(new DetalleVenta(Convert.ToInt32(drMenu["idDetalleVenta"]), Convert.ToInt32(drMenu["idVenta"]),
                     //    Convert.ToInt32(drMenu["idProducto"]), Convert.ToString(drMenu["cProducto"]),
                     //    Convert.ToInt32(drMenu["Cantidad"]), Convert.ToDecimal(drMenu["PrecioCompra"]),
@@ -703,7 +705,7 @@ namespace CapaDato
                         idTrandiaria = Convert.ToInt32(item["idTrandiaria"]),
                         Detalle=Convert.ToString(item["detalle"]),
                         idOperacion = Convert.ToInt32(item["idOperacion"]),
-                        importeSaldo = Convert.ToDouble(item["TotalPago"]),
+                        importeSaldo = Convert.ToDecimal(item["TotalPago"]),
                         idMoneda = Convert.ToInt32(item["idMoneda"]),
                         SimbloMon = Convert.ToString(item["cSimbolo"])
 
@@ -1135,8 +1137,8 @@ namespace CapaDato
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
                         SimboloMoneda = dr["cSimbolo"].ToString(),
-                        ImporteTipoCambio = Convert.ToDouble(dr["cTipoCambio"]),
-                        ImporteRow = Convert.ToDouble(dr["montoTotal"])
+                        ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["montoTotal"])
                     });
                     //lstVenta.Add(new DetalleVenta
                     //    (

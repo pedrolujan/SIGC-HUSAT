@@ -35,17 +35,17 @@ namespace CapaEntidad
         public DateTime fechaEmision { get; set; }
         public DateTime fechaVencimiento { get; set; }
         public DateTime fechaPago { get; set; }
-        public Double precioUnitario { get; set; }
+        public Decimal precioUnitario { get; set; }
         public String sPrecioUnitario { get; set; }
         public Int32 idTipoDescuento { get; set; }
         public String strTipoDescuento { get; set; }
-        public Double descuento { get; set; }
+        public Decimal descuento { get; set; }
         public Boolean estChk { get; set; }
         public Double descuentoCantidad { get; set; }
-        public Double descuentoPrecio { get; set; }
+        public Decimal descuentoPrecio { get; set; }
         public String sDescuento { get; set; }
         public Double cantidad { get; set; }
-        public Double total { get; set; }
+        public Decimal total { get; set; }
         public Double MontoTotalDocumento { get; set; }
         public String sTotal { get; set; }
         public Double montoPago { get; set; }

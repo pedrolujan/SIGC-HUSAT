@@ -354,7 +354,7 @@ namespace wfaIntegradoCom.Procesos
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        Double importeRestante = Convert.ToDouble(dr["TotalPago"]) - Convert.ToDouble(dr["pagaCon"]);
+                        Decimal importeRestante = Convert.ToDecimal(dr["TotalPago"]) - Convert.ToDecimal(dr["pagaCon"]);
 
                         lstDVenta.Add(new ReporteBloque
                         {
@@ -389,7 +389,7 @@ namespace wfaIntegradoCom.Procesos
                                         dr["cNombreOperacion"],
                                         FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(dr["TotalPago"]), 1),
                                         FunGeneral.fnFormatearPrecio("S/.", Convert.ToDouble(dr["pagaCon"]), 1),
-                                        (FunGeneral.fnFormatearPrecio("S/.", importeRestante, 1)),
+                                        (FunGeneral.fnFormatearPrecioDC("S/.", importeRestante, 1)),
                                         dr["cUser"],
                                         dr["cNomTab"]
                                     );
@@ -463,8 +463,8 @@ namespace wfaIntegradoCom.Procesos
         {
             List<DetalleVenta> lstDetV = new List<DetalleVenta>();
             Int32 cantidad = 1;
-            Double precioUnitario = lstPagosTrand[0].PagaCon;
-            double importe = lstPagosTrand[0].PagaCon;
+            Decimal precioUnitario = lstPagosTrand[0].PagaCon;
+            Decimal importe = lstPagosTrand[0].PagaCon;
             String descripcion = lstDVenta[0].idOperacion==4?"RENTA MENSUAL": lstDVenta[0].MasDetallereporte;
 
             lstDetV.Add(new DetalleVenta
@@ -489,8 +489,8 @@ namespace wfaIntegradoCom.Procesos
         {
             List<DetalleVenta> lstDetV = new List<DetalleVenta>();
             Int32 cantidad = 1;
-            Double precioUnitario = lstPagosTrand[0].PagaCon;
-            double importe = lstPagosTrand[0].PagaCon;
+            Decimal precioUnitario = lstPagosTrand[0].PagaCon;
+            Decimal importe = lstPagosTrand[0].PagaCon;
             String descripcion = lstDVenta[0].MasDetallereporte;
 
             lstDetV.Add(new DetalleVenta
@@ -626,10 +626,10 @@ namespace wfaIntegradoCom.Procesos
                 NombreDocumento = Convert.ToString(cboTipoDocEmitir.Text),
                 dFechaVenta = FunGeneral.fnUpdateFechas(stDtFechaDePago),
                 idMoneda = clsMoneda.idMoneda,
-                nSubtotal = dvc.SubTotal,
+                nSubtotal = dvc.ValorVenta,
                 nNroIGV = 18,
                 nIGV = dvc.IGV,
-                nMontoTotal = dvc.Total,
+                nMontoTotal = dvc.ImporteTotal,
                 cUsuario = clsUsuario.cPrimerNom + " " + clsUsuario.cApePat + " " + clsUsuario.cApeMat,
                 cVehiculos = lstDVenta[0].Codigoreporte,
                 cDescripcionTipoPago = lstPagosTrand[0].cDescripTipoPago,
@@ -669,10 +669,10 @@ namespace wfaIntegradoCom.Procesos
                 NombreDocumento = Convert.ToString(cboDVenta.Text),
                 dFechaVenta = stDtFechaDePago,
                 idMoneda = 1,
-                nSubtotal = dvc.SubTotal,
+                nSubtotal = dvc.ValorVenta,
                 nNroIGV = 18,
                 nIGV = dvc.IGV,
-                nMontoTotal = dvc.Total,
+                nMontoTotal = dvc.ImporteTotal,
                 cUsuario = UsuarioDocumentoVenta,
                 cVehiculos = PlacaVehiculo,
                 cDescripcionTipoPago = TipoPago,
@@ -845,14 +845,14 @@ namespace wfaIntegradoCom.Procesos
                         Numeracion = 1,
                         Descripcion = "CUOTA " + dt["cNombreOperacion"].ToString(),
                         idTipoTarifa = 0,
-                        PrecioUni = Convert.ToDouble(dt["importe"].ToString()),
+                        PrecioUni = Convert.ToDecimal(dt["importe"].ToString()),
                         Descuento = 0,
                         gananciaRedondeo = 0,
                         TotalTipoDescuento = 0,
                         IdTipoDescuento = 0,
                         Cantidad = 1,
                         Couta = 0,
-                        Importe = Convert.ToDouble(dt["importe"].ToString()),
+                        Importe = Convert.ToDecimal(dt["importe"].ToString()),
                         cSimbolo = "S/."
                     });
                     break;
@@ -900,9 +900,9 @@ namespace wfaIntegradoCom.Procesos
             DetalleVentaCabecera clsDVC = new DetalleVentaCabecera();
             DetalleVenta dvMensual = new DetalleVenta();
             clsDVC.IGV = 0;
-            clsDVC.Total = lstDV.Sum(item => item.Importe);
-            clsDVC.SubTotal = (clsDVC.Total / 1.18);
-            clsDVC.IGV = (clsDVC.Total - clsDVC.SubTotal);
+            clsDVC.ImporteTotal = lstDV.Sum(item => item.Importe);
+            clsDVC.ValorVenta = (clsDVC.ImporteTotal / 1.18m);
+            clsDVC.IGV = (clsDVC.ImporteTotal - clsDVC.ValorVenta);
             clsDVC.SimboloMoneda = clsMoneda.cSimbolo;
             clsDVC.NombreDocumento = Convert.ToString(cboDVenta.Text);
             clsDVC.CodDocumento = Convert.ToString(cboDVenta.SelectedValue);

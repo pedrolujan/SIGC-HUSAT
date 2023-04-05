@@ -113,8 +113,16 @@ namespace wfaIntegradoCom.Mantenedores
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.cboComprobanteP = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.txtValorVenta = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.txtSubtotal = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtRedondeo = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtDescuentos = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtAnticipos = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtIGV = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvPagoPlan = new System.Windows.Forms.DataGridView();
@@ -410,10 +418,10 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbDinamico.Controls.Add(this.siticoneSeparator2);
             this.gbDinamico.Controls.Add(this.button1);
             this.gbDinamico.Controls.Add(this.btnImprimir);
-            this.gbDinamico.Location = new System.Drawing.Point(19, 454);
+            this.gbDinamico.Location = new System.Drawing.Point(19, 508);
             this.gbDinamico.Name = "gbDinamico";
             this.gbDinamico.ShadowDecoration.Parent = this.gbDinamico;
-            this.gbDinamico.Size = new System.Drawing.Size(1173, 629);
+            this.gbDinamico.Size = new System.Drawing.Size(1173, 707);
             this.gbDinamico.TabIndex = 238;
             // 
             // lblSWNo
@@ -422,7 +430,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.lblSWNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.lblSWNo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSWNo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblSWNo.Location = new System.Drawing.Point(183, 578);
+            this.lblSWNo.Location = new System.Drawing.Point(181, 675);
             this.lblSWNo.Name = "lblSWNo";
             this.lblSWNo.Size = new System.Drawing.Size(31, 19);
             this.lblSWNo.TabIndex = 272;
@@ -564,7 +572,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.lblSWSi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.lblSWSi.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSWSi.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblSWSi.Location = new System.Drawing.Point(162, 578);
+            this.lblSWSi.Location = new System.Drawing.Point(160, 675);
             this.lblSWSi.Name = "lblSWSi";
             this.lblSWSi.Size = new System.Drawing.Size(21, 19);
             this.lblSWSi.TabIndex = 272;
@@ -589,8 +597,16 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbPlan.Controls.Add(this.dgvPrimerPago);
             this.gbPlan.Controls.Add(this.label5);
             this.gbPlan.Controls.Add(this.cboComprobanteP);
+            this.gbPlan.Controls.Add(this.txtValorVenta);
+            this.gbPlan.Controls.Add(this.label30);
             this.gbPlan.Controls.Add(this.txtSubtotal);
             this.gbPlan.Controls.Add(this.label2);
+            this.gbPlan.Controls.Add(this.txtRedondeo);
+            this.gbPlan.Controls.Add(this.label31);
+            this.gbPlan.Controls.Add(this.txtDescuentos);
+            this.gbPlan.Controls.Add(this.label20);
+            this.gbPlan.Controls.Add(this.txtAnticipos);
+            this.gbPlan.Controls.Add(this.label6);
             this.gbPlan.Controls.Add(this.txtIGV);
             this.gbPlan.Controls.Add(this.label1);
             this.gbPlan.Controls.Add(this.dgvPagoPlan);
@@ -617,7 +633,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbPlan.Location = new System.Drawing.Point(1, 168);
             this.gbPlan.Name = "gbPlan";
             this.gbPlan.ShadowDecoration.Parent = this.gbPlan;
-            this.gbPlan.Size = new System.Drawing.Size(1171, 365);
+            this.gbPlan.Size = new System.Drawing.Size(1171, 481);
             this.gbPlan.TabIndex = 135;
             this.gbPlan.Text = "Elegir Plan  - Tarifa: Nuevo";
             this.gbPlan.TextOffset = new System.Drawing.Point(0, -7);
@@ -899,6 +915,50 @@ namespace wfaIntegradoCom.Mantenedores
             this.cboComprobanteP.TabIndex = 261;
             this.cboComprobanteP.SelectedIndexChanged += new System.EventHandler(this.cboComprobanteP_SelectedIndexChanged);
             // 
+            // txtValorVenta
+            // 
+            this.txtValorVenta.Animated = false;
+            this.txtValorVenta.BorderColor = System.Drawing.Color.Silver;
+            this.txtValorVenta.BorderRadius = 5;
+            this.txtValorVenta.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtValorVenta.DefaultText = "";
+            this.txtValorVenta.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtValorVenta.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtValorVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtValorVenta.DisabledState.Parent = this.txtValorVenta;
+            this.txtValorVenta.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtValorVenta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtValorVenta.FocusedState.Parent = this.txtValorVenta;
+            this.txtValorVenta.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorVenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtValorVenta.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtValorVenta.HoveredState.Parent = this.txtValorVenta;
+            this.txtValorVenta.Location = new System.Drawing.Point(939, 362);
+            this.txtValorVenta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtValorVenta.Name = "txtValorVenta";
+            this.txtValorVenta.PasswordChar = '\0';
+            this.txtValorVenta.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtValorVenta.PlaceholderText = "";
+            this.txtValorVenta.ReadOnly = true;
+            this.txtValorVenta.SelectedText = "";
+            this.txtValorVenta.ShadowDecoration.Parent = this.txtValorVenta;
+            this.txtValorVenta.Size = new System.Drawing.Size(139, 26);
+            this.txtValorVenta.TabIndex = 257;
+            this.txtValorVenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label30.Location = new System.Drawing.Point(859, 367);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(77, 17);
+            this.label30.TabIndex = 258;
+            this.label30.Text = "Valor Venta:";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtSubtotal
             // 
             this.txtSubtotal.Animated = false;
@@ -936,11 +996,148 @@ namespace wfaIntegradoCom.Mantenedores
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(863, 280);
+            this.label2.Location = new System.Drawing.Point(829, 280);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.Size = new System.Drawing.Size(107, 17);
             this.label2.TabIndex = 258;
-            this.label2.Text = "SUBTOTAL:";
+            this.label2.Text = "Sub Total Ventas:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtRedondeo
+            // 
+            this.txtRedondeo.Animated = false;
+            this.txtRedondeo.BorderColor = System.Drawing.Color.Silver;
+            this.txtRedondeo.BorderRadius = 5;
+            this.txtRedondeo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRedondeo.DefaultText = "";
+            this.txtRedondeo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtRedondeo.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtRedondeo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRedondeo.DisabledState.Parent = this.txtRedondeo;
+            this.txtRedondeo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRedondeo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtRedondeo.FocusedState.Parent = this.txtRedondeo;
+            this.txtRedondeo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRedondeo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRedondeo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRedondeo.HoveredState.Parent = this.txtRedondeo;
+            this.txtRedondeo.Location = new System.Drawing.Point(939, 420);
+            this.txtRedondeo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtRedondeo.Name = "txtRedondeo";
+            this.txtRedondeo.PasswordChar = '\0';
+            this.txtRedondeo.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtRedondeo.PlaceholderText = "";
+            this.txtRedondeo.SelectedText = "";
+            this.txtRedondeo.ShadowDecoration.Parent = this.txtRedondeo;
+            this.txtRedondeo.Size = new System.Drawing.Size(139, 26);
+            this.txtRedondeo.TabIndex = 255;
+            this.txtRedondeo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtRedondeo.DoubleClick += new System.EventHandler(this.txtRedondeo_DoubleClick);
+            this.txtRedondeo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRedondeo_KeyPress);
+            this.txtRedondeo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtRedondeo_KeyUp);
+            this.txtRedondeo.Leave += new System.EventHandler(this.txtRedondeo_Leave);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label31.Location = new System.Drawing.Point(802, 425);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(134, 17);
+            this.label31.TabIndex = 256;
+            this.label31.Text = "Monto de Redondeo:";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label31.Click += new System.EventHandler(this.label31_Click);
+            // 
+            // txtDescuentos
+            // 
+            this.txtDescuentos.Animated = false;
+            this.txtDescuentos.BorderColor = System.Drawing.Color.Silver;
+            this.txtDescuentos.BorderRadius = 5;
+            this.txtDescuentos.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDescuentos.DefaultText = "";
+            this.txtDescuentos.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDescuentos.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtDescuentos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDescuentos.DisabledState.Parent = this.txtDescuentos;
+            this.txtDescuentos.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDescuentos.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtDescuentos.FocusedState.Parent = this.txtDescuentos;
+            this.txtDescuentos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescuentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDescuentos.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDescuentos.HoveredState.Parent = this.txtDescuentos;
+            this.txtDescuentos.Location = new System.Drawing.Point(939, 333);
+            this.txtDescuentos.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtDescuentos.Name = "txtDescuentos";
+            this.txtDescuentos.PasswordChar = '\0';
+            this.txtDescuentos.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtDescuentos.PlaceholderText = "";
+            this.txtDescuentos.ReadOnly = true;
+            this.txtDescuentos.SelectedText = "";
+            this.txtDescuentos.ShadowDecoration.Parent = this.txtDescuentos;
+            this.txtDescuentos.Size = new System.Drawing.Size(139, 26);
+            this.txtDescuentos.TabIndex = 255;
+            this.txtDescuentos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label20.Location = new System.Drawing.Point(861, 338);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(75, 17);
+            this.label20.TabIndex = 256;
+            this.label20.Text = "Descuentos";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtAnticipos
+            // 
+            this.txtAnticipos.Animated = false;
+            this.txtAnticipos.BorderColor = System.Drawing.Color.Silver;
+            this.txtAnticipos.BorderRadius = 5;
+            this.txtAnticipos.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAnticipos.DefaultText = "";
+            this.txtAnticipos.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtAnticipos.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtAnticipos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAnticipos.DisabledState.Parent = this.txtAnticipos;
+            this.txtAnticipos.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAnticipos.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtAnticipos.FocusedState.Parent = this.txtAnticipos;
+            this.txtAnticipos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnticipos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtAnticipos.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtAnticipos.HoveredState.Parent = this.txtAnticipos;
+            this.txtAnticipos.Location = new System.Drawing.Point(939, 304);
+            this.txtAnticipos.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtAnticipos.Name = "txtAnticipos";
+            this.txtAnticipos.PasswordChar = '\0';
+            this.txtAnticipos.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtAnticipos.PlaceholderText = "";
+            this.txtAnticipos.ReadOnly = true;
+            this.txtAnticipos.SelectedText = "";
+            this.txtAnticipos.ShadowDecoration.Parent = this.txtAnticipos;
+            this.txtAnticipos.Size = new System.Drawing.Size(139, 26);
+            this.txtAnticipos.TabIndex = 255;
+            this.txtAnticipos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(872, 309);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 17);
+            this.label6.TabIndex = 256;
+            this.label6.Text = "Anticipos:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtIGV
             // 
@@ -960,7 +1157,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtIGV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtIGV.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIGV.HoveredState.Parent = this.txtIGV;
-            this.txtIGV.Location = new System.Drawing.Point(939, 304);
+            this.txtIGV.Location = new System.Drawing.Point(939, 391);
             this.txtIGV.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtIGV.Name = "txtIGV";
             this.txtIGV.PasswordChar = '\0';
@@ -979,11 +1176,12 @@ namespace wfaIntegradoCom.Mantenedores
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(900, 309);
+            this.label1.Location = new System.Drawing.Point(905, 396);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 17);
             this.label1.TabIndex = 256;
             this.label1.Text = "IGV:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dgvPagoPlan
             // 
@@ -1128,7 +1326,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTotal.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTotal.HoveredState.Parent = this.txtTotal;
-            this.txtTotal.Location = new System.Drawing.Point(939, 334);
+            this.txtTotal.Location = new System.Drawing.Point(939, 449);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.PasswordChar = '\0';
@@ -1147,11 +1345,12 @@ namespace wfaIntegradoCom.Mantenedores
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(885, 339);
+            this.label12.Location = new System.Drawing.Point(847, 454);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(46, 17);
+            this.label12.Size = new System.Drawing.Size(89, 17);
             this.label12.TabIndex = 253;
-            this.label12.Text = "TOTAL:";
+            this.label12.Text = "Importe Total:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnLimpiarP
             // 
@@ -1416,7 +1615,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.label4.Location = new System.Drawing.Point(19, 544);
+            this.label4.Location = new System.Drawing.Point(19, 648);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(334, 22);
             this.label4.TabIndex = 274;
@@ -1435,7 +1634,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.AbrirReporteVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.AbrirReporteVentas.HoveredState.Parent = this.AbrirReporteVentas;
             this.AbrirReporteVentas.Image = global::wfaIntegradoCom.Properties.Resources.guardar_base;
-            this.AbrirReporteVentas.Location = new System.Drawing.Point(496, 564);
+            this.AbrirReporteVentas.Location = new System.Drawing.Point(496, 659);
             this.AbrirReporteVentas.Name = "AbrirReporteVentas";
             this.AbrirReporteVentas.ShadowDecoration.Parent = this.AbrirReporteVentas;
             this.AbrirReporteVentas.Size = new System.Drawing.Size(243, 45);
@@ -1452,7 +1651,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.swEstadoImprimirDocumento.CheckedState.InnerColor = System.Drawing.Color.White;
             this.swEstadoImprimirDocumento.CheckedState.Parent = this.swEstadoImprimirDocumento;
             this.swEstadoImprimirDocumento.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.swEstadoImprimirDocumento.Location = new System.Drawing.Point(154, 575);
+            this.swEstadoImprimirDocumento.Location = new System.Drawing.Point(154, 672);
             this.swEstadoImprimirDocumento.Name = "swEstadoImprimirDocumento";
             this.swEstadoImprimirDocumento.ShadowDecoration.Parent = this.swEstadoImprimirDocumento;
             this.swEstadoImprimirDocumento.Size = new System.Drawing.Size(65, 25);
@@ -1466,14 +1665,14 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             // siticoneSeparator2
             // 
-            this.siticoneSeparator2.Location = new System.Drawing.Point(64, 562);
+            this.siticoneSeparator2.Location = new System.Drawing.Point(64, 665);
             this.siticoneSeparator2.Name = "siticoneSeparator2";
             this.siticoneSeparator2.Size = new System.Drawing.Size(255, 10);
             this.siticoneSeparator2.TabIndex = 275;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(802, 567);
+            this.button1.Location = new System.Drawing.Point(802, 662);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 233;
@@ -1490,7 +1689,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnImprimir.ForeColor = System.Drawing.Color.White;
             this.btnImprimir.HoveredState.Parent = this.btnImprimir;
-            this.btnImprimir.Location = new System.Drawing.Point(883, 567);
+            this.btnImprimir.Location = new System.Drawing.Point(883, 662);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.ShadowDecoration.Parent = this.btnImprimir;
             this.btnImprimir.Size = new System.Drawing.Size(180, 45);
@@ -2687,26 +2886,26 @@ namespace wfaIntegradoCom.Mantenedores
             this.irAInstalacion,
             this.anularVentaToolStripMenuItem});
             this.cmListaVentas.Name = "cmListaVentas";
-            this.cmListaVentas.Size = new System.Drawing.Size(181, 92);
+            this.cmListaVentas.Size = new System.Drawing.Size(167, 70);
             // 
             // irActualizar
             // 
             this.irActualizar.Name = "irActualizar";
-            this.irActualizar.Size = new System.Drawing.Size(180, 22);
+            this.irActualizar.Size = new System.Drawing.Size(166, 22);
             this.irActualizar.Text = "Actualizar Venta";
             this.irActualizar.Click += new System.EventHandler(this.irActualizar_Click);
             // 
             // irAInstalacion
             // 
             this.irAInstalacion.Name = "irAInstalacion";
-            this.irAInstalacion.Size = new System.Drawing.Size(180, 22);
+            this.irAInstalacion.Size = new System.Drawing.Size(166, 22);
             this.irAInstalacion.Text = "Ir a Renovaciones";
             this.irAInstalacion.Click += new System.EventHandler(this.irAInstalacion_Click);
             // 
             // anularVentaToolStripMenuItem
             // 
             this.anularVentaToolStripMenuItem.Name = "anularVentaToolStripMenuItem";
-            this.anularVentaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.anularVentaToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.anularVentaToolStripMenuItem.Text = "Anular Venta";
             this.anularVentaToolStripMenuItem.Click += new System.EventHandler(this.anularVentaToolStripMenuItem_Click);
             // 
@@ -3719,5 +3918,13 @@ namespace wfaIntegradoCom.Mantenedores
         private Siticone.UI.WinForms.SiticoneButton btnImprimir;
         private Siticone.UI.WinForms.SiticoneComboBox cbPlanVentas;
         private System.Windows.Forms.Label label3;
+        private Siticone.UI.WinForms.SiticoneTextBox txtValorVenta;
+        private System.Windows.Forms.Label label30;
+        private Siticone.UI.WinForms.SiticoneTextBox txtRedondeo;
+        private System.Windows.Forms.Label label31;
+        private Siticone.UI.WinForms.SiticoneTextBox txtDescuentos;
+        private System.Windows.Forms.Label label20;
+        private Siticone.UI.WinForms.SiticoneTextBox txtAnticipos;
+        private System.Windows.Forms.Label label6;
     }
 }

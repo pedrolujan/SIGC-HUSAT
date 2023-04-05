@@ -15,10 +15,10 @@ namespace CapaEntidad
         public String cDescripTipoPago { get; set; }
         public Int32 idEntidadPago { get; set; }
         public Int32 Unidades { get; set; }
-        public Double cantAPagar { get; set; }
+        public Decimal cantAPagar { get; set; }
         public String cTipoVenta { get; set; }
         public String cNumeroOperacion { get; set; }
-        public Double PagaCon { get; set; }
+        public Decimal PagaCon { get; set; }
         public Double vuelto { get; set; }
         public DateTime dFechaRegistro { get; set; }
         public DateTime dFechaPago { get; set; }

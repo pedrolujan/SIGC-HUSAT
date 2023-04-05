@@ -86,7 +86,7 @@ namespace CapaDato
                 foreach (DataRow fila in dtUsuario.Rows)
                 {
                     clsCambioMoneda = new CambioMonedaVenta(
-                        Convert.ToDouble(fila["precioSalida"]), 
+                        Convert.ToDecimal(fila["precioSalida"]), 
                         Convert.ToDouble(fila["precioCambio"])
                         );
                     

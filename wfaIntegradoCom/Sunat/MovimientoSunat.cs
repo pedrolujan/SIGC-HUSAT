@@ -5,6 +5,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using FontAwesome.Sharp;
+using Siticone.UI.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,28 +33,28 @@ namespace wfaIntegradoCom.Sunat
         static Int32 NumFinal = 0;
         private void pbBuscar_Click(object sender, EventArgs e)
         {
-            fnBuscarDocumentos(0,-1);
+            fnBuscarDocumentos(0, cboPagina,"DOVE0002", -1);
         }
-        private void fnBuscarDocumentos(Int32 pagina,Int32 tipocon)
+        private void fnBuscarDocumentos(Int32 pagina,ComboBox cbo,String CodDoc,Int32 tipocon)
         {
             BLDocumentoVenta blDoc=new BLDocumentoVenta();
-            Boolean chkFechas = chkHabilitarFechasBus.Checked;
-            String dtFechaIni = FunGeneral.GetFechaHoraFormato(dtpFechaInicialBus.Value,5);
-            String dtFechaFin = FunGeneral.GetFechaHoraFormato(dtpFechaFinalBus.Value,5);
-            String buscar=txtBuscar.Text.ToString();
+            Boolean chkFechas = CodDoc== "DOVE0002" ? chkHabilitarFechasBus.Checked: CodDoc == "DOVE0001" ? siticoneCheckBox1.Checked : siticoneCheckBox1.Checked;
+            String dtFechaIni = CodDoc == "DOVE0002" ? FunGeneral.GetFechaHoraFormato(dtpFechaInicialBus.Value,5): CodDoc == "DOVE0001" ? FunGeneral.GetFechaHoraFormato(siticoneDateTimePicker2.Value, 5): FunGeneral.GetFechaHoraFormato(siticoneDateTimePicker2.Value, 5);
+            String dtFechaFin = CodDoc == "DOVE0002" ? FunGeneral.GetFechaHoraFormato(dtpFechaFinalBus.Value,5): CodDoc == "DOVE0001" ? FunGeneral.GetFechaHoraFormato(siticoneDateTimePicker1.Value, 5):FunGeneral.GetFechaHoraFormato(siticoneDateTimePicker1.Value, 5);
+            String buscar = CodDoc == "DOVE0002"?txtBuscar.Text.ToString(): CodDoc=="DOVE0001" ? txtBuscarBoleta.Text.ToString(): txtBuscarBoleta.Text.ToString();
             
 
 
-            lstDocumentos=blDoc.blBuscarDocumentoPorEmitir(chkFechas,dtFechaIni,dtFechaFin,buscar,pagina,tipocon);
-            fnLlenarPaginacion();
+            lstDocumentos=blDoc.blBuscarDocumentoPorEmitir(chkFechas,dtFechaIni,dtFechaFin,buscar,  CodDoc, pagina,tipocon);
+            fnLlenarPaginacion(cbo);
         }
 
-        private void fnCargarTabla()
+        private void fnCargarTabla(SiticoneDataGridView dgv )
         {
-            dgvListaVentas.Rows.Clear();
+            dgv.Rows.Clear();
             for (int i = numInicial; i < NumFinal; i++)
             {
-                dgvListaVentas.Rows.Add(
+                dgv.Rows.Add(
                     lstDocumentos[i].idVenta,
                     lstDocumentos[i].numero,
                     lstDocumentos[i].CodigoCorrelativo,
@@ -66,22 +67,22 @@ namespace wfaIntegradoCom.Sunat
 
                     );
             }
-            dgvListaVentas.Visible = true;
+            dgv.Visible = true;
         }
-        private void fnLlenarPaginacion()
+        private void fnLlenarPaginacion(ComboBox cbo)
         {
             Int32 residuo = 0;
-            cboPagina.Items.Clear();
+            cbo.Items.Clear();
             numRegistros = lstDocumentos.Count;
             residuo = numRegistros % numFilas;
             numPaginas = residuo == 0 ? (numRegistros / numFilas) : (numRegistros / numFilas) + 1;
             for (int i = 0; i < numPaginas; i++)
             {
-                cboPagina.Items.Add(i+1);
+                cbo.Items.Add(i+1);
             }
             if (numPaginas>0)
             {
-                cboPagina.SelectedIndex = 0;
+                cbo.SelectedIndex = 0;
 
             }
 
@@ -96,7 +97,7 @@ namespace wfaIntegradoCom.Sunat
             numInicial = (pagActual * numFilas)-numFilas;
             NumFinal = (pagActual * numFilas);
             NumFinal = NumFinal > numRegistros ? numRegistros : NumFinal;
-            fnCargarTabla();
+            fnCargarTabla(dgvListaVentas);
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -191,6 +192,9 @@ namespace wfaIntegradoCom.Sunat
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
 
+                siticoneDateTimePicker1.Value = Variables.gdFechaSis;
+                siticoneDateTimePicker2.Value = siticoneDateTimePicker1.Value.AddDays(-(siticoneDateTimePicker1.Value.Day - 1));
+
                 FunGeneral.fnLlenarTablaCodTipoCon(siticoneComboBox1, "EEST",true);
             }
             catch (Exception)
@@ -204,7 +208,7 @@ namespace wfaIntegradoCom.Sunat
         {
             if (e.KeyChar==(char)Keys.Enter)
             {
-                fnBuscarDocumentos(0, -1);
+                fnBuscarDocumentos(0, cboPagina,"DOVE0002", -1);
             }
         }
 
@@ -270,6 +274,29 @@ namespace wfaIntegradoCom.Sunat
                 objUtil = null;
                 objTipoVenta = null;
                 lsTipoVenta = null;
+            }
+        }
+
+        private void iconPictureBox1_Click(object sender, EventArgs e)
+        {
+            fnBuscarDocumentos(0, comboBox1, "DOVE0001", -1);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Int32 pagActual = Convert.ToInt32(comboBox1.Text);
+            numInicial = (pagActual * numFilas) - numFilas;
+            NumFinal = (pagActual * numFilas);
+            NumFinal = NumFinal > numRegistros ? numRegistros : NumFinal;
+            fnCargarTabla(siticoneDataGridView1);
+        }
+
+        private void txtBuscarBoleta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==(Char)Keys.Enter)
+            {
+                fnBuscarDocumentos(0, comboBox1, "DOVE0001", -1);
+
             }
         }
     }

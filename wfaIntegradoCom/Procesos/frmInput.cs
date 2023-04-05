@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaEntidad;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +23,8 @@ namespace wfaIntegradoCom.Procesos
         String cTitulo = "";
         String TextBtn1 = "";
         String TextBtn2 = "";
-       
+       List<Cargo> lsTipoAnulacion=new List<Cargo>();
+       Cargo clsTipoAnulacion=new Cargo();
         public void Inicio(Int32 tipLlamada,String titulo,String texBtn1,String textBtn2)
         {
             lnTipoLLamada=tipLlamada;
@@ -31,16 +33,53 @@ namespace wfaIntegradoCom.Procesos
             TextBtn2 = textBtn2;
             this.ShowDialog();
         }
+
+        private Boolean fnValidarDatos()
+        {
+            Boolean bValida=false;
+            String codTipoAnulacion=cboTipoAnulacion.SelectedValue.ToString();
+            if (lnTipoLLamada==-1)
+            {
+                if (codTipoAnulacion!="0" && txtDescripcion.Text.Length>3)
+                {
+                    bValida = true;
+                }
+                else
+                {
+                    MessageBox.Show("Por Complete todo los datos","Aviso.",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    bValida = false;
+
+                }
+
+            }
+            else
+            {
+                if (txtDescripcion.Text.Length > 3)
+                {
+                    bValida = true;
+                }
+                else
+                {
+                    MessageBox.Show("Por Complete todo los datos", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    bValida = false;
+                }
+            }
+            return bValida;
+        }
         private void btnContinuar_Click(object sender, EventArgs e)
         {
             String Descripcion=txtDescripcion.Text.ToString();
             if (estDescripcion)
             {
-                if (lnTipoLLamada==-1)
+                if (fnValidarDatos())
                 {
-                    frmAnularVenta frm = new frmAnularVenta();
-                    frm.fnRecibirDescripcion(Descripcion); 
+                    if (lnTipoLLamada == -1)
+                    {
+                        frmAnularVenta frm = new frmAnularVenta();
+                        frm.fnRecibirDescripcion(Descripcion,clsTipoAnulacion );
+                    }
                 }
+               
             }
             this.Dispose(); 
         }
@@ -55,11 +94,13 @@ namespace wfaIntegradoCom.Procesos
         {
             try
             {
+                lblTitulo.Text = cTitulo;
+                btnContinuar.Text = TextBtn1;
+                btnCancelar.Text = TextBtn2;
+
                 if (lnTipoLLamada==-1)
                 {
-                    lblTitulo.Text = cTitulo;
-                    btnContinuar.Text = TextBtn1;
-                    btnCancelar.Text = TextBtn2;
+                    lsTipoAnulacion=FunGeneral.fnLlenarCboSegunTablaTipoConReturnLista(cboTipoAnulacion, "Codigo", "Descripcion", "Tiposnotacredito", "estado", "1", false);
                 }
             }
             catch (Exception)
@@ -72,6 +113,12 @@ namespace wfaIntegradoCom.Procesos
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Dispose(); 
+        }
+
+        private void cboTipoAnulacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String id = cboTipoAnulacion.SelectedValue.ToString();
+            clsTipoAnulacion = lsTipoAnulacion.Find(i=>i.cCodTab== id);
         }
     }
 }

@@ -257,7 +257,7 @@ namespace wfaIntegradoCom.Procesos
                 dgv.Rows.Add(
                             lst[i].Codigoreporte,
                             i + 1,
-                            "ABRIR " + lst[i].Detallereporte + "-"+lst[i].cUsuario +"=> "+FunGeneral.fnFormatearPrecio(lst[i].SimboloMoneda, lst[i].ImporteRow,0)
+                            "ABRIR " + lst[i].Detallereporte + "-"+lst[i].cUsuario +"=> "+FunGeneral.fnFormatearPrecioDC(lst[i].SimboloMoneda, lst[i].ImporteRow,0)
                             );
             }
 

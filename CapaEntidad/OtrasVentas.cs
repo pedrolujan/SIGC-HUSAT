@@ -14,12 +14,12 @@ namespace CapaEntidad
         public Int32 idObjVenta { get; set; }
         public Int32 numeracion { get; set; }
         public String DetalleVentas { get; set; }
-        public Double precioUnico { get; set; }
-        public Double precioUnicoCambio { get; set; }
+        public Decimal precioUnico { get; set; }
+        public Decimal precioUnicoCambio { get; set; }
         public Int32 unidades { get; set; }
-        public Double descuentoCantidad { get; set; }
-        public Double descuentoPrecio { get; set; }
-        public Double precioNeto { get; set; }
+        public Decimal descuentoCantidad { get; set; }
+        public Decimal descuentoPrecio { get; set; }
+        public Decimal precioNeto { get; set; }
         public Int32 idTipoTransaccion { get; set; }
         public Int32 idOperacion { get; set; }
         public Int32 idValida { get; set; }
@@ -31,8 +31,8 @@ namespace CapaEntidad
         public DateTime dFechaOperacion { get; set; }
         public String CodDocumento { get; set; }
         public Double IgvPorcentaje { get; set; }
-        public Double IgvPrecio { get; set; }
-        public Double TotalVenta { get; set; }
+        public Decimal IgvPrecio { get; set; }
+        public Decimal TotalVenta { get; set; }
         public Int32 iddUsuario { get; set; }
         public String Visivilidad { get; set; }
         public String NombreDocumento { get; set; }
@@ -62,9 +62,9 @@ namespace CapaEntidad
     public class TotalPagosVenta
     {
         public TotalPagosVenta() { }
-        public Double Subtotal { get; set; }
-        public Double Igv { get; set; }
-        public Double Total { get; set; }
+        public Decimal Subtotal { get; set; }
+        public Decimal Igv { get; set; }
+        public Decimal Total { get; set; }
         public String cCodDocumentoVenta { get; set; }
         public Int32 idMoneda { get; set; }
         public String SimboloMoneda { get; set; }

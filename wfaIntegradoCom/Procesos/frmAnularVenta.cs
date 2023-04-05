@@ -12,6 +12,8 @@ using CapaUtil;
 using CapaDato;
 using wfaIntegradoCom.Funciones;
 using CapaEntidad;
+using wfaIntegradoCom.Sunat;
+
 namespace wfaIntegradoCom.Procesos
 {
     public partial class frmAnularVenta : Form
@@ -26,12 +28,18 @@ namespace wfaIntegradoCom.Procesos
         Boolean estBusqueda=false;
         static String cDescripcion = "";
         static List<xmlDocumentoVentaGeneral> stXmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
+        static List<Cargo> lstDocumentoVentaEmitir = new List<Cargo>();
+        static Cargo clsDocumentoVentaEmitir = new Cargo();
+        static Cliente clsCliente = new Cliente();
+
+        static Cargo clsTipoAnulacion=new Cargo();
         private void  fnBuscarVentas(Int32 numPagina, Int32 tipoCon  )
         {
             BLDocumentoVenta objdocVenta = new BLDocumentoVenta();
            
             clsUtil objUtil = new clsUtil();
             DataTable dtcodventa = new DataTable();
+            
 
             DataGridView dg = dgVentas;
             Int32 totalresult;
@@ -197,9 +205,10 @@ namespace wfaIntegradoCom.Procesos
         {
             fnActivarFechas(cbFechas.Checked);
         }
-        public void fnRecibirDescripcion( String str)
+        public void fnRecibirDescripcion( String str, Cargo clsAnulacion)
         {
             cDescripcion = str;
+            clsTipoAnulacion= clsAnulacion;
         }
         public void fnEstadoAnulacion(Boolean est)
         {
@@ -221,7 +230,7 @@ namespace wfaIntegradoCom.Procesos
                 xmlDocVenta.xmlDocumentoVenta[0].cDireccion = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDireccion);
                 xmlDocVenta.xmlDocumentoVenta[0].cEstado = "ANULACIONES";
                 xmlDocVenta.xmlDocumentoVenta[0].NombreDocumento = "NOTA DE CREDITO";
-                xmlDocVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = "NC001-000000000";
+                xmlDocVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = "FC01-00000002";
                 xmlDocVenta.xmlDocumentoVenta[0].cDocumento = xmlDocVenta.xmlDocumentoVenta[0].cDocumento.ToString()==""? "00000000": xmlDocVenta.xmlDocumentoVenta[0].cDocumento;
                 xmlDocVenta.xmlDocumentoVenta[0].est0 = false;
                 xmlDocVenta.xmlDocumentoVenta[0].cVehiculos = FunGeneral.FormatearCadenaTitleCase(cDescripcion);
@@ -254,7 +263,7 @@ namespace wfaIntegradoCom.Procesos
             BLDocumentoVenta objdocVenta = new BLDocumentoVenta();
             Boolean estadoOpe = false;
             frmInput frm = new frmInput();
-            frm.Inicio(-1,"Describa la anulacion","Continuar","Cancelar");
+            frm.Inicio(tipoCon, "Describa la anulacion","Continuar","Cancelar");
             if (cDescripcion != "")
             {
                 DialogResult resultDialog = MessageBox.Show("¿En realidad desea anular este Documento?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
@@ -263,6 +272,9 @@ namespace wfaIntegradoCom.Procesos
                     fnBuscarDocumentoVenta(codDocumento, -4, 0, 0);
                     if (EstadoAnulacion == true)
                     {
+                        EmitirFactura env = new EmitirFactura();
+                        env.EmitirNotaCredito(clsCliente, stXmlDocumentoVenta[0].xmlDetalleVentas, clsDocumentoVentaEmitir);
+
                         estadoOpe = objdocVenta.BLDAnularDocumentoVenta(codDocumento, idOperacion, stXmlDocumentoVenta, tipoCon);
 
                         if (estadoOpe == true)
@@ -285,21 +297,37 @@ namespace wfaIntegradoCom.Procesos
         }
         private void eliminarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
             String codDocVenta = Convert.ToString(dgVentas.CurrentRow.Cells[0].Value);
             Int32 idOperacion = Convert.ToInt32(dgVentas.CurrentRow.Cells[1].Value);
-            fnAnularDocumentoVenta(codDocVenta, idOperacion, -1);      
+            fnAnularDocumentoVenta(codDocVenta, idOperacion, -1);  
+        }
+
+        private void fnLlenadClaseDocumento()
+        {
+            Int32 j = 0;
+            foreach (Cargo item in lstDocumentoVentaEmitir)
+            {
+                lstDocumentoVentaEmitir[j].dFechaPago = dtpFechaFinalBus.Value;
+                lstDocumentoVentaEmitir[j].dFechaVenta = dtpFechaFinalBus.Value;
+                j++;
+            }
+            if (cboNotaCredit.Items.Count > 0)
+            {
+                clsDocumentoVentaEmitir = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboNotaCredit.SelectedValue.ToString());
+            }
 
 
         }
-
         private void frmAnularVenta_Load(object sender, EventArgs e)
         {
             DateTime fechaactual = DateTime.Now;
             dtpFechaFinalBus.Value = fechaactual;
             dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-dtpFechaFinalBus.Value.AddDays(-1).Day);
             cbFechas.Checked=true;
+            //BLCliente objAcc = new BLCliente();
+            //clsCliente = objAcc.blListarCliente(532, 1);
+            lstDocumentoVentaEmitir = Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboNotaCredit, "DOVE0004", 1, 1);
+
             fnActivarFechas(true);
         }
 
@@ -357,6 +385,11 @@ namespace wfaIntegradoCom.Procesos
                 cbR0.Checked = false;
                 cbF0.Checked = false;
             }
+        }
+
+        private void cboNotaCredit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fnLlenadClaseDocumento();
         }
     }
 }

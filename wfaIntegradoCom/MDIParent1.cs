@@ -2714,13 +2714,13 @@ namespace wfaIntegradoCom
 
                 foreach (ReporteBloque item in lst)
                 {
-                    dgv.Rows.Add(item.Codigoreporte, y + 1, item.Detallereporte, item.Cantidad, FunGeneral.fnFormatearPrecio("S/", item.ImporteRow, 1),item.codAuxiliar1);
+                    dgv.Rows.Add(item.Codigoreporte, y + 1, item.Detallereporte, item.Cantidad, FunGeneral.fnFormatearPrecioDC("S/", item.ImporteRow, 1),item.codAuxiliar1);
                     dgv.Rows[y].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     dgv.Rows[y].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     y++;
                 }
                 dgv.Rows.Add("", "", "", "", "");
-                dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lst.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecioDC("S/.", lst.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
                 dgv.Rows[y + 1].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dgv.Rows[y + 1].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
@@ -2747,14 +2747,14 @@ namespace wfaIntegradoCom
                 dgv.Columns.Add("Importe", "Importe");
                 foreach (ReporteBloque item in lst)
                 {
-                    dgv.Rows.Add(item.Codigoreporte, y + 1,item.codAuxiliar, item.Detallereporte, item.Cantidad, FunGeneral.fnFormatearPrecio("S/", item.ImporteRow, 1), item.codAuxiliar1);
+                    dgv.Rows.Add(item.Codigoreporte, y + 1,item.codAuxiliar, item.Detallereporte, item.Cantidad, FunGeneral.fnFormatearPrecioDC("S/", item.ImporteRow, 1), item.codAuxiliar1);
                     dgv.Rows[y].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     dgv.Rows[y].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     dgv.Rows[y].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     y++;
                 }
                 dgv.Rows.Add("", "","", "", "", "");
-                dgv.Rows.Add("TOTAL", "", "IMPORTE", "TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lst.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                dgv.Rows.Add("TOTAL", "", "IMPORTE", "TOTAL", "", FunGeneral.fnFormatearPrecioDC("S/.", lst.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
                 dgv.Rows[y + 1].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dgv.Rows[y + 1].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -2838,14 +2838,14 @@ namespace wfaIntegradoCom
                     lstRepDetalleIngresosDAshboard = fnBuscarDetalleParaCuadreDashboard();
 
                     Variables.lstCuardreCaja=FunGeneral.fnVerificarAperturaAnterior(Convert.ToDateTime(dtFechaInicioG.Value), Convert.ToInt32(cboUsuario.SelectedValue));
-                    Double MontoIngresos = lstRepDetalleIngresosDAshboard.Sum(i => i.ImporteRow);
-                    Double MontoEgresos = lsReporteBloqueEgresosMontoEnCaja.Sum(i => i.ImporteRow);
+                    Decimal MontoIngresos = lstRepDetalleIngresosDAshboard.Sum(i => i.ImporteRow);
+                    Decimal MontoEgresos = lsReporteBloqueEgresosMontoEnCaja.Sum(i => i.ImporteRow);
                     CuadreCaja lstApertura = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1) is null ? new CuadreCaja() : Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
-                    btnMontoEnCaja.Text = "Importe en Caja: " + FunGeneral.fnFormatearPrecio("S/", (MontoIngresos - MontoEgresos) + lstApertura.importeSaldo, 0);
+                    btnMontoEnCaja.Text = "Importe en Caja: " + FunGeneral.fnFormatearPrecioDC("S/", (MontoIngresos - MontoEgresos) + lstApertura.importeSaldo, 0);
                 }
                 
 
-                //lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0);
+                //lblMontoTotalRepBloque.Text = FunGeneral.fnFormatearPrecioDC("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0);
 
             }
             else if (tipoCon == -2)
@@ -2867,7 +2867,7 @@ namespace wfaIntegradoCom
                         clsRep.Codigoreporte,
                         clsRep.Detallereporte,
                         clsRep.Cantidad,
-                        FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                        FunGeneral.fnFormatearPrecioDC(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
                         );
                     y += 1;
                     dgv.Rows[i].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -2878,7 +2878,7 @@ namespace wfaIntegradoCom
 
                
                 dgv.Rows.Add("", "", "", "");
-                dgv.Rows.Add("TOTAL", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                dgv.Rows.Add("TOTAL", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecioDC("S/.", lsReporteBloque.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
                 dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dgv.Rows[y + 1].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dgv.Columns[0].Visible = false;
@@ -2926,14 +2926,14 @@ namespace wfaIntegradoCom
                         y + 1,
                         clsRep.Detallereporte,
                         clsRep.Cantidad,
-                        FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                        FunGeneral.fnFormatearPrecioDC(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
                         );
                     y += 1;
                     dgv.Rows[i].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     dgv.Rows[i].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 }
                 dgv.Rows.Add("", "", "", "", "");
-                dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecio("S/.", lstRep.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+                dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL", "", FunGeneral.fnFormatearPrecioDC("S/.", lstRep.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
                 dgv.Rows[y + 1].Cells[4].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dgv.Rows[y + 1].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
@@ -3195,7 +3195,7 @@ namespace wfaIntegradoCom
                 lblF.AutoSize = false;
                 lblF.Size = pnFooter.Size;
                 lblF.Location = new Point(0, 0);
-                lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecio("S/.", lstBusq[i].ImporteRow, 0);
+                lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecioDC("S/.", lstBusq[i].ImporteRow, 0);
                 //lblF.BackColor = "Dark"+ color;
                 lblF.TextAlignment = ContentAlignment.MiddleCenter;
                 lblF.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
@@ -3384,7 +3384,7 @@ namespace wfaIntegradoCom
                 lblF.AutoSize = false;
                 lblF.Size = pnFooter.Size;
                 lblF.Location = new Point(0, 0);
-                lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecio("S/.", lstBusq[i].ImporteRow, 0);
+                lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecioDC("S/.", lstBusq[i].ImporteRow, 0);
                 //lblF.BackColor = "Dark"+ color;
                 lblF.TextAlignment = ContentAlignment.MiddleCenter;
                 lblF.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
@@ -3488,7 +3488,7 @@ namespace wfaIntegradoCom
                     clsRep.Codigoreporte,
                    clsRep.Detallereporte,
                     clsRep.Cantidad,
-                    FunGeneral.fnFormatearPrecio(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
+                    FunGeneral.fnFormatearPrecioDC(clsRep.SimboloMoneda, clsRep.ImporteRow, 0)
                     );
                 y += 1;
                 dgv.Rows[i].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -3498,7 +3498,7 @@ namespace wfaIntegradoCom
             dgv.Visible = true;
 
             dgv.Rows.Add("", "", "", "");
-            dgv.Rows.Add("TOTAL", "IMPORTE TOTAL DE " + clsReporte.Detallereporte, "", FunGeneral.fnFormatearPrecio("S/.", lstRep.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
+            dgv.Rows.Add("TOTAL", "IMPORTE TOTAL DE " + clsReporte.Detallereporte, "", FunGeneral.fnFormatearPrecioDC("S/.", lstRep.Sum(i => i.idMoneda == 2 ? (i.ImporteTipoCambio * i.ImporteRow) : i.ImporteRow), 0));
             dgv.Rows[y + 1].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgv.Rows[y + 1].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgv.Columns[0].Visible = false;
@@ -3918,7 +3918,7 @@ namespace wfaIntegradoCom
                 }
                 else
                 {
-                    lbl.Text = "YA CERRASTE CAJA CON EL MONTO DE: " + FunGeneral.fnFormatearPrecio("S/.", Variables.lstCuardreCaja.Find(i => i.idOperacion == 2).importeSaldo, 0);
+                    lbl.Text = "YA CERRASTE CAJA CON EL MONTO DE: " + FunGeneral.fnFormatearPrecioDC("S/.", Variables.lstCuardreCaja.Find(i => i.idOperacion == 2).importeSaldo, 0);
                 }
                 pnl.Controls.Add(lbl);
             }
@@ -4090,13 +4090,13 @@ namespace wfaIntegradoCom
 
                     fnValidarListasVecias();
                     frmMovimientoCaja frmMC = new frmMovimientoCaja();
-                    lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
+                    lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
                     if (lsReporteBloqueDetalleEgresos.Count>0)
                     {
-                        lsReporteBloqueDetalleEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueDetalleEgresos[0].SimboloMoneda, lsReporteBloqueDetalleEgresos.Sum(i => i.ImporteRow), 0);
+                        lsReporteBloqueDetalleEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloqueDetalleEgresos[0].SimboloMoneda, lsReporteBloqueDetalleEgresos.Sum(i => i.ImporteRow), 0);
                     }
 
-                    lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
+                    lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
                     frmMC.Inicio(lsReporteBloque, lsReporteBloqueDetalleEgresos, lstRepDetalleIngresos, lstCajaChica, 0,1);
                     fnActivarDashBoard(estadoActivarDashBoard);
@@ -4119,11 +4119,11 @@ namespace wfaIntegradoCom
                             lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
                             fnValidarListasVecias();
                             frmMovimientoCaja frmMC = new frmMovimientoCaja();
-                            lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
+                            lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
 
-                            lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
+                            lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
 
-                            lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
+                            lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
                             frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0, 1);
                             fnActivarDashBoard(estadoActivarDashBoard);
@@ -4138,11 +4138,11 @@ namespace wfaIntegradoCom
                         lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
                         fnValidarListasVecias();
                         frmMovimientoCaja frmMC = new frmMovimientoCaja();
-                        lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
+                        lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
 
-                        lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
+                        lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
 
-                        lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
+                        lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
                         frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, -1, 0);
                         fnActivarDashBoard(estadoActivarDashBoard);
@@ -4156,11 +4156,11 @@ namespace wfaIntegradoCom
                         lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
                         fnValidarListasVecias();
                         frmMovimientoCaja frmMC = new frmMovimientoCaja();
-                        lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
+                        lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
 
-                        lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
+                        lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
 
-                        lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecio(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
+                        lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
                         frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0, 1);
                         fnActivarDashBoard(estadoActivarDashBoard);

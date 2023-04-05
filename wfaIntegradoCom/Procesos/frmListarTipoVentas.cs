@@ -284,7 +284,7 @@ namespace wfaIntegradoCom.Procesos
                         clsOtrasVentas.idObjVenta = Convert.ToInt32(dr["id"]);
                         clsOtrasVentas.DetalleVentas= Convert.ToString(dr["nombre"]);
                         clsOtrasVentas.simbMoneda = Convert.ToString(dr["cSimbolo"]);
-                        clsOtrasVentas.precioUnico= Convert.ToDouble(dr["cPrecio"].ToString());
+                        clsOtrasVentas.precioUnico= Convert.ToDecimal(dr["cPrecio"].ToString());
                         clsOtrasVentas.idMoneda= Convert.ToInt32(dr["idMoneda"]);
                         clsOtrasVentas.idTipoTransaccion= Convert.ToInt32(dr["idTipoTransaccion"]);
                         clsOtrasVentas.idValida = Convert.ToInt32(dr["idValida"]);

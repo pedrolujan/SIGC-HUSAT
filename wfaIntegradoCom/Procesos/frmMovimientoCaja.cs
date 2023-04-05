@@ -148,13 +148,13 @@ namespace wfaIntegradoCom.Procesos
 
         private void fnValidarCuadreCaja()
         {
-            Double importe = 0;
+            Decimal importe = 0;
 
             if (clcCaja is CuadreCaja)
             {
                 importe = clcCaja.importeSaldo;
-                lblMontoDeAperturaCaja.Text = "IMPORTE DE: " + FunGeneral.FormatearCadenaTitleCase(clcCaja.Detalle) + " " + FunGeneral.fnFormatearPrecio(clcCaja.SimbloMon, clcCaja.importeSaldo, 1);
-                siticoneTextBox1.Text = FunGeneral.fnFormatearPrecio(clcCaja.SimbloMon, clcCaja.importeSaldo, 1);
+                lblMontoDeAperturaCaja.Text = "IMPORTE DE: " + FunGeneral.FormatearCadenaTitleCase(clcCaja.Detalle) + " " + FunGeneral.fnFormatearPrecioDC(clcCaja.SimbloMon, clcCaja.importeSaldo, 1);
+                siticoneTextBox1.Text = FunGeneral.fnFormatearPrecioDC(clcCaja.SimbloMon, clcCaja.importeSaldo, 1);
             }
             else
             {
@@ -173,8 +173,8 @@ namespace wfaIntegradoCom.Procesos
             clsCuadreCaja.SimbloMon = "S/.";
             clsCuadreCaja.idOperacion = 2;
 
-            clsCuadreCaja.MonImporteSaldo = FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0);
-            txtTotalCerrarCaja.Text = FunGeneral.fnFormatearPrecio("S/.", clsCuadreCaja.importeSaldo, 0);
+            clsCuadreCaja.MonImporteSaldo = FunGeneral.fnFormatearPrecioDC("S/.", clsCuadreCaja.importeSaldo, 0);
+            txtTotalCerrarCaja.Text = FunGeneral.fnFormatearPrecioDC("S/.", clsCuadreCaja.importeSaldo, 0);
         }
         private void frmMovimientoCaja_Load(object sender, EventArgs e)
         {
@@ -255,7 +255,7 @@ namespace wfaIntegradoCom.Procesos
         private void fnLlenarTablas(List<ReporteBloque> lst,DataGridView dgv,SiticoneTextBox txt)
         {
             Int32 TotCantidad = 0;
-            Double TotImporte = 0;
+            Decimal TotImporte = 0;
             dgv.Rows.Clear();
             Int32 y = 0;
             foreach (ReporteBloque rp in lst)
@@ -263,11 +263,11 @@ namespace wfaIntegradoCom.Procesos
 
                 TotImporte += rp.ImporteRow;
                 TotCantidad += rp.Cantidad;
-                dgv.Rows.Add(rp.Codigoreporte, rp.numero, FunGeneral.FormatearCadenaTitleCase(rp.codAuxiliar is null?"": rp.codAuxiliar),FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecio("S/.", rp.ImporteRow, 0));
+                dgv.Rows.Add(rp.Codigoreporte, rp.numero, FunGeneral.FormatearCadenaTitleCase(rp.codAuxiliar is null?"": rp.codAuxiliar),FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecioDC("S/.", rp.ImporteRow, 0));
                 y++;
             }
             
-                txt.Text = FunGeneral.fnFormatearPrecio("S/.", TotImporte, 0);
+                txt.Text = FunGeneral.fnFormatearPrecioDC("S/.", TotImporte, 0);
            
             //dgv.Rows.Add("", "", "", "", "");
             //dgv.Rows.Add("TOTAL", "", "IMPORTE TOTAL INGRESOS", TotCantidad, FunGeneral.fnFormatearPrecio("S/.", TotImporte, 0));
@@ -531,7 +531,7 @@ namespace wfaIntegradoCom.Procesos
                     rp.numero, 
                     rp.codAuxiliar,
                     FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), 
-                    FunGeneral.fnFormatearPrecio("S/.", rp.ImporteRow, 0),
+                    FunGeneral.fnFormatearPrecioDC("S/.", rp.ImporteRow, 0),
                     rp.cUsuario
                     );
             }

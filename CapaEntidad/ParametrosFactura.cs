@@ -24,6 +24,7 @@ namespace CapaEntidad
         public DateTime Fecha_de_pago { get; set; }   
         public Decimal contadorProductos { get; set; }   
         public Decimal TotSubtotal { get; set; }   
+        public Decimal TotRedondeo { get; set; }   
         public Decimal TotalDescuento { get; set; }   
         public Decimal Monto_total { get; set; }   
         public Decimal TotalIgv { get; set; }   

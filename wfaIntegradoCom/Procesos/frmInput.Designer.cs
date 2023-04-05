@@ -38,6 +38,8 @@
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.lblDescipcion = new System.Windows.Forms.Label();
+            this.cboTipoAnulacion = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.siticonePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDescricion)).BeginInit();
             this.PanelTop.SuspendLayout();
@@ -58,7 +60,7 @@
             this.txtDescripcion.FocusedState.Parent = this.txtDescripcion;
             this.txtDescripcion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescripcion.HoveredState.Parent = this.txtDescripcion;
-            this.txtDescripcion.Location = new System.Drawing.Point(30, 69);
+            this.txtDescripcion.Location = new System.Drawing.Point(30, 112);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PasswordChar = '\0';
@@ -74,6 +76,8 @@
             this.siticonePanel1.BorderColor = System.Drawing.Color.Gray;
             this.siticonePanel1.BorderRadius = 3;
             this.siticonePanel1.BorderThickness = 2;
+            this.siticonePanel1.Controls.Add(this.cboTipoAnulacion);
+            this.siticonePanel1.Controls.Add(this.label23);
             this.siticonePanel1.Controls.Add(this.pbDescricion);
             this.siticonePanel1.Controls.Add(this.btnCancelar);
             this.siticonePanel1.Controls.Add(this.btnContinuar);
@@ -85,13 +89,13 @@
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(451, 225);
+            this.siticonePanel1.Size = new System.Drawing.Size(451, 264);
             this.siticonePanel1.TabIndex = 1;
             // 
             // pbDescricion
             // 
             this.pbDescricion.BackColor = System.Drawing.Color.White;
-            this.pbDescricion.Location = new System.Drawing.Point(397, 69);
+            this.pbDescricion.Location = new System.Drawing.Point(397, 112);
             this.pbDescricion.Name = "pbDescricion";
             this.pbDescricion.Size = new System.Drawing.Size(20, 20);
             this.pbDescricion.TabIndex = 267;
@@ -111,7 +115,7 @@
             this.btnCancelar.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCancelar.HoveredState.Parent = this.btnCancelar;
             this.btnCancelar.Image = global::wfaIntegradoCom.Properties.Resources.atras_base;
-            this.btnCancelar.Location = new System.Drawing.Point(243, 181);
+            this.btnCancelar.Location = new System.Drawing.Point(243, 217);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.ShadowDecoration.Parent = this.btnCancelar;
             this.btnCancelar.Size = new System.Drawing.Size(131, 33);
@@ -133,7 +137,7 @@
             this.btnContinuar.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnContinuar.HoveredState.Parent = this.btnContinuar;
             this.btnContinuar.Image = global::wfaIntegradoCom.Properties.Resources.equivale;
-            this.btnContinuar.Location = new System.Drawing.Point(56, 181);
+            this.btnContinuar.Location = new System.Drawing.Point(56, 217);
             this.btnContinuar.Name = "btnContinuar";
             this.btnContinuar.ShadowDecoration.Parent = this.btnContinuar;
             this.btnContinuar.Size = new System.Drawing.Size(131, 33);
@@ -210,11 +214,43 @@
             this.lblDescipcion.Size = new System.Drawing.Size(0, 13);
             this.lblDescipcion.TabIndex = 266;
             // 
+            // cboTipoAnulacion
+            // 
+            this.cboTipoAnulacion.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoAnulacion.BorderColor = System.Drawing.Color.Silver;
+            this.cboTipoAnulacion.BorderRadius = 5;
+            this.cboTipoAnulacion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoAnulacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoAnulacion.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboTipoAnulacion.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoAnulacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboTipoAnulacion.HoveredState.Parent = this.cboTipoAnulacion;
+            this.cboTipoAnulacion.ItemHeight = 30;
+            this.cboTipoAnulacion.ItemsAppearance.Parent = this.cboTipoAnulacion;
+            this.cboTipoAnulacion.Location = new System.Drawing.Point(126, 66);
+            this.cboTipoAnulacion.Name = "cboTipoAnulacion";
+            this.cboTipoAnulacion.ShadowDecoration.Parent = this.cboTipoAnulacion;
+            this.cboTipoAnulacion.Size = new System.Drawing.Size(291, 36);
+            this.cboTipoAnulacion.TabIndex = 268;
+            this.cboTipoAnulacion.SelectedIndexChanged += new System.EventHandler(this.cboTipoAnulacion_SelectedIndexChanged);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label23.Location = new System.Drawing.Point(27, 76);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(93, 17);
+            this.label23.TabIndex = 269;
+            this.label23.Text = "Tipo anulacion";
+            // 
             // frmInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 225);
+            this.ClientSize = new System.Drawing.Size(451, 264);
             this.Controls.Add(this.siticonePanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInput";
@@ -241,5 +277,7 @@
         private Siticone.UI.WinForms.SiticoneButton btnContinuar;
         private System.Windows.Forms.Label lblDescipcion;
         private System.Windows.Forms.PictureBox pbDescricion;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoAnulacion;
+        private System.Windows.Forms.Label label23;
     }
 }

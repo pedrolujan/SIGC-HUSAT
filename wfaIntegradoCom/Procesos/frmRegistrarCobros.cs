@@ -310,8 +310,8 @@ namespace wfaIntegradoCom
                 objVenta.iTipoOpe = liTipoOpe;
                 objVenta.cCliente = cboCliente.Text;
                 objVenta.cUsuario = Variables.gsCodUser;
-                objVenta.nSubtotal = Convert.ToDouble(Math.Round(Convert.ToDecimal(label6.Text) - pnMontoPagar, 2));
-                objVenta.nMontoTotal = Convert.ToDouble(Math.Round(Convert.ToDecimal(label6.Text), 2));
+                objVenta.nSubtotal = Convert.ToDecimal(Math.Round(Convert.ToDecimal(label6.Text) - pnMontoPagar, 2));
+                objVenta.nMontoTotal = Convert.ToDecimal(Math.Round(Convert.ToDecimal(label6.Text), 2));
 
                 lcValidar = blobjVenta.BLPagarCobro(objVenta, lnSaldo).Trim();
                 if (lcValidar == "OK")
