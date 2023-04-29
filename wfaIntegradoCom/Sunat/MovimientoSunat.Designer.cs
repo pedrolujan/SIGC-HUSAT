@@ -39,6 +39,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.dotNetBarTabControl1 = new wfaIntegradoCom.Mantenedores.DotNetBarTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -52,7 +57,7 @@
             this.btnTotalReg = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.btnTotalPag = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label41 = new System.Windows.Forms.Label();
-            this.siticoneComboBox1 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboEstadofactura = new Siticone.UI.WinForms.SiticoneComboBox();
             this.chkHabilitarFechasBus = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.gbBuscarListaVentas = new System.Windows.Forms.GroupBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -62,6 +67,34 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pbBuscar = new FontAwesome.Sharp.IconPictureBox();
             this.dgvListaVentas = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnNumFilasBoletas = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.siticoneVSeparator2 = new Siticone.UI.WinForms.SiticoneVSeparator();
+            this.cboPaginaBoletas = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnTotalRegBoleta = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnTotalPagBoletas = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.cboEstadosBoleta = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.siticoneCheckBox1 = new Siticone.UI.WinForms.SiticoneCheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtFechaFinBoletas = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtFechaIniBoletas = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pbBuscarBoleta = new FontAwesome.Sharp.IconPictureBox();
+            this.dgvBoletas = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.siticoneLabel2 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.txtBuscarBoleta = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cmAcciones = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.idDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,29 +104,6 @@
             this.Vehiculos_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imgImprimir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.siticoneCircleButton1 = new Siticone.UI.WinForms.SiticoneCircleButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.siticoneVSeparator2 = new Siticone.UI.WinForms.SiticoneVSeparator();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.siticoneCircleButton2 = new Siticone.UI.WinForms.SiticoneCircleButton();
-            this.siticoneCircleButton3 = new Siticone.UI.WinForms.SiticoneCircleButton();
-            this.label6 = new System.Windows.Forms.Label();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.siticoneComboBox2 = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.siticoneCheckBox1 = new Siticone.UI.WinForms.SiticoneCheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.siticoneDateTimePicker1 = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.siticoneDateTimePicker2 = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pbBuscarBoleta = new FontAwesome.Sharp.IconPictureBox();
-            this.siticoneDataGridView1 = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,12 +112,38 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imgImprimirBoletas = new System.Windows.Forms.DataGridViewImageColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnNumFilasNota = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.siticoneVSeparator3 = new Siticone.UI.WinForms.SiticoneVSeparator();
+            this.cboPaginaNota = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnTotalRegNota = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnTotalPagNota = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnExportarNota = new FontAwesome.Sharp.IconButton();
+            this.cboEstadoNota = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.chkHabilitaFechaNota = new Siticone.UI.WinForms.SiticoneCheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dtFechaFinNota = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dtFechaIniNota = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pbBuscarNotaCredito = new FontAwesome.Sharp.IconPictureBox();
+            this.dgvNota = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.siticoneLabel2 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.txtBuscarBoleta = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.cmAcciones = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.siticoneLabel3 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.txtBuscarNotaCredito = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticonePanel1.SuspendLayout();
             this.dotNetBarTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -119,8 +155,13 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscarBoleta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.siticoneDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBoletas)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBuscarNotaCredito)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNota)).BeginInit();
             this.SuspendLayout();
             // 
             // siticonePanel1
@@ -152,12 +193,13 @@
             this.dotNetBarTabControl1.Size = new System.Drawing.Size(1008, 489);
             this.dotNetBarTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.dotNetBarTabControl1.TabIndex = 0;
+            this.dotNetBarTabControl1.SelectedIndexChanged += new System.EventHandler(this.dotNetBarTabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.iconButton1);
             this.tabPage1.Controls.Add(this.gbPaginacion);
-            this.tabPage1.Controls.Add(this.siticoneComboBox1);
+            this.tabPage1.Controls.Add(this.cboEstadofactura);
             this.tabPage1.Controls.Add(this.chkHabilitarFechasBus);
             this.tabPage1.Controls.Add(this.gbBuscarListaVentas);
             this.tabPage1.Controls.Add(this.label10);
@@ -313,24 +355,24 @@
             this.label41.TabIndex = 170;
             this.label41.Text = "de";
             // 
-            // siticoneComboBox1
+            // cboEstadofactura
             // 
-            this.siticoneComboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cboEstadofactura.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.siticoneComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.siticoneComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.siticoneComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.siticoneComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.siticoneComboBox1.HoveredState.Parent = this.siticoneComboBox1;
-            this.siticoneComboBox1.ItemHeight = 30;
-            this.siticoneComboBox1.ItemsAppearance.Parent = this.siticoneComboBox1;
-            this.siticoneComboBox1.Location = new System.Drawing.Point(450, 45);
-            this.siticoneComboBox1.Name = "siticoneComboBox1";
-            this.siticoneComboBox1.ShadowDecoration.Parent = this.siticoneComboBox1;
-            this.siticoneComboBox1.Size = new System.Drawing.Size(96, 36);
-            this.siticoneComboBox1.TabIndex = 272;
+            this.cboEstadofactura.BackColor = System.Drawing.Color.Transparent;
+            this.cboEstadofactura.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboEstadofactura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstadofactura.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboEstadofactura.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboEstadofactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboEstadofactura.HoveredState.Parent = this.cboEstadofactura;
+            this.cboEstadofactura.ItemHeight = 30;
+            this.cboEstadofactura.ItemsAppearance.Parent = this.cboEstadofactura;
+            this.cboEstadofactura.Location = new System.Drawing.Point(450, 45);
+            this.cboEstadofactura.Name = "cboEstadofactura";
+            this.cboEstadofactura.ShadowDecoration.Parent = this.cboEstadofactura;
+            this.cboEstadofactura.Size = new System.Drawing.Size(96, 36);
+            this.cboEstadofactura.TabIndex = 272;
             // 
             // chkHabilitarFechasBus
             // 
@@ -554,6 +596,506 @@
             this.dgvListaVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellClick);
             this.dgvListaVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaVentas_CellFormatting);
             // 
+            // siticoneLabel1
+            // 
+            this.siticoneLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.siticoneLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneLabel1.Location = new System.Drawing.Point(715, 25);
+            this.siticoneLabel1.Name = "siticoneLabel1";
+            this.siticoneLabel1.Size = new System.Drawing.Size(107, 18);
+            this.siticoneLabel1.TabIndex = 1;
+            this.siticoneLabel1.Text = "Buscar Factura";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscar.Animated = false;
+            this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscar.DefaultText = "";
+            this.txtBuscar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscar.DisabledState.Parent = this.txtBuscar;
+            this.txtBuscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscar.FocusedState.Parent = this.txtBuscar;
+            this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscar.HoveredState.Parent = this.txtBuscar;
+            this.txtBuscar.Location = new System.Drawing.Point(715, 45);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.PasswordChar = '\0';
+            this.txtBuscar.PlaceholderText = "";
+            this.txtBuscar.SelectedText = "";
+            this.txtBuscar.ShadowDecoration.Parent = this.txtBuscar;
+            this.txtBuscar.Size = new System.Drawing.Size(141, 36);
+            this.txtBuscar.TabIndex = 273;
+            this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox2);
+            this.tabPage3.Controls.Add(this.iconButton2);
+            this.tabPage3.Controls.Add(this.cboEstadosBoleta);
+            this.tabPage3.Controls.Add(this.siticoneCheckBox1);
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.pbBuscarBoleta);
+            this.tabPage3.Controls.Add(this.dgvBoletas);
+            this.tabPage3.Controls.Add(this.siticoneLabel2);
+            this.tabPage3.Controls.Add(this.txtBuscarBoleta);
+            this.tabPage3.Location = new System.Drawing.Point(140, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(864, 481);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "BOLETAS";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnNumFilasBoletas);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.siticoneVSeparator2);
+            this.groupBox2.Controls.Add(this.cboPaginaBoletas);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.btnTotalRegBoleta);
+            this.groupBox2.Controls.Add(this.btnTotalPagBoletas);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(518, 436);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(340, 40);
+            this.groupBox2.TabIndex = 285;
+            this.groupBox2.TabStop = false;
+            // 
+            // btnNumFilasBoletas
+            // 
+            this.btnNumFilasBoletas.BackColor = System.Drawing.Color.Transparent;
+            this.btnNumFilasBoletas.CheckedState.Parent = this.btnNumFilasBoletas;
+            this.btnNumFilasBoletas.CustomImages.Parent = this.btnNumFilasBoletas;
+            this.btnNumFilasBoletas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumFilasBoletas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNumFilasBoletas.ForeColor = System.Drawing.Color.White;
+            this.btnNumFilasBoletas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumFilasBoletas.HoveredState.Parent = this.btnNumFilasBoletas;
+            this.btnNumFilasBoletas.Location = new System.Drawing.Point(209, 12);
+            this.btnNumFilasBoletas.Name = "btnNumFilasBoletas";
+            this.btnNumFilasBoletas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnNumFilasBoletas.ShadowDecoration.Parent = this.btnNumFilasBoletas;
+            this.btnNumFilasBoletas.Size = new System.Drawing.Size(25, 25);
+            this.btnNumFilasBoletas.TabIndex = 171;
+            this.btnNumFilasBoletas.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(240, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 15);
+            this.label4.TabIndex = 173;
+            this.label4.Text = "registros de";
+            // 
+            // siticoneVSeparator2
+            // 
+            this.siticoneVSeparator2.FillColor = System.Drawing.Color.Gray;
+            this.siticoneVSeparator2.Location = new System.Drawing.Point(186, 8);
+            this.siticoneVSeparator2.Name = "siticoneVSeparator2";
+            this.siticoneVSeparator2.Size = new System.Drawing.Size(13, 27);
+            this.siticoneVSeparator2.TabIndex = 174;
+            // 
+            // cboPaginaBoletas
+            // 
+            this.cboPaginaBoletas.DropDownHeight = 90;
+            this.cboPaginaBoletas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPaginaBoletas.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboPaginaBoletas.FormattingEnabled = true;
+            this.cboPaginaBoletas.IntegralHeight = false;
+            this.cboPaginaBoletas.Location = new System.Drawing.Point(52, 13);
+            this.cboPaginaBoletas.Name = "cboPaginaBoletas";
+            this.cboPaginaBoletas.Size = new System.Drawing.Size(63, 23);
+            this.cboPaginaBoletas.TabIndex = 167;
+            this.cboPaginaBoletas.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 15);
+            this.label5.TabIndex = 168;
+            this.label5.Text = "Página";
+            // 
+            // btnTotalRegBoleta
+            // 
+            this.btnTotalRegBoleta.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalRegBoleta.CheckedState.Parent = this.btnTotalRegBoleta;
+            this.btnTotalRegBoleta.CustomImages.Parent = this.btnTotalRegBoleta;
+            this.btnTotalRegBoleta.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalRegBoleta.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalRegBoleta.ForeColor = System.Drawing.Color.White;
+            this.btnTotalRegBoleta.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalRegBoleta.HoveredState.Parent = this.btnTotalRegBoleta;
+            this.btnTotalRegBoleta.Location = new System.Drawing.Point(307, 12);
+            this.btnTotalRegBoleta.Name = "btnTotalRegBoleta";
+            this.btnTotalRegBoleta.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalRegBoleta.ShadowDecoration.Parent = this.btnTotalRegBoleta;
+            this.btnTotalRegBoleta.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalRegBoleta.TabIndex = 172;
+            this.btnTotalRegBoleta.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // btnTotalPagBoletas
+            // 
+            this.btnTotalPagBoletas.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalPagBoletas.CheckedState.Parent = this.btnTotalPagBoletas;
+            this.btnTotalPagBoletas.CustomImages.Parent = this.btnTotalPagBoletas;
+            this.btnTotalPagBoletas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalPagBoletas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalPagBoletas.ForeColor = System.Drawing.Color.White;
+            this.btnTotalPagBoletas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalPagBoletas.HoveredState.Parent = this.btnTotalPagBoletas;
+            this.btnTotalPagBoletas.Location = new System.Drawing.Point(149, 12);
+            this.btnTotalPagBoletas.Name = "btnTotalPagBoletas";
+            this.btnTotalPagBoletas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalPagBoletas.ShadowDecoration.Parent = this.btnTotalPagBoletas;
+            this.btnTotalPagBoletas.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalPagBoletas.TabIndex = 169;
+            this.btnTotalPagBoletas.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(124, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(20, 15);
+            this.label6.TabIndex = 170;
+            this.label6.Text = "de";
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton2.BackColor = System.Drawing.SystemColors.Control;
+            this.iconButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton2.ForeColor = System.Drawing.Color.Green;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
+            this.iconButton2.IconColor = System.Drawing.Color.Green;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 32;
+            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton2.Location = new System.Drawing.Point(551, 45);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(160, 40);
+            this.iconButton2.TabIndex = 284;
+            this.iconButton2.Text = "Exportar a excel";
+            this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
+            // cboEstadosBoleta
+            // 
+            this.cboEstadosBoleta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboEstadosBoleta.BackColor = System.Drawing.Color.Transparent;
+            this.cboEstadosBoleta.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboEstadosBoleta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstadosBoleta.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboEstadosBoleta.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboEstadosBoleta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboEstadosBoleta.HoveredState.Parent = this.cboEstadosBoleta;
+            this.cboEstadosBoleta.ItemHeight = 30;
+            this.cboEstadosBoleta.ItemsAppearance.Parent = this.cboEstadosBoleta;
+            this.cboEstadosBoleta.Location = new System.Drawing.Point(449, 48);
+            this.cboEstadosBoleta.Name = "cboEstadosBoleta";
+            this.cboEstadosBoleta.ShadowDecoration.Parent = this.cboEstadosBoleta;
+            this.cboEstadosBoleta.Size = new System.Drawing.Size(96, 36);
+            this.cboEstadosBoleta.TabIndex = 282;
+            // 
+            // siticoneCheckBox1
+            // 
+            this.siticoneCheckBox1.AutoSize = true;
+            this.siticoneCheckBox1.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneCheckBox1.Checked = true;
+            this.siticoneCheckBox1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneCheckBox1.CheckedState.BorderRadius = 0;
+            this.siticoneCheckBox1.CheckedState.BorderThickness = 0;
+            this.siticoneCheckBox1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.siticoneCheckBox1.ForeColor = System.Drawing.Color.Black;
+            this.siticoneCheckBox1.Location = new System.Drawing.Point(338, 4);
+            this.siticoneCheckBox1.Name = "siticoneCheckBox1";
+            this.siticoneCheckBox1.Size = new System.Drawing.Size(102, 17);
+            this.siticoneCheckBox1.TabIndex = 281;
+            this.siticoneCheckBox1.Text = "Habilitar Fechas";
+            this.siticoneCheckBox1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.siticoneCheckBox1.UncheckedState.BorderRadius = 0;
+            this.siticoneCheckBox1.UncheckedState.BorderThickness = 0;
+            this.siticoneCheckBox1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.siticoneCheckBox1.UseVisualStyleBackColor = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.dtFechaFinBoletas);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.dtFechaIniBoletas);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox1.Location = new System.Drawing.Point(10, 15);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(430, 76);
+            this.groupBox1.TabIndex = 280;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Buscar por fechas";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(222, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 17);
+            this.label1.TabIndex = 232;
+            this.label1.Text = "Fecha Final:";
+            // 
+            // dtFechaFinBoletas
+            // 
+            this.dtFechaFinBoletas.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaFinBoletas.BorderRadius = 3;
+            this.dtFechaFinBoletas.BorderThickness = 1;
+            this.dtFechaFinBoletas.CheckedState.Parent = this.dtFechaFinBoletas;
+            this.dtFechaFinBoletas.CustomFormat = "MMMM";
+            this.dtFechaFinBoletas.FillColor = System.Drawing.Color.White;
+            this.dtFechaFinBoletas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaFinBoletas.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaFinBoletas.HoveredState.Parent = this.dtFechaFinBoletas;
+            this.dtFechaFinBoletas.Location = new System.Drawing.Point(222, 34);
+            this.dtFechaFinBoletas.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaFinBoletas.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaFinBoletas.Name = "dtFechaFinBoletas";
+            this.dtFechaFinBoletas.ShadowDecoration.Parent = this.dtFechaFinBoletas;
+            this.dtFechaFinBoletas.Size = new System.Drawing.Size(197, 36);
+            this.dtFechaFinBoletas.TabIndex = 233;
+            this.dtFechaFinBoletas.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(8, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 17);
+            this.label2.TabIndex = 227;
+            this.label2.Text = "Fecha Inicial:";
+            // 
+            // dtFechaIniBoletas
+            // 
+            this.dtFechaIniBoletas.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaIniBoletas.BorderRadius = 3;
+            this.dtFechaIniBoletas.BorderThickness = 1;
+            this.dtFechaIniBoletas.CheckedState.Parent = this.dtFechaIniBoletas;
+            this.dtFechaIniBoletas.FillColor = System.Drawing.Color.White;
+            this.dtFechaIniBoletas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaIniBoletas.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaIniBoletas.HoveredState.Parent = this.dtFechaIniBoletas;
+            this.dtFechaIniBoletas.Location = new System.Drawing.Point(8, 33);
+            this.dtFechaIniBoletas.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaIniBoletas.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaIniBoletas.Name = "dtFechaIniBoletas";
+            this.dtFechaIniBoletas.ShadowDecoration.Parent = this.dtFechaIniBoletas;
+            this.dtFechaIniBoletas.Size = new System.Drawing.Size(197, 36);
+            this.dtFechaIniBoletas.TabIndex = 231;
+            this.dtFechaIniBoletas.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(443, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 17);
+            this.label3.TabIndex = 279;
+            this.label3.Text = "Buscar Por:";
+            // 
+            // pbBuscarBoleta
+            // 
+            this.pbBuscarBoleta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbBuscarBoleta.BackColor = System.Drawing.Color.Transparent;
+            this.pbBuscarBoleta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbBuscarBoleta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.pbBuscarBoleta.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.pbBuscarBoleta.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.pbBuscarBoleta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.pbBuscarBoleta.IconSize = 26;
+            this.pbBuscarBoleta.Location = new System.Drawing.Point(827, 53);
+            this.pbBuscarBoleta.Name = "pbBuscarBoleta";
+            this.pbBuscarBoleta.Size = new System.Drawing.Size(26, 26);
+            this.pbBuscarBoleta.TabIndex = 278;
+            this.pbBuscarBoleta.TabStop = false;
+            this.pbBuscarBoleta.Click += new System.EventHandler(this.iconPictureBox1_Click);
+            // 
+            // dgvBoletas
+            // 
+            this.dgvBoletas.AllowUserToAddRows = false;
+            this.dgvBoletas.AllowUserToDeleteRows = false;
+            this.dgvBoletas.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            this.dgvBoletas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvBoletas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvBoletas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBoletas.BackgroundColor = System.Drawing.Color.White;
+            this.dgvBoletas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvBoletas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBoletas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvBoletas.ColumnHeadersHeight = 42;
+            this.dgvBoletas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.imgImprimirBoletas});
+            this.dgvBoletas.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBoletas.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvBoletas.EnableHeadersVisualStyles = false;
+            this.dgvBoletas.GridColor = System.Drawing.Color.Silver;
+            this.dgvBoletas.Location = new System.Drawing.Point(6, 94);
+            this.dgvBoletas.Name = "dgvBoletas";
+            this.dgvBoletas.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBoletas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvBoletas.RowHeadersVisible = false;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBoletas.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvBoletas.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvBoletas.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvBoletas.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBoletas.RowTemplate.Height = 60;
+            this.dgvBoletas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBoletas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvBoletas.Size = new System.Drawing.Size(852, 342);
+            this.dgvBoletas.TabIndex = 277;
+            this.dgvBoletas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvBoletas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvBoletas.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvBoletas.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvBoletas.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvBoletas.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvBoletas.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvBoletas.ThemeStyle.GridColor = System.Drawing.Color.Silver;
+            this.dgvBoletas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.SystemColors.Control;
+            this.dgvBoletas.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvBoletas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvBoletas.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgvBoletas.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvBoletas.ThemeStyle.HeaderStyle.Height = 42;
+            this.dgvBoletas.ThemeStyle.ReadOnly = true;
+            this.dgvBoletas.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvBoletas.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
+            this.dgvBoletas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvBoletas.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvBoletas.ThemeStyle.RowsStyle.Height = 60;
+            this.dgvBoletas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Azure;
+            this.dgvBoletas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            this.dgvBoletas.Visible = false;
+            this.dgvBoletas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBoletas_CellClick);
+            this.dgvBoletas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBoletas_CellFormatting);
+            // 
+            // siticoneLabel2
+            // 
+            this.siticoneLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.siticoneLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneLabel2.Location = new System.Drawing.Point(714, 28);
+            this.siticoneLabel2.Name = "siticoneLabel2";
+            this.siticoneLabel2.Size = new System.Drawing.Size(100, 18);
+            this.siticoneLabel2.TabIndex = 276;
+            this.siticoneLabel2.Text = "Buscar Boleta";
+            // 
+            // txtBuscarBoleta
+            // 
+            this.txtBuscarBoleta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscarBoleta.Animated = false;
+            this.txtBuscarBoleta.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarBoleta.DefaultText = "";
+            this.txtBuscarBoleta.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarBoleta.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarBoleta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarBoleta.DisabledState.Parent = this.txtBuscarBoleta;
+            this.txtBuscarBoleta.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarBoleta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarBoleta.FocusedState.Parent = this.txtBuscarBoleta;
+            this.txtBuscarBoleta.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarBoleta.HoveredState.Parent = this.txtBuscarBoleta;
+            this.txtBuscarBoleta.Location = new System.Drawing.Point(714, 48);
+            this.txtBuscarBoleta.Name = "txtBuscarBoleta";
+            this.txtBuscarBoleta.PasswordChar = '\0';
+            this.txtBuscarBoleta.PlaceholderText = "";
+            this.txtBuscarBoleta.SelectedText = "";
+            this.txtBuscarBoleta.ShadowDecoration.Parent = this.txtBuscarBoleta;
+            this.txtBuscarBoleta.Size = new System.Drawing.Size(141, 36);
+            this.txtBuscarBoleta.TabIndex = 283;
+            this.txtBuscarBoleta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarBoleta_KeyPress);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.btnExportarNota);
+            this.tabPage2.Controls.Add(this.cboEstadoNota);
+            this.tabPage2.Controls.Add(this.chkHabilitaFechaNota);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.pbBuscarNotaCredito);
+            this.tabPage2.Controls.Add(this.dgvNota);
+            this.tabPage2.Controls.Add(this.siticoneLabel3);
+            this.tabPage2.Controls.Add(this.txtBuscarNotaCredito);
+            this.tabPage2.Location = new System.Drawing.Point(140, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(864, 481);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "NOT. CREDITO";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cmAcciones
+            // 
+            this.cmAcciones.Name = "cmAcciones";
+            this.cmAcciones.Size = new System.Drawing.Size(61, 4);
+            // 
             // idDocumento
             // 
             this.idDocumento.HeaderText = "idDocumento";
@@ -598,7 +1140,7 @@
             // Vehiculos_lv
             // 
             this.Vehiculos_lv.FillWeight = 79.41992F;
-            this.Vehiculos_lv.HeaderText = "Vehiculo";
+            this.Vehiculos_lv.HeaderText = "Operacion";
             this.Vehiculos_lv.Name = "Vehiculos_lv";
             this.Vehiculos_lv.ReadOnly = true;
             // 
@@ -616,441 +1158,6 @@
             this.imgImprimir.ReadOnly = true;
             this.imgImprimir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.imgImprimir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // siticoneLabel1
-            // 
-            this.siticoneLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.siticoneLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneLabel1.Location = new System.Drawing.Point(715, 25);
-            this.siticoneLabel1.Name = "siticoneLabel1";
-            this.siticoneLabel1.Size = new System.Drawing.Size(107, 18);
-            this.siticoneLabel1.TabIndex = 1;
-            this.siticoneLabel1.Text = "Buscar Factura";
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscar.Animated = false;
-            this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscar.DefaultText = "";
-            this.txtBuscar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBuscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBuscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscar.DisabledState.Parent = this.txtBuscar;
-            this.txtBuscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscar.FocusedState.Parent = this.txtBuscar;
-            this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscar.HoveredState.Parent = this.txtBuscar;
-            this.txtBuscar.Location = new System.Drawing.Point(715, 45);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.PasswordChar = '\0';
-            this.txtBuscar.PlaceholderText = "";
-            this.txtBuscar.SelectedText = "";
-            this.txtBuscar.ShadowDecoration.Parent = this.txtBuscar;
-            this.txtBuscar.Size = new System.Drawing.Size(141, 36);
-            this.txtBuscar.TabIndex = 273;
-            this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Controls.Add(this.iconButton2);
-            this.tabPage3.Controls.Add(this.siticoneComboBox2);
-            this.tabPage3.Controls.Add(this.siticoneCheckBox1);
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Controls.Add(this.label3);
-            this.tabPage3.Controls.Add(this.pbBuscarBoleta);
-            this.tabPage3.Controls.Add(this.siticoneDataGridView1);
-            this.tabPage3.Controls.Add(this.siticoneLabel2);
-            this.tabPage3.Controls.Add(this.txtBuscarBoleta);
-            this.tabPage3.Location = new System.Drawing.Point(140, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(864, 481);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "BOLETAS";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.siticoneCircleButton1);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.siticoneVSeparator2);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.siticoneCircleButton2);
-            this.groupBox2.Controls.Add(this.siticoneCircleButton3);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(518, 436);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(340, 40);
-            this.groupBox2.TabIndex = 285;
-            this.groupBox2.TabStop = false;
-            // 
-            // siticoneCircleButton1
-            // 
-            this.siticoneCircleButton1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneCircleButton1.CheckedState.Parent = this.siticoneCircleButton1;
-            this.siticoneCircleButton1.CustomImages.Parent = this.siticoneCircleButton1;
-            this.siticoneCircleButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneCircleButton1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneCircleButton1.ForeColor = System.Drawing.Color.White;
-            this.siticoneCircleButton1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneCircleButton1.HoveredState.Parent = this.siticoneCircleButton1;
-            this.siticoneCircleButton1.Location = new System.Drawing.Point(209, 12);
-            this.siticoneCircleButton1.Name = "siticoneCircleButton1";
-            this.siticoneCircleButton1.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
-            this.siticoneCircleButton1.ShadowDecoration.Parent = this.siticoneCircleButton1;
-            this.siticoneCircleButton1.Size = new System.Drawing.Size(25, 25);
-            this.siticoneCircleButton1.TabIndex = 171;
-            this.siticoneCircleButton1.TextOffset = new System.Drawing.Point(0, 1);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(240, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 15);
-            this.label4.TabIndex = 173;
-            this.label4.Text = "registros de";
-            // 
-            // siticoneVSeparator2
-            // 
-            this.siticoneVSeparator2.FillColor = System.Drawing.Color.Gray;
-            this.siticoneVSeparator2.Location = new System.Drawing.Point(186, 8);
-            this.siticoneVSeparator2.Name = "siticoneVSeparator2";
-            this.siticoneVSeparator2.Size = new System.Drawing.Size(13, 27);
-            this.siticoneVSeparator2.TabIndex = 174;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownHeight = 90;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.Location = new System.Drawing.Point(52, 13);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(63, 23);
-            this.comboBox1.TabIndex = 167;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 15);
-            this.label5.TabIndex = 168;
-            this.label5.Text = "Página";
-            // 
-            // siticoneCircleButton2
-            // 
-            this.siticoneCircleButton2.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneCircleButton2.CheckedState.Parent = this.siticoneCircleButton2;
-            this.siticoneCircleButton2.CustomImages.Parent = this.siticoneCircleButton2;
-            this.siticoneCircleButton2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneCircleButton2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneCircleButton2.ForeColor = System.Drawing.Color.White;
-            this.siticoneCircleButton2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneCircleButton2.HoveredState.Parent = this.siticoneCircleButton2;
-            this.siticoneCircleButton2.Location = new System.Drawing.Point(307, 12);
-            this.siticoneCircleButton2.Name = "siticoneCircleButton2";
-            this.siticoneCircleButton2.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
-            this.siticoneCircleButton2.ShadowDecoration.Parent = this.siticoneCircleButton2;
-            this.siticoneCircleButton2.Size = new System.Drawing.Size(25, 25);
-            this.siticoneCircleButton2.TabIndex = 172;
-            this.siticoneCircleButton2.TextOffset = new System.Drawing.Point(0, 1);
-            // 
-            // siticoneCircleButton3
-            // 
-            this.siticoneCircleButton3.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneCircleButton3.CheckedState.Parent = this.siticoneCircleButton3;
-            this.siticoneCircleButton3.CustomImages.Parent = this.siticoneCircleButton3;
-            this.siticoneCircleButton3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneCircleButton3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneCircleButton3.ForeColor = System.Drawing.Color.White;
-            this.siticoneCircleButton3.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneCircleButton3.HoveredState.Parent = this.siticoneCircleButton3;
-            this.siticoneCircleButton3.Location = new System.Drawing.Point(149, 12);
-            this.siticoneCircleButton3.Name = "siticoneCircleButton3";
-            this.siticoneCircleButton3.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
-            this.siticoneCircleButton3.ShadowDecoration.Parent = this.siticoneCircleButton3;
-            this.siticoneCircleButton3.Size = new System.Drawing.Size(25, 25);
-            this.siticoneCircleButton3.TabIndex = 169;
-            this.siticoneCircleButton3.TextOffset = new System.Drawing.Point(0, 1);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(124, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(20, 15);
-            this.label6.TabIndex = 170;
-            this.label6.Text = "de";
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton2.BackColor = System.Drawing.SystemColors.Control;
-            this.iconButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.Color.Green;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
-            this.iconButton2.IconColor = System.Drawing.Color.Green;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 32;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(551, 45);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(160, 40);
-            this.iconButton2.TabIndex = 284;
-            this.iconButton2.Text = "Exportar a excel";
-            this.iconButton2.UseVisualStyleBackColor = false;
-            // 
-            // siticoneComboBox2
-            // 
-            this.siticoneComboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.siticoneComboBox2.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.siticoneComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.siticoneComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.siticoneComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.siticoneComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.siticoneComboBox2.HoveredState.Parent = this.siticoneComboBox2;
-            this.siticoneComboBox2.ItemHeight = 30;
-            this.siticoneComboBox2.ItemsAppearance.Parent = this.siticoneComboBox2;
-            this.siticoneComboBox2.Location = new System.Drawing.Point(449, 48);
-            this.siticoneComboBox2.Name = "siticoneComboBox2";
-            this.siticoneComboBox2.ShadowDecoration.Parent = this.siticoneComboBox2;
-            this.siticoneComboBox2.Size = new System.Drawing.Size(96, 36);
-            this.siticoneComboBox2.TabIndex = 282;
-            // 
-            // siticoneCheckBox1
-            // 
-            this.siticoneCheckBox1.AutoSize = true;
-            this.siticoneCheckBox1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneCheckBox1.Checked = true;
-            this.siticoneCheckBox1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneCheckBox1.CheckedState.BorderRadius = 0;
-            this.siticoneCheckBox1.CheckedState.BorderThickness = 0;
-            this.siticoneCheckBox1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.siticoneCheckBox1.ForeColor = System.Drawing.Color.Black;
-            this.siticoneCheckBox1.Location = new System.Drawing.Point(338, 4);
-            this.siticoneCheckBox1.Name = "siticoneCheckBox1";
-            this.siticoneCheckBox1.Size = new System.Drawing.Size(102, 17);
-            this.siticoneCheckBox1.TabIndex = 281;
-            this.siticoneCheckBox1.Text = "Habilitar Fechas";
-            this.siticoneCheckBox1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.siticoneCheckBox1.UncheckedState.BorderRadius = 0;
-            this.siticoneCheckBox1.UncheckedState.BorderThickness = 0;
-            this.siticoneCheckBox1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.siticoneCheckBox1.UseVisualStyleBackColor = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.siticoneDateTimePicker1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.siticoneDateTimePicker2);
-            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.groupBox1.Location = new System.Drawing.Point(10, 15);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(430, 76);
-            this.groupBox1.TabIndex = 280;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Buscar por fechas";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(222, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 17);
-            this.label1.TabIndex = 232;
-            this.label1.Text = "Fecha Final:";
-            // 
-            // siticoneDateTimePicker1
-            // 
-            this.siticoneDateTimePicker1.BorderColor = System.Drawing.Color.Gainsboro;
-            this.siticoneDateTimePicker1.BorderRadius = 3;
-            this.siticoneDateTimePicker1.BorderThickness = 1;
-            this.siticoneDateTimePicker1.CheckedState.Parent = this.siticoneDateTimePicker1;
-            this.siticoneDateTimePicker1.CustomFormat = "MMMM";
-            this.siticoneDateTimePicker1.FillColor = System.Drawing.Color.White;
-            this.siticoneDateTimePicker1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.siticoneDateTimePicker1.HoveredState.Parent = this.siticoneDateTimePicker1;
-            this.siticoneDateTimePicker1.Location = new System.Drawing.Point(222, 34);
-            this.siticoneDateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.siticoneDateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.siticoneDateTimePicker1.Name = "siticoneDateTimePicker1";
-            this.siticoneDateTimePicker1.ShadowDecoration.Parent = this.siticoneDateTimePicker1;
-            this.siticoneDateTimePicker1.Size = new System.Drawing.Size(197, 36);
-            this.siticoneDateTimePicker1.TabIndex = 233;
-            this.siticoneDateTimePicker1.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(8, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 17);
-            this.label2.TabIndex = 227;
-            this.label2.Text = "Fecha Inicial:";
-            // 
-            // siticoneDateTimePicker2
-            // 
-            this.siticoneDateTimePicker2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.siticoneDateTimePicker2.BorderRadius = 3;
-            this.siticoneDateTimePicker2.BorderThickness = 1;
-            this.siticoneDateTimePicker2.CheckedState.Parent = this.siticoneDateTimePicker2;
-            this.siticoneDateTimePicker2.FillColor = System.Drawing.Color.White;
-            this.siticoneDateTimePicker2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.siticoneDateTimePicker2.HoveredState.Parent = this.siticoneDateTimePicker2;
-            this.siticoneDateTimePicker2.Location = new System.Drawing.Point(8, 33);
-            this.siticoneDateTimePicker2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.siticoneDateTimePicker2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.siticoneDateTimePicker2.Name = "siticoneDateTimePicker2";
-            this.siticoneDateTimePicker2.ShadowDecoration.Parent = this.siticoneDateTimePicker2;
-            this.siticoneDateTimePicker2.Size = new System.Drawing.Size(197, 36);
-            this.siticoneDateTimePicker2.TabIndex = 231;
-            this.siticoneDateTimePicker2.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(443, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 17);
-            this.label3.TabIndex = 279;
-            this.label3.Text = "Buscar Por:";
-            // 
-            // pbBuscarBoleta
-            // 
-            this.pbBuscarBoleta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbBuscarBoleta.BackColor = System.Drawing.Color.Transparent;
-            this.pbBuscarBoleta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbBuscarBoleta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.pbBuscarBoleta.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.pbBuscarBoleta.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.pbBuscarBoleta.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.pbBuscarBoleta.IconSize = 26;
-            this.pbBuscarBoleta.Location = new System.Drawing.Point(827, 53);
-            this.pbBuscarBoleta.Name = "pbBuscarBoleta";
-            this.pbBuscarBoleta.Size = new System.Drawing.Size(26, 26);
-            this.pbBuscarBoleta.TabIndex = 278;
-            this.pbBuscarBoleta.TabStop = false;
-            this.pbBuscarBoleta.Click += new System.EventHandler(this.iconPictureBox1_Click);
-            // 
-            // siticoneDataGridView1
-            // 
-            this.siticoneDataGridView1.AllowUserToAddRows = false;
-            this.siticoneDataGridView1.AllowUserToDeleteRows = false;
-            this.siticoneDataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.siticoneDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.siticoneDataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.siticoneDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.siticoneDataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.siticoneDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.siticoneDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.siticoneDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.siticoneDataGridView1.ColumnHeadersHeight = 42;
-            this.siticoneDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewImageColumn1});
-            this.siticoneDataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.siticoneDataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
-            this.siticoneDataGridView1.EnableHeadersVisualStyles = false;
-            this.siticoneDataGridView1.GridColor = System.Drawing.Color.Silver;
-            this.siticoneDataGridView1.Location = new System.Drawing.Point(6, 94);
-            this.siticoneDataGridView1.Name = "siticoneDataGridView1";
-            this.siticoneDataGridView1.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.siticoneDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.siticoneDataGridView1.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.siticoneDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.siticoneDataGridView1.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.siticoneDataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneDataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.siticoneDataGridView1.RowTemplate.Height = 60;
-            this.siticoneDataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.siticoneDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.siticoneDataGridView1.Size = new System.Drawing.Size(852, 342);
-            this.siticoneDataGridView1.TabIndex = 277;
-            this.siticoneDataGridView1.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
-            this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.siticoneDataGridView1.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.siticoneDataGridView1.ThemeStyle.GridColor = System.Drawing.Color.Silver;
-            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.SystemColors.Control;
-            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black;
-            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.siticoneDataGridView1.ThemeStyle.HeaderStyle.Height = 42;
-            this.siticoneDataGridView1.ThemeStyle.ReadOnly = true;
-            this.siticoneDataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.siticoneDataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.siticoneDataGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneDataGridView1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneDataGridView1.ThemeStyle.RowsStyle.Height = 60;
-            this.siticoneDataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Azure;
-            this.siticoneDataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            this.siticoneDataGridView1.Visible = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1096,7 +1203,7 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.FillWeight = 79.41992F;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Vehiculo";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Operacion";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
@@ -1107,6 +1214,447 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
+            // imgImprimirBoletas
+            // 
+            this.imgImprimirBoletas.HeaderText = "";
+            this.imgImprimirBoletas.Name = "imgImprimirBoletas";
+            this.imgImprimirBoletas.ReadOnly = true;
+            this.imgImprimirBoletas.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.imgImprimirBoletas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnNumFilasNota);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.siticoneVSeparator3);
+            this.groupBox3.Controls.Add(this.cboPaginaNota);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.btnTotalRegNota);
+            this.groupBox3.Controls.Add(this.btnTotalPagNota);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(518, 436);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(340, 40);
+            this.groupBox3.TabIndex = 295;
+            this.groupBox3.TabStop = false;
+            // 
+            // btnNumFilasNota
+            // 
+            this.btnNumFilasNota.BackColor = System.Drawing.Color.Transparent;
+            this.btnNumFilasNota.CheckedState.Parent = this.btnNumFilasNota;
+            this.btnNumFilasNota.CustomImages.Parent = this.btnNumFilasNota;
+            this.btnNumFilasNota.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumFilasNota.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNumFilasNota.ForeColor = System.Drawing.Color.White;
+            this.btnNumFilasNota.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumFilasNota.HoveredState.Parent = this.btnNumFilasNota;
+            this.btnNumFilasNota.Location = new System.Drawing.Point(209, 12);
+            this.btnNumFilasNota.Name = "btnNumFilasNota";
+            this.btnNumFilasNota.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnNumFilasNota.ShadowDecoration.Parent = this.btnNumFilasNota;
+            this.btnNumFilasNota.Size = new System.Drawing.Size(25, 25);
+            this.btnNumFilasNota.TabIndex = 171;
+            this.btnNumFilasNota.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(240, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 15);
+            this.label7.TabIndex = 173;
+            this.label7.Text = "registros de";
+            // 
+            // siticoneVSeparator3
+            // 
+            this.siticoneVSeparator3.FillColor = System.Drawing.Color.Gray;
+            this.siticoneVSeparator3.Location = new System.Drawing.Point(186, 8);
+            this.siticoneVSeparator3.Name = "siticoneVSeparator3";
+            this.siticoneVSeparator3.Size = new System.Drawing.Size(13, 27);
+            this.siticoneVSeparator3.TabIndex = 174;
+            // 
+            // cboPaginaNota
+            // 
+            this.cboPaginaNota.DropDownHeight = 90;
+            this.cboPaginaNota.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPaginaNota.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboPaginaNota.FormattingEnabled = true;
+            this.cboPaginaNota.IntegralHeight = false;
+            this.cboPaginaNota.Location = new System.Drawing.Point(52, 13);
+            this.cboPaginaNota.Name = "cboPaginaNota";
+            this.cboPaginaNota.Size = new System.Drawing.Size(63, 23);
+            this.cboPaginaNota.TabIndex = 167;
+            this.cboPaginaNota.SelectedIndexChanged += new System.EventHandler(this.cboPaginaNota_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 17);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 15);
+            this.label8.TabIndex = 168;
+            this.label8.Text = "Página";
+            // 
+            // btnTotalRegNota
+            // 
+            this.btnTotalRegNota.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalRegNota.CheckedState.Parent = this.btnTotalRegNota;
+            this.btnTotalRegNota.CustomImages.Parent = this.btnTotalRegNota;
+            this.btnTotalRegNota.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalRegNota.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalRegNota.ForeColor = System.Drawing.Color.White;
+            this.btnTotalRegNota.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalRegNota.HoveredState.Parent = this.btnTotalRegNota;
+            this.btnTotalRegNota.Location = new System.Drawing.Point(307, 12);
+            this.btnTotalRegNota.Name = "btnTotalRegNota";
+            this.btnTotalRegNota.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalRegNota.ShadowDecoration.Parent = this.btnTotalRegNota;
+            this.btnTotalRegNota.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalRegNota.TabIndex = 172;
+            this.btnTotalRegNota.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // btnTotalPagNota
+            // 
+            this.btnTotalPagNota.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalPagNota.CheckedState.Parent = this.btnTotalPagNota;
+            this.btnTotalPagNota.CustomImages.Parent = this.btnTotalPagNota;
+            this.btnTotalPagNota.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalPagNota.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalPagNota.ForeColor = System.Drawing.Color.White;
+            this.btnTotalPagNota.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalPagNota.HoveredState.Parent = this.btnTotalPagNota;
+            this.btnTotalPagNota.Location = new System.Drawing.Point(149, 12);
+            this.btnTotalPagNota.Name = "btnTotalPagNota";
+            this.btnTotalPagNota.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalPagNota.ShadowDecoration.Parent = this.btnTotalPagNota;
+            this.btnTotalPagNota.Size = new System.Drawing.Size(25, 25);
+            this.btnTotalPagNota.TabIndex = 169;
+            this.btnTotalPagNota.TextOffset = new System.Drawing.Point(0, 1);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(124, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(20, 15);
+            this.label9.TabIndex = 170;
+            this.label9.Text = "de";
+            // 
+            // btnExportarNota
+            // 
+            this.btnExportarNota.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportarNota.BackColor = System.Drawing.SystemColors.Control;
+            this.btnExportarNota.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportarNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarNota.ForeColor = System.Drawing.Color.Green;
+            this.btnExportarNota.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
+            this.btnExportarNota.IconColor = System.Drawing.Color.Green;
+            this.btnExportarNota.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnExportarNota.IconSize = 32;
+            this.btnExportarNota.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportarNota.Location = new System.Drawing.Point(551, 45);
+            this.btnExportarNota.Name = "btnExportarNota";
+            this.btnExportarNota.Size = new System.Drawing.Size(160, 40);
+            this.btnExportarNota.TabIndex = 294;
+            this.btnExportarNota.Text = "Exportar a excel";
+            this.btnExportarNota.UseVisualStyleBackColor = false;
+            // 
+            // cboEstadoNota
+            // 
+            this.cboEstadoNota.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboEstadoNota.BackColor = System.Drawing.Color.Transparent;
+            this.cboEstadoNota.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboEstadoNota.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstadoNota.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboEstadoNota.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboEstadoNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboEstadoNota.HoveredState.Parent = this.cboEstadoNota;
+            this.cboEstadoNota.ItemHeight = 30;
+            this.cboEstadoNota.ItemsAppearance.Parent = this.cboEstadoNota;
+            this.cboEstadoNota.Location = new System.Drawing.Point(449, 48);
+            this.cboEstadoNota.Name = "cboEstadoNota";
+            this.cboEstadoNota.ShadowDecoration.Parent = this.cboEstadoNota;
+            this.cboEstadoNota.Size = new System.Drawing.Size(96, 36);
+            this.cboEstadoNota.TabIndex = 292;
+            // 
+            // chkHabilitaFechaNota
+            // 
+            this.chkHabilitaFechaNota.AutoSize = true;
+            this.chkHabilitaFechaNota.BackColor = System.Drawing.Color.Transparent;
+            this.chkHabilitaFechaNota.Checked = true;
+            this.chkHabilitaFechaNota.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkHabilitaFechaNota.CheckedState.BorderRadius = 0;
+            this.chkHabilitaFechaNota.CheckedState.BorderThickness = 0;
+            this.chkHabilitaFechaNota.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkHabilitaFechaNota.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkHabilitaFechaNota.ForeColor = System.Drawing.Color.Black;
+            this.chkHabilitaFechaNota.Location = new System.Drawing.Point(338, 4);
+            this.chkHabilitaFechaNota.Name = "chkHabilitaFechaNota";
+            this.chkHabilitaFechaNota.Size = new System.Drawing.Size(102, 17);
+            this.chkHabilitaFechaNota.TabIndex = 291;
+            this.chkHabilitaFechaNota.Text = "Habilitar Fechas";
+            this.chkHabilitaFechaNota.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkHabilitaFechaNota.UncheckedState.BorderRadius = 0;
+            this.chkHabilitaFechaNota.UncheckedState.BorderThickness = 0;
+            this.chkHabilitaFechaNota.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkHabilitaFechaNota.UseVisualStyleBackColor = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.dtFechaFinNota);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.dtFechaIniNota);
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox4.Location = new System.Drawing.Point(10, 15);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(430, 76);
+            this.groupBox4.TabIndex = 290;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Buscar por fechas";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label11.Location = new System.Drawing.Point(222, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(74, 17);
+            this.label11.TabIndex = 232;
+            this.label11.Text = "Fecha Final:";
+            // 
+            // dtFechaFinNota
+            // 
+            this.dtFechaFinNota.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaFinNota.BorderRadius = 3;
+            this.dtFechaFinNota.BorderThickness = 1;
+            this.dtFechaFinNota.CheckedState.Parent = this.dtFechaFinNota;
+            this.dtFechaFinNota.CustomFormat = "MMMM";
+            this.dtFechaFinNota.FillColor = System.Drawing.Color.White;
+            this.dtFechaFinNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaFinNota.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaFinNota.HoveredState.Parent = this.dtFechaFinNota;
+            this.dtFechaFinNota.Location = new System.Drawing.Point(222, 34);
+            this.dtFechaFinNota.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaFinNota.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaFinNota.Name = "dtFechaFinNota";
+            this.dtFechaFinNota.ShadowDecoration.Parent = this.dtFechaFinNota;
+            this.dtFechaFinNota.Size = new System.Drawing.Size(197, 36);
+            this.dtFechaFinNota.TabIndex = 233;
+            this.dtFechaFinNota.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label12.Location = new System.Drawing.Point(8, 14);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(80, 17);
+            this.label12.TabIndex = 227;
+            this.label12.Text = "Fecha Inicial:";
+            // 
+            // dtFechaIniNota
+            // 
+            this.dtFechaIniNota.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaIniNota.BorderRadius = 3;
+            this.dtFechaIniNota.BorderThickness = 1;
+            this.dtFechaIniNota.CheckedState.Parent = this.dtFechaIniNota;
+            this.dtFechaIniNota.FillColor = System.Drawing.Color.White;
+            this.dtFechaIniNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaIniNota.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaIniNota.HoveredState.Parent = this.dtFechaIniNota;
+            this.dtFechaIniNota.Location = new System.Drawing.Point(8, 33);
+            this.dtFechaIniNota.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaIniNota.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaIniNota.Name = "dtFechaIniNota";
+            this.dtFechaIniNota.ShadowDecoration.Parent = this.dtFechaIniNota;
+            this.dtFechaIniNota.Size = new System.Drawing.Size(197, 36);
+            this.dtFechaIniNota.TabIndex = 231;
+            this.dtFechaIniNota.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label13.Location = new System.Drawing.Point(443, 29);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(73, 17);
+            this.label13.TabIndex = 289;
+            this.label13.Text = "Buscar Por:";
+            // 
+            // pbBuscarNotaCredito
+            // 
+            this.pbBuscarNotaCredito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbBuscarNotaCredito.BackColor = System.Drawing.Color.Transparent;
+            this.pbBuscarNotaCredito.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbBuscarNotaCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.pbBuscarNotaCredito.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.pbBuscarNotaCredito.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.pbBuscarNotaCredito.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.pbBuscarNotaCredito.IconSize = 26;
+            this.pbBuscarNotaCredito.Location = new System.Drawing.Point(827, 53);
+            this.pbBuscarNotaCredito.Name = "pbBuscarNotaCredito";
+            this.pbBuscarNotaCredito.Size = new System.Drawing.Size(26, 26);
+            this.pbBuscarNotaCredito.TabIndex = 288;
+            this.pbBuscarNotaCredito.TabStop = false;
+            this.pbBuscarNotaCredito.Click += new System.EventHandler(this.pbBuscarNotaCredito_Click);
+            // 
+            // dgvNota
+            // 
+            this.dgvNota.AllowUserToAddRows = false;
+            this.dgvNota.AllowUserToDeleteRows = false;
+            this.dgvNota.AllowUserToResizeRows = false;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            this.dgvNota.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvNota.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvNota.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvNota.BackgroundColor = System.Drawing.Color.White;
+            this.dgvNota.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvNota.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNota.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvNota.ColumnHeadersHeight = 42;
+            this.dgvNota.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewImageColumn1});
+            this.dgvNota.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNota.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvNota.EnableHeadersVisualStyles = false;
+            this.dgvNota.GridColor = System.Drawing.Color.Silver;
+            this.dgvNota.Location = new System.Drawing.Point(6, 94);
+            this.dgvNota.Name = "dgvNota";
+            this.dgvNota.ReadOnly = true;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNota.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvNota.RowHeadersVisible = false;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNota.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvNota.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvNota.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvNota.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNota.RowTemplate.Height = 60;
+            this.dgvNota.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNota.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvNota.Size = new System.Drawing.Size(852, 342);
+            this.dgvNota.TabIndex = 287;
+            this.dgvNota.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvNota.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvNota.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvNota.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvNota.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvNota.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvNota.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvNota.ThemeStyle.GridColor = System.Drawing.Color.Silver;
+            this.dgvNota.ThemeStyle.HeaderStyle.BackColor = System.Drawing.SystemColors.Control;
+            this.dgvNota.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvNota.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvNota.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgvNota.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvNota.ThemeStyle.HeaderStyle.Height = 42;
+            this.dgvNota.ThemeStyle.ReadOnly = true;
+            this.dgvNota.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvNota.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
+            this.dgvNota.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvNota.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvNota.ThemeStyle.RowsStyle.Height = 60;
+            this.dgvNota.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Azure;
+            this.dgvNota.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            this.dgvNota.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "idDocumento";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.FillWeight = 22.84264F;
+            this.dataGridViewTextBoxColumn10.HeaderText = "N°";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.FillWeight = 116.8401F;
+            this.dataGridViewTextBoxColumn11.HeaderText = "Codigo Documento";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.FillWeight = 93.50409F;
+            this.dataGridViewTextBoxColumn12.HeaderText = "Fecha de Emision";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.FillWeight = 175.2433F;
+            this.dataGridViewTextBoxColumn13.HeaderText = "Cliente/Razon Social";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "Importe";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.FillWeight = 79.41992F;
+            this.dataGridViewTextBoxColumn15.HeaderText = "Operacion";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.FillWeight = 162.0815F;
+            this.dataGridViewTextBoxColumn16.HeaderText = "Estado";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.HeaderText = "";
@@ -1115,57 +1663,41 @@
             this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // siticoneLabel2
+            // siticoneLabel3
             // 
-            this.siticoneLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.siticoneLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneLabel2.Location = new System.Drawing.Point(714, 28);
-            this.siticoneLabel2.Name = "siticoneLabel2";
-            this.siticoneLabel2.Size = new System.Drawing.Size(100, 18);
-            this.siticoneLabel2.TabIndex = 276;
-            this.siticoneLabel2.Text = "Buscar Boleta";
+            this.siticoneLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.siticoneLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneLabel3.Location = new System.Drawing.Point(714, 28);
+            this.siticoneLabel3.Name = "siticoneLabel3";
+            this.siticoneLabel3.Size = new System.Drawing.Size(137, 18);
+            this.siticoneLabel3.TabIndex = 286;
+            this.siticoneLabel3.Text = "Buscar Not. Credito";
             // 
-            // txtBuscarBoleta
+            // txtBuscarNotaCredito
             // 
-            this.txtBuscarBoleta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscarBoleta.Animated = false;
-            this.txtBuscarBoleta.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscarBoleta.DefaultText = "";
-            this.txtBuscarBoleta.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBuscarBoleta.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBuscarBoleta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarBoleta.DisabledState.Parent = this.txtBuscarBoleta;
-            this.txtBuscarBoleta.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarBoleta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarBoleta.FocusedState.Parent = this.txtBuscarBoleta;
-            this.txtBuscarBoleta.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarBoleta.HoveredState.Parent = this.txtBuscarBoleta;
-            this.txtBuscarBoleta.Location = new System.Drawing.Point(714, 48);
-            this.txtBuscarBoleta.Name = "txtBuscarBoleta";
-            this.txtBuscarBoleta.PasswordChar = '\0';
-            this.txtBuscarBoleta.PlaceholderText = "";
-            this.txtBuscarBoleta.SelectedText = "";
-            this.txtBuscarBoleta.ShadowDecoration.Parent = this.txtBuscarBoleta;
-            this.txtBuscarBoleta.Size = new System.Drawing.Size(141, 36);
-            this.txtBuscarBoleta.TabIndex = 283;
-            this.txtBuscarBoleta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarBoleta_KeyPress);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(140, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(864, 481);
-            this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "NOT. CREDITO";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // cmAcciones
-            // 
-            this.cmAcciones.Name = "cmAcciones";
-            this.cmAcciones.Size = new System.Drawing.Size(61, 4);
+            this.txtBuscarNotaCredito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscarNotaCredito.Animated = false;
+            this.txtBuscarNotaCredito.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarNotaCredito.DefaultText = "";
+            this.txtBuscarNotaCredito.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarNotaCredito.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarNotaCredito.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarNotaCredito.DisabledState.Parent = this.txtBuscarNotaCredito;
+            this.txtBuscarNotaCredito.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarNotaCredito.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarNotaCredito.FocusedState.Parent = this.txtBuscarNotaCredito;
+            this.txtBuscarNotaCredito.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarNotaCredito.HoveredState.Parent = this.txtBuscarNotaCredito;
+            this.txtBuscarNotaCredito.Location = new System.Drawing.Point(714, 48);
+            this.txtBuscarNotaCredito.Name = "txtBuscarNotaCredito";
+            this.txtBuscarNotaCredito.PasswordChar = '\0';
+            this.txtBuscarNotaCredito.PlaceholderText = "";
+            this.txtBuscarNotaCredito.SelectedText = "";
+            this.txtBuscarNotaCredito.ShadowDecoration.Parent = this.txtBuscarNotaCredito;
+            this.txtBuscarNotaCredito.Size = new System.Drawing.Size(141, 36);
+            this.txtBuscarNotaCredito.TabIndex = 293;
             // 
             // MovimientoSunat
             // 
@@ -1194,8 +1726,16 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscarBoleta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.siticoneDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBoletas)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBuscarNotaCredito)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNota)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1214,7 +1754,7 @@
         private System.Windows.Forms.Label label22;
         private Siticone.UI.WinForms.SiticoneDateTimePicker dtpFechaInicialBus;
         private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBus;
-        private Siticone.UI.WinForms.SiticoneComboBox siticoneComboBox1;
+        private Siticone.UI.WinForms.SiticoneComboBox cboEstadofactura;
         private Siticone.UI.WinForms.SiticoneTextBox txtBuscar;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.GroupBox gbPaginacion;
@@ -1227,6 +1767,31 @@
         private Siticone.UI.WinForms.SiticoneCircleButton btnTotalPag;
         private System.Windows.Forms.Label label41;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.ContextMenuStrip cmAcciones;
+        private System.Windows.Forms.TabPage tabPage3;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private Siticone.UI.WinForms.SiticoneComboBox cboEstadosBoleta;
+        private Siticone.UI.WinForms.SiticoneCheckBox siticoneCheckBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaFinBoletas;
+        private System.Windows.Forms.Label label2;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaIniBoletas;
+        private System.Windows.Forms.Label label3;
+        private FontAwesome.Sharp.IconPictureBox pbBuscarBoleta;
+        private Siticone.UI.WinForms.SiticoneDataGridView dgvBoletas;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel2;
+        private Siticone.UI.WinForms.SiticoneTextBox txtBuscarBoleta;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnNumFilasBoletas;
+        private System.Windows.Forms.Label label4;
+        private Siticone.UI.WinForms.SiticoneVSeparator siticoneVSeparator2;
+        private System.Windows.Forms.ComboBox cboPaginaBoletas;
+        private System.Windows.Forms.Label label5;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalRegBoleta;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalPagBoletas;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn codDocumento;
@@ -1236,19 +1801,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculos_lv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado_lv;
         private System.Windows.Forms.DataGridViewImageColumn imgImprimir;
-        private System.Windows.Forms.ContextMenuStrip cmAcciones;
-        private System.Windows.Forms.TabPage tabPage3;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private Siticone.UI.WinForms.SiticoneComboBox siticoneComboBox2;
-        private Siticone.UI.WinForms.SiticoneCheckBox siticoneCheckBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker siticoneDateTimePicker1;
-        private System.Windows.Forms.Label label2;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker siticoneDateTimePicker2;
-        private System.Windows.Forms.Label label3;
-        private FontAwesome.Sharp.IconPictureBox pbBuscarBoleta;
-        private Siticone.UI.WinForms.SiticoneDataGridView siticoneDataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -1257,19 +1809,38 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewImageColumn imgImprimirBoletas;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnNumFilasNota;
+        private System.Windows.Forms.Label label7;
+        private Siticone.UI.WinForms.SiticoneVSeparator siticoneVSeparator3;
+        private System.Windows.Forms.ComboBox cboPaginaNota;
+        private System.Windows.Forms.Label label8;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalRegNota;
+        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalPagNota;
+        private System.Windows.Forms.Label label9;
+        private FontAwesome.Sharp.IconButton btnExportarNota;
+        private Siticone.UI.WinForms.SiticoneComboBox cboEstadoNota;
+        private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitaFechaNota;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label11;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaFinNota;
+        private System.Windows.Forms.Label label12;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaIniNota;
+        private System.Windows.Forms.Label label13;
+        private FontAwesome.Sharp.IconPictureBox pbBuscarNotaCredito;
+        private Siticone.UI.WinForms.SiticoneDataGridView dgvNota;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel2;
-        private Siticone.UI.WinForms.SiticoneTextBox txtBuscarBoleta;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private Siticone.UI.WinForms.SiticoneCircleButton siticoneCircleButton1;
-        private System.Windows.Forms.Label label4;
-        private Siticone.UI.WinForms.SiticoneVSeparator siticoneVSeparator2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label5;
-        private Siticone.UI.WinForms.SiticoneCircleButton siticoneCircleButton2;
-        private Siticone.UI.WinForms.SiticoneCircleButton siticoneCircleButton3;
-        private System.Windows.Forms.Label label6;
+        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel3;
+        private Siticone.UI.WinForms.SiticoneTextBox txtBuscarNotaCredito;
     }
 
 }

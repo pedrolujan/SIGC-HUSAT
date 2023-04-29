@@ -97,6 +97,7 @@ namespace wfaIntegradoCom
             this.tsCerraSession = new FontAwesome.Sharp.IconButton();
             this.Img_Husat_Blanco = new System.Windows.Forms.PictureBox();
             this.panelMenuPrincipal = new Siticone.UI.WinForms.SiticonePanel();
+            this.stpnMensajes = new Siticone.UI.WinForms.SiticonePanel();
             this.subMenuReportes = new Siticone.UI.WinForms.SiticonePanel();
             this.btnReportes = new FontAwesome.Sharp.IconButton();
             this.subMenuSoporte = new Siticone.UI.WinForms.SiticonePanel();
@@ -662,6 +663,7 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.AutoScroll = true;
             this.panelMenuPrincipal.AutoSize = true;
             this.panelMenuPrincipal.BackColor = System.Drawing.Color.Transparent;
+            this.panelMenuPrincipal.Controls.Add(this.stpnMensajes);
             this.panelMenuPrincipal.Controls.Add(this.subMenuReportes);
             this.panelMenuPrincipal.Controls.Add(this.btnReportes);
             this.panelMenuPrincipal.Controls.Add(this.subMenuSoporte);
@@ -687,6 +689,21 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.ShadowDecoration.Parent = this.panelMenuPrincipal;
             this.panelMenuPrincipal.Size = new System.Drawing.Size(230, 531);
             this.panelMenuPrincipal.TabIndex = 1;
+            // 
+            // stpnMensajes
+            // 
+            this.stpnMensajes.AutoSize = true;
+            this.stpnMensajes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.stpnMensajes.Cursor = System.Windows.Forms.Cursors.Default;
+            this.stpnMensajes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.stpnMensajes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stpnMensajes.Location = new System.Drawing.Point(0, 675);
+            this.stpnMensajes.MinimumSize = new System.Drawing.Size(250, 20);
+            this.stpnMensajes.Name = "stpnMensajes";
+            this.stpnMensajes.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.stpnMensajes.ShadowDecoration.Parent = this.stpnMensajes;
+            this.stpnMensajes.Size = new System.Drawing.Size(250, 20);
+            this.stpnMensajes.TabIndex = 31;
             // 
             // subMenuReportes
             // 
@@ -1543,7 +1560,7 @@ namespace wfaIntegradoCom
             // FWpnCajaChicaCopias
             // 
             this.FWpnCajaChicaCopias.AutoScroll = true;
-            this.FWpnCajaChicaCopias.Location = new System.Drawing.Point(3, 1);
+            this.FWpnCajaChicaCopias.Location = new System.Drawing.Point(46, 1);
             this.FWpnCajaChicaCopias.Name = "FWpnCajaChicaCopias";
             this.FWpnCajaChicaCopias.Size = new System.Drawing.Size(37, 98);
             this.FWpnCajaChicaCopias.TabIndex = 274;
@@ -3135,6 +3152,7 @@ namespace wfaIntegradoCom
         private System.Windows.Forms.ComboBox cboUsuarioMessage;
         private Siticone.UI.WinForms.SiticonePanel pnMostrarMensajes;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel8;
+        private Siticone.UI.WinForms.SiticonePanel stpnMensajes;
     }
 }
 

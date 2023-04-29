@@ -70,11 +70,22 @@ namespace wfaIntegradoCom.Procesos
             fnLlenarCombobox(cboEntidadesPago, Convert.ToString(cboTipoPago.SelectedValue), 0, false);
 
             String ValorCombo = cboTipoPago.SelectedValue.ToString().Trim();
-            if (ValorCombo == "TIPA0001" || ValorCombo == "0" || ValorCombo == "TIPA0005" || ValorCombo == "TIPA0006")
+            if (ValorCombo == "TIPA0001" || ValorCombo == "0")
             {
                 estEntidadVenta = true;
                 fnMostrarCombo(false);
                 estNroOperacion = true;
+                cboEntidadesPago.SelectedIndex = ValorCombo != "0" ? 1 : 0;
+            }
+            else if(ValorCombo == "TIPA0005" || ValorCombo == "TIPA0006")
+            {
+                fnMostrarCombo(false);
+                estEntidadVenta = true;
+                estNroOperacion = false;
+                if (ValorCombo == "TIPA0005")
+                {
+                    estNroOperacion = true;
+                }
                 cboEntidadesPago.SelectedIndex = ValorCombo != "0" ? 1 : 0;
             }
             else
@@ -167,7 +178,7 @@ namespace wfaIntegradoCom.Procesos
             pbEntidad.Visible = estado;
             lblEntidadPagos.Visible = estado;
 
-            if (cboTipoPago.SelectedValue.ToString() == "TIPA0006" && estado == false)
+            if ((cboTipoPago.SelectedValue.ToString() == "TIPA0006" || cboTipoPago.SelectedValue.ToString() == "TIPA0005") && estado == false)
             {
                 lblNOperacion.Visible = !estado;
                 txtNumeroOperacion.Visible = !estado;

@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPagosPendientes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPagosPendientes));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTop = new Siticone.UI.WinForms.SiticonePanel();
             this.label13 = new System.Windows.Forms.Label();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
@@ -47,6 +47,20 @@
             this.pnFondo = new Siticone.UI.WinForms.SiticonePanel();
             this.tabCuotas = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pnDatosPago = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnGusrdarPago = new Siticone.UI.WinForms.SiticoneButton();
+            this.cboTipoDocEmitir = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboMoneda = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.erFechaPago = new System.Windows.Forms.Label();
+            this.lblDocVenta = new System.Windows.Forms.Label();
+            this.pbFechaPago = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.erMoneda = new System.Windows.Forms.Label();
+            this.pbDocVenta = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.imgMoneda = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtFechaPago = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.cboEstado = new Siticone.UI.WinForms.SiticoneComboBox();
             this.gbPaginacion = new System.Windows.Forms.GroupBox();
@@ -64,19 +78,6 @@
             this.label35 = new System.Windows.Forms.Label();
             this.dtpFechaInicialBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
-            this.pnDatosPago = new Siticone.UI.WinForms.SiticonePanel();
-            this.cboTipoDocEmitir = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.cboMoneda = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.erFechaPago = new System.Windows.Forms.Label();
-            this.lblDocVenta = new System.Windows.Forms.Label();
-            this.pbFechaPago = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.erMoneda = new System.Windows.Forms.Label();
-            this.pbDocVenta = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.imgMoneda = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dtFechaPago = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.dgvVentas = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.verHistorialDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,12 +115,12 @@
             this.pnFondo.SuspendLayout();
             this.tabCuotas.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.gbPaginacion.SuspendLayout();
-            this.siticoneGroupBox1.SuspendLayout();
             this.pnDatosPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDocVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMoneda)).BeginInit();
+            this.gbPaginacion.SuspendLayout();
+            this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).BeginInit();
@@ -145,6 +146,7 @@
             this.PanelTop.ShadowDecoration.Parent = this.PanelTop;
             this.PanelTop.Size = new System.Drawing.Size(1009, 25);
             this.PanelTop.TabIndex = 136;
+            this.PanelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelTop_Paint);
             // 
             // label13
             // 
@@ -214,12 +216,12 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.pnDatosPago);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.cboEstado);
             this.tabPage1.Controls.Add(this.gbPaginacion);
             this.tabPage1.Controls.Add(this.chkHabilitarFechasBus);
             this.tabPage1.Controls.Add(this.siticoneGroupBox1);
-            this.tabPage1.Controls.Add(this.pnDatosPago);
             this.tabPage1.Controls.Add(this.dgvVentas);
             this.tabPage1.Controls.Add(this.pbBuscar);
             this.tabPage1.Controls.Add(this.label1);
@@ -231,6 +233,208 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Registrar Pago";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // pnDatosPago
+            // 
+            this.pnDatosPago.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.pnDatosPago.BorderThickness = 2;
+            this.pnDatosPago.Controls.Add(this.btnGusrdarPago);
+            this.pnDatosPago.Controls.Add(this.cboTipoDocEmitir);
+            this.pnDatosPago.Controls.Add(this.cboMoneda);
+            this.pnDatosPago.Controls.Add(this.erFechaPago);
+            this.pnDatosPago.Controls.Add(this.lblDocVenta);
+            this.pnDatosPago.Controls.Add(this.pbFechaPago);
+            this.pnDatosPago.Controls.Add(this.label2);
+            this.pnDatosPago.Controls.Add(this.erMoneda);
+            this.pnDatosPago.Controls.Add(this.pbDocVenta);
+            this.pnDatosPago.Controls.Add(this.label8);
+            this.pnDatosPago.Controls.Add(this.imgMoneda);
+            this.pnDatosPago.Controls.Add(this.label9);
+            this.pnDatosPago.Controls.Add(this.dtFechaPago);
+            this.pnDatosPago.Location = new System.Drawing.Point(138, 184);
+            this.pnDatosPago.Name = "pnDatosPago";
+            this.pnDatosPago.ShadowDecoration.Parent = this.pnDatosPago;
+            this.pnDatosPago.Size = new System.Drawing.Size(507, 210);
+            this.pnDatosPago.TabIndex = 291;
+            this.pnDatosPago.Visible = false;
+            // 
+            // btnGusrdarPago
+            // 
+            this.btnGusrdarPago.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnGusrdarPago.BorderRadius = 3;
+            this.btnGusrdarPago.BorderThickness = 1;
+            this.btnGusrdarPago.CheckedState.Parent = this.btnGusrdarPago;
+            this.btnGusrdarPago.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGusrdarPago.CustomImages.Parent = this.btnGusrdarPago;
+            this.btnGusrdarPago.FillColor = System.Drawing.Color.White;
+            this.btnGusrdarPago.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnGusrdarPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnGusrdarPago.HoveredState.Parent = this.btnGusrdarPago;
+            this.btnGusrdarPago.Image = global::wfaIntegradoCom.Properties.Resources.guardar_base;
+            this.btnGusrdarPago.Location = new System.Drawing.Point(175, 156);
+            this.btnGusrdarPago.Name = "btnGusrdarPago";
+            this.btnGusrdarPago.ShadowDecoration.Parent = this.btnGusrdarPago;
+            this.btnGusrdarPago.Size = new System.Drawing.Size(165, 45);
+            this.btnGusrdarPago.TabIndex = 287;
+            this.btnGusrdarPago.Text = "Registrar Pago";
+            this.btnGusrdarPago.Click += new System.EventHandler(this.btnGusrdarPago_Click);
+            // 
+            // cboTipoDocEmitir
+            // 
+            this.cboTipoDocEmitir.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoDocEmitir.BorderColor = System.Drawing.Color.Silver;
+            this.cboTipoDocEmitir.BorderRadius = 5;
+            this.cboTipoDocEmitir.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoDocEmitir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoDocEmitir.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboTipoDocEmitir.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoDocEmitir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboTipoDocEmitir.HoveredState.Parent = this.cboTipoDocEmitir;
+            this.cboTipoDocEmitir.ItemHeight = 30;
+            this.cboTipoDocEmitir.ItemsAppearance.Parent = this.cboTipoDocEmitir;
+            this.cboTipoDocEmitir.Location = new System.Drawing.Point(296, 29);
+            this.cboTipoDocEmitir.Name = "cboTipoDocEmitir";
+            this.cboTipoDocEmitir.ShadowDecoration.Parent = this.cboTipoDocEmitir;
+            this.cboTipoDocEmitir.Size = new System.Drawing.Size(173, 36);
+            this.cboTipoDocEmitir.TabIndex = 279;
+            this.cboTipoDocEmitir.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocEmitir_SelectedIndexChanged_1);
+            // 
+            // cboMoneda
+            // 
+            this.cboMoneda.BackColor = System.Drawing.Color.Transparent;
+            this.cboMoneda.BorderColor = System.Drawing.Color.Silver;
+            this.cboMoneda.BorderRadius = 5;
+            this.cboMoneda.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMoneda.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.cboMoneda.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboMoneda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboMoneda.HoveredState.Parent = this.cboMoneda;
+            this.cboMoneda.ItemHeight = 30;
+            this.cboMoneda.ItemsAppearance.Parent = this.cboMoneda;
+            this.cboMoneda.Location = new System.Drawing.Point(14, 29);
+            this.cboMoneda.Name = "cboMoneda";
+            this.cboMoneda.ShadowDecoration.Parent = this.cboMoneda;
+            this.cboMoneda.Size = new System.Drawing.Size(173, 36);
+            this.cboMoneda.TabIndex = 279;
+            this.cboMoneda.SelectedIndexChanged += new System.EventHandler(this.cboMoneda_SelectedIndexChanged);
+            // 
+            // erFechaPago
+            // 
+            this.erFechaPago.AutoSize = true;
+            this.erFechaPago.BackColor = System.Drawing.Color.Transparent;
+            this.erFechaPago.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erFechaPago.ForeColor = System.Drawing.Color.Red;
+            this.erFechaPago.Location = new System.Drawing.Point(12, 143);
+            this.erFechaPago.Name = "erFechaPago";
+            this.erFechaPago.Size = new System.Drawing.Size(0, 13);
+            this.erFechaPago.TabIndex = 284;
+            this.erFechaPago.Tag = "error";
+            // 
+            // lblDocVenta
+            // 
+            this.lblDocVenta.AutoSize = true;
+            this.lblDocVenta.BackColor = System.Drawing.Color.Transparent;
+            this.lblDocVenta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDocVenta.ForeColor = System.Drawing.Color.Red;
+            this.lblDocVenta.Location = new System.Drawing.Point(296, 66);
+            this.lblDocVenta.Name = "lblDocVenta";
+            this.lblDocVenta.Size = new System.Drawing.Size(0, 13);
+            this.lblDocVenta.TabIndex = 283;
+            this.lblDocVenta.Tag = "error";
+            // 
+            // pbFechaPago
+            // 
+            this.pbFechaPago.BackColor = System.Drawing.Color.White;
+            this.pbFechaPago.Location = new System.Drawing.Point(476, 114);
+            this.pbFechaPago.Name = "pbFechaPago";
+            this.pbFechaPago.Size = new System.Drawing.Size(20, 20);
+            this.pbFechaPago.TabIndex = 285;
+            this.pbFechaPago.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(296, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(173, 18);
+            this.label2.TabIndex = 281;
+            this.label2.Text = "Documento de venta";
+            // 
+            // erMoneda
+            // 
+            this.erMoneda.AutoSize = true;
+            this.erMoneda.BackColor = System.Drawing.Color.Transparent;
+            this.erMoneda.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erMoneda.ForeColor = System.Drawing.Color.Red;
+            this.erMoneda.Location = new System.Drawing.Point(14, 66);
+            this.erMoneda.Name = "erMoneda";
+            this.erMoneda.Size = new System.Drawing.Size(0, 13);
+            this.erMoneda.TabIndex = 283;
+            this.erMoneda.Tag = "error";
+            // 
+            // pbDocVenta
+            // 
+            this.pbDocVenta.BackColor = System.Drawing.Color.White;
+            this.pbDocVenta.Location = new System.Drawing.Point(476, 37);
+            this.pbDocVenta.Name = "pbDocVenta";
+            this.pbDocVenta.Size = new System.Drawing.Size(20, 20);
+            this.pbDocVenta.TabIndex = 286;
+            this.pbDocVenta.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label8.Location = new System.Drawing.Point(14, 11);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(128, 18);
+            this.label8.TabIndex = 281;
+            this.label8.Text = "Moneda:";
+            // 
+            // imgMoneda
+            // 
+            this.imgMoneda.BackColor = System.Drawing.Color.White;
+            this.imgMoneda.Location = new System.Drawing.Point(194, 37);
+            this.imgMoneda.Name = "imgMoneda";
+            this.imgMoneda.Size = new System.Drawing.Size(20, 20);
+            this.imgMoneda.TabIndex = 286;
+            this.imgMoneda.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label9.Location = new System.Drawing.Point(12, 88);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(128, 18);
+            this.label9.TabIndex = 280;
+            this.label9.Text = "Fecha de pago";
+            // 
+            // dtFechaPago
+            // 
+            this.dtFechaPago.BorderColor = System.Drawing.Color.Gainsboro;
+            this.dtFechaPago.BorderRadius = 3;
+            this.dtFechaPago.BorderThickness = 1;
+            this.dtFechaPago.CheckedState.Parent = this.dtFechaPago;
+            this.dtFechaPago.FillColor = System.Drawing.Color.White;
+            this.dtFechaPago.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtFechaPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtFechaPago.HoveredState.Parent = this.dtFechaPago;
+            this.dtFechaPago.Location = new System.Drawing.Point(12, 106);
+            this.dtFechaPago.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtFechaPago.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtFechaPago.Name = "dtFechaPago";
+            this.dtFechaPago.ShadowDecoration.Parent = this.dtFechaPago;
+            this.dtFechaPago.Size = new System.Drawing.Size(457, 36);
+            this.dtFechaPago.TabIndex = 282;
+            this.dtFechaPago.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
+            this.dtFechaPago.ValueChanged += new System.EventHandler(this.dtFechaPago_ValueChanged);
             // 
             // label11
             // 
@@ -485,231 +689,53 @@
             this.label22.TabIndex = 227;
             this.label22.Text = "Fecha Inicial:";
             // 
-            // pnDatosPago
-            // 
-            this.pnDatosPago.Controls.Add(this.cboTipoDocEmitir);
-            this.pnDatosPago.Controls.Add(this.cboMoneda);
-            this.pnDatosPago.Controls.Add(this.erFechaPago);
-            this.pnDatosPago.Controls.Add(this.lblDocVenta);
-            this.pnDatosPago.Controls.Add(this.pbFechaPago);
-            this.pnDatosPago.Controls.Add(this.label2);
-            this.pnDatosPago.Controls.Add(this.erMoneda);
-            this.pnDatosPago.Controls.Add(this.pbDocVenta);
-            this.pnDatosPago.Controls.Add(this.label8);
-            this.pnDatosPago.Controls.Add(this.imgMoneda);
-            this.pnDatosPago.Controls.Add(this.label9);
-            this.pnDatosPago.Controls.Add(this.dtFechaPago);
-            this.pnDatosPago.Location = new System.Drawing.Point(270, 87);
-            this.pnDatosPago.Name = "pnDatosPago";
-            this.pnDatosPago.ShadowDecoration.Parent = this.pnDatosPago;
-            this.pnDatosPago.Size = new System.Drawing.Size(722, 79);
-            this.pnDatosPago.TabIndex = 287;
-            this.pnDatosPago.Visible = false;
-            // 
-            // cboTipoDocEmitir
-            // 
-            this.cboTipoDocEmitir.BackColor = System.Drawing.Color.Transparent;
-            this.cboTipoDocEmitir.BorderColor = System.Drawing.Color.Silver;
-            this.cboTipoDocEmitir.BorderRadius = 5;
-            this.cboTipoDocEmitir.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboTipoDocEmitir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoDocEmitir.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.cboTipoDocEmitir.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboTipoDocEmitir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoDocEmitir.HoveredState.Parent = this.cboTipoDocEmitir;
-            this.cboTipoDocEmitir.ItemHeight = 30;
-            this.cboTipoDocEmitir.ItemsAppearance.Parent = this.cboTipoDocEmitir;
-            this.cboTipoDocEmitir.Location = new System.Drawing.Point(511, 22);
-            this.cboTipoDocEmitir.Name = "cboTipoDocEmitir";
-            this.cboTipoDocEmitir.ShadowDecoration.Parent = this.cboTipoDocEmitir;
-            this.cboTipoDocEmitir.Size = new System.Drawing.Size(173, 36);
-            this.cboTipoDocEmitir.TabIndex = 279;
-            this.cboTipoDocEmitir.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocEmitir_SelectedIndexChanged);
-            // 
-            // cboMoneda
-            // 
-            this.cboMoneda.BackColor = System.Drawing.Color.Transparent;
-            this.cboMoneda.BorderColor = System.Drawing.Color.Silver;
-            this.cboMoneda.BorderRadius = 5;
-            this.cboMoneda.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMoneda.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.cboMoneda.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboMoneda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboMoneda.HoveredState.Parent = this.cboMoneda;
-            this.cboMoneda.ItemHeight = 30;
-            this.cboMoneda.ItemsAppearance.Parent = this.cboMoneda;
-            this.cboMoneda.Location = new System.Drawing.Point(3, 22);
-            this.cboMoneda.Name = "cboMoneda";
-            this.cboMoneda.ShadowDecoration.Parent = this.cboMoneda;
-            this.cboMoneda.Size = new System.Drawing.Size(173, 36);
-            this.cboMoneda.TabIndex = 279;
-            this.cboMoneda.SelectedIndexChanged += new System.EventHandler(this.cboMoneda_SelectedIndexChanged);
-            // 
-            // erFechaPago
-            // 
-            this.erFechaPago.AutoSize = true;
-            this.erFechaPago.BackColor = System.Drawing.Color.Transparent;
-            this.erFechaPago.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.erFechaPago.ForeColor = System.Drawing.Color.Red;
-            this.erFechaPago.Location = new System.Drawing.Point(230, 59);
-            this.erFechaPago.Name = "erFechaPago";
-            this.erFechaPago.Size = new System.Drawing.Size(32, 13);
-            this.erFechaPago.TabIndex = 284;
-            this.erFechaPago.Text = "Error";
-            // 
-            // lblDocVenta
-            // 
-            this.lblDocVenta.AutoSize = true;
-            this.lblDocVenta.BackColor = System.Drawing.Color.Transparent;
-            this.lblDocVenta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDocVenta.ForeColor = System.Drawing.Color.Red;
-            this.lblDocVenta.Location = new System.Drawing.Point(511, 59);
-            this.lblDocVenta.Name = "lblDocVenta";
-            this.lblDocVenta.Size = new System.Drawing.Size(32, 13);
-            this.lblDocVenta.TabIndex = 283;
-            this.lblDocVenta.Text = "Error";
-            // 
-            // pbFechaPago
-            // 
-            this.pbFechaPago.BackColor = System.Drawing.Color.White;
-            this.pbFechaPago.Location = new System.Drawing.Point(480, 30);
-            this.pbFechaPago.Name = "pbFechaPago";
-            this.pbFechaPago.Size = new System.Drawing.Size(20, 20);
-            this.pbFechaPago.TabIndex = 285;
-            this.pbFechaPago.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(511, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 18);
-            this.label2.TabIndex = 281;
-            this.label2.Text = "Documento de venta";
-            // 
-            // erMoneda
-            // 
-            this.erMoneda.AutoSize = true;
-            this.erMoneda.BackColor = System.Drawing.Color.Transparent;
-            this.erMoneda.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.erMoneda.ForeColor = System.Drawing.Color.Red;
-            this.erMoneda.Location = new System.Drawing.Point(3, 59);
-            this.erMoneda.Name = "erMoneda";
-            this.erMoneda.Size = new System.Drawing.Size(32, 13);
-            this.erMoneda.TabIndex = 283;
-            this.erMoneda.Text = "Error";
-            // 
-            // pbDocVenta
-            // 
-            this.pbDocVenta.BackColor = System.Drawing.Color.White;
-            this.pbDocVenta.Location = new System.Drawing.Point(691, 30);
-            this.pbDocVenta.Name = "pbDocVenta";
-            this.pbDocVenta.Size = new System.Drawing.Size(20, 20);
-            this.pbDocVenta.TabIndex = 286;
-            this.pbDocVenta.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(3, 4);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(128, 18);
-            this.label8.TabIndex = 281;
-            this.label8.Text = "Moneda:";
-            // 
-            // imgMoneda
-            // 
-            this.imgMoneda.BackColor = System.Drawing.Color.White;
-            this.imgMoneda.Location = new System.Drawing.Point(183, 30);
-            this.imgMoneda.Name = "imgMoneda";
-            this.imgMoneda.Size = new System.Drawing.Size(20, 20);
-            this.imgMoneda.TabIndex = 286;
-            this.imgMoneda.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(230, 4);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(128, 18);
-            this.label9.TabIndex = 280;
-            this.label9.Text = "Fecha de pago";
-            // 
-            // dtFechaPago
-            // 
-            this.dtFechaPago.BorderColor = System.Drawing.Color.Gainsboro;
-            this.dtFechaPago.BorderRadius = 3;
-            this.dtFechaPago.BorderThickness = 1;
-            this.dtFechaPago.CheckedState.Parent = this.dtFechaPago;
-            this.dtFechaPago.FillColor = System.Drawing.Color.White;
-            this.dtFechaPago.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtFechaPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaPago.HoveredState.Parent = this.dtFechaPago;
-            this.dtFechaPago.Location = new System.Drawing.Point(230, 22);
-            this.dtFechaPago.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtFechaPago.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtFechaPago.Name = "dtFechaPago";
-            this.dtFechaPago.ShadowDecoration.Parent = this.dtFechaPago;
-            this.dtFechaPago.Size = new System.Drawing.Size(245, 36);
-            this.dtFechaPago.TabIndex = 282;
-            this.dtFechaPago.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
-            this.dtFechaPago.ValueChanged += new System.EventHandler(this.dtFechaPago_ValueChanged);
-            // 
             // dgvVentas
             // 
             this.dgvVentas.AllowUserToAddRows = false;
             this.dgvVentas.AllowUserToDeleteRows = false;
             this.dgvVentas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            this.dgvVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVentas.BackgroundColor = System.Drawing.Color.White;
             this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVentas.ColumnHeadersHeight = 42;
             this.dgvVentas.ContextMenuStrip = this.contextMenuStrip2;
             this.dgvVentas.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVentas.EnableHeadersVisualStyles = false;
             this.dgvVentas.GridColor = System.Drawing.Color.Silver;
             this.dgvVentas.Location = new System.Drawing.Point(0, 172);
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvVentas.RowHeadersVisible = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvVentas.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvVentas.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvVentas.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -742,7 +768,6 @@
             this.dgvVentas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
             this.dgvVentas.Visible = false;
             this.dgvVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellClick);
-            this.dgvVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentClick);
             this.dgvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellDoubleClick);
             this.dgvVentas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVentas_CellMouseDown);
             this.dgvVentas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvVentas_CellPainting);
@@ -1005,48 +1030,48 @@
             this.dgvCuotas.AllowUserToAddRows = false;
             this.dgvCuotas.AllowUserToDeleteRows = false;
             this.dgvCuotas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvCuotas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            this.dgvCuotas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCuotas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCuotas.BackgroundColor = System.Drawing.Color.White;
             this.dgvCuotas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCuotas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvCuotas.ColumnHeadersHeight = 42;
             this.dgvCuotas.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvCuotas.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCuotas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCuotas.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCuotas.EnableHeadersVisualStyles = false;
             this.dgvCuotas.GridColor = System.Drawing.Color.Silver;
             this.dgvCuotas.Location = new System.Drawing.Point(2, 110);
             this.dgvCuotas.Name = "dgvCuotas";
             this.dgvCuotas.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCuotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvCuotas.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCuotas.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuotas.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvCuotas.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvCuotas.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvCuotas.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -1264,15 +1289,15 @@
             this.tabCuotas.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.gbPaginacion.ResumeLayout(false);
-            this.gbPaginacion.PerformLayout();
-            this.siticoneGroupBox1.ResumeLayout(false);
-            this.siticoneGroupBox1.PerformLayout();
             this.pnDatosPago.ResumeLayout(false);
             this.pnDatosPago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFechaPago)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDocVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMoneda)).EndInit();
+            this.gbPaginacion.ResumeLayout(false);
+            this.gbPaginacion.PerformLayout();
+            this.siticoneGroupBox1.ResumeLayout(false);
+            this.siticoneGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.contextMenuStrip2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).EndInit();
@@ -1303,20 +1328,7 @@
         private System.Windows.Forms.PictureBox pbBuscar;
         private System.Windows.Forms.ToolStripMenuItem iRACONTROLDEPAGOSToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip ctmPagar;
-        private System.Windows.Forms.PictureBox pbFechaPago;
-        private System.Windows.Forms.PictureBox imgMoneda;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaPago;
-        private Siticone.UI.WinForms.SiticoneComboBox cboMoneda;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label erMoneda;
-        private System.Windows.Forms.Label erFechaPago;
-        private Siticone.UI.WinForms.SiticonePanel pnDatosPago;
         private Siticone.UI.WinForms.SiticoneDragControl siticoneDragControl1;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocEmitir;
-        private System.Windows.Forms.Label lblDocVenta;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pbDocVenta;
         private System.Windows.Forms.TabControl tabCuotas;
         private System.Windows.Forms.TabPage tabPage1;
         private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBus;
@@ -1362,5 +1374,19 @@
         private Siticone.UI.WinForms.SiticoneComboBox cboEstado;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem verHistorialDePagosToolStripMenuItem;
+        private Siticone.UI.WinForms.SiticonePanel pnDatosPago;
+        private Siticone.UI.WinForms.SiticoneComboBox cboTipoDocEmitir;
+        private Siticone.UI.WinForms.SiticoneComboBox cboMoneda;
+        private System.Windows.Forms.Label erFechaPago;
+        private System.Windows.Forms.Label lblDocVenta;
+        private System.Windows.Forms.PictureBox pbFechaPago;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label erMoneda;
+        private System.Windows.Forms.PictureBox pbDocVenta;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox imgMoneda;
+        private System.Windows.Forms.Label label9;
+        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaPago;
+        private Siticone.UI.WinForms.SiticoneButton btnGusrdarPago;
     }
 }

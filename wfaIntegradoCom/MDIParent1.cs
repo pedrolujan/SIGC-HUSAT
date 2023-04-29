@@ -47,6 +47,9 @@ using iTextSharp.text;
 using Font = System.Drawing.Font;
 using ListBox = System.Windows.Controls.ListBox;
 using Label = System.Windows.Forms.Label;
+using System.IO;
+using DocumentFormat.OpenXml.Bibliography;
+using System.Web.Services.Description;
 
 namespace wfaIntegradoCom
 
@@ -1382,8 +1385,51 @@ namespace wfaIntegradoCom
 
             btnAlertaSeguimiento.Text = "" + lstTotRan.totalRojos;
         }
+        public void fnValidarServidor()
+        {
+            String lsIni = "SIGC.ini";
+            String sLine = "";
+            String cClave1 = "";
+            String cClave2 = "";
+            int k = 0;
+
+            String cArchivo = System.AppDomain.CurrentDomain.BaseDirectory.ToString();
+
+            if (cArchivo.Substring(cArchivo.Length - 1, 1) == "\\")
+            {
+                cArchivo = cArchivo + lsIni;
+            }
+            else
+            {
+                cArchivo = cArchivo + @"\" + lsIni;
+            }
+
+            StreamReader objReader = new StreamReader(cArchivo, Encoding.Default);
+            do
+            {
+                sLine = objReader.ReadLine();
+                if (sLine != null)
+                {
+                    k = sLine.IndexOf("=");
+                    if (k > 0)
+                    {
+                        //cClave1 = oEnc.ConvertirClave(sLine.Substring(0, k), "", false);
+                        //cClave2 = oEnc.ConvertirClave(sLine.Substring(k + 1, sLine.Length - (k + 1)), "", false);
+                        cClave1 = sLine.Substring(0, k);
+                        cClave2 = sLine.Substring(k + 1, sLine.Length - (k + 1));
+                        if (cClave1 == "Server")
+                        {
+                            Variables.cNombreServidor = cClave2;
+
+                        }
+                    }
+                }
+            }
+            while (sLine != null);
+        }
         private void MDIParent1_Load(object sender, EventArgs e)
         {
+            stpnMensajes.Visible = false;
             //lblIngresos.Padding = new Padding(15, 0, 0, 0);
             //lblEgresos.Padding = lblIngresos.Padding;
             dtFechaFinG.Value = Variables.gdFechaSis;
@@ -1395,7 +1441,7 @@ namespace wfaIntegradoCom
             flowLayoutPanel1.Controls.Clear();
             ToggleBotonesAnchos.CheckState = CheckState.Unchecked;
             //inicio de funciones de cargado de menus y formulario load
-
+            fnValidarServidor();
             try
             {
                 //cboxSelecThema.SelectedIndex = 2;
@@ -2837,9 +2883,10 @@ namespace wfaIntegradoCom
                     //lsReporteBloqueEgresosMontoEnCaja.Clear();
                     lstRepDetalleIngresosDAshboard = fnBuscarDetalleParaCuadreDashboard();
 
-                    Variables.lstCuardreCaja=FunGeneral.fnVerificarAperturaAnterior(Convert.ToDateTime(dtFechaInicioG.Value), Convert.ToInt32(cboUsuario.SelectedValue));
                     Decimal MontoIngresos = lstRepDetalleIngresosDAshboard.Sum(i => i.ImporteRow);
                     Decimal MontoEgresos = lsReporteBloqueEgresosMontoEnCaja.Sum(i => i.ImporteRow);
+                    Variables.lstCuardreCaja=FunGeneral.fnVerificarAperturaAnterior(Convert.ToDateTime(dtFechaInicioG.Value), Convert.ToInt32(cboUsuario.SelectedValue));
+                   
                     CuadreCaja lstApertura = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1) is null ? new CuadreCaja() : Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
                     btnMontoEnCaja.Text = "Importe en Caja: " + FunGeneral.fnFormatearPrecioDC("S/", (MontoIngresos - MontoEgresos) + lstApertura.importeSaldo, 0);
                 }
@@ -3079,12 +3126,55 @@ namespace wfaIntegradoCom
             Int32 pnfH = 100;
             Int32 borderRadius = 2;
             Int32 tamLetraHF = 12;
+            Int32 tamLetrasMensajes = 21;
             Double rextWFlow = 0.2;
+
+            String strNomMensaje = "Versión de Pruebas";
             colorLetraHF = Color.Gainsboro;
             String tipoLetra = "Roboto";
             colorLetraBody = Color.Gainsboro;
             colorLetraIcono = fnDevolVerColorTransparente(65, Color.Black);
             colorHeaderFooter = fnDevolVerColorTransparente(150, Color.Black);
+            //FWpnCajaChicaCopias.Width = pnlParaDashboard.Width;
+
+
+            Label stLabel = new Label();
+            stLabel.Text = strNomMensaje;
+            stLabel.Font = new Font(tipoLetra, tamLetrasMensajes, GraphicsUnit.Pixel);
+            stLabel.AutoSize = true;
+            stLabel.ForeColor = Variables.ColorEmpresa;
+            stLabel.BackColor = Color.Yellow;
+            stLabel.Padding = new Padding(10);
+
+           
+
+            if (Variables.cNombreServidor!= "365.database.windows.net")
+            {
+                stpnMensajes.Controls.Clear();
+                stpnMensajes.BackColor = ColorThemas.PanelPadre;
+                stPanel.Controls.Add(stLabel);
+
+                int ly = 7;
+                for (int i = 0; i < 4; i++)
+                {
+                    Label stLabel1 = new Label();
+                    stLabel1.Name = "lbln" + i;
+                    stLabel1.Text = strNomMensaje;
+                    stLabel1.Font = new Font(tipoLetra, tamLetrasMensajes, GraphicsUnit.Pixel);
+                    stLabel1.AutoSize = true;
+                    stLabel1.ForeColor = Variables.ColorEmpresa;
+                    stLabel1.BackColor = Color.Yellow;
+                    stLabel1.Padding = new Padding(10);
+                   
+                    stLabel1.Location = new Point(stLabel1.Location.X,ly);
+                    stpnMensajes.Controls.Add(stLabel1);
+                    ly +=stLabel1.Height+ 10;
+                }
+                stpnMensajes.Visible = true;
+                stpnMensajes.Dock =  DockStyle.Fill;
+            }
+            //stPanel.Controls.Add(stLabel);
+
             for (int i = 0; i < lstBusq.Count; i++)
             {
                 ReporteBloque rpt = lstBusq[i];
@@ -3208,8 +3298,34 @@ namespace wfaIntegradoCom
                 stPanel.Controls.Add(panel);
             }
 
-            stPanel.Size =new Size((pnfW+20) * lstBusq.Count,pnfH+8);
+            Label stLabel2 = new Label();
+            stLabel2.Text = strNomMensaje;
+            stLabel2.Font = new Font(tipoLetra, tamLetrasMensajes, GraphicsUnit.Pixel);
+            stLabel2.AutoSize = true;
+            stLabel2.ForeColor = Variables.ColorEmpresa;
+            stLabel2.BackColor = Color.Yellow;
+            stLabel2.Padding = new Padding(10);
 
+            if (Variables.cNombreServidor != "365.database.windows.net")
+            {
+                stPanel.Controls.Add(stLabel2);
+            }
+
+            int totalWidth = 0;
+            int totalHeight = 0;
+            foreach (System.Windows.Forms.Control control in FWpnCajaChicaCopias.Controls)
+            {
+                totalWidth += control.Width;
+                if (totalHeight< control.Height)
+                {
+                    totalHeight = control.Height;
+                }
+            }
+
+            stPanel.Width = totalWidth + 90;
+            stPanel.Height = totalHeight+20;
+
+            //stPanel.Controls.Add(stLabel);
 
         }
         private void fnGenerarPaneles(List<ReporteBloque> lstBusq)
@@ -3667,11 +3783,45 @@ namespace wfaIntegradoCom
             estadoActivarDashBoard = est;
             
         }
+
+        public static UdpClient IsUdpPortInUse(int port)
+        {
+            bool inUse = false;
+
+            // Crear UdpClient con la dirección IP y el número de puerto
+            UdpClient udpClient = new UdpClient() ;
+            try
+            {
+                udpClient = new UdpClient(port);
+                inUse = false;
+            }
+            catch (SocketException ex)
+            {
+                if (ex.SocketErrorCode == SocketError.AddressAlreadyInUse)
+                {
+                    int min = 49152;
+                    int max = 65534;
+                    Random random = new Random();
+                    int randomNumber = random.Next(min, max + 1);
+                    udpClient = new UdpClient(randomNumber);
+                    inUse = true;
+                }
+            }
+            finally
+            {
+                //if (udpClient != null)
+                //{
+                //    udpClient.Close();
+                //}
+            }
+
+            return udpClient;
+        }
         public void fnEscucharMansages()
         {
 
 
-            UdpClient udpClient = new UdpClient(1234);
+            UdpClient udpClient = IsUdpPortInUse(1234);
 
             // Cree un objeto de extremo de red que represente la dirección de difusión de su red
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
@@ -4097,7 +4247,7 @@ namespace wfaIntegradoCom
                     }
 
                     lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
-
+                    //Llamada 1
                     frmMC.Inicio(lsReporteBloque, lsReporteBloqueDetalleEgresos, lstRepDetalleIngresos, lstCajaChica, 0,1);
                     fnActivarDashBoard(estadoActivarDashBoard);
                 }
@@ -4124,7 +4274,7 @@ namespace wfaIntegradoCom
                             lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloqueEgresos[0].SimboloMoneda, lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
 
                             lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
-
+                            //Llamada 2
                             frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0, 1);
                             fnActivarDashBoard(estadoActivarDashBoard);
                         }
@@ -4144,6 +4294,7 @@ namespace wfaIntegradoCom
 
                         lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
+                        //Llamada 3
                         frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, -1, 0);
                         fnActivarDashBoard(estadoActivarDashBoard);
                     }
@@ -4162,6 +4313,7 @@ namespace wfaIntegradoCom
 
                         lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
+                        //Llamada 4
                         frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0, 1);
                         fnActivarDashBoard(estadoActivarDashBoard);
                     }

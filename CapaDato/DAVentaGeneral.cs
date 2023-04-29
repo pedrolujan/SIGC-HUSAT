@@ -519,11 +519,12 @@ namespace CapaDato
         }
         public Boolean daGuardarpagosPendientes(Int32 idTrandiaria, List<Pagos> lstTrand, List<xmlDocumentoVentaGeneral> lstXml, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[6];
+            SqlParameter[] pa = new SqlParameter[10];
             DataTable dtVentaG;
             clsConexion objCnx = null;
             String xmlTrandiaria = clsUtil.Serialize(lstTrand);
             String xmDocumentoVenta = clsUtil.Serialize(lstXml);
+            String xmlDetalleVenta= clsUtil.Serialize(lstXml[0].xmlDetalleVentas);
             objUtil = new clsUtil();
             try
             {
@@ -533,6 +534,11 @@ namespace CapaDato
                 pa[3] = new SqlParameter("@dtFechaRegistro", SqlDbType.DateTime) { Value = lstTrand[0].dFechaPago };
                 pa[4] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = lstTrand[0].idUsario };
                 pa[5] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[6] = new SqlParameter("@idMoneda", SqlDbType.Int) { Value = lstXml[0].xmlDocumentoVenta[0].idMoneda };
+                pa[7] = new SqlParameter("@importeRestante", SqlDbType.Int) { Value = lstXml[0].xmlDetalleVentas.Sum(i=>i.importeRestante) };
+                pa[8] = new SqlParameter("@codigoDocumentoVentaCorrelativo", SqlDbType.VarChar,20) { Value = lstXml[0].xmlDocumentoVenta[0].CodigoCorrelativo };
+                pa[9] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml) { Value = xmlDetalleVenta };
+
 
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimientoDT("uspGuardarPagosPendientes", pa);

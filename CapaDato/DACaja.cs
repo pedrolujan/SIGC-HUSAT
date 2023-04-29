@@ -177,7 +177,7 @@ namespace CapaDato
                 pa[6] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = tipoCon };
 
                 objCnx = new clsConexion("");
-                dt = objCnx.EjecutarProcedimientoDT("uspGuardarCierreCaja", pa);
+                //dt = objCnx.EjecutarProcedimientoDT("uspGuardarCierreCaja", pa);
 
                 return true;
 

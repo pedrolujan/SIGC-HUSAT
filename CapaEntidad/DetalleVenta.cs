@@ -27,13 +27,17 @@ namespace CapaEntidad
         public Decimal gananciaRedondeo { get; set; }
         public Decimal TotalTipoDescuento { get; set; }
         public Decimal TotalDescuento { get; set; }
+        public Decimal ImporteActicipo { get; set; }
         public Decimal TotalPUCant { get; set; }
         public Decimal Couta { get; set; }
         public Decimal Importe { get; set; }
+        public Decimal importeRestante { get; set; }
         public Decimal ImporteRow { get; set; }
+        public DateTime dtFechaRegistro { get; set; }
         public Decimal valorRedondeo { get; set; }
         public String cSimbolo { get; set; }
-
+        
+        public Int32 idOperacionItem { get; set; }
         public Int32 idObjetoVenta { get; set; }
         public Int32 idTipoTransaccion { get; set; }
 
@@ -69,6 +73,7 @@ namespace CapaEntidad
         public DetalleVentaCabecera() { }
 
         public String NombreDocumento { get; set; }
+        public Int32 idTrandiaria { get; set; }
         public String CodDocumento { get; set; }
         public Decimal SubtotalVentas { get; set; }
         public Decimal Anticipos { get; set; }

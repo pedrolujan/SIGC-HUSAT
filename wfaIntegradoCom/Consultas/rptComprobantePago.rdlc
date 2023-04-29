@@ -41,6 +41,10 @@
           <DataField>Descuento</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="dtFechaRegistro">
+          <DataField>dtFechaRegistro</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
         <Field Name="gananciaRedondeo">
           <DataField>gananciaRedondeo</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
@@ -71,6 +75,10 @@
         </Field>
         <Field Name="Importe">
           <DataField>Importe</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ImporteActicipo">
+          <DataField>ImporteActicipo</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="ImporteRow">
@@ -246,6 +254,10 @@
           <DataField>est1</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
+        <Field Name="estValida">
+          <DataField>estValida</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
         <Field Name="FormaPagoFactura">
           <DataField>FormaPagoFactura</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -284,6 +296,10 @@
         </Field>
         <Field Name="MontoRedondeo">
           <DataField>MontoRedondeo</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="MontoTotalAnticipos">
+          <DataField>MontoTotalAnticipos</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="nIGV">
@@ -432,7 +448,7 @@
             <Top>3.18481cm</Top>
             <Left>1.83383cm</Left>
             <Height>0.6cm</Height>
-            <Width>16.71216cm</Width>
+            <Width>16.77566cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -535,7 +551,7 @@
             <Top>3.88001cm</Top>
             <Left>1.83383cm</Left>
             <Height>0.6cm</Height>
-            <Width>16.71216cm</Width>
+            <Width>16.77566cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -569,7 +585,7 @@
             <Top>4.57521cm</Top>
             <Left>1.83383cm</Left>
             <Height>0.6cm</Height>
-            <Width>16.71216cm</Width>
+            <Width>16.77566cm</Width>
             <ZIndex>6</ZIndex>
             <Visibility>
               <Hidden>=First(Fields!est0.Value, "DocumentoVenta")</Hidden>
@@ -804,22 +820,22 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.43582cm</Width>
+                  <Width>1.51409cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.44299cm</Width>
+                  <Width>6.52126cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.65989cm</Width>
+                  <Width>2.73816cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.72855cm</Width>
+                  <Width>2.80682cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.80499cm</Width>
+                  <Width>2.47716cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.45609cm</Width>
+                  <Width>2.53436cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1368,7 +1384,7 @@
             <Top>6.86041cm</Top>
             <Left>0.01766cm</Left>
             <Height>1.2cm</Height>
-            <Width>18.52833cm</Width>
+            <Width>18.59185cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -1570,7 +1586,7 @@
             <Top>14.16375cm</Top>
             <Left>3.33845cm</Left>
             <Height>0.6cm</Height>
-            <Width>8.92937cm</Width>
+            <Width>15.17579cm</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <Border>
@@ -1605,7 +1621,7 @@
             <Top>5.99207cm</Top>
             <Left>1.83383cm</Left>
             <Height>0.6cm</Height>
-            <Width>16.71216cm</Width>
+            <Width>16.77566cm</Width>
             <ZIndex>20</ZIndex>
             <Visibility>
               <Hidden>=First(Fields!est0.Value, "DocumentoVenta")</Hidden>
@@ -1717,7 +1733,7 @@
             <Top>5.27041cm</Top>
             <Left>1.83383cm</Left>
             <Height>0.6cm</Height>
-            <Width>16.71216cm</Width>
+            <Width>16.77566cm</Width>
             <ZIndex>23</ZIndex>
             <Visibility>
               <Hidden>=First(Fields!est0.Value, "DocumentoVenta")</Hidden>
@@ -1753,7 +1769,7 @@
             <Top>14.84058cm</Top>
             <Left>3.33845cm</Left>
             <Height>0.6cm</Height>
-            <Width>8.92937cm</Width>
+            <Width>15.17579cm</Width>
             <ZIndex>24</ZIndex>
             <Style>
               <Border>
@@ -1899,7 +1915,7 @@
             <Top>13.42856cm</Top>
             <Left>0.03175cm</Left>
             <Height>0cm</Height>
-            <Width>18.45074cm</Width>
+            <Width>18.57774cm</Width>
             <ZIndex>27</ZIndex>
             <Style>
               <Border>
@@ -1926,7 +1942,7 @@
             <Top>13.46561cm</Top>
             <Left>0.03175cm</Left>
             <Height>0.6cm</Height>
-            <Width>18.45074cm</Width>
+            <Width>18.48249cm</Width>
             <ZIndex>28</ZIndex>
             <Style>
               <Border>
@@ -1979,7 +1995,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Anticipos:</Value>
+                    <Value>Anticipos</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -2081,7 +2097,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!SimboloMoneda.Value, "DocumentoVenta") &amp; " " &amp; Format(Sum(Fields!PrecioUni.Value, "dsDetalleVenta"),"#0.00")</Value>
+                    <Value>=First(Fields!SimboloMoneda.Value, "DocumentoVenta") &amp; " " &amp; Format(Sum(Fields!ImporteRow.Value, "dsDetalleVenta"),"#0.00")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -2113,7 +2129,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!SimboloMoneda.Value, "DocumentoVenta") &amp; " " &amp; Format(0,"#0.00")</Value>
+                    <Value>=First(Fields!SimboloMoneda.Value, "DocumentoVenta") &amp; " " &amp; Format(Sum(Fields!MontoTotalAnticipos.Value*-1, "DocumentoVenta"),"#0.00")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -2210,7 +2226,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>18.67828cm</Width>
+      <Width>18.60951cm</Width>
       <Page>
         <PageHeader>
           <Height>0.40597cm</Height>
@@ -2281,7 +2297,7 @@
               <MIMEType>image/png</MIMEType>
               <Sizing>Fit</Sizing>
               <Top>0.00479cm</Top>
-              <Left>15.82491cm</Left>
+              <Left>15.50741cm</Left>
               <Height>2.7cm</Height>
               <Width>2.7cm</Width>
               <ZIndex>2</ZIndex>
@@ -2307,7 +2323,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox24</rd:DefaultName>
-              <Left>10.94138cm</Left>
+              <Left>10.62388cm</Left>
               <Height>2.70479cm</Height>
               <Width>4.74242cm</Width>
               <ZIndex>3</ZIndex>
@@ -2323,7 +2339,7 @@
             </Textbox>
             <Line Name="Line2">
               <Top>0.07056cm</Top>
-              <Left>10.13037cm</Left>
+              <Left>9.49537cm</Left>
               <Height>2.63424cm</Height>
               <Width>0cm</Width>
               <ZIndex>4</ZIndex>

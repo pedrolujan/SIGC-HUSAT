@@ -1785,6 +1785,9 @@ namespace wfaIntegradoCom.Mantenedores
                     tabRegistroVisitas.AutoScroll = false;
                     if (lstPros.idProspecto > 0)
                     {
+                        dtpFechaVisita.MinDate = lstPros.fechaVisita.AddDays(-2);
+                        dtpFechaVisita.MaxDate = Variables.gdFechaSis.AddDays(-2).AddDays(2).AddHours((23 - Variables.gdFechaSis.Hour));
+
                         txtCelular1.ReadOnly = true;
 
                         lnTipoConOferta = 1;
@@ -1942,7 +1945,7 @@ namespace wfaIntegradoCom.Mantenedores
             byte dia = (byte)Variables.gdFechaSis.DayOfWeek;
             if(dia==5 || dia == 6)
             {
-                fnValidarFechaProxSeguimiento(dtpFechaProximoSeguimiento, imgFechaSigSeguimiento, erFechaSigSeguimiento, 0, 3);
+                fnValidarFechaProxSeguimiento(dtpFechaProximoSeguimiento, imgFechaSigSeguimiento, erFechaSigSeguimiento, 0, 4);
 
             }
             else
@@ -1990,6 +1993,8 @@ namespace wfaIntegradoCom.Mantenedores
             cboPlan.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
             cboPaginaSeg.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
             FunGeneral.fnValidarFechaPago(dtpFechaRegSeguimiento, imgFechaRegSeguimiento, 0);
+            FunGeneral.fnValidarFechaPago(dtpFechaVisita, imgFechaVenida, 0);
+
         }
 
         private DateTime fnCalcularSoloFecha(DateTime fecha)

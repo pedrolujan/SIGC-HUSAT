@@ -13,7 +13,7 @@ namespace CapaNegocio
     {
         public BLDocumentoVenta() { }
 
-        public List<DocumentoVenta> blBuscarDocVenta(String pcBuscar, Int16 pnTipoCon)
+        public List<DetalleVenta> blBuscarDocVenta(String pcBuscar, Int32 pnTipoCon)
         {
             DADocumentoVenta objDocVenta = new DADocumentoVenta();
             try
@@ -61,6 +61,20 @@ namespace CapaNegocio
             try
             {
                 return objDocVenta.daListarDetalleVenta(pidVenta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+        public List<DetalleVenta> blbuscarDetalleVenta(Int32 idTrandia)
+        {
+
+            DADocumentoVenta objDocVenta = new DADocumentoVenta();
+            try
+            {
+                return objDocVenta.daBuscarDetalleVenta(idTrandia);
             }
             catch (Exception ex)
             {

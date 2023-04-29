@@ -48,7 +48,9 @@
             this.gbRespuestaPago = new System.Windows.Forms.GroupBox();
             this.rdbNo = new System.Windows.Forms.RadioButton();
             this.rdbSi = new System.Windows.Forms.RadioButton();
+            this.txtImporteAbonado = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtImporteRestante = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTotalAPagar = new Siticone.UI.WinForms.SiticoneTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,7 +81,9 @@
             this.siticonePanel1.Controls.Add(this.btnAdd);
             this.siticonePanel1.Controls.Add(this.gunaPanel1);
             this.siticonePanel1.Controls.Add(this.gbRespuestaPago);
+            this.siticonePanel1.Controls.Add(this.txtImporteAbonado);
             this.siticonePanel1.Controls.Add(this.txtImporteRestante);
+            this.siticonePanel1.Controls.Add(this.label6);
             this.siticonePanel1.Controls.Add(this.label1);
             this.siticonePanel1.Controls.Add(this.txtTotalAPagar);
             this.siticonePanel1.Controls.Add(this.label2);
@@ -164,12 +168,12 @@
             this.dgvEntidades.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvEntidades.EnableHeadersVisualStyles = false;
             this.dgvEntidades.GridColor = System.Drawing.Color.White;
-            this.dgvEntidades.Location = new System.Drawing.Point(8, 131);
+            this.dgvEntidades.Location = new System.Drawing.Point(8, 116);
             this.dgvEntidades.Name = "dgvEntidades";
             this.dgvEntidades.ReadOnly = true;
             this.dgvEntidades.RowHeadersVisible = false;
             this.dgvEntidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEntidades.Size = new System.Drawing.Size(562, 125);
+            this.dgvEntidades.Size = new System.Drawing.Size(485, 125);
             this.dgvEntidades.TabIndex = 178;
             this.dgvEntidades.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvEntidades.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -200,7 +204,7 @@
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Entidad (es) de págo";
+            this.Column1.HeaderText = "Medios de págo";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
@@ -228,7 +232,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.HoveredState.Parent = this.btnAdd;
-            this.btnAdd.Location = new System.Drawing.Point(571, 131);
+            this.btnAdd.Location = new System.Drawing.Point(529, 155);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
             this.btnAdd.ShadowDecoration.Parent = this.btnAdd;
@@ -304,6 +308,7 @@
             this.gbRespuestaPago.Size = new System.Drawing.Size(206, 35);
             this.gbRespuestaPago.TabIndex = 175;
             this.gbRespuestaPago.TabStop = false;
+            this.gbRespuestaPago.Visible = false;
             // 
             // rdbNo
             // 
@@ -329,6 +334,37 @@
             this.rdbSi.UseVisualStyleBackColor = true;
             this.rdbSi.CheckedChanged += new System.EventHandler(this.rdbSi_CheckedChanged);
             // 
+            // txtImporteAbonado
+            // 
+            this.txtImporteAbonado.Animated = false;
+            this.txtImporteAbonado.BorderColor = System.Drawing.Color.LightGray;
+            this.txtImporteAbonado.BorderRadius = 3;
+            this.txtImporteAbonado.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtImporteAbonado.DefaultText = "";
+            this.txtImporteAbonado.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtImporteAbonado.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtImporteAbonado.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtImporteAbonado.DisabledState.Parent = this.txtImporteAbonado;
+            this.txtImporteAbonado.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtImporteAbonado.Enabled = false;
+            this.txtImporteAbonado.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtImporteAbonado.FocusedState.Parent = this.txtImporteAbonado;
+            this.txtImporteAbonado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtImporteAbonado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtImporteAbonado.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtImporteAbonado.HoveredState.Parent = this.txtImporteAbonado;
+            this.txtImporteAbonado.Location = new System.Drawing.Point(262, 65);
+            this.txtImporteAbonado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtImporteAbonado.Name = "txtImporteAbonado";
+            this.txtImporteAbonado.PasswordChar = '\0';
+            this.txtImporteAbonado.PlaceholderText = "";
+            this.txtImporteAbonado.SelectedText = "";
+            this.txtImporteAbonado.ShadowDecoration.Parent = this.txtImporteAbonado;
+            this.txtImporteAbonado.Size = new System.Drawing.Size(166, 36);
+            this.txtImporteAbonado.TabIndex = 174;
+            this.txtImporteAbonado.TextOffset = new System.Drawing.Point(25, 0);
+            this.txtImporteAbonado.WordWrap = false;
+            // 
             // txtImporteRestante
             // 
             this.txtImporteRestante.Animated = false;
@@ -348,16 +384,29 @@
             this.txtImporteRestante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtImporteRestante.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtImporteRestante.HoveredState.Parent = this.txtImporteRestante;
-            this.txtImporteRestante.Location = new System.Drawing.Point(355, 80);
+            this.txtImporteRestante.Location = new System.Drawing.Point(435, 65);
             this.txtImporteRestante.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtImporteRestante.Name = "txtImporteRestante";
             this.txtImporteRestante.PasswordChar = '\0';
             this.txtImporteRestante.PlaceholderText = "";
             this.txtImporteRestante.SelectedText = "";
             this.txtImporteRestante.ShadowDecoration.Parent = this.txtImporteRestante;
-            this.txtImporteRestante.Size = new System.Drawing.Size(246, 36);
+            this.txtImporteRestante.Size = new System.Drawing.Size(166, 36);
             this.txtImporteRestante.TabIndex = 174;
             this.txtImporteRestante.TextOffset = new System.Drawing.Point(25, 0);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(262, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 17);
+            this.label6.TabIndex = 173;
+            this.label6.Text = "Importe Abonado";
+            this.label6.Visible = false;
             // 
             // label1
             // 
@@ -365,7 +414,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(355, 62);
+            this.label1.Location = new System.Drawing.Point(435, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 17);
             this.label1.TabIndex = 173;
@@ -390,7 +439,7 @@
             this.txtTotalAPagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTotalAPagar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTotalAPagar.HoveredState.Parent = this.txtTotalAPagar;
-            this.txtTotalAPagar.Location = new System.Drawing.Point(8, 80);
+            this.txtTotalAPagar.Location = new System.Drawing.Point(8, 65);
             this.txtTotalAPagar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTotalAPagar.Name = "txtTotalAPagar";
             this.txtTotalAPagar.PasswordChar = '\0';
@@ -402,15 +451,15 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(571, 113);
+            this.label2.Location = new System.Drawing.Point(489, 116);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 17);
+            this.label2.Size = new System.Drawing.Size(118, 36);
             this.label2.TabIndex = 173;
-            this.label2.Text = "Add.";
+            this.label2.Text = "Agregar Medios de Pago";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -418,7 +467,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(8, 62);
+            this.label4.Location = new System.Drawing.Point(8, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 17);
             this.label4.TabIndex = 173;
@@ -468,7 +517,7 @@
             // 
             this.pbOservacion.BackColor = System.Drawing.Color.Transparent;
             this.pbOservacion.BaseColor = System.Drawing.Color.Transparent;
-            this.pbOservacion.Location = new System.Drawing.Point(547, 284);
+            this.pbOservacion.Location = new System.Drawing.Point(547, 267);
             this.pbOservacion.Name = "pbOservacion";
             this.pbOservacion.Size = new System.Drawing.Size(22, 22);
             this.pbOservacion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -494,7 +543,7 @@
             this.txtObsevacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtObsevacion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtObsevacion.HoveredState.Parent = this.txtObsevacion;
-            this.txtObsevacion.Location = new System.Drawing.Point(8, 283);
+            this.txtObsevacion.Location = new System.Drawing.Point(8, 266);
             this.txtObsevacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtObsevacion.Multiline = true;
             this.txtObsevacion.Name = "txtObsevacion";
@@ -502,7 +551,7 @@
             this.txtObsevacion.PlaceholderText = "";
             this.txtObsevacion.SelectedText = "";
             this.txtObsevacion.ShadowDecoration.Parent = this.txtObsevacion;
-            this.txtObsevacion.Size = new System.Drawing.Size(562, 47);
+            this.txtObsevacion.Size = new System.Drawing.Size(562, 61);
             this.txtObsevacion.TabIndex = 156;
             this.txtObsevacion.TextChanged += new System.EventHandler(this.txtObsevacion_TextChanged);
             // 
@@ -512,7 +561,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(8, 263);
+            this.label5.Location = new System.Drawing.Point(8, 246);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 17);
             this.label5.TabIndex = 155;
@@ -547,7 +596,7 @@
             this.lblObservaciones.BackColor = System.Drawing.Color.Transparent;
             this.lblObservaciones.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblObservaciones.ForeColor = System.Drawing.Color.Red;
-            this.lblObservaciones.Location = new System.Drawing.Point(21, 331);
+            this.lblObservaciones.Location = new System.Drawing.Point(21, 329);
             this.lblObservaciones.Name = "lblObservaciones";
             this.lblObservaciones.Size = new System.Drawing.Size(0, 15);
             this.lblObservaciones.TabIndex = 170;
@@ -605,7 +654,6 @@
         private System.Windows.Forms.RadioButton rdbSi;
         private Siticone.UI.WinForms.SiticoneCircleButton btnAdd;
         private Siticone.UI.WinForms.SiticoneDataGridView dgvEntidades;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.ContextMenuStrip cntMenu;
         private System.Windows.Forms.ToolStripMenuItem elimiToolStripMenuItem;
         private System.Windows.Forms.Label label2;
@@ -613,5 +661,8 @@
         private System.Windows.Forms.Timer timer1;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel1;
         private Siticone.UI.WinForms.SiticoneProgressIndicator siticoneProgressIndicator1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private Siticone.UI.WinForms.SiticoneTextBox txtImporteAbonado;
+        private System.Windows.Forms.Label label6;
     }
 }

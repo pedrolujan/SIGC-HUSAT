@@ -735,7 +735,7 @@ namespace CapaDato
         }
         public Boolean daGuardarPagoCuotas(ControlPagos clsCPC, List<xmlDocumentoVentaGeneral> lstDV, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[22];
+            SqlParameter[] pa = new SqlParameter[23];
             DataTable dtResult = new DataTable();
             clsConexion objCnx = null;
             Int32 numRows = 0;
@@ -770,6 +770,7 @@ namespace CapaDato
                 pa[19] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
                 pa[20] = new SqlParameter("@ImgQr", SqlDbType.Image) { Value = clsCPC.byteQr };
                 pa[21] = new SqlParameter("@CodCorrelativo", SqlDbType.VarChar, 13) { Value = clsCPC.CodCorrelativoFactura };
+                pa[22] = new SqlParameter("@cCodEstadoPP", SqlDbType.VarChar, 13) { Value = clsCPC.listaPagosTrandiaria[0].cEstadoPP };
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspGuardarPagoCuotas", pa);
                 return true;
@@ -793,7 +794,7 @@ namespace CapaDato
 
         public Boolean daGuardarPagoCuotasPorDocumento(ControlPagos clsCPC, List<xmlDocumentoVentaGeneral> lstDV, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[20];
+            SqlParameter[] pa = new SqlParameter[21];
             DataTable dtResult = new DataTable();
             clsConexion objCnx = null;
             Int32 numRows = 0;
@@ -815,7 +816,7 @@ namespace CapaDato
                 pa[7] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml) { Value = xmlDetalleVenta };
                 pa[8] = new SqlParameter("@xmlDetalleCronograma", SqlDbType.Xml) { Value = xmlDetalleCronograma };
                 pa[9] = new SqlParameter("@xmlTrandiaria", SqlDbType.Xml) { Value = xmlTrandiaria };
-                pa[10] = new SqlParameter("@TotalCuota", SqlDbType.Money) { Value = clsCPC.listaPagosTrandiaria[0].cantAPagar };
+                pa[10] = new SqlParameter("@TotalCuota", SqlDbType.Money) { Value = clsCPC.listaPagosTrandiaria[0].PagaCon };
                 pa[11] = new SqlParameter("@idMoneda", SqlDbType.Int) { Value = clsCPC.listaPagosTrandiaria[0].idMoneda };
                 pa[12] = new SqlParameter("@idCiclo", SqlDbType.Int) { Value = clsCPC.idCiclo };
                 pa[13] = new SqlParameter("@IGVPrecio", SqlDbType.Money) { Value = lstDV[0].xmlDocumentoVenta[0].nIGV };
@@ -826,6 +827,7 @@ namespace CapaDato
                 pa[17] = new SqlParameter("@peTipoCon", SqlDbType.Int) { Value = tipoCon };
                 pa[18] = new SqlParameter("@ImgQr", SqlDbType.Image) { Value = clsCPC.byteQr };
                 pa[19] = new SqlParameter("@CodCorrelativo", SqlDbType.VarChar,13) { Value = clsCPC.CodCorrelativoFactura };
+                pa[20] = new SqlParameter("@cCodEstadoPP", SqlDbType.VarChar, 8) { Value = clsCPC.listaPagosTrandiaria[0].cEstadoPP };
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspGuardarPagoCuotasPorDocumento", pa);
                 return true;

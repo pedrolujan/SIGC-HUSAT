@@ -605,6 +605,12 @@
     <Compile Include="Procesos\frmBajadeServicio.Designer.cs">
       <DependentUpon>frmBajadeServicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\frmBuscarAnticipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmBuscarAnticipos.Designer.cs">
+      <DependentUpon>frmBuscarAnticipos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\frmBuscarVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -917,6 +923,9 @@
     <Compile Include="Sunat\NotaCredito.cs" />
     <EmbeddedResource Include="Mantenedores\frmConfiguracionDocumentoVenta.resx">
       <DependentUpon>frmConfiguracionDocumentoVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmBuscarAnticipos.resx">
+      <DependentUpon>frmBuscarAnticipos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sunat\MovimientoSunat.resx">
       <DependentUpon>MovimientoSunat.cs</DependentUpon>

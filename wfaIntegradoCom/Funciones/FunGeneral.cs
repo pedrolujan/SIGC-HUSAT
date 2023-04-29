@@ -78,6 +78,39 @@ namespace wfaIntegradoCom.Funciones
                         scmb.ForeColor = ColorThemas.FuenteControles;
                     }
 
+                    //panel dentro de tabPage
+
+                    var pnh=tp.Controls.OfType<SiticonePanel>();
+                    foreach (SiticonePanel pn in pnh)
+                    {
+                        pn.BackColor = ColorThemas.PanelPadre;
+
+                        var lblpnh = pn.Controls.OfType<SiticoneLabel>();
+                        foreach (SiticoneLabel stl in lblpnh)
+                        {
+                            stl.ForeColor = ColorThemas.FuenteControles;
+                        }
+                        var lblpnhf=pn.Controls.OfType<Label>();
+                        foreach (Label lbl in lblpnhf)
+                        {
+                            lbl.ForeColor = ColorThemas.FuenteControles;
+                            if (lbl.Tag== "error")
+                            {
+                                lbl.ForeColor = Color.Red;
+                            }
+                        }
+
+                        var stCheck=pn.Controls.OfType<SiticoneCheckBox>();
+                        foreach (SiticoneCheckBox chk in stCheck)
+                        {
+                            chk.ForeColor= ColorThemas.FuenteControles;
+                            if (chk.Tag== "important")
+                            {
+                                chk.ForeColor = Variables.ColorEmpresa;
+                            }
+                        }
+                    }
+
                     var SDatPickerIn = tp.Controls.OfType<SiticoneDateTimePicker>();
                     foreach (SiticoneDateTimePicker scmb in SDatPickerIn)
                     {
@@ -476,6 +509,20 @@ namespace wfaIntegradoCom.Funciones
             }
             return Tuple.Create(estado, msg);
         }
+        public static List<DetalleVenta> fnObtenerDetalleVenta(Int32 idTrandiaria)
+        {
+            BLDocumentoVenta bLDocumentoVenta = new BLDocumentoVenta();
+            try
+            {
+                return bLDocumentoVenta.blbuscarDetalleVenta(idTrandiaria);
+
+            }
+            catch (Exception ex)
+            {
+
+                return new List<DetalleVenta>();
+            }
+        }
         public static Tuple<Boolean, String> fnValidarFechaPago(SiticoneDateTimePicker dt, PictureBox pb, Int32 tipoCon)
         {
             Boolean estado = false;
@@ -488,7 +535,7 @@ namespace wfaIntegradoCom.Funciones
             }
             else
             {
-                if (dt.Value.Day<Variables.gdFechaSis.Day)
+                if (dt.Value.Day<Variables.gdFechaSis.Day && dt.Value.Day> Variables.gdFechaSis.AddDays(-4).Day)
                 {
                     DialogResult dialg = MessageBox.Show("La seleccion en menor a la fecha actual, deseas fijarla?","Avisoo!!!",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
 
@@ -496,6 +543,11 @@ namespace wfaIntegradoCom.Funciones
                     {
                         dt.Value = Variables.gdFechaSis;
                     }
+                }
+                else
+                {
+                    dt.MinDate = Variables.gdFechaSis.AddYears(-5);
+                    dt.MaxDate = ddt;
                 }
             }
             estado = true;

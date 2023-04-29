@@ -155,7 +155,7 @@ namespace CapaDato
 
         public Boolean daGuardarOtrasVenta(OtrasVentas clsOtrasVentas, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[23];
+            SqlParameter[] pa = new SqlParameter[24];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             int intRowsAffected = 0;
@@ -241,9 +241,12 @@ namespace CapaDato
 
                 pa[22] = new SqlParameter("@countItems", SqlDbType.Int);
                 pa[22].Value = clsOtrasVentas.lstDetalleVenta.Count;
+                
+                pa[23] = new SqlParameter("@codigoDocumentoVentaCorrelativo", SqlDbType.Int);
+                pa[23].Value = clsOtrasVentas.lstXmlDocVenta[0].xmlDocumentoVenta[0].CodigoCorrelativo;
 
-                objCnx = new clsConexion("");
-                intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
+                //objCnx = new clsConexion("");
+                //intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
                 return true;
             }
             catch (Exception ex)

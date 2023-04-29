@@ -31,6 +31,7 @@ namespace wfaIntegradoCom.Funciones
         public static string gsEmpresaDir = string.Empty;
         public static string gsRuc = string.Empty;
         public static string gsCargoUsuario = string.Empty;
+        public static string cNombreServidor = string.Empty;
         public static string gsImpresora = "EPSON099E3E (L395 Series)";
         public static IList<string> template = new List<string>();
         public static bool bitActivePrintDirect = false;

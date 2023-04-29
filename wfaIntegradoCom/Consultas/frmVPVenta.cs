@@ -96,8 +96,11 @@ namespace wfaIntegradoCom.Consultas
             }
             if (lnTipoCon == -4)
             {
-                label1.Text = "¿Desea Anular este Documento?";
-                btnGenerarVenta.Text = "Anular Documento";
+                //label1.Text = "¿Desea Anular este Documento?";
+                //btnGenerarVenta.Text = "Anular Documento";
+                //btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
+                label1.Text = "¿Desea finalizar el pago de la cuota?";
+                btnGenerarVenta.Text = "Finalizar pago";
                 btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
             }
             if (lnTipoCon == -5)
@@ -112,16 +115,16 @@ namespace wfaIntegradoCom.Consultas
 
         private void fnCargarReporte(List<DocumentoVenta> lstC, List<DetalleVenta> lstDV,Byte[] bt)
         {
+            reportViewer1.Reset();
             if (bt is null || bt.Length<2 )
             {
                 String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
                 bt = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
-
                 
             }
             MemoryStream ms = new MemoryStream(bt);
             ReportParameter[] parameters = new ReportParameter[7];
-            reportViewer1.Reset();
+            
             lstC[0].cCliente= lstC[0].cCliente.Trim();
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.ProcessingMode = ProcessingMode.Local;
@@ -226,9 +229,9 @@ namespace wfaIntegradoCom.Consultas
             {
                 if (lnEstadosProcesos==0)
                 {
-                    //Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                    //Decimal sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                    //fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
+                    Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                    Decimal sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
+                    fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
                     frm.fnCambiarEstadoPago(true);
                 }
                 else if (lnEstadosProcesos==-1)

@@ -16,6 +16,8 @@ namespace CapaEntidad
         public Int32 idEntidadPago { get; set; }
         public Int32 Unidades { get; set; }
         public Decimal cantAPagar { get; set; }
+        public Decimal importeRestante { get; set; }
+        public Decimal importeAbonado { get; set; }
         public String cTipoVenta { get; set; }
         public String cNumeroOperacion { get; set; }
         public Decimal PagaCon { get; set; }

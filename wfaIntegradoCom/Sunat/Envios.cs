@@ -921,22 +921,39 @@ namespace wfaIntegradoCom.Sunat
             byte[] bitArray = File.ReadAllBytes(filepath);
             try
             {
+                EndpointAddress remoteAddress= new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
                 BasicHttpBinding binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
                 binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
                 binding.Security.Transport.ProxyCredentialType = HttpProxyCredentialType.None;
                 binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
                 binding.Security.Message.AlgorithmSuite = System.ServiceModel.Security.SecurityAlgorithmSuite.Default;
 
-                //EndpointAddress remoteAddress = new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
-                EndpointAddress remoteAddress = new EndpointAddress("https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService");
+                if (Variables.cNombreServidor != "365.database.windows.net")
+                {
+                    remoteAddress = new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
+
+                }
+                else
+                {
+                    remoteAddress = new EndpointAddress("https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService");
+
+                }
                 billServiceClient servicio = new billServiceClient(binding, remoteAddress);
                 ServicePointManager.UseNagleAlgorithm = true;
                 ServicePointManager.Expect100Continue = false;
                 ServicePointManager.CheckCertificateRevocationList = true;
-                //servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
-                //servicio.ClientCredentials.UserName.Password = "MODDATOS";
-                servicio.ClientCredentials.UserName.UserName = "20602404863FACTURAS";
-                servicio.ClientCredentials.UserName.Password = "Mihusat1";
+                if (Variables.cNombreServidor != "365.database.windows.net")
+                {
+                    servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
+                    servicio.ClientCredentials.UserName.Password = "MODDATOS";
+                }
+                else
+                {
+
+                    servicio.ClientCredentials.UserName.UserName = "20602404863FACTURAS";
+                    servicio.ClientCredentials.UserName.Password = "Mihusat1";
+                }
+
 
                 var elements = servicio.Endpoint.Binding.CreateBindingElements();
                 elements.Find<SecurityBindingElement>().EnableUnsecuredResponse = true;

@@ -270,10 +270,10 @@ namespace wfaIntegradoCom.Procesos
                 if (resultDialog == DialogResult.Yes)
                 {
                     fnBuscarDocumentoVenta(codDocumento, -4, 0, 0);
-                    if (EstadoAnulacion == true)
+                    if (EstadoAnulacion == false)
                     {
-                        EmitirFactura env = new EmitirFactura();
-                        env.EmitirNotaCredito(clsCliente, stXmlDocumentoVenta[0].xmlDetalleVentas, clsDocumentoVentaEmitir);
+                        //EmitirFactura env = new EmitirFactura();
+                        //env.EmitirNotaCredito(clsCliente, stXmlDocumentoVenta[0].xmlDetalleVentas, clsDocumentoVentaEmitir);
 
                         estadoOpe = objdocVenta.BLDAnularDocumentoVenta(codDocumento, idOperacion, stXmlDocumentoVenta, tipoCon);
 

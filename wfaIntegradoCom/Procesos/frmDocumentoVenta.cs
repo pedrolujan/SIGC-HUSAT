@@ -486,7 +486,7 @@ namespace wfaIntegradoCom.Procesos
             {
 
                 lstDocVenta = new List<DocumentoVenta>();
-                lstDocVenta = objDocVenta.blBuscarDocVenta(pcBuscar, pnTipoCon);
+                //lstDocVenta = objDocVenta.blBuscarDocVenta(pcBuscar, pnTipoCon);
                 lvVenta.Items.Clear();
                 foreach (DocumentoVenta objVenta in lstDocVenta)
                 {

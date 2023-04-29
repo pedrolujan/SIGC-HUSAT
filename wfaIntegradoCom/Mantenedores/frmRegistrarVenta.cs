@@ -424,7 +424,7 @@ namespace wfaIntegradoCom.Mantenedores
                 cboTipoVetaBusq.SelectedValue = 0;
                 dtpFechaRegistro.Value = Variables.gdFechaSis;
                 dtFechaPago.Value = Variables.gdFechaSis;
-                //FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
+                FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
                 dtpFechaFinalBus.Value = Variables.gdFechaSis;
                 dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-(dtpFechaFinalBus.Value.Day - 1));
                 if (Variables.gsCargoUsuario == "PETR0001" || Variables.gsCargoUsuario == "PETR0005" || Variables.gsCargoUsuario == "PETR0007")
@@ -826,6 +826,12 @@ namespace wfaIntegradoCom.Mantenedores
             }
             //lstPP = lstT;
             //lstT = lstPP.Union(lstDV).ToList();
+            int y = 0;
+            foreach (DetalleVenta d in lstT)
+            {
+                lstT[y].importeRestante = d.PrecioUni - d.TotalTipoDescuento;
+                y++;
+            }
             lstTotalDetalle = lstT;
            fnCalcularCabeceraDetalle(lstT, true);
         }
@@ -1576,6 +1582,7 @@ namespace wfaIntegradoCom.Mantenedores
                     Numeracion = i + 1,                    
                     Descripcion = nombreTarifas[0],
                     PrecioUni = 0,
+                    importeRestante=0,
                     IdTipoDescuento = 0,
                     idTipoTarifa = staticTipoTarifa,
                     Descuento = 0,
@@ -1699,6 +1706,7 @@ namespace wfaIntegradoCom.Mantenedores
                 lstDV[i].Couta = Convert.ToInt32(cboTipoVenta.SelectedValue) == 2 ? 1 : lstDV[i].Couta;
                 lstDV[i].Cantidad = lnTipoCon==-1?ClsVentaGeneral.lstVehiculo.Count: lstVehiculo.Count;
                 lstDV[i].PrecioUni = fnConvertirPrecioMoneda(clsTarifa.IdMoneda, clsTarifa.PrecioPlan, clsMoneda.idMoneda);
+                lstDV[i].importeRestante = fnConvertirPrecioMoneda(clsTarifa.IdMoneda, clsTarifa.PrecioPlan, clsMoneda.idMoneda);
                 precioTotalFinal = lstDV[i].PrecioUni * lstDV[i].Cantidad;
                 Decimal convertDescuento = fnConvertirATipoDescuento(precioTotalFinal, cboTipoDescuentoPrecios.Text, lstDV[i].Descuento);
                 Decimal precioDescontado = fnConvertirPrecioMoneda(clsMonedaTarifa.idMoneda, convertDescuento, clsMoneda.idMoneda);
@@ -2486,6 +2494,7 @@ namespace wfaIntegradoCom.Mantenedores
                             lstDetV[i].Descripcion = result.Item1[i];
                             lstDetV[i].idTipoTarifa = clsTarifa.IdTarifa;
                             lstDetV[i].PrecioUni = precioUnitario;
+                            lstDetV[i].importeRestante = importe;
                             lstDetV[i].Descuento = result.Item3[i];
                             lstDetV[i].gananciaRedondeo = result.Item5[i];
                             lstDetV[i].TotalTipoDescuento = precioDescontado;
@@ -2523,6 +2532,7 @@ namespace wfaIntegradoCom.Mantenedores
                         Descripcion = result.Item1[i],
                         idTipoTarifa = clsTarifa.IdTarifa,
                         PrecioUni = precioUnitario,
+                        importeRestante = importe,
                         Descuento = result.Item3[i],
                         gananciaRedondeo = result.Item5[i],
                         TotalTipoDescuento = precioDescontado,  
@@ -2808,7 +2818,7 @@ namespace wfaIntegradoCom.Mantenedores
                         dgv.Columns[8].Width = 45;
                         dgv.Columns[9].Width = 45;
                         dgv.Columns[10].Width = 50;
-                        dgv.Columns[11].Width = 45;
+                        dgv.Columns[11].Width = 60;
                         dgv.Columns[12].Width = 40;
                         dgv.Columns[13].Width = 40;
                         dgv.Columns[14].Width = 100;
@@ -5057,6 +5067,7 @@ namespace wfaIntegradoCom.Mantenedores
                         lstDV[0].TotalTipoDescuento = lstPP[i].TotalTipoDescuento;
                         lstDV[0].Importe = lstPP[i].Importe;
                         lstDV[0].PrecioUni = lstPP[i].PrecioUni;
+                        lstDV[0].importeRestante = lstPP[i].PrecioUni;
                         lstDV[0].idTipoTarifa = lstPP[i].idTipoTarifa;
                         lstPP.Remove(lstPP[i]);
                     }else if ((lstPP[i].Descripcion == CadenaRecortada) || (lstPP[i].Descripcion == CadenaRecortadaTipoPlan))
@@ -5066,6 +5077,7 @@ namespace wfaIntegradoCom.Mantenedores
                         lstDV[0].TotalTipoDescuento = lstPP[i].TotalTipoDescuento;
                         lstDV[0].Importe = lstPP[i].Importe;
                         lstDV[0].PrecioUni = lstPP[i].PrecioUni;
+                        lstDV[0].importeRestante = lstPP[i].PrecioUni;
                         lstDV[0].idTipoTarifa = lstPP[i].idTipoTarifa;
                         lstPP.Remove(lstPP[i]);
                     }
@@ -5079,6 +5091,7 @@ namespace wfaIntegradoCom.Mantenedores
                         lstDV[0].TotalTipoDescuento = lstPP[i].TotalTipoDescuento;
                         lstDV[0].Importe = lstPP[i].Importe;
                         lstDV[0].PrecioUni = lstPP[i].PrecioUni;
+                        lstDV[0].importeRestante = lstPP[i].PrecioUni;
                         lstDV[0].idTipoTarifa = lstPP[i].idTipoTarifa;
                         lstPP.Remove(lstPP[i]);
                     }
@@ -5143,6 +5156,20 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     e.CellStyle.ForeColor = Color.Red;
 
+                }
+            }else if (nombreCabecera == "EstadoContrato")
+            {
+                if (e.Value.ToString()=="Vigente")
+                {
+                    e.CellStyle.ForeColor = Variables.ColorSuccess;
+                }
+                else if (e.Value.ToString().Contains("Incumplimiento") || e.Value.ToString().Contains("INCUMPLIMIENTO"))
+                {
+                    e.CellStyle.ForeColor = Color.Orange;
+                }
+                else if (e.Value.ToString().Contains("Finalizado"))
+                {
+                    e.CellStyle.ForeColor = Color.Red;
                 }
             }
         }

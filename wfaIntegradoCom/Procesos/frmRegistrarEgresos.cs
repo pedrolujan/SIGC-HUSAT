@@ -243,7 +243,11 @@ namespace wfaIntegradoCom.Procesos
                 Cantidad = 1,
                 Couta = 0,
                 Importe = importe,
-                cSimbolo = clsMoneda.cSimbolo
+                importeRestante=importe,
+                ImporteRow = importe,
+                preciounitario=precioUnitario,
+                cSimbolo = clsMoneda.cSimbolo,
+                CodigoProducto="ZZ"
             });
 
             return lstDetV;
@@ -259,7 +263,9 @@ namespace wfaIntegradoCom.Procesos
             clsDVC.SimboloMoneda = clsMoneda.cSimbolo;
             clsDVC.NombreDocumento = Convert.ToString(cboTipoDocEmitir.Text);
             clsDVC.CodDocumento = Convert.ToString(cboTipoDocEmitir.SelectedValue);
-           
+            clsDVC.idTrandiaria= lstDV[0].idObjetoVenta;
+
+
             return clsDVC;
         }
         private List<DocumentoVenta> fnDocumentoVentaHeader(DetalleVentaCabecera dvc )

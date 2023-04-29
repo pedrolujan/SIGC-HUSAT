@@ -18,33 +18,42 @@ namespace CapaDato
 
         private clsUtil objUtil = null;
 
-        public List<DocumentoVenta> daBuscarDocVenta(String pcBuscar, Int16 pnTipoCon)
+        public List<DetalleVenta> daBuscarDocVenta(String pcBuscar, Int32 pnTipoCon)
         {
 
             SqlParameter[] pa = new SqlParameter[2];
             DataTable dtVenta = new DataTable();
             clsConexion objCnx = null;
-            List<DocumentoVenta> lstVenta = null;
+            List<DetalleVenta> lstVenta = null;
             objUtil = new clsUtil();
 
             try
             {
 
-                pa[0] = new SqlParameter("@pecValorBuscar", SqlDbType.VarChar, 50);
+                pa[0] = new SqlParameter("@codDocumento", SqlDbType.VarChar, 15);
                 pa[0].Value = pcBuscar;
-                pa[1] = new SqlParameter("@peiTipoCon", SqlDbType.TinyInt);
+                pa[1] = new SqlParameter("@idTrandiaria", SqlDbType.Int);
                 pa[1].Value = pnTipoCon;
 
 
                 objCnx = new clsConexion("");
-                dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarDocVenta", pa);
+                dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarDocumetoActicipo", pa);
 
-                lstVenta = new List<DocumentoVenta>();
+                lstVenta = new List<DetalleVenta>();
 
-                foreach (DataRow drMenu in dtVenta.Rows)
+                foreach (DataRow d in dtVenta.Rows)
                 {
-                    lstVenta.Add(new DocumentoVenta(Convert.ToInt32(drMenu["idVenta"]), Convert.ToString(drMenu["cDocumento"])
-                    , Convert.ToString(drMenu["cCliente"]), Convert.ToString(drMenu["cDocVenta"]), Convert.ToDateTime(drMenu["dFechaVenta"])));
+                    lstVenta.Add(new DetalleVenta
+                    {
+                        IdDetalleVenta = Convert.ToInt32(d["idConcepto"]),
+                        Importe = Convert.ToDecimal(d["anticipo"]),
+                        ImporteRow = Convert.ToDecimal(d["Costo"]),
+                        //CodigoProducto = d["codDocumentoCorrelativo"].ToString(),
+                        Descripcion = d["Descripcion"].ToString(),
+                        //dtFechaRegistro = Convert.ToDateTime(d["dFechaPago"]),
+                        PrecioUni = Convert.ToDecimal(d["Costo"]),
+                        preciounitario= Convert.ToDecimal(d["Costo"]),
+                    });
                 }
 
                 return lstVenta;
@@ -212,6 +221,57 @@ namespace CapaDato
                     //    Convert.ToString(drMenu["cNombreUM"]), Convert.ToDecimal(drMenu["Importe"]), Convert.ToInt32(drMenu["idLote"])));
                 }
                 lstVenta.Add(dv);
+                return lstVenta;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DADocumentoVenta.cs", "daListarDetalleVenta", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                lstVenta = null;
+            }
+
+        }
+        public List<DetalleVenta> daBuscarDetalleVenta(Int32 idTrandiaria)
+        {
+
+
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtVenta = new DataTable();
+            clsConexion objCnx = null;
+            DetalleVenta dv = new DetalleVenta();
+            List<DetalleVenta> lstVenta = new List<DetalleVenta>();
+            objUtil = new clsUtil();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@idTrandiaria", SqlDbType.Int);
+                pa[0].Value = idTrandiaria;
+
+                objCnx = new clsConexion("");
+                dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarDetalleVenta", pa);
+
+                lstVenta = new List<DetalleVenta>();
+                foreach (DataRow drMenu in dtVenta.Rows)
+                {
+                    dv.IdDetalleVenta = Convert.ToInt32(drMenu["idDetallePago"]);
+                    dv.Descripcion = Convert.ToString(drMenu["Descripcion"]);
+                    dv.PrecioUni = Convert.ToDecimal(drMenu["Costo"]);
+                    dv.TotalTipoDescuento= Convert.ToDecimal(drMenu["DescuentoPrecio"]);
+                    dv.Importe = Convert.ToDecimal(drMenu["Costo"]) - Convert.ToDecimal(drMenu["DescuentoPrecio"]);
+                    dv.ImporteRow = Convert.ToDecimal(drMenu["Costo"]) - Convert.ToDecimal(drMenu["DescuentoPrecio"]);
+                    dv.idTipoTarifa = Convert.ToInt32(drMenu["idTarifa"]);
+                    dv.importeRestante = Convert.ToDecimal(drMenu["importeRestante"]);
+                    lstVenta.Add(dv);
+                }
+                
                 return lstVenta;
 
             }

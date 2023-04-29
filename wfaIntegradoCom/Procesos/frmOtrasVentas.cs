@@ -1,4 +1,5 @@
-﻿using CapaEntidad;
+﻿using CapaDato;
+using CapaEntidad;
 using CapaEntidad.Generic;
 using CapaNegocio;
 using CapaUtil;
@@ -22,6 +23,7 @@ using wfaIntegradoCom.Funciones;
 using wfaIntegradoCom.Funciones.Models;
 using wfaIntegradoCom.Impresiones;
 using wfaIntegradoCom.Mantenedores;
+using wfaIntegradoCom.Sunat;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 
 namespace wfaIntegradoCom.Procesos
@@ -47,7 +49,8 @@ namespace wfaIntegradoCom.Procesos
         static List<ModeloVehiculo> lstModelo = new List<ModeloVehiculo>();
         static List<MarcaVehiculo> lstMarca = new List<MarcaVehiculo>();
         static List<DetalleVenta> lstDventa = new List<DetalleVenta>();
-        static List<DocumentoVenta> lstdocumentoV = new List<DocumentoVenta>();
+        static List<DocumentoVenta> lstDocumentoVenta = new List<DocumentoVenta>();
+
         static List<Cargo> lstDocumentoVentaEmitir = new List<Cargo>();
         static Cargo clsDocumentoVenta = new Cargo();
         //static  CambioPrecioOtrasVentas cPOtrasVentas = new CambioPrecioOtrasVentas();
@@ -99,7 +102,7 @@ namespace wfaIntegradoCom.Procesos
 
         static DateTime dttFechaRecibida = Variables.gdFechaSis;
         static Int32 inTipoApertura = 0;
-
+        static Int32 intRespuestaSunat = 0;
         public void tipoApertura(DateTime dtt, Int32 tipoApertura)
         {
             dttFechaRecibida = dtt;
@@ -659,7 +662,7 @@ namespace wfaIntegradoCom.Procesos
             clsEquipo1 = new Equipo_imeis();
             clsObjetoEsxistente = new OtrasVentas();
             clsOtrasVentaGeneral = new OtrasVentas();
-            lstdocumentoV.Clear();
+            lstDocumentoVenta.Clear();
             lstDventa.Clear();
             lstMarca.Clear();
             lstModelo.Clear();
@@ -1891,7 +1894,12 @@ namespace wfaIntegradoCom.Procesos
                     cSimbolo = Mon.cSimbolo,
                     idObjetoVenta= lstOtrasVentas[i].idObjVenta,
                     idTipoTransaccion=lstOtrasVentas[i].idTipoTransaccion,
-                    idOperacion= lstOtrasVentas[i].idOperacion
+                    idOperacion= lstOtrasVentas[i].idOperacion,
+
+                     preciounitario = Convert.ToDecimal(lstOtrasVentas[i].precioUnico),
+                    ImporteRow = (Convert.ToDecimal(lstOtrasVentas[i].precioUnico) * 1),
+                    mtoValorVentaItem = (Convert.ToDecimal(lstOtrasVentas[i].precioUnico) * 1),
+                    Unidad_de_medida = "ZZ",
 
                 }) ;
 
@@ -2311,56 +2319,61 @@ namespace wfaIntegradoCom.Procesos
 
         private byte[] fnEnviarFacturaASunat()
         {
+
             //Cargo clsCargo1 = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboComprobanteP.SelectedValue.ToString());
-            //EmitirFactura emf = new EmitirFactura();
+            EmitirFactura emf = new EmitirFactura();
             String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
             byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
-            //if (lnTipoCon != -1)
-            //{
-            //    if (cboTipoDocEmitir.SelectedValue == "DOVE0002")
-            //    {
-            //        intRespuestaSunat = 0;
-            //        int resp = emf.EmitirFacturasContado(clsCliente, lstDetalleVDocumento, clsDocumentoVenta);
-            //        intRespuestaSunat = resp;
-            //        if (resp == 1)
-            //        {
+            BLCliente objAcc = new BLCliente();
+            Cliente clsCliente = new Cliente();
+            clsCliente = objAcc.blListarCliente(clsClienteDocumentoV.idCliente, 1);
+            if (clsDocumentoVenta.cCodTab == "DOVE0002" || clsDocumentoVenta.cCodTab == "DOVE0001")
+            {
+                intRespuestaSunat = 0;
+                int resp = emf.EmitirFacturasContado(clsCliente, lstLdv /*lstDetalleVenta*/, lstDocumentoVenta, clsDocumentoVenta);
+                intRespuestaSunat =  resp;
+                if (resp == 1)
+                {
+                    String nombreQR = clsCliente.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
+                    //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");
+                    imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\" + nombreQR + ".png");
+                }
+            }
+            else
+            {
+                intRespuestaSunat = 1;
+            }
 
-            //            String nombreQR = clsCliente.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
-            //            //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");
-            //            imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\" + nombreQR + ".png");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        intRespuestaSunat = 1;
-            //    }
 
-            //}
-
-            //intRespuestaSunat = 1;
             return imageBytes;
+
         }
         private Boolean fnMostrarVPDocumentoventa()
         {
             fnHabilitarControles(false);
             Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
             lstLdv = fnGenerarDetalleOtrasVentas();
+
+
             //if (lstLdv.Count == 1 && lstOtrasVentas.Count==1 && lstOtrasVentas[0].idTipoTransaccion==4 && lstOtrasVentas[0].idObjVenta==2)
             //{
             //    lstLdv[0].Descripcion = lstLdv[0].Descripcion + " del Equipo " + clsEquipo1.imei;
             //}
 
+            frmTipoPago fr = new frmTipoPago();
 
-            List<DocumentoVenta> lstDocVenta=new List<DocumentoVenta>();
+           
+
+           
             abrirFrmVPOtrasVentas.fnEstadoProcesos(lnTipoConCambio);
-            lstDocVenta = fnlstDocumentoVenta();
+            lstDocumentoVenta = fnlstDocumentoVenta();
 
 
             //MemoryStream ms = new MemoryStream(fnEnviarFacturaASunat());
 
-            abrirFrmVPOtrasVentas.Inicio(lstDocVenta,/*lstOtrasVentas*/ lstLdv, fnEnviarFacturaASunat(), -2);
+            //abrirFrmVPOtrasVentas.Inicio(lstDocVenta,/*lstOtrasVentas*/ lstLdv, fnEnviarFacturaASunat(), -2);
+            fr.Inicio(-2, lstDocumentoVenta, lstLdv,"S/. ");
 
-            
             Consultas.frmVPActaCambioTitularidad frmCT = new Consultas.frmVPActaCambioTitularidad();
 
             if (stCondicionprocesos==-1)
@@ -2370,9 +2383,9 @@ namespace wfaIntegradoCom.Procesos
                 frmCT.Inicio(clsOtrasVentaGeneral.lstXmlActTitularidad[0].lstClienteDocVenta, clsOtrasVentaGeneral.lstXmlActTitularidad[0].lstClienteAntecesor, clsOtrasVentaGeneral.lstXmlActTitularidad[0].lstVehiculo, -1);
                 if (stCondicionprocesos == -3)
                 {
-                    Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                    Decimal sumaPrimerPago = lstLdv.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocVenta[0].cCodDocumentoVenta);
+                    //Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                    //Decimal sumaPrimerPago = lstLdv.Sum(i => i.Importe);
+                    //fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocVenta[0].cCodDocumentoVenta);
                 }
             }
             else if (stCondicionprocesos==-2)
@@ -2383,7 +2396,7 @@ namespace wfaIntegradoCom.Procesos
                 {
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                     Decimal sumaPrimerPago = lstLdv.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocVenta[0].cCodDocumentoVenta);
+                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocumentoVenta[0].cCodDocumentoVenta);
                 }
             }
             else if (stCondicionprocesos == 3 || stCondicionprocesos == 5)
@@ -2394,7 +2407,7 @@ namespace wfaIntegradoCom.Procesos
                 //{
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                     Decimal sumaPrimerPago = lstLdv.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocVenta[0].cCodDocumentoVenta);
+                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocumentoVenta[0].cCodDocumentoVenta);
                 //}
             }
 
@@ -3117,29 +3130,37 @@ namespace wfaIntegradoCom.Procesos
                             {
                                 if (estadoTabla == true)
                                 {
-
                                     fnCargarClasePrincipal();
                                     if (fnMostrarVPDocumentoventa())
                                     {
-
-                                        fnCargarClasePrincipal();
-                                        blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral, lnTipoCon);
-                                        if (blnResultado)
+                                        byte[] btImage = new byte[] { };
+                                        btImage= fnEnviarFacturaASunat();
+                                        if (intRespuestaSunat==1)
                                         {
-                                            //blnResultado = fnObtenerPreciosxProductoxUM(idEquipo);
-                                            //if (!blnResultado)
-                                            //    MessageBox.Show("No se ha cargado correctamente Listado de Precios por Producto y unidad de medida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                            MessageBox.Show("Venta Generada Correctamente. ✔✔", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-                                            fnLimpiarControles();
-                                            fnHabilitarControles(true);
-                                            //fnLimpiarControles();
+                                            fnCargarClasePrincipal();
+                                            blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral, lnTipoCon);
+                                            if (blnResultado)
+                                            {
+                                                //blnResultado = fnObtenerPreciosxProductoxUM(idEquipo);
+                                                //if (!blnResultado)
+                                                //    MessageBox.Show("No se ha cargado correctamente Listado de Precios por Producto y unidad de medida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                                MessageBox.Show("Venta Generada Correctamente. ✔✔", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                FunValidaciones.fnHabilitarBoton(btnGuardar, false);
+                                                fnLimpiarControles();
+                                                fnHabilitarControles(true);
+                                                //fnLimpiarControles();
 
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Error al registrar avise al administrador");
+                                            }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Error al registrar avise al administrador");
+                                            MessageBox.Show("Error al emitir a la sunat");
                                         }
+                                        
                                     }
                                     else
                                     {

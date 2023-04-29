@@ -100,6 +100,7 @@ namespace CapaEntidad
         Decimal _nMontoTotal = 0;
         public Decimal nMontoTotal { get { return _nMontoTotal; } set { _nMontoTotal = value; } }
         public Decimal MontoRedondeo { get; set; }
+        public Decimal MontoTotalAnticipos { get; set; }
 
         Int32 _iTipoOpe = 0;
         public Int32 iTipoOpe { get { return _iTipoOpe; } set { _iTipoOpe = value; } }
@@ -119,6 +120,7 @@ namespace CapaEntidad
 
         public Boolean est0 { get; set; }
         public Boolean est1 { get; set; }
+        public Boolean estValida { get; set; }
 
         public xmlDocumentoVentaGeneral xmlDocumento { get; set; }
         public Byte[] imageBytes { get; set; }
