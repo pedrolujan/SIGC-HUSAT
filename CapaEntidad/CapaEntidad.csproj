@@ -98,6 +98,7 @@
     <Compile Include="Instalacion.cs" />
     <Compile Include="Inventario.cs" />
     <Compile Include="AttrVehiculo.cs" />
+    <Compile Include="Items.cs" />
     <Compile Include="Moneda.cs" />
     <Compile Include="ParametrosFactura.cs" />
     <Compile Include="Reactivaciones.cs" />

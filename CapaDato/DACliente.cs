@@ -388,10 +388,10 @@ namespace CapaDato
                 pa[6] = new SqlParameter("@pedFecNac", SqlDbType.DateTime);
                 pa[6].Value = objCliente.dFecNac;
 
-                pa[7] = new SqlParameter("@pecTipPers", SqlDbType.NVarChar, 8);
+                pa[7] = new SqlParameter("@pecTipPers", SqlDbType.Int);
                 pa[7].Value = objCliente.cTipPers;
 
-                pa[8] = new SqlParameter("@pecTiDo", SqlDbType.NVarChar, 8);
+                pa[8] = new SqlParameter("@pecTiDo", SqlDbType.Int);
                 pa[8].Value = objCliente.cTiDo;
 
                 pa[9] = new SqlParameter("@pecTelFijo", SqlDbType.NVarChar, 20);
@@ -430,7 +430,7 @@ namespace CapaDato
                 pa[20] = new SqlParameter("@pecCorreo", SqlDbType.NVarChar, 150);
                 pa[20].Value = objCliente.cCorreo;
 
-                pa[21] = new SqlParameter("@peiTipoCon", SqlDbType.TinyInt);
+                pa[21] = new SqlParameter("@peiTipoCon", SqlDbType.Int);
                 pa[21].Value = pnTipoCon;
 
                 pa[22] = new SqlParameter("@idRepreLegal", SqlDbType.Int);

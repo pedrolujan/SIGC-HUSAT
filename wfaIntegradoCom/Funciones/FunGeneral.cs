@@ -523,6 +523,20 @@ namespace wfaIntegradoCom.Funciones
                 return new List<DetalleVenta>();
             }
         }
+        public static List<ReporteBloque> fnBuscarCajasDashboard(Int32 tipoCon)
+        {
+            BLDocumentoVenta bLDocumentoVenta = new BLDocumentoVenta();
+            try
+            {
+                return bLDocumentoVenta.blbuscarCajasDashboard(tipoCon);
+
+            }
+            catch (Exception ex)
+            {
+
+                return new List<ReporteBloque>();
+            }
+        }
         public static Tuple<Boolean, String> fnValidarFechaPago(SiticoneDateTimePicker dt, PictureBox pb, Int32 tipoCon)
         {
             Boolean estado = false;
@@ -621,6 +635,8 @@ namespace wfaIntegradoCom.Funciones
             return numero.ToString().PadLeft(8, '0');
 
         }
+
+        //public static 
         public static List<Cargo> fnLlenarTablaCodTipoConDT(String cCodTab,Boolean buscar)
         {
             BLCargo objTablaCod = new BLCargo();
@@ -1347,6 +1363,35 @@ namespace wfaIntegradoCom.Funciones
             String dat = str.ToLower();
             return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(dat); ;
         }
+
+        public static List<Items> fnListarItemsVenta()
+        {
+            BLCargo objTablaCod = new BLCargo();
+            try
+            {
+
+                return objTablaCod.blListarItems();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public static DetalleCronograma fnObtenerDatosCuotaUltimoCronograma(Int32 idContrato)
+        {
+            BLCargo objTablaCod = new BLCargo();
+            try
+            {
+
+                return objTablaCod.blObtenerDatosCuotaUltimoCronograma( idContrato);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public static Double fnLimpiarDescuentos(String PrecioADescontarStr)
         {
             Double PrecioADescontar = 0;
@@ -1427,6 +1472,21 @@ namespace wfaIntegradoCom.Funciones
 
             }
             return srt;
+        }
+
+        public static List<ReporteBloque> fnBuscarOtrosIngresos(Busquedas bs )
+        {
+            BLCaja bLCaja = new BLCaja();
+            try
+            {
+                return bLCaja.blBuscarOtrosIngresos(bs);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         public static String fnFormatearPrecioDC(String simbolo,Decimal Precio,Int32 lnTipoCon)
         {

@@ -1564,6 +1564,7 @@ namespace wfaIntegradoCom
             this.FWpnCajaChicaCopias.Name = "FWpnCajaChicaCopias";
             this.FWpnCajaChicaCopias.Size = new System.Drawing.Size(37, 98);
             this.FWpnCajaChicaCopias.TabIndex = 274;
+            this.FWpnCajaChicaCopias.Paint += new System.Windows.Forms.PaintEventHandler(this.FWpnCajaChicaCopias_Paint);
             // 
             // flowLayoutPanel1
             // 

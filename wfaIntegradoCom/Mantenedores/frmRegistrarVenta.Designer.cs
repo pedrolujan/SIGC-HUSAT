@@ -148,7 +148,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.cboTipoDescuentoPrecios = new Siticone.UI.WinForms.SiticoneComboBox();
             this.label42 = new System.Windows.Forms.Label();
             this.finalizacionContrato = new Siticone.UI.WinForms.SiticoneCheckBox();
-            this.siticoneCheckBox1 = new Siticone.UI.WinForms.SiticoneCheckBox();
+            this.chkCambiarDatosDelServicio = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.chkHabilitarDescuentoP = new Siticone.UI.WinForms.SiticoneCheckBox();
             this.lblPrecioCambioMoneda = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -623,7 +623,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbPlan.Controls.Add(this.cboTipoDescuentoPrecios);
             this.gbPlan.Controls.Add(this.label42);
             this.gbPlan.Controls.Add(this.finalizacionContrato);
-            this.gbPlan.Controls.Add(this.siticoneCheckBox1);
+            this.gbPlan.Controls.Add(this.chkCambiarDatosDelServicio);
             this.gbPlan.Controls.Add(this.chkHabilitarDescuentoP);
             this.gbPlan.Controls.Add(this.lblPrecioCambioMoneda);
             this.gbPlan.CustomBorderColor = System.Drawing.Color.DimGray;
@@ -1555,26 +1555,26 @@ namespace wfaIntegradoCom.Mantenedores
             this.finalizacionContrato.Visible = false;
             this.finalizacionContrato.CheckedChanged += new System.EventHandler(this.siticoneCheckBox1_CheckedChanged);
             // 
-            // siticoneCheckBox1
+            // chkCambiarDatosDelServicio
             // 
-            this.siticoneCheckBox1.AutoSize = true;
-            this.siticoneCheckBox1.BackColor = System.Drawing.Color.White;
-            this.siticoneCheckBox1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneCheckBox1.CheckedState.BorderRadius = 0;
-            this.siticoneCheckBox1.CheckedState.BorderThickness = 0;
-            this.siticoneCheckBox1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneCheckBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneCheckBox1.Location = new System.Drawing.Point(19, 112);
-            this.siticoneCheckBox1.Name = "siticoneCheckBox1";
-            this.siticoneCheckBox1.Size = new System.Drawing.Size(151, 21);
-            this.siticoneCheckBox1.TabIndex = 242;
-            this.siticoneCheckBox1.Text = "Cambiar tipo de plan";
-            this.siticoneCheckBox1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.siticoneCheckBox1.UncheckedState.BorderRadius = 0;
-            this.siticoneCheckBox1.UncheckedState.BorderThickness = 0;
-            this.siticoneCheckBox1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.siticoneCheckBox1.UseVisualStyleBackColor = false;
-            this.siticoneCheckBox1.CheckedChanged += new System.EventHandler(this.siticoneCheckBox1_CheckedChanged);
+            this.chkCambiarDatosDelServicio.AutoSize = true;
+            this.chkCambiarDatosDelServicio.BackColor = System.Drawing.Color.White;
+            this.chkCambiarDatosDelServicio.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkCambiarDatosDelServicio.CheckedState.BorderRadius = 0;
+            this.chkCambiarDatosDelServicio.CheckedState.BorderThickness = 0;
+            this.chkCambiarDatosDelServicio.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.chkCambiarDatosDelServicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.chkCambiarDatosDelServicio.Location = new System.Drawing.Point(19, 112);
+            this.chkCambiarDatosDelServicio.Name = "chkCambiarDatosDelServicio";
+            this.chkCambiarDatosDelServicio.Size = new System.Drawing.Size(151, 21);
+            this.chkCambiarDatosDelServicio.TabIndex = 242;
+            this.chkCambiarDatosDelServicio.Text = "Cambiar tipo de plan";
+            this.chkCambiarDatosDelServicio.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkCambiarDatosDelServicio.UncheckedState.BorderRadius = 0;
+            this.chkCambiarDatosDelServicio.UncheckedState.BorderThickness = 0;
+            this.chkCambiarDatosDelServicio.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkCambiarDatosDelServicio.UseVisualStyleBackColor = false;
+            this.chkCambiarDatosDelServicio.CheckedChanged += new System.EventHandler(this.siticoneCheckBox1_CheckedChanged);
             // 
             // chkHabilitarDescuentoP
             // 
@@ -3858,7 +3858,7 @@ namespace wfaIntegradoCom.Mantenedores
         private Siticone.UI.WinForms.SiticoneComboBox cboTipoVetaBusq;
         private System.Windows.Forms.Label label7;
         private Siticone.UI.WinForms.SiticoneTextBox txtBuscarVentas;
-        private Siticone.UI.WinForms.SiticoneCheckBox siticoneCheckBox1;
+        private Siticone.UI.WinForms.SiticoneCheckBox chkCambiarDatosDelServicio;
         private Siticone.UI.WinForms.SiticonePanel pnMontoGanania;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblTotaGanancia;

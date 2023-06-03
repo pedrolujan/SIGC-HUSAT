@@ -82,6 +82,20 @@ namespace CapaNegocio
             }
 
         }
+        public List<ReporteBloque> blbuscarCajasDashboard(Int32 idTrandia)
+        {
+
+            DADocumentoVenta objDocVenta = new DADocumentoVenta();
+            try
+            {
+                return objDocVenta.daBuscarCajasDashboard(idTrandia);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
 
         public Decimal blDevolverUnidadDestino(Int32 pidUnidadMedida, Int32 pidUnidaDest)
         {

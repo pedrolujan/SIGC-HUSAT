@@ -30,12 +30,12 @@ namespace wfaIntegradoCom.Mantenedores
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,20 +45,25 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.siticoneGroupBox3 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.siticoneTextBox7 = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.siticoneButton3 = new Siticone.UI.WinForms.SiticoneButton();
             this.dgvAccesorios = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
             this.lblGuardarAccYServ = new System.Windows.Forms.Label();
             this.lblSeleccionar = new System.Windows.Forms.Label();
             this.pbBajar = new Siticone.UI.WinForms.SiticonePictureBox();
             this.pbSubir = new Siticone.UI.WinForms.SiticonePictureBox();
-            this.dgvServicios = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.txtidRefInstalacion = new Siticone.UI.WinForms.SiticoneTextBox();
             this.btnTRegistros = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodEquipo = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtCodVehiculo = new Siticone.UI.WinForms.SiticoneTextBox();
             this.txtCodVenta = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.label39 = new System.Windows.Forms.Label();
             this.btnGuardarIns = new Siticone.UI.WinForms.SiticoneButton();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpFechaRegistro = new Siticone.UI.WinForms.SiticoneDateTimePicker();
@@ -119,6 +124,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtOtraUbicacion = new Siticone.UI.WinForms.SiticoneTextBox();
             this.siticoneButton1 = new Siticone.UI.WinForms.SiticoneButton();
             this.label8 = new System.Windows.Forms.Label();
+            this.dgvServicios = new Siticone.UI.WinForms.SiticoneDataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gbPaginacionInst = new Siticone.UI.WinForms.SiticoneGroupBox();
             this.cboPagIns = new System.Windows.Forms.ComboBox();
@@ -168,11 +174,11 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticonePanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.siticoneGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).BeginInit();
             this.siticonePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBajar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSubir)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvServicios)).BeginInit();
             this.gbDatosPersona.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbtextcliente)).BeginInit();
             this.gbDatosVehiculo.SuspendLayout();
@@ -183,6 +189,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbUbicacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbubicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneCirclePictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServicios)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.gbPaginacionInst.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaInstalaciones)).BeginInit();
@@ -205,7 +212,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticonePanel1.Location = new System.Drawing.Point(0, 25);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(1091, 649);
+            this.siticonePanel1.Size = new System.Drawing.Size(1106, 649);
             this.siticonePanel1.TabIndex = 258;
             // 
             // tabControl1
@@ -215,22 +222,23 @@ namespace wfaIntegradoCom.Mantenedores
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1082, 645);
+            this.tabControl1.Size = new System.Drawing.Size(1101, 645);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
+            this.tabPage1.AutoScroll = true;
+            this.tabPage1.Controls.Add(this.dgvServicios);
+            this.tabPage1.Controls.Add(this.siticoneGroupBox3);
             this.tabPage1.Controls.Add(this.dgvAccesorios);
             this.tabPage1.Controls.Add(this.siticonePanel2);
-            this.tabPage1.Controls.Add(this.dgvServicios);
             this.tabPage1.Controls.Add(this.txtidRefInstalacion);
             this.tabPage1.Controls.Add(this.btnTRegistros);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.txtCodEquipo);
             this.tabPage1.Controls.Add(this.txtCodVehiculo);
             this.tabPage1.Controls.Add(this.txtCodVenta);
-            this.tabPage1.Controls.Add(this.label39);
             this.tabPage1.Controls.Add(this.btnGuardarIns);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.dtpFechaRegistro);
@@ -243,42 +251,166 @@ namespace wfaIntegradoCom.Mantenedores
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1074, 619);
+            this.tabPage1.Size = new System.Drawing.Size(1093, 619);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Instalaciones";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // siticoneGroupBox3
+            // 
+            this.siticoneGroupBox3.BorderColor = System.Drawing.Color.Gainsboro;
+            this.siticoneGroupBox3.BorderRadius = 5;
+            this.siticoneGroupBox3.Controls.Add(this.radioButton4);
+            this.siticoneGroupBox3.Controls.Add(this.radioButton3);
+            this.siticoneGroupBox3.Controls.Add(this.radioButton2);
+            this.siticoneGroupBox3.Controls.Add(this.radioButton1);
+            this.siticoneGroupBox3.Controls.Add(this.siticoneTextBox7);
+            this.siticoneGroupBox3.Controls.Add(this.siticoneButton3);
+            this.siticoneGroupBox3.CustomBorderColor = System.Drawing.Color.DimGray;
+            this.siticoneGroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
+            this.siticoneGroupBox3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneGroupBox3.ForeColor = System.Drawing.Color.White;
+            this.siticoneGroupBox3.Location = new System.Drawing.Point(238, 3);
+            this.siticoneGroupBox3.Name = "siticoneGroupBox3";
+            this.siticoneGroupBox3.ShadowDecoration.Parent = this.siticoneGroupBox3;
+            this.siticoneGroupBox3.Size = new System.Drawing.Size(614, 64);
+            this.siticoneGroupBox3.TabIndex = 259;
+            this.siticoneGroupBox3.Text = "Seleccione tipo de acta";
+            this.siticoneGroupBox3.TextOffset = new System.Drawing.Point(0, -7);
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.ForeColor = System.Drawing.Color.Black;
+            this.radioButton4.Location = new System.Drawing.Point(443, 31);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(98, 21);
+            this.radioButton4.TabIndex = 232;
+            this.radioButton4.Tag = "4";
+            this.radioButton4.Text = "Reactivación";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.ForeColor = System.Drawing.Color.Black;
+            this.radioButton3.Location = new System.Drawing.Point(299, 31);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(105, 21);
+            this.radioButton3.TabIndex = 232;
+            this.radioButton3.Tag = "3";
+            this.radioButton3.Text = "M. Preventivo";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.ForeColor = System.Drawing.Color.Black;
+            this.radioButton2.Location = new System.Drawing.Point(155, 31);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(105, 21);
+            this.radioButton2.TabIndex = 232;
+            this.radioButton2.Tag = "2";
+            this.radioButton2.Text = "M. Correctivo";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.ForeColor = System.Drawing.Color.Black;
+            this.radioButton1.Location = new System.Drawing.Point(11, 31);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(87, 21);
+            this.radioButton1.TabIndex = 232;
+            this.radioButton1.Tag = "1";
+            this.radioButton1.Text = "Instalación";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // siticoneTextBox7
+            // 
+            this.siticoneTextBox7.Animated = false;
+            this.siticoneTextBox7.BorderColor = System.Drawing.Color.Silver;
+            this.siticoneTextBox7.BorderRadius = 5;
+            this.siticoneTextBox7.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.siticoneTextBox7.DefaultText = "";
+            this.siticoneTextBox7.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.siticoneTextBox7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.siticoneTextBox7.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.siticoneTextBox7.DisabledState.Parent = this.siticoneTextBox7;
+            this.siticoneTextBox7.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.siticoneTextBox7.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneTextBox7.FocusedState.Parent = this.siticoneTextBox7;
+            this.siticoneTextBox7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneTextBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneTextBox7.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.siticoneTextBox7.HoveredState.Parent = this.siticoneTextBox7;
+            this.siticoneTextBox7.Location = new System.Drawing.Point(1141, 28);
+            this.siticoneTextBox7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.siticoneTextBox7.Name = "siticoneTextBox7";
+            this.siticoneTextBox7.PasswordChar = '\0';
+            this.siticoneTextBox7.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.siticoneTextBox7.PlaceholderText = "";
+            this.siticoneTextBox7.SelectedText = "";
+            this.siticoneTextBox7.ShadowDecoration.Parent = this.siticoneTextBox7;
+            this.siticoneTextBox7.Size = new System.Drawing.Size(118, 23);
+            this.siticoneTextBox7.TabIndex = 231;
+            // 
+            // siticoneButton3
+            // 
+            this.siticoneButton3.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneButton3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneButton3.BorderRadius = 15;
+            this.siticoneButton3.BorderThickness = 1;
+            this.siticoneButton3.CheckedState.Parent = this.siticoneButton3;
+            this.siticoneButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.siticoneButton3.CustomImages.Parent = this.siticoneButton3;
+            this.siticoneButton3.FillColor = System.Drawing.Color.White;
+            this.siticoneButton3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.siticoneButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneButton3.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneButton3.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.siticoneButton3.HoveredState.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton3.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
+            this.siticoneButton3.HoveredState.Parent = this.siticoneButton3;
+            this.siticoneButton3.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_32;
+            this.siticoneButton3.Location = new System.Drawing.Point(1141, 129);
+            this.siticoneButton3.Name = "siticoneButton3";
+            this.siticoneButton3.ShadowDecoration.Parent = this.siticoneButton3;
+            this.siticoneButton3.Size = new System.Drawing.Size(118, 36);
+            this.siticoneButton3.TabIndex = 146;
+            this.siticoneButton3.Text = "Limpiar";
+            // 
             // dgvAccesorios
             // 
             this.dgvAccesorios.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvAccesorios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvAccesorios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAccesorios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAccesorios.BackgroundColor = System.Drawing.Color.White;
             this.dgvAccesorios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvAccesorios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAccesorios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAccesorios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvAccesorios.ColumnHeadersHeight = 25;
             this.dgvAccesorios.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAccesorios.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAccesorios.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvAccesorios.EnableHeadersVisualStyles = false;
             this.dgvAccesorios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvAccesorios.Location = new System.Drawing.Point(507, 414);
+            this.dgvAccesorios.Location = new System.Drawing.Point(507, 429);
             this.dgvAccesorios.Name = "dgvAccesorios";
             this.dgvAccesorios.RowHeadersVisible = false;
             this.dgvAccesorios.RowHeadersWidth = 10;
@@ -322,7 +454,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticonePanel2.Controls.Add(this.pbBajar);
             this.siticonePanel2.Controls.Add(this.pbSubir);
             this.siticonePanel2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.siticonePanel2.Location = new System.Drawing.Point(507, 390);
+            this.siticonePanel2.Location = new System.Drawing.Point(507, 405);
             this.siticonePanel2.Name = "siticonePanel2";
             this.siticonePanel2.ShadowDecoration.Parent = this.siticonePanel2;
             this.siticonePanel2.Size = new System.Drawing.Size(566, 26);
@@ -381,68 +513,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.pbSubir.TabStop = false;
             this.pbSubir.Click += new System.EventHandler(this.siticonePictureBox2_Click);
             // 
-            // dgvServicios
-            // 
-            this.dgvServicios.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgvServicios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvServicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvServicios.BackgroundColor = System.Drawing.Color.White;
-            this.dgvServicios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvServicios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvServicios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvServicios.ColumnHeadersHeight = 25;
-            this.dgvServicios.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvServicios.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvServicios.EnableHeadersVisualStyles = false;
-            this.dgvServicios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvServicios.Location = new System.Drawing.Point(790, 414);
-            this.dgvServicios.Name = "dgvServicios";
-            this.dgvServicios.RowHeadersVisible = false;
-            this.dgvServicios.RowHeadersWidth = 10;
-            this.dgvServicios.RowTemplate.Height = 20;
-            this.dgvServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvServicios.Size = new System.Drawing.Size(283, 208);
-            this.dgvServicios.TabIndex = 274;
-            this.dgvServicios.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
-            this.dgvServicios.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvServicios.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgvServicios.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgvServicios.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgvServicios.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvServicios.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgvServicios.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvServicios.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.dgvServicios.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.dgvServicios.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvServicios.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvServicios.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvServicios.ThemeStyle.HeaderStyle.Height = 25;
-            this.dgvServicios.ThemeStyle.ReadOnly = false;
-            this.dgvServicios.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvServicios.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvServicios.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvServicios.ThemeStyle.RowsStyle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvServicios.ThemeStyle.RowsStyle.Height = 20;
-            this.dgvServicios.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvServicios.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvServicios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServicios_CellContentClick);
-            this.dgvServicios.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvServicios_CellMouseMove);
-            // 
             // txtidRefInstalacion
             // 
             this.txtidRefInstalacion.Animated = false;
@@ -457,7 +527,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtidRefInstalacion.FocusedState.Parent = this.txtidRefInstalacion;
             this.txtidRefInstalacion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtidRefInstalacion.HoveredState.Parent = this.txtidRefInstalacion;
-            this.txtidRefInstalacion.Location = new System.Drawing.Point(960, 575);
+            this.txtidRefInstalacion.Location = new System.Drawing.Point(960, 590);
             this.txtidRefInstalacion.Name = "txtidRefInstalacion";
             this.txtidRefInstalacion.PasswordChar = '\0';
             this.txtidRefInstalacion.PlaceholderText = "";
@@ -508,7 +578,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtCodEquipo.FocusedState.Parent = this.txtCodEquipo;
             this.txtCodEquipo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCodEquipo.HoveredState.Parent = this.txtCodEquipo;
-            this.txtCodEquipo.Location = new System.Drawing.Point(877, 575);
+            this.txtCodEquipo.Location = new System.Drawing.Point(877, 590);
             this.txtCodEquipo.Name = "txtCodEquipo";
             this.txtCodEquipo.PasswordChar = '\0';
             this.txtCodEquipo.PlaceholderText = "";
@@ -532,7 +602,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtCodVehiculo.FocusedState.Parent = this.txtCodVehiculo;
             this.txtCodVehiculo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCodVehiculo.HoveredState.Parent = this.txtCodVehiculo;
-            this.txtCodVehiculo.Location = new System.Drawing.Point(787, 575);
+            this.txtCodVehiculo.Location = new System.Drawing.Point(787, 590);
             this.txtCodVehiculo.Name = "txtCodVehiculo";
             this.txtCodVehiculo.PasswordChar = '\0';
             this.txtCodVehiculo.PlaceholderText = "";
@@ -556,7 +626,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtCodVenta.FocusedState.Parent = this.txtCodVenta;
             this.txtCodVenta.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCodVenta.HoveredState.Parent = this.txtCodVenta;
-            this.txtCodVenta.Location = new System.Drawing.Point(694, 574);
+            this.txtCodVenta.Location = new System.Drawing.Point(694, 589);
             this.txtCodVenta.Name = "txtCodVenta";
             this.txtCodVenta.PasswordChar = '\0';
             this.txtCodVenta.PlaceholderText = "";
@@ -565,18 +635,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtCodVenta.Size = new System.Drawing.Size(62, 36);
             this.txtCodVenta.TabIndex = 267;
             this.txtCodVenta.Visible = false;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.BackColor = System.Drawing.Color.Transparent;
-            this.label39.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label39.Location = new System.Drawing.Point(410, 4);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(245, 33);
-            this.label39.TabIndex = 266;
-            this.label39.Text = "Instalaciónes de GPS";
             // 
             // btnGuardarIns
             // 
@@ -597,7 +655,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnGuardarIns.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
             this.btnGuardarIns.HoveredState.Parent = this.btnGuardarIns;
             this.btnGuardarIns.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_32;
-            this.btnGuardarIns.Location = new System.Drawing.Point(536, 576);
+            this.btnGuardarIns.Location = new System.Drawing.Point(536, 591);
             this.btnGuardarIns.Name = "btnGuardarIns";
             this.btnGuardarIns.ShadowDecoration.Parent = this.btnGuardarIns;
             this.btnGuardarIns.Size = new System.Drawing.Size(119, 37);
@@ -633,7 +691,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dtpFechaRegistro.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaRegistro.Name = "dtpFechaRegistro";
             this.dtpFechaRegistro.ShadowDecoration.Parent = this.dtpFechaRegistro;
-            this.dtpFechaRegistro.Size = new System.Drawing.Size(285, 36);
+            this.dtpFechaRegistro.Size = new System.Drawing.Size(219, 36);
             this.dtpFechaRegistro.TabIndex = 262;
             this.dtpFechaRegistro.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
             // 
@@ -661,7 +719,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbDatosPersona.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbDatosPersona.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDatosPersona.ForeColor = System.Drawing.Color.White;
-            this.gbDatosPersona.Location = new System.Drawing.Point(14, 58);
+            this.gbDatosPersona.Location = new System.Drawing.Point(14, 73);
             this.gbDatosPersona.Name = "gbDatosPersona";
             this.gbDatosPersona.ShadowDecoration.Parent = this.gbDatosPersona;
             this.gbDatosPersona.Size = new System.Drawing.Size(1048, 211);
@@ -1011,7 +1069,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnNuevoInst.HoveredState.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_blanco_32;
             this.btnNuevoInst.HoveredState.Parent = this.btnNuevoInst;
             this.btnNuevoInst.Image = global::wfaIntegradoCom.Properties.Resources.limpiar_32;
-            this.btnNuevoInst.Location = new System.Drawing.Point(385, 575);
+            this.btnNuevoInst.Location = new System.Drawing.Point(385, 590);
             this.btnNuevoInst.Name = "btnNuevoInst";
             this.btnNuevoInst.ShadowDecoration.Parent = this.btnNuevoInst;
             this.btnNuevoInst.Size = new System.Drawing.Size(119, 37);
@@ -1035,7 +1093,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbDatosVehiculo.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbDatosVehiculo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDatosVehiculo.ForeColor = System.Drawing.Color.White;
-            this.gbDatosVehiculo.Location = new System.Drawing.Point(14, 272);
+            this.gbDatosVehiculo.Location = new System.Drawing.Point(14, 287);
             this.gbDatosVehiculo.Name = "gbDatosVehiculo";
             this.gbDatosVehiculo.ShadowDecoration.Parent = this.gbDatosVehiculo;
             this.gbDatosVehiculo.Size = new System.Drawing.Size(1048, 90);
@@ -1239,7 +1297,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbDatosEquipo.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbDatosEquipo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDatosEquipo.ForeColor = System.Drawing.Color.White;
-            this.gbDatosEquipo.Location = new System.Drawing.Point(15, 390);
+            this.gbDatosEquipo.Location = new System.Drawing.Point(15, 405);
             this.gbDatosEquipo.Name = "gbDatosEquipo";
             this.gbDatosEquipo.ShadowDecoration.Parent = this.gbDatosEquipo;
             this.gbDatosEquipo.Size = new System.Drawing.Size(1048, 92);
@@ -1494,7 +1552,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbObservacionesInst.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbObservacionesInst.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbObservacionesInst.ForeColor = System.Drawing.Color.White;
-            this.gbObservacionesInst.Location = new System.Drawing.Point(569, 484);
+            this.gbObservacionesInst.Location = new System.Drawing.Point(569, 499);
             this.gbObservacionesInst.Name = "gbObservacionesInst";
             this.gbObservacionesInst.ShadowDecoration.Parent = this.gbObservacionesInst;
             this.gbObservacionesInst.Size = new System.Drawing.Size(494, 85);
@@ -1637,7 +1695,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbUbicacion.CustomBorderThickness = new System.Windows.Forms.Padding(0, 25, 0, 0);
             this.gbUbicacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbUbicacion.ForeColor = System.Drawing.Color.White;
-            this.gbUbicacion.Location = new System.Drawing.Point(15, 483);
+            this.gbUbicacion.Location = new System.Drawing.Point(15, 498);
             this.gbUbicacion.Name = "gbUbicacion";
             this.gbUbicacion.ShadowDecoration.Parent = this.gbUbicacion;
             this.gbUbicacion.Size = new System.Drawing.Size(534, 85);
@@ -1817,6 +1875,68 @@ namespace wfaIntegradoCom.Mantenedores
             this.label8.TabIndex = 131;
             this.label8.Text = "Otro";
             // 
+            // dgvServicios
+            // 
+            this.dgvServicios.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvServicios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvServicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvServicios.BackgroundColor = System.Drawing.Color.White;
+            this.dgvServicios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvServicios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvServicios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvServicios.ColumnHeadersHeight = 25;
+            this.dgvServicios.Cursor = System.Windows.Forms.Cursors.Arrow;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvServicios.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvServicios.EnableHeadersVisualStyles = false;
+            this.dgvServicios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvServicios.Location = new System.Drawing.Point(790, 429);
+            this.dgvServicios.Name = "dgvServicios";
+            this.dgvServicios.RowHeadersVisible = false;
+            this.dgvServicios.RowHeadersWidth = 10;
+            this.dgvServicios.RowTemplate.Height = 20;
+            this.dgvServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvServicios.Size = new System.Drawing.Size(283, 208);
+            this.dgvServicios.TabIndex = 274;
+            this.dgvServicios.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvServicios.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvServicios.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvServicios.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvServicios.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvServicios.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvServicios.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvServicios.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvServicios.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.dgvServicios.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.dgvServicios.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvServicios.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvServicios.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvServicios.ThemeStyle.HeaderStyle.Height = 25;
+            this.dgvServicios.ThemeStyle.ReadOnly = false;
+            this.dgvServicios.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvServicios.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvServicios.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvServicios.ThemeStyle.RowsStyle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvServicios.ThemeStyle.RowsStyle.Height = 20;
+            this.dgvServicios.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvServicios.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvServicios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServicios_CellContentClick);
+            this.dgvServicios.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvServicios_CellMouseMove);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.gbPaginacionInst);
@@ -1825,7 +1945,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1074, 619);
+            this.tabPage2.Size = new System.Drawing.Size(1092, 619);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Buscar Instalaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2389,7 +2509,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gunaPanel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.gunaPanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaPanel1.Name = "gunaPanel1";
-            this.gunaPanel1.Size = new System.Drawing.Size(1091, 27);
+            this.gunaPanel1.Size = new System.Drawing.Size(1106, 27);
             this.gunaPanel1.TabIndex = 259;
             // 
             // label7
@@ -2412,7 +2532,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gunaControlBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gunaControlBox2.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox2.IconSize = 15F;
-            this.gunaControlBox2.Location = new System.Drawing.Point(994, 2);
+            this.gunaControlBox2.Location = new System.Drawing.Point(1009, 2);
             this.gunaControlBox2.Name = "gunaControlBox2";
             this.gunaControlBox2.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox2.OnHoverIconColor = System.Drawing.Color.White;
@@ -2428,7 +2548,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gunaControlBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(1042, 2);
+            this.gunaControlBox1.Location = new System.Drawing.Point(1057, 2);
             this.gunaControlBox1.Name = "gunaControlBox1";
             this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
@@ -2444,7 +2564,7 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1091, 675);
+            this.ClientSize = new System.Drawing.Size(1106, 675);
             this.Controls.Add(this.gunaPanel1);
             this.Controls.Add(this.siticonePanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -2456,12 +2576,13 @@ namespace wfaIntegradoCom.Mantenedores
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.siticoneGroupBox3.ResumeLayout(false);
+            this.siticoneGroupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesorios)).EndInit();
             this.siticonePanel2.ResumeLayout(false);
             this.siticonePanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBajar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSubir)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvServicios)).EndInit();
             this.gbDatosPersona.ResumeLayout(false);
             this.gbDatosPersona.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbtextcliente)).EndInit();
@@ -2477,6 +2598,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.gbUbicacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbubicacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneCirclePictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServicios)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.gbPaginacionInst.ResumeLayout(false);
             this.gbPaginacionInst.PerformLayout();
@@ -2498,7 +2620,6 @@ namespace wfaIntegradoCom.Mantenedores
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label label39;
         private Siticone.UI.WinForms.SiticoneButton btnGuardarIns;
         private System.Windows.Forms.Label label5;
         private Siticone.UI.WinForms.SiticoneDateTimePicker dtpFechaRegistro;
@@ -2618,5 +2739,12 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.DataGridViewTextBoxColumn idTipoTarifa;
         private System.Windows.Forms.DataGridViewTextBoxColumn UbicacionEquipo;
         private System.Windows.Forms.DataGridViewButtonColumn btImprimir;
+        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox3;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private Siticone.UI.WinForms.SiticoneTextBox siticoneTextBox7;
+        private Siticone.UI.WinForms.SiticoneButton siticoneButton3;
     }
 }

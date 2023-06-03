@@ -495,8 +495,9 @@ namespace wfaIntegradoCom.Sunat
                 decimal descuento_Sin_Igv = Convert.ToDecimal(detalle.TotalTipoDescuento) / 1.18m;
 
                 //Restar el valor del descuento al precio unitario del producto:
-                decimal precio_unitario_Sin_Igv = detalle.preciounitario / 1.18m;
-                decimal precio_unitario_descuento = detalle.preciounitario - descuento;
+                Decimal resta = detalle.preciounitario - detalle.importeRestante;
+                decimal precio_unitario_Sin_Igv = resta==0? detalle.preciounitario / 1.18m :(detalle.preciounitario) / 1.18m;
+                decimal precio_unitario_descuento = resta == 0 ? detalle.preciounitario -descuento:(detalle.preciounitario) - descuento;
 
                 //Calcular el valor del precio unitario sin el IGV:
                 decimal precio_unitario_descuento_sin_igv = precio_unitario_descuento / 1.18m;
@@ -550,7 +551,7 @@ namespace wfaIntegradoCom.Sunat
                 ChargeIndicatorType chargeIndicatorType = new ChargeIndicatorType();
                 chargeIndicatorType.Value = false;
                 MultiplierFactorNumericType multiplierFactorNumericType = new MultiplierFactorNumericType();
-                multiplierFactorNumericType.Value = detalle.IdTipoDescuento==2?Convert.ToDecimal(detalle.TotalTipoDescuento)/detalle.preciounitario: (Convert.ToDecimal(detalle.Descuento) / 100);
+                multiplierFactorNumericType.Value = detalle.IdTipoDescuento==2? Math.Round(Convert.ToDecimal(detalle.TotalTipoDescuento)/detalle.preciounitario,2): Math.Round((Convert.ToDecimal(detalle.Descuento) / 100),2);
                 BaseAmountType baseAmountType = new BaseAmountType();
                 baseAmountType.currencyID = "PEN";
                 baseAmountType.Value = Math.Round(Convert.ToDecimal(precio_unitario_Sin_Igv),2);
@@ -928,7 +929,7 @@ namespace wfaIntegradoCom.Sunat
                 binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
                 binding.Security.Message.AlgorithmSuite = System.ServiceModel.Security.SecurityAlgorithmSuite.Default;
 
-                if (Variables.cNombreServidor != "365.database.windows.net")
+                if (Variables.cNombreServidor == "365.database.windows.net")
                 {
                     remoteAddress = new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
 
@@ -942,7 +943,7 @@ namespace wfaIntegradoCom.Sunat
                 ServicePointManager.UseNagleAlgorithm = true;
                 ServicePointManager.Expect100Continue = false;
                 ServicePointManager.CheckCertificateRevocationList = true;
-                if (Variables.cNombreServidor != "365.database.windows.net")
+                if (Variables.cNombreServidor == "365.database.windows.net")
                 {
                     servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
                     servicio.ClientCredentials.UserName.Password = "MODDATOS";

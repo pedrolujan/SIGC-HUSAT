@@ -272,8 +272,8 @@ namespace wfaIntegradoCom.Procesos
                     fnBuscarDocumentoVenta(codDocumento, -4, 0, 0);
                     if (EstadoAnulacion == false)
                     {
-                        //EmitirFactura env = new EmitirFactura();
-                        //env.EmitirNotaCredito(clsCliente, stXmlDocumentoVenta[0].xmlDetalleVentas, clsDocumentoVentaEmitir);
+                        EmitirFactura env = new EmitirFactura();
+                        env.EmitirNotaCredito(clsCliente, stXmlDocumentoVenta[0].xmlDetalleVentas, clsDocumentoVentaEmitir);
 
                         estadoOpe = objdocVenta.BLDAnularDocumentoVenta(codDocumento, idOperacion, stXmlDocumentoVenta, tipoCon);
 
@@ -324,8 +324,8 @@ namespace wfaIntegradoCom.Procesos
             dtpFechaFinalBus.Value = fechaactual;
             dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-dtpFechaFinalBus.Value.AddDays(-1).Day);
             cbFechas.Checked=true;
-            //BLCliente objAcc = new BLCliente();
-            //clsCliente = objAcc.blListarCliente(532, 1);
+            BLCliente objAcc = new BLCliente();
+            clsCliente = objAcc.blListarCliente(334, 1);
             lstDocumentoVentaEmitir = Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboNotaCredit, "DOVE0004", 1, 1);
 
             fnActivarFechas(true);

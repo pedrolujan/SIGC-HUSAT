@@ -1891,6 +1891,7 @@ namespace wfaIntegradoCom.Procesos
                     Cantidad = lstOtrasVentas[i].unidades,
                     Couta = 1,
                     Importe = lstOtrasVentas[i].precioNeto,
+                    importeRestante= lstOtrasVentas[i].precioNeto,
                     cSimbolo = Mon.cSimbolo,
                     idObjetoVenta= lstOtrasVentas[i].idObjVenta,
                     idTipoTransaccion=lstOtrasVentas[i].idTipoTransaccion,
@@ -2396,7 +2397,7 @@ namespace wfaIntegradoCom.Procesos
                 {
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                     Decimal sumaPrimerPago = lstLdv.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocumentoVenta[0].cCodDocumentoVenta);
+                    //fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocumentoVenta[0].cCodDocumentoVenta);
                 }
             }
             else if (stCondicionprocesos == 3 || stCondicionprocesos == 5)

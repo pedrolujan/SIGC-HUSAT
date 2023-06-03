@@ -117,6 +117,7 @@ namespace CapaEntidad
         public String cUsuario { get; set; }
         public String cTipoVenta { get; set; }
         public String PrecioEnLetras { get; set; }
+        public Int32 idTipoTarifa { get;set; }
 
         public Boolean est0 { get; set; }
         public Boolean est1 { get; set; }

@@ -869,20 +869,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ubigeo1">
+                        <Textbox Name="cContactoNom2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value xml:space="preserve"> </Value>
-                                  <Style>
-                                    <FontSize>7.4pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Value>=Fields!ubigeo.Value</Value>
+                                  <Value>=Fields!cContactoNom2.Value</Value>
                                   <Style>
                                     <FontSize>7.4pt</FontSize>
                                   </Style>
@@ -893,7 +887,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ubigeo1</rd:DefaultName>
+                          <rd:DefaultName>cContactoNom2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -906,14 +900,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="idReferencia">
+                        <Textbox Name="cContactoCel2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!idReferencia.Value</Value>
+                                  <Value>=Fields!cContactoCel2.Value</Value>
                                   <Style>
                                     <FontSize>7.4pt</FontSize>
                                   </Style>
@@ -924,7 +918,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>idReferencia</rd:DefaultName>
+                          <rd:DefaultName>cContactoCel2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -933,6 +927,7 @@
                             <PaddingTop>2pt</PaddingTop>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>

@@ -206,7 +206,9 @@ namespace CapaEntidad
         public xmlActaCierraCaja() { }
 
 
-        public List<ReporteBloque> ListaReporteIngresos { get; set; }
+        public List<ReporteBloque> ListaReporteIngresosCategoria { get; set; }
+        public List<ReporteBloque> ListaReporteIngresosOperacion { get; set; }
+        public List<ReporteBloque> ListaReporteIngresosMedioPago { get; set; }
         public List<ReporteBloque> ListaReporteDetalleIngresos { get; set; }
         public List<ReporteBloque> ListaReporteEgresos { get; set; }
         public List<ReporteBloque> ListaCajaChica { get; set; }

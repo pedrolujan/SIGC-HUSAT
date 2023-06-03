@@ -222,6 +222,7 @@ namespace wfaIntegradoCom.Sunat
 
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadofactura, "EEST",true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadosBoleta, "EEST", true);
+                FunGeneral.fnLlenarTablaCodTipoCon(cboEstadoNota, "EEST", true);
 
             }
             catch (Exception)

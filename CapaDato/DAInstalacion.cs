@@ -101,7 +101,7 @@ namespace CapaDato
 
         public Boolean DaGuardarInstalacion(List<xmlInstalacion> xmlInstal,  Int32 idUsuario, DateTime FechaInstalacion)
         {
-            SqlParameter[] pa = new SqlParameter[15];
+            SqlParameter[] pa = new SqlParameter[16];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             DataTable dtResp = new DataTable();
@@ -153,9 +153,12 @@ namespace CapaDato
 
                 pa[14] = new SqlParameter("@peidEquipoActual", SqlDbType.Int);
                 pa[14].Value = xmlInstal[0].ListaEquipoActual[0].idEquipo;
+                
+                pa[15] = new SqlParameter("@tipoInstalacion", SqlDbType.Int);
+                pa[15].Value = xmlInstal[0].clsInstalacion.tipoActa;
 
                 objCnx = new clsConexion("");
-                objCnx.EjecutarProcedimiento("uspGuardarInstalacion", pa);
+                //objCnx.EjecutarProcedimiento("uspGuardarInstalacion", pa);
 
                 return true;
 

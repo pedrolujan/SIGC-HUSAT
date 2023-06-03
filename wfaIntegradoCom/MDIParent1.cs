@@ -50,6 +50,10 @@ using Label = System.Windows.Forms.Label;
 using System.IO;
 using DocumentFormat.OpenXml.Bibliography;
 using System.Web.Services.Description;
+using Siticone.UI.WinForms.Suite;
+using Rectangle = System.Drawing.Rectangle;
+using System.Reflection.Emit;
+using DocumentFormat.OpenXml.Office2016.Drawing.Charts;
 
 namespace wfaIntegradoCom
 
@@ -84,6 +88,7 @@ namespace wfaIntegradoCom
         List<ReporteBloque> lsReporteBloqueEgresos = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueEgresosMontoEnCaja = new List<ReporteBloque>();
         List<ReporteBloque> lstRepDetalleIngresos = new List<ReporteBloque>();
+        List<ReporteBloque> lstRepDetalleIngresosAlContado = new List<ReporteBloque>();
         static List<ReporteBloque> lstRepDetalleIngresosDAshboard = new List<ReporteBloque>();
         List<ReporteBloque> lsReporteBloqueGen = new List<ReporteBloque>();
 
@@ -95,6 +100,22 @@ namespace wfaIntegradoCom
         BLProspecto objAcc = new BLProspecto();
 
         String[] datosMessage = new String[] { };
+
+        private Timer timer;
+        private int contador;
+        private Color colorOriginalFuente;
+        private Color colorParpadeoFuente;
+        private Color colorOriginalBg;
+        private Color colorParpadeoBg;
+        private Color colorOriginalIcono;
+        private Color colorParpadeoIcono;
+
+        SiticoneLabel stlabelBG=new SiticoneLabel();
+        SiticonePanel stPn1=new SiticonePanel();
+        SiticonePanel stPn2=new SiticonePanel();
+        SiticonePanel stPn3=new SiticonePanel();
+        IconPictureBox IconoG = new IconPictureBox();
+
         public void fnLoadCarga(Boolean Load)
         {
             LoadCarga = Load;
@@ -199,7 +220,58 @@ namespace wfaIntegradoCom
             fnAbrirFormularioDinamico(sender);
         }
 
+        private void InicializarParpadeo(SiticoneLabel st, SiticonePanel stp1, IconPictureBox icn)
+        {
+            // Configurar el temporizador
+            timer = new Timer();
+            timer.Interval = 800; // Intervalo de 500 milisegundos (0.5 segundos)
+            timer.Tick += Timer_Tick;
 
+            // Configurar los colores de fondo
+            colorOriginalFuente = st.ForeColor; // Color de fondo original del panel
+            colorOriginalBg = stp1.BackColor;
+            colorOriginalIcono = icn.ForeColor;
+
+            stlabelBG = st;
+            stPn1 = stp1;
+            IconoG = icn;
+
+            colorParpadeoFuente = Color.Yellow; // Color de fondo para el parpadeo
+            colorParpadeoBg = Color.Yellow;
+            colorParpadeoIcono = Color.Yellow;
+
+            contador = 0;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Cambiar el color de fondo del panel
+            if (contador % 2 == 0)
+            {
+                stlabelBG.ForeColor = colorParpadeoFuente;
+                stPn1.BackColor = colorParpadeoBg;
+                IconoG.ForeColor = colorParpadeoIcono;
+
+            }
+            else
+            {
+                stlabelBG.ForeColor = colorOriginalFuente;
+                stPn1.BackColor = colorOriginalBg;
+                IconoG.ForeColor = colorOriginalIcono;
+            }
+
+            contador++;
+
+            // Detener el parpadeo después de 5 segundos (10 intervalos de 0.5 segundos)
+            if (contador >= 10)
+            {
+                timer.Stop();
+                stlabelBG.ForeColor = colorOriginalFuente; // Restaurar el color de fondo original
+                stPn1.BackColor = colorOriginalBg; // Restaurar el color de fondo original
+                IconoG.ForeColor = colorOriginalIcono; // Restaurar el color de fondo original
+            }
+        }
 
         private void fnAbrirFormularioDinamico(object e)
         {
@@ -490,7 +562,7 @@ namespace wfaIntegradoCom
             try
                 {
                 login();
-                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltraIngresos, "idOperacion", "cNombreOperacion", "OperacionHusat", "cTipoConcepto", "TICO0004", true);
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltraIngresos, "idOperacion", "cNombreOperacion", "OperacionHusat", "cTipoOpe", "4", true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboTipoPago, "TIPA", true);
                 
             }
@@ -1519,11 +1591,13 @@ namespace wfaIntegradoCom
                 {
                     cboUsuario.SelectedValue = 0;
                 }
-                    fnValidarusuarioEnSession();
-                    fnLocationElementos();
-                    fnPosicionDeCajas();
-                    fnEscucharMansages();
-                }
+                fnValidarusuarioEnSession();
+                fnLocationElementos();
+                fnPosicionDeCajas();
+                fnEscucharMansages();
+                fnEscucharAlertasDasboard() ;
+
+            }
 
         }
 
@@ -2851,13 +2925,16 @@ namespace wfaIntegradoCom
             Int32 filas = 10;
 
             var result = bl.blBuscarDashBoard(clsBusq);
-            fnGenerarPaneles(result.Item1);
             lsReporteBloque = result.Item2;
             lsReporteBloqueEgresos = fnBuscarEgresos(0,0);
             
             lstCajaChica = result.Item4;
             fnGenerarPanelsIndividuales(lstCajaChica, FWpnCajaChicaCopias, "pnCCh");
             fnPosicionarAlCentrocajas(FWpnCajaChicaCopias, siticonePanel3);
+            fnGenerarPaneles(FunGeneral.fnBuscarCajasDashboard(-1));
+            
+
+
             fnDatosPNEspaciador();
 
             Int32 totalRows = lsReporteBloque.Count;
@@ -3009,12 +3086,13 @@ namespace wfaIntegradoCom
             Int32 espaciosPequenos = 5;
             Int32 comparaAltoTablas = 0;
             Int32 comparaAltoTablasEgresos = 0;
-            //lblIngresos.Padding = new Padding(15, 0, 0, 0);
+
+            flowLayoutPanel1.Location= new Point(flowLayoutPanel1.Location.X, (FWpnCajaChicaCopias.Location.Y+ FWpnCajaChicaCopias.Height + espacios));
+            siticoneGroupBox1.Location = new Point(siticoneGroupBox1.Location.X,(flowLayoutPanel1.Location.Y+ flowLayoutPanel1.Height)+espacios);
+            siticonePanel3.Location = new Point(siticoneGroupBox1.Location.X, (siticoneGroupBox1.Location.Y + siticoneGroupBox1.Height) + espacios);
+
             lblIngresos.Size = new Size(siticonePanel3.Width - 20, 40);
-            //lblEgresos.Padding = lblIngresos.Padding;
             lblEgresos.Size = lblIngresos.Size;
-            //lblEgresos.TextAlignment =  ContentAlignment.MiddleLeft;
-            //lblIngresos.TextAlignment =  ContentAlignment.MiddleLeft;
 
             dgvListaPorBloque.Location = new Point(lblIngresos.Location.X, (lblIngresos.Location.Y+lblIngresos.Height )+ espacios);
             lblHeaderDetalle.Location = new Point(lblHeaderDetalle.Location.X, (lblIngresos.Location.Y+lblIngresos.Height) + espacios);
@@ -3038,71 +3116,32 @@ namespace wfaIntegradoCom
         private IconPictureBox fngenerarIconos(ReporteBloque rpt)
         {
             IconPictureBox icono = new IconPictureBox();
-            if (rpt.Codigoreporte == "1")
+            if (rpt.Codigoreporte == "00000001")
             {
-                icono.IconChar = IconChar.LockOpen;
+                icono.IconChar = IconChar.LocationDot;
             }
-            else if (rpt.Codigoreporte== "2")
+            else if (rpt.Codigoreporte== "00000002")
             {
-                icono.IconChar = IconChar.BridgeLock;
+                icono.IconChar = IconChar.BoxesPacking;
             }
-            else if (rpt.Codigoreporte == "3")
+            else if (rpt.Codigoreporte == "00000003")
             {
-                icono.IconChar = IconChar.LocationCrosshairs;
+                icono.IconChar = IconChar.RotateLeft;
             }
-            else if (rpt.Codigoreporte== "4")
+            else if (rpt.Codigoreporte== "00000004")
             {
                 icono.IconChar = IconChar.ClockFour;
 
-            }
-            else if (rpt.Codigoreporte== "5")
+            }else if (rpt.Codigoreporte== "00000005")
             {
-                icono.IconChar = IconChar.RotateLeft;
+                icono.IconChar = IconChar.Viber;
 
-            }
-            else if (rpt.Codigoreporte== "6")
+            }else if (rpt.Codigoreporte  == "TEGR0002")
             {
-                icono.IconChar = IconChar.PeopleCarryBox;
-
-            }
-            else if (rpt.Codigoreporte== "7")
+                icono.IconChar = IconChar.FileClipboard;
+            }else if (rpt.Codigoreporte == "TEGR0003")
             {
-                icono.IconChar = IconChar.CarBurst;
-
-            }
-            else if (rpt.Codigoreporte== "11")
-            {
-                icono.IconChar = IconChar.ArrowDownUpAcrossLine;
-
-            }else if (rpt.Codigoreporte== "13")
-            {
-                icono.IconChar = IconChar.MoneyBillWheat;
-
-            }else if (rpt.Codigoreporte== "14")
-            {
-                icono.IconChar = IconChar.Print;
-
-            }else if (rpt.Codigoreporte== "15")
-            {
-                icono.IconChar = IconChar.ShieldHeart;
-
-            }else if (rpt.Codigoreporte== "21")
-            {
-                icono.IconChar = IconChar.Bus;
-
-            }
-            else if (rpt.Codigoreporte== "TEGR0002")
-            {
-                icono.IconChar = IconChar.Print;
-
-            }else if (rpt.Codigoreporte== "TEGR0003")
-            {
-                icono.IconChar = IconChar.BoxArchive;
-
-            }else if (rpt.Codigoreporte== "TEGR0004")
-            {
-                icono.IconChar = IconChar.Bus;
-
+                icono.IconChar = IconChar.Vault;
             }
             return icono;
         }
@@ -3124,7 +3163,7 @@ namespace wfaIntegradoCom
             FWpnCajaChicaCopias.Controls.Clear(); //Formulario 
             Int32 pnfW = 180;
             Int32 pnfH = 100;
-            Int32 borderRadius = 2;
+            Int32 borderRadius = 10;
             Int32 tamLetraHF = 12;
             Int32 tamLetrasMensajes = 21;
             Double rextWFlow = 0.2;
@@ -3133,7 +3172,7 @@ namespace wfaIntegradoCom
             colorLetraHF = Color.Gainsboro;
             String tipoLetra = "Roboto";
             colorLetraBody = Color.Gainsboro;
-            colorLetraIcono = fnDevolVerColorTransparente(65, Color.Black);
+            colorLetraIcono = fnDevolVerColorTransparente(85, Color.Black);
             colorHeaderFooter = fnDevolVerColorTransparente(150, Color.Black);
             //FWpnCajaChicaCopias.Width = pnlParaDashboard.Width;
 
@@ -3178,30 +3217,37 @@ namespace wfaIntegradoCom
             for (int i = 0; i < lstBusq.Count; i++)
             {
                 ReporteBloque rpt = lstBusq[i];
-                if (lstBusq[i].ImporteRow < 15)
+                if (lstBusq[i].Codigoreporte == "TEGR0002")
                 {
-                    colorFondo = Color.FromArgb(161, 20, 1);
+                    colorFondo = Color.FromArgb(105, 105, 105);
                 }
-                else if (lstBusq[i].ImporteRow >= 15)
+                else if (lstBusq[i].Codigoreporte == "TEGR0003")
                 {
-                    colorFondo = Color.FromArgb(0, 126, 63);
+                    colorFondo = Color.FromArgb(38, 95, 102);
                 }
 
                 //Panel princilal
                 SiticonePanel panelFondo = new SiticonePanel();
                 panelFondo.Name = "panel" + i;
                 panelFondo.Size = new Size(pnfW, pnfH);
-                panelFondo.BorderRadius = borderRadius;
+                //panelFondo.BorderRadius =borderRadius;
                 panelFondo.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
 
                 panelFondo.BackColor = Color.Transparent;
                 panelFondo.FillColor = colorFondo;
 
+
+
+                // Establece la región del control utilizando el objeto GraphicsPath
+                panelFondo.Region = new System.Drawing.Region(fnRedondearBordes(panelFondo.Width, panelFondo.Height, borderRadius));
+
+
+
                 SiticonePanel panel = new SiticonePanel();
                 panel.Name = "panel" + i;
                 //panel.Size = new Size(panelFondo.Width, panelFondo.Height);
                 panel.Size = new Size(pnfW + 1, pnfH);
-                panel.BorderRadius = borderRadius;
+                ////panel.BorderRadius = borderRadius;
                 panel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
                 panel.BackColor = Color.Transparent;
                 panel.FillColor = colorHeaderFooter;
@@ -3211,7 +3257,7 @@ namespace wfaIntegradoCom
                 // panel Header
                 SiticonePanel pnHead = new SiticonePanel();
                 pnHead.Name = "pnHead" + i;
-                pnHead.Size = new Size(panel.Width-2, (panel.Height / 2) / 2);
+                pnHead.Size = new Size(panel.Width, (panel.Height / 2) / 2);
                 pnHead.BackColor = Color.Transparent;
                 pnHead.FillColor = colorFondo;
                 pnHead.Location = new Point(0, 0);
@@ -3219,14 +3265,13 @@ namespace wfaIntegradoCom
                 //pnHead.BorderRadius = borderRadius;
 
 
-                 
                 SiticoneLabel lblH = new SiticoneLabel();
                 lblH.Name = "lblHeader" + i;
                 lblH.AutoSize = false;
                 lblH.Size = new Size(pnHead.Width, pnHead.Height);
                 //lblH.BackColor = Color.Red;
                 lblH.Location = new Point(0, 1);
-                lblH.Text ="Tipo Concepto";
+                lblH.Text = "Tipo Concepto";
                 lblH.TextAlignment = ContentAlignment.MiddleCenter;
                 lblH.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
                 //lblH.Font = new Font(lblH.Font, FontStyle.Bold);
@@ -3247,10 +3292,11 @@ namespace wfaIntegradoCom
                 lblIzq.AutoSize = false;
                 lblIzq.Size = pnIzquierdo.Size;
                 lblIzq.Location = new Point(0, 0);
-                lblIzq.Text =FunGeneral.FormatearCadenaTitleCase(lstBusq[i].Detallereporte);
+                lblIzq.Text = FunGeneral.FormatearCadenaTitleCase(lstBusq[i].Detallereporte);
                 lblIzq.TextAlignment = ContentAlignment.MiddleCenter;
-                lblIzq.Font = new Font(tipoLetra, 10);
+                lblIzq.Font = new Font(tipoLetra, 10F);
                 lblIzq.ForeColor = colorLetraBody;
+                lblIzq.Tag = lstBusq[i].Codigoreporte;
                 lblIzq.Font = new Font(lblIzq.Font, FontStyle.Bold);
                 pnIzquierdo.Controls.Add(lblIzq);
 
@@ -3260,10 +3306,11 @@ namespace wfaIntegradoCom
                 pnDerecho.Name = "pnDerecho" + i;
                 pnDerecho.BackColor = colorFondo;
                 pnDerecho.Size = pnIzquierdo.Size;
-                pnDerecho.Location = new Point((panel.Width / 2)-1, pnHead.Height);
+                pnDerecho.Location = new Point(panel.Width / 2, pnHead.Height);
+                pnDerecho.Tag = lstBusq[i].Codigoreporte;
 
                 IconPictureBox icon = fngenerarIconos(rpt);
-                icon.Size = new Size(pnDerecho.Width - 8, pnDerecho.Height - 8);
+                icon.Size = new Size(pnDerecho.Width - 18, pnDerecho.Height - 18);
                 icon.Location = new Point((pnDerecho.Width / 3), 1);
                 icon.ForeColor = colorLetraIcono;
                 icon.Dock = DockStyle.Fill;
@@ -3276,9 +3323,11 @@ namespace wfaIntegradoCom
                 //Panel Footer
                 SiticonePanel pnFooter = new SiticonePanel();
                 pnFooter.Name = "pnFooter" + i;
-                //pnFooter.BackColor = Color.Green;
+                //pnFooter.BackColor = colorHeader;
                 pnFooter.Size = new Size(panel.Width, (panel.Height / 2) / 2);
                 pnFooter.Location = new Point(0, pnDerecho.Height + pnHead.Height);
+                pnFooter.Tag = lstBusq[i].Codigoreporte;
+                pnFooter.Cursor = System.Windows.Forms.Cursors.Hand;
 
                 SiticoneLabel lblF = new SiticoneLabel();
                 lblF.Name = "lblFooter" + i;
@@ -3286,16 +3335,29 @@ namespace wfaIntegradoCom
                 lblF.Size = pnFooter.Size;
                 lblF.Location = new Point(0, 0);
                 lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecioDC("S/.", lstBusq[i].ImporteRow, 0);
+                lblF.Tag = lstBusq[i].Codigoreporte;
                 //lblF.BackColor = "Dark"+ color;
                 lblF.TextAlignment = ContentAlignment.MiddleCenter;
                 lblF.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
 
                 lblF.ForeColor = colorLetraHF;
+                lblF.Cursor = System.Windows.Forms.Cursors.Hand;
                 pnFooter.Controls.Add(lblF);
 
+                panelFondo.Click += MiBoton_Click;
+                pnHead.Click += MiBoton_Click;
+                lblH.Click += MiBoton_Click;
+                pnIzquierdo.Click += MiBoton_Click;
+                lblIzq.Click += MiBoton_Click;
+                pnDerecho.Click += MiBoton_Click;
+                icon.Click += MiBoton_Click;
+                pnFooter.Click += MiBoton_Click;
+                lblF.Click += MiBoton_Click;
+                panel.Click += MiBoton_Click;
                 panel.Controls.Add(pnFooter);
 
-                stPanel.Controls.Add(panel);
+                stPanel.Controls.Add(panelFondo);
+                stPanel.Padding = new Padding(0, 0, 0, 0);
             }
 
             Label stLabel2 = new Label();
@@ -3311,21 +3373,113 @@ namespace wfaIntegradoCom
                 stPanel.Controls.Add(stLabel2);
             }
 
+            FWpnCajaChicaCopias.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
             int totalWidth = 0;
             int totalHeight = 0;
             foreach (System.Windows.Forms.Control control in FWpnCajaChicaCopias.Controls)
             {
                 totalWidth += control.Width;
-                if (totalHeight< control.Height)
+                if (totalHeight < control.Height)
                 {
                     totalHeight = control.Height;
                 }
             }
+            stPanel.Padding = new Padding(0, 0, 0, 0);
+            if (stPanel.VerticalScroll.Visible == true)
+            {
+                stPanel.Width = totalWidth + 30;
+            }
+            else
+            {
+                stPanel.Width = totalWidth + 15;
 
-            stPanel.Width = totalWidth + 90;
-            stPanel.Height = totalHeight+20;
+            }
+            stPanel.Height = totalHeight + 20;
 
-            //stPanel.Controls.Add(stLabel);
+
+
+
+        }
+
+        private void MiBoton_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Control control = sender as System.Windows.Forms.Control;
+            String nombre = "";
+            if (control != null)
+            {
+                Type controlType = control.GetType();
+                if (controlType == typeof(SiticoneLabel))
+                {
+                    SiticoneLabel label = (SiticoneLabel) control;
+                    nombre=label.Tag.ToString();
+                    // Código a ejecutar cuando se hace clic en un SiticoneLabel
+                }
+                else if (controlType == typeof(IconPictureBox))
+                {
+                    FontAwesome.Sharp.IconPictureBox iconChar = (FontAwesome.Sharp.IconPictureBox)control;
+                    nombre = iconChar.Tag.ToString();
+                    // Código a ejecutar cuando se hace clic en un Button
+                }
+                else if (controlType == typeof(SiticonePanel))
+                {
+                    SiticonePanel panel = (SiticonePanel)control;
+                    nombre = panel.Tag.ToString();
+                    // Código a ejecutar cuando se hace clic en un Panel
+                }
+
+                fnAbrirFormularios(nombre);
+
+
+            }
+
+        }
+        private void fnAbrirFormularios(string codigo)
+        {
+            
+            if (codigo== "00000001")
+            {
+                frmInstalacionEquipo frm=new frmInstalacionEquipo();
+                frm.Show();
+            }else if (codigo == "00000002")
+            {
+                if (Variables.gsCargoUsuario== "PETR0007" || Variables.gsCargoUsuario== "PETR0005")
+                {
+                    frmEquipoImeis frm =new frmEquipoImeis();
+                    frm.Show();
+                }
+
+            }else if (codigo == "00000003")
+            {
+                frmRegistrarVenta frm = new frmRegistrarVenta();
+                frm.Show();
+            }
+            else if (codigo == "00000004")
+            {
+                frmPagosPendientes frm = new frmPagosPendientes();
+                frm.Show();
+            }else if (codigo == "00000005")
+            {
+                frmSeguimiento frm = new frmSeguimiento();
+                frm.Inicio(1);
+            }
+        }
+
+        private System.Drawing.Drawing2D.GraphicsPath fnRedondearBordes(Int32 width, Int32 height, Int32 borderRadius)
+        {
+            int borderWidth = 1;
+
+            // Calcula el tamaño y la posición del rectángulo interno
+            Rectangle innerRect = new Rectangle(borderWidth, borderWidth, width - 2 * borderWidth, height - 2 * borderWidth);
+
+            // Crea el objeto GraphicsPath para la forma redondeada
+            System.Drawing.Drawing2D.GraphicsPath roundedPath = new System.Drawing.Drawing2D.GraphicsPath();
+            roundedPath.AddArc(innerRect.X, innerRect.Y, borderRadius, borderRadius, 180, 90); // Esquina superior izquierda
+            roundedPath.AddArc(innerRect.Right - borderRadius, innerRect.Y, borderRadius, borderRadius, 270, 90); // Esquina superior derecha
+            roundedPath.AddArc(innerRect.Right - borderRadius, innerRect.Bottom - borderRadius, borderRadius, borderRadius, 0, 90); // Esquina inferior derecha
+            roundedPath.AddArc(innerRect.X, innerRect.Bottom - borderRadius, borderRadius, borderRadius, 90, 90); // Esquina inferior izquierda
+            roundedPath.CloseFigure();
+            return roundedPath;
 
         }
         private void fnGenerarPaneles(List<ReporteBloque> lstBusq)
@@ -3338,13 +3492,13 @@ namespace wfaIntegradoCom
             flowLayoutPanel1.Controls.Clear();
             Int32 pnfW = 180;
             Int32 pnfH = 110;
-            Int32 borderRadius = 2;
+            Int32 borderRadius = 10;
             Int32 tamLetraHF = 12;
             Double rextWFlow = 0.2;
             colorLetraHF = Color.Gainsboro;
             String tipoLetra = "Roboto";
             colorLetraBody = Color.Gainsboro;
-            colorLetraIcono = fnDevolVerColorTransparente(35, Color.Black);
+            colorLetraIcono = fnDevolVerColorTransparente(85, Color.Black);
             colorHeaderFooter = fnDevolVerColorTransparente(110, Color.Black);
             pnlParaDashboard.Location = new Point(pnlParaDashboard.Location.X,0); ;
             flowLayoutPanel1.AutoScroll = false;
@@ -3381,47 +3535,80 @@ namespace wfaIntegradoCom
             for (Int32 i = 0; i < lstBusq.Count; i++)
             {
                 ReporteBloque rpt = lstBusq[i];
-                if (lstBusq[i].ImporteRow < 100)
+                if (lstBusq[i].Codigoreporte == "00000003")
                 {
                     colorFondo = Color.FromArgb(161, 20, 1);
                 }
-                else if (lstBusq[i].ImporteRow >= 100 && lstBusq[i].ImporteRow < 300)
-                {
-                    colorFondo = Color.FromArgb(228, 163, 0);
-                }
-                else if (lstBusq[i].ImporteRow >= 300 && lstBusq[i].ImporteRow < 700)
-                {
-                    
-                    colorFondo = Color.FromArgb(173, 115, 17);
-                }
-                else if (lstBusq[i].ImporteRow >= 700 && lstBusq[i].ImporteRow < 1000)
-                {
-                    colorFondo = Color.FromArgb(1, 139, 211);
-                }
-                else if (lstBusq[i].ImporteRow >= 1000)
+                else if (lstBusq[i].Codigoreporte == "00000002")
                 {
                     colorFondo = Color.FromArgb(0, 126, 63);
                 }
+                else if (lstBusq[i].Codigoreporte == "00000001")
+                {
+                    colorFondo = Color.FromArgb(131, 56, 236);
+                }
+                else if (lstBusq[i].Codigoreporte == "00000004")
+                {
+                    colorFondo = Color.FromArgb(173, 115, 17);
+                }else if (lstBusq[i].Codigoreporte == "00000005")
+                {
+                    colorFondo = Color.FromArgb(134, 27, 45);
+                }
+                else 
+                { 
+                    
+                    if (lstBusq[i].Cantidad <= 1)
+                    {
+                        colorFondo = Color.FromArgb(161, 20, 1);
+                    }
+                    else if (lstBusq[i].Cantidad >= 1 && lstBusq[i].Cantidad < 5)
+                    {
+                        colorFondo = Color.FromArgb(228, 163, 0);
+                    }
+                    else if (lstBusq[i].Cantidad >= 5 && lstBusq[i].Cantidad < 8)
+                    {
+
+                        colorFondo = Color.FromArgb(173, 115, 17);
+                    }
+                    else if (lstBusq[i].Cantidad >= 8 && lstBusq[i].Cantidad < 12)
+                    {
+                        colorFondo = Color.FromArgb(1, 139, 211);
+                    }
+                    else if (lstBusq[i].Cantidad >= 12)
+                    {
+                        colorFondo = Color.FromArgb(0, 126, 63);
+                    }
+                }
+                
                 
                 //Panel princilal
                 SiticonePanel panelFondo = new SiticonePanel();
                 panelFondo.Name = "panel" + i;
                 panelFondo.Size = new Size(pnfW, pnfH);
-                panelFondo.BorderRadius = borderRadius;
+                //panelFondo.BorderRadius =borderRadius;
                 panelFondo.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
 
                 panelFondo.BackColor = Color.Transparent;
                 panelFondo.FillColor = colorFondo;
+                panelFondo.Tag = lstBusq[i].Codigoreporte;
+
+
+
+                // Establece la región del control utilizando el objeto GraphicsPath
+                panelFondo.Region = new System.Drawing.Region(fnRedondearBordes(panelFondo.Width, panelFondo.Height,borderRadius));
+
+
 
                 SiticonePanel panel = new SiticonePanel();
                 panel.Name = "panel" + i;
                 //panel.Size = new Size(panelFondo.Width, panelFondo.Height);
                 panel.Size = new Size(pnfW+1, pnfH);
-                panel.BorderRadius = borderRadius;
+                ////panel.BorderRadius = borderRadius;
                 panel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
                 panel.BackColor = Color.Transparent;
                 panel.FillColor = colorHeaderFooter;
                 panel.Location = new Point(0, 0);
+                panel.Tag = lstBusq[i].Codigoreporte;
                 panelFondo.Controls.Add(panel);
 
                 // panel Header
@@ -3431,6 +3618,7 @@ namespace wfaIntegradoCom
                 pnHead.BackColor = Color.Transparent;
                 pnHead.FillColor = colorFondo;
                 pnHead.Location = new Point(0, 0);
+                pnHead.Tag = lstBusq[i].Codigoreporte;
                 //pnHead.Padding = new Padding(0, 0, 0, 0);
                 //pnHead.BorderRadius = borderRadius;
 
@@ -3443,6 +3631,7 @@ namespace wfaIntegradoCom
                 lblH.Location = new Point(0, 1);
                 lblH.Text = FunGeneral.FormatearCadenaTitleCase(lstBusq[i].Detallereporte);
                 lblH.TextAlignment = ContentAlignment.MiddleCenter;
+                lblH.Tag = lstBusq[i].Codigoreporte;
                 lblH.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
                 //lblH.Font = new Font(lblH.Font, FontStyle.Bold);
 
@@ -3456,9 +3645,11 @@ namespace wfaIntegradoCom
                 pnIzquierdo.Size = new Size(panel.Width/2, panel.Height- (pnHead.Height * 2));
                 pnIzquierdo.Location = new Point(0, pnHead.Height);
                 pnIzquierdo.FillColor = colorFondo;
+                pnIzquierdo.Tag = lstBusq[i].Codigoreporte;
+
 
                 SiticoneLabel lblIzq = new SiticoneLabel();
-                lblIzq.Name = "lblIzquierdo" + i;
+                lblIzq.Name = "lbl" + lstBusq[i].Codigoreporte;
                 lblIzq.AutoSize = false;
                 lblIzq.Size = pnIzquierdo.Size;
                 lblIzq.Location = new Point(0, 0);
@@ -3466,6 +3657,7 @@ namespace wfaIntegradoCom
                 lblIzq.TextAlignment = ContentAlignment.MiddleCenter;
                 lblIzq.Font = new Font(tipoLetra, 18F);
                 lblIzq.ForeColor = colorLetraBody;
+                lblIzq.Tag = lstBusq[i].Codigoreporte;
                 lblIzq.Font = new Font(lblIzq.Font, FontStyle.Bold);
                 pnIzquierdo.Controls.Add(lblIzq);
 
@@ -3476,14 +3668,17 @@ namespace wfaIntegradoCom
                 pnDerecho.BackColor = colorFondo;
                 pnDerecho.Size = pnIzquierdo.Size;
                 pnDerecho.Location = new Point(panel.Width / 2, pnHead.Height);
+                pnDerecho.Tag = lstBusq[i].Codigoreporte;
 
                 IconPictureBox icon = fngenerarIconos(rpt);
-                icon.Size = new Size(pnDerecho.Width-8, pnDerecho.Height-8);
+                icon.Size = new Size(pnDerecho.Width-18, pnDerecho.Height-18);
                 icon.Location = new Point((pnDerecho.Width/3), 1);
+                //icon.BackColor = Color.Green;
                 icon.ForeColor = colorLetraIcono;
                 icon.Dock = DockStyle.Fill;
+                icon.Tag = lstBusq[i].Codigoreporte;
                 //icon.SizeMode = PictureBoxSizeMode.AutoSize;
-                icon.Padding = new Padding(icon.Width/3, 0, 0, 0);
+                //icon.Padding = new Padding(icon.Width/3, 0, 0, 0);
                 pnDerecho.Controls.Add(icon);
 
                 panel.Controls.Add(pnDerecho);
@@ -3494,21 +3689,35 @@ namespace wfaIntegradoCom
                 //pnFooter.BackColor = colorHeader;
                 pnFooter.Size = new Size(panel.Width, (panel.Height / 2) / 2);
                 pnFooter.Location = new Point(0, pnDerecho.Height+pnHead.Height);
+                pnFooter.Tag = lstBusq[i].Codigoreporte;
+                pnFooter.Cursor= System.Windows.Forms.Cursors.Hand;
 
                 SiticoneLabel lblF = new SiticoneLabel();
                 lblF.Name = "lblFooter" + i;
                 lblF.AutoSize = false;
                 lblF.Size = pnFooter.Size;
                 lblF.Location = new Point(0, 0);
-                lblF.Text = "Importe: " + FunGeneral.fnFormatearPrecioDC("S/.", lstBusq[i].ImporteRow, 0);
+                lblF.Text = lstBusq[i].MasDetallereporte;
+                lblF.Tag = lstBusq[i].Codigoreporte;
                 //lblF.BackColor = "Dark"+ color;
                 lblF.TextAlignment = ContentAlignment.MiddleCenter;
                 lblF.Font = new Font(tipoLetra, tamLetraHF, GraphicsUnit.Pixel);
                
                 lblF.ForeColor = colorLetraHF;
+                lblF.Cursor = System.Windows.Forms.Cursors.Hand;
                 pnFooter.Controls.Add(lblF);
 
-
+                panelFondo.Click += MiBoton_Click;
+                pnHead.Click += MiBoton_Click;
+                lblH.Click += MiBoton_Click;
+                pnIzquierdo.Click += MiBoton_Click;
+                lblIzq.Click += MiBoton_Click;
+                pnDerecho.Click += MiBoton_Click;
+                icon.Click += MiBoton_Click;
+                pnFooter.Click += MiBoton_Click;
+                lblF.Click += MiBoton_Click;
+                panel.Click += MiBoton_Click;
+                panel.Controls.Add(pnFooter);
                 panel.Controls.Add(pnFooter);
 
                 flowLayoutPanel1.Controls.Add(panelFondo);
@@ -3620,7 +3829,7 @@ namespace wfaIntegradoCom
             dgv.Columns[0].Visible = false;
             dgv.Columns[1].Width = 100;
             dgv.Columns[2].Width = 20;
-            dgv.Columns[3].Width = 100;
+            dgv.Columns[3].Width = 70;
             dgv.ColumnHeadersVisible = false;
 
 
@@ -3817,11 +4026,98 @@ namespace wfaIntegradoCom
 
             return udpClient;
         }
+        public void fnEscucharAlertasDasboard()
+        {
+            UdpClient udpClient = IsUdpPortInUse(1222);
+
+            // Cree un objeto de extremo de red que represente la dirección de difusión de su red
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
+
+            // Inicie un subproceso separado para escuchar los mensajes
+            Thread receiveThread = new Thread(() =>
+            {
+                while (true)
+                {
+                    // Espere a recibir un mensaje
+                    byte[] data = udpClient.Receive(ref endPoint);
+
+                    // Convierta los datos en una cadena y muestre el mensaje
+                    //string message = Encoding.ASCII.GetString(data);
+                    string message = Encoding.UTF8.GetString(data);
+                    string[] datos = message.Split(':');
+                    bool enviadoPorMi = datos[0] == Variables.clasePersonal.cPrimerNom;
+                    datosMessage = datos;
+                    //if (datos[0].ToString()== "lbl00000005")
+                    //{
+                    //    btnAlertaSeguimiento.Text = datos[1];
+                    //}
+                    SiticonePanel siticonePanel = new SiticonePanel();
+
+                    flowLayoutPanel1.Invoke((MethodInvoker)delegate {
+                        SiticoneLabel lblPasar = new SiticoneLabel();
+                        Boolean estado = false;
+                        var ControlPanel = flowLayoutPanel1.Controls.OfType<SiticonePanel>();
+                        foreach (SiticonePanel png in ControlPanel)
+                        {
+                            var pnh1 = png.Controls.OfType<SiticonePanel>();
+                            foreach (SiticonePanel pnh in pnh1)
+                            {
+                                var paniz = pnh.Controls.OfType<SiticonePanel>();
+                                foreach (SiticonePanel pni in paniz)
+                                {
+                                    var lbliz = pni.Controls.OfType<SiticoneLabel>();
+                                    var lblIcon = pni.Controls.OfType<IconPictureBox>();
+                                    
+                                    foreach (SiticoneLabel lbl in lbliz)
+                                    {
+                                        if (lbl.Name.ToString() == "lbl" + datos[0].ToString())
+                                        {
+                                            lbl.Text = datos[1];
+                                            btnAlertaSeguimiento.Text= datos[1];
+                                            lblPasar = lbl;
+                                            estado = true;
+                                        }
+                                    }
+                                    if (estado)
+                                    {
+                                        foreach (IconPictureBox ic in lblIcon)
+                                        {
+                                            if (ic.Tag.ToString() == datos[0].ToString())
+                                            {
+                                                estado = true;
+                                                InicializarParpadeo(lblPasar, pnh, ic);
+                                                return;
+                                            }
+
+                                        }
+                                    }
+                                   
+
+
+
+                                }
+                            }
+                        }
+                    });
+
+                }
+            });
+
+            receiveThread.IsBackground = true;
+            receiveThread.Start();
+
+            //// Espere a recibir un mensaje
+            //byte[] data = udpClient.Receive(ref endPoint);
+
+            // Convierta los datos en una cadena y muestre el mensaje
+            //string message = Encoding.ASCII.GetString(data);
+
+        }
         public void fnEscucharMansages()
         {
 
 
-            UdpClient udpClient = IsUdpPortInUse(1234);
+            UdpClient udpClient = IsUdpPortInUse(1221);
 
             // Cree un objeto de extremo de red que represente la dirección de difusión de su red
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
@@ -4115,18 +4411,7 @@ namespace wfaIntegradoCom
         private void iconButton1_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Opcion aun no disponible");
-            //fnVerifApertura();
-            //if (estAperturaCaja==false)
-            //{
-            //    frmAperturaCaja frmAp = new frmAperturaCaja();
-            //    frmAp.ShowDialog();
-            //}
-            //else
-            //{
-            //    frmActaCierreCaja frmCierreC = new frmActaCierreCaja();
-            //    frmCierreC.Inicio(lsReporteBloque,1);
-
-            //}
+            
         }
         private List<ReporteBloque> fnBuscarDetalleParaCuadre()
         {
@@ -4145,7 +4430,7 @@ namespace wfaIntegradoCom
             //clsBusq.cod3 = cboUsuario.SelectedValue is null ? ""+Variables.gnCodUser : cboUsuario.SelectedValue.ToString();
             clsBusq.cod4 = "";
             clsBusq.cBuscar = txtBuscarRepGeneral.Text.ToString();
-            clsBusq.tipoCon=-1;
+            clsBusq.tipoCon=-2;
             if (verifApertura())
             {
                 clsBusq.cod3 = ""+Variables.gnCodUser;
@@ -4187,7 +4472,7 @@ namespace wfaIntegradoCom
                 {
                     numero = 1,
                     Cantidad=0,
-                    Detallereporte = "No hubo Ingresos al contado",
+                    Detallereporte = "No hubo ingresos en efectivo",
                     ImporteRow = 0,
                     codAuxiliar="",
                     MonImporteRow="S/."+ 0
@@ -4195,9 +4480,9 @@ namespace wfaIntegradoCom
                 });
                 lsReporteBloque[0].MonImporteSumado = "S/." + lsReporteBloque.Sum(i => i.ImporteRow);
             }
-            if (lsReporteBloqueEgresos.Count == 0)
+            if (lsReporteBloqueDetalleEgresos.Count == 0)
             {
-                lsReporteBloqueEgresos.Add(new ReporteBloque
+                lsReporteBloqueDetalleEgresos.Add(new ReporteBloque
                 {
                     numero = 1,
                     Cantidad = 0,
@@ -4208,7 +4493,21 @@ namespace wfaIntegradoCom
                     MonImporteRow = "S/." + 0
 
                 }) ;
-                lsReporteBloqueEgresos[0].MonImporteSumado = "S/." + lsReporteBloqueEgresos.Sum(i => i.ImporteRow);
+                lsReporteBloqueDetalleEgresos[0].MonImporteSumado =FunGeneral.fnFormatearPrecioDC("S/. ", lsReporteBloqueDetalleEgresos.Sum(i => i.ImporteRow),0) ;
+            }
+            if (lstRepDetalleIngresosAlContado.Count == 0)
+            {
+                lstRepDetalleIngresosAlContado.Add(new ReporteBloque
+                {
+                    numero = 1,
+                    Cantidad = 0,
+                    Detallereporte = "No hubo ingresos en efectivo",
+                    codAuxiliar = "",
+                    ImporteRow = 0,
+                    MonImporteRow = "S/." + 0
+
+                });
+                lstRepDetalleIngresosAlContado[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC("S/. ", lstRepDetalleIngresosAlContado.Sum(i => i.ImporteRow), 0);
             }
             if (lstRepDetalleIngresos.Count == 0)
             {
@@ -4216,23 +4515,61 @@ namespace wfaIntegradoCom
                 {
                     numero = 1,
                     Cantidad = 0,
-                    Detallereporte = "No hubo Ingresos al contado",
+                    Detallereporte = "No hubo ingresos",
                     codAuxiliar = "",
                     ImporteRow = 0,
                     MonImporteRow = "S/." + 0
 
                 });
-                lstRepDetalleIngresos[0].MonImporteSumado = "S/." + lstRepDetalleIngresos.Sum(i => i.ImporteRow);
+                lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC("S/. ", lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
             }
+        }
+
+        public Tuple<List<ReporteBloque>, List<ReporteBloque>, List<ReporteBloque>> fnBuscarReporteDiario()
+        {
+
+            bl = new BLControlCaja();
+            DataTable dtRes = new DataTable();
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.dtFechaIni = FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5);
+            clsBusq.tipoCon = 0;
+            clsBusq.cod3 =""+Variables.gnCodUser;
+           return bl.blBuscarReporteDiario(clsBusq);
         }
         private void tsMiCaja_Click(object sender, EventArgs e)
         {
+            lstRepDetalleIngresosAlContado.Clear();
+            //Busquedas bs=new Busquedas();
+            lstCajaChica = FunGeneral.fnBuscarOtrosIngresos(new Busquedas());
+            List<ReporteBloque> lstReportePorCategoria = new List<ReporteBloque>();
+            List<ReporteBloque> lstReportePorOperacion = new List<ReporteBloque>();
+            List<ReporteBloque> lstReportePorMedioPago = new List<ReporteBloque>();
+
+            var dtResult= fnBuscarReporteDiario();
+            lstReportePorCategoria = dtResult.Item1;
+            lstReportePorOperacion=dtResult.Item2;
+            lstReportePorMedioPago=dtResult.Item3;
+
             if (Variables.gsCargoUsuario=="PETR0006")
             {
                 if (dtFechaInicioG.Value.ToString("yyyy-MM-dd") == Variables.gdFechaSis.ToString("yyyy-MM-dd"))
                 {
                     lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
                     lsReporteBloqueDetalleEgresos = fnBuscarEgresos(-2,0);
+
+                    var productosAgrupados = lstRepDetalleIngresos.GroupBy(i => i.codAuxiliar == "TIPA0001");
+                    foreach (var grupo in productosAgrupados)
+                    {
+                        if (grupo.Key == true)
+                        {
+                            foreach (ReporteBloque item in grupo)
+                            {
+                                lstRepDetalleIngresosAlContado.Add(item);
+                            }
+                        }
+
+                    }
+
                     for (int i = 0; i < lsReporteBloqueDetalleEgresos.Count; i++)
                     {
                         lsReporteBloqueDetalleEgresos[i].numero = i + 1;
@@ -4248,7 +4585,7 @@ namespace wfaIntegradoCom
 
                     lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
                     //Llamada 1
-                    frmMC.Inicio(lsReporteBloque, lsReporteBloqueDetalleEgresos, lstRepDetalleIngresos, lstCajaChica, 0,1);
+                    frmMC.Inicio(lstReportePorCategoria,lstReportePorOperacion,lstReportePorMedioPago, lstRepDetalleIngresosAlContado, lstRepDetalleIngresos, lsReporteBloqueDetalleEgresos, lstCajaChica, 0,1);
                     fnActivarDashBoard(estadoActivarDashBoard);
                 }
                 else
@@ -4267,6 +4604,18 @@ namespace wfaIntegradoCom
                         if (dtFechaInicioG.Value.ToString("yyyy-MM-dd") == Variables.gdFechaSis.ToString("yyyy-MM-dd"))
                         {
                             lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
+                            var productosAgrupados = lsReporteBloqueDetalleEgresos.GroupBy(i => i.codAuxiliar == "TIPA0001");
+                            foreach (var grupo in productosAgrupados)
+                            {
+                                if (grupo.Key == true)
+                                {
+                                    foreach (ReporteBloque item in grupo)
+                                    {
+                                        lstRepDetalleIngresosAlContado.Add(item);
+                                    }
+                                }
+
+                            }
                             fnValidarListasVecias();
                             frmMovimientoCaja frmMC = new frmMovimientoCaja();
                             lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
@@ -4275,7 +4624,7 @@ namespace wfaIntegradoCom
 
                             lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
                             //Llamada 2
-                            frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0, 1);
+                            frmMC.Inicio(lstReportePorCategoria, lstReportePorOperacion, lstReportePorMedioPago, lstRepDetalleIngresosAlContado, lstRepDetalleIngresos, lsReporteBloqueEgresos,  lstCajaChica, 0, 1);
                             fnActivarDashBoard(estadoActivarDashBoard);
                         }
                         else
@@ -4286,6 +4635,18 @@ namespace wfaIntegradoCom
                     else
                     {
                         lstRepDetalleIngresos = fnBuscarDetalleParaCuadre();
+                        var productosAgrupados = lsReporteBloqueDetalleEgresos.GroupBy(i => i.codAuxiliar == "TIPA0001");
+                        foreach (var grupo in productosAgrupados)
+                        {
+                            if (grupo.Key == true)
+                            {
+                                foreach (ReporteBloque item in grupo)
+                                {
+                                    lstRepDetalleIngresosAlContado.Add(item);
+                                }
+                            }
+
+                        }
                         fnValidarListasVecias();
                         frmMovimientoCaja frmMC = new frmMovimientoCaja();
                         lsReporteBloque[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lsReporteBloque[0].SimboloMoneda, lsReporteBloque.Sum(i => i.ImporteRow), 0);
@@ -4295,7 +4656,7 @@ namespace wfaIntegradoCom
                         lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
                         //Llamada 3
-                        frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, -1, 0);
+                        frmMC.Inicio(lstReportePorCategoria, lstReportePorOperacion, lstReportePorMedioPago, lstRepDetalleIngresosAlContado, lstRepDetalleIngresos, lsReporteBloqueEgresos,  lstCajaChica, -1, 0);
                         fnActivarDashBoard(estadoActivarDashBoard);
                     }
                 }
@@ -4314,7 +4675,7 @@ namespace wfaIntegradoCom
                         lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC(lstRepDetalleIngresos[0].SimboloMoneda, lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
 
                         //Llamada 4
-                        frmMC.Inicio(lsReporteBloque, lsReporteBloqueEgresos, lstRepDetalleIngresos, lstCajaChica, 0, 1);
+                        frmMC.Inicio(lstReportePorCategoria, lstReportePorOperacion, lstReportePorMedioPago, lstRepDetalleIngresosAlContado, lstRepDetalleIngresos, lsReporteBloqueEgresos, lstCajaChica, 0, 1);
                         fnActivarDashBoard(estadoActivarDashBoard);
                     }
                     else
@@ -4414,9 +4775,32 @@ namespace wfaIntegradoCom
 
         private void btnAlertaSeguimiento_Click(object sender, EventArgs e)
         {
-            fnMostrarAlertaSeguimiento();
+            //fnMostrarAlertaSeguimiento();
+
         }
 
+        //public void fnCapturarContadorSeguimiento()
+        //{
+        //    // Cree un objeto Socket UDP
+        //    UdpClient udpClient = new UdpClient();
+        //    string message = "";
+        //    Int32 contador = Convert.ToInt32(btnAlertaSeguimiento.Text) - 1;
+
+
+        //     message = "00000005:" + contador;
+        //    // Cree un objeto de extremo de red que represente la dirección de difusión de su red
+        //    IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 1222);
+
+        //    btnAlertaSeguimiento.Text = "" + contador;
+        //    // Cree el mensaje que desea enviar
+
+        //    //
+        //    // Convierta el mensaje en bytes
+        //    byte[] data = Encoding.UTF8.GetBytes(message);
+
+        //    udpClient.Send(data, data.Length, endPoint);
+
+        //}
         private void btnReportes_Click(object sender, EventArgs e)
         {
             LoadCarga = false;
@@ -4462,7 +4846,7 @@ namespace wfaIntegradoCom
         private void siticonePictureBox1_Click(object sender, EventArgs e)
         {
             MovimientoSunat frm = new MovimientoSunat();
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
@@ -4479,7 +4863,7 @@ namespace wfaIntegradoCom
                 UdpClient udpClient = new UdpClient();
 
                 // Cree un objeto de extremo de red que represente la dirección de difusión de su red
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 1234);
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 1221);
 
                 // Cree el mensaje que desea enviar
                 string message = Variables.gnCodUser + ":" + cboCargoMessage.SelectedValue.ToString()+":"+cboUsuarioMessage.SelectedValue.ToString() + ":" + txtMensaje.Text.ToString();
@@ -4545,6 +4929,21 @@ namespace wfaIntegradoCom
         private void siticoneLabel8_BackColorChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void FWpnCajaChicaCopias_Paint(object sender, PaintEventArgs e)
+        {
+            int borderWidth = 2; // Grosor del borde
+            Color borderColor = Variables.ColorEmpresa; // Color del borde
+
+            // Obtener el área del FlowLayoutPanel
+            Rectangle rect = FWpnCajaChicaCopias.ClientRectangle;
+
+            // Dibujar el borde inferior
+            using (Pen pen = new Pen(borderColor, borderWidth))
+            {
+                e.Graphics.DrawLine(pen, rect.Left, rect.Bottom - borderWidth, rect.Right, rect.Bottom - borderWidth);
+            }
         }
     }
 

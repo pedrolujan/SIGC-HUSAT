@@ -50,6 +50,7 @@ namespace CapaEntidad
         public String sTotal { get; set; }
         public Double montoPago { get; set; }
         public String estado { get; set; }
+        public String codEstado { get; set; }
         public DateTime fechaRegistro { get; set; }
         public Int32 idUsuario { get; set; }
         public Int32 idPlan { get; set; }

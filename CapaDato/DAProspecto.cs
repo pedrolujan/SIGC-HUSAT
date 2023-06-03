@@ -568,10 +568,10 @@ namespace CapaDato
             }
         }
 
-        public DataTable daBuscarSeguimientoDataTable(Int32 idOferta, Int32 numPagina, Int32 tipoCon)
+        public DataSet daBuscarSeguimientoDataTable(Int32 idOferta, Int32 numPagina, Int32 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[3];
-            DataTable dtAccesorio = new DataTable();
+            DataSet dtAccesorio = new DataSet();
             clsConexion objCnx = null;
 
             objUtil = new clsUtil();
@@ -585,7 +585,7 @@ namespace CapaDato
                 pa[2] = new SqlParameter("@tipoCon", SqlDbType.Real);
                 pa[2].Value = tipoCon;
                 objCnx = new clsConexion("");
-                dtAccesorio = objCnx.EjecutarProcedimientoDT("uspBuscarSeguimientoEspecifico", pa);
+                dtAccesorio = objCnx.EjecutarProcedimientoDS("uspBuscarSeguimientoEspecifico", pa);
 
                 return dtAccesorio;
             }

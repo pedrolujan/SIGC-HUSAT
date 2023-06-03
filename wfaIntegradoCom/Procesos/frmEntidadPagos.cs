@@ -130,7 +130,7 @@ namespace wfaIntegradoCom.Procesos
         private void fnValidarpagaCon()
         {
             //String str = txtCanPagar.Text.Length>4?txtCanPagar.Text.ToString().Substring(2): txtCanPagar.Text.ToString();
-            Decimal PrecioADescontar = Convert.ToDecimal(txtCanPagar.Text);
+            Decimal PrecioADescontar = txtCanPagar.Text.ToString()==""?0: Convert.ToDecimal(txtCanPagar.Text);
             if (PrecioADescontar <= Convert.ToDecimal(string.Format("{0:0.00}", clsPagos.PagaCon)))
             {
                 txtCanPagar.Text = FunGeneral.fnFormatearPrecioDC(clsPagos.SimboloMoneda, PrecioADescontar, -1);

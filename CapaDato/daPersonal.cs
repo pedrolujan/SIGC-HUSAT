@@ -145,8 +145,8 @@ namespace CapaDato
                           Convert.ToString(drMenu["cSegundoNom"]), Convert.ToString(drMenu["cDocumento"]),
                           Convert.ToString(drMenu["cDireccion"]), Convert.ToDateTime(drMenu["dFecNac"]),
                           Convert.ToString(drMenu["cTipoCargo"]), Convert.ToString(drMenu["cTelefono"]),
-                          Convert.ToBoolean(drMenu["bestado"]), Convert.ToString(drMenu["cNomDep"]),
-                          Convert.ToString(drMenu["cNomProv"]), Convert.ToString(drMenu["cNomDist"])));
+                          Convert.ToBoolean(drMenu["bestado"]), Convert.ToString(drMenu["idDepa"]),
+                          Convert.ToString(drMenu["idProv"]), Convert.ToString(drMenu["idDist"])));
                     }
                     else
                     {
@@ -161,8 +161,8 @@ namespace CapaDato
                            Convert.ToString(drMenu["cSegundoNom"]), Convert.ToString(drMenu["cDocumento"]),
                            Convert.ToString(drMenu["cDireccion"]), Convert.ToDateTime(drMenu["dFecNac"]),
                            Convert.ToString(drMenu["cTipoCargo"]), Convert.ToString(drMenu["cTelefono"]),
-                           Convert.ToBoolean(drMenu["bestado"]), Convert.ToString(drMenu["cNomDep"]),
-                           Convert.ToString(drMenu["cNomProv"]), Convert.ToString(drMenu["cNomDist"]),
+                           Convert.ToBoolean(drMenu["bestado"]), Convert.ToString(drMenu["idDepa"]),
+                           Convert.ToString(drMenu["idProv"]), Convert.ToString(drMenu["idDist"]),
                           ms, 
                           Convert.ToString(drMenu["Name_ImgPerfil"])
 

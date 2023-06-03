@@ -73,6 +73,7 @@ namespace CapaDato
                 try
                 {
                     objUtil.gsLogAplicativo("DAAcceso.svc", "DAValidarIngreso", "Antes de llamr - ValidaUsuarioClaveDominio ");
+
                     blnUsuario = fnAccederSistema(pstrUsuario, pstrClave, out idUsuario);
                     pnidUsuario = idUsuario;
 

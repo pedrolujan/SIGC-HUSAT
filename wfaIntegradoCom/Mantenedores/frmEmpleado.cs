@@ -23,10 +23,13 @@ namespace wfaIntegradoCom.Mantenedores
         }
 
         static Int32 tabInicio;
+        static Int32 idPersonalRecibido=0;
         static Int16 lnTipoCon = 0;
+
+
         public void Inicio(Int32 idPersonal)
         {
-            fnListarPersonalEspecifico(idPersonal);
+            idPersonalRecibido=idPersonal;
             lnTipoCon = 1;
             ShowDialog();
         }
@@ -135,6 +138,8 @@ namespace wfaIntegradoCom.Mantenedores
             Boolean bResult = false;
             CargarCodigoEmpleado();
 
+            
+
             bResult = fnLlenarDepartamento();
             if (!bResult)
             {
@@ -148,6 +153,8 @@ namespace wfaIntegradoCom.Mantenedores
                 this.Close();
             }
             //fnHabilitarControles(false);
+
+            fnListarPersonalEspecifico(idPersonalRecibido);
         }
              
         private void fnHabilitarControles(Boolean pbHabilitar)
@@ -299,7 +306,7 @@ namespace wfaIntegradoCom.Mantenedores
             try
             {
 
-                if (lvempleado.Rows.Count > 0)
+                if (lvempleado.Rows.Count > 0 || idPersonal>0)
                 {
                     BLPersonal objPers = new BLPersonal();
                     Personal[] lstPers = new Personal[1];
@@ -316,12 +323,12 @@ namespace wfaIntegradoCom.Mantenedores
                     txtdni.Text = Convert.ToString(lstPers[0].cDocumento);
                     txtDireccion.Text = Convert.ToString(lstPers[0].cDireccion);
                     txtTelefono.Text = Convert.ToString(lstPers[0].cTelefono);
-                    cboCargo.Text = Convert.ToString(lstPers[0].cTipoCargo);
+                    cboCargo.SelectedText = Convert.ToString(lstPers[0].cTipoCargo);
                     dateTimePicker1.Value = lstPers[0].dFecNac;
                     chkEstado.Checked = Convert.ToBoolean(lstPers[0].bEstado);
-                    cboDepartamento.Text = Convert.ToString(lstPers[0].cNomDep.Trim());
-                    cboProvincia.Text = Convert.ToString(lstPers[0].cNomProv.Trim());
-                    cboDistrito.Text = Convert.ToString(lstPers[0].cNomDist.Trim());
+                    cboDepartamento.SelectedValue = Convert.ToInt32(lstPers[0].cNomDep.Trim());
+                    cboProvincia.SelectedValue = Convert.ToInt32(lstPers[0].cNomProv.Trim());
+                    cboDistrito.SelectedValue = Convert.ToInt32(lstPers[0].cNomDist.Trim());
 
                     picBoxImgPerfil.BackgroundImage = null;
 

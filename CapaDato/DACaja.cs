@@ -66,6 +66,50 @@ namespace CapaDato
 
             }
         }
+        public List<ReporteBloque> daBuscarOtrosIngresos(Busquedas clsBusq)
+        {
+            SqlParameter[] pa = new SqlParameter[0];
+            List<ControlCaja> lstControl = new List<ControlCaja>();
+            DataTable dt = new DataTable();
+            List<ReporteBloque> lsRepBloque = new List<ReporteBloque>();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            try
+            {
+                objCnx = new clsConexion("");
+
+                dt = objCnx.EjecutarProcedimientoDT("uspBuscarOtrosIngresos", pa);
+                int i = 0;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    lsRepBloque.Add(new ReporteBloque
+                    {
+                        numero = i + 1,
+                        Codigoreporte = dr["codigoTipoPago"].ToString(),
+                        codAuxiliar = dr["codigoOperacion"].ToString(),
+                        MasDetallereporte = dr["nomTipoPago"].ToString(),
+                        Detallereporte = dr["nomOperacion"].ToString(),
+                        Cantidad = Convert.ToInt32(dr["unidades"]),
+                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        SimboloMoneda = dr["simboloMoneda"].ToString(),
+                        ImporteTipoCambio = Convert.ToDecimal(dr["importeCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["importe"])
+                    }) ;
+                    i++;
+                }
+
+                return lsRepBloque;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+
+            }
+        }
         public List<ReporteBloque> daBuscarAccionCaja(String  dtt, Int32 idUsuario, Int32 TipoOpe)
         {
             SqlParameter[] pa = new SqlParameter[3];
@@ -177,7 +221,7 @@ namespace CapaDato
                 pa[6] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = tipoCon };
 
                 objCnx = new clsConexion("");
-                //dt = objCnx.EjecutarProcedimientoDT("uspGuardarCierreCaja", pa);
+                dt = objCnx.EjecutarProcedimientoDT("uspGuardarCierreCaja", pa);
 
                 return true;
 

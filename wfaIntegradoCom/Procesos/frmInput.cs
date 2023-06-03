@@ -37,7 +37,7 @@ namespace wfaIntegradoCom.Procesos
         private Boolean fnValidarDatos()
         {
             Boolean bValida=false;
-            String codTipoAnulacion=cboTipoAnulacion.SelectedValue.ToString();
+            String codTipoAnulacion=cboTipoAnulacion.SelectedValue is null?"0": cboTipoAnulacion.SelectedValue.ToString();
             if (lnTipoLLamada==-1)
             {
                 if (codTipoAnulacion!="0" && txtDescripcion.Text.Length>3)
@@ -71,7 +71,7 @@ namespace wfaIntegradoCom.Procesos
             String Descripcion=txtDescripcion.Text.ToString();
             if (estDescripcion)
             {
-                if (fnValidarDatos())
+                //if (fnValidarDatos())
                 {
                     if (lnTipoLLamada == -1)
                     {

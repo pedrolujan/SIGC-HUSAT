@@ -99,7 +99,7 @@ namespace wfaIntegradoCom.Mantenedores
             FunValidaciones.fnHabilitarBoton(btnGuardarIns, false);
 
           
-            fnActivarCamposInst(0, true);
+            //fnActivarCamposInst(0, true);
             dtpFechaRegistro.Enabled = true;
 
         }
@@ -279,8 +279,10 @@ namespace wfaIntegradoCom.Mantenedores
             }
             else if (Convert.ToString(cboEstadosInst.SelectedValue) == "ESVG0002")
             {
-                cmsMenuSeleccion.Items[0].Visible = false;
-                cmsMenuSeleccion.Items[1].Visible = true;
+                cmsMenuSeleccion.Items[0].Visible = true;
+                cmsMenuSeleccion.Items[0].Text="Modificar Instalacion";
+
+                cmsMenuSeleccion.Items[1].Visible = false;
                 cmsMenuSeleccion.Items[2].Visible = true;
 
             }
@@ -637,7 +639,7 @@ namespace wfaIntegradoCom.Mantenedores
             //pbBajar.Visible = false;
             
             fnActivarCamposActualizacion(true);
-            fnActivarCamposInst(1, true);
+            //fnActivarCamposInst(1, true);
             fnMostrtarTablas();
         }
         private void fnLlamarDatosInstalacion(String codVenta, String placa)
@@ -842,7 +844,7 @@ namespace wfaIntegradoCom.Mantenedores
             gbUbicacion.Enabled = true;
             txtNomMarModEquipo_TextChanged(sender, e);
 
-            fnActivarCamposInst(2, true);
+            //fnActivarCamposInst(2, true);
             //btnGuardarIns.Enabled = true;
             //txtCelularPerInst.Text = Convert.ToString(dr["cTelCelular"]);
         }
@@ -926,13 +928,14 @@ namespace wfaIntegradoCom.Mantenedores
         private void btnNuevoInst_Click(object sender, EventArgs e)
         {
 
+
             estCliente = false;
             estEquipo = false;
 
             btnGuardarIns.Enabled = false;
 
             fnLimpiarControlesInstalacion();
-            fnActivarCamposInst(1, true);
+            //fnActivarCamposInst(1, true);
 
 
         }
@@ -1432,6 +1435,8 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
+        
+
         private void cboSeleccionarUbicacionE_SelectedIndexChanged(object sender, EventArgs e)
        
         {
@@ -1442,13 +1447,15 @@ namespace wfaIntegradoCom.Mantenedores
             //cboClaseV.ValueMember = "idClase";
             //cboClaseV.DisplayMember = "cNomClase";
             //cboClaseV.DataSource = lstClase;
-            fnActivarCamposInst(3, true);
+            //fnActivarCamposInst(3, true);
 
         }
 
         private void btnGuardarIns_Click(object sender, EventArgs e)
         {
-            String codigoVenta = txtCodVenta.Text.ToString();
+            RadioButton selectedRadioButton = siticoneGroupBox3.Controls.OfType<RadioButton>().FirstOrDefault(radioButton => radioButton.Checked);
+
+            
             //Int32 idEquipo = Convert.ToInt32(txtCodEquipo.Text.ToString());
             //Int32 idVehiculo = Convert.ToInt32(txtCodVehiculo.Text.ToString());
             //Int32 idReferencia = Convert.ToInt32(txtidRefInstalacion.Text.ToString()); 
@@ -1456,77 +1463,87 @@ namespace wfaIntegradoCom.Mantenedores
             DateTime FechaInstalacion = dtpFechaRegistro.Value;
             Boolean respuesta = false;
             Boolean resul = false;
-            Personal clsPersonal = FunGeneral.fnObtenerUsuarioActual(); 
+            Personal clsPersonal = FunGeneral.fnObtenerUsuarioActual();
 
-
-            frmRegistrarVenta fntecnico = new frmRegistrarVenta();
-            instalacion.cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat + " " + clsPersonal.cApeMat;
-            instalacion.dFechaIntal = Convert.ToDateTime(dtpFechaRegistro.Value);
-            lstUbicacionEquipo.Clear();
-            lstUbicacionEquipo.Add(new UbicacionEquipoInstalacion {
-
-                idUbicacionEquipo = (Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue)),
-                //cboSeleccionarUbicacionE.SelectedIndex,
-                NUbicacionEquipo = txtOtraUbicacion.Text.ToString()
-
-            });
-            List<xmlInstalacion> xmlInstal = new List<xmlInstalacion>();
-            var resultado = fnObtenerListaAccesorios();
-
-            xmlInstal.Add(new xmlInstalacion
+            if (selectedRadioButton!=null)
             {
-                ListaCliente = lstCliente,
-                ListaVehiculo = lstVehiculo,
-                ListaAccesorio = resultado.Item1,
-                ListaServicio = resultado.Item2,
-                ListaEquipo = lstEquipo,
-                ListaEquipoActual = lstEquipoActual,
-                ListaPlan = lstPlan,
-                ListaUbicacionEquipo = lstUbicacionEquipo,
-                observaciones = txtObserInst.Text.ToString() == "" ? "Sin Observacion" : txtObserInst.Text.ToString(),
-                clsInstalacion = instalacion
-            });
-
-
-            if (estCliente == true && estEquipo == true /*&& estObservacion==true*/ && xmlInstal[0].ListaUbicacionEquipo[0].idUbicacionEquipo != 0)
-            {
-
-                //FUNCION DE CONFIRMACION DE VISTA PREVIA
-
-                fnConfirmacionVistaPreviaG(xmlInstal);
-
-
-
-                if (EstadoInstalacion == true)
+                instalacion.cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat + " " + clsPersonal.cApeMat;
+                instalacion.dFechaIntal = Convert.ToDateTime(dtpFechaRegistro.Value);
+                instalacion.tipoActa = Convert.ToInt32(selectedRadioButton.Tag.ToString());
+                lstUbicacionEquipo.Clear();
+                lstUbicacionEquipo.Add(new UbicacionEquipoInstalacion
                 {
 
+                    idUbicacionEquipo = (Convert.ToInt32(cboSeleccionarUbicacionE.SelectedValue)),
+                    //cboSeleccionarUbicacionE.SelectedIndex,
+                    NUbicacionEquipo = txtOtraUbicacion.Text.ToString()
 
-                    respuesta = FnGuardarInstalacionEquipo(xmlInstal, Variables.gnCodUser, FechaInstalacion);
+                });
+                List<xmlInstalacion> xmlInstal = new List<xmlInstalacion>();
+                var resultado = fnObtenerListaAccesorios();
 
-                    if (respuesta == true)
+                xmlInstal.Add(new xmlInstalacion
+                {
+                    
+                    ListaCliente = lstCliente,
+                    ListaVehiculo = lstVehiculo,
+                    ListaAccesorio = resultado.Item1,
+                    ListaServicio = resultado.Item2,
+                    ListaEquipo = lstEquipo,
+                    ListaEquipoActual = lstEquipoActual,
+                    ListaPlan = lstPlan,
+                    ListaUbicacionEquipo = lstUbicacionEquipo,
+                    observaciones = txtObserInst.Text.ToString() == "" ? "Sin Observacion" : txtObserInst.Text.ToString(),
+                    clsInstalacion = instalacion
+                });
+
+
+                if (estCliente == true && estEquipo == true /*&& estObservacion==true*/ && xmlInstal[0].ListaUbicacionEquipo[0].idUbicacionEquipo != 0)
+                {
+
+                    //FUNCION DE CONFIRMACION DE VISTA PREVIA
+
+                    fnConfirmacionVistaPreviaG(xmlInstal);
+
+
+
+                    if (EstadoInstalacion == true)
                     {
-                        MessageBox.Show("Se registro correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTRegistros, 0, 1, -3);
-                        fnLimpiarControlesInstalacion();
 
+
+                        respuesta = FnGuardarInstalacionEquipo(xmlInstal, Variables.gnCodUser, FechaInstalacion);
+
+                        if (respuesta == true)
+                        {
+                            MessageBox.Show("Se registro correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTRegistros, 0, 1, -3);
+                            fnLimpiarControlesInstalacion();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("NO SE PUDO REGISTRAR", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("NO SE PUDO REGISTRAR", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     }
+
                 }
                 else
                 {
-
+                    MessageBox.Show("COMPLETA TODOS LOS CAMPOS", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
             else
             {
-                MessageBox.Show("COMPLETA TODOS LOS CAMPOS", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione el tipo de  acta.", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
 
-            fnActivarCamposInst(0, true);
+            //fnActivarCamposInst(0, true);
 
         }
         //falta las texboxs ocultos para las id agregar a los campos qeu se envia 

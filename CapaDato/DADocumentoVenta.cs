@@ -289,6 +289,70 @@ namespace CapaDato
             }
 
         }
+        public List<ReporteBloque> daBuscarCajasDashboard(Int32 tipoCon)
+        {
+
+
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtVenta = new DataTable();
+            clsConexion objCnx = null;
+            DetalleVenta dv = new DetalleVenta();
+            List<ReporteBloque> lst = new List<ReporteBloque>();
+            objUtil = new clsUtil();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[0].Value = tipoCon;
+
+                objCnx = new clsConexion("");
+                dtVenta = objCnx.EjecutarProcedimientoDT("upsBuscarCajasDashboard", pa);
+
+                lst = new List<ReporteBloque>();
+                foreach (DataRow dr in dtVenta.Rows)
+                {
+                    lst.Add(new ReporteBloque
+                    {
+                        Codigoreporte = Convert.ToString(dr["id"]),
+                        MasDetallereporte = ConvertirPrimeraLetraMayuscula(Convert.ToString(dr["masdetalle"])),
+                        Detallereporte = ConvertirPrimeraLetraMayuscula(dr["detalle"].ToString()),
+                        Cantidad = Convert.ToInt32(dr["cantidad"]),
+                        idMoneda = Convert.ToInt32(1),
+                        SimboloMoneda = Convert.ToString("S/."),
+                        ImporteTipoCambio = Convert.ToDecimal(0),
+                        ImporteRow = Convert.ToDecimal(0),
+
+                    });
+                }
+                
+                return lst;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DADocumentoVenta.cs", "daListarDetalleVenta", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                lst = null;
+            }
+
+        }
+        public static string ConvertirPrimeraLetraMayuscula(string cadena)
+        {
+            cadena.ToLower();
+            if (string.IsNullOrEmpty(cadena))
+                return cadena;
+
+            string primeraLetraMayuscula = char.ToUpper(cadena[0]) + cadena.Substring(1);
+            return primeraLetraMayuscula;
+        }
+
 
         public Decimal DADevolverUnidadDestino(Int32 pidUnidadMedida, Int32 pidUnidaDest)
         {

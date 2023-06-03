@@ -324,7 +324,7 @@ namespace wfaIntegradoCom.Mantenedores
                     Int32 idTipoDocumento = Convert.ToInt32(cboTD.SelectedValue ?? 0);
                     Int32 estCliente = 1;
 
-                    datCliente = objVehi.blBuscarCliente(nombreCliente, estCliente, Pagina, TipoConPagina);
+                    datCliente = objVehi.blBuscarCliente(nroDocumento, estCliente, Pagina, TipoConPagina);
                     totalResultados = datCliente.Rows.Count;
 
                     if (totalResultados > 0)
@@ -715,7 +715,6 @@ namespace wfaIntegradoCom.Mantenedores
                         {
                             lblInfoCorreo.Text = "-Cliente sin Correo-";
                             lblInfoCorreo.ForeColor = Color.FromArgb(206, 123, 77);
-
                         }
                         txtTelefonoFijoRepre.Text = Convert.ToString(lstCliente.cTelCelularRepre);
                         dgDocumentoRP.Visible = false;

@@ -11,6 +11,7 @@ namespace CapaEntidad
 
         public Instalacion() { }
 
+        public Int32 tipoActa { get; set; }
         Int32 _idInstalacion = 0;
         public Int32 idInstalacion { get { return _idInstalacion; } set { _idInstalacion = value; } }
 
@@ -102,6 +103,7 @@ namespace CapaEntidad
     {
         public xmlInstalacion() { }
 
+      
         public List<Cliente>ListaCliente { get; set; }
         public List<Vehiculo> ListaVehiculo { get; set; }
         public List<Equipo_imeis> ListaEquipo { get; set; }

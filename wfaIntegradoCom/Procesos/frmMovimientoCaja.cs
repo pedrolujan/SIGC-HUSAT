@@ -35,7 +35,11 @@ namespace wfaIntegradoCom.Procesos
         static List<ReporteBloque> lstCajaChica = new List<ReporteBloque>();
         static List<ReporteBloque> lstReporteIngresos = new List<ReporteBloque>();
         static List<ReporteBloque> lstReporteEgresos = new List<ReporteBloque>();
-        static List<ReporteBloque> lstDetalleIngresos = new List<ReporteBloque>();
+        static List<ReporteBloque> lstDetalleIngresosCategoria = new List<ReporteBloque>();
+        static List<ReporteBloque> lstDetalleIngresosOperacion = new List<ReporteBloque>();
+        static List<ReporteBloque> lstDetalleIngresosMedioPago = new List<ReporteBloque>();
+        static List<ReporteBloque> lstDetalleIngresosContadoReporte = new List<ReporteBloque>();
+        static List<ReporteBloque> lstDetalleIngresosContadoDia = new List<ReporteBloque>();
         static List<CuadreCaja> lstAperturaCaja = new List<CuadreCaja>();
         static List<xmlActaCierraCaja> ListaxmlActaCierre = new List<xmlActaCierraCaja>();
         static CuadreCaja clcCaja = new CuadreCaja();
@@ -44,26 +48,20 @@ namespace wfaIntegradoCom.Procesos
         CuadreCaja clsCuadreCaja = new CuadreCaja();
         static Int32 lnTipoCon = 0;
         static Int32 IntApertura = 0;
-        public void Inicio(List<ReporteBloque> lstIngresos, List<ReporteBloque> lstEgresos, List<ReporteBloque> lstDetIngresos, List<ReporteBloque> lstCajaCh, Int32 tipoCon,Int32 intApertura)
+        public void Inicio(List<ReporteBloque> lstCategoria, List<ReporteBloque> lstOperacion, List<ReporteBloque> lstMedioPago, List<ReporteBloque> lstIngresosContadoDia, List<ReporteBloque> lstIngresos, List<ReporteBloque> lstEgresos,  List<ReporteBloque> lstCajaCh, Int32 tipoCon,Int32 intApertura)
         {
-            lstReporteIngresos = lstIngresos;
+            lstDetalleIngresosContadoDia = lstIngresosContadoDia;
+            lstDetalleIngresosContadoReporte = lstIngresos;
             lstReporteEgresos = lstEgresos;
-            lstDetalleIngresos = lstDetIngresos;
+            lstDetalleIngresosCategoria = lstCategoria;            
+            lstDetalleIngresosOperacion= lstOperacion;
+            lstDetalleIngresosMedioPago= lstMedioPago;
             lstCajaChica = lstCajaCh;
             intTipoLlamada = tipoCon;
             IntApertura = intApertura;  
             this.ShowDialog();
         }
-        public void tipoApertura(List<ReporteBloque> lstEgresos, List<ReporteBloque> lstDetIngresos, List<ReporteBloque> lstCajaCh,Int32 idUs, Int32 tipoCon)
-        {
-            lstReporteEgresos = lstEgresos;
-            sIdUsuario = idUs;
-            lstDetalleIngresos = lstDetIngresos;
-            lstCajaChica = lstCajaCh;
-            intTipoLlamada = tipoCon;
-            this.ShowDialog();
-        }
-
+       
 
         public Boolean fnCargarUsuario()
         {
@@ -163,10 +161,10 @@ namespace wfaIntegradoCom.Procesos
 
             }
 
-            clsCuadreCaja.importeTotalIngresos = lstDetalleIngresos.Sum(i => i.ImporteRow);
+            clsCuadreCaja.importeTotalIngresos = lstDetalleIngresosContadoReporte.Sum(i => i.ImporteRow);
             clsCuadreCaja.importeTotalEgresos = lstReporteEgresos.Sum(i => i.ImporteRow);
 
-            clsCuadreCaja.Detalle = "Cierre de caja de - " + FunGeneral.FormatearCadenaTitleCase(Variables.gsCodUser);
+            clsCuadreCaja.Detalle = "Importe en caja.";
 
             clsCuadreCaja.importeSaldo = (clsCuadreCaja.importeTotalIngresos + (clsCuadreCaja.importeTotalEgresos * -1) + importe);
 
@@ -189,7 +187,9 @@ namespace wfaIntegradoCom.Procesos
             {
                 fnActivarSegunApertura();
                 clcCaja = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
-                fnLlenarTablas(lstDetalleIngresos/*lstReporteIngresos*/, dgvIngresos, txtTotalIngresos);
+
+                
+                fnLlenarTablas(lstDetalleIngresosContadoDia/*lstReporteIngresos*/, dgvIngresos, txtTotalIngresos);
                 fnLlenarTablas(lstReporteEgresos, dgvEgresos, txtTotalEgresos);
                 fnValidarCuadreCaja();
 
@@ -258,14 +258,29 @@ namespace wfaIntegradoCom.Procesos
             Decimal TotImporte = 0;
             dgv.Rows.Clear();
             Int32 y = 0;
-            foreach (ReporteBloque rp in lst)
+            if (dgv.Name== "dgvIngresos")
             {
+                foreach (ReporteBloque rp in lst)
+                {
 
-                TotImporte += rp.ImporteRow;
-                TotCantidad += rp.Cantidad;
-                dgv.Rows.Add(rp.Codigoreporte, rp.numero, FunGeneral.FormatearCadenaTitleCase(rp.codAuxiliar is null?"": rp.codAuxiliar),FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecioDC("S/.", rp.ImporteRow, 0));
-                y++;
+                    TotImporte += rp.ImporteRow;
+                    TotCantidad += rp.Cantidad;
+                    dgv.Rows.Add(rp.Codigoreporte, rp.numero, FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecioDC("S/.", rp.ImporteRow, 0));
+                    y++;
+                }
             }
+            else
+            {
+                foreach (ReporteBloque rp in lst)
+                {
+
+                    TotImporte += rp.ImporteRow;
+                    TotCantidad += rp.Cantidad;
+                    dgv.Rows.Add(rp.Codigoreporte, rp.numero, FunGeneral.FormatearCadenaTitleCase(rp.codAuxiliar), FunGeneral.FormatearCadenaTitleCase(rp.Detallereporte), rp.Cantidad, FunGeneral.fnFormatearPrecioDC("S/.", rp.ImporteRow, 0));
+                    y++;
+                }
+            }
+            
             
                 txt.Text = FunGeneral.fnFormatearPrecioDC("S/.", TotImporte, 0);
            
@@ -411,8 +426,10 @@ namespace wfaIntegradoCom.Procesos
             Personal clt = Variables.clasePersonal;
             xmlActaCierre.Add(new xmlActaCierraCaja
             {
-                ListaReporteIngresos = lstReporteIngresos,
-                ListaReporteDetalleIngresos = lstDetalleIngresos,
+                ListaReporteIngresosCategoria = lstDetalleIngresosCategoria,
+                ListaReporteIngresosOperacion=lstDetalleIngresosOperacion,
+                ListaReporteIngresosMedioPago=lstDetalleIngresosMedioPago,
+                ListaReporteDetalleIngresos = lstDetalleIngresosContadoReporte,
                 ListaReporteEgresos = lstReporteEgresos,
                 ListaCuadreCaja = lstCuadreCaja,
                 ListaAperturaCaja=Variables.lstCuardreCaja,
@@ -482,7 +499,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            lstDetalleIngresos = new List<ReporteBloque>();
+            //lstDetalleIngresos = new List<ReporteBloque>();
             bool bResult = false;
             decimal nSaldo = 0;
             int intUsuario = 0;
@@ -657,12 +674,12 @@ namespace wfaIntegradoCom.Procesos
 
 
             lstCierresCaja = bl.blBuscarActaCierreCaja(id, tipoCon);
-            lstDetalleIngresos = lstCierresCaja[0].ListaReporteDetalleIngresos;
+            lstDetalleIngresosContadoReporte = lstCierresCaja[0].ListaReporteDetalleIngresos;
             lstReporteEgresos = lstCierresCaja[0].ListaReporteEgresos;
             clsCuadreCaja= lstCierresCaja[0].ListaCuadreCaja[0];
             lstAperturaCaja = lstCierresCaja[0].ListaAperturaCaja;
             clcCaja = lstAperturaCaja.Find(i => i.idOperacion == 1);
-            fnLlenarTablas(lstDetalleIngresos/*lstReporteIngresos*/, dgvIngresos, txtTotalIngresos);
+            fnLlenarTablas(lstDetalleIngresosContadoReporte/*lstReporteIngresos*/, dgvIngresos, txtTotalIngresos);
             fnLlenarTablas(lstReporteEgresos, dgvEgresos, txtTotalEgresos);
             fnValidarCuadreCaja();
 

@@ -41,6 +41,7 @@
             this.reportViewer1.ShowToolBar = false;
             this.reportViewer1.Size = new System.Drawing.Size(683, 430);
             this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
             // btnRegresar
             // 
@@ -93,7 +94,7 @@
             this.Controls.Add(this.reportViewer1);
             this.Name = "frmActaCierreCaja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmActaCierreCaja";
+            this.Text = "CIERRE DE CAJA";
             this.Load += new System.EventHandler(this.frmActaCierreCaja_Load);
             this.ResumeLayout(false);
 

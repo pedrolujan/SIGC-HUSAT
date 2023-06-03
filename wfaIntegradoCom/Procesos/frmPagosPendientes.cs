@@ -8,12 +8,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using wfaIntegradoCom.Funciones;
 using wfaIntegradoCom.Mantenedores;
+using wfaIntegradoCom.Sunat;
 using static wfaIntegradoCom.Mantenedores.ControlMover;
 using Icon = System.Drawing.Icon;
 
@@ -48,6 +50,13 @@ namespace wfaIntegradoCom.Procesos
         static List<DetalleVenta> lsDetalleVentaRecibidoParaPagar = new List<DetalleVenta>();
         Int32 IdUsuarioRegistro = 0;
         static int IdTra = 0;
+        Int32 intRespuestaSunat = 0;
+        String stDocumentoCleinte = "";
+        public void Inicio(String idtrand)
+        {
+            stDocumentoCleinte=idtrand;
+            ShowDialog();
+        }
         public void fnRecuperarTipoPago(List<Pagos> lstEntidades,List<DetalleVenta> lstDetVentas )
         {
             lstPagosTrand = lstEntidades;
@@ -60,6 +69,7 @@ namespace wfaIntegradoCom.Procesos
             }
 
         }
+
         public void fnRecuperarEstadoGenVenta(Boolean estado)
         {
             estadoGuardarPago = estado;
@@ -120,6 +130,7 @@ namespace wfaIntegradoCom.Procesos
                 FunGeneral.fnLlenarCboSegunTablaTipoCon(cboEstado, "cCodTab", "cNomTab", "TablaCod", "nValor1",
                     "estPagos", false);
                 cboEstado.SelectedValue = "ESPP0002";
+                
 
 
 
@@ -139,7 +150,12 @@ namespace wfaIntegradoCom.Procesos
                     btnBuscar.Location = new Point(945, 63);
                     contextMenuStrip1.Items.Clear();
                 }
-
+                if (stDocumentoCleinte != "")
+                {
+                    chkHabilitarFechasBus.Checked = false;
+                    fnBusacarVentas(0, -1);
+                }
+                
 
             }
             catch (Exception ex)
@@ -308,12 +324,12 @@ namespace wfaIntegradoCom.Procesos
             String fechaFin = FunGeneral.GetFechaHoraFormato(dtpFechaFinalBus.Value, 5);
             Boolean chkHabilita = chkHabilitarFechasBus.Checked;
             String CodEstadoPago = cboEstado.SelectedValue.ToString();
-
+            String idTrandiaria = stDocumentoCleinte;
 
             dEstadoBusquedaPaginacion = true;
             
 
-            dt = blV.blBuscarVentaPagoPendientes(chkHabilita, CodEstadoPago, cBuscar, fechaInicio, fechaFin, numPagina, tipoCon);
+            dt = blV.blBuscarVentaPagoPendientes(chkHabilita, CodEstadoPago, cBuscar, fechaInicio, fechaFin, numPagina, idTrandiaria, tipoCon);
             dtResultados = dt;
             numRows = dt.Rows.Count;
             DataGridView dgv = dgvVentas;
@@ -753,30 +769,73 @@ namespace wfaIntegradoCom.Procesos
             //DocumentoVenta.cVehiculos = lstvehiculo[0].vPlaca;
             //lstDocVenta.Add(DocumentoVenta);
         }
+        private byte[] fnEnviarFacturaASunat()
+        {
+            //Cargo clsCargo1 = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboComprobanteP.SelectedValue.ToString());
+            EmitirFactura emf = new EmitirFactura();
+            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+        
+                if (clsDocumentoVentaEmitir.cCodTab == "DOVE0002" || clsDocumentoVentaEmitir.cCodTab == "DOVE0001")
+                {
+                    intRespuestaSunat = 0;
+                    int resp = emf.EmitirFacturasContado(clsCliente, lsDetalleVentaRecibidoParaPagar, lstDocumentoVenta, clsDocumentoVentaEmitir);
+                    intRespuestaSunat = resp;
+                    //resp = 0;
+                    if (resp == 1)
+                    {
+
+                        String nombreQR = clsCliente.cDocumento + "-" + clsDocumentoVentaEmitir.nValor1 + "-" + clsDocumentoVentaEmitir.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVentaEmitir.nValor2));
+                        //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");
+                        imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\" + nombreQR + ".png");
+                    }
+                }
+                else
+                {
+                    intRespuestaSunat = 1;
+                }
+
+           
+            //intRespuestaSunat = 1;
+            return imageBytes;
+        }
 
         private void fnCompletarPago(Int32 idTrandiaria, Int32 tipoCon)
         {
             BLVentaGeneral blV = new BLVentaGeneral();
             Boolean est = false;
-
+            byte[] btImage = new byte[] { };
             List<xmlDocumentoVentaGeneral> lstXmlDocVenta = new List<xmlDocumentoVentaGeneral>();
+            btImage = fnEnviarFacturaASunat();
+
             lstXmlDocVenta.Add(new xmlDocumentoVentaGeneral
             {
                 xmlDocumentoVenta = lstDocumentoVenta,
-                xmlDetalleVentas = lsDetalleVentaRecibidoParaPagar
-            });
+                xmlDetalleVentas = lsDetalleVentaRecibidoParaPagar,
+                imgDocumento= btImage
 
-            est = blV.blGuardarpagosPendientes(idTrandiaria, lstPagosTrand, lstXmlDocVenta, tipoCon);
-            if (est == true)
+            });
+           
+            if (intRespuestaSunat == 1)
             {
-                MessageBox.Show("Importe guardado Exitosamente", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fnBusacarVentas(0, -1);
-                estadoGuardarPago = false;
+                est = blV.blGuardarpagosPendientes(idTrandiaria, lstPagosTrand, lstXmlDocVenta, tipoCon);
+                if (est == true)
+                {
+                    MessageBox.Show("Importe guardado Exitosamente", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fnBusacarVentas(0, -1);
+                    estadoGuardarPago = false;
+                }
+                else
+                {
+                    MessageBox.Show("Error al guardar Importe", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Error al guardar Importe", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al enviar documento a la sunat", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
+
         }
 
         private void pbBuscar_Click(object sender, EventArgs e)
@@ -1048,6 +1107,7 @@ namespace wfaIntegradoCom.Procesos
             if (estDocumento == true)
             {
                 fnLlenadClaseDocumento();
+               
             }
         }
 

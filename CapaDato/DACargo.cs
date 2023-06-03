@@ -58,6 +58,100 @@ namespace CapaDato
             }
 
         }
+        public List<Items> daListaItems()
+        {
+
+
+            SqlParameter[] pa = new SqlParameter[0];
+            DataTable dtUsuario = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            List<Items> lst = new List<Items>();
+
+            try
+            {
+
+                //pa[0] = new SqlParameter("@pecCodTab", SqlDbType.NVarChar,8);
+                //pa[0].Value = cCodTab;
+
+
+                objCnx = new clsConexion("");
+                dtUsuario = objCnx.EjecutarProcedimientoDT("uspListarItems", pa);
+
+                foreach (DataRow dr in dtUsuario.Rows)
+                {
+                    lst.Add(new Items
+                    {
+                        Id = Convert.ToInt32(dr["idItems"]),
+                        Nombre = dr["nombre"].ToString(),
+                        bestado = Convert.ToBoolean(dr["bEstado"])
+
+                    });
+                }
+
+                return lst;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACargo.cs", "daDevolverCargo", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
+        public DetalleCronograma daObtenerDatosCuotaUltimoCronograma(Int32 idContrato)
+        {
+
+
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtUsuario = new DataTable();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            DetalleCronograma clsDetCron = new DetalleCronograma();
+
+            try
+            {
+
+                pa[0] = new SqlParameter("@idContratoActual", SqlDbType.Int);
+                pa[0].Value = idContrato;
+
+
+                objCnx = new clsConexion("");
+                dtUsuario = objCnx.EjecutarProcedimientoDT("uspObtenerDatosCuotaUltimoCronograma", pa);
+
+                foreach (DataRow drMenu in dtUsuario.Rows)
+                {
+                    clsDetCron.idCronograma= Convert.ToInt16(drMenu["idContrato"]);
+                    clsDetCron.idDetalleCronograma = Convert.ToInt16(drMenu["idDetalleCronograma"]);
+                    clsDetCron.periodoInicio = Convert.ToDateTime(drMenu["periodoInicio"]);
+                    clsDetCron.periodoFinal = Convert.ToDateTime(drMenu["periodoFinal"]);
+                    clsDetCron.fechaVencimiento = Convert.ToDateTime(drMenu["fechaVencimiento"]);
+                    clsDetCron.fechaPago = Convert.ToDateTime(drMenu["fechaPago"]);
+                  
+                }
+
+                return clsDetCron;
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACargo.cs", "daDevolverCargo", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
 
         public String daGrabarCargo(Cargo objCargo, Int16 pnTipoCon)
         {

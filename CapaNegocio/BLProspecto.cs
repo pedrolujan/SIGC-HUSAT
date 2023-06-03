@@ -151,7 +151,7 @@ namespace CapaNegocio
 
         }
 
-        public DataTable blBuscarSeguimientoDataTable(Int32 idOferta, Int32 numPagina, Int32 tipoCon)
+        public DataSet blBuscarSeguimientoDataTable(Int32 idOferta, Int32 numPagina, Int32 tipoCon)
         {
             DAProspecto objEquipo = new DAProspecto();
             try

@@ -52,12 +52,12 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable blBuscarVentaPagoPendientes(Boolean chk,String CodEstadoPago, String busq, String dfechaIni, String dfecha, Int32 numPagina, Int32 tipoCon)
+        public DataTable blBuscarVentaPagoPendientes(Boolean chk,String CodEstadoPago, String busq, String dfechaIni, String dfecha, Int32 numPagina, String idTrandiaria, Int32 tipoCon)
         {
             DAVentaGeneral objVentaG = new DAVentaGeneral();
             try
             {
-                return objVentaG.daBuscarVentaPagoPendiente(chk,  CodEstadoPago, busq, dfechaIni, dfecha, numPagina, tipoCon);
+                return objVentaG.daBuscarVentaPagoPendiente(chk,  CodEstadoPago, busq, dfechaIni, dfecha, numPagina, idTrandiaria, tipoCon);
             }
             catch (Exception ex)
             {

@@ -28,6 +28,25 @@ namespace CapaNegocio
             }
 
         }
+
+        public List<ReporteBloque> blBuscarOtrosIngresos(Busquedas clsBusq)
+        {
+            dcaja = new DACaja();
+            try
+            {
+                return dcaja.daBuscarOtrosIngresos(clsBusq);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+
+            }
+
+        }
+
         public List<ReporteBloque> blBuscarAccionCaja(String dt, Int32 idUsuario, Int32 TipoOpe)
         {
             dcaja = new DACaja();

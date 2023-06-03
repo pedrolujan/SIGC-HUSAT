@@ -26,6 +26,34 @@ namespace CapaNegocio
             }
 
         }
+        public List<Items> blListarItems()
+        {
+
+            DACargo daobjUsuario = new DACargo();
+            try
+            {
+                return daobjUsuario.daListaItems();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+        public DetalleCronograma blObtenerDatosCuotaUltimoCronograma(Int32 idContrato)
+        {
+
+            DACargo daobjUsuario = new DACargo();
+            try
+            {
+                return daobjUsuario.daObtenerDatosCuotaUltimoCronograma( idContrato);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
 
         public String blGrabarCargo(Cargo objCargo, Int16 pnTipoCon)
         {

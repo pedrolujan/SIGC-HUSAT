@@ -87,7 +87,7 @@ namespace wfaIntegradoCom.Reportes
                
                 cboTipoReporte.SelectedValue = "TRRC0001";
 
-                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltraIngresos, "idOperacion", "cNombreOperacion", "OperacionHusat", "cTipoConcepto", "TICO0004", true);
+                FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltraIngresos, "idOperacion", "cNombreOperacion", "OperacionHusat", "cTipoOpe", "4", true);
 
                 cboRepVentaAnio.DataSource = Enumerable.Range(2018, (Variables.gdFechaSis.Year-2018)+1).ToList();
                 cboRepVentaAnio.SelectedIndex = cboRepVentaAnio.Items.IndexOf(Variables.gdFechaSis.Year);

@@ -52,6 +52,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.cboNotaCredit = new System.Windows.Forms.ComboBox();
             this.cbF0 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.cbR0 = new System.Windows.Forms.CheckBox();
@@ -84,7 +85,6 @@
             this.lvBtnImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idTipoTarida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboNotaCredit = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.cmsAnularVenta.SuspendLayout();
             this.gbBuscarListaVentas.SuspendLayout();
@@ -325,6 +325,15 @@
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
             this.siticonePanel1.Size = new System.Drawing.Size(975, 135);
             this.siticonePanel1.TabIndex = 226;
+            // 
+            // cboNotaCredit
+            // 
+            this.cboNotaCredit.FormattingEnabled = true;
+            this.cboNotaCredit.Location = new System.Drawing.Point(304, 108);
+            this.cboNotaCredit.Name = "cboNotaCredit";
+            this.cboNotaCredit.Size = new System.Drawing.Size(121, 21);
+            this.cboNotaCredit.TabIndex = 383;
+            this.cboNotaCredit.SelectedIndexChanged += new System.EventHandler(this.cboNotaCredit_SelectedIndexChanged);
             // 
             // cbF0
             // 
@@ -703,15 +712,6 @@
             this.idContrato.Name = "idContrato";
             this.idContrato.ReadOnly = true;
             this.idContrato.Visible = false;
-            // 
-            // cboNotaCredit
-            // 
-            this.cboNotaCredit.FormattingEnabled = true;
-            this.cboNotaCredit.Location = new System.Drawing.Point(304, 108);
-            this.cboNotaCredit.Name = "cboNotaCredit";
-            this.cboNotaCredit.Size = new System.Drawing.Size(121, 21);
-            this.cboNotaCredit.TabIndex = 383;
-            this.cboNotaCredit.SelectedIndexChanged += new System.EventHandler(this.cboNotaCredit_SelectedIndexChanged);
             // 
             // frmAnularVenta
             // 

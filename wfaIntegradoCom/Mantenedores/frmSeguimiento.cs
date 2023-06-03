@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Net.Sockets;
+using System.Net;
+using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using wfaIntegradoCom.Funciones;
@@ -812,8 +815,12 @@ namespace wfaIntegradoCom.Mantenedores
                     MessageBox.Show("Se Grabó Satisfactoriamente Accesorio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     
                     Int32 idProspectoPlan = Convert.ToInt32(txtIdVisita.Text.ToString());
-                    fnBuscarTablaSeguimiento(idProspectoPlan,1,-1);
-                   
+                    DataTable dt = new DataTable();
+                    dt=fnBuscarTablaSeguimiento(idProspectoPlan,1,-1);
+                    fnCapturarContadorSeguimiento(dt);
+
+
+
                 }
                 else
                 {
@@ -826,8 +833,30 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
 
-        
+        public void fnCapturarContadorSeguimiento(DataTable dt)
+        {
+            // Cree un objeto Socket UDP
+            UdpClient udpClient = new UdpClient();
+            string message = "";
+            String cantidad = "";
+            foreach (DataRow d in dt.Rows)
+            {
+                message =d["codigo"]+":" + d["cantidad"];
+                cantidad = d["cantidad"].ToString();
+            }
+            // Cree un objeto de extremo de red que represente la dirección de difusión de su red
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 1222);
 
+            btnRojo.Text = "" + cantidad;
+            // Cree el mensaje que desea enviar
+            
+            //
+            // Convierta el mensaje en bytes
+            byte[] data = Encoding.UTF8.GetBytes(message);
+
+            udpClient.Send(data, data.Length, endPoint);
+
+        }
         private void cboPagina_SelectedIndexChanged(object sender, EventArgs e)
         {
             String busqueda = txtBuscarNombreCliente.Text.Trim().ToString();
@@ -1945,7 +1974,7 @@ namespace wfaIntegradoCom.Mantenedores
             byte dia = (byte)Variables.gdFechaSis.DayOfWeek;
             if(dia==5 || dia == 6)
             {
-                fnValidarFechaProxSeguimiento(dtpFechaProximoSeguimiento, imgFechaSigSeguimiento, erFechaSigSeguimiento, 0, 4);
+                fnValidarFechaProxSeguimiento(dtpFechaProximoSeguimiento, imgFechaSigSeguimiento, erFechaSigSeguimiento, 0, 3);
 
             }
             else
@@ -2832,17 +2861,19 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private Boolean fnBuscarTablaSeguimiento(Int32 idOferta, Int32 numPagina, Int32 tipoCon)
+        private DataTable fnBuscarTablaSeguimiento(Int32 idOferta, Int32 numPagina, Int32 tipoCon)
         {
             BLProspecto objAcc = new BLProspecto();
             clsUtil objUtil = new clsUtil();
             DataTable datAcces = new DataTable();
+            DataSet dsResult = new DataSet();
             Int32 filas = 15;
 
             try
             {
 
-                datAcces = objAcc.blBuscarSeguimientoDataTable(idOferta, numPagina, tipoCon);
+                dsResult = objAcc.blBuscarSeguimientoDataTable(idOferta, numPagina, tipoCon);
+                datAcces= dsResult.Tables[0];
 
                 Int32 totalResultados = datAcces.Rows.Count;
 
@@ -2920,7 +2951,7 @@ namespace wfaIntegradoCom.Mantenedores
                     {
                         btnNumFilasProsPlan.Text = Convert.ToString(totalResultados);
                     }
-                    return true;
+                    return dsResult.Tables[1];
 
 
                 }
@@ -2932,14 +2963,14 @@ namespace wfaIntegradoCom.Mantenedores
                     dt.Columns.Add("AÚN NO HAY SEGUIMIENTOS PARA ESTE VISITA");
                     dgSeguimiento.DataSource = dt;
                     gbPaginacionSeg.Visible = false;
-                    return false;
+                    return new DataTable();
                 }
 
             }
             catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("frmRegistrarAccesorios", "fnBuscarEquipo", ex.Message);
-                return false;
+                return new DataTable();
             }
 
         }

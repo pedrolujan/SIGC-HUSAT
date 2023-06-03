@@ -388,55 +388,88 @@ namespace wfaIntegradoCom.Procesos
             //lsDetalleVentaAnticipo = lsDetalleVenta;
             if (lsDocumentoVenta[0].cDescripEstadoPP == "CREDITO" || restaPrecio!=0)
             {
-                lsDetalleVentaAnticipo = lsDetalleVenta;
+                //lsDetalleVentaAnticipo = lsDetalleVenta;
                 Decimal importePagado = ((clsPagosGeneral.cantAPagar - restaPrecio)-clsPagosGeneral.importeAbonado)+ lsDetalleVentaAnticiposRecibidos.Sum(i=>i.Importe);
                 Decimal importeRestantePorVehiculo = 0;
                 String cDescripcion = "";
                 Int32 idOperacionItem = 0;
                 int y = 0;
-                foreach (DetalleVenta dv in lsDetalleVenta)
+                if (lsDocumentoVenta[0].idTipoTarifa==1)
                 {
-                    if (lsDetalleVenta[y].Importe < importePagado)
-                    {
-                        importeRestantePorVehiculo = lsDetalleVenta[y].Importe;
-                        importePagado = importePagado - lsDetalleVenta[y].Importe;
-                        cDescripcion = lsDetalleVenta[y].Descripcion;
-                        idOperacionItem = dv.IdDetalleVenta;
-                        
-                    }
-                    else if (lsDetalleVenta[y].Importe > importePagado)
-                    {
-                        importeRestantePorVehiculo = importePagado;
-                        importePagado = importePagado > 0 ? importePagado - importePagado : 0;
-                        cDescripcion = lsDetalleVenta[y].Descripcion+" *Anticipo*";
-                        idOperacionItem = 2;
-                    }
-                    
-                    lsDetalleVentaAnticipo[y].Numeracion = 1;
-                    lsDetalleVentaAnticipo[y].IdDetalleVenta = lsDetalleVenta[y].IdDetalleVenta;
-                    lsDetalleVentaAnticipo[y].Descripcion = cDescripcion;
-                    lsDetalleVentaAnticipo[y].idTipoTarifa = lsDetalleVenta[y].idTipoTarifa;
-                    lsDetalleVentaAnticipo[y].PrecioUni = lsDetalleVenta[y].preciounitario;
-                    lsDetalleVentaAnticipo[y].Descuento = lsDetalleVenta[y].Descuento;
-                    lsDetalleVentaAnticipo[y].gananciaRedondeo = lsDetalleVenta[y].gananciaRedondeo;
-                    lsDetalleVentaAnticipo[y].TotalTipoDescuento = lsDetalleVenta[y].TotalTipoDescuento;
-                    lsDetalleVentaAnticipo[y].IdTipoDescuento = lsDetalleVenta[y].IdTipoDescuento;
-                    lsDetalleVentaAnticipo[y].Cantidad = lsDetalleVenta[y].Cantidad;
-                    lsDetalleVentaAnticipo[y].Couta = lsDetalleVenta[y].Couta;
-                    
-                    lsDetalleVentaAnticipo[y].Importe = importeRestantePorVehiculo;//lsDetalleVenta[y].Importe;
-                    lsDetalleVentaAnticipo[y].importeRestante = (lsDetalleVenta[y].preciounitario- importeRestantePorVehiculo)-clsPagosGeneral.importeAbonado;//lsDetalleVenta[y].Importe;
-                    lsDetalleVentaAnticipo[y].ImporteActicipo = importeRestantePorVehiculo;//lsDetalleVenta[y].Importe;
-                    lsDetalleVentaAnticipo[y].cSimbolo = lsDetalleVenta[y].cSimbolo;
+                   
+                        cDescripcion = "Servicio de monitoreo GPS"+ " *Anticipo*";
+                        lsDetalleVentaAnticipo.Add(new DetalleVenta
+                        {
+                            Numeracion = y + 1,
+                            Descripcion = cDescripcion,
+                            idTipoTarifa = lsDetalleVenta[0].idTipoTarifa,
+                            PrecioUni = importePagado,
+                            Descuento = 0,
+                            gananciaRedondeo = 0,
+                            TotalTipoDescuento = 0,
+                            IdTipoDescuento = 0,
+                            Cantidad = 1,
+                            Couta = 1,
+                            Importe = importePagado,
+                            cSimbolo = lsDetalleVenta[0].cSimbolo,
 
-                    lsDetalleVentaAnticipo[y].preciounitario = lsDetalleVenta[y]    .preciounitario;
-                    lsDetalleVentaAnticipo[y].ImporteRow = importeRestantePorVehiculo;
-                    lsDetalleVentaAnticipo[y].mtoValorVentaItem = importeRestantePorVehiculo;
-                    lsDetalleVentaAnticipo[y].Unidad_de_medida = "ZZ";
-                    lsDetalleVentaAnticipo[y].idOperacionItem = lsDetalleVentaAnticipo[y].importeRestante > 0 ? 2 : 0;
-                    
-                    y ++;
+                            preciounitario = Convert.ToDecimal(importePagado),
+                            ImporteRow = (Convert.ToDecimal(importePagado) * 1),
+                            mtoValorVentaItem = (Convert.ToDecimal(importePagado) * 1),
+                            Unidad_de_medida = "ZZ",
+                            idOperacionItem =  2 
+
+                        });
+                        y++;
                 }
+                else
+                {
+                    lsDetalleVentaAnticipo = lsDetalleVenta;
+                    foreach (DetalleVenta dv in lsDetalleVenta)
+                    {
+                        if (lsDetalleVenta[y].Importe <= importePagado)
+                        {
+                            importeRestantePorVehiculo = lsDetalleVenta[y].Importe;
+                            importePagado = importePagado - lsDetalleVenta[y].Importe;
+                            cDescripcion = lsDetalleVenta[y].Descripcion;
+                            idOperacionItem = dv.IdDetalleVenta;
+
+                        }
+                        else if (lsDetalleVenta[y].Importe > importePagado)
+                        {
+                            importeRestantePorVehiculo = importePagado;
+                            importePagado = importePagado > 0 ? importePagado - importePagado : 0;
+                            cDescripcion = lsDetalleVenta[y].Descripcion + " *Anticipo*";
+                            idOperacionItem = 2;
+                        }
+
+                        lsDetalleVentaAnticipo[y].Numeracion = 1;
+                        lsDetalleVentaAnticipo[y].IdDetalleVenta = lsDetalleVenta[y].IdDetalleVenta;
+                        lsDetalleVentaAnticipo[y].Descripcion = cDescripcion;
+                        lsDetalleVentaAnticipo[y].idTipoTarifa = lsDetalleVenta[y].idTipoTarifa;
+                        lsDetalleVentaAnticipo[y].PrecioUni = lsDetalleVenta[y].preciounitario;
+                        lsDetalleVentaAnticipo[y].Descuento = lsDetalleVenta[y].Descuento;
+                        lsDetalleVentaAnticipo[y].gananciaRedondeo = lsDetalleVenta[y].gananciaRedondeo;
+                        lsDetalleVentaAnticipo[y].TotalTipoDescuento = lsDetalleVenta[y].TotalTipoDescuento;
+                        lsDetalleVentaAnticipo[y].IdTipoDescuento = lsDetalleVenta[y].IdTipoDescuento;
+                        lsDetalleVentaAnticipo[y].Cantidad = lsDetalleVenta[y].Cantidad;
+                        lsDetalleVentaAnticipo[y].Couta = lsDetalleVenta[y].Couta;
+
+                        lsDetalleVentaAnticipo[y].Importe = importeRestantePorVehiculo;//lsDetalleVenta[y].Importe;
+                        lsDetalleVentaAnticipo[y].importeRestante = (lsDetalleVenta[y].preciounitario - importeRestantePorVehiculo) - clsPagosGeneral.importeAbonado;//lsDetalleVenta[y].Importe;
+                        lsDetalleVentaAnticipo[y].ImporteActicipo = importeRestantePorVehiculo;//lsDetalleVenta[y].Importe;
+                        lsDetalleVentaAnticipo[y].cSimbolo = lsDetalleVenta[y].cSimbolo;
+
+                        lsDetalleVentaAnticipo[y].preciounitario = importeRestantePorVehiculo;
+                        lsDetalleVentaAnticipo[y].ImporteRow = importeRestantePorVehiculo;
+                        lsDetalleVentaAnticipo[y].mtoValorVentaItem = importeRestantePorVehiculo;
+                        lsDetalleVentaAnticipo[y].Unidad_de_medida = "ZZ";
+                        lsDetalleVentaAnticipo[y].idOperacionItem = lsDetalleVentaAnticipo[y].importeRestante > 0 ? 2 : 0;
+
+                        y++;
+                    }
+                }
+                
 
                 PrecioALetras pal = new PrecioALetras();
                 string RecioALetras2 = pal.Convertir((lsDetalleVentaAnticipo.Sum(i => i.ImporteRow) - Convert.ToDecimal(lsDetalleVentaAnticipo.Sum(i => i.TotalTipoDescuento))).ToString(), true, " SOLES");
@@ -537,8 +570,8 @@ namespace wfaIntegradoCom.Procesos
 
             fnCrearItemAnticipos();
             Consultas.frmVPVenta frm = new Consultas.frmVPVenta();
-            lsDocumentoVenta[0].nMontoTotal = lsDetalleVentaAnticipo.Sum(x => x.Importe)+ lsDetalleVentaAnticipo.Sum(i=>i.valorRedondeo);
-            lsDocumentoVenta[0].MontoTotalAnticipos = lsDetalleVentaAnticiposRecibidos.Sum(x => x.Importe) * 1;
+            //lsDocumentoVenta[0].nMontoTotal = lsDetalleVentaAnticipo.Sum(x => x.Importe)+ lsDetalleVentaAnticipo.Sum(i=>i.valorRedondeo);
+            //lsDocumentoVenta[0].MontoTotalAnticipos = lsDetalleVentaAnticiposRecibidos.Sum(x => x.Importe) * 1;
             frm.Inicio(lsDocumentoVenta, lsDetalleVentaAnticipo.Count > 0 ? lsDetalleVentaAnticipo : lsDetalleVenta, lnTipoLLamada);
 
             //opcion para venta general
@@ -551,11 +584,11 @@ namespace wfaIntegradoCom.Procesos
                 if (bEstadoDocumento)
                 {
                     frmRegistrarVenta.fnRecuperarTipoPago(lstEntidades);
-                    fr.fnCambiarEstadoVenta(true);
+                    fr.fnCambiarEstadoVenta(true, lsDetalleVentaAnticipo);
                 }
                 else
                 {
-                    fr.fnCambiarEstadoVenta(false);
+                    fr.fnCambiarEstadoVenta(false,new List<DetalleVenta>());
                 }
 
             }
@@ -773,7 +806,7 @@ namespace wfaIntegradoCom.Procesos
             if (lnTipoLLamada == 0)
             {
                 Mantenedores.frmRegistrarVenta fmr = new Mantenedores.frmRegistrarVenta();
-                fmr.fnCambiarEstadoVenta(false);
+                fmr.fnCambiarEstadoVenta(false,new List<DetalleVenta>());
             }
 
             if (lnTipoLLamada == -1)

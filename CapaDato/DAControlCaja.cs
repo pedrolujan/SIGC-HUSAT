@@ -170,6 +170,7 @@ namespace CapaDato
 
             }
         }
+
         public Tuple<List<ReporteBloque>,List<ReporteBloque>, List<ReporteBloque>, List<ReporteBloque>> daBuscarDashBoard(Busquedas clsBusq)
         {
             SqlParameter[] pa = new SqlParameter[12];
@@ -346,9 +347,98 @@ namespace CapaDato
 
                 }
 
-
-
                 return Tuple.Create(lsDasboard, lsRepBloque, lstEgresos, lstCajaChica);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+
+            }
+        }
+        public Tuple<List<ReporteBloque>,List<ReporteBloque>, List<ReporteBloque>> daBuscarReporteDiario(Busquedas clsBusq)
+        {
+            SqlParameter[] pa = new SqlParameter[3];
+            List<ControlCaja> lstControl = new List<ControlCaja>();
+            DataSet dtMenu = new DataSet();
+            List<ReporteBloque> lsCategoria = new List<ReporteBloque>();
+            List<ReporteBloque> lsOperacion = new List<ReporteBloque>();
+            List<ReporteBloque> lsMedioPago= new List<ReporteBloque>();
+
+            DataView dvBusquedaPorCategoria = new DataView();
+            DataView dvBusquedaPorOperacion = new DataView();
+            DataView dvBusquedaPorMedioPago = new DataView();
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            try
+            {
+                
+                pa[0] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = clsBusq.cod3 };
+                pa[1] = new SqlParameter("@dtFechaBusqueda", SqlDbType.Date) { Value = clsBusq.dtFechaIni };
+                pa[2] = new SqlParameter("@tipoCon", SqlDbType.VarChar) { Value = clsBusq.tipoCon };                 
+
+                 objCnx = new clsConexion("");
+
+                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarReporteDiario", pa);
+                dvBusquedaPorCategoria = new DataView(dtMenu.Tables[0]);
+                dvBusquedaPorOperacion = new DataView(dtMenu.Tables[1]);
+                dvBusquedaPorMedioPago = new DataView(dtMenu.Tables[2]);
+                int y = 0;
+                foreach (DataRowView dr in dvBusquedaPorCategoria)
+                {
+                    lsCategoria.Add(new ReporteBloque
+                    {
+                        numero = y + 1,
+                        Codigoreporte = dr["id"].ToString(),
+                        Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
+                        Cantidad = Convert.ToInt32(dr["cantidad"]),
+                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        SimboloMoneda = dr["cSimbolo"].ToString(),
+                        ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["montoTotal"])
+                    });
+                    y++;
+                }
+
+                y = 0;
+                foreach (DataRowView dr in dvBusquedaPorOperacion)
+                {
+                    lsOperacion.Add(new ReporteBloque
+                    {
+                        numero = y + 1,
+                        Codigoreporte = dr["id"].ToString(),
+                        Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
+                        Cantidad = Convert.ToInt32(dr["cantidad"]),
+                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        SimboloMoneda = dr["cSimbolo"].ToString(),
+                        ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["montoTotal"])
+                    });
+                    y++;
+                }
+                y = 0;
+                foreach (DataRowView dr in dvBusquedaPorMedioPago)
+                {
+                    lsMedioPago.Add(new ReporteBloque
+                    {
+                        numero=y+1,
+                        Codigoreporte = dr["id"].ToString(),
+                        Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
+                        Cantidad = Convert.ToInt32(dr["cantidad"]),
+                        idMoneda = Convert.ToInt32(dr["idMoneda"]),
+                        SimboloMoneda = dr["cSimbolo"].ToString(),
+                        ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
+                        ImporteRow = Convert.ToDecimal(dr["montoTotal"])
+                    });
+                    y++;
+                }
+                
+
+
+                return Tuple.Create(lsCategoria, lsOperacion, lsMedioPago);
 
             }
             catch (Exception ex)
@@ -465,7 +555,7 @@ namespace CapaDato
                         numero = y + 1,
                         Codigoreporte = dr["id"].ToString(),
                         Detallereporte = FormatearCadenaTitleCase(dr["descripcion"].ToString()),
-                        codAuxiliar = FormatearCadenaTitleCase(dr["nomTipoPago"].ToString()),
+                        codAuxiliar = dr["nomTipoPago"].ToString(),
                         idOperacion = Convert.ToInt32(dr["idOperacion"]),
                         Cantidad = Convert.ToInt32(dr["cantidad"]),
                         idMoneda = Convert.ToInt32(dr["idMoneda"]),
@@ -473,7 +563,7 @@ namespace CapaDato
                         ImporteTipoCambio = Convert.ToDecimal(dr["cTipoCambio"]),
                         ImporteRow = Convert.ToDecimal(dr["montoTotal"]),
                         cUsuario = Convert.ToString(dr["IdUsuario"]),
-                        dFecha = Convert.ToDateTime(dr["dFechaRegistro"])
+                        //dFecha = Convert.ToDateTime(dr["dFechaRegistro"])
                     }) ;
                     y++;
                 }

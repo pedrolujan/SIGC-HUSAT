@@ -102,7 +102,7 @@ namespace wfaIntegradoCom.Consultas
         private void fnCargarRptActa(List<Cliente> lstCli, List<Vehiculo> lstVh, List<Equipo_imeis> lstEq, List<Plan> lstPl, List<AccesoriosEquipo> lstAc, List<ServicioEquipo> lstSer, String observaciones,Instalacion clsInt)
         {
 
-            ReportParameter[] parameters = new ReportParameter[8];
+            ReportParameter[] parameters = new ReportParameter[9];
             reportViewer1.Reset();
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.ProcessingMode = ProcessingMode.Local;
@@ -130,6 +130,7 @@ namespace wfaIntegradoCom.Consultas
             parameters[5] = new ReportParameter("prCodigoInstalacion", clsInt.codigoInstalacion);
             parameters[6] = new ReportParameter("prFechaHasta", Convert.ToString(clsInt.dFechaIntal.AddMonths(+12).AddDays(-1)));
             parameters[7] = new ReportParameter("prQr", Convert.ToBase64String(ms.ToArray()));
+            parameters[8] = new ReportParameter("prTipoActa", Convert.ToString(clsInt.tipoActa));
 
             reportViewer1.LocalReport.ReportEmbeddedResource = "wfaIntegradoCom.Consultas.rptActaInstalacion.rdlc";
             reportViewer1.LocalReport.SetParameters(parameters);

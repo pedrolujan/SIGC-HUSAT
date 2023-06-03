@@ -19,7 +19,7 @@ namespace CapaDato
         public Boolean daGenerarVentaGeneral(VentaGeneral clsVentaGeneral, List<xmlDocumentoVentaGeneral> xmlDocVenta, byte[] btImage, Int16 tipoCon)
         {
 
-            SqlParameter[] pa = new SqlParameter[34];
+            SqlParameter[] pa = new SqlParameter[35];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             List<VentaGeneral> lstVentaGeneral = new List<VentaGeneral>();
@@ -27,6 +27,7 @@ namespace CapaDato
             lstCliente.Add(clsVentaGeneral.ClsCliente);
             String xmlDetalleCronograma = clsUtil.Serialize(clsVentaGeneral.lstDetalleCronograma);
             String xmlDetalleVenta = clsUtil.Serialize(clsVentaGeneral.clsDetalleVentaCabecera.lstDetalleVenta);
+            String xmlDetalleVentaModificado = clsUtil.Serialize(xmlDocVenta[0].xmlDetalleVentas);
             String xmlVehiculo = clsUtil.Serialize(clsVentaGeneral.lstVehiculo);
             String xmlTrandiaria = clsUtil.Serialize(clsVentaGeneral.lstPagos);
             lstVentaGeneral.Add(clsVentaGeneral);
@@ -71,6 +72,7 @@ namespace CapaDato
                 pa[31] = new SqlParameter("@ImgQR", SqlDbType.Image) { Value =  btImage };
                 pa[32] = new SqlParameter("@CorrelativoDocumento", SqlDbType.VarChar,13) { Value = clsVentaGeneral.codigoCorrelativo };
                 pa[33] = new SqlParameter("@idContrato", SqlDbType.Int) { Value = tipoCon==0?0: clsVentaGeneral.clsContrato.idContrato };
+                pa[34] = new SqlParameter("@xmlDetalleVentaModificado", SqlDbType.Xml) { Value = xmlDetalleVentaModificado };
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
 
@@ -416,9 +418,9 @@ namespace CapaDato
                 objCnx = null;
             }
         }
-        public DataTable daBuscarVentaPagoPendiente(Boolean chk, String  CodEstadoPago, String busq, String dfechaIni, String dfechaFin, Int32 numPagina, Int32 tipoCon)
+        public DataTable daBuscarVentaPagoPendiente(Boolean chk, String  CodEstadoPago, String busq, String dfechaIni, String dfechaFin, Int32 numPagina, String idTrandiaria, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[7];
+            SqlParameter[] pa = new SqlParameter[8];
             DataTable dtVentaG;
             clsConexion objCnx = null;
 
@@ -431,7 +433,8 @@ namespace CapaDato
                 pa[3] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = dfechaIni };
                 pa[4] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = dfechaFin };
                 pa[5] = new SqlParameter("@numPagina", SqlDbType.VarChar, 15) { Value = numPagina };
-                pa[6] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
+                pa[6] = new SqlParameter("@idTrandiaria", SqlDbType.VarChar,15) { Value = idTrandiaria };
+                pa[7] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value = tipoCon };
 
                 objCnx = new clsConexion("");
                 dtVentaG = objCnx.EjecutarProcedimientoDT("uspBuscarPagoPendiente", pa);
@@ -519,7 +522,7 @@ namespace CapaDato
         }
         public Boolean daGuardarpagosPendientes(Int32 idTrandiaria, List<Pagos> lstTrand, List<xmlDocumentoVentaGeneral> lstXml, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[10];
+            SqlParameter[] pa = new SqlParameter[11];
             DataTable dtVentaG;
             clsConexion objCnx = null;
             String xmlTrandiaria = clsUtil.Serialize(lstTrand);
@@ -538,10 +541,11 @@ namespace CapaDato
                 pa[7] = new SqlParameter("@importeRestante", SqlDbType.Int) { Value = lstXml[0].xmlDetalleVentas.Sum(i=>i.importeRestante) };
                 pa[8] = new SqlParameter("@codigoDocumentoVentaCorrelativo", SqlDbType.VarChar,20) { Value = lstXml[0].xmlDocumentoVenta[0].CodigoCorrelativo };
                 pa[9] = new SqlParameter("@xmlDetalleVenta", SqlDbType.Xml) { Value = xmlDetalleVenta };
+                pa[10] = new SqlParameter("@qr", SqlDbType.Image) { Value = lstXml[0].imgDocumento };
 
 
                 objCnx = new clsConexion("");
-                objCnx.EjecutarProcedimientoDT("uspGuardarPagosPendientes", pa);
+                //objCnx.EjecutarProcedimientoDT("uspGuardarPagosPendientes", pa);
                 return true;
             }
             catch (Exception ex)

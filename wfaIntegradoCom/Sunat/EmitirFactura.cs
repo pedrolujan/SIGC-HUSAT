@@ -85,7 +85,7 @@ namespace wfaIntegradoCom.Sunat
             clsCliente.cCliente = clsCliente.cNombre + " " + clsCliente.cApePat + " " + clsCliente.cApePat;
             ParametrosFactura parametros = new ParametrosFactura();
             parametros.Ref_Serie = "FH01";
-            parametros.Ref_Numero = "00000031";
+            parametros.Ref_Numero = "00000091";
             parametros.Ref_Motivo = "Anulación de la operación";
             parametros.Ref_TipoComprobante = "01";
             parametros.CodigoTipoNotacredito = "01";

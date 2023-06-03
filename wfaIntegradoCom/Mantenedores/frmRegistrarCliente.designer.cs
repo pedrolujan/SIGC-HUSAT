@@ -542,6 +542,7 @@
             this.dgDocumentoRP.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgDocumentoRP.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgDocumentoRP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -569,7 +570,7 @@
             this.dgDocumentoRP.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgDocumentoRP.EnableHeadersVisualStyles = false;
             this.dgDocumentoRP.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgDocumentoRP.Location = new System.Drawing.Point(373, 76);
+            this.dgDocumentoRP.Location = new System.Drawing.Point(379, 80);
             this.dgDocumentoRP.Name = "dgDocumentoRP";
             this.dgDocumentoRP.ReadOnly = true;
             this.dgDocumentoRP.RowHeadersVisible = false;
@@ -585,7 +586,7 @@
             this.dgDocumentoRP.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
             this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.dgDocumentoRP.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dgDocumentoRP.ThemeStyle.BackColor = System.Drawing.Color.White;
