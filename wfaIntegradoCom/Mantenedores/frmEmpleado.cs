@@ -410,13 +410,14 @@ namespace wfaIntegradoCom.Mantenedores
         private Byte[] ConvertirImg()
         {
             MemoryStream ms = new MemoryStream();
-
+            ms = new MemoryStream();
+            picBoxImgPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
             if (ms.Length == 0)
             {
                 picBoxImgPerfil.Image = Properties.Resources.UserPorDefecto;
+                picBoxImgPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
-            ms = new MemoryStream();
-            picBoxImgPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+           
             return ms.GetBuffer();
         }
 
@@ -679,7 +680,7 @@ namespace wfaIntegradoCom.Mantenedores
             if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
             {
                 picBoxImgPerfil.Image = Image.FromFile(ofdSeleccionar.FileName);
-
+                lblNameImagen.Text = ofdSeleccionar.SafeFileName;
                 panelImagenes.Visible = false;
                 lblImgPerfil.Visible = false;
             }

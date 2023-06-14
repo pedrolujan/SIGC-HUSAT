@@ -507,7 +507,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void btnGuardarSimCard_Click(object sender, EventArgs e)
         {
-            Boolean Guardar;
+            Boolean Guardar=false;
                 String lcResultado = "";
                 txtSimCardNuevo_TextChanged(sender, e);
             Reactivaciones clsRenova = new Reactivaciones();
@@ -515,7 +515,7 @@ namespace wfaIntegradoCom.Procesos
               
             {
                 clsRenova = CargarClaseReactivaciones();
-               Guardar = fnGuardarRenovacion(clsRenova, "SIMCARD");
+                Guardar = fnGuardarRenovacion(clsRenova, "SIMCARD");
                 if (Guardar==true)
                 {
                     MessageBox.Show("Se guardo corectamente la Reactivacion del NUEVO SINCARD!!!!", "PERFECTO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -592,7 +592,7 @@ namespace wfaIntegradoCom.Procesos
         private Reactivaciones CargarClaseReactivaciones()
         {
            
-            lstSimCardsAntiguo = lstSimCardsAntiguo.Count == 0 ? lstSimCardNuevo : lstSimCardsAntiguo;
+            //lstSimCardsAntiguo = lstSimCardsAntiguo.Count == 0 ? lstSimCardNuevo : lstSimCardsAntiguo;
 
             ClsReactivaciones = new Reactivaciones
             {

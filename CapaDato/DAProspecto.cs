@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +17,10 @@ namespace CapaDato
         private clsUtil objUtil = null;
         public String daGrabarProspectoPlan(ProspectosPlan objProspecto, Int32 pnTipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[20];
+            SqlParameter[] pa = new SqlParameter[21];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
+            String xmlVentas= clsUtil.Serialize(objProspecto.lstVentasSeleccionadas);
 
             try
             {
@@ -37,11 +39,12 @@ namespace CapaDato
                 pa[12] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = objProspecto.idUsuario };
                 pa[13] = new SqlParameter("@dFechaRegistro", SqlDbType.DateTime) { Value = objProspecto.fechaRegistro };
                 pa[14] = new SqlParameter("@peiTipoCon", SqlDbType.Int) { Value = pnTipoCon };
-                pa[15] = new SqlParameter("@bEstado", SqlDbType.NVarChar, 15) { Value = objProspecto.estadoCliente };
+                pa[15] = new SqlParameter("@bEstado", SqlDbType.NVarChar, 15) { Value = objProspecto.estadoCliente};
                 pa[16] = new SqlParameter("@idTipoPlan", SqlDbType.Int) { Value = objProspecto.idTipoPlan };
                 pa[17] = new SqlParameter("@idPlan", SqlDbType.Int) { Value = objProspecto.idPlan };
                 pa[18] = new SqlParameter("@fechaVisita", SqlDbType.DateTime) { Value = objProspecto.fechaVisita };
                 pa[19] = new SqlParameter("@idTarifa", SqlDbType.Int) { Value = objProspecto.idTarifa };
+                pa[20] = new SqlParameter("@xmlVentas", SqlDbType.Xml) {Value= xmlVentas };
 
                 objCnx = new clsConexion("");
                 objCnx.EjecutarProcedimiento("uspGuardarProspectoPlan", pa);
@@ -346,6 +349,64 @@ namespace CapaDato
                 objCnx = null;
             }
         }
+        public List<ReporteBloque> daBuscarVentasRealizadas(Busquedas clsBusq)
+        {
+
+            SqlParameter[] pa = new SqlParameter[2];
+            DataTable dtUsuario = new DataTable();
+            clsConexion objCnx = null;
+            List<ReporteBloque> lstReporte = new List<ReporteBloque>();
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@pcBuscar", SqlDbType.VarChar,50);
+                pa[0].Value = clsBusq.cBuscar;
+                pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[1].Value = clsBusq.tipoCon;
+               
+
+                objCnx = new clsConexion("");
+                dtUsuario = objCnx.EjecutarProcedimientoDT("uspBuscarVentasSeguimiento", pa);
+
+                Int32 y = 0;
+
+                foreach (DataRow dr in dtUsuario.Rows)
+                {
+
+
+                    lstReporte.Add(new ReporteBloque
+                    {
+                        Codigoreporte = Convert.ToString(dr["idContrato"]),
+                        codAuxiliar = Convert.ToString(dr["Vehiculo"]),
+                        Detallereporte = FormatearCadenaTitleCase(dr["CLiente"].ToString()),
+                       
+
+                    });
+                    y++;
+                }
+                   
+
+
+
+                return lstReporte;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daListarEquipo", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+        public string FormatearCadenaTitleCase(String str)
+        {
+            String dat = str.ToLower();
+            return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(dat); ;
+        }
         public Prospecto daListarProspectoDatatable(Int32 idCliente, Int32 pnTipoCon)
         {
             SqlParameter[] pa = new SqlParameter[2];
@@ -524,9 +585,10 @@ namespace CapaDato
         }
         public String daGrabarSeguimiento(Seguimiento objProspecto, Int32 pnTipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[8];
+            SqlParameter[] pa = new SqlParameter[9];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
+            String xmlVentas=clsUtil.Serialize(objProspecto.lstVentasSeleccionadas);
 
             try
             {
@@ -546,6 +608,8 @@ namespace CapaDato
                 pa[6].Value = pnTipoCon;
                 pa[7] = new SqlParameter("@estadoCliente", SqlDbType.NVarChar,15);
                 pa[7].Value = objProspecto.estadoCliente;
+                pa[8] = new SqlParameter("@xmlVentas", SqlDbType.Xml);
+                pa[8].Value = xmlVentas;
 
 
                 objCnx = new clsConexion("");

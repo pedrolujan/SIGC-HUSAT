@@ -249,18 +249,34 @@ namespace wfaIntegradoCom.Procesos
             String Estado;
 
             EstadoTipoPago = rdbSi.Checked;
-            
-            if (clsPagosGeneral.cantAPagar > lstEntidades.Sum(i => i.PagaCon) || txtTotalAPagar.Text.ToString()==txtImporteRestante.Text.ToString())
+            if(clsPagosGeneral.importeRestante ==0)
             {
-                frmEntidadPagos frm = new frmEntidadPagos();
-                clsPagosGeneral.PagaCon = (clsPagosGeneral.cantAPagar - lstEntidades.Sum(i => i.PagaCon)-clsPagosGeneral.importeAbonado );
-                frm.Inicio(clsPagosGeneral, 0);
-                fnLlenarListBox();
+                if (clsPagosGeneral.cantAPagar == clsPagosGeneral.importeRestante)
+                {
+                    fnAgregarEntidades();
+                }
+                else
+                {
+                    MessageBox.Show("inporte insuficiente para agregar entidades de págo", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+            else if(clsPagosGeneral.importeRestante>0)
+            {
+                    fnAgregarEntidades();
             }
             else
             {
                 MessageBox.Show("inporte insuficiente para agregar entidades de págo","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
+        }
+        private void fnAgregarEntidades()
+        {
+            frmEntidadPagos frm = new frmEntidadPagos();
+            clsPagosGeneral.PagaCon = (clsPagosGeneral.cantAPagar - lstEntidades.Sum(i => i.PagaCon) - clsPagosGeneral.importeAbonado);
+            frm.Inicio(clsPagosGeneral, 0);
+            fnLlenarListBox();
+
         }
 
         private void rdbNo_CheckedChanged(object sender, EventArgs e)
@@ -413,7 +429,7 @@ namespace wfaIntegradoCom.Procesos
                             Importe = importePagado,
                             cSimbolo = lsDetalleVenta[0].cSimbolo,
 
-                            preciounitario = Convert.ToDecimal(importePagado),
+                            preciounitario = Convert.ToDecimal(clsPagosGeneral.cantAPagar- clsPagosGeneral.importeAbonado),
                             ImporteRow = (Convert.ToDecimal(importePagado) * 1),
                             mtoValorVentaItem = (Convert.ToDecimal(importePagado) * 1),
                             Unidad_de_medida = "ZZ",
@@ -477,6 +493,7 @@ namespace wfaIntegradoCom.Procesos
 
                 lsDocumentoVenta[0].nMontoTotal = lstEntidades.Sum(i => i.PagaCon);
                 lsDocumentoVenta[0].nSubtotal = (lstEntidades.Sum(i => i.PagaCon) / 1.18m);
+                lsDocumentoVenta[0].MontoTotalAnticipos = lsDetalleVentaAnticiposRecibidos.Sum(i => i.Importe);
                 lsDocumentoVenta[0].nIGV = (lsDocumentoVenta[0].nMontoTotal - lsDocumentoVenta[0].nSubtotal);
             }
             else
@@ -544,6 +561,7 @@ namespace wfaIntegradoCom.Procesos
 
                     lsDocumentoVenta[0].nMontoTotal = lstEntidades.Sum(i => i.PagaCon);
                     lsDocumentoVenta[0].nSubtotal = (lstEntidades.Sum(i => i.PagaCon) / 1.18m);
+                    lsDocumentoVenta[0].MontoTotalAnticipos = lsDetalleVentaAnticiposRecibidos.Sum(i => i.Importe);
                     lsDocumentoVenta[0].nIGV = (lsDocumentoVenta[0].nMontoTotal - lsDocumentoVenta[0].nSubtotal);
                 }
                 else
@@ -652,7 +670,7 @@ namespace wfaIntegradoCom.Procesos
                 if (bEstadoDocumento)
                 {
                     fr.fnRecuperarEstadoGenVenta(true);
-                    fr.fnRecuperarTipoPago(lstEntidades, lsDetalleVentaAnticipo);
+                    fr.fnRecuperarTipoPago(lstEntidades, lsDetalleVentaAnticipo, lsDocumentoVenta);
                 }
                 else
                 {

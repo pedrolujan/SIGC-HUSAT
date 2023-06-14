@@ -238,7 +238,7 @@ namespace CapaDato
             }
 
         }
-        public List<DetalleVenta> daBuscarDetalleVenta(Int32 idTrandiaria)
+        public List<DetalleVenta> daBuscarDetalleVenta(Int32 idTrandiaria, Int32 idTipoTarifa)
         {
 
 
@@ -254,6 +254,8 @@ namespace CapaDato
 
                 pa[0] = new SqlParameter("@idTrandiaria", SqlDbType.Int);
                 pa[0].Value = idTrandiaria;
+                //pa[1] = new SqlParameter("@idTipotarifa", SqlDbType.Int);
+                //pa[1].Value = idTipoTarifa;
 
                 objCnx = new clsConexion("");
                 dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarDetalleVenta", pa);

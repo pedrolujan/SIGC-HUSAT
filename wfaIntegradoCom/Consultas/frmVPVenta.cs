@@ -229,9 +229,9 @@ namespace wfaIntegradoCom.Consultas
             {
                 if (lnEstadosProcesos==0)
                 {
-                    Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
-                    Decimal sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
+                    //Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
+                    //Decimal sumaPrimerPago = lstDVenta.Sum(i => i.Importe);
+                    //fmr.Inicio(-2, sumaPrimerPago, lstDVenta[0].cSimbolo, lstCDocumento[0].cCodDocumentoVenta);
                     frm.fnCambiarEstadoPago(true);
                 }
                 else if (lnEstadosProcesos==-1)

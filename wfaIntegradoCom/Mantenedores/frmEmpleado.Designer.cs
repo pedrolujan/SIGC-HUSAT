@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tsBotonera = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -645,9 +645,9 @@
             this.lblImgPerfil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblImgPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblImgPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblImgPerfil.Location = new System.Drawing.Point(607, 33);
+            this.lblImgPerfil.Location = new System.Drawing.Point(607, 139);
             this.lblImgPerfil.Name = "lblImgPerfil";
-            this.lblImgPerfil.Size = new System.Drawing.Size(130, 130);
+            this.lblImgPerfil.Size = new System.Drawing.Size(130, 24);
             this.lblImgPerfil.TabIndex = 30;
             this.lblImgPerfil.Text = "Elige tu imagen";
             this.lblImgPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -655,6 +655,7 @@
             // 
             // picBoxImgPerfil
             // 
+            this.picBoxImgPerfil.BackColor = System.Drawing.Color.Transparent;
             this.picBoxImgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("picBoxImgPerfil.Image")));
             this.picBoxImgPerfil.Location = new System.Drawing.Point(607, 33);
             this.picBoxImgPerfil.Name = "picBoxImgPerfil";
@@ -1148,51 +1149,51 @@
             this.lvempleado.AllowUserToDeleteRows = false;
             this.lvempleado.AllowUserToResizeColumns = false;
             this.lvempleado.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            this.lvempleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.lvempleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.lvempleado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lvempleado.BackgroundColor = System.Drawing.Color.White;
             this.lvempleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvempleado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lvempleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvempleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.lvempleado.ColumnHeadersHeight = 40;
             this.lvempleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Código,
             this.NombreEmpleado,
             this.DNI});
             this.lvempleado.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lvempleado.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lvempleado.DefaultCellStyle = dataGridViewCellStyle3;
             this.lvempleado.EnableHeadersVisualStyles = false;
             this.lvempleado.GridColor = System.Drawing.Color.Silver;
-            this.lvempleado.Location = new System.Drawing.Point(748, 90);
+            this.lvempleado.Location = new System.Drawing.Point(347, 90);
             this.lvempleado.Name = "lvempleado";
             this.lvempleado.ReadOnly = true;
             this.lvempleado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lvempleado.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lvempleado.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.lvempleado.RowHeadersVisible = false;
             this.lvempleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.lvempleado.Size = new System.Drawing.Size(72, 310);
+            this.lvempleado.Size = new System.Drawing.Size(473, 336);
             this.lvempleado.TabIndex = 35;
             this.lvempleado.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.lvempleado.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;

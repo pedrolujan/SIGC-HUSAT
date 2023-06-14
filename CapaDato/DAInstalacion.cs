@@ -149,7 +149,7 @@ namespace CapaDato
                 pa[12].Value = xmlInstal[0].clsInstalacion.idInstalacion;
 
                 pa[13] = new SqlParameter("@codInstalacion", SqlDbType.NVarChar,20);
-                pa[13].Value = xmlInstal[0].clsInstalacion.codigoInstalacion;
+                pa[13].Value = 0; // xmlInstal[0].clsInstalacion.codigoInstalacion;
 
                 pa[14] = new SqlParameter("@peidEquipoActual", SqlDbType.Int);
                 pa[14].Value = xmlInstal[0].ListaEquipoActual[0].idEquipo;
@@ -158,7 +158,7 @@ namespace CapaDato
                 pa[15].Value = xmlInstal[0].clsInstalacion.tipoActa;
 
                 objCnx = new clsConexion("");
-                //objCnx.EjecutarProcedimiento("uspGuardarInstalacion", pa);
+                objCnx.EjecutarProcedimiento("uspGuardarInstalacion", pa);
 
                 return true;
 

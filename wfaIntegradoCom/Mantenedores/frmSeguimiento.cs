@@ -14,6 +14,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using wfaIntegradoCom.Funciones;
+using FontAwesome.Sharp;
 
 namespace wfaIntegradoCom.Mantenedores
 {
@@ -45,6 +46,8 @@ namespace wfaIntegradoCom.Mantenedores
         static Int32 idProspectoTabla= 0;
         static Int32 stMesesTipoPlan;
         static Int32 stIdTarifa;
+        static List<ReporteBloque> lstVentas = new List<ReporteBloque>();
+        static List<ReporteBloque> lstVentasSeleccionadas = new List<ReporteBloque>();
         String letraColor = "";
         Boolean estadoBusqueda = false;
 
@@ -797,40 +800,79 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void btnGuardarSeguimiento_Click(object sender, EventArgs e)
         {
-            String lcResultado;
+            String lcResultado="";
             
             txtObservacionSeguimiento_TextChanged(sender, e);
             txtHoraSigSeguimiento_ValueChanged(sender, e);
             var result1 = FunValidaciones.fnValidarCombobox(cboEstadoSeguimiento, erEstadoSeguimiento, imgEstadoSeguimiento);
             estEstadoSeguimiento = result1.Item1;
             msjEstadoSeguimiento = result1.Item2;
-
-               
-            if (estObservacionSeguimiento & estfechaSeguimiento & estEstadoSeguimiento && erFechaRegSeguimiento.Text.ToString().Trim()=="")
+            if (cboEstadoSeguimiento.SelectedValue.ToString()== "ESPR0002")
             {
-                lcResultado = fnGuardarSeguimiento();
-                if (lcResultado == "OK")
+                if (lstVentasSeleccionadas.Count>0)
                 {
-                    fnLimpiarSeguimiento();
-                    MessageBox.Show("Se Grabó Satisfactoriamente Accesorio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                    Int32 idProspectoPlan = Convert.ToInt32(txtIdVisita.Text.ToString());
-                    DataTable dt = new DataTable();
-                    dt=fnBuscarTablaSeguimiento(idProspectoPlan,1,-1);
-                    fnCapturarContadorSeguimiento(dt);
+                    if (estObservacionSeguimiento & estfechaSeguimiento & estEstadoSeguimiento && erFechaRegSeguimiento.Text.ToString().Trim() == "")
+                    {
+                        lcResultado = fnGuardarSeguimiento();
+                        if (lcResultado == "OK")
+                        {
+                            fnLimpiarSeguimiento();
+                            MessageBox.Show("Se Grabó Satisfactoriamente Accesorio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            Int32 idProspectoPlan = Convert.ToInt32(txtIdVisita.Text.ToString());
+                            DataTable dt = new DataTable();
+                            dt = fnBuscarTablaSeguimiento(idProspectoPlan, 1, -1);
+                            fnCapturarContadorSeguimiento(dt);
 
 
 
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al Grabar Accesorio. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Complete correctamente los datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al Grabar Accesorio. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Por favor seleccione la venta para este seguimiento", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
                 }
             }
             else
             {
-                MessageBox.Show("Complete correctamente los datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                if (estObservacionSeguimiento & estfechaSeguimiento & estEstadoSeguimiento && erFechaRegSeguimiento.Text.ToString().Trim() == "")
+                {
+                    lcResultado = fnGuardarSeguimiento();
+                    if (lcResultado == "OK")
+                    {
+                        fnLimpiarSeguimiento();
+                        MessageBox.Show("Se Grabó Satisfactoriamente Accesorio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        Int32 idProspectoPlan = Convert.ToInt32(txtIdVisita.Text.ToString());
+                        DataTable dt = new DataTable();
+                        dt = fnBuscarTablaSeguimiento(idProspectoPlan, 1, -1);
+                        fnCapturarContadorSeguimiento(dt);
+
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al Grabar Accesorio. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Complete correctamente los datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
+               
+            
         }
 
         public void fnCapturarContadorSeguimiento(DataTable dt)
@@ -956,8 +998,9 @@ namespace wfaIntegradoCom.Mantenedores
         private void opcEditar_Click(object sender, EventArgs e)
         {
             Boolean bResul = false;
-            btnEditar.Enabled = true;  
-             
+            btnEditar.Enabled = true;
+            pnVentasRealizadas.Location = new Point(700, 408);
+            lstVentasSeleccionadas.Clear();
             bResul = fnListarProspectoPlanEspecifico(dgProspecto,1);
             if (!bResul)
             {
@@ -970,6 +1013,8 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void opcCrearPlan_Click(object sender, EventArgs e)
         {
+            //pnVentasRealizadas.Location = new Point(36, 820);
+            lstVentasSeleccionadas.Clear();
 
             Boolean bResul = false;
            
@@ -1232,6 +1277,25 @@ namespace wfaIntegradoCom.Mantenedores
             var result = FunValidaciones.fnValidarCombobox(cboEstado, erEstadoCliente, imgEstadoCliente);
             estEstadoCliente = result.Item1;
             msjEstadoProspecto = result.Item2;
+
+            String codEstadoCliente= cboEstado.SelectedValue.ToString();
+
+            if (codEstadoCliente == "ESPR0002")
+            {
+                pnVentasRealizadas.Location =new Point(700, gbContacto.Location.Y+30);
+                dgvVentasElegidas.Location = pnVentasRealizadas.Location;
+                iconPictureBox1.Location = new Point((pnVentasRealizadas.Location.X + pnVentasRealizadas.Size.Width) + 5, pnVentasRealizadas.Location.Y);
+                pnVentasRealizadas.Visible = true;
+                dgvVentasElegidas.Visible = true;
+                iconPictureBox1.Visible = true;
+
+            }
+            else
+            {
+                pnVentasRealizadas.Visible = false;
+                dgvVentasElegidas.Visible = false;
+                iconPictureBox1.Visible = false;
+            }
         }
 
         private void dgProspecto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -1427,6 +1491,9 @@ namespace wfaIntegradoCom.Mantenedores
                 DateTime fechaRegistro = Convert.ToDateTime(dtpFechaRegSeguimiento.Value.ToString());
                 DateTime fechaMas6dias = fechaRegistro.AddDays(6);
                 //dtpFechaProximoSeguimiento.Value = fechaMas6dias;
+                pnVentasRealizadas.Visible = false;
+                dgvVentasElegidas.Visible = false;
+                iconPictureBox1.Visible = false;
             }
             else
             {
@@ -1441,6 +1508,18 @@ namespace wfaIntegradoCom.Mantenedores
                 imgFechaRegSeguimiento.Image = Properties.Resources.ok;
                 DateTime fechaRegistro = Convert.ToDateTime(dtpFechaRegSeguimiento.Value.ToString());
                 dtpFechaProximoSeguimiento.Value = fechaRegistro.AddDays(1);
+
+                if (codEstadoCliente == "ESPR0002")
+                {
+                    pnVentasRealizadas.Location =new Point(34,gbSeguimiento.Location.Y+102);
+                    dgvVentasElegidas.Location = pnVentasRealizadas.Location;
+                    iconPictureBox1.Location =new Point ((pnVentasRealizadas.Location.X + pnVentasRealizadas.Width), (pnVentasRealizadas.Location.Y));
+                    pnVentasRealizadas.Visible = true;
+                    dgvVentasElegidas.Visible = true;
+                    iconPictureBox1.Visible = true;
+
+                }
+                
             }
         }
 
@@ -1623,6 +1702,108 @@ namespace wfaIntegradoCom.Mantenedores
             fnBuscarTablaProspectosPlan(busqueda, 0, -1, letraColor);
 
             //MessageBox.Show(" TIENES " + btnRojo.Text + " PENDIENTES  EN ROJO ", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        }
+
+        private void pbBuscar_Click(object sender, EventArgs e)
+        {
+            fnBuscarVenta();
+        }
+        private void fnBuscarVenta()
+        {
+            BLProspecto bl = new BLProspecto();
+            Busquedas clsBusq = new Busquedas();
+            clsBusq.cBuscar = txtBuscarVenta.Text.ToString();
+            clsBusq.tipoCon = -1;
+            
+            lstVentas=bl.blBuscarVentasRealizadas(clsBusq);
+            dgvAnticipos.Columns.Clear();
+            dgvAnticipos.Rows.Clear();
+
+            if (lstVentas.Count>0)
+            {
+                dgvAnticipos.Columns.Add("id", "id");
+                dgvAnticipos.Columns.Add("Vehiculo", "Vehiculo");
+                dgvAnticipos.Columns.Add("Cliente", "Cliente");
+
+                foreach (ReporteBloque rp in lstVentas)
+                {
+
+                    dgvAnticipos.Rows.Add(rp.Codigoreporte,rp.codAuxiliar,rp.Detallereporte);
+
+                }
+                dgvAnticipos.Visible = true;
+                pnVentasRealizadas.Visible = true;
+
+                dgvAnticipos.Columns[1].Width = 15;
+                dgvAnticipos.Columns[2].Width = 100;
+            }
+            else
+            {
+                
+                dgvAnticipos.Columns.Add("id", "id");
+                dgvAnticipos.Columns.Add("Vehiculo", "No se encontraron resultados");
+
+            }
+            dgvAnticipos.Columns[0].Visible = false;
+        }
+
+        private void dgvAnticipos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Int32 idContrato= Convert.ToInt32(dgvAnticipos.Rows[e.RowIndex].Cells[0].Value);
+            lstVentasSeleccionadas.Add(lstVentas.Find(i => Convert.ToInt32(i.Codigoreporte) == idContrato));
+
+            pnVentasRealizadas.Visible = false;
+            dgvAnticipos.Visible = false;
+            fnLlenarListBox();
+        }
+        
+        private void fnLlenarListBox()
+        {
+            dgvVentasElegidas.Rows.Clear();
+            foreach (ReporteBloque dv in lstVentasSeleccionadas)
+            {
+                dgvVentasElegidas.Rows.Add(dv.codAuxiliar+" "+dv.Detallereporte );
+            }
+
+        }
+
+        private void iconPictureBox1_Click(object sender, EventArgs e)
+        {
+            if (pnVentasRealizadas.Visible==true)
+            {
+                pnVentasRealizadas.Visible = false;
+                iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Navicon ;
+            }
+            else
+            {
+                iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.XmarkCircle;
+                pnVentasRealizadas.Visible = true;
+
+            }
+        }
+
+        private void eliminarSeleccionadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Int32 index = dgvVentasElegidas.CurrentRow.Index;
+            ReporteBloque clsTemporal = new ReporteBloque();
+            for (int i = 0; i < lstVentasSeleccionadas.Count; i++)
+            {
+                if (i == index)
+                {
+                    clsTemporal = lstVentasSeleccionadas[i];
+                    break;
+                }
+            }
+            lstVentasSeleccionadas.Remove(clsTemporal);
+            fnLlenarListBox();
+        }
+
+        private void txtBuscarVenta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==(char)Keys.Enter)
+            {
+                fnBuscarVenta();
+            }
         }
 
         private void lblUsuarioRanking_Click(object sender, EventArgs e)
@@ -2023,6 +2204,7 @@ namespace wfaIntegradoCom.Mantenedores
             cboPaginaSeg.MouseWheel += new MouseEventHandler(FunGeneral.cbo_MouseWheel);
             FunGeneral.fnValidarFechaPago(dtpFechaRegSeguimiento, imgFechaRegSeguimiento, 0);
             FunGeneral.fnValidarFechaPago(dtpFechaVisita, imgFechaVenida, 0);
+            lstVentasSeleccionadas.Clear();
 
         }
 
@@ -2259,24 +2441,56 @@ namespace wfaIntegradoCom.Mantenedores
             estTarifa = result7.Item1;
             msjTarifa = result7.Item2;
 
-            if (estCelular1 & estCelular2 & estNombre & estApellido & estCorreo & estEstadoCliente & estClase & estModoUso & estTipoContacto & estObservaciones & estTipoPlan & estPlan & estFechaVenida & estTarifa)
+            if (cboEstado.SelectedValue.ToString()== "ESPR0002")
             {
-                lcResultado = fnGuardarProspectoPlan();
-                if (lcResultado == "OK")
+                if (lstVentasSeleccionadas.Count > 0)
                 {
-                    MessageBox.Show("Se Grabó Satisfactoriamente Accesorio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (estCelular1 & estCelular2 & estNombre & estApellido & estCorreo & estEstadoCliente & estClase & estModoUso & estTipoContacto & estObservaciones & estTipoPlan & estPlan & estFechaVenida & estTarifa)
+                    {
+                        lcResultado = fnGuardarProspectoPlan();
+                        if (lcResultado == "OK")
+                        {
+                            MessageBox.Show("Se Grabó Satisfactoriamente Accesorio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    fnLimpiarControlesVisita();
+                            fnLimpiarControlesVisita();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al Grabar Accesorio. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Complete correctamente los datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al Grabar Accesorio. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Por favor seleccione la venta para este seguimiento", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
                 }
             }
             else
             {
-                MessageBox.Show("Complete correctamente los datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+                if (estCelular1 & estCelular2 & estNombre & estApellido & estCorreo & estEstadoCliente & estClase & estModoUso & estTipoContacto & estObservaciones & estTipoPlan & estPlan & estFechaVenida & estTarifa)
+                {
+                    lcResultado = fnGuardarProspectoPlan();
+                    if (lcResultado == "OK")
+                    {
+                        MessageBox.Show("Se Grabó Satisfactoriamente Accesorio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        fnLimpiarControlesVisita();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al Grabar Accesorio. Comunicar a Administrador de Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Complete correctamente los datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }         
         }
 
         private String fnGuardarProspectoPlan()
@@ -2311,6 +2525,7 @@ namespace wfaIntegradoCom.Mantenedores
                 objProspecto.idUsuario = Variables.gnCodUser;
                 objProspecto.fechaVisita = Convert.ToDateTime(dtpFechaVisita.Value);
                 objProspecto.fechaRegistro = Variables.gdFechaSis;
+                objProspecto.lstVentasSeleccionadas = lstVentasSeleccionadas;
                 objProspecto.idTarifa = fnRetornarIdTarifa();
 
                 lcValidar = objAttrV.blGrabarProspectoPlan(objProspecto, tipoCon).Trim();
@@ -2407,7 +2622,7 @@ namespace wfaIntegradoCom.Mantenedores
                 objProspecto.fechaProxSeguimiento = FechaConHoraSigSeguimiento;
                 objProspecto.estadoCliente = Convert.ToString(cboEstadoSeguimiento.SelectedValue);
                 objProspecto.fechaRegistro = Convert.ToDateTime(dtpFechaRegSeguimiento.Value);
-
+                objProspecto.lstVentasSeleccionadas = lstVentasSeleccionadas;
                 lcValidar = objAttrV.blGrabarSeguimiento(objProspecto, tipoCon).Trim();
 
             }

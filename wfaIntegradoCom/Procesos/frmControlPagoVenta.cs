@@ -1919,9 +1919,9 @@ namespace wfaIntegradoCom.Procesos
                 lsDocVenta.Add(new DocumentoVenta
                 {
                     idCliente = clsCliente.idCliente,
-                    cCliente = FunGeneral.FormatearCadenaTitleCase(clsCliente.cNombre + " " + clsCliente.cApePat + " " + clsCliente.cApeMat),
+                    cCliente = clsCliente.cTiDo == 2 || clsCliente.cTiDo == 4 ? clsCliente.cApePat + " " + clsCliente.cApeMat + " " + clsCliente.cNombre : FunGeneral.FormatearCadenaTitleCase(clsCliente.cApePat + " " + clsCliente.cApeMat + " " + clsCliente.cNombre),
                     cTipoDoc = fnDevolverTipoDocPersona(clsCliente.cTiDo),
-                    cDireccion = /*cboComprobanteP.SelectedValue.ToString()!= "DOVE0002" ? */FunGeneral.FormatearCadenaTitleCase(clsCliente.cDireccion + ' ' + clsCliente.cContactoNom1)/*: FunGeneral.FormatearCadenaTitleCase(clsCliente.cDireccion)*/,
+                    cDireccion = clsCliente.cDireccion.ToString() != "-" ? FunGeneral.FormatearCadenaTitleCase(clsCliente.ubigeo) : clsCliente.cDireccion.ToString(),
                     cDocumento = clsCliente.cDocumento,
                     SimboloMoneda = clsMoneda.cSimbolo,
                     cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),

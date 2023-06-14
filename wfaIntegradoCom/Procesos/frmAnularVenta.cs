@@ -273,7 +273,7 @@ namespace wfaIntegradoCom.Procesos
                     if (EstadoAnulacion == false)
                     {
                         EmitirFactura env = new EmitirFactura();
-                        env.EmitirNotaCredito(clsCliente, stXmlDocumentoVenta[0].xmlDetalleVentas, clsDocumentoVentaEmitir);
+                        //env.EmitirNotaCredito(clsCliente, stXmlDocumentoVenta[0].xmlDetalleVentas, clsDocumentoVentaEmitir);
 
                         estadoOpe = objdocVenta.BLDAnularDocumentoVenta(codDocumento, idOperacion, stXmlDocumentoVenta, tipoCon);
 

@@ -68,13 +68,13 @@ namespace CapaNegocio
             }
 
         }
-        public List<DetalleVenta> blbuscarDetalleVenta(Int32 idTrandia)
+        public List<DetalleVenta> blbuscarDetalleVenta(Int32 idTrandia, Int32 idTipoTarifa)
         {
 
             DADocumentoVenta objDocVenta = new DADocumentoVenta();
             try
             {
-                return objDocVenta.daBuscarDetalleVenta(idTrandia);
+                return objDocVenta.daBuscarDetalleVenta(idTrandia, idTipoTarifa);
             }
             catch (Exception ex)
             {

@@ -76,6 +76,18 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public List<ReporteBloque> blBuscarVentasRealizadas(Busquedas rpt)
+        {
+            DAProspecto objPlan = new DAProspecto();
+            try
+            {
+                return objPlan.daBuscarVentasRealizadas(rpt);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public Prospecto blListarProspectoDataGrid(Int32 idPlan, Int32 pnTipoCon)
         {

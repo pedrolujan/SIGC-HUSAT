@@ -1458,7 +1458,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
 
             fnPreguntaQuienPaga(sender,e);
-            clsRespPago = clsCliente;
+            clsRespPago = clsRespPago.idCliente==0? clsCliente: clsRespPago;
             int idCliente = Convert.ToInt32(clsRespPago.cTiDo);
             lstDocumentoVentaEmitir=fnLlenarComprobante(cboComprobanteP, "DOVE", idCliente, 0);
             foreach(validacion item in lstValidacionRespPago)
@@ -1469,8 +1469,8 @@ namespace wfaIntegradoCom.Mantenedores
 
         private Boolean fnPreguntaQuienPaga(object sender, EventArgs e)
         {
+
             
-            btnLimpiarRP_Click(sender,e);
             if (rdbSi.Checked == true)
             {
                 gbResponsablePago.Enabled = false;
@@ -1480,6 +1480,7 @@ namespace wfaIntegradoCom.Mantenedores
             }
             else
             {
+                btnLimpiarRP_Click(sender, e);
                 gbResponsablePago.Enabled = true;
                 gbResponsablePago.Visible = true;
                 gbDinamico.Location = new Point(gbDinamico.Location.X, (gbResponsablePago.Location.Y+ gbResponsablePago.Height)+5);
@@ -4123,9 +4124,9 @@ namespace wfaIntegradoCom.Mantenedores
             lsDocVenta.Add(new DocumentoVenta
             {
                 idCliente = clsRespPago.idCliente,
-                cCliente = FunGeneral.FormatearCadenaTitleCase(clsRespPago.cApePat + " " + clsRespPago.cApeMat + " " + clsRespPago.cNombre),
+                cCliente = clsRespPago.cTiDo==2 || clsRespPago.cTiDo == 4?  (clsRespPago.cApePat + " " + clsRespPago.cApeMat + " " + clsRespPago.cNombre).Trim(): FunGeneral.FormatearCadenaTitleCase(clsRespPago.cApePat + " " + clsRespPago.cApeMat + " " + clsRespPago.cNombre),
                 cTipoDoc = fnDevolverTipoDocPersona(clsRespPago.cTiDo),
-                cDireccion = FunGeneral.FormatearCadenaTitleCase(clsRespPago.cDireccion),
+                cDireccion = clsRespPago.cDireccion.ToString()!="-"?FunGeneral.FormatearCadenaTitleCase(clsRespPago.ubigeo): clsRespPago.cDireccion.ToString(),
                 cDocumento = clsRespPago.cDocumento,
                 SimboloMoneda = clsMoneda.cSimbolo,
                 cCodDocumentoVenta = Convert.ToString(cboComprobanteP.SelectedValue),

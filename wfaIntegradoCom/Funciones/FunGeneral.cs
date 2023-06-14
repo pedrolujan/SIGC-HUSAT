@@ -509,12 +509,12 @@ namespace wfaIntegradoCom.Funciones
             }
             return Tuple.Create(estado, msg);
         }
-        public static List<DetalleVenta> fnObtenerDetalleVenta(Int32 idTrandiaria)
+        public static List<DetalleVenta> fnObtenerDetalleVenta(Int32 idTrandiaria,Int32 idTipoTarifa)
         {
             BLDocumentoVenta bLDocumentoVenta = new BLDocumentoVenta();
             try
             {
-                return bLDocumentoVenta.blbuscarDetalleVenta(idTrandiaria);
+                return bLDocumentoVenta.blbuscarDetalleVenta(idTrandiaria, idTipoTarifa);
 
             }
             catch (Exception ex)

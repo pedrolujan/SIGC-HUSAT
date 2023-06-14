@@ -545,7 +545,7 @@ namespace CapaDato
 
 
                 objCnx = new clsConexion("");
-                //objCnx.EjecutarProcedimientoDT("uspGuardarPagosPendientes", pa);
+                objCnx.EjecutarProcedimientoDT("uspGuardarPagosPendientes", pa);
                 return true;
             }
             catch (Exception ex)
@@ -806,6 +806,7 @@ namespace CapaDato
                         clsRespPago.cTelFijo = Convert.ToString(dtVentaG.Rows[0][47]);
                         clsRespPago.cTelCelular = Convert.ToString(dtVentaG.Rows[0][48]);
                         clsRespPago.cDireccion = Convert.ToString(dtVentaG.Rows[0][49]);
+                        clsRespPago.ubigeo = Convert.ToString(dtVentaG.Rows[0][50]);
 
                         lstVehiculo.Add(new Vehiculo
                         {

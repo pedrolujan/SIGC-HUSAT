@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace CapaEntidad
 {
@@ -238,6 +239,7 @@ namespace CapaEntidad
         String _nombreUsuario;
         public String nombreUsuario { get { return _nombreUsuario; } set { _nombreUsuario = value; } }
         public Int32 idTarifa { get; set; }
+        public List<ReporteBloque> lstVentasSeleccionadas = new List<ReporteBloque>();
     }
 
     public class Seguimiento
@@ -266,6 +268,7 @@ namespace CapaEntidad
         public String estadoCliente { get { return _estadoCliente; } set { _estadoCliente = value; } }
 
 
+        public List<ReporteBloque> lstVentasSeleccionadas = new List<ReporteBloque>();
     }
 
     public class totalRanking

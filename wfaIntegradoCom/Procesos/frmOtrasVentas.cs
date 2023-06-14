@@ -1607,12 +1607,12 @@ namespace wfaIntegradoCom.Procesos
                     else if (e.ColumnIndex == 5)
                     {
                         Int32 idTipoDescuento = Convert.ToInt32(cboTipoDescuento.SelectedValue);
-                        if (Convert.ToInt32(filaSeleccionada.Value)>0)
+                        if (Convert.ToDecimal(filaSeleccionada.Value)>0)
                         {
                             Decimal presioNeto = lstOtrasVentas[filaIndice].unidades * lstOtrasVentas[filaIndice].precioUnico;
                             if (idTipoDescuento == 1)
                             {
-                                if (Convert.ToInt32(filaSeleccionada.Value) > 100)
+                                if (Convert.ToDecimal(filaSeleccionada.Value) > 100)
                                 {
                                     rowss.Cells[5].Style.BackColor = Color.Red;
                                     fnAlertas("Es descuento no puede ser mayor al 100%","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
@@ -1902,6 +1902,25 @@ namespace wfaIntegradoCom.Procesos
                     mtoValorVentaItem = (Convert.ToDecimal(lstOtrasVentas[i].precioUnico) * 1),
                     Unidad_de_medida = "ZZ",
 
+
+                    //IdDetalleVenta = dcr.idDetalleCronograma,
+                    //Numeracion = 1 + y,
+                    //Descripcion = "Cuota " + dcr.periodoFinal.ToString("MMMM  yyyy") + dato,
+                    //idTipoTarifa = dcr.ClaseTarifa.IdTarifa,
+                    //PrecioUni = dcr.precioUnitario,
+                    //Descuento = dcr.descuento,
+                    //TotalTipoDescuento = dcr.descuentoPrecio,
+                    //IdTipoDescuento = Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue),
+                    //Cantidad = 1,
+                    //Couta = 0,
+                    //importeRestante = dcr.total,
+                    //Importe = dcr.total,
+                    //cSimbolo = clsMoneda.cSimbolo,
+                    //preciounitario = Convert.ToDecimal(dcr.precioUnitario),
+                    //ImporteRow = (Convert.ToDecimal(dcr.total) * 1),
+                    //mtoValorVentaItem = (Convert.ToDecimal(dcr.total) * 1),
+
+
                 }) ;
 
             }
@@ -1929,9 +1948,9 @@ namespace wfaIntegradoCom.Procesos
             lsDocVenta.Add(new DocumentoVenta
             {
                 idCliente = clsClienteDocumentoV.idCliente,
-                cCliente = FunGeneral.FormatearCadenaTitleCase(clsClienteDocumentoV.cNombre + " " + clsClienteDocumentoV.cApePat + " " + clsClienteDocumentoV.cApeMat),
+                cCliente = clsClienteDocumentoV.cTiDo == 2 && clsClienteDocumentoV.cTiDo == 4 ? clsClienteDocumentoV.cApePat + " " + clsClienteDocumentoV.cApeMat + " " + clsClienteDocumentoV.cNombre : FunGeneral.FormatearCadenaTitleCase(clsClienteDocumentoV.cApePat + " " + clsClienteDocumentoV.cApeMat + " " + clsClienteDocumentoV.cNombre),
                 cTipoDoc = clsClienteDocumentoV.cTipoDoc,
-                cDireccion = FunGeneral.FormatearCadenaTitleCase(clsClienteDocumentoV.cDireccion),
+                cDireccion = clsClienteDocumentoV.cDireccion.ToString () != "-" ? FunGeneral.FormatearCadenaTitleCase(clsClienteDocumentoV.ubigeo) : clsClienteDocumentoV.cDireccion.ToString(),
                 cDocumento = clsClienteDocumentoV.cDocumento,
                 SimboloMoneda = Mon.cSimbolo,
                 cCodDocumentoVenta = Convert.ToString(cboTipoDocEmitir.SelectedValue),

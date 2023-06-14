@@ -929,7 +929,7 @@ namespace wfaIntegradoCom.Sunat
                 binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
                 binding.Security.Message.AlgorithmSuite = System.ServiceModel.Security.SecurityAlgorithmSuite.Default;
 
-                if (Variables.cNombreServidor == "365.database.windows.net")
+                if (Variables.cNombreServidor != "365.database.windows.net")
                 {
                     remoteAddress = new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
 
@@ -943,7 +943,7 @@ namespace wfaIntegradoCom.Sunat
                 ServicePointManager.UseNagleAlgorithm = true;
                 ServicePointManager.Expect100Continue = false;
                 ServicePointManager.CheckCertificateRevocationList = true;
-                if (Variables.cNombreServidor == "365.database.windows.net")
+                if (Variables.cNombreServidor != "365.database.windows.net")
                 {
                     servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
                     servicio.ClientCredentials.UserName.Password = "MODDATOS";

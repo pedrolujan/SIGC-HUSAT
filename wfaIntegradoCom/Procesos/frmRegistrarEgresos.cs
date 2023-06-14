@@ -171,14 +171,14 @@ namespace wfaIntegradoCom.Procesos
             else 
             {
 
-                //if (Convert.ToDouble(str)>lstDetalleIngresosLimpio.Sum(i=>i.ImporteRow) && txt.Name!= "txtImporte2")
-                //{
-                //    lbl.Text = "El Egreso no puede ser mayor al importe disponible de la Fuente";
-                //    pb.Image = Properties.Resources.enojo;
-                //    txt.BorderColor = Variables.ColorError;
-                //    estado = false;
-                //}
-                //else
+                if (Convert.ToDecimal(str) > lstDetalleIngresosLimpio.Sum(i => i.ImporteRow) && txt.Name != "txtImporte2")
+                {
+                    lbl.Text = "El Egreso no puede ser mayor al importe disponible de la Fuente";
+                    pb.Image = Properties.Resources.enojo;
+                    txt.BorderColor = Variables.ColorError;
+                    estado = false;
+                }
+                else
                 {
                     lbl.Text = "";
                     pb.Image = Properties.Resources.ok;
@@ -192,16 +192,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void txtPlacaVehiculo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            NumberFormatInfo nfi = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
 
-            char decSeperator;
-
-            decSeperator = nfi.CurrencyDecimalSeparator[0];
-
-            if (!char.IsControl(e.KeyChar) && !(char.IsDigit(e.KeyChar) | e.KeyChar == decSeperator))
-            {
-                e.Handled = true;
-            }
         }
 
         private void txtPlacaVehiculo_Leave(object sender, EventArgs e)

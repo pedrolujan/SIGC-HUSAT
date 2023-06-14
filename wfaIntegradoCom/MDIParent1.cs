@@ -2925,10 +2925,10 @@ namespace wfaIntegradoCom
             Int32 filas = 10;
 
             var result = bl.blBuscarDashBoard(clsBusq);
-            lsReporteBloque = result.Item2;
+            lsReporteBloque = result.Item1;
             lsReporteBloqueEgresos = fnBuscarEgresos(0,0);
             
-            lstCajaChica = result.Item4;
+            lstCajaChica = result.Item2;
             fnGenerarPanelsIndividuales(lstCajaChica, FWpnCajaChicaCopias, "pnCCh");
             fnPosicionarAlCentrocajas(FWpnCajaChicaCopias, siticonePanel3);
             fnGenerarPaneles(FunGeneral.fnBuscarCajasDashboard(-1));
