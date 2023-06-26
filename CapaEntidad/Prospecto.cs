@@ -168,6 +168,7 @@ namespace CapaEntidad
         public Decimal numPorcentaje { get; set; }
         public String nombrePorcentaje { get; set; }
         public Decimal numPorcentajeTotales { get; set; }
+        public DateTime dtFecha { get; set; }
 
 
     }

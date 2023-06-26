@@ -424,15 +424,15 @@ namespace wfaIntegradoCom.Procesos
                 case "TEGR0001":
                     for (int i = 0; i < lstDetalleIngresos.Count; i++)
                     {
-                        //if (lstDetalleIngresos[i].idOperacion==14 || lstDetalleIngresos[i].idOperacion == 16)
-                        //{
+                        if (lstDetalleIngresos[i].idOperacion == 14 || lstDetalleIngresos[i].idOperacion == 16)
+                        {
 
-                        //}
-                        //else
-                        //{
+                        }
+                        else
+                        {
                             lstDetalleIngresosLimpio.Add(lstDetalleIngresos[i]);
-                        //}
-                        
+                        }
+
                     }
                     for (int i = 0; i < Variables.lstCuardreCaja.Count; i++)
                     {
@@ -441,13 +441,13 @@ namespace wfaIntegradoCom.Procesos
                             ImporteRow= Variables.lstCuardreCaja[i].importeSaldo
                         });
                     }
-                    for (int i = 0; i < lstCajaChica.Count; i++)
-                    {
-                        lstDetalleIngresosLimpio.Add(new ReporteBloque
-                        {
-                            ImporteRow = (lstCajaChica[i].ImporteRow*-1)
-                        });
-                    }
+                    //for (int i = 0; i < lstCajaChica.Count; i++)
+                    //{
+                    //    lstDetalleIngresosLimpio.Add(new ReporteBloque
+                    //    {
+                    //        ImporteRow = (lstCajaChica[i].ImporteRow*-1)
+                    //    });
+                    //}
                     for (int i = 0; i < lstDetalleEgresos.Count; i++)
                     {
                         if (lstDetalleEgresos[i].Codigoreporte== "TEGR0001")
@@ -476,18 +476,18 @@ namespace wfaIntegradoCom.Procesos
                         
 
                     }
-                    for (int i = 0; i < lstDetalleEgresos.Count; i++)
-                    {
-                        if (lstDetalleEgresos[i].Codigoreporte == "TEGR0002")
-                        {
-                            lstDetalleIngresosLimpio.Add(new ReporteBloque
-                            {
-                                ImporteRow = (lstDetalleEgresos[i].ImporteRow * -1)
-                            });
+                    //for (int i = 0; i < lstDetalleEgresos.Count; i++)
+                    //{
+                    //    if (lstDetalleEgresos[i].Codigoreporte == "TEGR0002")
+                    //    {
+                    //        lstDetalleIngresosLimpio.Add(new ReporteBloque
+                    //        {
+                    //            ImporteRow = (lstDetalleEgresos[i].ImporteRow * -1)
+                    //        });
 
-                        }
+                    //    }
 
-                    }
+                    //}
                     strImporte =lstDetalleIngresosLimpio.Count>0? FunGeneral.fnFormatearPrecioDC(lstDetalleIngresosLimpio[0].idMoneda == 1 ? "S/." : "$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
 
                     break;
@@ -501,18 +501,18 @@ namespace wfaIntegradoCom.Procesos
 
                     }
 
-                    for (int i = 0; i < lstDetalleEgresos.Count; i++)
-                    {
-                        if (lstDetalleEgresos[i].Codigoreporte == "TEGR0003")
-                        {
-                            lstDetalleIngresosLimpio.Add(new ReporteBloque
-                            {
-                                ImporteRow = (lstDetalleEgresos[i].ImporteRow * -1)
-                            });
+                    //for (int i = 0; i < lstDetalleEgresos.Count; i++)
+                    //{
+                    //    if (lstDetalleEgresos[i].Codigoreporte == "TEGR0003")
+                    //    {
+                    //        lstDetalleIngresosLimpio.Add(new ReporteBloque
+                    //        {
+                    //            ImporteRow = (lstDetalleEgresos[i].ImporteRow * -1)
+                    //        });
 
-                        }
+                    //    }
 
-                    }
+                    //}
                     strImporte =lstDetalleIngresosLimpio.Count>0? FunGeneral.fnFormatearPrecioDC(lstDetalleIngresosLimpio[0].idMoneda == 1 ? "S/." : "$.", lstDetalleIngresosLimpio.Sum(i => i.ImporteRow), 0): FunGeneral.fnFormatearPrecio("S/.", 0, 0);
 
                     break;

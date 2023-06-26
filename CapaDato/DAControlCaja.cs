@@ -126,7 +126,7 @@ namespace CapaDato
                 if (clsBusq.cod1.Length>5)
                 {
                     //DataView dvDasboard = new DataView(dtMenu.Tables[0]);
-                    DataView dvParatablas = new DataView(dtMenu.Tables[2]);
+                    DataView dvParatablas = new DataView(dtMenu.Tables[1]);
 
                     //foreach (DataRowView dr in dvDasboard)
                     //{

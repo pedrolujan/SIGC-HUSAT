@@ -219,6 +219,111 @@ namespace CapaDato
             }
 
         }
+        public Tuple< List<Reporte>, List<Reporte>> daBuscarReporteComisiones(Busquedas cls)
+        {
+            SqlParameter[] pa = new SqlParameter[7];
+            DataSet ds = new DataSet();
+            DataTable dtRep1 = new DataTable();
+            DataTable dtRep2 = new DataTable();
+            
+            clsConexion objCnx = null;
+            List<Reporte> lst = new List<Reporte>();
+            List<Reporte> lst2 = new List<Reporte>();
+            objUtil = new clsUtil();
+
+            try
+            {
+                pa[0] = new SqlParameter("@peHabilitarFechas", SqlDbType.TinyInt) { Value = cls.chkActivarFechas };
+                pa[1] = new SqlParameter("@peFechaInical", SqlDbType.Date) { Value = cls.dtFechaIni };
+                pa[2] = new SqlParameter("@peFechaFinal", SqlDbType.Date) { Value = cls.dtFechaFin };
+                pa[3] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 15) { Value = cls.cBuscar };
+                pa[4] = new SqlParameter("@tipoContrato", SqlDbType.Int) { Value = cls.cod1 };
+                pa[5] = new SqlParameter("@idPlan", SqlDbType.Int) { Value = cls.cod2 };
+                pa[6] = new SqlParameter("@idUsuario", SqlDbType.Int) { Value = cls.idUsuario };
+                objCnx = new clsConexion("");
+
+                ds = objCnx.EjecutarProcedimientoDS("uspBuscarReporteComisiones", pa);
+
+                dtRep1 = ds.Tables[0];
+                dtRep2 = ds.Tables[1];
+                Int32 y = 0;
+                Int32 sumColumn = 0;
+                foreach (DataRow dt in dtRep1.Rows)
+                {
+                    
+                    lst.Add(new Reporte
+                    {
+                        numero = y + 1,
+                        nombreAux1= dt["cUser"].ToString(),
+                        nombreAux2 = dt["cTipoPlan"].ToString(),
+                        nombreAux3 = dt["cPlan"].ToString(),
+                        ImporteAux3 = Convert.ToDouble(dt["ImporteTotal"]),
+                        ImporteAux4 = Convert.ToDouble(dt["ImportePagado"]),
+                        ImporteAux5 = Convert.ToDouble(dt["importeDescontado"]),
+                        ImporteAux6 = Convert.ToDouble(dt["ImporteTotalSinIgv"]),
+                        ImporteAux7 = Convert.ToDouble(dt["ImportePagadoSinIgv"]),
+                        ImporteAux8 = Convert.ToDouble(dt["importeComision"]),
+                        ImporteAux9 = Convert.ToDouble(dt["importeIgv"]),
+
+
+                    }) ;
+
+                  
+                        y++;
+                }
+                y = 0;
+                Double numTotal = 0;
+                foreach (DataRow dt in dtRep2.Rows)
+                {
+                    numTotal += (Convert.ToInt32(dt["Anual"].ToString()) + Convert.ToInt32(dt["Mensual"].ToString()));
+                    
+                }
+                Double contador= 0;
+                foreach (DataRow dt in dtRep2.Rows)
+                {
+                    contador = (Convert.ToInt32(dt["Anual"].ToString()) + Convert.ToInt32(dt["Mensual"].ToString()));
+                    Double porcentaje = (contador / numTotal) * 100;
+                    lst2.Add(new Reporte
+                    {
+                        
+                        numero = y + 1,
+                        nombreAux1 = dt["Usuario"].ToString(),
+                        nombreAux2 = dt["Anual"].ToString(),
+                        nombreAux3 = dt["Mensual"].ToString(),
+                        ImporteAux3 = Convert.ToDouble(dt["ImporteTotal"]),
+                        indiceCrecimientoRowGraficos = porcentaje
+
+
+                    }) ;
+
+                    y++;
+                }
+
+
+                //for (int i = 0; i < lst.Count; i++)
+                //{
+                //    double indica = (double)Convert.ToInt32(lst[i].coddAux6) * 100;
+                //    indica = Double.IsInfinity(indica) ? 0 : indica;
+
+                //    lst[i].indicadorDes = decimal.Round(SumRowPago !=0?Convert.ToDecimal(indica) / lst[0].SumRowsAux6:0,2);
+                //    lst[i].nombreIndicador = decimal.Round(lst[i].indicadorDes,2) + "%";
+                //}
+                return Tuple.Create(lst,lst2);
+
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
         public List<Reporte> daBuscarReporteRenovaciones(Busquedas cls)        
         {
             SqlParameter[] pa = new SqlParameter[9];

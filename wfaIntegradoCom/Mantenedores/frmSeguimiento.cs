@@ -2293,7 +2293,7 @@ namespace wfaIntegradoCom.Mantenedores
                 lstMarcaV = null;
             }
         }
-        private Boolean fnLLenarPlanxTipoPlan(SiticoneComboBox cbo, Boolean buscar, Int16 tipoCon, Int32 idTipoPlan)
+        public Boolean fnLLenarPlanxTipoPlan(SiticoneComboBox cbo, Boolean buscar, Int16 tipoCon, Int32 idTipoPlan)
         {
             BLPlan objMarcaV = new BLPlan();
             clsUtil objUtil = new clsUtil();
@@ -2349,7 +2349,7 @@ namespace wfaIntegradoCom.Mantenedores
             msjClase = result.Item2;
         }
 
-        private Boolean fnLlenarTipoPlan(Int32 idTipoPlan, SiticoneComboBox cbo, Int32 tipBusqueda)
+        public void fnLlenarTipoPlan(Int32 idTipoPlan, SiticoneComboBox cbo, Int32 tipBusqueda)
         {
             BLTipoPlan objTipPlan = new BLTipoPlan();
             clsUtil objUtil = new clsUtil();
@@ -2358,18 +2358,15 @@ namespace wfaIntegradoCom.Mantenedores
             try
             {
                 lstTipPlan = objTipPlan.blDevolverTipoPlan(idTipoPlan, tipBusqueda);
-
                 cbo.ValueMember = "idTipoPlan";
                 cbo.DisplayMember = "nombreTipoPlan";
                 cbo.DataSource = lstTipPlan;
                 lstTipoPlan = lstTipPlan;
 
-                return true;
             }
             catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("FrmRegistrarCliente", "fnLlenarDepartamento", ex.Message);
-                return false;
             }
 
         }

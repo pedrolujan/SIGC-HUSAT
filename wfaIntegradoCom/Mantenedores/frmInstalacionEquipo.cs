@@ -981,7 +981,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void txtNomMarModEquipo_TextChanged(object sender, EventArgs e)
         {
-            var Result = FunValidaciones.fnValidarTexboxs(txtNomMarModEquipo, lbltextequipo, pbtextequipo, true, true, true, 5, 50, 50, 70, "LLENE TODOS LOS CAMPOS");
+            var Result = FunValidaciones.fnValidarTexboxs(txtNomMarModEquipo, lbltextequipo, pbtextequipo, true, true, true, 5, 100, 100, 100, "LLENE TODOS LOS CAMPOS");
             estEquipo = Result.Item1;
             msjEquipo = Result.Item2;
         }

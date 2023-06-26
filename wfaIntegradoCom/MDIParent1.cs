@@ -560,7 +560,7 @@ namespace wfaIntegradoCom
             
 
             try
-                {
+            {
                 login();
                 FunGeneral.fnLlenarCboSegunTablaTipoCon(cboFiltraIngresos, "idOperacion", "cNombreOperacion", "OperacionHusat", "cTipoOpe", "4", true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboTipoPago, "TIPA", true);

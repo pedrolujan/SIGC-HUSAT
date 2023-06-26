@@ -2045,7 +2045,7 @@ namespace wfaIntegradoCom.Mantenedores
             if (bEstadoCronogramaSeleccionado==true && clsPlanActual.CicloPlan!=Convert.ToInt32(cboCicloP.SelectedValue))
             {
 
-                prorrateo = DetalleVentaCabecera.fnCalcularProrrateo(rentaAdelantada, ciclo, clsCuotaCronogramaAnterior.periodoFinal);
+                prorrateo = DetalleVentaCabecera.fnCalcularProrrateo(rentaAdelantada, ciclo, lnTipoCon == -2 ? fechaActual : clsCuotaCronogramaAnterior.periodoFinal);
             }
             else if(chkCambiarDatosDelServicio.Checked == true && clsPlanActual.CicloPlan != Convert.ToInt32(cboCicloP.SelectedValue))
             {

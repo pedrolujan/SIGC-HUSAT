@@ -496,7 +496,9 @@ namespace wfaIntegradoCom.Sunat
 
                 //Restar el valor del descuento al precio unitario del producto:
                 Decimal resta = detalle.preciounitario - detalle.importeRestante;
+                //Importe Total sin descuentos. sin igv
                 decimal precio_unitario_Sin_Igv = resta==0? detalle.preciounitario / 1.18m :(detalle.preciounitario) / 1.18m;
+                //Precio que se deba pagar
                 decimal precio_unitario_descuento = resta == 0 ? detalle.preciounitario -descuento:(detalle.preciounitario) - descuento;
 
                 //Calcular el valor del precio unitario sin el IGV:
@@ -551,9 +553,10 @@ namespace wfaIntegradoCom.Sunat
                 ChargeIndicatorType chargeIndicatorType = new ChargeIndicatorType();
                 chargeIndicatorType.Value = false;
                 MultiplierFactorNumericType multiplierFactorNumericType = new MultiplierFactorNumericType();
-                multiplierFactorNumericType.Value = detalle.IdTipoDescuento==2? Math.Round(Convert.ToDecimal(detalle.TotalTipoDescuento)/detalle.preciounitario,2): Math.Round((Convert.ToDecimal(detalle.Descuento) / 100),2);
+                multiplierFactorNumericType.Value = detalle.IdTipoDescuento==2? Math.Round(Convert.ToDecimal(detalle.TotalTipoDescuento)/detalle.preciounitario,3): Math.Round((Convert.ToDecimal(detalle.Descuento) / 100),2);
                 BaseAmountType baseAmountType = new BaseAmountType();
                 baseAmountType.currencyID = "PEN";
+                //Al precio original sin igv
                 baseAmountType.Value = Math.Round(Convert.ToDecimal(precio_unitario_Sin_Igv),2);
                 AmountType2 amountType = new AmountType2();
                 amountType.currencyID = "PEN";
@@ -951,8 +954,9 @@ namespace wfaIntegradoCom.Sunat
                 else
                 {
 
-                    servicio.ClientCredentials.UserName.UserName = "20602404863FACTURAS";
-                    servicio.ClientCredentials.UserName.Password = "Mihusat1";
+                    servicio.ClientCredentials.UserName.UserName = "20602404863FACTSIGC";
+                    servicio.ClientCredentials.UserName.Password = "MiHus@t1";
+                    //servicio.ClientCredentials.UserName.Password = "Mihusat1";
                 }
 
 

@@ -996,7 +996,7 @@ namespace wfaIntegradoCom.Procesos
                 clsCliente.cApeMat = dtResult.Rows[0][7].ToString();
                 clsCliente.cNombre = dtResult.Rows[0][8].ToString();
                 clsCliente.cDireccion = dtResult.Rows[0][9].ToString();
-                clsCliente.cContactoNom1 = dtResult.Rows[0][10].ToString();
+                clsCliente.ubigeo = dtResult.Rows[0][10].ToString();
                 clsCliente.cTiDo = Convert.ToInt32(dtResult.Rows[0][11]);
                 clsCliente.cDocumento = Convert.ToString(dtResult.Rows[0][13]);
                 clsCliente.TiDocumentoSunat=dtResult.Rows[0][35].ToString();
@@ -1543,8 +1543,8 @@ namespace wfaIntegradoCom.Procesos
                 cSimbolo = clsMoneda.cSimbolo,
 
                 preciounitario = Convert.ToDecimal(lstDetalleCronograma[fila].precioUnitario),
-                ImporteRow = (Convert.ToDecimal(lstDetalleCronograma[fila].total) * 1),
-                mtoValorVentaItem= (Convert.ToDecimal(lstDetalleCronograma[fila].total) * 1),
+                ImporteRow = (Convert.ToDecimal(lstDetalleCronograma[fila].precioUnitario) * 1),
+                mtoValorVentaItem= (Convert.ToDecimal(lstDetalleCronograma[fila].precioUnitario) * 1),
                 Unidad_de_medida = "ZZ"
 
 
@@ -1616,8 +1616,8 @@ namespace wfaIntegradoCom.Procesos
                     Importe = dcr.total,
                     cSimbolo = clsMoneda.cSimbolo,
                     preciounitario = Convert.ToDecimal(dcr.precioUnitario),
-                    ImporteRow = (Convert.ToDecimal(dcr.total) * 1),
-                    mtoValorVentaItem = (Convert.ToDecimal(dcr.total) * 1),
+                    ImporteRow = (Convert.ToDecimal(dcr.precioUnitario) * 1),
+                    mtoValorVentaItem = (Convert.ToDecimal(dcr.precioUnitario) * 1),
 
                     Unidad_de_medida = "ZZ"
                 });

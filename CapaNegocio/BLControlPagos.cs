@@ -37,6 +37,18 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public Tuple<List<Reporte>, List<Reporte>> blBuscarReporteComisiones(Busquedas cls)
+        {
+            objControlPagos = new DAControlPagos();
+            try
+            {
+                return objControlPagos.daBuscarReporteComisiones(cls);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<Reporte> blBuscarReporteRenovaciones(Busquedas cls)
         {
             objControlPagos = new DAControlPagos();

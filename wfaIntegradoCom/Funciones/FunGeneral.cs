@@ -19,6 +19,8 @@ using System.Text.RegularExpressions;
 using Microsoft.Reporting.WinForms;
 using RJCodeAdvance.RJControls;
 using System.IO;
+using CapaDato;
+using System.Data;
 
 namespace wfaIntegradoCom.Funciones
 {
@@ -774,6 +776,35 @@ namespace wfaIntegradoCom.Funciones
 
         }
 
+        public static void fnLlenarUsuariosConAccion(SiticoneComboBox cbo, Boolean chk, DateTime dtIni, DateTime dtFin, Boolean estado,int tipoCon)
+        {
+            DAControlCaja dc = new DAControlCaja();
+            List<Usuario> lstUsuario = new List<Usuario>();
+            DataTable dt = new DataTable();
+            String FI = FunGeneral.GetFechaHoraFormato(dtIni, 5);
+            String FF = FunGeneral.GetFechaHoraFormato(dtFin, 5);
+
+            dt = dc.daDevolverSoloUsuario(chk, FI, FF, tipoCon);
+
+            lstUsuario.Add(new Usuario(
+                Convert.ToInt32(0),
+                Convert.ToString(estado ? "TODOS" : "Selecc. Usuario")
+              ));
+
+            foreach (DataRow drMenu in dt.Rows)
+            {
+                lstUsuario.Add(new Usuario(
+                    Convert.ToInt32(drMenu["idUsuario"]),
+                    Convert.ToString(drMenu["cUser"])
+                    ));
+            }
+            cbo.ValueMember = "idUsuario";
+            cbo.DisplayMember = "cUser";
+            cbo.DataSource = lstUsuario;
+            cbo.SelectedValue = Variables.gsCargoUsuario != "PETR0006" ? 0 : Variables.gnCodUser;
+
+
+        }
         public static Boolean fnLlenarTablaCodValor(ComboBox cboCombo, String cCodTab)
         {
             BLCargo objTablaCod = new BLCargo();

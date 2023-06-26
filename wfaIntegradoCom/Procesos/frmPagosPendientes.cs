@@ -110,7 +110,7 @@ namespace wfaIntegradoCom.Procesos
                 lsDetalleVentaRecibidoParaEnviarASunat[y].Couta = lstDetalleParaSunat[y].Couta;
 
                 lsDetalleVentaRecibidoParaEnviarASunat[y].Importe = importeParaDocumentoReal;//lsDetalleVenta[y].Importe;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].importeRestante = (lstDetalleParaSunat[y].preciounitario - importeParaDocumentoReal)- ImporteARestar;
+                lsDetalleVentaRecibidoParaEnviarASunat[y].importeRestante = (lstDetalleParaSunat[y].preciounitario - importeParaDocumentoReal);
                 lsDetalleVentaRecibidoParaEnviarASunat[y].ImporteActicipo = importeParaDocumentoReal;//lsDetalleVenta[y].Importe;
                 lsDetalleVentaRecibidoParaEnviarASunat[y].cSimbolo = lstDetalleParaSunat[y].cSimbolo;
 

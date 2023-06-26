@@ -904,6 +904,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmReporteComisiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmReporteComisiones.Designer.cs">
+      <DependentUpon>frmReporteComisiones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frmReportes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -921,11 +927,15 @@
     <Compile Include="Sunat\Envios.cs" />
     <Compile Include="Sunat\Formatos.cs" />
     <Compile Include="Sunat\NotaCredito.cs" />
+    <EmbeddedResource Include="Consultas\reporteComisiones.rdlc" />
     <EmbeddedResource Include="Mantenedores\frmConfiguracionDocumentoVenta.resx">
       <DependentUpon>frmConfiguracionDocumentoVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\frmBuscarAnticipos.resx">
       <DependentUpon>frmBuscarAnticipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmReporteComisiones.resx">
+      <DependentUpon>frmReporteComisiones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sunat\MovimientoSunat.resx">
       <DependentUpon>MovimientoSunat.cs</DependentUpon>
