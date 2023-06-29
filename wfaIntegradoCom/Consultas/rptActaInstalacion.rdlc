@@ -3116,7 +3116,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=iif(Parameters!prTipoActa.Value="1","x","")</Value>
+                        <Value>=iif(Parameters!prTipoActa.Value="ESIN0001","x","")</Value>
                         <Style>
                           <FontSize>6pt</FontSize>
                         </Style>
@@ -3181,7 +3181,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=iif(Parameters!prTipoActa.Value="2","X","")</Value>
+                        <Value>=iif(Parameters!prTipoActa.Value="ESIN0002","X","")</Value>
                         <Style>
                           <FontSize>7pt</FontSize>
                         </Style>
@@ -3247,7 +3247,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=iif(Parameters!prTipoActa.Value="3","X","")</Value>
+                        <Value>=iif(Parameters!prTipoActa.Value="ESIN0003","X","")</Value>
                         <Style>
                           <FontSize>7pt</FontSize>
                         </Style>
@@ -3343,7 +3343,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=iif(Parameters!prTipoActa.Value="4","X","")</Value>
+                        <Value>=iif(Parameters!prTipoActa.Value="ESIN0004","X","")</Value>
                         <Style>
                           <FontSize>7pt</FontSize>
                         </Style>

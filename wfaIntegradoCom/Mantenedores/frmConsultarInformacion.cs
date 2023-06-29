@@ -31,11 +31,9 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 totalResultados;
             try
             {
-                DateTime fechaInicio = fnCalcularSoloFecha(dtHFechaInicio.Value);
-                DateTime fechaFinal = fnCalcularSoloFecha(dtHfechaFinal.Value).AddDays(1);
-                HabilitarFechas = Convert.ToBoolean(chkHabilitarFechas.Checked);
+                
                 dgConsultas.Rows.Clear();
-                datEquipo = objSimCard.blBuscarHistorialSimCard(txtBuscar.Text.ToString(), HabilitarFechas, fechaInicio, fechaFinal, Condicion);
+                datEquipo = objSimCard.blBuscarHistorialSimCard(txtBuscar.Text.ToString(),  Condicion);
 
                 //FunValidaciones.fnMostrarCantidadBusquedas(btnContadorRegistros, lblCantRegistros, datEquipo.Rows.Count, true, "Cantidad de registros");
                 totalResultados = Convert.ToInt32(datEquipo.Rows.Count);
@@ -90,12 +88,8 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 Condicion = 0;
             if (e.KeyChar == (Char)Keys.Enter)
             {
-                if (rbSimCard.Checked == true) { Condicion = 0; }else
-                if (rbImei.Checked==true) { Condicion = 1; }else
-                if (rbCliente.Checked==true) { Condicion = 2; }else
-                if (rbVehiculo.Checked==true) { Condicion = 3; }
 
-                fnBuscarConsultas(Condicion);
+                fnBuscarConsultas(0);
 
             }
         }
@@ -105,14 +99,14 @@ namespace wfaIntegradoCom.Mantenedores
             lbl.Visible = estLabel;
             lbl.Text = sms;
         }
-        private Boolean fnListarDatosEspecificos(DataGridViewCellEventArgs e,Int32 tipoCon)
+        private Boolean fnListarDatosEspecificos(Int32 idContrato,Int32 tipoCon)
         {
             BLConsultas objSimCard = new BLConsultas();
             clsUtil objUtil = new clsUtil();
             DataTable datosActualesSimCard = new DataTable();
             try
             {
-                datosActualesSimCard = objSimCard.blBuscarDatosEspecificos(Convert.ToInt32(dgConsultas.Rows[e.RowIndex].Cells[0].Value),tipoCon);
+                datosActualesSimCard = objSimCard.blBuscarDatosEspecificos(idContrato, tipoCon);
 
                 if (datosActualesSimCard.Rows.Count > 0)
                 {
@@ -205,16 +199,11 @@ namespace wfaIntegradoCom.Mantenedores
         }
         private void dgConsultas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Int32 Condicion=0 ;
-                if (rbSimCard.Checked == true) { Condicion = 0; }
-                else
-                if (rbImei.Checked == true) { Condicion = 1; }
-                else
-                if (rbCliente.Checked == true) { Condicion = 2; }
-                else
-                if (rbVehiculo.Checked == true) { Condicion = 3; }
-          
-            fnListarDatosEspecificos(e,Condicion);
+            Int32 Condicion = 0;
+
+            Int32 idContrato = Convert.ToInt32(dgConsultas.Rows[e.RowIndex].Cells[0].Value);
+
+            fnListarDatosEspecificos(idContrato, Condicion);
         }
 
         private void DotNetDatosSimCard_SelectedIndexChanged(object sender, EventArgs e)
@@ -222,20 +211,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private void chkHabilitarFechas_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkHabilitarFechas.Checked==true) 
-            {
-                dtHFechaInicio.Enabled = true;
-                dtHfechaFinal.Enabled = true;
-            }
-            else
-            {
-                dtHFechaInicio.Enabled = false;
-                dtHfechaFinal.Enabled = false;
-            }
-        }
-
+        
         private void frmConsultarInformacion_Load(object sender, EventArgs e)
         {
             FunValidaciones.fnColorBotonEspecifico(btnNuevoHistorial);
@@ -439,21 +415,8 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-           Int32 Condicion = 0;
-           
-            
-                if (rbSimCard.Checked == true) { Condicion = 0; }
-                else
-                if (rbImei.Checked == true) { Condicion = 1; }
-                else
-                if (rbCliente.Checked == true) { Condicion = 2; }
-                else
-                if (rbVehiculo.Checked == true) { Condicion = 3; }
-
-                fnBuscarConsultas(Condicion);
-
-            
-
+            Int32 Condicion = 0;
+            fnBuscarConsultas(Condicion);
         }
         private void OcultarBotones(Boolean estad)
         {

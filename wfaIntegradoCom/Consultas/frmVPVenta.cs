@@ -105,8 +105,8 @@ namespace wfaIntegradoCom.Consultas
             }
             if (lnTipoCon == -5)
             {
-                label1.Text = "¿Desea finalizar el pago de la cuota?";
-                btnGenerarVenta.Text = "Finalizar pago";
+                label1.Text = "¿Anular este documento?";
+                btnGenerarVenta.Text = "Anular Documento";
                 btnGenerarVenta.Width = btnGenerarVenta.Width + 15;
             }
             this.reportViewer1.RefreshReport();
@@ -278,9 +278,8 @@ namespace wfaIntegradoCom.Consultas
             }
             else if (lnTipoCon == -5)
             {
-                //frmPagosPendientes frm = new frmPagosPendientes();
-                //frm.fnRecuperarEstadoGenVenta(true);
-                frm.fnCambiarEstadoPago(true);
+                frmAnularVenta frmA = new frmAnularVenta();
+                frmA.fnEstadoAnulacion(true);
             }
 
             this.Close();

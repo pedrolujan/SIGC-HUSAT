@@ -109,6 +109,7 @@ namespace CapaEntidad
         public String CodigoCorrelativo { get; set; }
         public String NombreDocumento { get; set; }
         public Int32 idMoneda { get; set; }
+        public Int32 idTrandiaria { get; set; }
         public String SimboloMoneda { get; set; }
         public String cVehiculos { get; set; }
         public String FormaPagoFactura { get; set; }

@@ -499,7 +499,7 @@ namespace wfaIntegradoCom.Procesos
 
         private void txtVehiculoSimCard_TextChanged(object sender, EventArgs e)
         {
-            var resultado = FunValidaciones.fnValidarTexboxs(txtVehiculoSimCard, lblVehiculoSc, pbVehiculoSc, true, true, true, 5, 7, 7, 7, "Complete el número del Equipo");
+            var resultado = FunValidaciones.fnValidarTexboxs(txtVehiculoSimCard, lblVehiculoSc, pbVehiculoSc, true, true, true, 5, 17, 17, 17, "Complete el número del Equipo");
             estVehiculoSc = resultado.Item1;
             msjVehiculoSc = resultado.Item2;
             
@@ -578,7 +578,7 @@ namespace wfaIntegradoCom.Procesos
         }
         private void txtVehiculo_TextChanged(object sender, EventArgs e)
         {
-           var resultado = FunValidaciones.fnValidarTexboxs(txtVehiculo, lblVehiculoE, pbVehiculo, true, true, true, 5,7,7,7, "Complete la placa del Vehiculo");
+           var resultado = FunValidaciones.fnValidarTexboxs(txtVehiculo, lblVehiculoE, pbVehiculo, true, true, true, 5,17,17,17, "Complete la placa del Vehiculo");
             estVehiculoE = resultado.Item1;
             msjVehiculoE = resultado.Item2;
         }

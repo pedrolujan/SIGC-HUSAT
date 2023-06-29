@@ -154,7 +154,7 @@ namespace CapaDato
                 pa[14] = new SqlParameter("@peidEquipoActual", SqlDbType.Int);
                 pa[14].Value = xmlInstal[0].ListaEquipoActual[0].idEquipo;
                 
-                pa[15] = new SqlParameter("@tipoInstalacion", SqlDbType.Int);
+                pa[15] = new SqlParameter("@tipoInstalacion", SqlDbType.VarChar,10);
                 pa[15].Value = xmlInstal[0].clsInstalacion.tipoActa;
 
                 objCnx = new clsConexion("");

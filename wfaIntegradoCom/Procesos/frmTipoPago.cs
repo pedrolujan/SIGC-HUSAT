@@ -407,6 +407,7 @@ namespace wfaIntegradoCom.Procesos
                 //lsDetalleVentaAnticipo = lsDetalleVenta;
                 Decimal importePagado = ((clsPagosGeneral.cantAPagar - restaPrecio)-clsPagosGeneral.importeAbonado)+ lsDetalleVentaAnticiposRecibidos.Sum(i=>i.Importe);
                 Decimal importeRestantePorVehiculo = 0;
+                Decimal importeAPagarPorVehiculo = 0;
                 String cDescripcion = "";
                 Int32 idOperacionItem = 0;
                 int y = 0;
@@ -443,17 +444,20 @@ namespace wfaIntegradoCom.Procesos
                     lsDetalleVentaAnticipo = lsDetalleVenta;
                     foreach (DetalleVenta dv in lsDetalleVenta)
                     {
-                        if (lsDetalleVenta[y].Importe <= importePagado)
+                        Decimal valorImporte = (lsDetalleVenta[y].Importe + lsDetalleVenta[y].valorRedondeo);
+                        if (valorImporte <= importePagado)
                         {
                             importeRestantePorVehiculo = lsDetalleVenta[y].Importe;
-                            importePagado = importePagado - lsDetalleVenta[y].Importe;
+                            importeAPagarPorVehiculo= lsDetalleVenta[y].preciounitario;
+                            importePagado = importePagado - (lsDetalleVenta[y].Importe + lsDetalleVenta[y].valorRedondeo);
                             cDescripcion = lsDetalleVenta[y].Descripcion;
-                            idOperacionItem = dv.IdDetalleVenta;
+                            idOperacionItem = 0;
 
                         }
                         else if (lsDetalleVenta[y].Importe > importePagado)
                         {
                             importeRestantePorVehiculo = importePagado;
+                            importeAPagarPorVehiculo = importePagado;
                             importePagado = importePagado > 0 ? importePagado - importePagado : 0;
                             cDescripcion = lsDetalleVenta[y].Descripcion + " *Anticipo*";
                             idOperacionItem = 2;
@@ -476,11 +480,11 @@ namespace wfaIntegradoCom.Procesos
                         lsDetalleVentaAnticipo[y].ImporteActicipo = importeRestantePorVehiculo;//lsDetalleVenta[y].Importe;
                         lsDetalleVentaAnticipo[y].cSimbolo = lsDetalleVenta[y].cSimbolo;
 
-                        lsDetalleVentaAnticipo[y].preciounitario = importeRestantePorVehiculo;
-                        lsDetalleVentaAnticipo[y].ImporteRow = importeRestantePorVehiculo;
+                        lsDetalleVentaAnticipo[y].preciounitario = lsDetalleVenta[y].preciounitario;//importeRestantePorVehiculo;
+                        lsDetalleVentaAnticipo[y].ImporteRow = importeAPagarPorVehiculo; //importeRestantePorVehiculo;
                         lsDetalleVentaAnticipo[y].mtoValorVentaItem = importeRestantePorVehiculo;
                         lsDetalleVentaAnticipo[y].Unidad_de_medida = "ZZ";
-                        lsDetalleVentaAnticipo[y].idOperacionItem = lsDetalleVentaAnticipo[y].importeRestante > 0 ? 2 : 0;
+                        lsDetalleVentaAnticipo[y].idOperacionItem = idOperacionItem;
 
                         y++;
                     }
@@ -529,36 +533,72 @@ namespace wfaIntegradoCom.Procesos
                         y++;
                     }
 
-                    foreach (DetalleVenta dv in lsDetalleVenta)
+                    if (lsDocumentoVenta[0].idTipoTarifa == 1)
                     {
-                        lsDetalleVentaAnticipo.Add(new DetalleVenta
+                        List<DetalleVenta> detVentas = new List<DetalleVenta>();
+                        detVentas = FunGeneral.fnObtenerDetalleVenta(lsDocumentoVenta[0].idTrandiaria, lsDocumentoVenta[0].idTipoTarifa);
+                        foreach (DetalleVenta dv in detVentas)
                         {
-                            Numeracion = y + 1,
-                            Descripcion = dv.Descripcion,
-                            idTipoTarifa = lsDetalleVenta[0].idTipoTarifa,
-                            PrecioUni = dv.Importe,
-                            Descuento = 0,
-                            gananciaRedondeo = 0,
-                            TotalTipoDescuento = 0,
-                            IdTipoDescuento = 0,
-                            Cantidad = 1,
-                            Couta = 1,
-                            Importe = dv.Importe,
-                            cSimbolo = lsDetalleVenta[0].cSimbolo,
+                            lsDetalleVentaAnticipo.Add(new DetalleVenta
+                            {
+                                Numeracion = y + 1,
+                                Descripcion = dv.Descripcion,
+                                idTipoTarifa = lsDetalleVenta[0].idTipoTarifa,
+                                PrecioUni = dv.PrecioUni,
+                                Descuento = 0,
+                                gananciaRedondeo = 0,
+                                TotalTipoDescuento = dv.TotalTipoDescuento,
+                                IdTipoDescuento = 0,
+                                Cantidad = 1,
+                                Couta = 1,
+                                Importe = dv.Importe,
+                                cSimbolo = lsDetalleVenta[0].cSimbolo,
 
-                            preciounitario = Convert.ToDecimal(dv.Importe),
-                            ImporteRow = (Convert.ToDecimal(dv.Importe) * 1),
-                            mtoValorVentaItem = (Convert.ToDecimal(dv.Importe) * 1),
-                            Unidad_de_medida = "ZZ"
+                                preciounitario = Convert.ToDecimal(dv.Importe),
+                                ImporteRow = (Convert.ToDecimal(dv.Importe) * 1),
+                                mtoValorVentaItem = (Convert.ToDecimal(dv.Importe) * 1),
+                                Unidad_de_medida = "ZZ"
 
-                        });
-                        y++;
+                            });
+                            y++;
+                        }
                     }
+                    else
+                    {
+                        foreach (DetalleVenta dv in lsDetalleVenta)
+                        {
+                            lsDetalleVentaAnticipo.Add(new DetalleVenta
+                            {
+                                Numeracion = y + 1,
+                                Descripcion = dv.Descripcion,
+                                idTipoTarifa = lsDetalleVenta[0].idTipoTarifa,
+                                PrecioUni = dv.Importe,
+                                Descuento = 0,
+                                gananciaRedondeo = 0,
+                                TotalTipoDescuento = 0,
+                                IdTipoDescuento = 0,
+                                Cantidad = 1,
+                                Couta = 1,
+                                Importe = dv.Importe,
+                                cSimbolo = lsDetalleVenta[0].cSimbolo,
+
+                                preciounitario = Convert.ToDecimal(dv.Importe),
+                                ImporteRow = (Convert.ToDecimal(dv.Importe) * 1),
+                                mtoValorVentaItem = (Convert.ToDecimal(dv.Importe) * 1),
+                                Unidad_de_medida = "ZZ"
+
+                            });
+                            y++;
+                        }
+
+                    }
+
+                    
 
                     PrecioALetras pal = new PrecioALetras();
                     string RecioALetras2 = pal.Convertir((lsDetalleVentaAnticipo.Sum(i => i.ImporteRow) - Convert.ToDecimal(lsDetalleVentaAnticipo.Sum(i => i.TotalTipoDescuento))).ToString(), true, " SOLES");
+                    RecioALetras2 = pal.Convertir(lstEntidades.Sum(i=>i.PagaCon).ToString(), true, " SOLES");
                     lsDocumentoVenta[0].PrecioEnLetras = RecioALetras2;
-
                     lsDocumentoVenta[0].nMontoTotal = lstEntidades.Sum(i => i.PagaCon);
                     lsDocumentoVenta[0].nSubtotal = (lstEntidades.Sum(i => i.PagaCon) / 1.18m);
                     lsDocumentoVenta[0].MontoTotalAnticipos = lsDetalleVentaAnticiposRecibidos.Sum(i => i.Importe);
@@ -670,7 +710,7 @@ namespace wfaIntegradoCom.Procesos
                 if (bEstadoDocumento)
                 {
                     fr.fnRecuperarEstadoGenVenta(true);
-                    fr.fnRecuperarTipoPago(lstEntidades, lsDetalleVentaAnticipo, lsDocumentoVenta);
+                    fr.fnRecuperarTipoPago(lstEntidades, lsDetalleVentaAnticipo, lsDocumentoVenta, lsDetalleVenta);
                 }
                 else
                 {

@@ -69,19 +69,24 @@ namespace wfaIntegradoCom.Procesos
         private void btnContinuar_Click(object sender, EventArgs e)
         {
             String Descripcion=txtDescripcion.Text.ToString();
-            if (estDescripcion)
+            if (txtDescripcion.Text.ToString().Length>5)
             {
-                //if (fnValidarDatos())
+                if (fnValidarDatos())
                 {
                     if (lnTipoLLamada == -1)
                     {
                         frmAnularVenta frm = new frmAnularVenta();
-                        frm.fnRecibirDescripcion(Descripcion,clsTipoAnulacion );
+                        frm.fnRecibirDescripcion(Descripcion, clsTipoAnulacion);
+                       
                     }
+                    this.Dispose();
                 }
-               
             }
-            this.Dispose(); 
+            else
+            {
+                MessageBox.Show("Describa el motivo por favor", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
         }
 
         private void txtDescripcion_TextChanged(object sender, EventArgs e)

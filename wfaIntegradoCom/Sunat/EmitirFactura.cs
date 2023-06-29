@@ -75,7 +75,7 @@ namespace wfaIntegradoCom.Sunat
             return Validar; 
         }
 
-        public int EmitirNotaCredito(Cliente clsCliente, List<DetalleVenta> detalleventa, Cargo clsCargo)
+        public int EmitirNotaCredito(Cliente clsCliente, List<DetalleVenta> detalleventa, Cargo clsCargo,Cargo clsDocRef)
         {
            
            
@@ -84,11 +84,11 @@ namespace wfaIntegradoCom.Sunat
             claseDocumentoVenta = clsCargo;
             clsCliente.cCliente = clsCliente.cNombre + " " + clsCliente.cApePat + " " + clsCliente.cApePat;
             ParametrosFactura parametros = new ParametrosFactura();
-            parametros.Ref_Serie = "FH01";
-            parametros.Ref_Numero = "00000091";
-            parametros.Ref_Motivo = "Anulación de la operación";
-            parametros.Ref_TipoComprobante = "01";
-            parametros.CodigoTipoNotacredito = "01";
+            parametros.Ref_Serie = clsDocRef.Ref_Serie;
+            parametros.Ref_Numero = clsDocRef.Ref_Numero;
+            parametros.Ref_Motivo = clsDocRef.Ref_Motivo;
+            parametros.Ref_TipoComprobante = clsDocRef.Ref_TipoComprobante;
+            parametros.CodigoTipoNotacredito = clsDocRef.CodigoTipoNotacredito;
 
 
 

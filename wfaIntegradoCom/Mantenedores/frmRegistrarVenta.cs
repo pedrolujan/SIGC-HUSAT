@@ -103,6 +103,7 @@ namespace wfaIntegradoCom.Mantenedores
         static String strCodigoProducto = "0";
         static Boolean estGenrarVenta;
         static List<DetalleVenta> lstDetalleVentaRecibido= new List<DetalleVenta>();
+        static List<DetalleVenta> lstDetalleVentaRecibidoParaSunat= new List<DetalleVenta>();
         static Boolean estActivarImprecion=false;
         static Int32 staticTipoTarifa = 0;
         Int32 lnTipoLlamada = 0;
@@ -1230,7 +1231,7 @@ namespace wfaIntegradoCom.Mantenedores
         private void dgDocumentoC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Boolean bResul = false;
-            lnTipoCon = 0;
+            //lnTipoCon = 0;
             if (Convert.ToInt32(cboTipoVenta.SelectedValue)==2)
             {
                 String codVt = Convert.ToString(dgDocumentoC.CurrentRow.Cells[0].Value);
@@ -3288,7 +3289,7 @@ namespace wfaIntegradoCom.Mantenedores
             DataGridViewRow filaSeleccionada = dgvVehiculos.Rows[posicionFila];
             if (posicionColumna == dgvVehiculos.Columns["colBuscar"].Index && posicionFila >= 0)
             {
-                lnTipoCon = 0;
+                lnTipoCon = lnTipoCon;
                 frmRegistrarVehiculo frmVehiculo = new frmRegistrarVehiculo();
                 idEditar = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
                 frmVehiculo.Inicio(5);
@@ -4069,7 +4070,7 @@ namespace wfaIntegradoCom.Mantenedores
                 if (clsDocumentoVenta.cCodTab == "DOVE0002" || clsDocumentoVenta.cCodTab== "DOVE0001")
                 {
                     intRespuestaSunat = 0;
-                    int resp =emf.EmitirFacturasContado(clsRespPago, lstDetalleVentaRecibido, lstDocumentoVentaFormato, clsDocumentoVenta);
+                    int resp =emf.EmitirFacturasContado(clsRespPago, lstDetalleVentaRecibidoParaSunat, lstDocumentoVentaFormato, clsDocumentoVenta);
                     intRespuestaSunat = resp;
                     //resp = 0;
                     if (resp == 1)
@@ -4215,8 +4216,18 @@ namespace wfaIntegradoCom.Mantenedores
         }
         public void fnCambiarEstadoVenta(bool estado, List<DetalleVenta> lsDetalleVent)
         {
+            lstDetalleVentaRecibidoParaSunat.Clear();
             estGenrarVenta = estado;
             lstDetalleVentaRecibido = lsDetalleVent;
+            foreach (DetalleVenta dv in lsDetalleVent)
+            {
+                if (dv.idOperacionItem==0)
+                {
+                    lstDetalleVentaRecibidoParaSunat.Add(dv);
+
+                }
+            }
+            
         }
         public void fnActivarInprecion(bool estado)
         {
@@ -4844,7 +4855,7 @@ namespace wfaIntegradoCom.Mantenedores
                 //cboPlanP.SelectedValue = clsPlanActual.idPlan;
                 dgDocumentoC.Visible = false;
                 //clsPlan = lstvgeneral[0].ClsPlan;
-                fnNoEditarColumna(true);
+                //fnNoEditarColumna(true);
             }
            
 

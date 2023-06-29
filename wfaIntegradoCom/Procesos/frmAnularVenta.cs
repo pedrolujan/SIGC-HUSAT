@@ -31,6 +31,7 @@ namespace wfaIntegradoCom.Procesos
         static List<Cargo> lstDocumentoVentaEmitir = new List<Cargo>();
         static Cargo clsDocumentoVentaEmitir = new Cargo();
         static Cliente clsCliente = new Cliente();
+        BLCliente objAcc = new BLCliente();
 
         static Cargo clsTipoAnulacion=new Cargo();
         private void  fnBuscarVentas(Int32 numPagina, Int32 tipoCon  )
@@ -72,6 +73,7 @@ namespace wfaIntegradoCom.Procesos
                     dg.Rows.Clear();
                     dg.Columns.Add("id", "id");
                     dg.Columns.Add("id2", "id2");
+                    dg.Columns.Add("idCliente", "idCliente");
                     dg.Columns.Add("N", "N°");
                     dg.Columns.Add("codigo", "Codigo Documento");
                     dg.Columns.Add("Fecha", "Fecha");
@@ -96,8 +98,9 @@ namespace wfaIntegradoCom.Procesos
                     {
                         y += 1;
                         dg.Rows.Add(
-                            dr["codDocumentoCorrelativo"], 
+                            dr["idDocumentoVenta"], 
                             dr["idOperacion"],
+                            dr["idcliente"],
                             y, 
                             dr["codDocumentoCorrelativo"],
                             Convert.ToDateTime(dr["dfecharegistro"]).ToString("dd MMM yyyy hh:mm tt"), 
@@ -132,13 +135,14 @@ namespace wfaIntegradoCom.Procesos
 
                     dg.Columns[0].Visible = false;
                     dg.Columns[1].Visible = false;
-                    dg.Columns[2].Width = 15;
-                    dg.Columns[3].Width = 45;
-                    dg.Columns[4].Width = 58;
-                    dg.Columns[5].Width = 100;
-                    dg.Columns[6].Width = 50;
+                    dg.Columns[2].Visible = false;
+                    dg.Columns[3].Width = 15;
+                    dg.Columns[4].Width = 45;
+                    dg.Columns[5].Width = 58;
+                    dg.Columns[6].Width = 100;
                     dg.Columns[7].Width = 50;
-                    dg.Columns[8].Width = 65;
+                    dg.Columns[8].Width = 50;
+                    dg.Columns[9].Width = 65;
                 }
                 else
                 {
@@ -226,7 +230,7 @@ namespace wfaIntegradoCom.Procesos
 
             try
             {
-                xmlDocVenta = objTipoVenta.blBuscarDocumentoVentaGeneral(cCodVenta, tipCon, idTipoTarifa, idContrato);
+                xmlDocVenta = objTipoVenta.blBuscarDocumentoVentaGeneral(cCodVenta, -4, idTipoTarifa, idContrato);
                 xmlDocVenta.xmlDocumentoVenta[0].cDireccion = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDireccion);
                 xmlDocVenta.xmlDocumentoVenta[0].cEstado = "ANULACIONES";
                 xmlDocVenta.xmlDocumentoVenta[0].NombreDocumento = "NOTA DE CREDITO";
@@ -269,24 +273,67 @@ namespace wfaIntegradoCom.Procesos
                 DialogResult resultDialog = MessageBox.Show("¿En realidad desea anular este Documento?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
                 if (resultDialog == DialogResult.Yes)
                 {
-                    fnBuscarDocumentoVenta(codDocumento, -4, 0, 0);
-                    if (EstadoAnulacion == false)
+                    fnBuscarDocumentoVenta(codDocumento, -5, 0, 0);
+                    if (EstadoAnulacion == true)
                     {
-                        EmitirFactura env = new EmitirFactura();
-                        //env.EmitirNotaCredito(clsCliente, stXmlDocumentoVenta[0].xmlDetalleVentas, clsDocumentoVentaEmitir);
-
-                        estadoOpe = objdocVenta.BLDAnularDocumentoVenta(codDocumento, idOperacion, stXmlDocumentoVenta, tipoCon);
-
-                        if (estadoOpe == true)
+                        String cresultado = codDocumento.Substring(0, 2);
+                        if (cresultado=="FH" || cresultado == "BH")
                         {
-                            MessageBox.Show("Documento anulado correctamente", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            EmitirFactura env = new EmitirFactura();
+                            Cargo clsReferenciaDoc = new Cargo();
 
+                            int indiceGuion = codDocumento.IndexOf("-");
+                            string primeraParte = codDocumento.Substring(0, indiceGuion);
+                            string segundaParte = codDocumento.Substring(indiceGuion + 1);
+
+                            clsReferenciaDoc.Ref_Serie= primeraParte;
+                            clsReferenciaDoc.Ref_Numero= segundaParte;
+                            clsReferenciaDoc.Ref_TipoComprobante = cresultado == "FH" ? "01" : "03";
+                            clsReferenciaDoc.Ref_Motivo = clsTipoAnulacion.cNomTab;
+                            clsReferenciaDoc.CodigoTipoNotacredito = clsTipoAnulacion.cCodTab;
+                            
+
+                            Int32 intResulta= env.EmitirNotaCredito(clsCliente, stXmlDocumentoVenta[0].xmlDetalleVentas, clsDocumentoVentaEmitir, clsReferenciaDoc);
+                            if (intResulta==1)
+                            {
+                                estadoOpe = objdocVenta.BLDAnularDocumentoVenta(codDocumento, idOperacion, stXmlDocumentoVenta, tipoCon);
+
+                                if (estadoOpe == true)
+                                {
+                                    MessageBox.Show("Documento anulado correctamente", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ocurrio un error al anular el Documento de Venta", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrio un error al emitior nota de credito. intentelo nuevamente", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Ocurrio un error al anular el Documento de Venta", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            estadoOpe = objdocVenta.BLDAnularDocumentoVenta(codDocumento, idOperacion, stXmlDocumentoVenta, tipoCon);
 
+                            if (estadoOpe == true)
+                            {
+                                MessageBox.Show("Documento anulado correctamente", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrio un error al anular el Documento de Venta", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
                         }
+
+
+                        
                     }
 
                 }
@@ -297,9 +344,16 @@ namespace wfaIntegradoCom.Procesos
         }
         private void eliminarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String codDocVenta = Convert.ToString(dgVentas.CurrentRow.Cells[0].Value);
+            Int32 idDocumento = Convert.ToInt32(dgVentas.CurrentRow.Cells[0].Value);
             Int32 idOperacion = Convert.ToInt32(dgVentas.CurrentRow.Cells[1].Value);
+            Int32 idCliente = Convert.ToInt32(dgVentas.CurrentRow.Cells[2].Value);
+            String codDocVenta = Convert.ToString(dgVentas.CurrentRow.Cells[4].Value);
+
+
+            clsCliente = objAcc.blListarCliente(idCliente, 1);
+            
             fnAnularDocumentoVenta(codDocVenta, idOperacion, -1);  
+
         }
 
         private void fnLlenadClaseDocumento()
@@ -324,10 +378,8 @@ namespace wfaIntegradoCom.Procesos
             dtpFechaFinalBus.Value = fechaactual;
             dtpFechaInicialBus.Value = dtpFechaFinalBus.Value.AddDays(-dtpFechaFinalBus.Value.AddDays(-1).Day);
             cbFechas.Checked=true;
-            BLCliente objAcc = new BLCliente();
-            clsCliente = objAcc.blListarCliente(334, 1);
             lstDocumentoVentaEmitir = Mantenedores.frmRegistrarVenta.fnLlenarComprobante(cboNotaCredit, "DOVE0004", 1, 1);
-
+            cboNotaCredit.SelectedIndex = 1;
             fnActivarFechas(true);
         }
 

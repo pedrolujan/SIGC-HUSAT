@@ -1737,37 +1737,7 @@ namespace wfaIntegradoCom.Mantenedores
                 txtPlacaVh.Text = " ".Trim();
 
             }
-            //if (cboClaseV.SelectedIndex!=0 && cboClaseV.Text== "VEHICULOS ESPECIALES")
-            //{
-            //    fnLLenarDetalleVehiculoEspecial();
-            //    lblPlacaVehiculo.Text = "Vehiculo Especial (*)";
-            //    cboDescripVEspecial.Visible = true;
-            //    cboDescripVEspecial.Location= new Point(324, 61);
-            //    pbPlaca.Location = new Point(575, 69);
-            //    chkOtro.Enabled = false;
-            //    chkOtro.Visible = false;
-            //    txtPlacaVh.Visible = false;
-            //    estPlaca = false;
-            //    pbPlaca.Image = null;
-            //    lblPlaca.Text = "";
-            //    var ValidadVEspecial = fnValidarCombobox(cboDescripVEspecial, lblPlaca, pbPlaca);
-            //    estPlaca = ValidadVEspecial.Item1;
-            //    msjPlaca = ValidadVEspecial.Item2;
-               
-            //}
-            //else
-            //if (cboClaseV.SelectedIndex != 0 && cboClaseV.Text!= "VEHICULOS ESPECIALES")
-            //{
-            //    lblPlacaVehiculo.Text = "Placa (*)";
-            //    pbPlaca.Location = new Point(426, 67);
-            //    chkOtro.Visible = true;
-            //    chkOtro.Enabled = true;
-            //    lblPlaca.Text = "";
-            //    estPlaca = false;
-            //    txtPlacaVh.Visible = true;
-            //    cboDescripVEspecial.Visible = false;
-            //    txtPlacaVh_TextChanged(sender, e);
-            //}
+            
 
             if (Convert.ToInt32(cboClaseV.SelectedValue) != 0)
             {

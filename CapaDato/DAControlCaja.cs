@@ -497,6 +497,54 @@ namespace CapaDato
 
             }
         }
+        public List<CajaChica> daObtenerImporteCaja(String dtFecha, String fechaActual, Int32 idUsuario)
+        {
+            SqlParameter[] pa = new SqlParameter[3];
+            DataTable dtResult = new DataTable();
+            clsConexion objCnx = null;
+            List<CajaChica> lstImporte = new List<CajaChica>(); 
+
+            try
+            {
+                pa[0] = new SqlParameter("@fechaBusqueda", SqlDbType.Date);
+                pa[0].Value = dtFecha;
+                pa[1] = new SqlParameter("@fechaActual", SqlDbType.Date);
+                pa[1].Value = fechaActual;
+                pa[2] = new SqlParameter("@idUsuario", SqlDbType.Int);
+                pa[2].Value = idUsuario;
+
+
+                objCnx = new clsConexion("");
+                dtResult = objCnx.EjecutarProcedimientoDT("uspObtenerImporteEnCaja", pa);
+                foreach (DataRow dt in dtResult.Rows)
+                {
+                    lstImporte.Add(new CajaChica
+                    {
+                        IdMoneda = 1,
+                        Usuario = dt["Usuario"].ToString(),
+                        importe = Convert.ToDecimal(dt["ImporteCaja"])
+                    });
+                }
+
+
+                return lstImporte;
+
+            }
+            catch (Exception ex)
+            {
+                lstImporte = null;
+
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+                lstImporte = null;
+            }
+
+        }
         public List<ReporteBloque> daBuscarMovimientocaja(Busquedas clsBusq,Int32 tipoCon)
         {
             SqlParameter[] pa = new SqlParameter[11];

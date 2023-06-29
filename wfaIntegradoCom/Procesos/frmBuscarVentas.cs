@@ -452,39 +452,39 @@ namespace wfaIntegradoCom.Procesos
             ////Mantenedores.frmRegistrarVenta frmrv = new Mantenedores.frmRegistrarVenta();
             fnBuscarDocumentoVent(cCodigoVenta, 1, idTipoTarifa, idContrato);
         }
-        private void ActaInstalacion_Click(object sender, EventArgs e)
-        {
-            String CodVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
-            Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
-            Int32 idtipoPlan = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[19].Value);
-            Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[18].Value);
-            String RowVehiculos = Convert.ToString(dgvLVentas.CurrentRow.Cells[6].Value);
-            String[] ArrayVehiculos = RowVehiculos.Split(';');
-            List<Vehiculo> lstVehiculo = new List<Vehiculo>();
+        //private void ActaInstalacion_Click(object sender, EventArgs e)
+        //{
+        //    String CodVenta = Convert.ToString(dgvLVentas.CurrentRow.Cells[2].Value);
+        //    Int32 idTipoVenta = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[17].Value);
+        //    Int32 idtipoPlan = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[19].Value);
+        //    Int32 idContrato = Convert.ToInt32(dgvLVentas.CurrentRow.Cells[18].Value);
+        //    String RowVehiculos = Convert.ToString(dgvLVentas.CurrentRow.Cells[6].Value);
+        //    String[] ArrayVehiculos = RowVehiculos.Split(';');
+        //    List<Vehiculo> lstVehiculo = new List<Vehiculo>();
 
-            frmTipoImpresion frmTImpre = new frmTipoImpresion();
-            xmlInstalacion xmlInst = new xmlInstalacion();
-            frmRptActa frmVPActa = new frmRptActa();
-            if (ArrayVehiculos.Length - 1 == 1)
-            {
-                lstVehiculo = fnDebolverDatosVehi(RowVehiculos, ArrayVehiculos);
-                Mantenedores.frmRegistrarVenta frmv = new Mantenedores.frmRegistrarVenta();
-                xmlInst = frmv.fnBuscarActaInstalacion(CodVenta, lstVehiculo[0].vPlaca, idTipoVenta);
-                if (xmlInst.clsInstalacion != null)
-                {
-                    frmVPActa.Inicio(xmlInst.ListaCliente, xmlInst.ListaVehiculo, xmlInst.ListaEquipo, xmlInst.ListaPlan, xmlInst.ListaAccesorio, xmlInst.ListaServicio, xmlInst.observaciones, xmlInst.clsInstalacion, 1);
-                }
-                else
-                {
-                    MessageBox.Show("Por favor indique que se registre la instalacion para poder imprimir el acta.", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else
-            {
-                frmTImpre.inicio(Convert.ToInt32(cbTipoVenta.SelectedValue), CodVenta, fnDebolverDatosVehi(RowVehiculos, ArrayVehiculos), "A", idContrato);
-            }
+        //    frmTipoImpresion frmTImpre = new frmTipoImpresion();
+        //    xmlInstalacion xmlInst = new xmlInstalacion();
+        //    frmRptActa frmVPActa = new frmRptActa();
+        //    if (ArrayVehiculos.Length - 1 == 1)
+        //    {
+        //        lstVehiculo = fnDebolverDatosVehi(RowVehiculos, ArrayVehiculos);
+        //        Mantenedores.frmRegistrarVenta frmv = new Mantenedores.frmRegistrarVenta();
+        //        xmlInst = frmv.fnBuscarActaInstalacion(CodVenta, lstVehiculo[0].vPlaca, idTipoVenta);
+        //        if (xmlInst.clsInstalacion != null)
+        //        {
+        //            frmVPActa.Inicio(xmlInst.ListaCliente, xmlInst.ListaVehiculo, xmlInst.ListaEquipo, xmlInst.ListaPlan, xmlInst.ListaAccesorio, xmlInst.ListaServicio, xmlInst.observaciones, xmlInst.clsInstalacion, 1);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Por favor indique que se registre la instalacion para poder imprimir el acta.", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        frmTImpre.inicio(Convert.ToInt32(cbTipoVenta.SelectedValue), CodVenta, fnDebolverDatosVehi(RowVehiculos, ArrayVehiculos), "A", idContrato);
+        //    }
 
-        }
+        //}
         private List<Vehiculo> fnDebolverDatosVehi(String RowVehiculos, String[] ArrayVehiculos)
         {
             Int32 contad = ArrayVehiculos.Length - 1;

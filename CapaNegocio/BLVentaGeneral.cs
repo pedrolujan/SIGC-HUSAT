@@ -169,12 +169,25 @@ namespace CapaNegocio
             }
 
         }
-        public xmlInstalacion blBuscarActaInstalacion(String codventa, String Placa,Int32 idTipoVenta)
+        public xmlInstalacion blBuscarActaInstalacion(String codventa, String Placa, Int32 idTipoVenta)
         {
             DAVentaGeneral objDAVG = new DAVentaGeneral();
             try
             {
-                return objDAVG.daBuscarActaInstalacion( codventa,  Placa, idTipoVenta);
+                return objDAVG.daBuscarActaInstalacion(codventa, Placa, idTipoVenta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+        public xmlInstalacion blBuscarActaInstalacionIDInstalacion(Int32 idInstalacion, String codventa, String Placa,Int32 idTipoVenta)
+        {
+            DAVentaGeneral objDAVG = new DAVentaGeneral();
+            try
+            {
+                return objDAVG.daBuscarActaInstalacionIDInstalacion(idInstalacion, codventa,  Placa, idTipoVenta);
             }
             catch (Exception ex)
             {

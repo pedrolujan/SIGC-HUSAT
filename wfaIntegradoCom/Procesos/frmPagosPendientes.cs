@@ -59,7 +59,7 @@ namespace wfaIntegradoCom.Procesos
             stDocumentoCleinte=idtrand;
             ShowDialog();
         }
-        public void fnRecuperarTipoPago(List<Pagos> lstEntidades,List<DetalleVenta> lstDetVentas,List<DocumentoVenta> docVenta )
+        public void fnRecuperarTipoPago(List<Pagos> lstEntidades,List<DetalleVenta> lstDetVentas,List<DocumentoVenta> docVenta, List<DetalleVenta>dtv )
         {
             lstPagosTrand = lstEntidades;
 
@@ -82,45 +82,82 @@ namespace wfaIntegradoCom.Procesos
                 }
             }
             Int32 y=0;
-            lsDetalleVentaRecibidoParaEnviarASunat = lstDetalleParaSunat;
-            foreach (var item in lstDetalleParaSunat)
+            if (docVenta[0].idTipoTarifa==1)
             {
-                if (lstDetalleParaSunat[y].Importe >= ImporteARestar)
+                y = 0;
+                foreach (var dv in lstEntidades)
                 {
-                    importeParaDocumentoReal = lstDetalleParaSunat[y].Importe - ImporteARestar;
-                    ImporteARestar = lstDetalleParaSunat[y].Importe-ImporteARestar;
+                    lsDetalleVentaRecibidoParaEnviarASunat.Add(new DetalleVenta
+                    {
+                        Numeracion = y + 1,
+                        Descripcion = "Servicio de monitoreo GPS",
+                        idTipoTarifa = 2,
+                        PrecioUni = dv.PagaCon,
+                        Descuento = 0,
+                        gananciaRedondeo = 0,
+                        TotalTipoDescuento = 0,
+                        IdTipoDescuento = 0,
+                        Cantidad = 1,
+                        Couta = 1,
+                        Importe = dv.PagaCon,
+                        cSimbolo = "S/.",
+
+                        preciounitario = Convert.ToDecimal(dv.PagaCon),
+                        ImporteRow = (Convert.ToDecimal(dv.PagaCon) * 1),
+                        mtoValorVentaItem = (Convert.ToDecimal(dv.PagaCon) * 1),
+                        Unidad_de_medida = "ZZ"
+
+                    });
+                    y++;
 
                 }
-                else if (lstDetalleParaSunat[y].Importe > ImporteARestar)
-                {
-                    importeParaDocumentoReal = ImporteARestar;
-                    ImporteARestar = ImporteARestar > 0 ? ImporteARestar - ImporteARestar : 0;                   
-                }
-
-                lsDetalleVentaRecibidoParaEnviarASunat[y].Numeracion = 1;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].IdDetalleVenta = lstDetalleParaSunat[y].IdDetalleVenta;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].Descripcion = lstDetalleParaSunat[y].Descripcion;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].idTipoTarifa = lstDetalleParaSunat[y].idTipoTarifa;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].PrecioUni = lstDetalleParaSunat[y].preciounitario;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].Descuento = lstDetalleParaSunat[y].Descuento;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].gananciaRedondeo = lstDetalleParaSunat[y].gananciaRedondeo;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].TotalTipoDescuento = lstDetalleParaSunat[y].TotalTipoDescuento;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].IdTipoDescuento = lstDetalleParaSunat[y].IdTipoDescuento;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].Cantidad = lstDetalleParaSunat[y].Cantidad;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].Couta = lstDetalleParaSunat[y].Couta;
-
-                lsDetalleVentaRecibidoParaEnviarASunat[y].Importe = importeParaDocumentoReal;//lsDetalleVenta[y].Importe;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].importeRestante = (lstDetalleParaSunat[y].preciounitario - importeParaDocumentoReal);
-                lsDetalleVentaRecibidoParaEnviarASunat[y].ImporteActicipo = importeParaDocumentoReal;//lsDetalleVenta[y].Importe;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].cSimbolo = lstDetalleParaSunat[y].cSimbolo;
-
-                lsDetalleVentaRecibidoParaEnviarASunat[y].preciounitario = importeParaDocumentoReal;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].ImporteRow = importeParaDocumentoReal;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].mtoValorVentaItem = importeParaDocumentoReal;
-                lsDetalleVentaRecibidoParaEnviarASunat[y].Unidad_de_medida = "ZZ";
-                lsDetalleVentaRecibidoParaEnviarASunat[y].idOperacionItem = lsDetalleVentaRecibidoParaEnviarASunat[y].importeRestante == 0 ? 0 : 2;
-                y++;
+                
+               
+                
             }
+            else
+            {
+                lsDetalleVentaRecibidoParaEnviarASunat = lstDetalleParaSunat;
+                foreach (var item in lstDetalleParaSunat)
+                {
+                    if (lstDetalleParaSunat[y].Importe >= ImporteARestar)
+                    {
+                        importeParaDocumentoReal = lstDetalleParaSunat[y].Importe - ImporteARestar;
+                        ImporteARestar = lstDetalleParaSunat[y].Importe - ImporteARestar;
+
+                    }
+                    else if (lstDetalleParaSunat[y].Importe > ImporteARestar)
+                    {
+                        importeParaDocumentoReal = ImporteARestar;
+                        ImporteARestar = ImporteARestar > 0 ? ImporteARestar - ImporteARestar : 0;
+                    }
+
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].Numeracion = 1;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].IdDetalleVenta = lstDetalleParaSunat[y].IdDetalleVenta;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].Descripcion = lstDetalleParaSunat[y].Descripcion;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].idTipoTarifa = lstDetalleParaSunat[y].idTipoTarifa;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].PrecioUni = lstDetalleParaSunat[y].preciounitario;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].Descuento = lstDetalleParaSunat[y].Descuento;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].gananciaRedondeo = lstDetalleParaSunat[y].gananciaRedondeo;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].TotalTipoDescuento = lstDetalleParaSunat[y].TotalTipoDescuento;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].IdTipoDescuento = lstDetalleParaSunat[y].IdTipoDescuento;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].Cantidad = lstDetalleParaSunat[y].Cantidad;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].Couta = lstDetalleParaSunat[y].Couta;
+
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].Importe = importeParaDocumentoReal;//lsDetalleVenta[y].Importe;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].importeRestante = (lstDetalleParaSunat[y].preciounitario - importeParaDocumentoReal);
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].ImporteActicipo = importeParaDocumentoReal;//lsDetalleVenta[y].Importe;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].cSimbolo = lstDetalleParaSunat[y].cSimbolo;
+
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].preciounitario = importeParaDocumentoReal;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].ImporteRow = importeParaDocumentoReal;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].mtoValorVentaItem = importeParaDocumentoReal;
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].Unidad_de_medida = "ZZ";
+                    lsDetalleVentaRecibidoParaEnviarASunat[y].idOperacionItem = lsDetalleVentaRecibidoParaEnviarASunat[y].importeRestante == 0 ? 0 : 2;
+                    y++;
+                }
+            }
+            
             //lsDetalleVentaRecibidoParaPagar = lstDetVentas;
             for (int i = 0; i < lstPagosTrand.Count; i++)
             {
@@ -707,9 +744,9 @@ namespace wfaIntegradoCom.Procesos
                 Int32 idTipoTarifa = Convert.ToInt32(dgvVentas.CurrentRow.Cells[12].Value);
                 frmRegistrarEgresos f = new frmRegistrarEgresos();
 
-                lstDetalleVenta = fnDetalleventa(idTrandiaria, idTipoTarifa);
+                lstDetalleVenta = fnDetalleventa(idTrandiaria, 0);
                 lstDocumentoVenta = fnDocumentoVentaHeader(f.fnCalcularCabeceraDetalle(lstDetalleVenta), idTrandiaria, idTipoTarifa);
-
+                lstDocumentoVenta[0].idTrandiaria=lstDocumentoVenta.Count > 0 ?idTrandiaria:0;
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                 ReporteBloque repBloque = lstDVenta.Find(i => i.idAuxiliar == idTrandiaria);
                 fmr.Inicio(-4, lstDocumentoVenta,lstDetalleVenta, lstDVenta[0].idMoneda == 1 ? "S/" : "$");

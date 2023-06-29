@@ -164,6 +164,7 @@ namespace wfaIntegradoCom.Mantenedores
                         string desVehiculos = Convert.ToString(datVentaG.Rows[i][4]);
                         DateTime fecha = Convert.ToDateTime(datVentaG.Rows[i][3]);
                         dgv.Rows.Add(
+                            datVentaG.Rows[i][1],
                             datVentaG.Rows[i][2],
                             y,
                             fecha.ToString("dd/MM/yyyy"),
@@ -613,9 +614,9 @@ namespace wfaIntegradoCom.Mantenedores
             lstServicios.Clear();
             lstAccesorios.Clear();
             String codVenta = "";
-            codVenta = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[0].Value);
+            codVenta = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[1].Value);
 
-            String RowVehiculos = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[5].Value);
+            String RowVehiculos = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[6].Value);
             String[] ArrayVehiculos = RowVehiculos.Split(';');
             List<Vehiculo> lstVehiculo = new List<Vehiculo>();
 
@@ -1259,22 +1260,23 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void dgvListaInstalaciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 10)
+            if (e.ColumnIndex == 11)
             {
                 xmlInstalacion xmlInst = new xmlInstalacion();
                 String codVenta = "";
                 Int32 TipoVenta = 0;
-                codVenta = Convert.ToString(dgvListaInstalaciones.Rows[e.RowIndex].Cells[0].Value);
-                TipoVenta = Convert.ToInt32(dgvListaInstalaciones.Rows[e.RowIndex].Cells[8].Value);
+                codVenta = Convert.ToString(dgvListaInstalaciones.Rows[e.RowIndex].Cells[1].Value);
+                TipoVenta = Convert.ToInt32(dgvListaInstalaciones.Rows[e.RowIndex].Cells[9].Value);
+                Int32 idInstalacion = Convert.ToInt32(dgvListaInstalaciones.CurrentRow.Cells[0].Value);
 
-                String RowVehiculos = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[5].Value);
+                String RowVehiculos = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[6].Value);
                 String[] ArrayVehiculos = RowVehiculos.Split(';');
                 List<Vehiculo> lstVehiculo = new List<Vehiculo>();
 
                 lstVehiculo = fnDebolverDatVehiculo(RowVehiculos, ArrayVehiculos);
-                frmRegistrarVenta frmRegVenta = new frmRegistrarVenta();
+                BLVentaGeneral frmRegVenta = new BLVentaGeneral();
                 frmRptActa frmVPActa = new frmRptActa();
-                xmlInst = frmRegVenta.fnBuscarActaInstalacion(codVenta, lstVehiculo[0].vPlaca, TipoVenta);
+                xmlInst = frmRegVenta.blBuscarActaInstalacionIDInstalacion(idInstalacion,codVenta, lstVehiculo[0].vPlaca, TipoVenta);
                 if (xmlInst.clsInstalacion != null)
                 {
                     frmVPActa.Inicio(xmlInst.ListaCliente, xmlInst.ListaVehiculo, xmlInst.ListaEquipo, xmlInst.ListaPlan, xmlInst.ListaAccesorio, xmlInst.ListaServicio, xmlInst.observaciones, xmlInst.clsInstalacion, 1);
@@ -1297,7 +1299,8 @@ namespace wfaIntegradoCom.Mantenedores
             lstAccesorios.Clear();
 
             String codVenta = "";
-            codVenta = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[0].Value);
+            codVenta = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[1].Value);
+            
 
             String RowVehiculos = Convert.ToString(dgvListaInstalaciones.CurrentRow.Cells[5].Value);
             String[] ArrayVehiculos = RowVehiculos.Split(';');
@@ -1469,7 +1472,7 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 instalacion.cUsuario = clsPersonal.cPrimerNom + " " + clsPersonal.cApePat + " " + clsPersonal.cApeMat;
                 instalacion.dFechaIntal = Convert.ToDateTime(dtpFechaRegistro.Value);
-                instalacion.tipoActa = Convert.ToInt32(selectedRadioButton.Tag.ToString());
+                instalacion.tipoActa = selectedRadioButton.Tag.ToString();
                 lstUbicacionEquipo.Clear();
                 lstUbicacionEquipo.Add(new UbicacionEquipoInstalacion
                 {

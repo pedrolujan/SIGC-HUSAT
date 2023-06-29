@@ -74,6 +74,7 @@
     <Compile Include="AdministrarEquipos.cs" />
     <Compile Include="Almacen.cs" />
     <Compile Include="Asociacion.cs" />
+    <Compile Include="CajaChica.cs" />
     <Compile Include="Cate_Mar_Mod.cs" />
     <Compile Include="Cargo.cs" />
     <Compile Include="Ciclo.cs" />

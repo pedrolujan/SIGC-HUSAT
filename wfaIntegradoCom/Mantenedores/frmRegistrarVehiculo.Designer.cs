@@ -566,7 +566,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.rbNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rbNombre.Location = new System.Drawing.Point(21, 53);
             this.rbNombre.Name = "rbNombre";
-            this.rbNombre.Size = new System.Drawing.Size(58, 20);
+            this.rbNombre.Size = new System.Drawing.Size(57, 20);
             this.rbNombre.TabIndex = 3;
             this.rbNombre.Text = "Serie";
             this.rbNombre.UseVisualStyleBackColor = true;
@@ -578,7 +578,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.rbPlaca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rbPlaca.Location = new System.Drawing.Point(21, 27);
             this.rbPlaca.Name = "rbPlaca";
-            this.rbPlaca.Size = new System.Drawing.Size(61, 20);
+            this.rbPlaca.Size = new System.Drawing.Size(60, 20);
             this.rbPlaca.TabIndex = 4;
             this.rbPlaca.Text = "Placa";
             this.rbPlaca.UseVisualStyleBackColor = true;
@@ -881,7 +881,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtObservaciones.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtObservaciones.HoveredState.Parent = this.txtObservaciones;
             this.txtObservaciones.Location = new System.Drawing.Point(24, 306);
-            this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4);
+            this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.PasswordChar = '\0';
@@ -973,7 +973,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtColorVh.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtColorVh.HoveredState.Parent = this.txtColorVh;
             this.txtColorVh.Location = new System.Drawing.Point(738, 216);
-            this.txtColorVh.Margin = new System.Windows.Forms.Padding(4);
+            this.txtColorVh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtColorVh.Name = "txtColorVh";
             this.txtColorVh.PasswordChar = '\0';
             this.txtColorVh.PlaceholderText = "";
@@ -1003,7 +1003,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtAnio.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtAnio.HoveredState.Parent = this.txtAnio;
             this.txtAnio.Location = new System.Drawing.Point(365, 217);
-            this.txtAnio.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAnio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAnio.Name = "txtAnio";
             this.txtAnio.PasswordChar = '\0';
             this.txtAnio.PlaceholderText = "";
@@ -1033,7 +1033,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtSerieVh.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSerieVh.HoveredState.Parent = this.txtSerieVh;
             this.txtSerieVh.Location = new System.Drawing.Point(21, 216);
-            this.txtSerieVh.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSerieVh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSerieVh.Name = "txtSerieVh";
             this.txtSerieVh.PasswordChar = '\0';
             this.txtSerieVh.PlaceholderText = "";
@@ -1063,7 +1063,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtConPlaca.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtConPlaca.HoveredState.Parent = this.txtConPlaca;
             this.txtConPlaca.Location = new System.Drawing.Point(213, 37);
-            this.txtConPlaca.Margin = new System.Windows.Forms.Padding(4);
+            this.txtConPlaca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtConPlaca.Name = "txtConPlaca";
             this.txtConPlaca.PasswordChar = '\0';
             this.txtConPlaca.PlaceholderText = "";
@@ -1094,7 +1094,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtPlacaVh.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPlacaVh.HoveredState.Parent = this.txtPlacaVh;
             this.txtPlacaVh.Location = new System.Drawing.Point(368, 61);
-            this.txtPlacaVh.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPlacaVh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPlacaVh.Name = "txtPlacaVh";
             this.txtPlacaVh.PasswordChar = '\0';
             this.txtPlacaVh.PlaceholderText = "";
@@ -1715,6 +1715,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtBuscarVehiculoM.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarVehiculoM.HoveredState.Parent = this.txtBuscarVehiculoM;
             this.txtBuscarVehiculoM.Location = new System.Drawing.Point(16, 52);
+            this.txtBuscarVehiculoM.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscarVehiculoM.Name = "txtBuscarVehiculoM";
             this.txtBuscarVehiculoM.PasswordChar = '\0';
             this.txtBuscarVehiculoM.PlaceholderForeColor = System.Drawing.Color.DimGray;

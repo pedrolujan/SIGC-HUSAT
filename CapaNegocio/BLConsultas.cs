@@ -10,12 +10,12 @@ namespace CapaNegocio
 {
     public class BLConsultas
     {
-        public DataTable blBuscarHistorialSimCard(String simcard, Boolean HabilitarFechas, DateTime dtfechaInicio, DateTime dtFechaFinal, Int32 tipoCon)
+        public DataTable blBuscarHistorialSimCard(String simcard, Int32 tipoCon)
         {
             DAconsultas daobjEquipo = new DAconsultas();
             try
             {
-                return daobjEquipo.daBuscarHistorialSimCard(simcard, HabilitarFechas, dtfechaInicio, dtFechaFinal, tipoCon);
+                return daobjEquipo.daBuscarHistorialSimCard(simcard, tipoCon);
             }
             catch (Exception ex)
             {

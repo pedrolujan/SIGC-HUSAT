@@ -13,9 +13,9 @@ namespace CapaDato
     public class DAconsultas
     {
         private clsUtil objUtil = null;
-        public DataTable daBuscarHistorialSimCard(String pcBuscar, Boolean HabilitarFechas, DateTime dtfechaInicio, DateTime dtFechaFinal, Int32 tipoCon)
+        public DataTable daBuscarHistorialSimCard(String pcBuscar, Int32 tipoCon)
         {
-            SqlParameter[] pa = new SqlParameter[5];
+            SqlParameter[] pa = new SqlParameter[2];
             DataTable dtEquipo = new DataTable();
             clsConexion objCnx = null;
             objUtil = new clsUtil();
@@ -24,14 +24,8 @@ namespace CapaDato
             {
                 pa[0] = new SqlParameter("@pcBuscar", SqlDbType.VarChar, 30);
                 pa[0].Value = pcBuscar;
-                pa[1] = new SqlParameter("@HabilitarFechas", SqlDbType.TinyInt);
-                pa[1].Value = HabilitarFechas;
-                pa[2] = new SqlParameter("@dtFechaInicio", SqlDbType.DateTime);
-                pa[2].Value = dtfechaInicio;
-                pa[3] = new SqlParameter("@dtFechaFinal", SqlDbType.DateTime);
-                pa[3].Value = dtFechaFinal;
-                pa[4] = new SqlParameter("@tipoCon", SqlDbType.Int);
-                pa[4].Value = tipoCon;
+                pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[1].Value = tipoCon;
                 objCnx = new clsConexion("");
                 dtEquipo = objCnx.EjecutarProcedimientoDT("uspBuscarConsultas", pa);
 

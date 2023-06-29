@@ -45,6 +45,11 @@ namespace CapaEntidad
         public Int32 idUsuario { get { return _idUsuario; } set { _idUsuario = value; } }
 
      
+        public string Ref_Serie { get; set; }
+        public string Ref_Numero { get; set; }
+        public string Ref_Motivo { get; set; }
+        public string CodigoTipoNotacredito { get; set; }
+        public string  Ref_TipoComprobante { get; set; }
         public Cargo(String pcCodTab, String pcNomTab, Boolean pbEstado)
         {
             cCodTab = pcCodTab;

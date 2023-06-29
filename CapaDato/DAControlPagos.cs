@@ -986,6 +986,35 @@ namespace CapaDato
                 objUtil = null;
             }
         }
+        public Boolean daActualizarEstadoCronograma(Int32 idCronograma)
+        {
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dtResult = new DataTable();
+            clsConexion objCnx = null;
+            Int32 numRows = 0;
+
+            objUtil = new clsUtil();
+            try
+            {
+                pa[0] = new SqlParameter("@idCronograma", SqlDbType.Int) { Value = idCronograma };
+
+                objCnx = new clsConexion("");
+                objCnx.EjecutarProcedimiento("uspActualizarEstadoCronograma", pa);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                //if (objCnx != null)
+                objCnx.CierraConexion();
+                objCnx = null;
+                objUtil = null;
+            }
+        }
 
 
         public List<DetalleCronograma> daBuscarCronogramaAutomatico(String dtFechaIni, String dFechaFin,String estadoPago, List<DetalleCronograma>lstCron ,Int32 tipoCon)

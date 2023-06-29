@@ -242,7 +242,7 @@ namespace CapaDato
         {
 
 
-            SqlParameter[] pa = new SqlParameter[1];
+            SqlParameter[] pa = new SqlParameter[2];
             DataTable dtVenta = new DataTable();
             clsConexion objCnx = null;
             DetalleVenta dv = new DetalleVenta();
@@ -254,8 +254,8 @@ namespace CapaDato
 
                 pa[0] = new SqlParameter("@idTrandiaria", SqlDbType.Int);
                 pa[0].Value = idTrandiaria;
-                //pa[1] = new SqlParameter("@idTipotarifa", SqlDbType.Int);
-                //pa[1].Value = idTipoTarifa;
+                pa[1] = new SqlParameter("@idTipotarifa", SqlDbType.Int);
+                pa[1].Value = idTipoTarifa;
 
                 objCnx = new clsConexion("");
                 dtVenta = objCnx.EjecutarProcedimientoDT("uspBuscarDetalleVenta", pa);
@@ -263,15 +263,17 @@ namespace CapaDato
                 lstVenta = new List<DetalleVenta>();
                 foreach (DataRow drMenu in dtVenta.Rows)
                 {
-                    dv.IdDetalleVenta = Convert.ToInt32(drMenu["idDetallePago"]);
-                    dv.Descripcion = Convert.ToString(drMenu["Descripcion"]);
-                    dv.PrecioUni = Convert.ToDecimal(drMenu["Costo"]);
-                    dv.TotalTipoDescuento= Convert.ToDecimal(drMenu["DescuentoPrecio"]);
-                    dv.Importe = Convert.ToDecimal(drMenu["Costo"]) - Convert.ToDecimal(drMenu["DescuentoPrecio"]);
-                    dv.ImporteRow = Convert.ToDecimal(drMenu["Costo"]) - Convert.ToDecimal(drMenu["DescuentoPrecio"]);
-                    dv.idTipoTarifa = Convert.ToInt32(drMenu["idTarifa"]);
-                    dv.importeRestante = Convert.ToDecimal(drMenu["importeRestante"]);
-                    lstVenta.Add(dv);
+                    lstVenta.Add(new DetalleVenta
+                    {
+                        IdDetalleVenta = Convert.ToInt32(drMenu["idDetallePago"]),
+                        Descripcion = Convert.ToString(drMenu["Descripcion"]),
+                        PrecioUni = Convert.ToDecimal(drMenu["Costo"]),
+                        TotalTipoDescuento = Convert.ToDecimal(drMenu["DescuentoPrecio"]),
+                        Importe = Convert.ToDecimal(drMenu["Costo"]) - Convert.ToDecimal(drMenu["DescuentoPrecio"]),
+                        ImporteRow = Convert.ToDecimal(drMenu["Costo"]) - Convert.ToDecimal(drMenu["DescuentoPrecio"]),
+                        idTipoTarifa = Convert.ToInt32(drMenu["idTarifa"]),
+                        importeRestante = Convert.ToDecimal(drMenu["importeRestante"])
+                    });
                 }
                 
                 return lstVenta;
@@ -697,7 +699,7 @@ namespace CapaDato
                 pa[6] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value =  tipoCon };
 
                 objCnx = new clsConexion("");
-                dtresp = objCnx.EjecutarProcedimientoDT("uspAnularDocumentoVenta", pa);
+                //dtresp = objCnx.EjecutarProcedimientoDT("uspAnularDocumentoVenta", pa);
                 return true;
             }
             catch (Exception ex)

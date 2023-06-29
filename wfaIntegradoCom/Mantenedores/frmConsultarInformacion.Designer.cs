@@ -159,19 +159,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblTC = new System.Windows.Forms.Label();
             this.btnVerde = new Siticone.UI.WinForms.SiticoneCircleButton();
             this.btnRojo = new Siticone.UI.WinForms.SiticoneCircleButton();
-            this.dtHFechaInicio = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.dtHfechaFinal = new Siticone.UI.WinForms.SiticoneDateTimePicker();
             this.chkHabilitarFechas = new System.Windows.Forms.CheckBox();
-            this.siticoneGroupBox2 = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.rbVehiculo = new Siticone.UI.WinForms.SiticoneRadioButton();
-            this.rbCliente = new Siticone.UI.WinForms.SiticoneRadioButton();
-            this.rbImei = new Siticone.UI.WinForms.SiticoneRadioButton();
-            this.rbSimCard = new Siticone.UI.WinForms.SiticoneRadioButton();
             this.btnNuevoHistorial = new Siticone.UI.WinForms.SiticoneButton();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -198,7 +192,6 @@
             this.tabPage3.SuspendLayout();
             this.gbPlan.SuspendLayout();
             this.siticoneGroupBox1.SuspendLayout();
-            this.siticoneGroupBox2.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgConsultas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -2263,15 +2256,13 @@
             // 
             this.siticoneGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
             this.siticoneGroupBox1.BorderRadius = 5;
+            this.siticoneGroupBox1.Controls.Add(this.label6);
             this.siticoneGroupBox1.Controls.Add(this.label12);
             this.siticoneGroupBox1.Controls.Add(this.label7);
             this.siticoneGroupBox1.Controls.Add(this.lblTC);
             this.siticoneGroupBox1.Controls.Add(this.btnVerde);
             this.siticoneGroupBox1.Controls.Add(this.btnRojo);
-            this.siticoneGroupBox1.Controls.Add(this.dtHFechaInicio);
-            this.siticoneGroupBox1.Controls.Add(this.dtHfechaFinal);
             this.siticoneGroupBox1.Controls.Add(this.chkHabilitarFechas);
-            this.siticoneGroupBox1.Controls.Add(this.siticoneGroupBox2);
             this.siticoneGroupBox1.Controls.Add(this.btnNuevoHistorial);
             this.siticoneGroupBox1.CustomBorderColor = System.Drawing.Color.DimGray;
             this.siticoneGroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
@@ -2286,12 +2277,23 @@
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -10);
             this.siticoneGroupBox1.Click += new System.EventHandler(this.siticoneGroupBox1_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(25, 35);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.TabIndex = 231;
+            this.label6.Text = "Buscar Por:";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(344, 81);
+            this.label12.Location = new System.Drawing.Point(717, 85);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(52, 13);
             this.label12.TabIndex = 229;
@@ -2303,7 +2305,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(333, 81);
+            this.label7.Location = new System.Drawing.Point(706, 85);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 13);
             this.label7.TabIndex = 228;
@@ -2314,7 +2316,7 @@
             // 
             this.lblTC.AutoSize = true;
             this.lblTC.ForeColor = System.Drawing.Color.Black;
-            this.lblTC.Location = new System.Drawing.Point(367, 20);
+            this.lblTC.Location = new System.Drawing.Point(740, 24);
             this.lblTC.Name = "lblTC";
             this.lblTC.Size = new System.Drawing.Size(38, 13);
             this.lblTC.TabIndex = 227;
@@ -2331,7 +2333,7 @@
             this.btnVerde.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerde.ForeColor = System.Drawing.Color.White;
             this.btnVerde.HoveredState.Parent = this.btnVerde;
-            this.btnVerde.Location = new System.Drawing.Point(356, 43);
+            this.btnVerde.Location = new System.Drawing.Point(729, 47);
             this.btnVerde.Name = "btnVerde";
             this.btnVerde.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
             this.btnVerde.ShadowDecoration.Parent = this.btnVerde;
@@ -2351,7 +2353,7 @@
             this.btnRojo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRojo.ForeColor = System.Drawing.Color.White;
             this.btnRojo.HoveredState.Parent = this.btnRojo;
-            this.btnRojo.Location = new System.Drawing.Point(356, 43);
+            this.btnRojo.Location = new System.Drawing.Point(729, 47);
             this.btnRojo.Name = "btnRojo";
             this.btnRojo.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
             this.btnRojo.ShadowDecoration.Parent = this.btnRojo;
@@ -2360,36 +2362,6 @@
             this.btnRojo.Text = "✘";
             this.btnRojo.TextOffset = new System.Drawing.Point(0, 1);
             this.btnRojo.Visible = false;
-            // 
-            // dtHFechaInicio
-            // 
-            this.dtHFechaInicio.CheckedState.Parent = this.dtHFechaInicio;
-            this.dtHFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtHFechaInicio.HoveredState.Parent = this.dtHFechaInicio;
-            this.dtHFechaInicio.Location = new System.Drawing.Point(568, 62);
-            this.dtHFechaInicio.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtHFechaInicio.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtHFechaInicio.Name = "dtHFechaInicio";
-            this.dtHFechaInicio.ShadowDecoration.Parent = this.dtHFechaInicio;
-            this.dtHFechaInicio.Size = new System.Drawing.Size(200, 36);
-            this.dtHFechaInicio.TabIndex = 224;
-            this.dtHFechaInicio.Value = new System.DateTime(2022, 2, 5, 10, 35, 46, 344);
-            this.dtHFechaInicio.Visible = false;
-            // 
-            // dtHfechaFinal
-            // 
-            this.dtHfechaFinal.CheckedState.Parent = this.dtHfechaFinal;
-            this.dtHfechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtHfechaFinal.HoveredState.Parent = this.dtHfechaFinal;
-            this.dtHfechaFinal.Location = new System.Drawing.Point(568, 20);
-            this.dtHfechaFinal.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtHfechaFinal.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtHfechaFinal.Name = "dtHfechaFinal";
-            this.dtHfechaFinal.ShadowDecoration.Parent = this.dtHfechaFinal;
-            this.dtHfechaFinal.Size = new System.Drawing.Size(200, 36);
-            this.dtHfechaFinal.TabIndex = 223;
-            this.dtHfechaFinal.Value = new System.DateTime(2022, 2, 5, 10, 35, 24, 161);
-            this.dtHfechaFinal.Visible = false;
             // 
             // chkHabilitarFechas
             // 
@@ -2401,121 +2373,6 @@
             this.chkHabilitarFechas.Text = "checkBox1";
             this.chkHabilitarFechas.UseVisualStyleBackColor = true;
             this.chkHabilitarFechas.Visible = false;
-            // 
-            // siticoneGroupBox2
-            // 
-            this.siticoneGroupBox2.BorderThickness = 0;
-            this.siticoneGroupBox2.Controls.Add(this.rbVehiculo);
-            this.siticoneGroupBox2.Controls.Add(this.rbCliente);
-            this.siticoneGroupBox2.Controls.Add(this.rbImei);
-            this.siticoneGroupBox2.Controls.Add(this.rbSimCard);
-            this.siticoneGroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0);
-            this.siticoneGroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.siticoneGroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.siticoneGroupBox2.Location = new System.Drawing.Point(3, 23);
-            this.siticoneGroupBox2.Name = "siticoneGroupBox2";
-            this.siticoneGroupBox2.ShadowDecoration.Parent = this.siticoneGroupBox2;
-            this.siticoneGroupBox2.Size = new System.Drawing.Size(280, 23);
-            this.siticoneGroupBox2.TabIndex = 221;
-            // 
-            // rbVehiculo
-            // 
-            this.rbVehiculo.AutoSize = true;
-            this.rbVehiculo.BackColor = System.Drawing.Color.Transparent;
-            this.rbVehiculo.CheckedState.BorderColor = System.Drawing.Color.DimGray;
-            this.rbVehiculo.CheckedState.BorderThickness = 1;
-            this.rbVehiculo.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.rbVehiculo.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rbVehiculo.CheckedState.InnerOffset = -2;
-            this.rbVehiculo.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.rbVehiculo.FlatAppearance.BorderSize = 3;
-            this.rbVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.rbVehiculo.ForeColor = System.Drawing.Color.Black;
-            this.rbVehiculo.Location = new System.Drawing.Point(195, 5);
-            this.rbVehiculo.Name = "rbVehiculo";
-            this.rbVehiculo.Size = new System.Drawing.Size(66, 17);
-            this.rbVehiculo.TabIndex = 221;
-            this.rbVehiculo.Text = "Vehiculo";
-            this.rbVehiculo.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rbVehiculo.UncheckedState.BorderThickness = 0;
-            this.rbVehiculo.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rbVehiculo.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rbVehiculo.UseVisualStyleBackColor = false;
-            // 
-            // rbCliente
-            // 
-            this.rbCliente.AutoSize = true;
-            this.rbCliente.BackColor = System.Drawing.Color.Transparent;
-            this.rbCliente.CheckedState.BorderColor = System.Drawing.Color.DimGray;
-            this.rbCliente.CheckedState.BorderThickness = 1;
-            this.rbCliente.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.rbCliente.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rbCliente.CheckedState.InnerOffset = -2;
-            this.rbCliente.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.rbCliente.FlatAppearance.BorderSize = 3;
-            this.rbCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.rbCliente.ForeColor = System.Drawing.Color.Black;
-            this.rbCliente.Location = new System.Drawing.Point(130, 5);
-            this.rbCliente.Name = "rbCliente";
-            this.rbCliente.Size = new System.Drawing.Size(57, 17);
-            this.rbCliente.TabIndex = 221;
-            this.rbCliente.Text = "Cliente";
-            this.rbCliente.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rbCliente.UncheckedState.BorderThickness = 0;
-            this.rbCliente.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rbCliente.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rbCliente.UseVisualStyleBackColor = false;
-            // 
-            // rbImei
-            // 
-            this.rbImei.AutoSize = true;
-            this.rbImei.BackColor = System.Drawing.Color.Transparent;
-            this.rbImei.CheckedState.BorderColor = System.Drawing.Color.DimGray;
-            this.rbImei.CheckedState.BorderThickness = 1;
-            this.rbImei.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.rbImei.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rbImei.CheckedState.InnerOffset = -2;
-            this.rbImei.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.rbImei.FlatAppearance.BorderSize = 3;
-            this.rbImei.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.rbImei.ForeColor = System.Drawing.Color.Black;
-            this.rbImei.Location = new System.Drawing.Point(81, 5);
-            this.rbImei.Name = "rbImei";
-            this.rbImei.Size = new System.Drawing.Size(44, 17);
-            this.rbImei.TabIndex = 221;
-            this.rbImei.Text = "Imei";
-            this.rbImei.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rbImei.UncheckedState.BorderThickness = 0;
-            this.rbImei.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rbImei.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rbImei.UseVisualStyleBackColor = false;
-            // 
-            // rbSimCard
-            // 
-            this.rbSimCard.AutoSize = true;
-            this.rbSimCard.BackColor = System.Drawing.Color.Transparent;
-            this.rbSimCard.Checked = true;
-            this.rbSimCard.CheckedState.BorderColor = System.Drawing.Color.DimGray;
-            this.rbSimCard.CheckedState.BorderThickness = 1;
-            this.rbSimCard.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.rbSimCard.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rbSimCard.CheckedState.InnerOffset = -2;
-            this.rbSimCard.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.rbSimCard.FlatAppearance.BorderSize = 3;
-            this.rbSimCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.rbSimCard.ForeColor = System.Drawing.Color.Black;
-            this.rbSimCard.Location = new System.Drawing.Point(13, 5);
-            this.rbSimCard.Name = "rbSimCard";
-            this.rbSimCard.Size = new System.Drawing.Size(64, 17);
-            this.rbSimCard.TabIndex = 221;
-            this.rbSimCard.TabStop = true;
-            this.rbSimCard.Text = "SimCard";
-            this.rbSimCard.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rbSimCard.UncheckedState.BorderThickness = 0;
-            this.rbSimCard.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rbSimCard.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rbSimCard.UseVisualStyleBackColor = false;
-            this.rbSimCard.CheckedChanged += new System.EventHandler(this.rbSimCard_CheckedChanged);
             // 
             // btnNuevoHistorial
             // 
@@ -2644,7 +2501,7 @@
             this.dgConsultas.RowHeadersVisible = false;
             this.dgConsultas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgConsultas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgConsultas.Size = new System.Drawing.Size(280, 129);
+            this.dgConsultas.Size = new System.Drawing.Size(679, 200);
             this.dgConsultas.TabIndex = 224;
             this.dgConsultas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgConsultas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -2692,7 +2549,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(276, 99);
+            this.pictureBox2.Location = new System.Drawing.Point(677, 99);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(36, 29);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -2723,12 +2580,12 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
-            this.txtBuscar.PlaceholderText = "DATOS A BUSCAR...";
+            this.txtBuscar.PlaceholderText = "Buscar por : Placa,Cliente,Equipo,Sim Card";
             this.txtBuscar.SelectedText = "";
             this.txtBuscar.ShadowDecoration.Parent = this.txtBuscar;
-            this.txtBuscar.Size = new System.Drawing.Size(280, 36);
+            this.txtBuscar.Size = new System.Drawing.Size(679, 36);
             this.txtBuscar.TabIndex = 227;
-            this.txtBuscar.TextOffset = new System.Drawing.Point(30, 0);
+            this.txtBuscar.TextOffset = new System.Drawing.Point(3, 0);
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
@@ -2785,8 +2642,6 @@
             this.gbPlan.PerformLayout();
             this.siticoneGroupBox1.ResumeLayout(false);
             this.siticoneGroupBox1.PerformLayout();
-            this.siticoneGroupBox2.ResumeLayout(false);
-            this.siticoneGroupBox2.PerformLayout();
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgConsultas)).EndInit();
@@ -2867,11 +2722,6 @@
         private Siticone.UI.WinForms.SiticoneDataGridView dgConsultas;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Siticone.UI.WinForms.SiticoneTextBox txtBuscar;
-        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox2;
-        private Siticone.UI.WinForms.SiticoneRadioButton rbSimCard;
-        private Siticone.UI.WinForms.SiticoneRadioButton rbVehiculo;
-        private Siticone.UI.WinForms.SiticoneRadioButton rbCliente;
-        private Siticone.UI.WinForms.SiticoneRadioButton rbImei;
         private System.Windows.Forms.DataGridViewTextBoxColumn SIMCARDD;
         private System.Windows.Forms.DataGridViewTextBoxColumn IMEI;
         private System.Windows.Forms.ImageList imageList1;
@@ -2936,8 +2786,6 @@
         private Siticone.UI.WinForms.SiticoneSeparator siticoneSeparator5;
         private System.Windows.Forms.Label lblsmsPlan;
         private System.Windows.Forms.CheckBox chkHabilitarFechas;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dtHFechaInicio;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dtHfechaFinal;
         private Siticone.UI.WinForms.SiticoneDragControl drcMover;
         private Siticone.UI.WinForms.SiticoneMaterialTextBox txtPlataformaEquipo;
         private System.Windows.Forms.Label label5;
@@ -2947,5 +2795,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblTC;
         private Siticone.UI.WinForms.SiticoneCircleButton btnVerde;
+        private System.Windows.Forms.Label label6;
     }
 }

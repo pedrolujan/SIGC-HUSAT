@@ -34,7 +34,7 @@ namespace CapaDato
             String xmlVentaGeneral = clsUtil.Serialize(lstVentaGeneral);
             String xmlDocumentoVenta = clsUtil.Serialize(xmlDocVenta);
             String xmlCliente = clsUtil.Serialize(lstCliente);
-            String xmlDataVNR = clsUtil.Serialize(clsVentaGeneral.lstVehiculoNRenov);
+            String xmlDataVNR = clsUtil.Serialize(clsVentaGeneral.lstVehiculo);
 
             try
             {
@@ -185,6 +185,121 @@ namespace CapaDato
                 objCnx = new clsConexion("");
                 dtresp = objCnx.EjecutarProcedimientoDT("uspBuscarContrato", pa);
                 return dtresp;
+            }
+            catch (Exception ex)
+            {
+                objUtil.gsLogAplicativo("DAAccesorios.cs", "daDevolverAccesorio", ex.Message);
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+
+        }
+        public xmlInstalacion daBuscarActaInstalacionIDInstalacion(Int32 idInstalacion, String codventa, String Placa, Int32 idTipoVenta)
+        {
+            SqlParameter[] pa = new SqlParameter[4];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            String cCodVenta = "";
+            DataTable dtresp = new DataTable();
+            xmlInstalacion xmlInstal = new xmlInstalacion();
+            List<AccesoriosEquipo> lstaAcc = new List<AccesoriosEquipo>();
+            List<ServicioEquipo> lstaServ = new List<ServicioEquipo>();
+            List<AccesoriosEquipo> lstaAccesorioActual = new List<AccesoriosEquipo>();
+            List<ServicioEquipo> lstaServicioActual = new List<ServicioEquipo>();
+            DataSet dtMenu = new DataSet();
+            DataView dvaccesorio = new DataView();
+            DataView dvservicio = new DataView();
+            DataView dvgen = new DataView();
+            String xmlActaInstalacion = "";
+            String CodigoActaInstalacion = "";
+            String usuario = "";
+            String TipoVenta = "";
+
+            try
+            {
+                pa[0] = new SqlParameter("@idInstalacion", SqlDbType.Int) { Value = idInstalacion };
+                pa[1] = new SqlParameter("@CodigoVenta", SqlDbType.NVarChar, 20) { Value = codventa };
+                pa[2] = new SqlParameter("@PlacaVehiculo", SqlDbType.NVarChar, 20) { Value = Placa };
+                pa[3] = new SqlParameter("@idTipoVenta", SqlDbType.Int) { Value = idTipoVenta };
+
+                objCnx = new clsConexion("");
+                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarActaInstalacion", pa);
+                dvgen = new DataView(dtMenu.Tables[0]);
+                dvaccesorio = new DataView(dtMenu.Tables[1]);
+                dvservicio = new DataView(dtMenu.Tables[2]);
+
+                foreach (DataRowView dr in dvgen)
+                {
+                    xmlActaInstalacion = Convert.ToString(dr["XmlInstalacion"]);
+                    CodigoActaInstalacion = Convert.ToString(dr["CodigoInstalacion"]);
+                    usuario = Convert.ToString(dr["cUsuario"]);
+                    TipoVenta = Convert.ToString(dr["TipoVenta"]);
+                }
+
+                foreach (DataRowView dr in dvaccesorio)
+                {
+                    lstaAcc.Add(new AccesoriosEquipo
+                    {
+                        checkAccesorio = true,
+                        idAccesorios = Convert.ToInt32(dr["idAccesorio"]),
+                        NombreAccesorio = Convert.ToString(dr["cAccesorioGps"])
+                    });
+                }
+                foreach (DataRowView dr in dvservicio)
+                {
+                    lstaServ.Add(new ServicioEquipo
+                    {
+                        checkServicio = true,
+                        idServicios = Convert.ToInt32(dr["idServicio"]),
+                        NombreServicio = Convert.ToString(dr["cServicioGps"])
+                    });
+                }
+
+
+                if (xmlActaInstalacion != "")
+                {
+                    xmlInstal = clsUtil.Deserialize<xmlInstalacion>(xmlActaInstalacion);
+                    lstaAccesorioActual = xmlInstal.ListaAccesorio;
+                    lstaServicioActual = xmlInstal.ListaServicio;
+
+                    for (int i = 0; i < lstaAccesorioActual.Count; i++)
+                    {
+                        for (int j = 0; j < lstaAcc.Count; j++)
+                        {
+                            if (lstaAccesorioActual[i].idAccesorios == lstaAcc[j].idAccesorios)
+                            {
+                                lstaAccesorioActual[i].checkAccesorio = true;
+                            }
+                        }
+
+
+                    }
+
+                    for (int i = 0; i < lstaServicioActual.Count; i++)
+                    {
+                        for (int j = 0; j < lstaServ.Count; j++)
+                        {
+                            if (lstaServicioActual[i].idServicios == lstaServ[j].idServicios)
+                            {
+                                lstaServicioActual[i].checkServicio = true;
+                            }
+                        }
+
+
+                    }
+                    xmlInstal.clsInstalacion.codigoInstalacion = CodigoActaInstalacion;
+                    xmlInstal.ListaAccesorio = lstaAccesorioActual;
+                    xmlInstal.ListaServicio = lstaServicioActual;
+                    xmlInstal.clsInstalacion.cUsuario = usuario;
+                    xmlInstal.ListaPlan[0].tarifas = TipoVenta;
+                }
+
+                return xmlInstal;
             }
             catch (Exception ex)
             {

@@ -29,7 +29,7 @@ namespace CapaNegocio
             DAInstalacion objInstalacion = new DAInstalacion();
             try
             {
-                return objInstalacion.DadevolverDatosIns(codVenta,placa);
+                return objInstalacion.DadevolverDatosIns(codVenta, placa);
             }
             catch (Exception ex)
             {

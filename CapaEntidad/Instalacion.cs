@@ -11,7 +11,7 @@ namespace CapaEntidad
 
         public Instalacion() { }
 
-        public Int32 tipoActa { get; set; }
+        public String tipoActa { get; set; }
         Int32 _idInstalacion = 0;
         public Int32 idInstalacion { get { return _idInstalacion; } set { _idInstalacion = value; } }
 

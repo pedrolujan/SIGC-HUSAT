@@ -2962,10 +2962,14 @@ namespace wfaIntegradoCom
 
                     Decimal MontoIngresos = lstRepDetalleIngresosDAshboard.Sum(i => i.ImporteRow);
                     Decimal MontoEgresos = lsReporteBloqueEgresosMontoEnCaja.Sum(i => i.ImporteRow);
-                    Variables.lstCuardreCaja=FunGeneral.fnVerificarAperturaAnterior(Convert.ToDateTime(dtFechaInicioG.Value), Convert.ToInt32(cboUsuario.SelectedValue));
-                   
+                    Variables.lstCuardreCaja = FunGeneral.fnVerificarAperturaAnterior(Convert.ToDateTime(dtFechaInicioG.Value), Convert.ToInt32(cboUsuario.SelectedValue));
+
                     CuadreCaja lstApertura = Variables.lstCuardreCaja.Find(i => i.idOperacion == 1) is null ? new CuadreCaja() : Variables.lstCuardreCaja.Find(i => i.idOperacion == 1);
-                    btnMontoEnCaja.Text = "Importe en Caja: " + FunGeneral.fnFormatearPrecioDC("S/", (MontoIngresos - MontoEgresos) + lstApertura.importeSaldo, 0);
+
+                    DAControlCaja dcc = new DAControlCaja();
+                    List<CajaChica> lstCajaChic = new List<CajaChica>();
+                    lstCajaChic= dcc.daObtenerImporteCaja(FunGeneral.GetFechaHoraFormato(dtFechaInicioG.Value, 5), FunGeneral.GetFechaHoraFormato(Variables.gdFechaSis, 5), Convert.ToInt32(clsBusq.cod3));
+                    btnMontoEnCaja.Text = "Importe en Caja: " + FunGeneral.fnFormatearPrecioDC("S/", lstCajaChic.Sum(i=>i.importe), 0);
                 }
                 
 

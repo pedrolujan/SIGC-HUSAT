@@ -715,11 +715,17 @@ namespace wfaIntegradoCom.Procesos
                 {
                     btnValidarEstados.Visible = true;
                     cmsPagoCuotas.Items[1].Visible = true;
+                    button2.Visible = true;
+                    button2.Enabled = true;
+                    button2.ForeColor = Color.Black;
                 }
                 else
                 {
                     btnValidarEstados.Visible = false;
                     cmsPagoCuotas.Items[1].Visible = false;
+                    button2.Visible = false;
+                    button2.Enabled = false;
+
                 }
                 if (inTipoApertura==0)
                 {
@@ -1200,7 +1206,25 @@ namespace wfaIntegradoCom.Procesos
             if (row==0)
             {
                 Int32 indice = lstCronograma.IndexOf(lstCronograma.Find(i => i.idCronograma == CronogramaSeleccionado));
-                if (lstCronograma[indice + 1].estado == "ESPV0002")
+                if (lstCronograma.Count>1)
+                {
+                    if (lstCronograma[indice + 1].estado == "ESPV0002")
+                    {
+                        lstDetalleCronograma[row].estChk = true;
+                        lstDetalleCronograma[row].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
+                        lstDetalleCronograma[row].idOperacion = 3;
+                        lstDetalleCronograma[row].fechaPago = dtFechaPago.Value;
+                        lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[row]);
+                        estado = true;
+                    }
+                    else
+                    {
+
+                        estado = false;
+                        MessageBox.Show("Aun no puede generar este pago ! \n porque falta Completar los pagos del contrato anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
                 {
                     lstDetalleCronograma[row].estChk = true;
                     lstDetalleCronograma[row].cPlan = FunGeneral.FormatearCadenaTitleCase(txtPlan.Text);
@@ -1208,12 +1232,8 @@ namespace wfaIntegradoCom.Procesos
                     lstDetalleCronograma[row].fechaPago = dtFechaPago.Value;
                     lstCronoGramasParaDocumentoVenta.Add(lstDetalleCronograma[row]);
                     estado = true;
-                }else
-                {
-
-                    estado = false;
-                    MessageBox.Show("Aun no puede generar este pago ! \n porque falta Completar los pagos del contrato anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                
 
             }
             else
@@ -2763,8 +2783,18 @@ namespace wfaIntegradoCom.Procesos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //EmitirFactura env = new EmitirFactura();
-            //env.EmitirNotaCredito(clsCliente, lstDetalleVenta, clsDocumentoVenta);
+            Int32 idCronoGrama = Convert.ToInt32(cboCronograma.SelectedValue);
+            DAControlPagos dcp=new DAControlPagos();
+            if (dcp.daActualizarEstadoCronograma(idCronoGrama))
+            {
+                MessageBox.Show("Cronograma actualizado Correctamente", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else
+            {
+                MessageBox.Show("Error al actualizar cronograma", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
         }
 
         private void btnVerDatos_Click(object sender, EventArgs e)
@@ -2957,24 +2987,68 @@ namespace wfaIntegradoCom.Procesos
                 }
                 else
                 {
-                    DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n" + dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (EstadoDialog == DialogResult.Yes)
+                    if (filaSeleccionada.Index==0)
                     {
-                        lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
-                        clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
-                        lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera,0);
+                        DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n" + dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (EstadoDialog == DialogResult.Yes)
+                        {
+                            lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
+                            clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
+                            lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera, 0);
 
-                        String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
-                        byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+                            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+                            byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
-                        //MemoryStream ms = new MemoryStream(imageBytes);
+                            //MemoryStream ms = new MemoryStream(imageBytes);
 
-                        //Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
-                        //frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, imageBytes, -1);
-                        frmTipoPago.Inicio(-1, lstDocumentoVenta, lstDetalleVenta, lstDetalleVenta[0].cSimbolo);
+                            //Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
+                            //frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, imageBytes, -1);
+                            frmTipoPago.Inicio(-1, lstDocumentoVenta, lstDetalleVenta, lstDetalleVenta[0].cSimbolo);
 
-                        fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+                            fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+                        }
                     }
+                    else
+                    {
+                        DetalleCronograma clsDetCron = lstDetalleCronograma.Find(i => i.estado == "VENCIDO");
+                        if (clsDetCron is DetalleCronograma && lstDetalleCronograma[filaSeleccionada.Index].estado != "VENCIDO")
+                        {
+                            MessageBox.Show("Aun no puede generar este pago ! \n porque tiene una cuota VENCIDA !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            if (lstDetalleCronograma[filaSeleccionada.Index - 1].codEstado == "ESPV0001" || lstDetalleCronograma[filaSeleccionada.Index - 1].codEstado == "ESPV0003")
+                            {
+                                MessageBox.Show("Aun no puede generar este pago ! \n porque falta la cuota anterior !", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                DialogResult EstadoDialog = MessageBox.Show("Es correcta la fecha de pago?\n\n" + dtFechaPago.Value.ToString(), "Aviso!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                if (EstadoDialog == DialogResult.Yes)
+                                {
+                                    lstDetalleVenta = fnGenerarPagoPrincipal(filaSeleccionada.Index, ColumnaSeleccionada.ColumnIndex);
+                                    clsDetallecabecera = fnCalcularCabeceraDetalle(lstDetalleVenta);
+                                    lstDocumentoVenta = fnCargarDocumentoVenta(clsDetallecabecera, 0);
+
+                                    String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+                                    byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+
+                                    //MemoryStream ms = new MemoryStream(imageBytes);
+
+                                    //Consultas.frmVPVenta frmVenta = new Consultas.frmVPVenta();
+                                    //frmVenta.Inicio(lstDocumentoVenta, lstDetalleVenta, imageBytes, -1);
+                                    frmTipoPago.Inicio(-1, lstDocumentoVenta, lstDetalleVenta, lstDetalleVenta[0].cSimbolo);
+                                    //frmTipoPago.Inicio(-1, lstDocumentoVenta, lstDetalleVenta, lstDetalleVenta[0].cSimbolo);
+
+                                    fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+                                }
+
+
+
+                            }
+                        }
+                    }
+                    
                 }
                 
             }
