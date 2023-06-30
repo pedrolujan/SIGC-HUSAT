@@ -48,7 +48,7 @@ namespace wfaIntegradoCom.Mantenedores
         private void frmInstalacionEquipo_Load(object sender, EventArgs e)
         {
 
-            FunGeneral.fnLlenarTablaCodTipoCon(cboEstadosInst, "ESVG", true);
+            FunGeneral.fnLlenarTablaCodTipoCon(cboEstadosInst, "ESIN", true);
             FunGeneral.fnLlenarUsuarioPorCargo(cboUsuario, "PETR0008", true);
 
 
@@ -66,7 +66,7 @@ namespace wfaIntegradoCom.Mantenedores
             gbObservacionesInst.Enabled = false;
             btnGuardarIns.Enabled = false;
             btnBuscarEquipos.Enabled = false;
-            //fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTRegistros, 0, 1, -3);
+            //fnBuscarListaVentas(dgvListaInstalaciones, "ESIN0001", btnTRegistros, 0, 1, -3);
             pbValObservacion.Visible = false;
 
             String lnIdPlan = "";
@@ -270,7 +270,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
             //fnBuscarListaVentas(dgvListaInstalaciones, Convert.ToString(cboEstadosInst.SelectedValue), btnTotalRegistrosIns, 0, 1, -1);
             
-            if (Convert.ToString(cboEstadosInst.SelectedValue) == "ESVG0001")
+            if (Convert.ToString(cboEstadosInst.SelectedValue) == "ESIN0001")
             {
                 cmsMenuSeleccion.Items[0].Visible = true;
                 cmsMenuSeleccion.Items[1].Visible = false;
@@ -278,7 +278,7 @@ namespace wfaIntegradoCom.Mantenedores
                
 
             }
-            else if (Convert.ToString(cboEstadosInst.SelectedValue) == "ESVG0002")
+            else if (Convert.ToString(cboEstadosInst.SelectedValue) == "ESIN0002")
             {
                 cmsMenuSeleccion.Items[0].Visible = true;
                 cmsMenuSeleccion.Items[0].Text="Modificar Instalacion";
@@ -1519,7 +1519,7 @@ namespace wfaIntegradoCom.Mantenedores
                         if (respuesta == true)
                         {
                             MessageBox.Show("Se registro correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTRegistros, 0, 1, -3);
+                            fnBuscarListaVentas(dgvListaInstalaciones, "ESIN0001", btnTRegistros, 0, 1, -3);
                             fnLimpiarControlesInstalacion();
 
                         }
@@ -1598,14 +1598,14 @@ namespace wfaIntegradoCom.Mantenedores
         {
             if (tabControl1.SelectedIndex == 0)
             {
-                fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTRegistros, 0, 1, -3);
-                //fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTRegistros, 0, 1, -1);
+                fnBuscarListaVentas(dgvListaInstalaciones, "ESIN0001", btnTRegistros, 0, 1, -3);
+                //fnBuscarListaVentas(dgvListaInstalaciones, "ESIN0001", btnTRegistros, 0, 1, -1);
             }
             else
             {
-                cboEstadosInst.SelectedValue = "ESVG0001";
+                cboEstadosInst.SelectedValue = "ESIN0001";
                 fnBuscarListaVentas(dgvListaInstalaciones, Convert.ToString(cboEstadosInst.SelectedValue), btnTotalRegistrosIns, 0, 1, -1);
-                //fnBuscarListaVentas(dgvListaInstalaciones, "ESVG0001", btnTotalRegistrosIns, 0, 1, -1);
+                //fnBuscarListaVentas(dgvListaInstalaciones, "ESIN0001", btnTotalRegistrosIns, 0, 1, -1);
             }
         }
         private void fnActivarCamposInst(Int32 condicion, Boolean estado)

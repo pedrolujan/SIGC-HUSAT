@@ -342,7 +342,7 @@ namespace CapaDato
                 pa[2] = new SqlParameter("@idTipoVenta", SqlDbType.Int) { Value = idTipoVenta };
 
                 objCnx = new clsConexion("");
-                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarActaInstalacion", pa);
+                dtMenu = objCnx.EjecutarProcedimientoDS("uspBuscarActaInstalacionAntigua", pa);
                 dvgen = new DataView(dtMenu.Tables[0]);
                 dvaccesorio = new DataView(dtMenu.Tables[1]);
                 dvservicio = new DataView(dtMenu.Tables[2]);

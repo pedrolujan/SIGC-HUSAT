@@ -73,7 +73,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 if (fnValidarDatos())
                 {
-                    if (lnTipoLLamada == -1)
+                    if (lnTipoLLamada == -1 || lnTipoLLamada == -2)
                     {
                         frmAnularVenta frm = new frmAnularVenta();
                         frm.fnRecibirDescripcion(Descripcion, clsTipoAnulacion);
@@ -103,9 +103,9 @@ namespace wfaIntegradoCom.Procesos
                 btnContinuar.Text = TextBtn1;
                 btnCancelar.Text = TextBtn2;
 
-                if (lnTipoLLamada==-1)
+                if (lnTipoLLamada == -1 || lnTipoLLamada == -2)
                 {
-                    lsTipoAnulacion=FunGeneral.fnLlenarCboSegunTablaTipoConReturnLista(cboTipoAnulacion, "Codigo", "Descripcion", "Tiposnotacredito", "estado", "1", false);
+                    lsTipoAnulacion =FunGeneral.fnLlenarCboSegunTablaTipoConReturnLista(cboTipoAnulacion, "Codigo", "Descripcion", "Tiposnotacredito", "estado", "1", false);
                 }
             }
             catch (Exception)

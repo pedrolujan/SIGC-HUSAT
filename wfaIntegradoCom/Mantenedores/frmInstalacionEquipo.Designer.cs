@@ -136,6 +136,18 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneLabel5 = new Siticone.UI.WinForms.SiticoneLabel();
             this.siticoneLabel4 = new Siticone.UI.WinForms.SiticoneLabel();
             this.dgvListaInstalaciones = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.idInstalacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechadeInstalacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idTipoTarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UbicacionEquipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cmsMenuSeleccion = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.seleccionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarInstalacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -160,18 +172,6 @@ namespace wfaIntegradoCom.Mantenedores
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.siticoneDragControl1 = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
-            this.idInstalacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.N = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechadeInstalacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idTipoTarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UbicacionEquipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btImprimir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.siticonePanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -350,7 +350,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(98, 21);
             this.radioButton4.TabIndex = 232;
-            this.radioButton4.Tag = "ESIN0004";
+            this.radioButton4.Tag = "ESIN0005";
             this.radioButton4.Text = "Reactivación";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
@@ -362,7 +362,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(105, 21);
             this.radioButton3.TabIndex = 232;
-            this.radioButton3.Tag = "ESIN0003";
+            this.radioButton3.Tag = "ESIN0004";
             this.radioButton3.Text = "M. Preventivo";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
@@ -374,7 +374,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(105, 21);
             this.radioButton2.TabIndex = 232;
-            this.radioButton2.Tag = "ESIN0002";
+            this.radioButton2.Tag = "ESIN0003";
             this.radioButton2.Text = "M. Correctivo";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
@@ -386,7 +386,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(87, 21);
             this.radioButton1.TabIndex = 232;
-            this.radioButton1.Tag = "ESIN0001";
+            this.radioButton1.Tag = "ESIN0002";
             this.radioButton1.Text = "Instalación";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
@@ -2159,6 +2159,88 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvListaInstalaciones.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListaInstalaciones_CellMouseDown);
             this.dgvListaInstalaciones.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvListaInstalaciones_CellPainting);
             // 
+            // idInstalacion
+            // 
+            this.idInstalacion.HeaderText = "idInstalacion";
+            this.idInstalacion.Name = "idInstalacion";
+            this.idInstalacion.ReadOnly = true;
+            this.idInstalacion.Visible = false;
+            // 
+            // codVenta
+            // 
+            this.codVenta.HeaderText = "CodVenta";
+            this.codVenta.Name = "codVenta";
+            this.codVenta.ReadOnly = true;
+            this.codVenta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.codVenta.Visible = false;
+            // 
+            // N
+            // 
+            this.N.HeaderText = "Nro";
+            this.N.Name = "N";
+            this.N.ReadOnly = true;
+            this.N.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // FechadeInstalacion
+            // 
+            this.FechadeInstalacion.HeaderText = "Fecha de Instalacion";
+            this.FechadeInstalacion.Name = "FechadeInstalacion";
+            this.FechadeInstalacion.ReadOnly = true;
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Lugar De Instalacion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // Vehiculo
+            // 
+            this.Vehiculo.HeaderText = "Vehiculo";
+            this.Vehiculo.Name = "Vehiculo";
+            this.Vehiculo.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // Usuario
+            // 
+            this.Usuario.HeaderText = "Técnico";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            // 
+            // idTipoTarifa
+            // 
+            this.idTipoTarifa.HeaderText = "id Tipo Tarifa";
+            this.idTipoTarifa.Name = "idTipoTarifa";
+            this.idTipoTarifa.ReadOnly = true;
+            this.idTipoTarifa.Visible = false;
+            // 
+            // UbicacionEquipo
+            // 
+            this.UbicacionEquipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.UbicacionEquipo.HeaderText = "UbicacionEquipo";
+            this.UbicacionEquipo.Name = "UbicacionEquipo";
+            this.UbicacionEquipo.ReadOnly = true;
+            this.UbicacionEquipo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.UbicacionEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.UbicacionEquipo.Visible = false;
+            this.UbicacionEquipo.Width = 118;
+            // 
+            // btImprimir
+            // 
+            this.btImprimir.HeaderText = "";
+            this.btImprimir.Name = "btImprimir";
+            this.btImprimir.ReadOnly = true;
+            // 
             // cmsMenuSeleccion
             // 
             this.cmsMenuSeleccion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2486,88 +2568,6 @@ namespace wfaIntegradoCom.Mantenedores
             // siticoneDragControl1
             // 
             this.siticoneDragControl1.TargetControl = this.gunaPanel1;
-            // 
-            // idInstalacion
-            // 
-            this.idInstalacion.HeaderText = "idInstalacion";
-            this.idInstalacion.Name = "idInstalacion";
-            this.idInstalacion.ReadOnly = true;
-            this.idInstalacion.Visible = false;
-            // 
-            // codVenta
-            // 
-            this.codVenta.HeaderText = "CodVenta";
-            this.codVenta.Name = "codVenta";
-            this.codVenta.ReadOnly = true;
-            this.codVenta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.codVenta.Visible = false;
-            // 
-            // N
-            // 
-            this.N.HeaderText = "Nro";
-            this.N.Name = "N";
-            this.N.ReadOnly = true;
-            this.N.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // FechadeInstalacion
-            // 
-            this.FechadeInstalacion.HeaderText = "Fecha de Instalacion";
-            this.FechadeInstalacion.Name = "FechadeInstalacion";
-            this.FechadeInstalacion.ReadOnly = true;
-            // 
-            // Cliente
-            // 
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Lugar De Instalacion";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // Vehiculo
-            // 
-            this.Vehiculo.HeaderText = "Vehiculo";
-            this.Vehiculo.Name = "Vehiculo";
-            this.Vehiculo.ReadOnly = true;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // Usuario
-            // 
-            this.Usuario.HeaderText = "Técnico";
-            this.Usuario.Name = "Usuario";
-            this.Usuario.ReadOnly = true;
-            // 
-            // idTipoTarifa
-            // 
-            this.idTipoTarifa.HeaderText = "id Tipo Tarifa";
-            this.idTipoTarifa.Name = "idTipoTarifa";
-            this.idTipoTarifa.ReadOnly = true;
-            this.idTipoTarifa.Visible = false;
-            // 
-            // UbicacionEquipo
-            // 
-            this.UbicacionEquipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.UbicacionEquipo.HeaderText = "UbicacionEquipo";
-            this.UbicacionEquipo.Name = "UbicacionEquipo";
-            this.UbicacionEquipo.ReadOnly = true;
-            this.UbicacionEquipo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UbicacionEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.UbicacionEquipo.Visible = false;
-            this.UbicacionEquipo.Width = 118;
-            // 
-            // btImprimir
-            // 
-            this.btImprimir.HeaderText = "";
-            this.btImprimir.Name = "btImprimir";
-            this.btImprimir.ReadOnly = true;
             // 
             // frmInstalacionEquipo
             // 

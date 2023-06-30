@@ -56,7 +56,7 @@ namespace wfaIntegradoCom.Procesos
               
                 fnLlenarTipoTarifa(0, cbTipoVenta, true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadoContrato, "TICN", true);
-                FunGeneral.fnLlenarTablaCodTipoCon(cboEstado, "ESVG", true);
+                FunGeneral.fnLlenarTablaCodTipoCon(cboEstado, "ESIN", true);
                
                 cboPlanV.SelectedValue = 0;
               

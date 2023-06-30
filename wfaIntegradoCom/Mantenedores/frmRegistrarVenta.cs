@@ -4183,7 +4183,7 @@ namespace wfaIntegradoCom.Mantenedores
                 FechaPago = Convert.ToDateTime(dtFechaPago.Value),
                 FechaVenta = Convert.ToDateTime(dtpFechaRegistro.Value),
                 IdUsuario = Variables.gnCodUser,
-                Estado = "ESVG0001",
+                Estado = "ESIN0001",
                 cCodEstadoPP = lstPagosTrand[0].cEstadoPP,
                 ClsCliente = clsCliente,
                 ClsResponsablePago = clsRespPago,

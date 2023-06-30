@@ -341,9 +341,9 @@
             this.cbF0.AutoSize = true;
             this.cbF0.Location = new System.Drawing.Point(824, 92);
             this.cbF0.Name = "cbF0";
-            this.cbF0.Size = new System.Drawing.Size(83, 17);
+            this.cbF0.Size = new System.Drawing.Size(85, 17);
             this.cbF0.TabIndex = 228;
-            this.cbF0.Text = "F001-00000";
+            this.cbF0.Text = "FH01-00000";
             this.cbF0.UseVisualStyleBackColor = true;
             this.cbF0.CheckedChanged += new System.EventHandler(this.cbF0_CheckedChanged);
             // 
@@ -352,9 +352,9 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(653, 92);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(84, 17);
+            this.checkBox1.Size = new System.Drawing.Size(86, 17);
             this.checkBox1.TabIndex = 227;
-            this.checkBox1.Text = "B001-00000";
+            this.checkBox1.Text = "BH01-00000";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_2);
             // 
@@ -363,9 +363,9 @@
             this.cbR0.AutoSize = true;
             this.cbR0.Location = new System.Drawing.Point(483, 92);
             this.cbR0.Name = "cbR0";
-            this.cbR0.Size = new System.Drawing.Size(85, 17);
+            this.cbR0.Size = new System.Drawing.Size(86, 17);
             this.cbR0.TabIndex = 227;
-            this.cbR0.Text = "R001-00000";
+            this.cbR0.Text = "RC01-00000";
             this.cbR0.UseVisualStyleBackColor = true;
             this.cbR0.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
             // 

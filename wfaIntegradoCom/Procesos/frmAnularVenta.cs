@@ -413,8 +413,15 @@ namespace wfaIntegradoCom.Procesos
 
         private void eliminarContratoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String codDocVenta = Convert.ToString(dgVentas.CurrentRow.Cells[0].Value);
+
+            Int32 idDocumento = Convert.ToInt32(dgVentas.CurrentRow.Cells[0].Value);
             Int32 idOperacion = Convert.ToInt32(dgVentas.CurrentRow.Cells[1].Value);
+            Int32 idCliente = Convert.ToInt32(dgVentas.CurrentRow.Cells[2].Value);
+            String codDocVenta = Convert.ToString(dgVentas.CurrentRow.Cells[4].Value);
+
+
+            clsCliente = objAcc.blListarCliente(idCliente, 1);
+
             fnAnularDocumentoVenta(codDocVenta, idOperacion, -2);
         }
 
