@@ -247,7 +247,7 @@ namespace wfaIntegradoCom.Procesos
                             estMotivo = true;
                             estad = false;
                         }
-                        else if (idValida == -8)
+                        else if (idValida == -8 || idValida==-9)
                         {
                             tituloGbCliente = "Ingrese datos del vehiculo al cual se dio mantenimiento o datos del cliente";
                             phlBusqGbCliente = "Ingrese Placa ó documento";
@@ -1008,7 +1008,7 @@ namespace wfaIntegradoCom.Procesos
                         txtTelefono.Text = clsClienteDocumentoV.cTelCelular;
                         dgv.Visible = false;
                     }
-                    else if (lnTipoConCambio==-2 || lnTipoConCambio == -8 || lnTipoConCambio == 0)
+                    else if (lnTipoConCambio==-2 || lnTipoConCambio == -8 || lnTipoConCambio == -9  || lnTipoConCambio == 0)
                     {
                        
                         foreach (DataRow drMenu in dtResult.Rows)
@@ -2781,7 +2781,7 @@ namespace wfaIntegradoCom.Procesos
         }
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
-        {
+       {
             Int32 caracteres = Convert.ToInt32(txtBusca.Text.Length);
             if (caracteres > 2)
             {
