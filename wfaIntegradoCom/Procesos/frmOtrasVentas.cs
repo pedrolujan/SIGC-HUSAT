@@ -2427,7 +2427,7 @@ namespace wfaIntegradoCom.Procesos
                 //{
                     Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();
                     Decimal sumaPrimerPago = lstLdv.Sum(i => i.Importe);
-                    fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocumentoVenta[0].cCodDocumentoVenta);
+                    //fmr.Inicio(-2, sumaPrimerPago, lstLdv[0].cSimbolo, lstDocumentoVenta[0].cCodDocumentoVenta);
                 //}
             }
 
