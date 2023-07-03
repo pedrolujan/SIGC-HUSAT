@@ -503,7 +503,6 @@ namespace CapaDato
             DataTable dtResult = new DataTable();
             clsConexion objCnx = null;
             List<CajaChica> lstImporte = new List<CajaChica>(); 
-
             try
             {
                 pa[0] = new SqlParameter("@fechaBusqueda", SqlDbType.Date);
