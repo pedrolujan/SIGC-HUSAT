@@ -787,7 +787,7 @@ namespace wfaIntegradoCom.Procesos
                 
                 for (Int32 i = 0; i < lstDetCronAutomatico.Count; i++)
                 {
-                    if (lstDetCronAutomatico[i].idCronograma== 23)
+                    if (lstDetCronAutomatico[i].idCronograma== 996)
                     {
 
                     }
@@ -814,7 +814,7 @@ namespace wfaIntegradoCom.Procesos
 
                                 //if (contadorVencido <2)
                                 //{
-                                if (clsDetCro[j].estado != "ESPV0002")
+                                if (clsDetCro[j].estado != "ESPV0002" )
                                 {
                                     if (j > 0)
                                     {
