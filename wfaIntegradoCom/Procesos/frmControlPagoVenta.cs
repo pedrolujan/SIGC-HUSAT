@@ -761,6 +761,7 @@ namespace wfaIntegradoCom.Procesos
                 }
                 
             }
+
         }
 
         private void fnBuscarCronogramaAutomatico(String dtIni, String dtFin,String estado,Int32 tipoCon)
