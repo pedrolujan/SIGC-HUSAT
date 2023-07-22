@@ -113,15 +113,15 @@
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscar.HoveredState.Parent = this.txtBuscar;
-            this.txtBuscar.Location = new System.Drawing.Point(483, 35);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBuscar.Location = new System.Drawing.Point(644, 43);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtBuscar.PlaceholderText = "INGRESE COD VENTA...";
             this.txtBuscar.SelectedText = "";
             this.txtBuscar.ShadowDecoration.Parent = this.txtBuscar;
-            this.txtBuscar.Size = new System.Drawing.Size(424, 36);
+            this.txtBuscar.Size = new System.Drawing.Size(565, 44);
             this.txtBuscar.TabIndex = 189;
             this.txtBuscar.TextOffset = new System.Drawing.Point(30, 0);
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
@@ -131,9 +131,10 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(865, 39);
+            this.pictureBox4.Location = new System.Drawing.Point(1153, 48);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(34, 27);
+            this.pictureBox4.Size = new System.Drawing.Size(45, 33);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 190;
             this.pictureBox4.TabStop = false;
@@ -141,24 +142,25 @@
             // 
             // cmsAnularVenta
             // 
+            this.cmsAnularVenta.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsAnularVenta.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eliminarRegistroToolStripMenuItem,
             this.eliminarContratoToolStripMenuItem});
             this.cmsAnularVenta.Name = "cmsAnularVenta";
-            this.cmsAnularVenta.Size = new System.Drawing.Size(176, 48);
+            this.cmsAnularVenta.Size = new System.Drawing.Size(495, 80);
             // 
             // eliminarRegistroToolStripMenuItem
             // 
             this.eliminarRegistroToolStripMenuItem.Name = "eliminarRegistroToolStripMenuItem";
-            this.eliminarRegistroToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.eliminarRegistroToolStripMenuItem.Text = "Anular Documento";
+            this.eliminarRegistroToolStripMenuItem.Size = new System.Drawing.Size(494, 24);
+            this.eliminarRegistroToolStripMenuItem.Text = "Anular Documento de Venta";
             this.eliminarRegistroToolStripMenuItem.Click += new System.EventHandler(this.eliminarRegistroToolStripMenuItem_Click);
             // 
             // eliminarContratoToolStripMenuItem
             // 
             this.eliminarContratoToolStripMenuItem.Name = "eliminarContratoToolStripMenuItem";
-            this.eliminarContratoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.eliminarContratoToolStripMenuItem.Text = "Eliminar contrato";
+            this.eliminarContratoToolStripMenuItem.Size = new System.Drawing.Size(494, 24);
+            this.eliminarContratoToolStripMenuItem.Text = "Eliminar Contrato -- se eliminara el registo de la base de datos";
             this.eliminarContratoToolStripMenuItem.Click += new System.EventHandler(this.eliminarContratoToolStripMenuItem_Click);
             // 
             // label1
@@ -167,9 +169,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(425, 45);
+            this.label1.Location = new System.Drawing.Point(567, 55);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 15);
+            this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 196;
             this.label1.Text = "BUSCAR";
             // 
@@ -182,9 +185,11 @@
             this.gbBuscarListaVentas.Controls.Add(this.label14);
             this.gbBuscarListaVentas.Enabled = false;
             this.gbBuscarListaVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.gbBuscarListaVentas.Location = new System.Drawing.Point(15, 12);
+            this.gbBuscarListaVentas.Location = new System.Drawing.Point(20, 15);
+            this.gbBuscarListaVentas.Margin = new System.Windows.Forms.Padding(4);
             this.gbBuscarListaVentas.Name = "gbBuscarListaVentas";
-            this.gbBuscarListaVentas.Size = new System.Drawing.Size(268, 117);
+            this.gbBuscarListaVentas.Padding = new System.Windows.Forms.Padding(4);
+            this.gbBuscarListaVentas.Size = new System.Drawing.Size(357, 144);
             this.gbBuscarListaVentas.TabIndex = 225;
             this.gbBuscarListaVentas.TabStop = false;
             // 
@@ -198,12 +203,13 @@
             this.dtpFechaFinalBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaFinalBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpFechaFinalBus.HoveredState.Parent = this.dtpFechaFinalBus;
-            this.dtpFechaFinalBus.Location = new System.Drawing.Point(8, 77);
+            this.dtpFechaFinalBus.Location = new System.Drawing.Point(11, 95);
+            this.dtpFechaFinalBus.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFechaFinalBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaFinalBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaFinalBus.Name = "dtpFechaFinalBus";
             this.dtpFechaFinalBus.ShadowDecoration.Parent = this.dtpFechaFinalBus;
-            this.dtpFechaFinalBus.Size = new System.Drawing.Size(254, 36);
+            this.dtpFechaFinalBus.Size = new System.Drawing.Size(339, 44);
             this.dtpFechaFinalBus.TabIndex = 233;
             this.dtpFechaFinalBus.Value = new System.DateTime(2022, 4, 8, 18, 42, 0, 0);
             // 
@@ -217,12 +223,13 @@
             this.dtpFechaInicialBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaInicialBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpFechaInicialBus.HoveredState.Parent = this.dtpFechaInicialBus;
-            this.dtpFechaInicialBus.Location = new System.Drawing.Point(8, 25);
+            this.dtpFechaInicialBus.Location = new System.Drawing.Point(11, 31);
+            this.dtpFechaInicialBus.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFechaInicialBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaInicialBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaInicialBus.Name = "dtpFechaInicialBus";
             this.dtpFechaInicialBus.ShadowDecoration.Parent = this.dtpFechaInicialBus;
-            this.dtpFechaInicialBus.Size = new System.Drawing.Size(254, 36);
+            this.dtpFechaInicialBus.Size = new System.Drawing.Size(339, 44);
             this.dtpFechaInicialBus.TabIndex = 231;
             this.dtpFechaInicialBus.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
             // 
@@ -232,9 +239,10 @@
             this.label35.BackColor = System.Drawing.Color.Transparent;
             this.label35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label35.Location = new System.Drawing.Point(8, 60);
+            this.label35.Location = new System.Drawing.Point(11, 74);
+            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(74, 17);
+            this.label35.Size = new System.Drawing.Size(98, 23);
             this.label35.TabIndex = 232;
             this.label35.Text = "Fecha Final:";
             // 
@@ -244,9 +252,10 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(8, 9);
+            this.label14.Location = new System.Drawing.Point(11, 11);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(80, 17);
+            this.label14.Size = new System.Drawing.Size(107, 23);
             this.label14.TabIndex = 227;
             this.label14.Text = "Fecha Inicial:";
             // 
@@ -258,12 +267,13 @@
             this.gunaControlBox1.BackColor = System.Drawing.Color.Transparent;
             this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(930, 0);
+            this.gunaControlBox1.Location = new System.Drawing.Point(1240, 0);
+            this.gunaControlBox1.Margin = new System.Windows.Forms.Padding(4);
             this.gunaControlBox1.Name = "gunaControlBox1";
             this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
             this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.Size = new System.Drawing.Size(45, 29);
+            this.gunaControlBox1.Size = new System.Drawing.Size(60, 36);
             this.gunaControlBox1.TabIndex = 76;
             // 
             // gunaControlBox2
@@ -274,12 +284,13 @@
             this.gunaControlBox2.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MinimizeBox;
             this.gunaControlBox2.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox2.IconSize = 15F;
-            this.gunaControlBox2.Location = new System.Drawing.Point(883, 0);
+            this.gunaControlBox2.Location = new System.Drawing.Point(1177, 0);
+            this.gunaControlBox2.Margin = new System.Windows.Forms.Padding(4);
             this.gunaControlBox2.Name = "gunaControlBox2";
             this.gunaControlBox2.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.gunaControlBox2.OnHoverIconColor = System.Drawing.Color.White;
             this.gunaControlBox2.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaControlBox2.Size = new System.Drawing.Size(45, 29);
+            this.gunaControlBox2.Size = new System.Drawing.Size(60, 36);
             this.gunaControlBox2.TabIndex = 77;
             // 
             // label13
@@ -288,9 +299,10 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(12, 3);
+            this.label13.Location = new System.Drawing.Point(16, 4);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(75, 15);
+            this.label13.Size = new System.Drawing.Size(98, 20);
             this.label13.TabIndex = 141;
             this.label13.Text = "Anular Venta";
             // 
@@ -302,9 +314,10 @@
             this.siticonePanel2.Controls.Add(this.gunaControlBox1);
             this.siticonePanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.siticonePanel2.Location = new System.Drawing.Point(0, 0);
+            this.siticonePanel2.Margin = new System.Windows.Forms.Padding(4);
             this.siticonePanel2.Name = "siticonePanel2";
             this.siticonePanel2.ShadowDecoration.Parent = this.siticonePanel2;
-            this.siticonePanel2.Size = new System.Drawing.Size(975, 25);
+            this.siticonePanel2.Size = new System.Drawing.Size(1300, 31);
             this.siticonePanel2.TabIndex = 79;
             // 
             // siticonePanel1
@@ -320,18 +333,20 @@
             this.siticonePanel1.Controls.Add(this.txtBuscar);
             this.siticonePanel1.Controls.Add(this.gbBuscarListaVentas);
             this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.siticonePanel1.Location = new System.Drawing.Point(0, 25);
+            this.siticonePanel1.Location = new System.Drawing.Point(0, 31);
+            this.siticonePanel1.Margin = new System.Windows.Forms.Padding(4);
             this.siticonePanel1.Name = "siticonePanel1";
             this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
-            this.siticonePanel1.Size = new System.Drawing.Size(975, 135);
+            this.siticonePanel1.Size = new System.Drawing.Size(1300, 166);
             this.siticonePanel1.TabIndex = 226;
             // 
             // cboNotaCredit
             // 
             this.cboNotaCredit.FormattingEnabled = true;
-            this.cboNotaCredit.Location = new System.Drawing.Point(304, 108);
+            this.cboNotaCredit.Location = new System.Drawing.Point(405, 133);
+            this.cboNotaCredit.Margin = new System.Windows.Forms.Padding(4);
             this.cboNotaCredit.Name = "cboNotaCredit";
-            this.cboNotaCredit.Size = new System.Drawing.Size(121, 21);
+            this.cboNotaCredit.Size = new System.Drawing.Size(160, 24);
             this.cboNotaCredit.TabIndex = 383;
             this.cboNotaCredit.Visible = false;
             this.cboNotaCredit.SelectedIndexChanged += new System.EventHandler(this.cboNotaCredit_SelectedIndexChanged);
@@ -339,42 +354,46 @@
             // cbF0
             // 
             this.cbF0.AutoSize = true;
-            this.cbF0.Location = new System.Drawing.Point(824, 92);
+            this.cbF0.Location = new System.Drawing.Point(1099, 113);
+            this.cbF0.Margin = new System.Windows.Forms.Padding(4);
             this.cbF0.Name = "cbF0";
-            this.cbF0.Size = new System.Drawing.Size(85, 17);
+            this.cbF0.Size = new System.Drawing.Size(93, 20);
             this.cbF0.TabIndex = 228;
-            this.cbF0.Text = "FH01-00000";
+            this.cbF0.Text = "FH01-0000";
             this.cbF0.UseVisualStyleBackColor = true;
             this.cbF0.CheckedChanged += new System.EventHandler(this.cbF0_CheckedChanged);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(653, 92);
+            this.checkBox1.Location = new System.Drawing.Point(871, 113);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(86, 17);
+            this.checkBox1.Size = new System.Drawing.Size(94, 20);
             this.checkBox1.TabIndex = 227;
-            this.checkBox1.Text = "BH01-00000";
+            this.checkBox1.Text = "BH01-0000";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_2);
             // 
             // cbR0
             // 
             this.cbR0.AutoSize = true;
-            this.cbR0.Location = new System.Drawing.Point(483, 92);
+            this.cbR0.Location = new System.Drawing.Point(644, 113);
+            this.cbR0.Margin = new System.Windows.Forms.Padding(4);
             this.cbR0.Name = "cbR0";
-            this.cbR0.Size = new System.Drawing.Size(86, 17);
+            this.cbR0.Size = new System.Drawing.Size(94, 20);
             this.cbR0.TabIndex = 227;
-            this.cbR0.Text = "RC01-00000";
+            this.cbR0.Text = "RC01-0000";
             this.cbR0.UseVisualStyleBackColor = true;
             this.cbR0.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
             // 
             // cbFechas
             // 
             this.cbFechas.AutoSize = true;
-            this.cbFechas.Location = new System.Drawing.Point(183, 0);
+            this.cbFechas.Location = new System.Drawing.Point(244, 0);
+            this.cbFechas.Margin = new System.Windows.Forms.Padding(4);
             this.cbFechas.Name = "cbFechas";
-            this.cbFechas.Size = new System.Drawing.Size(97, 17);
+            this.cbFechas.Size = new System.Drawing.Size(118, 20);
             this.cbFechas.TabIndex = 226;
             this.cbFechas.Text = "Activar Fechas";
             this.cbFechas.UseVisualStyleBackColor = true;
@@ -391,9 +410,11 @@
             this.gbPaginacion.Controls.Add(this.btnTotalPag);
             this.gbPaginacion.Controls.Add(this.label41);
             this.gbPaginacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPaginacion.Location = new System.Drawing.Point(626, 541);
+            this.gbPaginacion.Location = new System.Drawing.Point(835, 666);
+            this.gbPaginacion.Margin = new System.Windows.Forms.Padding(4);
             this.gbPaginacion.Name = "gbPaginacion";
-            this.gbPaginacion.Size = new System.Drawing.Size(340, 48);
+            this.gbPaginacion.Padding = new System.Windows.Forms.Padding(4);
+            this.gbPaginacion.Size = new System.Drawing.Size(453, 59);
             this.gbPaginacion.TabIndex = 227;
             this.gbPaginacion.TabStop = false;
             // 
@@ -407,29 +428,32 @@
             this.btnNumFilas.ForeColor = System.Drawing.Color.White;
             this.btnNumFilas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnNumFilas.HoveredState.Parent = this.btnNumFilas;
-            this.btnNumFilas.Location = new System.Drawing.Point(209, 13);
+            this.btnNumFilas.Location = new System.Drawing.Point(279, 16);
+            this.btnNumFilas.Margin = new System.Windows.Forms.Padding(4);
             this.btnNumFilas.Name = "btnNumFilas";
             this.btnNumFilas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
             this.btnNumFilas.ShadowDecoration.Parent = this.btnNumFilas;
-            this.btnNumFilas.Size = new System.Drawing.Size(29, 29);
+            this.btnNumFilas.Size = new System.Drawing.Size(39, 36);
             this.btnNumFilas.TabIndex = 171;
             this.btnNumFilas.TextOffset = new System.Drawing.Point(0, 1);
             // 
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(240, 20);
+            this.label37.Location = new System.Drawing.Point(320, 25);
+            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(68, 15);
+            this.label37.Size = new System.Drawing.Size(87, 20);
             this.label37.TabIndex = 173;
             this.label37.Text = "registros de";
             // 
             // siticoneVSeparator1
             // 
             this.siticoneVSeparator1.FillColor = System.Drawing.Color.Gray;
-            this.siticoneVSeparator1.Location = new System.Drawing.Point(186, 8);
+            this.siticoneVSeparator1.Location = new System.Drawing.Point(248, 10);
+            this.siticoneVSeparator1.Margin = new System.Windows.Forms.Padding(4);
             this.siticoneVSeparator1.Name = "siticoneVSeparator1";
-            this.siticoneVSeparator1.Size = new System.Drawing.Size(13, 27);
+            this.siticoneVSeparator1.Size = new System.Drawing.Size(17, 33);
             this.siticoneVSeparator1.TabIndex = 174;
             // 
             // cboPagina
@@ -439,18 +463,20 @@
             this.cboPagina.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cboPagina.FormattingEnabled = true;
             this.cboPagina.IntegralHeight = false;
-            this.cboPagina.Location = new System.Drawing.Point(52, 16);
+            this.cboPagina.Location = new System.Drawing.Point(69, 20);
+            this.cboPagina.Margin = new System.Windows.Forms.Padding(4);
             this.cboPagina.Name = "cboPagina";
-            this.cboPagina.Size = new System.Drawing.Size(63, 23);
+            this.cboPagina.Size = new System.Drawing.Size(83, 28);
             this.cboPagina.TabIndex = 167;
             this.cboPagina.SelectedIndexChanged += new System.EventHandler(this.cboPagina_SelectedIndexChanged);
             // 
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(6, 20);
+            this.label40.Location = new System.Drawing.Point(8, 25);
+            this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(43, 15);
+            this.label40.Size = new System.Drawing.Size(53, 20);
             this.label40.TabIndex = 168;
             this.label40.Text = "Página";
             // 
@@ -464,11 +490,12 @@
             this.btnTotalReg.ForeColor = System.Drawing.Color.White;
             this.btnTotalReg.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnTotalReg.HoveredState.Parent = this.btnTotalReg;
-            this.btnTotalReg.Location = new System.Drawing.Point(307, 13);
+            this.btnTotalReg.Location = new System.Drawing.Point(409, 16);
+            this.btnTotalReg.Margin = new System.Windows.Forms.Padding(4);
             this.btnTotalReg.Name = "btnTotalReg";
             this.btnTotalReg.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
             this.btnTotalReg.ShadowDecoration.Parent = this.btnTotalReg;
-            this.btnTotalReg.Size = new System.Drawing.Size(29, 29);
+            this.btnTotalReg.Size = new System.Drawing.Size(39, 36);
             this.btnTotalReg.TabIndex = 172;
             this.btnTotalReg.TextOffset = new System.Drawing.Point(0, 1);
             // 
@@ -482,20 +509,22 @@
             this.btnTotalPag.ForeColor = System.Drawing.Color.White;
             this.btnTotalPag.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnTotalPag.HoveredState.Parent = this.btnTotalPag;
-            this.btnTotalPag.Location = new System.Drawing.Point(149, 13);
+            this.btnTotalPag.Location = new System.Drawing.Point(199, 16);
+            this.btnTotalPag.Margin = new System.Windows.Forms.Padding(4);
             this.btnTotalPag.Name = "btnTotalPag";
             this.btnTotalPag.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
             this.btnTotalPag.ShadowDecoration.Parent = this.btnTotalPag;
-            this.btnTotalPag.Size = new System.Drawing.Size(29, 29);
+            this.btnTotalPag.Size = new System.Drawing.Size(39, 36);
             this.btnTotalPag.TabIndex = 169;
             this.btnTotalPag.TextOffset = new System.Drawing.Point(0, 1);
             // 
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(124, 20);
+            this.label41.Location = new System.Drawing.Point(165, 25);
+            this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(20, 15);
+            this.label41.Size = new System.Drawing.Size(26, 20);
             this.label41.TabIndex = 170;
             this.label41.Text = "de";
             // 
@@ -551,7 +580,8 @@
             this.dgVentas.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgVentas.EnableHeadersVisualStyles = false;
             this.dgVentas.GridColor = System.Drawing.Color.Silver;
-            this.dgVentas.Location = new System.Drawing.Point(8, 161);
+            this.dgVentas.Location = new System.Drawing.Point(11, 198);
+            this.dgVentas.Margin = new System.Windows.Forms.Padding(4);
             this.dgVentas.Name = "dgVentas";
             this.dgVentas.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -563,6 +593,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgVentas.RowHeadersVisible = false;
+            this.dgVentas.RowHeadersWidth = 51;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgVentas.RowsDefaultCellStyle = dataGridViewCellStyle6;
@@ -572,7 +603,7 @@
             this.dgVentas.RowTemplate.Height = 50;
             this.dgVentas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgVentas.Size = new System.Drawing.Size(958, 382);
+            this.dgVentas.Size = new System.Drawing.Size(1277, 470);
             this.dgVentas.TabIndex = 228;
             this.dgVentas.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -601,6 +632,7 @@
             // ID
             // 
             this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.Visible = false;
@@ -608,12 +640,14 @@
             // Numero_lv
             // 
             this.Numero_lv.HeaderText = "N°";
+            this.Numero_lv.MinimumWidth = 6;
             this.Numero_lv.Name = "Numero_lv";
             this.Numero_lv.ReadOnly = true;
             // 
             // CodVenta_lv
             // 
             this.CodVenta_lv.HeaderText = "Cod. Venta";
+            this.CodVenta_lv.MinimumWidth = 6;
             this.CodVenta_lv.Name = "CodVenta_lv";
             this.CodVenta_lv.ReadOnly = true;
             this.CodVenta_lv.Visible = false;
@@ -621,72 +655,84 @@
             // fechaPago
             // 
             this.fechaPago.HeaderText = "Fecha Venta";
+            this.fechaPago.MinimumWidth = 6;
             this.fechaPago.Name = "fechaPago";
             this.fechaPago.ReadOnly = true;
             // 
             // FECHAVENTA
             // 
             this.FECHAVENTA.HeaderText = "Fecha inicio contrato";
+            this.FECHAVENTA.MinimumWidth = 6;
             this.FECHAVENTA.Name = "FECHAVENTA";
             this.FECHAVENTA.ReadOnly = true;
             // 
             // fechaFinContrato
             // 
             this.fechaFinContrato.HeaderText = "Fecha fin contrato";
+            this.fechaFinContrato.MinimumWidth = 6;
             this.fechaFinContrato.Name = "fechaFinContrato";
             this.fechaFinContrato.ReadOnly = true;
             // 
             // Vehiculos_lv
             // 
             this.Vehiculos_lv.HeaderText = "Vehiculos";
+            this.Vehiculos_lv.MinimumWidth = 6;
             this.Vehiculos_lv.Name = "Vehiculos_lv";
             this.Vehiculos_lv.ReadOnly = true;
             // 
             // Ciente_Rs_lv
             // 
             this.Ciente_Rs_lv.HeaderText = "Cliente/Razon Social";
+            this.Ciente_Rs_lv.MinimumWidth = 6;
             this.Ciente_Rs_lv.Name = "Ciente_Rs_lv";
             this.Ciente_Rs_lv.ReadOnly = true;
             // 
             // Plan_lv
             // 
             this.Plan_lv.HeaderText = "Plan";
+            this.Plan_lv.MinimumWidth = 6;
             this.Plan_lv.Name = "Plan_lv";
             this.Plan_lv.ReadOnly = true;
             // 
             // TipoVenta
             // 
             this.TipoVenta.HeaderText = "Tipo Venta";
+            this.TipoVenta.MinimumWidth = 6;
             this.TipoVenta.Name = "TipoVenta";
             this.TipoVenta.ReadOnly = true;
             // 
             // Estado_lv
             // 
             this.Estado_lv.HeaderText = "Estado";
+            this.Estado_lv.MinimumWidth = 6;
             this.Estado_lv.Name = "Estado_lv";
             this.Estado_lv.ReadOnly = true;
             // 
             // EstadoContrato
             // 
             this.EstadoContrato.HeaderText = "Estado Contrato";
+            this.EstadoContrato.MinimumWidth = 6;
             this.EstadoContrato.Name = "EstadoContrato";
             this.EstadoContrato.ReadOnly = true;
             // 
             // Usuario_lv
             // 
             this.Usuario_lv.HeaderText = "Usuario";
+            this.Usuario_lv.MinimumWidth = 6;
             this.Usuario_lv.Name = "Usuario_lv";
             this.Usuario_lv.ReadOnly = true;
             // 
             // ImporteTotal
             // 
             this.ImporteTotal.HeaderText = "Importe Total";
+            this.ImporteTotal.MinimumWidth = 6;
             this.ImporteTotal.Name = "ImporteTotal";
             this.ImporteTotal.ReadOnly = true;
             // 
             // txtEstado
             // 
             this.txtEstado.HeaderText = "Estado Renovacion";
+            this.txtEstado.MinimumWidth = 6;
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.ReadOnly = true;
             // 
@@ -697,12 +743,14 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.lvBtnImprimir.DefaultCellStyle = dataGridViewCellStyle3;
             this.lvBtnImprimir.HeaderText = "";
+            this.lvBtnImprimir.MinimumWidth = 6;
             this.lvBtnImprimir.Name = "lvBtnImprimir";
             this.lvBtnImprimir.ReadOnly = true;
             // 
             // idTipoTarida
             // 
             this.idTipoTarida.HeaderText = "idTipoTarida";
+            this.idTipoTarida.MinimumWidth = 6;
             this.idTipoTarida.Name = "idTipoTarida";
             this.idTipoTarida.ReadOnly = true;
             this.idTipoTarida.Visible = false;
@@ -710,20 +758,22 @@
             // idContrato
             // 
             this.idContrato.HeaderText = "idContrato";
+            this.idContrato.MinimumWidth = 6;
             this.idContrato.Name = "idContrato";
             this.idContrato.ReadOnly = true;
             this.idContrato.Visible = false;
             // 
             // frmAnularVenta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 593);
+            this.ClientSize = new System.Drawing.Size(1300, 730);
             this.Controls.Add(this.dgVentas);
             this.Controls.Add(this.gbPaginacion);
             this.Controls.Add(this.siticonePanel1);
             this.Controls.Add(this.siticonePanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAnularVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAnularVenta";

@@ -699,7 +699,7 @@ namespace CapaDato
                 pa[6] = new SqlParameter("@tipoCon", SqlDbType.Int) { Value =  tipoCon };
 
                 objCnx = new clsConexion("");
-                //dtresp = objCnx.EjecutarProcedimientoDT("uspAnularDocumentoVenta", pa);
+                dtresp = objCnx.EjecutarProcedimientoDT("uspAnularDocumentoVenta", pa);
                 return true;
             }
             catch (Exception ex)
