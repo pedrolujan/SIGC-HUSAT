@@ -252,7 +252,7 @@ namespace wfaIntegradoCom.Consultas
                     fr.fnCondicionProcesos(3);
                     frm.fnCambiarEstadoPago(true);
                 }
-                if (lnEstadosProcesos == -7 || lnEstadosProcesos == -8)
+                if (lnEstadosProcesos == -7 || lnEstadosProcesos == -8 || lnEstadosProcesos == -4)
                 {
                     frmOtrasVentas fr = new frmOtrasVentas();
                     fr.fnCondicionProcesos(5);
