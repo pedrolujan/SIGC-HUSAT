@@ -236,8 +236,14 @@ namespace wfaIntegradoCom.Procesos
                         }
                         else if (idValida == -4)
                         {
-                            estMostEquipos1 = true;
+                            tituloGbCliente = "Ingrese datos del cliente";
+                            phlBusqGbCliente = "Ingrese datos.";
+                            estMostEquipos1 = false;
                             estMotivo = true;
+                            estad = false;
+
+                            //estMostEquipos1 = true;
+                            //estMotivo = true;
                         }
                         else if (idValida == -7)
                         {
@@ -1008,7 +1014,7 @@ namespace wfaIntegradoCom.Procesos
                         txtTelefono.Text = clsClienteDocumentoV.cTelCelular;
                         dgv.Visible = false;
                     }
-                    else if (lnTipoConCambio==-2 || lnTipoConCambio == -8 || lnTipoConCambio == -9  || lnTipoConCambio == 0)
+                    else if (lnTipoConCambio==-2 || lnTipoConCambio == -8 || lnTipoConCambio == -9  || lnTipoConCambio == 0 || lnTipoConCambio == -4)
                     {
                        
                         foreach (DataRow drMenu in dtResult.Rows)
@@ -1031,7 +1037,7 @@ namespace wfaIntegradoCom.Procesos
                         lbltxtDireccion.Text = "Marca / Modelo";
                         lbltxtTelefono.Text = "Serie";
 
-                        if (lstOtrasVentas.Count> 1 || lnTipoConCambio == -8 || lnTipoConCambio == -7)
+                        if (lstOtrasVentas.Count> 1 || lnTipoConCambio == -8 || lnTipoConCambio == -7 || lnTipoConCambio == -4)
                         {
                             lblClienteAux.Visible=true;
                             txtClienteAux.Visible = true;
