@@ -3053,7 +3053,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 estCliente = true;
             }
-            if (lnTipoConCambio==-7 || lnTipoConCambio==-8)
+            if (lnTipoConCambio==-7 || lnTipoConCambio==-8 || lnTipoConCambio == -4)
             {
                 estPLACA = true;
             }
