@@ -246,7 +246,9 @@ namespace CapaDato
                 pa[23].Value = clsOtrasVentas.lstXmlDocVenta[0].xmlDocumentoVenta[0].CodigoCorrelativo;
 
                 objCnx = new clsConexion("");
-                intRowsAffected = objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
+                objCnx.EjecutarProcedimiento("uspGuardarOtrasVentas", pa);
+
+
                 return true;
             }
             catch (Exception ex)
