@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CapaDato
 {
@@ -821,16 +822,18 @@ namespace CapaDato
 
                 objCnx = new clsConexion("");
                 dtVentaG = objCnx.EjecutarProcedimientoDT("uspBusacrContratoReciente", pa);
-                foreach (DataRow drMenu in dtVentaG.Rows)
-                {
-                    idCOntratoValido = Convert.ToInt32(drMenu["idContratoValido"]);
-                }
-                return idCOntratoValido;
+                //foreach (DataRow drMenu in dtVentaG.Rows)
+                //{
+                //    idCOntratoValido = Convert.ToInt32(drMenu["idContratoValido"]);
+                //}
+                return 1;
             }
             catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("DACliente.cs", "daBuscarCliente", ex.Message);
-                throw new Exception(ex.Message);
+                //throw new Exception(ex.Message);
+                MessageBox.Show(ex.Message, "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return idCOntratoValido;
             }
             finally
             {

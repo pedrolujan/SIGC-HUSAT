@@ -80,7 +80,7 @@ namespace wfaIntegradoCom.Procesos
         static String cTipoPago = string.Empty;
         static Double nMontoPagar = 0;
         static string cDescripcionTipoPago = string.Empty;
-        static List<OtrasVentas> lstOtrasVentas = new List<OtrasVentas>();
+        public static List<OtrasVentas> lstOtrasVentas = new List<OtrasVentas>();
         static OtrasVentas  clsObjetoEsxistente = new OtrasVentas();
         static List<StokAccesorios> lstAtokAccesorios = new List<StokAccesorios>();
         static OtrasVentas clsOtrasVentaGeneral = new OtrasVentas();
@@ -111,6 +111,7 @@ namespace wfaIntegradoCom.Procesos
         }
         public  void fnObtenerObjVentas(OtrasVentas clsOtrasVentas)
         {
+            fnLimpiarControles();
 
             if ((lstOtrasVentas.Count==0 && clsOtrasVentas.idTipoTransaccion==4 && (clsOtrasVentas.idObjVenta==1 || clsOtrasVentas.idObjVenta==2)) /*|| (lstOtrasVentas.Count == 1 && lstOtrasVentas[0].idTipoTransaccion==4 && clsOtrasVentas.idTipoTransaccion == 4)*/)
             {
@@ -145,7 +146,17 @@ namespace wfaIntegradoCom.Procesos
                         {
                             //if (lstOtrasVentas.Count==0)
                             //{
-                                lstOtrasVentas.Add(clsOtrasVentas);
+                            lstOtrasVentas.Add(new OtrasVentas
+                            {
+                                idObjVenta=clsOtrasVentas.idObjVenta ,
+                                DetalleVentas=clsOtrasVentas.DetalleVentas,
+                                simbMoneda=clsOtrasVentas.simbMoneda  ,
+                                precioUnico=clsOtrasVentas.precioUnico,
+                                idMoneda=clsOtrasVentas.idMoneda,
+                                idTipoTransaccion=clsOtrasVentas.idTipoTransaccion,
+                                idValida=clsOtrasVentas.idValida,
+                                idOperacion=clsOtrasVentas.idOperacion
+                            });
                                 estMostrarGb = fnActivarEstados(lstOtrasVentas[0].idTipoTransaccion, lstOtrasVentas[0].idValida, 0);
                             //}
                             //else
@@ -156,7 +167,17 @@ namespace wfaIntegradoCom.Procesos
                         }
                         else
                         {
-                            lstOtrasVentas.Add(clsOtrasVentas);
+                            lstOtrasVentas.Add(new OtrasVentas
+                            {
+                                idObjVenta = clsOtrasVentas.idObjVenta,
+                                DetalleVentas = clsOtrasVentas.DetalleVentas,
+                                simbMoneda = clsOtrasVentas.simbMoneda,
+                                precioUnico = clsOtrasVentas.precioUnico,
+                                idMoneda = clsOtrasVentas.idMoneda,
+                                idTipoTransaccion = clsOtrasVentas.idTipoTransaccion,
+                                idValida = clsOtrasVentas.idValida,
+                                idOperacion = clsOtrasVentas.idOperacion
+                            });
                             estMostrarGb = fnActivarEstados(lstOtrasVentas[0].idTipoTransaccion, lstOtrasVentas[0].idValida, 0);
 
                         }
@@ -167,8 +188,24 @@ namespace wfaIntegradoCom.Procesos
                 {
 
                     Int32 indiceLista = lstOtrasVentas.FindIndex(i => i.idObjVenta == IdObjetoExistente);
-
-                    lstOtrasVentas[indiceLista] = clsOtrasVentas;
+                    if (indiceLista > -1)
+                    {
+                        lstOtrasVentas[indiceLista] = clsOtrasVentas;
+                    }
+                    else
+                    {
+                        lstOtrasVentas.Add(new OtrasVentas
+                        {
+                            idObjVenta = clsOtrasVentas.idObjVenta,
+                            DetalleVentas = clsOtrasVentas.DetalleVentas,
+                            simbMoneda = clsOtrasVentas.simbMoneda,
+                            precioUnico = clsOtrasVentas.precioUnico,
+                            idMoneda = clsOtrasVentas.idMoneda,
+                            idTipoTransaccion = clsOtrasVentas.idTipoTransaccion,
+                            idValida = clsOtrasVentas.idValida,
+                            idOperacion = clsOtrasVentas.idOperacion
+                        });
+                    }
                     estMostrarGb = fnActivarEstados(lstOtrasVentas[0].idTipoTransaccion, lstOtrasVentas[0].idValida, 0);
 
                 }
@@ -229,9 +266,9 @@ namespace wfaIntegradoCom.Procesos
                             tituloGbVehiculo = "Ingrese los datos del Vehiculo que desea hacer " + lstOtrasVentas[0].DetalleVentas;
                             tituloGbCliente = "";
 
-                            phlBusqVehiculo = "Ingrese Palaca";
+                            phlBusqVehiculo = "Ingrese Placa";
                             phlBusqGbCliente = "";
-                            estMostEquipos1 = true;
+                            estMostEquipos1 = false;
                             estMotivo = true;
                         }
                         else if (idValida == -4)
@@ -274,6 +311,7 @@ namespace wfaIntegradoCom.Procesos
                     }
                     else
                     {
+                        lnTipoConCambio = idValida;
                         estad = false;
                         estMotivo = true;
                         tituloGbCliente = "Ingrese datos del cliente";
@@ -923,6 +961,8 @@ namespace wfaIntegradoCom.Procesos
             clsUtil objUtil = new clsUtil();
             Int32 idCliente;
             Int32 id2;
+            lblClienteAux.Visible = false;
+            txtClienteAux.Visible = false;
             try
             {
 
@@ -1007,6 +1047,9 @@ namespace wfaIntegradoCom.Procesos
 
                         //}
 
+                        lbltxtClientesN_A.Text = "Cliente";
+                        lbltxtDireccion.Text = "Dirección";
+                        lbltxtTelefono.Text = "Telefono";
                         txtDoc.Text = clsClienteDocumentoV.cDocumento;
                         txtIdCliente.Text = clsClienteDocumentoV.idCliente.ToString();
                         txtClienteN_A.Text = FunGeneral.FormatearCadenaTitleCase($"{ clsClienteDocumentoV.cNombre.Trim()} {clsClienteDocumentoV.cApePat.Trim()} {clsClienteDocumentoV.cApeMat.Trim()}");
@@ -1014,7 +1057,7 @@ namespace wfaIntegradoCom.Procesos
                         txtTelefono.Text = clsClienteDocumentoV.cTelCelular;
                         dgv.Visible = false;
                     }
-                    else if (lnTipoConCambio==-2 || lnTipoConCambio == -8 || lnTipoConCambio == -9  || lnTipoConCambio == 0 || lnTipoConCambio == -4)
+                    else if (lnTipoConCambio==-2 || lnTipoConCambio == -8 || lnTipoConCambio == -9  || lnTipoConCambio == 0 || lnTipoConCambio == 2 || lnTipoConCambio == -4)
                     {
                        
                         foreach (DataRow drMenu in dtResult.Rows)
@@ -1037,7 +1080,7 @@ namespace wfaIntegradoCom.Procesos
                         lbltxtDireccion.Text = "Marca / Modelo";
                         lbltxtTelefono.Text = "Serie";
 
-                        if (lstOtrasVentas.Count> 1 || lnTipoConCambio == -8 || lnTipoConCambio == -7 || lnTipoConCambio == -4)
+                        if (lstOtrasVentas.Count> 1 || lnTipoConCambio == -8 || lnTipoConCambio == -9 || lnTipoConCambio == -7 || lnTipoConCambio == -4 || lnTipoConCambio == 2)
                         {
                             lblClienteAux.Visible=true;
                             txtClienteAux.Visible = true;
@@ -1458,7 +1501,7 @@ namespace wfaIntegradoCom.Procesos
             dgOtrasVentas.AllowUserToAddRows = lstOtrasVentas.Count>0? estOcultarFila:true;
             fncambiarPosicionGB(estMostrarGb);
             bgEquipos1.Visible = estMostEquipos1;
-            if (lnTipoConCambio == 3) { gbDatosCliente.Visible = false; } else if (lnTipoConCambio == 0) { gbDatosCliente.Visible = true; }
+            if (lnTipoConCambio == 3) { gbDatosCliente.Visible = false; } else if (lnTipoConCambio == 0 || lnTipoConCambio==2) { gbDatosCliente.Visible = true; }
             txtBusca.PlaceholderText = phlBusqVehiculo;
             txtDocumento.PlaceholderText = phlBusqGbCliente;
             gbDatosCliente.Text = tituloGbCliente;
@@ -1473,13 +1516,13 @@ namespace wfaIntegradoCom.Procesos
             if (estado)
             {
                 gbDatosVehiculo.Visible = estado;
-                gbDatosCliente.Location = new Point(6,(443 + posScroll));
+                gbDatosCliente.Location = new Point(6,((gbDatosVehiculo.Location.Y+ gbDatosVehiculo.Height+80) + posScroll));
             }
             else
             {
                 gbDatosVehiculo.Visible = estado;
 
-                gbDatosCliente.Location = new Point(6, (230 + posScroll));
+                gbDatosCliente.Location = new Point(6, ((gbDatosVenta.Location.Y+ gbDatosVenta.Height+30) + posScroll));
             }
 
         }
@@ -2633,10 +2676,7 @@ namespace wfaIntegradoCom.Procesos
                         //txtdni.Text = Convert.ToString(drMenu["cDocumento"]);
                         //txtTelefono.Text = Convert.ToString(drMenu["cTelCelular"]);
                         //txtCorreo.Text = Convert.ToString(drMenu["cCorreo"]) != "" ? Convert.ToString(drMenu["cCorreo"]) : "SIN CORREO";
-                        if (lnTipoConCambio==-3 || lnTipoConCambio == 3)
-                        {
-                            lstDocumentoVentaEmitir = frmRegistrarVenta.fnLlenarComprobante(cboTipoDocEmitir, "DOVE", clsClienteDocumentoV.cTiDo, 0);
-                        }
+                        
                         txtPlacaT.Text = Convert.ToString(drMenu["vPlaca"]);
 
                         txtSerie.Text = Convert.ToString(drMenu["vSerie"]);
@@ -2686,6 +2726,10 @@ namespace wfaIntegradoCom.Procesos
                         if (lnTipoConCambio == 3)
                         {
                             clsClienteDocumentoV = clsClienteAntecesor;
+                        }
+                        if (lnTipoConCambio == -3 || lnTipoConCambio == 3)
+                        {
+                            lstDocumentoVentaEmitir = frmRegistrarVenta.fnLlenarComprobante(cboTipoDocEmitir, "DOVE", clsClienteDocumentoV.cTiDo, 0);
                         }
 
                     }
@@ -3053,7 +3097,7 @@ namespace wfaIntegradoCom.Procesos
             {
                 estCliente = true;
             }
-            if (lnTipoConCambio==-7 || lnTipoConCambio==-8 || lnTipoConCambio == -4)
+            if (lnTipoConCambio==-7 || lnTipoConCambio==-9 || lnTipoConCambio==-8 || lnTipoConCambio == -4 || lnTipoConCambio == 2)
             {
                 estPLACA = true;
             }
@@ -3140,14 +3184,14 @@ namespace wfaIntegradoCom.Procesos
         {
             Boolean blnResultado = false;
             BLOtrasVenta objOtrasVentas = new BLOtrasVenta();
-            fnValidarCamposCliente(sender,e);
-
-            if (verifApertura() == true)
+            fnValidarCamposCliente(sender, e);
+            if (estPLACA == true && estMotivo == true && estDocumentoEmitir == true)
             {
-
-                List<OtrasVentas> lstDetalleVenta = fnRecorrerGrilla();
-                if (estPLACA == true && estMotivo == true && estDocumentoEmitir == true)
+                if (verifApertura() == true)
                 {
+
+                    List<OtrasVentas> lstDetalleVenta = fnRecorrerGrilla();
+
                     if (estDocumentoEmitir == true)
                     {
                         if (fnGenerarDetalleOtrasVentas().Count > 0)
@@ -3160,8 +3204,8 @@ namespace wfaIntegradoCom.Procesos
                                     if (fnMostrarVPDocumentoventa())
                                     {
                                         byte[] btImage = new byte[] { };
-                                        btImage= fnEnviarFacturaASunat();
-                                        if (intRespuestaSunat==1)
+                                        btImage = fnEnviarFacturaASunat();
+                                        if (intRespuestaSunat == 1)
                                         {
                                             fnCargarClasePrincipal();
                                             blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral, lnTipoCon);
@@ -3186,7 +3230,7 @@ namespace wfaIntegradoCom.Procesos
                                         {
                                             MessageBox.Show("Error al emitir a la sunat");
                                         }
-                                        
+
                                     }
                                     else
                                     {
@@ -3214,11 +3258,12 @@ namespace wfaIntegradoCom.Procesos
                     {
                         MessageBox.Show("Porfavor elija Documento de Venta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
+
                 }
-                else
-                {
-                    MessageBox.Show("Por favor Complete los Datos", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor Complete los Datos", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             //fnHabilitarControles(false);
             //fnLimpiarControles();

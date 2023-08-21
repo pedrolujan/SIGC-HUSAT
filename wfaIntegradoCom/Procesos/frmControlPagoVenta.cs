@@ -715,8 +715,8 @@ namespace wfaIntegradoCom.Procesos
                 {
                     btnValidarEstados.Visible = true;
                     cmsPagoCuotas.Items[1].Visible = true;
-                    button2.Visible = true;
-                    button2.Enabled = true;
+                    button2.Visible = false;
+                    button2.Enabled = false;
                     button2.ForeColor = Color.Black;
                 }
                 else

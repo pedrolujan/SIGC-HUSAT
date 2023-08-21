@@ -1753,6 +1753,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private List<DetalleCronograma> fnGenerarCronograma(DateTime fechaInicial)
         {
+
             List<DetalleCronograma> lstDC = new List<DetalleCronograma>();
             Int32 idTipoPlan = Convert.ToInt32(cboTipoPlanP.SelectedValue ?? 0);
             int j = 0;
@@ -1764,7 +1765,7 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 numDiasMesInicial = 0;
             Int32 numDiasMesTemp = 0;
             Int32 diaNuevaFecha = 0;
-            Int32 diaCicloPago = Convert.ToInt32(cboCicloP.SelectedValue)!=0?Convert.ToInt32(cboCicloP.Text):0;
+            Int32 diaCicloPago = Convert.ToInt32(cboCicloP.SelectedValue) != 0 ? Convert.ToInt32(cboCicloP.Text) : 0;
             if (ClsVentaGeneral.lstDetalleCronograma is List<DetalleCronograma>)
             {
                 for (Int32 i = 0; i < numCuotas; i++)
@@ -1775,7 +1776,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                     DateTime PeriodoEstimadoInicial = fechaSistema.AddMonths(i);
                     numDiasMesInicial = DateTime.DaysInMonth(PeriodoEstimadoInicial.Year, PeriodoEstimadoInicial.Month);
-                    DateTime fechaInicioCiclo = PeriodoEstimadoInicial.AddDays(numDiasMesInicial- PeriodoEstimadoInicial.Day);
+                    DateTime fechaInicioCiclo = PeriodoEstimadoInicial.AddDays(numDiasMesInicial - PeriodoEstimadoInicial.Day);
 
                     if (diaCicloPago == 30)
                     {
@@ -1790,8 +1791,17 @@ namespace wfaIntegradoCom.Mantenedores
                         }
                         else
                         {
-                            DateTime dFechaTemp = PeriodoEstimadoInicial.AddMonths(1).AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
-                            fechaInicioCiclo = dFechaTemp;
+                            if (diaCicloPago == PeriodoEstimadoInicial.Day)
+                            {
+                                DateTime dFechaTemp = PeriodoEstimadoInicial.AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
+                                fechaInicioCiclo = dFechaTemp;
+                            }
+                            else
+                            {
+                                DateTime dFechaTemp = PeriodoEstimadoInicial.AddMonths(1).AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
+                                fechaInicioCiclo = dFechaTemp;
+                            }
+
                         }
 
                     }
@@ -1853,22 +1863,22 @@ namespace wfaIntegradoCom.Mantenedores
                     int cantVehiculos = lstVehiculo.Count;
                     Decimal precioTotal = lstDV[0].TotalPUCant;
 
-                        ClsVentaGeneral.lstDetalleCronograma[i].numeroCuota = j;
-                        ClsVentaGeneral.lstDetalleCronograma[i].descripcion = "Plan";
-                        ClsVentaGeneral.lstDetalleCronograma[i].periodoInicio = PeriodoInicial;
-                        ClsVentaGeneral.lstDetalleCronograma[i].periodoFinal = PeriodoFinal;
-                        ClsVentaGeneral.lstDetalleCronograma[i].fechaEmision = fechaEmision;
-                        ClsVentaGeneral.lstDetalleCronograma[i].fechaVencimiento = fechaVencimiento;
-                        ClsVentaGeneral.lstDetalleCronograma[i].precioUnitario = precioUnitario;
-                        ClsVentaGeneral.lstDetalleCronograma[i].descuento =lstDV[0].Descuento;
-                        ClsVentaGeneral.lstDetalleCronograma[i].sDescuento = clsTD.IdTipoDescuento == 1 ? $"{string.Format("{0:0}", preciodescuento)}{clsTD.Simbolo}" : $"{clsMoneda.cSimbolo} {string.Format("{0:0.00}", preciodescuento)}";
-                        ClsVentaGeneral.lstDetalleCronograma[i].cantidad = cantVehiculos;
-                        ClsVentaGeneral.lstDetalleCronograma[i].total = precioTotal;
-                        ClsVentaGeneral.lstDetalleCronograma[i].estado = "ESPV0001";
-                        ClsVentaGeneral.lstDetalleCronograma[i].fechaRegistro = fechaSistema;
-                        ClsVentaGeneral.lstDetalleCronograma[i].idUsuario = idUsuario;
-                        ClsVentaGeneral.lstDetalleCronograma[i].cSimbolo = clsMoneda.cSimbolo;
-                  
+                    ClsVentaGeneral.lstDetalleCronograma[i].numeroCuota = j;
+                    ClsVentaGeneral.lstDetalleCronograma[i].descripcion = "Plan "+FunGeneral.FormatearCadenaTitleCase(cboPlanP.Text.ToString().Trim());
+                    ClsVentaGeneral.lstDetalleCronograma[i].periodoInicio = PeriodoInicial;
+                    ClsVentaGeneral.lstDetalleCronograma[i].periodoFinal = PeriodoFinal;
+                    ClsVentaGeneral.lstDetalleCronograma[i].fechaEmision = fechaEmision;
+                    ClsVentaGeneral.lstDetalleCronograma[i].fechaVencimiento = fechaVencimiento;
+                    ClsVentaGeneral.lstDetalleCronograma[i].precioUnitario = precioUnitario;
+                    ClsVentaGeneral.lstDetalleCronograma[i].descuento = lstDV[0].Descuento;
+                    ClsVentaGeneral.lstDetalleCronograma[i].sDescuento = clsTD.IdTipoDescuento == 1 ? $"{string.Format("{0:0}", preciodescuento)}{clsTD.Simbolo}" : $"{clsMoneda.cSimbolo} {string.Format("{0:0.00}", preciodescuento)}";
+                    ClsVentaGeneral.lstDetalleCronograma[i].cantidad = cantVehiculos;
+                    ClsVentaGeneral.lstDetalleCronograma[i].total = precioTotal;
+                    ClsVentaGeneral.lstDetalleCronograma[i].estado = "ESPV0001";
+                    ClsVentaGeneral.lstDetalleCronograma[i].fechaRegistro = fechaSistema;
+                    ClsVentaGeneral.lstDetalleCronograma[i].idUsuario = idUsuario;
+                    ClsVentaGeneral.lstDetalleCronograma[i].cSimbolo = clsMoneda.cSimbolo;
+
                 }
                 lstDC = ClsVentaGeneral.lstDetalleCronograma;
             }
@@ -1881,64 +1891,82 @@ namespace wfaIntegradoCom.Mantenedores
 
                     //DateTime PeriodoInicial = fechaSistema.AddMonths(i);
                     DateTime periodoInicialCiclo = DateTime.Now;
-                   DateTime PeriodoEstimadoInicial = fechaSistema.AddMonths(i);
+                    DateTime PeriodoEstimadoInicial = fechaSistema.AddMonths(i);
                     numDiasMesInicial = DateTime.DaysInMonth(PeriodoEstimadoInicial.Year, PeriodoEstimadoInicial.Month);
-                    if (diaCicloPago==30)
+                    if (diaCicloPago == 30)
                     {
-                        periodoInicialCiclo = PeriodoEstimadoInicial.AddDays(numDiasMesInicial- PeriodoEstimadoInicial.Day);
+                        periodoInicialCiclo = PeriodoEstimadoInicial.AddDays(numDiasMesInicial - PeriodoEstimadoInicial.Day);
                     }
-                    else if(diaCicloPago==15)
+                    else if (diaCicloPago == 15)
                     {
-                        if (diaCicloPago> PeriodoEstimadoInicial.Day)
+                        if (diaCicloPago > PeriodoEstimadoInicial.Day)
                         {
                             DateTime dFechaTemp = PeriodoEstimadoInicial.AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
                             periodoInicialCiclo = dFechaTemp;
                         }
                         else
                         {
-                            DateTime dFechaTemp = PeriodoEstimadoInicial.AddMonths(1).AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
-                            periodoInicialCiclo = dFechaTemp;
+                            if (diaCicloPago == PeriodoEstimadoInicial.Day)
+                            {
+                                DateTime dFechaTemp = PeriodoEstimadoInicial.AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
+                                periodoInicialCiclo = dFechaTemp;
+                            }
+                            else
+                            {
+                                DateTime dFechaTemp = PeriodoEstimadoInicial.AddMonths(1).AddDays(-PeriodoEstimadoInicial.Day).AddDays(15);
+                                DateTime dt = DateTime.Now;
+                                if (dFechaTemp.Day!=15)
+                                {
+                                    dt= dFechaTemp.AddDays(-(dFechaTemp.Day)).AddDays(15);
+                                }
+                                else
+                                {
+                                    dt = dFechaTemp;
+                                }
+                                periodoInicialCiclo = dt;
+                            }
+
                         }
-                        
-                    }
-                    if (PeriodoEstimadoInicial.Day>diaCicloPago && Convert.ToInt32(cboTipoPlanP.SelectedValue)==2)
-                    {
-                        PeriodoEstimadoInicial = PeriodoEstimadoInicial.AddMonths(1);
-                    }
-                    DateTime dtFechaTemp = PeriodoEstimadoInicial.AddMonths(1);
-
-                   
-                    numDiasMesTemp = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
-                    if (diaCicloPago==30 && PeriodoEstimadoInicial.Month==2)
-                    {
-                        resDias = numDiasMesInicial > numDiasMesTemp ? (numDiasMesInicial - numDiasMesTemp)-1 : (numDiasMesTemp - numDiasMesInicial)-1;
 
                     }
-                    else
-                    {
-                        resDias = 0;
-                    }
-                    if(Convert.ToInt32(cboTipoPlanP.SelectedValue) == 2)
-                    {
-                        diaNuevaFecha = numDiasMesInicial < diaCicloPago? numDiasMesInicial : diaCicloPago;
-                    }
-                    else
-                    {
-                        diaNuevaFecha = PeriodoEstimadoInicial.Day;
-                    }
+                    //if (PeriodoEstimadoInicial.Day > diaCicloPago && Convert.ToInt32(cboTipoPlanP.SelectedValue) == 2)
+                    //{
+                    //    PeriodoEstimadoInicial = PeriodoEstimadoInicial.AddMonths(1);
+                    //}
+                    //DateTime dtFechaTemp = PeriodoEstimadoInicial.AddMonths(1);
 
-                    DateTime PeriodoInicial = Convert.ToDateTime(diaNuevaFecha + "/" + (PeriodoEstimadoInicial.Month) + "/" + PeriodoEstimadoInicial.Year);
-                    if (diaCicloPago==30)
-                    {
-                        PeriodoInicial = PeriodoEstimadoInicial.AddDays(((numDiasMesInicial- fechaActual.Day)+1));
-                    }
-                    else
-                    {
-                        PeriodoInicial=PeriodoInicial.AddDays(1);
-                    }
-                    
-                    Int32 sumarMeses= numMeses;
-                    PeriodoInicial = periodoInicialCiclo.AddDays(1);
+
+                    //numDiasMesTemp = DateTime.DaysInMonth(dtFechaTemp.Year, dtFechaTemp.Month);
+                    //if (diaCicloPago == 30 && PeriodoEstimadoInicial.Month == 2)
+                    //{
+                    //    resDias = numDiasMesInicial > numDiasMesTemp ? (numDiasMesInicial - numDiasMesTemp) - 1 : (numDiasMesTemp - numDiasMesInicial) - 1;
+
+                    //}
+                    //else
+                    //{
+                    //    resDias = 0;
+                    //}
+                    //if (Convert.ToInt32(cboTipoPlanP.SelectedValue) == 2)
+                    //{
+                    //    diaNuevaFecha = numDiasMesInicial < diaCicloPago ? numDiasMesInicial : diaCicloPago;
+                    //}
+                    //else
+                    //{
+                    //    diaNuevaFecha = PeriodoEstimadoInicial.Day;
+                    //}
+
+                    //DateTime PeriodoInicial = Convert.ToDateTime(diaNuevaFecha + "/" + (PeriodoEstimadoInicial.Month) + "/" + PeriodoEstimadoInicial.Year);
+                    //if (diaCicloPago == 30)
+                    //{
+                    //    PeriodoInicial = PeriodoEstimadoInicial.AddDays(((numDiasMesInicial - fechaActual.Day) + 1));
+                    //}
+                    //else
+                    //{
+                    //    PeriodoInicial = PeriodoInicial.AddDays(1);
+                    //}
+
+                    Int32 sumarMeses = numMeses;
+                    DateTime PeriodoInicial = periodoInicialCiclo.AddDays(1);
                     DateTime PeriodoFinal = (PeriodoInicial.AddMonths(sumarMeses).AddDays(-1));
                     DateTime fechaEmision = PeriodoFinal.AddDays(1);
                     DateTime fechaVencimiento = PeriodoFinal.AddDays(5);
@@ -1946,13 +1974,13 @@ namespace wfaIntegradoCom.Mantenedores
                     Decimal precioUnitario = Convert.ToDecimal(lstDV[0].PrecioUni);
                     Decimal preciodescuento = Convert.ToDecimal(lstDV[0].Descuento);
                     int cantVehiculos = lstVehiculo.Count;
-                    Decimal precioTotal = lstDV[0].TotalPUCant;                    
+                    Decimal precioTotal = lstDV[0].TotalPUCant;
                     lstDC.Add(
                     new DetalleCronograma
                     {
                         idDetalleCronograma = 0,
                         numeroCuota = j,
-                        descripcion = "Plan",
+                        descripcion = "Plan " + FunGeneral.FormatearCadenaTitleCase(cboPlanP.Text.ToString().Trim()),
                         periodoInicio = PeriodoInicial,
                         periodoFinal = PeriodoFinal,
                         fechaEmision = fechaEmision,
@@ -1970,9 +1998,9 @@ namespace wfaIntegradoCom.Mantenedores
 
                 }
             }
-            
 
-            
+
+
             return lstDC;
         }
         private List<DetalleVenta> fnCargarDatosPagoPrincipal()
@@ -3227,11 +3255,16 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void chkHabilitarDescuentoP_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkHabilitarDescuentoP.Checked == true)
+            if (chkHabilitarDescuentoP.Checked == true )
             {
+
                 Procesos.frmAccesoADescuento frmDescuento = new Procesos.frmAccesoADescuento();
-                estDescuento = false;
-                frmDescuento.Inicio(2);
+                if (lnTipoCon != -1)
+                {
+                    estDescuento = false;
+
+                    frmDescuento.Inicio(2);
+                }
                 if (estDescuento==true)
                 {
                     cboTipoDescuentoPrecios.Enabled = estDescuento;
@@ -3417,12 +3450,12 @@ namespace wfaIntegradoCom.Mantenedores
             }
             else if (Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue) == 1)
             {
-                if (dgv.Name== "dgvPrimerPago")
+                if (dgv.Name == "dgvPrimerPago")
                 {
                     switch (filaIndice)
                     {
                         case 0:
-                            if (idTipoVenta==1)
+                            if (idTipoVenta == 1)
                             {
                                 if (Convert.ToDecimal(filaData.Cells[6].Value) > 5 && Convert.ToDecimal(filaData.Cells[6].Value) < 51)
                                 {
@@ -3468,7 +3501,7 @@ namespace wfaIntegradoCom.Mantenedores
                                     if (RespDescuento == DialogResult.Yes)
                                     {
                                         if (lnTipoCon == -2 && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
-                                        {                                            
+                                        {
                                             clsTarifa.DescuentoReactivacion = PrecioADescontar;
                                         }
                                         else
@@ -3504,6 +3537,22 @@ namespace wfaIntegradoCom.Mantenedores
                                     dgv.Columns[posicionColumna].DefaultCellStyle.BackColor = Color.White;
                                     //lstDV[filaIndice].Descuento = Convert.ToDecimal(filaData.Cells[posicionColumna].Value ?? 0);
                                     clsTarifa.DescuentoRentaAdelantada = Convert.ToDecimal(filaData.Cells[posicionColumna].Value ?? 0);
+                                    if (lnTipoCon == -2 && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
+                                    {
+                                        clsTarifa.DescuentoReactivacion = PrecioADescontar;
+                                    }
+                                    else
+                                    {
+                                        if (clsTarifa.PrecioPlan < 45)
+                                        {
+                                            clsTarifa.DescuentoReactivacion = PrecioADescontar;
+                                        }
+                                        else
+                                        {
+                                            clsTarifa.DescuentoRentaAdelantada = PrecioADescontar;
+
+                                        }
+                                    }
 
                                 }
 
@@ -3543,12 +3592,12 @@ namespace wfaIntegradoCom.Mantenedores
 
                                 }
                             }
-                            
+
 
                             break;
 
                         case 1:
-                            if (idTipoVenta==2)
+                            if (idTipoVenta == 2)
                             {
                                 if (PrecioADescontar > 5 && PrecioADescontar < 101)
                                 {
@@ -3625,7 +3674,7 @@ namespace wfaIntegradoCom.Mantenedores
                                     clsTarifa.DescuentoRentaAdelantada = Convert.ToDecimal(filaData.Cells[posicionColumna].Value ?? 0);
 
                                 }
-                            }                            
+                            }
 
                             break;
 
@@ -3701,10 +3750,10 @@ namespace wfaIntegradoCom.Mantenedores
                     }
                 }
 
-                
+
 
             }
-            else if(Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue) == 2)
+            else if (Convert.ToInt32(cboTipoDescuentoPrecios.SelectedValue) == 2)
             {
                 if (dgv.Name == "dgvPrimerPago")
                 {
@@ -3726,9 +3775,9 @@ namespace wfaIntegradoCom.Mantenedores
                                     clsTarifa.DescuentoEquipo = PrecioADescontar;
                                 }
                             }
-                            else if (idTipoVenta==2)
+                            else if (idTipoVenta == 2)
                             {
-                                if (lnTipoCon==-2 && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
+                                if (lnTipoCon == -2 && ClsVentaGeneral.clsCronograma.periodoFinal < Variables.gdFechaSis.AddMonths(-2))
                                 {
                                     if (PrecioADescontar > (clsTarifa.PrecioReactivacion * lstVehiculo.Count) * lstDV[0].Couta)
                                     {
@@ -3758,10 +3807,10 @@ namespace wfaIntegradoCom.Mantenedores
                                         clsTarifa.DescuentoReactivacion = PrecioADescontar;
                                     }
                                 }
-                                
-                                
+
+
                             }
-                            else if (idTipoVenta ==3)
+                            else if (idTipoVenta == 3)
                             {
                                 if (PrecioADescontar > (clsTarifa.PrecioReactivacion * lstVehiculo.Count))
                                 {
@@ -3811,7 +3860,7 @@ namespace wfaIntegradoCom.Mantenedores
                                 }
 
                             }
-                            else 
+                            else
                             {
                                 if (PrecioADescontar > (clsTarifa.PrecioRentaAdelantada * lstVehiculo.Count))
                                 {
@@ -3852,7 +3901,7 @@ namespace wfaIntegradoCom.Mantenedores
                 }
                 else if (dgv.Name == "dgvPagoPlan")
                 {
-                    if (PrecioADescontar > (clsTarifa.PrecioPlan * lstVehiculo.Count) *lstDV[0].Couta)
+                    if (PrecioADescontar > (clsTarifa.PrecioPlan * lstVehiculo.Count) * lstDV[0].Couta)
                     {
                         MessageBox.Show("El descuento no puede ser mayor al Importe", "Aviso !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -5200,6 +5249,8 @@ namespace wfaIntegradoCom.Mantenedores
             dtFechaPago.Value = Variables.gdFechaSis;
             //fnDesctivarRedondeo();
             //FunGeneral.fnValidarFechaPago(dtFechaPago, pbFechaPago, 0);
+
+
             importeRedondeo = 0.00m;
             bTipoTab = true;
             bActivarChecks = true;
@@ -5215,15 +5266,15 @@ namespace wfaIntegradoCom.Mantenedores
                 bEstadoCronogramaSeleccionado = true;
             }
 
-            clsCuotaCronogramaAnterior = FunGeneral.fnObtenerDatosCuotaUltimoCronograma(idContrato);
 
-            if (idContratoValido == idContrato)
+            if (idContratoValido > 0)
             {
+                clsCuotaCronogramaAnterior = FunGeneral.fnObtenerDatosCuotaUltimoCronograma(idContrato);
                 lnTipoCon = -2;
                 chkCambiarDatosDelServicio.Checked = false;
                 finalizacionContrato.Checked = false;
                 cboTipoVenta.SelectedValue = 2;
-                fnDevolverVehiculoRenovacion(codigoVenta, idCliente,"", idContrato);
+                fnDevolverVehiculoRenovacion(codigoVenta, idCliente, "", idContrato);
                 tabControl1.SelectedIndex = 0;
                 cboTipoPlanP.SelectedValue = clsPlanActual.idTipoPlan;
                 cboPlanP.SelectedValue = clsPlanActual.idPlan;
@@ -5233,12 +5284,12 @@ namespace wfaIntegradoCom.Mantenedores
                 fnHabilitarCboPlanes(false);
                 fnMostrarParaActualizar(true);
             }
-            else
-            {
-                MessageBox.Show("Por favor eliga un contrato vigente ó el mas reciente","Aviso!!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-            
-            
+            //else
+            //{
+            //    //MessageBox.Show("Por favor eliga un contrato vigente ó el mas reciente", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+
+
         }
 
         private void fnMostrarParaActualizar(Boolean estado)
@@ -5287,8 +5338,8 @@ namespace wfaIntegradoCom.Mantenedores
                 estDescuento = true;
                 cboTipoDescuentoPrecios.SelectedValue = ClsVentaGeneral.clsDetalleVentaCabecera.lstDetalleVenta[0].IdTipoDescuento;
             }
-
             fnDevolverVehiculoRenovacion(codigoVenta, idCliente, idContrato.ToString(), idContrato);
+            chkHabilitarDescuentoP.Checked = estDescuento;
 
             
             lstPP = ClsVentaGeneral.clsDetalleVentaCabecera.lstDetalleVenta;
