@@ -720,6 +720,49 @@ namespace CapaDato
 
                         }
                     }
+                }else if (dvAnterior.Count == dvActual.Count)
+                {
+                    int i = 0;
+                    foreach (Reporte rp in lstActual)
+                    {
+                        Reporte existente = lstAnterior.Find(e=>e.coddAux1.Trim()== rp.coddAux1.Trim());
+                        if (existente is null)
+                        {
+                            lstAnterior.Add(new Reporte
+                            {
+                                coddAux1 = rp.coddAux1.Trim(),
+                                nombreAux1 = "Operacion",
+                                coddAux2 = "0",
+                                nombreAux2 = "AÑO: " + (Convert.ToInt32(cod3)-1),
+                                ImporteAux2 = Convert.ToDouble("0")
+
+                            });
+                        }
+                        
+                        
+                        i++;
+                    }
+                    i = 0;
+
+                    foreach (Reporte rp in lstAnterior)
+                    {
+                        Reporte existente1 = lstActual.Find(e => e.coddAux1.Trim() == rp.coddAux1.Trim());
+                        if (existente1 is null)
+                        {
+                            lstActual.Add(new Reporte
+                            {
+                                coddAux1 = rp.coddAux1.Trim(),
+                                nombreAux1 = "Operacion",
+                                coddAux2 = "0",
+                                nombreAux2 = "AÑO: " + Convert.ToInt32(cod3),
+                                ImporteAux2 = Convert.ToDouble("0")
+
+                            });
+                        }
+
+                        i++;
+                    }
+
                 }
             }
 
@@ -739,9 +782,12 @@ namespace CapaDato
                     lstAnterior[i].indiceCrecimientoImporte = ((Convert.ToDouble(lstActual[i].ImporteAux2) / Convert.ToDouble(lstAnterior[i].ImporteAux2)) - 1) * 100;
                 }
             }
+            List<Reporte> lstAnteriorOrdenada = lstAnterior.OrderByDescending(e=>e.coddAux1).ToList();
+            List<Reporte> lstActualOrdenada = lstActual.OrderByDescending(e => e.coddAux1).ToList();
 
-           
-           return Tuple.Create(lstActual,lstAnterior);
+
+
+            return Tuple.Create(lstActualOrdenada, lstAnteriorOrdenada);
         }
         private DataTable GenerateTransposedTable(DataTable inputTable)
         {
