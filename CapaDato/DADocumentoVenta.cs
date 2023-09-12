@@ -53,6 +53,7 @@ namespace CapaDato
                         //dtFechaRegistro = Convert.ToDateTime(d["dFechaPago"]),
                         PrecioUni = Convert.ToDecimal(d["Costo"]),
                         preciounitario= Convert.ToDecimal(d["Costo"]),
+                        CodigoProducto = d["estadoDocVenta"].ToString().Trim()
                     });
                 }
 

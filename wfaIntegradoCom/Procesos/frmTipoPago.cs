@@ -532,8 +532,8 @@ namespace wfaIntegradoCom.Procesos
                         });
                         y++;
                     }
-
-                    if (lsDocumentoVenta[0].idTipoTarifa == 1)
+                    lsDocumentoVenta[0].idTipoTarifa = lsDetalleVentaAnticiposRecibidos.Count > 0 ? lsDetalleVentaAnticiposRecibidos[0].CodigoProducto== "ESDOV005"?0: lsDocumentoVenta[0].idTipoTarifa : 1;
+                    if (lsDocumentoVenta[0].idTipoTarifa == 1 )
                     {
                         List<DetalleVenta> detVentas = new List<DetalleVenta>();
                         detVentas = FunGeneral.fnObtenerDetalleVenta(lsDocumentoVenta[0].idTrandiaria, lsDocumentoVenta[0].idTipoTarifa);
