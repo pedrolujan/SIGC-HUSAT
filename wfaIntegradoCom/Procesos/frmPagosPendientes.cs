@@ -632,8 +632,12 @@ namespace wfaIntegradoCom.Procesos
             }
 
 
+            if (lstDetV1.Count>0)
+            {
+                lstDetV1[0].idObjetoVenta = idTrandiaria;
 
-            lstDetV1[0].idObjetoVenta = idTrandiaria;
+            }
+
 
             return lstDetV1;
 
