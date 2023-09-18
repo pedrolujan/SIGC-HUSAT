@@ -50,7 +50,6 @@ namespace CapaDato
                 objCnx.EjecutarProcedimiento("uspGuardarProspectoPlan", pa);
 
                 return "OK";
-
             }
             catch (Exception ex)
             {

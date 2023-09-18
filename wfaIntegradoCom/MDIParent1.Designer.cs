@@ -225,6 +225,7 @@ namespace wfaIntegradoCom
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelPerfil = new System.Windows.Forms.Panel();
+            this.siticonePanel4 = new Siticone.UI.WinForms.SiticonePanel();
             this.PanelEncavezadoFondo1.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.pntsSeguimiento.SuspendLayout();
@@ -1545,6 +1546,7 @@ namespace wfaIntegradoCom
             // 
             this.pnlParaDashboard.AutoScroll = true;
             this.pnlParaDashboard.BackColor = System.Drawing.Color.Transparent;
+            this.pnlParaDashboard.Controls.Add(this.siticonePanel4);
             this.pnlParaDashboard.Controls.Add(this.FWpnCajaChicaCopias);
             this.pnlParaDashboard.Controls.Add(this.flowLayoutPanel1);
             this.pnlParaDashboard.Controls.Add(this.siticonePanel3);
@@ -2929,6 +2931,14 @@ namespace wfaIntegradoCom
             this.panelPerfil.Size = new System.Drawing.Size(274, 72);
             this.panelPerfil.TabIndex = 24;
             // 
+            // siticonePanel4
+            // 
+            this.siticonePanel4.Location = new System.Drawing.Point(53, 227);
+            this.siticonePanel4.Name = "siticonePanel4";
+            this.siticonePanel4.ShadowDecoration.Parent = this.siticonePanel4;
+            this.siticonePanel4.Size = new System.Drawing.Size(10, 23);
+            this.siticonePanel4.TabIndex = 275;
+            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3154,6 +3164,7 @@ namespace wfaIntegradoCom
         private Siticone.UI.WinForms.SiticonePanel pnMostrarMensajes;
         private Siticone.UI.WinForms.SiticoneLabel siticoneLabel8;
         private Siticone.UI.WinForms.SiticonePanel stpnMensajes;
+        private Siticone.UI.WinForms.SiticonePanel siticonePanel4;
     }
 }
 
