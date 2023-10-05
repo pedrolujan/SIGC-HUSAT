@@ -4270,7 +4270,7 @@ namespace wfaIntegradoCom.Mantenedores
             lstDetalleVentaRecibido = lsDetalleVent;
             foreach (DetalleVenta dv in lsDetalleVent)
             {
-                if (dv.idOperacionItem==0)
+                if (dv.idOperacionItem==0 || dv.idTipoTarifa==2)
                 {
                     lstDetalleVentaRecibidoParaSunat.Add(dv);
 

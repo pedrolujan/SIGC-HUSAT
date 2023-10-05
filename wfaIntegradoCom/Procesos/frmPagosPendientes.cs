@@ -592,7 +592,7 @@ namespace wfaIntegradoCom.Procesos
             List<DetalleVenta> lstDetV1 = new List<DetalleVenta>();
           
             lstDetV=FunGeneral.fnObtenerDetalleVenta(idTrandiaria, idTipoTarifa);
-                
+
             //Int32 cantidad = 1;
             //Decimal dMontoRestante = 0;
             //foreach (DataRow dt in dtResultados.Rows)
@@ -604,6 +604,7 @@ namespace wfaIntegradoCom.Procesos
             //}
             //Decimal importe = dMontoRestante;
             //String descripcion = lstDVenta[0].idOperacion == 4 ? "RENTA MENSUAL" : lstDVenta[0].MasDetallereporte;
+           
             int y = 0;
             foreach (DetalleVenta d in lstDetV)
             {
@@ -713,6 +714,11 @@ namespace wfaIntegradoCom.Procesos
             if (dgv.Columns[e.ColumnIndex].Name == "Icono")
             {
                 clsCliente = lstCliente.Find(i => i.idCliente == idTrandiaria);
+                if (!(clsCliente is Cliente))
+                {
+                    MessageBox.Show("Ocurrio un error inesperado, por favor busque nuevamente los datos","Aviso!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return;
+                }
                 lstDocumentoVentaEmitir =frmRegistrarVenta.fnLlenarComprobante(cboTipoDocEmitir, "DOVE", clsCliente.cTiDo, 0);
                 foreach (DataRow dt in dtResultados.Rows)
                 {
@@ -749,6 +755,11 @@ namespace wfaIntegradoCom.Procesos
                 frmRegistrarEgresos f = new frmRegistrarEgresos();
 
                 lstDetalleVenta = fnDetalleventa(idTrandiaria, 0);
+                if (lstDetalleVenta.Count <= 0)
+                {
+                    MessageBox.Show("Ocurrio un error al buscar anticipo", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 lstDocumentoVenta = fnDocumentoVentaHeader(f.fnCalcularCabeceraDetalle(lstDetalleVenta), idTrandiaria, idTipoTarifa);
                 lstDocumentoVenta[0].idTrandiaria=lstDocumentoVenta.Count > 0 ?idTrandiaria:0;
                 Procesos.frmTipoPago fmr = new Procesos.frmTipoPago();

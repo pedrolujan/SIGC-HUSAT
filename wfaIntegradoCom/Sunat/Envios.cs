@@ -497,9 +497,9 @@ namespace wfaIntegradoCom.Sunat
                 //Restar el valor del descuento al precio unitario del producto:
                 Decimal resta = detalle.preciounitario - detalle.importeRestante;
                 //Importe Total sin descuentos. sin igv
-                decimal precio_unitario_Sin_Igv = resta==0? detalle.preciounitario / 1.18m :(detalle.preciounitario) / 1.18m;
+                decimal precio_unitario_Sin_Igv = resta==0? detalle.preciounitario / 1.18m :detalle.idTipoTarifa==2? resta / 1.18m : (detalle.preciounitario) / 1.18m;
                 //Precio que se deba pagar
-                decimal precio_unitario_descuento = resta == 0 ? detalle.preciounitario -descuento:(detalle.preciounitario) - descuento;
+                decimal precio_unitario_descuento = resta == 0 ? detalle.preciounitario -descuento: detalle.idTipoTarifa == 2 ? resta : (detalle.preciounitario) - descuento;
 
                 //Calcular el valor del precio unitario sin el IGV:
                 decimal precio_unitario_descuento_sin_igv = precio_unitario_descuento / 1.18m;
@@ -979,7 +979,7 @@ namespace wfaIntegradoCom.Sunat
             }
             catch (FaultException ex)
             {
-                MessageBox.Show(ex.Code.Name);
+                MessageBox.Show(ex.Message);
                 return null;
             }
 
