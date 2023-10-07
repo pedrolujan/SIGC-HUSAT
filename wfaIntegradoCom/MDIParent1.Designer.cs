@@ -77,64 +77,64 @@ namespace wfaIntegradoCom
             this.txtMensaje = new System.Windows.Forms.TextBox();
             this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
             this.miniToolStrip = new System.Windows.Forms.ToolStrip();
-            this.PanelEncavezadoFondo1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.PanelEncavezadoFondo1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.LayoutPanelAccesoRapido = new System.Windows.Forms.FlowLayoutPanel();
             this.tsConfiguracion = new FontAwesome.Sharp.IconButton();
-            this.pntsSeguimiento = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnAlertaSeguimiento = new Siticone.UI.WinForms.SiticoneButton();
+            this.pntsSeguimiento = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.btnAlertaSeguimiento = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.tsSeguimiento = new FontAwesome.Sharp.IconButton();
             this.tsUsuarios = new FontAwesome.Sharp.IconButton();
             this.tsVenta = new FontAwesome.Sharp.IconButton();
             this.tsCaja = new FontAwesome.Sharp.IconButton();
-            this.tsDoc_Sunat = new Siticone.UI.WinForms.SiticonePanel();
-            this.siticoneLabel5 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticonePictureBox1 = new Siticone.UI.WinForms.SiticonePictureBox();
+            this.tsDoc_Sunat = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.SiticoneHtmlLabel5 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.siticonePictureBox1 = new Siticone.Desktop.UI.WinForms.SiticonePictureBox();
             this.tsConsulta = new FontAwesome.Sharp.IconButton();
-            this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePanel2 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.iconChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.lblChilForm = new System.Windows.Forms.Label();
             this.tsMiCaja = new FontAwesome.Sharp.IconButton();
             this.tsCerraSession = new FontAwesome.Sharp.IconButton();
             this.Img_Husat_Blanco = new System.Windows.Forms.PictureBox();
-            this.panelMenuPrincipal = new Siticone.UI.WinForms.SiticonePanel();
-            this.stpnMensajes = new Siticone.UI.WinForms.SiticonePanel();
-            this.subMenuReportes = new Siticone.UI.WinForms.SiticonePanel();
+            this.panelMenuPrincipal = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.stpnMensajes = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.subMenuReportes = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnReportes = new FontAwesome.Sharp.IconButton();
-            this.subMenuSoporte = new Siticone.UI.WinForms.SiticonePanel();
+            this.subMenuSoporte = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnSoporte = new FontAwesome.Sharp.IconButton();
-            this.subMenuConfiguracion = new Siticone.UI.WinForms.SiticonePanel();
+            this.subMenuConfiguracion = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnConfiguracion = new FontAwesome.Sharp.IconButton();
-            this.subMenuRrhh = new Siticone.UI.WinForms.SiticonePanel();
+            this.subMenuRrhh = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnRrhh = new FontAwesome.Sharp.IconButton();
-            this.subMenuSistemas = new Siticone.UI.WinForms.SiticonePanel();
+            this.subMenuSistemas = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnSistemas = new FontAwesome.Sharp.IconButton();
-            this.subMenuLogistica = new Siticone.UI.WinForms.SiticonePanel();
+            this.subMenuLogistica = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnLogistica = new FontAwesome.Sharp.IconButton();
-            this.subMenuComercial = new Siticone.UI.WinForms.SiticonePanel();
+            this.subMenuComercial = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnComercial = new FontAwesome.Sharp.IconButton();
-            this.subMenuRecaudacion = new Siticone.UI.WinForms.SiticonePanel();
+            this.subMenuRecaudacion = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnRecaudacion = new FontAwesome.Sharp.IconButton();
-            this.subMenuVentas = new Siticone.UI.WinForms.SiticonePanel();
+            this.subMenuVentas = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnVenta = new FontAwesome.Sharp.IconButton();
-            this.panelIzquierdo = new Siticone.UI.WinForms.SiticonePanel();
-            this.panelImagenLogo = new Siticone.UI.WinForms.SiticonePanel();
+            this.panelIzquierdo = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.panelImagenLogo = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.Img_Husat_Naranja = new System.Windows.Forms.PictureBox();
-            this.panelCentral = new Siticone.UI.WinForms.SiticonePanel();
+            this.panelCentral = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
-            this.siticoneLabel8 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.pnMostrarMensajes = new Siticone.UI.WinForms.SiticonePanel();
-            this.siticoneLabel7 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneLabel6 = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.SiticoneHtmlLabel8 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.pnMostrarMensajes = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.SiticoneHtmlLabel7 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.SiticoneHtmlLabel6 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.cboUsuarioMessage = new System.Windows.Forms.ComboBox();
             this.cboCargoMessage = new System.Windows.Forms.ComboBox();
-            this.panelCerrarSession = new Siticone.UI.WinForms.SiticonePanel();
+            this.panelCerrarSession = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
             this.btnPerfil = new FontAwesome.Sharp.IconButton();
             this.panelOpciones = new System.Windows.Forms.Panel();
             this.ToggleTextoNegrita = new RJCodeAdvance.RJControls.RJToggleButton();
             this.ToggleBotonesAnchos = new RJCodeAdvance.RJControls.RJToggleButton();
-            this.cboxSelecThema = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboxSelecThema = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -143,79 +143,79 @@ namespace wfaIntegradoCom
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnOpciones = new FontAwesome.Sharp.IconButton();
-            this.panelPersonalizarColores = new Siticone.UI.WinForms.SiticonePanel();
+            this.panelPersonalizarColores = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.panelColorAccesoDirecto = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelColorMenuPrincipal = new System.Windows.Forms.Panel();
             this.panelColorPanelCentral = new System.Windows.Forms.Panel();
-            this.pnlParaDashboard = new Siticone.UI.WinForms.SiticonePanel();
+            this.pnlParaDashboard = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.FWpnCajaChicaCopias = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.siticonePanel3 = new Siticone.UI.WinForms.SiticonePanel();
-            this.dgvEgresos3 = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.siticonePanel3 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.dgvEgresos3 = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvEmergente = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.dgvEmergente = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.siticoneDataGridView1 = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.siticoneDataGridView1 = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnBotonera = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnRegistrarEgresos = new Siticone.UI.WinForms.SiticoneGradientButton();
+            this.pnBotonera = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.btnRegistrarEgresos = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
             this.btnMontoEnCaja = new FontAwesome.Sharp.IconButton();
-            this.lblEgresos = new Siticone.UI.WinForms.SiticonePanel();
-            this.cboTipoPago = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.siticoneLabel3 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneLabel2 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.lblIngresos = new Siticone.UI.WinForms.SiticonePanel();
-            this.cboFiltraIngresos = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.siticoneLabel4 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.lblHeaderDetalle = new Siticone.UI.WinForms.SiticoneLabel();
+            this.lblEgresos = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.cboTipoPago = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.SiticoneHtmlLabel3 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.SiticoneHtmlLabel2 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.lblIngresos = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.cboFiltraIngresos = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.SiticoneHtmlLabel4 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.SiticoneHtmlLabel1 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.lblHeaderDetalle = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.pbIndica = new System.Windows.Forms.PictureBox();
-            this.dgvEgresos2 = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.dgvEgresos2 = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvEgresos = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.dgvEgresos = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvListaPorBloque = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.dgvListaPorBloque = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importeRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.gbHabilitarBusqFechas = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.dtFechaFinG = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.dtFechaInicioG = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.lblFechaFinal = new Siticone.UI.WinForms.SiticoneLabel();
-            this.lblFechaInicial = new Siticone.UI.WinForms.SiticoneLabel();
-            this.lblBuscar = new Siticone.UI.WinForms.SiticoneLabel();
+            this.siticoneGroupBox1 = new Siticone.Desktop.UI.WinForms.SiticoneGroupBox();
+            this.gbHabilitarBusqFechas = new Siticone.Desktop.UI.WinForms.SiticoneGroupBox();
+            this.dtFechaFinG = new Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker();
+            this.dtFechaInicioG = new Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker();
+            this.lblFechaFinal = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.lblFechaInicial = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.lblBuscar = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.chkDiaEspecificoG = new Siticone.UI.WinForms.SiticoneCheckBox();
-            this.chkHabilitarFechasBusG = new Siticone.UI.WinForms.SiticoneCheckBox();
-            this.siticoneLabel13 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneLabel11 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.txtBuscarRepGeneral = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.cboTipoReporte = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.cboUsuario = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.chkDiaEspecificoG = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
+            this.chkHabilitarFechasBusG = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
+            this.SiticoneHtmlLabel13 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.SiticoneHtmlLabel11 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.txtBuscarRepGeneral = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.cboTipoReporte = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.cboUsuario = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.btnPersonalizacion = new FontAwesome.Sharp.IconButton();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panelEspaciado = new System.Windows.Forms.Panel();
@@ -225,7 +225,7 @@ namespace wfaIntegradoCom
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelPerfil = new System.Windows.Forms.Panel();
-            this.siticonePanel4 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePanel4 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.PanelEncavezadoFondo1.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.pntsSeguimiento.SuspendLayout();
@@ -379,7 +379,7 @@ namespace wfaIntegradoCom
             this.btnAlertaSeguimiento.FillColor = System.Drawing.Color.Red;
             this.btnAlertaSeguimiento.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.btnAlertaSeguimiento.ForeColor = System.Drawing.Color.White;
-            this.btnAlertaSeguimiento.HoveredState.Parent = this.btnAlertaSeguimiento;
+            this.btnAlertaSeguimiento.HoverState.Parent = this.btnAlertaSeguimiento;
             this.btnAlertaSeguimiento.Location = new System.Drawing.Point(84, 0);
             this.btnAlertaSeguimiento.Name = "btnAlertaSeguimiento";
             this.btnAlertaSeguimiento.ShadowDecoration.Parent = this.btnAlertaSeguimiento;
@@ -494,7 +494,7 @@ namespace wfaIntegradoCom
             // 
             // tsDoc_Sunat
             // 
-            this.tsDoc_Sunat.Controls.Add(this.siticoneLabel5);
+            this.tsDoc_Sunat.Controls.Add(this.SiticoneHtmlLabel5);
             this.tsDoc_Sunat.Controls.Add(this.siticonePictureBox1);
             this.tsDoc_Sunat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tsDoc_Sunat.Location = new System.Drawing.Point(520, 3);
@@ -506,16 +506,16 @@ namespace wfaIntegradoCom
             this.tsDoc_Sunat.Click += new System.EventHandler(this.tsCompra_Click_1);
             this.tsDoc_Sunat.Paint += new System.Windows.Forms.PaintEventHandler(this.tsCompra_Paint);
             // 
-            // siticoneLabel5
+            // SiticoneHtmlLabel5
             // 
-            this.siticoneLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneLabel5.ForeColor = System.Drawing.SystemColors.Control;
-            this.siticoneLabel5.Location = new System.Drawing.Point(14, 48);
-            this.siticoneLabel5.Name = "siticoneLabel5";
-            this.siticoneLabel5.Size = new System.Drawing.Size(63, 17);
-            this.siticoneLabel5.TabIndex = 1;
-            this.siticoneLabel5.Text = "Doc. Sunat";
+            this.SiticoneHtmlLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SiticoneHtmlLabel5.ForeColor = System.Drawing.SystemColors.Control;
+            this.SiticoneHtmlLabel5.Location = new System.Drawing.Point(14, 48);
+            this.SiticoneHtmlLabel5.Name = "SiticoneHtmlLabel5";
+            this.SiticoneHtmlLabel5.Size = new System.Drawing.Size(63, 17);
+            this.SiticoneHtmlLabel5.TabIndex = 1;
+            this.SiticoneHtmlLabel5.Text = "Doc. Sunat";
             // 
             // siticonePictureBox1
             // 
@@ -1148,10 +1148,10 @@ namespace wfaIntegradoCom
             this.siticonePanel1.BorderColor = System.Drawing.Color.Gray;
             this.siticonePanel1.BorderRadius = 5;
             this.siticonePanel1.BorderThickness = 2;
-            this.siticonePanel1.Controls.Add(this.siticoneLabel8);
+            this.siticonePanel1.Controls.Add(this.SiticoneHtmlLabel8);
             this.siticonePanel1.Controls.Add(this.pnMostrarMensajes);
-            this.siticonePanel1.Controls.Add(this.siticoneLabel7);
-            this.siticonePanel1.Controls.Add(this.siticoneLabel6);
+            this.siticonePanel1.Controls.Add(this.SiticoneHtmlLabel7);
+            this.siticonePanel1.Controls.Add(this.SiticoneHtmlLabel6);
             this.siticonePanel1.Controls.Add(this.cboUsuarioMessage);
             this.siticonePanel1.Controls.Add(this.cboCargoMessage);
             this.siticonePanel1.Controls.Add(this.txtMensaje);
@@ -1162,17 +1162,17 @@ namespace wfaIntegradoCom
             this.siticonePanel1.TabIndex = 39;
             this.siticonePanel1.Visible = false;
             // 
-            // siticoneLabel8
+            // SiticoneHtmlLabel8
             // 
-            this.siticoneLabel8.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
-            this.siticoneLabel8.Location = new System.Drawing.Point(99, 14);
-            this.siticoneLabel8.Name = "siticoneLabel8";
-            this.siticoneLabel8.Size = new System.Drawing.Size(136, 26);
-            this.siticoneLabel8.TabIndex = 171;
-            this.siticoneLabel8.Text = "TEAM HUSAT";
-            this.siticoneLabel8.BackColorChanged += new System.EventHandler(this.siticoneLabel8_BackColorChanged);
+            this.SiticoneHtmlLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SiticoneHtmlLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
+            this.SiticoneHtmlLabel8.Location = new System.Drawing.Point(99, 14);
+            this.SiticoneHtmlLabel8.Name = "SiticoneHtmlLabel8";
+            this.SiticoneHtmlLabel8.Size = new System.Drawing.Size(136, 26);
+            this.SiticoneHtmlLabel8.TabIndex = 171;
+            this.SiticoneHtmlLabel8.Text = "TEAM HUSAT";
+            this.SiticoneHtmlLabel8.BackColorChanged += new System.EventHandler(this.SiticoneHtmlLabel8_BackColorChanged);
             // 
             // pnMostrarMensajes
             // 
@@ -1183,23 +1183,23 @@ namespace wfaIntegradoCom
             this.pnMostrarMensajes.Size = new System.Drawing.Size(311, 175);
             this.pnMostrarMensajes.TabIndex = 170;
             // 
-            // siticoneLabel7
+            // SiticoneHtmlLabel7
             // 
-            this.siticoneLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel7.Location = new System.Drawing.Point(220, 227);
-            this.siticoneLabel7.Name = "siticoneLabel7";
-            this.siticoneLabel7.Size = new System.Drawing.Size(42, 15);
-            this.siticoneLabel7.TabIndex = 169;
-            this.siticoneLabel7.Text = "Usuario.";
+            this.SiticoneHtmlLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel7.Location = new System.Drawing.Point(220, 227);
+            this.SiticoneHtmlLabel7.Name = "SiticoneHtmlLabel7";
+            this.SiticoneHtmlLabel7.Size = new System.Drawing.Size(42, 15);
+            this.SiticoneHtmlLabel7.TabIndex = 169;
+            this.SiticoneHtmlLabel7.Text = "Usuario.";
             // 
-            // siticoneLabel6
+            // SiticoneHtmlLabel6
             // 
-            this.siticoneLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel6.Location = new System.Drawing.Point(6, 227);
-            this.siticoneLabel6.Name = "siticoneLabel6";
-            this.siticoneLabel6.Size = new System.Drawing.Size(25, 15);
-            this.siticoneLabel6.TabIndex = 169;
-            this.siticoneLabel6.Text = "Area";
+            this.SiticoneHtmlLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel6.Location = new System.Drawing.Point(6, 227);
+            this.SiticoneHtmlLabel6.Name = "SiticoneHtmlLabel6";
+            this.SiticoneHtmlLabel6.Size = new System.Drawing.Size(25, 15);
+            this.SiticoneHtmlLabel6.TabIndex = 169;
+            this.SiticoneHtmlLabel6.Text = "Area";
             // 
             // cboUsuarioMessage
             // 
@@ -1356,7 +1356,7 @@ namespace wfaIntegradoCom
             this.cboxSelecThema.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
             this.cboxSelecThema.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboxSelecThema.ForeColor = System.Drawing.Color.White;
-            this.cboxSelecThema.HoveredState.Parent = this.cboxSelecThema;
+            this.cboxSelecThema.HoverState.Parent = this.cboxSelecThema;
             this.cboxSelecThema.ItemHeight = 30;
             this.cboxSelecThema.ItemsAppearance.Parent = this.cboxSelecThema;
             this.cboxSelecThema.Location = new System.Drawing.Point(0, 75);
@@ -1663,7 +1663,7 @@ namespace wfaIntegradoCom
             this.dgvEgresos3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEgresos3.Size = new System.Drawing.Size(215, 91);
             this.dgvEgresos3.TabIndex = 270;
-            this.dgvEgresos3.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvEgresos3.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvEgresos3.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.Gainsboro;
             this.dgvEgresos3.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvEgresos3.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -1793,7 +1793,7 @@ namespace wfaIntegradoCom
             this.dgvEmergente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmergente.Size = new System.Drawing.Size(215, 120);
             this.dgvEmergente.TabIndex = 270;
-            this.dgvEmergente.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvEmergente.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvEmergente.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.Gainsboro;
             this.dgvEmergente.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvEmergente.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -1923,7 +1923,7 @@ namespace wfaIntegradoCom
             this.siticoneDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.siticoneDataGridView1.Size = new System.Drawing.Size(510, 208);
             this.siticoneDataGridView1.TabIndex = 270;
-            this.siticoneDataGridView1.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.siticoneDataGridView1.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -2008,7 +2008,7 @@ namespace wfaIntegradoCom
             this.btnRegistrarEgresos.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnRegistrarEgresos.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnRegistrarEgresos.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrarEgresos.HoveredState.Parent = this.btnRegistrarEgresos;
+            this.btnRegistrarEgresos.HoverState.Parent = this.btnRegistrarEgresos;
             this.btnRegistrarEgresos.Image = global::wfaIntegradoCom.Properties.Resources.porPagar_hover;
             this.btnRegistrarEgresos.ImageSize = new System.Drawing.Size(22, 22);
             this.btnRegistrarEgresos.Location = new System.Drawing.Point(23, 4);
@@ -2042,8 +2042,8 @@ namespace wfaIntegradoCom
             // 
             this.lblEgresos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblEgresos.Controls.Add(this.cboTipoPago);
-            this.lblEgresos.Controls.Add(this.siticoneLabel3);
-            this.lblEgresos.Controls.Add(this.siticoneLabel2);
+            this.lblEgresos.Controls.Add(this.SiticoneHtmlLabel3);
+            this.lblEgresos.Controls.Add(this.SiticoneHtmlLabel2);
             this.lblEgresos.Location = new System.Drawing.Point(9, 297);
             this.lblEgresos.Name = "lblEgresos";
             this.lblEgresos.ShadowDecoration.Parent = this.lblEgresos;
@@ -2060,7 +2060,7 @@ namespace wfaIntegradoCom
             this.cboTipoPago.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboTipoPago.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboTipoPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboTipoPago.HoveredState.Parent = this.cboTipoPago;
+            this.cboTipoPago.HoverState.Parent = this.cboTipoPago;
             this.cboTipoPago.IntegralHeight = false;
             this.cboTipoPago.ItemHeight = 30;
             this.cboTipoPago.ItemsAppearance.Parent = this.cboTipoPago;
@@ -2071,38 +2071,38 @@ namespace wfaIntegradoCom
             this.cboTipoPago.TabIndex = 2;
             this.cboTipoPago.SelectedIndexChanged += new System.EventHandler(this.cboTipoPago_SelectedIndexChanged);
             // 
-            // siticoneLabel3
+            // SiticoneHtmlLabel3
             // 
-            this.siticoneLabel3.AutoSize = false;
-            this.siticoneLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneLabel3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.siticoneLabel3.Location = new System.Drawing.Point(151, 11);
-            this.siticoneLabel3.Name = "siticoneLabel3";
-            this.siticoneLabel3.Size = new System.Drawing.Size(118, 19);
-            this.siticoneLabel3.TabIndex = 279;
-            this.siticoneLabel3.Text = "Filtrar";
-            this.siticoneLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            this.SiticoneHtmlLabel3.AutoSize = false;
+            this.SiticoneHtmlLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SiticoneHtmlLabel3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.SiticoneHtmlLabel3.Location = new System.Drawing.Point(151, 11);
+            this.SiticoneHtmlLabel3.Name = "SiticoneHtmlLabel3";
+            this.SiticoneHtmlLabel3.Size = new System.Drawing.Size(118, 19);
+            this.SiticoneHtmlLabel3.TabIndex = 279;
+            this.SiticoneHtmlLabel3.Text = "Filtrar";
+            this.SiticoneHtmlLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // siticoneLabel2
+            // SiticoneHtmlLabel2
             // 
-            this.siticoneLabel2.AutoSize = false;
-            this.siticoneLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneLabel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.siticoneLabel2.Location = new System.Drawing.Point(15, 11);
-            this.siticoneLabel2.Name = "siticoneLabel2";
-            this.siticoneLabel2.Size = new System.Drawing.Size(118, 19);
-            this.siticoneLabel2.TabIndex = 279;
-            this.siticoneLabel2.Text = "■   EGRESOS";
+            this.SiticoneHtmlLabel2.AutoSize = false;
+            this.SiticoneHtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SiticoneHtmlLabel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.SiticoneHtmlLabel2.Location = new System.Drawing.Point(15, 11);
+            this.SiticoneHtmlLabel2.Name = "SiticoneHtmlLabel2";
+            this.SiticoneHtmlLabel2.Size = new System.Drawing.Size(118, 19);
+            this.SiticoneHtmlLabel2.TabIndex = 279;
+            this.SiticoneHtmlLabel2.Text = "■   EGRESOS";
             // 
             // lblIngresos
             // 
             this.lblIngresos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblIngresos.BorderRadius = 5;
             this.lblIngresos.Controls.Add(this.cboFiltraIngresos);
-            this.lblIngresos.Controls.Add(this.siticoneLabel4);
-            this.lblIngresos.Controls.Add(this.siticoneLabel1);
+            this.lblIngresos.Controls.Add(this.SiticoneHtmlLabel4);
+            this.lblIngresos.Controls.Add(this.SiticoneHtmlLabel1);
             this.lblIngresos.Location = new System.Drawing.Point(3, 4);
             this.lblIngresos.Name = "lblIngresos";
             this.lblIngresos.ShadowDecoration.Parent = this.lblIngresos;
@@ -2119,7 +2119,7 @@ namespace wfaIntegradoCom
             this.cboFiltraIngresos.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboFiltraIngresos.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboFiltraIngresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboFiltraIngresos.HoveredState.Parent = this.cboFiltraIngresos;
+            this.cboFiltraIngresos.HoverState.Parent = this.cboFiltraIngresos;
             this.cboFiltraIngresos.IntegralHeight = false;
             this.cboFiltraIngresos.ItemHeight = 30;
             this.cboFiltraIngresos.Items.AddRange(new object[] {
@@ -2133,30 +2133,30 @@ namespace wfaIntegradoCom
             this.cboFiltraIngresos.TabIndex = 2;
             this.cboFiltraIngresos.SelectedIndexChanged += new System.EventHandler(this.cboFiltraIngresos_SelectedIndexChanged);
             // 
-            // siticoneLabel4
+            // SiticoneHtmlLabel4
             // 
-            this.siticoneLabel4.AutoSize = false;
-            this.siticoneLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneLabel4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.siticoneLabel4.Location = new System.Drawing.Point(134, 11);
-            this.siticoneLabel4.Name = "siticoneLabel4";
-            this.siticoneLabel4.Size = new System.Drawing.Size(136, 19);
-            this.siticoneLabel4.TabIndex = 279;
-            this.siticoneLabel4.Text = "Filtrar";
-            this.siticoneLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            this.SiticoneHtmlLabel4.AutoSize = false;
+            this.SiticoneHtmlLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SiticoneHtmlLabel4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.SiticoneHtmlLabel4.Location = new System.Drawing.Point(134, 11);
+            this.SiticoneHtmlLabel4.Name = "SiticoneHtmlLabel4";
+            this.SiticoneHtmlLabel4.Size = new System.Drawing.Size(136, 19);
+            this.SiticoneHtmlLabel4.TabIndex = 279;
+            this.SiticoneHtmlLabel4.Text = "Filtrar";
+            this.SiticoneHtmlLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // siticoneLabel1
+            // SiticoneHtmlLabel1
             // 
-            this.siticoneLabel1.AutoSize = false;
-            this.siticoneLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneLabel1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.siticoneLabel1.Location = new System.Drawing.Point(15, 11);
-            this.siticoneLabel1.Name = "siticoneLabel1";
-            this.siticoneLabel1.Size = new System.Drawing.Size(136, 19);
-            this.siticoneLabel1.TabIndex = 279;
-            this.siticoneLabel1.Text = "■   INGRESOS";
+            this.SiticoneHtmlLabel1.AutoSize = false;
+            this.SiticoneHtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SiticoneHtmlLabel1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.SiticoneHtmlLabel1.Location = new System.Drawing.Point(15, 11);
+            this.SiticoneHtmlLabel1.Name = "SiticoneHtmlLabel1";
+            this.SiticoneHtmlLabel1.Size = new System.Drawing.Size(136, 19);
+            this.SiticoneHtmlLabel1.TabIndex = 279;
+            this.SiticoneHtmlLabel1.Text = "■   INGRESOS";
             // 
             // lblHeaderDetalle
             // 
@@ -2244,7 +2244,7 @@ namespace wfaIntegradoCom
             this.dgvEgresos2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEgresos2.Size = new System.Drawing.Size(482, 121);
             this.dgvEgresos2.TabIndex = 270;
-            this.dgvEgresos2.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvEgresos2.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvEgresos2.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvEgresos2.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvEgresos2.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -2372,7 +2372,7 @@ namespace wfaIntegradoCom
             this.dgvEgresos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEgresos.Size = new System.Drawing.Size(482, 241);
             this.dgvEgresos.TabIndex = 270;
-            this.dgvEgresos.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvEgresos.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvEgresos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvEgresos.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvEgresos.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -2498,7 +2498,7 @@ namespace wfaIntegradoCom
             this.dgvListaPorBloque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaPorBloque.Size = new System.Drawing.Size(482, 241);
             this.dgvListaPorBloque.TabIndex = 270;
-            this.dgvListaPorBloque.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvListaPorBloque.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvListaPorBloque.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvListaPorBloque.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvListaPorBloque.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -2572,8 +2572,8 @@ namespace wfaIntegradoCom
             this.siticoneGroupBox1.Controls.Add(this.pictureBox1);
             this.siticoneGroupBox1.Controls.Add(this.chkDiaEspecificoG);
             this.siticoneGroupBox1.Controls.Add(this.chkHabilitarFechasBusG);
-            this.siticoneGroupBox1.Controls.Add(this.siticoneLabel13);
-            this.siticoneGroupBox1.Controls.Add(this.siticoneLabel11);
+            this.siticoneGroupBox1.Controls.Add(this.SiticoneHtmlLabel13);
+            this.siticoneGroupBox1.Controls.Add(this.SiticoneHtmlLabel11);
             this.siticoneGroupBox1.Controls.Add(this.txtBuscarRepGeneral);
             this.siticoneGroupBox1.Controls.Add(this.cboTipoReporte);
             this.siticoneGroupBox1.Controls.Add(this.cboUsuario);
@@ -2614,7 +2614,7 @@ namespace wfaIntegradoCom
             this.dtFechaFinG.FillColor = System.Drawing.Color.White;
             this.dtFechaFinG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFechaFinG.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaFinG.HoveredState.Parent = this.dtFechaFinG;
+            this.dtFechaFinG.HoverState.Parent = this.dtFechaFinG;
             this.dtFechaFinG.Location = new System.Drawing.Point(287, 28);
             this.dtFechaFinG.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaFinG.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -2635,7 +2635,7 @@ namespace wfaIntegradoCom
             this.dtFechaInicioG.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dtFechaInicioG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFechaInicioG.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaInicioG.HoveredState.Parent = this.dtFechaInicioG;
+            this.dtFechaInicioG.HoverState.Parent = this.dtFechaInicioG;
             this.dtFechaInicioG.Location = new System.Drawing.Point(8, 28);
             this.dtFechaInicioG.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaInicioG.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -2732,25 +2732,25 @@ namespace wfaIntegradoCom
             this.chkHabilitarFechasBusG.UseVisualStyleBackColor = false;
             this.chkHabilitarFechasBusG.CheckedChanged += new System.EventHandler(this.chkHabilitarFechasBusG_CheckedChanged);
             // 
-            // siticoneLabel13
+            // SiticoneHtmlLabel13
             // 
-            this.siticoneLabel13.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel13.ForeColor = System.Drawing.Color.Black;
-            this.siticoneLabel13.Location = new System.Drawing.Point(812, 35);
-            this.siticoneLabel13.Name = "siticoneLabel13";
-            this.siticoneLabel13.Size = new System.Drawing.Size(39, 15);
-            this.siticoneLabel13.TabIndex = 1;
-            this.siticoneLabel13.Text = "Usuario";
+            this.SiticoneHtmlLabel13.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel13.ForeColor = System.Drawing.Color.Black;
+            this.SiticoneHtmlLabel13.Location = new System.Drawing.Point(812, 35);
+            this.SiticoneHtmlLabel13.Name = "SiticoneHtmlLabel13";
+            this.SiticoneHtmlLabel13.Size = new System.Drawing.Size(39, 15);
+            this.SiticoneHtmlLabel13.TabIndex = 1;
+            this.SiticoneHtmlLabel13.Text = "Usuario";
             // 
-            // siticoneLabel11
+            // SiticoneHtmlLabel11
             // 
-            this.siticoneLabel11.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel11.ForeColor = System.Drawing.Color.Black;
-            this.siticoneLabel11.Location = new System.Drawing.Point(539, 35);
-            this.siticoneLabel11.Name = "siticoneLabel11";
-            this.siticoneLabel11.Size = new System.Drawing.Size(68, 15);
-            this.siticoneLabel11.TabIndex = 1;
-            this.siticoneLabel11.Text = "Tipo Reporte:";
+            this.SiticoneHtmlLabel11.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel11.ForeColor = System.Drawing.Color.Black;
+            this.SiticoneHtmlLabel11.Location = new System.Drawing.Point(539, 35);
+            this.SiticoneHtmlLabel11.Name = "SiticoneHtmlLabel11";
+            this.SiticoneHtmlLabel11.Size = new System.Drawing.Size(68, 15);
+            this.SiticoneHtmlLabel11.TabIndex = 1;
+            this.SiticoneHtmlLabel11.Text = "Tipo Reporte:";
             // 
             // txtBuscarRepGeneral
             // 
@@ -2765,8 +2765,8 @@ namespace wfaIntegradoCom
             this.txtBuscarRepGeneral.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtBuscarRepGeneral.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarRepGeneral.FocusedState.Parent = this.txtBuscarRepGeneral;
-            this.txtBuscarRepGeneral.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarRepGeneral.HoveredState.Parent = this.txtBuscarRepGeneral;
+            this.txtBuscarRepGeneral.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarRepGeneral.HoverState.Parent = this.txtBuscarRepGeneral;
             this.txtBuscarRepGeneral.Location = new System.Drawing.Point(969, 55);
             this.txtBuscarRepGeneral.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuscarRepGeneral.Name = "txtBuscarRepGeneral";
@@ -2788,7 +2788,7 @@ namespace wfaIntegradoCom
             this.cboTipoReporte.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboTipoReporte.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboTipoReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboTipoReporte.HoveredState.Parent = this.cboTipoReporte;
+            this.cboTipoReporte.HoverState.Parent = this.cboTipoReporte;
             this.cboTipoReporte.ItemHeight = 30;
             this.cboTipoReporte.ItemsAppearance.Parent = this.cboTipoReporte;
             this.cboTipoReporte.Location = new System.Drawing.Point(539, 55);
@@ -2807,7 +2807,7 @@ namespace wfaIntegradoCom
             this.cboUsuario.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboUsuario.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboUsuario.HoveredState.Parent = this.cboUsuario;
+            this.cboUsuario.HoverState.Parent = this.cboUsuario;
             this.cboUsuario.ItemHeight = 30;
             this.cboUsuario.ItemsAppearance.Parent = this.cboUsuario;
             this.cboUsuario.Location = new System.Drawing.Point(812, 55);
@@ -3014,35 +3014,35 @@ namespace wfaIntegradoCom
         private System.Windows.Forms.ToolTip toolTip;
         internal System.Windows.Forms.ImageList ListaImagenes;
         private System.Windows.Forms.ToolStrip miniToolStrip;
-        private Siticone.UI.WinForms.SiticonePanel panelMenuPrincipal;
-        private Siticone.UI.WinForms.SiticonePanel PanelEncavezadoFondo1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel panelMenuPrincipal;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel PanelEncavezadoFondo1;
         private System.Windows.Forms.PictureBox Img_Husat_Blanco;
         private WPF.CTRL.Colocaciones.ucOpcion ucOpcion1;
-        private Siticone.UI.WinForms.SiticonePanel panelIzquierdo;
-        private Siticone.UI.WinForms.SiticonePanel panelImagenLogo;
-        private Siticone.UI.WinForms.SiticonePanel panelCentral;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel panelIzquierdo;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel panelImagenLogo;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel panelCentral;
         internal System.Windows.Forms.StatusStrip statusStrip1;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
-        private Siticone.UI.WinForms.SiticonePanel panelCerrarSession;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel panelCerrarSession;
         private System.Windows.Forms.PictureBox Img_Husat_Naranja;
         private FontAwesome.Sharp.IconButton btnVenta;
-        private Siticone.UI.WinForms.SiticonePanel subMenuSoporte;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel subMenuSoporte;
         private FontAwesome.Sharp.IconButton btnSoporte;
-        private Siticone.UI.WinForms.SiticonePanel subMenuConfiguracion;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel subMenuConfiguracion;
         private FontAwesome.Sharp.IconButton btnConfiguracion;
-        private Siticone.UI.WinForms.SiticonePanel subMenuRrhh;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel subMenuRrhh;
         private FontAwesome.Sharp.IconButton btnRrhh;
-        private Siticone.UI.WinForms.SiticonePanel subMenuSistemas;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel subMenuSistemas;
         private FontAwesome.Sharp.IconButton btnSistemas;
-        private Siticone.UI.WinForms.SiticonePanel subMenuLogistica;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel subMenuLogistica;
         private FontAwesome.Sharp.IconButton btnLogistica;
-        private Siticone.UI.WinForms.SiticonePanel subMenuComercial;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel subMenuComercial;
         private FontAwesome.Sharp.IconButton btnComercial;
-        private Siticone.UI.WinForms.SiticonePanel subMenuRecaudacion;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel subMenuRecaudacion;
         private FontAwesome.Sharp.IconButton btnRecaudacion;
-        private Siticone.UI.WinForms.SiticonePanel subMenuVentas;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel subMenuVentas;
         private System.Windows.Forms.Label lblChilForm;
         private FontAwesome.Sharp.IconPictureBox iconChildForm;
         private System.Windows.Forms.FlowLayoutPanel LayoutPanelAccesoRapido;
@@ -3052,7 +3052,7 @@ namespace wfaIntegradoCom
         private FontAwesome.Sharp.IconButton tsCaja;
         private FontAwesome.Sharp.IconButton tsConsulta;
         private FontAwesome.Sharp.IconButton tsMiCaja;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel2;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel2;
         private System.Windows.Forms.Panel pnlSombra;
         private FontAwesome.Sharp.IconButton tsCerraSession;
         private FontAwesome.Sharp.IconButton btnPerfil;
@@ -3060,11 +3060,11 @@ namespace wfaIntegradoCom
         internal System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Integration.ElementHost elhAlert;
         private WPF.CTRL.Colocaciones.ucOpcion ucOpcion2;
-        private Siticone.UI.WinForms.SiticoneComboBox cboxSelecThema;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboxSelecThema;
         private FontAwesome.Sharp.IconButton btnOpciones;
         private System.Windows.Forms.Panel panelColorMenuPrincipal;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private Siticone.UI.WinForms.SiticonePanel panelPersonalizarColores;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel panelPersonalizarColores;
         private System.Windows.Forms.Panel panelColorPanelCentral;
         private System.Windows.Forms.Panel panelColorAccesoDirecto;
         private FontAwesome.Sharp.IconButton btnPersonalizacion;
@@ -3077,94 +3077,94 @@ namespace wfaIntegradoCom
         private System.Windows.Forms.Label label4;
         private RJCodeAdvance.RJControls.RJCircularPictureBox ImgPerfil;
         private System.Windows.Forms.Panel panelEspaciado;
-        private Siticone.UI.WinForms.SiticonePanel pnlParaDashboard;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel pnlParaDashboard;
         private System.Windows.Forms.PictureBox pbIndica;
-        private Siticone.UI.WinForms.SiticoneLabel lblHeaderDetalle;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvEmergente;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel lblHeaderDetalle;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvEmergente;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private Siticone.UI.WinForms.SiticoneDataGridView siticoneDataGridView1;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView siticoneDataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvListaPorBloque;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvListaPorBloque;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Detalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad1;
         private System.Windows.Forms.DataGridViewTextBoxColumn importeRow;
-        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaFinG;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaInicioG;
+        private Siticone.Desktop.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
+        private Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker dtFechaFinG;
+        private Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker dtFechaInicioG;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Siticone.UI.WinForms.SiticoneCheckBox chkDiaEspecificoG;
-        private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBusG;
-        private Siticone.UI.WinForms.SiticoneLabel lblBuscar;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel13;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel11;
-        private Siticone.UI.WinForms.SiticoneTextBox txtBuscarRepGeneral;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoReporte;
-        private Siticone.UI.WinForms.SiticoneComboBox cboUsuario;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel3;
+        private Siticone.Desktop.UI.WinForms.SiticoneCheckBox chkDiaEspecificoG;
+        private Siticone.Desktop.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBusG;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel lblBuscar;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel13;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel11;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtBuscarRepGeneral;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboTipoReporte;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboUsuario;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private Siticone.UI.WinForms.SiticoneGroupBox gbHabilitarBusqFechas;
-        private Siticone.UI.WinForms.SiticoneLabel lblFechaFinal;
-        private Siticone.UI.WinForms.SiticoneLabel lblFechaInicial;
+        private Siticone.Desktop.UI.WinForms.SiticoneGroupBox gbHabilitarBusqFechas;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel lblFechaFinal;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel lblFechaInicial;
         private FontAwesome.Sharp.IconButton btnMontoEnCaja;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvEgresos;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvEgresos;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private Siticone.UI.WinForms.SiticoneGradientButton btnRegistrarEgresos;
+        private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnRegistrarEgresos;
         private System.Windows.Forms.FlowLayoutPanel FWpnCajaChicaCopias;
-        private Siticone.UI.WinForms.SiticonePanel lblIngresos;
-        private Siticone.UI.WinForms.SiticoneComboBox cboFiltraIngresos;
-        private Siticone.UI.WinForms.SiticonePanel lblEgresos;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoPago;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel2;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel1;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel3;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel4;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvEgresos2;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel lblIngresos;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboFiltraIngresos;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel lblEgresos;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboTipoPago;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel2;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel3;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel4;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvEgresos2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvEgresos3;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvEgresos3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-        private Siticone.UI.WinForms.SiticonePanel pnBotonera;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel pnBotonera;
         private FontAwesome.Sharp.IconButton tsSeguimiento;
-        private Siticone.UI.WinForms.SiticonePanel pntsSeguimiento;
-        private Siticone.UI.WinForms.SiticoneButton btnAlertaSeguimiento;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel pntsSeguimiento;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnAlertaSeguimiento;
         private System.Windows.Forms.Panel panelPerfil;
-        private Siticone.UI.WinForms.SiticonePanel subMenuReportes;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel subMenuReportes;
         private FontAwesome.Sharp.IconButton btnReportes;
-        private Siticone.UI.WinForms.SiticonePanel tsDoc_Sunat;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel5;
-        private Siticone.UI.WinForms.SiticonePictureBox siticonePictureBox1;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel tsDoc_Sunat;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel5;
+        private Siticone.Desktop.UI.WinForms.SiticonePictureBox siticonePictureBox1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
         private System.Windows.Forms.TextBox txtMensaje;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.ComboBox cboCargoMessage;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel7;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel6;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel7;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel6;
         private System.Windows.Forms.ComboBox cboUsuarioMessage;
-        private Siticone.UI.WinForms.SiticonePanel pnMostrarMensajes;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel8;
-        private Siticone.UI.WinForms.SiticonePanel stpnMensajes;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel4;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel pnMostrarMensajes;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel8;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel stpnMensajes;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel4;
     }
 }
 

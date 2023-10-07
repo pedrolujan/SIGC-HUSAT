@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.gunaPanel1.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
@@ -138,7 +138,7 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

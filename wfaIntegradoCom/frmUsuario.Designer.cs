@@ -31,16 +31,16 @@
             this.UsernameLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.txtUser = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.txtUser = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
-            this.siticoneButton1 = new Siticone.UI.WinForms.SiticoneButton();
-            this.chkVerContraseña = new Siticone.UI.WinForms.SiticoneCheckBox();
-            this.dateTimePicker1 = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.cboSucursal = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.siticoneControlBox1 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
+            this.siticoneButton1 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.chkVerContraseña = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
+            this.dateTimePicker1 = new Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker();
+            this.cboSucursal = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.txtClave = new Guna.UI.WinForms.GunaLineTextBox();
-            this.siticonePanel2 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePanel2 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.iconVerContrasena = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.siticonePanel1.SuspendLayout();
@@ -103,8 +103,8 @@
             this.txtUser.FocusedState.Parent = this.txtUser;
             this.txtUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.ForeColor = System.Drawing.Color.Gray;
-            this.txtUser.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.txtUser.HoveredState.Parent = this.txtUser;
+            this.txtUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtUser.HoverState.Parent = this.txtUser;
             this.txtUser.Location = new System.Drawing.Point(159, 233);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUser.Name = "txtUser";
@@ -145,8 +145,8 @@
             // 
             this.siticoneControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.siticoneControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneControlBox1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneControlBox1.HoveredState.Parent = this.siticoneControlBox1;
+            this.siticoneControlBox1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneControlBox1.HoverState.Parent = this.siticoneControlBox1;
             this.siticoneControlBox1.IconColor = System.Drawing.Color.White;
             this.siticoneControlBox1.Location = new System.Drawing.Point(540, 0);
             this.siticoneControlBox1.Name = "siticoneControlBox1";
@@ -163,7 +163,7 @@
             this.siticoneButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.siticoneButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneButton1.ForeColor = System.Drawing.Color.White;
-            this.siticoneButton1.HoveredState.Parent = this.siticoneButton1;
+            this.siticoneButton1.HoverState.Parent = this.siticoneButton1;
             this.siticoneButton1.Image = global::wfaIntegradoCom.Properties.Resources.login_32px;
             this.siticoneButton1.Location = new System.Drawing.Point(210, 377);
             this.siticoneButton1.Name = "siticoneButton1";
@@ -201,7 +201,7 @@
             this.dateTimePicker1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.dateTimePicker1.ForeColor = System.Drawing.Color.White;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dateTimePicker1.HoveredState.Parent = this.dateTimePicker1;
+            this.dateTimePicker1.HoverState.Parent = this.dateTimePicker1;
             this.dateTimePicker1.Location = new System.Drawing.Point(16, 377);
             this.dateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -221,7 +221,7 @@
             this.cboSucursal.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.cboSucursal.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboSucursal.HoveredState.Parent = this.cboSucursal;
+            this.cboSucursal.HoverState.Parent = this.cboSucursal;
             this.cboSucursal.ItemHeight = 30;
             this.cboSucursal.ItemsAppearance.Parent = this.cboSucursal;
             this.cboSucursal.Location = new System.Drawing.Point(157, 137);
@@ -328,16 +328,16 @@
         internal System.Windows.Forms.Label UsernameLabel;
         internal System.Windows.Forms.Label PasswordLabel;
         internal System.Windows.Forms.Label lblVersion;
-        private Siticone.UI.WinForms.SiticoneMaterialTextBox txtUser;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtUser;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Siticone.UI.WinForms.SiticoneButton siticoneButton1;
-        private Siticone.UI.WinForms.SiticoneCheckBox chkVerContraseña;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dateTimePicker1;
-        private Siticone.UI.WinForms.SiticoneComboBox cboSucursal;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton1;
+        private Siticone.Desktop.UI.WinForms.SiticoneCheckBox chkVerContraseña;
+        private Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker dateTimePicker1;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboSucursal;
         private Guna.UI.WinForms.GunaLineTextBox txtClave;
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel2;
+        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel2;
         private FontAwesome.Sharp.IconPictureBox iconVerContrasena;
         internal System.Windows.Forms.Label label1;
     }

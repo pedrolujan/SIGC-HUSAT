@@ -3,7 +3,7 @@ using CapaEntidad;
 using CapaNegocio;
 using Microsoft.AspNet.SignalR.Client.Hubs;
 using Microsoft.Reporting.WinForms;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections;
 using System.Collections.Generic;

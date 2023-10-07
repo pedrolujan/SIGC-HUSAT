@@ -12,7 +12,7 @@ using wfaIntegradoCom.Funciones;
 using CapaEntidad;
 using CapaNegocio;
 using CapaUtil;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 
 namespace wfaIntegradoCom.Mantenedores
 {

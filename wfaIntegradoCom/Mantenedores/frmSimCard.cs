@@ -2,7 +2,7 @@
 using CapaNegocio;
 using CapaUtil;
 using Guna.UI.WinForms;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -218,7 +218,7 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     lbl.Text = msj;
                     lbl.ForeColor = Variables.ColorError;
-                    dtp.HoveredState.BorderColor = Variables.ColorError;
+                    dtp.HoverState.BorderColor = Variables.ColorError;
                     img.Image = Properties.Resources.error;
                     estFechaCompra = false;
                     return Tuple.Create(false, msj);
@@ -229,7 +229,7 @@ namespace wfaIntegradoCom.Mantenedores
                     lbl.Text = msj;
                     img.Image = Properties.Resources.ok;
                     lbl.ForeColor = Variables.ColorSuccess;
-                    dtp.HoveredState.BorderColor = Variables.ColorSuccess;
+                    dtp.HoverState.BorderColor = Variables.ColorSuccess;
                     return Tuple.Create(true, msj);
                 }
             }
@@ -241,7 +241,7 @@ namespace wfaIntegradoCom.Mantenedores
                     lbl.Text = msj;
                     img.Image = Properties.Resources.error;
                     lbl.ForeColor = Variables.ColorError;
-                    dtp.HoveredState.BorderColor = Variables.ColorError;
+                    dtp.HoverState.BorderColor = Variables.ColorError;
                     return Tuple.Create(false, msj);
                 }
                 else
@@ -250,7 +250,7 @@ namespace wfaIntegradoCom.Mantenedores
                     lbl.Text = msj;
                     img.Image = Properties.Resources.ok;
                     lbl.ForeColor = Variables.ColorSuccess;
-                    dtp.HoveredState.BorderColor = Variables.ColorSuccess;
+                    dtp.HoverState.BorderColor = Variables.ColorSuccess;
                     return Tuple.Create(true, msj);
                 }
             }
@@ -1320,9 +1320,9 @@ namespace wfaIntegradoCom.Mantenedores
             btnNuevo.ForeColor = Variables.ColorEmpresa;
             btnNuevo.Image = Properties.Resources.nuevo_base;
 
-            btnNuevo.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnNuevo.HoveredState.Image = Properties.Resources.nuevo_hover;
-            btnNuevo.HoveredState.ForeColor = Color.White;
+            btnNuevo.HoverState.FillColor = Variables.ColorEmpresa;
+            btnNuevo.HoverState.Image = Properties.Resources.nuevo_hover;
+            btnNuevo.HoverState.ForeColor = Color.White;
         }
         private void frmOperador_Load(object sender, EventArgs e)
         {

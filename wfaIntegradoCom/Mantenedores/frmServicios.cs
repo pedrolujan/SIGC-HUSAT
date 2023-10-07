@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using wfaIntegradoCom.Funciones;
 using System.Text.RegularExpressions;
 

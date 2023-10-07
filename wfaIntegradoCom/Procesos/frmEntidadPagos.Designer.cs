@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.lblTippago = new System.Windows.Forms.Label();
-            this.btnAceptar = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnAceptar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.pbOperacion = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.pbMontoAPagar = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.txtNumeroOperacion = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.txtCanPagar = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtNumeroOperacion = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.txtCanPagar = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.lblNOperacion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.lblImporte = new System.Windows.Forms.Label();
             this.lblEntidad = new System.Windows.Forms.Label();
-            this.cboEntidadesPago = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.cboTipoPago = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboEntidadesPago = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.cboTipoPago = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.pbTipoPago = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.pbEntidad = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.lblEntidadPagos = new System.Windows.Forms.Label();
@@ -113,8 +113,8 @@
             this.btnAceptar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptar.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnAceptar.HoveredState.Parent = this.btnAceptar;
+            this.btnAceptar.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnAceptar.HoverState.Parent = this.btnAceptar;
             this.btnAceptar.Location = new System.Drawing.Point(153, 216);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.PressedColor = System.Drawing.Color.White;
@@ -164,8 +164,8 @@
             this.txtNumeroOperacion.FocusedState.Parent = this.txtNumeroOperacion;
             this.txtNumeroOperacion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNumeroOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNumeroOperacion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNumeroOperacion.HoveredState.Parent = this.txtNumeroOperacion;
+            this.txtNumeroOperacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtNumeroOperacion.HoverState.Parent = this.txtNumeroOperacion;
             this.txtNumeroOperacion.Location = new System.Drawing.Point(256, 157);
             this.txtNumeroOperacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNumeroOperacion.Name = "txtNumeroOperacion";
@@ -194,8 +194,8 @@
             this.txtCanPagar.FocusedState.Parent = this.txtCanPagar;
             this.txtCanPagar.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCanPagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCanPagar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCanPagar.HoveredState.Parent = this.txtCanPagar;
+            this.txtCanPagar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCanPagar.HoverState.Parent = this.txtCanPagar;
             this.txtCanPagar.Location = new System.Drawing.Point(12, 157);
             this.txtCanPagar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCanPagar.Name = "txtCanPagar";
@@ -279,8 +279,8 @@
             this.cboEntidadesPago.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.cboEntidadesPago.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboEntidadesPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboEntidadesPago.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboEntidadesPago.HoveredState.Parent = this.cboEntidadesPago;
+            this.cboEntidadesPago.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboEntidadesPago.HoverState.Parent = this.cboEntidadesPago;
             this.cboEntidadesPago.ItemHeight = 30;
             this.cboEntidadesPago.ItemsAppearance.Parent = this.cboEntidadesPago;
             this.cboEntidadesPago.Location = new System.Drawing.Point(256, 82);
@@ -301,7 +301,7 @@
             this.cboTipoPago.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.cboTipoPago.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboTipoPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoPago.HoveredState.Parent = this.cboTipoPago;
+            this.cboTipoPago.HoverState.Parent = this.cboTipoPago;
             this.cboTipoPago.ItemHeight = 30;
             this.cboTipoPago.ItemsAppearance.Parent = this.cboTipoPago;
             this.cboTipoPago.Location = new System.Drawing.Point(12, 82);
@@ -471,28 +471,28 @@
 
         #endregion
 
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
         private System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private Guna.UI.WinForms.GunaCirclePictureBox pbOperacion;
         private Guna.UI.WinForms.GunaCirclePictureBox pbMontoAPagar;
-        private Siticone.UI.WinForms.SiticoneTextBox txtNumeroOperacion;
-        private Siticone.UI.WinForms.SiticoneTextBox txtCanPagar;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtNumeroOperacion;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtCanPagar;
         private System.Windows.Forms.Label lblNOperacion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label lblEntidad;
-        private Siticone.UI.WinForms.SiticoneComboBox cboEntidadesPago;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoPago;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboEntidadesPago;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboTipoPago;
         private Guna.UI.WinForms.GunaCirclePictureBox pbTipoPago;
         private Guna.UI.WinForms.GunaCirclePictureBox pbEntidad;
         private System.Windows.Forms.Label lblEntidadPagos;
         private System.Windows.Forms.Label lblOperacion;
         private System.Windows.Forms.Label lblMontoAPagar;
         private System.Windows.Forms.Label lblTipoPago;
-        private Siticone.UI.WinForms.SiticoneButton btnAceptar;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnAceptar;
         private System.Windows.Forms.Label lblImporte;
         private System.Windows.Forms.Label lblTippago;
         private System.Windows.Forms.Label lblCanpagar;

@@ -30,12 +30,12 @@ namespace wfaIntegradoCom.Procesos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ProgressBar1 = new Siticone.UI.WinForms.SiticoneProgressBar();
+            this.ProgressBar1 = new Siticone.Desktop.UI.WinForms.SiticoneProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.siticoneWinProgressIndicator1 = new Siticone.UI.WinForms.SiticoneWinProgressIndicator();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticoneWinProgressIndicator1 = new Siticone.Desktop.UI.WinForms.SiticoneWinProgressIndicator();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.siticonePanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,11 +137,11 @@ namespace wfaIntegradoCom.Procesos
 
         #endregion
 
-        private Siticone.UI.WinForms.SiticoneProgressBar ProgressBar1;
+        private Siticone.Desktop.UI.WinForms.SiticoneProgressBar ProgressBar1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label label1;
-        private Siticone.UI.WinForms.SiticoneWinProgressIndicator siticoneWinProgressIndicator1;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneWinProgressIndicator siticoneWinProgressIndicator1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
     }
 }

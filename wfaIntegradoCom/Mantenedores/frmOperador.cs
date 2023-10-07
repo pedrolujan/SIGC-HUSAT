@@ -119,17 +119,17 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private void siticoneLabel2_Click(object sender, EventArgs e)
+        private void SiticoneHtmlLabel2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void siticoneLabel1_Click(object sender, EventArgs e)
+        private void SiticoneHtmlLabel1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void siticoneLabel3_Click(object sender, EventArgs e)
+        private void SiticoneHtmlLabel3_Click(object sender, EventArgs e)
         {
 
         }

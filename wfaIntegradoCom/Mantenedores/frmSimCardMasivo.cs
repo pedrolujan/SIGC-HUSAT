@@ -876,7 +876,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private void siticoneLabel2_Click(object sender, EventArgs e)
+        private void SiticoneHtmlLabel2_Click(object sender, EventArgs e)
         {
 
         }

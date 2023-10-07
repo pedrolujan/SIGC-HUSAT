@@ -30,10 +30,10 @@ namespace wfaIntegradoCom.Consultas
         private void InitializeComponent()
         {
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.btnVolver = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnVolver = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnGenerarVenta = new Siticone.UI.WinForms.SiticoneButton();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnGenerarVenta = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.gunaPanel2 = new Guna.UI.WinForms.GunaPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.gunaControlBox3 = new Guna.UI.WinForms.GunaControlBox();
@@ -63,7 +63,7 @@ namespace wfaIntegradoCom.Consultas
             this.btnVolver.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnVolver.ForeColor = System.Drawing.Color.White;
-            this.btnVolver.HoveredState.Parent = this.btnVolver;
+            this.btnVolver.HoverState.Parent = this.btnVolver;
             this.btnVolver.Location = new System.Drawing.Point(328, 631);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.ShadowDecoration.Parent = this.btnVolver;
@@ -93,8 +93,8 @@ namespace wfaIntegradoCom.Consultas
             this.btnGenerarVenta.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnGenerarVenta.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnGenerarVenta.ForeColor = System.Drawing.Color.White;
-            this.btnGenerarVenta.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnGenerarVenta.HoveredState.Parent = this.btnGenerarVenta;
+            this.btnGenerarVenta.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnGenerarVenta.HoverState.Parent = this.btnGenerarVenta;
             this.btnGenerarVenta.Location = new System.Drawing.Point(134, 631);
             this.btnGenerarVenta.Name = "btnGenerarVenta";
             this.btnGenerarVenta.PressedColor = System.Drawing.Color.White;
@@ -195,10 +195,10 @@ namespace wfaIntegradoCom.Consultas
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private Siticone.UI.WinForms.SiticoneButton btnVolver;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnVolver;
         private System.Windows.Forms.Label label1;
-        private Siticone.UI.WinForms.SiticoneButton btnGenerarVenta;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnGenerarVenta;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
         private Guna.UI.WinForms.GunaPanel gunaPanel2;
         private System.Windows.Forms.Label label4;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox3;

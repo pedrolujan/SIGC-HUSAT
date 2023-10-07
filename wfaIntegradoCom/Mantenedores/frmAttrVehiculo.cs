@@ -2,7 +2,7 @@
 using CapaNegocio;
 using CapaUtil;
 using Guna.UI.WinForms;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -811,12 +811,12 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private void siticoneLabel1_Click(object sender, EventArgs e)
+        private void SiticoneHtmlLabel1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void siticoneLabel2_Click(object sender, EventArgs e)
+        private void SiticoneHtmlLabel2_Click(object sender, EventArgs e)
         {
 
         }
@@ -917,12 +917,12 @@ namespace wfaIntegradoCom.Mantenedores
 
 
         }
-        private void siticoneLabel8_Click(object sender, EventArgs e)
+        private void SiticoneHtmlLabel8_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void siticoneLabel9_Click(object sender, EventArgs e)
+        private void SiticoneHtmlLabel9_Click(object sender, EventArgs e)
         {
 
         }

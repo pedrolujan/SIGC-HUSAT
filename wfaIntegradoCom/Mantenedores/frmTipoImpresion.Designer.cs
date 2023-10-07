@@ -38,8 +38,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
-            this.dgvListaVehiculos = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.dgvListaVehiculos = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.CodVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PlacaVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -177,7 +177,7 @@
             this.dgvListaVehiculos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvListaVehiculos.Size = new System.Drawing.Size(422, 207);
             this.dgvListaVehiculos.TabIndex = 210;
-            this.dgvListaVehiculos.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvListaVehiculos.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvListaVehiculos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvListaVehiculos.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvListaVehiculos.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -267,8 +267,8 @@
         private System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvListaVehiculos;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvListaVehiculos;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn PlacaVehiculo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nro;

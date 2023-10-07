@@ -5,7 +5,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using FontAwesome.Sharp;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

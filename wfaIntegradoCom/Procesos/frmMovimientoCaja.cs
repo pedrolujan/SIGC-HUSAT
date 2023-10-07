@@ -11,7 +11,7 @@ using CapaNegocio;
 using CapaEntidad;
 using CapaUtil;
 using wfaIntegradoCom.Funciones;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using wfaIntegradoCom.Consultas;
 
 namespace wfaIntegradoCom.Procesos
@@ -612,7 +612,7 @@ namespace wfaIntegradoCom.Procesos
 
         }
 
-        private void siticoneLabel6_Click(object sender, EventArgs e)
+        private void SiticoneHtmlLabel6_Click(object sender, EventArgs e)
         {
 
         }

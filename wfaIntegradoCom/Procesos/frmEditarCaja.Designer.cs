@@ -50,15 +50,15 @@ namespace wfaIntegradoCom.Procesos
             this.label6 = new System.Windows.Forms.Label();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
-            this.btnGuardarCliente = new Siticone.UI.WinForms.SiticoneButton();
-            this.dgContenedor = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.btnGuardarCliente = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.dgContenedor = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
-            this.cboUsuario = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.dtFechaAccion = new Siticone.UI.WinForms.SiticoneDateTimePicker();
-            this.dgvOpciones = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.cboUsuario = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.dtFechaAccion = new Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker();
+            this.dgvOpciones = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -136,7 +136,7 @@ namespace wfaIntegradoCom.Procesos
             this.btnGuardarCliente.FillColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnGuardarCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarCliente.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarCliente.HoveredState.Parent = this.btnGuardarCliente;
+            this.btnGuardarCliente.HoverState.Parent = this.btnGuardarCliente;
             this.btnGuardarCliente.Location = new System.Drawing.Point(222, 282);
             this.btnGuardarCliente.Name = "btnGuardarCliente";
             this.btnGuardarCliente.ShadowDecoration.Parent = this.btnGuardarCliente;
@@ -199,7 +199,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgContenedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgContenedor.Size = new System.Drawing.Size(242, 142);
             this.dgContenedor.TabIndex = 320;
-            this.dgContenedor.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgContenedor.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgContenedor.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgContenedor.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgContenedor.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -278,7 +278,7 @@ namespace wfaIntegradoCom.Procesos
             this.cboUsuario.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboUsuario.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboUsuario.HoveredState.Parent = this.cboUsuario;
+            this.cboUsuario.HoverState.Parent = this.cboUsuario;
             this.cboUsuario.ItemHeight = 30;
             this.cboUsuario.ItemsAppearance.Parent = this.cboUsuario;
             this.cboUsuario.Location = new System.Drawing.Point(272, 61);
@@ -298,7 +298,7 @@ namespace wfaIntegradoCom.Procesos
             this.dtFechaAccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFechaAccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFechaAccion.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaAccion.HoveredState.Parent = this.dtFechaAccion;
+            this.dtFechaAccion.HoverState.Parent = this.dtFechaAccion;
             this.dtFechaAccion.Location = new System.Drawing.Point(12, 61);
             this.dtFechaAccion.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaAccion.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -364,7 +364,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgvOpciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOpciones.Size = new System.Drawing.Size(331, 142);
             this.dgvOpciones.TabIndex = 320;
-            this.dgvOpciones.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvOpciones.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvOpciones.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvOpciones.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvOpciones.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -453,18 +453,18 @@ namespace wfaIntegradoCom.Procesos
         private System.Windows.Forms.Label label6;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
-        private Siticone.UI.WinForms.SiticoneButton btnGuardarCliente;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgContenedor;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnGuardarCliente;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgContenedor;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dtFechaAccion;
+        private Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker dtFechaAccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn num;
         private System.Windows.Forms.DataGridViewTextBoxColumn Detalle;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvOpciones;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvOpciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private Siticone.UI.WinForms.SiticoneComboBox cboUsuario;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboUsuario;
     }
 }

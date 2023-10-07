@@ -1,5 +1,5 @@
 ﻿using Guna.UI.WinForms;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -327,36 +327,36 @@ namespace wfaIntegradoCom.Funciones
             btnNuevo.ForeColor = Variables.ColorEmpresa;
             btnNuevo.Image = Properties.Resources.nuevo_base;
 
-            btnNuevo.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnNuevo.HoveredState.Image = Properties.Resources.nuevo_hover;
-            btnNuevo.HoveredState.ForeColor = Color.White;
+            btnNuevo.HoverState.FillColor = Variables.ColorEmpresa;
+            btnNuevo.HoverState.Image = Properties.Resources.nuevo_hover;
+            btnNuevo.HoverState.ForeColor = Color.White;
 
             btnEditar.FillColor = Color.White;
             btnEditar.BorderColor = Variables.ColorEmpresa;
             btnEditar.ForeColor = Variables.ColorEmpresa;
             btnEditar.Image = Properties.Resources.editar_base;
 
-            btnEditar.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnEditar.HoveredState.Image = Properties.Resources.editar_hover;
-            btnEditar.HoveredState.ForeColor = Color.White;
+            btnEditar.HoverState.FillColor = Variables.ColorEmpresa;
+            btnEditar.HoverState.Image = Properties.Resources.editar_hover;
+            btnEditar.HoverState.ForeColor = Color.White;
 
             btnGuardar.FillColor = Color.White;
             btnGuardar.BorderColor = Variables.ColorEmpresa;
             btnGuardar.ForeColor = Variables.ColorEmpresa;
             btnGuardar.Image = Properties.Resources.guardar_base;
 
-            btnGuardar.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnGuardar.HoveredState.Image = Properties.Resources.guardar_hover;
-            btnGuardar.HoveredState.ForeColor = Color.White;
+            btnGuardar.HoverState.FillColor = Variables.ColorEmpresa;
+            btnGuardar.HoverState.Image = Properties.Resources.guardar_hover;
+            btnGuardar.HoverState.ForeColor = Color.White;
 
             btnSalir.FillColor = Color.White;
             btnSalir.BorderColor = Variables.ColorEmpresa;
             btnSalir.ForeColor = Variables.ColorEmpresa;
             btnSalir.Image = Properties.Resources.salir_base;
 
-            btnSalir.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnSalir.HoveredState.Image = Properties.Resources.salir_hover;
-            btnSalir.HoveredState.ForeColor = Color.White;
+            btnSalir.HoverState.FillColor = Variables.ColorEmpresa;
+            btnSalir.HoverState.Image = Properties.Resources.salir_hover;
+            btnSalir.HoverState.ForeColor = Color.White;
 
             btnNuevo.PressedColor = Color.White;
             btnEditar.PressedColor = Color.White;
@@ -651,18 +651,18 @@ namespace wfaIntegradoCom.Funciones
             btnNuevo.ForeColor = Variables.ColorEmpresa;
             btnNuevo.Image = Properties.Resources.nuevo_base;
 
-            btnNuevo.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnNuevo.HoveredState.Image = Properties.Resources.nuevo_hover;
-            btnNuevo.HoveredState.ForeColor = Color.White;
+            btnNuevo.HoverState.FillColor = Variables.ColorEmpresa;
+            btnNuevo.HoverState.Image = Properties.Resources.nuevo_hover;
+            btnNuevo.HoverState.ForeColor = Color.White;
 
             btnGuardar.FillColor = Color.White;
             btnGuardar.BorderColor = Variables.ColorEmpresa;
             btnGuardar.ForeColor = Variables.ColorEmpresa;
             btnGuardar.Image = Properties.Resources.guardar_base;
 
-            btnGuardar.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnGuardar.HoveredState.Image = Properties.Resources.guardar_hover;
-            btnGuardar.HoveredState.ForeColor = Color.White;
+            btnGuardar.HoverState.FillColor = Variables.ColorEmpresa;
+            btnGuardar.HoverState.Image = Properties.Resources.guardar_hover;
+            btnGuardar.HoverState.ForeColor = Color.White;
 
             btnNuevo.PressedColor = Color.White;
             btnGuardar.PressedColor = Color.White;
@@ -675,18 +675,18 @@ namespace wfaIntegradoCom.Funciones
             btnGuardar.ForeColor = Variables.ColorEmpresa;
             btnGuardar.Image = Properties.Resources.guardar_base;
 
-            btnGuardar.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnGuardar.HoveredState.Image = Properties.Resources.guardar_hover;
-            btnGuardar.HoveredState.ForeColor = Color.White;
+            btnGuardar.HoverState.FillColor = Variables.ColorEmpresa;
+            btnGuardar.HoverState.Image = Properties.Resources.guardar_hover;
+            btnGuardar.HoverState.ForeColor = Color.White;
 
             btnCancelar.FillColor = Color.White;
             btnCancelar.BorderColor = Variables.ColorEmpresa;
             btnCancelar.ForeColor = Variables.ColorEmpresa;
             btnCancelar.Image = Properties.Resources.atras_base;
 
-            btnCancelar.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnCancelar.HoveredState.Image = Properties.Resources.atras_hover;
-            btnCancelar.HoveredState.ForeColor = Color.White;
+            btnCancelar.HoverState.FillColor = Variables.ColorEmpresa;
+            btnCancelar.HoverState.Image = Properties.Resources.atras_hover;
+            btnCancelar.HoverState.ForeColor = Color.White;
 
             btnGuardar.PressedColor = Color.White;
             btnCancelar.PressedColor = Color.White;
@@ -699,9 +699,9 @@ namespace wfaIntegradoCom.Funciones
             btnGuardar.ForeColor = Variables.ColorEmpresa;
             btnGuardar.Image = Properties.Resources.guardar_base;
 
-            btnGuardar.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnGuardar.HoveredState.Image = Properties.Resources.guardar_hover;
-            btnGuardar.HoveredState.ForeColor = Color.White;
+            btnGuardar.HoverState.FillColor = Variables.ColorEmpresa;
+            btnGuardar.HoverState.Image = Properties.Resources.guardar_hover;
+            btnGuardar.HoverState.ForeColor = Color.White;
 
             btnGuardar.PressedColor = Color.White; 
             
@@ -714,9 +714,9 @@ namespace wfaIntegradoCom.Funciones
             btnNuevo.ForeColor = Variables.ColorEmpresa;
             btnNuevo.Image = Properties.Resources.nuevo_base;
 
-            btnNuevo.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnNuevo.HoveredState.Image = Properties.Resources.nuevo_hover;
-            btnNuevo.HoveredState.ForeColor = Color.White;
+            btnNuevo.HoverState.FillColor = Variables.ColorEmpresa;
+            btnNuevo.HoverState.Image = Properties.Resources.nuevo_hover;
+            btnNuevo.HoverState.ForeColor = Color.White;
         }
 
         public static void fnColorTresBotones(SiticoneButton btnNuevo, SiticoneButton btnEditar, SiticoneButton btnGuardar)
@@ -726,27 +726,27 @@ namespace wfaIntegradoCom.Funciones
             btnNuevo.ForeColor = Variables.ColorEmpresa;
             btnNuevo.Image = Properties.Resources.nuevo_base;
 
-            btnNuevo.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnNuevo.HoveredState.Image = Properties.Resources.nuevo_hover;
-            btnNuevo.HoveredState.ForeColor = Color.White;
+            btnNuevo.HoverState.FillColor = Variables.ColorEmpresa;
+            btnNuevo.HoverState.Image = Properties.Resources.nuevo_hover;
+            btnNuevo.HoverState.ForeColor = Color.White;
 
             btnEditar.FillColor = Color.White;
             btnEditar.BorderColor = Variables.ColorEmpresa;
             btnEditar.ForeColor = Variables.ColorEmpresa;
             btnEditar.Image = Properties.Resources.editar_base;
 
-            btnEditar.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnEditar.HoveredState.Image = Properties.Resources.editar_hover;
-            btnEditar.HoveredState.ForeColor = Color.White;
+            btnEditar.HoverState.FillColor = Variables.ColorEmpresa;
+            btnEditar.HoverState.Image = Properties.Resources.editar_hover;
+            btnEditar.HoverState.ForeColor = Color.White;
 
             btnGuardar.FillColor = Color.White;
             btnGuardar.BorderColor = Variables.ColorEmpresa;
             btnGuardar.ForeColor = Variables.ColorEmpresa;
             btnGuardar.Image = Properties.Resources.guardar_base;
 
-            btnGuardar.HoveredState.FillColor = Variables.ColorEmpresa;
-            btnGuardar.HoveredState.Image = Properties.Resources.guardar_hover;
-            btnGuardar.HoveredState.ForeColor = Color.White;
+            btnGuardar.HoverState.FillColor = Variables.ColorEmpresa;
+            btnGuardar.HoverState.Image = Properties.Resources.guardar_hover;
+            btnGuardar.HoverState.ForeColor = Color.White;
 
             btnNuevo.PressedColor = Color.White;
             btnEditar.PressedColor = Color.White;

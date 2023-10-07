@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnAccesoDescuento = new Siticone.UI.WinForms.SiticoneButton();
-            this.txtClave = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
+            this.btnAccesoDescuento = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.txtClave = new  Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.UsernameLabel = new System.Windows.Forms.Label();
-            this.txtUsuario = new Siticone.UI.WinForms.SiticoneMaterialTextBox();
+            this.txtUsuario = new  Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.topPanel = new Guna.UI.WinForms.GunaPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.controlMovimiento = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
+            this.controlMovimiento = new Siticone.Desktop.UI.WinForms.SiticoneDragControl(this.components);
             this.topPanel.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +53,7 @@
             this.btnAccesoDescuento.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnAccesoDescuento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccesoDescuento.ForeColor = System.Drawing.Color.White;
-            this.btnAccesoDescuento.HoveredState.Parent = this.btnAccesoDescuento;
+            this.btnAccesoDescuento.HoverState.Parent = this.btnAccesoDescuento;
             this.btnAccesoDescuento.Image = global::wfaIntegradoCom.Properties.Resources.login_32px;
             this.btnAccesoDescuento.Location = new System.Drawing.Point(105, 155);
             this.btnAccesoDescuento.Name = "btnAccesoDescuento";
@@ -79,8 +79,8 @@
             this.txtClave.FocusedState.Parent = this.txtClave;
             this.txtClave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClave.ForeColor = System.Drawing.Color.Gray;
-            this.txtClave.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.txtClave.HoveredState.Parent = this.txtClave;
+            this.txtClave.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtClave.HoverState.Parent = this.txtClave;
             this.txtClave.Location = new System.Drawing.Point(79, 117);
             this.txtClave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtClave.Name = "txtClave";
@@ -134,8 +134,8 @@
             this.txtUsuario.FocusedState.Parent = this.txtUsuario;
             this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.Color.Gray;
-            this.txtUsuario.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.txtUsuario.HoveredState.Parent = this.txtUsuario;
+            this.txtUsuario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.txtUsuario.HoverState.Parent = this.txtUsuario;
             this.txtUsuario.Location = new System.Drawing.Point(79, 62);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUsuario.Name = "txtUsuario";
@@ -242,16 +242,16 @@
 
         #endregion
 
-        private Siticone.UI.WinForms.SiticoneButton btnAccesoDescuento;
-        private Siticone.UI.WinForms.SiticoneMaterialTextBox txtClave;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnAccesoDescuento;
+        private  Siticone.Desktop.UI.WinForms.SiticoneTextBox txtClave;
         internal System.Windows.Forms.Label PasswordLabel;
         internal System.Windows.Forms.Label UsernameLabel;
-        private Siticone.UI.WinForms.SiticoneMaterialTextBox txtUsuario;
+        private  Siticone.Desktop.UI.WinForms.SiticoneTextBox txtUsuario;
         private Guna.UI.WinForms.GunaPanel topPanel;
         private System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
         private System.Windows.Forms.Label label1;
-        private Siticone.UI.WinForms.SiticoneDragControl controlMovimiento;
+        private Siticone.Desktop.UI.WinForms.SiticoneDragControl controlMovimiento;
     }
 }

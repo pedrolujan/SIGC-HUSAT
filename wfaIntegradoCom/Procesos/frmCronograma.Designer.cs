@@ -34,8 +34,8 @@ namespace wfaIntegradoCom.Procesos
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
-            this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.dgvVehiculos = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.siticoneGroupBox1 = new Siticone.Desktop.UI.WinForms.SiticoneGroupBox();
+            this.dgvVehiculos = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colElegir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -124,7 +124,7 @@ namespace wfaIntegradoCom.Procesos
             this.dgvVehiculos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVehiculos.Size = new System.Drawing.Size(195, 448);
             this.dgvVehiculos.TabIndex = 240;
-            this.dgvVehiculos.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvVehiculos.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvVehiculos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvVehiculos.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvVehiculos.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -194,8 +194,8 @@ namespace wfaIntegradoCom.Procesos
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvVehiculos;
+        private Siticone.Desktop.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvVehiculos;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPlaca;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colElegir;

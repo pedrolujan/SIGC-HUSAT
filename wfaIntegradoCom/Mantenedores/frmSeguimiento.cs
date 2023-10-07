@@ -2,7 +2,7 @@
 using CapaNegocio;
 using CapaUtil;
 using Guna.UI.WinForms;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Data;

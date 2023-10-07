@@ -36,10 +36,10 @@
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.epUsuario = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnRegistrar = new Siticone.UI.WinForms.SiticoneGradientButton();
-            this.btnAtras = new Siticone.UI.WinForms.SiticoneGradientButton();
-            this.pnImporteEnCaja = new Siticone.UI.WinForms.SiticoneGradientPanel();
-            this.lblMostraCierreAnterior = new Siticone.UI.WinForms.SiticoneLabel();
+            this.btnRegistrar = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
+            this.btnAtras = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
+            this.pnImporteEnCaja = new Siticone.Desktop.UI.WinForms.SiticoneGradientPanel();
+            this.lblMostraCierreAnterior = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             ((System.ComponentModel.ISupportInitialize)(this.epUsuario)).BeginInit();
             this.pnImporteEnCaja.SuspendLayout();
             this.SuspendLayout();
@@ -130,7 +130,7 @@
             this.btnRegistrar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnRegistrar.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.HoveredState.Parent = this.btnRegistrar;
+            this.btnRegistrar.HoverState.Parent = this.btnRegistrar;
             this.btnRegistrar.Image = global::wfaIntegradoCom.Properties.Resources.guardar_hover;
             this.btnRegistrar.ImageSize = new System.Drawing.Size(22, 22);
             this.btnRegistrar.Location = new System.Drawing.Point(16, 254);
@@ -152,7 +152,7 @@
             this.btnAtras.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnAtras.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnAtras.ForeColor = System.Drawing.Color.White;
-            this.btnAtras.HoveredState.Parent = this.btnAtras;
+            this.btnAtras.HoverState.Parent = this.btnAtras;
             this.btnAtras.Image = global::wfaIntegradoCom.Properties.Resources.salir_hover;
             this.btnAtras.ImageSize = new System.Drawing.Size(22, 22);
             this.btnAtras.Location = new System.Drawing.Point(204, 254);
@@ -226,9 +226,9 @@
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ErrorProvider epUsuario;
-        private Siticone.UI.WinForms.SiticoneGradientButton btnAtras;
-        private Siticone.UI.WinForms.SiticoneGradientButton btnRegistrar;
-        private Siticone.UI.WinForms.SiticoneGradientPanel pnImporteEnCaja;
-        private Siticone.UI.WinForms.SiticoneLabel lblMostraCierreAnterior;
+        private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnAtras;
+        private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnRegistrar;
+        private Siticone.Desktop.UI.WinForms.SiticoneGradientPanel pnImporteEnCaja;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel lblMostraCierreAnterior;
     }
 }

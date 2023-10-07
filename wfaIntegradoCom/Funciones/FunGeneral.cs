@@ -11,7 +11,7 @@ using wfaIntegradoCom.Funciones.Models;
 using wfaIntegradoCom.Funciones.Helper;
 using Newtonsoft.Json;
 using wfaIntegradoCom.Funciones.Enum;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using System.Globalization;
 using System.Drawing;
 using Guna.UI.WinForms;
@@ -87,8 +87,8 @@ namespace wfaIntegradoCom.Funciones
                     {
                         pn.BackColor = ColorThemas.PanelPadre;
 
-                        var lblpnh = pn.Controls.OfType<SiticoneLabel>();
-                        foreach (SiticoneLabel stl in lblpnh)
+                        var lblpnh = pn.Controls.OfType<SiticoneHtmlLabel>();
+                        foreach (SiticoneHtmlLabel stl in lblpnh)
                         {
                             stl.ForeColor = ColorThemas.FuenteControles;
                         }
@@ -140,8 +140,8 @@ namespace wfaIntegradoCom.Funciones
                         ch.ForeColor = ColorThemas.FuenteControles;
                     }
 
-                    var sLavel = tp.Controls.OfType<SiticoneLabel>();
-                    foreach (SiticoneLabel lbl in sLavel)
+                    var sLavel = tp.Controls.OfType<SiticoneHtmlLabel>();
+                    foreach (SiticoneHtmlLabel lbl in sLavel)
                     {
                         lbl.ForeColor = ColorThemas.FuenteControles;
                     }
@@ -176,8 +176,8 @@ namespace wfaIntegradoCom.Funciones
                             scmb.ForeColor = ColorThemas.FuenteControles;
                         }
 
-                        var vgLavel = sgb.Controls.OfType<SiticoneLabel>();
-                        foreach (SiticoneLabel lbl in vgLavel)
+                        var vgLavel = sgb.Controls.OfType<SiticoneHtmlLabel>();
+                        foreach (SiticoneHtmlLabel lbl in vgLavel)
                         {
                             lbl.ForeColor = ColorThemas.FuenteControles;
                         }
@@ -313,8 +313,8 @@ namespace wfaIntegradoCom.Funciones
                 }
 
 
-                var sLavel = pn1.Controls.OfType<SiticoneLabel>();
-                foreach (SiticoneLabel lbl in sLavel)
+                var sLavel = pn1.Controls.OfType<SiticoneHtmlLabel>();
+                foreach (SiticoneHtmlLabel lbl in sLavel)
                 {
                     lbl.ForeColor = ColorThemas.FuenteControles;
                 }
@@ -369,8 +369,8 @@ namespace wfaIntegradoCom.Funciones
                     scmb.ForeColor = ColorThemas.FuenteControles;
                 }
 
-                var vgLavel = sgb.Controls.OfType<SiticoneLabel>();
-                foreach (SiticoneLabel lbl in vgLavel)
+                var vgLavel = sgb.Controls.OfType<SiticoneHtmlLabel>();
+                foreach (SiticoneHtmlLabel lbl in vgLavel)
                 {
                     lbl.ForeColor = ColorThemas.FuenteControles;
                 }
@@ -442,8 +442,8 @@ namespace wfaIntegradoCom.Funciones
             }
 
             //codigo para buscar label
-            var vLabel = sPanel.Controls.OfType<SiticoneLabel>();
-            foreach (SiticoneLabel lbl in vLabel)
+            var vLabel = sPanel.Controls.OfType<SiticoneHtmlLabel>();
+            foreach (SiticoneHtmlLabel lbl in vLabel)
             {
                 lbl.ForeColor = ColorThemas.FuenteControles;
             }

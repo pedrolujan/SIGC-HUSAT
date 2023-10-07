@@ -30,7 +30,7 @@
         {
             this.imgComprobanteP = new System.Windows.Forms.PictureBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.cboComprobanteP = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboComprobanteP = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.erComprobanteP = new System.Windows.Forms.Label();
             this.txtBuscar = new RJCodeAdvance.RJControls.RJTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@
             this.cboComprobanteP.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.cboComprobanteP.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboComprobanteP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboComprobanteP.HoveredState.Parent = this.cboComprobanteP;
+            this.cboComprobanteP.HoverState.Parent = this.cboComprobanteP;
             this.cboComprobanteP.ItemHeight = 30;
             this.cboComprobanteP.ItemsAppearance.Parent = this.cboComprobanteP;
             this.cboComprobanteP.Location = new System.Drawing.Point(12, 62);
@@ -246,7 +246,7 @@
 
         private System.Windows.Forms.PictureBox imgComprobanteP;
         private System.Windows.Forms.Label label20;
-        private Siticone.UI.WinForms.SiticoneComboBox cboComprobanteP;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboComprobanteP;
         private System.Windows.Forms.Label erComprobanteP;
         private RJCodeAdvance.RJControls.RJTextBox txtBuscar;
         private System.Windows.Forms.Label label1;

@@ -32,16 +32,16 @@ namespace wfaIntegradoCom.Mantenedores
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pnlTop = new Siticone.UI.WinForms.SiticonePanel();
-            this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
-            this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
+            this.pnlTop = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.siticoneControlBox2 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
+            this.siticoneControlBox1 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
             this.label13 = new System.Windows.Forms.Label();
-            this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.dgvOperador = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.siticoneGroupBox1 = new Siticone.Desktop.UI.WinForms.SiticoneGroupBox();
+            this.dgvOperador = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.IdOperador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Operador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnvolver = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnvolver = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.pnlTop.SuspendLayout();
             this.siticoneGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperador)).BeginInit();
@@ -63,10 +63,10 @@ namespace wfaIntegradoCom.Mantenedores
             // siticoneControlBox2
             // 
             this.siticoneControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.siticoneControlBox2.ControlBoxType = Siticone.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.siticoneControlBox2.ControlBoxType = Siticone.Desktop.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.siticoneControlBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneControlBox2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneControlBox2.HoveredState.Parent = this.siticoneControlBox2;
+            this.siticoneControlBox2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneControlBox2.HoverState.Parent = this.siticoneControlBox2;
             this.siticoneControlBox2.IconColor = System.Drawing.Color.White;
             this.siticoneControlBox2.Location = new System.Drawing.Point(275, 0);
             this.siticoneControlBox2.Name = "siticoneControlBox2";
@@ -78,8 +78,8 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.siticoneControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.siticoneControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneControlBox1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneControlBox1.HoveredState.Parent = this.siticoneControlBox1;
+            this.siticoneControlBox1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneControlBox1.HoverState.Parent = this.siticoneControlBox1;
             this.siticoneControlBox1.IconColor = System.Drawing.Color.White;
             this.siticoneControlBox1.Location = new System.Drawing.Point(320, 0);
             this.siticoneControlBox1.Name = "siticoneControlBox1";
@@ -172,7 +172,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgvOperador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvOperador.Size = new System.Drawing.Size(283, 212);
             this.dgvOperador.TabIndex = 144;
-            this.dgvOperador.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvOperador.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvOperador.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvOperador.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvOperador.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -221,7 +221,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnvolver.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnvolver.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnvolver.ForeColor = System.Drawing.Color.White;
-            this.btnvolver.HoveredState.Parent = this.btnvolver;
+            this.btnvolver.HoverState.Parent = this.btnvolver;
             this.btnvolver.Location = new System.Drawing.Point(129, 278);
             this.btnvolver.Name = "btnvolver";
             this.btnvolver.PressedColor = System.Drawing.Color.Gray;
@@ -254,14 +254,14 @@ namespace wfaIntegradoCom.Mantenedores
 
         #endregion
 
-        private Siticone.UI.WinForms.SiticonePanel pnlTop;
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox2;
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel pnlTop;
+        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox2;
+        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox1;
         private Guna.UI.WinForms.GunaLabel gunaLabel10;
         private System.Windows.Forms.Label label13;
-        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
-        private Siticone.UI.WinForms.SiticoneButton btnvolver;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvOperador;
+        private Siticone.Desktop.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnvolver;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvOperador;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdOperador;
         private System.Windows.Forms.DataGridViewTextBoxColumn Operador;
     }

@@ -33,8 +33,8 @@ namespace wfaIntegradoCom.Mantenedores
             this.label14 = new System.Windows.Forms.Label();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
-            this.txtPrevisualizarTexto = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.txtPrevisualizarTexto = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.gunaPanel1.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
             this.SuspendLayout();
@@ -107,8 +107,8 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtPrevisualizarTexto.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPrevisualizarTexto.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrevisualizarTexto.FocusedState.Parent = this.txtPrevisualizarTexto;
-            this.txtPrevisualizarTexto.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPrevisualizarTexto.HoveredState.Parent = this.txtPrevisualizarTexto;
+            this.txtPrevisualizarTexto.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPrevisualizarTexto.HoverState.Parent = this.txtPrevisualizarTexto;
             this.txtPrevisualizarTexto.Location = new System.Drawing.Point(8, 8);
             this.txtPrevisualizarTexto.Multiline = true;
             this.txtPrevisualizarTexto.Name = "txtPrevisualizarTexto";
@@ -155,7 +155,7 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.Label label14;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
-        private Siticone.UI.WinForms.SiticoneTextBox txtPrevisualizarTexto;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtPrevisualizarTexto;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
     }
 }

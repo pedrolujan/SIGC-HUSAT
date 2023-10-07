@@ -33,10 +33,10 @@
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.btnVolver = new Siticone.UI.WinForms.SiticoneButton();
-            this.btnFinalizarInstalacion = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnVolver = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnFinalizarInstalacion = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.gunaPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,7 +116,7 @@
             this.btnVolver.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnVolver.ForeColor = System.Drawing.Color.White;
-            this.btnVolver.HoveredState.Parent = this.btnVolver;
+            this.btnVolver.HoverState.Parent = this.btnVolver;
             this.btnVolver.Location = new System.Drawing.Point(321, 564);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.ShadowDecoration.Parent = this.btnVolver;
@@ -135,8 +135,8 @@
             this.btnFinalizarInstalacion.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnFinalizarInstalacion.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnFinalizarInstalacion.ForeColor = System.Drawing.Color.White;
-            this.btnFinalizarInstalacion.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnFinalizarInstalacion.HoveredState.Parent = this.btnFinalizarInstalacion;
+            this.btnFinalizarInstalacion.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnFinalizarInstalacion.HoverState.Parent = this.btnFinalizarInstalacion;
             this.btnFinalizarInstalacion.Location = new System.Drawing.Point(88, 564);
             this.btnFinalizarInstalacion.Name = "btnFinalizarInstalacion";
             this.btnFinalizarInstalacion.PressedColor = System.Drawing.Color.White;
@@ -199,9 +199,9 @@
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private Siticone.UI.WinForms.SiticoneButton btnVolver;
-        private Siticone.UI.WinForms.SiticoneButton btnFinalizarInstalacion;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnVolver;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnFinalizarInstalacion;
         private System.Windows.Forms.Label label1;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
     }
 }

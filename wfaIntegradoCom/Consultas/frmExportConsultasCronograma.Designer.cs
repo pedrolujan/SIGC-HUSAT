@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -136,7 +136,7 @@
 
         #endregion
 
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
         private System.Windows.Forms.Label label1;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;

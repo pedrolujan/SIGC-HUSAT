@@ -13,8 +13,8 @@ using CapaNegocio;
 using CapaUtil;
 using CapaEntidad;
 using System.IO;
-using Siticone.UI.WinForms.Suite;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms.Suite;
+using Siticone.Desktop.UI.WinForms;
 using TextBox = System.Windows.Forms.TextBox;
 using CircularProgressBar;
 using wfaIntegradoCom.Mantenedores;
@@ -376,11 +376,11 @@ namespace wfaIntegradoCom.Procesos
             {
                 case "DOVE0002":
                 case "DOVE0001":
-                    siticoneLabel1.Text = "Emitiendo documento a SUNAT";
+                    SiticoneHtmlLabel1.Text = "Emitiendo documento a SUNAT";
                     break;
                 case "DOVE0003":
                 case "DOVE0004":
-                    siticoneLabel1.Text = "Guardando datos";
+                    SiticoneHtmlLabel1.Text = "Guardando datos";
                     break;
                 default:
                     break;

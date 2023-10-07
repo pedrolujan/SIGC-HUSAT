@@ -13,7 +13,7 @@ using wfaIntegradoCom.Mantenedores;
 using CapaUtil;
 using wfaIntegradoCom.Funciones;
 using System.Text.RegularExpressions;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using CapaDato;
 using wfaIntegradoCom.Consultas;
 using wfaIntegradoCom.Sunat;

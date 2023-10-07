@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
-            this.btnCancelar = new Siticone.UI.WinForms.SiticoneButton();
-            this.btnAceptar = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnCancelar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnAceptar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.label1 = new System.Windows.Forms.Label();
             this.siticonePanel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
@@ -135,7 +135,7 @@
             this.btnCancelar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.HoveredState.Parent = this.btnCancelar;
+            this.btnCancelar.HoverState.Parent = this.btnCancelar;
             this.btnCancelar.Location = new System.Drawing.Point(378, 631);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.ShadowDecoration.Parent = this.btnCancelar;
@@ -154,8 +154,8 @@
             this.btnAceptar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptar.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnAceptar.HoveredState.Parent = this.btnAceptar;
+            this.btnAceptar.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnAceptar.HoverState.Parent = this.btnAceptar;
             this.btnAceptar.Location = new System.Drawing.Point(184, 631);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.PressedColor = System.Drawing.Color.White;
@@ -198,9 +198,9 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
-        private Siticone.UI.WinForms.SiticoneButton btnCancelar;
-        private Siticone.UI.WinForms.SiticoneButton btnAceptar;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnCancelar;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnAceptar;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
         private System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;

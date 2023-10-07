@@ -2,8 +2,8 @@
 
 
 
-using System;
 using Siticone.UI.WinForms;
+using System;
 
 namespace CapaEntidad
 {
@@ -12,8 +12,8 @@ namespace CapaEntidad
         public validacion() { }
         public Boolean estado { get; set; }
         public String mensaje { get; set; }
-        public SiticoneTextBox textbox { get; set; }
-        public SiticoneComboBox combobox { get; set; }
+        public Siticone.Desktop.UI.WinForms.SiticoneTextBox textbox { get; set; }
+        public Siticone.Desktop.UI.WinForms.SiticoneComboBox combobox { get; set; }
 
 
         

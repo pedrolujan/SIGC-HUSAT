@@ -14,7 +14,7 @@ using wfaIntegradoCom.Funciones;
 using wfaIntegradoCom.Procesos;
 using wfaIntegradoCom.Consultas;
 using System.Net.Mail;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 
 namespace wfaIntegradoCom.Mantenedores
 {

@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtDescripcion = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.txtDescripcion = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.pbDescricion = new System.Windows.Forms.PictureBox();
-            this.btnCancelar = new Siticone.UI.WinForms.SiticoneButton();
-            this.btnContinuar = new Siticone.UI.WinForms.SiticoneButton();
-            this.lblTitulo = new Siticone.UI.WinForms.SiticoneLabel();
-            this.PanelTop = new Siticone.UI.WinForms.SiticonePanel();
+            this.btnCancelar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnContinuar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.lblTitulo = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.PanelTop = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.lblDescipcion = new System.Windows.Forms.Label();
-            this.cboTipoAnulacion = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboTipoAnulacion = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.siticonePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDescricion)).BeginInit();
@@ -58,8 +58,8 @@
             this.txtDescripcion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtDescripcion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescripcion.FocusedState.Parent = this.txtDescripcion;
-            this.txtDescripcion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescripcion.HoveredState.Parent = this.txtDescripcion;
+            this.txtDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDescripcion.HoverState.Parent = this.txtDescripcion;
             this.txtDescripcion.Location = new System.Drawing.Point(30, 112);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
@@ -112,8 +112,8 @@
             this.btnCancelar.FillColor = System.Drawing.Color.Transparent;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnCancelar.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCancelar.HoveredState.Parent = this.btnCancelar;
+            this.btnCancelar.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancelar.HoverState.Parent = this.btnCancelar;
             this.btnCancelar.Image = global::wfaIntegradoCom.Properties.Resources.atras_base;
             this.btnCancelar.Location = new System.Drawing.Point(243, 217);
             this.btnCancelar.Name = "btnCancelar";
@@ -134,8 +134,8 @@
             this.btnContinuar.FillColor = System.Drawing.Color.Transparent;
             this.btnContinuar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnContinuar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnContinuar.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnContinuar.HoveredState.Parent = this.btnContinuar;
+            this.btnContinuar.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnContinuar.HoverState.Parent = this.btnContinuar;
             this.btnContinuar.Image = global::wfaIntegradoCom.Properties.Resources.equivale;
             this.btnContinuar.Location = new System.Drawing.Point(56, 217);
             this.btnContinuar.Name = "btnContinuar";
@@ -224,7 +224,7 @@
             this.cboTipoAnulacion.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.cboTipoAnulacion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboTipoAnulacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoAnulacion.HoveredState.Parent = this.cboTipoAnulacion;
+            this.cboTipoAnulacion.HoverState.Parent = this.cboTipoAnulacion;
             this.cboTipoAnulacion.ItemHeight = 30;
             this.cboTipoAnulacion.ItemsAppearance.Parent = this.cboTipoAnulacion;
             this.cboTipoAnulacion.Location = new System.Drawing.Point(126, 66);
@@ -267,17 +267,17 @@
 
         #endregion
 
-        private Siticone.UI.WinForms.SiticoneTextBox txtDescripcion;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
-        private Siticone.UI.WinForms.SiticoneLabel lblTitulo;
-        private Siticone.UI.WinForms.SiticonePanel PanelTop;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtDescripcion;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel lblTitulo;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel PanelTop;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
-        private Siticone.UI.WinForms.SiticoneButton btnCancelar;
-        private Siticone.UI.WinForms.SiticoneButton btnContinuar;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnCancelar;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnContinuar;
         private System.Windows.Forms.Label lblDescipcion;
         private System.Windows.Forms.PictureBox pbDescricion;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoAnulacion;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboTipoAnulacion;
         private System.Windows.Forms.Label label23;
     }
 }

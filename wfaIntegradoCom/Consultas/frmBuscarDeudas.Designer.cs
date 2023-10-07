@@ -55,7 +55,7 @@
             this.txtDeuda = new System.Windows.Forms.TextBox();
             this.txtImporte = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.siticoneButton1 = new Siticone.UI.WinForms.SiticoneButton();
+            this.siticoneButton1 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -305,7 +305,7 @@
             this.siticoneButton1.CustomImages.Parent = this.siticoneButton1;
             this.siticoneButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.siticoneButton1.ForeColor = System.Drawing.Color.White;
-            this.siticoneButton1.HoveredState.Parent = this.siticoneButton1;
+            this.siticoneButton1.HoverState.Parent = this.siticoneButton1;
             this.siticoneButton1.Location = new System.Drawing.Point(165, 7);
             this.siticoneButton1.Name = "siticoneButton1";
             this.siticoneButton1.ShadowDecoration.Parent = this.siticoneButton1;
@@ -363,6 +363,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn importeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deudaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn diasTranscurridosDataGridViewTextBoxColumn;
-        private Siticone.UI.WinForms.SiticoneButton siticoneButton1;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton1;
     }
 }

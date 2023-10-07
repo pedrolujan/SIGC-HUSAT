@@ -25,7 +25,7 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using Newtonsoft.Json.Linq;
 using wfaIntegradoCom.Funciones.Models.Order;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using FontAwesome.Sharp;
 using CapaEntidad;
 using CapaDato;
@@ -50,7 +50,7 @@ using Label = System.Windows.Forms.Label;
 using System.IO;
 using DocumentFormat.OpenXml.Bibliography;
 using System.Web.Services.Description;
-using Siticone.UI.WinForms.Suite;
+using Siticone.Desktop.UI.WinForms.Suite;
 using Rectangle = System.Drawing.Rectangle;
 using System.Reflection.Emit;
 using DocumentFormat.OpenXml.Office2016.Drawing.Charts;
@@ -110,7 +110,7 @@ namespace wfaIntegradoCom
         private Color colorOriginalIcono;
         private Color colorParpadeoIcono;
 
-        SiticoneLabel stlabelBG=new SiticoneLabel();
+        SiticoneHtmlLabel stlabelBG=new SiticoneHtmlLabel();
         SiticonePanel stPn1=new SiticonePanel();
         SiticonePanel stPn2=new SiticonePanel();
         SiticonePanel stPn3=new SiticonePanel();
@@ -220,7 +220,7 @@ namespace wfaIntegradoCom
             fnAbrirFormularioDinamico(sender);
         }
 
-        private void InicializarParpadeo(SiticoneLabel st, SiticonePanel stp1, IconPictureBox icn)
+        private void InicializarParpadeo(SiticoneHtmlLabel st, SiticonePanel stp1, IconPictureBox icn)
         {
             // Configurar el temporizador
             timer = new Timer();
@@ -1417,8 +1417,8 @@ namespace wfaIntegradoCom
                 cboTipoReporte.Visible = false;
                 txtBuscarRepGeneral.Location = new Point(659, 55);
                 txtBuscarRepGeneral.Width = 440;
-                siticoneLabel11.Visible = false;
-                siticoneLabel13.Visible = false;
+                SiticoneHtmlLabel11.Visible = false;
+                SiticoneHtmlLabel13.Visible = false;
                 chkDiaEspecificoG.Checked = true;
                 dtFechaInicioG.Value = Variables.gdFechaSis;
                 chkDiaEspecificoG.Enabled=false;
@@ -1439,8 +1439,8 @@ namespace wfaIntegradoCom
                 cboUsuario.Visible = true;
                 txtBuscarRepGeneral.Location = new Point((cboUsuario.Location.X + cboUsuario.Width) + 5, 55);
                 txtBuscarRepGeneral.Width = 130;
-                siticoneLabel11.Visible = true;
-                siticoneLabel13.Visible = true;
+                SiticoneHtmlLabel11.Visible = true;
+                SiticoneHtmlLabel13.Visible = true;
 
 
             }
@@ -2487,8 +2487,8 @@ namespace wfaIntegradoCom
 
         private void fnObtenerLabels(SiticoneGroupBox gb)
         {
-            var lbl = gb.Controls.OfType<SiticoneLabel>();
-            foreach (SiticoneLabel llb in lbl)
+            var lbl = gb.Controls.OfType<SiticoneHtmlLabel>();
+            foreach (SiticoneHtmlLabel llb in lbl)
             {
                 llb.ForeColor = ColorThemas.FuenteBotones;
             }
@@ -3269,7 +3269,7 @@ namespace wfaIntegradoCom
                 //pnHead.BorderRadius = borderRadius;
 
 
-                SiticoneLabel lblH = new SiticoneLabel();
+                SiticoneHtmlLabel lblH = new SiticoneHtmlLabel();
                 lblH.Name = "lblHeader" + i;
                 lblH.AutoSize = false;
                 lblH.Size = new Size(pnHead.Width, pnHead.Height);
@@ -3291,7 +3291,7 @@ namespace wfaIntegradoCom
                 pnIzquierdo.Location = new Point(0, pnHead.Height);
                 pnIzquierdo.FillColor = colorFondo;
 
-                SiticoneLabel lblIzq = new SiticoneLabel();
+                SiticoneHtmlLabel lblIzq = new SiticoneHtmlLabel();
                 lblIzq.Name = "lblIzquierdo" + i;
                 lblIzq.AutoSize = false;
                 lblIzq.Size = pnIzquierdo.Size;
@@ -3333,7 +3333,7 @@ namespace wfaIntegradoCom
                 pnFooter.Tag = lstBusq[i].Codigoreporte;
                 pnFooter.Cursor = System.Windows.Forms.Cursors.Hand;
 
-                SiticoneLabel lblF = new SiticoneLabel();
+                SiticoneHtmlLabel lblF = new SiticoneHtmlLabel();
                 lblF.Name = "lblFooter" + i;
                 lblF.AutoSize = false;
                 lblF.Size = pnFooter.Size;
@@ -3413,11 +3413,11 @@ namespace wfaIntegradoCom
             if (control != null)
             {
                 Type controlType = control.GetType();
-                if (controlType == typeof(SiticoneLabel))
+                if (controlType == typeof(SiticoneHtmlLabel))
                 {
-                    SiticoneLabel label = (SiticoneLabel) control;
+                    SiticoneHtmlLabel label = (SiticoneHtmlLabel) control;
                     nombre=label.Tag.ToString();
-                    // Código a ejecutar cuando se hace clic en un SiticoneLabel
+                    // Código a ejecutar cuando se hace clic en un SiticoneHtmlLabel
                 }
                 else if (controlType == typeof(IconPictureBox))
                 {
@@ -3627,7 +3627,7 @@ namespace wfaIntegradoCom
                 //pnHead.BorderRadius = borderRadius;
 
 
-                SiticoneLabel lblH = new SiticoneLabel();
+                SiticoneHtmlLabel lblH = new SiticoneHtmlLabel();
                 lblH.Name = "lblHeader" + i;
                 lblH.AutoSize = false;
                 lblH.Size = new Size(pnHead.Width, pnHead.Height);
@@ -3652,7 +3652,7 @@ namespace wfaIntegradoCom
                 pnIzquierdo.Tag = lstBusq[i].Codigoreporte;
 
 
-                SiticoneLabel lblIzq = new SiticoneLabel();
+                SiticoneHtmlLabel lblIzq = new SiticoneHtmlLabel();
                 lblIzq.Name = "lbl" + lstBusq[i].Codigoreporte;
                 lblIzq.AutoSize = false;
                 lblIzq.Size = pnIzquierdo.Size;
@@ -3696,7 +3696,7 @@ namespace wfaIntegradoCom
                 pnFooter.Tag = lstBusq[i].Codigoreporte;
                 pnFooter.Cursor= System.Windows.Forms.Cursors.Hand;
 
-                SiticoneLabel lblF = new SiticoneLabel();
+                SiticoneHtmlLabel lblF = new SiticoneHtmlLabel();
                 lblF.Name = "lblFooter" + i;
                 lblF.AutoSize = false;
                 lblF.Size = pnFooter.Size;
@@ -4058,7 +4058,7 @@ namespace wfaIntegradoCom
                     SiticonePanel siticonePanel = new SiticonePanel();
 
                     flowLayoutPanel1.Invoke((MethodInvoker)delegate {
-                        SiticoneLabel lblPasar = new SiticoneLabel();
+                        SiticoneHtmlLabel lblPasar = new SiticoneHtmlLabel();
                         Boolean estado = false;
                         var ControlPanel = flowLayoutPanel1.Controls.OfType<SiticonePanel>();
                         foreach (SiticonePanel png in ControlPanel)
@@ -4069,10 +4069,10 @@ namespace wfaIntegradoCom
                                 var paniz = pnh.Controls.OfType<SiticonePanel>();
                                 foreach (SiticonePanel pni in paniz)
                                 {
-                                    var lbliz = pni.Controls.OfType<SiticoneLabel>();
+                                    var lbliz = pni.Controls.OfType<SiticoneHtmlLabel>();
                                     var lblIcon = pni.Controls.OfType<IconPictureBox>();
                                     
-                                    foreach (SiticoneLabel lbl in lbliz)
+                                    foreach (SiticoneHtmlLabel lbl in lbliz)
                                     {
                                         if (lbl.Name.ToString() == "lbl" + datos[0].ToString())
                                         {
@@ -4168,7 +4168,7 @@ namespace wfaIntegradoCom
                         pnS.Height = 5;
                         Font font = new Font("Segoe UI Emoji", 11);
 
-                        SiticoneLabel stl = new SiticoneLabel();
+                        SiticoneHtmlLabel stl = new SiticoneHtmlLabel();
                         
                         stl.Text = datos[3].ToString();
                         stl.AutoSize = true;
@@ -4351,7 +4351,7 @@ namespace wfaIntegradoCom
             pnl.Size = panelEspaciado.Size;
             pnl.BackColor = Color.Black;
 
-            SiticoneLabel lbl = new SiticoneLabel();
+            SiticoneHtmlLabel lbl = new SiticoneHtmlLabel();
             lbl.AutoSize = false;
             lbl.Size = panelEspaciado.Size;
             lbl.TextAlignment = ContentAlignment.MiddleCenter;
@@ -4930,7 +4930,7 @@ namespace wfaIntegradoCom
             FunGeneral.fnLlenarUsuarioPorCargo(cboUsuarioMessage, cboCargoMessage.SelectedValue.ToString(), true);
         }
 
-        private void siticoneLabel8_BackColorChanged(object sender, EventArgs e)
+        private void SiticoneHtmlLabel8_BackColorChanged(object sender, EventArgs e)
         {
 
         }

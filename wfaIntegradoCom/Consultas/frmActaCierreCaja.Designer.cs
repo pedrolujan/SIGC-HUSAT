@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.btnRegresar = new Siticone.UI.WinForms.SiticoneGradientButton();
-            this.btnCerrarGuardarCierre = new Siticone.UI.WinForms.SiticoneGradientButton();
+            this.btnRegresar = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
+            this.btnCerrarGuardarCierre = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
             this.SuspendLayout();
             // 
             // reportViewer1
@@ -53,7 +53,7 @@
             this.btnRegresar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnRegresar.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnRegresar.ForeColor = System.Drawing.Color.White;
-            this.btnRegresar.HoveredState.Parent = this.btnRegresar;
+            this.btnRegresar.HoverState.Parent = this.btnRegresar;
             this.btnRegresar.Image = global::wfaIntegradoCom.Properties.Resources.salir_hover;
             this.btnRegresar.Location = new System.Drawing.Point(376, 449);
             this.btnRegresar.Name = "btnRegresar";
@@ -73,7 +73,7 @@
             this.btnCerrarGuardarCierre.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnCerrarGuardarCierre.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnCerrarGuardarCierre.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarGuardarCierre.HoveredState.Parent = this.btnCerrarGuardarCierre;
+            this.btnCerrarGuardarCierre.HoverState.Parent = this.btnCerrarGuardarCierre;
             this.btnCerrarGuardarCierre.Image = global::wfaIntegradoCom.Properties.Resources.guardar_hover;
             this.btnCerrarGuardarCierre.ImageSize = new System.Drawing.Size(22, 22);
             this.btnCerrarGuardarCierre.Location = new System.Drawing.Point(111, 449);
@@ -103,7 +103,7 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private Siticone.UI.WinForms.SiticoneGradientButton btnRegresar;
-        private Siticone.UI.WinForms.SiticoneGradientButton btnCerrarGuardarCierre;
+        private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnRegresar;
+        private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnCerrarGuardarCierre;
     }
 }

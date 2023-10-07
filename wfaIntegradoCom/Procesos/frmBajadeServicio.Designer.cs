@@ -34,22 +34,22 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
-            this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
-            this.Toppanel = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticoneControlBox2 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
+            this.siticoneControlBox1 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
+            this.Toppanel = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscarBajaServicio = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.txtBuscarPlaca = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.dgBajaServicios = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.txtBuscarPlaca = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.dgBajaServicios = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.gbPaginacion = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.siticoneVSeparator1 = new Siticone.UI.WinForms.SiticoneVSeparator();
+            this.siticoneVSeparator1 = new Siticone.Desktop.UI.WinForms.SiticoneVSeparator();
             this.cboPagina = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.btnTotalReg = new Siticone.UI.WinForms.SiticoneCircleButton();
-            this.btnTotalPaginas = new Siticone.UI.WinForms.SiticoneCircleButton();
-            this.btnNumFilas = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnTotalReg = new Siticone.Desktop.UI.WinForms.SiticoneCircleButton();
+            this.btnTotalPaginas = new Siticone.Desktop.UI.WinForms.SiticoneCircleButton();
+            this.btnNumFilas = new Siticone.Desktop.UI.WinForms.SiticoneCircleButton();
             this.label26 = new System.Windows.Forms.Label();
             this.Toppanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscarBajaServicio)).BeginInit();
@@ -60,10 +60,10 @@
             // siticoneControlBox2
             // 
             this.siticoneControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.siticoneControlBox2.ControlBoxType = Siticone.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.siticoneControlBox2.ControlBoxType = Siticone.Desktop.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.siticoneControlBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneControlBox2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneControlBox2.HoveredState.Parent = this.siticoneControlBox2;
+            this.siticoneControlBox2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneControlBox2.HoverState.Parent = this.siticoneControlBox2;
             this.siticoneControlBox2.IconColor = System.Drawing.Color.White;
             this.siticoneControlBox2.Location = new System.Drawing.Point(878, 0);
             this.siticoneControlBox2.Name = "siticoneControlBox2";
@@ -75,8 +75,8 @@
             // 
             this.siticoneControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.siticoneControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneControlBox1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneControlBox1.HoveredState.Parent = this.siticoneControlBox1;
+            this.siticoneControlBox1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneControlBox1.HoverState.Parent = this.siticoneControlBox1;
             this.siticoneControlBox1.IconColor = System.Drawing.Color.White;
             this.siticoneControlBox1.Location = new System.Drawing.Point(923, 0);
             this.siticoneControlBox1.Name = "siticoneControlBox1";
@@ -150,8 +150,8 @@
             this.txtBuscarPlaca.FocusedState.Parent = this.txtBuscarPlaca;
             this.txtBuscarPlaca.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscarPlaca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtBuscarPlaca.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarPlaca.HoveredState.Parent = this.txtBuscarPlaca;
+            this.txtBuscarPlaca.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarPlaca.HoverState.Parent = this.txtBuscarPlaca;
             this.txtBuscarPlaca.Location = new System.Drawing.Point(10, 57);
             this.txtBuscarPlaca.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscarPlaca.Name = "txtBuscarPlaca";
@@ -213,7 +213,7 @@
             this.dgBajaServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgBajaServicios.Size = new System.Drawing.Size(930, 364);
             this.dgBajaServicios.TabIndex = 248;
-            this.dgBajaServicios.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgBajaServicios.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgBajaServicios.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgBajaServicios.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgBajaServicios.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -295,11 +295,11 @@
             this.btnTotalReg.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnTotalReg.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTotalReg.ForeColor = System.Drawing.Color.White;
-            this.btnTotalReg.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalReg.HoveredState.Parent = this.btnTotalReg;
+            this.btnTotalReg.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalReg.HoverState.Parent = this.btnTotalReg;
             this.btnTotalReg.Location = new System.Drawing.Point(307, 9);
             this.btnTotalReg.Name = "btnTotalReg";
-            this.btnTotalReg.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalReg.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
             this.btnTotalReg.ShadowDecoration.Parent = this.btnTotalReg;
             this.btnTotalReg.Size = new System.Drawing.Size(25, 25);
             this.btnTotalReg.TabIndex = 172;
@@ -313,11 +313,11 @@
             this.btnTotalPaginas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnTotalPaginas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTotalPaginas.ForeColor = System.Drawing.Color.White;
-            this.btnTotalPaginas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalPaginas.HoveredState.Parent = this.btnTotalPaginas;
+            this.btnTotalPaginas.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnTotalPaginas.HoverState.Parent = this.btnTotalPaginas;
             this.btnTotalPaginas.Location = new System.Drawing.Point(149, 9);
             this.btnTotalPaginas.Name = "btnTotalPaginas";
-            this.btnTotalPaginas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnTotalPaginas.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
             this.btnTotalPaginas.ShadowDecoration.Parent = this.btnTotalPaginas;
             this.btnTotalPaginas.Size = new System.Drawing.Size(25, 25);
             this.btnTotalPaginas.TabIndex = 169;
@@ -331,11 +331,11 @@
             this.btnNumFilas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnNumFilas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumFilas.ForeColor = System.Drawing.Color.White;
-            this.btnNumFilas.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnNumFilas.HoveredState.Parent = this.btnNumFilas;
+            this.btnNumFilas.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.btnNumFilas.HoverState.Parent = this.btnNumFilas;
             this.btnNumFilas.Location = new System.Drawing.Point(209, 9);
             this.btnNumFilas.Name = "btnNumFilas";
-            this.btnNumFilas.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnNumFilas.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
             this.btnNumFilas.ShadowDecoration.Parent = this.btnNumFilas;
             this.btnNumFilas.Size = new System.Drawing.Size(25, 25);
             this.btnNumFilas.TabIndex = 171;
@@ -377,22 +377,22 @@
 
         #endregion
 
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox2;
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
-        private Siticone.UI.WinForms.SiticonePanel Toppanel;
+        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox2;
+        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel Toppanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox btnBuscarBajaServicio;
         private System.Windows.Forms.Label label23;
-        private Siticone.UI.WinForms.SiticoneTextBox txtBuscarPlaca;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgBajaServicios;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtBuscarPlaca;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgBajaServicios;
         private System.Windows.Forms.GroupBox gbPaginacion;
         private System.Windows.Forms.Label label24;
-        private Siticone.UI.WinForms.SiticoneVSeparator siticoneVSeparator1;
+        private Siticone.Desktop.UI.WinForms.SiticoneVSeparator siticoneVSeparator1;
         private System.Windows.Forms.ComboBox cboPagina;
         private System.Windows.Forms.Label label25;
-        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalReg;
-        private Siticone.UI.WinForms.SiticoneCircleButton btnTotalPaginas;
-        private Siticone.UI.WinForms.SiticoneCircleButton btnNumFilas;
+        private Siticone.Desktop.UI.WinForms.SiticoneCircleButton btnTotalReg;
+        private Siticone.Desktop.UI.WinForms.SiticoneCircleButton btnTotalPaginas;
+        private Siticone.Desktop.UI.WinForms.SiticoneCircleButton btnNumFilas;
         private System.Windows.Forms.Label label26;
     }
 }

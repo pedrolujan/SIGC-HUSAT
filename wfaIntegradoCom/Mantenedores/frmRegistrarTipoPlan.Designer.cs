@@ -39,41 +39,41 @@ namespace wfaIntegradoCom.Mantenedores
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tsSalir = new System.Windows.Forms.ToolStripButton();
-            this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.siticoneGroupBox1 = new Siticone.Desktop.UI.WinForms.SiticoneGroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cboBuscar = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
-            this.txtActualizar = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.btnNuevo = new Siticone.UI.WinForms.SiticoneButton();
-            this.btnEditar = new Siticone.UI.WinForms.SiticoneButton();
-            this.btnGuardar = new Siticone.UI.WinForms.SiticoneButton();
-            this.btnSalir = new Siticone.UI.WinForms.SiticoneButton();
-            this.dgTipoPlan = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.cboBuscar = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.txtActualizar = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.btnNuevo = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnEditar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnGuardar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnSalir = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.dgTipoPlan = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.erNumResultados = new System.Windows.Forms.Label();
-            this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.gbFormTipoPlan = new Siticone.UI.WinForms.SiticoneGroupBox();
+            this.txtBuscar = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.gbFormTipoPlan = new Siticone.Desktop.UI.WinForms.SiticoneGroupBox();
             this.imgMeses = new System.Windows.Forms.PictureBox();
-            this.chkEstado = new Siticone.UI.WinForms.SiticoneWinToggleSwith();
+            this.chkEstado = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtCodigo = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtCodigo = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.erDescripcion = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.imgDescripcion = new System.Windows.Forms.PictureBox();
-            this.txtDescripcion = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.txtMeses = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtDescripcion = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.txtMeses = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.erNombre = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.imgNombre = new System.Windows.Forms.PictureBox();
             this.erMeses = new System.Windows.Forms.Label();
-            this.txtNombre = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.pnlTop = new Siticone.UI.WinForms.SiticonePanel();
-            this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
-            this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
+            this.txtNombre = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.pnlTop = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.siticoneControlBox2 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
+            this.siticoneControlBox1 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
-            this.dcMover = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
+            this.dcMover = new Siticone.Desktop.UI.WinForms.SiticoneDragControl(this.components);
             this.siticoneGroupBox1.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTipoPlan)).BeginInit();
@@ -163,7 +163,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.cboBuscar.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.cboBuscar.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboBuscar.HoveredState.Parent = this.cboBuscar;
+            this.cboBuscar.HoverState.Parent = this.cboBuscar;
             this.cboBuscar.ItemHeight = 30;
             this.cboBuscar.Items.AddRange(new object[] {
             "TODOS",
@@ -216,8 +216,8 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtActualizar.FocusedState.Parent = this.txtActualizar;
             this.txtActualizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtActualizar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtActualizar.HoveredState.Parent = this.txtActualizar;
+            this.txtActualizar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtActualizar.HoverState.Parent = this.txtActualizar;
             this.txtActualizar.Location = new System.Drawing.Point(16, 480);
             this.txtActualizar.Name = "txtActualizar";
             this.txtActualizar.PasswordChar = '\0';
@@ -238,7 +238,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnNuevo.CustomImages.Parent = this.btnNuevo;
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.HoveredState.Parent = this.btnNuevo;
+            this.btnNuevo.HoverState.Parent = this.btnNuevo;
             this.btnNuevo.Location = new System.Drawing.Point(285, 488);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.ShadowDecoration.Parent = this.btnNuevo;
@@ -256,7 +256,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnEditar.CustomImages.Parent = this.btnEditar;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.HoveredState.Parent = this.btnEditar;
+            this.btnEditar.HoverState.Parent = this.btnEditar;
             this.btnEditar.Location = new System.Drawing.Point(412, 488);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.ShadowDecoration.Parent = this.btnEditar;
@@ -274,7 +274,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnGuardar.CustomImages.Parent = this.btnGuardar;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.HoveredState.Parent = this.btnGuardar;
+            this.btnGuardar.HoverState.Parent = this.btnGuardar;
             this.btnGuardar.Location = new System.Drawing.Point(536, 488);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.ShadowDecoration.Parent = this.btnGuardar;
@@ -292,7 +292,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.btnSalir.CustomImages.Parent = this.btnSalir;
             this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.HoveredState.Parent = this.btnSalir;
+            this.btnSalir.HoverState.Parent = this.btnSalir;
             this.btnSalir.Location = new System.Drawing.Point(650, 488);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.ShadowDecoration.Parent = this.btnSalir;
@@ -338,7 +338,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.dgTipoPlan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgTipoPlan.Size = new System.Drawing.Size(572, 76);
             this.dgTipoPlan.TabIndex = 132;
-            this.dgTipoPlan.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgTipoPlan.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgTipoPlan.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgTipoPlan.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgTipoPlan.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -402,8 +402,8 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtBuscar.FocusedState.Parent = this.txtBuscar;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscar.HoveredState.Parent = this.txtBuscar;
+            this.txtBuscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscar.HoverState.Parent = this.txtBuscar;
             this.txtBuscar.Location = new System.Drawing.Point(369, 57);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
@@ -459,14 +459,14 @@ namespace wfaIntegradoCom.Mantenedores
             // chkEstado
             // 
             this.chkEstado.BackColor = System.Drawing.Color.Transparent;
-            this.chkEstado.CheckedFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            //Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.chkEstado.Location = new System.Drawing.Point(150, 84);
             this.chkEstado.Name = "chkEstado";
             this.chkEstado.Size = new System.Drawing.Size(45, 22);
             this.chkEstado.TabIndex = 129;
             this.chkEstado.Text = "siticoneWinToggleSwith1";
-            this.chkEstado.UncheckedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.chkEstado.UncheckInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            // = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            // = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             // 
             // label5
             // 
@@ -509,8 +509,8 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtCodigo.FocusedState.Parent = this.txtCodigo;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodigo.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCodigo.HoveredState.Parent = this.txtCodigo;
+            this.txtCodigo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCodigo.HoverState.Parent = this.txtCodigo;
             this.txtCodigo.Location = new System.Drawing.Point(22, 70);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.PasswordChar = '\0';
@@ -570,8 +570,8 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtDescripcion.FocusedState.Parent = this.txtDescripcion;
             this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDescripcion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescripcion.HoveredState.Parent = this.txtDescripcion;
+            this.txtDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDescripcion.HoverState.Parent = this.txtDescripcion;
             this.txtDescripcion.Location = new System.Drawing.Point(22, 143);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
@@ -601,8 +601,8 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtMeses.FocusedState.Parent = this.txtMeses;
             this.txtMeses.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMeses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtMeses.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMeses.HoveredState.Parent = this.txtMeses;
+            this.txtMeses.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMeses.HoverState.Parent = this.txtMeses;
             this.txtMeses.Location = new System.Drawing.Point(701, 70);
             this.txtMeses.Name = "txtMeses";
             this.txtMeses.PasswordChar = '\0';
@@ -688,8 +688,8 @@ namespace wfaIntegradoCom.Mantenedores
             this.txtNombre.FocusedState.Parent = this.txtNombre;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNombre.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombre.HoveredState.Parent = this.txtNombre;
+            this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNombre.HoverState.Parent = this.txtNombre;
             this.txtNombre.Location = new System.Drawing.Point(249, 70);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PasswordChar = '\0';
@@ -718,10 +718,10 @@ namespace wfaIntegradoCom.Mantenedores
             // siticoneControlBox2
             // 
             this.siticoneControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.siticoneControlBox2.ControlBoxType = Siticone.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.siticoneControlBox2.ControlBoxType = Siticone.Desktop.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.siticoneControlBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneControlBox2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneControlBox2.HoveredState.Parent = this.siticoneControlBox2;
+            this.siticoneControlBox2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneControlBox2.HoverState.Parent = this.siticoneControlBox2;
             this.siticoneControlBox2.IconColor = System.Drawing.Color.White;
             this.siticoneControlBox2.Location = new System.Drawing.Point(863, 0);
             this.siticoneControlBox2.Name = "siticoneControlBox2";
@@ -733,8 +733,8 @@ namespace wfaIntegradoCom.Mantenedores
             // 
             this.siticoneControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.siticoneControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneControlBox1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneControlBox1.HoveredState.Parent = this.siticoneControlBox1;
+            this.siticoneControlBox1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneControlBox1.HoverState.Parent = this.siticoneControlBox1;
             this.siticoneControlBox1.IconColor = System.Drawing.Color.White;
             this.siticoneControlBox1.Location = new System.Drawing.Point(908, 0);
             this.siticoneControlBox1.Name = "siticoneControlBox1";
@@ -790,40 +790,40 @@ namespace wfaIntegradoCom.Mantenedores
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsSalir;
-        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label erNumResultados;
-        private Siticone.UI.WinForms.SiticoneTextBox txtBuscar;
-        private Siticone.UI.WinForms.SiticoneGroupBox gbFormTipoPlan;
-        private Siticone.UI.WinForms.SiticoneWinToggleSwith chkEstado;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtBuscar;
+        private Siticone.Desktop.UI.WinForms.SiticoneGroupBox gbFormTipoPlan;
+        private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch chkEstado;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private Siticone.UI.WinForms.SiticoneTextBox txtCodigo;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtCodigo;
         private System.Windows.Forms.Label erDescripcion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox imgDescripcion;
-        private Siticone.UI.WinForms.SiticoneTextBox txtDescripcion;
-        private Siticone.UI.WinForms.SiticoneTextBox txtMeses;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtDescripcion;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtMeses;
         private System.Windows.Forms.Label erNombre;
         private System.Windows.Forms.PictureBox imgMeses;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox imgNombre;
         private System.Windows.Forms.Label erMeses;
-        private Siticone.UI.WinForms.SiticoneTextBox txtNombre;
-        private Siticone.UI.WinForms.SiticonePanel pnlTop;
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox2;
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtNombre;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel pnlTop;
+        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox2;
+        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox1;
         private Guna.UI.WinForms.GunaLabel gunaLabel10;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgTipoPlan;
-        private Siticone.UI.WinForms.SiticoneTextBox txtActualizar;
-        private Siticone.UI.WinForms.SiticoneButton btnNuevo;
-        private Siticone.UI.WinForms.SiticoneButton btnEditar;
-        private Siticone.UI.WinForms.SiticoneButton btnGuardar;
-        private Siticone.UI.WinForms.SiticoneButton btnSalir;
-        private Siticone.UI.WinForms.SiticoneDragControl dcMover;
-        private Siticone.UI.WinForms.SiticoneComboBox cboBuscar;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgTipoPlan;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtActualizar;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnNuevo;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnEditar;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnGuardar;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnSalir;
+        private Siticone.Desktop.UI.WinForms.SiticoneDragControl dcMover;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboBuscar;
         private System.Windows.Forms.Label label2;
     }
 }

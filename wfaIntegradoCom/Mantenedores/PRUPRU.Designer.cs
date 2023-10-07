@@ -30,7 +30,7 @@ namespace wfaIntegradoCom.Mantenedores
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PRUPRU));
-            this.siticoneCircleButton1 = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.siticoneCircleButton1 = new Siticone.Desktop.UI.WinForms.SiticoneCircleButton();
             this.gunaButton1 = new Guna.UI.WinForms.GunaButton();
             this.SuspendLayout();
             // 
@@ -40,7 +40,7 @@ namespace wfaIntegradoCom.Mantenedores
             this.siticoneCircleButton1.CustomImages.Parent = this.siticoneCircleButton1;
             this.siticoneCircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.siticoneCircleButton1.ForeColor = System.Drawing.Color.White;
-            this.siticoneCircleButton1.HoveredState.Parent = this.siticoneCircleButton1;
+            this.siticoneCircleButton1.HoverState.Parent = this.siticoneCircleButton1;
             this.siticoneCircleButton1.Location = new System.Drawing.Point(475, 116);
             this.siticoneCircleButton1.Name = "siticoneCircleButton1";
             this.siticoneCircleButton1.ShadowDecoration.Parent = this.siticoneCircleButton1;
@@ -86,7 +86,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         #endregion
 
-        private Siticone.UI.WinForms.SiticoneCircleButton siticoneCircleButton1;
+        private Siticone.Desktop.UI.WinForms.SiticoneCircleButton siticoneCircleButton1;
         private Guna.UI.WinForms.GunaButton gunaButton1;
     }
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using wfaIntegradoCom.Funciones;
 using Guna.UI.WinForms;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 
 namespace wfaIntegradoCom.Mantenedores
 {

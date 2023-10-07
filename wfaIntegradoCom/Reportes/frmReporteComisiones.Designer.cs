@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlTop = new Siticone.UI.WinForms.SiticonePanel();
+            this.pnlTop = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.siticoneControlBox2 = new Siticone.UI.WinForms.SiticoneControlBox();
-            this.siticoneControlBox1 = new Siticone.UI.WinForms.SiticoneControlBox();
+            this.siticoneControlBox2 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
+            this.siticoneControlBox1 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.siticoneGroupBox1 = new Siticone.UI.WinForms.SiticoneGroupBox();
-            this.chkHabilitarFechasBusG = new Siticone.UI.WinForms.SiticoneCheckBox();
+            this.siticoneGroupBox1 = new Siticone.Desktop.UI.WinForms.SiticoneGroupBox();
+            this.chkHabilitarFechasBusG = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
             this.pbBuscar = new FontAwesome.Sharp.IconPictureBox();
-            this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneLabel2 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneLabel5 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.lbl = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneComboBox1 = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.cboUsuario = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.cboTipoContrato = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.txtBuscar = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.SiticoneHtmlLabel1 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.SiticoneHtmlLabel2 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.SiticoneHtmlLabel5 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.lbl = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.siticoneComboBox1 = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.cboUsuario = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.cboTipoContrato = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.gbBuscar = new System.Windows.Forms.GroupBox();
-            this.dtpFechaFinalBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.dtpFechaFinalBus = new Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
-            this.dtpFechaInicialBus = new Siticone.UI.WinForms.SiticoneDateTimePicker();
+            this.dtpFechaInicialBus = new Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -91,10 +91,10 @@
             // siticoneControlBox2
             // 
             this.siticoneControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.siticoneControlBox2.ControlBoxType = Siticone.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.siticoneControlBox2.ControlBoxType = Siticone.Desktop.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.siticoneControlBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneControlBox2.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneControlBox2.HoveredState.Parent = this.siticoneControlBox2;
+            this.siticoneControlBox2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneControlBox2.HoverState.Parent = this.siticoneControlBox2;
             this.siticoneControlBox2.IconColor = System.Drawing.Color.White;
             this.siticoneControlBox2.Location = new System.Drawing.Point(825, 0);
             this.siticoneControlBox2.Name = "siticoneControlBox2";
@@ -106,8 +106,8 @@
             // 
             this.siticoneControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.siticoneControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.siticoneControlBox1.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.siticoneControlBox1.HoveredState.Parent = this.siticoneControlBox1;
+            this.siticoneControlBox1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.siticoneControlBox1.HoverState.Parent = this.siticoneControlBox1;
             this.siticoneControlBox1.IconColor = System.Drawing.Color.White;
             this.siticoneControlBox1.Location = new System.Drawing.Point(935, 0);
             this.siticoneControlBox1.Name = "siticoneControlBox1";
@@ -162,9 +162,9 @@
             this.siticoneGroupBox1.Controls.Add(this.chkHabilitarFechasBusG);
             this.siticoneGroupBox1.Controls.Add(this.pbBuscar);
             this.siticoneGroupBox1.Controls.Add(this.txtBuscar);
-            this.siticoneGroupBox1.Controls.Add(this.siticoneLabel1);
-            this.siticoneGroupBox1.Controls.Add(this.siticoneLabel2);
-            this.siticoneGroupBox1.Controls.Add(this.siticoneLabel5);
+            this.siticoneGroupBox1.Controls.Add(this.SiticoneHtmlLabel1);
+            this.siticoneGroupBox1.Controls.Add(this.SiticoneHtmlLabel2);
+            this.siticoneGroupBox1.Controls.Add(this.SiticoneHtmlLabel5);
             this.siticoneGroupBox1.Controls.Add(this.lbl);
             this.siticoneGroupBox1.Controls.Add(this.siticoneComboBox1);
             this.siticoneGroupBox1.Controls.Add(this.cboUsuario);
@@ -236,8 +236,8 @@
             this.txtBuscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtBuscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscar.FocusedState.Parent = this.txtBuscar;
-            this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscar.HoveredState.Parent = this.txtBuscar;
+            this.txtBuscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscar.HoverState.Parent = this.txtBuscar;
             this.txtBuscar.Location = new System.Drawing.Point(761, 107);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBuscar.Name = "txtBuscar";
@@ -249,35 +249,35 @@
             this.txtBuscar.TabIndex = 238;
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
-            // siticoneLabel1
+            // SiticoneHtmlLabel1
             // 
-            this.siticoneLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel1.ForeColor = System.Drawing.Color.Black;
-            this.siticoneLabel1.Location = new System.Drawing.Point(761, 90);
-            this.siticoneLabel1.Name = "siticoneLabel1";
-            this.siticoneLabel1.Size = new System.Drawing.Size(68, 15);
-            this.siticoneLabel1.TabIndex = 236;
-            this.siticoneLabel1.Text = "Tipo Reporte:";
+            this.SiticoneHtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel1.ForeColor = System.Drawing.Color.Black;
+            this.SiticoneHtmlLabel1.Location = new System.Drawing.Point(761, 90);
+            this.SiticoneHtmlLabel1.Name = "SiticoneHtmlLabel1";
+            this.SiticoneHtmlLabel1.Size = new System.Drawing.Size(68, 15);
+            this.SiticoneHtmlLabel1.TabIndex = 236;
+            this.SiticoneHtmlLabel1.Text = "Tipo Reporte:";
             // 
-            // siticoneLabel2
+            // SiticoneHtmlLabel2
             // 
-            this.siticoneLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel2.ForeColor = System.Drawing.Color.Black;
-            this.siticoneLabel2.Location = new System.Drawing.Point(505, 89);
-            this.siticoneLabel2.Name = "siticoneLabel2";
-            this.siticoneLabel2.Size = new System.Drawing.Size(24, 15);
-            this.siticoneLabel2.TabIndex = 236;
-            this.siticoneLabel2.Text = "Plan";
+            this.SiticoneHtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel2.ForeColor = System.Drawing.Color.Black;
+            this.SiticoneHtmlLabel2.Location = new System.Drawing.Point(505, 89);
+            this.SiticoneHtmlLabel2.Name = "SiticoneHtmlLabel2";
+            this.SiticoneHtmlLabel2.Size = new System.Drawing.Size(24, 15);
+            this.SiticoneHtmlLabel2.TabIndex = 236;
+            this.SiticoneHtmlLabel2.Text = "Plan";
             // 
-            // siticoneLabel5
+            // SiticoneHtmlLabel5
             // 
-            this.siticoneLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel5.ForeColor = System.Drawing.Color.Black;
-            this.siticoneLabel5.Location = new System.Drawing.Point(284, 30);
-            this.siticoneLabel5.Name = "siticoneLabel5";
-            this.siticoneLabel5.Size = new System.Drawing.Size(39, 15);
-            this.siticoneLabel5.TabIndex = 236;
-            this.siticoneLabel5.Text = "Usuario";
+            this.SiticoneHtmlLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel5.ForeColor = System.Drawing.Color.Black;
+            this.SiticoneHtmlLabel5.Location = new System.Drawing.Point(284, 30);
+            this.SiticoneHtmlLabel5.Name = "SiticoneHtmlLabel5";
+            this.SiticoneHtmlLabel5.Size = new System.Drawing.Size(39, 15);
+            this.SiticoneHtmlLabel5.TabIndex = 236;
+            this.SiticoneHtmlLabel5.Text = "Usuario";
             // 
             // lbl
             // 
@@ -298,7 +298,7 @@
             this.siticoneComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.siticoneComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.siticoneComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.siticoneComboBox1.HoveredState.Parent = this.siticoneComboBox1;
+            this.siticoneComboBox1.HoverState.Parent = this.siticoneComboBox1;
             this.siticoneComboBox1.ItemHeight = 30;
             this.siticoneComboBox1.ItemsAppearance.Parent = this.siticoneComboBox1;
             this.siticoneComboBox1.Location = new System.Drawing.Point(505, 106);
@@ -316,7 +316,7 @@
             this.cboUsuario.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboUsuario.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboUsuario.HoveredState.Parent = this.cboUsuario;
+            this.cboUsuario.HoverState.Parent = this.cboUsuario;
             this.cboUsuario.ItemHeight = 30;
             this.cboUsuario.ItemsAppearance.Parent = this.cboUsuario;
             this.cboUsuario.Location = new System.Drawing.Point(284, 47);
@@ -334,7 +334,7 @@
             this.cboTipoContrato.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboTipoContrato.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboTipoContrato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboTipoContrato.HoveredState.Parent = this.cboTipoContrato;
+            this.cboTipoContrato.HoverState.Parent = this.cboTipoContrato;
             this.cboTipoContrato.ItemHeight = 30;
             this.cboTipoContrato.ItemsAppearance.Parent = this.cboTipoContrato;
             this.cboTipoContrato.Location = new System.Drawing.Point(284, 106);
@@ -367,7 +367,7 @@
             this.dtpFechaFinalBus.FillColor = System.Drawing.Color.White;
             this.dtpFechaFinalBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaFinalBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpFechaFinalBus.HoveredState.Parent = this.dtpFechaFinalBus;
+            this.dtpFechaFinalBus.HoverState.Parent = this.dtpFechaFinalBus;
             this.dtpFechaFinalBus.Location = new System.Drawing.Point(17, 78);
             this.dtpFechaFinalBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaFinalBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -398,7 +398,7 @@
             this.dtpFechaInicialBus.FillColor = System.Drawing.Color.White;
             this.dtpFechaInicialBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaInicialBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpFechaInicialBus.HoveredState.Parent = this.dtpFechaInicialBus;
+            this.dtpFechaInicialBus.HoverState.Parent = this.dtpFechaInicialBus;
             this.dtpFechaInicialBus.Location = new System.Drawing.Point(17, 25);
             this.dtpFechaInicialBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaInicialBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -447,28 +447,28 @@
 
         #endregion
 
-        private Siticone.UI.WinForms.SiticonePanel pnlTop;
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox2;
-        private Siticone.UI.WinForms.SiticoneControlBox siticoneControlBox1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel pnlTop;
+        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox2;
+        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox1;
         private Guna.UI.WinForms.GunaLabel gunaLabel10;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private Siticone.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
-        private Siticone.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBusG;
+        private Siticone.Desktop.UI.WinForms.SiticoneGroupBox siticoneGroupBox1;
+        private Siticone.Desktop.UI.WinForms.SiticoneCheckBox chkHabilitarFechasBusG;
         private FontAwesome.Sharp.IconPictureBox pbBuscar;
-        private Siticone.UI.WinForms.SiticoneTextBox txtBuscar;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel1;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel5;
-        private Siticone.UI.WinForms.SiticoneLabel lbl;
-        private Siticone.UI.WinForms.SiticoneComboBox cboUsuario;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoContrato;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtBuscar;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel5;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel lbl;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboUsuario;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboTipoContrato;
         private System.Windows.Forms.GroupBox gbBuscar;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dtpFechaFinalBus;
+        private Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker dtpFechaFinalBus;
         private System.Windows.Forms.Label label14;
-        private Siticone.UI.WinForms.SiticoneDateTimePicker dtpFechaInicialBus;
+        private Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker dtpFechaInicialBus;
         private System.Windows.Forms.Label label1;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel2;
-        private Siticone.UI.WinForms.SiticoneComboBox siticoneComboBox1;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel2;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox siticoneComboBox1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
     }
 }

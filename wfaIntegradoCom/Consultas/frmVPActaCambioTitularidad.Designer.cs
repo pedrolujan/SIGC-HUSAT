@@ -33,9 +33,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.gunaControlBox3 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox4 = new Guna.UI.WinForms.GunaControlBox();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
-            this.btnGenerarVenta = new Siticone.UI.WinForms.SiticoneButton();
-            this.btnVolver = new Siticone.UI.WinForms.SiticoneButton();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.btnGenerarVenta = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnVolver = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.gunaPanel2.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
             this.SuspendLayout();
@@ -127,8 +127,8 @@
             this.btnGenerarVenta.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnGenerarVenta.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnGenerarVenta.ForeColor = System.Drawing.Color.White;
-            this.btnGenerarVenta.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnGenerarVenta.HoveredState.Parent = this.btnGenerarVenta;
+            this.btnGenerarVenta.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnGenerarVenta.HoverState.Parent = this.btnGenerarVenta;
             this.btnGenerarVenta.Location = new System.Drawing.Point(118, 529);
             this.btnGenerarVenta.Name = "btnGenerarVenta";
             this.btnGenerarVenta.PressedColor = System.Drawing.Color.White;
@@ -148,7 +148,7 @@
             this.btnVolver.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnVolver.ForeColor = System.Drawing.Color.White;
-            this.btnVolver.HoveredState.Parent = this.btnVolver;
+            this.btnVolver.HoverState.Parent = this.btnVolver;
             this.btnVolver.Location = new System.Drawing.Point(312, 529);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.ShadowDecoration.Parent = this.btnVolver;
@@ -184,8 +184,8 @@
         private System.Windows.Forms.Label label4;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox3;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox4;
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
-        private Siticone.UI.WinForms.SiticoneButton btnVolver;
-        private Siticone.UI.WinForms.SiticoneButton btnGenerarVenta;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnVolver;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnGenerarVenta;
     }
 }

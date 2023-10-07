@@ -1,7 +1,7 @@
 ﻿using CapaDato;
 using CapaEntidad;
 using CapaNegocio;
-using Siticone.UI.WinForms;
+using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -162,7 +162,7 @@ namespace wfaIntegradoCom.Procesos
                     FunValidaciones.fnCalcularPaginacion(totalRegistros, filas, totalRows, cboPagina, btnTotalPag, btnNumFilas, btnTotalReg);
                 }
 
-                siticoneLabel14.Text = FunGeneral.fnFormatearPrecioDC("S/.", Convert.ToDecimal(dtRes.Rows[0][1]), 0);
+                SiticoneHtmlLabel14.Text = FunGeneral.fnFormatearPrecioDC("S/.", Convert.ToDecimal(dtRes.Rows[0][1]), 0);
                 dgvListaVentas.Visible = true;
             }
             else
@@ -391,7 +391,7 @@ namespace wfaIntegradoCom.Procesos
 
 
 
-                SiticoneLabel lblH = new SiticoneLabel();
+                SiticoneHtmlLabel lblH = new SiticoneHtmlLabel();
                 lblH.Name = "lblHeader" + i;
                 lblH.AutoSize = false;
                 lblH.Size = new Size(190, 25);
@@ -412,7 +412,7 @@ namespace wfaIntegradoCom.Procesos
                 pnIzquierdo.Location = new Point(0, 25);
 
 
-                SiticoneLabel lblIzq = new SiticoneLabel();
+                SiticoneHtmlLabel lblIzq = new SiticoneHtmlLabel();
                 lblIzq.Name = "lblIzquierdo" + i;
                 lblIzq.AutoSize = false;
                 lblIzq.Size = new Size(95, 70);
@@ -439,7 +439,7 @@ namespace wfaIntegradoCom.Procesos
                 pnFooter.Size = new Size(190, 25);
                 pnFooter.Location = new Point(0, 95);
 
-                SiticoneLabel lblF = new SiticoneLabel();
+                SiticoneHtmlLabel lblF = new SiticoneHtmlLabel();
                 lblF.Name = "lblFooter" + i;
                 lblF.AutoSize = false;
                 lblF.Size = new Size(190, 25); ;
@@ -461,7 +461,7 @@ namespace wfaIntegradoCom.Procesos
         {
             return Color.FromArgb(alfa, colr);
         }
-        private void siticoneLabel3_Click(object sender, EventArgs e)
+        private void SiticoneHtmlLabel3_Click(object sender, EventArgs e)
         {
 
         }

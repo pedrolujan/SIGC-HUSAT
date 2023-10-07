@@ -34,15 +34,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.PanelTop = new Siticone.UI.WinForms.SiticonePanel();
+            this.PanelTop = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.label13 = new System.Windows.Forms.Label();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.pbBuscar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtBuscar = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.dgvAnticipos = new Siticone.UI.WinForms.SiticoneDataGridView();
-            this.pnDatosPago = new Siticone.UI.WinForms.SiticonePanel();
+            this.txtBuscar = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.dgvAnticipos = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
+            this.pnDatosPago = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.PanelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnticipos)).BeginInit();
@@ -145,8 +145,8 @@
             this.txtBuscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtBuscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscar.FocusedState.Parent = this.txtBuscar;
-            this.txtBuscar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscar.HoveredState.Parent = this.txtBuscar;
+            this.txtBuscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscar.HoverState.Parent = this.txtBuscar;
             this.txtBuscar.Location = new System.Drawing.Point(12, 49);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
@@ -210,7 +210,7 @@
             this.dgvAnticipos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvAnticipos.Size = new System.Drawing.Size(371, 127);
             this.dgvAnticipos.TabIndex = 271;
-            this.dgvAnticipos.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvAnticipos.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvAnticipos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvAnticipos.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvAnticipos.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -274,14 +274,14 @@
 
         #endregion
 
-        private Siticone.UI.WinForms.SiticonePanel PanelTop;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel PanelTop;
         private System.Windows.Forms.Label label13;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private System.Windows.Forms.PictureBox pbBuscar;
         private System.Windows.Forms.Label label1;
-        private Siticone.UI.WinForms.SiticoneTextBox txtBuscar;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvAnticipos;
-        private Siticone.UI.WinForms.SiticonePanel pnDatosPago;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtBuscar;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvAnticipos;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel pnDatosPago;
     }
 }

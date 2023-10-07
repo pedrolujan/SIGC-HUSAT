@@ -32,15 +32,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
-            this.pncargando = new Siticone.UI.WinForms.SiticonePanel();
-            this.siticoneLabel1 = new Siticone.UI.WinForms.SiticoneLabel();
-            this.siticoneProgressIndicator1 = new Siticone.UI.WinForms.SiticoneProgressIndicator();
-            this.dgvEntidades = new Siticone.UI.WinForms.SiticoneDataGridView();
+            this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.pncargando = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.SiticoneHtmlLabel1 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
+            this.siticoneProgressIndicator1 = new Siticone.Desktop.UI.WinForms.SiticoneProgressIndicator();
+            this.dgvEntidades = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cntMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.elimiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnAdd = new Siticone.UI.WinForms.SiticoneCircleButton();
+            this.btnAdd = new Siticone.Desktop.UI.WinForms.SiticoneCircleButton();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
@@ -48,19 +48,19 @@
             this.gbRespuestaPago = new System.Windows.Forms.GroupBox();
             this.rdbNo = new System.Windows.Forms.RadioButton();
             this.rdbSi = new System.Windows.Forms.RadioButton();
-            this.txtImporteAbonado = new Siticone.UI.WinForms.SiticoneTextBox();
-            this.txtImporteRestante = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtImporteAbonado = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.txtImporteRestante = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTotalAPagar = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtTotalAPagar = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnCancelar = new Siticone.UI.WinForms.SiticoneButton();
-            this.btnAceptar = new Siticone.UI.WinForms.SiticoneButton();
+            this.btnCancelar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnAceptar = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.pbOservacion = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.txtObsevacion = new Siticone.UI.WinForms.SiticoneTextBox();
+            this.txtObsevacion = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cboTipoVenta = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.cboTipoVenta = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.lblObservaciones = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.siticonePanel1.SuspendLayout();
@@ -105,7 +105,7 @@
             // 
             // pncargando
             // 
-            this.pncargando.Controls.Add(this.siticoneLabel1);
+            this.pncargando.Controls.Add(this.SiticoneHtmlLabel1);
             this.pncargando.Controls.Add(this.siticoneProgressIndicator1);
             this.pncargando.Location = new System.Drawing.Point(546, 27);
             this.pncargando.Name = "pncargando";
@@ -114,18 +114,18 @@
             this.pncargando.TabIndex = 179;
             this.pncargando.Visible = false;
             // 
-            // siticoneLabel1
+            // SiticoneHtmlLabel1
             // 
-            this.siticoneLabel1.AutoSize = false;
-            this.siticoneLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.siticoneLabel1.Location = new System.Drawing.Point(256, 118);
-            this.siticoneLabel1.Name = "siticoneLabel1";
-            this.siticoneLabel1.Size = new System.Drawing.Size(100, 68);
-            this.siticoneLabel1.TabIndex = 2;
-            this.siticoneLabel1.Text = "Emitiendo documento a SUNAT";
-            this.siticoneLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SiticoneHtmlLabel1.AutoSize = false;
+            this.SiticoneHtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.SiticoneHtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SiticoneHtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.SiticoneHtmlLabel1.Location = new System.Drawing.Point(256, 118);
+            this.SiticoneHtmlLabel1.Name = "SiticoneHtmlLabel1";
+            this.SiticoneHtmlLabel1.Size = new System.Drawing.Size(100, 68);
+            this.SiticoneHtmlLabel1.TabIndex = 2;
+            this.SiticoneHtmlLabel1.Text = "Emitiendo documento a SUNAT";
+            this.SiticoneHtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // siticoneProgressIndicator1
             // 
@@ -175,7 +175,7 @@
             this.dgvEntidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEntidades.Size = new System.Drawing.Size(485, 125);
             this.dgvEntidades.TabIndex = 178;
-            this.dgvEntidades.Theme = Siticone.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvEntidades.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvEntidades.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvEntidades.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvEntidades.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -231,10 +231,10 @@
             this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.HoveredState.Parent = this.btnAdd;
+            this.btnAdd.HoverState.Parent = this.btnAdd;
             this.btnAdd.Location = new System.Drawing.Point(529, 155);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.ShadowDecoration.Mode = Siticone.UI.WinForms.Enums.ShadowMode.Circle;
+            this.btnAdd.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
             this.btnAdd.ShadowDecoration.Parent = this.btnAdd;
             this.btnAdd.Size = new System.Drawing.Size(32, 32);
             this.btnAdd.TabIndex = 177;
@@ -351,8 +351,8 @@
             this.txtImporteAbonado.FocusedState.Parent = this.txtImporteAbonado;
             this.txtImporteAbonado.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtImporteAbonado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtImporteAbonado.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtImporteAbonado.HoveredState.Parent = this.txtImporteAbonado;
+            this.txtImporteAbonado.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtImporteAbonado.HoverState.Parent = this.txtImporteAbonado;
             this.txtImporteAbonado.Location = new System.Drawing.Point(262, 65);
             this.txtImporteAbonado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtImporteAbonado.Name = "txtImporteAbonado";
@@ -382,8 +382,8 @@
             this.txtImporteRestante.FocusedState.Parent = this.txtImporteRestante;
             this.txtImporteRestante.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtImporteRestante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtImporteRestante.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtImporteRestante.HoveredState.Parent = this.txtImporteRestante;
+            this.txtImporteRestante.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtImporteRestante.HoverState.Parent = this.txtImporteRestante;
             this.txtImporteRestante.Location = new System.Drawing.Point(435, 65);
             this.txtImporteRestante.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtImporteRestante.Name = "txtImporteRestante";
@@ -437,8 +437,8 @@
             this.txtTotalAPagar.FocusedState.Parent = this.txtTotalAPagar;
             this.txtTotalAPagar.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtTotalAPagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTotalAPagar.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTotalAPagar.HoveredState.Parent = this.txtTotalAPagar;
+            this.txtTotalAPagar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTotalAPagar.HoverState.Parent = this.txtTotalAPagar;
             this.txtTotalAPagar.Location = new System.Drawing.Point(8, 65);
             this.txtTotalAPagar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTotalAPagar.Name = "txtTotalAPagar";
@@ -483,7 +483,7 @@
             this.btnCancelar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.HoveredState.Parent = this.btnCancelar;
+            this.btnCancelar.HoverState.Parent = this.btnCancelar;
             this.btnCancelar.Location = new System.Drawing.Point(334, 347);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.ShadowDecoration.Parent = this.btnCancelar;
@@ -502,8 +502,8 @@
             this.btnAceptar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptar.HoveredState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnAceptar.HoveredState.Parent = this.btnAceptar;
+            this.btnAceptar.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnAceptar.HoverState.Parent = this.btnAceptar;
             this.btnAceptar.Location = new System.Drawing.Point(169, 347);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.PressedColor = System.Drawing.Color.White;
@@ -541,8 +541,8 @@
             this.txtObsevacion.FocusedState.Parent = this.txtObsevacion;
             this.txtObsevacion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtObsevacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtObsevacion.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtObsevacion.HoveredState.Parent = this.txtObsevacion;
+            this.txtObsevacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtObsevacion.HoverState.Parent = this.txtObsevacion;
             this.txtObsevacion.Location = new System.Drawing.Point(8, 266);
             this.txtObsevacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtObsevacion.Multiline = true;
@@ -578,8 +578,8 @@
             this.cboTipoVenta.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.cboTipoVenta.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboTipoVenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoVenta.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cboTipoVenta.HoveredState.Parent = this.cboTipoVenta;
+            this.cboTipoVenta.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cboTipoVenta.HoverState.Parent = this.cboTipoVenta;
             this.cboTipoVenta.ItemHeight = 30;
             this.cboTipoVenta.ItemsAppearance.Parent = this.cboTipoVenta;
             this.cboTipoVenta.Location = new System.Drawing.Point(476, 353);
@@ -633,36 +633,36 @@
         }
 
         #endregion
-        private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
-        private Siticone.UI.WinForms.SiticoneComboBox cboTipoVenta;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboTipoVenta;
         private Guna.UI.WinForms.GunaCirclePictureBox pbOservacion;
-        private Siticone.UI.WinForms.SiticoneTextBox txtObsevacion;
-        private Siticone.UI.WinForms.SiticoneButton btnCancelar;
-        private Siticone.UI.WinForms.SiticoneButton btnAceptar;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtObsevacion;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnCancelar;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnAceptar;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
         private System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblObservaciones;
-        private Siticone.UI.WinForms.SiticoneTextBox txtTotalAPagar;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtTotalAPagar;
         private System.Windows.Forms.Label label4;
-        private Siticone.UI.WinForms.SiticoneTextBox txtImporteRestante;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtImporteRestante;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbRespuestaPago;
         private System.Windows.Forms.RadioButton rdbNo;
         private System.Windows.Forms.RadioButton rdbSi;
-        private Siticone.UI.WinForms.SiticoneCircleButton btnAdd;
-        private Siticone.UI.WinForms.SiticoneDataGridView dgvEntidades;
+        private Siticone.Desktop.UI.WinForms.SiticoneCircleButton btnAdd;
+        private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvEntidades;
         private System.Windows.Forms.ContextMenuStrip cntMenu;
         private System.Windows.Forms.ToolStripMenuItem elimiToolStripMenuItem;
         private System.Windows.Forms.Label label2;
-        private Siticone.UI.WinForms.SiticonePanel pncargando;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel pncargando;
         private System.Windows.Forms.Timer timer1;
-        private Siticone.UI.WinForms.SiticoneLabel siticoneLabel1;
-        private Siticone.UI.WinForms.SiticoneProgressIndicator siticoneProgressIndicator1;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneProgressIndicator siticoneProgressIndicator1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private Siticone.UI.WinForms.SiticoneTextBox txtImporteAbonado;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtImporteAbonado;
         private System.Windows.Forms.Label label6;
     }
 }
