@@ -755,6 +755,7 @@ namespace wfaIntegradoCom.Procesos
                 frmRegistrarEgresos f = new frmRegistrarEgresos();
 
                 lstDetalleVenta = fnDetalleventa(idTrandiaria, 0);
+
                 if (lstDetalleVenta.Count <= 0)
                 {
                     MessageBox.Show("Ocurrio un error al buscar anticipo", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
