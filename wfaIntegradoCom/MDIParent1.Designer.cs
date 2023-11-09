@@ -128,6 +128,7 @@ namespace wfaIntegradoCom
             this.SiticoneHtmlLabel6 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.cboUsuarioMessage = new System.Windows.Forms.ComboBox();
             this.cboCargoMessage = new System.Windows.Forms.ComboBox();
+            this.btnPersonalizacion = new FontAwesome.Sharp.IconButton();
             this.panelCerrarSession = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
             this.btnPerfil = new FontAwesome.Sharp.IconButton();
@@ -216,7 +217,6 @@ namespace wfaIntegradoCom
             this.txtBuscarRepGeneral = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.cboTipoReporte = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.cboUsuario = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
-            this.btnPersonalizacion = new FontAwesome.Sharp.IconButton();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panelEspaciado = new System.Windows.Forms.Panel();
             this.pnlSombra = new System.Windows.Forms.Panel();
@@ -225,7 +225,6 @@ namespace wfaIntegradoCom
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelPerfil = new System.Windows.Forms.Panel();
-            this.siticonePanel4 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             this.PanelEncavezadoFondo1.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.pntsSeguimiento.SuspendLayout();
@@ -304,14 +303,14 @@ namespace wfaIntegradoCom
             // 
             // PanelEncavezadoFondo1
             // 
+            this.PanelEncavezadoFondo1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelEncavezadoFondo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
             this.PanelEncavezadoFondo1.Controls.Add(this.LayoutPanelAccesoRapido);
             this.PanelEncavezadoFondo1.Controls.Add(this.siticonePanel2);
-            this.PanelEncavezadoFondo1.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelEncavezadoFondo1.Location = new System.Drawing.Point(230, 0);
             this.PanelEncavezadoFondo1.Name = "PanelEncavezadoFondo1";
-            this.PanelEncavezadoFondo1.ShadowDecoration.Parent = this.PanelEncavezadoFondo1;
-            this.PanelEncavezadoFondo1.Size = new System.Drawing.Size(1054, 72);
+            this.PanelEncavezadoFondo1.Size = new System.Drawing.Size(1048, 72);
             this.PanelEncavezadoFondo1.TabIndex = 16;
             // 
             // LayoutPanelAccesoRapido
@@ -327,7 +326,7 @@ namespace wfaIntegradoCom
             this.LayoutPanelAccesoRapido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LayoutPanelAccesoRapido.Location = new System.Drawing.Point(91, 0);
             this.LayoutPanelAccesoRapido.Name = "LayoutPanelAccesoRapido";
-            this.LayoutPanelAccesoRapido.Size = new System.Drawing.Size(963, 72);
+            this.LayoutPanelAccesoRapido.Size = new System.Drawing.Size(957, 72);
             this.LayoutPanelAccesoRapido.TabIndex = 15;
             this.LayoutPanelAccesoRapido.Click += new System.EventHandler(this.flowLayoutPanel1_Click);
             // 
@@ -364,7 +363,6 @@ namespace wfaIntegradoCom
             this.pntsSeguimiento.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pntsSeguimiento.Location = new System.Drawing.Point(86, 3);
             this.pntsSeguimiento.Name = "pntsSeguimiento";
-            this.pntsSeguimiento.ShadowDecoration.Parent = this.pntsSeguimiento;
             this.pntsSeguimiento.Size = new System.Drawing.Size(109, 72);
             this.pntsSeguimiento.TabIndex = 275;
             this.pntsSeguimiento.Tag = "tsSeguimiento";
@@ -373,17 +371,13 @@ namespace wfaIntegradoCom
             // 
             // btnAlertaSeguimiento
             // 
-            this.btnAlertaSeguimiento.BorderRadius = 3;
-            this.btnAlertaSeguimiento.CheckedState.Parent = this.btnAlertaSeguimiento;
-            this.btnAlertaSeguimiento.CustomImages.Parent = this.btnAlertaSeguimiento;
+            this.btnAlertaSeguimiento.BorderRadius = 22;
             this.btnAlertaSeguimiento.FillColor = System.Drawing.Color.Red;
             this.btnAlertaSeguimiento.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.btnAlertaSeguimiento.ForeColor = System.Drawing.Color.White;
-            this.btnAlertaSeguimiento.HoverState.Parent = this.btnAlertaSeguimiento;
-            this.btnAlertaSeguimiento.Location = new System.Drawing.Point(84, 0);
+            this.btnAlertaSeguimiento.Location = new System.Drawing.Point(70, 0);
             this.btnAlertaSeguimiento.Name = "btnAlertaSeguimiento";
-            this.btnAlertaSeguimiento.ShadowDecoration.Parent = this.btnAlertaSeguimiento;
-            this.btnAlertaSeguimiento.Size = new System.Drawing.Size(25, 25);
+            this.btnAlertaSeguimiento.Size = new System.Drawing.Size(40, 25);
             this.btnAlertaSeguimiento.TabIndex = 275;
             this.btnAlertaSeguimiento.Text = "100";
             this.btnAlertaSeguimiento.Click += new System.EventHandler(this.btnAlertaSeguimiento_Click);
@@ -399,7 +393,7 @@ namespace wfaIntegradoCom
             this.tsSeguimiento.IconChar = FontAwesome.Sharp.IconChar.Viber;
             this.tsSeguimiento.IconColor = System.Drawing.Color.Gainsboro;
             this.tsSeguimiento.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.tsSeguimiento.IconSize = 32;
+            this.tsSeguimiento.IconSize = 30;
             this.tsSeguimiento.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.tsSeguimiento.Location = new System.Drawing.Point(0, 3);
             this.tsSeguimiento.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -499,7 +493,6 @@ namespace wfaIntegradoCom
             this.tsDoc_Sunat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tsDoc_Sunat.Location = new System.Drawing.Point(520, 3);
             this.tsDoc_Sunat.Name = "tsDoc_Sunat";
-            this.tsDoc_Sunat.ShadowDecoration.Parent = this.tsDoc_Sunat;
             this.tsDoc_Sunat.Size = new System.Drawing.Size(95, 75);
             this.tsDoc_Sunat.TabIndex = 276;
             this.tsDoc_Sunat.Tag = "tsDoc_Sunat";
@@ -520,9 +513,9 @@ namespace wfaIntegradoCom
             // siticonePictureBox1
             // 
             this.siticonePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("siticonePictureBox1.Image")));
+            this.siticonePictureBox1.ImageRotate = 0F;
             this.siticonePictureBox1.Location = new System.Drawing.Point(11, 2);
             this.siticonePictureBox1.Name = "siticonePictureBox1";
-            this.siticonePictureBox1.ShadowDecoration.Parent = this.siticonePictureBox1;
             this.siticonePictureBox1.Size = new System.Drawing.Size(69, 44);
             this.siticonePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.siticonePictureBox1.TabIndex = 0;
@@ -566,7 +559,6 @@ namespace wfaIntegradoCom
             this.siticonePanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.siticonePanel2.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel2.Name = "siticonePanel2";
-            this.siticonePanel2.ShadowDecoration.Parent = this.siticonePanel2;
             this.siticonePanel2.Size = new System.Drawing.Size(91, 72);
             this.siticonePanel2.TabIndex = 5;
             // 
@@ -650,7 +642,7 @@ namespace wfaIntegradoCom
             // Img_Husat_Blanco
             // 
             this.Img_Husat_Blanco.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Img_Husat_Blanco.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO__Blanco_sombra_color_;
+            this.Img_Husat_Blanco.Image = ((System.Drawing.Image)(resources.GetObject("Img_Husat_Blanco.Image")));
             this.Img_Husat_Blanco.Location = new System.Drawing.Point(23, 12);
             this.Img_Husat_Blanco.Name = "Img_Husat_Blanco";
             this.Img_Husat_Blanco.Size = new System.Drawing.Size(178, 90);
@@ -687,7 +679,6 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.FillColor = System.Drawing.Color.Transparent;
             this.panelMenuPrincipal.Location = new System.Drawing.Point(0, 140);
             this.panelMenuPrincipal.Name = "panelMenuPrincipal";
-            this.panelMenuPrincipal.ShadowDecoration.Parent = this.panelMenuPrincipal;
             this.panelMenuPrincipal.Size = new System.Drawing.Size(230, 531);
             this.panelMenuPrincipal.TabIndex = 1;
             // 
@@ -702,7 +693,6 @@ namespace wfaIntegradoCom
             this.stpnMensajes.MinimumSize = new System.Drawing.Size(250, 20);
             this.stpnMensajes.Name = "stpnMensajes";
             this.stpnMensajes.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.stpnMensajes.ShadowDecoration.Parent = this.stpnMensajes;
             this.stpnMensajes.Size = new System.Drawing.Size(250, 20);
             this.stpnMensajes.TabIndex = 31;
             // 
@@ -717,7 +707,6 @@ namespace wfaIntegradoCom
             this.subMenuReportes.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuReportes.Name = "subMenuReportes";
             this.subMenuReportes.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.subMenuReportes.ShadowDecoration.Parent = this.subMenuReportes;
             this.subMenuReportes.Size = new System.Drawing.Size(250, 20);
             this.subMenuReportes.TabIndex = 29;
             this.subMenuReportes.Click += new System.EventHandler(this.subMenuReportes_Click);
@@ -757,7 +746,6 @@ namespace wfaIntegradoCom
             this.subMenuSoporte.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuSoporte.Name = "subMenuSoporte";
             this.subMenuSoporte.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.subMenuSoporte.ShadowDecoration.Parent = this.subMenuSoporte;
             this.subMenuSoporte.Size = new System.Drawing.Size(250, 20);
             this.subMenuSoporte.TabIndex = 26;
             this.subMenuSoporte.Click += new System.EventHandler(this.subMenuSoporte_Click);
@@ -797,7 +785,6 @@ namespace wfaIntegradoCom
             this.subMenuConfiguracion.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuConfiguracion.Name = "subMenuConfiguracion";
             this.subMenuConfiguracion.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.subMenuConfiguracion.ShadowDecoration.Parent = this.subMenuConfiguracion;
             this.subMenuConfiguracion.Size = new System.Drawing.Size(250, 20);
             this.subMenuConfiguracion.TabIndex = 24;
             this.subMenuConfiguracion.Click += new System.EventHandler(this.subMenuConfiguracion_Click);
@@ -837,7 +824,6 @@ namespace wfaIntegradoCom
             this.subMenuRrhh.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuRrhh.Name = "subMenuRrhh";
             this.subMenuRrhh.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.subMenuRrhh.ShadowDecoration.Parent = this.subMenuRrhh;
             this.subMenuRrhh.Size = new System.Drawing.Size(250, 20);
             this.subMenuRrhh.TabIndex = 22;
             this.subMenuRrhh.Click += new System.EventHandler(this.subMenuRrhh_Click);
@@ -877,7 +863,6 @@ namespace wfaIntegradoCom
             this.subMenuSistemas.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuSistemas.Name = "subMenuSistemas";
             this.subMenuSistemas.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.subMenuSistemas.ShadowDecoration.Parent = this.subMenuSistemas;
             this.subMenuSistemas.Size = new System.Drawing.Size(250, 20);
             this.subMenuSistemas.TabIndex = 20;
             this.subMenuSistemas.Click += new System.EventHandler(this.subMenuSistemas_Click);
@@ -917,7 +902,6 @@ namespace wfaIntegradoCom
             this.subMenuLogistica.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuLogistica.Name = "subMenuLogistica";
             this.subMenuLogistica.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.subMenuLogistica.ShadowDecoration.Parent = this.subMenuLogistica;
             this.subMenuLogistica.Size = new System.Drawing.Size(250, 20);
             this.subMenuLogistica.TabIndex = 18;
             this.subMenuLogistica.Click += new System.EventHandler(this.btnLogistica_Click);
@@ -957,7 +941,6 @@ namespace wfaIntegradoCom
             this.subMenuComercial.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuComercial.Name = "subMenuComercial";
             this.subMenuComercial.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.subMenuComercial.ShadowDecoration.Parent = this.subMenuComercial;
             this.subMenuComercial.Size = new System.Drawing.Size(250, 20);
             this.subMenuComercial.TabIndex = 6;
             this.subMenuComercial.Click += new System.EventHandler(this.subMenuComercial_Click);
@@ -997,7 +980,6 @@ namespace wfaIntegradoCom
             this.subMenuRecaudacion.Margin = new System.Windows.Forms.Padding(50);
             this.subMenuRecaudacion.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuRecaudacion.Name = "subMenuRecaudacion";
-            this.subMenuRecaudacion.ShadowDecoration.Parent = this.subMenuRecaudacion;
             this.subMenuRecaudacion.Size = new System.Drawing.Size(250, 20);
             this.subMenuRecaudacion.TabIndex = 4;
             this.subMenuRecaudacion.Click += new System.EventHandler(this.subMenuRecaudacion_Click);
@@ -1037,7 +1019,6 @@ namespace wfaIntegradoCom
             this.subMenuVentas.MinimumSize = new System.Drawing.Size(250, 20);
             this.subMenuVentas.Name = "subMenuVentas";
             this.subMenuVentas.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.subMenuVentas.ShadowDecoration.Parent = this.subMenuVentas;
             this.subMenuVentas.Size = new System.Drawing.Size(250, 20);
             this.subMenuVentas.TabIndex = 2;
             this.subMenuVentas.Click += new System.EventHandler(this.subMenuVentas_Click);
@@ -1074,7 +1055,6 @@ namespace wfaIntegradoCom
             this.panelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelIzquierdo.Name = "panelIzquierdo";
-            this.panelIzquierdo.ShadowDecoration.Parent = this.panelIzquierdo;
             this.panelIzquierdo.Size = new System.Drawing.Size(230, 671);
             this.panelIzquierdo.TabIndex = 20;
             // 
@@ -1086,7 +1066,6 @@ namespace wfaIntegradoCom
             this.panelImagenLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelImagenLogo.Location = new System.Drawing.Point(0, 0);
             this.panelImagenLogo.Name = "panelImagenLogo";
-            this.panelImagenLogo.ShadowDecoration.Parent = this.panelImagenLogo;
             this.panelImagenLogo.Size = new System.Drawing.Size(230, 140);
             this.panelImagenLogo.TabIndex = 21;
             // 
@@ -1094,7 +1073,7 @@ namespace wfaIntegradoCom
             // 
             this.Img_Husat_Naranja.BackColor = System.Drawing.Color.Transparent;
             this.Img_Husat_Naranja.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Img_Husat_Naranja.Image = global::wfaIntegradoCom.Properties.Resources.HUSAT_LOGO__Letras_Naranjas__;
+            this.Img_Husat_Naranja.Image = ((System.Drawing.Image)(resources.GetObject("Img_Husat_Naranja.Image")));
             this.Img_Husat_Naranja.Location = new System.Drawing.Point(23, 12);
             this.Img_Husat_Naranja.Name = "Img_Husat_Naranja";
             this.Img_Husat_Naranja.Size = new System.Drawing.Size(178, 90);
@@ -1105,24 +1084,25 @@ namespace wfaIntegradoCom
             // 
             // panelCentral
             // 
+            this.panelCentral.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCentral.Controls.Add(this.iconPictureBox1);
             this.panelCentral.Controls.Add(this.siticonePanel1);
+            this.panelCentral.Controls.Add(this.btnPersonalizacion);
             this.panelCentral.Controls.Add(this.panelCerrarSession);
             this.panelCentral.Controls.Add(this.panelOpciones);
             this.panelCentral.Controls.Add(this.statusStrip1);
             this.panelCentral.Controls.Add(this.btnOpciones);
             this.panelCentral.Controls.Add(this.panelPersonalizarColores);
             this.panelCentral.Controls.Add(this.pnlParaDashboard);
-            this.panelCentral.Controls.Add(this.btnPersonalizacion);
             this.panelCentral.Controls.Add(this.treeView1);
             this.panelCentral.Controls.Add(this.panelEspaciado);
             this.panelCentral.Controls.Add(this.pnlSombra);
             this.panelCentral.Controls.Add(this.elhAlert);
-            this.panelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCentral.Location = new System.Drawing.Point(230, 72);
+            this.panelCentral.Location = new System.Drawing.Point(230, 69);
             this.panelCentral.Name = "panelCentral";
-            this.panelCentral.ShadowDecoration.Parent = this.panelCentral;
-            this.panelCentral.Size = new System.Drawing.Size(1054, 599);
+            this.panelCentral.Size = new System.Drawing.Size(1317, 602);
             this.panelCentral.TabIndex = 22;
             // 
             // iconPictureBox1
@@ -1133,10 +1113,10 @@ namespace wfaIntegradoCom
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Message;
             this.iconPictureBox1.IconColor = System.Drawing.Color.Red;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 26;
-            this.iconPictureBox1.Location = new System.Drawing.Point(1024, 574);
+            this.iconPictureBox1.IconSize = 25;
+            this.iconPictureBox1.Location = new System.Drawing.Point(1294, 583);
             this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(26, 26);
+            this.iconPictureBox1.Size = new System.Drawing.Size(26, 25);
             this.iconPictureBox1.TabIndex = 40;
             this.iconPictureBox1.TabStop = false;
             this.iconPictureBox1.Click += new System.EventHandler(this.iconPictureBox1_Click);
@@ -1155,9 +1135,8 @@ namespace wfaIntegradoCom
             this.siticonePanel1.Controls.Add(this.cboUsuarioMessage);
             this.siticonePanel1.Controls.Add(this.cboCargoMessage);
             this.siticonePanel1.Controls.Add(this.txtMensaje);
-            this.siticonePanel1.Location = new System.Drawing.Point(727, 298);
+            this.siticonePanel1.Location = new System.Drawing.Point(995, 309);
             this.siticonePanel1.Name = "siticonePanel1";
-            this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
             this.siticonePanel1.Size = new System.Drawing.Size(325, 299);
             this.siticonePanel1.TabIndex = 39;
             this.siticonePanel1.Visible = false;
@@ -1179,7 +1158,6 @@ namespace wfaIntegradoCom
             this.pnMostrarMensajes.AutoScroll = true;
             this.pnMostrarMensajes.Location = new System.Drawing.Point(7, 48);
             this.pnMostrarMensajes.Name = "pnMostrarMensajes";
-            this.pnMostrarMensajes.ShadowDecoration.Parent = this.pnMostrarMensajes;
             this.pnMostrarMensajes.Size = new System.Drawing.Size(311, 175);
             this.pnMostrarMensajes.TabIndex = 170;
             // 
@@ -1229,15 +1207,39 @@ namespace wfaIntegradoCom
             this.cboCargoMessage.TabIndex = 168;
             this.cboCargoMessage.SelectedIndexChanged += new System.EventHandler(this.cboPagina_SelectedIndexChanged);
             // 
+            // btnPersonalizacion
+            // 
+            this.btnPersonalizacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPersonalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
+            this.btnPersonalizacion.FlatAppearance.BorderSize = 0;
+            this.btnPersonalizacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.btnPersonalizacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPersonalizacion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPersonalizacion.ForeColor = System.Drawing.Color.Transparent;
+            this.btnPersonalizacion.IconChar = FontAwesome.Sharp.IconChar.Paintbrush;
+            this.btnPersonalizacion.IconColor = System.Drawing.Color.White;
+            this.btnPersonalizacion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPersonalizacion.IconSize = 40;
+            this.btnPersonalizacion.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPersonalizacion.Location = new System.Drawing.Point(1231, 410);
+            this.btnPersonalizacion.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnPersonalizacion.Name = "btnPersonalizacion";
+            this.btnPersonalizacion.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnPersonalizacion.Size = new System.Drawing.Size(89, 83);
+            this.btnPersonalizacion.TabIndex = 33;
+            this.btnPersonalizacion.Text = "Personalizar";
+            this.btnPersonalizacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPersonalizacion.UseVisualStyleBackColor = false;
+            this.btnPersonalizacion.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
             // panelCerrarSession
             // 
             this.panelCerrarSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCerrarSession.BackColor = System.Drawing.Color.White;
             this.panelCerrarSession.Controls.Add(this.btnCerrarSesion);
             this.panelCerrarSession.Controls.Add(this.btnPerfil);
-            this.panelCerrarSession.Location = new System.Drawing.Point(887, 0);
+            this.panelCerrarSession.Location = new System.Drawing.Point(1154, 0);
             this.panelCerrarSession.Name = "panelCerrarSession";
-            this.panelCerrarSession.ShadowDecoration.Parent = this.panelCerrarSession;
             this.panelCerrarSession.Size = new System.Drawing.Size(174, 78);
             this.panelCerrarSession.TabIndex = 14;
             this.panelCerrarSession.Visible = false;
@@ -1304,7 +1306,7 @@ namespace wfaIntegradoCom
             this.panelOpciones.Controls.Add(this.label3);
             this.panelOpciones.Controls.Add(this.label2);
             this.panelOpciones.Controls.Add(this.label4);
-            this.panelOpciones.Location = new System.Drawing.Point(898, 412);
+            this.panelOpciones.Location = new System.Drawing.Point(1164, 293);
             this.panelOpciones.Name = "panelOpciones";
             this.panelOpciones.Size = new System.Drawing.Size(156, 115);
             this.panelOpciones.TabIndex = 34;
@@ -1354,14 +1356,12 @@ namespace wfaIntegradoCom
             this.cboxSelecThema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxSelecThema.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.cboxSelecThema.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
+            this.cboxSelecThema.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(61)))), ((int)(((byte)(26)))));
             this.cboxSelecThema.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboxSelecThema.ForeColor = System.Drawing.Color.White;
-            this.cboxSelecThema.HoverState.Parent = this.cboxSelecThema;
             this.cboxSelecThema.ItemHeight = 30;
-            this.cboxSelecThema.ItemsAppearance.Parent = this.cboxSelecThema;
             this.cboxSelecThema.Location = new System.Drawing.Point(0, 75);
             this.cboxSelecThema.Name = "cboxSelecThema";
-            this.cboxSelecThema.ShadowDecoration.Parent = this.cboxSelecThema;
             this.cboxSelecThema.Size = new System.Drawing.Size(156, 36);
             this.cboxSelecThema.TabIndex = 17;
             this.cboxSelecThema.SelectedIndexChanged += new System.EventHandler(this.siticoneComboBox1_SelectedIndexChanged);
@@ -1411,9 +1411,9 @@ namespace wfaIntegradoCom
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 573);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 576);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1054, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1317, 26);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "StatusStrip1";
             // 
@@ -1467,7 +1467,7 @@ namespace wfaIntegradoCom
             this.btnOpciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnOpciones.IconSize = 40;
             this.btnOpciones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnOpciones.Location = new System.Drawing.Point(965, 526);
+            this.btnOpciones.Location = new System.Drawing.Point(1231, 493);
             this.btnOpciones.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnOpciones.Name = "btnOpciones";
             this.btnOpciones.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -1491,9 +1491,8 @@ namespace wfaIntegradoCom
             this.panelPersonalizarColores.Controls.Add(this.panelColorPanelCentral);
             this.panelPersonalizarColores.CustomBorderColor = System.Drawing.Color.Red;
             this.panelPersonalizarColores.CustomBorderThickness = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.panelPersonalizarColores.Location = new System.Drawing.Point(834, 277);
+            this.panelPersonalizarColores.Location = new System.Drawing.Point(1108, 247);
             this.panelPersonalizarColores.Name = "panelPersonalizarColores";
-            this.panelPersonalizarColores.ShadowDecoration.Parent = this.panelPersonalizarColores;
             this.panelPersonalizarColores.Size = new System.Drawing.Size(220, 161);
             this.panelPersonalizarColores.TabIndex = 32;
             this.panelPersonalizarColores.Visible = false;
@@ -1546,16 +1545,15 @@ namespace wfaIntegradoCom
             // 
             this.pnlParaDashboard.AutoScroll = true;
             this.pnlParaDashboard.BackColor = System.Drawing.Color.Transparent;
-            this.pnlParaDashboard.Controls.Add(this.siticonePanel4);
             this.pnlParaDashboard.Controls.Add(this.FWpnCajaChicaCopias);
             this.pnlParaDashboard.Controls.Add(this.flowLayoutPanel1);
             this.pnlParaDashboard.Controls.Add(this.siticonePanel3);
             this.pnlParaDashboard.Controls.Add(this.siticoneGroupBox1);
+            this.pnlParaDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlParaDashboard.FillColor = System.Drawing.Color.Transparent;
             this.pnlParaDashboard.Location = new System.Drawing.Point(0, 23);
             this.pnlParaDashboard.Name = "pnlParaDashboard";
-            this.pnlParaDashboard.ShadowDecoration.Parent = this.pnlParaDashboard;
-            this.pnlParaDashboard.Size = new System.Drawing.Size(1051, 573);
+            this.pnlParaDashboard.Size = new System.Drawing.Size(1317, 579);
             this.pnlParaDashboard.TabIndex = 37;
             this.pnlParaDashboard.MouseEnter += new System.EventHandler(this.pnlParaDashboard_MouseEnter_1);
             // 
@@ -1573,7 +1571,7 @@ namespace wfaIntegradoCom
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 111);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(37, 150);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(54, 150);
             this.flowLayoutPanel1.TabIndex = 274;
             // 
             // siticonePanel3
@@ -1592,8 +1590,7 @@ namespace wfaIntegradoCom
             this.siticonePanel3.Controls.Add(this.dgvListaPorBloque);
             this.siticonePanel3.Location = new System.Drawing.Point(8, 377);
             this.siticonePanel3.Name = "siticonePanel3";
-            this.siticonePanel3.ShadowDecoration.Parent = this.siticonePanel3;
-            this.siticonePanel3.Size = new System.Drawing.Size(1049, 673);
+            this.siticonePanel3.Size = new System.Drawing.Size(1290, 673);
             this.siticonePanel3.TabIndex = 273;
             this.siticonePanel3.MouseEnter += new System.EventHandler(this.siticonePanel3_MouseEnter);
             // 
@@ -1604,12 +1601,10 @@ namespace wfaIntegradoCom
             this.dgvEgresos3.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
             this.dgvEgresos3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvEgresos3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEgresos3.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvEgresos3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvEgresos3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvEgresos3.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.dgvEgresos3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gainsboro;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1619,7 +1614,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEgresos3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEgresos3.ColumnHeadersHeight = 4;
-            this.dgvEgresos3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvEgresos3.ColumnHeadersVisible = false;
             this.dgvEgresos3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn21,
@@ -1636,7 +1630,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvEgresos3.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvEgresos3.EnableHeadersVisualStyles = false;
             this.dgvEgresos3.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvEgresos3.Location = new System.Drawing.Point(590, 371);
             this.dgvEgresos3.Name = "dgvEgresos3";
@@ -1660,10 +1653,8 @@ namespace wfaIntegradoCom
             this.dgvEgresos3.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEgresos3.RowTemplate.Height = 35;
             this.dgvEgresos3.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEgresos3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEgresos3.Size = new System.Drawing.Size(215, 91);
             this.dgvEgresos3.TabIndex = 270;
-            this.dgvEgresos3.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvEgresos3.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.Gainsboro;
             this.dgvEgresos3.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvEgresos3.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -1734,12 +1725,10 @@ namespace wfaIntegradoCom
             this.dgvEmergente.AllowUserToResizeRows = false;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.Gainsboro;
             this.dgvEmergente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvEmergente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEmergente.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvEmergente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvEmergente.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvEmergente.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.dgvEmergente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.Gainsboro;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1749,7 +1738,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEmergente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvEmergente.ColumnHeadersHeight = 4;
-            this.dgvEmergente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvEmergente.ColumnHeadersVisible = false;
             this.dgvEmergente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn7,
@@ -1766,7 +1754,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvEmergente.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvEmergente.EnableHeadersVisualStyles = false;
             this.dgvEmergente.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvEmergente.Location = new System.Drawing.Point(603, 182);
             this.dgvEmergente.Name = "dgvEmergente";
@@ -1790,10 +1777,8 @@ namespace wfaIntegradoCom
             this.dgvEmergente.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEmergente.RowTemplate.Height = 25;
             this.dgvEmergente.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmergente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmergente.Size = new System.Drawing.Size(215, 120);
             this.dgvEmergente.TabIndex = 270;
-            this.dgvEmergente.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvEmergente.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.Gainsboro;
             this.dgvEmergente.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvEmergente.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -1864,12 +1849,9 @@ namespace wfaIntegradoCom
             this.siticoneDataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
             this.siticoneDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.siticoneDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.siticoneDataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.siticoneDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.siticoneDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.siticoneDataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.siticoneDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle16.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1879,7 +1861,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.siticoneDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.siticoneDataGridView1.ColumnHeadersHeight = 4;
-            this.siticoneDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.siticoneDataGridView1.ColumnHeadersVisible = false;
             this.siticoneDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -1896,7 +1877,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.siticoneDataGridView1.DefaultCellStyle = dataGridViewCellStyle19;
-            this.siticoneDataGridView1.EnableHeadersVisualStyles = false;
             this.siticoneDataGridView1.GridColor = System.Drawing.Color.Silver;
             this.siticoneDataGridView1.Location = new System.Drawing.Point(536, 82);
             this.siticoneDataGridView1.Name = "siticoneDataGridView1";
@@ -1920,10 +1900,8 @@ namespace wfaIntegradoCom
             this.siticoneDataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.siticoneDataGridView1.RowTemplate.Height = 25;
             this.siticoneDataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.siticoneDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.siticoneDataGridView1.Size = new System.Drawing.Size(510, 208);
             this.siticoneDataGridView1.TabIndex = 270;
-            this.siticoneDataGridView1.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.siticoneDataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -1995,25 +1973,20 @@ namespace wfaIntegradoCom
             this.pnBotonera.Controls.Add(this.btnMontoEnCaja);
             this.pnBotonera.Location = new System.Drawing.Point(13, 606);
             this.pnBotonera.Name = "pnBotonera";
-            this.pnBotonera.ShadowDecoration.Parent = this.pnBotonera;
             this.pnBotonera.Size = new System.Drawing.Size(1029, 64);
             this.pnBotonera.TabIndex = 282;
             // 
             // btnRegistrarEgresos
             // 
             this.btnRegistrarEgresos.BorderRadius = 5;
-            this.btnRegistrarEgresos.CheckedState.Parent = this.btnRegistrarEgresos;
-            this.btnRegistrarEgresos.CustomImages.Parent = this.btnRegistrarEgresos;
             this.btnRegistrarEgresos.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(72)))), ((int)(((byte)(31)))));
             this.btnRegistrarEgresos.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnRegistrarEgresos.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnRegistrarEgresos.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrarEgresos.HoverState.Parent = this.btnRegistrarEgresos;
-            this.btnRegistrarEgresos.Image = global::wfaIntegradoCom.Properties.Resources.porPagar_hover;
+            this.btnRegistrarEgresos.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarEgresos.Image")));
             this.btnRegistrarEgresos.ImageSize = new System.Drawing.Size(22, 22);
             this.btnRegistrarEgresos.Location = new System.Drawing.Point(23, 4);
             this.btnRegistrarEgresos.Name = "btnRegistrarEgresos";
-            this.btnRegistrarEgresos.ShadowDecoration.Parent = this.btnRegistrarEgresos;
             this.btnRegistrarEgresos.Size = new System.Drawing.Size(213, 55);
             this.btnRegistrarEgresos.TabIndex = 281;
             this.btnRegistrarEgresos.Text = "Registrar Movimiento";
@@ -2046,8 +2019,7 @@ namespace wfaIntegradoCom
             this.lblEgresos.Controls.Add(this.SiticoneHtmlLabel2);
             this.lblEgresos.Location = new System.Drawing.Point(9, 297);
             this.lblEgresos.Name = "lblEgresos";
-            this.lblEgresos.ShadowDecoration.Parent = this.lblEgresos;
-            this.lblEgresos.Size = new System.Drawing.Size(1029, 41);
+            this.lblEgresos.Size = new System.Drawing.Size(1117, 41);
             this.lblEgresos.TabIndex = 282;
             // 
             // cboTipoPago
@@ -2058,15 +2030,13 @@ namespace wfaIntegradoCom
             this.cboTipoPago.DropDownHeight = 100;
             this.cboTipoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoPago.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboTipoPago.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboTipoPago.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboTipoPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboTipoPago.HoverState.Parent = this.cboTipoPago;
             this.cboTipoPago.IntegralHeight = false;
             this.cboTipoPago.ItemHeight = 30;
-            this.cboTipoPago.ItemsAppearance.Parent = this.cboTipoPago;
             this.cboTipoPago.Location = new System.Drawing.Point(275, 3);
             this.cboTipoPago.Name = "cboTipoPago";
-            this.cboTipoPago.ShadowDecoration.Parent = this.cboTipoPago;
             this.cboTipoPago.Size = new System.Drawing.Size(207, 36);
             this.cboTipoPago.TabIndex = 2;
             this.cboTipoPago.SelectedIndexChanged += new System.EventHandler(this.cboTipoPago_SelectedIndexChanged);
@@ -2105,8 +2075,7 @@ namespace wfaIntegradoCom
             this.lblIngresos.Controls.Add(this.SiticoneHtmlLabel1);
             this.lblIngresos.Location = new System.Drawing.Point(3, 4);
             this.lblIngresos.Name = "lblIngresos";
-            this.lblIngresos.ShadowDecoration.Parent = this.lblIngresos;
-            this.lblIngresos.Size = new System.Drawing.Size(1029, 41);
+            this.lblIngresos.Size = new System.Drawing.Size(1117, 41);
             this.lblIngresos.TabIndex = 282;
             // 
             // cboFiltraIngresos
@@ -2117,18 +2086,16 @@ namespace wfaIntegradoCom
             this.cboFiltraIngresos.DropDownHeight = 120;
             this.cboFiltraIngresos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFiltraIngresos.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboFiltraIngresos.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboFiltraIngresos.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboFiltraIngresos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboFiltraIngresos.HoverState.Parent = this.cboFiltraIngresos;
             this.cboFiltraIngresos.IntegralHeight = false;
             this.cboFiltraIngresos.ItemHeight = 30;
             this.cboFiltraIngresos.Items.AddRange(new object[] {
             "unos",
             "dos"});
-            this.cboFiltraIngresos.ItemsAppearance.Parent = this.cboFiltraIngresos;
             this.cboFiltraIngresos.Location = new System.Drawing.Point(275, 3);
             this.cboFiltraIngresos.Name = "cboFiltraIngresos";
-            this.cboFiltraIngresos.ShadowDecoration.Parent = this.cboFiltraIngresos;
             this.cboFiltraIngresos.Size = new System.Drawing.Size(207, 36);
             this.cboFiltraIngresos.TabIndex = 2;
             this.cboFiltraIngresos.SelectedIndexChanged += new System.EventHandler(this.cboFiltraIngresos_SelectedIndexChanged);
@@ -2173,7 +2140,7 @@ namespace wfaIntegradoCom
             // 
             // pbIndica
             // 
-            this.pbIndica.Image = global::wfaIntegradoCom.Properties.Resources.salir_base;
+            this.pbIndica.Image = ((System.Drawing.Image)(resources.GetObject("pbIndica.Image")));
             this.pbIndica.Location = new System.Drawing.Point(504, 126);
             this.pbIndica.Name = "pbIndica";
             this.pbIndica.Size = new System.Drawing.Size(20, 20);
@@ -2189,9 +2156,8 @@ namespace wfaIntegradoCom
             this.dgvEgresos2.AllowUserToResizeRows = false;
             dataGridViewCellStyle22.BackColor = System.Drawing.Color.White;
             this.dgvEgresos2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
-            this.dgvEgresos2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvEgresos2.BackgroundColor = System.Drawing.Color.White;
             this.dgvEgresos2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvEgresos2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvEgresos2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.DimGray;
@@ -2202,7 +2168,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEgresos2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dgvEgresos2.ColumnHeadersHeight = 30;
-            this.dgvEgresos2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvEgresos2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17,
@@ -2218,7 +2183,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvEgresos2.DefaultCellStyle = dataGridViewCellStyle26;
-            this.dgvEgresos2.EnableHeadersVisualStyles = false;
             this.dgvEgresos2.GridColor = System.Drawing.Color.Silver;
             this.dgvEgresos2.Location = new System.Drawing.Point(536, 341);
             this.dgvEgresos2.Name = "dgvEgresos2";
@@ -2241,10 +2205,8 @@ namespace wfaIntegradoCom
             this.dgvEgresos2.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEgresos2.RowTemplate.Height = 25;
             this.dgvEgresos2.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEgresos2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEgresos2.Size = new System.Drawing.Size(482, 121);
             this.dgvEgresos2.TabIndex = 270;
-            this.dgvEgresos2.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvEgresos2.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvEgresos2.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvEgresos2.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -2317,9 +2279,8 @@ namespace wfaIntegradoCom
             this.dgvEgresos.AllowUserToResizeRows = false;
             dataGridViewCellStyle29.BackColor = System.Drawing.Color.White;
             this.dgvEgresos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
-            this.dgvEgresos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvEgresos.BackgroundColor = System.Drawing.Color.White;
             this.dgvEgresos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvEgresos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvEgresos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle30.BackColor = System.Drawing.Color.DimGray;
@@ -2330,7 +2291,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEgresos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.dgvEgresos.ColumnHeadersHeight = 30;
-            this.dgvEgresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvEgresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn12,
@@ -2346,7 +2306,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvEgresos.DefaultCellStyle = dataGridViewCellStyle33;
-            this.dgvEgresos.EnableHeadersVisualStyles = false;
             this.dgvEgresos.GridColor = System.Drawing.Color.Silver;
             this.dgvEgresos.Location = new System.Drawing.Point(8, 341);
             this.dgvEgresos.Name = "dgvEgresos";
@@ -2369,10 +2328,8 @@ namespace wfaIntegradoCom
             this.dgvEgresos.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvEgresos.RowTemplate.Height = 25;
             this.dgvEgresos.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEgresos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEgresos.Size = new System.Drawing.Size(482, 241);
             this.dgvEgresos.TabIndex = 270;
-            this.dgvEgresos.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvEgresos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvEgresos.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvEgresos.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -2443,9 +2400,8 @@ namespace wfaIntegradoCom
             this.dgvListaPorBloque.AllowUserToResizeRows = false;
             dataGridViewCellStyle36.BackColor = System.Drawing.Color.White;
             this.dgvListaPorBloque.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle36;
-            this.dgvListaPorBloque.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvListaPorBloque.BackgroundColor = System.Drawing.Color.White;
             this.dgvListaPorBloque.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvListaPorBloque.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvListaPorBloque.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle37.BackColor = System.Drawing.Color.DimGray;
@@ -2456,7 +2412,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaPorBloque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.dgvListaPorBloque.ColumnHeadersHeight = 30;
-            this.dgvListaPorBloque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvListaPorBloque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigo,
             this.numero,
@@ -2472,7 +2427,6 @@ namespace wfaIntegradoCom
             dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListaPorBloque.DefaultCellStyle = dataGridViewCellStyle40;
-            this.dgvListaPorBloque.EnableHeadersVisualStyles = false;
             this.dgvListaPorBloque.GridColor = System.Drawing.Color.Silver;
             this.dgvListaPorBloque.Location = new System.Drawing.Point(3, 49);
             this.dgvListaPorBloque.Name = "dgvListaPorBloque";
@@ -2495,10 +2449,8 @@ namespace wfaIntegradoCom
             this.dgvListaPorBloque.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaPorBloque.RowTemplate.Height = 25;
             this.dgvListaPorBloque.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaPorBloque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaPorBloque.Size = new System.Drawing.Size(482, 241);
             this.dgvListaPorBloque.TabIndex = 270;
-            this.dgvListaPorBloque.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvListaPorBloque.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvListaPorBloque.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvListaPorBloque.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -2582,9 +2534,9 @@ namespace wfaIntegradoCom
             this.siticoneGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneGroupBox1.ForeColor = System.Drawing.Color.White;
             this.siticoneGroupBox1.Location = new System.Drawing.Point(8, 267);
+            this.siticoneGroupBox1.Margin = new System.Windows.Forms.Padding(30, 3, 30, 3);
             this.siticoneGroupBox1.Name = "siticoneGroupBox1";
-            this.siticoneGroupBox1.ShadowDecoration.Parent = this.siticoneGroupBox1;
-            this.siticoneGroupBox1.Size = new System.Drawing.Size(1038, 104);
+            this.siticoneGroupBox1.Size = new System.Drawing.Size(1290, 104);
             this.siticoneGroupBox1.TabIndex = 271;
             this.siticoneGroupBox1.Text = "Buscar por";
             this.siticoneGroupBox1.TextOffset = new System.Drawing.Point(0, -7);
@@ -2601,7 +2553,6 @@ namespace wfaIntegradoCom
             this.gbHabilitarBusqFechas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.gbHabilitarBusqFechas.Location = new System.Drawing.Point(0, 27);
             this.gbHabilitarBusqFechas.Name = "gbHabilitarBusqFechas";
-            this.gbHabilitarBusqFechas.ShadowDecoration.Parent = this.gbHabilitarBusqFechas;
             this.gbHabilitarBusqFechas.Size = new System.Drawing.Size(530, 67);
             this.gbHabilitarBusqFechas.TabIndex = 276;
             // 
@@ -2610,16 +2561,15 @@ namespace wfaIntegradoCom
             this.dtFechaFinG.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtFechaFinG.BorderRadius = 3;
             this.dtFechaFinG.BorderThickness = 1;
-            this.dtFechaFinG.CheckedState.Parent = this.dtFechaFinG;
+            this.dtFechaFinG.Checked = true;
             this.dtFechaFinG.FillColor = System.Drawing.Color.White;
+            this.dtFechaFinG.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtFechaFinG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFechaFinG.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaFinG.HoverState.Parent = this.dtFechaFinG;
             this.dtFechaFinG.Location = new System.Drawing.Point(287, 28);
             this.dtFechaFinG.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaFinG.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtFechaFinG.Name = "dtFechaFinG";
-            this.dtFechaFinG.ShadowDecoration.Parent = this.dtFechaFinG;
             this.dtFechaFinG.Size = new System.Drawing.Size(242, 36);
             this.dtFechaFinG.TabIndex = 233;
             this.dtFechaFinG.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
@@ -2630,17 +2580,15 @@ namespace wfaIntegradoCom
             this.dtFechaInicioG.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtFechaInicioG.BorderRadius = 3;
             this.dtFechaInicioG.BorderThickness = 1;
-            this.dtFechaInicioG.CheckedState.Parent = this.dtFechaInicioG;
+            this.dtFechaInicioG.Checked = true;
             this.dtFechaInicioG.FillColor = System.Drawing.Color.White;
             this.dtFechaInicioG.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dtFechaInicioG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFechaInicioG.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaInicioG.HoverState.Parent = this.dtFechaInicioG;
             this.dtFechaInicioG.Location = new System.Drawing.Point(8, 28);
             this.dtFechaInicioG.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaInicioG.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtFechaInicioG.Name = "dtFechaInicioG";
-            this.dtFechaInicioG.ShadowDecoration.Parent = this.dtFechaInicioG;
             this.dtFechaInicioG.Size = new System.Drawing.Size(273, 36);
             this.dtFechaInicioG.TabIndex = 231;
             this.dtFechaInicioG.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
@@ -2677,10 +2625,11 @@ namespace wfaIntegradoCom
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1078, 60);
+            this.pictureBox1.Location = new System.Drawing.Point(1251, 60);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(26, 27);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -2754,27 +2703,25 @@ namespace wfaIntegradoCom
             // 
             // txtBuscarRepGeneral
             // 
-            this.txtBuscarRepGeneral.Animated = false;
+            this.txtBuscarRepGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuscarRepGeneral.BorderRadius = 5;
             this.txtBuscarRepGeneral.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscarRepGeneral.DefaultText = "";
             this.txtBuscarRepGeneral.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtBuscarRepGeneral.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtBuscarRepGeneral.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarRepGeneral.DisabledState.Parent = this.txtBuscarRepGeneral;
             this.txtBuscarRepGeneral.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtBuscarRepGeneral.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarRepGeneral.FocusedState.Parent = this.txtBuscarRepGeneral;
+            this.txtBuscarRepGeneral.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBuscarRepGeneral.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarRepGeneral.HoverState.Parent = this.txtBuscarRepGeneral;
             this.txtBuscarRepGeneral.Location = new System.Drawing.Point(969, 55);
             this.txtBuscarRepGeneral.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuscarRepGeneral.Name = "txtBuscarRepGeneral";
             this.txtBuscarRepGeneral.PasswordChar = '\0';
             this.txtBuscarRepGeneral.PlaceholderText = "";
             this.txtBuscarRepGeneral.SelectedText = "";
-            this.txtBuscarRepGeneral.ShadowDecoration.Parent = this.txtBuscarRepGeneral;
-            this.txtBuscarRepGeneral.Size = new System.Drawing.Size(134, 37);
+            this.txtBuscarRepGeneral.Size = new System.Drawing.Size(312, 37);
             this.txtBuscarRepGeneral.TabIndex = 3;
             this.txtBuscarRepGeneral.TextChanged += new System.EventHandler(this.txtBuscarRepGeneral_TextChanged);
             this.txtBuscarRepGeneral.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarRepGeneral_KeyPress);
@@ -2786,14 +2733,12 @@ namespace wfaIntegradoCom
             this.cboTipoReporte.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboTipoReporte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoReporte.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboTipoReporte.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboTipoReporte.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboTipoReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboTipoReporte.HoverState.Parent = this.cboTipoReporte;
             this.cboTipoReporte.ItemHeight = 30;
-            this.cboTipoReporte.ItemsAppearance.Parent = this.cboTipoReporte;
             this.cboTipoReporte.Location = new System.Drawing.Point(539, 55);
             this.cboTipoReporte.Name = "cboTipoReporte";
-            this.cboTipoReporte.ShadowDecoration.Parent = this.cboTipoReporte;
             this.cboTipoReporte.Size = new System.Drawing.Size(266, 36);
             this.cboTipoReporte.TabIndex = 2;
             this.cboTipoReporte.SelectedIndexChanged += new System.EventHandler(this.cboTipoReporte_SelectedIndexChanged);
@@ -2805,42 +2750,15 @@ namespace wfaIntegradoCom
             this.cboUsuario.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUsuario.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboUsuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboUsuario.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboUsuario.HoverState.Parent = this.cboUsuario;
             this.cboUsuario.ItemHeight = 30;
-            this.cboUsuario.ItemsAppearance.Parent = this.cboUsuario;
             this.cboUsuario.Location = new System.Drawing.Point(812, 55);
             this.cboUsuario.Name = "cboUsuario";
-            this.cboUsuario.ShadowDecoration.Parent = this.cboUsuario;
             this.cboUsuario.Size = new System.Drawing.Size(151, 36);
             this.cboUsuario.TabIndex = 2;
             this.cboUsuario.SelectedIndexChanged += new System.EventHandler(this.cboOperacion_SelectedIndexChanged);
-            // 
-            // btnPersonalizacion
-            // 
-            this.btnPersonalizacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPersonalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(129)))), ((int)(((byte)(103)))));
-            this.btnPersonalizacion.FlatAppearance.BorderSize = 0;
-            this.btnPersonalizacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
-            this.btnPersonalizacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPersonalizacion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPersonalizacion.ForeColor = System.Drawing.Color.Transparent;
-            this.btnPersonalizacion.IconChar = FontAwesome.Sharp.IconChar.Paintbrush;
-            this.btnPersonalizacion.IconColor = System.Drawing.Color.White;
-            this.btnPersonalizacion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnPersonalizacion.IconSize = 40;
-            this.btnPersonalizacion.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPersonalizacion.Location = new System.Drawing.Point(964, 438);
-            this.btnPersonalizacion.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.btnPersonalizacion.Name = "btnPersonalizacion";
-            this.btnPersonalizacion.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnPersonalizacion.Size = new System.Drawing.Size(89, 83);
-            this.btnPersonalizacion.TabIndex = 33;
-            this.btnPersonalizacion.Text = "Personalizar";
-            this.btnPersonalizacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPersonalizacion.UseVisualStyleBackColor = false;
-            this.btnPersonalizacion.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // treeView1
             // 
@@ -2861,7 +2779,7 @@ namespace wfaIntegradoCom
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.treeView1.SelectedImageIndex = 5;
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(1054, 576);
+            this.treeView1.Size = new System.Drawing.Size(1317, 579);
             this.treeView1.TabIndex = 5;
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
@@ -2872,7 +2790,7 @@ namespace wfaIntegradoCom
             this.panelEspaciado.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEspaciado.Location = new System.Drawing.Point(0, 3);
             this.panelEspaciado.Name = "panelEspaciado";
-            this.panelEspaciado.Size = new System.Drawing.Size(1054, 20);
+            this.panelEspaciado.Size = new System.Drawing.Size(1317, 20);
             this.panelEspaciado.TabIndex = 35;
             // 
             // pnlSombra
@@ -2881,14 +2799,14 @@ namespace wfaIntegradoCom
             this.pnlSombra.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSombra.Location = new System.Drawing.Point(0, 0);
             this.pnlSombra.Name = "pnlSombra";
-            this.pnlSombra.Size = new System.Drawing.Size(1054, 3);
+            this.pnlSombra.Size = new System.Drawing.Size(1317, 3);
             this.pnlSombra.TabIndex = 16;
             // 
             // elhAlert
             // 
             this.elhAlert.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.elhAlert.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.elhAlert.Location = new System.Drawing.Point(1025, 581);
+            this.elhAlert.Location = new System.Drawing.Point(1108, 498);
             this.elhAlert.Name = "elhAlert";
             this.elhAlert.Size = new System.Drawing.Size(29, 18);
             this.elhAlert.TabIndex = 13;
@@ -2926,35 +2844,28 @@ namespace wfaIntegradoCom
             this.panelPerfil.Controls.Add(this.tsMiCaja);
             this.panelPerfil.Controls.Add(this.ImgPerfil);
             this.panelPerfil.Controls.Add(this.tsCerraSession);
-            this.panelPerfil.Location = new System.Drawing.Point(1010, 0);
+            this.panelPerfil.Location = new System.Drawing.Point(1276, 0);
             this.panelPerfil.Name = "panelPerfil";
             this.panelPerfil.Size = new System.Drawing.Size(274, 72);
             this.panelPerfil.TabIndex = 24;
-            // 
-            // siticonePanel4
-            // 
-            this.siticonePanel4.Location = new System.Drawing.Point(53, 227);
-            this.siticonePanel4.Name = "siticonePanel4";
-            this.siticonePanel4.ShadowDecoration.Parent = this.siticonePanel4;
-            this.siticonePanel4.Size = new System.Drawing.Size(10, 23);
-            this.siticonePanel4.TabIndex = 275;
             // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 671);
-            this.Controls.Add(this.panelPerfil);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1550, 671);
             this.Controls.Add(this.panelCentral);
             this.Controls.Add(this.PanelEncavezadoFondo1);
             this.Controls.Add(this.panelIzquierdo);
+            this.Controls.Add(this.panelPerfil);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.IsMdiContainer = true;
             this.Name = "MDIParent1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SISTEMA DE GESTION COMERCIAL";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.MDIParent1_Activated);
             this.Load += new System.EventHandler(this.MDIParent1_Load);
             this.PanelEncavezadoFondo1.ResumeLayout(false);
             this.LayoutPanelAccesoRapido.ResumeLayout(false);
@@ -3164,7 +3075,6 @@ namespace wfaIntegradoCom
         private Siticone.Desktop.UI.WinForms.SiticonePanel pnMostrarMensajes;
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel8;
         private Siticone.Desktop.UI.WinForms.SiticonePanel stpnMensajes;
-        private Siticone.Desktop.UI.WinForms.SiticonePanel siticonePanel4;
     }
 }
 

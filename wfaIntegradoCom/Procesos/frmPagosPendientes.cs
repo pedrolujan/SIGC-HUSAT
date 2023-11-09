@@ -889,7 +889,8 @@ namespace wfaIntegradoCom.Procesos
                 if (clsDocumentoVentaEmitir.cCodTab == "DOVE0002" || clsDocumentoVentaEmitir.cCodTab == "DOVE0001")
                 {
                     intRespuestaSunat = 0;
-                    int resp = emf.EmitirFacturasContado(clsCliente, lsDetalleVentaRecibidoParaEnviarASunat, lsDocumentoVentaParaXml, clsDocumentoVentaEmitir);
+                int resp = 0;
+                    //emf.EmitirFacturasContado(clsCliente, lsDetalleVentaRecibidoParaEnviarASunat, lsDocumentoVentaParaXml, clsDocumentoVentaEmitir);
                     intRespuestaSunat = resp;
                     //resp = 0;
                     if (resp == 1)

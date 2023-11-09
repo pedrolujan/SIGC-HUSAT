@@ -96,6 +96,7 @@ namespace wfaIntegradoCom.Mantenedores
         public static String cCodigoVenta = "";
         static Double RestarDescuento = 0;
         static Int32 intRespuestaSunat=0;
+        static ResponseSunat clsResponseSunat= new ResponseSunat();
         Int32 idTipoPlanActual = 0;
         Int32 idPlanActual = 0;
         Int32 idCicloActual = 0;
@@ -412,8 +413,8 @@ namespace wfaIntegradoCom.Mantenedores
             txtRedondeo.ReadOnly = false;
         }
         private void frmRegistrarVenta_Load(object sender, EventArgs e)
-        { 
-           
+        {
+            clsResponseSunat=new ResponseSunat();
             try
             {
                 importeRedondeo = 0.00m;
@@ -4118,11 +4119,11 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 if (clsDocumentoVenta.cCodTab == "DOVE0002" || clsDocumentoVenta.cCodTab== "DOVE0001")
                 {
-                    intRespuestaSunat = 0;
-                    int resp =emf.EmitirFacturasContado(clsRespPago, lstDetalleVentaRecibidoParaSunat, lstDocumentoVentaFormato, clsDocumentoVenta);
-                    intRespuestaSunat = resp;
+                    clsResponseSunat = new ResponseSunat();
+                    clsResponseSunat = emf.EmitirFacturasContado(clsRespPago, lstDetalleVentaRecibidoParaSunat, lstDocumentoVentaFormato, clsDocumentoVenta);
+                    
                     //resp = 0;
-                    if (resp == 1)
+                    if (clsResponseSunat.isSuccesfull==true && clsResponseSunat.codeError.Trim()=="0")
                     {
 
                         String nombreQR = clsRespPago.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
@@ -4132,13 +4133,21 @@ namespace wfaIntegradoCom.Mantenedores
                 }
                 else
                 {
-                    intRespuestaSunat = 1;
+                    clsResponseSunat = (new ResponseSunat
+                    {
+                        isSuccesfull = true,
+                        codeError="RECIBO"
+                    });
                 }
 
             }
             else
             {
-                intRespuestaSunat = 1;
+                clsResponseSunat = (new ResponseSunat
+                {
+                    isSuccesfull = true,
+                    codeError = ""
+                });
             }
 
             //intRespuestaSunat = 1;
@@ -4293,58 +4302,54 @@ namespace wfaIntegradoCom.Mantenedores
             Boolean bResult=false;
             if (estado)
             {
-                if (intRespuestaSunat == 1)
+                 bResult = fnGenerarVenta(xmlDocumentoVenta, btImage,clsResponseSunat);
+
+                if (bResult)
                 {
-                    bResult = fnGenerarVenta(xmlDocumentoVenta, btImage);
+                    string msgDocumento = "";
+                   
+                    msgDocumento = "Datos del documento de venta:\n" + clsResponseSunat.message;
+                    
+                    #region imprimir tiket
+                    //if (swEstadoImprimirDocumento.Checked == true)
+                    //{
+                    //    bResult = false;
+                    //    bResult = fnBuscarVentaAImprimir(-1);
+                    //    if (bResult == true)
+                    //    {
+                    //        MessageBox.Show("La venta se Generó Exitosamente", "Mensaje Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //        fnLimpiarControles();
+                    //        bTipoTab = false;
+                    //        bActivarChecks = false;
+
+                    //        if (lnTipoCon==-2)
+                    //        {
+                    //            frmSeguimiento frm = new frmSeguimiento();
+
+                    //            //frm.fnCapturarContadorSeguimiento();
+                    //        }
 
 
+                    //    }
+                    //    else
+                    //    {
+                    //        MessageBox.Show("Error al Imprimir Comprobante de venta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if (bResult)
-                    {
-                        if (swEstadoImprimirDocumento.Checked == true)
-                        {
-                            bResult = false;
-                            bResult = fnBuscarVentaAImprimir(-1);
-                            if (bResult == true)
-                            {
-                                MessageBox.Show("La venta se Generó Exitosamente", "Mensaje Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                fnLimpiarControles();
-                                bTipoTab = false;
-                                bActivarChecks = false;
+                    //    }
+                    //}
+                    //else
+                    #endregion 
+                    MessageBox.Show("Datos de la venta:\nLa venta se Generó Exitosamente\n\n"+ msgDocumento, "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fnLimpiarControles();
+                    bTipoTab = false;
+                    bActivarChecks = false;
 
-                                if (lnTipoCon==-2)
-                                {
-                                    frmSeguimiento frm = new frmSeguimiento();
-
-                                    //frm.fnCapturarContadorSeguimiento();
-                                }
-                                
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("Error al Imprimir Comprobante de venta", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("La venta se Generó Exitosamente", "Mensaje Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            fnLimpiarControles();
-                            bTipoTab = false;
-                            bActivarChecks = false;
-                        }
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al generar la venta-Contacte al administrador", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al Emitir Factura a la sunat -Contacte al administrador", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Error al generar la venta-Contacte al administrador", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+               
             }
         }
 
@@ -4457,7 +4462,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             
         }
-        private Boolean fnGenerarVenta(List<xmlDocumentoVentaGeneral> xmlDocumentoVenta, byte[] btImage)
+        private Boolean fnGenerarVenta(List<xmlDocumentoVentaGeneral> xmlDocumentoVenta, byte[] btImage,ResponseSunat responseSunat)
         {
             clsUtil objUtil = new clsUtil();
             BLVentaGeneral blVentaGeneral = new BLVentaGeneral();
@@ -4469,7 +4474,7 @@ namespace wfaIntegradoCom.Mantenedores
                 ClsVentaGeneral.lstPagos = lstPagosTrand;
                 ClsVentaGeneral.ClsEquipoImies = clsEquipo_imeis;
 
-                bResult = blVentaGeneral.blGenerarVentaGeneral(ClsVentaGeneral, xmlDocumentoVenta,  btImage, lnTipoCon);
+                bResult = blVentaGeneral.blGenerarVentaGeneral(ClsVentaGeneral, xmlDocumentoVenta,  btImage,  responseSunat, lnTipoCon);
 
                 return true;
             }

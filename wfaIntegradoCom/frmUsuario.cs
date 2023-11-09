@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
+using Guna.UI.WinForms;
 using wfaIntegradoCom.Funciones;
 using wfaIntegradoCom.Procesos;
 
@@ -37,7 +38,7 @@ namespace wfaIntegradoCom
             String lcResultado = "";
             Int32 lnidUsuario=0;
 
-            lcResultado=objAccesso.BLValidarIngreso(dateTimePicker1.Value,pcUsuario, pcClave, pcMaquina, pcVersion, pnAplicacion,out lnidUsuario);
+            lcResultado=objAccesso.BLValidarIngreso(DateTime.Now,pcUsuario, pcClave, pcMaquina, pcVersion, pnAplicacion,out lnidUsuario);
 
             if (lcResultado.Trim() == "OK")
             {
@@ -65,15 +66,15 @@ namespace wfaIntegradoCom
             }
             else if (lcResultado.Trim()== "Usuario no Registrado.")
             {
-                txtUser.Text = "";
                 txtClave.Text = "";
+                txtUser.Text = "";
                 txtUser.Focus();
                 MessageBox.Show(lcResultado.Trim(), "Aviso",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
             }
             else {
                 //txtUser.Text = "";
-                txtClave.Text = "";
-                txtClave.Focus();
+                txtUser.Text = "";
+                txtUser.Focus();
                 MessageBox.Show(lcResultado.Trim(),"Aviso",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
             }
         }
@@ -143,9 +144,11 @@ namespace wfaIntegradoCom
         private void frmUsuario_Load(object sender, EventArgs e)
         {
             pCargarSucursal();
+            label2.Text = DateTime.Now.ToString("dd MMM yyyy hh:mm ss tt");
             lblVersion.Text = "Versión: " + ProductVersion.Trim();
             iconVerContrasena.IconChar = FontAwesome.Sharp.IconChar.Eye;
             iconVerContrasena.IconColor = Variables.ColorEmpresa;
+            this.txtUser.Focus();
 
 
         }
@@ -205,6 +208,35 @@ namespace wfaIntegradoCom
         private void cboSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtUser_TextChanged(object sender, EventArgs e)
+        {
+            //txtUser.Text= txtUser.Text.Trim().ToUpper();
+        }
+
+        private void frmUsuario_Activated(object sender, EventArgs e)
+        {
+            this.txtUser.Focus();
+        }
+
+        private void txtUser_KeyUp(object sender, KeyEventArgs e)
+        {
+            string texto = txtUser.Text;
+
+            // Convierte el texto a mayúsculas
+            string textoEnMayusculas = texto.ToUpper();
+
+            // Establece el texto en mayúsculas de nuevo en el TextBox
+            txtUser.Text = textoEnMayusculas;
+
+            int longitudTexto = txtUser.Text.Length;
+
+            // Mueve el cursor al final del texto
+            txtUser.Select(longitudTexto, 0);
+
+            // Asegúrate de que el control tenga el foco para que el cursor sea visible
+            txtUser.Focus();
         }
     }
 }

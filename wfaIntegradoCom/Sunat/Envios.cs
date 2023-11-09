@@ -45,7 +45,7 @@ namespace wfaIntegradoCom.Sunat
         public string RutaEnvios { get; set; }
         public string RutaCDR { get; set; }
 
-        public string[] GenerarFacturaBoletaXML(ParametrosFactura paramFactura,Cliente clsCliente,List<DetalleVenta> lstDetalleVentas)
+        public ResponseSunat GenerarFacturaBoletaXML(ParametrosFactura paramFactura,Cliente clsCliente,List<DetalleVenta> lstDetalleVentas)
         {
 
             //Cabecera del xml
@@ -745,11 +745,59 @@ namespace wfaIntegradoCom.Sunat
 
             #endregion
             string rutaxml = CrearArchivoxml(Factura, Variables.claseEmpresa.Ruc, paramFactura.CodigoComprobante, paramFactura.Serie, paramFactura.Correlativo);
-            FirmarXML(rutaxml, Ruta_Certificado, Password_Certificado);
-            string rutaenvio = RutaEnvios + Path.GetFileName(rutaxml).Replace(".xml", ".zip");
-            //fnConvertiraPdf(rutaxml);
-            ComprimirZip(rutaxml, rutaenvio);
-            return Enviardocumento(rutaenvio);
+            if (rutaxml.Trim()!="")
+            {
+                string resFirmado= FirmarXML(rutaxml, Ruta_Certificado, Password_Certificado);
+                if (resFirmado=="OK")
+                {
+                    string rutaenvio = RutaEnvios + Path.GetFileName(rutaxml).Replace(".xml", ".zip");
+                    //fnConvertiraPdf(rutaxml);
+                    string resComprimir=ComprimirZip(rutaxml, rutaenvio);
+                    if (resComprimir == "OK")
+                    {
+                      var resValidar=  EnviardocumentoValidar(rutaenvio);
+                        if (resValidar.isSuccesfull==true)
+                        {
+                            return Enviardocumento(rutaenvio);
+                        }
+                        else
+                        {
+                            return resValidar;
+                        }
+                        
+
+                    }
+                    else
+                    {
+                        return (new ResponseSunat
+                        {
+                            isSuccesfull = false,
+                            codeError = "SINCODIGO",
+                            message = "Ocurrio un error al comprimir documento, comuniquese con el area de sistemas",
+                        });
+                    }
+                }
+                else
+                {
+                    return (new ResponseSunat
+                    {
+                        isSuccesfull = false,
+                        codeError = "SINCODIGO",
+                        message = "Ocurrio un error al firmar documento, comuniquese con el area de sistemas",
+                    });
+                }
+
+            }
+            else
+            {
+                return (new ResponseSunat
+                {
+                    isSuccesfull = false,
+                    codeError = "SINCODIGO",
+                    message = "Ocurrio un error al crear archivo xml, comuniquese con el area de sistemas",
+                });
+            }
+            
         }
 
 
@@ -912,13 +960,14 @@ namespace wfaIntegradoCom.Sunat
         }
         public string ComprimirZip(string nombrearchivo, string rutadestino)
         {
+            string respuesta = "";
             Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile();
             zip.AddFile(nombrearchivo, "");
             zip.Save(rutadestino);
-            string respuesta = "Listo";
+            respuesta = "OK";
             return respuesta;
         }
-        public string[] Enviardocumento(string Archivo)
+        public ResponseSunat EnviardocumentoValidar(string Archivo)
         {
             string filezip = Archivo;
             string filepath = filezip;
@@ -926,6 +975,63 @@ namespace wfaIntegradoCom.Sunat
             try
             {
                 EndpointAddress remoteAddress= new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
+                BasicHttpBinding binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
+                binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+                binding.Security.Transport.ProxyCredentialType = HttpProxyCredentialType.None;
+                binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
+                binding.Security.Message.AlgorithmSuite = System.ServiceModel.Security.SecurityAlgorithmSuite.Default;
+
+                remoteAddress = new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
+
+                billServiceClient servicio = new billServiceClient(binding, remoteAddress);
+                ServicePointManager.UseNagleAlgorithm = true;
+                ServicePointManager.Expect100Continue = false;
+                ServicePointManager.CheckCertificateRevocationList = true;
+
+                servicio.ClientCredentials.UserName.UserName = "20602404863MODDATOS";
+                servicio.ClientCredentials.UserName.Password = "MODDATOS";
+               
+                var elements = servicio.Endpoint.Binding.CreateBindingElements();
+                elements.Find<SecurityBindingElement>().EnableUnsecuredResponse = true;
+                servicio.Endpoint.Binding = new CustomBinding(elements);
+                servicio.Open();
+                filezip = Path.GetFileName(filezip);
+                byte[] returByte = servicio.sendBill(filezip, bitArray, "0");
+
+                servicio.Close();
+                filezip = Path.GetFileName(filezip);
+                FileStream fs = new FileStream(RutaCDR + "R-" + filezip, FileMode.Create);
+                fs.Write(returByte, 0, returByte.Length);
+                fs.Close();
+                //MessageBox.Show("Archivo generado con exito");
+
+                return (new ResponseSunat
+                {
+                    isSuccesfull = true,
+                    codeError = "",
+                    message = "",
+                });
+            }
+            catch (FaultException ex)
+            {
+                return (new ResponseSunat
+                {
+                    isSuccesfull = false,
+                    codeError="SINCODIGO",
+                    message = ""+ex.Message,
+                });
+            }
+
+        }
+
+        public ResponseSunat Enviardocumento(string Archivo)
+        {
+            string filezip = Archivo;
+            string filepath = filezip;
+            byte[] bitArray = File.ReadAllBytes(filepath);
+            try
+            {
+                EndpointAddress remoteAddress = new EndpointAddress("https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService");
                 BasicHttpBinding binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
                 binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
                 binding.Security.Transport.ProxyCredentialType = HttpProxyCredentialType.None;
@@ -974,17 +1080,20 @@ namespace wfaIntegradoCom.Sunat
                 fs.Close();
                 //MessageBox.Show("Archivo generado con exito");
 
-                var respuesta = new EmitirFactura(); 
+                var respuesta = new EmitirFactura();
                 return respuesta.ObtenerRespuestaZIPSunat(RutaCDR + "R-" + filezip);
             }
             catch (FaultException ex)
             {
-                MessageBox.Show(ex.Code.Name);
-                return null;
+                return (new ResponseSunat
+                {
+                    isSuccesfull = false,
+                    codeError = "SINCODIGO",
+                    message = "" + ex.Message,
+                });
             }
 
         }
-
         #region Nota de credito
         public void GenerarNotaCredito(ParametrosFactura paramFactura, Cliente clsCliente, List<DetalleVenta> lstDetalleVentas)
         {

@@ -17,7 +17,7 @@ namespace CapaDato
     public class DAVentaGeneral
     {
         private clsUtil objUtil = null;
-        public Boolean daGenerarVentaGeneral(VentaGeneral clsVentaGeneral, List<xmlDocumentoVentaGeneral> xmlDocVenta, byte[] btImage, Int16 tipoCon)
+        public Boolean daGenerarVentaGeneral(VentaGeneral clsVentaGeneral, List<xmlDocumentoVentaGeneral> xmlDocVenta, byte[] btImage, ResponseSunat responseSunat, Int16 tipoCon)
         {
 
             SqlParameter[] pa = new SqlParameter[35];
@@ -36,6 +36,8 @@ namespace CapaDato
             String xmlDocumentoVenta = clsUtil.Serialize(xmlDocVenta);
             String xmlCliente = clsUtil.Serialize(lstCliente);
             String xmlDataVNR = clsUtil.Serialize(clsVentaGeneral.lstVehiculo);
+            string estadoEmisionDocumento = responseSunat.isSuccesfull == true ? "EEST0001" : "EEST0005";
+            String xmlRespSunat = clsUtil.Serialize(responseSunat);
 
             try
             {
@@ -74,8 +76,11 @@ namespace CapaDato
                 pa[32] = new SqlParameter("@CorrelativoDocumento", SqlDbType.VarChar,13) { Value = clsVentaGeneral.codigoCorrelativo };
                 pa[33] = new SqlParameter("@idContrato", SqlDbType.Int) { Value = tipoCon==0?0: clsVentaGeneral.clsContrato.idContrato };
                 pa[34] = new SqlParameter("@xmlDetalleVentaModificado", SqlDbType.Xml) { Value = xmlDetalleVentaModificado };
+
+                pa[35] = new SqlParameter("@EstadoSunat", SqlDbType.VarChar,20) { Value = estadoEmisionDocumento };
+                pa[36] = new SqlParameter("@xmlResponseSunat", SqlDbType.Xml) { Value = xmlRespSunat };
                 objCnx = new clsConexion("");
-                objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral", pa);
+                objCnx.EjecutarProcedimientoDT("uspGuardarVentaGeneral_v2", pa);
 
                 return true;
             }

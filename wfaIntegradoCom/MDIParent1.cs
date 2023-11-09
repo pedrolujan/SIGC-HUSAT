@@ -619,7 +619,18 @@ namespace wfaIntegradoCom
                         toolStripStatusLabel2.Text = "Servidor: " + dr["cValor"].ToString();
                         break;
                     case "PAVA0003":
-                        this.Text = "SISTEMA INTEGRADO DE GESTIÓN COMERCIAL - HUSAT";
+                        Assembly assembly = Assembly.GetExecutingAssembly();
+                        object[] attributes = assembly.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+
+                        // Si se encuentra el atributo AssemblyTitle, obtiene su valor.
+                        if (attributes.Length > 0)
+                        {
+                            AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
+                            string titulo = titleAttribute.Title;
+                            this.Text = titulo;
+
+                            // Ahora, 'titulo' contiene el título de tu proyecto.
+                        }
                         Variables.gsSucursal = dr["cValor"].ToString();
                         Variables.gsEmpresa = dr["cNomTab"].ToString();
 
@@ -3515,7 +3526,7 @@ namespace wfaIntegradoCom
                 flowLayoutPanel1.Width = pnlParaDashboard.Size.Width - 17;
             }
             fnPosicionDeCajas();
-            siticoneGroupBox1.Width = pnlParaDashboard.Size.Width - 30;           
+            siticoneGroupBox1.Width = pnlParaDashboard.Size.Width - 30 - pnlParaDashboard.AutoScrollMinSize.Width;           
 
             Int32 residuo;
             Int32 cantidadPaginas;
@@ -4948,6 +4959,12 @@ namespace wfaIntegradoCom
             {
                 e.Graphics.DrawLine(pen, rect.Left, rect.Bottom - borderWidth, rect.Right, rect.Bottom - borderWidth);
             }
+        }
+
+        private void MDIParent1_Activated(object sender, EventArgs e)
+        {
+            siticoneGroupBox1.Width = pnlParaDashboard.Size.Width - 30 - pnlParaDashboard.AutoScrollMinSize.Width;
+            fnPosicionarAlCentrocajas(FWpnCajaChicaCopias, siticonePanel3);
         }
     }
 

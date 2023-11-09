@@ -23,7 +23,7 @@ namespace wfaIntegradoCom.Sunat
         static Cliente claseCliente = new Cliente();
         static Cargo claseDocumentoVenta = new Cargo();
         static ParametrosFactura parametrosFactura = new ParametrosFactura();
-        public int EmitirFacturasContado(Cliente clsCliente,List<DetalleVenta> detalleventa, List<DocumentoVenta>  lstDocVenta, Cargo clsCargo)
+        public ResponseSunat EmitirFacturasContado(Cliente clsCliente,List<DetalleVenta> detalleventa, List<DocumentoVenta>  lstDocVenta, Cargo clsCargo)
         {
             claseCliente = clsCliente;
             claseDocumentoVenta = clsCargo;
@@ -57,22 +57,18 @@ namespace wfaIntegradoCom.Sunat
             int Validar = 0;
             try
             {
-                string[] restDatos=envios.GenerarFacturaBoletaXML(parametros, clsCliente,detalleventa);
-                if (restDatos.Count()>0)
-                {
-                    Validar = 1;
-                }
-                else
-                {
-                    Validar = 0;
-                }
+                ResponseSunat responseSunat= envios.GenerarFacturaBoletaXML(parametros, clsCliente,detalleventa);
+                return responseSunat;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                Validar = 0;
+                return (new ResponseSunat
+                {
+                    isSuccesfull = false,
+                    codeError = "SINCODIGO",
+                    message = "Ocurrio un error al emitir documento,\n"+ex.Message+"\ncomuniquese con el area de sistemas",
+                });
             }
-            return Validar; 
         }
 
         public int EmitirNotaCredito(Cliente clsCliente, List<DetalleVenta> detalleventa, Cargo clsCargo,Cargo clsDocRef)
@@ -125,7 +121,7 @@ namespace wfaIntegradoCom.Sunat
             }
         }
 
-        public string[] ObtenerRespuestaZIPSunat(string ruta)
+        public ResponseSunat ObtenerRespuestaZIPSunat(string ruta)
         {
             FileInfo arch = new FileInfo(ruta);
             if (arch.Extension == ".zip")
@@ -134,16 +130,18 @@ namespace wfaIntegradoCom.Sunat
             }
             else
             {
-                return null;
+                return new ResponseSunat();
             }
         }
 
 
-        public string[] LeerRespuestaCDR(string ruta, string nomfile)
+        public ResponseSunat LeerRespuestaCDR(string ruta, string nomfile)
         {
             string r = "";
+            string code = "";
             String strSignatureValue = "";
             string file = "";
+            ResponseSunat respSunat=new ResponseSunat();
             string[] datos = new string[3];
             try
             {
@@ -155,7 +153,12 @@ namespace wfaIntegradoCom.Sunat
                     XmlDocument xd = new XmlDocument();
                     xd.Load(zentry.Open());
                     XmlNodeList xnl = xd.GetElementsByTagName("cbc:Description");
-                   
+                    XmlNodeList xnlcodeError = xd.GetElementsByTagName("cbc:ResponseCode");
+
+                    foreach (XmlElement item in xnlcodeError)
+                    {
+                        code = item.InnerText;
+                    }
 
                     foreach (XmlElement item in xnl)
                     {
@@ -176,16 +179,21 @@ namespace wfaIntegradoCom.Sunat
                     MessageBox.Show(r);
 
                 }
-                datos[0] = r;
-                datos[1] = file;
-                datos[2] = nomfile;
+                respSunat.isSuccesfull=true;
+                respSunat.codeError = code;
+                respSunat.message = r;
+                respSunat.aux1 = file;
+                respSunat.aux2 = nomfile;
                 ObtenerQr(strSignatureValue);
-                return datos;
+                return respSunat;
 
             }
             catch (Exception ex)
             {
-                return null;
+                respSunat.isSuccesfull=false;
+                respSunat.codeError = "SINCODIGO";
+                respSunat.message = "Ocurrio un error al emitir documento comunicarse con el area de sistemas";
+                return respSunat;
 
             }
             

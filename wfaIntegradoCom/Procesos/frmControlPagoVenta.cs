@@ -39,7 +39,7 @@ namespace wfaIntegradoCom.Procesos
         static List<Cronograma> lstCronograma = new List<Cronograma>();
         static Tarifa clsTarifa = new Tarifa();
         static Vehiculo clsVehiculo = new Vehiculo();
-        
+        static ResponseSunat clsResponseSunat = new ResponseSunat();
         static Cliente clsCliente = new Cliente();
         
         BLControlPagos obControPagos = null;
@@ -1787,9 +1787,10 @@ namespace wfaIntegradoCom.Procesos
             if (clsDocumentoVenta.cCodTab== "DOVE0002" || clsDocumentoVenta.cCodTab == "DOVE0001")
             {
                 intRespuestaSunat = 0;
-                int resp =emf.EmitirFacturasContado(clsCliente, lstDetalleVenta, lstDocumentoVenta,clsDocumentoVenta);
-                intRespuestaSunat = resp;
-                if (resp == 1)
+                clsResponseSunat = new ResponseSunat();
+                clsResponseSunat = emf.EmitirFacturasContado(clsCliente, lstDetalleVenta, lstDocumentoVenta,clsDocumentoVenta);
+                //intRespuestaSunat = resp;
+                if (clsResponseSunat.isSuccesfull == true)
                 {                    
                     String nombreQR = clsCliente.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
                     //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");

@@ -106,6 +106,7 @@
     <Compile Include="Moneda.cs" />
     <Compile Include="ParametrosFactura.cs" />
     <Compile Include="Reactivaciones.cs" />
+    <Compile Include="ResponseSunat.cs" />
     <Compile Include="SimCard.cs" />
     <Compile Include="OrdenCompra.cs" />
     <Compile Include="OtrasVentas.cs" />
