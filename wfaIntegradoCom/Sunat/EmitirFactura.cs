@@ -145,6 +145,7 @@ namespace wfaIntegradoCom.Sunat
             string[] datos = new string[3];
             try
             {
+
                 using (ZipArchive zip = ZipFile.Open(ruta, ZipArchiveMode.Read))
                 {
                     ZipArchiveEntry zentry = null;
