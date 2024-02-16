@@ -52,3 +52,29 @@ D:\System Husat\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
 D:\System Husat\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
 D:\System Husat\CapaNegocio\obj\Debug\CapaNegocio.dll
 D:\System Husat\CapaNegocio\obj\Debug\CapaNegocio.pdb
+D:\SIGC\CapaNegocio\bin\Debug\CapaNegocio.dll
+D:\SIGC\CapaNegocio\bin\Debug\CapaNegocio.pdb
+D:\SIGC\CapaNegocio\bin\Debug\CapaConexion.dll
+D:\SIGC\CapaNegocio\bin\Debug\CapaDato.dll
+D:\SIGC\CapaNegocio\bin\Debug\CapaEntidad.dll
+D:\SIGC\CapaNegocio\bin\Debug\CapaUtil.dll
+D:\SIGC\CapaNegocio\bin\Debug\CircularProgressBar.dll
+D:\SIGC\CapaNegocio\bin\Debug\FontAwesome.Sharp.dll
+D:\SIGC\CapaNegocio\bin\Debug\Ionic.Zip.dll
+D:\SIGC\CapaNegocio\bin\Debug\WinFormAnimation.dll
+D:\SIGC\CapaNegocio\bin\Debug\Encripta.dll
+D:\SIGC\CapaNegocio\bin\Debug\Siticone.UI.dll
+D:\SIGC\CapaNegocio\bin\Debug\Newtonsoft.Json.dll
+D:\SIGC\CapaNegocio\bin\Debug\zxing.dll
+D:\SIGC\CapaNegocio\bin\Debug\CapaConexion.pdb
+D:\SIGC\CapaNegocio\bin\Debug\CapaDato.pdb
+D:\SIGC\CapaNegocio\bin\Debug\CapaDato.dll.config
+D:\SIGC\CapaNegocio\bin\Debug\CapaEntidad.pdb
+D:\SIGC\CapaNegocio\bin\Debug\CapaUtil.pdb
+D:\SIGC\CapaNegocio\bin\Debug\CircularProgressBar.xml
+D:\SIGC\CapaNegocio\bin\Debug\zxing.xml
+D:\SIGC\CapaNegocio\obj\Debug\CapaNegocio.csproj.AssemblyReference.cache
+D:\SIGC\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
+D:\SIGC\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
+D:\SIGC\CapaNegocio\obj\Debug\CapaNegocio.dll
+D:\SIGC\CapaNegocio\obj\Debug\CapaNegocio.pdb

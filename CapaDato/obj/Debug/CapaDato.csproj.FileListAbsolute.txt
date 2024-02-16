@@ -46,3 +46,27 @@ D:\System Husat\CapaDato\obj\Debug\CapaDato.csproj.CoreCompileInputs.cache
 D:\System Husat\CapaDato\obj\Debug\CapaDato.csproj.CopyComplete
 D:\System Husat\CapaDato\obj\Debug\CapaDato.dll
 D:\System Husat\CapaDato\obj\Debug\CapaDato.pdb
+D:\SIGC\CapaDato\bin\Debug\CapaDato.dll.config
+D:\SIGC\CapaDato\bin\Debug\CapaDato.dll
+D:\SIGC\CapaDato\bin\Debug\CapaDato.pdb
+D:\SIGC\CapaDato\bin\Debug\CapaConexion.dll
+D:\SIGC\CapaDato\bin\Debug\CapaEntidad.dll
+D:\SIGC\CapaDato\bin\Debug\CapaUtil.dll
+D:\SIGC\CapaDato\bin\Debug\CircularProgressBar.dll
+D:\SIGC\CapaDato\bin\Debug\FontAwesome.Sharp.dll
+D:\SIGC\CapaDato\bin\Debug\Ionic.Zip.dll
+D:\SIGC\CapaDato\bin\Debug\WinFormAnimation.dll
+D:\SIGC\CapaDato\bin\Debug\Encripta.dll
+D:\SIGC\CapaDato\bin\Debug\Siticone.UI.dll
+D:\SIGC\CapaDato\bin\Debug\Newtonsoft.Json.dll
+D:\SIGC\CapaDato\bin\Debug\zxing.dll
+D:\SIGC\CapaDato\bin\Debug\CapaConexion.pdb
+D:\SIGC\CapaDato\bin\Debug\CapaEntidad.pdb
+D:\SIGC\CapaDato\bin\Debug\CapaUtil.pdb
+D:\SIGC\CapaDato\bin\Debug\CircularProgressBar.xml
+D:\SIGC\CapaDato\bin\Debug\zxing.xml
+D:\SIGC\CapaDato\obj\Debug\CapaDato.csproj.AssemblyReference.cache
+D:\SIGC\CapaDato\obj\Debug\CapaDato.csproj.CoreCompileInputs.cache
+D:\SIGC\CapaDato\obj\Debug\CapaDato.csproj.CopyComplete
+D:\SIGC\CapaDato\obj\Debug\CapaDato.dll
+D:\SIGC\CapaDato\obj\Debug\CapaDato.pdb

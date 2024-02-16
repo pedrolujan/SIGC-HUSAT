@@ -16,3 +16,19 @@ D:\System Husat\CapaUtil\obj\Debug\CapaUtil.csproj.AssemblyReference.cache
 D:\System Husat\CapaUtil\obj\Debug\CapaUtil.csproj.CoreCompileInputs.cache
 D:\System Husat\CapaUtil\obj\Debug\CapaUtil.dll
 D:\System Husat\CapaUtil\obj\Debug\CapaUtil.pdb
+D:\SIGC\CapaUtil\bin\Debug\CapaUtil.dll
+D:\SIGC\CapaUtil\bin\Debug\CapaUtil.pdb
+D:\SIGC\CapaUtil\bin\Debug\CircularProgressBar.dll
+D:\SIGC\CapaUtil\bin\Debug\FontAwesome.Sharp.dll
+D:\SIGC\CapaUtil\bin\Debug\Ionic.Zip.dll
+D:\SIGC\CapaUtil\bin\Debug\WinFormAnimation.dll
+D:\SIGC\CapaUtil\bin\Debug\zxing.dll
+D:\SIGC\CapaUtil\bin\Debug\zxing.presentation.dll
+D:\SIGC\CapaUtil\bin\Debug\CircularProgressBar.xml
+D:\SIGC\CapaUtil\bin\Debug\zxing.xml
+D:\SIGC\CapaUtil\bin\Debug\zxing.presentation.xml
+D:\SIGC\CapaUtil\obj\Debug\CapaUtil.csproj.AssemblyReference.cache
+D:\SIGC\CapaUtil\obj\Debug\CapaUtil.csproj.CoreCompileInputs.cache
+D:\SIGC\CapaUtil\obj\Debug\CapaUtil.csproj.CopyComplete
+D:\SIGC\CapaUtil\obj\Debug\CapaUtil.dll
+D:\SIGC\CapaUtil\obj\Debug\CapaUtil.pdb

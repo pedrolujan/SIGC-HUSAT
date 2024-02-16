@@ -4,3 +4,12 @@ D:\SISTEMA-HUSAT\WPF\WpfTools\obj\Debug\WpfTools.csproj.AssemblyReference.cache
 D:\SISTEMA-HUSAT\WPF\WpfTools\obj\Debug\WpfTools.csproj.CoreCompileInputs.cache
 D:\SISTEMA-HUSAT\WPF\WpfTools\obj\Debug\WpfTools.dll
 D:\SISTEMA-HUSAT\WPF\WpfTools\obj\Debug\WpfTools.pdb
+D:\SIGC\WPF\WpfTools\bin\Debug\WpfTools.dll
+D:\SIGC\WPF\WpfTools\bin\Debug\WpfTools.pdb
+D:\SIGC\WPF\WpfTools\bin\Debug\FontAwesome.Sharp.dll
+D:\SIGC\WPF\WpfTools\bin\Debug\Ionic.Zip.dll
+D:\SIGC\WPF\WpfTools\obj\Debug\WpfTools.csproj.AssemblyReference.cache
+D:\SIGC\WPF\WpfTools\obj\Debug\WpfTools.csproj.CoreCompileInputs.cache
+D:\SIGC\WPF\WpfTools\obj\Debug\WpfTools.csproj.CopyComplete
+D:\SIGC\WPF\WpfTools\obj\Debug\WpfTools.dll
+D:\SIGC\WPF\WpfTools\obj\Debug\WpfTools.pdb

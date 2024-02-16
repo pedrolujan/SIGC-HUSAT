@@ -20,3 +20,16 @@ D:\System Husat\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 D:\System Husat\CapaEntidad\obj\Debug\CapaEntidad.csproj.CopyComplete
 D:\System Husat\CapaEntidad\obj\Debug\CapaEntidad.dll
 D:\System Husat\CapaEntidad\obj\Debug\CapaEntidad.pdb
+D:\SIGC\CapaEntidad\bin\Debug\CapaEntidad.dll
+D:\SIGC\CapaEntidad\bin\Debug\CapaEntidad.pdb
+D:\SIGC\CapaEntidad\bin\Debug\CircularProgressBar.dll
+D:\SIGC\CapaEntidad\bin\Debug\FontAwesome.Sharp.dll
+D:\SIGC\CapaEntidad\bin\Debug\Ionic.Zip.dll
+D:\SIGC\CapaEntidad\bin\Debug\Newtonsoft.Json.dll
+D:\SIGC\CapaEntidad\bin\Debug\WinFormAnimation.dll
+D:\SIGC\CapaEntidad\bin\Debug\CircularProgressBar.xml
+D:\SIGC\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+D:\SIGC\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+D:\SIGC\CapaEntidad\obj\Debug\CapaEntidad.csproj.CopyComplete
+D:\SIGC\CapaEntidad\obj\Debug\CapaEntidad.dll
+D:\SIGC\CapaEntidad\obj\Debug\CapaEntidad.pdb

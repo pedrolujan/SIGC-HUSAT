@@ -25,3 +25,18 @@ D:\System Husat\ModulePrinting\obj\Debug\ModulePrinting.csproj.CoreCompileInputs
 D:\System Husat\ModulePrinting\obj\Debug\ModulePrinting.csproj.CopyComplete
 D:\System Husat\ModulePrinting\obj\Debug\ModulePrinting.dll
 D:\System Husat\ModulePrinting\obj\Debug\ModulePrinting.pdb
+D:\SIGC\ModulePrinting\bin\Debug\ModulePrinting.dll.config
+D:\SIGC\ModulePrinting\bin\Debug\ModulePrinting.dll
+D:\SIGC\ModulePrinting\bin\Debug\ModulePrinting.pdb
+D:\SIGC\ModulePrinting\bin\Debug\CircularProgressBar.dll
+D:\SIGC\ModulePrinting\bin\Debug\FontAwesome.Sharp.dll
+D:\SIGC\ModulePrinting\bin\Debug\HubblePOSPrintModule.dll
+D:\SIGC\ModulePrinting\bin\Debug\Ionic.Zip.dll
+D:\SIGC\ModulePrinting\bin\Debug\Newtonsoft.Json.dll
+D:\SIGC\ModulePrinting\bin\Debug\WinFormAnimation.dll
+D:\SIGC\ModulePrinting\bin\Debug\CircularProgressBar.xml
+D:\SIGC\ModulePrinting\obj\Debug\ModulePrinting.csproj.AssemblyReference.cache
+D:\SIGC\ModulePrinting\obj\Debug\ModulePrinting.csproj.CoreCompileInputs.cache
+D:\SIGC\ModulePrinting\obj\Debug\ModulePrinting.csproj.CopyComplete
+D:\SIGC\ModulePrinting\obj\Debug\ModulePrinting.dll
+D:\SIGC\ModulePrinting\obj\Debug\ModulePrinting.pdb

@@ -22,3 +22,16 @@ D:\System Husat\CapaConexion\obj\Debug\CapaConexion.csproj.CoreCompileInputs.cac
 D:\System Husat\CapaConexion\obj\Debug\CapaConexion.csproj.CopyComplete
 D:\System Husat\CapaConexion\obj\Debug\CapaConexion.dll
 D:\System Husat\CapaConexion\obj\Debug\CapaConexion.pdb
+D:\SIGC\CapaConexion\bin\Debug\CapaConexion.dll
+D:\SIGC\CapaConexion\bin\Debug\CapaConexion.pdb
+D:\SIGC\CapaConexion\bin\Debug\CircularProgressBar.dll
+D:\SIGC\CapaConexion\bin\Debug\Encripta.dll
+D:\SIGC\CapaConexion\bin\Debug\FontAwesome.Sharp.dll
+D:\SIGC\CapaConexion\bin\Debug\Ionic.Zip.dll
+D:\SIGC\CapaConexion\bin\Debug\WinFormAnimation.dll
+D:\SIGC\CapaConexion\bin\Debug\CircularProgressBar.xml
+D:\SIGC\CapaConexion\obj\Debug\CapaConexion.csproj.AssemblyReference.cache
+D:\SIGC\CapaConexion\obj\Debug\CapaConexion.csproj.CoreCompileInputs.cache
+D:\SIGC\CapaConexion\obj\Debug\CapaConexion.csproj.CopyComplete
+D:\SIGC\CapaConexion\obj\Debug\CapaConexion.dll
+D:\SIGC\CapaConexion\obj\Debug\CapaConexion.pdb

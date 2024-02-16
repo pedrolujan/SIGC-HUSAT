@@ -682,7 +682,7 @@ namespace wfaIntegradoCom.Procesos
             {
 
                 lstCronoGramasParaDocumentoVenta.Clear();
-                btnValidarEstados.Visible = false;
+                btnValidarEstados.Visible = true;
                 EstadoCarga = false;
                 Boolean bResult = false;
                 lstC.Clear();
@@ -1787,9 +1787,9 @@ namespace wfaIntegradoCom.Procesos
             if (clsDocumentoVenta.cCodTab== "DOVE0002" || clsDocumentoVenta.cCodTab == "DOVE0001")
             {
                 intRespuestaSunat = 0;
-                int resp =emf.EmitirFacturasContado(clsCliente, lstDetalleVenta, lstDocumentoVenta,clsDocumentoVenta);
+                int resp = emf.EmitirFacturasContado(clsCliente, lstDetalleVenta, lstDocumentoVenta, clsDocumentoVenta);
                 intRespuestaSunat = resp;
-                if (resp == 1)
+                if (intRespuestaSunat == 1)
                 {                    
                     String nombreQR = clsCliente.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
                     //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");

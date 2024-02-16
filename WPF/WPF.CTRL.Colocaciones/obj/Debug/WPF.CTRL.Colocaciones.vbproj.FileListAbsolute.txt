@@ -85,3 +85,34 @@ D:\System Husat\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.vbproj
 D:\System Husat\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.dll
 D:\System Husat\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.xml
 D:\System Husat\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.pdb
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\bin\Debug\WPF.CTRL.Colocaciones.dll.config
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\bin\Debug\WPF.CTRL.Colocaciones.dll
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\bin\Debug\WPF.CTRL.Colocaciones.pdb
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\bin\Debug\WPF.CTRL.Colocaciones.xml
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\bin\Debug\FontAwesome.Sharp.dll
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\bin\Debug\FontAwesome.WPF.dll
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\bin\Debug\Ionic.Zip.dll
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\bin\Debug\System.Windows.Controls.Layout.Toolkit.dll
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\bin\Debug\WPF.Themes.dll
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\bin\Debug\WPFToolkit.dll
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.vbproj.AssemblyReference.cache
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\ucColor.g.vb
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\ucComboColor.g.vb
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\ucIcono.g.vb
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\ucOpcion.g.vb
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\GeneratedInternalTypeHelper.g.vb
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones_MarkupCompile.cache
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones_MarkupCompile.lref
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\Tema\dyAcordion.baml
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\ucColor.baml
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\ucComboColor.baml
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\ucIcono.baml
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\ucOpcion.baml
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.g.resources
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.Resources.resources
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.vbproj.GenerateResource.cache
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.vbproj.CoreCompileInputs.cache
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.vbproj.CopyComplete
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.dll
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.xml
+D:\SIGC\WPF\WPF.CTRL.Colocaciones\obj\Debug\WPF.CTRL.Colocaciones.pdb

@@ -88,3 +88,38 @@ D:\System Husat\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.CoreCompil
 D:\System Husat\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.CopyComplete
 D:\System Husat\HubblePOSMultiTPVHubCOFO\obj\Debug\HubblePOSMultiTPVHubCOFO.dll
 D:\System Husat\HubblePOSMultiTPVHubCOFO\obj\Debug\HubblePOSMultiTPVHubCOFO.pdb
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\HubblePOSMultiTPVHubCOFO.dll.config
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\HubblePOSMultiTPVHubCOFO.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\HubblePOSMultiTPVHubCOFO.pdb
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\CircularProgressBar.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Firebase.Auth.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Firebase.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\FontAwesome.Sharp.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Ionic.Zip.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\LiteDB.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Cors.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Security.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Newtonsoft.Json.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Owin.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Reactive.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Web.Cors.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\WinFormAnimation.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\CircularProgressBar.xml
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Firebase.xml
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\LiteDB.xml
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.AspNet.SignalR.Core.pdb
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.xml
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Cors.xml
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Microsoft.Owin.Security.xml
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\Newtonsoft.Json.xml
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\SIGC\HubblePOSMultiTPVHubCOFO\bin\Debug\System.Reactive.xml
+D:\SIGC\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.AssemblyReference.cache
+D:\SIGC\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.CoreCompileInputs.cache
+D:\SIGC\HubblePOSMultiTPVHubCOFO\obj\Debug\HubFirebase.csproj.CopyComplete
+D:\SIGC\HubblePOSMultiTPVHubCOFO\obj\Debug\HubblePOSMultiTPVHubCOFO.dll
+D:\SIGC\HubblePOSMultiTPVHubCOFO\obj\Debug\HubblePOSMultiTPVHubCOFO.pdb
