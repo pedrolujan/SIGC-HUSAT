@@ -2391,7 +2391,7 @@ namespace wfaIntegradoCom.Procesos
 
             //Cargo clsCargo1 = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboComprobanteP.SelectedValue.ToString());
             EmitirFactura emf = new EmitirFactura();
-            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            String rutaArchivo = FunGeneral.GetRootPathSunat()+ @"\CDR\";
             byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
             BLCliente objAcc = new BLCliente();
             Cliente clsCliente = new Cliente();
@@ -3205,31 +3205,25 @@ namespace wfaIntegradoCom.Procesos
                                     if (fnMostrarVPDocumentoventa())
                                     {
                                         byte[] btImage = new byte[] { };
-                                        btImage = fnEnviarFacturaASunat();
-                                        if (intRespuestaSunat == 1)
+                                        //btImage = fnEnviarFacturaASunat();
+                                     
+                                        fnCargarClasePrincipal();
+                                        blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral, lnTipoCon);
+                                        if (blnResultado)
                                         {
-                                            fnCargarClasePrincipal();
-                                            blnResultado = objOtrasVentas.blGuardarOtrasVentas(clsOtrasVentaGeneral, lnTipoCon);
-                                            if (blnResultado)
-                                            {
-                                                //blnResultado = fnObtenerPreciosxProductoxUM(idEquipo);
-                                                //if (!blnResultado)
-                                                //    MessageBox.Show("No se ha cargado correctamente Listado de Precios por Producto y unidad de medida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                                MessageBox.Show("Venta Generada Correctamente. ✔✔", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                                FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-                                                fnLimpiarControles();
-                                                fnHabilitarControles(true);
-                                                //fnLimpiarControles();
+                                            //blnResultado = fnObtenerPreciosxProductoxUM(idEquipo);
+                                            //if (!blnResultado)
+                                            //    MessageBox.Show("No se ha cargado correctamente Listado de Precios por Producto y unidad de medida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                            MessageBox.Show("Venta Generada Correctamente. ✔✔", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
+                                            fnLimpiarControles();
+                                            fnHabilitarControles(true);
+                                            //fnLimpiarControles();
 
-                                            }
-                                            else
-                                            {
-                                                MessageBox.Show("Error al registrar avise al administrador");
-                                            }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Error al emitir a la sunat");
+                                            MessageBox.Show("Error al registrar avise al administrador");
                                         }
 
                                     }

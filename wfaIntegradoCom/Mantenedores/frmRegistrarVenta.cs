@@ -4062,65 +4062,74 @@ namespace wfaIntegradoCom.Mantenedores
             List<Cliente> lstCliente = new List<Cliente>();
             lstCliente.Add(clsRespPago);
 
-            lstDetalleVDocumento = Convert.ToInt32(cboTipoPlanP.SelectedValue) == 1 ? lstTotalDetalle : lstPP;
-            lstDVC.Add(fnCalcularCabeceraDetalle(lstDetalleVDocumento, false));
-            List <xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
-
-
-            //lstDetalleVDocumento = Convert.ToInt32(cboTipoPlanP.SelectedValue) == 1?lstTotalDetalle: lstPP;
-            //fncalcularTotales(lstDetalleVDocumento, lstDVC);
-
-            frmTipoPago fmr = new frmTipoPago();
-            Decimal sumaPrimerPago = lstDetalleVDocumento.Sum(i => i.Importe);
-            lstDocumentoVentaFormato = fnCargarDocumentoVenta(lstDVC);
-            fmr.Inicio(0, lstDocumentoVentaFormato, lstDetalleVDocumento,"S/.");       
-            
-            //Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
-            //fmr2.fnCambiarEstadoVenta(true);
-
-            // una funcion deveria recibir en nuevo formato del documento
-
-            //frmVenta.Inicio(fnCargarDocumentoVenta(lstDVC), lstDetalleVDocumento, ms,0);
-            if (Convert.ToInt32(cboTipoVenta.SelectedValue)!=2)
+            try
             {
+                lstDetalleVDocumento = Convert.ToInt32(cboTipoPlanP.SelectedValue) == 1 ? lstTotalDetalle : lstPP;
+                lstDVC.Add(fnCalcularCabeceraDetalle(lstDetalleVDocumento, false));
+                List<xmlDocumentoVentaGeneral> xmlDocumentoVenta = new List<xmlDocumentoVentaGeneral>();
+
+
+                //lstDetalleVDocumento = Convert.ToInt32(cboTipoPlanP.SelectedValue) == 1?lstTotalDetalle: lstPP;
+                //fncalcularTotales(lstDetalleVDocumento, lstDVC);
+
+                frmTipoPago fmr = new frmTipoPago();
+                Decimal sumaPrimerPago = lstDetalleVDocumento.Sum(i => i.Importe);
+                lstDocumentoVentaFormato = fnCargarDocumentoVenta(lstDVC);
+                fmr.Inicio(0, lstDocumentoVentaFormato, lstDetalleVDocumento, "S/.");
+
+                //Mantenedores.frmRegistrarVenta fmr2 = new Mantenedores.frmRegistrarVenta();
+                //fmr2.fnCambiarEstadoVenta(true);
+
+                // una funcion deveria recibir en nuevo formato del documento
+
+                //frmVenta.Inicio(fnCargarDocumentoVenta(lstDVC), lstDetalleVDocumento, ms,0);
+                if (Convert.ToInt32(cboTipoVenta.SelectedValue) != 2)
+                {
+                    if (estGenrarVenta == true)
+                    {
+                        estGenrarVenta = false;
+                        frmReferenciaInstalacion frmRefInstal = new frmReferenciaInstalacion();
+                        frmRefInstal.Inicio(1, Convert.ToDateTime(dtpFechaRegistro.Value));
+                    }
+                }
+                byte[] btImage = new byte[] { };
                 if (estGenrarVenta == true)
                 {
-                    estGenrarVenta = false;
-                    frmReferenciaInstalacion frmRefInstal = new frmReferenciaInstalacion();
-                    frmRefInstal.Inicio(1, Convert.ToDateTime(dtpFechaRegistro.Value));
+                    cargarClaseVentaGeneral();
+
+
+                    //btImage = fnEnviarFacturaASunat();
+                    xmlDocumentoVenta.Add(new xmlDocumentoVentaGeneral
+                    {
+                        xmlDocumentoVenta = lstDocumentoVentaFormato,
+                        xmlDetalleVentas = lstDetalleVentaRecibido //lstDetalleVDocumento,
+                                                                   //memoryStream = new MemoryStream(btImage)
+                    });
                 }
+                //cargarClaseVentaGeneral();
+                //return;
+
+                fnActivarVenta(estGenrarVenta, xmlDocumentoVenta, btImage);
             }
-            byte[] btImage = new byte[] { };
-            if (estGenrarVenta == true)
+            catch(Exception ex)
             {
-                cargarClaseVentaGeneral();
-
-
-                 btImage = fnEnviarFacturaASunat();
-                xmlDocumentoVenta.Add(new xmlDocumentoVentaGeneral
-                {
-                    xmlDocumentoVenta = lstDocumentoVentaFormato,
-                    xmlDetalleVentas = lstDetalleVentaRecibido //lstDetalleVDocumento,
-                    //memoryStream = new MemoryStream(btImage)
-                }) ;
+                MessageBox.Show("Ocurrio un error:\n"+ ex.Message, "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            //cargarClaseVentaGeneral();
-
-            fnActivarVenta(estGenrarVenta, xmlDocumentoVenta, btImage);
+            
 
         }
         private byte[] fnEnviarFacturaASunat()
         {
             //Cargo clsCargo1 = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboComprobanteP.SelectedValue.ToString());
             EmitirFactura emf = new EmitirFactura();
-            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            String rutaArchivo = FunGeneral.GetRootPathSunat()+ @"\CDR\";
             byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
             if (lnTipoCon != -1)
             {
                 if (clsDocumentoVenta.cCodTab == "DOVE0002" || clsDocumentoVenta.cCodTab== "DOVE0001")
                 {
                     clsResponseSunat = new ResponseSunat();
-                    clsResponseSunat = emf.EmitirFacturasContado(clsRespPago, lstDetalleVentaRecibidoParaSunat, lstDocumentoVentaFormato, clsDocumentoVenta);
+                    clsResponseSunat = emf.EmitirFacturasContado(clsRespPago, lstDetalleVentaRecibido, lstDocumentoVentaFormato, clsDocumentoVenta);
                     
                     //resp = 0;
                     if (clsResponseSunat.isSuccesfull==true && clsResponseSunat.codeError.Trim()=="0")
@@ -4305,11 +4314,7 @@ namespace wfaIntegradoCom.Mantenedores
                  bResult = fnGenerarVenta(xmlDocumentoVenta, btImage,clsResponseSunat);
 
                 if (bResult)
-                {
-                    string msgDocumento = "";
-                   
-                    msgDocumento = "Datos del documento de venta:\n" + clsResponseSunat.message;
-                    
+                {                    
                     #region imprimir tiket
                     //if (swEstadoImprimirDocumento.Checked == true)
                     //{
@@ -4339,7 +4344,7 @@ namespace wfaIntegradoCom.Mantenedores
                     //}
                     //else
                     #endregion 
-                    MessageBox.Show("Datos de la venta:\nLa venta se Generó Exitosamente\n\n"+ msgDocumento, "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Datos de la venta:\nLa venta se Generó Exitosamente.","Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     fnLimpiarControles();
                     bTipoTab = false;
                     bActivarChecks = false;

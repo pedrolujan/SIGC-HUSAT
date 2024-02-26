@@ -1354,6 +1354,35 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sunat\DatosFacturacion\CDR\QR\QrDefecto.png" />
+    <Content Include="QR\ACTA\IHN000-000000000.png" />
+    <Content Include="QR\ACTA\IHN001-000000235.png" />
+    <Content Include="QR\ACTA\IHN001-000000587.png" />
+    <Content Include="QR\ACTA\IHN001-000000590.png" />
+    <Content Include="QR\ACTA\IHN001-000000595.png" />
+    <Content Include="QR\ACTA\IHN001-000000597.png" />
+    <Content Include="QR\ACTA\IHN001-000000607.png" />
+    <Content Include="QR\ACTA\IHN001-000000615.png" />
+    <Content Include="QR\ACTA\IHN001-000000616.png" />
+    <Content Include="QR\ACTA\IHN001-000000618.png" />
+    <Content Include="QR\ACTA\IHN001-000000619.png" />
+    <Content Include="QR\ACTA\IHN001-000000620.png" />
+    <Content Include="QR\ACTA\IHN001-000000621.png" />
+    <Content Include="QR\ACTA\IHN001-000000622.png" />
+    <Content Include="QR\ACTA\IHN001-000000625.png" />
+    <Content Include="QR\ACTA\IHN001-000000627.png" />
+    <Content Include="QR\ACTA\IHN001-000000628.png" />
+    <Content Include="QR\CONTRATO\CHN001-000001051.png" />
+    <Content Include="QR\CONTRATO\CHN001-000001064.png" />
+    <Content Include="QR\CONTRATO\CHN001-000001083.png" />
+    <Content Include="QR\CONTRATO\CHN001-000001086.png" />
+    <Content Include="QR\CONTRATO\CHN001-000001111.png" />
+    <Content Include="QR\CONTRATO\CHN001-000001115.png" />
+    <Content Include="QR\CONTRATO\CHN001-000001124.png" />
+    <Content Include="QR\CONTRATO\CHN001-000001127.png" />
+    <Content Include="QR\CONTRATO\CHN001-000001154.png" />
+    <Content Include="QR\CONTRATO\CHR001-000001096.png" />
+    <Content Include="QR\CONTRATO\CHR001-000001135.png" />
     <Content Include="Template\Cobro_Deuda.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1557,6 +1586,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Sunat\DatosFacturacion\Certificado\certificado.pfx" />
+    <None Include="Sunat\DatosFacturacion\Certificado\LLAMA-PE-CERTIFICADO-DEMO-20602404863.pfx" />
+    <None Include="Sunat\DatosFacturacion\Certificado\LLAMA-PE-CERTIFICADO-DEMO-20606879904.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -1610,6 +1642,10 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServicioFacturacion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sunat\DatosFacturacion\ENVIOS\" />
+    <Folder Include="Sunat\DatosFacturacion\XML\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

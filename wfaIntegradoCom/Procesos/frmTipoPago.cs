@@ -237,12 +237,6 @@ namespace wfaIntegradoCom.Procesos
             }
         }
 
-        private void btnAnticipos_Click(object sender, EventArgs e)
-        {
-            frmBuscarAnticipos f  = new frmBuscarAnticipos();
-            f.Inicio(idTrandiaria);
-            fnLlenarListBox();
-        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -429,7 +423,7 @@ namespace wfaIntegradoCom.Procesos
                             Couta = 1,
                             Importe = importePagado,
                             cSimbolo = lsDetalleVenta[0].cSimbolo,
-
+                            importeRestante = restaPrecio,
                             preciounitario = Convert.ToDecimal(clsPagosGeneral.cantAPagar- clsPagosGeneral.importeAbonado),
                             ImporteRow = (Convert.ToDecimal(importePagado) * 1),
                             mtoValorVentaItem = (Convert.ToDecimal(importePagado) * 1),
@@ -444,24 +438,51 @@ namespace wfaIntegradoCom.Procesos
                     lsDetalleVentaAnticipo = lsDetalleVenta;
                     foreach (DetalleVenta dv in lsDetalleVenta)
                     {
-                        Decimal valorImporte = (lsDetalleVenta[y].Importe + lsDetalleVenta[y].valorRedondeo);
-                        if (valorImporte <= importePagado)
+                        Decimal valorImporte = 0;
+                        
+                        if (lnTipoLLamada == -4)
                         {
-                            importeRestantePorVehiculo = lsDetalleVenta[y].Importe;
-                            importeAPagarPorVehiculo= lsDetalleVenta[y].preciounitario;
-                            importePagado = importePagado - (lsDetalleVenta[y].Importe + lsDetalleVenta[y].valorRedondeo);
-                            cDescripcion = lsDetalleVenta[y].Descripcion;
-                            idOperacionItem = 0;
+                            valorImporte = (lsDetalleVenta[y].Importe + lsDetalleVenta[y].valorRedondeo) - lsDetalleVenta[y].importeRestante;
+                            if (valorImporte <= importePagado)
+                            {
+                                importeRestantePorVehiculo = 0;
+                                importeAPagarPorVehiculo = lsDetalleVenta[y].preciounitario;
+                                importePagado = importePagado - (lsDetalleVenta[y].Importe + lsDetalleVenta[y].valorRedondeo);
+                                cDescripcion = lsDetalleVenta[y].Descripcion;
+                                idOperacionItem = 0;
 
+                            }
+                            else if (lsDetalleVenta[y].Importe - lsDetalleVenta[y].importeRestante > importePagado)
+                            {
+                                importeRestantePorVehiculo = valorImporte - importePagado;
+                                importeAPagarPorVehiculo = importePagado;
+                                importePagado = importePagado > 0 ? importePagado - importePagado : 0;
+                                cDescripcion = lsDetalleVenta[y].Descripcion + " *Anticipo*";
+                                idOperacionItem = 2;
+                            }
                         }
-                        else if (lsDetalleVenta[y].Importe > importePagado)
+                        else
                         {
-                            importeRestantePorVehiculo = importePagado;
-                            importeAPagarPorVehiculo = importePagado;
-                            importePagado = importePagado > 0 ? importePagado - importePagado : 0;
-                            cDescripcion = lsDetalleVenta[y].Descripcion + " *Anticipo*";
-                            idOperacionItem = 2;
+                            valorImporte = (lsDetalleVenta[y].Importe + lsDetalleVenta[y].valorRedondeo);
+                            if (valorImporte <= importePagado)
+                            {
+                                importeRestantePorVehiculo = 0;
+                                importeAPagarPorVehiculo = lsDetalleVenta[y].preciounitario;
+                                importePagado = importePagado - (lsDetalleVenta[y].Importe + lsDetalleVenta[y].valorRedondeo);
+                                cDescripcion = lsDetalleVenta[y].Descripcion;
+                                idOperacionItem = 0;
+
+                            }
+                            else if (lsDetalleVenta[y].Importe  > importePagado)
+                            {
+                                importeRestantePorVehiculo = valorImporte - importePagado;
+                                importeAPagarPorVehiculo = importePagado;
+                                importePagado = importePagado > 0 ? importePagado - importePagado : 0;
+                                cDescripcion = lsDetalleVenta[y].Descripcion + " *Anticipo*";
+                                idOperacionItem = 2;
+                            }
                         }
+                        
 
                         lsDetalleVentaAnticipo[y].Numeracion = 1;
                         lsDetalleVentaAnticipo[y].IdDetalleVenta = lsDetalleVenta[y].IdDetalleVenta;
@@ -475,13 +496,13 @@ namespace wfaIntegradoCom.Procesos
                         lsDetalleVentaAnticipo[y].Cantidad = lsDetalleVenta[y].Cantidad;
                         lsDetalleVentaAnticipo[y].Couta = lsDetalleVenta[y].Couta;
 
-                        lsDetalleVentaAnticipo[y].Importe = importeRestantePorVehiculo;//lsDetalleVenta[y].Importe;
-                        lsDetalleVentaAnticipo[y].importeRestante = (lsDetalleVenta[y].preciounitario - importeRestantePorVehiculo) - clsPagosGeneral.importeAbonado;//lsDetalleVenta[y].Importe;
-                        lsDetalleVentaAnticipo[y].ImporteActicipo = importeRestantePorVehiculo;//lsDetalleVenta[y].Importe;
+                        lsDetalleVentaAnticipo[y].Importe = importeAPagarPorVehiculo;//lsDetalleVenta[y].preciounitario- lsDetalleVenta[y].TotalTipoDescuento;//lsDetalleVenta[y].Importe;
+                        lsDetalleVentaAnticipo[y].importeRestante = importeRestantePorVehiculo;//lsDetalleVenta[y].Importe;
+                        lsDetalleVentaAnticipo[y].ImporteActicipo = 0;//lsDetalleVenta[y].Importe;
                         lsDetalleVentaAnticipo[y].cSimbolo = lsDetalleVenta[y].cSimbolo;
 
                         lsDetalleVentaAnticipo[y].preciounitario = lsDetalleVenta[y].preciounitario;//importeRestantePorVehiculo;
-                        lsDetalleVentaAnticipo[y].ImporteRow = importeAPagarPorVehiculo; //importeRestantePorVehiculo;
+                        lsDetalleVentaAnticipo[y].ImporteRow = importeAPagarPorVehiculo;//lsDetalleVenta[y].preciounitario - lsDetalleVenta[y].TotalTipoDescuento; ; //importeRestantePorVehiculo;
                         lsDetalleVentaAnticipo[y].mtoValorVentaItem = importeRestantePorVehiculo;
                         lsDetalleVentaAnticipo[y].Unidad_de_medida = "ZZ";
                         lsDetalleVentaAnticipo[y].idOperacionItem = idOperacionItem;
@@ -498,7 +519,7 @@ namespace wfaIntegradoCom.Procesos
                 lsDocumentoVenta[0].nMontoTotal = lstEntidades.Sum(i => i.PagaCon);
                 lsDocumentoVenta[0].nSubtotal = (lstEntidades.Sum(i => i.PagaCon) / 1.18m);
                 lsDocumentoVenta[0].MontoTotalAnticipos = lsDetalleVentaAnticiposRecibidos.Sum(i => i.Importe);
-                lsDocumentoVenta[0].nIGV = (lsDocumentoVenta[0].nMontoTotal - lsDocumentoVenta[0].nSubtotal);
+                lsDocumentoVenta[0].nIGV = lsDocumentoVenta[0].nSubtotal * 0.18m; //(lsDocumentoVenta[0].nMontoTotal - lsDocumentoVenta[0].nSubtotal);
             }
             else
             {
@@ -517,6 +538,7 @@ namespace wfaIntegradoCom.Procesos
                             PrecioUni = dv.Importe,
                             Descuento = 0,
                             gananciaRedondeo = 0,
+                            importeRestante = 0,
                             TotalTipoDescuento = 0,
                             IdTipoDescuento = 0,
                             Cantidad = 1,
@@ -553,7 +575,7 @@ namespace wfaIntegradoCom.Procesos
                                 Couta = 1,
                                 Importe = dv.Importe,
                                 cSimbolo = lsDetalleVenta[0].cSimbolo,
-
+                                importeRestante = 0,
                                 preciounitario = Convert.ToDecimal(dv.Importe),
                                 ImporteRow = (Convert.ToDecimal(dv.Importe) * 1),
                                 mtoValorVentaItem = (Convert.ToDecimal(dv.Importe) * 1),
@@ -574,6 +596,7 @@ namespace wfaIntegradoCom.Procesos
                                 idTipoTarifa = lsDetalleVenta[0].idTipoTarifa,
                                 PrecioUni = dv.Importe,
                                 Descuento = 0,
+                                importeRestante = 0,
                                 gananciaRedondeo = 0,
                                 TotalTipoDescuento = 0,
                                 IdTipoDescuento = 0,
@@ -607,6 +630,12 @@ namespace wfaIntegradoCom.Procesos
                 else
                 {
                     lsDetalleVentaAnticipo = lsDetalleVenta;
+                    int ii = 0;
+                    foreach (var item in lsDetalleVentaAnticipo)
+                    {
+                        lsDetalleVentaAnticipo[ii].importeRestante = 0;
+                        ii++;
+                    }
                 }
 
             }
@@ -631,7 +660,7 @@ namespace wfaIntegradoCom.Procesos
             //lsDocumentoVenta[0].nMontoTotal = lsDetalleVentaAnticipo.Sum(x => x.Importe)+ lsDetalleVentaAnticipo.Sum(i=>i.valorRedondeo);
             //lsDocumentoVenta[0].MontoTotalAnticipos = lsDetalleVentaAnticiposRecibidos.Sum(x => x.Importe) * 1;
             frm.Inicio(lsDocumentoVenta, lsDetalleVentaAnticipo.Count > 0 ? lsDetalleVentaAnticipo : lsDetalleVenta, lnTipoLLamada);
-
+            this.Cursor = Cursors.WaitCursor;
             //opcion para venta general
             if (lnTipoLLamada == 0)
             {

@@ -21,6 +21,8 @@ using RJCodeAdvance.RJControls;
 using System.IO;
 using CapaDato;
 using System.Data;
+using FontAwesome.Sharp;
+using System.Reflection;
 
 namespace wfaIntegradoCom.Funciones
 {
@@ -157,10 +159,14 @@ namespace wfaIntegradoCom.Funciones
                         dg.BackgroundColor = ColorThemas.BarraAccesoDirectos;
                         dg.ThemeStyle.RowsStyle.BackColor = ColorThemas.BarraAccesoDirectos;
                         //dg.DefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                        dg.DefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
                         dg.RowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
                         //dg.ThemeStyle.BackColor= ColorThemas.BarraAccesoDirectos;
                         dg.ThemeStyle.AlternatingRowsStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                        dg.ThemeStyle.AlternatingRowsStyle.ForeColor = ColorThemas.FuenteControles;
                         dg.ThemeStyle.RowsStyle.ForeColor = ColorThemas.FuenteControles;
+                        dg.AlternatingRowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                        dg.AlternatingRowsDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
                     }
 
                     var vGrouptp = tp.Controls.OfType<SiticoneGroupBox>();
@@ -265,6 +271,23 @@ namespace wfaIntegradoCom.Funciones
                         {
                             lbl.BackColor = sgb.FillColor;
                             lbl.ForeColor = ColorThemas.FuenteControles;
+                        }
+
+                        var gdg = sgb.Controls.OfType<GunaDataGridView>();
+
+                        foreach (GunaDataGridView dg in gdg)
+                        {
+                            dg.BackgroundColor = ColorThemas.BarraAccesoDirectos;
+                            dg.ThemeStyle.RowsStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            //dg.DefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            dg.DefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+                            dg.RowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            //dg.ThemeStyle.BackColor= ColorThemas.BarraAccesoDirectos;
+                            dg.ThemeStyle.AlternatingRowsStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            dg.ThemeStyle.AlternatingRowsStyle.ForeColor = ColorThemas.FuenteControles;
+                            dg.ThemeStyle.RowsStyle.ForeColor = ColorThemas.FuenteControles;
+                            dg.AlternatingRowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            dg.AlternatingRowsDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
                         }
                     }
                     var rpViwer = tp.Controls.OfType<ReportViewer>();
@@ -537,6 +560,30 @@ namespace wfaIntegradoCom.Funciones
             {
 
                 return new List<ReporteBloque>();
+            }
+        }
+        private static Point location;
+        private static Size size;
+        public static void MaximizeFormWithoutTaskbar(Form form, IconPictureBox iconPictureBox)
+        {
+            string nombreIcono = iconPictureBox.IconChar.ToString();
+
+            Rectangle screenBounds = Screen.FromControl(form).WorkingArea;
+
+            if (nombreIcono == "WindowMaximize")
+            {
+                location = form.Location;
+                size = form.Size;
+
+                form.Location = screenBounds.Location;
+                form.Size = screenBounds.Size;
+                iconPictureBox.IconChar = IconChar.WindowRestore;
+            }
+            else
+            {
+                form.Location = location;
+                form.Size = size;
+                iconPictureBox.IconChar = IconChar.WindowMaximize;
             }
         }
         public static Tuple<Boolean, String> fnValidarFechaPago(SiticoneDateTimePicker dt, PictureBox pb, Int32 tipoCon)
@@ -1337,7 +1384,7 @@ namespace wfaIntegradoCom.Funciones
         }
         public static Byte[] fnObtenerQRDefecto()
         {
-            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            String rutaArchivo = GetRootPath() + @"\CDR\";
             byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
             return imageBytes;
@@ -1612,6 +1659,32 @@ namespace wfaIntegradoCom.Funciones
             {
                 lstMoneda = null;
             }
+        }
+        public static string GetRootPath()
+        {
+            // Obtiene la ruta del directorio del ensamblado actual
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+
+            // Combina la ruta del ensamblado con la ruta relativa al directorio raíz del proyecto
+            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "../../");
+
+            // Convierte la ruta a una ruta completa
+            rootPath = Path.GetFullPath(rootPath);
+
+            return rootPath;
+        }
+        public static string GetRootPathSunat()
+        {
+            // Obtiene la ruta del directorio del ensamblado actual
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+
+            // Combina la ruta del ensamblado con la ruta relativa al directorio raíz del proyecto
+            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "../../");
+
+            // Convierte la ruta a una ruta completa
+            rootPath = Path.GetFullPath(rootPath)+@"Sunat\DatosFacturacion";
+
+            return rootPath;
         }
 
     }

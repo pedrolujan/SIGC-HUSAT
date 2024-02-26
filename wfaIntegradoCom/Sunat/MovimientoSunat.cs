@@ -1,4 +1,5 @@
-﻿using CapaEntidad;
+﻿using CapaDato;
+using CapaEntidad;
 using CapaNegocio;
 using CapaUtil;
 using DocumentFormat.OpenXml;
@@ -12,12 +13,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using wfaIntegradoCom.Funciones;
 using wfaIntegradoCom.Mantenedores;
+using static wfaIntegradoCom.Mantenedores.frmEquipoImeis;
+using Color = System.Drawing.Color;
+using Timer = System.Windows.Forms.Timer;
 
 namespace wfaIntegradoCom.Sunat
 {
@@ -26,6 +33,10 @@ namespace wfaIntegradoCom.Sunat
         public MovimientoSunat()
         {
             InitializeComponent();
+            // Inicializa el Timer
+            timer = new Timer();
+            timer.Interval = 1;  // Puedes ajustar el intervalo según tu preferencia
+            timer.Tick += Timer_Tick;
         }
         static List<DocumentoVenta> lstDocumentos = new List<DocumentoVenta>();
         static Int32 numFilas = 8;
@@ -34,9 +45,18 @@ namespace wfaIntegradoCom.Sunat
         static Int32 numInicial = 0;
         static Int32 NumFinal = 0;
         String strTextTab = "";
+        private Timer timer;
+        private int progressBarValue=0;
         private void pbBuscar_Click(object sender, EventArgs e)
         {
             fnBuscarDocumentos(0, cboPagina,"DOVE0002", -1);
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Actualiza el valor de la barra de progreso (círculo)
+
+            progressBarValue = (progressBarValue + 1) % 101;
+            circularProgressBar1.Value = progressBarValue;
         }
         private void fnBuscarDocumentos(Int32 pagina,ComboBox cbo,String CodDoc,Int32 tipocon)
         {
@@ -48,8 +68,12 @@ namespace wfaIntegradoCom.Sunat
             String estdoDocumento= CodDoc == "DOVE0002" ? cboEstadofactura.SelectedValue.ToString() : CodDoc == "DOVE0001" ? cboEstadosBoleta.SelectedValue.ToString() : cboEstadoNota.SelectedValue.ToString();
             lstDocumentos.Clear();
 
-
-            lstDocumentos =blDoc.blBuscarDocumentoPorEmitir(chkFechas,dtFechaIni,dtFechaFin,buscar,  CodDoc, pagina,tipocon);
+            try
+            {
+                lstDocumentos = blDoc.blBuscarDocumentoPorEmitir(chkFechas, dtFechaIni, dtFechaFin, buscar, CodDoc, estdoDocumento, pagina, tipocon);
+            }catch (Exception ex) {
+                MessageBox.Show("Error al buscar documentos\n" + ex.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             fnLlenarPaginacion(cbo);
         }
 
@@ -67,7 +91,7 @@ namespace wfaIntegradoCom.Sunat
                     FunGeneral.fnFormatearPrecio("S/.",lstDocumentos[i].nMontoPagar,0),
                     lstDocumentos[i].cVehiculos,
                     lstDocumentos[i].cEstado,
-                    ""
+                    "",""
 
                     );
             }
@@ -75,6 +99,18 @@ namespace wfaIntegradoCom.Sunat
         }
         private void fnLlenarPaginacion(ComboBox cbo)
         {
+            if (cbo.Name == "cboPagina")
+            {
+                dgvListaVentas.Rows.Clear();
+            }
+            else if (cbo.Name == "cboPaginaBoletas")
+            {
+                dgvBoletas.Rows.Clear();
+            }
+            else if (cbo.Name == "cboPaginaNota")
+            {
+                dgvNota.Rows.Clear();
+            }
             Int32 residuo = 0;
             cbo.Items.Clear();
             numRegistros = lstDocumentos.Count;
@@ -220,6 +256,9 @@ namespace wfaIntegradoCom.Sunat
                 dtFechaFinBoletas.Value = Variables.gdFechaSis;
                 dtFechaIniBoletas.Value = dtFechaFinBoletas.Value.AddDays(-(dtFechaFinBoletas.Value.Day - 1));
 
+                dtFechaFinNota.Value = Variables.gdFechaSis;
+                dtFechaIniNota.Value = dtFechaFinNota.Value.AddDays(-(dtFechaFinNota.Value.Day - 1));
+
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadofactura, "EEST",true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadosBoleta, "EEST", true);
                 FunGeneral.fnLlenarTablaCodTipoCon(cboEstadoNota, "EEST", true);
@@ -236,18 +275,57 @@ namespace wfaIntegradoCom.Sunat
         {
             if (e.KeyChar==(char)Keys.Enter)
             {
-                fnBuscarDocumentos(0, cboPagina,"DOVE0002", -1);
+                fnBuscarDocumentos(0, cboPagina, "DOVE0002", -1);
             }
         }
 
         private void dgvListaVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            DataGridView dgv = sender as DataGridView;
+
+            String nombreCabecera = dgv.Columns[e.ColumnIndex].HeaderText;
+
+            if (nombreCabecera == "Estado")
+            {
+                e.CellStyle.ForeColor = Color.White;
+                e.CellStyle.Font = new System.Drawing.Font("Arial", 11, FontStyle.Regular);
+                if (e.Value.ToString().Contains("✅"))
+                {
+                    e.CellStyle.BackColor = Variables.ColorSuccess;
+                }
+                else if (e.Value.ToString().Contains("❗"))
+                {
+                    e.CellStyle.BackColor = Color.DarkOrange;
+                }
+                else if (e.Value.ToString().Contains("🚫"))
+                {
+                    e.CellStyle.BackColor = Color.Red;
+
+                }
+
+            }
+
             if (this.dgvListaVentas.Columns[e.ColumnIndex].Name == "imgImprimir")
             {
                 if (e.Value != null)
                 {
                     IconPictureBox iconPictureBox = new IconPictureBox();
-                    iconPictureBox.IconChar = IconChar.FileArrowDown;
+                    iconPictureBox.IconChar = IconChar.ArrowsToEye;
+                    iconPictureBox.IconColor = System.Drawing.Color.Tomato;
+                    iconPictureBox.Size = new Size(36, 36);
+
+                    Bitmap bmp = new Bitmap(iconPictureBox.Width, iconPictureBox.Height);
+                    iconPictureBox.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    e.Value = bmp;
+                    this.dgvListaVentas.Columns[e.ColumnIndex].Width = 40;
+                }
+            }
+            if (this.dgvListaVentas.Columns[e.ColumnIndex].Name == "ImgEnviarASunat")
+            {
+                if (e.Value != null)
+                {
+                    IconPictureBox iconPictureBox = new IconPictureBox();
+                    iconPictureBox.IconChar = IconChar.Telegram;
                     iconPictureBox.IconColor = System.Drawing.Color.Tomato;
                     iconPictureBox.Size = new Size(36, 36);
 
@@ -264,12 +342,17 @@ namespace wfaIntegradoCom.Sunat
             if (dg.Columns[e.ColumnIndex].Name== "imgImprimir")
             {
                 Int32 idDocumento = Convert.ToInt32(dg.Rows[e.RowIndex].Cells[0].Value);
-                fnBuscarDocumentoVenta(idDocumento,0);
+                fnBuscarDocumentoVenta(idDocumento,0,1);
+            }
+            if (dg.Columns[e.ColumnIndex].Name == "ImgEnviarASunat")
+            {
+                Int32 idDocumento = Convert.ToInt32(dg.Rows[e.RowIndex].Cells[0].Value);
+                fnEnviarASunat(idDocumento, 0);
             }
 
         }
 
-        private void fnBuscarDocumentoVenta(Int32 idDocumentoVenta,Int32 tipCon)
+        private void fnBuscarDocumentoVenta(Int32 idDocumentoVenta,Int32 tipCon,Int32 estPrevisualizacion)
         {
             BLOtrasVenta objTipoVenta = new BLOtrasVenta();
             clsUtil objUtil = new clsUtil();
@@ -289,7 +372,7 @@ namespace wfaIntegradoCom.Sunat
 
                 Consultas.frmVPVenta abrirFrmVPOtrasVentas = new Consultas.frmVPVenta();
 
-                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, xmlDocVenta.imgDocumento, 1);
+                abrirFrmVPOtrasVentas.Inicio(xmlDocumentoVenta[0].xmlDocumentoVenta, xmlDocumentoVenta[0].xmlDetalleVentas, xmlDocVenta.imgDocumento, estPrevisualizacion);
 
             }
             catch (Exception ex)
@@ -303,6 +386,146 @@ namespace wfaIntegradoCom.Sunat
                 objTipoVenta = null;
                 lsTipoVenta = null;
             }
+        }
+        private void fnEnviarASunat(Int32 idDocumentoVenta,Int32 tipCon)
+        {
+            BLOtrasVenta objTipoVenta = new BLOtrasVenta();
+            clsUtil objUtil = new clsUtil();
+            DataTable dtResp = new DataTable();
+            Int32 filas = 20;
+            List<DetalleVenta> lstDetalle= new List<DetalleVenta>();
+            xmlDocumentoVentaGeneral xmlDocVenta = new xmlDocumentoVentaGeneral();
+            EmitirFactura emf = new EmitirFactura();
+            BLCliente objAcc = new BLCliente();
+            Cargo clsDocumentoVenta =new Cargo();
+            String rutaArchivo = FunGeneral.GetRootPathSunat();
+            ResponseSunat clsResponseSunat= new ResponseSunat();
+
+            String xmlDocventa = "";
+            String codigoDocumento = "";
+            String DescripEstadoPP = "";
+            String MediosDePago = "";
+            String DireccionCLiente = "";
+            String UbigeoCLiente = "";
+            int idUsuario = 0;
+            byte[] imgQr = new byte[] { };
+            try
+            {
+                this.Cursor=Cursors.WaitCursor;
+                dtResp = objTipoVenta.blBuscarDocumentoVentaParaEmitirASunat(idDocumentoVenta, tipCon);
+                #region preparar datos
+                foreach (DataRow drMenu in dtResp.Rows)
+                {
+                    DescripEstadoPP = Convert.ToString(drMenu["descripcionEstadoVenta"]).ToLower();
+                    codigoDocumento = Convert.ToString(drMenu["codDocumentoCorrelativo"]);
+                    xmlDocventa = Convert.ToString(drMenu["Documentoventa"]);
+                    MediosDePago = Convert.ToString(drMenu["mediosDePago"]);
+                    imgQr = (Byte[])drMenu["CodigoQr"];
+
+                    clsDocumentoVenta = new Cargo
+                    {
+                        nValor1 = Convert.ToString(drMenu["TipoDocumentoEmitir"]),
+                        SerieDoc = Convert.ToString(drMenu["SerieDocumento"]),
+                        nValor2 = Convert.ToString(drMenu["NumeroDocumento"])
+                    };
+                    DireccionCLiente = Convert.ToString(drMenu["direccionCLinete"]);
+                    UbigeoCLiente = Convert.ToString(drMenu["ubigeoCliente"]);
+                    idUsuario = Convert.ToInt32(drMenu["idCliente"]);
+
+                }
+                if (imgQr.Length <= 0)
+                {
+
+                    imgQr = File.ReadAllBytes(rutaArchivo + @"\CDR\QR\\QrDefecto.png");
+
+                }
+                MemoryStream ms = new MemoryStream(imgQr);
+                
+                xmlDocVenta = clsUtil.Deserialize<xmlDocumentoVentaGeneral>(xmlDocventa);
+                xmlDocVenta.xmlDocumentoVenta[0].cDescripEstadoPP = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(DescripEstadoPP);
+                xmlDocVenta.xmlDocumentoVenta[0].cDireccion = DireccionCLiente + " " + UbigeoCLiente;
+                xmlDocVenta.xmlDocumentoVenta[0].CodigoCorrelativo = codigoDocumento;
+                xmlDocVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = MediosDePago;
+                xmlDocVenta.xmlDocumentoVenta[0].idUsuario = idUsuario;
+                xmlDocVenta.xmlDocumentoVenta[0].idDocumentoVenta = idDocumentoVenta;
+
+                clsDocumentoVenta.dFechaVenta = xmlDocVenta.xmlDocumentoVenta[0].dFechaVenta;
+                clsDocumentoVenta.dFechaPago = xmlDocVenta.xmlDocumentoVenta[0].dFechaVenta;
+
+                if (tipCon != 2)
+                {
+                    xmlDocVenta.imgDocumento = ms.ToArray();
+                }
+                #endregion
+                //Obtenemos el detalle correcto para enviar a la sunat
+                lstDetalle = xmlDocVenta.xmlDetalleVentas.Where(i => i.ImporteRow > 0).ToList();
+
+                lstDetalle.ForEach(detalle => { if (detalle.importeRestante > 0 && detalle.importeRestante==detalle.preciounitario) detalle.importeRestante = 0; });
+
+                //Obtenemos los datos de cliente para el Documento de venta
+                Cliente clsCliente = objAcc.blListarCliente(xmlDocVenta.xmlDocumentoVenta[0].idUsuario, 1);
+                if (!(clsCliente is Cliente))
+                {
+                    MessageBox.Show("Error al obtener cliente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                clsResponseSunat = emf.EmitirFacturasContado(clsCliente, lstDetalle, xmlDocVenta.xmlDocumentoVenta, clsDocumentoVenta);
+
+                if (clsResponseSunat.isSuccesfull == true && clsResponseSunat.codeError.Trim() == "0")
+                {
+                    String nombreQR = clsCliente.cDocumento + "-" + clsDocumentoVenta.nValor1 + "-" + clsDocumentoVenta.SerieDoc + "-" + FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVenta.nValor2));
+                    //bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");
+                    imgQr = File.ReadAllBytes(rutaArchivo + @"\CDR\QR\\" + nombreQR + ".png");
+                    Boolean estado = false;
+                    estado = fnActualizarDocumentoVenta(xmlDocVenta, clsResponseSunat, imgQr);
+                    if (estado == true)
+                    {
+                        MessageBox.Show("Información del documento.\n\n" + clsResponseSunat.message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (clsDocumentoVenta.SerieDoc== "FH01")
+                        {
+                            fnBuscarDocumentos(0, cboPagina, "DOVE0002", -1);
+
+                        }else if (clsDocumentoVenta.SerieDoc == "BH01")
+                        {
+                            fnBuscarDocumentos(0, cboPaginaBoletas, "DOVE0001", -1);
+
+                        }else if (clsDocumentoVenta.SerieDoc == "FC01")
+                        {
+                            fnBuscarDocumentos(0, cboPaginaNota, "DOVE0004", -1);
+
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error al emitir documento a la SUnat.\n\n" + clsResponseSunat.message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al Emitir documento a la SUNAT\n"+ex.Message ,"Información",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                //objUtil.gsLogAplicativo("frmOrdenCompra", "fnListarProveedorActivo", ex.Message);
+
+            }
+            finally
+            {
+                objUtil = null;
+                objTipoVenta = null;
+                this.Cursor = Cursors.Default;
+            }
+        }
+        private Boolean fnActualizarDocumentoVenta(xmlDocumentoVentaGeneral xmlDoc, ResponseSunat cls, byte[] imgQr)
+        {
+            BLOtrasVenta objTipoVenta = new BLOtrasVenta();
+            return objTipoVenta.blActualizarDocumentoVenta(xmlDoc, cls,  imgQr);
+
         }
 
         private void iconPictureBox1_Click(object sender, EventArgs e)
@@ -372,19 +595,58 @@ namespace wfaIntegradoCom.Sunat
 
         private void dgvBoletas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (this.dgvBoletas.Columns[e.ColumnIndex].Name == "imgImprimirBoletas")
+            DataGridView dgv = sender as DataGridView;
+
+            String nombreCabecera = dgv.Columns[e.ColumnIndex].HeaderText;
+
+            if (nombreCabecera == "Estado")
+            {
+                e.CellStyle.ForeColor = Color.White;
+                e.CellStyle.Font = new System.Drawing.Font("Arial", 11, FontStyle.Regular);
+                if (e.Value.ToString().Contains("✅"))
+                {
+                    e.CellStyle.BackColor = Variables.ColorSuccess;
+                }
+                else if (e.Value.ToString().Contains("❗"))
+                {
+                    e.CellStyle.BackColor = Color.DarkOrange;
+                }
+                else if (e.Value.ToString().Contains("🚫"))
+                {
+                    e.CellStyle.BackColor = Color.Red;
+
+                }
+
+            }
+
+            if (this.dgvListaVentas.Columns[e.ColumnIndex].Name == "imgImprimir")
             {
                 if (e.Value != null)
                 {
                     IconPictureBox iconPictureBox = new IconPictureBox();
-                    iconPictureBox.IconChar = IconChar.FileArrowDown;
+                    iconPictureBox.IconChar = IconChar.ArrowsToEye;
                     iconPictureBox.IconColor = System.Drawing.Color.Tomato;
                     iconPictureBox.Size = new Size(36, 36);
 
                     Bitmap bmp = new Bitmap(iconPictureBox.Width, iconPictureBox.Height);
                     iconPictureBox.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                     e.Value = bmp;
-                    this.dgvBoletas.Columns[e.ColumnIndex].Width = 40;
+                    this.dgvListaVentas.Columns[e.ColumnIndex].Width = 40;
+                }
+            }
+            if (this.dgvListaVentas.Columns[e.ColumnIndex].Name == "ImgEnviarASunat")
+            {
+                if (e.Value != null)
+                {
+                    IconPictureBox iconPictureBox = new IconPictureBox();
+                    iconPictureBox.IconChar = IconChar.Telegram;
+                    iconPictureBox.IconColor = System.Drawing.Color.Tomato;
+                    iconPictureBox.Size = new Size(36, 36);
+
+                    Bitmap bmp = new Bitmap(iconPictureBox.Width, iconPictureBox.Height);
+                    iconPictureBox.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    e.Value = bmp;
+                    this.dgvListaVentas.Columns[e.ColumnIndex].Width = 40;
                 }
             }
         }
@@ -392,11 +654,16 @@ namespace wfaIntegradoCom.Sunat
         private void dgvBoletas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dg = dgvBoletas;
+            Int32 idDocumento = Convert.ToInt32(dg.Rows[e.RowIndex].Cells[0].Value);
             if (dg.Columns[e.ColumnIndex].Name == "imgImprimirBoletas")
             {
-                Int32 idDocumento = Convert.ToInt32(dg.Rows[e.RowIndex].Cells[0].Value);
-                fnBuscarDocumentoVenta(idDocumento, 0);
+                fnBuscarDocumentoVenta(idDocumento, 0,1);
             }
+            if (dg.Columns[e.ColumnIndex].Name == "ImgEnviarASunatBoletas")
+            {
+                fnEnviarASunat(idDocumento, 0);
+            }
+            
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
@@ -421,6 +688,86 @@ namespace wfaIntegradoCom.Sunat
             NumFinal = (pagActual * numFilas);
             NumFinal = NumFinal > numRegistros ? numRegistros : NumFinal;
             fnCargarTabla(dgvNota);
+        }
+
+        private void dgvNota_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            String nombreCabecera = dgv.Columns[e.ColumnIndex].HeaderText;
+            if (nombreCabecera == "Estado")
+            {
+                e.CellStyle.ForeColor = Color.White;
+                e.CellStyle.Font = new System.Drawing.Font("Arial", 11, FontStyle.Regular);
+                if (e.Value.ToString().Contains("✅"))
+                {
+                    e.CellStyle.BackColor = Variables.ColorSuccess;
+                }
+                else if (e.Value.ToString().Contains("❗"))
+                {
+                    e.CellStyle.BackColor = Color.DarkOrange;
+                }
+                else if (e.Value.ToString().Contains("🚫"))
+                {
+                    e.CellStyle.BackColor = Color.Red;
+
+                }
+
+            }
+            if (this.dgvNota.Columns[e.ColumnIndex].Name == "dataGridViewImageColumn1")
+            {
+                if (e.Value != null)
+                {
+                    IconPictureBox iconPictureBox = new IconPictureBox();
+                    iconPictureBox.IconChar = IconChar.ArrowsToEye;
+                    iconPictureBox.IconColor = System.Drawing.Color.Tomato;
+                    iconPictureBox.Size = new Size(36, 36);
+
+                    Bitmap bmp = new Bitmap(iconPictureBox.Width, iconPictureBox.Height);
+                    iconPictureBox.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    e.Value = bmp;
+                    this.dgvBoletas.Columns[e.ColumnIndex].Width = 40;
+                }
+            }
+            if (this.dgvListaVentas.Columns[e.ColumnIndex].Name == "ImgEnviarASunat")
+            {
+                if (e.Value != null)
+                {
+                    IconPictureBox iconPictureBox = new IconPictureBox();
+                    iconPictureBox.IconChar = IconChar.Telegram;
+                    iconPictureBox.IconColor = System.Drawing.Color.Tomato;
+                    iconPictureBox.Size = new Size(36, 36);
+
+                    Bitmap bmp = new Bitmap(iconPictureBox.Width, iconPictureBox.Height);
+                    iconPictureBox.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    e.Value = bmp;
+                    this.dgvListaVentas.Columns[e.ColumnIndex].Width = 40;
+                }
+            }
+        }
+
+        private void dgvNota_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dg = dgvNota;
+            if (dg.Columns[e.ColumnIndex].Name == "dataGridViewImageColumn1")
+            {
+                Int32 idDocumento = Convert.ToInt32(dg.Rows[e.RowIndex].Cells[0].Value);
+                fnBuscarDocumentoVenta(idDocumento, 2,1);
+            }
+        }
+
+        private void reenviarDocumentoASunatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBuscarNotaCredito_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                fnBuscarDocumentos(0, cboPaginaNota, "DOVE0004", -1);
+
+            }
         }
     }
 }

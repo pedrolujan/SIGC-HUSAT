@@ -74,10 +74,10 @@ namespace CapaDato
             }
 
         }
-        public List<DocumentoVenta> daBuscarDocumentoPorEmitir(Boolean chkActivaFecha,String dtFechaIni, String dtFechaFin, String pcBuscar, String CodDoc, Int32 numPagina,Int32 pnTipoCon)
+        public List<DocumentoVenta> daBuscarDocumentoPorEmitir(Boolean chkActivaFecha,String dtFechaIni, String dtFechaFin, String pcBuscar, String CodDoc,string estdoDocumento, Int32 numPagina,Int32 pnTipoCon)
         {
 
-            SqlParameter[] pa = new SqlParameter[7];
+            SqlParameter[] pa = new SqlParameter[8];
             DataTable dtVenta = new DataTable();
             clsConexion objCnx = null;
             List<DocumentoVenta> lstDocumentos = new List<DocumentoVenta>() ;
@@ -96,10 +96,12 @@ namespace CapaDato
                 pa[3].Value = pcBuscar;
                 pa[4] = new SqlParameter("@CodDocumento", SqlDbType.VarChar, 8);
                 pa[4].Value =  CodDoc;
-                pa[5] = new SqlParameter("@numPagina", SqlDbType.Int);
-                pa[5].Value = numPagina;
-                pa[6] = new SqlParameter("@TipoCon", SqlDbType.Int);
-                pa[6].Value = pnTipoCon;
+                pa[5] = new SqlParameter("@EstadoDocumento", SqlDbType.VarChar, 8);
+                pa[5].Value = estdoDocumento;
+                pa[6] = new SqlParameter("@numPagina", SqlDbType.Int);
+                pa[6].Value = numPagina;
+                pa[7] = new SqlParameter("@TipoCon", SqlDbType.Int);
+                pa[7].Value = pnTipoCon;
 
 
                 objCnx = new clsConexion("");
@@ -107,6 +109,9 @@ namespace CapaDato
                 Int32 i = 0;
                 foreach (DataRow d in dtVenta.Rows)
                 {
+                    decimal montoPagar = Convert.ToDecimal(d["pagaCon"]);
+                    Double DBmontoPagar = Convert.ToDouble(d["pagaCon"]);
+                    string cEstado = (d["codigoEstado"].ToString() == "EEST0001" ? "✅" : d["codigoEstado"].ToString() == "EEST0002" ? "❗" : "🚫") +" "+ d["estadoEmision"].ToString();
                     lstDocumentos.Add(new DocumentoVenta
                     {
                         numero = i + 1,
@@ -117,7 +122,9 @@ namespace CapaDato
                         cDescripEstadoPP = d["cNombreOperacion"].ToString(),
                         cVehiculos = d["vehiculo"].ToString(),
                         nMontoPagar = Convert.ToDouble(d["pagaCon"]),
-                        cEstado = d["estadoEmision"].ToString()
+                        cEstado = cEstado,
+                        CodigoEstado = d["codigoEstado"].ToString(),
+                        
                     }) ;
                     i++;
                 }

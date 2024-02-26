@@ -106,7 +106,7 @@ namespace wfaIntegradoCom.Consultas
             reportViewer1.Reset();
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.ProcessingMode = ProcessingMode.Local;
-            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\QR\ACTA\"+ clsInt.codigoInstalacion+".png";
+            String rutaArchivo = FunGeneral.GetRootPath() + @"\QR\ACTA\"+ clsInt.codigoInstalacion+".png";
 
             if (File.Exists(rutaArchivo))
             {

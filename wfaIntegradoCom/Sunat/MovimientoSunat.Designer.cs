@@ -67,9 +67,20 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pbBuscar = new FontAwesome.Sharp.IconPictureBox();
             this.dgvListaVentas = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
+            this.idDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHAPAGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ciente_Rs_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vehiculos_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImgEnviarASunat = new System.Windows.Forms.DataGridViewImageColumn();
+            this.imgImprimir = new System.Windows.Forms.DataGridViewImageColumn();
             this.SiticoneHtmlLabel1 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.txtBuscar = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnNumFilasBoletas = new Siticone.Desktop.UI.WinForms.SiticoneCircleButton();
             this.label4 = new System.Windows.Forms.Label();
@@ -90,20 +101,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pbBuscarBoleta = new FontAwesome.Sharp.IconPictureBox();
             this.dgvBoletas = new Siticone.Desktop.UI.WinForms.SiticoneDataGridView();
-            this.SiticoneHtmlLabel2 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
-            this.txtBuscarBoleta = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.cmAcciones = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.idDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAPAGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ciente_Rs_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vehiculos_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado_lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imgImprimir = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,7 +109,10 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImgEnviarASunatBoletas = new System.Windows.Forms.DataGridViewImageColumn();
             this.imgImprimirBoletas = new System.Windows.Forms.DataGridViewImageColumn();
+            this.txtBuscarBoleta = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnNumFilasNota = new Siticone.Desktop.UI.WinForms.SiticoneCircleButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -141,9 +141,14 @@
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImgEnviarASunatNota = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.SiticoneHtmlLabel3 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.txtBuscarNotaCredito = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cntxtMenuStrip = new Guna.UI.WinForms.GunaContextMenuStrip();
+            this.reenviarDocumentoASunatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.circularProgressBar1 = new CircularProgressBar.CircularProgressBar();
             this.siticonePanel1.SuspendLayout();
             this.dotNetBarTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -157,11 +162,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscarBoleta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletas)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscarNotaCredito)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNota)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.cntxtMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // siticonePanel1
@@ -170,7 +176,6 @@
             this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
-            this.siticonePanel1.ShadowDecoration.Parent = this.siticonePanel1;
             this.siticonePanel1.Size = new System.Drawing.Size(1014, 495);
             this.siticonePanel1.TabIndex = 1;
             // 
@@ -256,17 +261,13 @@
             // btnNumFilas
             // 
             this.btnNumFilas.BackColor = System.Drawing.Color.Transparent;
-            this.btnNumFilas.CheckedState.Parent = this.btnNumFilas;
-            this.btnNumFilas.CustomImages.Parent = this.btnNumFilas;
             this.btnNumFilas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnNumFilas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumFilas.ForeColor = System.Drawing.Color.White;
             this.btnNumFilas.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnNumFilas.HoverState.Parent = this.btnNumFilas;
             this.btnNumFilas.Location = new System.Drawing.Point(209, 12);
             this.btnNumFilas.Name = "btnNumFilas";
             this.btnNumFilas.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnNumFilas.ShadowDecoration.Parent = this.btnNumFilas;
             this.btnNumFilas.Size = new System.Drawing.Size(25, 25);
             this.btnNumFilas.TabIndex = 171;
             this.btnNumFilas.TextOffset = new System.Drawing.Point(0, 1);
@@ -313,17 +314,13 @@
             // btnTotalReg
             // 
             this.btnTotalReg.BackColor = System.Drawing.Color.Transparent;
-            this.btnTotalReg.CheckedState.Parent = this.btnTotalReg;
-            this.btnTotalReg.CustomImages.Parent = this.btnTotalReg;
             this.btnTotalReg.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnTotalReg.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTotalReg.ForeColor = System.Drawing.Color.White;
             this.btnTotalReg.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalReg.HoverState.Parent = this.btnTotalReg;
             this.btnTotalReg.Location = new System.Drawing.Point(307, 12);
             this.btnTotalReg.Name = "btnTotalReg";
             this.btnTotalReg.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnTotalReg.ShadowDecoration.Parent = this.btnTotalReg;
             this.btnTotalReg.Size = new System.Drawing.Size(25, 25);
             this.btnTotalReg.TabIndex = 172;
             this.btnTotalReg.TextOffset = new System.Drawing.Point(0, 1);
@@ -331,17 +328,13 @@
             // btnTotalPag
             // 
             this.btnTotalPag.BackColor = System.Drawing.Color.Transparent;
-            this.btnTotalPag.CheckedState.Parent = this.btnTotalPag;
-            this.btnTotalPag.CustomImages.Parent = this.btnTotalPag;
             this.btnTotalPag.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnTotalPag.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTotalPag.ForeColor = System.Drawing.Color.White;
             this.btnTotalPag.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalPag.HoverState.Parent = this.btnTotalPag;
             this.btnTotalPag.Location = new System.Drawing.Point(149, 12);
             this.btnTotalPag.Name = "btnTotalPag";
             this.btnTotalPag.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnTotalPag.ShadowDecoration.Parent = this.btnTotalPag;
             this.btnTotalPag.Size = new System.Drawing.Size(25, 25);
             this.btnTotalPag.TabIndex = 169;
             this.btnTotalPag.TextOffset = new System.Drawing.Point(0, 1);
@@ -363,14 +356,12 @@
             this.cboEstadofactura.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboEstadofactura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstadofactura.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboEstadofactura.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboEstadofactura.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboEstadofactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboEstadofactura.HoverState.Parent = this.cboEstadofactura;
             this.cboEstadofactura.ItemHeight = 30;
-            this.cboEstadofactura.ItemsAppearance.Parent = this.cboEstadofactura;
             this.cboEstadofactura.Location = new System.Drawing.Point(450, 45);
             this.cboEstadofactura.Name = "cboEstadofactura";
-            this.cboEstadofactura.ShadowDecoration.Parent = this.cboEstadofactura;
             this.cboEstadofactura.Size = new System.Drawing.Size(96, 36);
             this.cboEstadofactura.TabIndex = 272;
             // 
@@ -428,17 +419,16 @@
             this.dtpFechaFinalBus.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtpFechaFinalBus.BorderRadius = 3;
             this.dtpFechaFinalBus.BorderThickness = 1;
-            this.dtpFechaFinalBus.CheckedState.Parent = this.dtpFechaFinalBus;
+            this.dtpFechaFinalBus.Checked = true;
             this.dtpFechaFinalBus.CustomFormat = "MMMM";
             this.dtpFechaFinalBus.FillColor = System.Drawing.Color.White;
+            this.dtpFechaFinalBus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpFechaFinalBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaFinalBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpFechaFinalBus.HoverState.Parent = this.dtpFechaFinalBus;
             this.dtpFechaFinalBus.Location = new System.Drawing.Point(222, 34);
             this.dtpFechaFinalBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaFinalBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaFinalBus.Name = "dtpFechaFinalBus";
-            this.dtpFechaFinalBus.ShadowDecoration.Parent = this.dtpFechaFinalBus;
             this.dtpFechaFinalBus.Size = new System.Drawing.Size(197, 36);
             this.dtpFechaFinalBus.TabIndex = 233;
             this.dtpFechaFinalBus.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
@@ -460,16 +450,15 @@
             this.dtpFechaInicialBus.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtpFechaInicialBus.BorderRadius = 3;
             this.dtpFechaInicialBus.BorderThickness = 1;
-            this.dtpFechaInicialBus.CheckedState.Parent = this.dtpFechaInicialBus;
+            this.dtpFechaInicialBus.Checked = true;
             this.dtpFechaInicialBus.FillColor = System.Drawing.Color.White;
+            this.dtpFechaInicialBus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpFechaInicialBus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpFechaInicialBus.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpFechaInicialBus.HoverState.Parent = this.dtpFechaInicialBus;
             this.dtpFechaInicialBus.Location = new System.Drawing.Point(8, 33);
             this.dtpFechaInicialBus.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaInicialBus.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaInicialBus.Name = "dtpFechaInicialBus";
-            this.dtpFechaInicialBus.ShadowDecoration.Parent = this.dtpFechaInicialBus;
             this.dtpFechaInicialBus.Size = new System.Drawing.Size(197, 36);
             this.dtpFechaInicialBus.TabIndex = 231;
             this.dtpFechaInicialBus.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
@@ -513,9 +502,7 @@
             this.dgvListaVentas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvListaVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvListaVentas.BackgroundColor = System.Drawing.Color.White;
-            this.dgvListaVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvListaVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvListaVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -526,6 +513,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaVentas.ColumnHeadersHeight = 42;
+            this.dgvListaVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvListaVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDocumento,
             this.numero,
@@ -535,6 +523,7 @@
             this.Importe,
             this.Vehiculos_lv,
             this.Estado_lv,
+            this.ImgEnviarASunat,
             this.imgImprimir});
             this.dgvListaVentas.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -545,7 +534,6 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvListaVentas.EnableHeadersVisualStyles = false;
             this.dgvListaVentas.GridColor = System.Drawing.Color.Silver;
             this.dgvListaVentas.Location = new System.Drawing.Point(7, 91);
             this.dgvListaVentas.Name = "dgvListaVentas";
@@ -570,7 +558,6 @@
             this.dgvListaVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvListaVentas.Size = new System.Drawing.Size(852, 342);
             this.dgvListaVentas.TabIndex = 265;
-            this.dgvListaVentas.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvListaVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvListaVentas.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvListaVentas.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -596,6 +583,75 @@
             this.dgvListaVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVentas_CellClick);
             this.dgvListaVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaVentas_CellFormatting);
             // 
+            // idDocumento
+            // 
+            this.idDocumento.HeaderText = "idDocumento";
+            this.idDocumento.Name = "idDocumento";
+            this.idDocumento.ReadOnly = true;
+            this.idDocumento.Visible = false;
+            // 
+            // numero
+            // 
+            this.numero.FillWeight = 22.84264F;
+            this.numero.HeaderText = "N°";
+            this.numero.Name = "numero";
+            this.numero.ReadOnly = true;
+            // 
+            // codDocumento
+            // 
+            this.codDocumento.FillWeight = 116.8401F;
+            this.codDocumento.HeaderText = "Codigo Documento";
+            this.codDocumento.Name = "codDocumento";
+            this.codDocumento.ReadOnly = true;
+            // 
+            // FECHAPAGO
+            // 
+            this.FECHAPAGO.FillWeight = 93.50409F;
+            this.FECHAPAGO.HeaderText = "Fecha de Emision";
+            this.FECHAPAGO.Name = "FECHAPAGO";
+            this.FECHAPAGO.ReadOnly = true;
+            // 
+            // Ciente_Rs_lv
+            // 
+            this.Ciente_Rs_lv.FillWeight = 175.2433F;
+            this.Ciente_Rs_lv.HeaderText = "Cliente/Razon Social";
+            this.Ciente_Rs_lv.Name = "Ciente_Rs_lv";
+            this.Ciente_Rs_lv.ReadOnly = true;
+            // 
+            // Importe
+            // 
+            this.Importe.HeaderText = "Importe";
+            this.Importe.Name = "Importe";
+            this.Importe.ReadOnly = true;
+            // 
+            // Vehiculos_lv
+            // 
+            this.Vehiculos_lv.FillWeight = 79.41992F;
+            this.Vehiculos_lv.HeaderText = "Operacion";
+            this.Vehiculos_lv.Name = "Vehiculos_lv";
+            this.Vehiculos_lv.ReadOnly = true;
+            // 
+            // Estado_lv
+            // 
+            this.Estado_lv.FillWeight = 162.0815F;
+            this.Estado_lv.HeaderText = "Estado";
+            this.Estado_lv.Name = "Estado_lv";
+            this.Estado_lv.ReadOnly = true;
+            // 
+            // ImgEnviarASunat
+            // 
+            this.ImgEnviarASunat.HeaderText = "";
+            this.ImgEnviarASunat.Name = "ImgEnviarASunat";
+            this.ImgEnviarASunat.ReadOnly = true;
+            // 
+            // imgImprimir
+            // 
+            this.imgImprimir.HeaderText = "";
+            this.imgImprimir.Name = "imgImprimir";
+            this.imgImprimir.ReadOnly = true;
+            this.imgImprimir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.imgImprimir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // SiticoneHtmlLabel1
             // 
             this.SiticoneHtmlLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -611,30 +667,27 @@
             // txtBuscar
             // 
             this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscar.Animated = false;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.DefaultText = "";
             this.txtBuscar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtBuscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtBuscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscar.DisabledState.Parent = this.txtBuscar;
             this.txtBuscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtBuscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscar.FocusedState.Parent = this.txtBuscar;
+            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBuscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscar.HoverState.Parent = this.txtBuscar;
             this.txtBuscar.Location = new System.Drawing.Point(715, 45);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderText = "";
             this.txtBuscar.SelectedText = "";
-            this.txtBuscar.ShadowDecoration.Parent = this.txtBuscar;
             this.txtBuscar.Size = new System.Drawing.Size(141, 36);
             this.txtBuscar.TabIndex = 273;
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.gunaLabel1);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Controls.Add(this.iconButton2);
             this.tabPage3.Controls.Add(this.cboEstadosBoleta);
@@ -643,7 +696,6 @@
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.pbBuscarBoleta);
             this.tabPage3.Controls.Add(this.dgvBoletas);
-            this.tabPage3.Controls.Add(this.SiticoneHtmlLabel2);
             this.tabPage3.Controls.Add(this.txtBuscarBoleta);
             this.tabPage3.Location = new System.Drawing.Point(140, 4);
             this.tabPage3.Name = "tabPage3";
@@ -652,6 +704,18 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "BOLETAS";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.gunaLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.gunaLabel1.Location = new System.Drawing.Point(710, 26);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(100, 19);
+            this.gunaLabel1.TabIndex = 286;
+            this.gunaLabel1.Text = "Buscar Boleta";
             // 
             // groupBox2
             // 
@@ -674,17 +738,13 @@
             // btnNumFilasBoletas
             // 
             this.btnNumFilasBoletas.BackColor = System.Drawing.Color.Transparent;
-            this.btnNumFilasBoletas.CheckedState.Parent = this.btnNumFilasBoletas;
-            this.btnNumFilasBoletas.CustomImages.Parent = this.btnNumFilasBoletas;
             this.btnNumFilasBoletas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnNumFilasBoletas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumFilasBoletas.ForeColor = System.Drawing.Color.White;
             this.btnNumFilasBoletas.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnNumFilasBoletas.HoverState.Parent = this.btnNumFilasBoletas;
             this.btnNumFilasBoletas.Location = new System.Drawing.Point(209, 12);
             this.btnNumFilasBoletas.Name = "btnNumFilasBoletas";
             this.btnNumFilasBoletas.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnNumFilasBoletas.ShadowDecoration.Parent = this.btnNumFilasBoletas;
             this.btnNumFilasBoletas.Size = new System.Drawing.Size(25, 25);
             this.btnNumFilasBoletas.TabIndex = 171;
             this.btnNumFilasBoletas.TextOffset = new System.Drawing.Point(0, 1);
@@ -731,17 +791,13 @@
             // btnTotalRegBoleta
             // 
             this.btnTotalRegBoleta.BackColor = System.Drawing.Color.Transparent;
-            this.btnTotalRegBoleta.CheckedState.Parent = this.btnTotalRegBoleta;
-            this.btnTotalRegBoleta.CustomImages.Parent = this.btnTotalRegBoleta;
             this.btnTotalRegBoleta.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnTotalRegBoleta.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTotalRegBoleta.ForeColor = System.Drawing.Color.White;
             this.btnTotalRegBoleta.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalRegBoleta.HoverState.Parent = this.btnTotalRegBoleta;
             this.btnTotalRegBoleta.Location = new System.Drawing.Point(307, 12);
             this.btnTotalRegBoleta.Name = "btnTotalRegBoleta";
             this.btnTotalRegBoleta.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnTotalRegBoleta.ShadowDecoration.Parent = this.btnTotalRegBoleta;
             this.btnTotalRegBoleta.Size = new System.Drawing.Size(25, 25);
             this.btnTotalRegBoleta.TabIndex = 172;
             this.btnTotalRegBoleta.TextOffset = new System.Drawing.Point(0, 1);
@@ -749,17 +805,13 @@
             // btnTotalPagBoletas
             // 
             this.btnTotalPagBoletas.BackColor = System.Drawing.Color.Transparent;
-            this.btnTotalPagBoletas.CheckedState.Parent = this.btnTotalPagBoletas;
-            this.btnTotalPagBoletas.CustomImages.Parent = this.btnTotalPagBoletas;
             this.btnTotalPagBoletas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnTotalPagBoletas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTotalPagBoletas.ForeColor = System.Drawing.Color.White;
             this.btnTotalPagBoletas.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalPagBoletas.HoverState.Parent = this.btnTotalPagBoletas;
             this.btnTotalPagBoletas.Location = new System.Drawing.Point(149, 12);
             this.btnTotalPagBoletas.Name = "btnTotalPagBoletas";
             this.btnTotalPagBoletas.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnTotalPagBoletas.ShadowDecoration.Parent = this.btnTotalPagBoletas;
             this.btnTotalPagBoletas.Size = new System.Drawing.Size(25, 25);
             this.btnTotalPagBoletas.TabIndex = 169;
             this.btnTotalPagBoletas.TextOffset = new System.Drawing.Point(0, 1);
@@ -801,14 +853,12 @@
             this.cboEstadosBoleta.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboEstadosBoleta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstadosBoleta.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboEstadosBoleta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboEstadosBoleta.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboEstadosBoleta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboEstadosBoleta.HoverState.Parent = this.cboEstadosBoleta;
             this.cboEstadosBoleta.ItemHeight = 30;
-            this.cboEstadosBoleta.ItemsAppearance.Parent = this.cboEstadosBoleta;
             this.cboEstadosBoleta.Location = new System.Drawing.Point(449, 48);
             this.cboEstadosBoleta.Name = "cboEstadosBoleta";
-            this.cboEstadosBoleta.ShadowDecoration.Parent = this.cboEstadosBoleta;
             this.cboEstadosBoleta.Size = new System.Drawing.Size(96, 36);
             this.cboEstadosBoleta.TabIndex = 282;
             // 
@@ -866,17 +916,16 @@
             this.dtFechaFinBoletas.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtFechaFinBoletas.BorderRadius = 3;
             this.dtFechaFinBoletas.BorderThickness = 1;
-            this.dtFechaFinBoletas.CheckedState.Parent = this.dtFechaFinBoletas;
+            this.dtFechaFinBoletas.Checked = true;
             this.dtFechaFinBoletas.CustomFormat = "MMMM";
             this.dtFechaFinBoletas.FillColor = System.Drawing.Color.White;
+            this.dtFechaFinBoletas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtFechaFinBoletas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFechaFinBoletas.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaFinBoletas.HoverState.Parent = this.dtFechaFinBoletas;
             this.dtFechaFinBoletas.Location = new System.Drawing.Point(222, 34);
             this.dtFechaFinBoletas.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaFinBoletas.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtFechaFinBoletas.Name = "dtFechaFinBoletas";
-            this.dtFechaFinBoletas.ShadowDecoration.Parent = this.dtFechaFinBoletas;
             this.dtFechaFinBoletas.Size = new System.Drawing.Size(197, 36);
             this.dtFechaFinBoletas.TabIndex = 233;
             this.dtFechaFinBoletas.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
@@ -898,16 +947,15 @@
             this.dtFechaIniBoletas.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtFechaIniBoletas.BorderRadius = 3;
             this.dtFechaIniBoletas.BorderThickness = 1;
-            this.dtFechaIniBoletas.CheckedState.Parent = this.dtFechaIniBoletas;
+            this.dtFechaIniBoletas.Checked = true;
             this.dtFechaIniBoletas.FillColor = System.Drawing.Color.White;
+            this.dtFechaIniBoletas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtFechaIniBoletas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFechaIniBoletas.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaIniBoletas.HoverState.Parent = this.dtFechaIniBoletas;
             this.dtFechaIniBoletas.Location = new System.Drawing.Point(8, 33);
             this.dtFechaIniBoletas.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaIniBoletas.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtFechaIniBoletas.Name = "dtFechaIniBoletas";
-            this.dtFechaIniBoletas.ShadowDecoration.Parent = this.dtFechaIniBoletas;
             this.dtFechaIniBoletas.Size = new System.Drawing.Size(197, 36);
             this.dtFechaIniBoletas.TabIndex = 231;
             this.dtFechaIniBoletas.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
@@ -951,9 +999,7 @@
             this.dgvBoletas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvBoletas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvBoletas.BackgroundColor = System.Drawing.Color.White;
-            this.dgvBoletas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvBoletas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvBoletas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -964,6 +1010,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvBoletas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvBoletas.ColumnHeadersHeight = 42;
+            this.dgvBoletas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvBoletas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
@@ -973,6 +1020,7 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
+            this.ImgEnviarASunatBoletas,
             this.imgImprimirBoletas});
             this.dgvBoletas.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -983,7 +1031,6 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBoletas.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvBoletas.EnableHeadersVisualStyles = false;
             this.dgvBoletas.GridColor = System.Drawing.Color.Silver;
             this.dgvBoletas.Location = new System.Drawing.Point(6, 94);
             this.dgvBoletas.Name = "dgvBoletas";
@@ -1008,7 +1055,6 @@
             this.dgvBoletas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvBoletas.Size = new System.Drawing.Size(852, 342);
             this.dgvBoletas.TabIndex = 277;
-            this.dgvBoletas.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvBoletas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvBoletas.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvBoletas.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -1033,131 +1079,6 @@
             this.dgvBoletas.Visible = false;
             this.dgvBoletas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBoletas_CellClick);
             this.dgvBoletas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBoletas_CellFormatting);
-            // 
-            // SiticoneHtmlLabel2
-            // 
-            this.SiticoneHtmlLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SiticoneHtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.SiticoneHtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SiticoneHtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.SiticoneHtmlLabel2.Location = new System.Drawing.Point(714, 28);
-            this.SiticoneHtmlLabel2.Name = "SiticoneHtmlLabel2";
-            this.SiticoneHtmlLabel2.Size = new System.Drawing.Size(100, 18);
-            this.SiticoneHtmlLabel2.TabIndex = 276;
-            this.SiticoneHtmlLabel2.Text = "Buscar Boleta";
-            // 
-            // txtBuscarBoleta
-            // 
-            this.txtBuscarBoleta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscarBoleta.Animated = false;
-            this.txtBuscarBoleta.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscarBoleta.DefaultText = "";
-            this.txtBuscarBoleta.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBuscarBoleta.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBuscarBoleta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarBoleta.DisabledState.Parent = this.txtBuscarBoleta;
-            this.txtBuscarBoleta.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarBoleta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarBoleta.FocusedState.Parent = this.txtBuscarBoleta;
-            this.txtBuscarBoleta.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarBoleta.HoverState.Parent = this.txtBuscarBoleta;
-            this.txtBuscarBoleta.Location = new System.Drawing.Point(714, 48);
-            this.txtBuscarBoleta.Name = "txtBuscarBoleta";
-            this.txtBuscarBoleta.PasswordChar = '\0';
-            this.txtBuscarBoleta.PlaceholderText = "";
-            this.txtBuscarBoleta.SelectedText = "";
-            this.txtBuscarBoleta.ShadowDecoration.Parent = this.txtBuscarBoleta;
-            this.txtBuscarBoleta.Size = new System.Drawing.Size(141, 36);
-            this.txtBuscarBoleta.TabIndex = 283;
-            this.txtBuscarBoleta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarBoleta_KeyPress);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.btnExportarNota);
-            this.tabPage2.Controls.Add(this.cboEstadoNota);
-            this.tabPage2.Controls.Add(this.chkHabilitaFechaNota);
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.pbBuscarNotaCredito);
-            this.tabPage2.Controls.Add(this.dgvNota);
-            this.tabPage2.Controls.Add(this.SiticoneHtmlLabel3);
-            this.tabPage2.Controls.Add(this.txtBuscarNotaCredito);
-            this.tabPage2.Location = new System.Drawing.Point(140, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(864, 481);
-            this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "NOT. CREDITO";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // cmAcciones
-            // 
-            this.cmAcciones.Name = "cmAcciones";
-            this.cmAcciones.Size = new System.Drawing.Size(61, 4);
-            // 
-            // idDocumento
-            // 
-            this.idDocumento.HeaderText = "idDocumento";
-            this.idDocumento.Name = "idDocumento";
-            this.idDocumento.ReadOnly = true;
-            this.idDocumento.Visible = false;
-            // 
-            // numero
-            // 
-            this.numero.FillWeight = 22.84264F;
-            this.numero.HeaderText = "N°";
-            this.numero.Name = "numero";
-            this.numero.ReadOnly = true;
-            // 
-            // codDocumento
-            // 
-            this.codDocumento.FillWeight = 116.8401F;
-            this.codDocumento.HeaderText = "Codigo Documento";
-            this.codDocumento.Name = "codDocumento";
-            this.codDocumento.ReadOnly = true;
-            // 
-            // FECHAPAGO
-            // 
-            this.FECHAPAGO.FillWeight = 93.50409F;
-            this.FECHAPAGO.HeaderText = "Fecha de Emision";
-            this.FECHAPAGO.Name = "FECHAPAGO";
-            this.FECHAPAGO.ReadOnly = true;
-            // 
-            // Ciente_Rs_lv
-            // 
-            this.Ciente_Rs_lv.FillWeight = 175.2433F;
-            this.Ciente_Rs_lv.HeaderText = "Cliente/Razon Social";
-            this.Ciente_Rs_lv.Name = "Ciente_Rs_lv";
-            this.Ciente_Rs_lv.ReadOnly = true;
-            // 
-            // Importe
-            // 
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
-            this.Importe.ReadOnly = true;
-            // 
-            // Vehiculos_lv
-            // 
-            this.Vehiculos_lv.FillWeight = 79.41992F;
-            this.Vehiculos_lv.HeaderText = "Operacion";
-            this.Vehiculos_lv.Name = "Vehiculos_lv";
-            this.Vehiculos_lv.ReadOnly = true;
-            // 
-            // Estado_lv
-            // 
-            this.Estado_lv.FillWeight = 162.0815F;
-            this.Estado_lv.HeaderText = "Estado";
-            this.Estado_lv.Name = "Estado_lv";
-            this.Estado_lv.ReadOnly = true;
-            // 
-            // imgImprimir
-            // 
-            this.imgImprimir.HeaderText = "";
-            this.imgImprimir.Name = "imgImprimir";
-            this.imgImprimir.ReadOnly = true;
-            this.imgImprimir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.imgImprimir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1214,6 +1135,12 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
+            // ImgEnviarASunatBoletas
+            // 
+            this.ImgEnviarASunatBoletas.HeaderText = "";
+            this.ImgEnviarASunatBoletas.Name = "ImgEnviarASunatBoletas";
+            this.ImgEnviarASunatBoletas.ReadOnly = true;
+            // 
             // imgImprimirBoletas
             // 
             this.imgImprimirBoletas.HeaderText = "";
@@ -1221,6 +1148,47 @@
             this.imgImprimirBoletas.ReadOnly = true;
             this.imgImprimirBoletas.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.imgImprimirBoletas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // txtBuscarBoleta
+            // 
+            this.txtBuscarBoleta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscarBoleta.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarBoleta.DefaultText = "";
+            this.txtBuscarBoleta.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarBoleta.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarBoleta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarBoleta.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarBoleta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarBoleta.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtBuscarBoleta.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarBoleta.Location = new System.Drawing.Point(714, 48);
+            this.txtBuscarBoleta.Name = "txtBuscarBoleta";
+            this.txtBuscarBoleta.PasswordChar = '\0';
+            this.txtBuscarBoleta.PlaceholderText = "";
+            this.txtBuscarBoleta.SelectedText = "";
+            this.txtBuscarBoleta.Size = new System.Drawing.Size(141, 36);
+            this.txtBuscarBoleta.TabIndex = 283;
+            this.txtBuscarBoleta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarBoleta_KeyPress);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.btnExportarNota);
+            this.tabPage2.Controls.Add(this.cboEstadoNota);
+            this.tabPage2.Controls.Add(this.chkHabilitaFechaNota);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.pbBuscarNotaCredito);
+            this.tabPage2.Controls.Add(this.dgvNota);
+            this.tabPage2.Controls.Add(this.SiticoneHtmlLabel3);
+            this.tabPage2.Controls.Add(this.txtBuscarNotaCredito);
+            this.tabPage2.Location = new System.Drawing.Point(140, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(864, 481);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "NOT. CREDITO";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -1243,17 +1211,13 @@
             // btnNumFilasNota
             // 
             this.btnNumFilasNota.BackColor = System.Drawing.Color.Transparent;
-            this.btnNumFilasNota.CheckedState.Parent = this.btnNumFilasNota;
-            this.btnNumFilasNota.CustomImages.Parent = this.btnNumFilasNota;
             this.btnNumFilasNota.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnNumFilasNota.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNumFilasNota.ForeColor = System.Drawing.Color.White;
             this.btnNumFilasNota.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnNumFilasNota.HoverState.Parent = this.btnNumFilasNota;
             this.btnNumFilasNota.Location = new System.Drawing.Point(209, 12);
             this.btnNumFilasNota.Name = "btnNumFilasNota";
             this.btnNumFilasNota.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnNumFilasNota.ShadowDecoration.Parent = this.btnNumFilasNota;
             this.btnNumFilasNota.Size = new System.Drawing.Size(25, 25);
             this.btnNumFilasNota.TabIndex = 171;
             this.btnNumFilasNota.TextOffset = new System.Drawing.Point(0, 1);
@@ -1300,17 +1264,13 @@
             // btnTotalRegNota
             // 
             this.btnTotalRegNota.BackColor = System.Drawing.Color.Transparent;
-            this.btnTotalRegNota.CheckedState.Parent = this.btnTotalRegNota;
-            this.btnTotalRegNota.CustomImages.Parent = this.btnTotalRegNota;
             this.btnTotalRegNota.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnTotalRegNota.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTotalRegNota.ForeColor = System.Drawing.Color.White;
             this.btnTotalRegNota.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalRegNota.HoverState.Parent = this.btnTotalRegNota;
             this.btnTotalRegNota.Location = new System.Drawing.Point(307, 12);
             this.btnTotalRegNota.Name = "btnTotalRegNota";
             this.btnTotalRegNota.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnTotalRegNota.ShadowDecoration.Parent = this.btnTotalRegNota;
             this.btnTotalRegNota.Size = new System.Drawing.Size(25, 25);
             this.btnTotalRegNota.TabIndex = 172;
             this.btnTotalRegNota.TextOffset = new System.Drawing.Point(0, 1);
@@ -1318,17 +1278,13 @@
             // btnTotalPagNota
             // 
             this.btnTotalPagNota.BackColor = System.Drawing.Color.Transparent;
-            this.btnTotalPagNota.CheckedState.Parent = this.btnTotalPagNota;
-            this.btnTotalPagNota.CustomImages.Parent = this.btnTotalPagNota;
             this.btnTotalPagNota.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.btnTotalPagNota.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTotalPagNota.ForeColor = System.Drawing.Color.White;
             this.btnTotalPagNota.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.btnTotalPagNota.HoverState.Parent = this.btnTotalPagNota;
             this.btnTotalPagNota.Location = new System.Drawing.Point(149, 12);
             this.btnTotalPagNota.Name = "btnTotalPagNota";
             this.btnTotalPagNota.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
-            this.btnTotalPagNota.ShadowDecoration.Parent = this.btnTotalPagNota;
             this.btnTotalPagNota.Size = new System.Drawing.Size(25, 25);
             this.btnTotalPagNota.TabIndex = 169;
             this.btnTotalPagNota.TextOffset = new System.Drawing.Point(0, 1);
@@ -1369,14 +1325,12 @@
             this.cboEstadoNota.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboEstadoNota.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstadoNota.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboEstadoNota.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboEstadoNota.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboEstadoNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboEstadoNota.HoverState.Parent = this.cboEstadoNota;
             this.cboEstadoNota.ItemHeight = 30;
-            this.cboEstadoNota.ItemsAppearance.Parent = this.cboEstadoNota;
             this.cboEstadoNota.Location = new System.Drawing.Point(449, 48);
             this.cboEstadoNota.Name = "cboEstadoNota";
-            this.cboEstadoNota.ShadowDecoration.Parent = this.cboEstadoNota;
             this.cboEstadoNota.Size = new System.Drawing.Size(96, 36);
             this.cboEstadoNota.TabIndex = 292;
             // 
@@ -1434,17 +1388,16 @@
             this.dtFechaFinNota.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtFechaFinNota.BorderRadius = 3;
             this.dtFechaFinNota.BorderThickness = 1;
-            this.dtFechaFinNota.CheckedState.Parent = this.dtFechaFinNota;
+            this.dtFechaFinNota.Checked = true;
             this.dtFechaFinNota.CustomFormat = "MMMM";
             this.dtFechaFinNota.FillColor = System.Drawing.Color.White;
+            this.dtFechaFinNota.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtFechaFinNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFechaFinNota.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaFinNota.HoverState.Parent = this.dtFechaFinNota;
             this.dtFechaFinNota.Location = new System.Drawing.Point(222, 34);
             this.dtFechaFinNota.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaFinNota.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtFechaFinNota.Name = "dtFechaFinNota";
-            this.dtFechaFinNota.ShadowDecoration.Parent = this.dtFechaFinNota;
             this.dtFechaFinNota.Size = new System.Drawing.Size(197, 36);
             this.dtFechaFinNota.TabIndex = 233;
             this.dtFechaFinNota.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
@@ -1466,16 +1419,15 @@
             this.dtFechaIniNota.BorderColor = System.Drawing.Color.Gainsboro;
             this.dtFechaIniNota.BorderRadius = 3;
             this.dtFechaIniNota.BorderThickness = 1;
-            this.dtFechaIniNota.CheckedState.Parent = this.dtFechaIniNota;
+            this.dtFechaIniNota.Checked = true;
             this.dtFechaIniNota.FillColor = System.Drawing.Color.White;
+            this.dtFechaIniNota.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtFechaIniNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFechaIniNota.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtFechaIniNota.HoverState.Parent = this.dtFechaIniNota;
             this.dtFechaIniNota.Location = new System.Drawing.Point(8, 33);
             this.dtFechaIniNota.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFechaIniNota.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtFechaIniNota.Name = "dtFechaIniNota";
-            this.dtFechaIniNota.ShadowDecoration.Parent = this.dtFechaIniNota;
             this.dtFechaIniNota.Size = new System.Drawing.Size(197, 36);
             this.dtFechaIniNota.TabIndex = 231;
             this.dtFechaIniNota.Value = new System.DateTime(2021, 4, 8, 18, 42, 48, 690);
@@ -1519,9 +1471,7 @@
             this.dgvNota.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvNota.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvNota.BackgroundColor = System.Drawing.Color.White;
-            this.dgvNota.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvNota.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvNota.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
@@ -1532,6 +1482,7 @@
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvNota.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvNota.ColumnHeadersHeight = 42;
+            this.dgvNota.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvNota.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
@@ -1541,6 +1492,7 @@
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15,
             this.dataGridViewTextBoxColumn16,
+            this.ImgEnviarASunatNota,
             this.dataGridViewImageColumn1});
             this.dgvNota.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1551,7 +1503,6 @@
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvNota.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dgvNota.EnableHeadersVisualStyles = false;
             this.dgvNota.GridColor = System.Drawing.Color.Silver;
             this.dgvNota.Location = new System.Drawing.Point(6, 94);
             this.dgvNota.Name = "dgvNota";
@@ -1576,7 +1527,6 @@
             this.dgvNota.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvNota.Size = new System.Drawing.Size(852, 342);
             this.dgvNota.TabIndex = 287;
-            this.dgvNota.Theme = Siticone.Desktop.UI.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvNota.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvNota.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvNota.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -1599,6 +1549,8 @@
             this.dgvNota.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Azure;
             this.dgvNota.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.SteelBlue;
             this.dgvNota.Visible = false;
+            this.dgvNota.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNota_CellClick);
+            this.dgvNota.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvNota_CellFormatting);
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -1655,6 +1607,12 @@
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
             // 
+            // ImgEnviarASunatNota
+            // 
+            this.ImgEnviarASunatNota.HeaderText = "";
+            this.ImgEnviarASunatNota.Name = "ImgEnviarASunatNota";
+            this.ImgEnviarASunatNota.ReadOnly = true;
+            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.HeaderText = "";
@@ -1678,32 +1636,87 @@
             // txtBuscarNotaCredito
             // 
             this.txtBuscarNotaCredito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscarNotaCredito.Animated = false;
             this.txtBuscarNotaCredito.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscarNotaCredito.DefaultText = "";
             this.txtBuscarNotaCredito.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtBuscarNotaCredito.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtBuscarNotaCredito.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarNotaCredito.DisabledState.Parent = this.txtBuscarNotaCredito;
             this.txtBuscarNotaCredito.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtBuscarNotaCredito.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarNotaCredito.FocusedState.Parent = this.txtBuscarNotaCredito;
+            this.txtBuscarNotaCredito.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBuscarNotaCredito.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarNotaCredito.HoverState.Parent = this.txtBuscarNotaCredito;
             this.txtBuscarNotaCredito.Location = new System.Drawing.Point(714, 48);
             this.txtBuscarNotaCredito.Name = "txtBuscarNotaCredito";
             this.txtBuscarNotaCredito.PasswordChar = '\0';
             this.txtBuscarNotaCredito.PlaceholderText = "";
             this.txtBuscarNotaCredito.SelectedText = "";
-            this.txtBuscarNotaCredito.ShadowDecoration.Parent = this.txtBuscarNotaCredito;
             this.txtBuscarNotaCredito.Size = new System.Drawing.Size(141, 36);
             this.txtBuscarNotaCredito.TabIndex = 293;
+            this.txtBuscarNotaCredito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarNotaCredito_KeyPress);
+            // 
+            // cntxtMenuStrip
+            // 
+            this.cntxtMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reenviarDocumentoASunatToolStripMenuItem});
+            this.cntxtMenuStrip.Name = "cntxtMenuStrip";
+            this.cntxtMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.cntxtMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.cntxtMenuStrip.RenderStyle.ColorTable = null;
+            this.cntxtMenuStrip.RenderStyle.RoundedEdges = true;
+            this.cntxtMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.cntxtMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cntxtMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.cntxtMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.cntxtMenuStrip.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.SystemDefault;
+            this.cntxtMenuStrip.Size = new System.Drawing.Size(228, 26);
+            // 
+            // reenviarDocumentoASunatToolStripMenuItem
+            // 
+            this.reenviarDocumentoASunatToolStripMenuItem.Image = global::wfaIntegradoCom.Properties.Resources.equivale;
+            this.reenviarDocumentoASunatToolStripMenuItem.Name = "reenviarDocumentoASunatToolStripMenuItem";
+            this.reenviarDocumentoASunatToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.reenviarDocumentoASunatToolStripMenuItem.Text = "Reenviar Documento a Sunat";
+            this.reenviarDocumentoASunatToolStripMenuItem.Click += new System.EventHandler(this.reenviarDocumentoASunatToolStripMenuItem_Click);
+            // 
+            // circularProgressBar1
+            // 
+            this.circularProgressBar1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.circularProgressBar1.AnimationSpeed = 500;
+            this.circularProgressBar1.BackColor = System.Drawing.Color.Transparent;
+            this.circularProgressBar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.circularProgressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.circularProgressBar1.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.circularProgressBar1.InnerMargin = 2;
+            this.circularProgressBar1.InnerWidth = -1;
+            this.circularProgressBar1.Location = new System.Drawing.Point(12, 377);
+            this.circularProgressBar1.MarqueeAnimationSpeed = 2000;
+            this.circularProgressBar1.Name = "circularProgressBar1";
+            this.circularProgressBar1.OuterColor = System.Drawing.Color.Gray;
+            this.circularProgressBar1.OuterMargin = -25;
+            this.circularProgressBar1.OuterWidth = 26;
+            this.circularProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.circularProgressBar1.ProgressWidth = 25;
+            this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.circularProgressBar1.Size = new System.Drawing.Size(125, 115);
+            this.circularProgressBar1.StartAngle = 270;
+            this.circularProgressBar1.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.circularProgressBar1.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.circularProgressBar1.SubscriptText = "";
+            this.circularProgressBar1.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.circularProgressBar1.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.circularProgressBar1.SuperscriptText = "";
+            this.circularProgressBar1.TabIndex = 1;
+            this.circularProgressBar1.Text = "Emitiendo..";
+            this.circularProgressBar1.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.circularProgressBar1.Value = 68;
+            this.circularProgressBar1.Visible = false;
             // 
             // MovimientoSunat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 495);
+            this.Controls.Add(this.circularProgressBar1);
             this.Controls.Add(this.siticonePanel1);
             this.Name = "MovimientoSunat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1729,13 +1742,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletas)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscarNotaCredito)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNota)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.cntxtMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1767,7 +1781,6 @@
         private Siticone.Desktop.UI.WinForms.SiticoneCircleButton btnTotalPag;
         private System.Windows.Forms.Label label41;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.ContextMenuStrip cmAcciones;
         private System.Windows.Forms.TabPage tabPage3;
         private FontAwesome.Sharp.IconButton iconButton2;
         private Siticone.Desktop.UI.WinForms.SiticoneComboBox cboEstadosBoleta;
@@ -1780,7 +1793,6 @@
         private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconPictureBox pbBuscarBoleta;
         private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvBoletas;
-        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel2;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtBuscarBoleta;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1792,24 +1804,6 @@
         private Siticone.Desktop.UI.WinForms.SiticoneCircleButton btnTotalRegBoleta;
         private Siticone.Desktop.UI.WinForms.SiticoneCircleButton btnTotalPagBoletas;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDocumento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codDocumento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAPAGO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ciente_Rs_lv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculos_lv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado_lv;
-        private System.Windows.Forms.DataGridViewImageColumn imgImprimir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewImageColumn imgImprimirBoletas;
         private System.Windows.Forms.GroupBox groupBox3;
         private Siticone.Desktop.UI.WinForms.SiticoneCircleButton btnNumFilasNota;
         private System.Windows.Forms.Label label7;
@@ -1830,6 +1824,31 @@
         private System.Windows.Forms.Label label13;
         private FontAwesome.Sharp.IconPictureBox pbBuscarNotaCredito;
         private Siticone.Desktop.UI.WinForms.SiticoneDataGridView dgvNota;
+        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel3;
+        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtBuscarNotaCredito;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAPAGO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ciente_Rs_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculos_lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado_lv;
+        private System.Windows.Forms.DataGridViewImageColumn ImgEnviarASunat;
+        private System.Windows.Forms.DataGridViewImageColumn imgImprimir;
+        private Guna.UI.WinForms.GunaContextMenuStrip cntxtMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem reenviarDocumentoASunatToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewImageColumn ImgEnviarASunatBoletas;
+        private System.Windows.Forms.DataGridViewImageColumn imgImprimirBoletas;
+        private Guna.UI.WinForms.GunaLabel gunaLabel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
@@ -1838,9 +1857,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewImageColumn ImgEnviarASunatNota;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel SiticoneHtmlLabel3;
-        private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtBuscarNotaCredito;
+        private CircularProgressBar.CircularProgressBar circularProgressBar1;
     }
 
 }

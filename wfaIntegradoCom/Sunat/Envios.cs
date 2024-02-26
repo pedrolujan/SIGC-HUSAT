@@ -495,15 +495,17 @@ namespace wfaIntegradoCom.Sunat
                 decimal descuento_Sin_Igv = Convert.ToDecimal(detalle.TotalTipoDescuento) / 1.18m;
 
                 //Restar el valor del descuento al precio unitario del producto:
-                Decimal resta = detalle.preciounitario - detalle.importeRestante;
+                decimal importeRestante_Descontado = detalle.importeRestante - descuento;
+                Decimal resta_UniValido = detalle.preciounitario - (importeRestante_Descontado<0?0: importeRestante_Descontado);
+
                 //Importe Total sin descuentos. sin igv
-                decimal precio_unitario_Sin_Igv = resta==0? detalle.preciounitario / 1.18m :(detalle.preciounitario) / 1.18m;
+                decimal precio_unitario_Sin_Igv = resta_UniValido / 1.18m;
                 //Precio que se deba pagar
-                decimal precio_unitario_descuento = resta == 0 ? detalle.preciounitario -descuento:(detalle.preciounitario) - descuento;
+                decimal precio_unitario_descuento = resta_UniValido -descuento;
 
                 //Calcular el valor del precio unitario sin el IGV:
                 decimal precio_unitario_descuento_sin_igv = precio_unitario_descuento / 1.18m;
-
+                
                 InvoiceLineType item = new InvoiceLineType();
 
                 IDType numeroItem = new IDType();
@@ -1017,7 +1019,7 @@ namespace wfaIntegradoCom.Sunat
                 return (new ResponseSunat
                 {
                     isSuccesfull = false,
-                    codeError="SINCODIGO",
+                    codeError=ex.Code.Name+"",
                     message = ""+ex.Message,
                 });
             }

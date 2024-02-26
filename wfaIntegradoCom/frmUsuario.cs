@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -140,7 +142,7 @@ namespace wfaIntegradoCom
             }
 
         }
-
+        
         private void frmUsuario_Load(object sender, EventArgs e)
         {
             pCargarSucursal();
@@ -149,7 +151,6 @@ namespace wfaIntegradoCom
             iconVerContrasena.IconChar = FontAwesome.Sharp.IconChar.Eye;
             iconVerContrasena.IconColor = Variables.ColorEmpresa;
             this.txtUser.Focus();
-
 
         }
 

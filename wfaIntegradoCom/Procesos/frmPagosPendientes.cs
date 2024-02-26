@@ -117,7 +117,7 @@ namespace wfaIntegradoCom.Procesos
             }
             else
             {
-                lsDetalleVentaRecibidoParaEnviarASunat = lstDetalleParaSunat;
+                 lsDetalleVentaRecibidoParaEnviarASunat = lstDetalleParaSunat;
                 foreach (var item in lstDetalleParaSunat)
                 {
                     if (lstDetalleParaSunat[y].Importe >= ImporteARestar)
@@ -623,7 +623,7 @@ namespace wfaIntegradoCom.Procesos
                     cSimbolo = clsMoneda.cSimbolo,
                     preciounitario = Convert.ToDecimal(d.Importe),
                     ImporteRow = (Convert.ToDecimal(d.Importe) * 1),
-                    importeRestante=d.importeRestante,
+                    importeRestante=d.importeRestante-d.TotalTipoDescuento,
                     mtoValorVentaItem = (Convert.ToDecimal(d.Importe) * 1),
 
                     Unidad_de_medida = "ZZ"
@@ -883,7 +883,7 @@ namespace wfaIntegradoCom.Procesos
         {
             //Cargo clsCargo1 = lstDocumentoVentaEmitir.Find(i => i.cCodTab == cboComprobanteP.SelectedValue.ToString());
             EmitirFactura emf = new EmitirFactura();
-            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            String rutaArchivo = FunGeneral.GetRootPathSunat()+ @"\CDR\";
             byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
         
                 if (clsDocumentoVentaEmitir.cCodTab == "DOVE0002" || clsDocumentoVentaEmitir.cCodTab == "DOVE0001")
@@ -917,7 +917,7 @@ namespace wfaIntegradoCom.Procesos
             Boolean est = false;
             byte[] btImage = new byte[] { };
             List<xmlDocumentoVentaGeneral> lstXmlDocVenta = new List<xmlDocumentoVentaGeneral>();
-            btImage = fnEnviarFacturaASunat();
+            //btImage = fnEnviarFacturaASunat();
 
             lstXmlDocVenta.Add(new xmlDocumentoVentaGeneral
             {
@@ -927,25 +927,19 @@ namespace wfaIntegradoCom.Procesos
 
             });
            
-            if (intRespuestaSunat == 1)
+            
+            est = blV.blGuardarpagosPendientes(idTrandiaria, lstPagosTrand, lstXmlDocVenta, tipoCon);
+            if (est == true)
             {
-                est = blV.blGuardarpagosPendientes(idTrandiaria, lstPagosTrand, lstXmlDocVenta, tipoCon);
-                if (est == true)
-                {
-                    MessageBox.Show("Importe guardado Exitosamente", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    fnBusacarVentas(0, -1);
-                    estadoGuardarPago = false;
-                }
-                else
-                {
-                    MessageBox.Show("Error al guardar Importe", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Importe guardado Exitosamente", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fnBusacarVentas(0, -1);
+                estadoGuardarPago = false;
             }
             else
             {
-                MessageBox.Show("Error al enviar documento a la sunat", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("Error al guardar Importe", "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+          
 
         }
 
@@ -1207,7 +1201,15 @@ namespace wfaIntegradoCom.Procesos
 
         private void btnGusrdarPago_Click(object sender, EventArgs e)
         {
-            fnCargarDatosDeDocumento();
+            try
+            {
+                fnCargarDatosDeDocumento();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error\n"+ex.Message, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void cboTipoDocEmitir_SelectedIndexChanged_1(object sender, EventArgs e)

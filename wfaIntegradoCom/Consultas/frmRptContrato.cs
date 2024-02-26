@@ -40,7 +40,7 @@ namespace wfaIntegradoCom.Consultas
         }
         private void fnCargarReporte(List<Cliente> lstC, List<Vehiculo> lstV,List<Contrato> lstCt)
         {
-            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\QR\CONTRATO\" + lstCt[0].codContrato + ".png";
+            String rutaArchivo = FunGeneral.GetRootPath() + @"\QR\CONTRATO\" + lstCt[0].codContrato + ".png";
 
             if (File.Exists(rutaArchivo))
             {

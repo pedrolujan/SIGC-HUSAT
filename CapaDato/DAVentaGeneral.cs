@@ -20,7 +20,7 @@ namespace CapaDato
         public Boolean daGenerarVentaGeneral(VentaGeneral clsVentaGeneral, List<xmlDocumentoVentaGeneral> xmlDocVenta, byte[] btImage, ResponseSunat responseSunat, Int16 tipoCon)
         {
 
-            SqlParameter[] pa = new SqlParameter[35];
+            SqlParameter[] pa = new SqlParameter[37];
             clsConexion objCnx = null;
             objUtil = new clsUtil();
             List<VentaGeneral> lstVentaGeneral = new List<VentaGeneral>();

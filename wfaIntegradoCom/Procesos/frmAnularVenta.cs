@@ -234,7 +234,7 @@ namespace wfaIntegradoCom.Procesos
                 xmlDocVenta.xmlDocumentoVenta[0].cDireccion = FunGeneral.FormatearCadenaTitleCase(xmlDocVenta.xmlDocumentoVenta[0].cDireccion);
                 xmlDocVenta.xmlDocumentoVenta[0].cEstado = "ANULACIONES";
                 xmlDocVenta.xmlDocumentoVenta[0].NombreDocumento = "NOTA DE CREDITO";
-                xmlDocVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = "FC01-00000002";
+                xmlDocVenta.xmlDocumentoVenta[0].cCodDocumentoVenta = clsDocumentoVentaEmitir.SerieDoc+"-"+FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsDocumentoVentaEmitir.nValor2));
                 xmlDocVenta.xmlDocumentoVenta[0].cDocumento = xmlDocVenta.xmlDocumentoVenta[0].cDocumento.ToString()==""? "00000000": xmlDocVenta.xmlDocumentoVenta[0].cDocumento;
                 xmlDocVenta.xmlDocumentoVenta[0].est0 = false;
                 xmlDocVenta.xmlDocumentoVenta[0].cVehiculos = FunGeneral.FormatearCadenaTitleCase(cDescripcion);

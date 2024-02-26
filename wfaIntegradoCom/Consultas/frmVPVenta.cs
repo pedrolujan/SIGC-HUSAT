@@ -118,7 +118,7 @@ namespace wfaIntegradoCom.Consultas
             reportViewer1.Reset();
             if (bt is null || bt.Length<2 )
             {
-                String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+                String rutaArchivo = FunGeneral.GetRootPathSunat() + @"\CDR\";
                 bt = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
                 
             }

@@ -146,6 +146,32 @@ namespace CapaNegocio
 
             }
         }
+        public DataTable blBuscarDocumentoVentaParaEmitirASunat(Int32 idDocumento,Int32 idTipoCon)
+        {
+            daObjTipoVenta = new DAOtrasVenta();
+            try
+            {
+                return daObjTipoVenta.daBuscarDocumentoParaEmitirASunat(idDocumento,idTipoCon);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+        }
+        public Boolean blActualizarDocumentoVenta(xmlDocumentoVentaGeneral xmlDoc, ResponseSunat cls, byte[] imgQr)
+        {
+            daObjTipoVenta = new DAOtrasVenta();
+            try
+            {
+                return daObjTipoVenta.daActualizarDocumentoVenta(xmlDoc, cls, imgQr);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+        }
         public xmlDocumentoVentaGeneral blBuscarDocumentoPagoPendientes(Int32 idContrato,Int32 idTipoCon)
         {
             daObjTipoVenta = new DAOtrasVenta();

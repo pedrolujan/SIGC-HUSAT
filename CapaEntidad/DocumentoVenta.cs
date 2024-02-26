@@ -12,6 +12,8 @@ namespace CapaEntidad
 
         Int32 _idVenta = 0;
         public Int32 idVenta { get { return _idVenta; } set { _idVenta = value; } }
+        Int32 _idDocumentoVenta = 0;
+        public Int32 idDocumentoVenta { get { return _idDocumentoVenta; } set { _idDocumentoVenta = value; } }
 
         String _cTipoDoc = "";
         public String cTipoDoc { get { return _cTipoDoc; } set { _cTipoDoc = value; } }
@@ -51,6 +53,8 @@ namespace CapaEntidad
 
         String _cEstado = "";
         public String cEstado { get { return _cEstado; } set { _cEstado = value; } }
+        String _CodigoEstado = "";
+        public String CodigoEstado { get { return _CodigoEstado; } set { _CodigoEstado = value; } }
 
         public String cDescripcionEstado { get; set; }
         public String cCodEstadoPP { get; set; }

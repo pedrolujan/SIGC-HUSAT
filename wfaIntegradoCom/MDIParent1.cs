@@ -2507,13 +2507,17 @@ namespace wfaIntegradoCom
 
         private void fnColoresDatagridView(SiticoneDataGridView dg)
         {
-            dg.BackgroundColor = ColorThemas.contenidoDasboard;
-            dg.ThemeStyle.RowsStyle.BackColor= ColorThemas.BarraAccesoDirectos;
+            dg.BackgroundColor = ColorThemas.BarraAccesoDirectos;
+            dg.ThemeStyle.RowsStyle.BackColor = ColorThemas.BarraAccesoDirectos;
             //dg.DefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+            dg.DefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
             dg.RowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
             //dg.ThemeStyle.BackColor= ColorThemas.BarraAccesoDirectos;
-            dg.ThemeStyle.AlternatingRowsStyle.BackColor= ColorThemas.BarraAccesoDirectos;
-            dg.ThemeStyle.RowsStyle.ForeColor= ColorThemas.FuenteBotones;
+            dg.ThemeStyle.AlternatingRowsStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+            dg.ThemeStyle.AlternatingRowsStyle.ForeColor = ColorThemas.FuenteControles;
+            dg.ThemeStyle.RowsStyle.ForeColor = ColorThemas.FuenteControles;
+            dg.AlternatingRowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+            dg.AlternatingRowsDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
         }
         private void siticoneComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -4537,6 +4541,20 @@ namespace wfaIntegradoCom
 
                 });
                 lstRepDetalleIngresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC("S/. ", lstRepDetalleIngresos.Sum(i => i.ImporteRow), 0);
+            }
+            if (lsReporteBloqueEgresos.Count == 0)
+            {
+                lsReporteBloqueEgresos.Add(new ReporteBloque
+                {
+                    numero = 1,
+                    Cantidad = 0,
+                    Detallereporte = "No hubo ingresos",
+                    codAuxiliar = "",
+                    ImporteRow = 0,
+                    MonImporteRow = "S/." + 0
+
+                });
+                lsReporteBloqueEgresos[0].MonImporteSumado = FunGeneral.fnFormatearPrecioDC("S/. ", lsReporteBloqueEgresos.Sum(i => i.ImporteRow), 0);
             }
         }
 

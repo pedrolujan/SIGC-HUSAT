@@ -107,10 +107,23 @@ namespace CapaUtil
                 throw new Exception(ex.Message);
             }
         }
+        static string GetRootPath()
+        {
+            // Obtiene la ruta del directorio del ensamblado actual
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+
+            // Combina la ruta del ensamblado con la ruta relativa al directorio raíz del proyecto
+            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "../../");
+
+            // Convierte la ruta a una ruta completa
+            rootPath = Path.GetFullPath(rootPath);
+
+            return rootPath;
+        }
         public void ObtenerQr(String texto,String carpeta, String nombre)
         {
 
-            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\QR\";
+            String rutaArchivo = GetRootPath() + @"\QR\";
             Bitmap bitmap = GenerarQR(texto);
 
             bitmap.Save(rutaArchivo + carpeta+"\\" + nombre + ".png");

@@ -23,14 +23,17 @@ namespace wfaIntegradoCom.Sunat
         static Cliente claseCliente = new Cliente();
         static Cargo claseDocumentoVenta = new Cargo();
         static ParametrosFactura parametrosFactura = new ParametrosFactura();
+        static string addPath = FunGeneral.GetRootPathSunat();
         public ResponseSunat EmitirFacturasContado(Cliente clsCliente,List<DetalleVenta> detalleventa, List<DocumentoVenta>  lstDocVenta, Cargo clsCargo)
         {
             claseCliente = clsCliente;
             claseDocumentoVenta = clsCargo;
             clsCliente.cCliente = clsCliente.cNombre + " " + clsCliente.cApePat + " " + clsCliente.cApePat;
+            decimal importeRestante = Convert.ToDecimal(detalleventa.Sum(i => i.importeRestante));
+            //return new ResponseSunat();
             ParametrosFactura parametros = new ParametrosFactura();
-            parametros.Monto_total = (detalleventa.Sum(i=>i.ImporteRow) - Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento)));
-            parametros.TotSubtotal = Convert.ToDecimal(detalleventa.Sum(i => i.ImporteRow) - Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento))) / 1.18m;
+            parametros.Monto_total = (detalleventa.Sum(i=>i.preciounitario) - Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento)))- (importeRestante>0? importeRestante:0);
+            parametros.TotSubtotal = parametros.Monto_total / 1.18m;
             parametros.TotalIgv = parametros.TotSubtotal * 0.18m;//(parametros.Monto_total- parametros.TotSubtotal);
             parametros.Porcentaje_IGV = 18;
             parametros.TotalDescuento = Convert.ToDecimal(detalleventa.Sum(i => i.TotalTipoDescuento));
@@ -45,14 +48,15 @@ namespace wfaIntegradoCom.Sunat
 
             
             var envios = new Envios();
-            envios.Rutaxml = Path.GetDirectoryName(Application.ExecutablePath) + @"\XML\";
+
+            envios.Rutaxml =addPath + @"\XML\";
             //envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\LLAMA-PE-CERTIFICADO-DEMO-20602404863.pfx";
             //envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\LLAMA-PE-CERTIFICADO-DEMO-20606879904.pfx";
-            envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\certificado.pfx";
+            envios.Ruta_Certificado = addPath + @"\Certificado\certificado.pfx";
             //envios.Password_Certificado = "123456";
             envios.Password_Certificado = "Husatsunat1";
-            envios.RutaEnvios = Path.GetDirectoryName(Application.ExecutablePath) + @"\ENVIOS\";
-            envios.RutaCDR = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            envios.RutaEnvios = addPath + @"\ENVIOS\";
+            envios.RutaCDR = addPath + @"\CDR\";
             parametrosFactura = parametros;
             int Validar = 0;
             try
@@ -99,14 +103,14 @@ namespace wfaIntegradoCom.Sunat
             parametros.CodigoComprobante = clsCargo.nValor1;
 
             var envios = new Envios();
-            envios.Rutaxml = Path.GetDirectoryName(Application.ExecutablePath) + @"\XML\";
+            envios.Rutaxml = addPath + @"\XML\";
             //envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\LLAMA-PE-CERTIFICADO-DEMO-20602404863.pfx";
             //envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\LLAMA-PE-CERTIFICADO-DEMO-20606879904.pfx";
-            envios.Ruta_Certificado = Path.GetDirectoryName(Application.ExecutablePath) + @"\Certificado\certificado.pfx";
+            envios.Ruta_Certificado = addPath + @"\Certificado\certificado.pfx";
             //envios.Password_Certificado = "123456";
             envios.Password_Certificado = "Husatsunat1";
-            envios.RutaEnvios = Path.GetDirectoryName(Application.ExecutablePath) + @"\ENVIOS\";
-            envios.RutaCDR = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            envios.RutaEnvios = addPath + @"\ENVIOS\";
+            envios.RutaCDR = addPath + @"\CDR\";
             parametrosFactura = parametros;
             try
             {
@@ -177,7 +181,7 @@ namespace wfaIntegradoCom.Sunat
                         }
                        
                     }
-                    MessageBox.Show(r);
+                    //MessageBox.Show(r);
 
                 }
                 respSunat.isSuccesfull=true;
@@ -221,7 +225,7 @@ namespace wfaIntegradoCom.Sunat
 
             String digestValue = Ruc + "|" + TipoFactura + "|" + Serie + "|" + Correlativo + "|" + igv + "|" + importTotal + "|" + fecha + "|" + codTipoDocResceptor + "|" + RucReceptor + "|" + firmaDigital + "|";
 
-            String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+            String rutaArchivo = addPath + @"\CDR\";
             Bitmap bitmap = GenerarQR(digestValue);
 
             bitmap.Save(rutaArchivo + "QR\\" + nombreQR + ".png");

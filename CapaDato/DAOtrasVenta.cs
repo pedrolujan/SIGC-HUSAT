@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -471,7 +472,7 @@ namespace CapaDato
 
                 if (imgQr.Length <= 0)
                 {
-                    String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+                    String rutaArchivo = GetRootPath() + @"\CDR\";
                     imgQr = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
                 } 
@@ -546,7 +547,8 @@ namespace CapaDato
                 }
                 if (imgQr.Length<=0) 
                 {
-					String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
+
+                    String rutaArchivo = GetRootPath() + @"Sunat\\DatosFacturacion\CDR\";
 					imgQr = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
 				}
@@ -575,6 +577,33 @@ namespace CapaDato
                 objCnx = null;
             }
         }
+
+        static string GetRootPath()
+        {
+            // Obtiene la ruta del directorio del ensamblado actual
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+
+            // Combina la ruta del ensamblado con la ruta relativa al directorio raíz del proyecto
+            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "../../");
+
+            // Convierte la ruta a una ruta completa
+            rootPath = Path.GetFullPath(rootPath);
+
+            return rootPath;
+        }
+        static string GetRootPathSUnat()
+        {
+            // Obtiene la ruta del directorio del ensamblado actual
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+
+            // Combina la ruta del ensamblado con la ruta relativa al directorio raíz del proyecto
+            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "../../");
+
+            // Convierte la ruta a una ruta completa
+            rootPath = Path.GetFullPath(rootPath)+ @"Sunat\DatosFacturacion\CDR\";
+
+            return rootPath;
+        }
         public xmlDocumentoVentaGeneral daBuscarDocumentoVentaGeneral(Int32 idDocumento,Int32 idTipoCon)
         {
             SqlParameter[] pa = new SqlParameter[2];
@@ -585,11 +614,10 @@ namespace CapaDato
             String xmlDocventa = "";
             String codigoDocumento = "";
             String DescripEstadoPP = "";
-            String PlacaVehiculos = "";
-            String Cdirrecion = "";
-            String Cliente = "";
-            String TipoPago = "";
-            String character = ",";
+            String MediosDePago = "";
+
+            String DireccionCLiente = "";
+            String UbigeoCLiente = "";
             byte[] imgQr = new byte[] { };
             //string xmlData = clsUtil.Serialize(lstOtrasVentas);
             try
@@ -599,7 +627,7 @@ namespace CapaDato
                 pa[0].Value = idDocumento;
                 pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int);
                 pa[1].Value = idTipoCon;
-               
+
 
 
                 objCnx = new clsConexion("");
@@ -610,34 +638,76 @@ namespace CapaDato
                     DescripEstadoPP = Convert.ToString(drMenu["descripcionEstadoVenta"]).ToLower();
                     codigoDocumento = Convert.ToString(drMenu["codDocumentoCorrelativo"]);
                     xmlDocventa = Convert.ToString(drMenu["Documentoventa"]);
+                    MediosDePago = Convert.ToString(drMenu["mediosDePago"]);
+                    DireccionCLiente = Convert.ToString(drMenu["direccionCLinete"]);
+                    UbigeoCLiente = Convert.ToString(drMenu["ubigeoCliente"]);
                     //PlacaVehiculos = Convert.ToString(drMenu["Vehiculos"]).ToString().Remove(Convert.ToString(drMenu["Vehiculos"]).ToString().ToString().LastIndexOf(character), character.Length);
                     //Cdirrecion = Convert.ToString(drMenu["direccionRespPago"]).ToString();
                     //Cliente = Convert.ToString(drMenu["cCliente"]).ToString();
                     //TipoPago = Convert.ToString(drMenu["tipoPago"]).ToString();
-                    imgQr= (Byte[])drMenu["CodigoQr"];
+                    imgQr = (Byte[])drMenu["CodigoQr"];
                 }
-                if (imgQr.Length<=0) 
+                if (imgQr.Length <= 0)
                 {
-					String rutaArchivo = Path.GetDirectoryName(Application.ExecutablePath) + @"\CDR\";
-					imgQr = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
+                    String rutaArchivo = GetRootPathSUnat() ;
+                    imgQr = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
-				}
-				MemoryStream ms = new MemoryStream(imgQr);
+                }
+                MemoryStream ms = new MemoryStream(imgQr);
 
                 lstDocumentoVenta = clsUtil.Deserialize<xmlDocumentoVentaGeneral>(xmlDocventa);
                 lstDocumentoVenta.xmlDocumentoVenta[0].cDescripEstadoPP = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(DescripEstadoPP);
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cVehiculos = PlacaVehiculos;
                 lstDocumentoVenta.xmlDocumentoVenta[0].CodigoCorrelativo = codigoDocumento;
                 //lstDocumentoVenta.xmlDocumentoVenta[0].cCliente = Cliente;
-                lstDocumentoVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = TipoPago;
-                lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Cdirrecion);
+                lstDocumentoVenta.xmlDocumentoVenta[0].cDescripcionTipoPago = MediosDePago;
+                lstDocumentoVenta.xmlDocumentoVenta[0].cDireccion = DireccionCLiente+" "+ UbigeoCLiente;
                 //lstDocumentoVenta.memoryStream = ms;
-                lstDocumentoVenta.imgDocumento = ms.ToArray();
+                if (idTipoCon != 2)
+                {
+                    lstDocumentoVenta.imgDocumento = ms.ToArray();
+                }
                 return lstDocumentoVenta;
             }
             catch (Exception ex)
             {
                 return lstDocumentoVenta;
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
+        public DataTable daBuscarDocumentoParaEmitirASunat(Int32 idDocumento,Int32 idTipoCon)
+        {
+            SqlParameter[] pa = new SqlParameter[2];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            DataTable dtDocumento = new DataTable();
+           
+            
+            //string xmlData = clsUtil.Serialize(lstOtrasVentas);
+            try
+            {
+
+                pa[0] = new SqlParameter("@idDocumento", SqlDbType.Int);
+                pa[0].Value = idDocumento;
+                pa[1] = new SqlParameter("@tipoCon", SqlDbType.Int);
+                pa[1].Value = idTipoCon;
+
+
+
+                objCnx = new clsConexion("");
+                dtDocumento = objCnx.EjecutarProcedimientoDT("uspBuscarDocumentoDeVenta", pa);
+
+                
+                return dtDocumento;
+            }
+            catch (Exception ex)
+            {
+                return dtDocumento;
             }
             finally
             {
@@ -825,6 +895,42 @@ namespace CapaDato
                 lstCliente = null;
             }
 
+        }
+        public Boolean daActualizarDocumentoVenta(xmlDocumentoVentaGeneral xmlDoc, ResponseSunat cls, byte[] imgQr)
+        {
+            SqlParameter[] pa = new SqlParameter[4];
+            clsConexion objCnx = null;
+            objUtil = new clsUtil();
+            int intRowsAffected = 0;
+
+
+            string xmlDocumentoDeVenta = clsUtil.Serialize(xmlDoc);
+            string estadoEnvioASunat = cls.isSuccesfull == true && cls.codeError == "0" ? "EEST0001" : "EEST0005";
+            try
+            {
+
+                pa[0] = new SqlParameter("@xmlDocumentoVenta", SqlDbType.Xml) { Value = xmlDocumentoDeVenta };
+                pa[1] = new SqlParameter("@estadoEnvioASunat", SqlDbType.NVarChar, 10) { Value = estadoEnvioASunat };
+                pa[2] = new SqlParameter("@ImgQR", SqlDbType.Image) { Value = imgQr };
+                pa[3] = new SqlParameter("@idDocumento", SqlDbType.Int, 10) { Value = xmlDoc.xmlDocumentoVenta[0].idDocumentoVenta };
+
+                objCnx = new clsConexion("");
+                objCnx.EjecutarProcedimiento("uspActualizarDocumentoVentaEmisionSunat", pa);
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
         }
 
     }

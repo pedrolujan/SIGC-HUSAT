@@ -220,11 +220,11 @@ namespace wfaIntegradoCom
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panelEspaciado = new System.Windows.Forms.Panel();
             this.pnlSombra = new System.Windows.Forms.Panel();
-            this.elhAlert = new System.Windows.Forms.Integration.ElementHost();
-            this.ucOpcion2 = new WPF.CTRL.Colocaciones.ucOpcion();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelPerfil = new System.Windows.Forms.Panel();
+            this.elhAlert = new System.Windows.Forms.Integration.ElementHost();
+            this.ucOpcion2 = new WPF.CTRL.Colocaciones.ucOpcion();
             this.PanelEncavezadoFondo1.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.pntsSeguimiento.SuspendLayout();
@@ -493,7 +493,7 @@ namespace wfaIntegradoCom
             this.tsDoc_Sunat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tsDoc_Sunat.Location = new System.Drawing.Point(520, 3);
             this.tsDoc_Sunat.Name = "tsDoc_Sunat";
-            this.tsDoc_Sunat.Size = new System.Drawing.Size(95, 75);
+            this.tsDoc_Sunat.Size = new System.Drawing.Size(110, 75);
             this.tsDoc_Sunat.TabIndex = 276;
             this.tsDoc_Sunat.Tag = "tsDoc_Sunat";
             this.tsDoc_Sunat.Click += new System.EventHandler(this.tsCompra_Click_1);
@@ -504,7 +504,7 @@ namespace wfaIntegradoCom
             this.SiticoneHtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.SiticoneHtmlLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiticoneHtmlLabel5.ForeColor = System.Drawing.SystemColors.Control;
-            this.SiticoneHtmlLabel5.Location = new System.Drawing.Point(14, 48);
+            this.SiticoneHtmlLabel5.Location = new System.Drawing.Point(26, 48);
             this.SiticoneHtmlLabel5.Name = "SiticoneHtmlLabel5";
             this.SiticoneHtmlLabel5.Size = new System.Drawing.Size(63, 17);
             this.SiticoneHtmlLabel5.TabIndex = 1;
@@ -514,9 +514,9 @@ namespace wfaIntegradoCom
             // 
             this.siticonePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("siticonePictureBox1.Image")));
             this.siticonePictureBox1.ImageRotate = 0F;
-            this.siticonePictureBox1.Location = new System.Drawing.Point(11, 2);
+            this.siticonePictureBox1.Location = new System.Drawing.Point(9, 10);
             this.siticonePictureBox1.Name = "siticonePictureBox1";
-            this.siticonePictureBox1.Size = new System.Drawing.Size(69, 44);
+            this.siticonePictureBox1.Size = new System.Drawing.Size(96, 30);
             this.siticonePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.siticonePictureBox1.TabIndex = 0;
             this.siticonePictureBox1.TabStop = false;
@@ -536,7 +536,7 @@ namespace wfaIntegradoCom
             this.tsConsulta.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.tsConsulta.IconSize = 32;
             this.tsConsulta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tsConsulta.Location = new System.Drawing.Point(618, 3);
+            this.tsConsulta.Location = new System.Drawing.Point(633, 3);
             this.tsConsulta.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.tsConsulta.Name = "tsConsulta";
             this.tsConsulta.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -2802,18 +2802,6 @@ namespace wfaIntegradoCom
             this.pnlSombra.Size = new System.Drawing.Size(1317, 3);
             this.pnlSombra.TabIndex = 16;
             // 
-            // elhAlert
-            // 
-            this.elhAlert.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.elhAlert.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.elhAlert.Location = new System.Drawing.Point(1108, 498);
-            this.elhAlert.Name = "elhAlert";
-            this.elhAlert.Size = new System.Drawing.Size(29, 18);
-            this.elhAlert.TabIndex = 13;
-            this.elhAlert.Text = "elhAlert";
-            this.elhAlert.Visible = false;
-            this.elhAlert.Child = this.ucOpcion2;
-            // 
             // colorDialog1
             // 
             this.colorDialog1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -2848,6 +2836,18 @@ namespace wfaIntegradoCom
             this.panelPerfil.Name = "panelPerfil";
             this.panelPerfil.Size = new System.Drawing.Size(274, 72);
             this.panelPerfil.TabIndex = 24;
+            // 
+            // elhAlert
+            // 
+            this.elhAlert.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.elhAlert.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.elhAlert.Location = new System.Drawing.Point(1108, 498);
+            this.elhAlert.Name = "elhAlert";
+            this.elhAlert.Size = new System.Drawing.Size(29, 18);
+            this.elhAlert.TabIndex = 13;
+            this.elhAlert.Text = "elhAlert";
+            this.elhAlert.Visible = false;
+            this.elhAlert.Child = this.ucOpcion2;
             // 
             // MDIParent1
             // 
