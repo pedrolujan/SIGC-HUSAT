@@ -100,6 +100,7 @@ namespace wfaIntegradoCom.Procesos
             }
         }
 
+        #region Button Registrar Apertura Caja
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             string lcResultado = "";
@@ -174,7 +175,8 @@ namespace wfaIntegradoCom.Procesos
                 MessageBox.Show("El Monto no puede ser Menor a cero", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
-        }    
+        }
+        #endregion
 
         private void frmAperturaCaja_Load(object sender, EventArgs e)
         {
@@ -263,14 +265,11 @@ namespace wfaIntegradoCom.Procesos
             }
         }
 
+        #region  Button Cerrar Formulario
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

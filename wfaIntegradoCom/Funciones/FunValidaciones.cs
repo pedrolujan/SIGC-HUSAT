@@ -42,6 +42,41 @@ namespace wfaIntegradoCom.Funciones
 
             }
         }
+
+
+
+        //Nueva Validacion para ComboBox [frmSinCard]
+        public static Tuple<Boolean, String> fnNewValidarCombobox(GunaComboBox cbo, Label lbl, PictureBox img)
+        {
+            String msj;
+
+            if (cbo.SelectedIndex == 0 || cbo.SelectedIndex == -1 || cbo.SelectedIndex == null)
+            {
+                img.Image = Properties.Resources.error;
+
+
+                lbl.ForeColor = Variables.ColorError;
+
+                msj = "Seleccione una opción";
+                lbl.Text = msj;
+                return Tuple.Create(false, msj);
+
+            }
+            else
+            {
+
+                img.Image = Properties.Resources.ok;
+
+                lbl.ForeColor = Variables.ColorSuccess;
+                msj = "";
+                lbl.Text = msj;
+                return Tuple.Create(true, msj);
+
+
+            }
+        }
+
+
         public static Tuple<Boolean, String> fnValidarTexbox(GunaTextBox txt, Label lbl, PictureBox img, Boolean maximo, Int32 num, String msjError)
         {
             String msj;
@@ -320,6 +355,12 @@ namespace wfaIntegradoCom.Funciones
 
         }
 
+        //Clase nueva HabilitarButton
+        public static void fnNewHabilitarBoton(GunaButton btn, Boolean estado)
+        {
+            btn.Enabled = estado;
+
+        }
         public static void fnColorBotones(SiticoneButton btnNuevo, SiticoneButton btnEditar, SiticoneButton btnGuardar, SiticoneButton btnSalir)
         {
             btnNuevo.FillColor = Color.White;
@@ -364,6 +405,53 @@ namespace wfaIntegradoCom.Funciones
             btnSalir.PressedColor = Color.White;
 
         }
+
+        public static void fnNewColorBotones(GunaButton btnNuevo, GunaButton btnEditar, GunaButton btnGuardar, GunaButton btnSalir)
+        {
+            btnNuevo.BaseColor = Color.White;
+            btnNuevo.BorderColor = Variables.ColorEmpresa;
+            btnNuevo.ForeColor = Variables.ColorEmpresa;
+            btnNuevo.Image = Properties.Resources.nuevo_base;
+
+            btnNuevo.OnHoverBaseColor = Variables.ColorEmpresa;
+            btnNuevo.OnHoverImage = Properties.Resources.nuevo_hover;
+            btnNuevo.OnHoverForeColor = Color.White;
+
+            btnEditar.BaseColor = Color.White;
+            btnEditar.BorderColor = Variables.ColorEmpresa;
+            btnEditar.ForeColor = Variables.ColorEmpresa;
+            btnEditar.Image = Properties.Resources.editar_base;
+
+            btnEditar.OnHoverBaseColor = Variables.ColorEmpresa;
+            btnEditar.OnHoverImage = Properties.Resources.editar_hover;
+            btnEditar.OnHoverForeColor = Color.White;
+
+            btnGuardar.BaseColor = Color.White;
+            btnGuardar.BorderColor = Variables.ColorEmpresa;
+            btnGuardar.ForeColor = Variables.ColorEmpresa;
+            btnGuardar.Image = Properties.Resources.guardar_base;
+
+            btnGuardar.OnHoverBaseColor = Variables.ColorEmpresa;
+            btnGuardar.OnHoverImage = Properties.Resources.guardar_hover;
+            btnGuardar.OnHoverForeColor = Color.White;
+
+            btnSalir.BaseColor = Color.White;
+            btnSalir.BorderColor = Variables.ColorEmpresa;
+            btnSalir.ForeColor = Variables.ColorEmpresa;
+            btnSalir.Image = Properties.Resources.salir_base;
+
+            btnSalir.OnHoverBaseColor = Variables.ColorEmpresa;
+            btnSalir.OnHoverImage = Properties.Resources.salir_hover;
+            btnSalir.OnHoverForeColor = Color.White;
+
+            btnNuevo.OnPressedColor = Color.White;
+            btnEditar.OnPressedColor = Color.White;
+            btnGuardar.OnPressedColor = Color.White;
+            btnSalir.OnPressedColor = Color.White;
+
+        }
+
+
 
         public static Tuple<Boolean, String> fnValidarTexboxs(SiticoneTextBox txt, Label lbl, PictureBox img, Boolean obligatorio, Boolean letras, Boolean minimo, Int32 numMenor, Int32 numMayor, Int32 NumCaract, Int32 MaxLength, String msjError)
         {
@@ -569,6 +657,218 @@ namespace wfaIntegradoCom.Funciones
 
         }
 
+
+        //Nueva Validacion Para Controles guna
+        public static Tuple<Boolean, String> fnNewValidarTexboxs(GunaTextBox txt, Label lbl, PictureBox img, Boolean obligatorio, Boolean letras, Boolean minimo, Int32 numMenor, Int32 numMayor, Int32 NumCaract, Int32 MaxLength, String msjError)
+        {
+            String msj;
+
+            if (obligatorio)
+            {
+                if (letras)
+                {
+
+                    if (txt.Text == null || txt.Text.Trim() == "")
+                    {
+                        img.Image = Properties.Resources.error;
+
+                        lbl.ForeColor = Variables.ColorError;
+                        msj = "Complete los datos (campo obligatorio)";
+                        lbl.Text = msj;
+                        txt.FocusedBorderColor = Variables.ColorError;
+
+                        return Tuple.Create(false, msj);
+
+                    }
+                    else
+                    {
+
+                        if (minimo)
+                        {
+                            txt.MaxLength = MaxLength;
+                            if (txt.Text.Length >= numMenor && txt.Text.Length <= numMayor)
+                            {
+                                img.Image = Properties.Resources.ok;
+
+                                lbl.ForeColor = Variables.ColorSuccess;
+                                txt.FocusedBorderColor = Variables.ColorSuccess;
+
+                                msj = "";
+                                lbl.Text = msj;
+
+                                return Tuple.Create(true, msj);
+
+                            }
+                            else
+                            {
+                                img.Image = Properties.Resources.error;
+
+                                lbl.ForeColor = Variables.ColorError;
+                                txt.FocusedBorderColor = Variables.ColorError;
+                                msj = msjError;
+                                lbl.Text = msj;
+
+                                return Tuple.Create(false, msj);
+
+                            }
+                        }
+                        else
+                        {
+                            img.Image = Properties.Resources.ok;
+
+                            lbl.ForeColor = Variables.ColorSuccess;
+                            txt.FocusedBorderColor = Variables.ColorSuccess;
+                            msj = "";
+                            lbl.Text = msj;
+
+                            return Tuple.Create(true, msj);
+                        }
+
+                    }
+
+                }
+                else
+                {
+
+                    if (txt.Text == null || txt.Text.Trim() == "")
+                    {
+                        img.Image = Properties.Resources.error;
+
+                        lbl.ForeColor = Variables.ColorError;
+                        txt.FocusedBorderColor = Variables.ColorError;
+                        msj = "Ingrese datos (campo obligatorio)";
+                        lbl.Text = msj;
+
+                        return Tuple.Create(false, msj);
+
+                    }
+                    else
+                    {
+
+                        if (minimo)
+                        {
+                            String texto = (txt.Text.Trim().ToString());
+                            Int32 repetido = texto.Split(',').Length - 1;
+                            if (repetido <= 1)
+                            {
+                                Double numCaja = Convert.ToDouble(texto);
+                                txt.MaxLength = MaxLength;
+                                if (numCaja >= numMenor & numCaja <= numMayor)
+                                {
+                                    img.Image = Properties.Resources.ok;
+                                    txt.FocusedBorderColor = Variables.ColorSuccess;
+                                    msj = "";
+                                    lbl.Text = msj;
+
+                                    return Tuple.Create(true, msj);
+
+                                }
+                                else
+                                {
+                                    img.Image = Properties.Resources.error;
+
+                                    lbl.ForeColor = Variables.ColorError;
+                                    txt.FocusedBorderColor = Variables.ColorError;
+                                    msj = msjError;
+                                    lbl.Text = msj;
+
+                                    return Tuple.Create(false, msj);
+
+                                }
+                            }
+                            else
+                            {
+                                img.Image = Properties.Resources.error;
+
+                                lbl.ForeColor = Variables.ColorError;
+                                txt.FocusedBorderColor = Variables.ColorError;
+                                msj = "Ingrese correctamente el campo";
+                                lbl.Text = msj;
+
+                                return Tuple.Create(false, msj);
+                            }
+
+                        }
+                        else
+                        {
+
+                            img.Image = Properties.Resources.ok;
+                            txt.FocusedBorderColor = Variables.ColorSuccess;
+                            msj = "";
+                            lbl.Text = msj;
+
+                            return Tuple.Create(true, msj);
+
+                        }
+
+                    }
+
+                }
+            }
+            else
+            {
+
+                txt.MaxLength = MaxLength;
+                if (txt.Text == null || txt.Text.Trim() == "")
+                {
+                    img.Image = null;
+                    msj = "vacio (campo no obligatorio)";
+                    lbl.Text = msj;
+                    lbl.ForeColor = Variables.ColorSuccess;
+                    txt.FocusedBorderColor = Variables.ColorSuccess;
+
+                    return Tuple.Create(true, msj);
+                }
+                else
+                {
+
+                    if (txt.Text.Length > 0)
+                    {
+                        if (txt.Text.Length >= NumCaract)
+                        {
+                            img.Image = Properties.Resources.ok;
+                            txt.FocusedBorderColor = Variables.ColorSuccess;
+                            msj = "";
+                            lbl.Text = msj;
+
+                            return Tuple.Create(true, msj);
+
+                        }
+                        else
+                        {
+                            img.Image = Properties.Resources.error;
+                            txt.FocusedBorderColor = Variables.ColorError;
+                            msj = msjError;
+                            lbl.Text = msj;
+                            lbl.ForeColor = Variables.ColorError;
+
+
+                            return Tuple.Create(false, msj);
+                        }
+                    }
+                    else
+                    {
+                        img.Image = Properties.Resources.error;
+                        txt.FocusedBorderColor = Variables.ColorError;
+                        msj = "Ocurrió otro error";
+                        lbl.Text = msj;
+                        lbl.ForeColor = Variables.ColorError;
+                        return Tuple.Create(false, msj);
+                    }
+
+                }
+            }
+        }
+
+
+        
+
+
+
+
+
+
+
         public static Tuple<Boolean, String> fnValidarElementoExistente(SiticoneTextBox txt, Label lbl, PictureBox img, Int32 NumCaract, Int32 numResult, String msj)
         {
             if (numResult == 1)
@@ -590,6 +890,30 @@ namespace wfaIntegradoCom.Funciones
             }
 
         }
+
+        //Nueva Validacion para Elementos Existentes [frmSinCard]
+        public static Tuple<Boolean, String> fnNewValidarElementoExistente(GunaTextBox txt, Label lbl, PictureBox img, Int32 NumCaract, Int32 numResult, String msj)
+        {
+            if (numResult == 1)
+            {
+                img.Image = Properties.Resources.error;
+                txt.FocusedBorderColor= Variables.ColorError;
+                lbl.Text = msj;
+                lbl.ForeColor = Variables.ColorError;
+                return Tuple.Create(false, msj);
+            }
+            else
+            {
+                msj = "";
+                img.Image = Properties.Resources.ok;
+                txt.FocusedBorderColor = Variables.ColorError;
+                lbl.Text = msj;
+                lbl.ForeColor = Variables.ColorError;
+                return Tuple.Create(true, msj);
+            }
+
+        }
+
         public static void fnValidarEstado(GunaWinSwitch sw, Label lbl)
         {
             if (sw.Checked == true)
@@ -611,6 +935,16 @@ namespace wfaIntegradoCom.Funciones
         }
 
         public static void fnMostrarCantidadBusquedas(SiticoneCircleButton btn, Label lbl, Int32 numero, Boolean estado, String msj)
+        {
+            btn.Text = Convert.ToString(numero);
+            lbl.Text = msj;
+            btn.Visible = estado;
+            lbl.Visible = estado;
+
+        }
+
+        //Nueva funcion para Controls Guna [frmAdministrarChips]
+        public static void fnNewMostrarCantidadBusquedas(GunaCircleButton btn, Label lbl, Int32 numero, Boolean estado, String msj)
         {
             btn.Text = Convert.ToString(numero);
             lbl.Text = msj;

@@ -26,11 +26,11 @@ namespace wfaIntegradoCom.Mantenedores
             InitializeComponent();
             cboBuscar.SelectedIndex = 0;
             fnHabilitarGroupBoxs(false);
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, false);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
-            FunValidaciones.fnColorBotones(btnNuevo, btnEditar, btnGuardar, btnSalir);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
+            FunValidaciones.fnNewColorBotones(btnNuevo, btnEditar, btnGuardar, btnSalir);
             fnLimpiarControles();
             tabRegistro.AutoScroll = false;
             estPasoLoad = true;
@@ -427,10 +427,10 @@ namespace wfaIntegradoCom.Mantenedores
                         fnVerValidacion(false);
                         txtIdAccesorio.Visible = true;
                         lblVerID.Visible = true;
-                        FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-                        FunValidaciones.fnHabilitarBoton(btnEditar, true);
-                        FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-                        FunValidaciones.fnHabilitarBoton(btnSalir, true);
+                        FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+                        FunValidaciones.fnNewHabilitarBoton(btnEditar, true);
+                        FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+                        FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
                         txtBuscar.Text = "";
                         lnTipoCon = 1;
                         tabControl.SelectedIndex = 0;
@@ -463,7 +463,7 @@ namespace wfaIntegradoCom.Mantenedores
 
        
 
-        private Tuple<Boolean, String> fnValidarTexboxSQL(SiticoneTextBox txt, Label lbl, PictureBox img, Boolean maximo, Int32 num)
+        private Tuple<Boolean, String> fnValidarTexboxSQL(GunaTextBox txt, Label lbl, PictureBox img, Boolean maximo, Int32 num)
         {
             String msj;
             Boolean bResul;
@@ -581,10 +581,10 @@ namespace wfaIntegradoCom.Mantenedores
         {
             fnHabilitarGroupBoxs(true);
             fnVerValidacion(true);
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, false);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, true);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, true);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -604,10 +604,10 @@ namespace wfaIntegradoCom.Mantenedores
 
                     fnLimpiarControles();
                     fnHabilitarGroupBoxs(false);
-                    FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-                    FunValidaciones.fnHabilitarBoton(btnEditar, false);
-                    FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-                    FunValidaciones.fnHabilitarBoton(btnSalir, true);
+                    FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+                    FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+                    FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+                    FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
                     
 
                 }
@@ -669,10 +669,10 @@ namespace wfaIntegradoCom.Mantenedores
             }
 
            
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, true);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, true);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
             fnHabilitarGroupBoxs(false);
 
             fnVerValidacion(false);
@@ -692,7 +692,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void precio_Changed(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarTexboxs(txtPrecio, erPrecio, imgPrecio, true, false, true,1, 999999, 0,6, "Dato precio inválido");
+            var result = FunValidaciones.fnNewValidarTexboxs(txtPrecio, erPrecio, imgPrecio, true, false, true,1, 999999, 0,6, "Dato precio inválido");
             estPrecio = result.Item1;
             msjPrecio = result.Item2;
 
@@ -716,10 +716,10 @@ namespace wfaIntegradoCom.Mantenedores
             fnLimpiarControles();
             fnHabilitarGroupBoxs(true);
             fnVerValidacion(true);
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, false);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, true);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, true);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
             tabRegistro.AutoScroll = false;
         }
 
@@ -773,10 +773,10 @@ namespace wfaIntegradoCom.Mantenedores
                 this.Close();
             }
             
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, true);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, true);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
             
             tabControl.SelectedIndex = 0;
             tabRegistro.AutoScroll = false;
@@ -806,10 +806,10 @@ namespace wfaIntegradoCom.Mantenedores
                 this.Close();
             }
 
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, true);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, true);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
 
             tabControl.SelectedIndex = 0;
             tabRegistro.AutoScroll = true;
@@ -826,7 +826,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void txtSotck_TextChanged(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarTexboxs(txtSotck, erStock, imgStock, true, false, true, 0, 999999, 0,5, "Ingrese correctamente el campo");
+            var result = FunValidaciones.fnNewValidarTexboxs(txtSotck, erStock, imgStock, true, false, true, 0, 999999, 0,5, "Ingrese correctamente el campo");
             estStock = result.Item1;
             msjStock = result.Item2;
         }
@@ -849,7 +849,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void descripcion_Changed(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarTexboxs(txtDescripcion, erDescripcion, imgDescripcion, false, true, true, 0, 0,3,200, "Complete correctamente el campo");
+            var result = FunValidaciones.fnNewValidarTexboxs(txtDescripcion, erDescripcion, imgDescripcion, false, true, true, 0, 0,3,200, "Complete correctamente el campo");
             estDescripcion = result.Item1;
             msjDescripcion = result.Item2;
         }

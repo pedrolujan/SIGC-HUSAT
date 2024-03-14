@@ -93,7 +93,8 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void fnHabilitarControles(Boolean pbHabilitar)
         {
-            if (pbHabilitar == true) {
+            if (pbHabilitar == true)
+            {
                 gbDatosChip.BaseColor = Color.White;
                 gbDatosChip.LineColor = Variables.ColorGroupBox;
 
@@ -184,7 +185,7 @@ namespace wfaIntegradoCom.Mantenedores
             }
 
 
-            FunValidaciones.fnHabilitarBoton(btnGuardar, pbHabilitar);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, pbHabilitar);
         }
         private void fnLimpiarControles()
         {
@@ -210,7 +211,7 @@ namespace wfaIntegradoCom.Mantenedores
         }
 
 
-        private Tuple<Boolean, String> fnValidarFecha(SiticoneDateTimePicker dtp, PictureBox img, Label lbl, String msj)
+        private Tuple<Boolean, String> fnValidarFecha(GunaDateTimePicker dtp, PictureBox img, Label lbl, String msj)
         {
             if (dtp.Name != "dtFechaReactivacion")
             {
@@ -218,7 +219,7 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     lbl.Text = msj;
                     lbl.ForeColor = Variables.ColorError;
-                    dtp.HoverState.BorderColor = Variables.ColorError;
+                    dtp.OnHoverBorderColor = Variables.ColorError;
                     img.Image = Properties.Resources.error;
                     estFechaCompra = false;
                     return Tuple.Create(false, msj);
@@ -229,7 +230,7 @@ namespace wfaIntegradoCom.Mantenedores
                     lbl.Text = msj;
                     img.Image = Properties.Resources.ok;
                     lbl.ForeColor = Variables.ColorSuccess;
-                    dtp.HoverState.BorderColor = Variables.ColorSuccess;
+                    dtp.OnHoverBorderColor = Variables.ColorSuccess;
                     return Tuple.Create(true, msj);
                 }
             }
@@ -241,7 +242,7 @@ namespace wfaIntegradoCom.Mantenedores
                     lbl.Text = msj;
                     img.Image = Properties.Resources.error;
                     lbl.ForeColor = Variables.ColorError;
-                    dtp.HoverState.BorderColor = Variables.ColorError;
+                    dtp.OnHoverBorderColor = Variables.ColorError;
                     return Tuple.Create(false, msj);
                 }
                 else
@@ -250,7 +251,7 @@ namespace wfaIntegradoCom.Mantenedores
                     lbl.Text = msj;
                     img.Image = Properties.Resources.ok;
                     lbl.ForeColor = Variables.ColorSuccess;
-                    dtp.HoverState.BorderColor = Variables.ColorSuccess;
+                    dtp.OnHoverBorderColor = Variables.ColorSuccess;
                     return Tuple.Create(true, msj);
                 }
             }
@@ -293,7 +294,7 @@ namespace wfaIntegradoCom.Mantenedores
             //nuevaFecha = nuevaFecha.AddDays(10);
 
         }
-        public static Tuple<Boolean, String> fnValidarComboboxChips(SiticoneComboBox cbo, Label lbl, PictureBox img, String estadoActual, String validar, Int32 lntipoCondicion)
+        public static Tuple<Boolean, String> fnValidarComboboxChips(GunaComboBox cbo, Label lbl, PictureBox img, String estadoActual, String validar, Int32 lntipoCondicion)
         {
             String msj = "";
             String datoSeleccionado = Convert.ToString(cbo.SelectedValue);
@@ -329,7 +330,8 @@ namespace wfaIntegradoCom.Mantenedores
                         lbl.Text = msj;
                         estado = false;
                     }
-                } else if (estadoActual == "ESCHI002")
+                }
+                else if (estadoActual == "ESCHI002")
                 {
                     if ((datoSeleccionado == estadoActual) || (datoSeleccionado == "ESCHI004") || (datoSeleccionado == "ESCHI005") || (datoSeleccionado == "ESCHI006"))
                     {
@@ -348,7 +350,8 @@ namespace wfaIntegradoCom.Mantenedores
                         lbl.Text = msj;
                         estado = false;
                     }
-                } else if (estadoActual == "ESCHI003")
+                }
+                else if (estadoActual == "ESCHI003")
                 {
                     if (datoSeleccionado == "ESCHI001")
                     {
@@ -369,7 +372,8 @@ namespace wfaIntegradoCom.Mantenedores
                         estado = true;
                     }
 
-                } else if (estadoActual == "ESCHI004")
+                }
+                else if (estadoActual == "ESCHI004")
                 {
                     if (datoSeleccionado == "ESCHI001" || validar != "")
                     {
@@ -389,7 +393,8 @@ namespace wfaIntegradoCom.Mantenedores
                         estado = true;
                     }
 
-                } else if (estadoActual == "ESCHI005")
+                }
+                else if (estadoActual == "ESCHI005")
                 {
                     if (datoSeleccionado == "ESCHI001" || validar != "")
                     {
@@ -532,13 +537,7 @@ namespace wfaIntegradoCom.Mantenedores
                 msjEstado = result.Item2;
                 fnMosatrarFechasPorEstado();
             }
-
-
-
-
-
         }
-
 
         private void txtNumeroRecibo_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -548,7 +547,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void txtSimCard_TextChanged(object sender, EventArgs e)
         {
-            var resultado = FunValidaciones.fnValidarTexboxs(txtSimCard, lblSimcard, pbSimCard, true, true, true, 9, 9, 9, 9, "Complete el numero SimCar");
+            var resultado = FunValidaciones.fnNewValidarTexboxs(txtSimCard, lblSimcard, pbSimCard, true, true, true, 9, 9, 9, 9, "Complete el numero SimCar");
             estSimCard = resultado.Item1;
             msjSimCard = resultado.Item2;
 
@@ -558,7 +557,7 @@ namespace wfaIntegradoCom.Mantenedores
                 result = FunGeneral.fnValidarDatosExistentes(txtSimCard.Text.Trim(), txtSimcard2.Text.Trim(), 0, "uspValidarSimCard");
                 if (result == 1)
                 {
-                    var res = FunValidaciones.fnValidarElementoExistente(txtSimCard, lblSimcard, pbSimCard, 9, 1, "El SimCard ya existe ingrese otro");
+                    var res = FunValidaciones.fnNewValidarElementoExistente(txtSimCard, lblSimcard, pbSimCard, 9, 1, "El SimCard ya existe ingrese otro");
                     estSimCard = res.Item1;
                     msjSimCard = res.Item2;
                     MessageBox.Show("El numero de SimCard ya existe ingrese otro", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -567,16 +566,11 @@ namespace wfaIntegradoCom.Mantenedores
                 }
                 else
                 {
-                    var res = FunValidaciones.fnValidarElementoExistente(txtSimCard, lblSimcard, pbSimCard, 9, 0, "");
+                    var res = FunValidaciones.fnNewValidarElementoExistente(txtSimCard, lblSimcard, pbSimCard, 9, 0, "");
                     estSimCard = res.Item1;
                     msjSimCard = res.Item2;
                 }
             }
-
-
-
-
-
         }
 
         private void txtSimCard_KeyPress(object sender, KeyPressEventArgs e)
@@ -595,14 +589,11 @@ namespace wfaIntegradoCom.Mantenedores
             FunValidaciones.fnValidarTipografia(e, "LETRAS", false);
         }
 
-
-
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             fnLimpiarControles();
             fnHabilitarControles(true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
             pbFechaSuspencion.Visible = false;
 
             lnTipoCon = 0;
@@ -615,33 +606,15 @@ namespace wfaIntegradoCom.Mantenedores
         private void btnEditar_Click(object sender, EventArgs e)
         {
             fnHabilitarControles(true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, false);
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
 
-
-        }
-
-        private void gbFechasChip_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblFechaCompra_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-        private void txtSimcard2_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
         private void cboOperador_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarCombobox(cboOperador, lblOperador, pbOperador);
+            var result = FunValidaciones.fnNewValidarCombobox(cboOperador, lblOperador, pbOperador);
             estOperador = result.Item1;
             msjOperador = result.Item2;
         }
@@ -660,11 +633,6 @@ namespace wfaIntegradoCom.Mantenedores
             msjFechaSuspencion = result.Item2;
 
             fnSumarFechaActivacion();
-        }
-
-        private void pbFechaSuspencion_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void rbSimCard_CheckedChanged(object sender, EventArgs e)
@@ -728,16 +696,17 @@ namespace wfaIntegradoCom.Mantenedores
             FunValidaciones.fnValidarTipografia(e, "NUMEROS", true);
         }
 
+        //Revisar Validación [Conflicto con nuevos controles]
         private void txtCantDias_TextChanged(object sender, EventArgs e)
         {
-            var resultado = FunValidaciones.fnValidarTexboxs(txtCantDias, lblDiasSuspen, pbDiasSuspencion, true, true, true, 1, 3, 3, 3, "Complete el numero SimCar");
+            var resultado = FunValidaciones.fnNewValidarTexboxs(txtCantDias, lblDiasSuspen, pbDiasSuspencion, true, true, true, 1, 3, 3, 3, "Complete el numero SimCar");
             estDiasSuspencion = resultado.Item1;
             msjDiasSuspencion = resultado.Item2;
             fnSumarFechaActivacion();
 
 
         }
-
+        //Error si en caso se realiza la nueva validación
         private void fnSumarFechaActivacion()
         {
             if (txtCantDias.Text.Length > 0)
@@ -761,11 +730,6 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgChip_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridView dgv = sender as DataGridView;
@@ -776,7 +740,8 @@ namespace wfaIntegradoCom.Mantenedores
                 if (e.Value.ToString().Length > 44)   //Si el valor de la celda contiene la palabra hora
                 {
                     e.CellStyle.ForeColor = Variables.ColorError;
-                } else if (e.Value.ToString().Length > 37 && e.Value.ToString().Length < 42)
+                }
+                else if (e.Value.ToString().Length > 37 && e.Value.ToString().Length < 42)
                 {
                     e.CellStyle.ForeColor = Variables.ColorSuccess;
 
@@ -795,9 +760,9 @@ namespace wfaIntegradoCom.Mantenedores
 
             fnHabilitarControles(false);
 
-            FunValidaciones.fnHabilitarBoton(btnNuevo, false);
-            FunValidaciones.fnHabilitarBoton(btnEditar, false);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, true);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, false);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, true);
         }
 
         private void dtFechaReactivacion_ValueChanged(object sender, EventArgs e)
@@ -823,15 +788,6 @@ namespace wfaIntegradoCom.Mantenedores
             //fnBuscarEquipo(txtBuscarChip.Text.Trim(), pnTipocon,valorComboBuscar);
         }
 
-        private void cboPaginacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (estadoBusqPaginas == true)
-            {
-                fnBuscarEquipo(Convert.ToInt32(cboPaginacion.Text), -2);
-                fnHabilitarControles(false);
-            }
-
-        }
         private DateTime fnCalcularSoloFecha(DateTime fecha)
         {
             String TextSoloFecha = fecha.ToString("yyyy/MM/dd");
@@ -1085,7 +1041,8 @@ namespace wfaIntegradoCom.Mantenedores
 
                     objOperador.rNumeroDias = Convert.ToInt32(txtCantDias.Text.Trim());
 
-                } else if (Convert.ToString(cboEstado.SelectedValue) == "ESCHI002")
+                }
+                else if (Convert.ToString(cboEstado.SelectedValue) == "ESCHI002")
                 {
                     DateTime fechaBaja = Convert.ToDateTime(dtFechaBaja.Value);
                     feBaja = fechaBaja.ToString("yyyy-MM-dd");
@@ -1110,9 +1067,9 @@ namespace wfaIntegradoCom.Mantenedores
 
                 fnLimpiarControles();
                 fnHabilitarControles(false);
-                FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-                FunValidaciones.fnHabilitarBoton(btnEditar, false);
-                FunValidaciones.fnHabilitarBoton(btnNuevo, true);
+                FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+                FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+                FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
             }
             catch (Exception ex)
             {
@@ -1194,7 +1151,7 @@ namespace wfaIntegradoCom.Mantenedores
                 dtHFechaInicio.Enabled = false;
                 dtHfechaFinal.Enabled = false;
             }
-            fnBuscarHistorialSimCard(Convert.ToInt32(cboPagina.Text), -1);
+            fnBuscarHistorialSimCard(cboPagina.Text != "" ? Convert.ToInt32(cboPagina.Text = "") : 0, -1);
         }
 
         private void dtHFechaInicio_ValueChanged(object sender, EventArgs e)
@@ -1206,7 +1163,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
             //fnBuscarHistorialSimCard(Convert.ToInt32(cboPagina.Text), -1);
         }
-        private Boolean fnListarHistorial(SiticoneDataGridView dgv)
+        private Boolean fnListarHistorial(GunaDataGridView dgv)
         {
             BLProspecto objAcc = new BLProspecto();
             ProspectosPlan lstPros = new ProspectosPlan();
@@ -1262,7 +1219,7 @@ namespace wfaIntegradoCom.Mantenedores
             //}
             //else
             //{
-            var resultado = FunValidaciones.fnValidarTexboxs(txtObservacion, lblObservacion, pbObservacion, false, true, false, 0, 0, 0, 200, "Ingrese observacion valida");
+            var resultado = FunValidaciones.fnNewValidarTexboxs(txtObservacion, lblObservacion, pbObservacion, false, true, false, 0, 0, 0, 200, "Ingrese observacion valida");
             estObservaciones = resultado.Item1;
             msjObservaciones = resultado.Item2;
             //}
@@ -1279,7 +1236,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private Boolean fnLlenarOperador(SiticoneComboBox combo, Int32 condicion)
+        private Boolean fnLlenarOperador(GunaComboBox combo, Int32 condicion)
         {
             BLOperador objCate_Marca_Mod = new BLOperador();
             clsUtil objUtil = new clsUtil();
@@ -1304,25 +1261,25 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void pbSearch_Click(object sender, EventArgs e)
         {
-           // if (e.KeyChar == (Char)Keys.Enter)
-           // {
-                //fnObtenerPaginacionEquipos(valorComboBuscar,lnTipoCon , txtBuscarChip.Text);
-                fnBuscarEquipo(0, -1);
+            // if (e.KeyChar == (Char)Keys.Enter)
+            // {
+            //fnObtenerPaginacionEquipos(valorComboBuscar,lnTipoCon , txtBuscarChip.Text);
+            fnBuscarEquipo(0, -1);
 
-               //fnHabilitarControles(false);
-           // }
+            //fnHabilitarControles(false);
+            // }
         }
 
-        private void fnColorBotonEsp(SiticoneButton btnNuevo)
+        private void fnColorBotonEsp(GunaButton btnNuevo)
         {
-            btnNuevo.FillColor = Color.White;
+            btnNuevo.BaseColor = Color.White;
             btnNuevo.BorderColor = Variables.ColorEmpresa;
             btnNuevo.ForeColor = Variables.ColorEmpresa;
             btnNuevo.Image = Properties.Resources.nuevo_base;
 
-            btnNuevo.HoverState.FillColor = Variables.ColorEmpresa;
-            btnNuevo.HoverState.Image = Properties.Resources.nuevo_hover;
-            btnNuevo.HoverState.ForeColor = Color.White;
+            btnNuevo.OnHoverBaseColor = Variables.ColorEmpresa;
+            btnNuevo.OnHoverImage = Properties.Resources.nuevo_hover;
+            btnNuevo.OnHoverForeColor = Color.White;
         }
         private void frmOperador_Load(object sender, EventArgs e)
         {
@@ -1333,7 +1290,7 @@ namespace wfaIntegradoCom.Mantenedores
                 dtFechaCompra.Value = Variables.gdFechaSis;
                 dtFechaSuspencion.Value = Variables.gdFechaSis;
 
-                dtHfechaFinal.Value = Variables.gdFechaSis;
+                dtHFechaInicio.Value = Variables.gdFechaSis;
                 txtObservacion.MaxLength = 5;
                 fnHabilitarControles(false);
 
@@ -1358,7 +1315,7 @@ namespace wfaIntegradoCom.Mantenedores
                     MessageBox.Show("Error al cargar operador", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     this.Close();
                 }
-                FunValidaciones.fnColorBotones(btnNuevo, btnEditar, btnGuardar, btnSalir);
+                FunValidaciones.fnNewColorBotones(btnNuevo, btnEditar, btnGuardar, btnSalir);
                 fnColorBotonEsp(btnNuevoHistorial);
 
 
@@ -1390,7 +1347,7 @@ namespace wfaIntegradoCom.Mantenedores
             fnHabilitarBotones(false);
             this.Text = "Buscar SimCard";
             this.Width = 1000;
-            this.gunaPanel1.Width = 900;
+            this.pSuperior.Width = 900;
             gunaControlBox1.Location = new Point(936, 2);
             gunaControlBox2.Location = new Point(888, 2);
 
@@ -1402,14 +1359,14 @@ namespace wfaIntegradoCom.Mantenedores
             cboBuscarEstado.Visible = false;
             lblEstadoTitle.Visible = false;
 
-            rbOperador.Height = 74;
-            rbOperador.Location = new Point(31, 10);
+            rbOperador.Height =70 ;
+            rbOperador.Location = new Point(15, 10);
 
             gbPaginas.Location = new Point(460, 10);
             gbRegistros.Location = new Point(715, 10);
 
 
-            txtBuscarChip.Location = new Point(17, 80);
+            txtBuscarChip.Location = new Point(18, 80);
             txtBuscarChip.Width = 935;
 
             pbSearch.Location = new Point(21, 85);
@@ -1502,7 +1459,8 @@ namespace wfaIntegradoCom.Mantenedores
                 String ComboEstado = "";
                 Int32 ComboOperador = 0;
 
-                if (rbSimCard.Checked == true) { pnTipocon = 0; } else
+                if (rbSimCard.Checked == true) { pnTipocon = 0; }
+                else
                 if (rbRecibo.Checked == true) { pnTipocon = 1; }
 
                 if (lnTipoLlamada == 0)
@@ -1636,7 +1594,8 @@ namespace wfaIntegradoCom.Mantenedores
                         dgChip.Columns[6].Width = 100;
 
                         Int32 totalRegistros = Convert.ToInt32(datOperador.Rows[0][7]);
-                        if (tipoConPagina == -1) {
+                        if (tipoConPagina == -1)
+                        {
                             cboPagina.Visible = true;
                             fnCalcularPaginacion(totalRegistros, filas, totalResultados);
                             estadoBusqPaginas = true;
@@ -1711,13 +1670,13 @@ namespace wfaIntegradoCom.Mantenedores
             clsUtil objUtil = new clsUtil();
             try
             {
-                if(dgChip.Rows.Count > 0)
+                if (dgChip.Rows.Count > 0)
                 {
                     frmReactivaciones.fnRecuperarSimCard(Convert.ToInt32(dgChip.Rows[e.RowIndex].Cells[0].Value), Convert.ToInt32(dgChip.Rows[e.RowIndex].Cells[1].Value), 1);
                 }
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("frmRegistrarCLienes", "fnRecuperarSimCard", ex.Message);
                 return false;
@@ -1744,7 +1703,7 @@ namespace wfaIntegradoCom.Mantenedores
         }
 
 
-       
+
         private Boolean fnListarChipEspcifico(DataGridViewCellEventArgs e)
         {
             clsUtil objUtil = new clsUtil();
@@ -1752,7 +1711,7 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 if (dgChip.Rows.Count > 0)
                 {
-                    BLOperador objChip= new BLOperador();
+                    BLOperador objChip = new BLOperador();
                     SimCard lstChip = new SimCard();
                     DataTable dtEquipo = new DataTable();
                     lstChip = objChip.blListarChip(Convert.ToInt32(dgChip.Rows[e.RowIndex].Cells[0].Value));
@@ -1770,22 +1729,22 @@ namespace wfaIntegradoCom.Mantenedores
                         cboOperador.SelectedValue = Convert.ToInt32(lstChip.idOperador);
                         cboEstado.SelectedValue = lstChip.idEstado;
                         dtFechaCompra.Value = lstChip.dFechaCompra;
-                       
 
-                        if (lstChip.dFechaSuspencion=="")
+
+                        if (lstChip.dFechaSuspencion == "")
                         {
                             dtFechaSuspencion.Value = Variables.gdFechaSis;
                         }
                         else
                         {
                             txtCantDias.Text = Convert.ToString(lstChip.rNumeroDias);
-                            dtFechaSuspencion.Value =Convert.ToDateTime(lstChip.dFechaSuspencion);
-                            
+                            dtFechaSuspencion.Value = Convert.ToDateTime(lstChip.dFechaSuspencion);
+
                             dtFechaBaja.Visible = false;
                         }
 
 
-                        if (lstChip.dFechaReactivacion=="")
+                        if (lstChip.dFechaReactivacion == "")
                         {
                             dtFechaReactivacion.Value = Variables.gdFechaSis;
                         }
@@ -1794,7 +1753,7 @@ namespace wfaIntegradoCom.Mantenedores
                             dtFechaReactivacion.Value = Convert.ToDateTime(lstChip.dFechaReactivacion);
                         }
 
-                        if (lstChip.dFechaBaja == "" || lstChip.dFechaBaja==null)
+                        if (lstChip.dFechaBaja == "" || lstChip.dFechaBaja == null)
                         {
                             dtFechaBaja.Value = Variables.gdFechaSis;
                         }
@@ -1805,15 +1764,15 @@ namespace wfaIntegradoCom.Mantenedores
                         }
 
                         txtObservacion.Text = Convert.ToString(lstChip.observacion);
-                                               
+
                         //swEstado.Checked = lstChip.bEstado;
 
                         dgChip.Visible = false;
                         lblCantRegistros.Visible = false;
-                        
-                        fnHabilitarControles(false);                       
-                        FunValidaciones.fnHabilitarBoton(btnEditar, true);
-                        FunValidaciones.fnHabilitarBoton(btnNuevo, true);
+
+                        fnHabilitarControles(false);
+                        FunValidaciones.fnNewHabilitarBoton(btnEditar, true);
+                        FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
 
 
                         txtBuscarChip.Text = "";
@@ -1833,20 +1792,21 @@ namespace wfaIntegradoCom.Mantenedores
                 return false;
             }
         }
-       
+
         private void dgOperador1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (lnTipoLlamada==0)
+            if (lnTipoLlamada == 0)
             {
                 Boolean bResul = false;
                 bResul = fnListarChipEspcifico(e);
-                
+
                 if (!bResul)
                 {
                     MessageBox.Show("Error al Cargar chip Especifico", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     //this.Close();
                 }
-            }else if (lnTipoLlamada == 1)
+            }
+            else if (lnTipoLlamada == 1)
             {
                 Boolean bResul = false;
                 bResul = fnRecuperarChipEsp(e);
@@ -1858,12 +1818,12 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     this.Dispose();
                 }
-                
+
             }
             else if (lnTipoLlamada == 2)
             {
                 Boolean bResul = false;
-                bResul =fnRecuperaSimCardReac(e);
+                bResul = fnRecuperaSimCardReac(e);
                 this.Dispose();
             }
 
@@ -1880,7 +1840,7 @@ namespace wfaIntegradoCom.Mantenedores
             if (e.KeyChar == (Char)Keys.Enter)
             {
                 //fnObtenerPaginacionEquipos(valorComboBuscar,lnTipoCon , txtBuscarChip.Text);
-                fnBuscarEquipo(0,-1);
+                fnBuscarEquipo(0, -1);
 
                 fnHabilitarControles(false);
             }
@@ -1895,8 +1855,8 @@ namespace wfaIntegradoCom.Mantenedores
             dtFechaCompra_ValueChanged(sender, e);
             dtFechaSuspencion_ValueChanged_1(sender, e);
             txtObservacion_TextChanged_1(sender, e);
-            
-            if (estSimCard==true && estOperador==true && estEstado==true && estFechaCompra==true && estFechaSuspencion==true && estObservaciones==true)
+
+            if (estSimCard == true && estOperador == true && estEstado == true && estFechaCompra == true && estFechaSuspencion == true && estObservaciones == true)
             {
                 //MessageBox.Show("Todo Ok");
                 lcResultado = fnGuardarChip(lnTipoCon);

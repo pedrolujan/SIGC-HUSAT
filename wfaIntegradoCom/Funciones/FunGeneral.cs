@@ -60,7 +60,7 @@ namespace wfaIntegradoCom.Funciones
         }
         public static void fnThemaAFormularios(SiticonePanel sPanel)
         {
-            sPanel.FillColor = ColorThemas.PanelPadre;
+            sPanel.BackColor = ColorThemas.PanelPadre;
             //sPanel.BackColor = ColorThemas.PanelPadre;
             // codigo para buscar tab control
             var pTabControl = sPanel.Controls.OfType<TabControl>();
@@ -443,6 +443,458 @@ namespace wfaIntegradoCom.Funciones
                 {
                     hc.BackColor = ColorThemas.BarraAccesoDirectos;
                     hc.ForeColor=ColorThemas.FuenteControles;   
+                }
+
+                var sBut = sgb.Controls.OfType<SiticoneButton>();
+                foreach (SiticoneButton bt in sBut)
+                {
+                    bt.BackColor = ColorThemas.BarraAccesoDirectos;
+                }
+            }
+            //codigo para buscar datagridview
+            var sdgv = sPanel.Controls.OfType<SiticoneDataGridView>();
+            foreach (SiticoneDataGridView dg in sdgv)
+            {
+                dg.BackgroundColor = ColorThemas.PanelPadre;
+                dg.ThemeStyle.RowsStyle.BackColor = ColorThemas.FondoControles;
+                //dg.DefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                dg.RowsDefaultCellStyle.BackColor = ColorThemas.FondoControles;
+                //dg.ThemeStyle.BackColor= ColorThemas.BarraAccesoDirectos;
+                dg.ThemeStyle.AlternatingRowsStyle.BackColor = ColorThemas.FondoControles;
+                dg.ThemeStyle.RowsStyle.ForeColor = ColorThemas.FuenteControles;
+            }
+
+            //codigo para buscar label
+            var vLabel = sPanel.Controls.OfType<SiticoneHtmlLabel>();
+            foreach (SiticoneHtmlLabel lbl in vLabel)
+            {
+                lbl.ForeColor = ColorThemas.FuenteControles;
+            }
+            var label = sPanel.Controls.OfType<Label>();
+            foreach (Label lbl in label)
+            {
+                lbl.ForeColor = ColorThemas.FuenteControles;
+            }
+
+            //codigo para buscar SitiConetexbox
+            var stexbox = sPanel.Controls.OfType<SiticoneTextBox>();
+            foreach (SiticoneTextBox txt in stexbox)
+            {
+                txt.BackColor = ColorThemas.PanelPadre;
+                txt.FillColor = ColorThemas.FondoControles;
+                txt.ForeColor = ColorThemas.FuenteControles;
+            }
+            var sCmbox = sPanel.Controls.OfType<SiticoneComboBox>();
+            foreach (SiticoneComboBox scmb in sCmbox)
+            {
+                scmb.BackColor = ColorThemas.PanelPadre;
+                scmb.FillColor = ColorThemas.FondoControles;
+                scmb.ForeColor = ColorThemas.FuenteControles;
+            }
+
+            var SDatPicker = sPanel.Controls.OfType<SiticoneDateTimePicker>();
+            foreach (SiticoneDateTimePicker scmb in SDatPicker)
+            {
+                scmb.BackColor = ColorThemas.PanelPadre;
+                scmb.FillColor = ColorThemas.FondoControles;
+                scmb.ForeColor = ColorThemas.FuenteControles;
+            }
+
+            var sCheck = sPanel.Controls.OfType<SiticoneCheckBox>();
+            foreach (SiticoneCheckBox scmb in sCheck)
+            {
+                scmb.ForeColor = ColorThemas.FuenteControles;
+            }
+        }
+
+
+      
+
+        public static void fnNewThemaAFormularios(GunaPanel sPanel)
+        {
+            sPanel.BackColor = ColorThemas.PanelPadre;
+            //sPanel.BackColor = ColorThemas.PanelPadre;
+            // codigo para buscar tab control
+            var pTabControl = sPanel.Controls.OfType<TabControl>();
+            foreach (TabControl tb in pTabControl)
+            {
+                tb.BackColor = ColorThemas.PanelPadre;
+
+                var tbPage = tb.Controls.OfType<TabPage>();
+                foreach (TabPage tp in tbPage)
+                {
+                    tp.BackColor = ColorThemas.BarraAccesoDirectos;
+                    tp.ForeColor = ColorThemas.FuenteControles;
+                    var SComboBox = tp.Controls.OfType<SiticoneComboBox>();
+
+                    foreach (SiticoneComboBox scmb in SComboBox)
+                    {
+                        scmb.BackColor = ColorThemas.PanelPadre;
+                        scmb.FillColor = ColorThemas.BarraAccesoDirectos;
+                        scmb.ForeColor = ColorThemas.FuenteControles;
+                    }
+
+                    //panel dentro de tabPage
+
+                    var pnh = tp.Controls.OfType<SiticonePanel>();
+                    foreach (SiticonePanel pn in pnh)
+                    {
+                        pn.BackColor = ColorThemas.PanelPadre;
+
+                        var lblpnh = pn.Controls.OfType<SiticoneHtmlLabel>();
+                        foreach (SiticoneHtmlLabel stl in lblpnh)
+                        {
+                            stl.ForeColor = ColorThemas.FuenteControles;
+                        }
+                        var lblpnhf = pn.Controls.OfType<Label>();
+                        foreach (Label lbl in lblpnhf)
+                        {
+                            lbl.ForeColor = ColorThemas.FuenteControles;
+                            if (lbl.Tag == "error")
+                            {
+                                lbl.ForeColor = Color.Red;
+                            }
+                        }
+
+                        var stCheck = pn.Controls.OfType<SiticoneCheckBox>();
+                        foreach (SiticoneCheckBox chk in stCheck)
+                        {
+                            chk.ForeColor = ColorThemas.FuenteControles;
+                            if (chk.Tag == "important")
+                            {
+                                chk.ForeColor = Variables.ColorEmpresa;
+                            }
+                        }
+                    }
+
+                    var SDatPickerIn = tp.Controls.OfType<SiticoneDateTimePicker>();
+                    foreach (SiticoneDateTimePicker scmb in SDatPickerIn)
+                    {
+                        scmb.BackColor = ColorThemas.PanelPadre;
+                        scmb.FillColor = ColorThemas.BarraAccesoDirectos;
+                        scmb.ForeColor = ColorThemas.FuenteControles;
+                    }
+
+                    var pbTp = tp.Controls.OfType<PictureBox>();
+                    foreach (PictureBox p in pbTp)
+                    {
+                        p.BackColor = ColorThemas.BarraAccesoDirectos;
+                    }
+
+                    var pbbt = tp.Controls.OfType<SiticoneCircleButton>();
+                    foreach (SiticoneCircleButton bt in pbbt)
+                    {
+                        bt.BackColor = ColorThemas.BarraAccesoDirectos;
+                    }
+
+                    var stch = tp.Controls.OfType<SiticoneCheckBox>();
+                    foreach (SiticoneCheckBox ch in stch)
+                    {
+                        ch.BackColor = ColorThemas.BarraAccesoDirectos;
+                        ch.ForeColor = ColorThemas.FuenteControles;
+                    }
+
+                    var sLavel = tp.Controls.OfType<SiticoneHtmlLabel>();
+                    foreach (SiticoneHtmlLabel lbl in sLavel)
+                    {
+                        lbl.ForeColor = ColorThemas.FuenteControles;
+                    }
+                    var lavel = tp.Controls.OfType<Label>();
+                    foreach (Label lbl in lavel)
+                    {
+                        lbl.ForeColor = ColorThemas.FuenteControles;
+                    }
+
+                    var sdgvtp = tp.Controls.OfType<SiticoneDataGridView>();
+                    foreach (SiticoneDataGridView dg in sdgvtp)
+                    {
+                        dg.BackgroundColor = ColorThemas.BarraAccesoDirectos;
+                        dg.ThemeStyle.RowsStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                        //dg.DefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                        dg.DefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+                        dg.RowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                        //dg.ThemeStyle.BackColor= ColorThemas.BarraAccesoDirectos;
+                        dg.ThemeStyle.AlternatingRowsStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                        dg.ThemeStyle.AlternatingRowsStyle.ForeColor = ColorThemas.FuenteControles;
+                        dg.ThemeStyle.RowsStyle.ForeColor = ColorThemas.FuenteControles;
+                        dg.AlternatingRowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                        dg.AlternatingRowsDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+                    }
+
+                    var vGrouptp = tp.Controls.OfType<SiticoneGroupBox>();
+                    foreach (SiticoneGroupBox sgb in vGrouptp)
+                    {
+                        sgb.FillColor = ColorThemas.BarraAccesoDirectos;
+
+                        var gDatPickerIn = sgb.Controls.OfType<SiticoneDateTimePicker>();
+                        foreach (SiticoneDateTimePicker scmb in gDatPickerIn)
+                        {
+                            scmb.BackColor = ColorThemas.PanelPadre;
+                            scmb.FillColor = ColorThemas.FondoControles;
+                            scmb.ForeColor = ColorThemas.FuenteControles;
+                        }
+
+                        var vgLavel = sgb.Controls.OfType<SiticoneHtmlLabel>();
+                        foreach (SiticoneHtmlLabel lbl in vgLavel)
+                        {
+                            lbl.ForeColor = ColorThemas.FuenteControles;
+                        }
+                        var lvel = sgb.Controls.OfType<Label>();
+                        foreach (Label l in lvel)
+                        {
+                            l.BackColor = sgb.FillColor;
+                            l.ForeColor = ColorThemas.FuenteControles;
+                        }
+
+                        var sdgvG = sgb.Controls.OfType<SiticoneDataGridView>();
+                        foreach (SiticoneDataGridView dg in sdgvG)
+                        {
+                            dg.BackgroundColor = ColorThemas.PanelPadre;
+                            dg.ThemeStyle.RowsStyle.BackColor = ColorThemas.FondoControles;
+                            //dg.DefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            dg.RowsDefaultCellStyle.BackColor = ColorThemas.FondoControles;
+                            //dg.ThemeStyle.BackColor= ColorThemas.BarraAccesoDirectos;
+                            dg.ThemeStyle.AlternatingRowsStyle.BackColor = ColorThemas.FondoControles;
+                            dg.ThemeStyle.RowsStyle.ForeColor = ColorThemas.FuenteControles;
+                        }
+
+                        var dgvG = sgb.Controls.OfType<DataGridView>();
+                        foreach (DataGridView dg in dgvG)
+                        {
+                            dg.BackgroundColor = ColorThemas.BarraAccesoDirectos;
+                            dg.RowsDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+                            dg.RowTemplate.DefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+
+                            dg.RowHeadersDefaultCellStyle.BackColor = ColorThemas.PanelPadre;
+                            dg.ColumnHeadersDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+
+                            dg.ColumnHeadersDefaultCellStyle.BackColor = ColorThemas.FondoControles;
+                            dg.RowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                        }
+
+                        var grbint = sgb.Controls.OfType<GroupBox>();
+                        foreach (GroupBox gb in grbint)
+                        {
+                            gb.BackColor = ColorThemas.BarraAccesoDirectos;
+                            gb.ForeColor = ColorThemas.FuenteControles;
+
+                            var lblg = gb.Controls.OfType<Label>();
+                            foreach (Label lbl in lblg)
+                            {
+                                lbl.ForeColor = ColorThemas.FuenteControles;
+                            }
+
+                            var rb = gb.Controls.OfType<GunaRadioButton>();
+                            foreach (GunaRadioButton r in rb)
+                            {
+                                r.ForeColor = ColorThemas.FuenteControles;
+                            }
+                        }
+
+                        var sSep = sgb.Controls.OfType<SiticoneSeparator>();
+                        foreach (SiticoneSeparator sp in sSep)
+                        {
+                            sp.BackColor = ColorThemas.BarraAccesoDirectos;
+                        }
+
+                        var pb = sgb.Controls.OfType<PictureBox>();
+                        foreach (PictureBox p in pb)
+                        {
+                            if (p.Tag is null)
+                            {
+                                p.BackColor = ColorThemas.BarraAccesoDirectos;
+                            }
+                            else
+                            {
+                                if (p.Tag.ToString() == "pbBuscar")
+                                {
+                                    p.BackColor = ColorThemas.FondoControles;
+                                }
+                                else
+                                {
+                                    p.BackColor = ColorThemas.BarraAccesoDirectos;
+                                }
+                            }
+
+
+                        }
+                        var sch = sgb.Controls.OfType<SiticoneCheckBox>();
+                        foreach (SiticoneCheckBox lbl in sch)
+                        {
+                            lbl.BackColor = sgb.FillColor;
+                            lbl.ForeColor = ColorThemas.FuenteControles;
+                        }
+
+                        var gdg = sgb.Controls.OfType<GunaDataGridView>();
+
+                        foreach (GunaDataGridView dg in gdg)
+                        {
+                            dg.BackgroundColor = ColorThemas.BarraAccesoDirectos;
+                            dg.ThemeStyle.RowsStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            //dg.DefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            dg.DefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+                            dg.RowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            //dg.ThemeStyle.BackColor= ColorThemas.BarraAccesoDirectos;
+                            dg.ThemeStyle.AlternatingRowsStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            dg.ThemeStyle.AlternatingRowsStyle.ForeColor = ColorThemas.FuenteControles;
+                            dg.ThemeStyle.RowsStyle.ForeColor = ColorThemas.FuenteControles;
+                            dg.AlternatingRowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                            dg.AlternatingRowsDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+                        }
+                    }
+                    var rpViwer = tp.Controls.OfType<ReportViewer>();
+                    foreach (ReportViewer rv in rpViwer)
+                    {
+                        rv.BackColor = ColorThemas.FondoControles;
+                        rv.ForeColor = ColorThemas.FuenteControles;
+                    }
+                }
+
+
+            }
+
+            var pimage = sPanel.Controls.OfType<PictureBox>();
+            foreach (PictureBox pb in pimage)
+            {
+                if (pb.Tag.ToString() == "pbBuscar")
+                {
+                    pb.BackColor = ColorThemas.FondoControles;
+                }
+                else
+                {
+                    pb.BackColor = ColorThemas.PanelPadre;
+                }
+
+            }
+            var spn1 = sPanel.Controls.OfType<SiticonePanel>();
+            foreach (SiticonePanel pn1 in spn1)
+            {
+                pn1.FillColor = ColorThemas.PanelPadre;
+                pn1.ForeColor = ColorThemas.FuenteBotones;
+                var SComboBox = pn1.Controls.OfType<SiticoneComboBox>();
+                foreach (SiticoneComboBox scmb in SComboBox)
+                {
+                    scmb.BackColor = ColorThemas.PanelPadre;
+                    scmb.FillColor = ColorThemas.FondoControles;
+                    scmb.ForeColor = ColorThemas.FuenteControles;
+                }
+
+                var SDatPickerIn = pn1.Controls.OfType<SiticoneDateTimePicker>();
+                foreach (SiticoneDateTimePicker scmb in SDatPickerIn)
+                {
+                    scmb.BackColor = ColorThemas.PanelPadre;
+                    scmb.FillColor = ColorThemas.FondoControles;
+                    scmb.ForeColor = ColorThemas.FuenteControles;
+                }
+
+
+                var sLavel = pn1.Controls.OfType<SiticoneHtmlLabel>();
+                foreach (SiticoneHtmlLabel lbl in sLavel)
+                {
+                    lbl.ForeColor = ColorThemas.FuenteControles;
+                }
+                var lavel = pn1.Controls.OfType<Label>();
+                foreach (Label lbl in lavel)
+                {
+                    lbl.ForeColor = ColorThemas.FuenteControles;
+                }
+
+                var pimagein = pn1.Controls.OfType<PictureBox>();
+                foreach (PictureBox pb in pimagein)
+                {
+                    pb.BackColor = ColorThemas.PanelPadre;
+
+                }
+
+
+                var dgvG = pn1.Controls.OfType<DataGridView>();
+                foreach (DataGridView dg in dgvG)
+                {
+                    dg.BackgroundColor = ColorThemas.BarraAccesoDirectos;
+                    dg.RowsDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+                    dg.RowTemplate.DefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+
+                    dg.RowHeadersDefaultCellStyle.BackColor = ColorThemas.PanelPadre;
+                    dg.ColumnHeadersDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+
+                    dg.ColumnHeadersDefaultCellStyle.BackColor = ColorThemas.FondoControles;
+                    dg.RowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                }
+            }
+
+            //codigo para buscar groupBox
+            var grb = sPanel.Controls.OfType<GroupBox>();
+            foreach (GroupBox grp in grb)
+            {
+                grp.ForeColor = ColorThemas.FuenteControles;
+                grp.BackColor = ColorThemas.BarraAccesoDirectos;
+            }
+
+            var vGroupBox = sPanel.Controls.OfType<SiticoneGroupBox>();
+            foreach (SiticoneGroupBox sgb in vGroupBox)
+            {
+                sgb.FillColor = ColorThemas.BarraAccesoDirectos;
+                sgb.BackColor = ColorThemas.PanelPadre;
+
+                var gDatPickerIn = sgb.Controls.OfType<SiticoneDateTimePicker>();
+                foreach (SiticoneDateTimePicker scmb in gDatPickerIn)
+                {
+                    scmb.BackColor = ColorThemas.PanelPadre;
+                    scmb.FillColor = ColorThemas.FondoControles;
+                    scmb.ForeColor = ColorThemas.FuenteControles;
+                }
+
+                var vgLavel = sgb.Controls.OfType<SiticoneHtmlLabel>();
+                foreach (SiticoneHtmlLabel lbl in vgLavel)
+                {
+                    lbl.ForeColor = ColorThemas.FuenteControles;
+                }
+                var lavel = sgb.Controls.OfType<Label>();
+                foreach (Label lbl in lavel)
+                {
+                    if (lbl.Tag is null)
+                    {
+                        lbl.BackColor = sgb.FillColor;
+                    }
+                    else if (lbl.Tag.ToString() == "lblPanel")
+                    {
+                        lbl.BackColor = ColorThemas.FondoControles;
+
+                    }
+                    else
+                    {
+                        lbl.BackColor = sgb.FillColor;
+                    }
+                    lbl.ForeColor = ColorThemas.FuenteControles;
+                }
+                var dgvG = sgb.Controls.OfType<DataGridView>();
+                foreach (DataGridView dg in dgvG)
+                {
+                    dg.BackgroundColor = ColorThemas.BarraAccesoDirectos;
+                    dg.RowsDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+                    dg.RowTemplate.DefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+
+                    dg.RowHeadersDefaultCellStyle.BackColor = ColorThemas.PanelPadre;
+                    dg.ColumnHeadersDefaultCellStyle.ForeColor = ColorThemas.FuenteControles;
+
+                    dg.ColumnHeadersDefaultCellStyle.BackColor = ColorThemas.FondoControles;
+                    dg.RowsDefaultCellStyle.BackColor = ColorThemas.BarraAccesoDirectos;
+                    //dg.ThemeStyle.BackColor= ColorThemas.BarraAccesoDirectos;
+                    //dg.ThemeStyle.AlternatingRowsStyle.BackColor = ColorThemas.FondoControles;
+                    //dg.ThemeStyle.RowsStyle.ForeColor = ColorThemas.FuenteControles;
+                }
+
+                var pb = sgb.Controls.OfType<PictureBox>();
+                foreach (PictureBox p in pb)
+                {
+                    p.BackColor = ColorThemas.BarraAccesoDirectos;
+                }
+
+                var chk = sgb.Controls.OfType<CheckBox>();
+                foreach (CheckBox hc in chk)
+                {
+                    hc.BackColor = ColorThemas.BarraAccesoDirectos;
+                    hc.ForeColor = ColorThemas.FuenteControles;
                 }
 
                 var sBut = sgb.Controls.OfType<SiticoneButton>();

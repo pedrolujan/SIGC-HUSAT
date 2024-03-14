@@ -1,6 +1,7 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using CapaUtil;
+using Guna.UI.WinForms;
 using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections.Generic;
@@ -24,13 +25,13 @@ namespace wfaIntegradoCom.Mantenedores
             pasoLoad = false;
             InitializeComponent();
             Boolean bResult = false;
-            bResult = fnLlenarCategoria(1,cboBuscarCategoria, true);
+            bResult = fnLlenarCategoria(1, cboBuscarCategoria, true);
             if (!bResult)
             {
                 MessageBox.Show("Error al Cargar Categoria", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
-            bResult = fnLlenarCategoria(lnTipoCon,cboCategoria, false);
+            bResult = fnLlenarCategoria(lnTipoCon, cboCategoria, false);
             if (!bResult)
             {
                 MessageBox.Show("Error al Cargar Categoria", "Avise a Administrador de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -40,14 +41,16 @@ namespace wfaIntegradoCom.Mantenedores
             fnHabilitarGroupBoxs(false);
 
             cboBuscarEstado.SelectedIndex = 0;
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, false);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
-            FunValidaciones.fnColorBotones(btnNuevo, btnEditar, btnGuardar, btnSalir);
+
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
+            FunValidaciones.fnNewColorBotones(btnNuevo, btnEditar, btnGuardar, btnSalir);
             fnLimpiarControles();
-            fnVerAnadirAccesorio(false,false);
+            fnVerAnadirAccesorio(false, false);
             pasoLoad = true;
+
         }
 
         Boolean pasoLoad;
@@ -64,7 +67,7 @@ namespace wfaIntegradoCom.Mantenedores
             ShowDialog();
         }
 
-        private void fnVerAnadirAccesorio(Boolean chkestado,Boolean btnEstado)
+        private void fnVerAnadirAccesorio(Boolean chkestado, Boolean btnEstado)
         {
             chkAnadir.Visible = chkestado;
             chkAnadir.Checked = false;
@@ -106,11 +109,10 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void fnLimpiarControles()
         {
-            
+
             fnVerAnadirAccesorio(false, false);
             lnTipoCon = 0;
             fnLlenarCategoria(lnTipoCon, cboCategoria, false);
-            
 
             /////TEXBOXS/////
             txtCodigo.Text = "0";
@@ -127,7 +129,7 @@ namespace wfaIntegradoCom.Mantenedores
             cboModelo.SelectedValue = 0;
 
             ////LABELS//// 
-            
+
             erCategoria.Text = "";
             erMarca.Text = "";
             erModelo.Text = "";
@@ -135,7 +137,7 @@ namespace wfaIntegradoCom.Mantenedores
             erPrecio.Text = "";
             erAccesorios.Text = "";
             erObservaciones.Text = "";
-            
+
             ////CHEKSBOXS/////
             chkEstado.Checked = true;
             chkSinAccesorios.Checked = false;
@@ -149,11 +151,11 @@ namespace wfaIntegradoCom.Mantenedores
             imgAccesorios.Image = null;
             imgObservaciones.Image = null;
 
-     
+
             ////LISTBOXS/////
             dgEquipo.Visible = false;
 
-           
+
 
             txtBuscar.Focus();
             lnTipoCon = 0;
@@ -176,7 +178,7 @@ namespace wfaIntegradoCom.Mantenedores
                 txtNombre.Text = "";
 
             }
-            var result = FunValidaciones.fnValidarCombobox(cboModelo, erModelo, imgModelo);
+            var result = FunValidaciones.fnNewValidarCombobox(cboModelo, erModelo, imgModelo);
             estModelo = result.Item1;
             msjModelo = result.Item2;
 
@@ -189,7 +191,7 @@ namespace wfaIntegradoCom.Mantenedores
             msjNombre = result.Item2;
         }
 
-        private Tuple<Boolean, String> fnValidarTexboxSQL(SiticoneTextBox txt, Label lbl, PictureBox img, Boolean maximo, Int32 num)
+        private Tuple<Boolean, String> fnValidarTexboxSQL(GunaTextBox txt, Label lbl, PictureBox img, Boolean maximo, Int32 num)
         {
             String msj;
             Boolean bResul;
@@ -252,7 +254,7 @@ namespace wfaIntegradoCom.Mantenedores
                 Int32 idMarca = Convert.ToInt32(cboMarca.SelectedValue.ToString());
                 Int32 idModelo = Convert.ToInt32(cboModelo.SelectedValue.ToString());
 
-                numResult = objAcc.blBuscarNombreEquipo(idCategoria,idMarca,idModelo, pcBuscar, pnTipoCon);
+                numResult = objAcc.blBuscarNombreEquipo(idCategoria, idMarca, idModelo, pcBuscar, pnTipoCon);
 
                 if (numResult == 1)
                 {
@@ -291,21 +293,21 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void siticoneTextBox1_TextChanged(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarTexboxs(txtPrecio,erPrecio,imgPrecio,true,false,true,0,99999,0,6,"Ingrese un campo válido");
+            var result = FunValidaciones.fnNewValidarTexboxs(txtPrecio, erPrecio, imgPrecio, true, false, true, 0, 99999, 0, 6, "Ingrese un campo válido");
             estPrecio = result.Item1;
             msjPrecio = result.Item2;
         }
 
         private void txtObservaciones_TextChanged(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarTexboxs(txtObservaciones,erObservaciones,imgObservaciones,false,true,false,3,200,0,200,"Ingrese correctamente el campo");
+            var result = FunValidaciones.fnNewValidarTexboxs(txtObservaciones, erObservaciones, imgObservaciones, false, true, false, 3, 200, 0, 200, "Ingrese correctamente el campo");
             estObservaciones = result.Item1;
             msjObservaciones = result.Item2;
         }
 
         private void chkListaAccesorios_Click(object sender, EventArgs e)
         {
-           
+
             if (lnTipoCon == 1)
             {
                 Int32 index = chkListaAccesorios.SelectedIndex;
@@ -342,20 +344,20 @@ namespace wfaIntegradoCom.Mantenedores
 
                 }
             }
-            
 
-            
+
+
         }
 
-        private Boolean fnValidarEquipoAccesorio(Int32 idPlanAccesorio,Int16 pnTipoCon)
+        private Boolean fnValidarEquipoAccesorio(Int32 idPlanAccesorio, Int16 pnTipoCon)
         {
-            
+
             clsUtil objUtil = new clsUtil();
             BLEquipo objPlan = new BLEquipo();
             Boolean estadoTipoPlan;
             try
             {
-                estadoTipoPlan = objPlan.blValidarEquipoAccesorio(idPlanAccesorio,pnTipoCon);
+                estadoTipoPlan = objPlan.blValidarEquipoAccesorio(idPlanAccesorio, pnTipoCon);
 
                 return estadoTipoPlan;
             }
@@ -386,12 +388,12 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            FunValidaciones.fnValidarTipografia(e, "DIRECCION", true,erNombre);
+            FunValidaciones.fnValidarTipografia(e, "DIRECCION", true, erNombre);
         }
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            FunValidaciones.fnValidarTipografia(e, "MONEDA", false,erPrecio);
+            FunValidaciones.fnValidarTipografia(e, "MONEDA", false, erPrecio);
         }
 
         private Boolean fnLlenarCategoria(Int32 idCategoria, ComboBox combo, Boolean buscar)
@@ -417,7 +419,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private Boolean fnLlenarMarca( Int32 idMarca, ComboBox combo, Boolean buscar)
+        private Boolean fnLlenarMarca(Int32 idMarca, ComboBox combo, Boolean buscar)
         {
             BLEquipo objMarca = new BLEquipo();
             clsUtil objUtil = new clsUtil();
@@ -425,7 +427,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             try
             {
-                lstMarca = objMarca.blDevolverMarcaEquipo(-1,idMarca, buscar);
+                lstMarca = objMarca.blDevolverMarcaEquipo(-1, idMarca, buscar);
                 combo.ValueMember = "idMarca";
                 combo.DisplayMember = "cNomMarca";
                 combo.DataSource = lstMarca;
@@ -471,7 +473,7 @@ namespace wfaIntegradoCom.Mantenedores
                     fnBuscarTabla(dgEquipo, 0, -1);
                 }
             }
-            
+
         }
 
         private Boolean fnBuscarTabla(DataGridView dgv, Int32 numPagina, Int32 tipoCon)
@@ -490,25 +492,32 @@ namespace wfaIntegradoCom.Mantenedores
             Int32 totalResultados;
             try
             {
-
-                if (cboBuscarEstado.SelectedIndex == 1)
+                if (cboBuscarEstado.SelectedIndex >= 0)
                 {
-                    tipoBusqueda ="1";
-                }
-                else if (cboBuscarEstado.SelectedIndex == 2)
-                {
-                    tipoBusqueda = "0";
+                    if (cboBuscarEstado.SelectedIndex == 1)
+                    {
+                        tipoBusqueda = "1";
+                    }
+                    else if (cboBuscarEstado.SelectedIndex == 2)
+                    {
+                        tipoBusqueda = "0";
+                    }
+                    else
+                    {
+                        tipoBusqueda = "";
+                    }
                 }
                 else
                 {
                     tipoBusqueda = "";
                 }
+
                 nombreModelo = txtBuscar.Text.Trim();
                 valorCategoria = Convert.ToInt32(cboBuscarCategoria.SelectedValue.ToString());
                 valorMarca = Convert.ToInt32(cboBuscarMarca.SelectedValue.ToString());
                 valorModelo = Convert.ToInt32(cboBuscarModelo.SelectedValue.ToString());
                 lstPlan = new List<Equipo>();
-                datTipoPlan = objPlan.blBuscarEquipoDataTable(nombreModelo,tipoBusqueda,valorCategoria,valorMarca,valorModelo,numPagina,tipoCon);
+                datTipoPlan = objPlan.blBuscarEquipoDataTable(nombreModelo, tipoBusqueda, valorCategoria, valorMarca, valorModelo, numPagina, tipoCon);
 
                 totalResultados = datTipoPlan.Rows.Count;
                 if (totalResultados > 0)
@@ -563,16 +572,16 @@ namespace wfaIntegradoCom.Mantenedores
                         }
 
                         String precio = Convert.ToString(Math.Round(Convert.ToDecimal(datTipoPlan.Rows[i][4]), 2));
-                        object[] row = { 
-                            datTipoPlan.Rows[i][0],
-                            y,
-                            Marca, 
-                            Modelo, 
-                            datTipoPlan.Rows[i][3], 
-                            precio, 
-                            columAccesorio, 
-                            estado 
-                        };
+                        object[] row = {
+                    datTipoPlan.Rows[i][0],
+                    y,
+                    Marca,
+                    Modelo,
+                    datTipoPlan.Rows[i][3],
+                    precio,
+                    columAccesorio,
+                    estado
+                };
                         dt.Rows.Add(row);
 
                     }
@@ -595,7 +604,7 @@ namespace wfaIntegradoCom.Mantenedores
                     {
                         gbPaginacion.Visible = true;
                         Int32 totalRegistros = Convert.ToInt32(datTipoPlan.Rows[0][7]);
-                        fnCalcularPaginacion(
+                        ValidacionPaginacion.CalcularPaginacion(
                             totalRegistros,
                             filas,
                             totalResultados,
@@ -603,7 +612,7 @@ namespace wfaIntegradoCom.Mantenedores
                             btnTotalPaginas,
                             btnNumFilas,
                             btnTotalRegistros
-                            );
+                        );
                     }
                     else
                     {
@@ -628,8 +637,8 @@ namespace wfaIntegradoCom.Mantenedores
                 objUtil.gsLogAplicativo("frmRegistrarAccesorios", "fnBuscarEquipo", ex.Message);
                 return false;
             }
-
         }
+
 
 
         private Boolean fnBuscarEquipoHistorial(DataGridView dgv, Int32 numPagina, Int32 tipoCon)
@@ -642,7 +651,7 @@ namespace wfaIntegradoCom.Mantenedores
             String columAccesorio;
             Int32 idEquipo;
             Int32 totalResultados;
-           
+
             try
             {
 
@@ -724,11 +733,11 @@ namespace wfaIntegradoCom.Mantenedores
                     {
                         gbPaginacionHistorial.Visible = true;
                         Int32 totalRegistros = Convert.ToInt32(datTipoPlan.Rows[0][10]);
-                        fnCalcularPaginacion(totalRegistros,filas,totalResultados,cboPaginaHistorial,btnTotalPaginasHistorial,btnRegistrosHistorial,btnTotalRegistrosHistorial);
+                        ValidacionPaginacion.CalcularPaginacion(totalRegistros, filas, totalResultados, cboPaginaHistorial, btnRegistrosHistorial, btnRegistrosHistorial, btnTotalRegistrosHistorial);
                     }
                     else
                     {
-                        btnTotalPaginasHistorial.Text = Convert.ToString(totalResultados);
+                        btnTotalRegistrosHistorial.Text = Convert.ToString(totalResultados);
                     }
                     return true;
                 }
@@ -807,9 +816,9 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void dgEquipo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             estActualizar = true;
-            
+
             if (lnTipoLlamada == 0)
             {
                 Boolean bResul = false;
@@ -833,7 +842,8 @@ namespace wfaIntegradoCom.Mantenedores
                 //{
                 //    this.Dispose();
                 //}
-            }else if (lnTipoLlamada == 3)
+            }
+            else if (lnTipoLlamada == 3)
             {
                 Boolean bResul = false;
 
@@ -842,23 +852,20 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     MessageBox.Show("Error al Recuperar Equipo Especifico", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                else { 
-                    this.Dispose(); 
+                else
+                {
+                    this.Dispose();
                 }
             }
 
-
-
-
-
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, true);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, true);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
             fnHabilitarGroupBoxs(false);
 
             fnVerValidacion(false);
-            
+
         }
         private Boolean fnRecuperarEquipo(DataGridViewCellEventArgs e)
         {
@@ -871,7 +878,7 @@ namespace wfaIntegradoCom.Mantenedores
                 String modelo = Convert.ToString(dgEquipo.Rows[e.RowIndex].Cells[3].Value);
                 String nombreEquipo = Convert.ToString(dgEquipo.Rows[e.RowIndex].Cells[4].Value);
                 Procesos.frmOrdenCompraEquipos.fnObtenerEquipo(idEquipo, marca, modelo, nombreEquipo);
-                
+
                 return true;
             }
             catch (Exception ex)
@@ -906,7 +913,7 @@ namespace wfaIntegradoCom.Mantenedores
                     cboModelo.SelectedValue = lstEquipo.idModeloEquipo;
                     txtNombre.Text = Convert.ToString(lstEquipo.cNombre.ToString().Trim());
                     txtPrecio.Text = Convert.ToString(Math.Round(lstEquipo.cPrecio, 2));
-                     
+
 
                     bResult = fnListarAccesorios(lstEquipo.accesorios);
 
@@ -925,16 +932,16 @@ namespace wfaIntegradoCom.Mantenedores
                     txtObservaciones.Text = Convert.ToString(lstEquipo.cObservacion.ToString().Trim());
                     chkEstado.Checked = lstEquipo.bEstado;
 
-                    
+
                     dgv.Visible = false;
                     fnHabilitarGroupBoxs(false);
                     fnVerValidacion(false);
-                    FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-                    FunValidaciones.fnHabilitarBoton(btnEditar, true);
-                    FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-                    FunValidaciones.fnHabilitarBoton(btnSalir, true);
+                    FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+                    FunValidaciones.fnNewHabilitarBoton(btnEditar, true);
+                    FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+                    FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
                     txtBuscar.Text = "";
-                    
+
                     fnVerAnadirAccesorio(true, false);
                 }
 
@@ -995,7 +1002,7 @@ namespace wfaIntegradoCom.Mantenedores
                         }
 
                     }
-                    if(j == 0)
+                    if (j == 0)
                     {
                         chkSinAccesorios.Checked = true;
                         chkListaAccesorios.Enabled = false;
@@ -1005,30 +1012,30 @@ namespace wfaIntegradoCom.Mantenedores
                         chkSinAccesorios.Checked = false;
                         chkListaAccesorios.Enabled = true;
                     }
-                   
-                       
+
+
                     return true;
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 objUtil.gsLogAplicativo("frmRegistrarEquipo", "fnListarEquipoEspcifico", ex.Message);
                 return false;
-                
-            }
-           
 
-            
+            }
+
+
+
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
             fnVerValidacion(true);
             fnHabilitarGroupBoxs(true);
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, false);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, true);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, true);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -1052,7 +1059,7 @@ namespace wfaIntegradoCom.Mantenedores
                 fnObtenerAccesorios(Convert.ToInt32(txtCodigo.Text.ToString()), -2);
                 btnAnadir.Visible = true;
                 chkSinAccesorios.Visible = false;
-                FunValidaciones.fnHabilitarBoton(btnGuardar, false);
+                FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
             }
             else
             {
@@ -1064,7 +1071,7 @@ namespace wfaIntegradoCom.Mantenedores
                 Equipo lstEquipo = new Equipo();
                 Boolean bResult;
 
-                
+
                 Int32 idEquipo = Convert.ToInt32(txtCodigo.Text.Trim().ToString());
                 lstEquipo = objEquipo.blListarPlanDataGrid(idEquipo);
 
@@ -1074,7 +1081,7 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     MessageBox.Show("Error al listar Accesorios", "Accesorios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                FunValidaciones.fnHabilitarBoton(btnGuardar, true);
+                FunValidaciones.fnNewHabilitarBoton(btnGuardar, true);
             }
         }
 
@@ -1085,16 +1092,16 @@ namespace wfaIntegradoCom.Mantenedores
             Boolean bResult;
             Int32 idEquipo = Convert.ToInt32(txtCodigo.Text.Trim().ToString());
 
-            if(chkListaAccesorios.Items.Count == 0 )
+            if (chkListaAccesorios.Items.Count == 0)
             {
                 DialogResult resp;
                 resp = MessageBox.Show("No tiene ningun accesorio por agregar...\n VOLVER", "frmEquipo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if(resp == DialogResult.OK)
+                if (resp == DialogResult.OK)
                 {
                     chkAnadir.Checked = false;
-                    
+
                     lstEquipo = objEquipo.blListarPlanDataGrid(idEquipo);
-                    
+
                     bResult = fnListarAccesorios(lstEquipo.accesorios);
 
                     if (!bResult)
@@ -1104,7 +1111,8 @@ namespace wfaIntegradoCom.Mantenedores
 
                     fnVerAnadirAccesorio(true, false);
                 }
-            }else if (chkListaAccesorios.CheckedItems.Count == 0)
+            }
+            else if (chkListaAccesorios.CheckedItems.Count == 0)
             {
                 DialogResult resp;
                 resp = MessageBox.Show("No seleccionó ningun ACCESORIO...\n¿Todavía desea agregar?", "frmEquipo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -1113,12 +1121,12 @@ namespace wfaIntegradoCom.Mantenedores
                     chkListaAccesorios.Enabled = true;
                     fnLimpiarListaChecks();
                     fnObtenerAccesorios(Convert.ToInt32(txtCodigo.Text.ToString()), -2);
-                    
+
                 }
                 else
                 {
                     chkAnadir.Checked = false;
-                   
+
                     lstEquipo = objEquipo.blListarPlanDataGrid(idEquipo);
 
                     bResult = fnListarAccesorios(lstEquipo.accesorios);
@@ -1170,13 +1178,8 @@ namespace wfaIntegradoCom.Mantenedores
                 }
             }
 
-           
-            
-        }
 
-        private void txtObservaciones_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
+
         }
 
         private void cboBuscarCategoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -1235,13 +1238,13 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void cboBuscarEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             if (pasoLoad)
             {
                 fnBuscarTabla(dgEquipo, 0, -1);
             }
 
-            
+
         }
 
         private void cboBuscarModelo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1267,10 +1270,10 @@ namespace wfaIntegradoCom.Mantenedores
                 txtBuscar.Location = new Point(292, 57);
                 pbBuscar.Location = new Point(300, 66);
                 dgEquipo.Location = new Point(292, 103);
-                
+
                 cboBuscarEstado.Width = 200;
 
-                cboBuscarCategoria.Location=new Point(23, 128);
+                cboModelo.Location = new Point(23, 128);
                 cboBuscarCategoria.Width = 200;
                 lblCategoria.Location = new Point(20, 110);
 
@@ -1287,17 +1290,17 @@ namespace wfaIntegradoCom.Mantenedores
                 //dgEquipo.Width = 635;
                 StartPosition = FormStartPosition.CenterScreen;
                 fnOcultarObjeto(lnTipoLlamada);
-                
+
             }
             else if (lnTipoLlamada == 3)
             {
-                
+
                 this.Text = "Consultar Equipo";
-                
+
                 tabControl1.SelectedIndex = 1;
-                
+
                 StartPosition = FormStartPosition.CenterScreen;
-                tabControl1.TabPages.Remove(tabRegistro); 
+                tabControl1.TabPages.Remove(tabRegistro);
                 if (pasoLoad)
                 {
                     fnBuscarTabla(dgEquipo, 0, -1);
@@ -1338,11 +1341,11 @@ namespace wfaIntegradoCom.Mantenedores
                 MessageBox.Show("Error al Cargar accesorio Especifico", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
-           
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, true);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
+
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, true);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
             fnHabilitarGroupBoxs(false);
 
             fnVerValidacion(false);
@@ -1362,16 +1365,16 @@ namespace wfaIntegradoCom.Mantenedores
                 this.Close();
             }
 
-            bResul = fnBuscarEquipoHistorial(dgEquipoHistorial,0,-1);
+            bResul = fnBuscarEquipoHistorial(dgEquipoHistorial, 0, -1);
             if (!bResul)
             {
                 MessageBox.Show("Error al Listar Historial Equipo", "Aviso!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
-            FunValidaciones.fnHabilitarBoton(btnNuevo, true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, false);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, false);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
             fnHabilitarGroupBoxs(false);
 
             fnVerValidacion(false);
@@ -1392,7 +1395,7 @@ namespace wfaIntegradoCom.Mantenedores
             }
         }
 
-        private Boolean fnLLnenarMarcaxCategoria(Int32 idCategoria,Int16 pnTipoCon,Boolean buscar, ComboBox combo)
+        private Boolean fnLLnenarMarcaxCategoria(Int32 idCategoria, Int16 pnTipoCon, Boolean buscar, ComboBox combo)
         {
             BLCate_Mar_Mod objCate_Marca_Mod = new BLCate_Mar_Mod();
             clsUtil objUtil = new clsUtil();
@@ -1400,7 +1403,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             try
             {
-                lstMarca = objCate_Marca_Mod.blDevolverMarcaEquipo(idCategoria,pnTipoCon,buscar);
+                lstMarca = objCate_Marca_Mod.blDevolverMarcaEquipo(idCategoria, pnTipoCon, buscar);
                 combo.ValueMember = "idMarca";
                 combo.DisplayMember = "cNomMarca";
                 combo.DataSource = lstMarca;
@@ -1415,7 +1418,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         }
 
-        private Boolean fnLlenarModeloxMarca(Int32 idMarca,Int16 lnTipoCon,ComboBox combo,Boolean buscar)
+        private Boolean fnLlenarModeloxMarca(Int32 idMarca, Int16 lnTipoCon, ComboBox combo, Boolean buscar)
         {
             BLCate_Mar_Mod objCate_Marca_Mod = new BLCate_Mar_Mod();
             clsUtil objUtil = new clsUtil();
@@ -1423,7 +1426,7 @@ namespace wfaIntegradoCom.Mantenedores
 
             try
             {
-                lstModelo = objCate_Marca_Mod.blDevolverModeloEquipo(idMarca,lnTipoCon,buscar);
+                lstModelo = objCate_Marca_Mod.blDevolverModeloEquipo(idMarca, lnTipoCon, buscar);
                 combo.ValueMember = "idModelo";
                 combo.DisplayMember = "cNomModelo";
                 combo.DataSource = lstModelo;
@@ -1485,7 +1488,7 @@ namespace wfaIntegradoCom.Mantenedores
                 }
                 return lstAccesorios;
             }
-            
+
 
         }
 
@@ -1501,14 +1504,14 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 objEquipo.idEquipo = Convert.ToInt32(txtCodigo.Text.Trim());
                 objEquipo.idModeloEquipo = Convert.ToInt32(cboModelo.SelectedValue);
-                objEquipo.cNombre = Convert.ToString(txtNombre.Text.Trim());             
+                objEquipo.cNombre = Convert.ToString(txtNombre.Text.Trim());
                 objEquipo.cObservacion = Convert.ToString(txtObservaciones.Text.Trim());
                 objEquipo.cPrecio = Convert.ToDouble(txtPrecio.Text.Trim().ToString());
                 objEquipo.dFechaRegistro = Variables.gdFechaSis;
                 objEquipo.idUsuario = Variables.gnCodUser;
                 objEquipo.bEstado = Convert.ToBoolean(chkEstado.Checked);
 
-                Int32 opcion = lnTipoCon == 1 ?  0 : 1;
+                Int32 opcion = lnTipoCon == 1 ? 0 : 1;
 
                 lcValidar = blEquipo.blGrabarEquipo(objEquipo, idTipoCon, fnRecorrerAccesorios(opcion));
 
@@ -1527,13 +1530,13 @@ namespace wfaIntegradoCom.Mantenedores
         private void cboCategoriaEquipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             Boolean bResult;
-            
+
 
             if (cboCategoria.SelectedValue == null || cboCategoria.SelectedValue.ToString() == "0")
             {
 
                 cboMarca.Enabled = false;
-                bResult = fnLLnenarMarcaxCategoria(Convert.ToInt32(cboCategoria.SelectedValue),lnTipoCon,false, cboMarca);
+                bResult = fnLLnenarMarcaxCategoria(Convert.ToInt32(cboCategoria.SelectedValue), lnTipoCon, false, cboMarca);
                 if (!bResult)
                 {
                     MessageBox.Show("ERROR al Devolver la MARCA  DE TAL CATEGORIA", "cboCategoria", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1550,10 +1553,10 @@ namespace wfaIntegradoCom.Mantenedores
 
             }
 
-            var result = FunValidaciones.fnValidarCombobox(cboCategoria, erCategoria, imgCategoria);
+            var result = FunValidaciones.fnNewValidarCombobox(cboCategoria, erCategoria, imgCategoria);
             estCategoria = result.Item1;
             msjCategoria = result.Item2;
-            
+
         }
 
         private void cboMarcaEquipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1566,7 +1569,7 @@ namespace wfaIntegradoCom.Mantenedores
             {
 
                 cboModelo.Enabled = false;
-                bResult = fnLlenarModeloxMarca(Convert.ToInt32(cboMarca.SelectedValue),lnTipoCon,cboModelo,false);
+                bResult = fnLlenarModeloxMarca(Convert.ToInt32(cboMarca.SelectedValue), lnTipoCon, cboModelo, false);
                 if (!bResult)
                 {
                     MessageBox.Show("Error al devolver las Marcas", "cboMarca", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1576,33 +1579,33 @@ namespace wfaIntegradoCom.Mantenedores
             else
             {
                 cboModelo.Enabled = true;
-                bResult = fnLlenarModeloxMarca(Convert.ToInt32(cboMarca.SelectedValue),lnTipoCon,cboModelo,false);
+                bResult = fnLlenarModeloxMarca(Convert.ToInt32(cboMarca.SelectedValue), lnTipoCon, cboModelo, false);
                 if (!bResult)
                 {
                     MessageBox.Show("Error al devolver las Marcas", "cboMarca", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            
-            var result = FunValidaciones.fnValidarCombobox(cboMarca, erMarca, imgMarca);
+
+            var result = FunValidaciones.fnNewValidarCombobox(cboMarca, erMarca, imgMarca);
             estMarca = result.Item1;
             msjMarca = result.Item2;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            
-            var result1 = FunValidaciones.fnValidarCombobox(cboCategoria, erCategoria, imgCategoria);
+
+            var result1 = FunValidaciones.fnNewValidarCombobox(cboCategoria, erCategoria, imgCategoria);
             estCategoria = result1.Item1;
             msjCategoria = result1.Item2;
 
-            var result2 = FunValidaciones.fnValidarCombobox(cboMarca, erMarca, imgMarca);
+            var result2 = FunValidaciones.fnNewValidarCombobox(cboMarca, erMarca, imgMarca);
             estMarca = result2.Item1;
             msjMarca = result2.Item2;
 
-            var result3 = FunValidaciones.fnValidarCombobox(cboModelo, erModelo, imgModelo);
+            var result3 = FunValidaciones.fnNewValidarCombobox(cboModelo, erModelo, imgModelo);
             estModelo = result3.Item1;
             msjModelo = result3.Item2;
-            
+
             txtNombre_TextChanged(sender, e);
             siticoneTextBox1_TextChanged(sender, e);
             txtObservaciones_TextChanged(sender, e);
@@ -1630,8 +1633,8 @@ namespace wfaIntegradoCom.Mantenedores
                 MessageBox.Show("Complete correctamente los campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
-            
-            
+
+
         }
 
         private Tuple<Boolean, String> fnValidarCheckedListBox(CheckBox chk, CheckedListBox cklb, Label lbl, PictureBox img)
@@ -1685,7 +1688,7 @@ namespace wfaIntegradoCom.Mantenedores
                 chkListaAccesorios.DataSource = lstAcces;
                 chkListaAccesorios.ValueMember = "idAccesorio";
                 chkListaAccesorios.DisplayMember = "cAccesorio";
-               
+
 
                 return true;
             }
@@ -1694,13 +1697,8 @@ namespace wfaIntegradoCom.Mantenedores
                 objUtil.gsLogAplicativo("frmRegistrarAccesorios", "fnBuscarAccesorio", ex.Message);
                 return false;
             }
-
-
         }
-        private void txtNombreEquipo_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void chkListaAccesorios_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1715,16 +1713,16 @@ namespace wfaIntegradoCom.Mantenedores
             fnObtenerAccesorios(0, 0);
             fnLimpiarControles();
             fnHabilitarGroupBoxs(true);
-            
 
-            
 
-            FunValidaciones.fnHabilitarBoton(btnNuevo,true);
-            FunValidaciones.fnHabilitarBoton(btnEditar, false);
-            FunValidaciones.fnHabilitarBoton(btnGuardar, true);
-            FunValidaciones.fnHabilitarBoton(btnSalir, true);
+
+
+            FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
+            FunValidaciones.fnNewHabilitarBoton(btnEditar, false);
+            FunValidaciones.fnNewHabilitarBoton(btnGuardar, true);
+            FunValidaciones.fnNewHabilitarBoton(btnSalir, true);
             tabRegistro.AutoScroll = false;
         }
-        
+
     }
 }

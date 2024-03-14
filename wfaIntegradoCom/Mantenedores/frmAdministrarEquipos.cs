@@ -1,6 +1,7 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using CapaUtil;
+using Guna.UI.WinForms;
 using Siticone.Desktop.UI.WinForms;
 using System;
 using System.Collections.Generic;
@@ -51,16 +52,16 @@ namespace wfaIntegradoCom.Mantenedores
         }
         
 
-        private void fnColorBotonEsp(SiticoneButton btnNuevo)
+        private void fnColorBotonEsp(GunaButton btnNuevo)
         {
-            btnNuevo.FillColor = Color.White;
+            btnNuevo.BaseColor = Color.White;
             btnNuevo.BorderColor = Variables.ColorEmpresa;
             btnNuevo.ForeColor = Variables.ColorEmpresa;
             btnNuevo.Image = Properties.Resources.nuevo_base;
 
-            btnNuevo.HoverState.FillColor = Variables.ColorEmpresa;
-            btnNuevo.HoverState.Image = Properties.Resources.nuevo_hover;
-            btnNuevo.HoverState.ForeColor = Color.White;
+            btnNuevo.OnHoverBaseColor = Variables.ColorEmpresa;
+            btnNuevo.OnHoverImage= Properties.Resources.nuevo_hover;
+            btnNuevo.OnHoverForeColor = Color.White;
         }
         private void frmAdministrarEquipos_Load(object sender, EventArgs e)
         {
@@ -73,7 +74,7 @@ namespace wfaIntegradoCom.Mantenedores
                 fecha = fecha.AddDays(-30);
                 dtHFechaInicio.Value = fecha;
 
-                FunValidaciones.fnColorBotones(btnNuevo, btnEditar, btnGuardar, btnSalir);
+                FunValidaciones.fnNewColorBotones(btnNuevo, btnEditar, btnGuardar, btnSalir);
                 fnColorBotonEsp(btnNuevoHistorial);
                 frmImeis = new frmEquipoImeis();
 
@@ -469,8 +470,8 @@ namespace wfaIntegradoCom.Mantenedores
                         //dgImei_serie.Rows.Add(Convert.ToString(lstChip.idEquipoImeis), Convert.ToString(lstChip.imei), Convert.ToString(lstChip.serie));
 
                         //fnHabilitarControles(false);
-                        FunValidaciones.fnHabilitarBoton(btnEditar, true);
-                        FunValidaciones.fnHabilitarBoton(btnNuevo, true);
+                        FunValidaciones.fnNewHabilitarBoton(btnEditar, true);
+                        FunValidaciones.fnNewHabilitarBoton(btnNuevo, true);
 
                         dgEquipoAdmin.Visible = false;
                         txtBuscar.Text = "";
@@ -607,14 +608,14 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void txtImei_TextChanged(object sender, EventArgs e)
         {
-            var resultado = FunValidaciones.fnValidarTexboxs(txtImei, lblImei, pbImei, true, true, true, 15, 15, 15, 15, "Elija el equipo");
+            var resultado = FunValidaciones.fnNewValidarTexboxs(txtImei, lblImei, pbImei, true, true, true, 15, 15, 15, 15, "Elija el equipo");
             estEquipo = resultado.Item1;
             msjEquipo = resultado.Item2;
         }
 
         private void txtSerie_TextChanged(object sender, EventArgs e)
         {
-            var resultado = FunValidaciones.fnValidarTexboxs(txtSerie, lblSerie, pbSerie, true, true, true, 15, 15,15, 15, "Elija el equipo");
+            var resultado = FunValidaciones.fnNewValidarTexboxs(txtSerie, lblSerie, pbSerie, true, true, true, 15, 15,15, 15, "Elija el equipo");
             estEquipo = resultado.Item1;
             msjEquipo = resultado.Item2;
         }
@@ -626,7 +627,7 @@ namespace wfaIntegradoCom.Mantenedores
             msjSimCard = resultado.Item2;
         }
 
-        private Tuple<Boolean, String> fnValidarCombobox(SiticoneComboBox cbo, Label lbl, PictureBox img)
+        private Tuple<Boolean, String> fnValidarCombobox(GunaComboBox cbo, Label lbl, PictureBox img)
         {
             String msj;
             Boolean estado;
@@ -700,17 +701,17 @@ namespace wfaIntegradoCom.Mantenedores
         }
         private void cboPlataForma_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var result = FunValidaciones.fnValidarCombobox(cboPlataForma,lblPlataforma,pbPlataforma);
+            var result = FunValidaciones.fnNewValidarCombobox(cboPlataForma,lblPlataforma,pbPlataforma);
             estPlataforma = result.Item1;
             msjPlataforma = result.Item2;
         }
-        private Tuple<Boolean, String> fnValidarFecha(SiticoneDateTimePicker dtp, PictureBox img, Label lbl, String msj)
+        private Tuple<Boolean, String> fnValidarFecha(GunaDateTimePicker dtp, PictureBox img, Label lbl, String msj)
         {
                 if ((dtp.Value > Variables.gdFechaSis.AddHours(2)))
                 {
                     lbl.Text = msj;
                     lbl.ForeColor = Variables.ColorError;
-                    dtp.HoverState.BorderColor = Variables.ColorError;
+                    dtp.OnHoverBorderColor= Variables.ColorError;
                     img.Image = Properties.Resources.error;
                     return Tuple.Create(false, msj);
                 }
@@ -720,7 +721,7 @@ namespace wfaIntegradoCom.Mantenedores
                     lbl.Text = msj;
                     img.Image = Properties.Resources.ok;
                     lbl.ForeColor = Variables.ColorSuccess;
-                    dtp.HoverState.BorderColor = Variables.ColorSuccess;
+                    dtp.OnHoverBorderColor = Variables.ColorSuccess;
                     return Tuple.Create(true, msj);
                 }
            
@@ -819,11 +820,6 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 dgEquipoAdmin.Visible = false;
             }
-        }
-
-        private void cboBuscarMarca_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
         }
 
         private void cboEstadoBuscar_SelectedIndexChanged(object sender, EventArgs e)
@@ -1005,7 +1001,7 @@ namespace wfaIntegradoCom.Mantenedores
                 dgHistorial.Rows.Clear();
             }
         }
-        private Boolean fnListarProspectoPlanEspecifico(SiticoneDataGridView dgv, Int32 opc)
+        private Boolean fnListarProspectoPlanEspecifico(GunaDataGridView dgv, Int32 opc)
         {
             BLProspecto objAcc = new BLProspecto();
             ProspectosPlan lstPros = new ProspectosPlan();
@@ -1283,7 +1279,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void txtEquipoUnico_TextChanged(object sender, EventArgs e)
         {
-            var resultado = FunValidaciones.fnValidarTexboxs(txtEquipoUnico, lblEquipo, pbEquipo, true, true, false, 9, 9, 9, 9, "Elija el equipo");
+            var resultado = FunValidaciones.fnNewValidarTexboxs(txtEquipoUnico, lblEquipo, pbEquipo, true, true, false, 9, 9, 9, 9, "Elija el equipo");
             estEquipo = resultado.Item1;
             msjEquipo = resultado.Item2;
         }

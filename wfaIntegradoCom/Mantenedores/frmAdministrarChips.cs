@@ -49,11 +49,11 @@ namespace wfaIntegradoCom.Mantenedores
             {
                 if (datOperador.Rows.Count > 0)
                 {
-                    FunValidaciones.fnMostrarCantidadBusquedas(btnContadorRegistros, lblCantRegistros, datOperador.Rows.Count, true, "Estos son los chips sin cuenta");
+                    FunValidaciones.fnNewMostrarCantidadBusquedas(btnContadorRegistros, lblCantRegistros, datOperador.Rows.Count, true, "Estos son los chips sin cuenta");
                 }
                 else
                 {
-                    FunValidaciones.fnMostrarCantidadBusquedas(btnContadorRegistros, lblCantRegistros, datOperador.Rows.Count, true, "No hay chips disponibles para agregar a cuentas");
+                    FunValidaciones.fnNewMostrarCantidadBusquedas(btnContadorRegistros, lblCantRegistros, datOperador.Rows.Count, true, "No hay chips disponibles para agregar a cuentas");
                 }
 
                 for (int i = 0; i <= datOperador.Rows.Count - 1; i++)
@@ -82,8 +82,8 @@ namespace wfaIntegradoCom.Mantenedores
                 {
                     if (chkBuscar.Checked == true && Convert.ToInt32(cboNumRecibo.SelectedValue) != 0)
                     {
-                        FunValidaciones.fnMostrarCantidadBusquedas(btnContadorRegistros, lblCantRegistros, datOperador.Rows.Count, true, "Estos son los chips para la Cuenta [ " + cboNumRecibo.Text.ToString() + " ]");
-                        btnContadorRegistros.FillColor = Variables.ColorEmpresa;                      
+                        FunValidaciones.fnNewMostrarCantidadBusquedas(btnContadorRegistros, lblCantRegistros, datOperador.Rows.Count, true, "Estos son los chips para la Cuenta [ " + cboNumRecibo.Text.ToString() + " ]");
+                        btnContadorRegistros.BaseColor = Variables.ColorEmpresa;                      
 
                         foreach (DataGridViewRow row in dgChips.Rows)
                         {
@@ -103,8 +103,8 @@ namespace wfaIntegradoCom.Mantenedores
                 }
                 else
                 {
-                    FunValidaciones.fnMostrarCantidadBusquedas(btnContadorRegistros, lblCantRegistros, datOperador.Rows.Count, true, "Sin registros => elija otro numero de cuenta");
-                    btnContadorRegistros.FillColor = Variables.ColorEmpresa;
+                    FunValidaciones.fnNewMostrarCantidadBusquedas(btnContadorRegistros, lblCantRegistros, datOperador.Rows.Count, true, "Sin registros => elija otro numero de cuenta");
+                    btnContadorRegistros.BaseColor = Variables.ColorEmpresa;
                 }
             }
 
@@ -227,7 +227,7 @@ namespace wfaIntegradoCom.Mantenedores
         {
             Int32 lnIdRecibo = 0;
             fnBuscarChips(lnIdRecibo,lnTipoCon);
-            FunValidaciones.fnColorBotones(btnNuevo, btnEditar, btnGuardar, btnSalir);
+            FunValidaciones.fnNewColorBotones(btnNuevo, btnEditar, btnGuardar, btnSalir);
             fnLlenarRecibo();
             dgChips.ThemeStyle.HeaderStyle.BackColor = Variables.ColorGroupBox;
             lblCantRegistros.BackColor = Color.DimGray;
@@ -245,7 +245,7 @@ namespace wfaIntegradoCom.Mantenedores
        
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            var resul = FunValidaciones.fnValidarCombobox(cboNumRecibo, lblNumRecibo, pbNumRecibo);
+            var resul = FunValidaciones.fnNewValidarCombobox(cboNumRecibo, lblNumRecibo, pbNumRecibo);
             estNumCuenta = resul.Item1;
             msjNumCuenta = resul.Item2;
 
@@ -307,7 +307,7 @@ namespace wfaIntegradoCom.Mantenedores
 
         private void cboNumRecibo_SelectedIndexChanged(object sender, EventArgs e)
         {
-           var resul= FunValidaciones.fnValidarCombobox(cboNumRecibo,lblNumRecibo,pbNumRecibo);
+           var resul= FunValidaciones.fnNewValidarCombobox(cboNumRecibo,lblNumRecibo,pbNumRecibo);
             estNumCuenta = resul.Item1;
             msjNumCuenta = resul.Item2;
             
@@ -354,7 +354,7 @@ namespace wfaIntegradoCom.Mantenedores
 
                     lblCantRegistros.Text = "Buscar chips seleccione una cuenta";
                 }
-                btnContadorRegistros.FillColor = Variables.ColorEmpresa;
+                btnContadorRegistros.BaseColor = Variables.ColorEmpresa;
                 btnContadorRegistros.BackColor = Color.DimGray;
                 
                 dgChips.ThemeStyle.HeaderStyle.BackColor = Variables.ColorEmpresa;
@@ -371,7 +371,7 @@ namespace wfaIntegradoCom.Mantenedores
                 lnTipoCon = 0;
                 fnBuscarChips(0,lnTipoCon);
                 lblCantRegistros.Text = "Estos son los chips sin numero de cuenta";
-                btnContadorRegistros.FillColor = Variables.ColorGroupBox;
+                btnContadorRegistros.BaseColor = Variables.ColorGroupBox;
                 cboNumRecibo.SelectedValue = 0;      
                 
                 dgChips.ThemeStyle.HeaderStyle.BackColor = Variables.ColorGroupBox;
@@ -386,11 +386,6 @@ namespace wfaIntegradoCom.Mantenedores
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void siticonePanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

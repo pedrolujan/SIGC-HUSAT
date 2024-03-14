@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="cmOpCierre.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -151,6 +154,25 @@
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnCerrarFormulario.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAD5SURBVEhLvZVJ
+        DsIwDEXLJVjBtbpguA6wKT2yeU7sSiiUZoInRTQ/9rNoGYa/ICJ71mjbZnBdWUfbhmBkKZNF1eCYo0rO
+        FkUIbjGX2aJi6H1EhTwteoeD6iH0fJc7FNxjXf4Qal2e10Nh9hBqyuQODZtDOKuTOzQuQ1g7iwPs2+QO
+        gmQIr33kjoqiL7wu13bcB4T+TpS+cgWp3xYleSZNmFDpf4sQJQ+U69VPVxE0r34XyNqG0LQqdzirG0Lx
+        ptyhpmwIRdlyh9q8IRwWyx16lp96VjqEsFru0Pt5CJtTiLf+LDLAMUWVXCwK4YF1sm0z6lKnbX/JMLwA
+        DoTi35IiYIMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnMinimize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAA8SURBVEhLYxgF
+        o2AUjAISwf///0WAeBMQ7yYTg/SKQo3DBEBJISBeB1VMDgZZIAw1bhSMglEwCogDDAwAWYWDG3MrDt8A
+        AAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btnBuscar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAACoZJREFUWEfN
@@ -202,48 +224,25 @@
         RU5ErkJggg==
 </value>
   </data>
-  <data name="btnAperturarCaja.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAABGdBTUEAALGPC/xhBQAAA1tJREFUWEft
-        l0lrVEEUhUNi0DhEXKiYQSTgRjdiRDeSIOgfCIKggguDxjgtxL0gSmI0iholIggiKm7yG9SAIuLswmHh
-        gCMaB5wFy+9U3RIr6SHdia76g0Ooc0/V67x+9ep2WYkS/wPnXAVagragDtRrfzVuRhUW/XdwkZnoCHqN
-        cvEK9aB6mzp6sGgV2ou+ochXdB6dRrozZ9AFNDizB42zpUYGC9WgKyhyC61EkyySgF+NVqHbKHIZzbBI
-        cbBALXqq1eAzakXlVs4JOT1X69AXJJ6gGisXBhPHo6taBZ6h+VYqCOYtQM+1COgOV1lp+DDpoJ/u3Cc0
-        z+yiYH4j0p0V3WYPDybMRj/8VOfWmD0iWGdtWM59Rw1m54fwCT/NuWso4zOCX4cOo7toAN1Bh1DG5wK/
-        HN1E4rjZuSE4BmlxscLsBHy98GJmMG9Rk0UT8LULxRuU/8VISBcSel8M2b549ei9AvAAbUBLUTt6iIQ+
-        aK1N+QPeZKSvSWT8wAmENoes6zcrAT8+2PfRFLM9GqP4gfabnYB/KZTdRrOyQ2h3yLqzZiXg626IVrMS
-        8NeHsrtnVgL+uVB2u8zKDqFjIet6zErAfxfKrtmsBPz4NQ+YlYCvs030mpUdQvtC1p00KwH/Rii7drMS
-        8DeFsrtuVgL+qVB2XWZlh9D2kHUXzUrA7wxl9whNNdvDeBp6rCJ0mJ2A3x/KbptZ2SHUFLJ+Nw15dePp
-        gtq+QhdWDzMdbUU6f4S2bvJBBZ6OmHiqLzY7O4TGoY8+znvB7AT8RShub7Hc/go9UwstmoC/2iec+4DG
-        mp0bgupPhA62bG/gbp+gPbCx2gSR8ezB1xs4HrxHzc4P4bnop5+WYQvjVaKXvupcm3ltYej9Sh/8Czy1
-        E0LrzjF7eDChy08N3Vpy2xm3+Eo4iavNU1MVT+YWHzQY62vVOqLT7OHDpIlIXZ14gRqtpFqfd2k5zfJo
-        HGzXZ5Y89TPxLuq1MMFKhcHEBqTGSqiv0VehnRPbi2UW9WgcbF9XTudVvFvqGGdZtDhYQAdjvENCnb/Q
-        Nk4ebo3NFzEn1DrUWWxksJB+HeiA/IUiO62cID+UPcofQIW3mvlgUf1S2IH0uynjLZdvdeWKa8ALgYvk
-        /E/z1UuUGB3Kyn4D9pIa1PeA2SwAAAAASUVORK5CYII=
-</value>
-  </data>
-  <metadata name="dataGridViewTextBoxColumn7.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="dataGridViewTextBoxColumn8.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="fechaHora.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="dataGridViewTextBoxColumn10.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="dataGridViewTextBoxColumn12.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Column5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Usuario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Column6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="btnActa.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="cmOpCierre.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
   </metadata>
 </root>
