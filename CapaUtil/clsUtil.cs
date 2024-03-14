@@ -113,7 +113,7 @@ namespace CapaUtil
             string assemblyLocation = Assembly.GetExecutingAssembly().Location;
 
             // Combina la ruta del ensamblado con la ruta relativa al directorio raíz del proyecto
-            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "../../");
+            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "");
 
             // Convierte la ruta a una ruta completa
             rootPath = Path.GetFullPath(rootPath);

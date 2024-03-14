@@ -104,6 +104,7 @@
     <Compile Include="AttrVehiculo.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="Moneda.cs" />
+    <Compile Include="MultiThread.cs" />
     <Compile Include="ParametrosFactura.cs" />
     <Compile Include="Reactivaciones.cs" />
     <Compile Include="ResponseSunat.cs" />

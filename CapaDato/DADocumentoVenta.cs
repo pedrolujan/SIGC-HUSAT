@@ -116,6 +116,7 @@ namespace CapaDato
                     {
                         numero = i + 1,
                         idVenta = Convert.ToInt32(d["idDocumentoVenta"]),
+                        idDocumentoVenta = Convert.ToInt32(d["idDocumentoVenta"]),
                         CodigoCorrelativo = d["codDocumentoCorrelativo"].ToString(),
                         cCliente = d["cliente"].ToString(),
                         dFechaRegistro = Convert.ToDateTime(d["dtFecha"]),

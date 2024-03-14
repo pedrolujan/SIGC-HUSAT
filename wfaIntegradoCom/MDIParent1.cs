@@ -54,6 +54,9 @@ using Siticone.Desktop.UI.WinForms.Suite;
 using Rectangle = System.Drawing.Rectangle;
 using System.Reflection.Emit;
 using DocumentFormat.OpenXml.Office2016.Drawing.Charts;
+using ToolTip = System.Windows.Forms.ToolTip;
+using WPF.CTRL.Colocaciones;
+using System.Threading.Tasks;
 
 namespace wfaIntegradoCom
 
@@ -627,7 +630,7 @@ namespace wfaIntegradoCom
                         {
                             AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
                             string titulo = titleAttribute.Title;
-                            this.Text = titulo;
+                            this.Text = "Husis - "+Variables.clasePersonal.cPrimerNom+" "+ Variables.clasePersonal.cApePat;
 
                             // Ahora, 'titulo' contiene el título de tu proyecto.
                         }
@@ -3161,6 +3164,9 @@ namespace wfaIntegradoCom
             }else if (rpt.Codigoreporte == "TEGR0003")
             {
                 icono.IconChar = IconChar.Vault;
+            }else if (rpt.Detallereporte.ToString().Contains("EMIT") || rpt.Detallereporte.ToString().Contains("EMIT"))
+            {
+                icono.IconChar = IconChar.FileInvoice;
             }
             return icono;
         }
@@ -3174,6 +3180,7 @@ namespace wfaIntegradoCom
         }
         private void fnGenerarPanelsIndividuales(List<ReporteBloque> lstBusq, FlowLayoutPanel stPanel ,String nombPn)
         {
+
             Color colorFondo = new Color();
             Color colorHeaderFooter = new Color();
             Color colorLetraHF = new Color();
@@ -3322,7 +3329,9 @@ namespace wfaIntegradoCom
                 panel.Controls.Add(pnIzquierdo);
                 //Panel Derecho
                 SiticonePanel pnDerecho = new SiticonePanel();
-                pnDerecho.Name = "pnDerecho" + i;
+                ToolTip toolTipPanel = new ToolTip();
+                toolTipPanel.SetToolTip(pnDerecho, "Click Para emitir documentos");
+                pnDerecho.Name = "pnDerecho" + i+ lstBusq[i].Detallereporte;
                 pnDerecho.BackColor = colorFondo;
                 pnDerecho.Size = pnIzquierdo.Size;
                 pnDerecho.Location = new Point(panel.Width / 2, pnHead.Height);
@@ -3336,6 +3345,7 @@ namespace wfaIntegradoCom
                 //icon.SizeMode = PictureBoxSizeMode.AutoSize;
                 icon.Padding = new Padding(icon.Width / 3, 0, 0, 0);
                 pnDerecho.Controls.Add(icon);
+                
 
                 panel.Controls.Add(pnDerecho);
 
@@ -3385,7 +3395,9 @@ namespace wfaIntegradoCom
             stLabel2.AutoSize = true;
             stLabel2.ForeColor = Variables.ColorEmpresa;
             stLabel2.BackColor = Color.Yellow;
-            stLabel2.Padding = new Padding(10);
+            stLabel2.Location = new Point(0,0);
+            stLabel2.Padding = new Padding(0,10,0,10);
+            stLabel2.Margin=new Padding(0,0,0,0);
 
             if (Variables.cNombreServidor != "365.database.windows.net")
             {
@@ -3407,15 +3419,16 @@ namespace wfaIntegradoCom
             stPanel.Padding = new Padding(0, 0, 0, 0);
             if (stPanel.VerticalScroll.Visible == true)
             {
-                stPanel.Width = totalWidth + 30;
+
+                stPanel.Width = totalWidth + 35;
             }
             else
             {
-                stPanel.Width = totalWidth + 15;
+                stPanel.Width = totalWidth + 35;
 
             }
             stPanel.Height = totalHeight + 20;
-
+            stPanel.Location = new Point(stPanel.Location.X, (8 + pnlParaDashboard.AutoScrollPosition.Y));
 
 
 
@@ -3424,43 +3437,56 @@ namespace wfaIntegradoCom
         private void MiBoton_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Control control = sender as System.Windows.Forms.Control;
+            String tag = "";
             String nombre = "";
-            if (control != null)
+            try
             {
-                Type controlType = control.GetType();
-                if (controlType == typeof(SiticoneHtmlLabel))
+                if (control != null)
                 {
-                    SiticoneHtmlLabel label = (SiticoneHtmlLabel) control;
-                    nombre=label.Tag.ToString();
-                    // Código a ejecutar cuando se hace clic en un SiticoneHtmlLabel
-                }
-                else if (controlType == typeof(IconPictureBox))
-                {
-                    FontAwesome.Sharp.IconPictureBox iconChar = (FontAwesome.Sharp.IconPictureBox)control;
-                    nombre = iconChar.Tag.ToString();
-                    // Código a ejecutar cuando se hace clic en un Button
-                }
-                else if (controlType == typeof(SiticonePanel))
-                {
-                    SiticonePanel panel = (SiticonePanel)control;
-                    nombre = panel.Tag.ToString();
-                    // Código a ejecutar cuando se hace clic en un Panel
-                }
+                    Type controlType = control.GetType();
+                    if (controlType == typeof(SiticoneHtmlLabel))
+                    {
+                        SiticoneHtmlLabel label = (SiticoneHtmlLabel)control;
+                        tag = label.Tag.ToString();
+                        nombre = label.Name.ToString();
+                        // Código a ejecutar cuando se hace clic en un SiticoneHtmlLabel
+                    }
+                    else if (controlType == typeof(IconPictureBox))
+                    {
+                        FontAwesome.Sharp.IconPictureBox iconChar = (FontAwesome.Sharp.IconPictureBox)control;
+                        tag = iconChar.Tag.ToString();
+                        nombre = iconChar.Name.ToString();
+                        // Código a ejecutar cuando se hace clic en un Button
+                    }
+                    else if (controlType == typeof(SiticonePanel))
+                    {
+                        SiticonePanel panel = (SiticonePanel)control;
+                        tag = panel.Tag.ToString();
+                        nombre = panel.Name.ToString();
+                        // Código a ejecutar cuando se hace clic en un Panel
+                    }
 
-                fnAbrirFormularios(nombre);
+                    fnAbrirFormularios(tag, nombre);
 
 
+                }
             }
+            catch (Exception ex)
+            {
+
+                
+            }
+            
 
         }
-        private void fnAbrirFormularios(string codigo)
+        private void fnAbrirFormularios(string tag, string name)
         {
             
-            if (codigo== "00000001")
+            if (tag == "00000001")
             {
                 frmInstalacionEquipo frm=new frmInstalacionEquipo();
                 frm.Show();
-            }else if (codigo == "00000002")
+            }else if (tag == "00000002")
             {
                 if (Variables.gsCargoUsuario== "PETR0007" || Variables.gsCargoUsuario== "PETR0005")
                 {
@@ -3468,20 +3494,78 @@ namespace wfaIntegradoCom
                     frm.Show();
                 }
 
-            }else if (codigo == "00000003")
+            }else if (tag == "00000003")
             {
                 frmRegistrarVenta frm = new frmRegistrarVenta();
                 frm.Show();
             }
-            else if (codigo == "00000004")
+            else if (tag == "00000004")
             {
                 frmPagosPendientes frm = new frmPagosPendientes();
                 frm.Show();
-            }else if (codigo == "00000005")
+            }else if (tag == "00000005")
             {
                 frmSeguimiento frm = new frmSeguimiento();
                 frm.Inicio(1);
             }
+            else if (name.ToString().Contains("EMIT") || name.ToString().Contains("EMIT"))
+            {
+                panelEspaciado.Controls.Clear();
+
+                Label lbl = new Label();
+                lbl.AutoSize = false;
+                lbl.Size = panelEspaciado.Size;
+                lbl.TextAlign = ContentAlignment.MiddleCenter;
+                lbl.BackColor = Color.Black;
+                lbl.ForeColor = Variables.ColorWarning;
+                lbl.Font = new Font("Roboto", 14);
+                lbl.Text = "Enviando documentos a la sunat...";
+
+
+                panelEspaciado.Controls.Add(lbl);
+
+                fnPrepararDatosYENviarASUnat(tag);
+            }
+        }
+        private async void fnPrepararDatosYENviarASUnat(string codigo)
+        {
+            try
+            {
+                MovimientoSunat ms = new MovimientoSunat();
+                string[] codigos = codigo.Split(',');
+                int idDocumento = 0;
+                List<Task> tasks = new List<Task>();
+               
+                
+                foreach (string cod in codigos)
+                {
+                    tasks = new List<Task>();
+                    tasks.Add(Task.Run(() => ms.fnEnviarASunat(Convert.ToInt32(cod), 0)));
+                    await Task.WhenAll(tasks);
+                }
+                panelEspaciado.Controls.Clear();
+
+                Label lbl = new Label();
+                lbl.AutoSize = false;
+                lbl.Size = panelEspaciado.Size;
+                lbl.TextAlign = ContentAlignment.MiddleCenter;
+                lbl.BackColor = Color.Black;
+                lbl.ForeColor = Variables.ColorWarning;
+                lbl.Font = new Font("Roboto", 14);
+                lbl.Text = "Documentos emitidos..";
+
+
+                panelEspaciado.Controls.Add(lbl);
+                fnGenerarPaneles(FunGeneral.fnBuscarCajasDashboard(-1));
+
+            }
+            catch (Exception ex)
+            {
+
+                
+            }
+           
+            
         }
 
         private System.Drawing.Drawing2D.GraphicsPath fnRedondearBordes(Int32 width, Int32 height, Int32 borderRadius)
@@ -3575,6 +3659,7 @@ namespace wfaIntegradoCom
                 }
                 else 
                 { 
+
                     
                     if (lstBusq[i].Cantidad <= 1)
                     {
@@ -3597,12 +3682,23 @@ namespace wfaIntegradoCom
                     {
                         colorFondo = Color.FromArgb(0, 126, 63);
                     }
+                    if (lstBusq[i].Detallereporte.ToString().Contains("EMIT"))
+                    {
+                        if (lstBusq[i].Cantidad <=0)
+                        {
+                            colorFondo = Color.FromArgb(0, 126, 63);
+                        }
+                        else 
+                        {
+                            colorFondo = Color.FromArgb(161, 20, 1);
+                        }
+                    }
                 }
                 
                 
                 //Panel princilal
                 SiticonePanel panelFondo = new SiticonePanel();
-                panelFondo.Name = "panel" + i;
+                panelFondo.Name = "panel" + i+ lstBusq[i].Detallereporte;
                 panelFondo.Size = new Size(pnfW, pnfH);
                 //panelFondo.BorderRadius =borderRadius;
                 panelFondo.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
@@ -3619,7 +3715,7 @@ namespace wfaIntegradoCom
 
 
                 SiticonePanel panel = new SiticonePanel();
-                panel.Name = "panel" + i;
+                panel.Name = "panel" + i + lstBusq[i].Detallereporte;
                 //panel.Size = new Size(panelFondo.Width, panelFondo.Height);
                 panel.Size = new Size(pnfW+1, pnfH);
                 ////panel.BorderRadius = borderRadius;
@@ -3632,7 +3728,7 @@ namespace wfaIntegradoCom
 
                 // panel Header
                 SiticonePanel pnHead = new SiticonePanel();
-                pnHead.Name = "pnHead" + i;
+                pnHead.Name = "pnHead" + i + lstBusq[i].Detallereporte;
                 pnHead.Size = new Size(panel.Width, (panel.Height/2)/2);
                 pnHead.BackColor = Color.Transparent;
                 pnHead.FillColor = colorFondo;
@@ -3643,7 +3739,7 @@ namespace wfaIntegradoCom
 
 
                 SiticoneHtmlLabel lblH = new SiticoneHtmlLabel();
-                lblH.Name = "lblHeader" + i;
+                lblH.Name = "lblHeader" + i + lstBusq[i].Detallereporte;
                 lblH.AutoSize = false;
                 lblH.Size = new Size(pnHead.Width, pnHead.Height);
                 //lblH.BackColor = Color.Red;
@@ -3660,7 +3756,7 @@ namespace wfaIntegradoCom
 
                 //Panel Izquierdo
                 SiticonePanel pnIzquierdo = new SiticonePanel();
-                pnIzquierdo.Name = "pnIzquierdo" + i;
+                pnIzquierdo.Name = "pnIzquierdo" + i + lstBusq[i].Detallereporte;
                 pnIzquierdo.Size = new Size(panel.Width/2, panel.Height- (pnHead.Height * 2));
                 pnIzquierdo.Location = new Point(0, pnHead.Height);
                 pnIzquierdo.FillColor = colorFondo;
@@ -3683,7 +3779,7 @@ namespace wfaIntegradoCom
                 panel.Controls.Add(pnIzquierdo);
                 //Panel Derecho
                 SiticonePanel pnDerecho = new SiticonePanel();
-                pnDerecho.Name = "pnDerecho" + i;
+                pnDerecho.Name = "pnDerecho" + i + lstBusq[i].Detallereporte;
                 pnDerecho.BackColor = colorFondo;
                 pnDerecho.Size = pnIzquierdo.Size;
                 pnDerecho.Location = new Point(panel.Width / 2, pnHead.Height);
@@ -3693,6 +3789,7 @@ namespace wfaIntegradoCom
                 icon.Size = new Size(pnDerecho.Width-18, pnDerecho.Height-18);
                 icon.Location = new Point((pnDerecho.Width/3), 1);
                 //icon.BackColor = Color.Green;
+                icon.Name = lstBusq[i].Detallereporte;
                 icon.ForeColor = colorLetraIcono;
                 icon.Dock = DockStyle.Fill;
                 icon.Tag = lstBusq[i].Codigoreporte;

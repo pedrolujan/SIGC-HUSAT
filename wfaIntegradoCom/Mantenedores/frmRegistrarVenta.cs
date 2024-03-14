@@ -4348,7 +4348,10 @@ namespace wfaIntegradoCom.Mantenedores
                     fnLimpiarControles();
                     bTipoTab = false;
                     bActivarChecks = false;
-
+                    int idDocumento = 0;
+                    MovimientoSunat ms = new MovimientoSunat();
+                    idDocumento=ms.fnObtenerIdDocumentoVenta(xmlDocumentoVenta[0].xmlDocumentoVenta[0].CodigoCorrelativo);
+                    ms.fnEnviarDocumentosASunat(idDocumento,0);
                 }
                 else
                 {

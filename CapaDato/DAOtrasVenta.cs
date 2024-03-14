@@ -932,6 +932,39 @@ namespace CapaDato
                 objCnx = null;
             }
         }
+        public int daObtenerIdDocumentoVenta(string correlativo)
+        {
+            SqlParameter[] pa = new SqlParameter[1];
+            DataTable dt = new DataTable();
+            clsConexion objCnx = null;
+            
+            objUtil = new clsUtil();
+            int idDocumento = 0;
+            try
+            {
+
+                pa[0] = new SqlParameter("@correlatico", SqlDbType.VarChar) { Value = correlativo };
+                objCnx = new clsConexion("");
+                dt=objCnx.EjecutarProcedimientoDT("uspObtenerIdDocumentoVenta", pa);
+                foreach (DataRow drMenu in dt.Rows)
+                {
+                    idDocumento = Convert.ToInt32(drMenu["idDocumentoVenta"]);
+                }
+
+                return idDocumento;
+            }
+            catch (Exception ex)
+            {
+                
+                return idDocumento;
+            }
+            finally
+            {
+                if (objCnx != null)
+                    objCnx.CierraConexion();
+                objCnx = null;
+            }
+        }
 
     }
 }

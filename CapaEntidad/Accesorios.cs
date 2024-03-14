@@ -8,6 +8,7 @@ namespace CapaEntidad
 {
     public class Accesorios
     {
+        
         public Accesorios() { }
 
         Int32 _idAccesorio = 0;

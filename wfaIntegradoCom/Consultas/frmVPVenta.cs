@@ -258,6 +258,12 @@ namespace wfaIntegradoCom.Consultas
                     fr.fnCondicionProcesos(5);
                     frm.fnCambiarEstadoPago(true);
                 }
+                else
+                {
+                    frmOtrasVentas fr = new frmOtrasVentas();
+                    fr.fnCondicionProcesos(lnEstadosProcesos);
+                    frm.fnCambiarEstadoPago(true);
+                }
 
 
 

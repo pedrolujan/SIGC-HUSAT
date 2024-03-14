@@ -8,6 +8,7 @@ namespace CapaEntidad
 {
     public class DocumentoVenta
     {
+        
         public DocumentoVenta() { }
 
         Int32 _idVenta = 0;

@@ -45,8 +45,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.siticonePanel1 = new Siticone.Desktop.UI.WinForms.SiticonePanel();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cntxtMenuStrip = new Guna.UI.WinForms.GunaContextMenuStrip();
+            this.reenviarDocumentoASunatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.ProgressBar1 = new Siticone.Desktop.UI.WinForms.SiticoneWinProgressIndicator();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dotNetBarTabControl1 = new wfaIntegradoCom.Mantenedores.DotNetBarTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.gunaGradientButton1 = new Guna.UI.WinForms.GunaGradientButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.gbPaginacion = new System.Windows.Forms.GroupBox();
             this.btnNumFilas = new Siticone.Desktop.UI.WinForms.SiticoneCircleButton();
@@ -80,6 +89,7 @@
             this.SiticoneHtmlLabel1 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.txtBuscar = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.gunaGradientButton2 = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnNumFilasBoletas = new Siticone.Desktop.UI.WinForms.SiticoneCircleButton();
@@ -145,11 +155,10 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.SiticoneHtmlLabel3 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.txtBuscarNotaCredito = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.cntxtMenuStrip = new Guna.UI.WinForms.GunaContextMenuStrip();
-            this.reenviarDocumentoASunatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.circularProgressBar1 = new CircularProgressBar.CircularProgressBar();
             this.siticonePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.cntxtMenuStrip.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.dotNetBarTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbPaginacion.SuspendLayout();
@@ -166,8 +175,6 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscarNotaCredito)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNota)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            this.cntxtMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // siticonePanel1
@@ -176,8 +183,85 @@
             this.siticonePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.siticonePanel1.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel1.Name = "siticonePanel1";
-            this.siticonePanel1.Size = new System.Drawing.Size(1014, 495);
+            this.siticonePanel1.Size = new System.Drawing.Size(1261, 495);
             this.siticonePanel1.TabIndex = 1;
+            // 
+            // cntxtMenuStrip
+            // 
+            this.cntxtMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reenviarDocumentoASunatToolStripMenuItem});
+            this.cntxtMenuStrip.Name = "cntxtMenuStrip";
+            this.cntxtMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.cntxtMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.cntxtMenuStrip.RenderStyle.ColorTable = null;
+            this.cntxtMenuStrip.RenderStyle.RoundedEdges = true;
+            this.cntxtMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.cntxtMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cntxtMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.cntxtMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.cntxtMenuStrip.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.SystemDefault;
+            this.cntxtMenuStrip.Size = new System.Drawing.Size(228, 26);
+            // 
+            // reenviarDocumentoASunatToolStripMenuItem
+            // 
+            this.reenviarDocumentoASunatToolStripMenuItem.Image = global::wfaIntegradoCom.Properties.Resources.equivale;
+            this.reenviarDocumentoASunatToolStripMenuItem.Name = "reenviarDocumentoASunatToolStripMenuItem";
+            this.reenviarDocumentoASunatToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.reenviarDocumentoASunatToolStripMenuItem.Text = "Reenviar Documento a Sunat";
+            this.reenviarDocumentoASunatToolStripMenuItem.Click += new System.EventHandler(this.reenviarDocumentoASunatToolStripMenuItem_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.lblStatus);
+            this.panel1.Controls.Add(this.ProgressBar1);
+            this.panel1.Location = new System.Drawing.Point(0, 297);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(144, 195);
+            this.panel1.TabIndex = 2;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.label14.Location = new System.Drawing.Point(0, 156);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(144, 29);
+            this.label14.TabIndex = 7;
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.lblStatus.Location = new System.Drawing.Point(43, 74);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(46, 26);
+            this.lblStatus.TabIndex = 8;
+            this.lblStatus.Text = "0%";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ProgressBar1
+            // 
+            this.ProgressBar1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ProgressBar1.BackColor = System.Drawing.Color.Transparent;
+            this.ProgressBar1.CircleSize = 1F;
+            this.ProgressBar1.Location = new System.Drawing.Point(10, 30);
+            this.ProgressBar1.Name = "ProgressBar1";
+            this.ProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.ProgressBar1.Size = new System.Drawing.Size(125, 115);
+            this.ProgressBar1.TabIndex = 9;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // dotNetBarTabControl1
             // 
@@ -195,13 +279,14 @@
             this.dotNetBarTabControl1.Multiline = true;
             this.dotNetBarTabControl1.Name = "dotNetBarTabControl1";
             this.dotNetBarTabControl1.SelectedIndex = 0;
-            this.dotNetBarTabControl1.Size = new System.Drawing.Size(1008, 489);
+            this.dotNetBarTabControl1.Size = new System.Drawing.Size(1255, 489);
             this.dotNetBarTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.dotNetBarTabControl1.TabIndex = 0;
             this.dotNetBarTabControl1.SelectedIndexChanged += new System.EventHandler(this.dotNetBarTabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.gunaGradientButton1);
             this.tabPage1.Controls.Add(this.iconButton1);
             this.tabPage1.Controls.Add(this.gbPaginacion);
             this.tabPage1.Controls.Add(this.cboEstadofactura);
@@ -215,10 +300,39 @@
             this.tabPage1.Location = new System.Drawing.Point(140, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(864, 481);
+            this.tabPage1.Size = new System.Drawing.Size(1111, 481);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "FACTURAS";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // gunaGradientButton1
+            // 
+            this.gunaGradientButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gunaGradientButton1.AnimationHoverSpeed = 0.07F;
+            this.gunaGradientButton1.AnimationSpeed = 0.03F;
+            this.gunaGradientButton1.BaseColor1 = System.Drawing.Color.Transparent;
+            this.gunaGradientButton1.BaseColor2 = System.Drawing.Color.Transparent;
+            this.gunaGradientButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.gunaGradientButton1.BorderSize = 1;
+            this.gunaGradientButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gunaGradientButton1.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gunaGradientButton1.FocusedColor = System.Drawing.Color.Empty;
+            this.gunaGradientButton1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.gunaGradientButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.gunaGradientButton1.Image = global::wfaIntegradoCom.Properties.Resources.equivale;
+            this.gunaGradientButton1.ImageSize = new System.Drawing.Size(20, 20);
+            this.gunaGradientButton1.Location = new System.Drawing.Point(832, 41);
+            this.gunaGradientButton1.Name = "gunaGradientButton1";
+            this.gunaGradientButton1.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.gunaGradientButton1.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.gunaGradientButton1.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gunaGradientButton1.OnHoverForeColor = System.Drawing.Color.White;
+            this.gunaGradientButton1.OnHoverImage = null;
+            this.gunaGradientButton1.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaGradientButton1.Size = new System.Drawing.Size(158, 40);
+            this.gunaGradientButton1.TabIndex = 277;
+            this.gunaGradientButton1.Text = "Emitir Documentos";
+            this.gunaGradientButton1.Click += new System.EventHandler(this.gunaGradientButton1_Click);
             // 
             // iconButton1
             // 
@@ -232,9 +346,9 @@
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 32;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(552, 42);
+            this.iconButton1.Location = new System.Drawing.Point(652, 41);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(160, 40);
+            this.iconButton1.Size = new System.Drawing.Size(158, 40);
             this.iconButton1.TabIndex = 275;
             this.iconButton1.Text = "Exportar a excel";
             this.iconButton1.UseVisualStyleBackColor = false;
@@ -252,7 +366,7 @@
             this.gbPaginacion.Controls.Add(this.btnTotalPag);
             this.gbPaginacion.Controls.Add(this.label41);
             this.gbPaginacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPaginacion.Location = new System.Drawing.Point(514, 435);
+            this.gbPaginacion.Location = new System.Drawing.Point(761, 435);
             this.gbPaginacion.Name = "gbPaginacion";
             this.gbPaginacion.Size = new System.Drawing.Size(340, 40);
             this.gbPaginacion.TabIndex = 274;
@@ -362,7 +476,7 @@
             this.cboEstadofactura.ItemHeight = 30;
             this.cboEstadofactura.Location = new System.Drawing.Point(450, 45);
             this.cboEstadofactura.Name = "cboEstadofactura";
-            this.cboEstadofactura.Size = new System.Drawing.Size(96, 36);
+            this.cboEstadofactura.Size = new System.Drawing.Size(196, 36);
             this.cboEstadofactura.TabIndex = 272;
             // 
             // chkHabilitarFechasBus
@@ -485,7 +599,7 @@
             this.pbBuscar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.pbBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.pbBuscar.IconSize = 26;
-            this.pbBuscar.Location = new System.Drawing.Point(828, 50);
+            this.pbBuscar.Location = new System.Drawing.Point(1075, 50);
             this.pbBuscar.Name = "pbBuscar";
             this.pbBuscar.Size = new System.Drawing.Size(26, 26);
             this.pbBuscar.TabIndex = 266;
@@ -535,7 +649,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaVentas.GridColor = System.Drawing.Color.Silver;
-            this.dgvListaVentas.Location = new System.Drawing.Point(7, 91);
+            this.dgvListaVentas.Location = new System.Drawing.Point(7, 92);
             this.dgvListaVentas.Name = "dgvListaVentas";
             this.dgvListaVentas.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -556,7 +670,7 @@
             this.dgvListaVentas.RowTemplate.Height = 60;
             this.dgvListaVentas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvListaVentas.Size = new System.Drawing.Size(852, 342);
+            this.dgvListaVentas.Size = new System.Drawing.Size(1099, 342);
             this.dgvListaVentas.TabIndex = 265;
             this.dgvListaVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvListaVentas.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -658,7 +772,7 @@
             this.SiticoneHtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.SiticoneHtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiticoneHtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.SiticoneHtmlLabel1.Location = new System.Drawing.Point(715, 25);
+            this.SiticoneHtmlLabel1.Location = new System.Drawing.Point(996, 25);
             this.SiticoneHtmlLabel1.Name = "SiticoneHtmlLabel1";
             this.SiticoneHtmlLabel1.Size = new System.Drawing.Size(107, 18);
             this.SiticoneHtmlLabel1.TabIndex = 1;
@@ -676,17 +790,18 @@
             this.txtBuscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBuscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscar.Location = new System.Drawing.Point(715, 45);
+            this.txtBuscar.Location = new System.Drawing.Point(996, 45);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderText = "";
             this.txtBuscar.SelectedText = "";
-            this.txtBuscar.Size = new System.Drawing.Size(141, 36);
+            this.txtBuscar.Size = new System.Drawing.Size(107, 36);
             this.txtBuscar.TabIndex = 273;
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.gunaGradientButton2);
             this.tabPage3.Controls.Add(this.gunaLabel1);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Controls.Add(this.iconButton2);
@@ -700,10 +815,39 @@
             this.tabPage3.Location = new System.Drawing.Point(140, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(864, 481);
+            this.tabPage3.Size = new System.Drawing.Size(1111, 481);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "BOLETAS";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // gunaGradientButton2
+            // 
+            this.gunaGradientButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gunaGradientButton2.AnimationHoverSpeed = 0.07F;
+            this.gunaGradientButton2.AnimationSpeed = 0.03F;
+            this.gunaGradientButton2.BaseColor1 = System.Drawing.Color.Transparent;
+            this.gunaGradientButton2.BaseColor2 = System.Drawing.Color.Transparent;
+            this.gunaGradientButton2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.gunaGradientButton2.BorderSize = 1;
+            this.gunaGradientButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gunaGradientButton2.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gunaGradientButton2.FocusedColor = System.Drawing.Color.Empty;
+            this.gunaGradientButton2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.gunaGradientButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.gunaGradientButton2.Image = global::wfaIntegradoCom.Properties.Resources.equivale;
+            this.gunaGradientButton2.ImageSize = new System.Drawing.Size(20, 20);
+            this.gunaGradientButton2.Location = new System.Drawing.Point(826, 49);
+            this.gunaGradientButton2.Name = "gunaGradientButton2";
+            this.gunaGradientButton2.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
+            this.gunaGradientButton2.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.gunaGradientButton2.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gunaGradientButton2.OnHoverForeColor = System.Drawing.Color.White;
+            this.gunaGradientButton2.OnHoverImage = null;
+            this.gunaGradientButton2.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaGradientButton2.Size = new System.Drawing.Size(160, 35);
+            this.gunaGradientButton2.TabIndex = 287;
+            this.gunaGradientButton2.Text = "Emitir Documentos";
+            this.gunaGradientButton2.Click += new System.EventHandler(this.gunaGradientButton2_Click);
             // 
             // gunaLabel1
             // 
@@ -711,7 +855,7 @@
             this.gunaLabel1.AutoSize = true;
             this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.gunaLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.gunaLabel1.Location = new System.Drawing.Point(710, 26);
+            this.gunaLabel1.Location = new System.Drawing.Point(1002, 26);
             this.gunaLabel1.Name = "gunaLabel1";
             this.gunaLabel1.Size = new System.Drawing.Size(100, 19);
             this.gunaLabel1.TabIndex = 286;
@@ -729,7 +873,7 @@
             this.groupBox2.Controls.Add(this.btnTotalPagBoletas);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(518, 436);
+            this.groupBox2.Location = new System.Drawing.Point(765, 436);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(340, 40);
             this.groupBox2.TabIndex = 285;
@@ -837,7 +981,7 @@
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 32;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(551, 45);
+            this.iconButton2.Location = new System.Drawing.Point(664, 47);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Size = new System.Drawing.Size(160, 40);
             this.iconButton2.TabIndex = 284;
@@ -859,7 +1003,7 @@
             this.cboEstadosBoleta.ItemHeight = 30;
             this.cboEstadosBoleta.Location = new System.Drawing.Point(449, 48);
             this.cboEstadosBoleta.Name = "cboEstadosBoleta";
-            this.cboEstadosBoleta.Size = new System.Drawing.Size(96, 36);
+            this.cboEstadosBoleta.Size = new System.Drawing.Size(211, 36);
             this.cboEstadosBoleta.TabIndex = 282;
             // 
             // siticoneCheckBox1
@@ -982,7 +1126,7 @@
             this.pbBuscarBoleta.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.pbBuscarBoleta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.pbBuscarBoleta.IconSize = 26;
-            this.pbBuscarBoleta.Location = new System.Drawing.Point(827, 53);
+            this.pbBuscarBoleta.Location = new System.Drawing.Point(1074, 53);
             this.pbBuscarBoleta.Name = "pbBuscarBoleta";
             this.pbBuscarBoleta.Size = new System.Drawing.Size(26, 26);
             this.pbBuscarBoleta.TabIndex = 278;
@@ -1053,7 +1197,7 @@
             this.dgvBoletas.RowTemplate.Height = 60;
             this.dgvBoletas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvBoletas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvBoletas.Size = new System.Drawing.Size(852, 342);
+            this.dgvBoletas.Size = new System.Drawing.Size(1099, 342);
             this.dgvBoletas.TabIndex = 277;
             this.dgvBoletas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvBoletas.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -1161,12 +1305,12 @@
             this.txtBuscarBoleta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarBoleta.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBuscarBoleta.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarBoleta.Location = new System.Drawing.Point(714, 48);
+            this.txtBuscarBoleta.Location = new System.Drawing.Point(992, 48);
             this.txtBuscarBoleta.Name = "txtBuscarBoleta";
             this.txtBuscarBoleta.PasswordChar = '\0';
             this.txtBuscarBoleta.PlaceholderText = "";
             this.txtBuscarBoleta.SelectedText = "";
-            this.txtBuscarBoleta.Size = new System.Drawing.Size(141, 36);
+            this.txtBuscarBoleta.Size = new System.Drawing.Size(110, 36);
             this.txtBuscarBoleta.TabIndex = 283;
             this.txtBuscarBoleta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarBoleta_KeyPress);
             // 
@@ -1185,7 +1329,7 @@
             this.tabPage2.Location = new System.Drawing.Point(140, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(864, 481);
+            this.tabPage2.Size = new System.Drawing.Size(1111, 481);
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "NOT. CREDITO";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1202,7 +1346,7 @@
             this.groupBox3.Controls.Add(this.btnTotalPagNota);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(518, 436);
+            this.groupBox3.Location = new System.Drawing.Point(765, 436);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(340, 40);
             this.groupBox3.TabIndex = 295;
@@ -1310,7 +1454,7 @@
             this.btnExportarNota.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExportarNota.IconSize = 32;
             this.btnExportarNota.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportarNota.Location = new System.Drawing.Point(551, 45);
+            this.btnExportarNota.Location = new System.Drawing.Point(798, 45);
             this.btnExportarNota.Name = "btnExportarNota";
             this.btnExportarNota.Size = new System.Drawing.Size(160, 40);
             this.btnExportarNota.TabIndex = 294;
@@ -1331,7 +1475,7 @@
             this.cboEstadoNota.ItemHeight = 30;
             this.cboEstadoNota.Location = new System.Drawing.Point(449, 48);
             this.cboEstadoNota.Name = "cboEstadoNota";
-            this.cboEstadoNota.Size = new System.Drawing.Size(96, 36);
+            this.cboEstadoNota.Size = new System.Drawing.Size(343, 36);
             this.cboEstadoNota.TabIndex = 292;
             // 
             // chkHabilitaFechaNota
@@ -1454,7 +1598,7 @@
             this.pbBuscarNotaCredito.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
             this.pbBuscarNotaCredito.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.pbBuscarNotaCredito.IconSize = 26;
-            this.pbBuscarNotaCredito.Location = new System.Drawing.Point(827, 53);
+            this.pbBuscarNotaCredito.Location = new System.Drawing.Point(1074, 53);
             this.pbBuscarNotaCredito.Name = "pbBuscarNotaCredito";
             this.pbBuscarNotaCredito.Size = new System.Drawing.Size(26, 26);
             this.pbBuscarNotaCredito.TabIndex = 288;
@@ -1525,7 +1669,7 @@
             this.dgvNota.RowTemplate.Height = 60;
             this.dgvNota.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvNota.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvNota.Size = new System.Drawing.Size(852, 342);
+            this.dgvNota.Size = new System.Drawing.Size(1099, 342);
             this.dgvNota.TabIndex = 287;
             this.dgvNota.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvNota.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -1627,7 +1771,7 @@
             this.SiticoneHtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.SiticoneHtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiticoneHtmlLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(68)))), ((int)(((byte)(29)))));
-            this.SiticoneHtmlLabel3.Location = new System.Drawing.Point(714, 28);
+            this.SiticoneHtmlLabel3.Location = new System.Drawing.Point(961, 28);
             this.SiticoneHtmlLabel3.Name = "SiticoneHtmlLabel3";
             this.SiticoneHtmlLabel3.Size = new System.Drawing.Size(137, 18);
             this.SiticoneHtmlLabel3.TabIndex = 286;
@@ -1645,7 +1789,7 @@
             this.txtBuscarNotaCredito.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarNotaCredito.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBuscarNotaCredito.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarNotaCredito.Location = new System.Drawing.Point(714, 48);
+            this.txtBuscarNotaCredito.Location = new System.Drawing.Point(961, 48);
             this.txtBuscarNotaCredito.Name = "txtBuscarNotaCredito";
             this.txtBuscarNotaCredito.PasswordChar = '\0';
             this.txtBuscarNotaCredito.PlaceholderText = "";
@@ -1654,75 +1798,22 @@
             this.txtBuscarNotaCredito.TabIndex = 293;
             this.txtBuscarNotaCredito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarNotaCredito_KeyPress);
             // 
-            // cntxtMenuStrip
-            // 
-            this.cntxtMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reenviarDocumentoASunatToolStripMenuItem});
-            this.cntxtMenuStrip.Name = "cntxtMenuStrip";
-            this.cntxtMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.cntxtMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.cntxtMenuStrip.RenderStyle.ColorTable = null;
-            this.cntxtMenuStrip.RenderStyle.RoundedEdges = true;
-            this.cntxtMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.cntxtMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.cntxtMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.cntxtMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.cntxtMenuStrip.RenderStyle.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.SystemDefault;
-            this.cntxtMenuStrip.Size = new System.Drawing.Size(228, 26);
-            // 
-            // reenviarDocumentoASunatToolStripMenuItem
-            // 
-            this.reenviarDocumentoASunatToolStripMenuItem.Image = global::wfaIntegradoCom.Properties.Resources.equivale;
-            this.reenviarDocumentoASunatToolStripMenuItem.Name = "reenviarDocumentoASunatToolStripMenuItem";
-            this.reenviarDocumentoASunatToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-            this.reenviarDocumentoASunatToolStripMenuItem.Text = "Reenviar Documento a Sunat";
-            this.reenviarDocumentoASunatToolStripMenuItem.Click += new System.EventHandler(this.reenviarDocumentoASunatToolStripMenuItem_Click);
-            // 
-            // circularProgressBar1
-            // 
-            this.circularProgressBar1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.circularProgressBar1.AnimationSpeed = 500;
-            this.circularProgressBar1.BackColor = System.Drawing.Color.Transparent;
-            this.circularProgressBar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.circularProgressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.circularProgressBar1.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.circularProgressBar1.InnerMargin = 2;
-            this.circularProgressBar1.InnerWidth = -1;
-            this.circularProgressBar1.Location = new System.Drawing.Point(12, 377);
-            this.circularProgressBar1.MarqueeAnimationSpeed = 2000;
-            this.circularProgressBar1.Name = "circularProgressBar1";
-            this.circularProgressBar1.OuterColor = System.Drawing.Color.Gray;
-            this.circularProgressBar1.OuterMargin = -25;
-            this.circularProgressBar1.OuterWidth = 26;
-            this.circularProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.circularProgressBar1.ProgressWidth = 25;
-            this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.circularProgressBar1.Size = new System.Drawing.Size(125, 115);
-            this.circularProgressBar1.StartAngle = 270;
-            this.circularProgressBar1.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.circularProgressBar1.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.circularProgressBar1.SubscriptText = "";
-            this.circularProgressBar1.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.circularProgressBar1.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.circularProgressBar1.SuperscriptText = "";
-            this.circularProgressBar1.TabIndex = 1;
-            this.circularProgressBar1.Text = "Emitiendo..";
-            this.circularProgressBar1.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.circularProgressBar1.Value = 68;
-            this.circularProgressBar1.Visible = false;
-            // 
             // MovimientoSunat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 495);
-            this.Controls.Add(this.circularProgressBar1);
+            this.ClientSize = new System.Drawing.Size(1261, 495);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.siticonePanel1);
             this.Name = "MovimientoSunat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movimiento Sunat";
             this.Load += new System.EventHandler(this.MovimientoSunat_Load);
             this.siticonePanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.cntxtMenuStrip.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.dotNetBarTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -1748,8 +1839,6 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBuscarNotaCredito)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNota)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.cntxtMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1859,7 +1948,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewImageColumn ImgEnviarASunatNota;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private CircularProgressBar.CircularProgressBar circularProgressBar1;
+        private System.Windows.Forms.Panel panel1;
+        private Guna.UI.WinForms.GunaGradientButton gunaGradientButton1;
+        private Guna.UI.WinForms.GunaGradientButton gunaGradientButton2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblStatus;
+        private Siticone.Desktop.UI.WinForms.SiticoneWinProgressIndicator ProgressBar1;
+        private System.Windows.Forms.Timer timer1;
     }
 
 }

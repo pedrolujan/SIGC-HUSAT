@@ -1062,8 +1062,8 @@ namespace wfaIntegradoCom.Sunat
                 else
                 {
 
-                    servicio.ClientCredentials.UserName.UserName = "20602404863FACTSIGC";
-                    servicio.ClientCredentials.UserName.Password = "MiHus@t1";
+                    servicio.ClientCredentials.UserName.UserName = "20602404863HUSATFAC";
+                    servicio.ClientCredentials.UserName.Password = "Sunat2024";
                     //servicio.ClientCredentials.UserName.Password = "Mihusat1";
                 }
 
