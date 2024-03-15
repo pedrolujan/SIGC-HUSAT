@@ -40,8 +40,8 @@ namespace wfaIntegradoCom.Sunat
             parametros.TotRedondeo = lstDocVenta[0].MontoRedondeo;
             parametros.Serie = clsCargo.SerieDoc;//"FA01";
             parametros.Correlativo =FunGeneral.generarCorrelativoDocumento(Convert.ToInt32(clsCargo.nValor2));// "00000132";
-            parametros.fecha_venta = clsCargo.dFechaVenta;
-            parametros.Fecha_de_pago = clsCargo.dFechaPago;
+            parametros.fecha_venta = clsCargo.dFechaVenta.AddDays(1);
+            parametros.Fecha_de_pago = clsCargo.dFechaPago.AddDays(1);
             parametros.FormaDePagoFactura = lstDocVenta[0].FormaPagoFactura;
             parametros.CodigoComprobante = clsCargo.nValor1;
             parametros.PrecioALetras = lstDocVenta[0].PrecioEnLetras;

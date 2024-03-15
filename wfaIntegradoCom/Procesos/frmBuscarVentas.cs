@@ -804,9 +804,9 @@ namespace wfaIntegradoCom.Procesos
                 lstVehiculo = fnDebolverDatVehiculo(RowVehiculos, ArrayVehiculos);
                 Mantenedores.frmRegistrarVenta FRMRegistrarV = new frmRegistrarVenta();
                 xmlInst = FRMRegistrarV.fnBuscarActaInstalacion(CodVenta, lstVehiculo[0].vPlaca, idTipoVenta);
-                xmlInst.ListaEquipo = xmlInst.ListaEquipo.Count==0 ? xmlInst.ListaEquipoActual : xmlInst.ListaEquipo;
-                if (xmlInst.clsInstalacion != null)
+                if ((xmlInst.clsInstalacion is Instalacion))
                 {
+                    xmlInst.ListaEquipo = xmlInst.ListaEquipo.Count==0 ? xmlInst.ListaEquipoActual : xmlInst.ListaEquipo;
                     frmVPActa.Inicio(xmlInst.ListaCliente, xmlInst.ListaVehiculo, xmlInst.ListaEquipo, xmlInst.ListaPlan, xmlInst.ListaAccesorio, xmlInst.ListaServicio, xmlInst.observaciones, xmlInst.clsInstalacion, 1);
                 }
                 else

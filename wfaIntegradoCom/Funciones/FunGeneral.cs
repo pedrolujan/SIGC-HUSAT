@@ -23,12 +23,14 @@ using CapaDato;
 using System.Data;
 using FontAwesome.Sharp;
 using System.Reflection;
+using wfaIntegradoCom.Sunat;
 
 namespace wfaIntegradoCom.Funciones
 {
     public class FunGeneral
     {
         static clsUtil objUtil = new clsUtil();
+        MultiThread _multithread = null;
         public static Boolean fnLlenarTablaCod(ComboBox cboCombo, String cCodTab)
         {
             BLCargo objTablaCod = new BLCargo();
@@ -1836,7 +1838,7 @@ namespace wfaIntegradoCom.Funciones
         }
         public static Byte[] fnObtenerQRDefecto()
         {
-            String rutaArchivo = GetRootPath() + @"\CDR\";
+            String rutaArchivo = GetRootPathSunat() + @"\CDR\";
             byte[] imageBytes = File.ReadAllBytes(rutaArchivo + "QR\\QrDefecto.png");
 
             return imageBytes;
@@ -2118,7 +2120,7 @@ namespace wfaIntegradoCom.Funciones
             string assemblyLocation = Assembly.GetExecutingAssembly().Location;
 
             // Combina la ruta del ensamblado con la ruta relativa al directorio raíz del proyecto
-            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "../../");
+            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "");
 
             // Convierte la ruta a una ruta completa
             rootPath = Path.GetFullPath(rootPath);
@@ -2131,13 +2133,13 @@ namespace wfaIntegradoCom.Funciones
             string assemblyLocation = Assembly.GetExecutingAssembly().Location;
 
             // Combina la ruta del ensamblado con la ruta relativa al directorio raíz del proyecto
-            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "../../");
+            string rootPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "");
 
             // Convierte la ruta a una ruta completa
-            rootPath = Path.GetFullPath(rootPath)+@"Sunat\DatosFacturacion";
+            rootPath = Path.GetFullPath(rootPath)+@"\DatosFacturacion";
 
             return rootPath;
         }
-
+        
     }
 }

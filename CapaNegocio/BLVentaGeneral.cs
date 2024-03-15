@@ -11,12 +11,15 @@ namespace CapaNegocio
 {
     public class BLVentaGeneral
     {
+       
         public Boolean blGenerarVentaGeneral(VentaGeneral objVG, List<xmlDocumentoVentaGeneral> xmlDocumentoVenta, byte[] btImage, ResponseSunat responseSunat, Int16 tipoCon)
         {
-            DAVentaGeneral objDAVG = new DAVentaGeneral(); 
+            DAVentaGeneral objDAVG = new DAVentaGeneral();
+            int idDocumentoVenta = 0;
             try
             {
-                return objDAVG.daGenerarVentaGeneral(objVG,xmlDocumentoVenta,  btImage,  responseSunat, tipoCon);
+                var res= objDAVG.daGenerarVentaGeneral(objVG, xmlDocumentoVenta, btImage, responseSunat, tipoCon);
+                return res;
             }
             catch (Exception ex)
             {

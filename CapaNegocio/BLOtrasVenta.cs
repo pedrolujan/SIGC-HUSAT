@@ -172,6 +172,19 @@ namespace CapaNegocio
 
             }
         }
+        public int blObtenerIdDocumentoVenta(string correlativo)
+        {
+            daObjTipoVenta = new DAOtrasVenta();
+            try
+            {
+                return daObjTipoVenta.daObtenerIdDocumentoVenta(correlativo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+        }
         public xmlDocumentoVentaGeneral blBuscarDocumentoPagoPendientes(Int32 idContrato,Int32 idTipoCon)
         {
             daObjTipoVenta = new DAOtrasVenta();

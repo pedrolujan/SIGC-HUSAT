@@ -1081,17 +1081,26 @@ namespace wfaIntegradoCom.Procesos
 
         private void iRACONTROLDEPAGOSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 1;
-            CronogramaSeleccionado = 0;
-            Int32 idCronograma = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[0].Value);
-            Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[1].Value);
-            String Placa = Convert.ToString(dgvListaVentas.CurrentRow.Cells[5].Value);
+            try
+            {
+                tabControl1.SelectedIndex = 1;
+                CronogramaSeleccionado = 0;
+                Int32 idCronograma = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[0].Value);
+                Int32 idContrato = Convert.ToInt32(dgvListaVentas.CurrentRow.Cells[1].Value);
+                String Placa = Convert.ToString(dgvListaVentas.CurrentRow.Cells[5].Value);
 
-            fnBuscarCronograma(1, Placa, -1, 0);
+                fnBuscarCronograma(1, Placa, -1, 0);
 
-            cboCronograma.SelectedIndex = 0;
-            fnObtenerCronogramaEspecifico(Convert.ToInt32(cboCronograma.SelectedValue), idContrato);
-            fnHabilitarDescuento(false);
+                cboCronograma.SelectedIndex = 0;
+                fnObtenerCronogramaEspecifico(Convert.ToInt32(cboCronograma.SelectedValue), idContrato);
+                fnHabilitarDescuento(false);
+            }
+            catch (Exception EX)
+            {
+
+                MessageBox.Show(""+ EX.Message, "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void dgvCronograma_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -1165,7 +1174,10 @@ namespace wfaIntegradoCom.Procesos
         {
             lstCronoGramasParaDocumentoVenta.Clear();
             dgvDatosDocumentosVenta.Rows.Clear();
-            cboCronograma.SelectedValue = CronogramaSeleccionado;
+            fnObtenerCronogramaEspecifico(CronogramaSeleccionado, 0);
+            dgvCronograma.Update();
+            dgvCronograma.Refresh();
+
 
         }
         private void obtenerNumeroDeItems()
@@ -1793,20 +1805,25 @@ namespace wfaIntegradoCom.Procesos
         {
             obControPagos = new BLControlPagos();
             Boolean bResult = false;
-                bResult = obControPagos.blGuardarPagoCuota(ctp, lstDV, tipoCon);
-                String strTipo = tipoCon == 0 ? "Guardado" : "Actualizado";
-                if (bResult)
-                {
-                   //string msgDocumento = "Informacion del documento de venta:\n🔘 " + clsResponseSunat.message;
-                    MessageBox.Show("Informacion del págo\n🔘 Págo " + strTipo + " Correctamente ✅ ", "Informacion ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    chkHabilitarDescuentoP.Checked = false;
-                    fnLimpiarSeleccion();
-                }
-                else
-                {
-                    MessageBox.Show("Error al " + strTipo + " Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            bResult = obControPagos.blGuardarPagoCuota(ctp, lstDV, tipoCon);
+            String strTipo = tipoCon == 0 ? "Guardado" : "Actualizado";
+            if (bResult)
+            {
+                //string msgDocumento = "Informacion del documento de venta:\n🔘 " + clsResponseSunat.message;
+                MessageBox.Show("Informacion del págo\n🔘 Págo " + strTipo + " Correctamente ✅ ", "Informacion ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                chkHabilitarDescuentoP.Checked = false;
+                fnLimpiarSeleccion();
+                int idDocumento = 0;
+                MovimientoSunat ms = new MovimientoSunat();
+                idDocumento = ms.fnObtenerIdDocumentoVenta(lstDV[0].xmlDocumentoVenta[0].CodigoCorrelativo);
+                ms.fnEnviarDocumentosASunat(idDocumento, 0);
 
-                }
+            }
+            else
+            {
+                MessageBox.Show("Error al " + strTipo + " Págo ❌ \n -> Comunique al administrador", "Informacion ❌", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
 
             this.Cursor = Cursors.Default;
         }
@@ -1822,6 +1839,11 @@ namespace wfaIntegradoCom.Procesos
                 MessageBox.Show("Págo " + strTipo + " Correctamente ✅", "Informacion ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 chkHabilitarDescuentoP.Checked = false;
                 fnLimpiarSeleccion();
+                int idDocumento = 0;
+                MovimientoSunat ms = new MovimientoSunat();
+                idDocumento = ms.fnObtenerIdDocumentoVenta(lstDV[0].xmlDocumentoVenta[0].CodigoCorrelativo);
+                ms.fnEnviarDocumentosASunat(idDocumento, 0);
+
 
             }
             else
@@ -2470,6 +2492,12 @@ namespace wfaIntegradoCom.Procesos
                         ctmPagar.Show(dgvCronograma, mousePosition);
                     }
 
+                    if (e.ColumnIndex==12)
+                    {
+                        var mousePosition = dgvCronograma.PointToClient(Cursor.Position);
+                        cmsActualizarEstado.Show(dgvCronograma, mousePosition);
+
+                    }
                 }
             }
         }
@@ -2643,7 +2671,8 @@ namespace wfaIntegradoCom.Procesos
                 if (estadoComprabanteP == true && estadoFechaPago == true)
                 {
                     fnAniadirADocumento(lstCronoGramasParaDocumentoVenta, Variables.gnCodUser, 0);
-
+                    cboCronograma.SelectedValue = CronogramaSeleccionado;
+                   
                 }
                 else
                 {
@@ -2847,6 +2876,8 @@ namespace wfaIntegradoCom.Procesos
             if (estadoApertura == 1)
             {
                 fnGenerarComprobantePago(filaSeleccionada, ColumnaSeleccionada);
+                cboCronograma.SelectedValue = CronogramaSeleccionado;
+                dgvCronograma.Refresh();
             }
             else if (estadoApertura == 0)
             {

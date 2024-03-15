@@ -220,11 +220,11 @@ namespace wfaIntegradoCom
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panelEspaciado = new System.Windows.Forms.Panel();
             this.pnlSombra = new System.Windows.Forms.Panel();
+            this.elhAlert = new System.Windows.Forms.Integration.ElementHost();
+            this.ucOpcion2 = new WPF.CTRL.Colocaciones.ucOpcion();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.ImgPerfil = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelPerfil = new System.Windows.Forms.Panel();
-            this.elhAlert = new System.Windows.Forms.Integration.ElementHost();
-            this.ucOpcion2 = new WPF.CTRL.Colocaciones.ucOpcion();
             this.PanelEncavezadoFondo1.SuspendLayout();
             this.LayoutPanelAccesoRapido.SuspendLayout();
             this.pntsSeguimiento.SuspendLayout();
@@ -324,9 +324,9 @@ namespace wfaIntegradoCom
             this.LayoutPanelAccesoRapido.Controls.Add(this.tsDoc_Sunat);
             this.LayoutPanelAccesoRapido.Controls.Add(this.tsConsulta);
             this.LayoutPanelAccesoRapido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LayoutPanelAccesoRapido.Location = new System.Drawing.Point(91, 0);
+            this.LayoutPanelAccesoRapido.Location = new System.Drawing.Point(73, 0);
             this.LayoutPanelAccesoRapido.Name = "LayoutPanelAccesoRapido";
-            this.LayoutPanelAccesoRapido.Size = new System.Drawing.Size(957, 72);
+            this.LayoutPanelAccesoRapido.Size = new System.Drawing.Size(975, 72);
             this.LayoutPanelAccesoRapido.TabIndex = 15;
             this.LayoutPanelAccesoRapido.Click += new System.EventHandler(this.flowLayoutPanel1_Click);
             // 
@@ -371,7 +371,7 @@ namespace wfaIntegradoCom
             // 
             // btnAlertaSeguimiento
             // 
-            this.btnAlertaSeguimiento.BorderRadius = 22;
+            this.btnAlertaSeguimiento.BorderRadius = 50;
             this.btnAlertaSeguimiento.FillColor = System.Drawing.Color.Red;
             this.btnAlertaSeguimiento.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.btnAlertaSeguimiento.ForeColor = System.Drawing.Color.White;
@@ -559,7 +559,7 @@ namespace wfaIntegradoCom
             this.siticonePanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.siticonePanel2.Location = new System.Drawing.Point(0, 0);
             this.siticonePanel2.Name = "siticonePanel2";
-            this.siticonePanel2.Size = new System.Drawing.Size(91, 72);
+            this.siticonePanel2.Size = new System.Drawing.Size(73, 72);
             this.siticonePanel2.TabIndex = 5;
             // 
             // iconChildForm
@@ -626,11 +626,11 @@ namespace wfaIntegradoCom
             this.tsCerraSession.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.tsCerraSession.IconSize = 32;
             this.tsCerraSession.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tsCerraSession.Location = new System.Drawing.Point(97, 0);
+            this.tsCerraSession.Location = new System.Drawing.Point(132, 0);
             this.tsCerraSession.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.tsCerraSession.Name = "tsCerraSession";
             this.tsCerraSession.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.tsCerraSession.Size = new System.Drawing.Size(177, 72);
+            this.tsCerraSession.Size = new System.Drawing.Size(142, 72);
             this.tsCerraSession.TabIndex = 27;
             this.tsCerraSession.Tag = "tsCerraSession";
             this.tsCerraSession.Text = "   Cerra Session";
@@ -677,9 +677,9 @@ namespace wfaIntegradoCom
             this.panelMenuPrincipal.Controls.Add(this.btnVenta);
             this.panelMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMenuPrincipal.FillColor = System.Drawing.Color.Transparent;
-            this.panelMenuPrincipal.Location = new System.Drawing.Point(0, 140);
+            this.panelMenuPrincipal.Location = new System.Drawing.Point(0, 112);
             this.panelMenuPrincipal.Name = "panelMenuPrincipal";
-            this.panelMenuPrincipal.Size = new System.Drawing.Size(230, 531);
+            this.panelMenuPrincipal.Size = new System.Drawing.Size(230, 559);
             this.panelMenuPrincipal.TabIndex = 1;
             // 
             // stpnMensajes
@@ -1066,7 +1066,7 @@ namespace wfaIntegradoCom
             this.panelImagenLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelImagenLogo.Location = new System.Drawing.Point(0, 0);
             this.panelImagenLogo.Name = "panelImagenLogo";
-            this.panelImagenLogo.Size = new System.Drawing.Size(230, 140);
+            this.panelImagenLogo.Size = new System.Drawing.Size(230, 112);
             this.panelImagenLogo.TabIndex = 21;
             // 
             // Img_Husat_Naranja
@@ -1411,9 +1411,9 @@ namespace wfaIntegradoCom
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 576);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 581);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1317, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1317, 21);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "StatusStrip1";
             // 
@@ -1426,7 +1426,7 @@ namespace wfaIntegradoCom
             this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.toolStripStatusLabel2.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 21);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(81, 16);
             this.toolStripStatusLabel2.Text = "Servidor: ";
             // 
             // toolStripStatusLabel3
@@ -1438,7 +1438,7 @@ namespace wfaIntegradoCom
             this.toolStripStatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.toolStripStatusLabel3.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(144, 21);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(144, 16);
             this.toolStripStatusLabel3.Text = "Fecha del Sistema: ";
             // 
             // toolStripStatusLabel4
@@ -1450,7 +1450,7 @@ namespace wfaIntegradoCom
             this.toolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.toolStripStatusLabel4.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Bold);
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(74, 21);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(74, 16);
             this.toolStripStatusLabel4.Text = "Versión: ";
             // 
             // btnOpciones
@@ -1551,9 +1551,9 @@ namespace wfaIntegradoCom
             this.pnlParaDashboard.Controls.Add(this.siticoneGroupBox1);
             this.pnlParaDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlParaDashboard.FillColor = System.Drawing.Color.Transparent;
-            this.pnlParaDashboard.Location = new System.Drawing.Point(0, 23);
+            this.pnlParaDashboard.Location = new System.Drawing.Point(0, 18);
             this.pnlParaDashboard.Name = "pnlParaDashboard";
-            this.pnlParaDashboard.Size = new System.Drawing.Size(1317, 579);
+            this.pnlParaDashboard.Size = new System.Drawing.Size(1317, 584);
             this.pnlParaDashboard.TabIndex = 37;
             this.pnlParaDashboard.MouseEnter += new System.EventHandler(this.pnlParaDashboard_MouseEnter_1);
             // 
@@ -2773,13 +2773,13 @@ namespace wfaIntegradoCom
             this.treeView1.ImageIndex = 3;
             this.treeView1.ImageList = this.ListaImagenes;
             this.treeView1.LineColor = System.Drawing.Color.White;
-            this.treeView1.Location = new System.Drawing.Point(0, 23);
+            this.treeView1.Location = new System.Drawing.Point(0, 18);
             this.treeView1.Margin = new System.Windows.Forms.Padding(50);
             this.treeView1.Name = "treeView1";
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.treeView1.SelectedImageIndex = 5;
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(1317, 579);
+            this.treeView1.Size = new System.Drawing.Size(1317, 584);
             this.treeView1.TabIndex = 5;
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
@@ -2788,9 +2788,9 @@ namespace wfaIntegradoCom
             // panelEspaciado
             // 
             this.panelEspaciado.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEspaciado.Location = new System.Drawing.Point(0, 3);
+            this.panelEspaciado.Location = new System.Drawing.Point(0, 2);
             this.panelEspaciado.Name = "panelEspaciado";
-            this.panelEspaciado.Size = new System.Drawing.Size(1317, 20);
+            this.panelEspaciado.Size = new System.Drawing.Size(1317, 16);
             this.panelEspaciado.TabIndex = 35;
             // 
             // pnlSombra
@@ -2799,8 +2799,20 @@ namespace wfaIntegradoCom
             this.pnlSombra.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSombra.Location = new System.Drawing.Point(0, 0);
             this.pnlSombra.Name = "pnlSombra";
-            this.pnlSombra.Size = new System.Drawing.Size(1317, 3);
+            this.pnlSombra.Size = new System.Drawing.Size(1317, 2);
             this.pnlSombra.TabIndex = 16;
+            // 
+            // elhAlert
+            // 
+            this.elhAlert.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.elhAlert.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.elhAlert.Location = new System.Drawing.Point(1108, 498);
+            this.elhAlert.Name = "elhAlert";
+            this.elhAlert.Size = new System.Drawing.Size(29, 18);
+            this.elhAlert.TabIndex = 13;
+            this.elhAlert.Text = "elhAlert";
+            this.elhAlert.Visible = false;
+            this.elhAlert.Child = this.ucOpcion2;
             // 
             // colorDialog1
             // 
@@ -2837,18 +2849,6 @@ namespace wfaIntegradoCom
             this.panelPerfil.Size = new System.Drawing.Size(274, 72);
             this.panelPerfil.TabIndex = 24;
             // 
-            // elhAlert
-            // 
-            this.elhAlert.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.elhAlert.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.elhAlert.Location = new System.Drawing.Point(1108, 498);
-            this.elhAlert.Name = "elhAlert";
-            this.elhAlert.Size = new System.Drawing.Size(29, 18);
-            this.elhAlert.TabIndex = 13;
-            this.elhAlert.Text = "elhAlert";
-            this.elhAlert.Visible = false;
-            this.elhAlert.Child = this.ucOpcion2;
-            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2863,7 +2863,7 @@ namespace wfaIntegradoCom
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MDIParent1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SISTEMA DE GESTION COMERCIAL";
+            this.Text = "Husis";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.MDIParent1_Activated);
             this.Load += new System.EventHandler(this.MDIParent1_Load);
